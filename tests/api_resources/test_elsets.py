@@ -1,0 +1,885 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+import os
+from typing import Any, cast
+
+import pytest
+
+from tests.utils import assert_matches_type
+from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.types import (
+    Elset,
+    ElsetListResponse,
+    ElsetTupleResponse,
+)
+from unifieddatalibrary._utils import parse_datetime
+
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+
+
+class TestElsets:
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    def test_method_create(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+        )
+        assert elset is None
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+            agom=0,
+            algorithm="algorithm",
+            apogee=0,
+            arg_of_perigee=0,
+            ballistic_coeff=0,
+            b_star=0,
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_by="createdBy",
+            descriptor="descriptor",
+            eccentricity=0,
+            ephem_type=0,
+            id_elset="idElset",
+            id_on_orbit="idOnOrbit",
+            id_orbit_determination="idOrbitDetermination",
+            inclination=0,
+            line1="line1",
+            line2="line2",
+            mean_anomaly=0,
+            mean_motion=0,
+            mean_motion_d_dot=0,
+            mean_motion_dot=0,
+            origin="origin",
+            orig_network="origNetwork",
+            orig_object_id="origObjectId",
+            perigee=0,
+            period=0,
+            raan=0,
+            raw_file_uri="rawFileURI",
+            rev_no=0,
+            sat_no=0,
+            semi_major_axis=0,
+            sourced_data=["string"],
+            sourced_data_types=["string"],
+            source_dl="sourceDL",
+            tags=["string"],
+            transaction_id="transactionId",
+            uct=True,
+        )
+        assert elset is None
+
+    @parametrize
+    def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert elset is None
+
+    @parametrize
+    def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.retrieve(
+            "id",
+        )
+        assert_matches_type(Elset, elset, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.retrieve(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert_matches_type(Elset, elset, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.retrieve(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert_matches_type(Elset, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.elsets.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.list(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(ElsetListResponse, elset, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.list(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert_matches_type(ElsetListResponse, elset, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.list(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert_matches_type(ElsetListResponse, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_count(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.count(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, elset, path=["response"])
+
+    @parametrize
+    def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.count(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert_matches_type(str, elset, path=["response"])
+
+    @parametrize
+    def test_streaming_response_count(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.count(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert_matches_type(str, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                }
+            ],
+        )
+        assert elset is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                    "agom": 0,
+                    "algorithm": "algorithm",
+                    "apogee": 0,
+                    "arg_of_perigee": 0,
+                    "ballistic_coeff": 0,
+                    "b_star": 0,
+                    "created_at": "2019-12-27T18:11:19.117Z",
+                    "created_by": "createdBy",
+                    "descriptor": "descriptor",
+                    "eccentricity": 0,
+                    "ephem_type": 0,
+                    "id_elset": "idElset",
+                    "id_on_orbit": "idOnOrbit",
+                    "id_orbit_determination": "idOrbitDetermination",
+                    "inclination": 0,
+                    "line1": "line1",
+                    "line2": "line2",
+                    "mean_anomaly": 0,
+                    "mean_motion": 0,
+                    "mean_motion_d_dot": 0,
+                    "mean_motion_dot": 0,
+                    "origin": "origin",
+                    "orig_network": "origNetwork",
+                    "orig_object_id": "origObjectId",
+                    "perigee": 0,
+                    "period": 0,
+                    "raan": 0,
+                    "raw_file_uri": "rawFileURI",
+                    "rev_no": 0,
+                    "sat_no": 0,
+                    "semi_major_axis": 0,
+                    "sourced_data": ["string"],
+                    "sourced_data_types": ["string"],
+                    "source_dl": "sourceDL",
+                    "tags": ["string"],
+                    "transaction_id": "transactionId",
+                    "uct": True,
+                }
+            ],
+            dupe_check=True,
+        )
+        assert elset is None
+
+    @parametrize
+    def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert elset is None
+
+    @parametrize
+    def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_bulk_from_tle(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+        )
+        assert elset is None
+
+    @parametrize
+    def test_method_create_bulk_from_tle_with_all_params(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+            auto_create_sats=True,
+            control="control",
+            origin="origin",
+            tags="tags",
+        )
+        assert elset is None
+
+    @parametrize
+    def test_raw_response_create_bulk_from_tle(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert elset is None
+
+    @parametrize
+    def test_streaming_response_create_bulk_from_tle(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.query_current_elset_help()
+        assert elset is None
+
+    @parametrize
+    def test_raw_response_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.query_current_elset_help()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert elset is None
+
+    @parametrize
+    def test_streaming_response_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.query_current_elset_help() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.queryhelp()
+        assert elset is None
+
+    @parametrize
+    def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.queryhelp()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert elset is None
+
+    @parametrize
+    def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.queryhelp() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_tuple(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.tuple(
+            columns="columns",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+    @parametrize
+    def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.tuple(
+            columns="columns",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+    @parametrize
+    def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.tuple(
+            columns="columns",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+
+class TestAsyncElsets:
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+            agom=0,
+            algorithm="algorithm",
+            apogee=0,
+            arg_of_perigee=0,
+            ballistic_coeff=0,
+            b_star=0,
+            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_by="createdBy",
+            descriptor="descriptor",
+            eccentricity=0,
+            ephem_type=0,
+            id_elset="idElset",
+            id_on_orbit="idOnOrbit",
+            id_orbit_determination="idOrbitDetermination",
+            inclination=0,
+            line1="line1",
+            line2="line2",
+            mean_anomaly=0,
+            mean_motion=0,
+            mean_motion_d_dot=0,
+            mean_motion_dot=0,
+            origin="origin",
+            orig_network="origNetwork",
+            orig_object_id="origObjectId",
+            perigee=0,
+            period=0,
+            raan=0,
+            raw_file_uri="rawFileURI",
+            rev_no=0,
+            sat_no=0,
+            semi_major_axis=0,
+            sourced_data=["string"],
+            sourced_data_types=["string"],
+            source_dl="sourceDL",
+            tags=["string"],
+            transaction_id="transactionId",
+            uct=True,
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert elset is None
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.create(
+            classification_marking="classificationMarking",
+            data_mode="dataMode",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+            source="source",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.retrieve(
+            "id",
+        )
+        assert_matches_type(Elset, elset, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.retrieve(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert_matches_type(Elset, elset, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.retrieve(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert_matches_type(Elset, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.elsets.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.list(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(ElsetListResponse, elset, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.list(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert_matches_type(ElsetListResponse, elset, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.list(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert_matches_type(ElsetListResponse, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.count(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, elset, path=["response"])
+
+    @parametrize
+    async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.count(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert_matches_type(str, elset, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.count(
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert_matches_type(str, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                }
+            ],
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                    "agom": 0,
+                    "algorithm": "algorithm",
+                    "apogee": 0,
+                    "arg_of_perigee": 0,
+                    "ballistic_coeff": 0,
+                    "b_star": 0,
+                    "created_at": "2019-12-27T18:11:19.117Z",
+                    "created_by": "createdBy",
+                    "descriptor": "descriptor",
+                    "eccentricity": 0,
+                    "ephem_type": 0,
+                    "id_elset": "idElset",
+                    "id_on_orbit": "idOnOrbit",
+                    "id_orbit_determination": "idOrbitDetermination",
+                    "inclination": 0,
+                    "line1": "line1",
+                    "line2": "line2",
+                    "mean_anomaly": 0,
+                    "mean_motion": 0,
+                    "mean_motion_d_dot": 0,
+                    "mean_motion_dot": 0,
+                    "origin": "origin",
+                    "orig_network": "origNetwork",
+                    "orig_object_id": "origObjectId",
+                    "perigee": 0,
+                    "period": 0,
+                    "raan": 0,
+                    "raw_file_uri": "rawFileURI",
+                    "rev_no": 0,
+                    "sat_no": 0,
+                    "semi_major_axis": 0,
+                    "sourced_data": ["string"],
+                    "sourced_data_types": ["string"],
+                    "source_dl": "sourceDL",
+                    "tags": ["string"],
+                    "transaction_id": "transactionId",
+                    "uct": True,
+                }
+            ],
+            dupe_check=True,
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert elset is None
+
+    @parametrize
+    async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "classificationMarking",
+                    "data_mode": "dataMode",
+                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "source": "source",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_bulk_from_tle(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_method_create_bulk_from_tle_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+            auto_create_sats=True,
+            control="control",
+            origin="origin",
+            tags="tags",
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_raw_response_create_bulk_from_tle(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert elset is None
+
+    @parametrize
+    async def test_streaming_response_create_bulk_from_tle(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.create_bulk_from_tle(
+            data_mode="dataMode",
+            make_current=True,
+            source="source",
+            body="body",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.query_current_elset_help()
+        assert elset is None
+
+    @parametrize
+    async def test_raw_response_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.query_current_elset_help()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert elset is None
+
+    @parametrize
+    async def test_streaming_response_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.query_current_elset_help() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.queryhelp()
+        assert elset is None
+
+    @parametrize
+    async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.queryhelp()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert elset is None
+
+    @parametrize
+    async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.queryhelp() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert elset is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.tuple(
+            columns="columns",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+    @parametrize
+    async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.tuple(
+            columns="columns",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.tuple(
+            columns="columns",
+            epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
