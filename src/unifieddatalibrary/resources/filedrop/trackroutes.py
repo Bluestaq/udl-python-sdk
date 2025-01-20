@@ -1,0 +1,554 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Union, Iterable
+from datetime import datetime
+
+import httpx
+
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from ..._base_client import make_request_options
+from ...types.filedrop import trackroute_create_params
+
+__all__ = ["TrackroutesResource", "AsyncTrackroutesResource"]
+
+
+class TrackroutesResource(SyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> TrackroutesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        """
+        return TrackroutesResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> TrackroutesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        """
+        return TrackroutesResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        classification_marking: str,
+        data_mode: str,
+        last_update_date: Union[str, datetime],
+        source: str,
+        type: str,
+        id: str | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[trackroute_create_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        apn_setting: str | NotGiven = NOT_GIVEN,
+        apx_beacon_code: str | NotGiven = NOT_GIVEN,
+        artcc_message: str | NotGiven = NOT_GIVEN,
+        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        created_by: str | NotGiven = NOT_GIVEN,
+        creating_org: str | NotGiven = NOT_GIVEN,
+        direction: str | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        location_track_id: str | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        orig_network: str | NotGiven = NOT_GIVEN,
+        poc: Iterable[trackroute_create_params.Poc] | NotGiven = NOT_GIVEN,
+        pri_freq: float | NotGiven = NOT_GIVEN,
+        receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
+        region_code: str | NotGiven = NOT_GIVEN,
+        region_name: str | NotGiven = NOT_GIVEN,
+        review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[trackroute_create_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        scheduler_org_name: str | NotGiven = NOT_GIVEN,
+        scheduler_org_unit: str | NotGiven = NOT_GIVEN,
+        sec_freq: float | NotGiven = NOT_GIVEN,
+        short_name: str | NotGiven = NOT_GIVEN,
+        sic: str | NotGiven = NOT_GIVEN,
+        source_dl: str | NotGiven = NOT_GIVEN,
+        track_id: str | NotGiven = NOT_GIVEN,
+        track_name: str | NotGiven = NOT_GIVEN,
+        type_code: str | NotGiven = NOT_GIVEN,
+        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        updated_by: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple trackroute records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          last_update_date: The last updated date of the track route in ISO 8601 UTC format with millisecond
+              precision.
+
+          source: Source of the data.
+
+          type: The track route type represented by this record (ex. AIR REFUELING).
+
+          id: Unique identifier of the record, auto-generated by the system.
+
+          altitude_blocks: Minimum and maximum altitude bounds for the track.
+
+          apn_setting: The APN radar code sent and received by the aircraft for identification.
+
+          apx_beacon_code: The APX radar code sent and received by the aircraft for identification.
+
+          artcc_message: Air Refueling Track Control Center message.
+
+          created_at: Time the row was created in the database, auto-populated by the system.
+
+          created_by: Application user who created the row in the database, auto-populated by the
+              system.
+
+          creating_org: The name of the creating organization of the track route.
+
+          direction: The principal compass direction (cardinal or ordinal) of the track route.
+
+          effective_date: The date which the DAFIF track was last updated/validated in ISO 8601 UTC format
+              with millisecond precision.
+
+          external_id: Optional air refueling track ID from external systems. This field has no meaning
+              within UDL and is provided as a convenience for systems that require tracking of
+              an internal system generated ID.
+
+          last_used_date: Used to show last time the track route was added to an itinerary in ISO 8601 UTC
+              format with millisecond precision.
+
+          location_track_id: Track location ID.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          orig_network: The originating source network on which this record was created, auto-populated
+              by the system.
+
+          poc: Point of contacts for scheduling or modifying the route.
+
+          pri_freq: The primary UHF radio frequency used for the track route in megahertz.
+
+          receiver_tanker_ch_code: The receiver tanker channel identifer for air refueling tracks.
+
+          region_code: Region code indicating where the track resides as determined by the data source.
+
+          region_name: Region where the track resides.
+
+          review_date: Date the track needs to be reviewed for accuracy or deletion in ISO 8601 UTC
+              format with millisecond precision.
+
+          route_points: Points identified within the route.
+
+          scheduler_org_name: Point of contact for the air refueling track route scheduler.
+
+          scheduler_org_unit: The unit responsible for scheduling the track route.
+
+          sec_freq: The secondary UHF radio frequency used for the track route in megahertz.
+
+          short_name: Abbreviated name of the track.
+
+          sic: Standard Indicator Code of the air refueling track.
+
+          source_dl: The source data library from which this record was received. This could be a
+              remote or tactical UDL or another data library. If null, the record should be
+              assumed to have originated from the primary Enterprise UDL.
+
+          track_id: Identifier of the track.
+
+          track_name: Name of the track.
+
+          type_code: Type of process used by AMC to schedule an air refueling event. Possible values
+              are A (Matched Long Range), F (Matched AMC Short Notice), N (Unmatched Theater
+              Operation Short Notice (Theater Assets)), R, Unmatched Long Range, S (Soft Air
+              Refueling), T (Matched Theater Operation Short Notice (Theater Assets)), V
+              (Unmatched AMC Short Notice), X (Unmatched Theater Operation Short Notice (AMC
+              Assets)), Y (Matched Theater Operation Short Notice (AMC Assets)), Z (Other Air
+              Refueling).
+
+          updated_at: Time the row was updated in the database, auto-populated by the system.
+
+          updated_by: Application user who updated the row in the database, auto-populated by the
+              system.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-trackroute",
+            body=maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "last_update_date": last_update_date,
+                    "source": source,
+                    "type": type,
+                    "id": id,
+                    "altitude_blocks": altitude_blocks,
+                    "apn_setting": apn_setting,
+                    "apx_beacon_code": apx_beacon_code,
+                    "artcc_message": artcc_message,
+                    "created_at": created_at,
+                    "created_by": created_by,
+                    "creating_org": creating_org,
+                    "direction": direction,
+                    "effective_date": effective_date,
+                    "external_id": external_id,
+                    "last_used_date": last_used_date,
+                    "location_track_id": location_track_id,
+                    "origin": origin,
+                    "orig_network": orig_network,
+                    "poc": poc,
+                    "pri_freq": pri_freq,
+                    "receiver_tanker_ch_code": receiver_tanker_ch_code,
+                    "region_code": region_code,
+                    "region_name": region_name,
+                    "review_date": review_date,
+                    "route_points": route_points,
+                    "scheduler_org_name": scheduler_org_name,
+                    "scheduler_org_unit": scheduler_org_unit,
+                    "sec_freq": sec_freq,
+                    "short_name": short_name,
+                    "sic": sic,
+                    "source_dl": source_dl,
+                    "track_id": track_id,
+                    "track_name": track_name,
+                    "type_code": type_code,
+                    "updated_at": updated_at,
+                    "updated_by": updated_by,
+                },
+                trackroute_create_params.TrackrouteCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+
+class AsyncTrackroutesResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncTrackroutesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncTrackroutesResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncTrackroutesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        """
+        return AsyncTrackroutesResourceWithStreamingResponse(self)
+
+    async def create(
+        self,
+        *,
+        classification_marking: str,
+        data_mode: str,
+        last_update_date: Union[str, datetime],
+        source: str,
+        type: str,
+        id: str | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[trackroute_create_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        apn_setting: str | NotGiven = NOT_GIVEN,
+        apx_beacon_code: str | NotGiven = NOT_GIVEN,
+        artcc_message: str | NotGiven = NOT_GIVEN,
+        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        created_by: str | NotGiven = NOT_GIVEN,
+        creating_org: str | NotGiven = NOT_GIVEN,
+        direction: str | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        location_track_id: str | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        orig_network: str | NotGiven = NOT_GIVEN,
+        poc: Iterable[trackroute_create_params.Poc] | NotGiven = NOT_GIVEN,
+        pri_freq: float | NotGiven = NOT_GIVEN,
+        receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
+        region_code: str | NotGiven = NOT_GIVEN,
+        region_name: str | NotGiven = NOT_GIVEN,
+        review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[trackroute_create_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        scheduler_org_name: str | NotGiven = NOT_GIVEN,
+        scheduler_org_unit: str | NotGiven = NOT_GIVEN,
+        sec_freq: float | NotGiven = NOT_GIVEN,
+        short_name: str | NotGiven = NOT_GIVEN,
+        sic: str | NotGiven = NOT_GIVEN,
+        source_dl: str | NotGiven = NOT_GIVEN,
+        track_id: str | NotGiven = NOT_GIVEN,
+        track_name: str | NotGiven = NOT_GIVEN,
+        type_code: str | NotGiven = NOT_GIVEN,
+        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        updated_by: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple trackroute records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          last_update_date: The last updated date of the track route in ISO 8601 UTC format with millisecond
+              precision.
+
+          source: Source of the data.
+
+          type: The track route type represented by this record (ex. AIR REFUELING).
+
+          id: Unique identifier of the record, auto-generated by the system.
+
+          altitude_blocks: Minimum and maximum altitude bounds for the track.
+
+          apn_setting: The APN radar code sent and received by the aircraft for identification.
+
+          apx_beacon_code: The APX radar code sent and received by the aircraft for identification.
+
+          artcc_message: Air Refueling Track Control Center message.
+
+          created_at: Time the row was created in the database, auto-populated by the system.
+
+          created_by: Application user who created the row in the database, auto-populated by the
+              system.
+
+          creating_org: The name of the creating organization of the track route.
+
+          direction: The principal compass direction (cardinal or ordinal) of the track route.
+
+          effective_date: The date which the DAFIF track was last updated/validated in ISO 8601 UTC format
+              with millisecond precision.
+
+          external_id: Optional air refueling track ID from external systems. This field has no meaning
+              within UDL and is provided as a convenience for systems that require tracking of
+              an internal system generated ID.
+
+          last_used_date: Used to show last time the track route was added to an itinerary in ISO 8601 UTC
+              format with millisecond precision.
+
+          location_track_id: Track location ID.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          orig_network: The originating source network on which this record was created, auto-populated
+              by the system.
+
+          poc: Point of contacts for scheduling or modifying the route.
+
+          pri_freq: The primary UHF radio frequency used for the track route in megahertz.
+
+          receiver_tanker_ch_code: The receiver tanker channel identifer for air refueling tracks.
+
+          region_code: Region code indicating where the track resides as determined by the data source.
+
+          region_name: Region where the track resides.
+
+          review_date: Date the track needs to be reviewed for accuracy or deletion in ISO 8601 UTC
+              format with millisecond precision.
+
+          route_points: Points identified within the route.
+
+          scheduler_org_name: Point of contact for the air refueling track route scheduler.
+
+          scheduler_org_unit: The unit responsible for scheduling the track route.
+
+          sec_freq: The secondary UHF radio frequency used for the track route in megahertz.
+
+          short_name: Abbreviated name of the track.
+
+          sic: Standard Indicator Code of the air refueling track.
+
+          source_dl: The source data library from which this record was received. This could be a
+              remote or tactical UDL or another data library. If null, the record should be
+              assumed to have originated from the primary Enterprise UDL.
+
+          track_id: Identifier of the track.
+
+          track_name: Name of the track.
+
+          type_code: Type of process used by AMC to schedule an air refueling event. Possible values
+              are A (Matched Long Range), F (Matched AMC Short Notice), N (Unmatched Theater
+              Operation Short Notice (Theater Assets)), R, Unmatched Long Range, S (Soft Air
+              Refueling), T (Matched Theater Operation Short Notice (Theater Assets)), V
+              (Unmatched AMC Short Notice), X (Unmatched Theater Operation Short Notice (AMC
+              Assets)), Y (Matched Theater Operation Short Notice (AMC Assets)), Z (Other Air
+              Refueling).
+
+          updated_at: Time the row was updated in the database, auto-populated by the system.
+
+          updated_by: Application user who updated the row in the database, auto-populated by the
+              system.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-trackroute",
+            body=await async_maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "last_update_date": last_update_date,
+                    "source": source,
+                    "type": type,
+                    "id": id,
+                    "altitude_blocks": altitude_blocks,
+                    "apn_setting": apn_setting,
+                    "apx_beacon_code": apx_beacon_code,
+                    "artcc_message": artcc_message,
+                    "created_at": created_at,
+                    "created_by": created_by,
+                    "creating_org": creating_org,
+                    "direction": direction,
+                    "effective_date": effective_date,
+                    "external_id": external_id,
+                    "last_used_date": last_used_date,
+                    "location_track_id": location_track_id,
+                    "origin": origin,
+                    "orig_network": orig_network,
+                    "poc": poc,
+                    "pri_freq": pri_freq,
+                    "receiver_tanker_ch_code": receiver_tanker_ch_code,
+                    "region_code": region_code,
+                    "region_name": region_name,
+                    "review_date": review_date,
+                    "route_points": route_points,
+                    "scheduler_org_name": scheduler_org_name,
+                    "scheduler_org_unit": scheduler_org_unit,
+                    "sec_freq": sec_freq,
+                    "short_name": short_name,
+                    "sic": sic,
+                    "source_dl": source_dl,
+                    "track_id": track_id,
+                    "track_name": track_name,
+                    "type_code": type_code,
+                    "updated_at": updated_at,
+                    "updated_by": updated_by,
+                },
+                trackroute_create_params.TrackrouteCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+
+class TrackroutesResourceWithRawResponse:
+    def __init__(self, trackroutes: TrackroutesResource) -> None:
+        self._trackroutes = trackroutes
+
+        self.create = to_raw_response_wrapper(
+            trackroutes.create,
+        )
+
+
+class AsyncTrackroutesResourceWithRawResponse:
+    def __init__(self, trackroutes: AsyncTrackroutesResource) -> None:
+        self._trackroutes = trackroutes
+
+        self.create = async_to_raw_response_wrapper(
+            trackroutes.create,
+        )
+
+
+class TrackroutesResourceWithStreamingResponse:
+    def __init__(self, trackroutes: TrackroutesResource) -> None:
+        self._trackroutes = trackroutes
+
+        self.create = to_streamed_response_wrapper(
+            trackroutes.create,
+        )
+
+
+class AsyncTrackroutesResourceWithStreamingResponse:
+    def __init__(self, trackroutes: AsyncTrackroutesResource) -> None:
+        self._trackroutes = trackroutes
+
+        self.create = async_to_streamed_response_wrapper(
+            trackroutes.create,
+        )
