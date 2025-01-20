@@ -1182,7 +1182,7 @@ class CollectRequestFull(BaseModel):
 
 
 from ..elset import Elset
-from ..onorbit import Onorbit
+from .onorbit import Onorbit
 from .collect_response_full import CollectResponseFull
 
 if PYDANTIC_V2:

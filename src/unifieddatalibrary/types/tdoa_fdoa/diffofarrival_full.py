@@ -248,7 +248,7 @@ class DiffofarrivalFull(BaseModel):
     """
 
 
-from ..onorbit import Onorbit
+from ..shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     DiffofarrivalFull.model_rebuild()

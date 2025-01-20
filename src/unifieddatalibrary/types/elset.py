@@ -317,7 +317,7 @@ class Elset(BaseModel):
     """
 
 
-from .onorbit import Onorbit
+from .shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     Elset.model_rebuild()

@@ -201,7 +201,7 @@ class AttitudesetFull(BaseModel):
     """
 
 
-from ..onorbit import Onorbit
+from .onorbit import Onorbit
 
 if PYDANTIC_V2:
     AttitudesetFull.model_rebuild()

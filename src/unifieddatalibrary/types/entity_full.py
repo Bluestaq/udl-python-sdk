@@ -1490,7 +1490,7 @@ class EntityFull(BaseModel):
     """List of URLs to additional details/documents for this entity."""
 
 
-from .onorbit import Onorbit
+from .shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     EntityFull.model_rebuild()
