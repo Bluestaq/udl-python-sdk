@@ -7,6 +7,7 @@ from .engine import Engine as Engine
 from .shared import (
     AIsFull as AIsFull,
     EopFull as EopFull,
+    Onorbit as Onorbit,
     EvacFull as EvacFull,
     DriftHistory as DriftHistory,
     EphemerisFull as EphemerisFull,
@@ -19,7 +20,6 @@ from .shared import (
     DrifthistoryAbridged as DrifthistoryAbridged,
     AirTransportMissionFull as AirTransportMissionFull,
 )
-from .onorbit import Onorbit as Onorbit
 from .bus_full import BusFull as BusFull
 from .beam_full import BeamFull as BeamFull
 from .comm_full import CommFull as CommFull

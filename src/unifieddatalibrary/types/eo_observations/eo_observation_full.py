@@ -938,7 +938,7 @@ class EoObservationFull(BaseModel):
     """
 
 
-from ..onorbit import Onorbit
+from ..shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     EoObservationFull.model_rebuild()

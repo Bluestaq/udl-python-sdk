@@ -281,7 +281,7 @@ class Ecpsdr(BaseModel):
     """
 
 
-from ..onorbit import Onorbit
+from ..shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     Ecpsdr.model_rebuild()

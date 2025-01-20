@@ -1671,7 +1671,7 @@ class ConjunctionFull(BaseModel):
     """The shape (BOX, ELLIPSOID) of the screening volume."""
 
 
-from .onorbit import Onorbit
+from .shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     ConjunctionFull.model_rebuild()

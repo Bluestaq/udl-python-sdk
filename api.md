@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     EvacFull,
     EventEvolutionFull,
     FlightPlanFull,
+    Onorbit,
 )
 ```
 
@@ -26,7 +27,6 @@ Types:
 from unifieddatalibrary.types import (
     ConjunctionAbridged,
     ConjunctionFull,
-    Onorbit,
     ConjunctionListResponse,
     ConjunctionCountResponse,
     ConjunctionGetHistoryResponse,

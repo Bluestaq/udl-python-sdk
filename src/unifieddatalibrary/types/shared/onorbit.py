@@ -7,11 +7,11 @@ from datetime import date, datetime
 
 from pydantic import Field as FieldInfo
 
-from .engine import Engine
-from .._compat import PYDANTIC_V2
-from .._models import BaseModel
-from .antenna_full import AntennaFull
-from .battery_full import BatteryFull
+from ..engine import Engine
+from ..._compat import PYDANTIC_V2
+from ..._models import BaseModel
+from ..antenna_full import AntennaFull
+from ..battery_full import BatteryFull
 
 __all__ = [
     "Onorbit",
@@ -1169,7 +1169,7 @@ class Onorbit(BaseModel):
     """
 
 
-from .entity_full import EntityFull
+from ..entity_full import EntityFull
 
 if PYDANTIC_V2:
     Onorbit.model_rebuild()

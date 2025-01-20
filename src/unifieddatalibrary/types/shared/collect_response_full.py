@@ -197,7 +197,7 @@ class CollectResponseFull(BaseModel):
     """Optional task ID associated with the request/response."""
 
 
-from ..onorbit import Onorbit
+from .onorbit import Onorbit
 
 if PYDANTIC_V2:
     CollectResponseFull.model_rebuild()

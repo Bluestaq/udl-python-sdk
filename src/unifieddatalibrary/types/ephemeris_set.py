@@ -885,7 +885,7 @@ class EphemerisSet(BaseModel):
     """
 
 
-from .onorbit import Onorbit
+from .shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
     EphemerisSet.model_rebuild()
