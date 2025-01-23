@@ -54,7 +54,7 @@ class CrewUpdateParams(TypedDict, total=False):
     """The aircraft Model Design Series designation assigned for this crew."""
 
     alerted_time: Annotated[Union[str, datetime], PropertyInfo(alias="alertedTime", format="iso8601")]
-    """Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision."""
+    """Time the crew was alerted, in ISO8601 UTC format, with millisecond precision."""
 
     arms_crew_unit: Annotated[str, PropertyInfo(alias="armsCrewUnit")]
     """The crew's Aviation Resource Management System (ARMS) unit.
@@ -134,13 +134,13 @@ class CrewUpdateParams(TypedDict, total=False):
 
     legal_alert_time: Annotated[Union[str, datetime], PropertyInfo(alias="legalAlertTime", format="iso8601")]
     """
-    Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
+    Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
     precision.
     """
 
     legal_bravo_time: Annotated[Union[str, datetime], PropertyInfo(alias="legalBravoTime", format="iso8601")]
     """
-    Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
+    Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
     precision.
     """
 
@@ -177,7 +177,7 @@ class CrewUpdateParams(TypedDict, total=False):
     """
 
     return_time: Annotated[Union[str, datetime], PropertyInfo(alias="returnTime", format="iso8601")]
-    """Scheduled return time, in ISO 8601 UTC format, with millisecond precision."""
+    """Scheduled return time, in ISO8601 UTC format, with millisecond precision."""
 
     stage_time: Annotated[Union[str, datetime], PropertyInfo(alias="stageTime", format="iso8601")]
     """

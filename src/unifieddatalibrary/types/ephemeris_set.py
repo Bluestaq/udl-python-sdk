@@ -1,13 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .._compat import PYDANTIC_V2
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
 from .shared.ephemeris_full import EphemerisFull
 
 __all__ = ["EphemerisSet", "StateVector"]
@@ -313,7 +315,7 @@ class StateVector(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -803,7 +805,7 @@ class EphemerisSet(BaseModel):
     lunar_solar: Optional[bool] = FieldInfo(alias="lunarSolar", default=None)
     """Boolean indicating use of lunar/solar data in ephemeris generation."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -888,3 +890,13 @@ class EphemerisSet(BaseModel):
     Optional start time of the usable time span for the ephemeris data, in ISO 8601
     UTC format with microsecond precision.
     """
+
+
+from .shared.onorbit import Onorbit
+
+if PYDANTIC_V2:
+    EphemerisSet.model_rebuild()
+    StateVector.model_rebuild()
+else:
+    EphemerisSet.update_forward_refs()  # type: ignore
+    StateVector.update_forward_refs()  # type: ignore

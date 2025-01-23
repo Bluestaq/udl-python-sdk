@@ -27,7 +27,7 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
         assert air_load_plan is None
@@ -37,7 +37,7 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             id="0457f578-e29c-312e-85aa-0a04a430bdd0",
             acl_onboard=500.1,
@@ -89,7 +89,7 @@ class TestAirLoadPlans:
                     "pp_off_icao": "MBPV",
                     "pp_pieces": 3,
                     "pp_remarks": "Pallet remarks",
-                    "pp_tcn": "M1358232245912XXX",
+                    "pp_tcn": "ppTcn",
                     "pp_weight": 100.1,
                     "special_interest": True,
                 }
@@ -148,7 +148,7 @@ class TestAirLoadPlans:
             dep_airfield="W99",
             dep_icao="KCHS",
             equip_config="Standard",
-            est_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
+            est_arr_time=parse_datetime("2024-01-01T02:00:00.123Z"),
             est_landing_fuel_moment=2500.1,
             est_landing_fuel_weight=100.1,
             external_id="dec7a61a-cd97-4af0-b7bc-f4c3bb33341b",
@@ -189,7 +189,7 @@ class TestAirLoadPlans:
         response = client.air_load_plans.with_raw_response.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
 
@@ -203,7 +203,7 @@ class TestAirLoadPlans:
         with client.air_load_plans.with_streaming_response.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
             assert not response.is_closed
@@ -382,7 +382,7 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
         assert air_load_plan is None
@@ -392,7 +392,7 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             id="0457f578-e29c-312e-85aa-0a04a430bdd0",
             acl_onboard=500.1,
@@ -444,7 +444,7 @@ class TestAsyncAirLoadPlans:
                     "pp_off_icao": "MBPV",
                     "pp_pieces": 3,
                     "pp_remarks": "Pallet remarks",
-                    "pp_tcn": "M1358232245912XXX",
+                    "pp_tcn": "ppTcn",
                     "pp_weight": 100.1,
                     "special_interest": True,
                 }
@@ -503,7 +503,7 @@ class TestAsyncAirLoadPlans:
             dep_airfield="W99",
             dep_icao="KCHS",
             equip_config="Standard",
-            est_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
+            est_arr_time=parse_datetime("2024-01-01T02:00:00.123Z"),
             est_landing_fuel_moment=2500.1,
             est_landing_fuel_weight=100.1,
             external_id="dec7a61a-cd97-4af0-b7bc-f4c3bb33341b",
@@ -544,7 +544,7 @@ class TestAsyncAirLoadPlans:
         response = await async_client.air_load_plans.with_raw_response.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
 
@@ -558,7 +558,7 @@ class TestAsyncAirLoadPlans:
         async with async_client.air_load_plans.with_streaming_response.create(
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
             assert not response.is_closed

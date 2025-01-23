@@ -119,13 +119,13 @@ class Requirement(BaseModel):
     bulk_weight: Optional[float] = FieldInfo(alias="bulkWeight", default=None)
     """Total weight of the bulk cargo, in kilograms."""
 
-    ead: Optional[datetime] = None
+    ead: Optional[str] = None
     """Earliest available date the cargo can be picked up."""
 
     gdss_req_id: Optional[str] = FieldInfo(alias="gdssReqId", default=None)
     """Global Decision Support System (GDSS) mission requirement identifier."""
 
-    lad: Optional[datetime] = None
+    lad: Optional[str] = None
     """Latest available date the cargo may be delivered."""
 
     num_ambulatory: Optional[int] = FieldInfo(alias="numAmbulatory", default=None)

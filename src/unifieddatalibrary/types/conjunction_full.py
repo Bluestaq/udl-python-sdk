@@ -1,13 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .._compat import PYDANTIC_V2
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
 
 __all__ = ["ConjunctionFull", "StateVector1", "StateVector2"]
 
@@ -311,6 +313,9 @@ class StateVector1(BaseModel):
 
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
+
+    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
     """
@@ -960,6 +965,9 @@ class StateVector2(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
+    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    """Model object representing on-orbit objects or satellites in the system."""
+
     origin: Optional[str] = None
     """
     Originating system or organization which produced the data, if different from
@@ -1476,10 +1484,10 @@ class ConjunctionFull(BaseModel):
     miss_distance: Optional[float] = FieldInfo(alias="missDistance", default=None)
     """Distance between objects at Time of Closest Approach (TCA) in meters."""
 
-    on_orbit1: Optional[Onorbit] = FieldInfo(alias="onOrbit1", default=None)
+    on_orbit1: Optional["Onorbit"] = FieldInfo(alias="onOrbit1", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
-    on_orbit2: Optional[Onorbit] = FieldInfo(alias="onOrbit2", default=None)
+    on_orbit2: Optional["Onorbit"] = FieldInfo(alias="onOrbit2", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     orig_id_on_orbit1: Optional[str] = FieldInfo(alias="origIdOnOrbit1", default=None)
@@ -1670,3 +1678,15 @@ class ConjunctionFull(BaseModel):
 
     vol_shape: Optional[str] = FieldInfo(alias="volShape", default=None)
     """The shape (BOX, ELLIPSOID) of the screening volume."""
+
+
+from .shared.onorbit import Onorbit
+
+if PYDANTIC_V2:
+    ConjunctionFull.model_rebuild()
+    StateVector1.model_rebuild()
+    StateVector2.model_rebuild()
+else:
+    ConjunctionFull.update_forward_refs()  # type: ignore
+    StateVector1.update_forward_refs()  # type: ignore
+    StateVector2.update_forward_refs()  # type: ignore

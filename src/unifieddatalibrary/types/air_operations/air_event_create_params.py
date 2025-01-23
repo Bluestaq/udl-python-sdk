@@ -317,9 +317,6 @@ class Body(TypedDict, total=False):
     systems that require tracking of an internal system generated ID.
     """
 
-    id_drop_zone: Annotated[str, PropertyInfo(alias="idDropZone")]
-    """The UDL unique identifier of the drop zone associated with this air event."""
-
     id_mission: Annotated[str, PropertyInfo(alias="idMission")]
     """The UDL unique identifier of the mission associated with this air event."""
 

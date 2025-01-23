@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -49,11 +48,8 @@ class AirfieldUpdateParams(TypedDict, total=False):
     alt_airfield_id: Annotated[str, PropertyInfo(alias="altAirfieldId")]
     """Alternate Airfield identifier provided by source."""
 
-    alternative_names: Annotated[List[str], PropertyInfo(alias="alternativeNames")]
-    """Alternative names for this airfield."""
-
     city: str
-    """The closest city to the location of this airfield."""
+    """Closest city to the airfield's location."""
 
     country_code: Annotated[str, PropertyInfo(alias="countryCode")]
     """The country code.
@@ -63,15 +59,6 @@ class AirfieldUpdateParams(TypedDict, total=False):
     document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
-    """
-
-    country_name: Annotated[str, PropertyInfo(alias="countryName")]
-    """The country name where this airfield is located."""
-
-    dst_info: Annotated[str, PropertyInfo(alias="dstInfo")]
-    """
-    Information regarding daylight saving time as is relevant to the location and
-    operation of this airfield.
     """
 
     elev_ft: Annotated[float, PropertyInfo(alias="elevFt")]
@@ -153,37 +140,14 @@ class AirfieldUpdateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    regional_authority: Annotated[str, PropertyInfo(alias="regionalAuthority")]
-    """The regional authority of the airfield."""
-
     region_name: Annotated[str, PropertyInfo(alias="regionName")]
     """Region where the airfield resides."""
 
     runways: int
     """The number of runways at the site."""
 
-    secondary_icao: Annotated[str, PropertyInfo(alias="secondaryICAO")]
-    """The secondary ICAO code for this airfield.
-
-    Some airfields have two associated ICAO codes, this can occur in cases when a
-    single airfield supports both military and civilian operations.
-    """
-
     state: str
     """State or province of the airfield's location."""
-
-    state_province_code: Annotated[str, PropertyInfo(alias="stateProvinceCode")]
-    """The code for the state or province in which this airfield is located.
-
-    Intended as, but not constrained to, FIPS 10-4 region code designations.
-    """
-
-    suitability_code_descs: Annotated[List[str], PropertyInfo(alias="suitabilityCodeDescs")]
-    """Array of descriptions for given suitability codes.
-
-    The index of the description corresponds to the position of the letter code in
-    the string provided in the suitabilityCodes field.
-    """
 
     suitability_codes: Annotated[str, PropertyInfo(alias="suitabilityCodes")]
     """

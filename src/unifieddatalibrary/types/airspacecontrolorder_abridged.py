@@ -334,12 +334,12 @@ class AirspacecontrolorderAbridged(BaseModel):
 
     op_ex_name: str = FieldInfo(alias="opExName")
     """
-    Specifies the code name or nickname assigned to a joint exercise or plan to
-    designate message traffic.
+    Specifies the unique operation or exercise name, nickname, or codeword assigned
+    to a joint exercise or operation plan.
     """
 
     originator: str
-    """The originator of this reference."""
+    """The identifier of the originator of this message."""
 
     source: str
     """Source of the data."""
@@ -408,7 +408,7 @@ class AirspacecontrolorderAbridged(BaseModel):
     downgrade_ins_dates: Optional[List[str]] = FieldInfo(alias="downgradeInsDates", default=None)
     """
     Markings providing the literal guidance or date for downgrading or declassifying
-    the airspace control order. Manditory if declassExemptionCode is nul.
+    the airspace control order.
     """
 
     geo_datum: Optional[str] = FieldInfo(alias="geoDatum", default=None)

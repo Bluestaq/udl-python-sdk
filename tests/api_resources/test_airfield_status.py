@@ -13,7 +13,6 @@ from unifieddatalibrary.types import (
     AirfieldstatusFull,
     AirfieldStatusTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -80,8 +79,6 @@ class TestAirfieldStatus:
             source="Bluestaq",
             id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
             alt_airfield_id="AIRFIELD-ID",
-            approved_by="John Smith",
-            approved_date=parse_datetime("2024-01-01T16:00:00.123Z"),
             arff_cat="FAA-A",
             cargo_mog=8,
             fleet_service_mog=4,
@@ -102,13 +99,10 @@ class TestAirfieldStatus:
             passenger_service_mog=5,
             pri_freq=123.45,
             pri_rwy_num="35R",
-            reviewed_by="Jane Doe",
-            reviewed_date=parse_datetime("2024-01-01T00:00:00.123Z"),
             rwy_cond_reading=23,
             rwy_friction_factor=10,
             rwy_markings=["Aiming Point", "Threshold"],
             slot_types_req=["PARKING", "WORKING", "LANDING"],
-            survey_date=parse_datetime("2023-01-01T12:00:00.123Z"),
             wide_parking_mog=7,
             wide_working_mog=3,
         )
@@ -290,8 +284,6 @@ class TestAsyncAirfieldStatus:
             source="Bluestaq",
             id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
             alt_airfield_id="AIRFIELD-ID",
-            approved_by="John Smith",
-            approved_date=parse_datetime("2024-01-01T16:00:00.123Z"),
             arff_cat="FAA-A",
             cargo_mog=8,
             fleet_service_mog=4,
@@ -312,13 +304,10 @@ class TestAsyncAirfieldStatus:
             passenger_service_mog=5,
             pri_freq=123.45,
             pri_rwy_num="35R",
-            reviewed_by="Jane Doe",
-            reviewed_date=parse_datetime("2024-01-01T00:00:00.123Z"),
             rwy_cond_reading=23,
             rwy_friction_factor=10,
             rwy_markings=["Aiming Point", "Threshold"],
             slot_types_req=["PARKING", "WORKING", "LANDING"],
-            survey_date=parse_datetime("2023-01-01T12:00:00.123Z"),
             wide_parking_mog=7,
             wide_working_mog=3,
         )

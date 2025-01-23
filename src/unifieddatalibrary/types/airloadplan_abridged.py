@@ -299,8 +299,8 @@ class AirloadplanAbridged(BaseModel):
 
     est_dep_time: datetime = FieldInfo(alias="estDepTime")
     """
-    The current estimated time that the Aircraft is planned to depart, in ISO 8601
-    UTC format.
+    The current estimated time that the aircraft is planned to depart, in ISO 8601
+    UTC format with millisecond precision.
     """
 
     source: str
@@ -607,7 +607,7 @@ class AirloadplanAbridged(BaseModel):
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
-    """Time the row was last updated in the database, auto-populated by the system."""
+    """Time the row was updated in the database, auto-populated by the system."""
 
     updated_by: Optional[str] = FieldInfo(alias="updatedBy", default=None)
     """

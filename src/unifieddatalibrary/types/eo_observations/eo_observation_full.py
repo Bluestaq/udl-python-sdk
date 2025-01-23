@@ -1,13 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from ..._compat import PYDANTIC_V2
 from ..._models import BaseModel
-from ..shared.onorbit import Onorbit
 
 __all__ = ["EoObservationFull", "EoobservationDetails"]
 
@@ -673,7 +675,7 @@ class EoObservationFull(BaseModel):
     whether other observations may or may not exist to compose a track.
     """
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -939,3 +941,13 @@ class EoObservationFull(BaseModel):
     This is the uncertainty in the zero point for the filter used for this
     observation/row in units of mag. For use with differential photometry.
     """
+
+
+from ..shared.onorbit import Onorbit
+
+if PYDANTIC_V2:
+    EoObservationFull.model_rebuild()
+    EoobservationDetails.model_rebuild()
+else:
+    EoObservationFull.update_forward_refs()  # type: ignore
+    EoobservationDetails.update_forward_refs()  # type: ignore

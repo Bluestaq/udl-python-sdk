@@ -1,13 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from ..._compat import PYDANTIC_V2
 from ..._models import BaseModel
-from ..shared.onorbit import Onorbit
 
 __all__ = ["Ecpsdr"]
 
@@ -176,7 +178,7 @@ class Ecpsdr(BaseModel):
     ob_time: Optional[datetime] = FieldInfo(alias="obTime", default=None)
     """Time of the observation, in ISO 8601 UTC format with millisecond precision."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -278,3 +280,11 @@ class Ecpsdr(BaseModel):
 
     Conversion factor used to convert analog V monitor data from bytes to volts.
     """
+
+
+from ..shared.onorbit import Onorbit
+
+if PYDANTIC_V2:
+    Ecpsdr.model_rebuild()
+else:
+    Ecpsdr.update_forward_refs()  # type: ignore

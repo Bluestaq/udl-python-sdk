@@ -342,12 +342,12 @@ class Body(TypedDict, total=False):
 
     op_ex_name: Required[Annotated[str, PropertyInfo(alias="opExName")]]
     """
-    Specifies the code name or nickname assigned to a joint exercise or plan to
-    designate message traffic.
+    Specifies the unique operation or exercise name, nickname, or codeword assigned
+    to a joint exercise or operation plan.
     """
 
     originator: Required[str]
-    """The originator of this reference."""
+    """The identifier of the originator of this message."""
 
     source: Required[str]
     """Source of the data."""
@@ -407,7 +407,7 @@ class Body(TypedDict, total=False):
     downgrade_ins_dates: Annotated[List[str], PropertyInfo(alias="downgradeInsDates")]
     """
     Markings providing the literal guidance or date for downgrading or declassifying
-    the airspace control order. Manditory if declassExemptionCode is nul.
+    the airspace control order.
     """
 
     geo_datum: Annotated[str, PropertyInfo(alias="geoDatum")]

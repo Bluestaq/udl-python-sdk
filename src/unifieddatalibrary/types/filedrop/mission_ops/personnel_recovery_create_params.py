@@ -79,6 +79,7 @@ class BodyExecutionInfo(TypedDict, total=False):
     """
 
     escort_vehicle: Annotated[BodyExecutionInfoEscortVehicle, PropertyInfo(alias="escortVehicle")]
+    """Information regarding the recovery vehicle."""
 
     ingress: float
     """The heading, in degrees clockwise from North, of entering the recovery zone."""
@@ -96,6 +97,7 @@ class BodyExecutionInfo(TypedDict, total=False):
     """Description of the objective strategy plan."""
 
     recovery_vehicle: Annotated[BodyExecutionInfoRecoveryVehicle, PropertyInfo(alias="recoveryVehicle")]
+    """Information regarding the recovery vehicle."""
 
 
 class BodyObjectiveAreaInfoEnemyData(TypedDict, total=False):
@@ -241,6 +243,7 @@ class Body(TypedDict, total=False):
     """
 
     execution_info: Annotated[BodyExecutionInfo, PropertyInfo(alias="executionInfo")]
+    """Information pertaining to the details of executing the recovery."""
 
     identity: str
     """
@@ -289,6 +292,7 @@ class Body(TypedDict, total=False):
     """The count of persons requiring recovery."""
 
     objective_area_info: Annotated[BodyObjectiveAreaInfo, PropertyInfo(alias="objectiveAreaInfo")]
+    """Objective Area Information."""
 
     origin: str
     """

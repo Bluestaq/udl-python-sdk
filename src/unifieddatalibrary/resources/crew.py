@@ -136,7 +136,7 @@ class CrewResource(SyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
@@ -180,10 +180,10 @@ class CrewResource(SyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -205,7 +205,7 @@ class CrewResource(SyncAPIResource):
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
@@ -395,7 +395,7 @@ class CrewResource(SyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
@@ -439,10 +439,10 @@ class CrewResource(SyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -464,7 +464,7 @@ class CrewResource(SyncAPIResource):
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
@@ -762,7 +762,7 @@ class AsyncCrewResource(AsyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
@@ -806,10 +806,10 @@ class AsyncCrewResource(AsyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -831,7 +831,7 @@ class AsyncCrewResource(AsyncAPIResource):
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
@@ -1021,7 +1021,7 @@ class AsyncCrewResource(AsyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
@@ -1065,10 +1065,10 @@ class AsyncCrewResource(AsyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -1090,7 +1090,7 @@ class AsyncCrewResource(AsyncAPIResource):
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.

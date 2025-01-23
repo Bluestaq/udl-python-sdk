@@ -92,9 +92,9 @@ class TestAirTransportMissions:
             requirements=[
                 {
                     "bulk_weight": 1.3,
-                    "ead": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "ead": "2024-01-01T16:00:00Z",
                     "gdss_req_id": "23a1fb67-cc2d-5ebe-6b99-68130cb1aa6c",
-                    "lad": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "lad": "2024-01-01T16:00:00Z",
                     "num_ambulatory": 10,
                     "num_attendant": 10,
                     "num_litter": 10,
@@ -255,9 +255,9 @@ class TestAirTransportMissions:
             requirements=[
                 {
                     "bulk_weight": 1.3,
-                    "ead": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "ead": "2024-01-01T16:00:00Z",
                     "gdss_req_id": "23a1fb67-cc2d-5ebe-6b99-68130cb1aa6c",
-                    "lad": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "lad": "2024-01-01T16:00:00Z",
                     "num_ambulatory": 10,
                     "num_attendant": 10,
                     "num_litter": 10,
@@ -516,9 +516,9 @@ class TestAsyncAirTransportMissions:
             requirements=[
                 {
                     "bulk_weight": 1.3,
-                    "ead": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "ead": "2024-01-01T16:00:00Z",
                     "gdss_req_id": "23a1fb67-cc2d-5ebe-6b99-68130cb1aa6c",
-                    "lad": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "lad": "2024-01-01T16:00:00Z",
                     "num_ambulatory": 10,
                     "num_attendant": 10,
                     "num_litter": 10,
@@ -679,9 +679,9 @@ class TestAsyncAirTransportMissions:
             requirements=[
                 {
                     "bulk_weight": 1.3,
-                    "ead": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "ead": "2024-01-01T16:00:00Z",
                     "gdss_req_id": "23a1fb67-cc2d-5ebe-6b99-68130cb1aa6c",
-                    "lad": parse_datetime("2024-01-01T16:00:00.000Z"),
+                    "lad": "2024-01-01T16:00:00Z",
                     "num_ambulatory": 10,
                     "num_attendant": 10,
                     "num_litter": 10,

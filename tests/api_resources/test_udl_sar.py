@@ -21,7 +21,7 @@ class TestUdlSar:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_end": "2023-04-22T17:38:10.20177Z",
                     "collection_start": "2023-04-22T17:35:00.123456Z",
                     "data_mode": "REAL",
                     "sar_mode": "SPOTLIGHT",
@@ -37,7 +37,7 @@ class TestUdlSar:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_end": "2023-04-22T17:38:10.20177Z",
                     "collection_start": "2023-04-22T17:35:00.123456Z",
                     "data_mode": "REAL",
                     "sar_mode": "SPOTLIGHT",
@@ -57,7 +57,7 @@ class TestUdlSar:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_end": "2023-04-22T17:38:10.20177Z",
                     "collection_start": "2023-04-22T17:35:00.123456Z",
                     "data_mode": "REAL",
                     "sar_mode": "SPOTLIGHT",
@@ -83,7 +83,7 @@ class TestAsyncUdlSar:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_end": "2023-04-22T17:38:10.20177Z",
                     "collection_start": "2023-04-22T17:35:00.123456Z",
                     "data_mode": "REAL",
                     "sar_mode": "SPOTLIGHT",
@@ -99,7 +99,7 @@ class TestAsyncUdlSar:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_end": "2023-04-22T17:38:10.20177Z",
                     "collection_start": "2023-04-22T17:35:00.123456Z",
                     "data_mode": "REAL",
                     "sar_mode": "SPOTLIGHT",
@@ -119,7 +119,7 @@ class TestAsyncUdlSar:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_end": "2023-04-22T17:38:10.20177Z",
                     "collection_start": "2023-04-22T17:35:00.123456Z",
                     "data_mode": "REAL",
                     "sar_mode": "SPOTLIGHT",
