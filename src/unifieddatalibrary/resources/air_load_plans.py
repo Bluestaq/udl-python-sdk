@@ -155,8 +155,8 @@ class AirLoadPlansResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          est_dep_time: The current estimated time that the Aircraft is planned to depart, in ISO 8601
-              UTC format.
+          est_dep_time: The current estimated time that the aircraft is planned to depart, in ISO 8601
+              UTC format with millisecond precision.
 
           source: Source of the data.
 
@@ -728,8 +728,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          est_dep_time: The current estimated time that the Aircraft is planned to depart, in ISO 8601
-              UTC format.
+          est_dep_time: The current estimated time that the aircraft is planned to depart, in ISO 8601
+              UTC format with millisecond precision.
 
           source: Source of the data.
 

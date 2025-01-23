@@ -22,7 +22,7 @@ class TestAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
         assert airloadplan is None
@@ -33,7 +33,7 @@ class TestAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             id_2="0457f578-e29c-312e-85aa-0a04a430bdd0",
             acl_onboard=500.1,
@@ -85,7 +85,7 @@ class TestAirloadplans:
                     "pp_off_icao": "MBPV",
                     "pp_pieces": 3,
                     "pp_remarks": "Pallet remarks",
-                    "pp_tcn": "M1358232245912XXX",
+                    "pp_tcn": "ppTcn",
                     "pp_weight": 100.1,
                     "special_interest": True,
                 }
@@ -144,7 +144,7 @@ class TestAirloadplans:
             dep_airfield="W99",
             dep_icao="KCHS",
             equip_config="Standard",
-            est_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
+            est_arr_time=parse_datetime("2024-01-01T02:00:00.123Z"),
             est_landing_fuel_moment=2500.1,
             est_landing_fuel_weight=100.1,
             external_id="dec7a61a-cd97-4af0-b7bc-f4c3bb33341b",
@@ -186,7 +186,7 @@ class TestAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
 
@@ -201,7 +201,7 @@ class TestAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
             assert not response.is_closed
@@ -219,7 +219,7 @@ class TestAirloadplans:
                 id_1="",
                 classification_marking="U",
                 data_mode="REAL",
-                est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+                est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
                 id_2="",
             )
@@ -272,7 +272,7 @@ class TestAsyncAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
         assert airloadplan is None
@@ -283,7 +283,7 @@ class TestAsyncAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             id_2="0457f578-e29c-312e-85aa-0a04a430bdd0",
             acl_onboard=500.1,
@@ -335,7 +335,7 @@ class TestAsyncAirloadplans:
                     "pp_off_icao": "MBPV",
                     "pp_pieces": 3,
                     "pp_remarks": "Pallet remarks",
-                    "pp_tcn": "M1358232245912XXX",
+                    "pp_tcn": "ppTcn",
                     "pp_weight": 100.1,
                     "special_interest": True,
                 }
@@ -394,7 +394,7 @@ class TestAsyncAirloadplans:
             dep_airfield="W99",
             dep_icao="KCHS",
             equip_config="Standard",
-            est_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
+            est_arr_time=parse_datetime("2024-01-01T02:00:00.123Z"),
             est_landing_fuel_moment=2500.1,
             est_landing_fuel_weight=100.1,
             external_id="dec7a61a-cd97-4af0-b7bc-f4c3bb33341b",
@@ -436,7 +436,7 @@ class TestAsyncAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
 
@@ -451,7 +451,7 @@ class TestAsyncAirloadplans:
             id_1="id",
             classification_marking="U",
             data_mode="REAL",
-            est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+            est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
             assert not response.is_closed
@@ -469,7 +469,7 @@ class TestAsyncAirloadplans:
                 id_1="",
                 classification_marking="U",
                 data_mode="REAL",
-                est_dep_time=parse_datetime("2023-01-01T01:01:01.123Z"),
+                est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
                 id_2="",
             )

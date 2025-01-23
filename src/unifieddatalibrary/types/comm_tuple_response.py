@@ -1,10 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List
 from typing_extensions import TypeAlias
 
-from .comm_full import CommFull
-
 __all__ = ["CommTupleResponse"]
 
-CommTupleResponse: TypeAlias = List[CommFull]
+CommTupleResponse: TypeAlias = List["CommFull"]
+
+from .comm_full import CommFull

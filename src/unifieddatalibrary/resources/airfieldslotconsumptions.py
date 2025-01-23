@@ -59,6 +59,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -71,7 +72,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -121,6 +121,8 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
+          end_time: The end of the slot window, in ISO 8601 UTC format.
+
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -149,8 +151,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
-
-          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -214,6 +214,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
+                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -226,7 +227,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -294,6 +294,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -306,7 +307,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -357,6 +357,8 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
+          end_time: The end of the slot window, in ISO 8601 UTC format.
+
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -385,8 +387,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
-
-          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -452,6 +452,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
+                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -464,7 +465,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -676,6 +676,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -688,7 +689,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -738,6 +738,8 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
+          end_time: The end of the slot window, in ISO 8601 UTC format.
+
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -766,8 +768,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
-
-          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -831,6 +831,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
+                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -843,7 +844,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -911,6 +911,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -923,7 +924,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -974,6 +974,8 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
+          end_time: The end of the slot window, in ISO 8601 UTC format.
+
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -1002,8 +1004,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
-
-          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -1069,6 +1069,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
+                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -1081,7 +1082,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,

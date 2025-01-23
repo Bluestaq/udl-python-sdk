@@ -1085,11 +1085,9 @@ class EquipmentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation intended for initial integration only, to take a list of
-        Equipment records as a POST body and ingest into the database. This operation is
-        not intended to be used for automated feeds into UDL. Data providers should
-        contact the UDL team for specific role assignments and for instructions on
-        setting up a permanent feed through an alternate mechanism.
+        Service operation to take multiple Equipment records as a POST body and ingest
+        into the database. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -2231,11 +2229,9 @@ class AsyncEquipmentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation intended for initial integration only, to take a list of
-        Equipment records as a POST body and ingest into the database. This operation is
-        not intended to be used for automated feeds into UDL. Data providers should
-        contact the UDL team for specific role assignments and for instructions on
-        setting up a permanent feed through an alternate mechanism.
+        Service operation to take multiple Equipment records as a POST body and ingest
+        into the database. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers

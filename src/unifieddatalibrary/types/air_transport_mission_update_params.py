@@ -281,13 +281,13 @@ class Requirement(TypedDict, total=False):
     bulk_weight: Annotated[float, PropertyInfo(alias="bulkWeight")]
     """Total weight of the bulk cargo, in kilograms."""
 
-    ead: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    ead: str
     """Earliest available date the cargo can be picked up."""
 
     gdss_req_id: Annotated[str, PropertyInfo(alias="gdssReqId")]
     """Global Decision Support System (GDSS) mission requirement identifier."""
 
-    lad: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    lad: str
     """Latest available date the cargo may be delivered."""
 
     num_ambulatory: Annotated[int, PropertyInfo(alias="numAmbulatory")]

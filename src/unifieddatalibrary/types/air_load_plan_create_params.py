@@ -41,8 +41,8 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
 
     est_dep_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="estDepTime", format="iso8601")]]
     """
-    The current estimated time that the Aircraft is planned to depart, in ISO 8601
-    UTC format.
+    The current estimated time that the aircraft is planned to depart, in ISO 8601
+    UTC format with millisecond precision.
     """
 
     source: Required[str]

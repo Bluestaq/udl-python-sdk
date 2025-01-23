@@ -24,7 +24,7 @@ class TestRf:
                     "data_mode": "REAL",
                     "ob_time": "2018-01-01T16:00:00.123456Z",
                     "source": "Bluestaq",
-                    "type": "x",
+                    "type": "RF",
                 }
             ],
         )
@@ -39,7 +39,7 @@ class TestRf:
                     "data_mode": "REAL",
                     "ob_time": "2018-01-01T16:00:00.123456Z",
                     "source": "Bluestaq",
-                    "type": "x",
+                    "type": "RF",
                 }
             ],
         )
@@ -58,7 +58,7 @@ class TestRf:
                     "data_mode": "REAL",
                     "ob_time": "2018-01-01T16:00:00.123456Z",
                     "source": "Bluestaq",
-                    "type": "x",
+                    "type": "RF",
                 }
             ],
         ) as response:
@@ -83,7 +83,7 @@ class TestAsyncRf:
                     "data_mode": "REAL",
                     "ob_time": "2018-01-01T16:00:00.123456Z",
                     "source": "Bluestaq",
-                    "type": "x",
+                    "type": "RF",
                 }
             ],
         )
@@ -98,7 +98,7 @@ class TestAsyncRf:
                     "data_mode": "REAL",
                     "ob_time": "2018-01-01T16:00:00.123456Z",
                     "source": "Bluestaq",
-                    "type": "x",
+                    "type": "RF",
                 }
             ],
         )
@@ -117,7 +117,7 @@ class TestAsyncRf:
                     "data_mode": "REAL",
                     "ob_time": "2018-01-01T16:00:00.123456Z",
                     "source": "Bluestaq",
-                    "type": "x",
+                    "type": "RF",
                 }
             ],
         ) as response:

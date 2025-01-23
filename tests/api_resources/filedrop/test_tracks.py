@@ -24,7 +24,7 @@ class TestTracks:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
             ],
         )
@@ -38,7 +38,7 @@ class TestTracks:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
             ],
         )
@@ -56,7 +56,7 @@ class TestTracks:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
             ],
         ) as response:
@@ -80,7 +80,7 @@ class TestAsyncTracks:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
             ],
         )
@@ -94,7 +94,7 @@ class TestAsyncTracks:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
             ],
         )
@@ -112,7 +112,7 @@ class TestAsyncTracks:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
             ],
         ) as response:

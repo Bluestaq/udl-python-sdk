@@ -118,10 +118,10 @@ class AirspaceControlOrdersResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          op_ex_name: Specifies the code name or nickname assigned to a joint exercise or plan to
-              designate message traffic.
+          op_ex_name: Specifies the unique operation or exercise name, nickname, or codeword assigned
+              to a joint exercise or operation plan.
 
-          originator: The originator of this reference.
+          originator: The identifier of the originator of this message.
 
           source: Source of the data.
 
@@ -152,7 +152,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
               downgrading or declassification of the airspace control order.
 
           downgrade_ins_dates: Markings providing the literal guidance or date for downgrading or declassifying
-              the airspace control order. Manditory if declassExemptionCode is nul.
+              the airspace control order.
 
           geo_datum: Specifies the geodetic datum by which the spatial coordinates of the controlled
               airspace are calculated.
@@ -518,10 +518,10 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          op_ex_name: Specifies the code name or nickname assigned to a joint exercise or plan to
-              designate message traffic.
+          op_ex_name: Specifies the unique operation or exercise name, nickname, or codeword assigned
+              to a joint exercise or operation plan.
 
-          originator: The originator of this reference.
+          originator: The identifier of the originator of this message.
 
           source: Source of the data.
 
@@ -552,7 +552,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
               downgrading or declassification of the airspace control order.
 
           downgrade_ins_dates: Markings providing the literal guidance or date for downgrading or declassifying
-              the airspace control order. Manditory if declassExemptionCode is nul.
+              the airspace control order.
 
           geo_datum: Specifies the geodetic datum by which the spatial coordinates of the controlled
               airspace are calculated.

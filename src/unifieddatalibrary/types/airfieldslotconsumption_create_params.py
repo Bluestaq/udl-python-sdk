@@ -32,6 +32,9 @@ class AirfieldslotconsumptionCreateParams(TypedDict, total=False):
     characteristics.
     """
 
+    end_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="endTime", format="iso8601")]]
+    """The end of the slot window, in ISO 8601 UTC format."""
+
     id_airfield_slot: Required[Annotated[str, PropertyInfo(alias="idAirfieldSlot")]]
     """
     Unique identifier of the airfield slot for which this slot consumption record is
@@ -83,9 +86,6 @@ class AirfieldslotconsumptionCreateParams(TypedDict, total=False):
     Names are often Prior Permission Required (PPR) numbers or other similar
     human-readable identifiers.
     """
-
-    end_time: Annotated[Union[str, datetime], PropertyInfo(alias="endTime", format="iso8601")]
-    """The end of the slot window, in ISO 8601 UTC format."""
 
     id_arr_sortie: Annotated[str, PropertyInfo(alias="idArrSortie")]
     """Unique identifier of the sortie arriving at the slot start time."""
