@@ -20,12 +20,12 @@ class TestFlightplans:
         flightplan = client.filedrop.flightplans.create(
             body=[
                 {
-                    "arr_airfield": "arrAirfield",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "dep_airfield": "depAirfield",
-                    "gen_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestFlightplans:
         response = client.filedrop.flightplans.with_raw_response.create(
             body=[
                 {
-                    "arr_airfield": "arrAirfield",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "dep_airfield": "depAirfield",
-                    "gen_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestFlightplans:
         with client.filedrop.flightplans.with_streaming_response.create(
             body=[
                 {
-                    "arr_airfield": "arrAirfield",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "dep_airfield": "depAirfield",
-                    "gen_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncFlightplans:
         flightplan = await async_client.filedrop.flightplans.create(
             body=[
                 {
-                    "arr_airfield": "arrAirfield",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "dep_airfield": "depAirfield",
-                    "gen_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncFlightplans:
         response = await async_client.filedrop.flightplans.with_raw_response.create(
             body=[
                 {
-                    "arr_airfield": "arrAirfield",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "dep_airfield": "depAirfield",
-                    "gen_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncFlightplans:
         async with async_client.filedrop.flightplans.with_streaming_response.create(
             body=[
                 {
-                    "arr_airfield": "arrAirfield",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "dep_airfield": "depAirfield",
-                    "gen_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

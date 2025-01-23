@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import date, datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
@@ -19,7 +19,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -124,15 +124,6 @@ class Body(TypedDict, total=False):
     commander_name: Annotated[str, PropertyInfo(alias="commanderName")]
     """The last name of the aircraft commander."""
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     current_state: Annotated[str, PropertyInfo(alias="currentState")]
     """The current state of this sortie."""
 
@@ -189,12 +180,6 @@ class Body(TypedDict, total=False):
     The current estimated time that the Aircraft is planned to depart, in ISO 8601
     UTC format with millisecond precision.
     """
-
-    filename: str
-    """Name of the uploaded PDF."""
-
-    filesize: int
-    """Size of the supporting PDF, in bytes."""
 
     flight_time: Annotated[float, PropertyInfo(alias="flightTime")]
     """The planned flight time for this sortie, in minutes."""
@@ -254,12 +239,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_sortie_id: Annotated[str, PropertyInfo(alias="origSortieId")]
     """The sortie identifier provided by the originating source."""
 
@@ -275,12 +254,6 @@ class Body(TypedDict, total=False):
     oxy_req_pax: Annotated[float, PropertyInfo(alias="oxyReqPax")]
     """Liquid oxygen required on the aircraft for the troop compartment, in liters."""
 
-    paper_status: Annotated[str, PropertyInfo(alias="paperStatus")]
-    """The status of the supporting document."""
-
-    papers_version: Annotated[str, PropertyInfo(alias="papersVersion")]
-    """The version number of the crew paper."""
-
     parking_loc: Annotated[str, PropertyInfo(alias="parkingLoc")]
     """The POI parking location."""
 
@@ -293,19 +266,13 @@ class Body(TypedDict, total=False):
     UTC format with millisecond precision.
     """
 
-    ppr_status: Annotated[str, PropertyInfo(alias="pprStatus")]
+    ppr_status: Annotated[
+        Literal["NOT REQUIRED", "REQUIRED NOT REQUESTED", "GRANTED", "PENDING"], PropertyInfo(alias="pprStatus")
+    ]
     """The prior permission required (PPR) status."""
 
     primary_scl: Annotated[str, PropertyInfo(alias="primarySCL")]
     """The planned primary Standard Conventional Load of the aircraft for this sortie."""
-
-    raw_file_uri: Annotated[str, PropertyInfo(alias="rawFileURI")]
-    """When crew papers are associated to this sortie, the system updates this value.
-
-    This field is the URI location in the document repository of that raw file. To
-    download the raw file, prepend https://udl-hostname/scs/download?id= to this
-    field's value.
-    """
 
     req_config: Annotated[str, PropertyInfo(alias="reqConfig")]
     """Aircraft configuration required for the mission."""
@@ -313,7 +280,7 @@ class Body(TypedDict, total=False):
     result_remarks: Annotated[str, PropertyInfo(alias="resultRemarks")]
     """Remarks concerning the results of this sortie."""
 
-    rvn_req: Annotated[str, PropertyInfo(alias="rvnReq")]
+    rvn_req: Annotated[Literal["N", "R", "C6", "R6"], PropertyInfo(alias="rvnReq")]
     """
     Type of Ravens required for this sortie (N - None, R - Raven (Security Team)
     required, C6 - Consider ravens (Ground time over 6 hours), R6 - Ravens required
@@ -340,13 +307,6 @@ class Body(TypedDict, total=False):
     """The scheduled UTC date for this sortie, in ISO 8601 date-only format (ex.
 
     YYYY-MM-DD).
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     tail_number: Annotated[str, PropertyInfo(alias="tailNumber")]

@@ -20,10 +20,10 @@ class TestPassiveRadar:
         passive_radar = client.filedrop.observation.passive_radar.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestPassiveRadar:
         response = client.filedrop.observation.passive_radar.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestPassiveRadar:
         with client.filedrop.observation.passive_radar.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncPassiveRadar:
         passive_radar = await async_client.filedrop.observation.passive_radar.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncPassiveRadar:
         response = await async_client.filedrop.observation.passive_radar.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncPassiveRadar:
         async with async_client.filedrop.observation.passive_radar.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -100,7 +101,9 @@ class AirspaceControlMeansStatusAirspaceControlMean(BaseModel):
     cm_id: Optional[str] = FieldInfo(alias="cmId", default=None)
     """Airspace control means name or designator."""
 
-    cm_shape: Optional[str] = FieldInfo(alias="cmShape", default=None)
+    cm_shape: Optional[Literal["POLYARC", "1TRACK", "POLYGON", "CIRCLE", "CORRIDOR", "APOINT", "AORBIT", "GEOLINE"]] = (
+        FieldInfo(alias="cmShape", default=None)
+    )
     """Designates the geometric type that defines the airspace shape.
 
     One of CIRCLE, CORRIDOR, LINE, ORBIT, etc.
@@ -312,7 +315,7 @@ class AirspacecontrolorderAbridged(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -331,12 +334,12 @@ class AirspacecontrolorderAbridged(BaseModel):
 
     op_ex_name: str = FieldInfo(alias="opExName")
     """
-    Specifies the unique operation or exercise name, nickname, or codeword assigned
-    to a joint exercise or operation plan.
+    Specifies the code name or nickname assigned to a joint exercise or plan to
+    designate message traffic.
     """
 
     originator: str
-    """The identifier of the originator of this message."""
+    """The originator of this reference."""
 
     source: str
     """Source of the data."""
@@ -405,7 +408,7 @@ class AirspacecontrolorderAbridged(BaseModel):
     downgrade_ins_dates: Optional[List[str]] = FieldInfo(alias="downgradeInsDates", default=None)
     """
     Markings providing the literal guidance or date for downgrading or declassifying
-    the airspace control order.
+    the airspace control order. Manditory if declassExemptionCode is nul.
     """
 
     geo_datum: Optional[str] = FieldInfo(alias="geoDatum", default=None)

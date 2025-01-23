@@ -20,10 +20,10 @@ class TestEffectrequests:
         effectrequest = client.filedrop.effectrequests.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestEffectrequests:
         response = client.filedrop.effectrequests.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestEffectrequests:
         with client.filedrop.effectrequests.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncEffectrequests:
         effectrequest = await async_client.filedrop.effectrequests.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncEffectrequests:
         response = await async_client.filedrop.effectrequests.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncEffectrequests:
         async with async_client.filedrop.effectrequests.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

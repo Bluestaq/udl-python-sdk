@@ -25,80 +25,76 @@ class TestEcpsdr:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
         )
         assert ecpsdr is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
-            id="id",
-            asl5_v_curr_mon=0,
-            cds_plate_v_mon=0,
-            cds_ref_v_mon=0,
-            cds_threshold=0,
-            cds_throttle=0,
-            checksum=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            dos_bias=0,
-            dsl5_v_curr_mon=0,
-            esd_trig_count_h=0,
-            esd_trig_count_l=0,
-            hi_let_l=0,
-            hi_let_m=0,
-            id_on_orbit="idOnOrbit",
-            id_sensor="idSensor",
-            low_let_l=0,
-            low_let_m=0,
-            med_let1_l=0,
-            med_let1_m=0,
-            med_let2_l=0,
-            med_let2_m=0,
-            med_let3_l=0,
-            med_let3_m=0,
-            med_let4_l=0,
-            med_let4_m=0,
-            mp_temp=0,
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            origin="origin",
-            orig_network="origNetwork",
-            orig_object_id="origObjectId",
-            orig_sensor_id="origSensorId",
-            pd1_sig_lev=0,
-            pd2_sig_lev=0,
-            ps_temp_mon=0,
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
+            id="ECPSDR-ID",
+            asl5_v_curr_mon=12,
+            cds_plate_v_mon=12,
+            cds_ref_v_mon=12,
+            cds_threshold=12,
+            cds_throttle=12,
+            checksum=12,
+            dos_bias=12,
+            dsl5_v_curr_mon=12,
+            esd_trig_count_h=12,
+            esd_trig_count_l=12,
+            hi_let_l=2,
+            hi_let_m=2,
+            id_sensor="SENSOR-ID",
+            low_let_l=2,
+            low_let_m=2,
+            med_let1_l=2,
+            med_let1_m=2,
+            med_let2_l=2,
+            med_let2_m=2,
+            med_let3_l=2,
+            med_let3_m=2,
+            med_let4_l=2,
+            med_let4_m=2,
+            mp_temp=12,
+            ob_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            orig_sensor_id="ORIGSENSOR-ID",
+            pd1_sig_lev=12,
+            pd2_sig_lev=12,
+            ps_temp_mon=12,
             retransmit=True,
-            sat_no=0,
-            sen_mode="senMode",
-            surf_dos_charge_h=0,
-            surf_dos_charge_l=0,
-            surf_dos_h=0,
-            surf_dos_l=0,
-            surf_dos_m=0,
-            surf_dos_stat=0,
-            transient_data=[0],
-            v_ref=0,
+            sat_no=101,
+            sen_mode="TEST",
+            surf_dos_charge_h=12,
+            surf_dos_charge_l=12,
+            surf_dos_h=12,
+            surf_dos_l=12,
+            surf_dos_m=12,
+            surf_dos_stat=2,
+            transient_data=[1, 2, 3],
+            v_ref=12,
         )
         assert ecpsdr is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.observations.ecpsdr.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
         )
 
         assert response.is_closed is True
@@ -109,11 +105,11 @@ class TestEcpsdr:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.observations.ecpsdr.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -228,11 +224,11 @@ class TestEcpsdr:
         ecpsdr = client.observations.ecpsdr.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -243,11 +239,11 @@ class TestEcpsdr:
         response = client.observations.ecpsdr.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -262,11 +258,11 @@ class TestEcpsdr:
         with client.observations.ecpsdr.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         ) as response:
@@ -344,80 +340,76 @@ class TestAsyncEcpsdr:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
         )
         assert ecpsdr is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
-            id="id",
-            asl5_v_curr_mon=0,
-            cds_plate_v_mon=0,
-            cds_ref_v_mon=0,
-            cds_threshold=0,
-            cds_throttle=0,
-            checksum=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            dos_bias=0,
-            dsl5_v_curr_mon=0,
-            esd_trig_count_h=0,
-            esd_trig_count_l=0,
-            hi_let_l=0,
-            hi_let_m=0,
-            id_on_orbit="idOnOrbit",
-            id_sensor="idSensor",
-            low_let_l=0,
-            low_let_m=0,
-            med_let1_l=0,
-            med_let1_m=0,
-            med_let2_l=0,
-            med_let2_m=0,
-            med_let3_l=0,
-            med_let3_m=0,
-            med_let4_l=0,
-            med_let4_m=0,
-            mp_temp=0,
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            origin="origin",
-            orig_network="origNetwork",
-            orig_object_id="origObjectId",
-            orig_sensor_id="origSensorId",
-            pd1_sig_lev=0,
-            pd2_sig_lev=0,
-            ps_temp_mon=0,
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
+            id="ECPSDR-ID",
+            asl5_v_curr_mon=12,
+            cds_plate_v_mon=12,
+            cds_ref_v_mon=12,
+            cds_threshold=12,
+            cds_throttle=12,
+            checksum=12,
+            dos_bias=12,
+            dsl5_v_curr_mon=12,
+            esd_trig_count_h=12,
+            esd_trig_count_l=12,
+            hi_let_l=2,
+            hi_let_m=2,
+            id_sensor="SENSOR-ID",
+            low_let_l=2,
+            low_let_m=2,
+            med_let1_l=2,
+            med_let1_m=2,
+            med_let2_l=2,
+            med_let2_m=2,
+            med_let3_l=2,
+            med_let3_m=2,
+            med_let4_l=2,
+            med_let4_m=2,
+            mp_temp=12,
+            ob_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            orig_sensor_id="ORIGSENSOR-ID",
+            pd1_sig_lev=12,
+            pd2_sig_lev=12,
+            ps_temp_mon=12,
             retransmit=True,
-            sat_no=0,
-            sen_mode="senMode",
-            surf_dos_charge_h=0,
-            surf_dos_charge_l=0,
-            surf_dos_h=0,
-            surf_dos_l=0,
-            surf_dos_m=0,
-            surf_dos_stat=0,
-            transient_data=[0],
-            v_ref=0,
+            sat_no=101,
+            sen_mode="TEST",
+            surf_dos_charge_h=12,
+            surf_dos_charge_l=12,
+            surf_dos_h=12,
+            surf_dos_l=12,
+            surf_dos_m=12,
+            surf_dos_stat=2,
+            transient_data=[1, 2, 3],
+            v_ref=12,
         )
         assert ecpsdr is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.observations.ecpsdr.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
         )
 
         assert response.is_closed is True
@@ -428,11 +420,11 @@ class TestAsyncEcpsdr:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.observations.ecpsdr.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            type="STANDARD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -547,11 +539,11 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.observations.ecpsdr.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -562,11 +554,11 @@ class TestAsyncEcpsdr:
         response = await async_client.observations.ecpsdr.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -581,11 +573,11 @@ class TestAsyncEcpsdr:
         async with async_client.observations.ecpsdr.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         ) as response:

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -21,7 +21,7 @@ class H3geoCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -56,15 +56,6 @@ class H3geoCreateParams(TypedDict, total=False):
     center_freq: Annotated[float, PropertyInfo(alias="centerFreq")]
     """The center frequency of this H3 Geo data set measured in megahertz."""
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     end_time: Annotated[Union[str, datetime], PropertyInfo(alias="endTime", format="iso8601")]
     """End time for this H3 Geo data set in ISO 8601 UTC with millisecond precision."""
 
@@ -76,23 +67,10 @@ class H3geoCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     resolution: int
-    """H3 resolution (0 � 15) for the data set.
+    """H3 resolution (0 – 15) for the data set.
 
     At this time, UDL supports a resolution of 3 or less.
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     tags: List[str]
@@ -118,7 +96,7 @@ class Cell(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -171,15 +149,6 @@ class Cell(TypedDict, total=False):
     times.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     id_h3_geo: Annotated[str, PropertyInfo(alias="idH3Geo")]
     """Unique identifier of the parent H3 Geo record containing this hex cell."""
 
@@ -189,12 +158,6 @@ class Cell(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     rpm_max: Annotated[float, PropertyInfo(alias="rpmMax")]
@@ -225,11 +188,4 @@ class Cell(TypedDict, total=False):
     """
     The standard deviation of the received power monitor (RPM) output value for the
     set of data contained within this cell.
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """

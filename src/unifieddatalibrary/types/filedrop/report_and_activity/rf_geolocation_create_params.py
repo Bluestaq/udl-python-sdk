@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 
@@ -19,7 +19,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -121,15 +121,6 @@ class Body(TypedDict, total=False):
     constellation: str
     """The name of the satellite constellation."""
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     created_ts: Annotated[Union[str, datetime], PropertyInfo(alias="createdTs", format="iso8601")]
     """
     Specifies the creation time associated with the order in ISO 8601 UTC with
@@ -165,14 +156,6 @@ class Body(TypedDict, total=False):
     systems that require tracking of an internal system generated ID.
     """
 
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """
-    Unique identifier of the satellite used to identify and geolocate RF signals of
-    interest. This ID can be used to obtain additional information on an OnOrbit
-    object using the 'get by ID' operation (e.g. /udl/onorbit/{id}). For example,
-    the onorbit object with idOnOrbit = abc would be queried as /udl/onorbit/abc.
-    """
-
     id_rf_emitter: Annotated[str, PropertyInfo(alias="idRFEmitter")]
     """
     Optional identifier of the geolocated signal of interest RF Emitter for this
@@ -199,12 +182,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
     """
     Optional identifier of the satellite used to identify and geolocate RF signals
@@ -229,13 +206,6 @@ class Body(TypedDict, total=False):
 
     signal_of_interest: Annotated[str, PropertyInfo(alias="signalOfInterest")]
     """The name of the signal of interest."""
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
 
     tags: List[str]
     """

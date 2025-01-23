@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -51,7 +52,7 @@ class GnssrawifResource(SyncAPIResource):
         *,
         center_freq: Iterable[float],
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         end_time: Union[str, datetime],
         file_name: str,
         source: str,
@@ -59,8 +60,6 @@ class GnssrawifResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         bit_depth: int | NotGiven = NOT_GIVEN,
         boresight: Iterable[float] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         data_rate: float | NotGiven = NOT_GIVEN,
         diff_code_bias: Iterable[float] | NotGiven = NOT_GIVEN,
         end_alt: float | NotGiven = NOT_GIVEN,
@@ -68,11 +67,8 @@ class GnssrawifResource(SyncAPIResource):
         end_lon: float | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         event_id: str | NotGiven = NOT_GIVEN,
-        file_size: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         if_freq: Iterable[float] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         post_fourier: List[str] | NotGiven = NOT_GIVEN,
         quat: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -151,11 +147,6 @@ class GnssrawifResource(SyncAPIResource):
           boresight: Unit vector of the outward facing direction of the receiver boresight in a
               body-fixed coordinate system.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           data_rate: The amount of data generated per unit time, expressed in Megabytes/minute.
 
           diff_code_bias: Differential Code Biases (DCBs) are the systematic errors, or biases, between
@@ -181,12 +172,6 @@ class GnssrawifResource(SyncAPIResource):
           event_id: Optional source-provided identifier for this collection event. This field can be
               used to associate records related to the same event.
 
-          file_size: The binary file size, in bytes, auto-populated by the system. The maximum file
-              size for this service is 5,000,000 Bytes (5 MB). Files exceeding the maximum
-              size will be rejected.
-
-          id_on_orbit: Unique identifier of the primary satellite on-orbit object.
-
           if_freq: The center frequency, in MHz, after downconversion to intermediate frequency. If
               provided, this array should have the same length as centerFreqs.
 
@@ -194,9 +179,6 @@ class GnssrawifResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the data source to indicate the target object of
               this record. This may be an internal identifier and not necessarily map to a
@@ -292,8 +274,6 @@ class GnssrawifResource(SyncAPIResource):
                     "id": id,
                     "bit_depth": bit_depth,
                     "boresight": boresight,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "data_rate": data_rate,
                     "diff_code_bias": diff_code_bias,
                     "end_alt": end_alt,
@@ -301,11 +281,8 @@ class GnssrawifResource(SyncAPIResource):
                     "end_lon": end_lon,
                     "es_id": es_id,
                     "event_id": event_id,
-                    "file_size": file_size,
-                    "id_on_orbit": id_on_orbit,
                     "if_freq": if_freq,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "post_fourier": post_fourier,
                     "quat": quat,
@@ -358,7 +335,7 @@ class AsyncGnssrawifResource(AsyncAPIResource):
         *,
         center_freq: Iterable[float],
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         end_time: Union[str, datetime],
         file_name: str,
         source: str,
@@ -366,8 +343,6 @@ class AsyncGnssrawifResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         bit_depth: int | NotGiven = NOT_GIVEN,
         boresight: Iterable[float] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         data_rate: float | NotGiven = NOT_GIVEN,
         diff_code_bias: Iterable[float] | NotGiven = NOT_GIVEN,
         end_alt: float | NotGiven = NOT_GIVEN,
@@ -375,11 +350,8 @@ class AsyncGnssrawifResource(AsyncAPIResource):
         end_lon: float | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         event_id: str | NotGiven = NOT_GIVEN,
-        file_size: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         if_freq: Iterable[float] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         post_fourier: List[str] | NotGiven = NOT_GIVEN,
         quat: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -458,11 +430,6 @@ class AsyncGnssrawifResource(AsyncAPIResource):
           boresight: Unit vector of the outward facing direction of the receiver boresight in a
               body-fixed coordinate system.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           data_rate: The amount of data generated per unit time, expressed in Megabytes/minute.
 
           diff_code_bias: Differential Code Biases (DCBs) are the systematic errors, or biases, between
@@ -488,12 +455,6 @@ class AsyncGnssrawifResource(AsyncAPIResource):
           event_id: Optional source-provided identifier for this collection event. This field can be
               used to associate records related to the same event.
 
-          file_size: The binary file size, in bytes, auto-populated by the system. The maximum file
-              size for this service is 5,000,000 Bytes (5 MB). Files exceeding the maximum
-              size will be rejected.
-
-          id_on_orbit: Unique identifier of the primary satellite on-orbit object.
-
           if_freq: The center frequency, in MHz, after downconversion to intermediate frequency. If
               provided, this array should have the same length as centerFreqs.
 
@@ -501,9 +462,6 @@ class AsyncGnssrawifResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the data source to indicate the target object of
               this record. This may be an internal identifier and not necessarily map to a
@@ -599,8 +557,6 @@ class AsyncGnssrawifResource(AsyncAPIResource):
                     "id": id,
                     "bit_depth": bit_depth,
                     "boresight": boresight,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "data_rate": data_rate,
                     "diff_code_bias": diff_code_bias,
                     "end_alt": end_alt,
@@ -608,11 +564,8 @@ class AsyncGnssrawifResource(AsyncAPIResource):
                     "end_lon": end_lon,
                     "es_id": es_id,
                     "event_id": event_id,
-                    "file_size": file_size,
-                    "id_on_orbit": id_on_orbit,
                     "if_freq": if_freq,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "post_fourier": post_fourier,
                     "quat": quat,

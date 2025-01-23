@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -279,7 +280,7 @@ class AirloadplanFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -298,8 +299,8 @@ class AirloadplanFull(BaseModel):
 
     est_dep_time: datetime = FieldInfo(alias="estDepTime")
     """
-    The current estimated time that the aircraft is planned to depart, in ISO 8601
-    UTC format with millisecond precision.
+    The current estimated time that the Aircraft is planned to depart, in ISO 8601
+    UTC format.
     """
 
     source: str
@@ -606,7 +607,7 @@ class AirloadplanFull(BaseModel):
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
-    """Time the row was updated in the database, auto-populated by the system."""
+    """Time the row was last updated in the database, auto-populated by the system."""
 
     updated_by: Optional[str] = FieldInfo(alias="updatedBy", default=None)
     """

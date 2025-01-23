@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union
 from datetime import date, datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +15,7 @@ class EntityCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -38,7 +38,21 @@ class EntityCreateParams(TypedDict, total=False):
     source: Required[str]
     """Source of the data."""
 
-    type: Required[str]
+    type: Required[
+        Literal[
+            "AIRCRAFT",
+            "BUS",
+            "COMM",
+            "IR",
+            "NAVIGATION",
+            "ONORBIT",
+            "RFEMITTER",
+            "SCIENTIFIC",
+            "SENSOR",
+            "SITE",
+            "VESSEL",
+        ]
+    ]
     """
     The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
     NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
@@ -49,18 +63,9 @@ class EntityCreateParams(TypedDict, total=False):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     id_entity: Annotated[str, PropertyInfo(alias="idEntity")]
@@ -96,13 +101,9 @@ class EntityCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
-    owner_type: Annotated[str, PropertyInfo(alias="ownerType")]
+    owner_type: Annotated[
+        Literal["Commercial", "Government", "Academic", "Consortium", "Other"], PropertyInfo(alias="ownerType")
+    ]
     """Type of organization which owns this entity (e.g.
 
     Commercial, Government, Academic, Consortium, etc).
@@ -119,7 +120,7 @@ class Location(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -150,18 +151,9 @@ class Location(TypedDict, total=False):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     id_location: Annotated[str, PropertyInfo(alias="idLocation")]
@@ -187,18 +179,12 @@ class Location(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
 
 class OnOrbit(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -224,7 +210,21 @@ class OnOrbit(TypedDict, total=False):
     alt_name: Annotated[str, PropertyInfo(alias="altName")]
     """Alternate name of the on-orbit object."""
 
-    category: str
+    category: Literal[
+        "Unknown",
+        "On-Orbit",
+        "Decayed",
+        "Cataloged Without State",
+        "Launch Nominal",
+        "Analyst Satellite",
+        "Cislunar",
+        "Lunar",
+        "Hyperbolic",
+        "Heliocentric",
+        "Interplanetary",
+        "Lagrangian",
+        "Docked",
+    ]
     """Category of the on-orbit object.
 
     (Unknown, On-Orbit, Decayed, Cataloged Without State, Launch Nominal, Analyst
@@ -243,18 +243,9 @@ class OnOrbit(TypedDict, total=False):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     decay_date: Annotated[Union[str, datetime], PropertyInfo(alias="decayDate", format="iso8601")]
@@ -286,7 +277,9 @@ class OnOrbit(TypedDict, total=False):
     mission_number: Annotated[str, PropertyInfo(alias="missionNumber")]
     """Mission number of the on-orbit object."""
 
-    object_type: Annotated[str, PropertyInfo(alias="objectType")]
+    object_type: Annotated[
+        Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"], PropertyInfo(alias="objectType")
+    ]
     """
     Type of on-orbit object: ROCKET BODY, DEBRIS, PAYLOAD, PLATFORM, MANNED,
     UNKNOWN.
@@ -298,10 +291,4 @@ class OnOrbit(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """

@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,15 +52,12 @@ class CountriesResource(SyncAPIResource):
         self,
         *,
         code: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         code_alt: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         fips_code: str | NotGiven = NOT_GIVEN,
         iso3_code: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -99,11 +95,6 @@ class CountriesResource(SyncAPIResource):
 
           code_alt: 3 Digit or other alternate country code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           fips_code: Federal Information Processing Standard (FIPS) two-character country code. This
               field is used when the country code for FIPS differs from the country code for
               ISO-3166 value. For example, the ISO-3166 Alpha-2-country code for Vanuatu is
@@ -114,9 +105,6 @@ class CountriesResource(SyncAPIResource):
               corresponding Alpha-2 code.
 
           name: Country name.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           extra_headers: Send extra headers
 
@@ -135,12 +123,9 @@ class CountriesResource(SyncAPIResource):
                     "data_mode": data_mode,
                     "source": source,
                     "code_alt": code_alt,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "fips_code": fips_code,
                     "iso3_code": iso3_code,
                     "name": name,
-                    "orig_network": orig_network,
                 },
                 country_create_params.CountryCreateParams,
             ),
@@ -189,15 +174,12 @@ class CountriesResource(SyncAPIResource):
         code_1: str,
         *,
         code_2: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         code_alt: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         fips_code: str | NotGiven = NOT_GIVEN,
         iso3_code: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,11 +217,6 @@ class CountriesResource(SyncAPIResource):
 
           code_alt: 3 Digit or other alternate country code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           fips_code: Federal Information Processing Standard (FIPS) two-character country code. This
               field is used when the country code for FIPS differs from the country code for
               ISO-3166 value. For example, the ISO-3166 Alpha-2-country code for Vanuatu is
@@ -250,9 +227,6 @@ class CountriesResource(SyncAPIResource):
               corresponding Alpha-2 code.
 
           name: Country name.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           extra_headers: Send extra headers
 
@@ -273,12 +247,9 @@ class CountriesResource(SyncAPIResource):
                     "data_mode": data_mode,
                     "source": source,
                     "code_alt": code_alt,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "fips_code": fips_code,
                     "iso3_code": iso3_code,
                     "name": name,
-                    "orig_network": orig_network,
                 },
                 country_update_params.CountryUpdateParams,
             ),
@@ -421,7 +392,7 @@ class CountriesResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -469,15 +440,12 @@ class AsyncCountriesResource(AsyncAPIResource):
         self,
         *,
         code: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         code_alt: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         fips_code: str | NotGiven = NOT_GIVEN,
         iso3_code: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -515,11 +483,6 @@ class AsyncCountriesResource(AsyncAPIResource):
 
           code_alt: 3 Digit or other alternate country code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           fips_code: Federal Information Processing Standard (FIPS) two-character country code. This
               field is used when the country code for FIPS differs from the country code for
               ISO-3166 value. For example, the ISO-3166 Alpha-2-country code for Vanuatu is
@@ -530,9 +493,6 @@ class AsyncCountriesResource(AsyncAPIResource):
               corresponding Alpha-2 code.
 
           name: Country name.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           extra_headers: Send extra headers
 
@@ -551,12 +511,9 @@ class AsyncCountriesResource(AsyncAPIResource):
                     "data_mode": data_mode,
                     "source": source,
                     "code_alt": code_alt,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "fips_code": fips_code,
                     "iso3_code": iso3_code,
                     "name": name,
-                    "orig_network": orig_network,
                 },
                 country_create_params.CountryCreateParams,
             ),
@@ -605,15 +562,12 @@ class AsyncCountriesResource(AsyncAPIResource):
         code_1: str,
         *,
         code_2: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         code_alt: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         fips_code: str | NotGiven = NOT_GIVEN,
         iso3_code: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -651,11 +605,6 @@ class AsyncCountriesResource(AsyncAPIResource):
 
           code_alt: 3 Digit or other alternate country code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           fips_code: Federal Information Processing Standard (FIPS) two-character country code. This
               field is used when the country code for FIPS differs from the country code for
               ISO-3166 value. For example, the ISO-3166 Alpha-2-country code for Vanuatu is
@@ -666,9 +615,6 @@ class AsyncCountriesResource(AsyncAPIResource):
               corresponding Alpha-2 code.
 
           name: Country name.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           extra_headers: Send extra headers
 
@@ -689,12 +635,9 @@ class AsyncCountriesResource(AsyncAPIResource):
                     "data_mode": data_mode,
                     "source": source,
                     "code_alt": code_alt,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "fips_code": fips_code,
                     "iso3_code": iso3_code,
                     "name": name,
-                    "orig_network": orig_network,
                 },
                 country_update_params.CountryUpdateParams,
             ),
@@ -837,7 +780,7 @@ class AsyncCountriesResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

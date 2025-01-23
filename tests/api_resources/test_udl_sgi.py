@@ -20,11 +20,11 @@ class TestUdlSgi:
         udl_sgi = client.udl_sgi.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effective_date": "2019-12-27T18:11:19.117Z",
-                    "sgi_date": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effective_date": "2018-01-01T16:00:00.123Z",
+                    "sgi_date": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -35,11 +35,11 @@ class TestUdlSgi:
         response = client.udl_sgi.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effective_date": "2019-12-27T18:11:19.117Z",
-                    "sgi_date": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effective_date": "2018-01-01T16:00:00.123Z",
+                    "sgi_date": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -54,11 +54,11 @@ class TestUdlSgi:
         with client.udl_sgi.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effective_date": "2019-12-27T18:11:19.117Z",
-                    "sgi_date": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effective_date": "2018-01-01T16:00:00.123Z",
+                    "sgi_date": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -79,11 +79,11 @@ class TestAsyncUdlSgi:
         udl_sgi = await async_client.udl_sgi.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effective_date": "2019-12-27T18:11:19.117Z",
-                    "sgi_date": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effective_date": "2018-01-01T16:00:00.123Z",
+                    "sgi_date": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -94,11 +94,11 @@ class TestAsyncUdlSgi:
         response = await async_client.udl_sgi.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effective_date": "2019-12-27T18:11:19.117Z",
-                    "sgi_date": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effective_date": "2018-01-01T16:00:00.123Z",
+                    "sgi_date": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -113,11 +113,11 @@ class TestAsyncUdlSgi:
         async with async_client.udl_sgi.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effective_date": "2019-12-27T18:11:19.117Z",
-                    "sgi_date": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effective_date": "2018-01-01T16:00:00.123Z",
+                    "sgi_date": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

@@ -2,6 +2,7 @@
 
 from typing import Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class EopAbridged(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -137,7 +138,7 @@ class EopAbridged(BaseModel):
     lod_unc: Optional[float] = FieldInfo(alias="lodUnc", default=None)
     """The estimated uncertainty/error in the lod value in seconds."""
 
-    nutation_state: Optional[str] = FieldInfo(alias="nutationState", default=None)
+    nutation_state: Optional[Literal["I", "P"]] = FieldInfo(alias="nutationState", default=None)
     """
     Flag indicating Issued (I), or Predicted (P) for this record's nutation values
     (dPSI and dEpsilon).
@@ -157,7 +158,7 @@ class EopAbridged(BaseModel):
     by the system.
     """
 
-    polar_motion_state: Optional[str] = FieldInfo(alias="polarMotionState", default=None)
+    polar_motion_state: Optional[Literal["I", "P"]] = FieldInfo(alias="polarMotionState", default=None)
     """
     Flag indicating Issued (I), or Predicted (P) for this record's polar motion
     values.
@@ -232,7 +233,7 @@ class EopAbridged(BaseModel):
     seconds.
     """
 
-    ut1_utc_state: Optional[str] = FieldInfo(alias="ut1UTCState", default=None)
+    ut1_utc_state: Optional[Literal["I", "P"]] = FieldInfo(alias="ut1UTCState", default=None)
     """
     Flag indicating Issued (I), or Predicted (P) for this record''s Bulletin A
     UT1-UTC values.

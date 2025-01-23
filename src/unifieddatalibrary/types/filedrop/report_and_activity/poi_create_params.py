@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 
@@ -19,7 +19,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -128,12 +128,6 @@ class Body(TypedDict, total=False):
     1, with 0 indicating lowest confidence.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """Application user who created the row in the database."""
-
     desc: str
     """Description of the POI target object."""
 
@@ -204,12 +198,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     plat: str
     """POI/object platform type (e.g., 14/GROUND, COMBAT_VEHICLE, etc.)."""
 
@@ -221,13 +209,6 @@ class Body(TypedDict, total=False):
 
     pri: int
     """Priority of the POI target object."""
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
 
     spec: str
     """Specific point/object type (e.g., 82/GROUND, LIGHT_TANK, etc.)."""

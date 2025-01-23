@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -58,7 +59,7 @@ class DatalinkResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_ex_name: str,
         originator: str,
         source: str,
@@ -77,8 +78,6 @@ class DatalinkResource(SyncAPIResource):
         class_source: str | NotGiven = NOT_GIVEN,
         consec_decorr: int | NotGiven = NOT_GIVEN,
         course_diff: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         dec_exempt_codes: List[str] | NotGiven = NOT_GIVEN,
         dec_inst_dates: List[str] | NotGiven = NOT_GIVEN,
         decorr_win_mult: float | NotGiven = NOT_GIVEN,
@@ -101,7 +100,6 @@ class DatalinkResource(SyncAPIResource):
         op_ex_info_alt: str | NotGiven = NOT_GIVEN,
         ops: Iterable[datalink_create_params.Op] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         plan_orig_num: str | NotGiven = NOT_GIVEN,
         poc_call_sign: str | NotGiven = NOT_GIVEN,
         poc_lat: float | NotGiven = NOT_GIVEN,
@@ -112,13 +110,11 @@ class DatalinkResource(SyncAPIResource):
         poc_rank: str | NotGiven = NOT_GIVEN,
         qualifier: str | NotGiven = NOT_GIVEN,
         qual_sn: int | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
         references: Iterable[datalink_create_params.Reference] | NotGiven = NOT_GIVEN,
         ref_points: Iterable[datalink_create_params.RefPoint] | NotGiven = NOT_GIVEN,
         remarks: Iterable[datalink_create_params.Remark] | NotGiven = NOT_GIVEN,
         res_track_qual: int | NotGiven = NOT_GIVEN,
         serial_num: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         spec_tracks: Iterable[datalink_create_params.SpecTrack] | NotGiven = NOT_GIVEN,
         speed_diff: int | NotGiven = NOT_GIVEN,
         stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -126,8 +122,6 @@ class DatalinkResource(SyncAPIResource):
         sys_default_code: str | NotGiven = NOT_GIVEN,
         track_num_block_l_ls: Iterable[int] | NotGiven = NOT_GIVEN,
         track_num_blocks: List[str] | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         voice_coord: Iterable[datalink_create_params.VoiceCoord] | NotGiven = NOT_GIVEN,
         win_size_min: float | NotGiven = NOT_GIVEN,
         win_size_mult: float | NotGiven = NOT_GIVEN,
@@ -213,11 +207,6 @@ class DatalinkResource(SyncAPIResource):
               calculated course of the local track. Required if sysDefaultCode field is "MAN".
               Allowable entries are 15 to 90 in increments of 15 degrees.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           dec_exempt_codes: Array of codes that provide justification for exemption from automatic
               downgrading or declassification.
 
@@ -284,9 +273,6 @@ class DatalinkResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           plan_orig_num: The official identifier of the military establishment responsible for the
               operation plan and the identification number assigned to this plan.
 
@@ -314,10 +300,6 @@ class DatalinkResource(SyncAPIResource):
 
           qual_sn: The serial number associated with the message qualifier.
 
-          raw_file_uri: Optional URI location in the document repository of the raw file parsed by the
-              system to produce this record. To download the raw file, prepend
-              https://udl-hostname/scs/download?id= to this value.
-
           references: Collection of reference information. There can be 0 to many DataLinkReferences
               collections within the datalink service.
 
@@ -332,10 +314,6 @@ class DatalinkResource(SyncAPIResource):
               integers from 2 to 6.
 
           serial_num: The unique message identifier assigned by the originator.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           spec_tracks: Collection of special track numbers used on the data links. There can be 0 to
               many DataLinkSpecTracks collections within the datalink service.
@@ -359,11 +337,6 @@ class DatalinkResource(SyncAPIResource):
 
           track_num_blocks: Array of defined ranges of Link-11/11B track numbers assigned to a participating
               unit or reporting unit.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           voice_coord: Collection of information regarding the function, frequency, and priority of
               interface control and coordination nets for this data link message. There can be
@@ -410,8 +383,6 @@ class DatalinkResource(SyncAPIResource):
                     "class_source": class_source,
                     "consec_decorr": consec_decorr,
                     "course_diff": course_diff,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "dec_exempt_codes": dec_exempt_codes,
                     "dec_inst_dates": dec_inst_dates,
                     "decorr_win_mult": decorr_win_mult,
@@ -434,7 +405,6 @@ class DatalinkResource(SyncAPIResource):
                     "op_ex_info_alt": op_ex_info_alt,
                     "ops": ops,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "plan_orig_num": plan_orig_num,
                     "poc_call_sign": poc_call_sign,
                     "poc_lat": poc_lat,
@@ -445,13 +415,11 @@ class DatalinkResource(SyncAPIResource):
                     "poc_rank": poc_rank,
                     "qualifier": qualifier,
                     "qual_sn": qual_sn,
-                    "raw_file_uri": raw_file_uri,
                     "references": references,
                     "ref_points": ref_points,
                     "remarks": remarks,
                     "res_track_qual": res_track_qual,
                     "serial_num": serial_num,
-                    "source_dl": source_dl,
                     "spec_tracks": spec_tracks,
                     "speed_diff": speed_diff,
                     "stop_time": stop_time,
@@ -459,8 +427,6 @@ class DatalinkResource(SyncAPIResource):
                     "sys_default_code": sys_default_code,
                     "track_num_block_l_ls": track_num_block_l_ls,
                     "track_num_blocks": track_num_blocks,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "voice_coord": voice_coord,
                     "win_size_min": win_size_min,
                     "win_size_mult": win_size_mult,
@@ -641,7 +607,7 @@ class DatalinkResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           start_time: The start of the effective time period of this data link message, in ISO 8601
@@ -698,7 +664,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_ex_name: str,
         originator: str,
         source: str,
@@ -717,8 +683,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
         class_source: str | NotGiven = NOT_GIVEN,
         consec_decorr: int | NotGiven = NOT_GIVEN,
         course_diff: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         dec_exempt_codes: List[str] | NotGiven = NOT_GIVEN,
         dec_inst_dates: List[str] | NotGiven = NOT_GIVEN,
         decorr_win_mult: float | NotGiven = NOT_GIVEN,
@@ -741,7 +705,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
         op_ex_info_alt: str | NotGiven = NOT_GIVEN,
         ops: Iterable[datalink_create_params.Op] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         plan_orig_num: str | NotGiven = NOT_GIVEN,
         poc_call_sign: str | NotGiven = NOT_GIVEN,
         poc_lat: float | NotGiven = NOT_GIVEN,
@@ -752,13 +715,11 @@ class AsyncDatalinkResource(AsyncAPIResource):
         poc_rank: str | NotGiven = NOT_GIVEN,
         qualifier: str | NotGiven = NOT_GIVEN,
         qual_sn: int | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
         references: Iterable[datalink_create_params.Reference] | NotGiven = NOT_GIVEN,
         ref_points: Iterable[datalink_create_params.RefPoint] | NotGiven = NOT_GIVEN,
         remarks: Iterable[datalink_create_params.Remark] | NotGiven = NOT_GIVEN,
         res_track_qual: int | NotGiven = NOT_GIVEN,
         serial_num: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         spec_tracks: Iterable[datalink_create_params.SpecTrack] | NotGiven = NOT_GIVEN,
         speed_diff: int | NotGiven = NOT_GIVEN,
         stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -766,8 +727,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
         sys_default_code: str | NotGiven = NOT_GIVEN,
         track_num_block_l_ls: Iterable[int] | NotGiven = NOT_GIVEN,
         track_num_blocks: List[str] | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         voice_coord: Iterable[datalink_create_params.VoiceCoord] | NotGiven = NOT_GIVEN,
         win_size_min: float | NotGiven = NOT_GIVEN,
         win_size_mult: float | NotGiven = NOT_GIVEN,
@@ -853,11 +812,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
               calculated course of the local track. Required if sysDefaultCode field is "MAN".
               Allowable entries are 15 to 90 in increments of 15 degrees.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           dec_exempt_codes: Array of codes that provide justification for exemption from automatic
               downgrading or declassification.
 
@@ -924,9 +878,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           plan_orig_num: The official identifier of the military establishment responsible for the
               operation plan and the identification number assigned to this plan.
 
@@ -954,10 +905,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
 
           qual_sn: The serial number associated with the message qualifier.
 
-          raw_file_uri: Optional URI location in the document repository of the raw file parsed by the
-              system to produce this record. To download the raw file, prepend
-              https://udl-hostname/scs/download?id= to this value.
-
           references: Collection of reference information. There can be 0 to many DataLinkReferences
               collections within the datalink service.
 
@@ -972,10 +919,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
               integers from 2 to 6.
 
           serial_num: The unique message identifier assigned by the originator.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           spec_tracks: Collection of special track numbers used on the data links. There can be 0 to
               many DataLinkSpecTracks collections within the datalink service.
@@ -999,11 +942,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
 
           track_num_blocks: Array of defined ranges of Link-11/11B track numbers assigned to a participating
               unit or reporting unit.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           voice_coord: Collection of information regarding the function, frequency, and priority of
               interface control and coordination nets for this data link message. There can be
@@ -1050,8 +988,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
                     "class_source": class_source,
                     "consec_decorr": consec_decorr,
                     "course_diff": course_diff,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "dec_exempt_codes": dec_exempt_codes,
                     "dec_inst_dates": dec_inst_dates,
                     "decorr_win_mult": decorr_win_mult,
@@ -1074,7 +1010,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
                     "op_ex_info_alt": op_ex_info_alt,
                     "ops": ops,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "plan_orig_num": plan_orig_num,
                     "poc_call_sign": poc_call_sign,
                     "poc_lat": poc_lat,
@@ -1085,13 +1020,11 @@ class AsyncDatalinkResource(AsyncAPIResource):
                     "poc_rank": poc_rank,
                     "qualifier": qualifier,
                     "qual_sn": qual_sn,
-                    "raw_file_uri": raw_file_uri,
                     "references": references,
                     "ref_points": ref_points,
                     "remarks": remarks,
                     "res_track_qual": res_track_qual,
                     "serial_num": serial_num,
-                    "source_dl": source_dl,
                     "spec_tracks": spec_tracks,
                     "speed_diff": speed_diff,
                     "stop_time": stop_time,
@@ -1099,8 +1032,6 @@ class AsyncDatalinkResource(AsyncAPIResource):
                     "sys_default_code": sys_default_code,
                     "track_num_block_l_ls": track_num_block_l_ls,
                     "track_num_blocks": track_num_blocks,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "voice_coord": voice_coord,
                     "win_size_min": win_size_min,
                     "win_size_mult": win_size_mult,
@@ -1283,7 +1214,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           start_time: The start of the effective time period of this data link message, in ISO 8601

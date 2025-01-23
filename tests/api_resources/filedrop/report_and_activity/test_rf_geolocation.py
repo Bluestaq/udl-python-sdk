@@ -20,12 +20,12 @@ class TestRfGeolocation:
         rf_geolocation = client.filedrop.report_and_activity.rf_geolocation.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "order_id": "orderId",
-                    "received_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "order_id": "155240",
+                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "source": "Bluestaq",
+                    "start_time": "2024-05-31T21:12:12.123456Z",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestRfGeolocation:
         response = client.filedrop.report_and_activity.rf_geolocation.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "order_id": "orderId",
-                    "received_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "order_id": "155240",
+                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "source": "Bluestaq",
+                    "start_time": "2024-05-31T21:12:12.123456Z",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestRfGeolocation:
         with client.filedrop.report_and_activity.rf_geolocation.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "order_id": "orderId",
-                    "received_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "order_id": "155240",
+                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "source": "Bluestaq",
+                    "start_time": "2024-05-31T21:12:12.123456Z",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncRfGeolocation:
         rf_geolocation = await async_client.filedrop.report_and_activity.rf_geolocation.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "order_id": "orderId",
-                    "received_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "order_id": "155240",
+                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "source": "Bluestaq",
+                    "start_time": "2024-05-31T21:12:12.123456Z",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncRfGeolocation:
         response = await async_client.filedrop.report_and_activity.rf_geolocation.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "order_id": "orderId",
-                    "received_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "order_id": "155240",
+                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "source": "Bluestaq",
+                    "start_time": "2024-05-31T21:12:12.123456Z",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncRfGeolocation:
         async with async_client.filedrop.report_and_activity.rf_geolocation.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "order_id": "orderId",
-                    "received_ts": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "order_id": "155240",
+                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "source": "Bluestaq",
+                    "start_time": "2024-05-31T21:12:12.123456Z",
                 }
             ],
         ) as response:

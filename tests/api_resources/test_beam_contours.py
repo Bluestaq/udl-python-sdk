@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     BeamContourListResponse,
     BeamContourTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,47 +24,44 @@ class TestBeamContours:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
         assert beam_contour is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
-            id="id",
-            contour_idx=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            gain=0,
-            geography="geography",
-            geography_json="geographyJson",
-            geography_ndims=0,
-            geography_srid=0,
-            geography_text="geographyText",
-            geography_type="geographyType",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
+            id="BEAMCONTOUR-ID",
+            contour_idx=1,
+            gain=17.1,
+            geography="POLYGON((26.156175339112 67.3291113966927,26.0910220642717 67.2580009640721,26.6637992964562 67.1795862381682,26.730115808233 67.2501237475598,26.156175339112 67.3291113966927))",
+            geography_json='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
+            geography_ndims=2,
+            geography_srid=4326,
+            geography_text="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            geography_type="ST_Polygon",
+            origin="THIRD_PARTY_DATASOURCE",
+            region_name="Example region name",
         )
         assert beam_contour is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.beam_contours.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
 
         assert response.is_closed is True
@@ -76,11 +72,11 @@ class TestBeamContours:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.beam_contours.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -132,11 +128,11 @@ class TestBeamContours:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
         assert beam_contour is None
 
@@ -144,25 +140,22 @@ class TestBeamContours:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
-            id_2="id",
-            contour_idx=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            gain=0,
-            geography="geography",
-            geography_json="geographyJson",
-            geography_ndims=0,
-            geography_srid=0,
-            geography_text="geographyText",
-            geography_type="geographyType",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
+            id_2="BEAMCONTOUR-ID",
+            contour_idx=1,
+            gain=17.1,
+            geography="POLYGON((26.156175339112 67.3291113966927,26.0910220642717 67.2580009640721,26.6637992964562 67.1795862381682,26.730115808233 67.2501237475598,26.156175339112 67.3291113966927))",
+            geography_json='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
+            geography_ndims=2,
+            geography_srid=4326,
+            geography_text="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            geography_type="ST_Polygon",
+            origin="THIRD_PARTY_DATASOURCE",
+            region_name="Example region name",
         )
         assert beam_contour is None
 
@@ -170,11 +163,11 @@ class TestBeamContours:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.beam_contours.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
 
         assert response.is_closed is True
@@ -186,11 +179,11 @@ class TestBeamContours:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.beam_contours.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -205,11 +198,11 @@ class TestBeamContours:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.beam_contours.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_beam="idBeam",
-                source="source",
-                type="type",
+                classification_marking="U",
+                data_mode="REAL",
+                id_beam="REF-BEAM-ID",
+                source="Bluestaq",
+                type="BORESIGHT",
                 id_2="",
             )
 
@@ -318,11 +311,11 @@ class TestBeamContours:
         beam_contour = client.beam_contours.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_beam": "idBeam",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_beam": "REF-BEAM-ID",
+                    "source": "Bluestaq",
+                    "type": "BORESIGHT",
                 }
             ],
         )
@@ -333,11 +326,11 @@ class TestBeamContours:
         response = client.beam_contours.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_beam": "idBeam",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_beam": "REF-BEAM-ID",
+                    "source": "Bluestaq",
+                    "type": "BORESIGHT",
                 }
             ],
         )
@@ -352,11 +345,11 @@ class TestBeamContours:
         with client.beam_contours.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_beam": "idBeam",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_beam": "REF-BEAM-ID",
+                    "source": "Bluestaq",
+                    "type": "BORESIGHT",
                 }
             ],
         ) as response:
@@ -434,47 +427,44 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
         assert beam_contour is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
-            id="id",
-            contour_idx=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            gain=0,
-            geography="geography",
-            geography_json="geographyJson",
-            geography_ndims=0,
-            geography_srid=0,
-            geography_text="geographyText",
-            geography_type="geographyType",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
+            id="BEAMCONTOUR-ID",
+            contour_idx=1,
+            gain=17.1,
+            geography="POLYGON((26.156175339112 67.3291113966927,26.0910220642717 67.2580009640721,26.6637992964562 67.1795862381682,26.730115808233 67.2501237475598,26.156175339112 67.3291113966927))",
+            geography_json='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
+            geography_ndims=2,
+            geography_srid=4326,
+            geography_text="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            geography_type="ST_Polygon",
+            origin="THIRD_PARTY_DATASOURCE",
+            region_name="Example region name",
         )
         assert beam_contour is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.beam_contours.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
 
         assert response.is_closed is True
@@ -485,11 +475,11 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.beam_contours.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -541,11 +531,11 @@ class TestAsyncBeamContours:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
         assert beam_contour is None
 
@@ -553,25 +543,22 @@ class TestAsyncBeamContours:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
-            id_2="id",
-            contour_idx=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            gain=0,
-            geography="geography",
-            geography_json="geographyJson",
-            geography_ndims=0,
-            geography_srid=0,
-            geography_text="geographyText",
-            geography_type="geographyType",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
+            id_2="BEAMCONTOUR-ID",
+            contour_idx=1,
+            gain=17.1,
+            geography="POLYGON((26.156175339112 67.3291113966927,26.0910220642717 67.2580009640721,26.6637992964562 67.1795862381682,26.730115808233 67.2501237475598,26.156175339112 67.3291113966927))",
+            geography_json='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
+            geography_ndims=2,
+            geography_srid=4326,
+            geography_text="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            geography_type="ST_Polygon",
+            origin="THIRD_PARTY_DATASOURCE",
+            region_name="Example region name",
         )
         assert beam_contour is None
 
@@ -579,11 +566,11 @@ class TestAsyncBeamContours:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.beam_contours.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         )
 
         assert response.is_closed is True
@@ -595,11 +582,11 @@ class TestAsyncBeamContours:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.beam_contours.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_beam="idBeam",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_beam="REF-BEAM-ID",
+            source="Bluestaq",
+            type="BORESIGHT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -614,11 +601,11 @@ class TestAsyncBeamContours:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.beam_contours.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_beam="idBeam",
-                source="source",
-                type="type",
+                classification_marking="U",
+                data_mode="REAL",
+                id_beam="REF-BEAM-ID",
+                source="Bluestaq",
+                type="BORESIGHT",
                 id_2="",
             )
 
@@ -727,11 +714,11 @@ class TestAsyncBeamContours:
         beam_contour = await async_client.beam_contours.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_beam": "idBeam",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_beam": "REF-BEAM-ID",
+                    "source": "Bluestaq",
+                    "type": "BORESIGHT",
                 }
             ],
         )
@@ -742,11 +729,11 @@ class TestAsyncBeamContours:
         response = await async_client.beam_contours.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_beam": "idBeam",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_beam": "REF-BEAM-ID",
+                    "source": "Bluestaq",
+                    "type": "BORESIGHT",
                 }
             ],
         )
@@ -761,11 +748,11 @@ class TestAsyncBeamContours:
         async with async_client.beam_contours.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_beam": "idBeam",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_beam": "REF-BEAM-ID",
+                    "source": "Bluestaq",
+                    "type": "BORESIGHT",
                 }
             ],
         ) as response:

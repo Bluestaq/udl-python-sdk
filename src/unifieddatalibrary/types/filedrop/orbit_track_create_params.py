@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
@@ -28,7 +28,10 @@ class BodyTrackSensor(TypedDict, total=False):
     mission_number: Annotated[str, PropertyInfo(alias="missionNumber")]
     """The mission number which produced this track observation."""
 
-    sensor_fov_type: Annotated[str, PropertyInfo(alias="sensorFOVType")]
+    sensor_fov_type: Annotated[
+        Literal["BUTTERFLY", "CONE ANGULAR", "CONE DISTANCE", "HORIZON TO HORIZON", "UNKNOWN"],
+        PropertyInfo(alias="sensorFOVType"),
+    ]
     """
     The field of view (FOV) type (Butterfly, Cone Angular, Cone Distance, Horizon to
     Horizon, Unknown) employed by the sensor observing this object.
@@ -50,7 +53,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -169,16 +172,10 @@ class Body(TypedDict, total=False):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """Application user who created the row in the database."""
 
     decay: float
     """Predicted change in Mean Motion (velocity) in radians/herg^2.
@@ -240,13 +237,18 @@ class Body(TypedDict, total=False):
     Based on MIL-STD-2525 symbology definitions.
     """
 
-    object_type: Annotated[str, PropertyInfo(alias="objectType")]
+    object_type: Annotated[
+        Literal["DEBRIS", "MANNED", "PAYLOAD", "PLATFORM", "ROCKET BODY", "UNKNOWN"], PropertyInfo(alias="objectType")
+    ]
     """
     The on-orbit category assigned to this track object (DEBRIS, MANNED, PAYLOAD,
     PLATFORM, ROCKET BODY, UNKNOWN).
     """
 
-    obj_ident: Annotated[str, PropertyInfo(alias="objIdent")]
+    obj_ident: Annotated[
+        Literal["ASSUMED FRIEND", "FRIEND", "HOSTILE", "NEUTRAL", "PENDING", "SUSPECT", "UNKNOWN"],
+        PropertyInfo(alias="objIdent"),
+    ]
     """
     The estimated identity of the track object (ASSUMED FRIEND, FRIEND, HOSTILE,
     NEUTRAL, PENDING, SUSPECT, UNKNOWN):
@@ -280,12 +282,6 @@ class Body(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
@@ -206,7 +206,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -284,15 +284,6 @@ class Body(TypedDict, total=False):
     cancelled: bool
     """Flag indicating that this air refueling event has been cancelled."""
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     dep_purpose: Annotated[str, PropertyInfo(alias="depPurpose")]
     """The purpose of the air event at the departure location.
 
@@ -326,6 +317,9 @@ class Body(TypedDict, total=False):
     systems that require tracking of an internal system generated ID.
     """
 
+    id_drop_zone: Annotated[str, PropertyInfo(alias="idDropZone")]
+    """The UDL unique identifier of the drop zone associated with this air event."""
+
     id_mission: Annotated[str, PropertyInfo(alias="idMission")]
     """The UDL unique identifier of the mission associated with this air event."""
 
@@ -351,12 +345,6 @@ class Body(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     planned_arr_time: Annotated[Union[str, datetime], PropertyInfo(alias="plannedArrTime", format="iso8601")]
@@ -414,13 +402,6 @@ class Body(TypedDict, total=False):
     an air refueling track.
     """
 
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
-
     status_code: Annotated[str, PropertyInfo(alias="statusCode")]
     """Status of this air refueling event track reservation.
 
@@ -433,12 +414,3 @@ class Body(TypedDict, total=False):
 
     track_time: Annotated[float, PropertyInfo(alias="trackTime")]
     """Length of time the receiver unit has requested for an air event, in hours."""
-
-    updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """Time the row was updated in the database, auto-populated by the system."""
-
-    updated_by: Annotated[str, PropertyInfo(alias="updatedBy")]
-    """
-    Application user who updated the row in the database, auto-populated by the
-    system.
-    """

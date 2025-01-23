@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class AirfieldslotconsumptionFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -30,9 +31,6 @@ class AirfieldslotconsumptionFull(BaseModel):
     requirements, and for validating technical, functional, and performance
     characteristics.
     """
-
-    end_time: datetime = FieldInfo(alias="endTime")
-    """The end of the slot window, in ISO 8601 UTC format."""
 
     id_airfield_slot: str = FieldInfo(alias="idAirfieldSlot")
     """
@@ -94,6 +92,9 @@ class AirfieldslotconsumptionFull(BaseModel):
     Application user who created the row in the database, auto-populated by the
     system.
     """
+
+    end_time: Optional[datetime] = FieldInfo(alias="endTime", default=None)
+    """The end of the slot window, in ISO 8601 UTC format."""
 
     id_arr_sortie: Optional[str] = FieldInfo(alias="idArrSortie", default=None)
     """Unique identifier of the sortie arriving at the slot start time."""
@@ -182,7 +183,7 @@ class AirfieldslotconsumptionFull(BaseModel):
     record should be assumed to have originated from the primary Enterprise UDL.
     """
 
-    status: Optional[str] = None
+    status: Optional[Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"]] = None
     """Current status of this slot (REQUESTED / APPROVED / DENIED / BLOCKED / OTHER)."""
 
     target_time: Optional[datetime] = FieldInfo(alias="targetTime", default=None)

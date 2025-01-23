@@ -20,11 +20,11 @@ class TestItems:
         item = client.items.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "12345ABCD",
+                    "source": "Bluestaq",
+                    "type": "CARGO",
                 }
             ],
         )
@@ -35,11 +35,11 @@ class TestItems:
         response = client.items.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "12345ABCD",
+                    "source": "Bluestaq",
+                    "type": "CARGO",
                 }
             ],
         )
@@ -54,11 +54,11 @@ class TestItems:
         with client.items.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "12345ABCD",
+                    "source": "Bluestaq",
+                    "type": "CARGO",
                 }
             ],
         ) as response:
@@ -79,11 +79,11 @@ class TestAsyncItems:
         item = await async_client.items.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "12345ABCD",
+                    "source": "Bluestaq",
+                    "type": "CARGO",
                 }
             ],
         )
@@ -94,11 +94,11 @@ class TestAsyncItems:
         response = await async_client.items.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "12345ABCD",
+                    "source": "Bluestaq",
+                    "type": "CARGO",
                 }
             ],
         )
@@ -113,11 +113,11 @@ class TestAsyncItems:
         async with async_client.items.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "12345ABCD",
+                    "source": "Bluestaq",
+                    "type": "CARGO",
                 }
             ],
         ) as response:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -64,7 +65,7 @@ class FlightplansResource(SyncAPIResource):
         *,
         arr_airfield: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         dep_airfield: str,
         gen_ts: Union[str, datetime],
         source: str,
@@ -88,8 +89,6 @@ class FlightplansResource(SyncAPIResource):
         climb_time: str | NotGiven = NOT_GIVEN,
         contingency_fuel: float | NotGiven = NOT_GIVEN,
         country_codes: List[str] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         dep_alternate: str | NotGiven = NOT_GIVEN,
         depress_fuel: float | NotGiven = NOT_GIVEN,
         dep_runway: str | NotGiven = NOT_GIVEN,
@@ -132,7 +131,6 @@ class FlightplansResource(SyncAPIResource):
         op_weight: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         originator: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         planner_remark: str | NotGiven = NOT_GIVEN,
         ramp_fuel: float | NotGiven = NOT_GIVEN,
         rem_alternate1_fuel: float | NotGiven = NOT_GIVEN,
@@ -140,7 +138,6 @@ class FlightplansResource(SyncAPIResource):
         reserve_fuel: float | NotGiven = NOT_GIVEN,
         route_string: str | NotGiven = NOT_GIVEN,
         sid: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         star: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         takeoff_fuel: float | NotGiven = NOT_GIVEN,
@@ -249,11 +246,6 @@ class FlightplansResource(SyncAPIResource):
 
           country_codes: Array of country codes for the countries overflown during this flight in ISO
               3166-1 Alpha-2 format.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           dep_alternate: The designated alternate departure airfield, International Civil Aviation
               Organization (ICAO) code preferred.
@@ -367,9 +359,6 @@ class FlightplansResource(SyncAPIResource):
 
           originator: Air Traffic Control address filing the flight plan.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           planner_remark: Remarks from the planners concerning this flight plan.
 
           ramp_fuel: Total of all fuel required to complete the flight in pounds, including fuel to
@@ -386,10 +375,6 @@ class FlightplansResource(SyncAPIResource):
               change of flight rules, and cruise climbs.
 
           sid: Name of the planned Standard Instrument Departure (SID) procedure.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           star: Name of the planned Standard Terminal Arrival (STAR) procedure.
 
@@ -476,8 +461,6 @@ class FlightplansResource(SyncAPIResource):
                     "climb_time": climb_time,
                     "contingency_fuel": contingency_fuel,
                     "country_codes": country_codes,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "dep_alternate": dep_alternate,
                     "depress_fuel": depress_fuel,
                     "dep_runway": dep_runway,
@@ -520,7 +503,6 @@ class FlightplansResource(SyncAPIResource):
                     "op_weight": op_weight,
                     "origin": origin,
                     "originator": originator,
-                    "orig_network": orig_network,
                     "planner_remark": planner_remark,
                     "ramp_fuel": ramp_fuel,
                     "rem_alternate1_fuel": rem_alternate1_fuel,
@@ -528,7 +510,6 @@ class FlightplansResource(SyncAPIResource):
                     "reserve_fuel": reserve_fuel,
                     "route_string": route_string,
                     "sid": sid,
-                    "source_dl": source_dl,
                     "star": star,
                     "tail_number": tail_number,
                     "takeoff_fuel": takeoff_fuel,
@@ -635,7 +616,7 @@ class AsyncFlightplansResource(AsyncAPIResource):
         *,
         arr_airfield: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         dep_airfield: str,
         gen_ts: Union[str, datetime],
         source: str,
@@ -659,8 +640,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
         climb_time: str | NotGiven = NOT_GIVEN,
         contingency_fuel: float | NotGiven = NOT_GIVEN,
         country_codes: List[str] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         dep_alternate: str | NotGiven = NOT_GIVEN,
         depress_fuel: float | NotGiven = NOT_GIVEN,
         dep_runway: str | NotGiven = NOT_GIVEN,
@@ -703,7 +682,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
         op_weight: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         originator: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         planner_remark: str | NotGiven = NOT_GIVEN,
         ramp_fuel: float | NotGiven = NOT_GIVEN,
         rem_alternate1_fuel: float | NotGiven = NOT_GIVEN,
@@ -711,7 +689,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
         reserve_fuel: float | NotGiven = NOT_GIVEN,
         route_string: str | NotGiven = NOT_GIVEN,
         sid: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         star: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         takeoff_fuel: float | NotGiven = NOT_GIVEN,
@@ -820,11 +797,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
 
           country_codes: Array of country codes for the countries overflown during this flight in ISO
               3166-1 Alpha-2 format.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           dep_alternate: The designated alternate departure airfield, International Civil Aviation
               Organization (ICAO) code preferred.
@@ -938,9 +910,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
 
           originator: Air Traffic Control address filing the flight plan.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           planner_remark: Remarks from the planners concerning this flight plan.
 
           ramp_fuel: Total of all fuel required to complete the flight in pounds, including fuel to
@@ -957,10 +926,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
               change of flight rules, and cruise climbs.
 
           sid: Name of the planned Standard Instrument Departure (SID) procedure.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           star: Name of the planned Standard Terminal Arrival (STAR) procedure.
 
@@ -1047,8 +1012,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
                     "climb_time": climb_time,
                     "contingency_fuel": contingency_fuel,
                     "country_codes": country_codes,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "dep_alternate": dep_alternate,
                     "depress_fuel": depress_fuel,
                     "dep_runway": dep_runway,
@@ -1091,7 +1054,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
                     "op_weight": op_weight,
                     "origin": origin,
                     "originator": originator,
-                    "orig_network": orig_network,
                     "planner_remark": planner_remark,
                     "ramp_fuel": ramp_fuel,
                     "rem_alternate1_fuel": rem_alternate1_fuel,
@@ -1099,7 +1061,6 @@ class AsyncFlightplansResource(AsyncAPIResource):
                     "reserve_fuel": reserve_fuel,
                     "route_string": route_string,
                     "sid": sid,
-                    "source_dl": source_dl,
                     "star": star,
                     "tail_number": tail_number,
                     "takeoff_fuel": takeoff_fuel,

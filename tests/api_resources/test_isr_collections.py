@@ -20,9 +20,9 @@ class TestIsrCollections:
         isr_collection = client.isr_collections.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -33,9 +33,9 @@ class TestIsrCollections:
         response = client.isr_collections.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -50,9 +50,9 @@ class TestIsrCollections:
         with client.isr_collections.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -73,9 +73,9 @@ class TestAsyncIsrCollections:
         isr_collection = await async_client.isr_collections.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -86,9 +86,9 @@ class TestAsyncIsrCollections:
         response = await async_client.isr_collections.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -103,9 +103,9 @@ class TestAsyncIsrCollections:
         async with async_client.isr_collections.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

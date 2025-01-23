@@ -19,36 +19,36 @@ class TestCots:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         cot = client.cots.create(
-            lat=0,
-            lon=0,
+            lat=45.23,
+            lon=45.23,
         )
         assert cot is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         cot = client.cots.create(
-            lat=0,
-            lon=0,
-            alt=0,
+            lat=45.23,
+            lon=45.23,
+            alt=5.23,
             call_signs=["string"],
-            ce=0,
+            ce=10.23,
             cot_chat_data={
-                "chat_msg": "chatMsg",
-                "chat_room": "chatRoom",
-                "chat_sender_call_sign": "chatSenderCallSign",
+                "chat_msg": "Mission is go",
+                "chat_room": "All Chat Rooms",
+                "chat_sender_call_sign": "Pebble",
             },
             cot_position_data={
-                "call_sign": "callSign",
-                "team": "team",
-                "team_role": "teamRole",
+                "call_sign": "POI_NAME",
+                "team": "Description of the object",
+                "team_role": "Team Member",
             },
             groups=["string"],
-            how="how",
-            le=0,
-            sender_uid="senderUid",
-            stale=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            type="type",
+            how="h-e",
+            le=10.23,
+            sender_uid="POI-ID",
+            stale=parse_datetime("2020-01-01T16:00:00.123456Z"),
+            start=parse_datetime("2020-01-01T16:00:00.123456Z"),
+            type="a-h-G",
             uids=["string"],
         )
         assert cot is None
@@ -56,8 +56,8 @@ class TestCots:
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.cots.with_raw_response.create(
-            lat=0,
-            lon=0,
+            lat=45.23,
+            lon=45.23,
         )
 
         assert response.is_closed is True
@@ -68,8 +68,8 @@ class TestCots:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.cots.with_streaming_response.create(
-            lat=0,
-            lon=0,
+            lat=45.23,
+            lon=45.23,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -86,36 +86,36 @@ class TestAsyncCots:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         cot = await async_client.cots.create(
-            lat=0,
-            lon=0,
+            lat=45.23,
+            lon=45.23,
         )
         assert cot is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         cot = await async_client.cots.create(
-            lat=0,
-            lon=0,
-            alt=0,
+            lat=45.23,
+            lon=45.23,
+            alt=5.23,
             call_signs=["string"],
-            ce=0,
+            ce=10.23,
             cot_chat_data={
-                "chat_msg": "chatMsg",
-                "chat_room": "chatRoom",
-                "chat_sender_call_sign": "chatSenderCallSign",
+                "chat_msg": "Mission is go",
+                "chat_room": "All Chat Rooms",
+                "chat_sender_call_sign": "Pebble",
             },
             cot_position_data={
-                "call_sign": "callSign",
-                "team": "team",
-                "team_role": "teamRole",
+                "call_sign": "POI_NAME",
+                "team": "Description of the object",
+                "team_role": "Team Member",
             },
             groups=["string"],
-            how="how",
-            le=0,
-            sender_uid="senderUid",
-            stale=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            type="type",
+            how="h-e",
+            le=10.23,
+            sender_uid="POI-ID",
+            stale=parse_datetime("2020-01-01T16:00:00.123456Z"),
+            start=parse_datetime("2020-01-01T16:00:00.123456Z"),
+            type="a-h-G",
             uids=["string"],
         )
         assert cot is None
@@ -123,8 +123,8 @@ class TestAsyncCots:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.cots.with_raw_response.create(
-            lat=0,
-            lon=0,
+            lat=45.23,
+            lon=45.23,
         )
 
         assert response.is_closed is True
@@ -135,8 +135,8 @@ class TestAsyncCots:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.cots.with_streaming_response.create(
-            lat=0,
-            lon=0,
+            lat=45.23,
+            lon=45.23,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

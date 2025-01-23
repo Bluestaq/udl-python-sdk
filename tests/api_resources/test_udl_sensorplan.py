@@ -20,12 +20,12 @@ class TestUdlSensorplan:
         udl_sensorplan = client.udl_sensorplan.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rec_type": "recType",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "PLAN",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestUdlSensorplan:
         response = client.udl_sensorplan.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rec_type": "recType",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "PLAN",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestUdlSensorplan:
         with client.udl_sensorplan.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rec_type": "recType",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "PLAN",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncUdlSensorplan:
         udl_sensorplan = await async_client.udl_sensorplan.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rec_type": "recType",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "PLAN",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncUdlSensorplan:
         response = await async_client.udl_sensorplan.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rec_type": "recType",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "PLAN",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncUdlSensorplan:
         async with async_client.udl_sensorplan.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rec_type": "recType",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "PLAN",
                 }
             ],
         ) as response:

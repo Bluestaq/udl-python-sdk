@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     AirfieldListResponse,
     AirfieldTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,63 +24,66 @@ class TestAirfields:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
         assert airfield is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
-            id="id",
-            alt_airfield_id="altAirfieldId",
-            city="city",
-            country_code="countryCode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            elev_ft=0,
-            elev_m=0,
-            faa="faa",
-            geoloc="geoloc",
-            gmt_offset="gmtOffset",
-            host_nat_code="hostNatCode",
-            iata="iata",
-            icao="icao",
-            id_site="idSite",
-            info_url="infoURL",
-            lat=0,
-            lon=0,
-            mag_dec=0,
-            max_runway_length=0,
-            misc_codes="miscCodes",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
-            runways=0,
-            source_dl="sourceDL",
-            state="state",
-            suitability_codes="suitabilityCodes",
-            wac_innr="wacINNR",
-            zar_id="zarId",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
+            id="3f28f60b-3a50-2aef-ac88-8e9d0e39912b",
+            alt_airfield_id="45301",
+            alternative_names=["BELLEVILLE", "JONESTOWN"],
+            city="Honolulu",
+            country_code="US",
+            country_name="United States",
+            dst_info="SEE THE ENROUTE SUPP FOR INFORMATION",
+            elev_ft=33.562,
+            elev_m=10.29,
+            faa="FAA1",
+            geoloc="XLSX",
+            gmt_offset="-4:30",
+            host_nat_code="ZPU",
+            iata="AAA",
+            icao="KCOS",
+            id_site="a150b3ee-884b-b9ac-60a0-6408b4b16088",
+            info_url="URL Link to the Airfield",
+            lat=45.23,
+            lon=179.1,
+            mag_dec=7.35,
+            max_runway_length=1000,
+            misc_codes="AMZ",
+            origin="THIRD_PARTY_DATASOURCE",
+            regional_authority="18TH AF",
+            region_name="Hawaii",
+            runways=5,
+            secondary_icao="PHNL",
+            state="Hawaii",
+            state_province_code="US15",
+            suitability_code_descs=["Suitable C-32", "Suitable C-5", "Suitable C-130"],
+            suitability_codes="ABC",
+            wac_innr="0409-00039",
+            zar_id="231",
         )
         assert airfield is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.airfields.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
 
         assert response.is_closed is True
@@ -92,11 +94,11 @@ class TestAirfields:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.airfields.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,11 +150,11 @@ class TestAirfields:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
         assert airfield is None
 
@@ -160,41 +162,44 @@ class TestAirfields:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
-            id_2="id",
-            alt_airfield_id="altAirfieldId",
-            city="city",
-            country_code="countryCode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            elev_ft=0,
-            elev_m=0,
-            faa="faa",
-            geoloc="geoloc",
-            gmt_offset="gmtOffset",
-            host_nat_code="hostNatCode",
-            iata="iata",
-            icao="icao",
-            id_site="idSite",
-            info_url="infoURL",
-            lat=0,
-            lon=0,
-            mag_dec=0,
-            max_runway_length=0,
-            misc_codes="miscCodes",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
-            runways=0,
-            source_dl="sourceDL",
-            state="state",
-            suitability_codes="suitabilityCodes",
-            wac_innr="wacINNR",
-            zar_id="zarId",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
+            id_2="3f28f60b-3a50-2aef-ac88-8e9d0e39912b",
+            alt_airfield_id="45301",
+            alternative_names=["BELLEVILLE", "JONESTOWN"],
+            city="Honolulu",
+            country_code="US",
+            country_name="United States",
+            dst_info="SEE THE ENROUTE SUPP FOR INFORMATION",
+            elev_ft=33.562,
+            elev_m=10.29,
+            faa="FAA1",
+            geoloc="XLSX",
+            gmt_offset="-4:30",
+            host_nat_code="ZPU",
+            iata="AAA",
+            icao="KCOS",
+            id_site="a150b3ee-884b-b9ac-60a0-6408b4b16088",
+            info_url="URL Link to the Airfield",
+            lat=45.23,
+            lon=179.1,
+            mag_dec=7.35,
+            max_runway_length=1000,
+            misc_codes="AMZ",
+            origin="THIRD_PARTY_DATASOURCE",
+            regional_authority="18TH AF",
+            region_name="Hawaii",
+            runways=5,
+            secondary_icao="PHNL",
+            state="Hawaii",
+            state_province_code="US15",
+            suitability_code_descs=["Suitable C-32", "Suitable C-5", "Suitable C-130"],
+            suitability_codes="ABC",
+            wac_innr="0409-00039",
+            zar_id="231",
         )
         assert airfield is None
 
@@ -202,11 +207,11 @@ class TestAirfields:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.airfields.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
 
         assert response.is_closed is True
@@ -218,11 +223,11 @@ class TestAirfields:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.airfields.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -237,11 +242,11 @@ class TestAirfields:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.airfields.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                name="name",
-                source="source",
-                type="type",
+                classification_marking="U",
+                data_mode="REAL",
+                name="Hickam Air Force Base",
+                source="Bluestaq",
+                type="Commercial",
                 id_2="",
             )
 
@@ -358,63 +363,66 @@ class TestAsyncAirfields:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
         assert airfield is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
-            id="id",
-            alt_airfield_id="altAirfieldId",
-            city="city",
-            country_code="countryCode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            elev_ft=0,
-            elev_m=0,
-            faa="faa",
-            geoloc="geoloc",
-            gmt_offset="gmtOffset",
-            host_nat_code="hostNatCode",
-            iata="iata",
-            icao="icao",
-            id_site="idSite",
-            info_url="infoURL",
-            lat=0,
-            lon=0,
-            mag_dec=0,
-            max_runway_length=0,
-            misc_codes="miscCodes",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
-            runways=0,
-            source_dl="sourceDL",
-            state="state",
-            suitability_codes="suitabilityCodes",
-            wac_innr="wacINNR",
-            zar_id="zarId",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
+            id="3f28f60b-3a50-2aef-ac88-8e9d0e39912b",
+            alt_airfield_id="45301",
+            alternative_names=["BELLEVILLE", "JONESTOWN"],
+            city="Honolulu",
+            country_code="US",
+            country_name="United States",
+            dst_info="SEE THE ENROUTE SUPP FOR INFORMATION",
+            elev_ft=33.562,
+            elev_m=10.29,
+            faa="FAA1",
+            geoloc="XLSX",
+            gmt_offset="-4:30",
+            host_nat_code="ZPU",
+            iata="AAA",
+            icao="KCOS",
+            id_site="a150b3ee-884b-b9ac-60a0-6408b4b16088",
+            info_url="URL Link to the Airfield",
+            lat=45.23,
+            lon=179.1,
+            mag_dec=7.35,
+            max_runway_length=1000,
+            misc_codes="AMZ",
+            origin="THIRD_PARTY_DATASOURCE",
+            regional_authority="18TH AF",
+            region_name="Hawaii",
+            runways=5,
+            secondary_icao="PHNL",
+            state="Hawaii",
+            state_province_code="US15",
+            suitability_code_descs=["Suitable C-32", "Suitable C-5", "Suitable C-130"],
+            suitability_codes="ABC",
+            wac_innr="0409-00039",
+            zar_id="231",
         )
         assert airfield is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfields.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
 
         assert response.is_closed is True
@@ -425,11 +433,11 @@ class TestAsyncAirfields:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfields.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -481,11 +489,11 @@ class TestAsyncAirfields:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
         assert airfield is None
 
@@ -493,41 +501,44 @@ class TestAsyncAirfields:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
-            id_2="id",
-            alt_airfield_id="altAirfieldId",
-            city="city",
-            country_code="countryCode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            elev_ft=0,
-            elev_m=0,
-            faa="faa",
-            geoloc="geoloc",
-            gmt_offset="gmtOffset",
-            host_nat_code="hostNatCode",
-            iata="iata",
-            icao="icao",
-            id_site="idSite",
-            info_url="infoURL",
-            lat=0,
-            lon=0,
-            mag_dec=0,
-            max_runway_length=0,
-            misc_codes="miscCodes",
-            origin="origin",
-            orig_network="origNetwork",
-            region_name="regionName",
-            runways=0,
-            source_dl="sourceDL",
-            state="state",
-            suitability_codes="suitabilityCodes",
-            wac_innr="wacINNR",
-            zar_id="zarId",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
+            id_2="3f28f60b-3a50-2aef-ac88-8e9d0e39912b",
+            alt_airfield_id="45301",
+            alternative_names=["BELLEVILLE", "JONESTOWN"],
+            city="Honolulu",
+            country_code="US",
+            country_name="United States",
+            dst_info="SEE THE ENROUTE SUPP FOR INFORMATION",
+            elev_ft=33.562,
+            elev_m=10.29,
+            faa="FAA1",
+            geoloc="XLSX",
+            gmt_offset="-4:30",
+            host_nat_code="ZPU",
+            iata="AAA",
+            icao="KCOS",
+            id_site="a150b3ee-884b-b9ac-60a0-6408b4b16088",
+            info_url="URL Link to the Airfield",
+            lat=45.23,
+            lon=179.1,
+            mag_dec=7.35,
+            max_runway_length=1000,
+            misc_codes="AMZ",
+            origin="THIRD_PARTY_DATASOURCE",
+            regional_authority="18TH AF",
+            region_name="Hawaii",
+            runways=5,
+            secondary_icao="PHNL",
+            state="Hawaii",
+            state_province_code="US15",
+            suitability_code_descs=["Suitable C-32", "Suitable C-5", "Suitable C-130"],
+            suitability_codes="ABC",
+            wac_innr="0409-00039",
+            zar_id="231",
         )
         assert airfield is None
 
@@ -535,11 +546,11 @@ class TestAsyncAirfields:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfields.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         )
 
         assert response.is_closed is True
@@ -551,11 +562,11 @@ class TestAsyncAirfields:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfields.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Hickam Air Force Base",
+            source="Bluestaq",
+            type="Commercial",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -570,11 +581,11 @@ class TestAsyncAirfields:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.airfields.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                name="name",
-                source="source",
-                type="type",
+                classification_marking="U",
+                data_mode="REAL",
+                name="Hickam Air Force Base",
+                source="Bluestaq",
+                type="Commercial",
                 id_2="",
             )
 

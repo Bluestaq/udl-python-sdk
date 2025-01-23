@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import date, datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -23,7 +24,7 @@ class EquipmentFull(BaseModel):
     (ISO-3166-ALPHA-2).
     """
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data

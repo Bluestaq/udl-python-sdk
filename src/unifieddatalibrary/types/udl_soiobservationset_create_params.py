@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -97,7 +97,7 @@ class BodyOpticalSoiObservationList(TypedDict, total=False):
     """
     Array of declination values, in degrees, of the Target object from the frame of
     reference of the sensor. A value is provided for each element in the intensities
-    field, at the middle of the frame�s exposure time.
+    field, at the middle of the frame’s exposure time.
     """
 
     exp_duration: Annotated[float, PropertyInfo(alias="expDuration")]
@@ -167,7 +167,7 @@ class BodyOpticalSoiObservationList(TypedDict, total=False):
     Array of right ascension rate values, in degrees per second, measuring the rate
     the telescope is moving to track the Target object from the frame of reference
     of the sensor, for each element in the intensities field, at the middle of the
-    frame�s exposure time.
+    frame’s exposure time.
     """
 
     ras: Iterable[float]
@@ -202,27 +202,31 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     aspect_angles: Annotated[Iterable[float], PropertyInfo(alias="aspectAngles")]
     """Array of the aspect angle at the center of the image in degrees.
 
-    The 'tov' and 'aspectAngle' arrays must match in size.
+    The 'tovs' and 'aspectAngles' arrays must match in size, if 'aspectAngles' is
+    provided.
     """
 
     azimuth_biases: Annotated[Iterable[float], PropertyInfo(alias="azimuthBiases")]
     """Array of sensor azimuth angle biases in degrees.
 
-    The 'tov' and 'azimuthBias' arrays must match in size.
+    The 'tovs' and 'azimuthBiases' arrays must match in size, if 'azimuthBiases' is
+    provided.
     """
 
     azimuth_rates: Annotated[Iterable[float], PropertyInfo(alias="azimuthRates")]
-    """Array of the azimuth rates of target in degrees per second.
+    """Array of the azimuth rate of target at image center in degrees per second.
 
-    The 'tov' and 'azimuthRate' arrays must match in size. If there is an associated
-    image the azimuth rate is assumed to be at image center.
+    The 'tovs' and 'azimuthRates' arrays must match in size, if 'azimuthRates' is
+    provided. If there is an associated image the azimuth rate is assumed to be at
+    image center.
     """
 
     azimuths: Iterable[float]
-    """Array of the azimuth angles to target in degrees.
+    """Array of the azimuth angle to target at image center in degrees.
 
-    The 'tov' and 'azimuth' arrays must match in size. If there is an associated
-    image the azimuth angle is assumed to be at image center.
+    The 'tovs' and 'azimuths' arrays must match in size, if 'azimuths' is provided.
+    If there is an associated image the azimuth angle is assumed to be at image
+    center.
     """
 
     beta: float
@@ -234,39 +238,45 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     cross_range_res: Annotated[Iterable[float], PropertyInfo(alias="crossRangeRes")]
     """
     Array of cross-range resolutions (accounting for weighting function) in
-    kilometers. The 'tov' and 'crossRangeRes' arrays must match in size.
+    kilometers. The 'tovs' and 'crossRangeRes' arrays must match in size, if
+    'crossRangeRes' is provided.
     """
 
     delta_times: Annotated[Iterable[float], PropertyInfo(alias="deltaTimes")]
     """Array of average Interpulse spacing in seconds.
 
-    The 'tov' and 'deltaTime' arrays must match in size.
+    The 'tovs' and 'deltaTimes' arrays must match in size, if 'deltaTimes' is
+    provided.
     """
 
     doppler2_x_rs: Annotated[Iterable[float], PropertyInfo(alias="doppler2XRs")]
     """Array of conversion factors between Doppler in hertz and cross-range in meters.
 
-    The 'tov' and 'doppler2XR' arrays must match in size.
+    The 'tovs' and 'doppler2XRs' arrays must match in size, if 'doppler2XRs' is
+    provided.
     """
 
     elevation_biases: Annotated[Iterable[float], PropertyInfo(alias="elevationBiases")]
     """Array of sensor elevation biases in degrees.
 
-    The 'tov' and 'elevationBias' arrays must match in size.
+    The 'tovs' and 'elevationBiases' arrays must match in size, if 'elevationBiases'
+    is provided.
     """
 
     elevation_rates: Annotated[Iterable[float], PropertyInfo(alias="elevationRates")]
-    """Array of the elevation rates of target in degrees per second.
+    """Array of the elevation rate of target at image center in degrees per second.
 
-    The 'tov' and 'elevationRate' arrays must match in size. If there is an
-    associated image the elevation rate is assumed to be at image center.
+    The 'tovs' and 'elevationRates' arrays must match in size, if 'elevationRates'
+    is provided. If there is an associated image the elevation rate is assumed to be
+    at image center.
     """
 
     elevations: Iterable[float]
-    """Array of the elevation angles to target in degrees.
+    """Array of the elevation angle to target at image center in degrees.
 
-    The 'tov' and 'elevation' arrays must match in size. If there is an associated
-    image the elevation angle is assumed to be at image center.
+    The 'tovs' and 'elevations' arrays must match in size, if 'elevations' is
+    provided. If there is an associated image the elevation angle is assumed to be
+    at image center.
     """
 
     id_attitude_set: Annotated[str, PropertyInfo(alias="idAttitudeSet")]
@@ -278,7 +288,8 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     integration_angles: Annotated[Iterable[float], PropertyInfo(alias="integrationAngles")]
     """Array of Integration angles in degrees.
 
-    The 'tov' and 'integrationAngle' arrays must match in size.
+    The 'tov' and 'integrationAngles' arrays must match in size, if
+    'integrationAngles' is provided.
     """
 
     kappa: float
@@ -287,7 +298,8 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     peak_amplitudes: Annotated[Iterable[float], PropertyInfo(alias="peakAmplitudes")]
     """Array of the peak pixel amplitude for each image in decibels.
 
-    The 'tov' and 'peakAmplitude' arrays must match in size.
+    The 'tovs' and 'peakAmplitudes' arrays must match in size, if 'peakAmplitudes'
+    is provided.
     """
 
     polarizations: List[str]
@@ -304,7 +316,8 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     proj_ang_vels: Annotated[Iterable[float], PropertyInfo(alias="projAngVels")]
     """
     Array of the component of target angular velocity observable by radar in radians
-    per second. The 'tov' and 'projAngVel' arrays must match in size.
+    per second. The 'tovs' and 'projAngVels' arrays must match in size, if
+    'projAngVels' is provided.
     """
 
     pulse_bandwidth: Annotated[float, PropertyInfo(alias="pulseBandwidth")]
@@ -313,32 +326,35 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     range_accels: Annotated[Iterable[float], PropertyInfo(alias="rangeAccels")]
     """Array of the range acceleratons of target in kilometers per second squared.
 
-    The 'tov' and 'rangeAccels' arrays must match in size. If there is an associated
-    image the range acceleration is assumed to be at image center.
+    The 'tov' and 'rangeAccels' arrays must match in size, if 'rangeAccels' is
+    provided. If there is an associated image the range acceleration is assumed to
+    be at image center.
     """
 
     range_biases: Annotated[Iterable[float], PropertyInfo(alias="rangeBiases")]
     """Array of sensor range biases in kilometers.
 
-    The 'tov' and 'rangeBias' arrays must match in size.
+    The 'tovs' and 'rangeBiases' arrays must match in size, if 'rangeBiases' is
+    provided.
     """
 
     range_rates: Annotated[Iterable[float], PropertyInfo(alias="rangeRates")]
-    """Array of the range rates of target in kilometers per second.
+    """Array of the range rate of target at image center in kilometers per second.
 
-    The 'tov' and 'rangeRate' arrays must match in size. If there is an associated
-    image the range rate is assumed to be at image center.
+    The 'tovs' and 'rangeRates' arrays must match in size, if 'rangeRates' is
+    provided. If there is an associated image the range rate is assumed to be at
+    image center.
     """
 
     ranges: Iterable[float]
-    """Array of the ranges to target in kilometers.
+    """Array of the range to target at image center in kilometers.
 
-    The 'tov' and 'range' arrays must match in size. If there is an associated image
-    the range is assumed to be at image center.
+    The 'tovs' and 'ranges' arrays must match in size, if 'ranges' is provided. If
+    there is an associated image the range is assumed to be at image center.
     """
 
     rcs_error_ests: Annotated[Iterable[float], PropertyInfo(alias="rcsErrorEsts")]
-    """Array of error estimates of RCS vaues, in square meters."""
+    """Array of error estimates of RCS values, in square meters."""
 
     rcs_values: Annotated[Iterable[float], PropertyInfo(alias="rcsValues")]
     """Array of observed radar cross section (RCS) values, in square meters."""
@@ -346,7 +362,7 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     rspaces: Iterable[float]
     """Array of range sample spacing in meters.
 
-    The 'tov' and 'rspace' arrays must match in size.
+    The 'tovs' and 'rspaces' arrays must match in size, if 'rspaces' is provided.
     """
 
     spectral_widths: Annotated[Iterable[float], PropertyInfo(alias="spectralWidths")]
@@ -368,69 +384,69 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     """
     Array of the cartesian X accelerations, in kilometers per second squared, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'xaccel' arrays must match in size.
+    The 'tovs' and 'xaccel' arrays must match in size, if 'xaccel' is provided.
     """
 
     xpos: Iterable[float]
     """
     Array of the cartesian X positions of the target, in kilometers, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'xpos' arrays must match in size.
+    The 'tovs' and 'xpos' arrays must match in size, if 'xpos' is provided.
     """
 
     xspaces: Iterable[float]
     """Array of cross-range sample spacing in meters.
 
-    The 'tov' and 'xspace' arrays must match in size.
+    The 'tovs' and 'xspaces' arrays must match in size, if 'xspaces' is provided.
     """
 
     xvel: Iterable[float]
     """
     Array of the cartesian X velocities of target, in kilometers per second, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'xvel' arrays must match in size.
+    The 'tovs' and 'xvel' arrays must match in size, if 'xvel' is provided.
     """
 
     yaccel: Iterable[float]
     """
     Array of the cartesian Y accelerations, in kilometers per second squared, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'yaccel' arrays must match in size.
+    The 'tovs' and 'yaccel' arrays must match in size, if 'yaccel' is provided.
     """
 
     ypos: Iterable[float]
     """
     Array of the cartesian Y positions of the target, in kilometers, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'ypos' arrays must match in size.
+    The 'tovs' and 'ypos' arrays must match in size, if 'ypos' is provided.
     """
 
     yvel: Iterable[float]
     """
     Array of the cartesian Y velocities of target, in kilometers per second, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'yvel' arrays must match in size.
+    The 'tovs' and 'yvel' arrays must match in size, if 'yvel' is provided.
     """
 
     zaccel: Iterable[float]
     """
     Array of the cartesian Z accelerations, in kilometers per second squared, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'zaccel' arrays must match in size.
+    The 'tovs' and 'zaccel' arrays must match in size, if 'zaccel' is provided.
     """
 
     zpos: Iterable[float]
     """
     Array of the cartesian Z positions of the target, in kilometers, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'zpos' arrays must match in size.
+    The 'tovs' and 'zpos' arrays must match in size, if 'zpos' is provided.
     """
 
     zvel: Iterable[float]
     """
     Array of the cartesian Z velocities of target, in kilometers per second, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'zvel' arrays must match in size.
+    The 'tovs' and 'zvel' arrays must match in size, if 'zvel' is provided.
     """
 
 
@@ -438,7 +454,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -466,7 +482,7 @@ class Body(TypedDict, total=False):
     Observation set detection start time in ISO 8601 UTC with microsecond precision.
     """
 
-    type: Required[str]
+    type: Required[Literal["OPTICAL", "RADAR"]]
     """Observation type (OPTICAL, RADAR)."""
 
     id: str
@@ -533,15 +549,6 @@ class Body(TypedDict, total=False):
     low/weak correlation).
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     end_time: Annotated[Union[str, datetime], PropertyInfo(alias="endTime", format="iso8601")]
     """Observation set detection end time in ISO 8601 UTC with microsecond precision."""
 
@@ -553,9 +560,6 @@ class Body(TypedDict, total=False):
 
     id_elset: Annotated[str, PropertyInfo(alias="idElset")]
     """ID of the UDL Elset of the Space Object under observation."""
-
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """Unique identifier of the target on-orbit object, if correlated."""
 
     id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
     """ID of the observing sensor."""
@@ -591,12 +595,6 @@ class Body(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
@@ -694,7 +692,9 @@ class Body(TypedDict, total=False):
     ]
     """RadarSOIObservations associated with this RadarSOIObservationSet."""
 
-    reference_frame: Annotated[str, PropertyInfo(alias="referenceFrame")]
+    reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="referenceFrame")
+    ]
     """The reference frame of the observation measurements.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -723,7 +723,9 @@ class Body(TypedDict, total=False):
     south of equator).
     """
 
-    sen_reference_frame: Annotated[str, PropertyInfo(alias="senReferenceFrame")]
+    sen_reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="senReferenceFrame")
+    ]
     """The reference frame of the observing sensor state.
 
     If the senReferenceFrame is null it is assumed to be J2000.
@@ -786,13 +788,6 @@ class Body(TypedDict, total=False):
     """
     Boolean indicating if a solar phase angle brightness change event was detected,
     based on historical collection data for the object.
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     spectral_filters: Annotated[List[str], PropertyInfo(alias="spectralFilters")]

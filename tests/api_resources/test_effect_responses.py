@@ -25,86 +25,83 @@ class TestEffectResponses:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
         )
         assert effect_response is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
-            id="id",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
+            id="EFFECTRESPONSE-ID",
             actions_list=[
                 {
-                    "action_actor_src_id": "actionActorSrcId",
-                    "action_actor_src_type": "actionActorSrcType",
-                    "action_end_time": "2019-12-27T18:11:19.117Z",
-                    "action_id": "actionId",
+                    "action_actor_src_id": "ACTIONACTORSRC-ID",
+                    "action_actor_src_type": "AIRCRAFT",
+                    "action_end_time": "2021-01-01T00:00:00.123456Z",
+                    "action_id": "ACTION-ID",
                     "action_metrics": [
                         {
-                            "domain_value": 0,
-                            "metric_type": "metricType",
-                            "provenance": "provenance",
-                            "relative_value": 0,
+                            "domain_value": 10.1,
+                            "metric_type": "GoalAchievement",
+                            "provenance": "Example metric",
+                            "relative_value": 10.1,
                         }
                     ],
-                    "action_start_time": "2019-12-27T18:11:19.117Z",
-                    "actor_intercept_alt": 0,
-                    "actor_intercept_lat": 0,
-                    "actor_intercept_lon": 0,
-                    "effector": "effector",
-                    "summary": "summary",
-                    "target_src_id": "targetSrcId",
-                    "target_src_type": "targetSrcType",
-                    "tot_end_time": "2019-12-27T18:11:19.117Z",
-                    "tot_start_time": "2019-12-27T18:11:19.117Z",
-                    "weapon_intercept_alt": 0,
-                    "weapon_intercept_lat": 0,
-                    "weapon_intercept_lon": 0,
+                    "action_start_time": "2021-01-01T00:00:00.123456Z",
+                    "actor_intercept_alt": 1.1,
+                    "actor_intercept_lat": 45.1,
+                    "actor_intercept_lon": 180.1,
+                    "effector": "SENSOR1",
+                    "summary": "Example summary",
+                    "target_src_id": "TARGETSRC-ID",
+                    "target_src_type": "POI",
+                    "tot_end_time": "2021-01-01T00:00:00.123456Z",
+                    "tot_start_time": "2021-01-01T00:00:00.123456Z",
+                    "weapon_intercept_alt": 1.1,
+                    "weapon_intercept_lat": 45.1,
+                    "weapon_intercept_lon": 180.1,
                 }
             ],
-            actor_src_id="actorSrcId",
-            actor_src_type="actorSrcType",
+            actor_src_id="RC-ID",
+            actor_src_type="AIRCRAFT",
             coa_metrics=[
                 {
-                    "domain_value": 0,
-                    "metric_type": "metricType",
-                    "provenance": "provenance",
-                    "relative_value": 0,
+                    "domain_value": 10.1,
+                    "metric_type": "GoalAchievement",
+                    "provenance": "Example metric",
+                    "relative_value": 10.1,
                 }
             ],
-            collateral_damage_est=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            decision_deadline=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_actions=["string"],
-            external_request_id="externalRequestId",
-            id_effect_request="idEffectRequest",
-            munition_id="munitionId",
-            munition_type="munitionType",
-            origin="origin",
-            orig_network="origNetwork",
-            probability_of_kill=0,
-            red_target_src_id="redTargetSrcId",
-            red_target_src_type="redTargetSrcType",
-            red_time_to_overhead=parse_datetime("2019-12-27T18:11:19.117Z"),
-            shots_required=0,
+            collateral_damage_est=0.5,
+            decision_deadline=parse_datetime("2021-01-01T00:00:00.123456Z"),
+            external_actions=["ACTION1", "ACTION2"],
+            external_request_id="EXTERNALREQUEST-ID",
+            id_effect_request="EFFECTREQUEST-ID",
+            munition_id="MUNITION-ID",
+            munition_type="Dummy",
+            origin="THIRD_PARTY_DATASOURCE",
+            probability_of_kill=0.7,
+            red_target_src_id="REDTARGETSRC-ID",
+            red_target_src_type="POI",
+            red_time_to_overhead=parse_datetime("2021-01-01T00:00:00.123456Z"),
+            shots_required=10,
         )
         assert effect_response is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.effect_responses.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
         )
 
         assert response.is_closed is True
@@ -115,10 +112,10 @@ class TestEffectResponses:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.effect_responses.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -233,10 +230,10 @@ class TestEffectResponses:
         effect_response = client.effect_responses.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
                 }
             ],
         )
@@ -247,10 +244,10 @@ class TestEffectResponses:
         response = client.effect_responses.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
                 }
             ],
         )
@@ -265,10 +262,10 @@ class TestEffectResponses:
         with client.effect_responses.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
                 }
             ],
         ) as response:
@@ -346,86 +343,83 @@ class TestAsyncEffectResponses:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
         )
         assert effect_response is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
-            id="id",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
+            id="EFFECTRESPONSE-ID",
             actions_list=[
                 {
-                    "action_actor_src_id": "actionActorSrcId",
-                    "action_actor_src_type": "actionActorSrcType",
-                    "action_end_time": "2019-12-27T18:11:19.117Z",
-                    "action_id": "actionId",
+                    "action_actor_src_id": "ACTIONACTORSRC-ID",
+                    "action_actor_src_type": "AIRCRAFT",
+                    "action_end_time": "2021-01-01T00:00:00.123456Z",
+                    "action_id": "ACTION-ID",
                     "action_metrics": [
                         {
-                            "domain_value": 0,
-                            "metric_type": "metricType",
-                            "provenance": "provenance",
-                            "relative_value": 0,
+                            "domain_value": 10.1,
+                            "metric_type": "GoalAchievement",
+                            "provenance": "Example metric",
+                            "relative_value": 10.1,
                         }
                     ],
-                    "action_start_time": "2019-12-27T18:11:19.117Z",
-                    "actor_intercept_alt": 0,
-                    "actor_intercept_lat": 0,
-                    "actor_intercept_lon": 0,
-                    "effector": "effector",
-                    "summary": "summary",
-                    "target_src_id": "targetSrcId",
-                    "target_src_type": "targetSrcType",
-                    "tot_end_time": "2019-12-27T18:11:19.117Z",
-                    "tot_start_time": "2019-12-27T18:11:19.117Z",
-                    "weapon_intercept_alt": 0,
-                    "weapon_intercept_lat": 0,
-                    "weapon_intercept_lon": 0,
+                    "action_start_time": "2021-01-01T00:00:00.123456Z",
+                    "actor_intercept_alt": 1.1,
+                    "actor_intercept_lat": 45.1,
+                    "actor_intercept_lon": 180.1,
+                    "effector": "SENSOR1",
+                    "summary": "Example summary",
+                    "target_src_id": "TARGETSRC-ID",
+                    "target_src_type": "POI",
+                    "tot_end_time": "2021-01-01T00:00:00.123456Z",
+                    "tot_start_time": "2021-01-01T00:00:00.123456Z",
+                    "weapon_intercept_alt": 1.1,
+                    "weapon_intercept_lat": 45.1,
+                    "weapon_intercept_lon": 180.1,
                 }
             ],
-            actor_src_id="actorSrcId",
-            actor_src_type="actorSrcType",
+            actor_src_id="RC-ID",
+            actor_src_type="AIRCRAFT",
             coa_metrics=[
                 {
-                    "domain_value": 0,
-                    "metric_type": "metricType",
-                    "provenance": "provenance",
-                    "relative_value": 0,
+                    "domain_value": 10.1,
+                    "metric_type": "GoalAchievement",
+                    "provenance": "Example metric",
+                    "relative_value": 10.1,
                 }
             ],
-            collateral_damage_est=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            decision_deadline=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_actions=["string"],
-            external_request_id="externalRequestId",
-            id_effect_request="idEffectRequest",
-            munition_id="munitionId",
-            munition_type="munitionType",
-            origin="origin",
-            orig_network="origNetwork",
-            probability_of_kill=0,
-            red_target_src_id="redTargetSrcId",
-            red_target_src_type="redTargetSrcType",
-            red_time_to_overhead=parse_datetime("2019-12-27T18:11:19.117Z"),
-            shots_required=0,
+            collateral_damage_est=0.5,
+            decision_deadline=parse_datetime("2021-01-01T00:00:00.123456Z"),
+            external_actions=["ACTION1", "ACTION2"],
+            external_request_id="EXTERNALREQUEST-ID",
+            id_effect_request="EFFECTREQUEST-ID",
+            munition_id="MUNITION-ID",
+            munition_type="Dummy",
+            origin="THIRD_PARTY_DATASOURCE",
+            probability_of_kill=0.7,
+            red_target_src_id="REDTARGETSRC-ID",
+            red_target_src_type="POI",
+            red_time_to_overhead=parse_datetime("2021-01-01T00:00:00.123456Z"),
+            shots_required=10,
         )
         assert effect_response is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.effect_responses.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
         )
 
         assert response.is_closed is True
@@ -436,10 +430,10 @@ class TestAsyncEffectResponses:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.effect_responses.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            type="COA",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -554,10 +548,10 @@ class TestAsyncEffectResponses:
         effect_response = await async_client.effect_responses.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
                 }
             ],
         )
@@ -568,10 +562,10 @@ class TestAsyncEffectResponses:
         response = await async_client.effect_responses.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
                 }
             ],
         )
@@ -586,10 +580,10 @@ class TestAsyncEffectResponses:
         async with async_client.effect_responses.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
                 }
             ],
         ) as response:

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -108,7 +108,10 @@ class BodyAirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
     cm_id: Annotated[str, PropertyInfo(alias="cmId")]
     """Airspace control means name or designator."""
 
-    cm_shape: Annotated[str, PropertyInfo(alias="cmShape")]
+    cm_shape: Annotated[
+        Literal["POLYARC", "1TRACK", "POLYGON", "CIRCLE", "CORRIDOR", "APOINT", "AORBIT", "GEOLINE"],
+        PropertyInfo(alias="cmShape"),
+    ]
     """Designates the geometric type that defines the airspace shape.
 
     One of CIRCLE, CORRIDOR, LINE, ORBIT, etc.
@@ -320,7 +323,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -339,12 +342,12 @@ class Body(TypedDict, total=False):
 
     op_ex_name: Required[Annotated[str, PropertyInfo(alias="opExName")]]
     """
-    Specifies the unique operation or exercise name, nickname, or codeword assigned
-    to a joint exercise or operation plan.
+    Specifies the code name or nickname assigned to a joint exercise or plan to
+    designate message traffic.
     """
 
     originator: Required[str]
-    """The identifier of the originator of this message."""
+    """The originator of this reference."""
 
     source: Required[str]
     """Source of the data."""
@@ -395,15 +398,6 @@ class Body(TypedDict, total=False):
     for the ACO message.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     declass_exemption_codes: Annotated[List[str], PropertyInfo(alias="declassExemptionCodes")]
     """
     Coded entries that provide justification for exemption from automatic
@@ -413,7 +407,7 @@ class Body(TypedDict, total=False):
     downgrade_ins_dates: Annotated[List[str], PropertyInfo(alias="downgradeInsDates")]
     """
     Markings providing the literal guidance or date for downgrading or declassifying
-    the airspace control order.
+    the airspace control order. Manditory if declassExemptionCode is nul.
     """
 
     geo_datum: Annotated[str, PropertyInfo(alias="geoDatum")]
@@ -446,12 +440,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     plan_orig_num: Annotated[str, PropertyInfo(alias="planOrigNum")]
     """
     The official identifier of the military establishment responsible for the
@@ -464,22 +452,8 @@ class Body(TypedDict, total=False):
     qual_sn: Annotated[int, PropertyInfo(alias="qualSN")]
     """The serial number associated with the message qualifier."""
 
-    raw_file_uri: Annotated[str, PropertyInfo(alias="rawFileURI")]
-    """
-    Optional URI location in the document repository of the raw file parsed by the
-    system to produce this record. To download the raw file, prepend
-    https://udl-hostname/scs/download?id= to this value.
-    """
-
     serial_num: Annotated[str, PropertyInfo(alias="serialNum")]
     """The unique message identifier sequentially assigned by the originator."""
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
 
     stop_qualifier: Annotated[str, PropertyInfo(alias="stopQualifier")]
     """

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -22,7 +22,7 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -41,8 +41,8 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
 
     est_dep_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="estDepTime", format="iso8601")]]
     """
-    The current estimated time that the aircraft is planned to depart, in ISO 8601
-    UTC format with millisecond precision.
+    The current estimated time that the Aircraft is planned to depart, in ISO 8601
+    UTC format.
     """
 
     source: Required[str]
@@ -169,15 +169,6 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
 
     cargo_weight: Annotated[float, PropertyInfo(alias="cargoWeight")]
     """The weight of the cargo on board the aircraft, in kilograms."""
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
 
     crew_size: Annotated[int, PropertyInfo(alias="crewSize")]
     """The number of crew members on the aircraft."""
@@ -306,12 +297,6 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     pp_onboard: Annotated[int, PropertyInfo(alias="ppOnboard")]
     """Number of pallet positions on the aircraft."""
 
@@ -330,13 +315,6 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
     seats_released: Annotated[int, PropertyInfo(alias="seatsReleased")]
     """Number of passenger seats released this leg."""
 
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
-
     tail_number: Annotated[str, PropertyInfo(alias="tailNumber")]
     """The tail number of the aircraft supporting this load plan."""
 
@@ -344,15 +322,6 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
     """Description of the fuel tank(s) configuration (e.g.
 
     ER, NON-ER, etc.). Configuration meanings are determined by the data source.
-    """
-
-    updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """Time the row was updated in the database, auto-populated by the system."""
-
-    updated_by: Annotated[str, PropertyInfo(alias="updatedBy")]
-    """
-    Application user who updated the row in the database, auto-populated by the
-    system.
     """
 
     util_code: Annotated[str, PropertyInfo(alias="utilCode")]

@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class AircraftstatusFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -46,13 +47,17 @@ class AircraftstatusFull(BaseModel):
     available.
     """
 
-    air_to_air_status: Optional[str] = FieldInfo(alias="airToAirStatus", default=None)
+    air_to_air_status: Optional[Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"]] = FieldInfo(
+        alias="airToAirStatus", default=None
+    )
     """
     The status of the air-to-air weapon release system (OPERATIONAL,
     NON-OPERATIONAL, OFF).
     """
 
-    air_to_ground_status: Optional[str] = FieldInfo(alias="airToGroundStatus", default=None)
+    air_to_ground_status: Optional[Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"]] = FieldInfo(
+        alias="airToGroundStatus", default=None
+    )
     """
     The status of the air-to-ground weapon release system (OPERATIONAL,
     NON-OPERATIONAL, OFF).

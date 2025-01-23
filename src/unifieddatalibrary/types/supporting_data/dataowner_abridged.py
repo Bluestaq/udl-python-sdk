@@ -36,7 +36,7 @@ class DataownerAbridged(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """

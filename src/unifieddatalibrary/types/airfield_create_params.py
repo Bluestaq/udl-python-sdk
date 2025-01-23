@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing import List
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +14,7 @@ class AirfieldCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -50,26 +49,29 @@ class AirfieldCreateParams(TypedDict, total=False):
     alt_airfield_id: Annotated[str, PropertyInfo(alias="altAirfieldId")]
     """Alternate Airfield identifier provided by source."""
 
+    alternative_names: Annotated[List[str], PropertyInfo(alias="alternativeNames")]
+    """Alternative names for this airfield."""
+
     city: str
-    """Closest city to the airfield's location."""
+    """The closest city to the location of this airfield."""
 
     country_code: Annotated[str, PropertyInfo(alias="countryCode")]
     """The country code.
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
+    country_name: Annotated[str, PropertyInfo(alias="countryName")]
+    """The country name where this airfield is located."""
 
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
+    dst_info: Annotated[str, PropertyInfo(alias="dstInfo")]
     """
-    Application user who created the row in the database, auto-populated by the
-    system.
+    Information regarding daylight saving time as is relevant to the location and
+    operation of this airfield.
     """
 
     elev_ft: Annotated[float, PropertyInfo(alias="elevFt")]
@@ -151,11 +153,8 @@ class AirfieldCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
+    regional_authority: Annotated[str, PropertyInfo(alias="regionalAuthority")]
+    """The regional authority of the airfield."""
 
     region_name: Annotated[str, PropertyInfo(alias="regionName")]
     """Region where the airfield resides."""
@@ -163,15 +162,28 @@ class AirfieldCreateParams(TypedDict, total=False):
     runways: int
     """The number of runways at the site."""
 
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
+    secondary_icao: Annotated[str, PropertyInfo(alias="secondaryICAO")]
+    """The secondary ICAO code for this airfield.
 
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
+    Some airfields have two associated ICAO codes, this can occur in cases when a
+    single airfield supports both military and civilian operations.
     """
 
     state: str
     """State or province of the airfield's location."""
+
+    state_province_code: Annotated[str, PropertyInfo(alias="stateProvinceCode")]
+    """The code for the state or province in which this airfield is located.
+
+    Intended as, but not constrained to, FIPS 10-4 region code designations.
+    """
+
+    suitability_code_descs: Annotated[List[str], PropertyInfo(alias="suitabilityCodeDescs")]
+    """Array of descriptions for given suitability codes.
+
+    The index of the description corresponds to the position of the letter code in
+    the string provided in the suitabilityCodes field.
+    """
 
     suitability_codes: Annotated[str, PropertyInfo(alias="suitabilityCodes")]
     """

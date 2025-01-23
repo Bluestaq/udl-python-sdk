@@ -1,7 +1,8 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class AirfieldAbridged(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -49,18 +50,24 @@ class AirfieldAbridged(BaseModel):
     alt_airfield_id: Optional[str] = FieldInfo(alias="altAirfieldId", default=None)
     """Alternate Airfield identifier provided by source."""
 
+    alternative_names: Optional[List[str]] = FieldInfo(alias="alternativeNames", default=None)
+    """Alternative names for this airfield."""
+
     city: Optional[str] = None
-    """Closest city to the airfield's location."""
+    """The closest city to the location of this airfield."""
 
     country_code: Optional[str] = FieldInfo(alias="countryCode", default=None)
     """The country code.
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
+
+    country_name: Optional[str] = FieldInfo(alias="countryName", default=None)
+    """The country name where this airfield is located."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Time the row was created in the database, auto-populated by the system."""
@@ -69,6 +76,12 @@ class AirfieldAbridged(BaseModel):
     """
     Application user who created the row in the database, auto-populated by the
     system.
+    """
+
+    dst_info: Optional[str] = FieldInfo(alias="dstInfo", default=None)
+    """
+    Information regarding daylight saving time as is relevant to the location and
+    operation of this airfield.
     """
 
     elev_ft: Optional[float] = FieldInfo(alias="elevFt", default=None)
@@ -156,11 +169,21 @@ class AirfieldAbridged(BaseModel):
     by the system.
     """
 
+    regional_authority: Optional[str] = FieldInfo(alias="regionalAuthority", default=None)
+    """The regional authority of the airfield."""
+
     region_name: Optional[str] = FieldInfo(alias="regionName", default=None)
     """Region where the airfield resides."""
 
     runways: Optional[int] = None
     """The number of runways at the site."""
+
+    secondary_icao: Optional[str] = FieldInfo(alias="secondaryICAO", default=None)
+    """The secondary ICAO code for this airfield.
+
+    Some airfields have two associated ICAO codes, this can occur in cases when a
+    single airfield supports both military and civilian operations.
+    """
 
     source_dl: Optional[str] = FieldInfo(alias="sourceDL", default=None)
     """The source data library from which this record was received.
@@ -171,6 +194,19 @@ class AirfieldAbridged(BaseModel):
 
     state: Optional[str] = None
     """State or province of the airfield's location."""
+
+    state_province_code: Optional[str] = FieldInfo(alias="stateProvinceCode", default=None)
+    """The code for the state or province in which this airfield is located.
+
+    Intended as, but not constrained to, FIPS 10-4 region code designations.
+    """
+
+    suitability_code_descs: Optional[List[str]] = FieldInfo(alias="suitabilityCodeDescs", default=None)
+    """Array of descriptions for given suitability codes.
+
+    The index of the description corresponds to the position of the letter code in
+    the string provided in the suitabilityCodes field.
+    """
 
     suitability_codes: Optional[str] = FieldInfo(alias="suitabilityCodes", default=None)
     """

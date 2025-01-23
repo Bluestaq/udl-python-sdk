@@ -21,10 +21,10 @@ class TestStateVectors:
         state_vector = client.filedrop.state_vectors.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -35,10 +35,10 @@ class TestStateVectors:
         response = client.filedrop.state_vectors.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -53,10 +53,10 @@ class TestStateVectors:
         with client.filedrop.state_vectors.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -77,10 +77,10 @@ class TestAsyncStateVectors:
         state_vector = await async_client.filedrop.state_vectors.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -91,10 +91,10 @@ class TestAsyncStateVectors:
         response = await async_client.filedrop.state_vectors.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -109,10 +109,10 @@ class TestAsyncStateVectors:
         async with async_client.filedrop.state_vectors.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "epoch": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

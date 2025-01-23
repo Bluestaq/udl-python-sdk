@@ -21,10 +21,10 @@ class TestTracks:
         track = client.filedrop.tracks.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -35,10 +35,10 @@ class TestTracks:
         response = client.filedrop.tracks.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -53,10 +53,10 @@ class TestTracks:
         with client.filedrop.tracks.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         ) as response:
@@ -77,10 +77,10 @@ class TestAsyncTracks:
         track = await async_client.filedrop.tracks.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -91,10 +91,10 @@ class TestAsyncTracks:
         response = await async_client.filedrop.tracks.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -109,10 +109,10 @@ class TestAsyncTracks:
         async with async_client.filedrop.tracks.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         ) as response:

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..types import ephemeride_create_params
@@ -48,8 +50,8 @@ class EphemeridesResource(SyncAPIResource):
         *,
         category: str,
         classification: str,
-        data_mode: str,
-        ephem_format_type: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
         has_mnvr: bool,
         sat_no: int,
         source: str,
@@ -162,8 +164,8 @@ class AsyncEphemeridesResource(AsyncAPIResource):
         *,
         category: str,
         classification: str,
-        data_mode: str,
-        ephem_format_type: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
         has_mnvr: bool,
         sat_no: int,
         source: str,

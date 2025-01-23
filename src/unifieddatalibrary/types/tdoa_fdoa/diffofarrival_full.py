@@ -1,14 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
 from ..._models import BaseModel
+from ..shared.onorbit import Onorbit
 
 __all__ = ["DiffofarrivalFull"]
 
@@ -17,7 +16,7 @@ class DiffofarrivalFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -103,7 +102,7 @@ class DiffofarrivalFull(BaseModel):
     id_sensor2: Optional[str] = FieldInfo(alias="idSensor2", default=None)
     """Sensor ID of the secondary/2nd sensor used for this measurement."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -246,11 +245,3 @@ class DiffofarrivalFull(BaseModel):
     and failed. If unable to correlate, the 'origObjectId' field may be populated
     with an internal data provider specific identifier.
     """
-
-
-from ..shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    DiffofarrivalFull.model_rebuild()
-else:
-    DiffofarrivalFull.update_forward_refs()  # type: ignore

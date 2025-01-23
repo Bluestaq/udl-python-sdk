@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
-from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing import Iterable
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -16,7 +15,9 @@ class UdlStarcatalogCreateParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
-    astrometry_origin: Required[Annotated[str, PropertyInfo(alias="astrometryOrigin")]]
+    astrometry_origin: Required[
+        Annotated[Literal["GAIADR3", "HIPPARCOS", "USNOBSC"], PropertyInfo(alias="astrometryOrigin")]
+    ]
     """Originating astrometric catalog for this object.
 
     Enum: [GAIADR3, HIPPARCOS, USNOBSC].
@@ -28,7 +29,7 @@ class Body(TypedDict, total=False):
     cs_id: Required[Annotated[int, PropertyInfo(alias="csId")]]
     """The ID of this object in the specific catalog associated with this record."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -77,15 +78,6 @@ class Body(TypedDict, total=False):
 
     cat_version: Annotated[str, PropertyInfo(alias="catVersion")]
     """The version of the catalog associated with this object."""
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
 
     dec_unc: Annotated[float, PropertyInfo(alias="decUnc")]
     """
@@ -166,12 +158,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     parallax: float
     """Absolute stellar parallax of the source, in milliarcseconds."""
 
@@ -225,12 +211,6 @@ class Body(TypedDict, total=False):
 
     shift_flag: Annotated[bool, PropertyInfo(alias="shiftFlag")]
     """Flag indicating that the photocentric shift is greater than 50 milliarcseconds."""
-
-    updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """Time the row was updated in the database."""
-
-    updated_by: Annotated[str, PropertyInfo(alias="updatedBy")]
-    """Application user who updated the row in the database."""
 
     var_flag: Annotated[bool, PropertyInfo(alias="varFlag")]
     """Flag indicating that the source exhibits variable magnitude."""

@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class AntennaDetailsAbridged(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -76,7 +77,7 @@ class AntennaDetailsAbridged(BaseModel):
     manufacturer_org_id: Optional[str] = FieldInfo(alias="manufacturerOrgId", default=None)
     """ID of the organization that manufactures the antenna."""
 
-    mode: Optional[str] = None
+    mode: Optional[Literal["TX", "RX"]] = None
     """Antenna mode (e.g. TX,RX)."""
 
     origin: Optional[str] = None

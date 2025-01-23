@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -81,7 +81,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -111,15 +111,6 @@ class Body(TypedDict, total=False):
     """
     Spacecraft/sensor altitude at observation time, expressed in kilometers above
     WGS-84 ellipsoid.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     data_type: Annotated[str, PropertyInfo(alias="dataType")]
@@ -155,12 +146,6 @@ class Body(TypedDict, total=False):
     """
     The time at which the associated data message was generated, in ISO 8601 UTC
     format with millisecond precision.
-    """
-
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """
-    Unique identifier of the on-orbit satellite hosting the sensor which produced
-    this data.
     """
 
     id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
@@ -217,12 +202,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
     """
     Optional identifier provided by the record source to indicate the satellite
@@ -268,7 +247,9 @@ class Body(TypedDict, total=False):
     The array element order is [xpos, ypos, zpos].
     """
 
-    sen_reference_frame: Annotated[str, PropertyInfo(alias="senReferenceFrame")]
+    sen_reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="senReferenceFrame")
+    ]
     """The reference frame of the observing spacecraft/sensor state.
 
     If the senReferenceFrame is null it is assumed to be J2000.

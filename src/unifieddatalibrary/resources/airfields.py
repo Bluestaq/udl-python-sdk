@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,16 +53,17 @@ class AirfieldsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
+        alternative_names: List[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        country_name: str | NotGiven = NOT_GIVEN,
+        dst_info: str | NotGiven = NOT_GIVEN,
         elev_ft: float | NotGiven = NOT_GIVEN,
         elev_m: float | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
@@ -79,11 +80,13 @@ class AirfieldsResource(SyncAPIResource):
         max_runway_length: int | NotGiven = NOT_GIVEN,
         misc_codes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
+        regional_authority: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         runways: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
+        secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
+        state_province_code: str | NotGiven = NOT_GIVEN,
+        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -131,19 +134,21 @@ class AirfieldsResource(SyncAPIResource):
 
           alt_airfield_id: Alternate Airfield identifier provided by source.
 
-          city: Closest city to the airfield's location.
+          alternative_names: Alternative names for this airfield.
+
+          city: The closest city to the location of this airfield.
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
+          country_name: The country name where this airfield is located.
 
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          dst_info: Information regarding daylight saving time as is relevant to the location and
+              operation of this airfield.
 
           elev_ft: Elevation of the airfield above mean sea level, in feet. Note: The corresponding
               equivalent field is not converted by the UDL and may or may not be supplied by
@@ -192,18 +197,24 @@ class AirfieldsResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
+          regional_authority: The regional authority of the airfield.
 
           region_name: Region where the airfield resides.
 
           runways: The number of runways at the site.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
+          secondary_icao: The secondary ICAO code for this airfield. Some airfields have two associated
+              ICAO codes, this can occur in cases when a single airfield supports both
+              military and civilian operations.
 
           state: State or province of the airfield's location.
+
+          state_province_code: The code for the state or province in which this airfield is located. Intended
+              as, but not constrained to, FIPS 10-4 region code designations.
+
+          suitability_code_descs: Array of descriptions for given suitability codes. The index of the description
+              corresponds to the position of the letter code in the string provided in the
+              suitabilityCodes field.
 
           suitability_codes: Associated suitability codes according to the Airfield Suitability and
               Restrictions Report (ASRR) for this airfield.
@@ -232,10 +243,11 @@ class AirfieldsResource(SyncAPIResource):
                     "type": type,
                     "id": id,
                     "alt_airfield_id": alt_airfield_id,
+                    "alternative_names": alternative_names,
                     "city": city,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "country_name": country_name,
+                    "dst_info": dst_info,
                     "elev_ft": elev_ft,
                     "elev_m": elev_m,
                     "faa": faa,
@@ -252,11 +264,13 @@ class AirfieldsResource(SyncAPIResource):
                     "max_runway_length": max_runway_length,
                     "misc_codes": misc_codes,
                     "origin": origin,
-                    "orig_network": orig_network,
+                    "regional_authority": regional_authority,
                     "region_name": region_name,
                     "runways": runways,
-                    "source_dl": source_dl,
+                    "secondary_icao": secondary_icao,
                     "state": state,
+                    "state_province_code": state_province_code,
+                    "suitability_code_descs": suitability_code_descs,
                     "suitability_codes": suitability_codes,
                     "wac_innr": wac_innr,
                     "zar_id": zar_id,
@@ -308,16 +322,17 @@ class AirfieldsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         type: str,
         id_2: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
+        alternative_names: List[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        country_name: str | NotGiven = NOT_GIVEN,
+        dst_info: str | NotGiven = NOT_GIVEN,
         elev_ft: float | NotGiven = NOT_GIVEN,
         elev_m: float | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
@@ -334,11 +349,13 @@ class AirfieldsResource(SyncAPIResource):
         max_runway_length: int | NotGiven = NOT_GIVEN,
         misc_codes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
+        regional_authority: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         runways: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
+        secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
+        state_province_code: str | NotGiven = NOT_GIVEN,
+        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -384,19 +401,21 @@ class AirfieldsResource(SyncAPIResource):
 
           alt_airfield_id: Alternate Airfield identifier provided by source.
 
-          city: Closest city to the airfield's location.
+          alternative_names: Alternative names for this airfield.
+
+          city: The closest city to the location of this airfield.
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
+          country_name: The country name where this airfield is located.
 
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          dst_info: Information regarding daylight saving time as is relevant to the location and
+              operation of this airfield.
 
           elev_ft: Elevation of the airfield above mean sea level, in feet. Note: The corresponding
               equivalent field is not converted by the UDL and may or may not be supplied by
@@ -445,18 +464,24 @@ class AirfieldsResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
+          regional_authority: The regional authority of the airfield.
 
           region_name: Region where the airfield resides.
 
           runways: The number of runways at the site.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
+          secondary_icao: The secondary ICAO code for this airfield. Some airfields have two associated
+              ICAO codes, this can occur in cases when a single airfield supports both
+              military and civilian operations.
 
           state: State or province of the airfield's location.
+
+          state_province_code: The code for the state or province in which this airfield is located. Intended
+              as, but not constrained to, FIPS 10-4 region code designations.
+
+          suitability_code_descs: Array of descriptions for given suitability codes. The index of the description
+              corresponds to the position of the letter code in the string provided in the
+              suitabilityCodes field.
 
           suitability_codes: Associated suitability codes according to the Airfield Suitability and
               Restrictions Report (ASRR) for this airfield.
@@ -487,10 +512,11 @@ class AirfieldsResource(SyncAPIResource):
                     "type": type,
                     "id_2": id_2,
                     "alt_airfield_id": alt_airfield_id,
+                    "alternative_names": alternative_names,
                     "city": city,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "country_name": country_name,
+                    "dst_info": dst_info,
                     "elev_ft": elev_ft,
                     "elev_m": elev_m,
                     "faa": faa,
@@ -507,11 +533,13 @@ class AirfieldsResource(SyncAPIResource):
                     "max_runway_length": max_runway_length,
                     "misc_codes": misc_codes,
                     "origin": origin,
-                    "orig_network": orig_network,
+                    "regional_authority": regional_authority,
                     "region_name": region_name,
                     "runways": runways,
-                    "source_dl": source_dl,
+                    "secondary_icao": secondary_icao,
                     "state": state,
+                    "state_province_code": state_province_code,
+                    "suitability_code_descs": suitability_code_descs,
                     "suitability_codes": suitability_codes,
                     "wac_innr": wac_innr,
                     "zar_id": zar_id,
@@ -621,7 +649,7 @@ class AirfieldsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -669,16 +697,17 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
+        alternative_names: List[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        country_name: str | NotGiven = NOT_GIVEN,
+        dst_info: str | NotGiven = NOT_GIVEN,
         elev_ft: float | NotGiven = NOT_GIVEN,
         elev_m: float | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
@@ -695,11 +724,13 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         max_runway_length: int | NotGiven = NOT_GIVEN,
         misc_codes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
+        regional_authority: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         runways: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
+        secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
+        state_province_code: str | NotGiven = NOT_GIVEN,
+        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -747,19 +778,21 @@ class AsyncAirfieldsResource(AsyncAPIResource):
 
           alt_airfield_id: Alternate Airfield identifier provided by source.
 
-          city: Closest city to the airfield's location.
+          alternative_names: Alternative names for this airfield.
+
+          city: The closest city to the location of this airfield.
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
+          country_name: The country name where this airfield is located.
 
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          dst_info: Information regarding daylight saving time as is relevant to the location and
+              operation of this airfield.
 
           elev_ft: Elevation of the airfield above mean sea level, in feet. Note: The corresponding
               equivalent field is not converted by the UDL and may or may not be supplied by
@@ -808,18 +841,24 @@ class AsyncAirfieldsResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
+          regional_authority: The regional authority of the airfield.
 
           region_name: Region where the airfield resides.
 
           runways: The number of runways at the site.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
+          secondary_icao: The secondary ICAO code for this airfield. Some airfields have two associated
+              ICAO codes, this can occur in cases when a single airfield supports both
+              military and civilian operations.
 
           state: State or province of the airfield's location.
+
+          state_province_code: The code for the state or province in which this airfield is located. Intended
+              as, but not constrained to, FIPS 10-4 region code designations.
+
+          suitability_code_descs: Array of descriptions for given suitability codes. The index of the description
+              corresponds to the position of the letter code in the string provided in the
+              suitabilityCodes field.
 
           suitability_codes: Associated suitability codes according to the Airfield Suitability and
               Restrictions Report (ASRR) for this airfield.
@@ -848,10 +887,11 @@ class AsyncAirfieldsResource(AsyncAPIResource):
                     "type": type,
                     "id": id,
                     "alt_airfield_id": alt_airfield_id,
+                    "alternative_names": alternative_names,
                     "city": city,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "country_name": country_name,
+                    "dst_info": dst_info,
                     "elev_ft": elev_ft,
                     "elev_m": elev_m,
                     "faa": faa,
@@ -868,11 +908,13 @@ class AsyncAirfieldsResource(AsyncAPIResource):
                     "max_runway_length": max_runway_length,
                     "misc_codes": misc_codes,
                     "origin": origin,
-                    "orig_network": orig_network,
+                    "regional_authority": regional_authority,
                     "region_name": region_name,
                     "runways": runways,
-                    "source_dl": source_dl,
+                    "secondary_icao": secondary_icao,
                     "state": state,
+                    "state_province_code": state_province_code,
+                    "suitability_code_descs": suitability_code_descs,
                     "suitability_codes": suitability_codes,
                     "wac_innr": wac_innr,
                     "zar_id": zar_id,
@@ -924,16 +966,17 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         type: str,
         id_2: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
+        alternative_names: List[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        country_name: str | NotGiven = NOT_GIVEN,
+        dst_info: str | NotGiven = NOT_GIVEN,
         elev_ft: float | NotGiven = NOT_GIVEN,
         elev_m: float | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
@@ -950,11 +993,13 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         max_runway_length: int | NotGiven = NOT_GIVEN,
         misc_codes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
+        regional_authority: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         runways: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
+        secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
+        state_province_code: str | NotGiven = NOT_GIVEN,
+        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -1000,19 +1045,21 @@ class AsyncAirfieldsResource(AsyncAPIResource):
 
           alt_airfield_id: Alternate Airfield identifier provided by source.
 
-          city: Closest city to the airfield's location.
+          alternative_names: Alternative names for this airfield.
+
+          city: The closest city to the location of this airfield.
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
+          country_name: The country name where this airfield is located.
 
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          dst_info: Information regarding daylight saving time as is relevant to the location and
+              operation of this airfield.
 
           elev_ft: Elevation of the airfield above mean sea level, in feet. Note: The corresponding
               equivalent field is not converted by the UDL and may or may not be supplied by
@@ -1061,18 +1108,24 @@ class AsyncAirfieldsResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
+          regional_authority: The regional authority of the airfield.
 
           region_name: Region where the airfield resides.
 
           runways: The number of runways at the site.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
+          secondary_icao: The secondary ICAO code for this airfield. Some airfields have two associated
+              ICAO codes, this can occur in cases when a single airfield supports both
+              military and civilian operations.
 
           state: State or province of the airfield's location.
+
+          state_province_code: The code for the state or province in which this airfield is located. Intended
+              as, but not constrained to, FIPS 10-4 region code designations.
+
+          suitability_code_descs: Array of descriptions for given suitability codes. The index of the description
+              corresponds to the position of the letter code in the string provided in the
+              suitabilityCodes field.
 
           suitability_codes: Associated suitability codes according to the Airfield Suitability and
               Restrictions Report (ASRR) for this airfield.
@@ -1103,10 +1156,11 @@ class AsyncAirfieldsResource(AsyncAPIResource):
                     "type": type,
                     "id_2": id_2,
                     "alt_airfield_id": alt_airfield_id,
+                    "alternative_names": alternative_names,
                     "city": city,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "country_name": country_name,
+                    "dst_info": dst_info,
                     "elev_ft": elev_ft,
                     "elev_m": elev_m,
                     "faa": faa,
@@ -1123,11 +1177,13 @@ class AsyncAirfieldsResource(AsyncAPIResource):
                     "max_runway_length": max_runway_length,
                     "misc_codes": misc_codes,
                     "origin": origin,
-                    "orig_network": orig_network,
+                    "regional_authority": regional_authority,
                     "region_name": region_name,
                     "runways": runways,
-                    "source_dl": source_dl,
+                    "secondary_icao": secondary_icao,
                     "state": state,
+                    "state_province_code": state_province_code,
+                    "suitability_code_descs": suitability_code_descs,
                     "suitability_codes": suitability_codes,
                     "wac_innr": wac_innr,
                     "zar_id": zar_id,
@@ -1237,7 +1293,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

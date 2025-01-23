@@ -10,7 +10,6 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import EngineDetailsFull
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -21,50 +20,47 @@ class TestEngineDetails:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         engine_detail = client.engine_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
         assert engine_detail is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         engine_detail = client.engine_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
-            id="id",
-            burn_time=0,
-            chamber_pressure=0,
-            characteristic_type="characteristicType",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            cycle_type="cycleType",
-            family="family",
-            manufacturer_org_id="manufacturerOrgId",
-            max_firings=0,
-            notes="notes",
-            nozzle_expansion_ratio=0,
-            origin="origin",
-            orig_network="origNetwork",
-            oxidizer="oxidizer",
-            propellant="propellant",
-            sea_level_thrust=0,
-            specific_impulse=0,
-            tags=["string"],
-            vacuum_thrust=0,
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
+            id="ENGINEDETAILS-ID",
+            burn_time=1.1,
+            chamber_pressure=1.1,
+            characteristic_type="Electric",
+            cycle_type="Pressure Fed",
+            family="ENGINE_TYPE1",
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_firings=5,
+            notes="Example notes",
+            nozzle_expansion_ratio=1.1,
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Liquid Oxygen",
+            propellant="Liquid",
+            sea_level_thrust=1.1,
+            specific_impulse=1.1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            vacuum_thrust=1.1,
         )
         assert engine_detail is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.engine_details.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -75,10 +71,10 @@ class TestEngineDetails:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.engine_details.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -130,10 +126,10 @@ class TestEngineDetails:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         engine_detail = client.engine_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
         assert engine_detail is None
 
@@ -141,30 +137,27 @@ class TestEngineDetails:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         engine_detail = client.engine_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
-            id_2="id",
-            burn_time=0,
-            chamber_pressure=0,
-            characteristic_type="characteristicType",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            cycle_type="cycleType",
-            family="family",
-            manufacturer_org_id="manufacturerOrgId",
-            max_firings=0,
-            notes="notes",
-            nozzle_expansion_ratio=0,
-            origin="origin",
-            orig_network="origNetwork",
-            oxidizer="oxidizer",
-            propellant="propellant",
-            sea_level_thrust=0,
-            specific_impulse=0,
-            tags=["string"],
-            vacuum_thrust=0,
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
+            id_2="ENGINEDETAILS-ID",
+            burn_time=1.1,
+            chamber_pressure=1.1,
+            characteristic_type="Electric",
+            cycle_type="Pressure Fed",
+            family="ENGINE_TYPE1",
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_firings=5,
+            notes="Example notes",
+            nozzle_expansion_ratio=1.1,
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Liquid Oxygen",
+            propellant="Liquid",
+            sea_level_thrust=1.1,
+            specific_impulse=1.1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            vacuum_thrust=1.1,
         )
         assert engine_detail is None
 
@@ -172,10 +165,10 @@ class TestEngineDetails:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.engine_details.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -187,10 +180,10 @@ class TestEngineDetails:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.engine_details.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -205,10 +198,10 @@ class TestEngineDetails:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.engine_details.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_engine="idEngine",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                id_engine="ENGINE-ID",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -257,50 +250,47 @@ class TestAsyncEngineDetails:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine_detail = await async_client.engine_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
         assert engine_detail is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine_detail = await async_client.engine_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
-            id="id",
-            burn_time=0,
-            chamber_pressure=0,
-            characteristic_type="characteristicType",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            cycle_type="cycleType",
-            family="family",
-            manufacturer_org_id="manufacturerOrgId",
-            max_firings=0,
-            notes="notes",
-            nozzle_expansion_ratio=0,
-            origin="origin",
-            orig_network="origNetwork",
-            oxidizer="oxidizer",
-            propellant="propellant",
-            sea_level_thrust=0,
-            specific_impulse=0,
-            tags=["string"],
-            vacuum_thrust=0,
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
+            id="ENGINEDETAILS-ID",
+            burn_time=1.1,
+            chamber_pressure=1.1,
+            characteristic_type="Electric",
+            cycle_type="Pressure Fed",
+            family="ENGINE_TYPE1",
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_firings=5,
+            notes="Example notes",
+            nozzle_expansion_ratio=1.1,
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Liquid Oxygen",
+            propellant="Liquid",
+            sea_level_thrust=1.1,
+            specific_impulse=1.1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            vacuum_thrust=1.1,
         )
         assert engine_detail is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.engine_details.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -311,10 +301,10 @@ class TestAsyncEngineDetails:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.engine_details.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -366,10 +356,10 @@ class TestAsyncEngineDetails:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine_detail = await async_client.engine_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
         assert engine_detail is None
 
@@ -377,30 +367,27 @@ class TestAsyncEngineDetails:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine_detail = await async_client.engine_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
-            id_2="id",
-            burn_time=0,
-            chamber_pressure=0,
-            characteristic_type="characteristicType",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            cycle_type="cycleType",
-            family="family",
-            manufacturer_org_id="manufacturerOrgId",
-            max_firings=0,
-            notes="notes",
-            nozzle_expansion_ratio=0,
-            origin="origin",
-            orig_network="origNetwork",
-            oxidizer="oxidizer",
-            propellant="propellant",
-            sea_level_thrust=0,
-            specific_impulse=0,
-            tags=["string"],
-            vacuum_thrust=0,
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
+            id_2="ENGINEDETAILS-ID",
+            burn_time=1.1,
+            chamber_pressure=1.1,
+            characteristic_type="Electric",
+            cycle_type="Pressure Fed",
+            family="ENGINE_TYPE1",
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_firings=5,
+            notes="Example notes",
+            nozzle_expansion_ratio=1.1,
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Liquid Oxygen",
+            propellant="Liquid",
+            sea_level_thrust=1.1,
+            specific_impulse=1.1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            vacuum_thrust=1.1,
         )
         assert engine_detail is None
 
@@ -408,10 +395,10 @@ class TestAsyncEngineDetails:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.engine_details.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -423,10 +410,10 @@ class TestAsyncEngineDetails:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.engine_details.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_engine="idEngine",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_engine="ENGINE-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -441,10 +428,10 @@ class TestAsyncEngineDetails:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.engine_details.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_engine="idEngine",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                id_engine="ENGINE-ID",
+                source="Bluestaq",
                 id_2="",
             )
 

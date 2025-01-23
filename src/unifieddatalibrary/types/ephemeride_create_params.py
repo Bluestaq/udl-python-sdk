@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -16,10 +16,12 @@ class EphemerideCreateParams(TypedDict, total=False):
     classification: Required[str]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data."""
 
-    ephem_format_type: Required[Annotated[str, PropertyInfo(alias="ephemFormatType")]]
+    ephem_format_type: Required[
+        Annotated[Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"], PropertyInfo(alias="ephemFormatType")]
+    ]
     """Ephemeris format as documented in Flight Safety Handbook."""
 
     has_mnvr: Required[Annotated[bool, PropertyInfo(alias="hasMnvr")]]

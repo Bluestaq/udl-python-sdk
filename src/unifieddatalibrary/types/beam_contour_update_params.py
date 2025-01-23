@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +13,7 @@ class BeamContourUpdateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -38,7 +36,7 @@ class BeamContourUpdateParams(TypedDict, total=False):
     source: Required[str]
     """Source of the data."""
 
-    type: Required[str]
+    type: Required[Literal["BORESIGHT", "CONTOUR", "SVC AREA"]]
     """The type of object represented in this record (BORESIGHT, CONTOUR, SVC AREA).
 
     Boresight refers to the point of maximum/peak gain, and should not be confused
@@ -53,18 +51,6 @@ class BeamContourUpdateParams(TypedDict, total=False):
 
     contour_idx: Annotated[int, PropertyInfo(alias="contourIdx")]
     """The index number of this contour. The value is required if type = CONTOUR."""
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """
-    Time the row was created in the database, auto-populated by the system, example
-    = 2018-01-01T16:00:00.123Z.
-    """
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
 
     gain: float
     """The relative gain level in dB associated with this boresight or contour.
@@ -117,12 +103,6 @@ class BeamContourUpdateParams(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     region_name: Annotated[str, PropertyInfo(alias="regionName")]

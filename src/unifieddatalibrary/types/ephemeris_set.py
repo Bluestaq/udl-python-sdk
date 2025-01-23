@@ -1,14 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 from .shared.ephemeris_full import EphemerisFull
 
 __all__ = ["EphemerisSet", "StateVector"]
@@ -18,7 +17,7 @@ class StateVector(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -114,7 +113,7 @@ class StateVector(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -314,7 +313,7 @@ class StateVector(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -368,7 +367,9 @@ class StateVector(BaseModel):
     rec_od_span: Optional[float] = FieldInfo(alias="recODSpan", default=None)
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -432,7 +433,9 @@ class StateVector(BaseModel):
     match in size).
     """
 
-    sourced_data_types: Optional[List[str]] = FieldInfo(alias="sourcedDataTypes", default=None)
+    sourced_data_types: Optional[List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]]] = FieldInfo(
+        alias="sourcedDataTypes", default=None
+    )
     """
     Optional array of UDL observation data types used to build this state vector
     (e.g. EO, RADAR, RF, DOA). See the associated sourcedData array for the specific
@@ -668,7 +671,7 @@ class EphemerisSet(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -718,7 +721,7 @@ class EphemerisSet(BaseModel):
     comments: Optional[str] = None
     """Additional source provided comments associated with the ephemeris."""
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -800,7 +803,7 @@ class EphemerisSet(BaseModel):
     lunar_solar: Optional[bool] = FieldInfo(alias="lunarSolar", default=None)
     """Boolean indicating use of lunar/solar data in ephemeris generation."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -830,7 +833,9 @@ class EphemerisSet(BaseModel):
     DOPPLER, GPS, HYBRID, PROPAGATED, RANGING, SLR).
     """
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -883,13 +888,3 @@ class EphemerisSet(BaseModel):
     Optional start time of the usable time span for the ephemeris data, in ISO 8601
     UTC format with microsecond precision.
     """
-
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    EphemerisSet.model_rebuild()
-    StateVector.model_rebuild()
-else:
-    EphemerisSet.update_forward_refs()  # type: ignore
-    StateVector.update_forward_refs()  # type: ignore

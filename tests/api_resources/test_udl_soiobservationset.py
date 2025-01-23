@@ -20,12 +20,12 @@ class TestUdlSoiobservationset:
         udl_soiobservationset = client.udl_soiobservationset.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "num_obs": 0,
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "num_obs": 1,
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "OPTICAL",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestUdlSoiobservationset:
         response = client.udl_soiobservationset.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "num_obs": 0,
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "num_obs": 1,
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "OPTICAL",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestUdlSoiobservationset:
         with client.udl_soiobservationset.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "num_obs": 0,
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "num_obs": 1,
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "OPTICAL",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncUdlSoiobservationset:
         udl_soiobservationset = await async_client.udl_soiobservationset.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "num_obs": 0,
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "num_obs": 1,
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "OPTICAL",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncUdlSoiobservationset:
         response = await async_client.udl_soiobservationset.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "num_obs": 0,
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "num_obs": 1,
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "OPTICAL",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncUdlSoiobservationset:
         async with async_client.udl_soiobservationset.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "num_obs": 0,
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "num_obs": 1,
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "OPTICAL",
                 }
             ],
         ) as response:

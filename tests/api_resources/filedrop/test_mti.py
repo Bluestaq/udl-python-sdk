@@ -20,9 +20,9 @@ class TestMti:
         mti = client.filedrop.mti.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -33,9 +33,9 @@ class TestMti:
         response = client.filedrop.mti.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -50,9 +50,9 @@ class TestMti:
         with client.filedrop.mti.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -73,9 +73,9 @@ class TestAsyncMti:
         mti = await async_client.filedrop.mti.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -86,9 +86,9 @@ class TestAsyncMti:
         response = await async_client.filedrop.mti.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -103,9 +103,9 @@ class TestAsyncMti:
         async with async_client.filedrop.mti.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

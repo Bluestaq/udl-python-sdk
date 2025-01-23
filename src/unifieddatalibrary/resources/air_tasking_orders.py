@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,15 +54,13 @@ class AirTaskingOrdersResource(SyncAPIResource):
         *,
         begin_ts: Union[str, datetime],
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_exer_name: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         ack_req_ind: str | NotGiven = NOT_GIVEN,
         ack_unit_instructions: str | NotGiven = NOT_GIVEN,
         ac_msn_tasking: Iterable[air_tasking_order_create_params.AcMsnTasking] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         end_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
         gen_text: Iterable[air_tasking_order_create_params.GenText] | NotGiven = NOT_GIVEN,
         msg_month: str | NotGiven = NOT_GIVEN,
@@ -70,9 +69,6 @@ class AirTaskingOrdersResource(SyncAPIResource):
         msg_sn: str | NotGiven = NOT_GIVEN,
         naval_flt_ops: Iterable[air_tasking_order_create_params.NavalFltOp] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -123,10 +119,6 @@ class AirTaskingOrdersResource(SyncAPIResource):
           ac_msn_tasking: A collection that specifies the tasked country, tasked service, unit and mission
               level tasking for this ATO.
 
-          created_at: Time the row was created in the database.
-
-          created_by: Application user who created the row in the database.
-
           end_ts: The effective end time for this ATO in ISO 8601 UTC format with millisecond
               precision.
 
@@ -147,17 +139,6 @@ class AirTaskingOrdersResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          raw_file_uri: Optional URI location in the document repository of the raw file parsed by the
-              system to produce this record. To download the raw file, prepend
-              https://udl-hostname/scs/download?id= to this value.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           extra_headers: Send extra headers
 
@@ -181,8 +162,6 @@ class AirTaskingOrdersResource(SyncAPIResource):
                     "ack_req_ind": ack_req_ind,
                     "ack_unit_instructions": ack_unit_instructions,
                     "ac_msn_tasking": ac_msn_tasking,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "end_ts": end_ts,
                     "gen_text": gen_text,
                     "msg_month": msg_month,
@@ -191,9 +170,6 @@ class AirTaskingOrdersResource(SyncAPIResource):
                     "msg_sn": msg_sn,
                     "naval_flt_ops": naval_flt_ops,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "raw_file_uri": raw_file_uri,
-                    "source_dl": source_dl,
                 },
                 air_tasking_order_create_params.AirTaskingOrderCreateParams,
             ),
@@ -310,7 +286,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -359,15 +335,13 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         *,
         begin_ts: Union[str, datetime],
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_exer_name: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         ack_req_ind: str | NotGiven = NOT_GIVEN,
         ack_unit_instructions: str | NotGiven = NOT_GIVEN,
         ac_msn_tasking: Iterable[air_tasking_order_create_params.AcMsnTasking] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         end_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
         gen_text: Iterable[air_tasking_order_create_params.GenText] | NotGiven = NOT_GIVEN,
         msg_month: str | NotGiven = NOT_GIVEN,
@@ -376,9 +350,6 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         msg_sn: str | NotGiven = NOT_GIVEN,
         naval_flt_ops: Iterable[air_tasking_order_create_params.NavalFltOp] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -429,10 +400,6 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
           ac_msn_tasking: A collection that specifies the tasked country, tasked service, unit and mission
               level tasking for this ATO.
 
-          created_at: Time the row was created in the database.
-
-          created_by: Application user who created the row in the database.
-
           end_ts: The effective end time for this ATO in ISO 8601 UTC format with millisecond
               precision.
 
@@ -453,17 +420,6 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          raw_file_uri: Optional URI location in the document repository of the raw file parsed by the
-              system to produce this record. To download the raw file, prepend
-              https://udl-hostname/scs/download?id= to this value.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           extra_headers: Send extra headers
 
@@ -487,8 +443,6 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
                     "ack_req_ind": ack_req_ind,
                     "ack_unit_instructions": ack_unit_instructions,
                     "ac_msn_tasking": ac_msn_tasking,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "end_ts": end_ts,
                     "gen_text": gen_text,
                     "msg_month": msg_month,
@@ -497,9 +451,6 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
                     "msg_sn": msg_sn,
                     "naval_flt_ops": naval_flt_ops,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "raw_file_uri": raw_file_uri,
-                    "source_dl": source_dl,
                 },
                 air_tasking_order_create_params.AirTaskingOrderCreateParams,
             ),
@@ -616,7 +567,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

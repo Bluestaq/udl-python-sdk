@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -59,7 +60,7 @@ class EcpsdrResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         msg_time: Union[str, datetime],
         source: str,
         type: str,
@@ -70,15 +71,12 @@ class EcpsdrResource(SyncAPIResource):
         cds_threshold: int | NotGiven = NOT_GIVEN,
         cds_throttle: int | NotGiven = NOT_GIVEN,
         checksum: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         dos_bias: int | NotGiven = NOT_GIVEN,
         dsl5_v_curr_mon: int | NotGiven = NOT_GIVEN,
         esd_trig_count_h: int | NotGiven = NOT_GIVEN,
         esd_trig_count_l: int | NotGiven = NOT_GIVEN,
         hi_let_l: int | NotGiven = NOT_GIVEN,
         hi_let_m: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         low_let_l: int | NotGiven = NOT_GIVEN,
         low_let_m: int | NotGiven = NOT_GIVEN,
@@ -93,7 +91,6 @@ class EcpsdrResource(SyncAPIResource):
         mp_temp: int | NotGiven = NOT_GIVEN,
         ob_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         pd1_sig_lev: int | NotGiven = NOT_GIVEN,
@@ -164,11 +161,6 @@ class EcpsdrResource(SyncAPIResource):
 
           checksum: Two byte CRC-16-CCITT checksum (ordered as first byte, second byte).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           dos_bias: Unitless dosimeter detector bias for MedLET and HiLET. MedLET (Linear Energy
               Transfer) and HiLET subsensors detect particles above LET thresholds, 300keV and
               1MeV, respectively.
@@ -184,8 +176,6 @@ class EcpsdrResource(SyncAPIResource):
 
           hi_let_m: Unitless HiLET dosimeter medium range output. Medium byte of (HiLET) dosimeter
               output.
-
-          id_on_orbit: Unique identifier of the on-orbit satellite hosting the sensor.
 
           id_sensor: Unique identifier of the reporting sensor.
 
@@ -225,9 +215,6 @@ class EcpsdrResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the record source to indicate the satellite
               hosting the sensor. This may be an internal identifier and not necessarily map
@@ -297,15 +284,12 @@ class EcpsdrResource(SyncAPIResource):
                     "cds_threshold": cds_threshold,
                     "cds_throttle": cds_throttle,
                     "checksum": checksum,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "dos_bias": dos_bias,
                     "dsl5_v_curr_mon": dsl5_v_curr_mon,
                     "esd_trig_count_h": esd_trig_count_h,
                     "esd_trig_count_l": esd_trig_count_l,
                     "hi_let_l": hi_let_l,
                     "hi_let_m": hi_let_m,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "low_let_l": low_let_l,
                     "low_let_m": low_let_m,
@@ -320,7 +304,6 @@ class EcpsdrResource(SyncAPIResource):
                     "mp_temp": mp_temp,
                     "ob_time": ob_time,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "pd1_sig_lev": pd1_sig_lev,
@@ -549,7 +532,7 @@ class EcpsdrResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           msg_time: Time stamp of time packet receipt on ground, in ISO 8601 UTC format with
@@ -606,7 +589,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         msg_time: Union[str, datetime],
         source: str,
         type: str,
@@ -617,15 +600,12 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         cds_threshold: int | NotGiven = NOT_GIVEN,
         cds_throttle: int | NotGiven = NOT_GIVEN,
         checksum: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         dos_bias: int | NotGiven = NOT_GIVEN,
         dsl5_v_curr_mon: int | NotGiven = NOT_GIVEN,
         esd_trig_count_h: int | NotGiven = NOT_GIVEN,
         esd_trig_count_l: int | NotGiven = NOT_GIVEN,
         hi_let_l: int | NotGiven = NOT_GIVEN,
         hi_let_m: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         low_let_l: int | NotGiven = NOT_GIVEN,
         low_let_m: int | NotGiven = NOT_GIVEN,
@@ -640,7 +620,6 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         mp_temp: int | NotGiven = NOT_GIVEN,
         ob_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         pd1_sig_lev: int | NotGiven = NOT_GIVEN,
@@ -711,11 +690,6 @@ class AsyncEcpsdrResource(AsyncAPIResource):
 
           checksum: Two byte CRC-16-CCITT checksum (ordered as first byte, second byte).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           dos_bias: Unitless dosimeter detector bias for MedLET and HiLET. MedLET (Linear Energy
               Transfer) and HiLET subsensors detect particles above LET thresholds, 300keV and
               1MeV, respectively.
@@ -731,8 +705,6 @@ class AsyncEcpsdrResource(AsyncAPIResource):
 
           hi_let_m: Unitless HiLET dosimeter medium range output. Medium byte of (HiLET) dosimeter
               output.
-
-          id_on_orbit: Unique identifier of the on-orbit satellite hosting the sensor.
 
           id_sensor: Unique identifier of the reporting sensor.
 
@@ -772,9 +744,6 @@ class AsyncEcpsdrResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the record source to indicate the satellite
               hosting the sensor. This may be an internal identifier and not necessarily map
@@ -844,15 +813,12 @@ class AsyncEcpsdrResource(AsyncAPIResource):
                     "cds_threshold": cds_threshold,
                     "cds_throttle": cds_throttle,
                     "checksum": checksum,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "dos_bias": dos_bias,
                     "dsl5_v_curr_mon": dsl5_v_curr_mon,
                     "esd_trig_count_h": esd_trig_count_h,
                     "esd_trig_count_l": esd_trig_count_l,
                     "hi_let_l": hi_let_l,
                     "hi_let_m": hi_let_m,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "low_let_l": low_let_l,
                     "low_let_m": low_let_m,
@@ -867,7 +833,6 @@ class AsyncEcpsdrResource(AsyncAPIResource):
                     "mp_temp": mp_temp,
                     "ob_time": ob_time,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "pd1_sig_lev": pd1_sig_lev,
@@ -1096,7 +1061,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           msg_time: Time stamp of time packet receipt on ground, in ISO 8601 UTC format with

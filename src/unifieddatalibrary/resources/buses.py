@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import datetime
+from typing import List
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,7 +53,7 @@ class BusesResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -68,8 +68,6 @@ class BusesResource(SyncAPIResource):
         body_dimension_z: float | NotGiven = NOT_GIVEN,
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         entity: bus_create_params.Entity | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
@@ -101,7 +99,6 @@ class BusesResource(SyncAPIResource):
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
         orbit_types: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
         payload_dimension_z: float | NotGiven = NOT_GIVEN,
@@ -169,14 +166,9 @@ class BusesResource(SyncAPIResource):
           country_code: Country where this bus was manufactured. This value is typically the ISO 3166
               Alpha-2 two-character country code, however it can also represent various
               consortiums that do not appear in the ISO document. The code must correspond to
-              an existing country in the UDL�s country API. Call udl/country/{code} to get any
+              an existing country in the UDL’s country API. Call udl/country/{code} to get any
               associated FIPS code, ISO Alpha-3 code, or alternate code values that exist for
               the specified country code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           description: Notes/description of the bus.
 
@@ -252,9 +244,6 @@ class BusesResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           payload_dimension_x: The radial dimension available on this bus for payloads, in meters.
 
           payload_dimension_y: The in-track dimension available on this bus for payloads, in meters.
@@ -299,8 +288,6 @@ class BusesResource(SyncAPIResource):
                     "body_dimension_z": body_dimension_z,
                     "bus_kit_designer_org_id": bus_kit_designer_org_id,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "entity": entity,
                     "generic": generic,
@@ -332,7 +319,6 @@ class BusesResource(SyncAPIResource):
                     "oap_spacecraft_power": oap_spacecraft_power,
                     "orbit_types": orbit_types,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "payload_dimension_x": payload_dimension_x,
                     "payload_dimension_y": payload_dimension_y,
                     "payload_dimension_z": payload_dimension_z,
@@ -388,7 +374,7 @@ class BusesResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -403,8 +389,6 @@ class BusesResource(SyncAPIResource):
         body_dimension_z: float | NotGiven = NOT_GIVEN,
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         entity: bus_update_params.Entity | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
@@ -436,7 +420,6 @@ class BusesResource(SyncAPIResource):
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
         orbit_types: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
         payload_dimension_z: float | NotGiven = NOT_GIVEN,
@@ -504,14 +487,9 @@ class BusesResource(SyncAPIResource):
           country_code: Country where this bus was manufactured. This value is typically the ISO 3166
               Alpha-2 two-character country code, however it can also represent various
               consortiums that do not appear in the ISO document. The code must correspond to
-              an existing country in the UDL�s country API. Call udl/country/{code} to get any
+              an existing country in the UDL’s country API. Call udl/country/{code} to get any
               associated FIPS code, ISO Alpha-3 code, or alternate code values that exist for
               the specified country code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           description: Notes/description of the bus.
 
@@ -587,9 +565,6 @@ class BusesResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           payload_dimension_x: The radial dimension available on this bus for payloads, in meters.
 
           payload_dimension_y: The in-track dimension available on this bus for payloads, in meters.
@@ -636,8 +611,6 @@ class BusesResource(SyncAPIResource):
                     "body_dimension_z": body_dimension_z,
                     "bus_kit_designer_org_id": bus_kit_designer_org_id,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "entity": entity,
                     "generic": generic,
@@ -669,7 +642,6 @@ class BusesResource(SyncAPIResource):
                     "oap_spacecraft_power": oap_spacecraft_power,
                     "orbit_types": orbit_types,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "payload_dimension_x": payload_dimension_x,
                     "payload_dimension_y": payload_dimension_y,
                     "payload_dimension_z": payload_dimension_z,
@@ -819,7 +791,7 @@ class BusesResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -867,7 +839,7 @@ class AsyncBusesResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -882,8 +854,6 @@ class AsyncBusesResource(AsyncAPIResource):
         body_dimension_z: float | NotGiven = NOT_GIVEN,
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         entity: bus_create_params.Entity | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
@@ -915,7 +885,6 @@ class AsyncBusesResource(AsyncAPIResource):
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
         orbit_types: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
         payload_dimension_z: float | NotGiven = NOT_GIVEN,
@@ -983,14 +952,9 @@ class AsyncBusesResource(AsyncAPIResource):
           country_code: Country where this bus was manufactured. This value is typically the ISO 3166
               Alpha-2 two-character country code, however it can also represent various
               consortiums that do not appear in the ISO document. The code must correspond to
-              an existing country in the UDL�s country API. Call udl/country/{code} to get any
+              an existing country in the UDL’s country API. Call udl/country/{code} to get any
               associated FIPS code, ISO Alpha-3 code, or alternate code values that exist for
               the specified country code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           description: Notes/description of the bus.
 
@@ -1066,9 +1030,6 @@ class AsyncBusesResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           payload_dimension_x: The radial dimension available on this bus for payloads, in meters.
 
           payload_dimension_y: The in-track dimension available on this bus for payloads, in meters.
@@ -1113,8 +1074,6 @@ class AsyncBusesResource(AsyncAPIResource):
                     "body_dimension_z": body_dimension_z,
                     "bus_kit_designer_org_id": bus_kit_designer_org_id,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "entity": entity,
                     "generic": generic,
@@ -1146,7 +1105,6 @@ class AsyncBusesResource(AsyncAPIResource):
                     "oap_spacecraft_power": oap_spacecraft_power,
                     "orbit_types": orbit_types,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "payload_dimension_x": payload_dimension_x,
                     "payload_dimension_y": payload_dimension_y,
                     "payload_dimension_z": payload_dimension_z,
@@ -1202,7 +1160,7 @@ class AsyncBusesResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -1217,8 +1175,6 @@ class AsyncBusesResource(AsyncAPIResource):
         body_dimension_z: float | NotGiven = NOT_GIVEN,
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         entity: bus_update_params.Entity | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
@@ -1250,7 +1206,6 @@ class AsyncBusesResource(AsyncAPIResource):
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
         orbit_types: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
         payload_dimension_z: float | NotGiven = NOT_GIVEN,
@@ -1318,14 +1273,9 @@ class AsyncBusesResource(AsyncAPIResource):
           country_code: Country where this bus was manufactured. This value is typically the ISO 3166
               Alpha-2 two-character country code, however it can also represent various
               consortiums that do not appear in the ISO document. The code must correspond to
-              an existing country in the UDL�s country API. Call udl/country/{code} to get any
+              an existing country in the UDL’s country API. Call udl/country/{code} to get any
               associated FIPS code, ISO Alpha-3 code, or alternate code values that exist for
               the specified country code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           description: Notes/description of the bus.
 
@@ -1401,9 +1351,6 @@ class AsyncBusesResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           payload_dimension_x: The radial dimension available on this bus for payloads, in meters.
 
           payload_dimension_y: The in-track dimension available on this bus for payloads, in meters.
@@ -1450,8 +1397,6 @@ class AsyncBusesResource(AsyncAPIResource):
                     "body_dimension_z": body_dimension_z,
                     "bus_kit_designer_org_id": bus_kit_designer_org_id,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "entity": entity,
                     "generic": generic,
@@ -1483,7 +1428,6 @@ class AsyncBusesResource(AsyncAPIResource):
                     "oap_spacecraft_power": oap_spacecraft_power,
                     "orbit_types": orbit_types,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "payload_dimension_x": payload_dimension_x,
                     "payload_dimension_y": payload_dimension_y,
                     "payload_dimension_z": payload_dimension_z,
@@ -1633,7 +1577,7 @@ class AsyncBusesResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

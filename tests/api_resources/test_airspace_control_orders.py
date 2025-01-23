@@ -25,126 +25,121 @@ class TestAirspaceControlOrders:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         airspace_control_order = client.airspace_control_orders.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
         )
         assert airspace_control_order is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         airspace_control_order = client.airspace_control_orders.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id="id",
-            aco_comments="acoComments",
-            aco_serial_num="acoSerialNum",
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
+            id="c44b0a80-9fef-63d9-6267-79037fb93e4c",
+            aco_comments="CHOKE POINTS",
+            aco_serial_num="27B",
             airspace_control_means_status=[
                 {
                     "airspace_control_means": [
                         {
                             "airspace_control_point": [
                                 {
-                                    "ctrl_pt_altitude": "ctrlPtAltitude",
-                                    "ctrl_pt_location": "ctrlPtLocation",
-                                    "ctrl_pt_name": "ctrlPtName",
-                                    "ctrl_pt_type": "ctrlPtType",
+                                    "ctrl_pt_altitude": "BRFL:MSL-FL230",
+                                    "ctrl_pt_location": "203632N0594256E",
+                                    "ctrl_pt_name": "APPLE",
+                                    "ctrl_pt_type": "CP",
                                 }
                             ],
                             "airspace_time_period": [
                                 {
-                                    "int_dur": ["string"],
-                                    "int_freq": ["string"],
-                                    "time_end": "timeEnd",
-                                    "time_mode": "timeMode",
-                                    "time_start": "timeStart",
+                                    "int_dur": ["65WK"],
+                                    "int_freq": ["WEEKLY"],
+                                    "time_end": "141325ZFEB2002",
+                                    "time_mode": "DISCRETE",
+                                    "time_start": "141325ZFEB2002",
                                 }
                             ],
-                            "bearing0": 0,
-                            "bearing1": 0,
-                            "cm_id": "cmId",
-                            "cm_shape": "cmShape",
+                            "bearing0": 330,
+                            "bearing1": 160,
+                            "cm_id": "DESIG:C34",
+                            "cm_shape": "POLYARC",
                             "cm_type": "cmType",
-                            "cntrl_auth": "cntrlAuth",
-                            "cntrl_auth_freqs": ["string"],
-                            "coord0": "coord0",
-                            "coord1": "coord1",
-                            "corr_way_points": ["string"],
-                            "eff_v_dim": "effVDim",
-                            "free_text": "freeText",
-                            "gen_text_ind": "genTextInd",
-                            "geo_datum_alt": "geoDatumAlt",
-                            "link16_id": "link16Id",
-                            "orbit_alignment": "orbitAlignment",
-                            "poly_coord": ["string"],
-                            "rad_mag0": 0,
-                            "rad_mag1": 0,
-                            "rad_mag_unit": "radMagUnit",
-                            "track_leg": 0,
-                            "trans_altitude": "transAltitude",
+                            "cntrl_auth": "RHEIN MAIN CP",
+                            "cntrl_auth_freqs": ["125.25MHZ"],
+                            "coord0": "152345N0505657E",
+                            "coord1": "1523N05057E",
+                            "corr_way_points": ["POB", "RDU", "IAD"],
+                            "eff_v_dim": "BRRA:GL-100AGL",
+                            "free_text": "1. CAPACITY: MDM TK, 50 VEHICLE CONVOY. 2. CHOKE POINTS: EXIT 5",
+                            "gen_text_ind": "SITUATION",
+                            "geo_datum_alt": "NAR",
+                            "link16_id": "F3356",
+                            "orbit_alignment": "C",
+                            "poly_coord": ["203632N0594256E", "155000N0594815E", "155000N0591343E"],
+                            "rad_mag0": 30.04,
+                            "rad_mag1": 50.12,
+                            "rad_mag_unit": "NM",
+                            "track_leg": 99,
+                            "trans_altitude": "18000FT",
                             "usage": "usage",
-                            "width": 0,
-                            "width_left": 0,
-                            "width_right": 0,
-                            "width_unit": "widthUnit",
+                            "width": 15.6,
+                            "width_left": 5.2,
+                            "width_right": 10.4,
+                            "width_unit": "KM",
                         }
                     ],
-                    "cm_stat": "cmStat",
-                    "cm_stat_id": ["string"],
+                    "cm_stat": "ADD",
+                    "cm_stat_id": ["DESIGN:B35", "NAME:ERMA", "RANG:C21-C25"],
                 }
             ],
             airspace_control_order_references=[
                 {
-                    "ref_originator": "refOriginator",
-                    "ref_serial_num": "refSerialNum",
-                    "ref_si_cs": ["string"],
-                    "ref_s_id": "refSId",
-                    "ref_special_notation": "refSpecialNotation",
-                    "ref_ts": "2019-12-27T18:11:19.117Z",
-                    "ref_type": "refType",
+                    "ref_originator": "SHAPE",
+                    "ref_serial_num": "100",
+                    "ref_si_cs": ["RCA", "FN:4503B"],
+                    "ref_s_id": "A",
+                    "ref_special_notation": "NOTAL",
+                    "ref_ts": "2024-01-07T13:55:43.123Z",
+                    "ref_type": "NBC1",
                 }
             ],
-            area_of_validity="areaOfValidity",
-            class_reasons=["string"],
-            class_source="classSource",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            declass_exemption_codes=["string"],
-            downgrade_ins_dates=["string"],
-            geo_datum="geoDatum",
-            month="month",
-            op_ex_info="opExInfo",
-            op_ex_info_alt="opExInfoAlt",
-            origin="origin",
-            orig_network="origNetwork",
-            plan_orig_num="planOrigNum",
-            qualifier="qualifier",
-            qual_sn=0,
-            raw_file_uri="rawFileURI",
-            serial_num="serialNum",
-            source_dl="sourceDL",
-            stop_qualifier="stopQualifier",
-            stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            und_lnk_trks=["string"],
+            area_of_validity="FORT BRAGG",
+            class_reasons=["15C", "10C"],
+            class_source="ORIG:USJFCOM",
+            declass_exemption_codes=["X1", "X2"],
+            downgrade_ins_dates=["NST:AT EXERCISE ENDEX", "DATE:25NOV1997"],
+            geo_datum="EUR-T",
+            month="OCT",
+            op_ex_info="CONTROL",
+            op_ex_info_alt="ORANGE",
+            origin="THIRD_PARTY_DATASOURCE",
+            plan_orig_num="SACEUR 106",
+            qualifier="CHG",
+            qual_sn=1,
+            serial_num="1201003",
+            stop_qualifier="AFTER",
+            stop_time=parse_datetime("2024-01-08T13:55:43.123Z"),
+            und_lnk_trks=["A2467", "A3466", "AA232"],
         )
         assert airspace_control_order is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.airspace_control_orders.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
         )
 
         assert response.is_closed is True
@@ -155,12 +150,12 @@ class TestAirspaceControlOrders:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.airspace_control_orders.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -263,12 +258,12 @@ class TestAirspaceControlOrders:
         airspace_control_order = client.airspace_control_orders.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -279,12 +274,12 @@ class TestAirspaceControlOrders:
         response = client.airspace_control_orders.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -299,12 +294,12 @@ class TestAirspaceControlOrders:
         with client.airspace_control_orders.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         ) as response:
@@ -379,126 +374,121 @@ class TestAsyncAirspaceControlOrders:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         airspace_control_order = await async_client.airspace_control_orders.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
         )
         assert airspace_control_order is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airspace_control_order = await async_client.airspace_control_orders.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id="id",
-            aco_comments="acoComments",
-            aco_serial_num="acoSerialNum",
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
+            id="c44b0a80-9fef-63d9-6267-79037fb93e4c",
+            aco_comments="CHOKE POINTS",
+            aco_serial_num="27B",
             airspace_control_means_status=[
                 {
                     "airspace_control_means": [
                         {
                             "airspace_control_point": [
                                 {
-                                    "ctrl_pt_altitude": "ctrlPtAltitude",
-                                    "ctrl_pt_location": "ctrlPtLocation",
-                                    "ctrl_pt_name": "ctrlPtName",
-                                    "ctrl_pt_type": "ctrlPtType",
+                                    "ctrl_pt_altitude": "BRFL:MSL-FL230",
+                                    "ctrl_pt_location": "203632N0594256E",
+                                    "ctrl_pt_name": "APPLE",
+                                    "ctrl_pt_type": "CP",
                                 }
                             ],
                             "airspace_time_period": [
                                 {
-                                    "int_dur": ["string"],
-                                    "int_freq": ["string"],
-                                    "time_end": "timeEnd",
-                                    "time_mode": "timeMode",
-                                    "time_start": "timeStart",
+                                    "int_dur": ["65WK"],
+                                    "int_freq": ["WEEKLY"],
+                                    "time_end": "141325ZFEB2002",
+                                    "time_mode": "DISCRETE",
+                                    "time_start": "141325ZFEB2002",
                                 }
                             ],
-                            "bearing0": 0,
-                            "bearing1": 0,
-                            "cm_id": "cmId",
-                            "cm_shape": "cmShape",
+                            "bearing0": 330,
+                            "bearing1": 160,
+                            "cm_id": "DESIG:C34",
+                            "cm_shape": "POLYARC",
                             "cm_type": "cmType",
-                            "cntrl_auth": "cntrlAuth",
-                            "cntrl_auth_freqs": ["string"],
-                            "coord0": "coord0",
-                            "coord1": "coord1",
-                            "corr_way_points": ["string"],
-                            "eff_v_dim": "effVDim",
-                            "free_text": "freeText",
-                            "gen_text_ind": "genTextInd",
-                            "geo_datum_alt": "geoDatumAlt",
-                            "link16_id": "link16Id",
-                            "orbit_alignment": "orbitAlignment",
-                            "poly_coord": ["string"],
-                            "rad_mag0": 0,
-                            "rad_mag1": 0,
-                            "rad_mag_unit": "radMagUnit",
-                            "track_leg": 0,
-                            "trans_altitude": "transAltitude",
+                            "cntrl_auth": "RHEIN MAIN CP",
+                            "cntrl_auth_freqs": ["125.25MHZ"],
+                            "coord0": "152345N0505657E",
+                            "coord1": "1523N05057E",
+                            "corr_way_points": ["POB", "RDU", "IAD"],
+                            "eff_v_dim": "BRRA:GL-100AGL",
+                            "free_text": "1. CAPACITY: MDM TK, 50 VEHICLE CONVOY. 2. CHOKE POINTS: EXIT 5",
+                            "gen_text_ind": "SITUATION",
+                            "geo_datum_alt": "NAR",
+                            "link16_id": "F3356",
+                            "orbit_alignment": "C",
+                            "poly_coord": ["203632N0594256E", "155000N0594815E", "155000N0591343E"],
+                            "rad_mag0": 30.04,
+                            "rad_mag1": 50.12,
+                            "rad_mag_unit": "NM",
+                            "track_leg": 99,
+                            "trans_altitude": "18000FT",
                             "usage": "usage",
-                            "width": 0,
-                            "width_left": 0,
-                            "width_right": 0,
-                            "width_unit": "widthUnit",
+                            "width": 15.6,
+                            "width_left": 5.2,
+                            "width_right": 10.4,
+                            "width_unit": "KM",
                         }
                     ],
-                    "cm_stat": "cmStat",
-                    "cm_stat_id": ["string"],
+                    "cm_stat": "ADD",
+                    "cm_stat_id": ["DESIGN:B35", "NAME:ERMA", "RANG:C21-C25"],
                 }
             ],
             airspace_control_order_references=[
                 {
-                    "ref_originator": "refOriginator",
-                    "ref_serial_num": "refSerialNum",
-                    "ref_si_cs": ["string"],
-                    "ref_s_id": "refSId",
-                    "ref_special_notation": "refSpecialNotation",
-                    "ref_ts": "2019-12-27T18:11:19.117Z",
-                    "ref_type": "refType",
+                    "ref_originator": "SHAPE",
+                    "ref_serial_num": "100",
+                    "ref_si_cs": ["RCA", "FN:4503B"],
+                    "ref_s_id": "A",
+                    "ref_special_notation": "NOTAL",
+                    "ref_ts": "2024-01-07T13:55:43.123Z",
+                    "ref_type": "NBC1",
                 }
             ],
-            area_of_validity="areaOfValidity",
-            class_reasons=["string"],
-            class_source="classSource",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            declass_exemption_codes=["string"],
-            downgrade_ins_dates=["string"],
-            geo_datum="geoDatum",
-            month="month",
-            op_ex_info="opExInfo",
-            op_ex_info_alt="opExInfoAlt",
-            origin="origin",
-            orig_network="origNetwork",
-            plan_orig_num="planOrigNum",
-            qualifier="qualifier",
-            qual_sn=0,
-            raw_file_uri="rawFileURI",
-            serial_num="serialNum",
-            source_dl="sourceDL",
-            stop_qualifier="stopQualifier",
-            stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            und_lnk_trks=["string"],
+            area_of_validity="FORT BRAGG",
+            class_reasons=["15C", "10C"],
+            class_source="ORIG:USJFCOM",
+            declass_exemption_codes=["X1", "X2"],
+            downgrade_ins_dates=["NST:AT EXERCISE ENDEX", "DATE:25NOV1997"],
+            geo_datum="EUR-T",
+            month="OCT",
+            op_ex_info="CONTROL",
+            op_ex_info_alt="ORANGE",
+            origin="THIRD_PARTY_DATASOURCE",
+            plan_orig_num="SACEUR 106",
+            qualifier="CHG",
+            qual_sn=1,
+            serial_num="1201003",
+            stop_qualifier="AFTER",
+            stop_time=parse_datetime("2024-01-08T13:55:43.123Z"),
+            und_lnk_trks=["A2467", "A3466", "AA232"],
         )
         assert airspace_control_order is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airspace_control_orders.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
         )
 
         assert response.is_closed is True
@@ -509,12 +499,12 @@ class TestAsyncAirspaceControlOrders:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airspace_control_orders.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_ex_name="opExName",
-            originator="originator",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_ex_name="DESERT WIND",
+            originator="USCENTCOM",
+            source="Bluestaq",
+            start_time=parse_datetime("2024-01-07T13:55:43.123Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -617,12 +607,12 @@ class TestAsyncAirspaceControlOrders:
         airspace_control_order = await async_client.airspace_control_orders.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -633,12 +623,12 @@ class TestAsyncAirspaceControlOrders:
         response = await async_client.airspace_control_orders.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -653,12 +643,12 @@ class TestAsyncAirspaceControlOrders:
         async with async_client.airspace_control_orders.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         ) as response:

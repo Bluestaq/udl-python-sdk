@@ -20,14 +20,14 @@ class TestUdlStarcatalog:
         udl_starcatalog = client.udl_starcatalog.create(
             body=[
                 {
-                    "astrometry_origin": "astrometryOrigin",
-                    "classification_marking": "classificationMarking",
-                    "cs_id": 0,
-                    "data_mode": "dataMode",
-                    "dec": 0,
-                    "ra": 0,
-                    "source": "source",
-                    "star_epoch": 0,
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "REAL",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
                 }
             ],
         )
@@ -38,14 +38,14 @@ class TestUdlStarcatalog:
         response = client.udl_starcatalog.with_raw_response.create(
             body=[
                 {
-                    "astrometry_origin": "astrometryOrigin",
-                    "classification_marking": "classificationMarking",
-                    "cs_id": 0,
-                    "data_mode": "dataMode",
-                    "dec": 0,
-                    "ra": 0,
-                    "source": "source",
-                    "star_epoch": 0,
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "REAL",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
                 }
             ],
         )
@@ -60,14 +60,14 @@ class TestUdlStarcatalog:
         with client.udl_starcatalog.with_streaming_response.create(
             body=[
                 {
-                    "astrometry_origin": "astrometryOrigin",
-                    "classification_marking": "classificationMarking",
-                    "cs_id": 0,
-                    "data_mode": "dataMode",
-                    "dec": 0,
-                    "ra": 0,
-                    "source": "source",
-                    "star_epoch": 0,
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "REAL",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
                 }
             ],
         ) as response:
@@ -88,14 +88,14 @@ class TestAsyncUdlStarcatalog:
         udl_starcatalog = await async_client.udl_starcatalog.create(
             body=[
                 {
-                    "astrometry_origin": "astrometryOrigin",
-                    "classification_marking": "classificationMarking",
-                    "cs_id": 0,
-                    "data_mode": "dataMode",
-                    "dec": 0,
-                    "ra": 0,
-                    "source": "source",
-                    "star_epoch": 0,
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "REAL",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
                 }
             ],
         )
@@ -106,14 +106,14 @@ class TestAsyncUdlStarcatalog:
         response = await async_client.udl_starcatalog.with_raw_response.create(
             body=[
                 {
-                    "astrometry_origin": "astrometryOrigin",
-                    "classification_marking": "classificationMarking",
-                    "cs_id": 0,
-                    "data_mode": "dataMode",
-                    "dec": 0,
-                    "ra": 0,
-                    "source": "source",
-                    "star_epoch": 0,
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "REAL",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
                 }
             ],
         )
@@ -128,14 +128,14 @@ class TestAsyncUdlStarcatalog:
         async with async_client.udl_starcatalog.with_streaming_response.create(
             body=[
                 {
-                    "astrometry_origin": "astrometryOrigin",
-                    "classification_marking": "classificationMarking",
-                    "cs_id": 0,
-                    "data_mode": "dataMode",
-                    "dec": 0,
-                    "ra": 0,
-                    "source": "source",
-                    "star_epoch": 0,
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "REAL",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
                 }
             ],
         ) as response:

@@ -24,53 +24,49 @@ class TestCollectResponses:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         collect_response = client.collect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
         )
         assert collect_response is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         collect_response = client.collect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
-            id="id",
-            actual_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            actual_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            alt_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            alt_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            err_code="errCode",
-            external_id="externalId",
-            id_on_orbit="idOnOrbit",
-            id_plan="idPlan",
-            id_sensor="idSensor",
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
-            orig_object_id="origObjectId",
-            orig_sensor_id="origSensorId",
-            sat_no=0,
-            src_ids=["string"],
-            src_typs=["string"],
-            status="status",
-            tags=["string"],
-            task_id="taskId",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
+            id="COLLECTRESPONSE-ID",
+            actual_end_time=parse_datetime("2018-01-01T18:00:00.123456Z"),
+            actual_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            alt_end_time=parse_datetime("2018-01-01T18:00:00.123456Z"),
+            alt_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            err_code="ERROR CODE",
+            external_id="EXTERNAL-ID",
+            id_plan="REF-PLAN-ID",
+            id_sensor="REF-SENSOR-ID",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            orig_sensor_id="ORIGSENSOR-ID",
+            sat_no=101,
+            src_ids=["DOA_ID", "DWELL_ID"],
+            src_typs=["DOA", "DWELL"],
+            status="ACCEPTED",
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            task_id="TASK-ID",
         )
         assert collect_response is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.collect_responses.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -81,10 +77,10 @@ class TestCollectResponses:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.collect_responses.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -199,10 +195,10 @@ class TestCollectResponses:
         collect_response = client.collect_responses.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_request": "idRequest",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_request": "REF-REQUEST-ID",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -213,10 +209,10 @@ class TestCollectResponses:
         response = client.collect_responses.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_request": "idRequest",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_request": "REF-REQUEST-ID",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -231,10 +227,10 @@ class TestCollectResponses:
         with client.collect_responses.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_request": "idRequest",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_request": "REF-REQUEST-ID",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -278,53 +274,49 @@ class TestAsyncCollectResponses:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_response = await async_client.collect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
         )
         assert collect_response is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_response = await async_client.collect_responses.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
-            id="id",
-            actual_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            actual_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            alt_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            alt_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            err_code="errCode",
-            external_id="externalId",
-            id_on_orbit="idOnOrbit",
-            id_plan="idPlan",
-            id_sensor="idSensor",
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
-            orig_object_id="origObjectId",
-            orig_sensor_id="origSensorId",
-            sat_no=0,
-            src_ids=["string"],
-            src_typs=["string"],
-            status="status",
-            tags=["string"],
-            task_id="taskId",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
+            id="COLLECTRESPONSE-ID",
+            actual_end_time=parse_datetime("2018-01-01T18:00:00.123456Z"),
+            actual_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            alt_end_time=parse_datetime("2018-01-01T18:00:00.123456Z"),
+            alt_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            err_code="ERROR CODE",
+            external_id="EXTERNAL-ID",
+            id_plan="REF-PLAN-ID",
+            id_sensor="REF-SENSOR-ID",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            orig_sensor_id="ORIGSENSOR-ID",
+            sat_no=101,
+            src_ids=["DOA_ID", "DWELL_ID"],
+            src_typs=["DOA", "DWELL"],
+            status="ACCEPTED",
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            task_id="TASK-ID",
         )
         assert collect_response is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.collect_responses.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -335,10 +327,10 @@ class TestAsyncCollectResponses:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.collect_responses.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_request="idRequest",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_request="REF-REQUEST-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -453,10 +445,10 @@ class TestAsyncCollectResponses:
         collect_response = await async_client.collect_responses.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_request": "idRequest",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_request": "REF-REQUEST-ID",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -467,10 +459,10 @@ class TestAsyncCollectResponses:
         response = await async_client.collect_responses.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_request": "idRequest",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_request": "REF-REQUEST-ID",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -485,10 +477,10 @@ class TestAsyncCollectResponses:
         async with async_client.collect_responses.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_request": "idRequest",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_request": "REF-REQUEST-ID",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

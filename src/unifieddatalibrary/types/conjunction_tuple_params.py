@@ -16,7 +16,7 @@ class ConjunctionTupleParams(TypedDict, total=False):
     """
     Comma-separated list of valid field names for this data type to be returned in
     the response. Only the fields specified will be returned as well as the
-    classification marking of the data, if applicable. See the �queryhelp� operation
+    classification marking of the data, if applicable. See the ‘queryhelp’ operation
     for a complete list of possible fields.
     """
 

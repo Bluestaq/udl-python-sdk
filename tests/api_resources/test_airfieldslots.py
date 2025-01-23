@@ -13,7 +13,6 @@ from unifieddatalibrary.types import (
     AirfieldslotFull,
     AirfieldslotTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -63,11 +62,11 @@ class TestAirfieldslots:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         airfieldslot = client.airfieldslots.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
         )
         assert airfieldslot is None
 
@@ -75,27 +74,23 @@ class TestAirfieldslots:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfieldslot = client.airfieldslots.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id_2="id",
-            ac_slot_cat="acSlotCat",
-            alt_airfield_id="altAirfieldId",
-            capacity=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            end_time="endTime",
-            icao="icao",
-            id_airfield="idAirfield",
-            min_separation=0,
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            start_time="startTime",
-            type="type",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
+            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            ac_slot_cat="WIDE",
+            alt_airfield_id="ALT-AIRFIELD-ID",
+            capacity=5,
+            end_time="2359Z",
+            icao="KCOS",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            min_separation=7,
+            notes="Notes for an airfield slot.",
+            origin="THIRD_PARTY_DATASOURCE",
+            start_time="0000Z",
+            type="WORKING",
         )
         assert airfieldslot is None
 
@@ -103,11 +98,11 @@ class TestAirfieldslots:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldslots.with_raw_response.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -119,11 +114,11 @@ class TestAirfieldslots:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.airfieldslots.with_streaming_response.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -138,11 +133,11 @@ class TestAirfieldslots:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.airfieldslots.with_raw_response.update(
                 id_1="",
-                airfield_name="airfieldName",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                name="name",
-                source="source",
+                airfield_name="USAF Academy AFLD",
+                classification_marking="U",
+                data_mode="REAL",
+                name="Apron 5",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -311,11 +306,11 @@ class TestAsyncAirfieldslots:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslot = await async_client.airfieldslots.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
         )
         assert airfieldslot is None
 
@@ -323,27 +318,23 @@ class TestAsyncAirfieldslots:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslot = await async_client.airfieldslots.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id_2="id",
-            ac_slot_cat="acSlotCat",
-            alt_airfield_id="altAirfieldId",
-            capacity=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            end_time="endTime",
-            icao="icao",
-            id_airfield="idAirfield",
-            min_separation=0,
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            start_time="startTime",
-            type="type",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
+            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            ac_slot_cat="WIDE",
+            alt_airfield_id="ALT-AIRFIELD-ID",
+            capacity=5,
+            end_time="2359Z",
+            icao="KCOS",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            min_separation=7,
+            notes="Notes for an airfield slot.",
+            origin="THIRD_PARTY_DATASOURCE",
+            start_time="0000Z",
+            type="WORKING",
         )
         assert airfieldslot is None
 
@@ -351,11 +342,11 @@ class TestAsyncAirfieldslots:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldslots.with_raw_response.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -367,11 +358,11 @@ class TestAsyncAirfieldslots:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfieldslots.with_streaming_response.update(
             id_1="id",
-            airfield_name="airfieldName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            airfield_name="USAF Academy AFLD",
+            classification_marking="U",
+            data_mode="REAL",
+            name="Apron 5",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -386,11 +377,11 @@ class TestAsyncAirfieldslots:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.airfieldslots.with_raw_response.update(
                 id_1="",
-                airfield_name="airfieldName",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                name="name",
-                source="source",
+                airfield_name="USAF Academy AFLD",
+                classification_marking="U",
+                data_mode="REAL",
+                name="Apron 5",
+                source="Bluestaq",
                 id_2="",
             )
 

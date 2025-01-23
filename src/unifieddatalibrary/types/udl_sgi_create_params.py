@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -19,7 +19,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -84,15 +84,6 @@ class Body(TypedDict, total=False):
     """Array containing the order of the temperature coefficients.
 
     The coeffDegree and coeffOrder arrays must be the same length.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     ctce: Iterable[float]
@@ -216,12 +207,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_sensor_id: Annotated[str, PropertyInfo(alias="origSensorId")]
     """
     Optional identifier provided by the reporting source to indicate the sensor
@@ -235,7 +220,7 @@ class Body(TypedDict, total=False):
     This array should correspond with the same-sized array of frequencies.
     """
 
-    precedence: str
+    precedence: Literal["O", "P", "R", "Y", "Z"]
     """
     The precedence of data in this record (O = Immediate, P = Priority, R = Routine,
     Y = Emergency, Z = Flash).
@@ -289,7 +274,7 @@ class Body(TypedDict, total=False):
     28.4-30.4 nm emissions in x10-22 Watts per meter squared per Hertz.
     """
 
-    state: str
+    state: Literal["I", "N", "P"]
     """
     State indicating Issued (I), Nowcast (N), or Predicted (P) values for this
     record.

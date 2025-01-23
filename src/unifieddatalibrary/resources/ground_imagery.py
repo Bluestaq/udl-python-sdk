@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -50,14 +51,12 @@ class GroundImageryResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         filename: str,
         image_time: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         checksum_value: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         filesize: int | NotGiven = NOT_GIVEN,
         format: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -65,7 +64,6 @@ class GroundImageryResource(SyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         region: str | NotGiven = NOT_GIVEN,
         region_geo_json: str | NotGiven = NOT_GIVEN,
@@ -73,7 +71,6 @@ class GroundImageryResource(SyncAPIResource):
         region_s_rid: int | NotGiven = NOT_GIVEN,
         region_text: str | NotGiven = NOT_GIVEN,
         region_type: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         subject_id: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
@@ -127,11 +124,6 @@ class GroundImageryResource(SyncAPIResource):
           checksum_value: MD5 value of the file. The ingest/create operation will automatically generate
               the value.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           filesize: Size of the image file. Units in bytes. If filesize is provided without an
               associated file, it defaults to 0.
 
@@ -149,9 +141,6 @@ class GroundImageryResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_sensor_id: Optional identifier provided by source to indicate the sensor identifier used to
               detect this event. This may be an internal identifier and not necessarily a
@@ -178,10 +167,6 @@ class GroundImageryResource(SyncAPIResource):
               if included with a create operation that also specifies a valid region.
 
           region_type: Type of region as projected on the ground.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           subject_id: Optional identifier of the subject/target of the image, useful for correlating
               multiple images of the same subject.
@@ -215,8 +200,6 @@ class GroundImageryResource(SyncAPIResource):
                     "source": source,
                     "id": id,
                     "checksum_value": checksum_value,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "filesize": filesize,
                     "format": format,
                     "id_sensor": id_sensor,
@@ -224,7 +207,6 @@ class GroundImageryResource(SyncAPIResource):
                     "name": name,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_sensor_id": orig_sensor_id,
                     "region": region,
                     "region_geo_json": region_geo_json,
@@ -232,7 +214,6 @@ class GroundImageryResource(SyncAPIResource):
                     "region_s_rid": region_s_rid,
                     "region_text": region_text,
                     "region_type": region_type,
-                    "source_dl": source_dl,
                     "subject_id": subject_id,
                     "tags": tags,
                     "transaction_id": transaction_id,
@@ -270,14 +251,12 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         filename: str,
         image_time: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         checksum_value: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         filesize: int | NotGiven = NOT_GIVEN,
         format: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -285,7 +264,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         region: str | NotGiven = NOT_GIVEN,
         region_geo_json: str | NotGiven = NOT_GIVEN,
@@ -293,7 +271,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         region_s_rid: int | NotGiven = NOT_GIVEN,
         region_text: str | NotGiven = NOT_GIVEN,
         region_type: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         subject_id: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
@@ -347,11 +324,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
           checksum_value: MD5 value of the file. The ingest/create operation will automatically generate
               the value.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           filesize: Size of the image file. Units in bytes. If filesize is provided without an
               associated file, it defaults to 0.
 
@@ -369,9 +341,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_sensor_id: Optional identifier provided by source to indicate the sensor identifier used to
               detect this event. This may be an internal identifier and not necessarily a
@@ -398,10 +367,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
               if included with a create operation that also specifies a valid region.
 
           region_type: Type of region as projected on the ground.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           subject_id: Optional identifier of the subject/target of the image, useful for correlating
               multiple images of the same subject.
@@ -435,8 +400,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
                     "source": source,
                     "id": id,
                     "checksum_value": checksum_value,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "filesize": filesize,
                     "format": format,
                     "id_sensor": id_sensor,
@@ -444,7 +407,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
                     "name": name,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_sensor_id": orig_sensor_id,
                     "region": region,
                     "region_geo_json": region_geo_json,
@@ -452,7 +414,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
                     "region_s_rid": region_s_rid,
                     "region_text": region_text,
                     "region_type": region_type,
-                    "source_dl": source_dl,
                     "subject_id": subject_id,
                     "tags": tags,
                     "transaction_id": transaction_id,

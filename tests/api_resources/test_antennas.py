@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     AntennaListResponse,
     AntennaTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,32 +24,29 @@ class TestAntennas:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
         assert antenna is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            origin="origin",
-            orig_network="origNetwork",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
+            id="ANTENNA-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert antenna is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.antennas.with_raw_response.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -61,9 +57,9 @@ class TestAntennas:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.antennas.with_streaming_response.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -115,9 +111,9 @@ class TestAntennas:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
         assert antenna is None
 
@@ -125,14 +121,11 @@ class TestAntennas:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            origin="origin",
-            orig_network="origNetwork",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
+            id_2="ANTENNA-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert antenna is None
 
@@ -140,9 +133,9 @@ class TestAntennas:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.antennas.with_raw_response.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -154,9 +147,9 @@ class TestAntennas:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.antennas.with_streaming_response.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -171,9 +164,9 @@ class TestAntennas:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.antennas.with_raw_response.update(
                 id_1="",
-                data_mode="dataMode",
-                name="name",
-                source="source",
+                data_mode="REAL",
+                name="IRIDIUM NEXT 121-ANTENNA-10075",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -328,32 +321,29 @@ class TestAsyncAntennas:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
         assert antenna is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            origin="origin",
-            orig_network="origNetwork",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
+            id="ANTENNA-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert antenna is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.antennas.with_raw_response.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -364,9 +354,9 @@ class TestAsyncAntennas:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.antennas.with_streaming_response.create(
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -418,9 +408,9 @@ class TestAsyncAntennas:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
         assert antenna is None
 
@@ -428,14 +418,11 @@ class TestAsyncAntennas:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            origin="origin",
-            orig_network="origNetwork",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
+            id_2="ANTENNA-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert antenna is None
 
@@ -443,9 +430,9 @@ class TestAsyncAntennas:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.antennas.with_raw_response.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -457,9 +444,9 @@ class TestAsyncAntennas:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.antennas.with_streaming_response.update(
             id_1="id",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            data_mode="REAL",
+            name="IRIDIUM NEXT 121-ANTENNA-10075",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -474,9 +461,9 @@ class TestAsyncAntennas:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.antennas.with_raw_response.update(
                 id_1="",
-                data_mode="dataMode",
-                name="name",
-                source="source",
+                data_mode="REAL",
+                name="IRIDIUM NEXT 121-ANTENNA-10075",
+                source="Bluestaq",
                 id_2="",
             )
 

@@ -24,174 +24,171 @@ class TestEvac:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         evac = client.evac.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
         )
         assert evac is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         evac = client.evac.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
-            id="id",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
+            id="MEDEVACEVENT-ID",
             casualty_info=[
                 {
-                    "age": 0,
+                    "age": 35,
                     "allergy": [
                         {
-                            "comments": "comments",
-                            "type": "type",
+                            "comments": "Comments on the patient's allergies.",
+                            "type": "PENICILLIN",
                         }
                     ],
-                    "blood_type": "bloodType",
-                    "body_part": "bodyPart",
-                    "burial_location": [0],
-                    "call_sign": "callSign",
-                    "care_provider_urn": "careProviderUrn",
-                    "casualty_key": "casualtyKey",
-                    "casualty_type": "casualtyType",
-                    "collection_point": [0],
-                    "comments": "comments",
+                    "blood_type": "O NEG",
+                    "body_part": "FACE",
+                    "burial_location": [-33.123, 150.33, 0.24],
+                    "call_sign": "SHARK",
+                    "care_provider_urn": "CARE_PROVIDER-1",
+                    "casualty_key": "casualty-007",
+                    "casualty_type": "DENTAL",
+                    "collection_point": [12.44, 122.55, 0.98],
+                    "comments": "Comments relating to this casualty info.",
                     "condition": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "ANKLE LEFT FRONT",
+                            "comments": "Comments on the patient's condition.",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
+                            "type": "ACTIVITY LOW",
                         }
                     ],
-                    "contam_type": "contamType",
-                    "disposition": "disposition",
-                    "disposition_type": "dispositionType",
+                    "contam_type": "NONE",
+                    "disposition": "EVACUATE WOUNDED",
+                    "disposition_type": "EVACUATE",
                     "etiology": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "ARM LEFT FRONT",
+                            "comments": "Comments on the etiology info.",
+                            "time": parse_datetime("2021-10-16T16:00:00.123Z"),
+                            "type": "BURN",
                         }
                     ],
-                    "evac_type": "evacType",
-                    "gender": "gender",
+                    "evac_type": "GROUND",
+                    "gender": "MALE",
                     "health_state": [
                         {
-                            "health_state_code": "healthStateCode",
-                            "med_conf_factor": 0,
-                            "time": "2019-12-27T18:11:19.117Z",
-                            "type": "type",
+                            "health_state_code": "BLUE",
+                            "med_conf_factor": 1,
+                            "time": "2021-10-15T16:00:00.123Z",
+                            "type": "COGNITIVE",
                         }
                     ],
                     "injury": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "ARM LEFT FRONT",
+                            "comments": "Comments on the patient's injury.",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
+                            "type": "ABRASION",
                         }
                     ],
-                    "last4_ssn": "last4SSN",
+                    "last4_ssn": "1234",
                     "medication": [
                         {
-                            "admin_route": "adminRoute",
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "dose": "dose",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "admin_route": "ORAL",
+                            "body_part": "ARM LEFT BACK",
+                            "comments": "Comments on the patient's medication information.",
+                            "dose": "800mg",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
+                            "type": "TYLENOL",
                         }
                     ],
-                    "name": "name",
-                    "nationality": "nationality",
-                    "occ_speciality": "occSpeciality",
-                    "patient_identity": "patientIdentity",
-                    "patient_status": "patientStatus",
-                    "pay_grade": "payGrade",
-                    "priority": "priority",
-                    "report_gen": "reportGen",
-                    "report_time": "2019-12-27T18:11:19.117Z",
-                    "service": "service",
-                    "spec_med_equip": ["string"],
+                    "name": "John Smith",
+                    "nationality": "US",
+                    "occ_speciality": "Healthcare",
+                    "patient_identity": "FRIEND CIVILIAN",
+                    "patient_status": "US CIVILIAN",
+                    "pay_grade": "CIVILIAN",
+                    "priority": "ROUTINE",
+                    "report_gen": "DEVICE",
+                    "report_time": "2021-10-15T16:00:00.123Z",
+                    "service": "CIV",
+                    "spec_med_equip": ["OXYGEN", "HOIST"],
                     "treatment": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "CHEST",
+                            "comments": "Comments on the treatment info.",
+                            "time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                            "type": "BREATHING CHEST TUBE",
                         }
                     ],
                     "vital_sign_data": [
                         {
-                            "med_conf_factor": 0,
-                            "time": "2019-12-27T18:11:19.117Z",
-                            "vital_sign": "vitalSign",
-                            "vital_sign1": 0,
-                            "vital_sign2": 0,
+                            "med_conf_factor": 1,
+                            "time": "2021-10-15T16:00:00.123Z",
+                            "vital_sign": "HEART RATE",
+                            "vital_sign1": 120,
+                            "vital_sign2": 80,
                         }
                     ],
                 }
             ],
-            ce=0,
-            cntct_freq=0,
-            comments="comments",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
+            ce=10.1234,
+            cntct_freq=3.11,
+            comments="Comments concerning mission",
             enemy_data=[
                 {
-                    "dir_to_enemy": "dirToEnemy",
-                    "friendlies_remarks": "friendliesRemarks",
-                    "hlz_remarks": "hlzRemarks",
-                    "hostile_fire_type": "hostileFireType",
+                    "dir_to_enemy": "NORTH",
+                    "friendlies_remarks": "Comments from friendlies.",
+                    "hlz_remarks": "Remarks about hot landing zone.",
+                    "hostile_fire_type": "SMALL ARMS",
                 }
             ],
-            id_weather_report="idWeatherReport",
-            le=0,
-            medevac_id="medevacId",
+            id_weather_report="WeatherReport-ID",
+            le=5.1234,
+            medevac_id="MedEvac-ID",
             medic_req=True,
-            mission_type="missionType",
-            num_ambulatory=0,
-            num_casualties=0,
+            mission_type="GROUND",
+            num_ambulatory=5,
+            num_casualties=5,
             num_kia=0,
             num_litter=0,
-            num_wia=0,
-            obstacles_remarks="obstaclesRemarks",
-            origin="origin",
-            orig_network="origNetwork",
-            pickup_alt=0,
-            pickup_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            req_call_sign="reqCallSign",
-            req_num="reqNum",
-            terrain="terrain",
-            terrain_remarks="terrainRemarks",
-            zone_contr_call_sign="zoneContrCallSign",
-            zone_hot=True,
-            zone_marking="zoneMarking",
-            zone_marking_color="zoneMarkingColor",
-            zone_name="zoneName",
-            zone_security="zoneSecurity",
+            num_wia=3,
+            obstacles_remarks="N/A",
+            origin="THIRD_PARTY_DATASOURCE",
+            pickup_alt=30.1234,
+            pickup_time=parse_datetime("2021-10-20T16:00:00.123Z"),
+            req_call_sign="Bravo",
+            req_num="MED.1.234567",
+            terrain="ROCKY",
+            terrain_remarks="N/A",
+            zone_contr_call_sign="Tango",
+            zone_hot=False,
+            zone_marking="ILLUMINATION",
+            zone_marking_color="RED",
+            zone_name="example-zone",
+            zone_security="NO ENEMY",
         )
         assert evac is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.evac.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
         )
 
         assert response.is_closed is True
@@ -202,13 +199,13 @@ class TestEvac:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.evac.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -323,13 +320,13 @@ class TestEvac:
         evac = client.evac.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -340,13 +337,13 @@ class TestEvac:
         response = client.evac.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -361,13 +358,13 @@ class TestEvac:
         with client.evac.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         ) as response:
@@ -411,174 +408,171 @@ class TestAsyncEvac:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         evac = await async_client.evac.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
         )
         assert evac is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         evac = await async_client.evac.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
-            id="id",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
+            id="MEDEVACEVENT-ID",
             casualty_info=[
                 {
-                    "age": 0,
+                    "age": 35,
                     "allergy": [
                         {
-                            "comments": "comments",
-                            "type": "type",
+                            "comments": "Comments on the patient's allergies.",
+                            "type": "PENICILLIN",
                         }
                     ],
-                    "blood_type": "bloodType",
-                    "body_part": "bodyPart",
-                    "burial_location": [0],
-                    "call_sign": "callSign",
-                    "care_provider_urn": "careProviderUrn",
-                    "casualty_key": "casualtyKey",
-                    "casualty_type": "casualtyType",
-                    "collection_point": [0],
-                    "comments": "comments",
+                    "blood_type": "O NEG",
+                    "body_part": "FACE",
+                    "burial_location": [-33.123, 150.33, 0.24],
+                    "call_sign": "SHARK",
+                    "care_provider_urn": "CARE_PROVIDER-1",
+                    "casualty_key": "casualty-007",
+                    "casualty_type": "DENTAL",
+                    "collection_point": [12.44, 122.55, 0.98],
+                    "comments": "Comments relating to this casualty info.",
                     "condition": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "ANKLE LEFT FRONT",
+                            "comments": "Comments on the patient's condition.",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
+                            "type": "ACTIVITY LOW",
                         }
                     ],
-                    "contam_type": "contamType",
-                    "disposition": "disposition",
-                    "disposition_type": "dispositionType",
+                    "contam_type": "NONE",
+                    "disposition": "EVACUATE WOUNDED",
+                    "disposition_type": "EVACUATE",
                     "etiology": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "ARM LEFT FRONT",
+                            "comments": "Comments on the etiology info.",
+                            "time": parse_datetime("2021-10-16T16:00:00.123Z"),
+                            "type": "BURN",
                         }
                     ],
-                    "evac_type": "evacType",
-                    "gender": "gender",
+                    "evac_type": "GROUND",
+                    "gender": "MALE",
                     "health_state": [
                         {
-                            "health_state_code": "healthStateCode",
-                            "med_conf_factor": 0,
-                            "time": "2019-12-27T18:11:19.117Z",
-                            "type": "type",
+                            "health_state_code": "BLUE",
+                            "med_conf_factor": 1,
+                            "time": "2021-10-15T16:00:00.123Z",
+                            "type": "COGNITIVE",
                         }
                     ],
                     "injury": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "ARM LEFT FRONT",
+                            "comments": "Comments on the patient's injury.",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
+                            "type": "ABRASION",
                         }
                     ],
-                    "last4_ssn": "last4SSN",
+                    "last4_ssn": "1234",
                     "medication": [
                         {
-                            "admin_route": "adminRoute",
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "dose": "dose",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "admin_route": "ORAL",
+                            "body_part": "ARM LEFT BACK",
+                            "comments": "Comments on the patient's medication information.",
+                            "dose": "800mg",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
+                            "type": "TYLENOL",
                         }
                     ],
-                    "name": "name",
-                    "nationality": "nationality",
-                    "occ_speciality": "occSpeciality",
-                    "patient_identity": "patientIdentity",
-                    "patient_status": "patientStatus",
-                    "pay_grade": "payGrade",
-                    "priority": "priority",
-                    "report_gen": "reportGen",
-                    "report_time": "2019-12-27T18:11:19.117Z",
-                    "service": "service",
-                    "spec_med_equip": ["string"],
+                    "name": "John Smith",
+                    "nationality": "US",
+                    "occ_speciality": "Healthcare",
+                    "patient_identity": "FRIEND CIVILIAN",
+                    "patient_status": "US CIVILIAN",
+                    "pay_grade": "CIVILIAN",
+                    "priority": "ROUTINE",
+                    "report_gen": "DEVICE",
+                    "report_time": "2021-10-15T16:00:00.123Z",
+                    "service": "CIV",
+                    "spec_med_equip": ["OXYGEN", "HOIST"],
                     "treatment": [
                         {
-                            "body_part": "bodyPart",
-                            "comments": "comments",
-                            "time": parse_datetime("2019-12-27T18:11:19.117Z"),
-                            "type": "type",
+                            "body_part": "CHEST",
+                            "comments": "Comments on the treatment info.",
+                            "time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                            "type": "BREATHING CHEST TUBE",
                         }
                     ],
                     "vital_sign_data": [
                         {
-                            "med_conf_factor": 0,
-                            "time": "2019-12-27T18:11:19.117Z",
-                            "vital_sign": "vitalSign",
-                            "vital_sign1": 0,
-                            "vital_sign2": 0,
+                            "med_conf_factor": 1,
+                            "time": "2021-10-15T16:00:00.123Z",
+                            "vital_sign": "HEART RATE",
+                            "vital_sign1": 120,
+                            "vital_sign2": 80,
                         }
                     ],
                 }
             ],
-            ce=0,
-            cntct_freq=0,
-            comments="comments",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
+            ce=10.1234,
+            cntct_freq=3.11,
+            comments="Comments concerning mission",
             enemy_data=[
                 {
-                    "dir_to_enemy": "dirToEnemy",
-                    "friendlies_remarks": "friendliesRemarks",
-                    "hlz_remarks": "hlzRemarks",
-                    "hostile_fire_type": "hostileFireType",
+                    "dir_to_enemy": "NORTH",
+                    "friendlies_remarks": "Comments from friendlies.",
+                    "hlz_remarks": "Remarks about hot landing zone.",
+                    "hostile_fire_type": "SMALL ARMS",
                 }
             ],
-            id_weather_report="idWeatherReport",
-            le=0,
-            medevac_id="medevacId",
+            id_weather_report="WeatherReport-ID",
+            le=5.1234,
+            medevac_id="MedEvac-ID",
             medic_req=True,
-            mission_type="missionType",
-            num_ambulatory=0,
-            num_casualties=0,
+            mission_type="GROUND",
+            num_ambulatory=5,
+            num_casualties=5,
             num_kia=0,
             num_litter=0,
-            num_wia=0,
-            obstacles_remarks="obstaclesRemarks",
-            origin="origin",
-            orig_network="origNetwork",
-            pickup_alt=0,
-            pickup_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            req_call_sign="reqCallSign",
-            req_num="reqNum",
-            terrain="terrain",
-            terrain_remarks="terrainRemarks",
-            zone_contr_call_sign="zoneContrCallSign",
-            zone_hot=True,
-            zone_marking="zoneMarking",
-            zone_marking_color="zoneMarkingColor",
-            zone_name="zoneName",
-            zone_security="zoneSecurity",
+            num_wia=3,
+            obstacles_remarks="N/A",
+            origin="THIRD_PARTY_DATASOURCE",
+            pickup_alt=30.1234,
+            pickup_time=parse_datetime("2021-10-20T16:00:00.123Z"),
+            req_call_sign="Bravo",
+            req_num="MED.1.234567",
+            terrain="ROCKY",
+            terrain_remarks="N/A",
+            zone_contr_call_sign="Tango",
+            zone_hot=False,
+            zone_marking="ILLUMINATION",
+            zone_marking_color="RED",
+            zone_name="example-zone",
+            zone_security="NO ENEMY",
         )
         assert evac is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.evac.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
         )
 
         assert response.is_closed is True
@@ -589,13 +583,13 @@ class TestAsyncEvac:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.evac.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            pickup_lat=0,
-            pickup_lon=0,
-            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            pickup_lat=75.1234,
+            pickup_lon=175.1234,
+            req_time=parse_datetime("2021-10-15T16:00:00.123Z"),
+            source="Bluestaq",
+            type="REQUEST",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -710,13 +704,13 @@ class TestAsyncEvac:
         evac = await async_client.evac.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -727,13 +721,13 @@ class TestAsyncEvac:
         response = await async_client.evac.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -748,13 +742,13 @@ class TestAsyncEvac:
         async with async_client.evac.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         ) as response:

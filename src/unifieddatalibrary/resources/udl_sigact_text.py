@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -50,7 +51,7 @@ class UdlSigactTextResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         report_date: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -80,8 +81,6 @@ class UdlSigactTextResource(SyncAPIResource):
         complex_attack: bool | NotGiven = NOT_GIVEN,
         confidence: int | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         district: str | NotGiven = NOT_GIVEN,
         document_filename: str | NotGiven = NOT_GIVEN,
         document_source: str | NotGiven = NOT_GIVEN,
@@ -112,7 +111,6 @@ class UdlSigactTextResource(SyncAPIResource):
         num_mentions: int | NotGiven = NOT_GIVEN,
         num_sources: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         province: str | NotGiven = NOT_GIVEN,
         related_docs: Iterable[udl_sigact_text_create_params.RelatedDoc] | NotGiven = NOT_GIVEN,
         rep_unit: str | NotGiven = NOT_GIVEN,
@@ -261,15 +259,9 @@ class UdlSigactTextResource(SyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system, example
-              = 2018-01-01T16:00:00.123Z.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           district: The district in which this event occurred.
 
@@ -369,9 +361,6 @@ class UdlSigactTextResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           province: The province in which this event occurred.
 
@@ -462,8 +451,6 @@ class UdlSigactTextResource(SyncAPIResource):
                     "complex_attack": complex_attack,
                     "confidence": confidence,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "district": district,
                     "document_filename": document_filename,
                     "document_source": document_source,
@@ -494,7 +481,6 @@ class UdlSigactTextResource(SyncAPIResource):
                     "num_mentions": num_mentions,
                     "num_sources": num_sources,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "province": province,
                     "related_docs": related_docs,
                     "rep_unit": rep_unit,
@@ -548,7 +534,7 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         report_date: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -578,8 +564,6 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
         complex_attack: bool | NotGiven = NOT_GIVEN,
         confidence: int | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         district: str | NotGiven = NOT_GIVEN,
         document_filename: str | NotGiven = NOT_GIVEN,
         document_source: str | NotGiven = NOT_GIVEN,
@@ -610,7 +594,6 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
         num_mentions: int | NotGiven = NOT_GIVEN,
         num_sources: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         province: str | NotGiven = NOT_GIVEN,
         related_docs: Iterable[udl_sigact_text_create_params.RelatedDoc] | NotGiven = NOT_GIVEN,
         rep_unit: str | NotGiven = NOT_GIVEN,
@@ -759,15 +742,9 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system, example
-              = 2018-01-01T16:00:00.123Z.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           district: The district in which this event occurred.
 
@@ -868,9 +845,6 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           province: The province in which this event occurred.
 
           related_docs: Related document ids.
@@ -960,8 +934,6 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
                     "complex_attack": complex_attack,
                     "confidence": confidence,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "district": district,
                     "document_filename": document_filename,
                     "document_source": document_source,
@@ -992,7 +964,6 @@ class AsyncUdlSigactTextResource(AsyncAPIResource):
                     "num_mentions": num_mentions,
                     "num_sources": num_sources,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "province": province,
                     "related_docs": related_docs,
                     "rep_unit": rep_unit,

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -50,16 +51,13 @@ class UdlSkyimageryResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         exp_start_time: Union[str, datetime],
         image_type: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         annotation_key: str | NotGiven = NOT_GIVEN,
         calibration_key: str | NotGiven = NOT_GIVEN,
-        checksum_value: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         eo_observations: Iterable[udl_skyimagery_create_params.EoObservation] | NotGiven = NOT_GIVEN,
         exp_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -70,14 +68,12 @@ class UdlSkyimageryResource(SyncAPIResource):
         frame_height_pixels: int | NotGiven = NOT_GIVEN,
         frame_width_pixels: int | NotGiven = NOT_GIVEN,
         id_attitude_set: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         id_soi_set: str | NotGiven = NOT_GIVEN,
         image_set_id: str | NotGiven = NOT_GIVEN,
         image_set_length: int | NotGiven = NOT_GIVEN,
         image_source_info: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         pixel_bit_depth: int | NotGiven = NOT_GIVEN,
@@ -93,7 +89,6 @@ class UdlSkyimageryResource(SyncAPIResource):
         seny: float | NotGiven = NOT_GIVEN,
         senz: float | NotGiven = NOT_GIVEN,
         sequence_id: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         top_left_start_az: float | NotGiven = NOT_GIVEN,
         top_left_start_el: float | NotGiven = NOT_GIVEN,
@@ -150,14 +145,6 @@ class UdlSkyimageryResource(SyncAPIResource):
 
           calibration_key: Reference to a calibration document associated with this image.
 
-          checksum_value: MD5 value of the file. The ingest/create operation will automatically generate
-              the value.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Optional name/description associated with this image.
 
           eo_observations: Collection of linked EOObservations.
@@ -179,8 +166,6 @@ class UdlSkyimageryResource(SyncAPIResource):
           id_attitude_set: Optional identifier of the AttitudeSet data record describing the orientation of
               an object body.
 
-          id_on_orbit: Optional identifier of the target on-orbit object, if correlated.
-
           id_sensor: Unique identifier of the reporting sensor.
 
           id_soi_set: Optional unique identifier of the SOI Observation Set associated with this
@@ -196,9 +181,6 @@ class UdlSkyimageryResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the imaging source to indicate the target
               onorbit object of this image. This may be an internal identifier and not
@@ -250,10 +232,6 @@ class UdlSkyimageryResource(SyncAPIResource):
 
           sequence_id: The sequence ID of an image within an image set.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -292,9 +270,6 @@ class UdlSkyimageryResource(SyncAPIResource):
                     "id": id,
                     "annotation_key": annotation_key,
                     "calibration_key": calibration_key,
-                    "checksum_value": checksum_value,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "eo_observations": eo_observations,
                     "exp_end_time": exp_end_time,
@@ -305,14 +280,12 @@ class UdlSkyimageryResource(SyncAPIResource):
                     "frame_height_pixels": frame_height_pixels,
                     "frame_width_pixels": frame_width_pixels,
                     "id_attitude_set": id_attitude_set,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "id_soi_set": id_soi_set,
                     "image_set_id": image_set_id,
                     "image_set_length": image_set_length,
                     "image_source_info": image_source_info,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "pixel_bit_depth": pixel_bit_depth,
@@ -328,7 +301,6 @@ class UdlSkyimageryResource(SyncAPIResource):
                     "seny": seny,
                     "senz": senz,
                     "sequence_id": sequence_id,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "top_left_start_az": top_left_start_az,
                     "top_left_start_el": top_left_start_el,
@@ -369,16 +341,13 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         exp_start_time: Union[str, datetime],
         image_type: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         annotation_key: str | NotGiven = NOT_GIVEN,
         calibration_key: str | NotGiven = NOT_GIVEN,
-        checksum_value: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         eo_observations: Iterable[udl_skyimagery_create_params.EoObservation] | NotGiven = NOT_GIVEN,
         exp_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -389,14 +358,12 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
         frame_height_pixels: int | NotGiven = NOT_GIVEN,
         frame_width_pixels: int | NotGiven = NOT_GIVEN,
         id_attitude_set: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         id_soi_set: str | NotGiven = NOT_GIVEN,
         image_set_id: str | NotGiven = NOT_GIVEN,
         image_set_length: int | NotGiven = NOT_GIVEN,
         image_source_info: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         pixel_bit_depth: int | NotGiven = NOT_GIVEN,
@@ -412,7 +379,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
         seny: float | NotGiven = NOT_GIVEN,
         senz: float | NotGiven = NOT_GIVEN,
         sequence_id: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         top_left_start_az: float | NotGiven = NOT_GIVEN,
         top_left_start_el: float | NotGiven = NOT_GIVEN,
@@ -469,14 +435,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
 
           calibration_key: Reference to a calibration document associated with this image.
 
-          checksum_value: MD5 value of the file. The ingest/create operation will automatically generate
-              the value.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Optional name/description associated with this image.
 
           eo_observations: Collection of linked EOObservations.
@@ -498,8 +456,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
           id_attitude_set: Optional identifier of the AttitudeSet data record describing the orientation of
               an object body.
 
-          id_on_orbit: Optional identifier of the target on-orbit object, if correlated.
-
           id_sensor: Unique identifier of the reporting sensor.
 
           id_soi_set: Optional unique identifier of the SOI Observation Set associated with this
@@ -515,9 +471,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the imaging source to indicate the target
               onorbit object of this image. This may be an internal identifier and not
@@ -569,10 +522,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
 
           sequence_id: The sequence ID of an image within an image set.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -611,9 +560,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
                     "id": id,
                     "annotation_key": annotation_key,
                     "calibration_key": calibration_key,
-                    "checksum_value": checksum_value,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "eo_observations": eo_observations,
                     "exp_end_time": exp_end_time,
@@ -624,14 +570,12 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
                     "frame_height_pixels": frame_height_pixels,
                     "frame_width_pixels": frame_width_pixels,
                     "id_attitude_set": id_attitude_set,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "id_soi_set": id_soi_set,
                     "image_set_id": image_set_id,
                     "image_set_length": image_set_length,
                     "image_source_info": image_source_info,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "pixel_bit_depth": pixel_bit_depth,
@@ -647,7 +591,6 @@ class AsyncUdlSkyimageryResource(AsyncAPIResource):
                     "seny": seny,
                     "senz": senz,
                     "sequence_id": sequence_id,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "top_left_start_az": top_left_start_az,
                     "top_left_start_el": top_left_start_el,

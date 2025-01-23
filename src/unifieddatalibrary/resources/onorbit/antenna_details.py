@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
-from datetime import datetime
+from typing import List, Iterable
+from typing_extensions import Literal
 
 import httpx
 
@@ -52,23 +52,20 @@ class AntennaDetailsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_antenna: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         beam_forming: bool | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         diameter: float | NotGiven = NOT_GIVEN,
         end_frequency: float | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         gain_tolerance: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode: str | NotGiven = NOT_GIVEN,
+        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         polarization: float | NotGiven = NOT_GIVEN,
         position: str | NotGiven = NOT_GIVEN,
         size: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -119,11 +116,6 @@ class AntennaDetailsResource(SyncAPIResource):
           beamwidth: Array of angles between the half-power (-3 dB) points of the main lobe of the
               antenna, in degrees.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Antenna description.
 
           diameter: Antenna diameter in meters.
@@ -142,9 +134,6 @@ class AntennaDetailsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           polarization: Antenna polarization in degrees.
 
@@ -186,8 +175,6 @@ class AntennaDetailsResource(SyncAPIResource):
                     "id": id,
                     "beam_forming": beam_forming,
                     "beamwidth": beamwidth,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "diameter": diameter,
                     "end_frequency": end_frequency,
@@ -196,7 +183,6 @@ class AntennaDetailsResource(SyncAPIResource):
                     "manufacturer_org_id": manufacturer_org_id,
                     "mode": mode,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "polarization": polarization,
                     "position": position,
                     "size": size,
@@ -253,23 +239,20 @@ class AntennaDetailsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_antenna: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         beam_forming: bool | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         diameter: float | NotGiven = NOT_GIVEN,
         end_frequency: float | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         gain_tolerance: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode: str | NotGiven = NOT_GIVEN,
+        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         polarization: float | NotGiven = NOT_GIVEN,
         position: str | NotGiven = NOT_GIVEN,
         size: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -321,11 +304,6 @@ class AntennaDetailsResource(SyncAPIResource):
           beamwidth: Array of angles between the half-power (-3 dB) points of the main lobe of the
               antenna, in degrees.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Antenna description.
 
           diameter: Antenna diameter in meters.
@@ -344,9 +322,6 @@ class AntennaDetailsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           polarization: Antenna polarization in degrees.
 
@@ -390,8 +365,6 @@ class AntennaDetailsResource(SyncAPIResource):
                     "id_2": id_2,
                     "beam_forming": beam_forming,
                     "beamwidth": beamwidth,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "diameter": diameter,
                     "end_frequency": end_frequency,
@@ -400,7 +373,6 @@ class AntennaDetailsResource(SyncAPIResource):
                     "manufacturer_org_id": manufacturer_org_id,
                     "mode": mode,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "polarization": polarization,
                     "position": position,
                     "size": size,
@@ -503,23 +475,20 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_antenna: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         beam_forming: bool | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         diameter: float | NotGiven = NOT_GIVEN,
         end_frequency: float | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         gain_tolerance: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode: str | NotGiven = NOT_GIVEN,
+        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         polarization: float | NotGiven = NOT_GIVEN,
         position: str | NotGiven = NOT_GIVEN,
         size: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -570,11 +539,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
           beamwidth: Array of angles between the half-power (-3 dB) points of the main lobe of the
               antenna, in degrees.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Antenna description.
 
           diameter: Antenna diameter in meters.
@@ -593,9 +557,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           polarization: Antenna polarization in degrees.
 
@@ -637,8 +598,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
                     "id": id,
                     "beam_forming": beam_forming,
                     "beamwidth": beamwidth,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "diameter": diameter,
                     "end_frequency": end_frequency,
@@ -647,7 +606,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
                     "manufacturer_org_id": manufacturer_org_id,
                     "mode": mode,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "polarization": polarization,
                     "position": position,
                     "size": size,
@@ -704,23 +662,20 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_antenna: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         beam_forming: bool | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         diameter: float | NotGiven = NOT_GIVEN,
         end_frequency: float | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         gain_tolerance: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode: str | NotGiven = NOT_GIVEN,
+        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         polarization: float | NotGiven = NOT_GIVEN,
         position: str | NotGiven = NOT_GIVEN,
         size: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -772,11 +727,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
           beamwidth: Array of angles between the half-power (-3 dB) points of the main lobe of the
               antenna, in degrees.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Antenna description.
 
           diameter: Antenna diameter in meters.
@@ -795,9 +745,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           polarization: Antenna polarization in degrees.
 
@@ -841,8 +788,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
                     "id_2": id_2,
                     "beam_forming": beam_forming,
                     "beamwidth": beamwidth,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "diameter": diameter,
                     "end_frequency": end_frequency,
@@ -851,7 +796,6 @@ class AsyncAntennaDetailsResource(AsyncAPIResource):
                     "manufacturer_org_id": manufacturer_org_id,
                     "mode": mode,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "polarization": polarization,
                     "position": position,
                     "size": size,

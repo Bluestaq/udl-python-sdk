@@ -20,11 +20,11 @@ class TestRf:
         rf = client.filedrop.observation.rf.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
+                    "type": "x",
                 }
             ],
         )
@@ -35,11 +35,11 @@ class TestRf:
         response = client.filedrop.observation.rf.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
+                    "type": "x",
                 }
             ],
         )
@@ -54,11 +54,11 @@ class TestRf:
         with client.filedrop.observation.rf.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
+                    "type": "x",
                 }
             ],
         ) as response:
@@ -79,11 +79,11 @@ class TestAsyncRf:
         rf = await async_client.filedrop.observation.rf.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
+                    "type": "x",
                 }
             ],
         )
@@ -94,11 +94,11 @@ class TestAsyncRf:
         response = await async_client.filedrop.observation.rf.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
+                    "type": "x",
                 }
             ],
         )
@@ -113,11 +113,11 @@ class TestAsyncRf:
         async with async_client.filedrop.observation.rf.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
+                    "type": "x",
                 }
             ],
         ) as response:

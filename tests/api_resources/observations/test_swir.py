@@ -21,10 +21,10 @@ class TestSwir:
         swir = client.observations.swir.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -35,10 +35,10 @@ class TestSwir:
         response = client.observations.swir.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -53,10 +53,10 @@ class TestSwir:
         with client.observations.swir.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         ) as response:
@@ -77,10 +77,10 @@ class TestAsyncSwir:
         swir = await async_client.observations.swir.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -91,10 +91,10 @@ class TestAsyncSwir:
         response = await async_client.observations.swir.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -109,10 +109,10 @@ class TestAsyncSwir:
         async with async_client.observations.swir.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         ) as response:

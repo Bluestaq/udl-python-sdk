@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -68,14 +69,12 @@ class DiffofarrivalResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         ob_time: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
         collection_mode: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         delta_range: float | NotGiven = NOT_GIVEN,
         delta_range_rate: float | NotGiven = NOT_GIVEN,
         delta_range_rate_unc: float | NotGiven = NOT_GIVEN,
@@ -84,11 +83,9 @@ class DiffofarrivalResource(SyncAPIResource):
         fdoa: float | NotGiven = NOT_GIVEN,
         fdoa_unc: float | NotGiven = NOT_GIVEN,
         frequency: float | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor1: str | NotGiven = NOT_GIVEN,
         id_sensor2: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id1: str | NotGiven = NOT_GIVEN,
         orig_sensor_id2: str | NotGiven = NOT_GIVEN,
@@ -103,7 +100,6 @@ class DiffofarrivalResource(SyncAPIResource):
         sensor1_delay: float | NotGiven = NOT_GIVEN,
         sensor2_delay: float | NotGiven = NOT_GIVEN,
         snr: float | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         tdoa: float | NotGiven = NOT_GIVEN,
@@ -154,11 +150,6 @@ class DiffofarrivalResource(SyncAPIResource):
           collection_mode: Collection mode (e.g. SURVEY, SPOT_SEARCH, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH,
               MANUAL, etc).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           delta_range: Delta range, in km. Delta range calculation convention is (sensor2 - sensor1).
 
           delta_range_rate: Delta range rate, in km/sec. Delta range rate calculation convention is
@@ -178,8 +169,6 @@ class DiffofarrivalResource(SyncAPIResource):
 
           frequency: Center frequency of the collect in Hz.
 
-          id_on_orbit: Unique identifier of the target on-orbit object, if correlated.
-
           id_sensor1: Sensor ID of the primary/1st sensor used for this measurement.
 
           id_sensor2: Sensor ID of the secondary/2nd sensor used for this measurement.
@@ -188,9 +177,6 @@ class DiffofarrivalResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by observation source to indicate the target
               onorbit object of this observation. This may be an internal identifier and not
@@ -234,10 +220,6 @@ class DiffofarrivalResource(SyncAPIResource):
           sensor2_delay: The signal arrival delay relative to sensor 2 in seconds.
 
           snr: Signal to noise ratio, in dB.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -283,8 +265,6 @@ class DiffofarrivalResource(SyncAPIResource):
                     "id": id,
                     "bandwidth": bandwidth,
                     "collection_mode": collection_mode,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "delta_range": delta_range,
                     "delta_range_rate": delta_range_rate,
                     "delta_range_rate_unc": delta_range_rate_unc,
@@ -293,11 +273,9 @@ class DiffofarrivalResource(SyncAPIResource):
                     "fdoa": fdoa,
                     "fdoa_unc": fdoa_unc,
                     "frequency": frequency,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor1": id_sensor1,
                     "id_sensor2": id_sensor2,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id1": orig_sensor_id1,
                     "orig_sensor_id2": orig_sensor_id2,
@@ -312,7 +290,6 @@ class DiffofarrivalResource(SyncAPIResource):
                     "sensor1_delay": sensor1_delay,
                     "sensor2_delay": sensor2_delay,
                     "snr": snr,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "task_id": task_id,
                     "tdoa": tdoa,
@@ -478,14 +455,12 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         ob_time: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
         collection_mode: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         delta_range: float | NotGiven = NOT_GIVEN,
         delta_range_rate: float | NotGiven = NOT_GIVEN,
         delta_range_rate_unc: float | NotGiven = NOT_GIVEN,
@@ -494,11 +469,9 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         fdoa: float | NotGiven = NOT_GIVEN,
         fdoa_unc: float | NotGiven = NOT_GIVEN,
         frequency: float | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor1: str | NotGiven = NOT_GIVEN,
         id_sensor2: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id1: str | NotGiven = NOT_GIVEN,
         orig_sensor_id2: str | NotGiven = NOT_GIVEN,
@@ -513,7 +486,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         sensor1_delay: float | NotGiven = NOT_GIVEN,
         sensor2_delay: float | NotGiven = NOT_GIVEN,
         snr: float | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         tdoa: float | NotGiven = NOT_GIVEN,
@@ -564,11 +536,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
           collection_mode: Collection mode (e.g. SURVEY, SPOT_SEARCH, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH,
               MANUAL, etc).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           delta_range: Delta range, in km. Delta range calculation convention is (sensor2 - sensor1).
 
           delta_range_rate: Delta range rate, in km/sec. Delta range rate calculation convention is
@@ -588,8 +555,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
 
           frequency: Center frequency of the collect in Hz.
 
-          id_on_orbit: Unique identifier of the target on-orbit object, if correlated.
-
           id_sensor1: Sensor ID of the primary/1st sensor used for this measurement.
 
           id_sensor2: Sensor ID of the secondary/2nd sensor used for this measurement.
@@ -598,9 +563,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by observation source to indicate the target
               onorbit object of this observation. This may be an internal identifier and not
@@ -644,10 +606,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
           sensor2_delay: The signal arrival delay relative to sensor 2 in seconds.
 
           snr: Signal to noise ratio, in dB.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -693,8 +651,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                     "id": id,
                     "bandwidth": bandwidth,
                     "collection_mode": collection_mode,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "delta_range": delta_range,
                     "delta_range_rate": delta_range_rate,
                     "delta_range_rate_unc": delta_range_rate_unc,
@@ -703,11 +659,9 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                     "fdoa": fdoa,
                     "fdoa_unc": fdoa_unc,
                     "frequency": frequency,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor1": id_sensor1,
                     "id_sensor2": id_sensor2,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id1": orig_sensor_id1,
                     "orig_sensor_id2": orig_sensor_id2,
@@ -722,7 +676,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                     "sensor1_delay": sensor1_delay,
                     "sensor2_delay": sensor2_delay,
                     "snr": snr,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "task_id": task_id,
                     "tdoa": tdoa,

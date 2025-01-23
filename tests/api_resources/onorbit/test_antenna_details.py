@@ -9,7 +9,6 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.types.onorbit import (
     AntennaDetailsFull,
     AntennaDetailListResponse,
@@ -24,51 +23,48 @@ class TestAntennaDetails:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
         assert antenna_detail is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
-            id="id",
-            beam_forming=True,
-            beamwidth=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
-            diameter=0,
-            end_frequency=0,
-            gain=0,
-            gain_tolerance=0,
-            manufacturer_org_id="manufacturerOrgId",
-            mode="mode",
-            origin="origin",
-            orig_network="origNetwork",
-            polarization=0,
-            position="position",
-            size=[0],
-            start_frequency=0,
-            steerable=True,
-            tags=["string"],
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
+            id="ANTENNADETAILS-ID",
+            beam_forming=False,
+            beamwidth=14.1,
+            description="Description of antenna A",
+            diameter=0.01,
+            end_frequency=3.3,
+            gain=20.1,
+            gain_tolerance=5.1,
+            manufacturer_org_id="MANUFACTUREORG-ID",
+            mode="TX",
+            origin="THIRD_PARTY_DATASOURCE",
+            polarization=45.1,
+            position="Top",
+            size=[0.03, 0.05],
+            start_frequency=2.1,
+            steerable=False,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            type="Reflector",
         )
         assert antenna_detail is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbit.antenna_details.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -79,10 +75,10 @@ class TestAntennaDetails:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbit.antenna_details.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -134,10 +130,10 @@ class TestAntennaDetails:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
         assert antenna_detail is None
 
@@ -145,31 +141,28 @@ class TestAntennaDetails:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
-            id_2="id",
-            beam_forming=True,
-            beamwidth=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
-            diameter=0,
-            end_frequency=0,
-            gain=0,
-            gain_tolerance=0,
-            manufacturer_org_id="manufacturerOrgId",
-            mode="mode",
-            origin="origin",
-            orig_network="origNetwork",
-            polarization=0,
-            position="position",
-            size=[0],
-            start_frequency=0,
-            steerable=True,
-            tags=["string"],
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
+            id_2="ANTENNADETAILS-ID",
+            beam_forming=False,
+            beamwidth=14.1,
+            description="Description of antenna A",
+            diameter=0.01,
+            end_frequency=3.3,
+            gain=20.1,
+            gain_tolerance=5.1,
+            manufacturer_org_id="MANUFACTUREORG-ID",
+            mode="TX",
+            origin="THIRD_PARTY_DATASOURCE",
+            polarization=45.1,
+            position="Top",
+            size=[0.03, 0.05],
+            start_frequency=2.1,
+            steerable=False,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            type="Reflector",
         )
         assert antenna_detail is None
 
@@ -177,10 +170,10 @@ class TestAntennaDetails:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.onorbit.antenna_details.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -192,10 +185,10 @@ class TestAntennaDetails:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.onorbit.antenna_details.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -210,10 +203,10 @@ class TestAntennaDetails:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.onorbit.antenna_details.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_antenna="idAntenna",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                id_antenna="ANTENNA-ID",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -287,51 +280,48 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
         assert antenna_detail is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
-            id="id",
-            beam_forming=True,
-            beamwidth=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
-            diameter=0,
-            end_frequency=0,
-            gain=0,
-            gain_tolerance=0,
-            manufacturer_org_id="manufacturerOrgId",
-            mode="mode",
-            origin="origin",
-            orig_network="origNetwork",
-            polarization=0,
-            position="position",
-            size=[0],
-            start_frequency=0,
-            steerable=True,
-            tags=["string"],
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
+            id="ANTENNADETAILS-ID",
+            beam_forming=False,
+            beamwidth=14.1,
+            description="Description of antenna A",
+            diameter=0.01,
+            end_frequency=3.3,
+            gain=20.1,
+            gain_tolerance=5.1,
+            manufacturer_org_id="MANUFACTUREORG-ID",
+            mode="TX",
+            origin="THIRD_PARTY_DATASOURCE",
+            polarization=45.1,
+            position="Top",
+            size=[0.03, 0.05],
+            start_frequency=2.1,
+            steerable=False,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            type="Reflector",
         )
         assert antenna_detail is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbit.antenna_details.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -342,10 +332,10 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbit.antenna_details.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -397,10 +387,10 @@ class TestAsyncAntennaDetails:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
         assert antenna_detail is None
 
@@ -408,31 +398,28 @@ class TestAsyncAntennaDetails:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
-            id_2="id",
-            beam_forming=True,
-            beamwidth=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
-            diameter=0,
-            end_frequency=0,
-            gain=0,
-            gain_tolerance=0,
-            manufacturer_org_id="manufacturerOrgId",
-            mode="mode",
-            origin="origin",
-            orig_network="origNetwork",
-            polarization=0,
-            position="position",
-            size=[0],
-            start_frequency=0,
-            steerable=True,
-            tags=["string"],
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
+            id_2="ANTENNADETAILS-ID",
+            beam_forming=False,
+            beamwidth=14.1,
+            description="Description of antenna A",
+            diameter=0.01,
+            end_frequency=3.3,
+            gain=20.1,
+            gain_tolerance=5.1,
+            manufacturer_org_id="MANUFACTUREORG-ID",
+            mode="TX",
+            origin="THIRD_PARTY_DATASOURCE",
+            polarization=45.1,
+            position="Top",
+            size=[0.03, 0.05],
+            start_frequency=2.1,
+            steerable=False,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            type="Reflector",
         )
         assert antenna_detail is None
 
@@ -440,10 +427,10 @@ class TestAsyncAntennaDetails:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbit.antenna_details.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -455,10 +442,10 @@ class TestAsyncAntennaDetails:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbit.antenna_details.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_antenna="idAntenna",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_antenna="ANTENNA-ID",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -473,10 +460,10 @@ class TestAsyncAntennaDetails:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.onorbit.antenna_details.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_antenna="idAntenna",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                id_antenna="ANTENNA-ID",
+                source="Bluestaq",
                 id_2="",
             )
 

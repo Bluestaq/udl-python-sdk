@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,20 +54,16 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_aircraft_status: str,
         source: str,
         text: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_rmk_id: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         last_updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         last_updated_by: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         timestamp: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -111,11 +108,6 @@ class AircraftStatusRemarksResource(SyncAPIResource):
           alt_rmk_id: Unique identifier of the Aircraft Status Remark record from the originating
               system.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           last_updated_at: Time the remark was last updated in the originating system in ISO 8601 UTC
               format with millisecond precision.
 
@@ -128,13 +120,6 @@ class AircraftStatusRemarksResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           timestamp: Time the remark was created in the originating system in ISO 8601 UTC format
               with millisecond precision.
@@ -159,14 +144,10 @@ class AircraftStatusRemarksResource(SyncAPIResource):
                     "text": text,
                     "id": id,
                     "alt_rmk_id": alt_rmk_id,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "last_updated_at": last_updated_at,
                     "last_updated_by": last_updated_by,
                     "name": name,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
                     "timestamp": timestamp,
                 },
                 aircraft_status_remark_create_params.AircraftStatusRemarkCreateParams,
@@ -308,7 +289,7 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -358,20 +339,16 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_aircraft_status: str,
         source: str,
         text: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_rmk_id: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         last_updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         last_updated_by: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         timestamp: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -416,11 +393,6 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
           alt_rmk_id: Unique identifier of the Aircraft Status Remark record from the originating
               system.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           last_updated_at: Time the remark was last updated in the originating system in ISO 8601 UTC
               format with millisecond precision.
 
@@ -433,13 +405,6 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           timestamp: Time the remark was created in the originating system in ISO 8601 UTC format
               with millisecond precision.
@@ -464,14 +429,10 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
                     "text": text,
                     "id": id,
                     "alt_rmk_id": alt_rmk_id,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "last_updated_at": last_updated_at,
                     "last_updated_by": last_updated_by,
                     "name": name,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
                     "timestamp": timestamp,
                 },
                 aircraft_status_remark_create_params.AircraftStatusRemarkCreateParams,
@@ -613,7 +574,7 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

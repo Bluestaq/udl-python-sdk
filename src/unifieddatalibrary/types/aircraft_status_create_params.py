@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +15,7 @@ class AircraftStatusCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -47,13 +47,15 @@ class AircraftStatusCreateParams(TypedDict, total=False):
     available.
     """
 
-    air_to_air_status: Annotated[str, PropertyInfo(alias="airToAirStatus")]
+    air_to_air_status: Annotated[Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"], PropertyInfo(alias="airToAirStatus")]
     """
     The status of the air-to-air weapon release system (OPERATIONAL,
     NON-OPERATIONAL, OFF).
     """
 
-    air_to_ground_status: Annotated[str, PropertyInfo(alias="airToGroundStatus")]
+    air_to_ground_status: Annotated[
+        Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"], PropertyInfo(alias="airToGroundStatus")
+    ]
     """
     The status of the air-to-ground weapon release system (OPERATIONAL,
     NON-OPERATIONAL, OFF).
@@ -72,15 +74,6 @@ class AircraftStatusCreateParams(TypedDict, total=False):
     """The contamination status of the aircraft (e.g.
 
     CLEAR, CONTAMINATED, DECONTAMINATED, UNKNOWN, etc.).
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     current_icao: Annotated[str, PropertyInfo(alias="currentICAO")]
@@ -241,12 +234,6 @@ class AircraftStatusCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     park_location: Annotated[str, PropertyInfo(alias="parkLocation")]
     """The parking location of this aircraft."""
 
@@ -257,13 +244,6 @@ class AircraftStatusCreateParams(TypedDict, total=False):
     """
     The International Civil Aviation Organization (ICAO) code at which this aircraft
     was previously located.
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     ta_start_time: Annotated[Union[str, datetime], PropertyInfo(alias="taStartTime", format="iso8601")]

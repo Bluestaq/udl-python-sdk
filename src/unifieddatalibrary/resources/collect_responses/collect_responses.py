@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import date, datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -81,7 +82,7 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_request: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -89,16 +90,12 @@ class CollectResponsesResource(SyncAPIResource):
         actual_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alt_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alt_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         err_code: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_plan: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
@@ -152,18 +149,11 @@ class CollectResponsesResource(SyncAPIResource):
 
           alt_start_time: Proposed alternative start time, in ISO 8601 UTC format.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           err_code: Error code associated with this request/response.
 
           external_id: UUID from external systems. This field has no meaning within UDL and is provided
               as a convenience for systems that require tracking of internal system generated
               ID.
-
-          id_on_orbit: Unique identifier of the target on-orbit object associated with this response.
 
           id_plan: Unique identifier of the parent plan or schedule associated with the
               request/response.
@@ -176,9 +166,6 @@ class CollectResponsesResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by data source to indicate the target object of
               this response. This may be an internal identifier and not necessarily a valid
@@ -272,16 +259,12 @@ class CollectResponsesResource(SyncAPIResource):
                     "actual_start_time": actual_start_time,
                     "alt_end_time": alt_end_time,
                     "alt_start_time": alt_start_time,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "err_code": err_code,
                     "external_id": external_id,
-                    "id_on_orbit": id_on_orbit,
                     "id_plan": id_plan,
                     "id_sensor": id_sensor,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "sat_no": sat_no,
@@ -514,7 +497,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_request: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -522,16 +505,12 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         actual_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alt_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alt_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         err_code: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_plan: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
@@ -585,18 +564,11 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
 
           alt_start_time: Proposed alternative start time, in ISO 8601 UTC format.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           err_code: Error code associated with this request/response.
 
           external_id: UUID from external systems. This field has no meaning within UDL and is provided
               as a convenience for systems that require tracking of internal system generated
               ID.
-
-          id_on_orbit: Unique identifier of the target on-orbit object associated with this response.
 
           id_plan: Unique identifier of the parent plan or schedule associated with the
               request/response.
@@ -609,9 +581,6 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by data source to indicate the target object of
               this response. This may be an internal identifier and not necessarily a valid
@@ -705,16 +674,12 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
                     "actual_start_time": actual_start_time,
                     "alt_end_time": alt_end_time,
                     "alt_start_time": alt_start_time,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "err_code": err_code,
                     "external_id": external_id,
-                    "id_on_orbit": id_on_orbit,
                     "id_plan": id_plan,
                     "id_sensor": id_sensor,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "sat_no": sat_no,

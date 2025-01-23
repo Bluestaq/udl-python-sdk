@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
+from .onorbit import Onorbit
 from ..._models import BaseModel
 
 __all__ = ["CollectResponseFull"]
@@ -17,7 +16,7 @@ class CollectResponseFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -89,7 +88,7 @@ class CollectResponseFull(BaseModel):
     notes: Optional[str] = None
     """Notes or comments associated with this response."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -195,11 +194,3 @@ class CollectResponseFull(BaseModel):
 
     task_id: Optional[str] = FieldInfo(alias="taskId", default=None)
     """Optional task ID associated with the request/response."""
-
-
-from .onorbit import Onorbit
-
-if PYDANTIC_V2:
-    CollectResponseFull.model_rebuild()
-else:
-    CollectResponseFull.update_forward_refs()  # type: ignore

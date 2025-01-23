@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -54,13 +53,11 @@ class AircraftResource(SyncAPIResource):
         *,
         aircraft_mds: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         category: str | NotGiven = NOT_GIVEN,
         command: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
         entity: aircraft_create_params.Entity | NotGiven = NOT_GIVEN,
@@ -71,10 +68,8 @@ class AircraftResource(SyncAPIResource):
         nominal_ta_time: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         serial_number: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -119,11 +114,6 @@ class AircraftResource(SyncAPIResource):
 
           command: The Air Force major command (MAJCOM) overseeing the aircraft.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cruise_speed: The cruise speed of the aircraft, in kilometers/hour.
 
           dtd: Military data network data transfer device ID for this aircraft.
@@ -156,16 +146,9 @@ class AircraftResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           owner: The wing or unit that owns the aircraft.
 
           serial_number: Full serial number of the aircraft.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tail_number: The tail number of this aircraft.
 
@@ -189,8 +172,6 @@ class AircraftResource(SyncAPIResource):
                     "id": id,
                     "category": category,
                     "command": command,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cruise_speed": cruise_speed,
                     "dtd": dtd,
                     "entity": entity,
@@ -201,10 +182,8 @@ class AircraftResource(SyncAPIResource):
                     "nominal_ta_time": nominal_ta_time,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "serial_number": serial_number,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                 },
                 aircraft_create_params.AircraftCreateParams,
@@ -255,13 +234,11 @@ class AircraftResource(SyncAPIResource):
         *,
         aircraft_mds: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         category: str | NotGiven = NOT_GIVEN,
         command: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
         entity: aircraft_update_params.Entity | NotGiven = NOT_GIVEN,
@@ -272,10 +249,8 @@ class AircraftResource(SyncAPIResource):
         nominal_ta_time: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         serial_number: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -320,11 +295,6 @@ class AircraftResource(SyncAPIResource):
 
           command: The Air Force major command (MAJCOM) overseeing the aircraft.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cruise_speed: The cruise speed of the aircraft, in kilometers/hour.
 
           dtd: Military data network data transfer device ID for this aircraft.
@@ -357,16 +327,9 @@ class AircraftResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           owner: The wing or unit that owns the aircraft.
 
           serial_number: Full serial number of the aircraft.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tail_number: The tail number of this aircraft.
 
@@ -392,8 +355,6 @@ class AircraftResource(SyncAPIResource):
                     "id_2": id_2,
                     "category": category,
                     "command": command,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cruise_speed": cruise_speed,
                     "dtd": dtd,
                     "entity": entity,
@@ -404,10 +365,8 @@ class AircraftResource(SyncAPIResource):
                     "nominal_ta_time": nominal_ta_time,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "serial_number": serial_number,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                 },
                 aircraft_update_params.AircraftUpdateParams,
@@ -515,7 +474,7 @@ class AircraftResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -564,13 +523,11 @@ class AsyncAircraftResource(AsyncAPIResource):
         *,
         aircraft_mds: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         category: str | NotGiven = NOT_GIVEN,
         command: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
         entity: aircraft_create_params.Entity | NotGiven = NOT_GIVEN,
@@ -581,10 +538,8 @@ class AsyncAircraftResource(AsyncAPIResource):
         nominal_ta_time: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         serial_number: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -629,11 +584,6 @@ class AsyncAircraftResource(AsyncAPIResource):
 
           command: The Air Force major command (MAJCOM) overseeing the aircraft.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cruise_speed: The cruise speed of the aircraft, in kilometers/hour.
 
           dtd: Military data network data transfer device ID for this aircraft.
@@ -666,16 +616,9 @@ class AsyncAircraftResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           owner: The wing or unit that owns the aircraft.
 
           serial_number: Full serial number of the aircraft.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tail_number: The tail number of this aircraft.
 
@@ -699,8 +642,6 @@ class AsyncAircraftResource(AsyncAPIResource):
                     "id": id,
                     "category": category,
                     "command": command,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cruise_speed": cruise_speed,
                     "dtd": dtd,
                     "entity": entity,
@@ -711,10 +652,8 @@ class AsyncAircraftResource(AsyncAPIResource):
                     "nominal_ta_time": nominal_ta_time,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "serial_number": serial_number,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                 },
                 aircraft_create_params.AircraftCreateParams,
@@ -765,13 +704,11 @@ class AsyncAircraftResource(AsyncAPIResource):
         *,
         aircraft_mds: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         category: str | NotGiven = NOT_GIVEN,
         command: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
         entity: aircraft_update_params.Entity | NotGiven = NOT_GIVEN,
@@ -782,10 +719,8 @@ class AsyncAircraftResource(AsyncAPIResource):
         nominal_ta_time: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         serial_number: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -830,11 +765,6 @@ class AsyncAircraftResource(AsyncAPIResource):
 
           command: The Air Force major command (MAJCOM) overseeing the aircraft.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cruise_speed: The cruise speed of the aircraft, in kilometers/hour.
 
           dtd: Military data network data transfer device ID for this aircraft.
@@ -867,16 +797,9 @@ class AsyncAircraftResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           owner: The wing or unit that owns the aircraft.
 
           serial_number: Full serial number of the aircraft.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tail_number: The tail number of this aircraft.
 
@@ -902,8 +825,6 @@ class AsyncAircraftResource(AsyncAPIResource):
                     "id_2": id_2,
                     "category": category,
                     "command": command,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cruise_speed": cruise_speed,
                     "dtd": dtd,
                     "entity": entity,
@@ -914,10 +835,8 @@ class AsyncAircraftResource(AsyncAPIResource):
                     "nominal_ta_time": nominal_ta_time,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "serial_number": serial_number,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                 },
                 aircraft_update_params.AircraftUpdateParams,
@@ -1025,7 +944,7 @@ class AsyncAircraftResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

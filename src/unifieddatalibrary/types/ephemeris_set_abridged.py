@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -17,7 +18,7 @@ class EphemerisSetAbridged(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -67,7 +68,7 @@ class EphemerisSetAbridged(BaseModel):
     comments: Optional[str] = None
     """Additional source provided comments associated with the ephemeris."""
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -169,7 +170,9 @@ class EphemerisSetAbridged(BaseModel):
     DOPPLER, GPS, HYBRID, PROPAGATED, RANGING, SLR).
     """
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.

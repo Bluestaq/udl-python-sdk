@@ -19,9 +19,9 @@ class TestCrewpapers:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         crewpaper = client.air_operations.crewpapers.create(
             aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="classificationMarking",
-            paper_status="paperStatus",
-            papers_version="papersVersion",
+            classification_marking="x",
+            paper_status="PUBLISHED",
+            papers_version="x",
             body=b"raw file contents",
         )
         assert crewpaper is None
@@ -30,9 +30,9 @@ class TestCrewpapers:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.air_operations.crewpapers.with_raw_response.create(
             aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="classificationMarking",
-            paper_status="paperStatus",
-            papers_version="papersVersion",
+            classification_marking="x",
+            paper_status="PUBLISHED",
+            papers_version="x",
             body=b"raw file contents",
         )
 
@@ -45,9 +45,9 @@ class TestCrewpapers:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.air_operations.crewpapers.with_streaming_response.create(
             aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="classificationMarking",
-            paper_status="paperStatus",
-            papers_version="papersVersion",
+            classification_marking="x",
+            paper_status="PUBLISHED",
+            papers_version="x",
             body=b"raw file contents",
         ) as response:
             assert not response.is_closed
@@ -97,9 +97,9 @@ class TestAsyncCrewpapers:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         crewpaper = await async_client.air_operations.crewpapers.create(
             aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="classificationMarking",
-            paper_status="paperStatus",
-            papers_version="papersVersion",
+            classification_marking="x",
+            paper_status="PUBLISHED",
+            papers_version="x",
             body=b"raw file contents",
         )
         assert crewpaper is None
@@ -108,9 +108,9 @@ class TestAsyncCrewpapers:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_operations.crewpapers.with_raw_response.create(
             aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="classificationMarking",
-            paper_status="paperStatus",
-            papers_version="papersVersion",
+            classification_marking="x",
+            paper_status="PUBLISHED",
+            papers_version="x",
             body=b"raw file contents",
         )
 
@@ -123,9 +123,9 @@ class TestAsyncCrewpapers:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_operations.crewpapers.with_streaming_response.create(
             aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="classificationMarking",
-            paper_status="paperStatus",
-            papers_version="papersVersion",
+            classification_marking="x",
+            paper_status="PUBLISHED",
+            papers_version="x",
             body=b"raw file contents",
         ) as response:
             assert not response.is_closed

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -63,7 +64,7 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         classification_marking: str,
         content: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         description: str,
         filename: str,
         filesize: int,
@@ -79,9 +80,6 @@ class AnalyticImageryResource(SyncAPIResource):
         asrid: int | NotGiven = NOT_GIVEN,
         atext: str | NotGiven = NOT_GIVEN,
         atype: str | NotGiven = NOT_GIVEN,
-        checksum_value: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         data_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         data_stop: Union[str, datetime] | NotGiven = NOT_GIVEN,
         image_set_id: str | NotGiven = NOT_GIVEN,
@@ -90,11 +88,9 @@ class AnalyticImageryResource(SyncAPIResource):
         img_width: int | NotGiven = NOT_GIVEN,
         keywords: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         sat_id: List[str] | NotGiven = NOT_GIVEN,
         sat_id_conf: Iterable[float] | NotGiven = NOT_GIVEN,
         sequence_id: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         src_ids: List[str] | NotGiven = NOT_GIVEN,
         src_typs: List[str] | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -178,14 +174,6 @@ class AnalyticImageryResource(SyncAPIResource):
 
           atype: Type of region as projected on the ground.
 
-          checksum_value: MD5 checksum value of the file. The ingest/create operation will automatically
-              generate the value.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           data_start: The start time, in ISO8601 UTC format with millisecond precision, of the data
               used in the analysis or composition of the image content, when applicable.
 
@@ -208,9 +196,6 @@ class AnalyticImageryResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           sat_id: Assessed satellite ID (NORAD RSO object number). The 'satId' and 'satIdConf'
               arrays must match in size.
 
@@ -219,10 +204,6 @@ class AnalyticImageryResource(SyncAPIResource):
 
           sequence_id: The sequence number of an image within an image set. If null, then it is assumed
               that the order of images in an imageSet is not relevant.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           src_ids: Array of UUIDs of the UDL data records that are related to this image. See the
               associated 'srcTyps' array for the specific types of data, positionally
@@ -285,9 +266,6 @@ class AnalyticImageryResource(SyncAPIResource):
                     "asrid": asrid,
                     "atext": atext,
                     "atype": atype,
-                    "checksum_value": checksum_value,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "data_start": data_start,
                     "data_stop": data_stop,
                     "image_set_id": image_set_id,
@@ -296,11 +274,9 @@ class AnalyticImageryResource(SyncAPIResource):
                     "img_width": img_width,
                     "keywords": keywords,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "sat_id": sat_id,
                     "sat_id_conf": sat_id_conf,
                     "sequence_id": sequence_id,
-                    "source_dl": source_dl,
                     "src_ids": src_ids,
                     "src_typs": src_typs,
                     "tags": tags,
@@ -652,7 +628,7 @@ class AnalyticImageryResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
@@ -710,7 +686,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         classification_marking: str,
         content: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         description: str,
         filename: str,
         filesize: int,
@@ -726,9 +702,6 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         asrid: int | NotGiven = NOT_GIVEN,
         atext: str | NotGiven = NOT_GIVEN,
         atype: str | NotGiven = NOT_GIVEN,
-        checksum_value: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         data_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         data_stop: Union[str, datetime] | NotGiven = NOT_GIVEN,
         image_set_id: str | NotGiven = NOT_GIVEN,
@@ -737,11 +710,9 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         img_width: int | NotGiven = NOT_GIVEN,
         keywords: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         sat_id: List[str] | NotGiven = NOT_GIVEN,
         sat_id_conf: Iterable[float] | NotGiven = NOT_GIVEN,
         sequence_id: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         src_ids: List[str] | NotGiven = NOT_GIVEN,
         src_typs: List[str] | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -825,14 +796,6 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
 
           atype: Type of region as projected on the ground.
 
-          checksum_value: MD5 checksum value of the file. The ingest/create operation will automatically
-              generate the value.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           data_start: The start time, in ISO8601 UTC format with millisecond precision, of the data
               used in the analysis or composition of the image content, when applicable.
 
@@ -855,9 +818,6 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           sat_id: Assessed satellite ID (NORAD RSO object number). The 'satId' and 'satIdConf'
               arrays must match in size.
 
@@ -866,10 +826,6 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
 
           sequence_id: The sequence number of an image within an image set. If null, then it is assumed
               that the order of images in an imageSet is not relevant.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           src_ids: Array of UUIDs of the UDL data records that are related to this image. See the
               associated 'srcTyps' array for the specific types of data, positionally
@@ -932,9 +888,6 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     "asrid": asrid,
                     "atext": atext,
                     "atype": atype,
-                    "checksum_value": checksum_value,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "data_start": data_start,
                     "data_stop": data_stop,
                     "image_set_id": image_set_id,
@@ -943,11 +896,9 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     "img_width": img_width,
                     "keywords": keywords,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "sat_id": sat_id,
                     "sat_id_conf": sat_id_conf,
                     "sequence_id": sequence_id,
-                    "source_dl": source_dl,
                     "src_ids": src_ids,
                     "src_typs": src_typs,
                     "tags": tags,
@@ -1303,7 +1254,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
