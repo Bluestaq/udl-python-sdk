@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -21,7 +21,7 @@ class AnalyticImageryCreateParams(TypedDict, total=False):
     PLOT, SCREENSHOT).
     """
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data."""
 
     description: Required[str]
@@ -102,21 +102,6 @@ class AnalyticImageryCreateParams(TypedDict, total=False):
     atype: str
     """Type of region as projected on the ground."""
 
-    checksum_value: Annotated[str, PropertyInfo(alias="checksumValue")]
-    """MD5 checksum value of the file.
-
-    The ingest/create operation will automatically generate the value.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     data_start: Annotated[Union[str, datetime], PropertyInfo(alias="dataStart", format="iso8601")]
     """
     The start time, in ISO8601 UTC format with millisecond precision, of the data
@@ -155,12 +140,6 @@ class AnalyticImageryCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     sat_id: Annotated[List[str], PropertyInfo(alias="satId")]
     """Assessed satellite ID (NORAD RSO object number).
 
@@ -179,13 +158,6 @@ class AnalyticImageryCreateParams(TypedDict, total=False):
 
     If null, then it is assumed that the order of images in an imageSet is not
     relevant.
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]

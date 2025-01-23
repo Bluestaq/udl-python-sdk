@@ -24,116 +24,111 @@ class TestAirTaskingOrders:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         air_tasking_order = client.air_tasking_orders.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
         )
         assert air_tasking_order is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_tasking_order = client.air_tasking_orders.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
-            id="id",
-            ack_req_ind="ackReqInd",
-            ack_unit_instructions="ackUnitInstructions",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
+            id="POI-ID",
+            ack_req_ind="YES",
+            ack_unit_instructions="INST:45TS",
             ac_msn_tasking=[
                 {
-                    "country_code": "countryCode",
-                    "tasked_service": "taskedService",
-                    "unit_designator": "unitDesignator",
+                    "country_code": "US",
+                    "tasked_service": "A",
+                    "unit_designator": "AMPHIB5DIV",
                     "ac_msn_loc_seg": [
                         {
-                            "start_time": "2019-12-27T18:11:19.117Z",
-                            "air_msn_pri": "airMsnPri",
-                            "alt": 0,
-                            "area_geo_rad": 0,
-                            "end_time": "2019-12-27T18:11:19.117Z",
-                            "msn_loc_name": "msnLocName",
-                            "msn_loc_pt_bar_t": "msnLocPtBarT",
-                            "msn_loc_pt_lat": 0,
-                            "msn_loc_pt_lon": 0,
-                            "msn_loc_pt_name": "msnLocPtName",
+                            "start_time": "2021-10-25T12:00:00.123Z",
+                            "air_msn_pri": "1A",
+                            "alt": 210,
+                            "area_geo_rad": 1000,
+                            "end_time": "2021-10-25T12:00:00.123Z",
+                            "msn_loc_name": "KLSV",
+                            "msn_loc_pt_bar_t": "330T-PT ALFA-50NM",
+                            "msn_loc_pt_lat": 35.123,
+                            "msn_loc_pt_lon": 79.01,
+                            "msn_loc_pt_name": "PT ALFA",
                         }
                     ],
-                    "alert_status": 0,
-                    "amc_msn_num": "amcMsnNum",
-                    "dep_loc_lat": 0,
-                    "dep_loc_lon": 0,
-                    "dep_loc_name": "depLocName",
-                    "dep_loc_utm": "depLocUTM",
-                    "dep_time": "2019-12-27T18:11:19.117Z",
+                    "alert_status": 30,
+                    "amc_msn_num": "AMC:JJXD123HA045",
+                    "dep_loc_lat": 35.123,
+                    "dep_loc_lon": 79.2354,
+                    "dep_loc_name": "ICAO:KBIF",
+                    "dep_loc_utm": "32WDL123123",
+                    "dep_time": "2021-10-25T12:00:00.123Z",
                     "ind_ac_tasking": [
                         {
-                            "acft_type": "acftType",
-                            "call_sign": "callSign",
-                            "iff_sif_mode1_code": "iffSifMode1Code",
-                            "iff_sif_mode2_code": "iffSifMode2Code",
-                            "iff_sif_mode3_code": "iffSifMode3Code",
-                            "ju_address": [0],
-                            "link16_call_sign": "link16CallSign",
-                            "num_acft": 0,
-                            "pri_config_code": "priConfigCode",
-                            "sec_config_code": "secConfigCode",
-                            "tacan_chan": 0,
+                            "acft_type": "F35A",
+                            "call_sign": "EAGLE47",
+                            "iff_sif_mode1_code": "111",
+                            "iff_sif_mode2_code": "20147",
+                            "iff_sif_mode3_code": "30147",
+                            "ju_address": [12345, 65432],
+                            "link16_call_sign": "EE47",
+                            "num_acft": 2,
+                            "pri_config_code": "6A2W3",
+                            "sec_config_code": "2S2WG",
+                            "tacan_chan": 123,
                         }
                     ],
-                    "msn_commander": "msnCommander",
-                    "msn_num": "msnNum",
-                    "pkg_id": "pkgId",
-                    "pri_msn_type": "priMsnType",
-                    "rcvy_loc_lat": [0],
-                    "rcvy_loc_lon": [0],
-                    "rcvy_loc_name": ["string"],
-                    "rcvy_loc_utm": ["string"],
-                    "rcvy_time": ["2019-12-27T18:11:19.117Z"],
-                    "res_msn_ind": "resMsnInd",
-                    "sec_msn_type": "secMsnType",
-                    "unit_loc_name": "unitLocName",
+                    "msn_commander": "MC",
+                    "msn_num": "D123HA",
+                    "pkg_id": "ZZ",
+                    "pri_msn_type": "CAS",
+                    "rcvy_loc_lat": [48.8584, 40.7554],
+                    "rcvy_loc_lon": [2.2945, -73.9866],
+                    "rcvy_loc_name": ["ARRLOC:KBIF", "ARRLOC:KDZ7"],
+                    "rcvy_loc_utm": ["ARRUTMO:32WDL123123", "ARRUTMO:32WDL321321"],
+                    "rcvy_time": ["2021-10-25T16:00:00.234Z", "2021-10-26T16:00:00.234Z"],
+                    "res_msn_ind": "N",
+                    "sec_msn_type": "SEAD",
+                    "unit_loc_name": "ICAO:KXXQ",
                 }
             ],
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            end_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            end_ts=parse_datetime("2023-10-27T12:00:00.123Z"),
             gen_text=[
                 {
-                    "text": "text",
-                    "text_ind": "textInd",
+                    "text": "FREE-TEXT",
+                    "text_ind": "OPENING REMARKS",
                 }
             ],
-            msg_month="msgMonth",
-            msg_originator="msgOriginator",
-            msg_qualifier="msgQualifier",
-            msg_sn="msgSN",
+            msg_month="OCT",
+            msg_originator="USCENTCOM",
+            msg_qualifier="CHG",
+            msg_sn="ATO A",
             naval_flt_ops=[
                 {
-                    "ship_name": "shipName",
-                    "flt_op_start": "2019-12-27T18:11:19.117Z",
-                    "flt_op_stop": "2019-12-27T18:11:19.117Z",
-                    "schd_launch_rcvy_time": ["2019-12-27T18:11:19.117Z"],
+                    "ship_name": "USS WASP",
+                    "flt_op_start": "2021-02-25T12:00:00.123Z",
+                    "flt_op_stop": "2021-02-25T12:00:00.123Z",
+                    "schd_launch_rcvy_time": ["2021-02-25T12:00:00.123Z"],
                 }
             ],
-            origin="origin",
-            orig_network="origNetwork",
-            raw_file_uri="rawFileURI",
-            source_dl="sourceDL",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert air_tasking_order is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.air_tasking_orders.with_raw_response.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -144,11 +139,11 @@ class TestAirTaskingOrders:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.air_tasking_orders.with_streaming_response.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -284,116 +279,111 @@ class TestAsyncAirTaskingOrders:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_tasking_order = await async_client.air_tasking_orders.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
         )
         assert air_tasking_order is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_tasking_order = await async_client.air_tasking_orders.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
-            id="id",
-            ack_req_ind="ackReqInd",
-            ack_unit_instructions="ackUnitInstructions",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
+            id="POI-ID",
+            ack_req_ind="YES",
+            ack_unit_instructions="INST:45TS",
             ac_msn_tasking=[
                 {
-                    "country_code": "countryCode",
-                    "tasked_service": "taskedService",
-                    "unit_designator": "unitDesignator",
+                    "country_code": "US",
+                    "tasked_service": "A",
+                    "unit_designator": "AMPHIB5DIV",
                     "ac_msn_loc_seg": [
                         {
-                            "start_time": "2019-12-27T18:11:19.117Z",
-                            "air_msn_pri": "airMsnPri",
-                            "alt": 0,
-                            "area_geo_rad": 0,
-                            "end_time": "2019-12-27T18:11:19.117Z",
-                            "msn_loc_name": "msnLocName",
-                            "msn_loc_pt_bar_t": "msnLocPtBarT",
-                            "msn_loc_pt_lat": 0,
-                            "msn_loc_pt_lon": 0,
-                            "msn_loc_pt_name": "msnLocPtName",
+                            "start_time": "2021-10-25T12:00:00.123Z",
+                            "air_msn_pri": "1A",
+                            "alt": 210,
+                            "area_geo_rad": 1000,
+                            "end_time": "2021-10-25T12:00:00.123Z",
+                            "msn_loc_name": "KLSV",
+                            "msn_loc_pt_bar_t": "330T-PT ALFA-50NM",
+                            "msn_loc_pt_lat": 35.123,
+                            "msn_loc_pt_lon": 79.01,
+                            "msn_loc_pt_name": "PT ALFA",
                         }
                     ],
-                    "alert_status": 0,
-                    "amc_msn_num": "amcMsnNum",
-                    "dep_loc_lat": 0,
-                    "dep_loc_lon": 0,
-                    "dep_loc_name": "depLocName",
-                    "dep_loc_utm": "depLocUTM",
-                    "dep_time": "2019-12-27T18:11:19.117Z",
+                    "alert_status": 30,
+                    "amc_msn_num": "AMC:JJXD123HA045",
+                    "dep_loc_lat": 35.123,
+                    "dep_loc_lon": 79.2354,
+                    "dep_loc_name": "ICAO:KBIF",
+                    "dep_loc_utm": "32WDL123123",
+                    "dep_time": "2021-10-25T12:00:00.123Z",
                     "ind_ac_tasking": [
                         {
-                            "acft_type": "acftType",
-                            "call_sign": "callSign",
-                            "iff_sif_mode1_code": "iffSifMode1Code",
-                            "iff_sif_mode2_code": "iffSifMode2Code",
-                            "iff_sif_mode3_code": "iffSifMode3Code",
-                            "ju_address": [0],
-                            "link16_call_sign": "link16CallSign",
-                            "num_acft": 0,
-                            "pri_config_code": "priConfigCode",
-                            "sec_config_code": "secConfigCode",
-                            "tacan_chan": 0,
+                            "acft_type": "F35A",
+                            "call_sign": "EAGLE47",
+                            "iff_sif_mode1_code": "111",
+                            "iff_sif_mode2_code": "20147",
+                            "iff_sif_mode3_code": "30147",
+                            "ju_address": [12345, 65432],
+                            "link16_call_sign": "EE47",
+                            "num_acft": 2,
+                            "pri_config_code": "6A2W3",
+                            "sec_config_code": "2S2WG",
+                            "tacan_chan": 123,
                         }
                     ],
-                    "msn_commander": "msnCommander",
-                    "msn_num": "msnNum",
-                    "pkg_id": "pkgId",
-                    "pri_msn_type": "priMsnType",
-                    "rcvy_loc_lat": [0],
-                    "rcvy_loc_lon": [0],
-                    "rcvy_loc_name": ["string"],
-                    "rcvy_loc_utm": ["string"],
-                    "rcvy_time": ["2019-12-27T18:11:19.117Z"],
-                    "res_msn_ind": "resMsnInd",
-                    "sec_msn_type": "secMsnType",
-                    "unit_loc_name": "unitLocName",
+                    "msn_commander": "MC",
+                    "msn_num": "D123HA",
+                    "pkg_id": "ZZ",
+                    "pri_msn_type": "CAS",
+                    "rcvy_loc_lat": [48.8584, 40.7554],
+                    "rcvy_loc_lon": [2.2945, -73.9866],
+                    "rcvy_loc_name": ["ARRLOC:KBIF", "ARRLOC:KDZ7"],
+                    "rcvy_loc_utm": ["ARRUTMO:32WDL123123", "ARRUTMO:32WDL321321"],
+                    "rcvy_time": ["2021-10-25T16:00:00.234Z", "2021-10-26T16:00:00.234Z"],
+                    "res_msn_ind": "N",
+                    "sec_msn_type": "SEAD",
+                    "unit_loc_name": "ICAO:KXXQ",
                 }
             ],
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            end_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            end_ts=parse_datetime("2023-10-27T12:00:00.123Z"),
             gen_text=[
                 {
-                    "text": "text",
-                    "text_ind": "textInd",
+                    "text": "FREE-TEXT",
+                    "text_ind": "OPENING REMARKS",
                 }
             ],
-            msg_month="msgMonth",
-            msg_originator="msgOriginator",
-            msg_qualifier="msgQualifier",
-            msg_sn="msgSN",
+            msg_month="OCT",
+            msg_originator="USCENTCOM",
+            msg_qualifier="CHG",
+            msg_sn="ATO A",
             naval_flt_ops=[
                 {
-                    "ship_name": "shipName",
-                    "flt_op_start": "2019-12-27T18:11:19.117Z",
-                    "flt_op_stop": "2019-12-27T18:11:19.117Z",
-                    "schd_launch_rcvy_time": ["2019-12-27T18:11:19.117Z"],
+                    "ship_name": "USS WASP",
+                    "flt_op_start": "2021-02-25T12:00:00.123Z",
+                    "flt_op_stop": "2021-02-25T12:00:00.123Z",
+                    "schd_launch_rcvy_time": ["2021-02-25T12:00:00.123Z"],
                 }
             ],
-            origin="origin",
-            orig_network="origNetwork",
-            raw_file_uri="rawFileURI",
-            source_dl="sourceDL",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert air_tasking_order is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_tasking_orders.with_raw_response.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -404,11 +394,11 @@ class TestAsyncAirTaskingOrders:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_tasking_orders.with_streaming_response.create(
-            begin_ts=parse_datetime("2019-12-27T18:11:19.117Z"),
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            op_exer_name="opExerName",
-            source="source",
+            begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            op_exer_name="DESERT WIND",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

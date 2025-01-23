@@ -1,14 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
 from ..._models import BaseModel
+from ..shared.onorbit import Onorbit
 
 __all__ = ["EoObservationFull", "EoobservationDetails"]
 
@@ -127,7 +126,7 @@ class EoobservationDetails(BaseModel):
     the corresponding spectralFilterNames.
     """
 
-    data_mode: Optional[str] = FieldInfo(alias="dataMode", default=None)
+    data_mode: Optional[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"]] = FieldInfo(alias="dataMode", default=None)
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -379,7 +378,7 @@ class EoobservationDetails(BaseModel):
     solar_disk_frac: Optional[float] = FieldInfo(alias="solarDiskFrac", default=None)
     """Fraction of the sun that is illuminating the target object.
 
-    This indicates if the target is in the Earth�s penumbra or umbra. (It is 0 when
+    This indicates if the target is in the Earth’s penumbra or umbra. (It is 0 when
     object is in umbra and 1 when object is fully illuminated.).
     """
 
@@ -481,7 +480,7 @@ class EoObservationFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -674,7 +673,7 @@ class EoObservationFull(BaseModel):
     whether other observations may or may not exist to compose a track.
     """
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -765,7 +764,9 @@ class EoObservationFull(BaseModel):
     https://udl-hostname/scs/download?id= to this value.
     """
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "GCRF", "ITRF", "TEME"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the EOObservation measurements.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -799,7 +800,9 @@ class EoObservationFull(BaseModel):
     component first, followed by the three vector components (qc, q1, q2, q3).
     """
 
-    sen_reference_frame: Optional[str] = FieldInfo(alias="senReferenceFrame", default=None)
+    sen_reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="senReferenceFrame", default=None
+    )
     """The reference frame of the observing sensor state.
 
     If the senReferenceFrame is null it is assumed to be J2000.
@@ -936,13 +939,3 @@ class EoObservationFull(BaseModel):
     This is the uncertainty in the zero point for the filter used for this
     observation/row in units of mag. For use with differential photometry.
     """
-
-
-from ..shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    EoObservationFull.model_rebuild()
-    EoobservationDetails.model_rebuild()
-else:
-    EoObservationFull.update_forward_refs()  # type: ignore
-    EoobservationDetails.update_forward_refs()  # type: ignore

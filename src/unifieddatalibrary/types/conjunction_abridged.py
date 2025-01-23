@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class StateVector1(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -110,7 +111,7 @@ class StateVector1(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -342,7 +343,9 @@ class StateVector1(BaseModel):
     rec_od_span: Optional[float] = FieldInfo(alias="recODSpan", default=None)
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -614,7 +617,7 @@ class StateVector2(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -710,7 +713,7 @@ class StateVector2(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -942,7 +945,9 @@ class StateVector2(BaseModel):
     rec_od_span: Optional[float] = FieldInfo(alias="recODSpan", default=None)
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -1214,7 +1219,7 @@ class ConjunctionAbridged(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data

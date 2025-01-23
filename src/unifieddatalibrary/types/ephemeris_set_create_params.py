@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -18,7 +18,7 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -68,17 +68,11 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     comments: str
     """Additional source provided comments associated with the ephemeris."""
 
-    cov_reference_frame: Annotated[str, PropertyInfo(alias="covReferenceFrame")]
+    cov_reference_frame: Annotated[Literal["J2000", "UVW"], PropertyInfo(alias="covReferenceFrame")]
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
     """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, in UTC."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """Application user who created the row in the database."""
 
     description: str
     """Notes/description of the provided ephemeris.
@@ -158,12 +152,6 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
     """
     Optional identifier provided by ephemeris source to indicate the target object
@@ -177,7 +165,9 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     DOPPLER, GPS, HYBRID, PROPAGATED, RANGING, SLR).
     """
 
-    reference_frame: Annotated[str, PropertyInfo(alias="referenceFrame")]
+    reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="referenceFrame")
+    ]
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -224,7 +214,7 @@ class EphemerisList(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -315,15 +305,6 @@ class EphemerisList(TypedDict, total=False):
     position only covariance, or length 21 for position-velocity covariance. The cov
     array should contain only the lower left triangle values from top left down to
     bottom right, in order.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     es_id: Annotated[str, PropertyInfo(alias="esId")]

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +15,7 @@ class AttitudeSetCreateFiledropParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -97,15 +97,6 @@ class AttitudeSetCreateFiledropParams(TypedDict, total=False):
     attitude_list: Annotated[Iterable[AttitudeList], PropertyInfo(alias="attitudeList")]
     """Collection of attitude data associated with this Attitude Set."""
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     es_id: Annotated[str, PropertyInfo(alias="esId")]
     """
     Unique identifier of the parent (positional) Ephemeris Set, if this data is
@@ -129,9 +120,6 @@ class AttitudeSetCreateFiledropParams(TypedDict, total=False):
     be expressed as '312'.
     """
 
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """Unique identifier of the on-orbit satellite to which this attitude set applies."""
-
     id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
     """
     Unique identifier of the sensor to which this attitude set applies IF this set
@@ -153,12 +141,6 @@ class AttitudeSetCreateFiledropParams(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
@@ -199,7 +181,7 @@ class AttitudeList(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -234,23 +216,8 @@ class AttitudeList(TypedDict, total=False):
     coning_angle: Annotated[float, PropertyInfo(alias="coningAngle")]
     """Coning angle in degrees."""
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     declination: float
     """Precession axis declination (ECI J2000 frame) in degrees."""
-
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """
-    Unique identifier of the on-orbit satellite to which this attitude record
-    applies.
-    """
 
     motion_type: Annotated[str, PropertyInfo(alias="motionType")]
     """Label specifying type of rotational motion of target."""
@@ -261,12 +228,6 @@ class AttitudeList(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]

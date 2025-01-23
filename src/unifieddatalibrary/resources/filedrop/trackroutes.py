@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -50,7 +51,7 @@ class TrackroutesResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         last_update_date: Union[str, datetime],
         source: str,
         type: str,
@@ -59,8 +60,6 @@ class TrackroutesResource(SyncAPIResource):
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         creating_org: str | NotGiven = NOT_GIVEN,
         direction: str | NotGiven = NOT_GIVEN,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -68,7 +67,6 @@ class TrackroutesResource(SyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         poc: Iterable[trackroute_create_params.Poc] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
@@ -81,12 +79,9 @@ class TrackroutesResource(SyncAPIResource):
         sec_freq: float | NotGiven = NOT_GIVEN,
         short_name: str | NotGiven = NOT_GIVEN,
         sic: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
         track_name: str | NotGiven = NOT_GIVEN,
         type_code: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -136,11 +131,6 @@ class TrackroutesResource(SyncAPIResource):
 
           artcc_message: Air Refueling Track Control Center message.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           creating_org: The name of the creating organization of the track route.
 
           direction: The principal compass direction (cardinal or ordinal) of the track route.
@@ -161,9 +151,6 @@ class TrackroutesResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           poc: Point of contacts for scheduling or modifying the route.
 
@@ -190,10 +177,6 @@ class TrackroutesResource(SyncAPIResource):
 
           sic: Standard Indicator Code of the air refueling track.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           track_id: Identifier of the track.
 
           track_name: Name of the track.
@@ -205,11 +188,6 @@ class TrackroutesResource(SyncAPIResource):
               (Unmatched AMC Short Notice), X (Unmatched Theater Operation Short Notice (AMC
               Assets)), Y (Matched Theater Operation Short Notice (AMC Assets)), Z (Other Air
               Refueling).
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -234,8 +212,6 @@ class TrackroutesResource(SyncAPIResource):
                     "apn_setting": apn_setting,
                     "apx_beacon_code": apx_beacon_code,
                     "artcc_message": artcc_message,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "creating_org": creating_org,
                     "direction": direction,
                     "effective_date": effective_date,
@@ -243,7 +219,6 @@ class TrackroutesResource(SyncAPIResource):
                     "last_used_date": last_used_date,
                     "location_track_id": location_track_id,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "poc": poc,
                     "pri_freq": pri_freq,
                     "receiver_tanker_ch_code": receiver_tanker_ch_code,
@@ -256,12 +231,9 @@ class TrackroutesResource(SyncAPIResource):
                     "sec_freq": sec_freq,
                     "short_name": short_name,
                     "sic": sic,
-                    "source_dl": source_dl,
                     "track_id": track_id,
                     "track_name": track_name,
                     "type_code": type_code,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 trackroute_create_params.TrackrouteCreateParams,
             ),
@@ -296,7 +268,7 @@ class AsyncTrackroutesResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         last_update_date: Union[str, datetime],
         source: str,
         type: str,
@@ -305,8 +277,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         creating_org: str | NotGiven = NOT_GIVEN,
         direction: str | NotGiven = NOT_GIVEN,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -314,7 +284,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         poc: Iterable[trackroute_create_params.Poc] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
@@ -327,12 +296,9 @@ class AsyncTrackroutesResource(AsyncAPIResource):
         sec_freq: float | NotGiven = NOT_GIVEN,
         short_name: str | NotGiven = NOT_GIVEN,
         sic: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
         track_name: str | NotGiven = NOT_GIVEN,
         type_code: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,11 +348,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
 
           artcc_message: Air Refueling Track Control Center message.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           creating_org: The name of the creating organization of the track route.
 
           direction: The principal compass direction (cardinal or ordinal) of the track route.
@@ -407,9 +368,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           poc: Point of contacts for scheduling or modifying the route.
 
@@ -436,10 +394,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
 
           sic: Standard Indicator Code of the air refueling track.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           track_id: Identifier of the track.
 
           track_name: Name of the track.
@@ -451,11 +405,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
               (Unmatched AMC Short Notice), X (Unmatched Theater Operation Short Notice (AMC
               Assets)), Y (Matched Theater Operation Short Notice (AMC Assets)), Z (Other Air
               Refueling).
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -480,8 +429,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
                     "apn_setting": apn_setting,
                     "apx_beacon_code": apx_beacon_code,
                     "artcc_message": artcc_message,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "creating_org": creating_org,
                     "direction": direction,
                     "effective_date": effective_date,
@@ -489,7 +436,6 @@ class AsyncTrackroutesResource(AsyncAPIResource):
                     "last_used_date": last_used_date,
                     "location_track_id": location_track_id,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "poc": poc,
                     "pri_freq": pri_freq,
                     "receiver_tanker_ch_code": receiver_tanker_ch_code,
@@ -502,12 +448,9 @@ class AsyncTrackroutesResource(AsyncAPIResource):
                     "sec_freq": sec_freq,
                     "short_name": short_name,
                     "sic": sic,
-                    "source_dl": source_dl,
                     "track_id": track_id,
                     "track_name": track_name,
                     "type_code": type_code,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 trackroute_create_params.TrackrouteCreateParams,
             ),

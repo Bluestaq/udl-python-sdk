@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -57,7 +58,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_ex_name: str,
         originator: str,
         source: str,
@@ -72,8 +73,6 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         area_of_validity: str | NotGiven = NOT_GIVEN,
         class_reasons: List[str] | NotGiven = NOT_GIVEN,
         class_source: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         declass_exemption_codes: List[str] | NotGiven = NOT_GIVEN,
         downgrade_ins_dates: List[str] | NotGiven = NOT_GIVEN,
         geo_datum: str | NotGiven = NOT_GIVEN,
@@ -81,13 +80,10 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         op_ex_info: str | NotGiven = NOT_GIVEN,
         op_ex_info_alt: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         plan_orig_num: str | NotGiven = NOT_GIVEN,
         qualifier: str | NotGiven = NOT_GIVEN,
         qual_sn: int | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
         serial_num: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         stop_qualifier: str | NotGiven = NOT_GIVEN,
         stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         und_lnk_trks: List[str] | NotGiven = NOT_GIVEN,
@@ -122,10 +118,10 @@ class AirspaceControlOrdersResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          op_ex_name: Specifies the unique operation or exercise name, nickname, or codeword assigned
-              to a joint exercise or operation plan.
+          op_ex_name: Specifies the code name or nickname assigned to a joint exercise or plan to
+              designate message traffic.
 
-          originator: The identifier of the originator of this message.
+          originator: The originator of this reference.
 
           source: Source of the data.
 
@@ -152,16 +148,11 @@ class AirspaceControlOrdersResource(SyncAPIResource):
           class_source: Markings defining the source material or the original classification authority
               for the ACO message.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           declass_exemption_codes: Coded entries that provide justification for exemption from automatic
               downgrading or declassification of the airspace control order.
 
           downgrade_ins_dates: Markings providing the literal guidance or date for downgrading or declassifying
-              the airspace control order.
+              the airspace control order. Manditory if declassExemptionCode is nul.
 
           geo_datum: Specifies the geodetic datum by which the spatial coordinates of the controlled
               airspace are calculated.
@@ -180,9 +171,6 @@ class AirspaceControlOrdersResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           plan_orig_num: The official identifier of the military establishment responsible for the
               operation plan and the identification number assigned to this plan.
 
@@ -190,15 +178,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
 
           qual_sn: The serial number associated with the message qualifier.
 
-          raw_file_uri: Optional URI location in the document repository of the raw file parsed by the
-              system to produce this record. To download the raw file, prepend
-              https://udl-hostname/scs/download?id= to this value.
-
           serial_num: The unique message identifier sequentially assigned by the originator.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           stop_qualifier: A qualifier for the end of the effective time period of this airspace control
               order, such as AFTER, ASOF, NLT, etc. Used with field stopTime to indicate a
@@ -237,8 +217,6 @@ class AirspaceControlOrdersResource(SyncAPIResource):
                     "area_of_validity": area_of_validity,
                     "class_reasons": class_reasons,
                     "class_source": class_source,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "declass_exemption_codes": declass_exemption_codes,
                     "downgrade_ins_dates": downgrade_ins_dates,
                     "geo_datum": geo_datum,
@@ -246,13 +224,10 @@ class AirspaceControlOrdersResource(SyncAPIResource):
                     "op_ex_info": op_ex_info,
                     "op_ex_info_alt": op_ex_info_alt,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "plan_orig_num": plan_orig_num,
                     "qualifier": qualifier,
                     "qual_sn": qual_sn,
-                    "raw_file_uri": raw_file_uri,
                     "serial_num": serial_num,
-                    "source_dl": source_dl,
                     "stop_qualifier": stop_qualifier,
                     "stop_time": stop_time,
                     "und_lnk_trks": und_lnk_trks,
@@ -433,7 +408,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -483,7 +458,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_ex_name: str,
         originator: str,
         source: str,
@@ -498,8 +473,6 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         area_of_validity: str | NotGiven = NOT_GIVEN,
         class_reasons: List[str] | NotGiven = NOT_GIVEN,
         class_source: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         declass_exemption_codes: List[str] | NotGiven = NOT_GIVEN,
         downgrade_ins_dates: List[str] | NotGiven = NOT_GIVEN,
         geo_datum: str | NotGiven = NOT_GIVEN,
@@ -507,13 +480,10 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         op_ex_info: str | NotGiven = NOT_GIVEN,
         op_ex_info_alt: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         plan_orig_num: str | NotGiven = NOT_GIVEN,
         qualifier: str | NotGiven = NOT_GIVEN,
         qual_sn: int | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
         serial_num: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         stop_qualifier: str | NotGiven = NOT_GIVEN,
         stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         und_lnk_trks: List[str] | NotGiven = NOT_GIVEN,
@@ -548,10 +518,10 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          op_ex_name: Specifies the unique operation or exercise name, nickname, or codeword assigned
-              to a joint exercise or operation plan.
+          op_ex_name: Specifies the code name or nickname assigned to a joint exercise or plan to
+              designate message traffic.
 
-          originator: The identifier of the originator of this message.
+          originator: The originator of this reference.
 
           source: Source of the data.
 
@@ -578,16 +548,11 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
           class_source: Markings defining the source material or the original classification authority
               for the ACO message.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           declass_exemption_codes: Coded entries that provide justification for exemption from automatic
               downgrading or declassification of the airspace control order.
 
           downgrade_ins_dates: Markings providing the literal guidance or date for downgrading or declassifying
-              the airspace control order.
+              the airspace control order. Manditory if declassExemptionCode is nul.
 
           geo_datum: Specifies the geodetic datum by which the spatial coordinates of the controlled
               airspace are calculated.
@@ -606,9 +571,6 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           plan_orig_num: The official identifier of the military establishment responsible for the
               operation plan and the identification number assigned to this plan.
 
@@ -616,15 +578,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
 
           qual_sn: The serial number associated with the message qualifier.
 
-          raw_file_uri: Optional URI location in the document repository of the raw file parsed by the
-              system to produce this record. To download the raw file, prepend
-              https://udl-hostname/scs/download?id= to this value.
-
           serial_num: The unique message identifier sequentially assigned by the originator.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           stop_qualifier: A qualifier for the end of the effective time period of this airspace control
               order, such as AFTER, ASOF, NLT, etc. Used with field stopTime to indicate a
@@ -663,8 +617,6 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
                     "area_of_validity": area_of_validity,
                     "class_reasons": class_reasons,
                     "class_source": class_source,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "declass_exemption_codes": declass_exemption_codes,
                     "downgrade_ins_dates": downgrade_ins_dates,
                     "geo_datum": geo_datum,
@@ -672,13 +624,10 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
                     "op_ex_info": op_ex_info,
                     "op_ex_info_alt": op_ex_info_alt,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "plan_orig_num": plan_orig_num,
                     "qualifier": qualifier,
                     "qual_sn": qual_sn,
-                    "raw_file_uri": raw_file_uri,
                     "serial_num": serial_num,
-                    "source_dl": source_dl,
                     "stop_qualifier": stop_qualifier,
                     "stop_time": stop_time,
                     "und_lnk_trks": und_lnk_trks,
@@ -859,7 +808,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

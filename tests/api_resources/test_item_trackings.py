@@ -21,12 +21,12 @@ class TestItemTrackings:
         item_tracking = client.item_trackings.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "scanner_id": "scannerId",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
                 }
             ],
         )
@@ -37,12 +37,12 @@ class TestItemTrackings:
         response = client.item_trackings.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "scanner_id": "scannerId",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
                 }
             ],
         )
@@ -57,12 +57,12 @@ class TestItemTrackings:
         with client.item_trackings.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "scanner_id": "scannerId",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
                 }
             ],
         ) as response:
@@ -83,12 +83,12 @@ class TestAsyncItemTrackings:
         item_tracking = await async_client.item_trackings.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "scanner_id": "scannerId",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
                 }
             ],
         )
@@ -99,12 +99,12 @@ class TestAsyncItemTrackings:
         response = await async_client.item_trackings.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "scanner_id": "scannerId",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
                 }
             ],
         )
@@ -119,12 +119,12 @@ class TestAsyncItemTrackings:
         async with async_client.item_trackings.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "scan_code": "scanCode",
-                    "scanner_id": "scannerId",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
                 }
             ],
         ) as response:

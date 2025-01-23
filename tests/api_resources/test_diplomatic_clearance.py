@@ -25,81 +25,75 @@ class TestDiplomaticClearance:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
         assert diplomatic_clearance is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
-            id="id",
-            apacs_id="apacsId",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
+            id="25059135-4afc-45c2-b78b-d6e843dbd96d",
+            apacs_id="1083034",
             diplomatic_clearance_details=[
                 {
-                    "action": "action",
-                    "alt_country_code": "altCountryCode",
-                    "clearance_id": "clearanceId",
-                    "clearance_remark": "clearanceRemark",
-                    "cleared_call_sign": "clearedCallSign",
-                    "country_code": "countryCode",
-                    "country_name": "countryName",
-                    "entry_net": "2019-12-27T18:11:19.117Z",
-                    "entry_point": "entryPoint",
-                    "exit_nlt": "2019-12-27T18:11:19.117Z",
-                    "exit_point": "exitPoint",
-                    "external_clearance_id": "externalClearanceId",
-                    "id_sortie": "idSortie",
-                    "leg_num": 0,
-                    "profile": "profile",
+                    "action": "O",
+                    "alt_country_code": "IZ",
+                    "clearance_id": "MFMW225662GHQ",
+                    "clearance_remark": "Clearance remarks",
+                    "cleared_call_sign": "FALCN09",
+                    "country_code": "NL",
+                    "country_name": "NETHERLANDS",
+                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_point": "LOMOS",
+                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_point": "BUDOP",
+                    "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
+                    "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
+                    "leg_num": 825,
+                    "profile": "T LAND/OFLY IATA COMPLIANT CARGO 23",
                     "req_icao": True,
                     "req_point": True,
-                    "route_string": "routeString",
-                    "sequence_num": 0,
-                    "status": "status",
-                    "valid_desc": "validDesc",
-                    "valid_end_time": "2019-12-27T18:11:19.117Z",
-                    "valid_start_time": "2019-12-27T18:11:19.117Z",
-                    "window_remark": "windowRemark",
+                    "route_string": "DCT DOH P430 BAYAN/M062F150 P430 RAMKI",
+                    "sequence_num": 3,
+                    "status": "IN WORK",
+                    "valid_desc": "CY2023",
+                    "valid_end_time": "2024-01-01T01:01:01.123Z",
+                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "window_remark": "Period remarks",
                 }
             ],
             diplomatic_clearance_remarks=[
                 {
-                    "date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "gdss_remark_id": "gdssRemarkId",
-                    "text": "text",
-                    "user": "user",
+                    "date": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "gdss_remark_id": "GDSSREMARK-ID",
+                    "text": "Example mission remarks.",
+                    "user": "John Doe",
                 }
             ],
-            dip_worksheet_name="dipWorksheetName",
-            doc_deadline=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_worksheet_id="externalWorksheetId",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            updated_by="updatedBy",
+            dip_worksheet_name="G2-939911-AC",
+            doc_deadline=parse_datetime("2024-01-01T01:01:01.123Z"),
+            external_worksheet_id="990ae849089e3d6cad69655324176bb6",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert diplomatic_clearance is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.diplomatic_clearance.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -110,11 +104,11 @@ class TestDiplomaticClearance:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.diplomatic_clearance.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -166,11 +160,11 @@ class TestDiplomaticClearance:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
         assert diplomatic_clearance is None
 
@@ -178,59 +172,53 @@ class TestDiplomaticClearance:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
-            id_2="id",
-            apacs_id="apacsId",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
+            id_2="25059135-4afc-45c2-b78b-d6e843dbd96d",
+            apacs_id="1083034",
             diplomatic_clearance_details=[
                 {
-                    "action": "action",
-                    "alt_country_code": "altCountryCode",
-                    "clearance_id": "clearanceId",
-                    "clearance_remark": "clearanceRemark",
-                    "cleared_call_sign": "clearedCallSign",
-                    "country_code": "countryCode",
-                    "country_name": "countryName",
-                    "entry_net": "2019-12-27T18:11:19.117Z",
-                    "entry_point": "entryPoint",
-                    "exit_nlt": "2019-12-27T18:11:19.117Z",
-                    "exit_point": "exitPoint",
-                    "external_clearance_id": "externalClearanceId",
-                    "id_sortie": "idSortie",
-                    "leg_num": 0,
-                    "profile": "profile",
+                    "action": "O",
+                    "alt_country_code": "IZ",
+                    "clearance_id": "MFMW225662GHQ",
+                    "clearance_remark": "Clearance remarks",
+                    "cleared_call_sign": "FALCN09",
+                    "country_code": "NL",
+                    "country_name": "NETHERLANDS",
+                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_point": "LOMOS",
+                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_point": "BUDOP",
+                    "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
+                    "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
+                    "leg_num": 825,
+                    "profile": "T LAND/OFLY IATA COMPLIANT CARGO 23",
                     "req_icao": True,
                     "req_point": True,
-                    "route_string": "routeString",
-                    "sequence_num": 0,
-                    "status": "status",
-                    "valid_desc": "validDesc",
-                    "valid_end_time": "2019-12-27T18:11:19.117Z",
-                    "valid_start_time": "2019-12-27T18:11:19.117Z",
-                    "window_remark": "windowRemark",
+                    "route_string": "DCT DOH P430 BAYAN/M062F150 P430 RAMKI",
+                    "sequence_num": 3,
+                    "status": "IN WORK",
+                    "valid_desc": "CY2023",
+                    "valid_end_time": "2024-01-01T01:01:01.123Z",
+                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "window_remark": "Period remarks",
                 }
             ],
             diplomatic_clearance_remarks=[
                 {
-                    "date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "gdss_remark_id": "gdssRemarkId",
-                    "text": "text",
-                    "user": "user",
+                    "date": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "gdss_remark_id": "GDSSREMARK-ID",
+                    "text": "Example mission remarks.",
+                    "user": "John Doe",
                 }
             ],
-            dip_worksheet_name="dipWorksheetName",
-            doc_deadline=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_worksheet_id="externalWorksheetId",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            updated_by="updatedBy",
+            dip_worksheet_name="G2-939911-AC",
+            doc_deadline=parse_datetime("2024-01-01T01:01:01.123Z"),
+            external_worksheet_id="990ae849089e3d6cad69655324176bb6",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert diplomatic_clearance is None
 
@@ -238,11 +226,11 @@ class TestDiplomaticClearance:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.diplomatic_clearance.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -254,11 +242,11 @@ class TestDiplomaticClearance:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.diplomatic_clearance.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -273,11 +261,11 @@ class TestDiplomaticClearance:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.diplomatic_clearance.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                id_mission="idMission",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+                id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -386,11 +374,11 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.diplomatic_clearance.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -401,11 +389,11 @@ class TestDiplomaticClearance:
         response = client.diplomatic_clearance.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -420,11 +408,11 @@ class TestDiplomaticClearance:
         with client.diplomatic_clearance.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -502,81 +490,75 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
         assert diplomatic_clearance is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
-            id="id",
-            apacs_id="apacsId",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
+            id="25059135-4afc-45c2-b78b-d6e843dbd96d",
+            apacs_id="1083034",
             diplomatic_clearance_details=[
                 {
-                    "action": "action",
-                    "alt_country_code": "altCountryCode",
-                    "clearance_id": "clearanceId",
-                    "clearance_remark": "clearanceRemark",
-                    "cleared_call_sign": "clearedCallSign",
-                    "country_code": "countryCode",
-                    "country_name": "countryName",
-                    "entry_net": "2019-12-27T18:11:19.117Z",
-                    "entry_point": "entryPoint",
-                    "exit_nlt": "2019-12-27T18:11:19.117Z",
-                    "exit_point": "exitPoint",
-                    "external_clearance_id": "externalClearanceId",
-                    "id_sortie": "idSortie",
-                    "leg_num": 0,
-                    "profile": "profile",
+                    "action": "O",
+                    "alt_country_code": "IZ",
+                    "clearance_id": "MFMW225662GHQ",
+                    "clearance_remark": "Clearance remarks",
+                    "cleared_call_sign": "FALCN09",
+                    "country_code": "NL",
+                    "country_name": "NETHERLANDS",
+                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_point": "LOMOS",
+                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_point": "BUDOP",
+                    "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
+                    "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
+                    "leg_num": 825,
+                    "profile": "T LAND/OFLY IATA COMPLIANT CARGO 23",
                     "req_icao": True,
                     "req_point": True,
-                    "route_string": "routeString",
-                    "sequence_num": 0,
-                    "status": "status",
-                    "valid_desc": "validDesc",
-                    "valid_end_time": "2019-12-27T18:11:19.117Z",
-                    "valid_start_time": "2019-12-27T18:11:19.117Z",
-                    "window_remark": "windowRemark",
+                    "route_string": "DCT DOH P430 BAYAN/M062F150 P430 RAMKI",
+                    "sequence_num": 3,
+                    "status": "IN WORK",
+                    "valid_desc": "CY2023",
+                    "valid_end_time": "2024-01-01T01:01:01.123Z",
+                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "window_remark": "Period remarks",
                 }
             ],
             diplomatic_clearance_remarks=[
                 {
-                    "date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "gdss_remark_id": "gdssRemarkId",
-                    "text": "text",
-                    "user": "user",
+                    "date": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "gdss_remark_id": "GDSSREMARK-ID",
+                    "text": "Example mission remarks.",
+                    "user": "John Doe",
                 }
             ],
-            dip_worksheet_name="dipWorksheetName",
-            doc_deadline=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_worksheet_id="externalWorksheetId",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            updated_by="updatedBy",
+            dip_worksheet_name="G2-939911-AC",
+            doc_deadline=parse_datetime("2024-01-01T01:01:01.123Z"),
+            external_worksheet_id="990ae849089e3d6cad69655324176bb6",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert diplomatic_clearance is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.diplomatic_clearance.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -587,11 +569,11 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.diplomatic_clearance.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -643,11 +625,11 @@ class TestAsyncDiplomaticClearance:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
         assert diplomatic_clearance is None
 
@@ -655,59 +637,53 @@ class TestAsyncDiplomaticClearance:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
-            id_2="id",
-            apacs_id="apacsId",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
+            id_2="25059135-4afc-45c2-b78b-d6e843dbd96d",
+            apacs_id="1083034",
             diplomatic_clearance_details=[
                 {
-                    "action": "action",
-                    "alt_country_code": "altCountryCode",
-                    "clearance_id": "clearanceId",
-                    "clearance_remark": "clearanceRemark",
-                    "cleared_call_sign": "clearedCallSign",
-                    "country_code": "countryCode",
-                    "country_name": "countryName",
-                    "entry_net": "2019-12-27T18:11:19.117Z",
-                    "entry_point": "entryPoint",
-                    "exit_nlt": "2019-12-27T18:11:19.117Z",
-                    "exit_point": "exitPoint",
-                    "external_clearance_id": "externalClearanceId",
-                    "id_sortie": "idSortie",
-                    "leg_num": 0,
-                    "profile": "profile",
+                    "action": "O",
+                    "alt_country_code": "IZ",
+                    "clearance_id": "MFMW225662GHQ",
+                    "clearance_remark": "Clearance remarks",
+                    "cleared_call_sign": "FALCN09",
+                    "country_code": "NL",
+                    "country_name": "NETHERLANDS",
+                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_point": "LOMOS",
+                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_point": "BUDOP",
+                    "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
+                    "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
+                    "leg_num": 825,
+                    "profile": "T LAND/OFLY IATA COMPLIANT CARGO 23",
                     "req_icao": True,
                     "req_point": True,
-                    "route_string": "routeString",
-                    "sequence_num": 0,
-                    "status": "status",
-                    "valid_desc": "validDesc",
-                    "valid_end_time": "2019-12-27T18:11:19.117Z",
-                    "valid_start_time": "2019-12-27T18:11:19.117Z",
-                    "window_remark": "windowRemark",
+                    "route_string": "DCT DOH P430 BAYAN/M062F150 P430 RAMKI",
+                    "sequence_num": 3,
+                    "status": "IN WORK",
+                    "valid_desc": "CY2023",
+                    "valid_end_time": "2024-01-01T01:01:01.123Z",
+                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "window_remark": "Period remarks",
                 }
             ],
             diplomatic_clearance_remarks=[
                 {
-                    "date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "gdss_remark_id": "gdssRemarkId",
-                    "text": "text",
-                    "user": "user",
+                    "date": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "gdss_remark_id": "GDSSREMARK-ID",
+                    "text": "Example mission remarks.",
+                    "user": "John Doe",
                 }
             ],
-            dip_worksheet_name="dipWorksheetName",
-            doc_deadline=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_worksheet_id="externalWorksheetId",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            updated_by="updatedBy",
+            dip_worksheet_name="G2-939911-AC",
+            doc_deadline=parse_datetime("2024-01-01T01:01:01.123Z"),
+            external_worksheet_id="990ae849089e3d6cad69655324176bb6",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert diplomatic_clearance is None
 
@@ -715,11 +691,11 @@ class TestAsyncDiplomaticClearance:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.diplomatic_clearance.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -731,11 +707,11 @@ class TestAsyncDiplomaticClearance:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.diplomatic_clearance.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id_mission="idMission",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+            id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -750,11 +726,11 @@ class TestAsyncDiplomaticClearance:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.diplomatic_clearance.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                id_mission="idMission",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
+                id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -863,11 +839,11 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.diplomatic_clearance.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -878,11 +854,11 @@ class TestAsyncDiplomaticClearance:
         response = await async_client.diplomatic_clearance.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -897,11 +873,11 @@ class TestAsyncDiplomaticClearance:
         async with async_client.diplomatic_clearance.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

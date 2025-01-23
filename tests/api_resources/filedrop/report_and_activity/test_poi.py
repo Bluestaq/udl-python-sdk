@@ -21,12 +21,12 @@ class TestPoi:
         poi = client.filedrop.report_and_activity.poi.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "poiid": "poiid",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -37,12 +37,12 @@ class TestPoi:
         response = client.filedrop.report_and_activity.poi.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "poiid": "poiid",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -57,12 +57,12 @@ class TestPoi:
         with client.filedrop.report_and_activity.poi.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "poiid": "poiid",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
                 }
             ],
         ) as response:
@@ -83,12 +83,12 @@ class TestAsyncPoi:
         poi = await async_client.filedrop.report_and_activity.poi.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "poiid": "poiid",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -99,12 +99,12 @@ class TestAsyncPoi:
         response = await async_client.filedrop.report_and_activity.poi.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "poiid": "poiid",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -119,12 +119,12 @@ class TestAsyncPoi:
         async with async_client.filedrop.report_and_activity.poi.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "poiid": "poiid",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
                 }
             ],
         ) as response:

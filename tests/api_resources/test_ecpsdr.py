@@ -20,11 +20,11 @@ class TestEcpsdr:
         ecpsdr = client.ecpsdr.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -35,11 +35,11 @@ class TestEcpsdr:
         response = client.ecpsdr.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -54,11 +54,11 @@ class TestEcpsdr:
         with client.ecpsdr.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         ) as response:
@@ -79,11 +79,11 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.ecpsdr.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -94,11 +94,11 @@ class TestAsyncEcpsdr:
         response = await async_client.ecpsdr.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         )
@@ -113,11 +113,11 @@ class TestAsyncEcpsdr:
         async with async_client.ecpsdr.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2018-01-01T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "STANDARD",
                 }
             ],
         ) as response:

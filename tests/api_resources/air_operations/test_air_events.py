@@ -20,10 +20,10 @@ class TestAirEvents:
         air_event = client.air_operations.air_events.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "FUEL TRANSFER",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestAirEvents:
         response = client.air_operations.air_events.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "FUEL TRANSFER",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestAirEvents:
         with client.air_operations.air_events.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "FUEL TRANSFER",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncAirEvents:
         air_event = await async_client.air_operations.air_events.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "FUEL TRANSFER",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncAirEvents:
         response = await async_client.air_operations.air_events.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "FUEL TRANSFER",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncAirEvents:
         async with async_client.air_operations.air_events.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "FUEL TRANSFER",
                 }
             ],
         ) as response:

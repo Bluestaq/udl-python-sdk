@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
-from datetime import datetime
+from typing import Iterable
+from typing_extensions import Literal
 
 import httpx
 
@@ -60,14 +60,12 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_beam: str,
         source: str,
-        type: str,
+        type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
         id: str | NotGiven = NOT_GIVEN,
         contour_idx: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         geography: str | NotGiven = NOT_GIVEN,
         geography_json: str | NotGiven = NOT_GIVEN,
@@ -76,7 +74,6 @@ class BeamContoursResource(SyncAPIResource):
         geography_text: str | NotGiven = NOT_GIVEN,
         geography_type: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -124,12 +121,6 @@ class BeamContoursResource(SyncAPIResource):
 
           contour_idx: The index number of this contour. The value is required if type = CONTOUR.
 
-          created_at: Time the row was created in the database, auto-populated by the system, example
-              = 2018-01-01T16:00:00.123Z.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           gain: The relative gain level in dB associated with this boresight or contour. Gain
               does not apply to service area records. The value is required if type =
               BORESIGHT or CONTOUR.
@@ -165,9 +156,6 @@ class BeamContoursResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           region_name: The region name within the service area.
 
           extra_headers: Send extra headers
@@ -190,8 +178,6 @@ class BeamContoursResource(SyncAPIResource):
                     "type": type,
                     "id": id,
                     "contour_idx": contour_idx,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "gain": gain,
                     "geography": geography,
                     "geography_json": geography_json,
@@ -200,7 +186,6 @@ class BeamContoursResource(SyncAPIResource):
                     "geography_text": geography_text,
                     "geography_type": geography_type,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "region_name": region_name,
                 },
                 beam_contour_create_params.BeamContourCreateParams,
@@ -250,14 +235,12 @@ class BeamContoursResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_beam: str,
         source: str,
-        type: str,
+        type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
         id_2: str | NotGiven = NOT_GIVEN,
         contour_idx: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         geography: str | NotGiven = NOT_GIVEN,
         geography_json: str | NotGiven = NOT_GIVEN,
@@ -266,7 +249,6 @@ class BeamContoursResource(SyncAPIResource):
         geography_text: str | NotGiven = NOT_GIVEN,
         geography_type: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -314,12 +296,6 @@ class BeamContoursResource(SyncAPIResource):
 
           contour_idx: The index number of this contour. The value is required if type = CONTOUR.
 
-          created_at: Time the row was created in the database, auto-populated by the system, example
-              = 2018-01-01T16:00:00.123Z.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           gain: The relative gain level in dB associated with this boresight or contour. Gain
               does not apply to service area records. The value is required if type =
               BORESIGHT or CONTOUR.
@@ -355,9 +331,6 @@ class BeamContoursResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           region_name: The region name within the service area.
 
           extra_headers: Send extra headers
@@ -382,8 +355,6 @@ class BeamContoursResource(SyncAPIResource):
                     "type": type,
                     "id_2": id_2,
                     "contour_idx": contour_idx,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "gain": gain,
                     "geography": geography,
                     "geography_json": geography_json,
@@ -392,7 +363,6 @@ class BeamContoursResource(SyncAPIResource):
                     "geography_text": geography_text,
                     "geography_type": geography_type,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "region_name": region_name,
                 },
                 beam_contour_update_params.BeamContourUpdateParams,
@@ -606,7 +576,7 @@ class BeamContoursResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           id_beam: ID of the beam.
@@ -662,14 +632,12 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_beam: str,
         source: str,
-        type: str,
+        type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
         id: str | NotGiven = NOT_GIVEN,
         contour_idx: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         geography: str | NotGiven = NOT_GIVEN,
         geography_json: str | NotGiven = NOT_GIVEN,
@@ -678,7 +646,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         geography_text: str | NotGiven = NOT_GIVEN,
         geography_type: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -726,12 +693,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
 
           contour_idx: The index number of this contour. The value is required if type = CONTOUR.
 
-          created_at: Time the row was created in the database, auto-populated by the system, example
-              = 2018-01-01T16:00:00.123Z.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           gain: The relative gain level in dB associated with this boresight or contour. Gain
               does not apply to service area records. The value is required if type =
               BORESIGHT or CONTOUR.
@@ -767,9 +728,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           region_name: The region name within the service area.
 
           extra_headers: Send extra headers
@@ -792,8 +750,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                     "type": type,
                     "id": id,
                     "contour_idx": contour_idx,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "gain": gain,
                     "geography": geography,
                     "geography_json": geography_json,
@@ -802,7 +758,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                     "geography_text": geography_text,
                     "geography_type": geography_type,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "region_name": region_name,
                 },
                 beam_contour_create_params.BeamContourCreateParams,
@@ -852,14 +807,12 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_beam: str,
         source: str,
-        type: str,
+        type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
         id_2: str | NotGiven = NOT_GIVEN,
         contour_idx: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         gain: float | NotGiven = NOT_GIVEN,
         geography: str | NotGiven = NOT_GIVEN,
         geography_json: str | NotGiven = NOT_GIVEN,
@@ -868,7 +821,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         geography_text: str | NotGiven = NOT_GIVEN,
         geography_type: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -916,12 +868,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
 
           contour_idx: The index number of this contour. The value is required if type = CONTOUR.
 
-          created_at: Time the row was created in the database, auto-populated by the system, example
-              = 2018-01-01T16:00:00.123Z.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           gain: The relative gain level in dB associated with this boresight or contour. Gain
               does not apply to service area records. The value is required if type =
               BORESIGHT or CONTOUR.
@@ -957,9 +903,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           region_name: The region name within the service area.
 
           extra_headers: Send extra headers
@@ -984,8 +927,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                     "type": type,
                     "id_2": id_2,
                     "contour_idx": contour_idx,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "gain": gain,
                     "geography": geography,
                     "geography_json": geography_json,
@@ -994,7 +935,6 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                     "geography_text": geography_text,
                     "geography_type": geography_type,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "region_name": region_name,
                 },
                 beam_contour_update_params.BeamContourUpdateParams,
@@ -1210,7 +1150,7 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           id_beam: ID of the beam.

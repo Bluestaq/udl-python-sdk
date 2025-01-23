@@ -20,11 +20,11 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.air_operations.diplomatic_clearance.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -35,11 +35,11 @@ class TestDiplomaticClearance:
         response = client.air_operations.diplomatic_clearance.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -54,11 +54,11 @@ class TestDiplomaticClearance:
         with client.air_operations.diplomatic_clearance.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -79,11 +79,11 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.air_operations.diplomatic_clearance.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -94,11 +94,11 @@ class TestAsyncDiplomaticClearance:
         response = await async_client.air_operations.diplomatic_clearance.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -113,11 +113,11 @@ class TestAsyncDiplomaticClearance:
         async with async_client.air_operations.diplomatic_clearance.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "first_dep_date": "2019-12-27T18:11:19.117Z",
-                    "id_mission": "idMission",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

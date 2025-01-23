@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,7 +54,7 @@ class CrewResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         orig_crew_id: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -63,8 +64,6 @@ class CrewResource(SyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
         arr_icao: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         crew_home: bool | NotGiven = NOT_GIVEN,
         crew_members: Iterable[crew_create_params.CrewMember] | NotGiven = NOT_GIVEN,
         crew_name: str | NotGiven = NOT_GIVEN,
@@ -88,14 +87,11 @@ class CrewResource(SyncAPIResource):
         male_officer_qty: int | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         post_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,18 +136,13 @@ class CrewResource(SyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
 
           arr_icao: Arrival location for the itinerary point. Intended to be an ICAO, but an air
               refueling track short name or drop zone ID can be used.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           crew_home: Flag indicating whether this crew task takes the crew home and out of the stage.
 
@@ -189,10 +180,10 @@ class CrewResource(SyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -208,27 +199,19 @@ class CrewResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           post_rest_applied: Flag indicating whether post-mission crew rest is applied to the last sortie of
               a crew's task.
 
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
 
           status: Crew status (e.g. NEEDCREW, ASSIGNED, APPROVED, NOTIFIED, PARTIAL, UNKNOWN,
               etc.).
-
-          updated_at: Time the row was created in the database, auto-populated by the system.
-
-          updated_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -254,8 +237,6 @@ class CrewResource(SyncAPIResource):
                     "alerted_time": alerted_time,
                     "arms_crew_unit": arms_crew_unit,
                     "arr_icao": arr_icao,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "crew_home": crew_home,
                     "crew_members": crew_members,
                     "crew_name": crew_name,
@@ -279,14 +260,11 @@ class CrewResource(SyncAPIResource):
                     "male_officer_qty": male_officer_qty,
                     "mission_id": mission_id,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "post_rest_applied": post_rest_applied,
                     "pre_rest_applied": pre_rest_applied,
                     "return_time": return_time,
                     "stage_time": stage_time,
                     "status": status,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 crew_create_params.CrewCreateParams,
             ),
@@ -335,7 +313,7 @@ class CrewResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         orig_crew_id: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -345,8 +323,6 @@ class CrewResource(SyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
         arr_icao: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         crew_home: bool | NotGiven = NOT_GIVEN,
         crew_members: Iterable[crew_update_params.CrewMember] | NotGiven = NOT_GIVEN,
         crew_name: str | NotGiven = NOT_GIVEN,
@@ -370,14 +346,11 @@ class CrewResource(SyncAPIResource):
         male_officer_qty: int | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         post_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -422,18 +395,13 @@ class CrewResource(SyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
 
           arr_icao: Arrival location for the itinerary point. Intended to be an ICAO, but an air
               refueling track short name or drop zone ID can be used.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           crew_home: Flag indicating whether this crew task takes the crew home and out of the stage.
 
@@ -471,10 +439,10 @@ class CrewResource(SyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -490,27 +458,19 @@ class CrewResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           post_rest_applied: Flag indicating whether post-mission crew rest is applied to the last sortie of
               a crew's task.
 
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
 
           status: Crew status (e.g. NEEDCREW, ASSIGNED, APPROVED, NOTIFIED, PARTIAL, UNKNOWN,
               etc.).
-
-          updated_at: Time the row was created in the database, auto-populated by the system.
-
-          updated_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -538,8 +498,6 @@ class CrewResource(SyncAPIResource):
                     "alerted_time": alerted_time,
                     "arms_crew_unit": arms_crew_unit,
                     "arr_icao": arr_icao,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "crew_home": crew_home,
                     "crew_members": crew_members,
                     "crew_name": crew_name,
@@ -563,14 +521,11 @@ class CrewResource(SyncAPIResource):
                     "male_officer_qty": male_officer_qty,
                     "mission_id": mission_id,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "post_rest_applied": post_rest_applied,
                     "pre_rest_applied": pre_rest_applied,
                     "return_time": return_time,
                     "stage_time": stage_time,
                     "status": status,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 crew_update_params.CrewUpdateParams,
             ),
@@ -677,7 +632,7 @@ class CrewResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -725,7 +680,7 @@ class AsyncCrewResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         orig_crew_id: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -735,8 +690,6 @@ class AsyncCrewResource(AsyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
         arr_icao: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         crew_home: bool | NotGiven = NOT_GIVEN,
         crew_members: Iterable[crew_create_params.CrewMember] | NotGiven = NOT_GIVEN,
         crew_name: str | NotGiven = NOT_GIVEN,
@@ -760,14 +713,11 @@ class AsyncCrewResource(AsyncAPIResource):
         male_officer_qty: int | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         post_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -812,18 +762,13 @@ class AsyncCrewResource(AsyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
 
           arr_icao: Arrival location for the itinerary point. Intended to be an ICAO, but an air
               refueling track short name or drop zone ID can be used.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           crew_home: Flag indicating whether this crew task takes the crew home and out of the stage.
 
@@ -861,10 +806,10 @@ class AsyncCrewResource(AsyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -880,27 +825,19 @@ class AsyncCrewResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           post_rest_applied: Flag indicating whether post-mission crew rest is applied to the last sortie of
               a crew's task.
 
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
 
           status: Crew status (e.g. NEEDCREW, ASSIGNED, APPROVED, NOTIFIED, PARTIAL, UNKNOWN,
               etc.).
-
-          updated_at: Time the row was created in the database, auto-populated by the system.
-
-          updated_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -926,8 +863,6 @@ class AsyncCrewResource(AsyncAPIResource):
                     "alerted_time": alerted_time,
                     "arms_crew_unit": arms_crew_unit,
                     "arr_icao": arr_icao,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "crew_home": crew_home,
                     "crew_members": crew_members,
                     "crew_name": crew_name,
@@ -951,14 +886,11 @@ class AsyncCrewResource(AsyncAPIResource):
                     "male_officer_qty": male_officer_qty,
                     "mission_id": mission_id,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "post_rest_applied": post_rest_applied,
                     "pre_rest_applied": pre_rest_applied,
                     "return_time": return_time,
                     "stage_time": stage_time,
                     "status": status,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 crew_create_params.CrewCreateParams,
             ),
@@ -1007,7 +939,7 @@ class AsyncCrewResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         orig_crew_id: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -1017,8 +949,6 @@ class AsyncCrewResource(AsyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
         arr_icao: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         crew_home: bool | NotGiven = NOT_GIVEN,
         crew_members: Iterable[crew_update_params.CrewMember] | NotGiven = NOT_GIVEN,
         crew_name: str | NotGiven = NOT_GIVEN,
@@ -1042,14 +972,11 @@ class AsyncCrewResource(AsyncAPIResource):
         male_officer_qty: int | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         post_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1094,18 +1021,13 @@ class AsyncCrewResource(AsyncAPIResource):
 
           aircraft_mds: The aircraft Model Design Series designation assigned for this crew.
 
-          alerted_time: Time the crew was alerted, in ISO8601 UTC format, with millisecond precision.
+          alerted_time: Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision.
 
           arms_crew_unit: The crew's Aviation Resource Management System (ARMS) unit. If multiple units
               exist, use the Aircraft Commander's Unit.
 
           arr_icao: Arrival location for the itinerary point. Intended to be an ICAO, but an air
               refueling track short name or drop zone ID can be used.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           crew_home: Flag indicating whether this crew task takes the crew home and out of the stage.
 
@@ -1143,10 +1065,10 @@ class AsyncCrewResource(AsyncAPIResource):
 
           init_start_time: Initial start time of the linked task that was delinked due to mission closure.
 
-          legal_alert_time: Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
+          legal_alert_time: Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
               precision.
 
-          legal_bravo_time: Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
+          legal_bravo_time: Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
               precision.
 
           linked_task: Flag indicating whether this crew is part of a linked flying task.
@@ -1162,27 +1084,19 @@ class AsyncCrewResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           post_rest_applied: Flag indicating whether post-mission crew rest is applied to the last sortie of
               a crew's task.
 
           pre_rest_applied: Flag indicating whether pre-mission crew rest is applied to the first sortie of
               a crew's task.
 
-          return_time: Scheduled return time, in ISO8601 UTC format, with millisecond precision.
+          return_time: Scheduled return time, in ISO 8601 UTC format, with millisecond precision.
 
           stage_time: Time the crew entered the stage in ISO 8601 UTC format with millisecond
               precision.
 
           status: Crew status (e.g. NEEDCREW, ASSIGNED, APPROVED, NOTIFIED, PARTIAL, UNKNOWN,
               etc.).
-
-          updated_at: Time the row was created in the database, auto-populated by the system.
-
-          updated_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -1210,8 +1124,6 @@ class AsyncCrewResource(AsyncAPIResource):
                     "alerted_time": alerted_time,
                     "arms_crew_unit": arms_crew_unit,
                     "arr_icao": arr_icao,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "crew_home": crew_home,
                     "crew_members": crew_members,
                     "crew_name": crew_name,
@@ -1235,14 +1147,11 @@ class AsyncCrewResource(AsyncAPIResource):
                     "male_officer_qty": male_officer_qty,
                     "mission_id": mission_id,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "post_rest_applied": post_rest_applied,
                     "pre_rest_applied": pre_rest_applied,
                     "return_time": return_time,
                     "stage_time": stage_time,
                     "status": status,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 crew_update_params.CrewUpdateParams,
             ),
@@ -1349,7 +1258,7 @@ class AsyncCrewResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

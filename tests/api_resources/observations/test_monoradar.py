@@ -21,13 +21,13 @@ class TestMonoradar:
         monoradar = client.observations.monoradar.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msgfmt": "msgfmt",
-                    "msgts": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "msgtyp": "msgtyp",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msgfmt": "CAT48",
+                    "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "msgtyp": "BCN",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -38,13 +38,13 @@ class TestMonoradar:
         response = client.observations.monoradar.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msgfmt": "msgfmt",
-                    "msgts": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "msgtyp": "msgtyp",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msgfmt": "CAT48",
+                    "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "msgtyp": "BCN",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -59,13 +59,13 @@ class TestMonoradar:
         with client.observations.monoradar.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msgfmt": "msgfmt",
-                    "msgts": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "msgtyp": "msgtyp",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msgfmt": "CAT48",
+                    "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "msgtyp": "BCN",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         ) as response:
@@ -86,13 +86,13 @@ class TestAsyncMonoradar:
         monoradar = await async_client.observations.monoradar.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msgfmt": "msgfmt",
-                    "msgts": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "msgtyp": "msgtyp",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msgfmt": "CAT48",
+                    "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "msgtyp": "BCN",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -103,13 +103,13 @@ class TestAsyncMonoradar:
         response = await async_client.observations.monoradar.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msgfmt": "msgfmt",
-                    "msgts": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "msgtyp": "msgtyp",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msgfmt": "CAT48",
+                    "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "msgtyp": "BCN",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         )
@@ -124,13 +124,13 @@ class TestAsyncMonoradar:
         async with async_client.observations.monoradar.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msgfmt": "msgfmt",
-                    "msgts": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "msgtyp": "msgtyp",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msgfmt": "CAT48",
+                    "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "msgtyp": "BCN",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
             ],
         ) as response:

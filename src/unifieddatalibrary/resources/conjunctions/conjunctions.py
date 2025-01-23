@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -227,7 +228,7 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         tca: Union[str, datetime],
         convert_pos_vel: bool | NotGiven = NOT_GIVEN,
@@ -241,16 +242,12 @@ class ConjunctionsResource(SyncAPIResource):
         concern_notes: str | NotGiven = NOT_GIVEN,
         cr_ao_m1: float | NotGiven = NOT_GIVEN,
         cr_ao_m2: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         ephem_name1: str | NotGiven = NOT_GIVEN,
         ephem_name2: str | NotGiven = NOT_GIVEN,
         es_id1: str | NotGiven = NOT_GIVEN,
         es_id2: str | NotGiven = NOT_GIVEN,
         event_id: str | NotGiven = NOT_GIVEN,
-        id_on_orbit1: str | NotGiven = NOT_GIVEN,
-        id_on_orbit2: str | NotGiven = NOT_GIVEN,
         id_state_vector1: str | NotGiven = NOT_GIVEN,
         id_state_vector2: str | NotGiven = NOT_GIVEN,
         large_cov_warning: bool | NotGiven = NOT_GIVEN,
@@ -264,7 +261,6 @@ class ConjunctionsResource(SyncAPIResource):
         orig_id_on_orbit2: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         originator: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner_contacted: bool | NotGiven = NOT_GIVEN,
         penetration_level_sigma: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
@@ -367,10 +363,6 @@ class ConjunctionsResource(SyncAPIResource):
               the primary state vector and covariance to TCA. This parameter is sometimes
               referred to as AGOM.
 
-          created_at: Time the row was created in the database.
-
-          created_by: Application user who created the row in the database.
-
           descriptor: Optional source-provided and searchable metadata or descriptor of the data.
 
           ephem_name1: The filename of the primary (object1) ephemeris used in the screening, if
@@ -388,10 +380,6 @@ class ConjunctionsResource(SyncAPIResource):
           event_id: Optional source-provided identifier for this conjunction event. In the case
               where multiple conjunction records are submitted for the same event, this field
               can be used to tie them together to the same event.
-
-          id_on_orbit1: Unique identifier of the primary satellite on-orbit object, if correlated.
-
-          id_on_orbit2: Unique identifier of the secondary satellite on-orbit object, if correlated.
 
           id_state_vector1: Optional ID of the UDL State Vector at TCA of the primary object. When
               performing a create, this id will be ignored in favor of the UDL generated id of
@@ -428,9 +416,6 @@ class ConjunctionsResource(SyncAPIResource):
 
           originator: Creating agency or owner/operator (may be different than provider who submitted
               the conjunction message).
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner_contacted: Flag indicating if owner was contacted.
 
@@ -554,16 +539,12 @@ class ConjunctionsResource(SyncAPIResource):
                     "concern_notes": concern_notes,
                     "cr_ao_m1": cr_ao_m1,
                     "cr_ao_m2": cr_ao_m2,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "descriptor": descriptor,
                     "ephem_name1": ephem_name1,
                     "ephem_name2": ephem_name2,
                     "es_id1": es_id1,
                     "es_id2": es_id2,
                     "event_id": event_id,
-                    "id_on_orbit1": id_on_orbit1,
-                    "id_on_orbit2": id_on_orbit2,
                     "id_state_vector1": id_state_vector1,
                     "id_state_vector2": id_state_vector2,
                     "large_cov_warning": large_cov_warning,
@@ -577,7 +558,6 @@ class ConjunctionsResource(SyncAPIResource):
                     "orig_id_on_orbit2": orig_id_on_orbit2,
                     "origin": origin,
                     "originator": originator,
-                    "orig_network": orig_network,
                     "owner_contacted": owner_contacted,
                     "penetration_level_sigma": penetration_level_sigma,
                     "raw_file_uri": raw_file_uri,
@@ -762,7 +742,7 @@ class ConjunctionsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           tca: Time of closest approach (TCA) in UTC. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
@@ -975,7 +955,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         tca: Union[str, datetime],
         convert_pos_vel: bool | NotGiven = NOT_GIVEN,
@@ -989,16 +969,12 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         concern_notes: str | NotGiven = NOT_GIVEN,
         cr_ao_m1: float | NotGiven = NOT_GIVEN,
         cr_ao_m2: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         ephem_name1: str | NotGiven = NOT_GIVEN,
         ephem_name2: str | NotGiven = NOT_GIVEN,
         es_id1: str | NotGiven = NOT_GIVEN,
         es_id2: str | NotGiven = NOT_GIVEN,
         event_id: str | NotGiven = NOT_GIVEN,
-        id_on_orbit1: str | NotGiven = NOT_GIVEN,
-        id_on_orbit2: str | NotGiven = NOT_GIVEN,
         id_state_vector1: str | NotGiven = NOT_GIVEN,
         id_state_vector2: str | NotGiven = NOT_GIVEN,
         large_cov_warning: bool | NotGiven = NOT_GIVEN,
@@ -1012,7 +988,6 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         orig_id_on_orbit2: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         originator: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner_contacted: bool | NotGiven = NOT_GIVEN,
         penetration_level_sigma: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
@@ -1115,10 +1090,6 @@ class AsyncConjunctionsResource(AsyncAPIResource):
               the primary state vector and covariance to TCA. This parameter is sometimes
               referred to as AGOM.
 
-          created_at: Time the row was created in the database.
-
-          created_by: Application user who created the row in the database.
-
           descriptor: Optional source-provided and searchable metadata or descriptor of the data.
 
           ephem_name1: The filename of the primary (object1) ephemeris used in the screening, if
@@ -1136,10 +1107,6 @@ class AsyncConjunctionsResource(AsyncAPIResource):
           event_id: Optional source-provided identifier for this conjunction event. In the case
               where multiple conjunction records are submitted for the same event, this field
               can be used to tie them together to the same event.
-
-          id_on_orbit1: Unique identifier of the primary satellite on-orbit object, if correlated.
-
-          id_on_orbit2: Unique identifier of the secondary satellite on-orbit object, if correlated.
 
           id_state_vector1: Optional ID of the UDL State Vector at TCA of the primary object. When
               performing a create, this id will be ignored in favor of the UDL generated id of
@@ -1176,9 +1143,6 @@ class AsyncConjunctionsResource(AsyncAPIResource):
 
           originator: Creating agency or owner/operator (may be different than provider who submitted
               the conjunction message).
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner_contacted: Flag indicating if owner was contacted.
 
@@ -1302,16 +1266,12 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     "concern_notes": concern_notes,
                     "cr_ao_m1": cr_ao_m1,
                     "cr_ao_m2": cr_ao_m2,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "descriptor": descriptor,
                     "ephem_name1": ephem_name1,
                     "ephem_name2": ephem_name2,
                     "es_id1": es_id1,
                     "es_id2": es_id2,
                     "event_id": event_id,
-                    "id_on_orbit1": id_on_orbit1,
-                    "id_on_orbit2": id_on_orbit2,
                     "id_state_vector1": id_state_vector1,
                     "id_state_vector2": id_state_vector2,
                     "large_cov_warning": large_cov_warning,
@@ -1325,7 +1285,6 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     "orig_id_on_orbit2": orig_id_on_orbit2,
                     "origin": origin,
                     "originator": originator,
-                    "orig_network": orig_network,
                     "owner_contacted": owner_contacted,
                     "penetration_level_sigma": penetration_level_sigma,
                     "raw_file_uri": raw_file_uri,
@@ -1510,7 +1469,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           tca: Time of closest approach (TCA) in UTC. (YYYY-MM-DDTHH:MM:SS.ssssssZ)

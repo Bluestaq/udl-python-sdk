@@ -25,44 +25,40 @@ class TestAircraftStatusRemarks:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         aircraft_status_remark = client.aircraft_status_remarks.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
         )
         assert aircraft_status_remark is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_status_remark = client.aircraft_status_remarks.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
-            id="id",
-            alt_rmk_id="altRmkId",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            last_updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            last_updated_by="lastUpdatedBy",
-            name="name",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
+            id="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            alt_rmk_id="GDSSBL022307131714250077",
+            last_updated_at=parse_datetime("2024-01-01T16:00:00.123Z"),
+            last_updated_by="JOHN SMITH",
+            name="DISCREPANCY - 202297501",
+            origin="THIRD_PARTY_DATASOURCE",
+            timestamp=parse_datetime("2024-01-01T15:00:00.123Z"),
         )
         assert aircraft_status_remark is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft_status_remarks.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
         )
 
         assert response.is_closed is True
@@ -73,11 +69,11 @@ class TestAircraftStatusRemarks:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.aircraft_status_remarks.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -238,44 +234,40 @@ class TestAsyncAircraftStatusRemarks:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status_remark = await async_client.aircraft_status_remarks.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
         )
         assert aircraft_status_remark is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status_remark = await async_client.aircraft_status_remarks.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
-            id="id",
-            alt_rmk_id="altRmkId",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            last_updated_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            last_updated_by="lastUpdatedBy",
-            name="name",
-            origin="origin",
-            orig_network="origNetwork",
-            source_dl="sourceDL",
-            timestamp=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
+            id="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            alt_rmk_id="GDSSBL022307131714250077",
+            last_updated_at=parse_datetime("2024-01-01T16:00:00.123Z"),
+            last_updated_by="JOHN SMITH",
+            name="DISCREPANCY - 202297501",
+            origin="THIRD_PARTY_DATASOURCE",
+            timestamp=parse_datetime("2024-01-01T15:00:00.123Z"),
         )
         assert aircraft_status_remark is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraft_status_remarks.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
         )
 
         assert response.is_closed is True
@@ -286,11 +278,11 @@ class TestAsyncAircraftStatusRemarks:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraft_status_remarks.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_aircraft_status="idAircraftStatus",
-            source="source",
-            text="text",
+            classification_marking="U",
+            data_mode="REAL",
+            id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
+            source="Bluestaq",
+            text="Remark text",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

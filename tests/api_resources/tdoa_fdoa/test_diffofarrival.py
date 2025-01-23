@@ -23,69 +23,64 @@ class TestDiffofarrival:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         diffofarrival = client.tdoa_fdoa.diffofarrival.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
         )
         assert diffofarrival is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         diffofarrival = client.tdoa_fdoa.diffofarrival.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            id="id",
-            bandwidth=0,
-            collection_mode="collectionMode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            delta_range=0,
-            delta_range_rate=0,
-            delta_range_rate_unc=0,
-            delta_range_unc=0,
-            descriptor="descriptor",
-            fdoa=0,
-            fdoa_unc=0,
-            frequency=0,
-            id_on_orbit="idOnOrbit",
-            id_sensor1="idSensor1",
-            id_sensor2="idSensor2",
-            origin="origin",
-            orig_network="origNetwork",
-            orig_object_id="origObjectId",
-            orig_sensor_id1="origSensorId1",
-            orig_sensor_id2="origSensorId2",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
+            id="DIFFOFARRIVAL-ID",
+            bandwidth=1.1,
+            collection_mode="SURVEY",
+            delta_range=1.1,
+            delta_range_rate=1.1,
+            delta_range_rate_unc=1.1,
+            delta_range_unc=1.1,
+            descriptor="Example descriptor",
+            fdoa=1.1,
+            fdoa_unc=1.1,
+            frequency=1.1,
+            id_sensor1="SENSOR1-ID",
+            id_sensor2="SENSOR2-ID",
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            orig_sensor_id1="ORIGSENSOR1-ID",
+            orig_sensor_id2="ORIGSENSOR2-ID",
             raw_file_uri="rawFileURI",
-            sat_no=0,
-            sen2alt=0,
-            sen2lat=0,
-            sen2lon=0,
-            senalt=0,
-            senlat=0,
-            senlon=0,
-            sensor1_delay=0,
-            sensor2_delay=0,
-            snr=0,
-            source_dl="sourceDL",
-            tags=["string"],
-            task_id="taskId",
-            tdoa=0,
-            tdoa_unc=0,
-            transaction_id="transactionId",
-            uct=True,
+            sat_no=25544,
+            sen2alt=1.1,
+            sen2lat=1.1,
+            sen2lon=1.1,
+            senalt=1.1,
+            senlat=45.1,
+            senlon=120.1,
+            sensor1_delay=1.1,
+            sensor2_delay=1.1,
+            snr=1.1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            task_id="TASK-ID",
+            tdoa=1.1,
+            tdoa_unc=1.1,
+            transaction_id="TRANSACTION-ID",
+            uct=False,
         )
         assert diffofarrival is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.tdoa_fdoa.diffofarrival.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -96,10 +91,10 @@ class TestDiffofarrival:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.tdoa_fdoa.diffofarrival.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -176,10 +171,10 @@ class TestDiffofarrival:
         diffofarrival = client.tdoa_fdoa.diffofarrival.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -190,10 +185,10 @@ class TestDiffofarrival:
         response = client.tdoa_fdoa.diffofarrival.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -208,10 +203,10 @@ class TestDiffofarrival:
         with client.tdoa_fdoa.diffofarrival.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -230,69 +225,64 @@ class TestAsyncDiffofarrival:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         diffofarrival = await async_client.tdoa_fdoa.diffofarrival.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
         )
         assert diffofarrival is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         diffofarrival = await async_client.tdoa_fdoa.diffofarrival.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            id="id",
-            bandwidth=0,
-            collection_mode="collectionMode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            delta_range=0,
-            delta_range_rate=0,
-            delta_range_rate_unc=0,
-            delta_range_unc=0,
-            descriptor="descriptor",
-            fdoa=0,
-            fdoa_unc=0,
-            frequency=0,
-            id_on_orbit="idOnOrbit",
-            id_sensor1="idSensor1",
-            id_sensor2="idSensor2",
-            origin="origin",
-            orig_network="origNetwork",
-            orig_object_id="origObjectId",
-            orig_sensor_id1="origSensorId1",
-            orig_sensor_id2="origSensorId2",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
+            id="DIFFOFARRIVAL-ID",
+            bandwidth=1.1,
+            collection_mode="SURVEY",
+            delta_range=1.1,
+            delta_range_rate=1.1,
+            delta_range_rate_unc=1.1,
+            delta_range_unc=1.1,
+            descriptor="Example descriptor",
+            fdoa=1.1,
+            fdoa_unc=1.1,
+            frequency=1.1,
+            id_sensor1="SENSOR1-ID",
+            id_sensor2="SENSOR2-ID",
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            orig_sensor_id1="ORIGSENSOR1-ID",
+            orig_sensor_id2="ORIGSENSOR2-ID",
             raw_file_uri="rawFileURI",
-            sat_no=0,
-            sen2alt=0,
-            sen2lat=0,
-            sen2lon=0,
-            senalt=0,
-            senlat=0,
-            senlon=0,
-            sensor1_delay=0,
-            sensor2_delay=0,
-            snr=0,
-            source_dl="sourceDL",
-            tags=["string"],
-            task_id="taskId",
-            tdoa=0,
-            tdoa_unc=0,
-            transaction_id="transactionId",
-            uct=True,
+            sat_no=25544,
+            sen2alt=1.1,
+            sen2lat=1.1,
+            sen2lon=1.1,
+            senalt=1.1,
+            senlat=45.1,
+            senlon=120.1,
+            sensor1_delay=1.1,
+            sensor2_delay=1.1,
+            snr=1.1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            task_id="TASK-ID",
+            tdoa=1.1,
+            tdoa_unc=1.1,
+            transaction_id="TRANSACTION-ID",
+            uct=False,
         )
         assert diffofarrival is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.tdoa_fdoa.diffofarrival.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -303,10 +293,10 @@ class TestAsyncDiffofarrival:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.tdoa_fdoa.diffofarrival.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -383,10 +373,10 @@ class TestAsyncDiffofarrival:
         diffofarrival = await async_client.tdoa_fdoa.diffofarrival.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -397,10 +387,10 @@ class TestAsyncDiffofarrival:
         response = await async_client.tdoa_fdoa.diffofarrival.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -415,10 +405,10 @@ class TestAsyncDiffofarrival:
         async with async_client.tdoa_fdoa.diffofarrival.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

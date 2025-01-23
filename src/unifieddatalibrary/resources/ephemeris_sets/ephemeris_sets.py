@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -79,7 +80,7 @@ class EphemerisSetsResource(SyncAPIResource):
         *,
         category: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         num_points: int,
         point_end_time: Union[str, datetime],
         point_start_time: Union[str, datetime],
@@ -89,9 +90,7 @@ class EphemerisSetsResource(SyncAPIResource):
         b_dot: float | NotGiven = NOT_GIVEN,
         cent_body: str | NotGiven = NOT_GIVEN,
         comments: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        cov_reference_frame: Literal["J2000", "UVW"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
@@ -110,10 +109,9 @@ class EphemerisSetsResource(SyncAPIResource):
         interpolation_degree: int | NotGiven = NOT_GIVEN,
         lunar_solar: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         pedigree: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
+        reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
         solid_earth_tides: bool | NotGiven = NOT_GIVEN,
         step_size: int | NotGiven = NOT_GIVEN,
@@ -193,10 +191,6 @@ class EphemerisSetsResource(SyncAPIResource):
           cov_reference_frame: The reference frame of the covariance matrix elements. If the covReferenceFrame
               is null it is assumed to be J2000.
 
-          created_at: Time the row was created in the database, in UTC.
-
-          created_by: Application user who created the row in the database.
-
           description: Notes/description of the provided ephemeris. A value of DSTOP signifies the
               ephemeris were generated using the last observation available.
 
@@ -241,9 +235,6 @@ class EphemerisSetsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by ephemeris source to indicate the target object
               of this ephemeris. This may be an internal identifier and not necessarily map to
@@ -302,8 +293,6 @@ class EphemerisSetsResource(SyncAPIResource):
                     "cent_body": cent_body,
                     "comments": comments,
                     "cov_reference_frame": cov_reference_frame,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "descriptor": descriptor,
                     "drag_model": drag_model,
@@ -322,7 +311,6 @@ class EphemerisSetsResource(SyncAPIResource):
                     "interpolation_degree": interpolation_degree,
                     "lunar_solar": lunar_solar,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "pedigree": pedigree,
                     "reference_frame": reference_frame,
@@ -568,7 +556,7 @@ class EphemerisSetsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           point_end_time: (One or more of fields 'pointEndTime, pointStartTime' are required.) End
@@ -636,7 +624,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         *,
         category: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         num_points: int,
         point_end_time: Union[str, datetime],
         point_start_time: Union[str, datetime],
@@ -646,9 +634,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         b_dot: float | NotGiven = NOT_GIVEN,
         cent_body: str | NotGiven = NOT_GIVEN,
         comments: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        cov_reference_frame: Literal["J2000", "UVW"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
@@ -667,10 +653,9 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         interpolation_degree: int | NotGiven = NOT_GIVEN,
         lunar_solar: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         pedigree: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
+        reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
         solid_earth_tides: bool | NotGiven = NOT_GIVEN,
         step_size: int | NotGiven = NOT_GIVEN,
@@ -750,10 +735,6 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
           cov_reference_frame: The reference frame of the covariance matrix elements. If the covReferenceFrame
               is null it is assumed to be J2000.
 
-          created_at: Time the row was created in the database, in UTC.
-
-          created_by: Application user who created the row in the database.
-
           description: Notes/description of the provided ephemeris. A value of DSTOP signifies the
               ephemeris were generated using the last observation available.
 
@@ -798,9 +779,6 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by ephemeris source to indicate the target object
               of this ephemeris. This may be an internal identifier and not necessarily map to
@@ -859,8 +837,6 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                     "cent_body": cent_body,
                     "comments": comments,
                     "cov_reference_frame": cov_reference_frame,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "descriptor": descriptor,
                     "drag_model": drag_model,
@@ -879,7 +855,6 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                     "interpolation_degree": interpolation_degree,
                     "lunar_solar": lunar_solar,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "pedigree": pedigree,
                     "reference_frame": reference_frame,
@@ -1125,7 +1100,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           point_end_time: (One or more of fields 'pointEndTime, pointStartTime' are required.) End

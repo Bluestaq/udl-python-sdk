@@ -23,60 +23,57 @@ class TestEventEvolution:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
         )
         assert event_evolution is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
-            id="id",
-            agjson="agjson",
-            andims=0,
-            area="area",
-            asrid=0,
-            atext="atext",
-            atype="atype",
-            category="category",
-            country_code="countryCode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            data_description="dataDescription",
-            end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            geo_admin_level1="geoAdminLevel1",
-            geo_admin_level2="geoAdminLevel2",
-            geo_admin_level3="geoAdminLevel3",
-            origin="origin",
-            orig_network="origNetwork",
-            redact=True,
-            src_ids=["string"],
-            src_typs=["string"],
-            status="status",
-            tags=["string"],
-            url=["string"],
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
+            id="EVENT_EVOL_ID",
+            agjson='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
+            andims=2,
+            area="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            asrid=4326,
+            atext="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            atype="POLYGON",
+            category="PROTEST",
+            country_code="US",
+            data_description="Description of relationship between srcTyps and srcIds",
+            end_time=parse_datetime("2021-12-03T16:00:00.123Z"),
+            geo_admin_level1="Colorado",
+            geo_admin_level2="El Paso County",
+            geo_admin_level3="Colorado Springs",
+            origin="THIRD_PARTY_DATASOURCE",
+            redact=False,
+            src_ids=["SRC_ID_1", "SRC_ID_2"],
+            src_typs=["AIS", "CONJUNCTION"],
+            status="UNKNOWN",
+            tags=["TAG1", "TAG2"],
+            url=["URL1", "URL2"],
         )
         assert event_evolution is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.event_evolution.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
         )
 
         assert response.is_closed is True
@@ -87,12 +84,12 @@ class TestEventEvolution:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.event_evolution.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -173,12 +170,12 @@ class TestEventEvolution:
         event_evolution = client.event_evolution.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -189,12 +186,12 @@ class TestEventEvolution:
         response = client.event_evolution.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -209,12 +206,12 @@ class TestEventEvolution:
         with client.event_evolution.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         ) as response:
@@ -233,60 +230,57 @@ class TestAsyncEventEvolution:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
         )
         assert event_evolution is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
-            id="id",
-            agjson="agjson",
-            andims=0,
-            area="area",
-            asrid=0,
-            atext="atext",
-            atype="atype",
-            category="category",
-            country_code="countryCode",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            data_description="dataDescription",
-            end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            geo_admin_level1="geoAdminLevel1",
-            geo_admin_level2="geoAdminLevel2",
-            geo_admin_level3="geoAdminLevel3",
-            origin="origin",
-            orig_network="origNetwork",
-            redact=True,
-            src_ids=["string"],
-            src_typs=["string"],
-            status="status",
-            tags=["string"],
-            url=["string"],
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
+            id="EVENT_EVOL_ID",
+            agjson='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
+            andims=2,
+            area="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            asrid=4326,
+            atext="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
+            atype="POLYGON",
+            category="PROTEST",
+            country_code="US",
+            data_description="Description of relationship between srcTyps and srcIds",
+            end_time=parse_datetime("2021-12-03T16:00:00.123Z"),
+            geo_admin_level1="Colorado",
+            geo_admin_level2="El Paso County",
+            geo_admin_level3="Colorado Springs",
+            origin="THIRD_PARTY_DATASOURCE",
+            redact=False,
+            src_ids=["SRC_ID_1", "SRC_ID_2"],
+            src_typs=["AIS", "CONJUNCTION"],
+            status="UNKNOWN",
+            tags=["TAG1", "TAG2"],
+            url=["URL1", "URL2"],
         )
         assert event_evolution is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.event_evolution.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
         )
 
         assert response.is_closed is True
@@ -297,12 +291,12 @@ class TestAsyncEventEvolution:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.event_evolution.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            event_id="eventId",
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            summary="summary",
+            classification_marking="U",
+            data_mode="REAL",
+            event_id="EVENT_ID",
+            source="Bluestaq",
+            start_time=parse_datetime("2021-12-02T16:00:00.123Z"),
+            summary="Example summary of the event.",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -383,12 +377,12 @@ class TestAsyncEventEvolution:
         event_evolution = await async_client.event_evolution.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -399,12 +393,12 @@ class TestAsyncEventEvolution:
         response = await async_client.event_evolution.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -419,12 +413,12 @@ class TestAsyncEventEvolution:
         async with async_client.event_evolution.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         ) as response:

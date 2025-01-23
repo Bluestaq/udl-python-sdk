@@ -20,11 +20,11 @@ class TestAirTaskingOrders:
         air_tasking_order = client.air_operations.air_tasking_orders.create(
             body=[
                 {
-                    "begin_ts": "2019-12-27T18:11:19.117Z",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_exer_name": "opExerName",
-                    "source": "source",
+                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_exer_name": "DESERT WIND",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -35,11 +35,11 @@ class TestAirTaskingOrders:
         response = client.air_operations.air_tasking_orders.with_raw_response.create(
             body=[
                 {
-                    "begin_ts": "2019-12-27T18:11:19.117Z",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_exer_name": "opExerName",
-                    "source": "source",
+                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_exer_name": "DESERT WIND",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -54,11 +54,11 @@ class TestAirTaskingOrders:
         with client.air_operations.air_tasking_orders.with_streaming_response.create(
             body=[
                 {
-                    "begin_ts": "2019-12-27T18:11:19.117Z",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_exer_name": "opExerName",
-                    "source": "source",
+                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_exer_name": "DESERT WIND",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -79,11 +79,11 @@ class TestAsyncAirTaskingOrders:
         air_tasking_order = await async_client.air_operations.air_tasking_orders.create(
             body=[
                 {
-                    "begin_ts": "2019-12-27T18:11:19.117Z",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_exer_name": "opExerName",
-                    "source": "source",
+                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_exer_name": "DESERT WIND",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -94,11 +94,11 @@ class TestAsyncAirTaskingOrders:
         response = await async_client.air_operations.air_tasking_orders.with_raw_response.create(
             body=[
                 {
-                    "begin_ts": "2019-12-27T18:11:19.117Z",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_exer_name": "opExerName",
-                    "source": "source",
+                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_exer_name": "DESERT WIND",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -113,11 +113,11 @@ class TestAsyncAirTaskingOrders:
         async with async_client.air_operations.air_tasking_orders.with_streaming_response.create(
             body=[
                 {
-                    "begin_ts": "2019-12-27T18:11:19.117Z",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_exer_name": "opExerName",
-                    "source": "source",
+                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_exer_name": "DESERT WIND",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

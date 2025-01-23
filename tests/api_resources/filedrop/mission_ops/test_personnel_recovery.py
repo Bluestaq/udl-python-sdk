@@ -20,13 +20,13 @@ class TestPersonnelRecovery:
         personnel_recovery = client.filedrop.mission_ops.personnel_recovery.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
                 }
             ],
         )
@@ -37,13 +37,13 @@ class TestPersonnelRecovery:
         response = client.filedrop.mission_ops.personnel_recovery.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
                 }
             ],
         )
@@ -58,13 +58,13 @@ class TestPersonnelRecovery:
         with client.filedrop.mission_ops.personnel_recovery.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
                 }
             ],
         ) as response:
@@ -85,13 +85,13 @@ class TestAsyncPersonnelRecovery:
         personnel_recovery = await async_client.filedrop.mission_ops.personnel_recovery.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
                 }
             ],
         )
@@ -102,13 +102,13 @@ class TestAsyncPersonnelRecovery:
         response = await async_client.filedrop.mission_ops.personnel_recovery.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
                 }
             ],
         )
@@ -123,13 +123,13 @@ class TestAsyncPersonnelRecovery:
         async with async_client.filedrop.mission_ops.personnel_recovery.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "msg_time": "2019-12-27T18:11:19.117Z",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
                 }
             ],
         ) as response:

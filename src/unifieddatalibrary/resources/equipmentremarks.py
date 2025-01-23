@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
-from datetime import datetime
+from typing import Iterable
+from typing_extensions import Literal
 
 import httpx
 
@@ -57,15 +57,13 @@ class EquipmentremarksResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_equipment: str,
         source: str,
         text: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_rmk_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -113,11 +111,6 @@ class EquipmentremarksResource(SyncAPIResource):
           code: The remark type identifier. For example, the Mobility Air Forces (MAF) remark
               code, defined in the Airfield Suitability and Restriction Report (ASRR).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           name: The name of the remark.
 
           origin: Originating system or organization which produced the data, if different from
@@ -148,8 +141,6 @@ class EquipmentremarksResource(SyncAPIResource):
                     "id": id,
                     "alt_rmk_id": alt_rmk_id,
                     "code": code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "name": name,
                     "origin": origin,
                     "type": type,
@@ -330,7 +321,7 @@ class EquipmentremarksResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -378,15 +369,13 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_equipment: str,
         source: str,
         text: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_rmk_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -434,11 +423,6 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
           code: The remark type identifier. For example, the Mobility Air Forces (MAF) remark
               code, defined in the Airfield Suitability and Restriction Report (ASRR).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           name: The name of the remark.
 
           origin: Originating system or organization which produced the data, if different from
@@ -469,8 +453,6 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
                     "id": id,
                     "alt_rmk_id": alt_rmk_id,
                     "code": code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "name": name,
                     "origin": origin,
                     "type": type,
@@ -651,7 +633,7 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

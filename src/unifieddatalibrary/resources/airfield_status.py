@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -87,15 +88,15 @@ class AirfieldStatusResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_airfield: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
+        approved_by: str | NotGiven = NOT_GIVEN,
+        approved_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         arff_cat: str | NotGiven = NOT_GIVEN,
         cargo_mog: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         fleet_service_mog: int | NotGiven = NOT_GIVEN,
         fuel_mog: int | NotGiven = NOT_GIVEN,
         fuel_qtys: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -111,15 +112,16 @@ class AirfieldStatusResource(SyncAPIResource):
         num_cog: int | NotGiven = NOT_GIVEN,
         operating_mog: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         passenger_service_mog: int | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         pri_rwy_num: str | NotGiven = NOT_GIVEN,
+        reviewed_by: str | NotGiven = NOT_GIVEN,
+        reviewed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         rwy_cond_reading: int | NotGiven = NOT_GIVEN,
         rwy_friction_factor: int | NotGiven = NOT_GIVEN,
         rwy_markings: List[str] | NotGiven = NOT_GIVEN,
         slot_types_req: List[str] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
+        survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         wide_parking_mog: int | NotGiven = NOT_GIVEN,
         wide_working_mog: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -162,17 +164,17 @@ class AirfieldStatusResource(SyncAPIResource):
 
           alt_airfield_id: Alternate airfield identifier provided by the source.
 
+          approved_by: The name of the person who approved the airfield survey review.
+
+          approved_date: The date that survey review changes were approved for this airfield, in ISO 8601
+              UTC format with millisecond precision.
+
           arff_cat: The category of aircraft rescue and fire fighting (ARFF) services that are
               currently available at the airfield. Entries should include the code (FAA or
               ICAO) and the category.
 
           cargo_mog: Maximum on ground (MOG) number of high-reach/wide-body cargo aircraft that can
               be serviced simultaneously based on spacing and manpower at the time of status.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           fleet_service_mog: Maximum on ground (MOG) number of fleet aircraft that can be serviced
               simultaneously based on spacing and manpower at the time of status.
@@ -222,9 +224,6 @@ class AirfieldStatusResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           passenger_service_mog: Maximum on ground (MOG) number of high-reach/wide-body passenger aircraft that
               can be serviced simultaneously based on spacing and manpower at the time of
               status.
@@ -232,6 +231,11 @@ class AirfieldStatusResource(SyncAPIResource):
           pri_freq: The primary frequency which the airfield is currently operating, in megahertz.
 
           pri_rwy_num: The number or ID of primary runway at the airfield.
+
+          reviewed_by: The name of the person who reviewed the airfield survey.
+
+          reviewed_date: The date the airfield survey was reviewed, in ISO 8601 UTC format with
+              millisecond precision.
 
           rwy_cond_reading: The primary runway condition reading value used for determining runway braking
               action, from 0 to 26. A value of 0 indicates braking action is poor or
@@ -246,15 +250,18 @@ class AirfieldStatusResource(SyncAPIResource):
           slot_types_req: Array of slot types that an airfield requires a particular aircraft provide in
               order to consume a slot at this location.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
+          survey_date: The date the airfield survey was performed, in ISO 8601 UTC format with
+              millisecond precision.
 
           wide_parking_mog: Maximum on ground (MOG) number of parking wide-body aircraft based on spacing
-              and manpower at the time of status.
+              and manpower at the time of status. Additional information about this field as
+              it pertains to specific aircraft type may be available in an associated
+              SiteOperations record.
 
           wide_working_mog: Maximum on ground (MOG) number of working wide-body aircraft based on spacing
-              and manpower at the time of status.
+              and manpower at the time of status. Additional information about this field as
+              it pertains to specific aircraft type may be available in an associated
+              SiteOperations record.
 
           extra_headers: Send extra headers
 
@@ -277,10 +284,10 @@ class AirfieldStatusResource(SyncAPIResource):
                     "source": source,
                     "id_2": id_2,
                     "alt_airfield_id": alt_airfield_id,
+                    "approved_by": approved_by,
+                    "approved_date": approved_date,
                     "arff_cat": arff_cat,
                     "cargo_mog": cargo_mog,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "fleet_service_mog": fleet_service_mog,
                     "fuel_mog": fuel_mog,
                     "fuel_qtys": fuel_qtys,
@@ -296,15 +303,16 @@ class AirfieldStatusResource(SyncAPIResource):
                     "num_cog": num_cog,
                     "operating_mog": operating_mog,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "passenger_service_mog": passenger_service_mog,
                     "pri_freq": pri_freq,
                     "pri_rwy_num": pri_rwy_num,
+                    "reviewed_by": reviewed_by,
+                    "reviewed_date": reviewed_date,
                     "rwy_cond_reading": rwy_cond_reading,
                     "rwy_friction_factor": rwy_friction_factor,
                     "rwy_markings": rwy_markings,
                     "slot_types_req": slot_types_req,
-                    "source_dl": source_dl,
+                    "survey_date": survey_date,
                     "wide_parking_mog": wide_parking_mog,
                     "wide_working_mog": wide_working_mog,
                 },
@@ -376,7 +384,7 @@ class AirfieldStatusResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -459,15 +467,15 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_airfield: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
+        approved_by: str | NotGiven = NOT_GIVEN,
+        approved_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         arff_cat: str | NotGiven = NOT_GIVEN,
         cargo_mog: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         fleet_service_mog: int | NotGiven = NOT_GIVEN,
         fuel_mog: int | NotGiven = NOT_GIVEN,
         fuel_qtys: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -483,15 +491,16 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         num_cog: int | NotGiven = NOT_GIVEN,
         operating_mog: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         passenger_service_mog: int | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         pri_rwy_num: str | NotGiven = NOT_GIVEN,
+        reviewed_by: str | NotGiven = NOT_GIVEN,
+        reviewed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         rwy_cond_reading: int | NotGiven = NOT_GIVEN,
         rwy_friction_factor: int | NotGiven = NOT_GIVEN,
         rwy_markings: List[str] | NotGiven = NOT_GIVEN,
         slot_types_req: List[str] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
+        survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         wide_parking_mog: int | NotGiven = NOT_GIVEN,
         wide_working_mog: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -534,17 +543,17 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
 
           alt_airfield_id: Alternate airfield identifier provided by the source.
 
+          approved_by: The name of the person who approved the airfield survey review.
+
+          approved_date: The date that survey review changes were approved for this airfield, in ISO 8601
+              UTC format with millisecond precision.
+
           arff_cat: The category of aircraft rescue and fire fighting (ARFF) services that are
               currently available at the airfield. Entries should include the code (FAA or
               ICAO) and the category.
 
           cargo_mog: Maximum on ground (MOG) number of high-reach/wide-body cargo aircraft that can
               be serviced simultaneously based on spacing and manpower at the time of status.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           fleet_service_mog: Maximum on ground (MOG) number of fleet aircraft that can be serviced
               simultaneously based on spacing and manpower at the time of status.
@@ -594,9 +603,6 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           passenger_service_mog: Maximum on ground (MOG) number of high-reach/wide-body passenger aircraft that
               can be serviced simultaneously based on spacing and manpower at the time of
               status.
@@ -604,6 +610,11 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
           pri_freq: The primary frequency which the airfield is currently operating, in megahertz.
 
           pri_rwy_num: The number or ID of primary runway at the airfield.
+
+          reviewed_by: The name of the person who reviewed the airfield survey.
+
+          reviewed_date: The date the airfield survey was reviewed, in ISO 8601 UTC format with
+              millisecond precision.
 
           rwy_cond_reading: The primary runway condition reading value used for determining runway braking
               action, from 0 to 26. A value of 0 indicates braking action is poor or
@@ -618,15 +629,18 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
           slot_types_req: Array of slot types that an airfield requires a particular aircraft provide in
               order to consume a slot at this location.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
+          survey_date: The date the airfield survey was performed, in ISO 8601 UTC format with
+              millisecond precision.
 
           wide_parking_mog: Maximum on ground (MOG) number of parking wide-body aircraft based on spacing
-              and manpower at the time of status.
+              and manpower at the time of status. Additional information about this field as
+              it pertains to specific aircraft type may be available in an associated
+              SiteOperations record.
 
           wide_working_mog: Maximum on ground (MOG) number of working wide-body aircraft based on spacing
-              and manpower at the time of status.
+              and manpower at the time of status. Additional information about this field as
+              it pertains to specific aircraft type may be available in an associated
+              SiteOperations record.
 
           extra_headers: Send extra headers
 
@@ -649,10 +663,10 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
                     "source": source,
                     "id_2": id_2,
                     "alt_airfield_id": alt_airfield_id,
+                    "approved_by": approved_by,
+                    "approved_date": approved_date,
                     "arff_cat": arff_cat,
                     "cargo_mog": cargo_mog,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "fleet_service_mog": fleet_service_mog,
                     "fuel_mog": fuel_mog,
                     "fuel_qtys": fuel_qtys,
@@ -668,15 +682,16 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
                     "num_cog": num_cog,
                     "operating_mog": operating_mog,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "passenger_service_mog": passenger_service_mog,
                     "pri_freq": pri_freq,
                     "pri_rwy_num": pri_rwy_num,
+                    "reviewed_by": reviewed_by,
+                    "reviewed_date": reviewed_date,
                     "rwy_cond_reading": rwy_cond_reading,
                     "rwy_friction_factor": rwy_friction_factor,
                     "rwy_markings": rwy_markings,
                     "slot_types_req": slot_types_req,
-                    "source_dl": source_dl,
+                    "survey_date": survey_date,
                     "wide_parking_mog": wide_parking_mog,
                     "wide_working_mog": wide_working_mog,
                 },
@@ -748,7 +763,7 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

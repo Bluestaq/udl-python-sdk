@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import datetime
+from typing import List
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,13 +53,23 @@ class EntitiesResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        type: str,
+        type: Literal[
+            "AIRCRAFT",
+            "BUS",
+            "COMM",
+            "IR",
+            "NAVIGATION",
+            "ONORBIT",
+            "RFEMITTER",
+            "SCIENTIFIC",
+            "SENSOR",
+            "SITE",
+            "VESSEL",
+        ],
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
@@ -67,8 +77,7 @@ class EntitiesResource(SyncAPIResource):
         location: entity_create_params.Location | NotGiven = NOT_GIVEN,
         on_orbit: entity_create_params.OnOrbit | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        owner_type: str | NotGiven = NOT_GIVEN,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
         urls: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -112,14 +121,9 @@ class EntitiesResource(SyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           id_entity: Unique identifier of the record.
 
@@ -140,9 +144,6 @@ class EntitiesResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner_type: Type of organization which owns this entity (e.g. Commercial, Government,
               Academic, Consortium, etc).
@@ -170,8 +171,6 @@ class EntitiesResource(SyncAPIResource):
                     "source": source,
                     "type": type,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "id_entity": id_entity,
                     "id_location": id_location,
                     "id_on_orbit": id_on_orbit,
@@ -179,7 +178,6 @@ class EntitiesResource(SyncAPIResource):
                     "location": location,
                     "on_orbit": on_orbit,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner_type": owner_type,
                     "taskable": taskable,
                     "urls": urls,
@@ -231,13 +229,23 @@ class EntitiesResource(SyncAPIResource):
         id: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        type: str,
+        type: Literal[
+            "AIRCRAFT",
+            "BUS",
+            "COMM",
+            "IR",
+            "NAVIGATION",
+            "ONORBIT",
+            "RFEMITTER",
+            "SCIENTIFIC",
+            "SENSOR",
+            "SITE",
+            "VESSEL",
+        ],
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
@@ -245,8 +253,7 @@ class EntitiesResource(SyncAPIResource):
         location: entity_update_params.Location | NotGiven = NOT_GIVEN,
         on_orbit: entity_update_params.OnOrbit | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        owner_type: str | NotGiven = NOT_GIVEN,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
         urls: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -290,14 +297,9 @@ class EntitiesResource(SyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           id_entity: Unique identifier of the record.
 
@@ -318,9 +320,6 @@ class EntitiesResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner_type: Type of organization which owns this entity (e.g. Commercial, Government,
               Academic, Consortium, etc).
@@ -350,8 +349,6 @@ class EntitiesResource(SyncAPIResource):
                     "source": source,
                     "type": type,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "id_entity": id_entity,
                     "id_location": id_location,
                     "id_on_orbit": id_on_orbit,
@@ -359,7 +356,6 @@ class EntitiesResource(SyncAPIResource):
                     "location": location,
                     "on_orbit": on_orbit,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner_type": owner_type,
                     "taskable": taskable,
                     "urls": urls,
@@ -500,7 +496,7 @@ class EntitiesResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -548,13 +544,23 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        type: str,
+        type: Literal[
+            "AIRCRAFT",
+            "BUS",
+            "COMM",
+            "IR",
+            "NAVIGATION",
+            "ONORBIT",
+            "RFEMITTER",
+            "SCIENTIFIC",
+            "SENSOR",
+            "SITE",
+            "VESSEL",
+        ],
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
@@ -562,8 +568,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         location: entity_create_params.Location | NotGiven = NOT_GIVEN,
         on_orbit: entity_create_params.OnOrbit | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        owner_type: str | NotGiven = NOT_GIVEN,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
         urls: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -607,14 +612,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           id_entity: Unique identifier of the record.
 
@@ -635,9 +635,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner_type: Type of organization which owns this entity (e.g. Commercial, Government,
               Academic, Consortium, etc).
@@ -665,8 +662,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "source": source,
                     "type": type,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "id_entity": id_entity,
                     "id_location": id_location,
                     "id_on_orbit": id_on_orbit,
@@ -674,7 +669,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "location": location,
                     "on_orbit": on_orbit,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner_type": owner_type,
                     "taskable": taskable,
                     "urls": urls,
@@ -726,13 +720,23 @@ class AsyncEntitiesResource(AsyncAPIResource):
         id: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        type: str,
+        type: Literal[
+            "AIRCRAFT",
+            "BUS",
+            "COMM",
+            "IR",
+            "NAVIGATION",
+            "ONORBIT",
+            "RFEMITTER",
+            "SCIENTIFIC",
+            "SENSOR",
+            "SITE",
+            "VESSEL",
+        ],
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
@@ -740,8 +744,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         location: entity_update_params.Location | NotGiven = NOT_GIVEN,
         on_orbit: entity_update_params.OnOrbit | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        owner_type: str | NotGiven = NOT_GIVEN,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
         urls: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -785,14 +788,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           id_entity: Unique identifier of the record.
 
@@ -813,9 +811,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner_type: Type of organization which owns this entity (e.g. Commercial, Government,
               Academic, Consortium, etc).
@@ -845,8 +840,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "source": source,
                     "type": type,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "id_entity": id_entity,
                     "id_location": id_location,
                     "id_on_orbit": id_on_orbit,
@@ -854,7 +847,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "location": location,
                     "on_orbit": on_orbit,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner_type": owner_type,
                     "taskable": taskable,
                     "urls": urls,
@@ -995,7 +987,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

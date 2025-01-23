@@ -23,62 +23,63 @@ class TestAirfieldstatus:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         airfieldstatus = client.airfieldstatus.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
         )
         assert airfieldstatus is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfieldstatus = client.airfieldstatus.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
-            id="id",
-            alt_airfield_id="altAirfieldId",
-            arff_cat="arffCat",
-            cargo_mog=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            fleet_service_mog=0,
-            fuel_mog=0,
-            fuel_qtys=[0],
-            fuel_types=["string"],
-            gse_time=0,
-            med_cap="medCap",
-            message="message",
-            mhe_qtys=[0],
-            mhe_types=["string"],
-            mx_mog=0,
-            narrow_parking_mog=0,
-            narrow_working_mog=0,
-            num_cog=0,
-            operating_mog=0,
-            origin="origin",
-            orig_network="origNetwork",
-            passenger_service_mog=0,
-            pri_freq=0,
-            pri_rwy_num="priRwyNum",
-            rwy_cond_reading=0,
-            rwy_friction_factor=0,
-            rwy_markings=["string"],
-            slot_types_req=["string"],
-            source_dl="sourceDL",
-            wide_parking_mog=0,
-            wide_working_mog=0,
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
+            id="be831d39-1822-da9f-7ace-6cc5643397dc",
+            alt_airfield_id="AIRFIELD-ID",
+            approved_by="John Smith",
+            approved_date=parse_datetime("2024-01-01T16:00:00.123Z"),
+            arff_cat="FAA-A",
+            cargo_mog=8,
+            fleet_service_mog=4,
+            fuel_mog=9,
+            fuel_qtys=[263083.6, 286674.9, 18143.69],
+            fuel_types=["JP-8", "Jet A", "AVGAS"],
+            gse_time=10,
+            med_cap="Large Field Hospital",
+            message="Status message about the airfield.",
+            mhe_qtys=[1, 3, 1],
+            mhe_types=["30k", "AT", "60k"],
+            mx_mog=3,
+            narrow_parking_mog=5,
+            narrow_working_mog=4,
+            num_cog=2,
+            operating_mog=4,
+            origin="THIRD_PARTY_DATASOURCE",
+            passenger_service_mog=5,
+            pri_freq=123.45,
+            pri_rwy_num="35R",
+            reviewed_by="Jane Doe",
+            reviewed_date=parse_datetime("2024-01-01T00:00:00.123Z"),
+            rwy_cond_reading=23,
+            rwy_friction_factor=10,
+            rwy_markings=["Aiming Point", "Threshold"],
+            slot_types_req=["PARKING", "WORKING", "LANDING"],
+            survey_date=parse_datetime("2023-01-01T12:00:00.123Z"),
+            wide_parking_mog=7,
+            wide_working_mog=3,
         )
         assert airfieldstatus is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldstatus.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -89,10 +90,10 @@ class TestAirfieldstatus:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.airfieldstatus.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -184,62 +185,63 @@ class TestAsyncAirfieldstatus:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldstatus = await async_client.airfieldstatus.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
         )
         assert airfieldstatus is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldstatus = await async_client.airfieldstatus.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
-            id="id",
-            alt_airfield_id="altAirfieldId",
-            arff_cat="arffCat",
-            cargo_mog=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            fleet_service_mog=0,
-            fuel_mog=0,
-            fuel_qtys=[0],
-            fuel_types=["string"],
-            gse_time=0,
-            med_cap="medCap",
-            message="message",
-            mhe_qtys=[0],
-            mhe_types=["string"],
-            mx_mog=0,
-            narrow_parking_mog=0,
-            narrow_working_mog=0,
-            num_cog=0,
-            operating_mog=0,
-            origin="origin",
-            orig_network="origNetwork",
-            passenger_service_mog=0,
-            pri_freq=0,
-            pri_rwy_num="priRwyNum",
-            rwy_cond_reading=0,
-            rwy_friction_factor=0,
-            rwy_markings=["string"],
-            slot_types_req=["string"],
-            source_dl="sourceDL",
-            wide_parking_mog=0,
-            wide_working_mog=0,
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
+            id="be831d39-1822-da9f-7ace-6cc5643397dc",
+            alt_airfield_id="AIRFIELD-ID",
+            approved_by="John Smith",
+            approved_date=parse_datetime("2024-01-01T16:00:00.123Z"),
+            arff_cat="FAA-A",
+            cargo_mog=8,
+            fleet_service_mog=4,
+            fuel_mog=9,
+            fuel_qtys=[263083.6, 286674.9, 18143.69],
+            fuel_types=["JP-8", "Jet A", "AVGAS"],
+            gse_time=10,
+            med_cap="Large Field Hospital",
+            message="Status message about the airfield.",
+            mhe_qtys=[1, 3, 1],
+            mhe_types=["30k", "AT", "60k"],
+            mx_mog=3,
+            narrow_parking_mog=5,
+            narrow_working_mog=4,
+            num_cog=2,
+            operating_mog=4,
+            origin="THIRD_PARTY_DATASOURCE",
+            passenger_service_mog=5,
+            pri_freq=123.45,
+            pri_rwy_num="35R",
+            reviewed_by="Jane Doe",
+            reviewed_date=parse_datetime("2024-01-01T00:00:00.123Z"),
+            rwy_cond_reading=23,
+            rwy_friction_factor=10,
+            rwy_markings=["Aiming Point", "Threshold"],
+            slot_types_req=["PARKING", "WORKING", "LANDING"],
+            survey_date=parse_datetime("2023-01-01T12:00:00.123Z"),
+            wide_parking_mog=7,
+            wide_working_mog=3,
         )
         assert airfieldstatus is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldstatus.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -250,10 +252,10 @@ class TestAsyncAirfieldstatus:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfieldstatus.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_airfield="idAirfield",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

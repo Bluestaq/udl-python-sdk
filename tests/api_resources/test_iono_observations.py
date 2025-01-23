@@ -20,13 +20,13 @@ class TestIonoObservations:
         iono_observation = client.iono_observations.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time_utc": "2019-12-27T18:11:19.117Z",
-                    "station_id": "stationId",
-                    "system": "system",
-                    "system_info": "systemInfo",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time_utc": "2021-01-01T01:01:01.123456Z",
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
                 }
             ],
         )
@@ -37,13 +37,13 @@ class TestIonoObservations:
         response = client.iono_observations.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time_utc": "2019-12-27T18:11:19.117Z",
-                    "station_id": "stationId",
-                    "system": "system",
-                    "system_info": "systemInfo",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time_utc": "2021-01-01T01:01:01.123456Z",
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
                 }
             ],
         )
@@ -58,13 +58,13 @@ class TestIonoObservations:
         with client.iono_observations.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time_utc": "2019-12-27T18:11:19.117Z",
-                    "station_id": "stationId",
-                    "system": "system",
-                    "system_info": "systemInfo",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time_utc": "2021-01-01T01:01:01.123456Z",
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
                 }
             ],
         ) as response:
@@ -85,13 +85,13 @@ class TestAsyncIonoObservations:
         iono_observation = await async_client.iono_observations.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time_utc": "2019-12-27T18:11:19.117Z",
-                    "station_id": "stationId",
-                    "system": "system",
-                    "system_info": "systemInfo",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time_utc": "2021-01-01T01:01:01.123456Z",
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
                 }
             ],
         )
@@ -102,13 +102,13 @@ class TestAsyncIonoObservations:
         response = await async_client.iono_observations.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time_utc": "2019-12-27T18:11:19.117Z",
-                    "station_id": "stationId",
-                    "system": "system",
-                    "system_info": "systemInfo",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time_utc": "2021-01-01T01:01:01.123456Z",
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
                 }
             ],
         )
@@ -123,13 +123,13 @@ class TestAsyncIonoObservations:
         async with async_client.iono_observations.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time_utc": "2019-12-27T18:11:19.117Z",
-                    "station_id": "stationId",
-                    "system": "system",
-                    "system_info": "systemInfo",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time_utc": "2021-01-01T01:01:01.123456Z",
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
                 }
             ],
         ) as response:

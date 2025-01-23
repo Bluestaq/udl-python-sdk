@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     BeamListResponse,
     BeamTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,36 +24,33 @@ class TestBeam:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert beam is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            id="BEAM-ID",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert beam is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.beam.with_raw_response.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -65,10 +61,10 @@ class TestBeam:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.beam.with_streaming_response.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -120,10 +116,10 @@ class TestBeam:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert beam is None
 
@@ -131,16 +127,13 @@ class TestBeam:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            id_2="BEAM-ID",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert beam is None
 
@@ -148,10 +141,10 @@ class TestBeam:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.beam.with_raw_response.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -163,10 +156,10 @@ class TestBeam:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.beam.with_streaming_response.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -181,10 +174,10 @@ class TestBeam:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.beam.with_raw_response.update(
                 id_1="",
-                beam_name="beamName",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                source="source",
+                beam_name="BEAMNAME-ID",
+                classification_marking="U",
+                data_mode="REAL",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -339,36 +332,33 @@ class TestAsyncBeam:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert beam is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            id="BEAM-ID",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert beam is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.beam.with_raw_response.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -379,10 +369,10 @@ class TestAsyncBeam:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.beam.with_streaming_response.create(
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -434,10 +424,10 @@ class TestAsyncBeam:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert beam is None
 
@@ -445,16 +435,13 @@ class TestAsyncBeam:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            notes="notes",
-            origin="origin",
-            orig_network="origNetwork",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
+            id_2="BEAM-ID",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert beam is None
 
@@ -462,10 +449,10 @@ class TestAsyncBeam:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.beam.with_raw_response.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -477,10 +464,10 @@ class TestAsyncBeam:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.beam.with_streaming_response.update(
             id_1="id",
-            beam_name="beamName",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            source="source",
+            beam_name="BEAMNAME-ID",
+            classification_marking="U",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -495,10 +482,10 @@ class TestAsyncBeam:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.beam.with_raw_response.update(
                 id_1="",
-                beam_name="beamName",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                source="source",
+                beam_name="BEAMNAME-ID",
+                classification_marking="U",
+                data_mode="REAL",
+                source="Bluestaq",
                 id_2="",
             )
 

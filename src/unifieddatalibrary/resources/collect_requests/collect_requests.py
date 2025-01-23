@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -71,7 +72,7 @@ class CollectRequestsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         start_time: Union[str, datetime],
         type: str,
@@ -79,8 +80,6 @@ class CollectRequestsResource(SyncAPIResource):
         alt: float | NotGiven = NOT_GIVEN,
         arg_of_perigee: float | NotGiven = NOT_GIVEN,
         az: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         customer: str | NotGiven = NOT_GIVEN,
         dec: float | NotGiven = NOT_GIVEN,
         duration: int | NotGiven = NOT_GIVEN,
@@ -101,7 +100,6 @@ class CollectRequestsResource(SyncAPIResource):
         freq_min: float | NotGiven = NOT_GIVEN,
         id_elset: str | NotGiven = NOT_GIVEN,
         id_manifold: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_parent_req: str | NotGiven = NOT_GIVEN,
         id_plan: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -122,7 +120,6 @@ class CollectRequestsResource(SyncAPIResource):
         orbit_regime: str | NotGiven = NOT_GIVEN,
         orient_angle: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         plan_index: int | NotGiven = NOT_GIVEN,
@@ -209,11 +206,6 @@ class CollectRequestsResource(SyncAPIResource):
           az: The expected or directed azimuth angle, in degrees, for search or target
               acquisition.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           customer: The customer for this request.
 
           dec: The expected or directed declination angle, in degrees, for search or target
@@ -274,8 +266,6 @@ class CollectRequestsResource(SyncAPIResource):
               Manifold Elset provides theoretical Keplerian orbital elements belonging to an
               object of interest's manifold describing a possible/theoretical orbit for an
               object of interest for tasking purposes.
-
-          id_on_orbit: Unique identifier of the target on-orbit object for this request.
 
           id_parent_req: The unique ID of the collect request record from which this request originated.
               This may be used for cases of sensor-to-sensor tasking, such as tip/cue
@@ -341,9 +331,6 @@ class CollectRequestsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the data source to indicate the target object of
               this request. This may be an internal identifier and not necessarily map to a
@@ -486,8 +473,6 @@ class CollectRequestsResource(SyncAPIResource):
                     "alt": alt,
                     "arg_of_perigee": arg_of_perigee,
                     "az": az,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "customer": customer,
                     "dec": dec,
                     "duration": duration,
@@ -508,7 +493,6 @@ class CollectRequestsResource(SyncAPIResource):
                     "freq_min": freq_min,
                     "id_elset": id_elset,
                     "id_manifold": id_manifold,
-                    "id_on_orbit": id_on_orbit,
                     "id_parent_req": id_parent_req,
                     "id_plan": id_plan,
                     "id_sensor": id_sensor,
@@ -529,7 +513,6 @@ class CollectRequestsResource(SyncAPIResource):
                     "orbit_regime": orbit_regime,
                     "orient_angle": orient_angle,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "plan_index": plan_index,
@@ -779,7 +762,7 @@ class CollectRequestsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           start_time: The start time or earliest time of the collect or contact request window, in ISO
@@ -840,7 +823,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         start_time: Union[str, datetime],
         type: str,
@@ -848,8 +831,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         alt: float | NotGiven = NOT_GIVEN,
         arg_of_perigee: float | NotGiven = NOT_GIVEN,
         az: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         customer: str | NotGiven = NOT_GIVEN,
         dec: float | NotGiven = NOT_GIVEN,
         duration: int | NotGiven = NOT_GIVEN,
@@ -870,7 +851,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         freq_min: float | NotGiven = NOT_GIVEN,
         id_elset: str | NotGiven = NOT_GIVEN,
         id_manifold: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_parent_req: str | NotGiven = NOT_GIVEN,
         id_plan: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -891,7 +871,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         orbit_regime: str | NotGiven = NOT_GIVEN,
         orient_angle: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         plan_index: int | NotGiven = NOT_GIVEN,
@@ -978,11 +957,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
           az: The expected or directed azimuth angle, in degrees, for search or target
               acquisition.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           customer: The customer for this request.
 
           dec: The expected or directed declination angle, in degrees, for search or target
@@ -1043,8 +1017,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
               Manifold Elset provides theoretical Keplerian orbital elements belonging to an
               object of interest's manifold describing a possible/theoretical orbit for an
               object of interest for tasking purposes.
-
-          id_on_orbit: Unique identifier of the target on-orbit object for this request.
 
           id_parent_req: The unique ID of the collect request record from which this request originated.
               This may be used for cases of sensor-to-sensor tasking, such as tip/cue
@@ -1110,9 +1082,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the data source to indicate the target object of
               this request. This may be an internal identifier and not necessarily map to a
@@ -1255,8 +1224,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                     "alt": alt,
                     "arg_of_perigee": arg_of_perigee,
                     "az": az,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "customer": customer,
                     "dec": dec,
                     "duration": duration,
@@ -1277,7 +1244,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                     "freq_min": freq_min,
                     "id_elset": id_elset,
                     "id_manifold": id_manifold,
-                    "id_on_orbit": id_on_orbit,
                     "id_parent_req": id_parent_req,
                     "id_plan": id_plan,
                     "id_sensor": id_sensor,
@@ -1298,7 +1264,6 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                     "orbit_regime": orbit_regime,
                     "orient_angle": orient_angle,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "plan_index": plan_index,
@@ -1550,7 +1515,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           start_time: The start time or earliest time of the collect or contact request window, in ISO

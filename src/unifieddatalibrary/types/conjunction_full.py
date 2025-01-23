@@ -1,14 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["ConjunctionFull", "StateVector1", "StateVector2"]
 
@@ -17,7 +16,7 @@ class StateVector1(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -113,7 +112,7 @@ class StateVector1(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -313,9 +312,6 @@ class StateVector1(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
-    """Model object representing on-orbit objects or satellites in the system."""
-
     origin: Optional[str] = None
     """
     Originating system or organization which produced the data, if different from
@@ -367,7 +363,9 @@ class StateVector1(BaseModel):
     rec_od_span: Optional[float] = FieldInfo(alias="recODSpan", default=None)
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -431,7 +429,9 @@ class StateVector1(BaseModel):
     match in size).
     """
 
-    sourced_data_types: Optional[List[str]] = FieldInfo(alias="sourcedDataTypes", default=None)
+    sourced_data_types: Optional[List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]]] = FieldInfo(
+        alias="sourcedDataTypes", default=None
+    )
     """
     Optional array of UDL observation data types used to build this state vector
     (e.g. EO, RADAR, RF, DOA). See the associated sourcedData array for the specific
@@ -664,7 +664,7 @@ class StateVector2(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -760,7 +760,7 @@ class StateVector2(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[str] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -960,9 +960,6 @@ class StateVector2(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
-    """Model object representing on-orbit objects or satellites in the system."""
-
     origin: Optional[str] = None
     """
     Originating system or organization which produced the data, if different from
@@ -1014,7 +1011,9 @@ class StateVector2(BaseModel):
     rec_od_span: Optional[float] = FieldInfo(alias="recODSpan", default=None)
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
+    reference_frame: Optional[Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"]] = FieldInfo(
+        alias="referenceFrame", default=None
+    )
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -1078,7 +1077,9 @@ class StateVector2(BaseModel):
     match in size).
     """
 
-    sourced_data_types: Optional[List[str]] = FieldInfo(alias="sourcedDataTypes", default=None)
+    sourced_data_types: Optional[List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]]] = FieldInfo(
+        alias="sourcedDataTypes", default=None
+    )
     """
     Optional array of UDL observation data types used to build this state vector
     (e.g. EO, RADAR, RF, DOA). See the associated sourcedData array for the specific
@@ -1311,7 +1312,7 @@ class ConjunctionFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1475,10 +1476,10 @@ class ConjunctionFull(BaseModel):
     miss_distance: Optional[float] = FieldInfo(alias="missDistance", default=None)
     """Distance between objects at Time of Closest Approach (TCA) in meters."""
 
-    on_orbit1: Optional["Onorbit"] = FieldInfo(alias="onOrbit1", default=None)
+    on_orbit1: Optional[Onorbit] = FieldInfo(alias="onOrbit1", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
-    on_orbit2: Optional["Onorbit"] = FieldInfo(alias="onOrbit2", default=None)
+    on_orbit2: Optional[Onorbit] = FieldInfo(alias="onOrbit2", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     orig_id_on_orbit1: Optional[str] = FieldInfo(alias="origIdOnOrbit1", default=None)
@@ -1669,15 +1670,3 @@ class ConjunctionFull(BaseModel):
 
     vol_shape: Optional[str] = FieldInfo(alias="volShape", default=None)
     """The shape (BOX, ELLIPSOID) of the screening volume."""
-
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    ConjunctionFull.model_rebuild()
-    StateVector1.model_rebuild()
-    StateVector2.model_rebuild()
-else:
-    ConjunctionFull.update_forward_refs()  # type: ignore
-    StateVector1.update_forward_refs()  # type: ignore
-    StateVector2.update_forward_refs()  # type: ignore

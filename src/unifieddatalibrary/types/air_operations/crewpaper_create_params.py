@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._types import FileTypes
 from ..._utils import PropertyInfo
@@ -17,7 +17,9 @@ class CrewpaperCreateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """classificationMarking of the Crew Papers."""
 
-    paper_status: Required[Annotated[str, PropertyInfo(alias="paperStatus")]]
+    paper_status: Required[
+        Annotated[Literal["PUBLISHED", "DELETED", "UPDATED", "READ"], PropertyInfo(alias="paperStatus")]
+    ]
     """The status of the supporting document."""
 
     papers_version: Required[Annotated[str, PropertyInfo(alias="papersVersion")]]

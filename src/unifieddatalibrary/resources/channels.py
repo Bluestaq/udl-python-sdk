@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -53,7 +52,7 @@ class ChannelsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_transponder: str,
         name: str,
         source: str,
@@ -61,13 +60,10 @@ class ChannelsResource(SyncAPIResource):
         apid: str | NotGiven = NOT_GIVEN,
         beam_name: str | NotGiven = NOT_GIVEN,
         compression: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         encryption: str | NotGiven = NOT_GIVEN,
         id_beam: str | NotGiven = NOT_GIVEN,
         id_rf_band: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         pkg: str | NotGiven = NOT_GIVEN,
         res: str | NotGiven = NOT_GIVEN,
@@ -121,11 +117,6 @@ class ChannelsResource(SyncAPIResource):
 
           compression: Channel compression.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           encryption: Channel encryption.
 
           id_beam: Identifier of the particular beam for this channel.
@@ -136,9 +127,6 @@ class ChannelsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner: Owner.
 
@@ -174,13 +162,10 @@ class ChannelsResource(SyncAPIResource):
                     "apid": apid,
                     "beam_name": beam_name,
                     "compression": compression,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "encryption": encryption,
                     "id_beam": id_beam,
                     "id_rf_band": id_rf_band,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "pkg": pkg,
                     "res": res,
@@ -236,7 +221,7 @@ class ChannelsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_transponder: str,
         name: str,
         source: str,
@@ -244,13 +229,10 @@ class ChannelsResource(SyncAPIResource):
         apid: str | NotGiven = NOT_GIVEN,
         beam_name: str | NotGiven = NOT_GIVEN,
         compression: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         encryption: str | NotGiven = NOT_GIVEN,
         id_beam: str | NotGiven = NOT_GIVEN,
         id_rf_band: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         pkg: str | NotGiven = NOT_GIVEN,
         res: str | NotGiven = NOT_GIVEN,
@@ -305,11 +287,6 @@ class ChannelsResource(SyncAPIResource):
 
           compression: Channel compression.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           encryption: Channel encryption.
 
           id_beam: Identifier of the particular beam for this channel.
@@ -320,9 +297,6 @@ class ChannelsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner: Owner.
 
@@ -360,13 +334,10 @@ class ChannelsResource(SyncAPIResource):
                     "apid": apid,
                     "beam_name": beam_name,
                     "compression": compression,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "encryption": encryption,
                     "id_beam": id_beam,
                     "id_rf_band": id_rf_band,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "pkg": pkg,
                     "res": res,
@@ -516,7 +487,7 @@ class ChannelsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -564,7 +535,7 @@ class AsyncChannelsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_transponder: str,
         name: str,
         source: str,
@@ -572,13 +543,10 @@ class AsyncChannelsResource(AsyncAPIResource):
         apid: str | NotGiven = NOT_GIVEN,
         beam_name: str | NotGiven = NOT_GIVEN,
         compression: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         encryption: str | NotGiven = NOT_GIVEN,
         id_beam: str | NotGiven = NOT_GIVEN,
         id_rf_band: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         pkg: str | NotGiven = NOT_GIVEN,
         res: str | NotGiven = NOT_GIVEN,
@@ -632,11 +600,6 @@ class AsyncChannelsResource(AsyncAPIResource):
 
           compression: Channel compression.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           encryption: Channel encryption.
 
           id_beam: Identifier of the particular beam for this channel.
@@ -647,9 +610,6 @@ class AsyncChannelsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner: Owner.
 
@@ -685,13 +645,10 @@ class AsyncChannelsResource(AsyncAPIResource):
                     "apid": apid,
                     "beam_name": beam_name,
                     "compression": compression,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "encryption": encryption,
                     "id_beam": id_beam,
                     "id_rf_band": id_rf_band,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "pkg": pkg,
                     "res": res,
@@ -747,7 +704,7 @@ class AsyncChannelsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_transponder: str,
         name: str,
         source: str,
@@ -755,13 +712,10 @@ class AsyncChannelsResource(AsyncAPIResource):
         apid: str | NotGiven = NOT_GIVEN,
         beam_name: str | NotGiven = NOT_GIVEN,
         compression: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         encryption: str | NotGiven = NOT_GIVEN,
         id_beam: str | NotGiven = NOT_GIVEN,
         id_rf_band: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         owner: str | NotGiven = NOT_GIVEN,
         pkg: str | NotGiven = NOT_GIVEN,
         res: str | NotGiven = NOT_GIVEN,
@@ -816,11 +770,6 @@ class AsyncChannelsResource(AsyncAPIResource):
 
           compression: Channel compression.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           encryption: Channel encryption.
 
           id_beam: Identifier of the particular beam for this channel.
@@ -831,9 +780,6 @@ class AsyncChannelsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           owner: Owner.
 
@@ -871,13 +817,10 @@ class AsyncChannelsResource(AsyncAPIResource):
                     "apid": apid,
                     "beam_name": beam_name,
                     "compression": compression,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "encryption": encryption,
                     "id_beam": id_beam,
                     "id_rf_band": id_rf_band,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "owner": owner,
                     "pkg": pkg,
                     "res": res,
@@ -1027,7 +970,7 @@ class AsyncChannelsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

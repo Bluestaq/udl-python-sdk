@@ -20,10 +20,10 @@ class TestLogisticsSupports:
         logistics_support = client.logistics_supports.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rpt_created_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestLogisticsSupports:
         response = client.logistics_supports.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rpt_created_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestLogisticsSupports:
         with client.logistics_supports.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rpt_created_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncLogisticsSupports:
         logistics_support = await async_client.logistics_supports.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rpt_created_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncLogisticsSupports:
         response = await async_client.logistics_supports.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rpt_created_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncLogisticsSupports:
         async with async_client.logistics_supports.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "rpt_created_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

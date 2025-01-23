@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -88,25 +87,21 @@ class AirfieldslotsResource(SyncAPIResource):
         *,
         airfield_name: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
-        ac_slot_cat: str | NotGiven = NOT_GIVEN,
+        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
         capacity: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         end_time: str | NotGiven = NOT_GIVEN,
         icao: str | NotGiven = NOT_GIVEN,
         id_airfield: str | NotGiven = NOT_GIVEN,
         min_separation: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         start_time: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
+        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -154,11 +149,6 @@ class AirfieldslotsResource(SyncAPIResource):
 
           capacity: Number of aircraft that can fit in this slot at the same time.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           end_time: Latest zulu time this slot is available based on daily standard hours. Not
               applicable to slots with type PARKING. Abnormal hours, such as holidays, should
               be marked via the AirfieldSlotConsumption schema.
@@ -176,13 +166,6 @@ class AirfieldslotsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           start_time: Zulu time this slot is first available based on daily standard hours. Not
               applicable to slots with type PARKING. Abnormal hours, such as holidays, should
@@ -215,16 +198,12 @@ class AirfieldslotsResource(SyncAPIResource):
                     "ac_slot_cat": ac_slot_cat,
                     "alt_airfield_id": alt_airfield_id,
                     "capacity": capacity,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "end_time": end_time,
                     "icao": icao,
                     "id_airfield": id_airfield,
                     "min_separation": min_separation,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
                     "start_time": start_time,
                     "type": type,
                 },
@@ -345,7 +324,7 @@ class AirfieldslotsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -429,25 +408,21 @@ class AsyncAirfieldslotsResource(AsyncAPIResource):
         *,
         airfield_name: str,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
-        ac_slot_cat: str | NotGiven = NOT_GIVEN,
+        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
         capacity: int | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         end_time: str | NotGiven = NOT_GIVEN,
         icao: str | NotGiven = NOT_GIVEN,
         id_airfield: str | NotGiven = NOT_GIVEN,
         min_separation: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         start_time: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
+        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -495,11 +470,6 @@ class AsyncAirfieldslotsResource(AsyncAPIResource):
 
           capacity: Number of aircraft that can fit in this slot at the same time.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           end_time: Latest zulu time this slot is available based on daily standard hours. Not
               applicable to slots with type PARKING. Abnormal hours, such as holidays, should
               be marked via the AirfieldSlotConsumption schema.
@@ -517,13 +487,6 @@ class AsyncAirfieldslotsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           start_time: Zulu time this slot is first available based on daily standard hours. Not
               applicable to slots with type PARKING. Abnormal hours, such as holidays, should
@@ -556,16 +519,12 @@ class AsyncAirfieldslotsResource(AsyncAPIResource):
                     "ac_slot_cat": ac_slot_cat,
                     "alt_airfield_id": alt_airfield_id,
                     "capacity": capacity,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "end_time": end_time,
                     "icao": icao,
                     "id_airfield": id_airfield,
                     "min_separation": min_separation,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
                     "start_time": start_time,
                     "type": type,
                 },
@@ -686,7 +645,7 @@ class AsyncAirfieldslotsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

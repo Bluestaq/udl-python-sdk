@@ -20,10 +20,10 @@ class TestManeuvers:
         maneuver = client.maneuvers.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_start_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_start_time": "2023-11-16T01:05:16.835689Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestManeuvers:
         response = client.maneuvers.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_start_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_start_time": "2023-11-16T01:05:16.835689Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestManeuvers:
         with client.maneuvers.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_start_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_start_time": "2023-11-16T01:05:16.835689Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncManeuvers:
         maneuver = await async_client.maneuvers.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_start_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_start_time": "2023-11-16T01:05:16.835689Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncManeuvers:
         response = await async_client.maneuvers.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_start_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_start_time": "2023-11-16T01:05:16.835689Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncManeuvers:
         async with async_client.maneuvers.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_start_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_start_time": "2023-11-16T01:05:16.835689Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

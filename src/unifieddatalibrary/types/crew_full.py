@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -70,7 +71,7 @@ class CrewFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -109,7 +110,7 @@ class CrewFull(BaseModel):
     """The aircraft Model Design Series designation assigned for this crew."""
 
     alerted_time: Optional[datetime] = FieldInfo(alias="alertedTime", default=None)
-    """Time the crew was alerted, in ISO8601 UTC format, with millisecond precision."""
+    """Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision."""
 
     arms_crew_unit: Optional[str] = FieldInfo(alias="armsCrewUnit", default=None)
     """The crew's Aviation Resource Management System (ARMS) unit.
@@ -198,13 +199,13 @@ class CrewFull(BaseModel):
 
     legal_alert_time: Optional[datetime] = FieldInfo(alias="legalAlertTime", default=None)
     """
-    Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
+    Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
     precision.
     """
 
     legal_bravo_time: Optional[datetime] = FieldInfo(alias="legalBravoTime", default=None)
     """
-    Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
+    Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
     precision.
     """
 
@@ -247,7 +248,7 @@ class CrewFull(BaseModel):
     """
 
     return_time: Optional[datetime] = FieldInfo(alias="returnTime", default=None)
-    """Scheduled return time, in ISO8601 UTC format, with millisecond precision."""
+    """Scheduled return time, in ISO 8601 UTC format, with millisecond precision."""
 
     stage_time: Optional[datetime] = FieldInfo(alias="stageTime", default=None)
     """

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -70,7 +71,7 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         end_time: Union[str, datetime],
         frame1: str,
         frame2: str,
@@ -81,17 +82,13 @@ class AttitudeSetsResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         interpolator: str | NotGiven = NOT_GIVEN,
         interpolator_degree: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         prec_angle_init: float | NotGiven = NOT_GIVEN,
@@ -189,11 +186,6 @@ class AttitudeSetsResource(SyncAPIResource):
 
           attitude_list: Collection of attitude data associated with this Attitude Set.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           es_id: Unique identifier of the parent (positional) Ephemeris Set, if this data is
               correlated with an Ephemeris.
 
@@ -211,8 +203,6 @@ class AttitudeSetsResource(SyncAPIResource):
               sequence can be expressed as '13', and a triple rotation with Z-X-Y sequence can
               be expressed as '312'.
 
-          id_on_orbit: Unique identifier of the on-orbit satellite to which this attitude set applies.
-
           id_sensor: Unique identifier of the sensor to which this attitude set applies IF this set
               is reporting a single sensor orientation.
 
@@ -226,9 +216,6 @@ class AttitudeSetsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the record source to indicate the target object
               of this attitude set. This may be an internal identifier and not necessarily map
@@ -274,17 +261,13 @@ class AttitudeSetsResource(SyncAPIResource):
                     "id": id,
                     "as_ref": as_ref,
                     "attitude_list": attitude_list,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "es_id": es_id,
                     "euler_rot_seq": euler_rot_seq,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "interpolator": interpolator,
                     "interpolator_degree": interpolator_degree,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "prec_angle_init": prec_angle_init,
@@ -392,7 +375,7 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         end_time: Union[str, datetime],
         frame1: str,
         frame2: str,
@@ -403,17 +386,13 @@ class AttitudeSetsResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_create_filedrop_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         interpolator: str | NotGiven = NOT_GIVEN,
         interpolator_degree: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         prec_angle_init: float | NotGiven = NOT_GIVEN,
@@ -508,11 +487,6 @@ class AttitudeSetsResource(SyncAPIResource):
 
           attitude_list: Collection of attitude data associated with this Attitude Set.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           es_id: Unique identifier of the parent (positional) Ephemeris Set, if this data is
               correlated with an Ephemeris.
 
@@ -530,8 +504,6 @@ class AttitudeSetsResource(SyncAPIResource):
               sequence can be expressed as '13', and a triple rotation with Z-X-Y sequence can
               be expressed as '312'.
 
-          id_on_orbit: Unique identifier of the on-orbit satellite to which this attitude set applies.
-
           id_sensor: Unique identifier of the sensor to which this attitude set applies IF this set
               is reporting a single sensor orientation.
 
@@ -545,9 +517,6 @@ class AttitudeSetsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the record source to indicate the target object
               of this attitude set. This may be an internal identifier and not necessarily map
@@ -593,17 +562,13 @@ class AttitudeSetsResource(SyncAPIResource):
                     "id": id,
                     "as_ref": as_ref,
                     "attitude_list": attitude_list,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "es_id": es_id,
                     "euler_rot_seq": euler_rot_seq,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "interpolator": interpolator,
                     "interpolator_degree": interpolator_degree,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "prec_angle_init": prec_angle_init,
@@ -667,7 +632,7 @@ class AttitudeSetsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           start_time: The epoch or start time of the attitude parameter or attitude ephemeris, in ISO
@@ -730,7 +695,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         end_time: Union[str, datetime],
         frame1: str,
         frame2: str,
@@ -741,17 +706,13 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         interpolator: str | NotGiven = NOT_GIVEN,
         interpolator_degree: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         prec_angle_init: float | NotGiven = NOT_GIVEN,
@@ -849,11 +810,6 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
 
           attitude_list: Collection of attitude data associated with this Attitude Set.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           es_id: Unique identifier of the parent (positional) Ephemeris Set, if this data is
               correlated with an Ephemeris.
 
@@ -871,8 +827,6 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
               sequence can be expressed as '13', and a triple rotation with Z-X-Y sequence can
               be expressed as '312'.
 
-          id_on_orbit: Unique identifier of the on-orbit satellite to which this attitude set applies.
-
           id_sensor: Unique identifier of the sensor to which this attitude set applies IF this set
               is reporting a single sensor orientation.
 
@@ -886,9 +840,6 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the record source to indicate the target object
               of this attitude set. This may be an internal identifier and not necessarily map
@@ -934,17 +885,13 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                     "id": id,
                     "as_ref": as_ref,
                     "attitude_list": attitude_list,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "es_id": es_id,
                     "euler_rot_seq": euler_rot_seq,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "interpolator": interpolator,
                     "interpolator_degree": interpolator_degree,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "prec_angle_init": prec_angle_init,
@@ -1056,7 +1003,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         end_time: Union[str, datetime],
         frame1: str,
         frame2: str,
@@ -1067,17 +1014,13 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_create_filedrop_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         interpolator: str | NotGiven = NOT_GIVEN,
         interpolator_degree: int | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         prec_angle_init: float | NotGiven = NOT_GIVEN,
@@ -1172,11 +1115,6 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
 
           attitude_list: Collection of attitude data associated with this Attitude Set.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           es_id: Unique identifier of the parent (positional) Ephemeris Set, if this data is
               correlated with an Ephemeris.
 
@@ -1194,8 +1132,6 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
               sequence can be expressed as '13', and a triple rotation with Z-X-Y sequence can
               be expressed as '312'.
 
-          id_on_orbit: Unique identifier of the on-orbit satellite to which this attitude set applies.
-
           id_sensor: Unique identifier of the sensor to which this attitude set applies IF this set
               is reporting a single sensor orientation.
 
@@ -1209,9 +1145,6 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by the record source to indicate the target object
               of this attitude set. This may be an internal identifier and not necessarily map
@@ -1257,17 +1190,13 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                     "id": id,
                     "as_ref": as_ref,
                     "attitude_list": attitude_list,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "es_id": es_id,
                     "euler_rot_seq": euler_rot_seq,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "interpolator": interpolator,
                     "interpolator_degree": interpolator_degree,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "prec_angle_init": prec_angle_init,
@@ -1331,7 +1260,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           start_time: The epoch or start time of the attitude parameter or attitude ephemeris, in ISO

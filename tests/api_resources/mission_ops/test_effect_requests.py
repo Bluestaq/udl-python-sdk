@@ -23,47 +23,44 @@ class TestEffectRequests:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         effect_request = client.mission_ops.effect_requests.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
         )
         assert effect_request is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         effect_request = client.mission_ops.effect_requests.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
-            id="id",
-            context="context",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            deadline_type="deadlineType",
-            end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_request_id="externalRequestId",
-            metric_types=["string"],
-            metric_weights=[0],
-            model_class="modelClass",
-            origin="origin",
-            orig_network="origNetwork",
-            priority="priority",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            state="state",
-            target_src_id="targetSrcId",
-            target_src_type="targetSrcType",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+            id="EFFECTREQUEST-ID",
+            context="Example Notes",
+            deadline_type="NoLaterThan",
+            end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            external_request_id="EXTERNALREQUEST-ID",
+            metric_types=["COST", "RISK"],
+            metric_weights=[0.5, 0.6],
+            model_class="Preference model",
+            origin="THIRD_PARTY_DATASOURCE",
+            priority="LOW",
+            start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            state="CREATED",
+            target_src_id="TARGETSRC-ID",
+            target_src_type="POI",
         )
         assert effect_request is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.mission_ops.effect_requests.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -74,10 +71,10 @@ class TestEffectRequests:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.mission_ops.effect_requests.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -125,47 +122,44 @@ class TestAsyncEffectRequests:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_request = await async_client.mission_ops.effect_requests.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
         )
         assert effect_request is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_request = await async_client.mission_ops.effect_requests.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
-            id="id",
-            context="context",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            deadline_type="deadlineType",
-            end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_request_id="externalRequestId",
-            metric_types=["string"],
-            metric_weights=[0],
-            model_class="modelClass",
-            origin="origin",
-            orig_network="origNetwork",
-            priority="priority",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            state="state",
-            target_src_id="targetSrcId",
-            target_src_type="targetSrcType",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+            id="EFFECTREQUEST-ID",
+            context="Example Notes",
+            deadline_type="NoLaterThan",
+            end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            external_request_id="EXTERNALREQUEST-ID",
+            metric_types=["COST", "RISK"],
+            metric_weights=[0.5, 0.6],
+            model_class="Preference model",
+            origin="THIRD_PARTY_DATASOURCE",
+            priority="LOW",
+            start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            state="CREATED",
+            target_src_id="TARGETSRC-ID",
+            target_src_type="POI",
         )
         assert effect_request is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.mission_ops.effect_requests.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -176,10 +170,10 @@ class TestAsyncEffectRequests:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.mission_ops.effect_requests.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            effect_list=["string"],
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -14,7 +15,7 @@ class AirfieldstatusFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -42,6 +43,15 @@ class AirfieldstatusFull(BaseModel):
 
     alt_airfield_id: Optional[str] = FieldInfo(alias="altAirfieldId", default=None)
     """Alternate airfield identifier provided by the source."""
+
+    approved_by: Optional[str] = FieldInfo(alias="approvedBy", default=None)
+    """The name of the person who approved the airfield survey review."""
+
+    approved_date: Optional[datetime] = FieldInfo(alias="approvedDate", default=None)
+    """
+    The date that survey review changes were approved for this airfield, in ISO 8601
+    UTC format with millisecond precision.
+    """
 
     arff_cat: Optional[str] = FieldInfo(alias="arffCat", default=None)
     """
@@ -171,6 +181,15 @@ class AirfieldstatusFull(BaseModel):
     pri_rwy_num: Optional[str] = FieldInfo(alias="priRwyNum", default=None)
     """The number or ID of primary runway at the airfield."""
 
+    reviewed_by: Optional[str] = FieldInfo(alias="reviewedBy", default=None)
+    """The name of the person who reviewed the airfield survey."""
+
+    reviewed_date: Optional[datetime] = FieldInfo(alias="reviewedDate", default=None)
+    """
+    The date the airfield survey was reviewed, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
     rwy_cond_reading: Optional[int] = FieldInfo(alias="rwyCondReading", default=None)
     """
     The primary runway condition reading value used for determining runway braking
@@ -201,6 +220,12 @@ class AirfieldstatusFull(BaseModel):
     record should be assumed to have originated from the primary Enterprise UDL.
     """
 
+    survey_date: Optional[datetime] = FieldInfo(alias="surveyDate", default=None)
+    """
+    The date the airfield survey was performed, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Time the row was last updated in the database, auto-populated by the system."""
 
@@ -213,11 +238,15 @@ class AirfieldstatusFull(BaseModel):
     wide_parking_mog: Optional[int] = FieldInfo(alias="wideParkingMOG", default=None)
     """
     Maximum on ground (MOG) number of parking wide-body aircraft based on spacing
-    and manpower at the time of status.
+    and manpower at the time of status. Additional information about this field as
+    it pertains to specific aircraft type may be available in an associated
+    SiteOperations record.
     """
 
     wide_working_mog: Optional[int] = FieldInfo(alias="wideWorkingMOG", default=None)
     """
     Maximum on ground (MOG) number of working wide-body aircraft based on spacing
-    and manpower at the time of status.
+    and manpower at the time of status. Additional information about this field as
+    it pertains to specific aircraft type may be available in an associated
+    SiteOperations record.
     """

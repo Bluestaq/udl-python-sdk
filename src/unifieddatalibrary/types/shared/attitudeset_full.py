@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
+from .onorbit import Onorbit
 from ..._models import BaseModel
 from ..attitudedata_full import AttitudedataFull
 
@@ -18,7 +17,7 @@ class AttitudesetFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -150,7 +149,7 @@ class AttitudesetFull(BaseModel):
     notes: Optional[str] = None
     """Optional notes/comments for this attitude set."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -199,11 +198,3 @@ class AttitudesetFull(BaseModel):
 
     This applies to Attitude Ephemeris Messages (AEM) that employ a fixed step size.
     """
-
-
-from .onorbit import Onorbit
-
-if PYDANTIC_V2:
-    AttitudesetFull.model_rebuild()
-else:
-    AttitudesetFull.update_forward_refs()  # type: ignore

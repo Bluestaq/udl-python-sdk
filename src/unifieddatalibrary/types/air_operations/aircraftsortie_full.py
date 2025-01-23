@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import date, datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -15,7 +16,7 @@ class SortiePpr(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -105,7 +106,7 @@ class SortiePpr(BaseModel):
     format with millisecond precision.
     """
 
-    type: Optional[str] = None
+    type: Optional[Literal["M", "C"]] = None
     """
     Type of prior permission required (PPR) for a sortie (M - Military or C -
     Civilian). Enum: [M, C].
@@ -125,7 +126,7 @@ class AircraftsortieFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -384,7 +385,9 @@ class AircraftsortieFull(BaseModel):
     oxy_req_pax: Optional[float] = FieldInfo(alias="oxyReqPax", default=None)
     """Liquid oxygen required on the aircraft for the troop compartment, in liters."""
 
-    paper_status: Optional[str] = FieldInfo(alias="paperStatus", default=None)
+    paper_status: Optional[Literal["PUBLISHED", "DELETED", "UPDATED", "READ"]] = FieldInfo(
+        alias="paperStatus", default=None
+    )
     """The status of the supporting document."""
 
     papers_version: Optional[str] = FieldInfo(alias="papersVersion", default=None)
@@ -402,7 +405,9 @@ class AircraftsortieFull(BaseModel):
     UTC format with millisecond precision.
     """
 
-    ppr_status: Optional[str] = FieldInfo(alias="pprStatus", default=None)
+    ppr_status: Optional[Literal["NOT REQUIRED", "REQUIRED NOT REQUESTED", "GRANTED", "PENDING"]] = FieldInfo(
+        alias="pprStatus", default=None
+    )
     """The prior permission required (PPR) status."""
 
     primary_scl: Optional[str] = FieldInfo(alias="primarySCL", default=None)
@@ -422,7 +427,7 @@ class AircraftsortieFull(BaseModel):
     result_remarks: Optional[str] = FieldInfo(alias="resultRemarks", default=None)
     """Remarks concerning the results of this sortie."""
 
-    rvn_req: Optional[str] = FieldInfo(alias="rvnReq", default=None)
+    rvn_req: Optional[Literal["N", "R", "C6", "R6"]] = FieldInfo(alias="rvnReq", default=None)
     """
     Type of Ravens required for this sortie (N - None, R - Raven (Security Team)
     required, C6 - Consider ravens (Ground time over 6 hours), R6 - Ravens required

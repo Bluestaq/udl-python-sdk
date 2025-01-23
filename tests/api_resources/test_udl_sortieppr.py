@@ -20,10 +20,10 @@ class TestUdlSortieppr:
         udl_sortieppr = client.udl_sortieppr.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_sortie": "idSortie",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestUdlSortieppr:
         response = client.udl_sortieppr.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_sortie": "idSortie",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestUdlSortieppr:
         with client.udl_sortieppr.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_sortie": "idSortie",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncUdlSortieppr:
         udl_sortieppr = await async_client.udl_sortieppr.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_sortie": "idSortie",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncUdlSortieppr:
         response = await async_client.udl_sortieppr.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_sortie": "idSortie",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncUdlSortieppr:
         async with async_client.udl_sortieppr.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_sortie": "idSortie",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

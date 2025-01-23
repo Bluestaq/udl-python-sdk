@@ -1,14 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["Elset"]
 
@@ -17,7 +16,7 @@ class Elset(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -196,7 +195,7 @@ class Elset(BaseModel):
     Units are revolutions per day squared.
     """
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -276,7 +275,9 @@ class Elset(BaseModel):
     match in size).
     """
 
-    sourced_data_types: Optional[List[str]] = FieldInfo(alias="sourcedDataTypes", default=None)
+    sourced_data_types: Optional[List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]]] = FieldInfo(
+        alias="sourcedDataTypes", default=None
+    )
     """Optional array of UDL observation data types used to build this element set
     (e.g.
 
@@ -315,11 +316,3 @@ class Elset(BaseModel):
     'origObjectId' field may be populated with an internal data provider specific
     identifier.
     """
-
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    Elset.model_rebuild()
-else:
-    Elset.update_forward_refs()  # type: ignore

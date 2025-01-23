@@ -21,10 +21,10 @@ class TestAIsObjects:
         ais_object = client.ais_objects.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
             ],
         )
@@ -35,10 +35,10 @@ class TestAIsObjects:
         response = client.ais_objects.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
             ],
         )
@@ -53,10 +53,10 @@ class TestAIsObjects:
         with client.ais_objects.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
             ],
         ) as response:
@@ -77,10 +77,10 @@ class TestAsyncAIsObjects:
         ais_object = await async_client.ais_objects.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
             ],
         )
@@ -91,10 +91,10 @@ class TestAsyncAIsObjects:
         response = await async_client.ais_objects.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
             ],
         )
@@ -109,10 +109,10 @@ class TestAsyncAIsObjects:
         async with async_client.ais_objects.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
             ],
         ) as response:

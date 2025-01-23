@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +15,7 @@ class AirTransportMissionUpdateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -58,15 +58,6 @@ class AirTransportMissionUpdateParams(TypedDict, total=False):
 
     call_sign: Annotated[str, PropertyInfo(alias="callSign")]
     """The call sign for this mission."""
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
 
     cw: bool
     """Flag indicating this is a close watch mission."""
@@ -138,12 +129,6 @@ class AirTransportMissionUpdateParams(TypedDict, total=False):
     orig_mission_id: Annotated[str, PropertyInfo(alias="origMissionId")]
     """The mission identifier provided by the originating source."""
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     prev_amc_mission_id: Annotated[str, PropertyInfo(alias="prevAMCMissionId")]
     """
     Air Mobility Command (AMC) mission identifier of the previous air transport
@@ -176,13 +161,6 @@ class AirTransportMissionUpdateParams(TypedDict, total=False):
     one aircraft to carry out a mission.
     """
 
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
-
     source_sys_deviation: Annotated[float, PropertyInfo(alias="sourceSysDeviation")]
     """
     The number of minutes a mission is off schedule based on the source system's
@@ -194,15 +172,6 @@ class AirTransportMissionUpdateParams(TypedDict, total=False):
 
     type: str
     """The type of mission (e.g. SAAM, CHNL, etc.)."""
-
-    updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """Time the row was updated in the database, auto-populated by the system."""
-
-    updated_by: Annotated[str, PropertyInfo(alias="updatedBy")]
-    """
-    Application user who updated the row in the database, auto-populated by the
-    system.
-    """
 
 
 class HazMat(TypedDict, total=False):
@@ -312,13 +281,13 @@ class Requirement(TypedDict, total=False):
     bulk_weight: Annotated[float, PropertyInfo(alias="bulkWeight")]
     """Total weight of the bulk cargo, in kilograms."""
 
-    ead: str
+    ead: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Earliest available date the cargo can be picked up."""
 
     gdss_req_id: Annotated[str, PropertyInfo(alias="gdssReqId")]
     """Global Decision Support System (GDSS) mission requirement identifier."""
 
-    lad: str
+    lad: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Latest available date the cargo may be delivered."""
 
     num_ambulatory: Annotated[int, PropertyInfo(alias="numAmbulatory")]

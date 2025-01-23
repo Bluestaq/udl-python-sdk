@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from typing import List, Union
-from datetime import date, datetime
-from typing_extensions import Required, Annotated, TypedDict
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -23,7 +23,7 @@ class EquipmentUpdateParams(TypedDict, total=False):
     (ISO-3166-ALPHA-2).
     """
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -168,15 +168,6 @@ class EquipmentUpdateParams(TypedDict, total=False):
     """
     Indicates the plus or minus error assessed against the method used to derive the
     coordinate.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     elev_msl: Annotated[float, PropertyInfo(alias="elevMsl")]

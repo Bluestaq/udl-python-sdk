@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -51,19 +52,15 @@ class H3geoResource(SyncAPIResource):
         *,
         cells: Iterable[h3geo_create_params.Cell],
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         num_cells: int,
         source: str,
         start_time: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
         center_freq: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         resolution: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -112,11 +109,6 @@ class H3geoResource(SyncAPIResource):
 
           center_freq: The center frequency of this H3 Geo data set measured in megahertz.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           end_time: End time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
 
           origin: Originating system or organization which produced the data, if different from
@@ -124,15 +116,8 @@ class H3geoResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          resolution: H3 resolution (0 � 15) for the data set. At this time, UDL supports a resolution
+          resolution: H3 resolution (0 – 15) for the data set. At this time, UDL supports a resolution
               of 3 or less.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -164,13 +149,9 @@ class H3geoResource(SyncAPIResource):
                     "start_time": start_time,
                     "id": id,
                     "center_freq": center_freq,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "end_time": end_time,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "resolution": resolution,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "type": type,
                 },
@@ -208,19 +189,15 @@ class AsyncH3geoResource(AsyncAPIResource):
         *,
         cells: Iterable[h3geo_create_params.Cell],
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         num_cells: int,
         source: str,
         start_time: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
         center_freq: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         resolution: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -269,11 +246,6 @@ class AsyncH3geoResource(AsyncAPIResource):
 
           center_freq: The center frequency of this H3 Geo data set measured in megahertz.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           end_time: End time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
 
           origin: Originating system or organization which produced the data, if different from
@@ -281,15 +253,8 @@ class AsyncH3geoResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          resolution: H3 resolution (0 � 15) for the data set. At this time, UDL supports a resolution
+          resolution: H3 resolution (0 – 15) for the data set. At this time, UDL supports a resolution
               of 3 or less.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -321,13 +286,9 @@ class AsyncH3geoResource(AsyncAPIResource):
                     "start_time": start_time,
                     "id": id,
                     "center_freq": center_freq,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "end_time": end_time,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "resolution": resolution,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "type": type,
                 },

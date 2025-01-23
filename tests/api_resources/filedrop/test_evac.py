@@ -20,13 +20,13 @@ class TestEvac:
         evac = client.filedrop.evac.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -37,13 +37,13 @@ class TestEvac:
         response = client.filedrop.evac.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -58,13 +58,13 @@ class TestEvac:
         with client.filedrop.evac.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         ) as response:
@@ -85,13 +85,13 @@ class TestAsyncEvac:
         evac = await async_client.filedrop.evac.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -102,13 +102,13 @@ class TestAsyncEvac:
         response = await async_client.filedrop.evac.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         )
@@ -123,13 +123,13 @@ class TestAsyncEvac:
         async with async_client.filedrop.evac.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "pickup_lat": 0,
-                    "pickup_lon": 0,
-                    "req_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
-                    "type": "type",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "source": "Bluestaq",
+                    "type": "REQUEST",
                 }
             ],
         ) as response:

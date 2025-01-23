@@ -21,10 +21,10 @@ class TestGnssobservations:
         gnssobservation = client.filedrop.gnssobservations.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
                 }
             ],
         )
@@ -35,10 +35,10 @@ class TestGnssobservations:
         response = client.filedrop.gnssobservations.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
                 }
             ],
         )
@@ -53,10 +53,10 @@ class TestGnssobservations:
         with client.filedrop.gnssobservations.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
                 }
             ],
         ) as response:
@@ -77,10 +77,10 @@ class TestAsyncGnssobservations:
         gnssobservation = await async_client.filedrop.gnssobservations.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
                 }
             ],
         )
@@ -91,10 +91,10 @@ class TestAsyncGnssobservations:
         response = await async_client.filedrop.gnssobservations.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
                 }
             ],
         )
@@ -109,10 +109,10 @@ class TestAsyncGnssobservations:
         async with async_client.filedrop.gnssobservations.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "ts": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
                 }
             ],
         ) as response:

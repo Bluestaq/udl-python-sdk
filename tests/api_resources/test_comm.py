@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     CommListResponse,
     CommTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,94 +24,91 @@ class TestComm:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
         assert comm is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
+            id="COMM-ID",
+            description="Description for comm A",
             entity={
-                "classification_marking": "classificationMarking",
-                "data_mode": "dataMode",
-                "name": "name",
-                "source": "source",
-                "type": "type",
-                "country_code": "countryCode",
-                "created_at": "2019-12-27T18:11:19.117Z",
-                "created_by": "createdBy",
-                "id_entity": "idEntity",
-                "id_location": "idLocation",
-                "id_on_orbit": "idOnOrbit",
-                "id_operating_unit": "idOperatingUnit",
+                "classification_marking": "U",
+                "data_mode": "REAL",
+                "name": "Example name",
+                "source": "Bluestaq",
+                "type": "AIRCRAFT",
+                "country_code": "US",
+                "created_at": "2018-01-01T16:00:00.123Z",
+                "created_by": "some.user",
+                "id_entity": "ENTITY-ID",
+                "id_location": "LOCATION-ID",
+                "id_on_orbit": "ONORBIT-ID",
+                "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "source": "source",
-                    "altitude": 0,
-                    "country_code": "countryCode",
-                    "created_at": "2019-12-27T18:11:19.117Z",
-                    "created_by": "createdBy",
-                    "id_location": "idLocation",
-                    "lat": 0,
-                    "lon": 0,
-                    "origin": "origin",
-                    "orig_network": "origNetwork",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "Example location",
+                    "source": "Bluestaq",
+                    "altitude": 10.23,
+                    "country_code": "US",
+                    "created_at": "2018-01-01T16:00:00.123Z",
+                    "created_by": "some.user",
+                    "id_location": "LOCATION-ID",
+                    "lat": 45.23,
+                    "lon": 179.1,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_network": "OPS1",
                 },
                 "on_orbit": {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "sat_no": 0,
-                    "source": "source",
-                    "alt_name": "altName",
-                    "category": "category",
-                    "common_name": "commonName",
-                    "constellation": "constellation",
-                    "country_code": "countryCode",
-                    "created_at": "2019-12-27T18:11:19.117Z",
-                    "created_by": "createdBy",
-                    "decay_date": "2019-12-27T18:11:19.117Z",
-                    "id_on_orbit": "idOnOrbit",
-                    "intl_des": "intlDes",
-                    "launch_date": "2019-12-27",
-                    "launch_site_id": "launchSiteId",
-                    "lifetime_years": 0,
-                    "mission_number": "missionNumber",
-                    "object_type": "objectType",
-                    "origin": "origin",
-                    "orig_network": "origNetwork",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "sat_no": 1,
+                    "source": "Bluestaq",
+                    "alt_name": "Alternate Name",
+                    "category": "Unknown",
+                    "common_name": "Example common name",
+                    "constellation": "Big Dipper",
+                    "country_code": "US",
+                    "created_at": "2018-01-01T16:00:00.123Z",
+                    "created_by": "some.user",
+                    "decay_date": "2018-01-01T16:00:00.123Z",
+                    "id_on_orbit": "ONORBIT-ID",
+                    "intl_des": "2021123ABC",
+                    "launch_date": "2018-01-01",
+                    "launch_site_id": "LAUNCHSITE-ID",
+                    "lifetime_years": 10,
+                    "mission_number": "Expedition 1",
+                    "object_type": "ROCKET BODY",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_network": "OPS1",
                 },
-                "origin": "origin",
-                "orig_network": "origNetwork",
-                "owner_type": "ownerType",
-                "taskable": True,
-                "urls": ["string"],
+                "origin": "THIRD_PARTY_DATASOURCE",
+                "orig_network": "OPS1",
+                "owner_type": "Commercial",
+                "taskable": False,
+                "urls": ["URL1", "URL2"],
             },
-            id_entity="idEntity",
-            origin="origin",
-            orig_network="origNetwork",
+            id_entity="ENTITY-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert comm is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.comm.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -123,10 +119,10 @@ class TestComm:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.comm.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -178,10 +174,10 @@ class TestComm:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
         assert comm is None
 
@@ -189,17 +185,14 @@ class TestComm:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
-            id_entity="idEntity",
-            origin="origin",
-            orig_network="origNetwork",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
+            id_2="COMM-ID",
+            description="Description for comm A",
+            id_entity="ENTITY-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert comm is None
 
@@ -207,10 +200,10 @@ class TestComm:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.comm.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -222,10 +215,10 @@ class TestComm:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.comm.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -240,10 +233,10 @@ class TestComm:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.comm.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                name="name",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                name="DSCS II C-7-COMM Payload",
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -398,94 +391,91 @@ class TestAsyncComm:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
         assert comm is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
+            id="COMM-ID",
+            description="Description for comm A",
             entity={
-                "classification_marking": "classificationMarking",
-                "data_mode": "dataMode",
-                "name": "name",
-                "source": "source",
-                "type": "type",
-                "country_code": "countryCode",
-                "created_at": "2019-12-27T18:11:19.117Z",
-                "created_by": "createdBy",
-                "id_entity": "idEntity",
-                "id_location": "idLocation",
-                "id_on_orbit": "idOnOrbit",
-                "id_operating_unit": "idOperatingUnit",
+                "classification_marking": "U",
+                "data_mode": "REAL",
+                "name": "Example name",
+                "source": "Bluestaq",
+                "type": "AIRCRAFT",
+                "country_code": "US",
+                "created_at": "2018-01-01T16:00:00.123Z",
+                "created_by": "some.user",
+                "id_entity": "ENTITY-ID",
+                "id_location": "LOCATION-ID",
+                "id_on_orbit": "ONORBIT-ID",
+                "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "name": "name",
-                    "source": "source",
-                    "altitude": 0,
-                    "country_code": "countryCode",
-                    "created_at": "2019-12-27T18:11:19.117Z",
-                    "created_by": "createdBy",
-                    "id_location": "idLocation",
-                    "lat": 0,
-                    "lon": 0,
-                    "origin": "origin",
-                    "orig_network": "origNetwork",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "name": "Example location",
+                    "source": "Bluestaq",
+                    "altitude": 10.23,
+                    "country_code": "US",
+                    "created_at": "2018-01-01T16:00:00.123Z",
+                    "created_by": "some.user",
+                    "id_location": "LOCATION-ID",
+                    "lat": 45.23,
+                    "lon": 179.1,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_network": "OPS1",
                 },
                 "on_orbit": {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "sat_no": 0,
-                    "source": "source",
-                    "alt_name": "altName",
-                    "category": "category",
-                    "common_name": "commonName",
-                    "constellation": "constellation",
-                    "country_code": "countryCode",
-                    "created_at": "2019-12-27T18:11:19.117Z",
-                    "created_by": "createdBy",
-                    "decay_date": "2019-12-27T18:11:19.117Z",
-                    "id_on_orbit": "idOnOrbit",
-                    "intl_des": "intlDes",
-                    "launch_date": "2019-12-27",
-                    "launch_site_id": "launchSiteId",
-                    "lifetime_years": 0,
-                    "mission_number": "missionNumber",
-                    "object_type": "objectType",
-                    "origin": "origin",
-                    "orig_network": "origNetwork",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "sat_no": 1,
+                    "source": "Bluestaq",
+                    "alt_name": "Alternate Name",
+                    "category": "Unknown",
+                    "common_name": "Example common name",
+                    "constellation": "Big Dipper",
+                    "country_code": "US",
+                    "created_at": "2018-01-01T16:00:00.123Z",
+                    "created_by": "some.user",
+                    "decay_date": "2018-01-01T16:00:00.123Z",
+                    "id_on_orbit": "ONORBIT-ID",
+                    "intl_des": "2021123ABC",
+                    "launch_date": "2018-01-01",
+                    "launch_site_id": "LAUNCHSITE-ID",
+                    "lifetime_years": 10,
+                    "mission_number": "Expedition 1",
+                    "object_type": "ROCKET BODY",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_network": "OPS1",
                 },
-                "origin": "origin",
-                "orig_network": "origNetwork",
-                "owner_type": "ownerType",
-                "taskable": True,
-                "urls": ["string"],
+                "origin": "THIRD_PARTY_DATASOURCE",
+                "orig_network": "OPS1",
+                "owner_type": "Commercial",
+                "taskable": False,
+                "urls": ["URL1", "URL2"],
             },
-            id_entity="idEntity",
-            origin="origin",
-            orig_network="origNetwork",
+            id_entity="ENTITY-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert comm is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.comm.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -496,10 +486,10 @@ class TestAsyncComm:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.comm.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -551,10 +541,10 @@ class TestAsyncComm:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
         assert comm is None
 
@@ -562,17 +552,14 @@ class TestAsyncComm:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            description="description",
-            id_entity="idEntity",
-            origin="origin",
-            orig_network="origNetwork",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
+            id_2="COMM-ID",
+            description="Description for comm A",
+            id_entity="ENTITY-ID",
+            origin="THIRD_PARTY_DATASOURCE",
         )
         assert comm is None
 
@@ -580,10 +567,10 @@ class TestAsyncComm:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.comm.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -595,10 +582,10 @@ class TestAsyncComm:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.comm.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            name="DSCS II C-7-COMM Payload",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -613,10 +600,10 @@ class TestAsyncComm:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.comm.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                name="name",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                name="DSCS II C-7-COMM Payload",
+                source="Bluestaq",
                 id_2="",
             )
 

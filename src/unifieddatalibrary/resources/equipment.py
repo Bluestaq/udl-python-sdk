@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable
-from datetime import date, datetime
+from datetime import date
+from typing_extensions import Literal
 
 import httpx
 
@@ -59,7 +60,7 @@ class EquipmentResource(SyncAPIResource):
         *,
         classification_marking: str,
         country_code: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         lat: float,
         lon: float,
         source: str,
@@ -75,8 +76,6 @@ class EquipmentResource(SyncAPIResource):
         coord: str | NotGiven = NOT_GIVEN,
         coord_datum: str | NotGiven = NOT_GIVEN,
         coord_deriv_acc: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
@@ -234,11 +233,6 @@ class EquipmentResource(SyncAPIResource):
 
           coord_deriv_acc: Indicates the plus or minus error assessed against the method used to derive the
               coordinate.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           elev_msl: Ground elevation, in meters, of the geographic coordinates referenced to (above
               or below) Mean Sea Level (MSL) vertical datum.
@@ -466,8 +460,6 @@ class EquipmentResource(SyncAPIResource):
                     "coord": coord,
                     "coord_datum": coord_datum,
                     "coord_deriv_acc": coord_deriv_acc,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "elev_msl": elev_msl,
                     "elev_msl_conf_lvl": elev_msl_conf_lvl,
                     "elev_msl_deriv_acc": elev_msl_deriv_acc,
@@ -550,7 +542,7 @@ class EquipmentResource(SyncAPIResource):
         *,
         classification_marking: str,
         country_code: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         lat: float,
         lon: float,
         source: str,
@@ -566,8 +558,6 @@ class EquipmentResource(SyncAPIResource):
         coord: str | NotGiven = NOT_GIVEN,
         coord_datum: str | NotGiven = NOT_GIVEN,
         coord_deriv_acc: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
@@ -726,11 +716,6 @@ class EquipmentResource(SyncAPIResource):
 
           coord_deriv_acc: Indicates the plus or minus error assessed against the method used to derive the
               coordinate.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           elev_msl: Ground elevation, in meters, of the geographic coordinates referenced to (above
               or below) Mean Sea Level (MSL) vertical datum.
@@ -960,8 +945,6 @@ class EquipmentResource(SyncAPIResource):
                     "coord": coord,
                     "coord_datum": coord_datum,
                     "coord_deriv_acc": coord_deriv_acc,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "elev_msl": elev_msl,
                     "elev_msl_conf_lvl": elev_msl_conf_lvl,
                     "elev_msl_deriv_acc": elev_msl_deriv_acc,
@@ -1102,9 +1085,11 @@ class EquipmentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take multiple Equipment records as a POST body and ingest
-        into the database. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
+        Service operation intended for initial integration only, to take a list of
+        Equipment records as a POST body and ingest into the database. This operation is
+        not intended to be used for automated feeds into UDL. Data providers should
+        contact the UDL team for specific role assignments and for instructions on
+        setting up a permanent feed through an alternate mechanism.
 
         Args:
           extra_headers: Send extra headers
@@ -1172,7 +1157,7 @@ class EquipmentResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -1221,7 +1206,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
         *,
         classification_marking: str,
         country_code: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         lat: float,
         lon: float,
         source: str,
@@ -1237,8 +1222,6 @@ class AsyncEquipmentResource(AsyncAPIResource):
         coord: str | NotGiven = NOT_GIVEN,
         coord_datum: str | NotGiven = NOT_GIVEN,
         coord_deriv_acc: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
@@ -1396,11 +1379,6 @@ class AsyncEquipmentResource(AsyncAPIResource):
 
           coord_deriv_acc: Indicates the plus or minus error assessed against the method used to derive the
               coordinate.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           elev_msl: Ground elevation, in meters, of the geographic coordinates referenced to (above
               or below) Mean Sea Level (MSL) vertical datum.
@@ -1628,8 +1606,6 @@ class AsyncEquipmentResource(AsyncAPIResource):
                     "coord": coord,
                     "coord_datum": coord_datum,
                     "coord_deriv_acc": coord_deriv_acc,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "elev_msl": elev_msl,
                     "elev_msl_conf_lvl": elev_msl_conf_lvl,
                     "elev_msl_deriv_acc": elev_msl_deriv_acc,
@@ -1712,7 +1688,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
         *,
         classification_marking: str,
         country_code: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         lat: float,
         lon: float,
         source: str,
@@ -1728,8 +1704,6 @@ class AsyncEquipmentResource(AsyncAPIResource):
         coord: str | NotGiven = NOT_GIVEN,
         coord_datum: str | NotGiven = NOT_GIVEN,
         coord_deriv_acc: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
@@ -1888,11 +1862,6 @@ class AsyncEquipmentResource(AsyncAPIResource):
 
           coord_deriv_acc: Indicates the plus or minus error assessed against the method used to derive the
               coordinate.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           elev_msl: Ground elevation, in meters, of the geographic coordinates referenced to (above
               or below) Mean Sea Level (MSL) vertical datum.
@@ -2122,8 +2091,6 @@ class AsyncEquipmentResource(AsyncAPIResource):
                     "coord": coord,
                     "coord_datum": coord_datum,
                     "coord_deriv_acc": coord_deriv_acc,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "elev_msl": elev_msl,
                     "elev_msl_conf_lvl": elev_msl_conf_lvl,
                     "elev_msl_deriv_acc": elev_msl_deriv_acc,
@@ -2264,9 +2231,11 @@ class AsyncEquipmentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take multiple Equipment records as a POST body and ingest
-        into the database. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
+        Service operation intended for initial integration only, to take a list of
+        Equipment records as a POST body and ingest into the database. This operation is
+        not intended to be used for automated feeds into UDL. Data providers should
+        contact the UDL team for specific role assignments and for instructions on
+        setting up a permanent feed through an alternate mechanism.
 
         Args:
           extra_headers: Send extra headers
@@ -2334,7 +2303,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

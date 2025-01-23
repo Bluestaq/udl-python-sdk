@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     CountryListResponse,
     CountryTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,34 +24,31 @@ class TestCountries:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         country = client.countries.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert country is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         country = client.countries.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
-            code_alt="codeAlt",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            fips_code="fipsCode",
-            iso3_code="iso3Code",
-            name="name",
-            orig_network="origNetwork",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
+            code_alt="US",
+            fips_code="US",
+            iso3_code="USA",
+            name="UNITED STATES",
         )
         assert country is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.countries.with_raw_response.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -63,9 +59,9 @@ class TestCountries:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.countries.with_streaming_response.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -117,9 +113,9 @@ class TestCountries:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         country = client.countries.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert country is None
 
@@ -127,16 +123,13 @@ class TestCountries:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         country = client.countries.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
-            code_alt="codeAlt",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            fips_code="fipsCode",
-            iso3_code="iso3Code",
-            name="name",
-            orig_network="origNetwork",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
+            code_alt="US",
+            fips_code="US",
+            iso3_code="USA",
+            name="UNITED STATES",
         )
         assert country is None
 
@@ -144,9 +137,9 @@ class TestCountries:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.countries.with_raw_response.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -158,9 +151,9 @@ class TestCountries:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.countries.with_streaming_response.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -176,8 +169,8 @@ class TestCountries:
             client.countries.with_raw_response.update(
                 code_1="",
                 code_2="",
-                data_mode="dataMode",
-                source="source",
+                data_mode="REAL",
+                source="Bluestaq",
             )
 
     @parametrize
@@ -331,34 +324,31 @@ class TestAsyncCountries:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert country is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
-            code_alt="codeAlt",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            fips_code="fipsCode",
-            iso3_code="iso3Code",
-            name="name",
-            orig_network="origNetwork",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
+            code_alt="US",
+            fips_code="US",
+            iso3_code="USA",
+            name="UNITED STATES",
         )
         assert country is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.countries.with_raw_response.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -369,9 +359,9 @@ class TestAsyncCountries:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.countries.with_streaming_response.create(
-            code="code",
-            data_mode="dataMode",
-            source="source",
+            code="US",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -423,9 +413,9 @@ class TestAsyncCountries:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
         assert country is None
 
@@ -433,16 +423,13 @@ class TestAsyncCountries:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
-            code_alt="codeAlt",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            fips_code="fipsCode",
-            iso3_code="iso3Code",
-            name="name",
-            orig_network="origNetwork",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
+            code_alt="US",
+            fips_code="US",
+            iso3_code="USA",
+            name="UNITED STATES",
         )
         assert country is None
 
@@ -450,9 +437,9 @@ class TestAsyncCountries:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.countries.with_raw_response.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -464,9 +451,9 @@ class TestAsyncCountries:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.countries.with_streaming_response.update(
             code_1="code",
-            code_2="code",
-            data_mode="dataMode",
-            source="source",
+            code_2="US",
+            data_mode="REAL",
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -482,8 +469,8 @@ class TestAsyncCountries:
             await async_client.countries.with_raw_response.update(
                 code_1="",
                 code_2="",
-                data_mode="dataMode",
-                source="source",
+                data_mode="REAL",
+                source="Bluestaq",
             )
 
     @parametrize

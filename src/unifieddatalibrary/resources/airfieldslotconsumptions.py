@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -57,8 +58,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
-        end_time: Union[str, datetime],
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -71,8 +71,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -81,7 +80,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         occ_tail_number: str | NotGiven = NOT_GIVEN,
         occupied: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         req_comment: str | NotGiven = NOT_GIVEN,
         req_initials: str | NotGiven = NOT_GIVEN,
         req_org: str | NotGiven = NOT_GIVEN,
@@ -90,8 +88,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         res_reason: str | NotGiven = NOT_GIVEN,
         res_tail_number: str | NotGiven = NOT_GIVEN,
         res_type: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
         target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -124,8 +121,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -155,10 +150,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -182,9 +174,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           req_comment: Comments from the requester.
 
           req_initials: Initials of the person requesting the use of this slot. Use SYSTEM if this
@@ -204,10 +193,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           res_type: Indicates the type of reservation (e.g. M for Mission, A for Aircraft, O for
               Other).
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           status: Current status of this slot (REQUESTED / APPROVED / DENIED / BLOCKED / OTHER).
 
@@ -229,7 +214,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -242,8 +226,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -252,7 +235,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "occ_tail_number": occ_tail_number,
                     "occupied": occupied,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "req_comment": req_comment,
                     "req_initials": req_initials,
                     "req_org": req_org,
@@ -261,7 +243,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "res_reason": res_reason,
                     "res_tail_number": res_tail_number,
                     "res_type": res_type,
-                    "source_dl": source_dl,
                     "status": status,
                     "target_time": target_time,
                 },
@@ -312,8 +293,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
-        end_time: Union[str, datetime],
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -326,8 +306,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -336,7 +315,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         occ_tail_number: str | NotGiven = NOT_GIVEN,
         occupied: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         req_comment: str | NotGiven = NOT_GIVEN,
         req_initials: str | NotGiven = NOT_GIVEN,
         req_org: str | NotGiven = NOT_GIVEN,
@@ -345,8 +323,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         res_reason: str | NotGiven = NOT_GIVEN,
         res_tail_number: str | NotGiven = NOT_GIVEN,
         res_type: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
         target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -380,8 +357,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -411,10 +386,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -438,9 +410,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           req_comment: Comments from the requester.
 
           req_initials: Initials of the person requesting the use of this slot. Use SYSTEM if this
@@ -460,10 +429,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           res_type: Indicates the type of reservation (e.g. M for Mission, A for Aircraft, O for
               Other).
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           status: Current status of this slot (REQUESTED / APPROVED / DENIED / BLOCKED / OTHER).
 
@@ -487,7 +452,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -500,8 +464,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -510,7 +473,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "occ_tail_number": occ_tail_number,
                     "occupied": occupied,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "req_comment": req_comment,
                     "req_initials": req_initials,
                     "req_org": req_org,
@@ -519,7 +481,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "res_reason": res_reason,
                     "res_tail_number": res_tail_number,
                     "res_type": res_type,
-                    "source_dl": source_dl,
                     "status": status,
                     "target_time": target_time,
                 },
@@ -664,7 +625,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -714,8 +675,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
-        end_time: Union[str, datetime],
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -728,8 +688,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -738,7 +697,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         occ_tail_number: str | NotGiven = NOT_GIVEN,
         occupied: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         req_comment: str | NotGiven = NOT_GIVEN,
         req_initials: str | NotGiven = NOT_GIVEN,
         req_org: str | NotGiven = NOT_GIVEN,
@@ -747,8 +705,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         res_reason: str | NotGiven = NOT_GIVEN,
         res_tail_number: str | NotGiven = NOT_GIVEN,
         res_type: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
         target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -781,8 +738,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -812,10 +767,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -839,9 +791,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           req_comment: Comments from the requester.
 
           req_initials: Initials of the person requesting the use of this slot. Use SYSTEM if this
@@ -861,10 +810,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           res_type: Indicates the type of reservation (e.g. M for Mission, A for Aircraft, O for
               Other).
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           status: Current status of this slot (REQUESTED / APPROVED / DENIED / BLOCKED / OTHER).
 
@@ -886,7 +831,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -899,8 +843,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -909,7 +852,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "occ_tail_number": occ_tail_number,
                     "occupied": occupied,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "req_comment": req_comment,
                     "req_initials": req_initials,
                     "req_org": req_org,
@@ -918,7 +860,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "res_reason": res_reason,
                     "res_tail_number": res_tail_number,
                     "res_type": res_type,
-                    "source_dl": source_dl,
                     "status": status,
                     "target_time": target_time,
                 },
@@ -969,8 +910,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
-        end_time: Union[str, datetime],
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -983,8 +923,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -993,7 +932,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         occ_tail_number: str | NotGiven = NOT_GIVEN,
         occupied: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         req_comment: str | NotGiven = NOT_GIVEN,
         req_initials: str | NotGiven = NOT_GIVEN,
         req_org: str | NotGiven = NOT_GIVEN,
@@ -1002,8 +940,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         res_reason: str | NotGiven = NOT_GIVEN,
         res_tail_number: str | NotGiven = NOT_GIVEN,
         res_type: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
         target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1037,8 +974,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -1068,10 +1003,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -1095,9 +1027,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           req_comment: Comments from the requester.
 
           req_initials: Initials of the person requesting the use of this slot. Use SYSTEM if this
@@ -1117,10 +1046,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           res_type: Indicates the type of reservation (e.g. M for Mission, A for Aircraft, O for
               Other).
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           status: Current status of this slot (REQUESTED / APPROVED / DENIED / BLOCKED / OTHER).
 
@@ -1144,7 +1069,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -1157,8 +1081,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
-                    "created_at": created_at,
-                    "created_by": created_by,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -1167,7 +1090,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "occ_tail_number": occ_tail_number,
                     "occupied": occupied,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "req_comment": req_comment,
                     "req_initials": req_initials,
                     "req_org": req_org,
@@ -1176,7 +1098,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "res_reason": res_reason,
                     "res_tail_number": res_tail_number,
                     "res_type": res_type,
-                    "source_dl": source_dl,
                     "status": status,
                     "target_time": target_time,
                 },
@@ -1321,7 +1242,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

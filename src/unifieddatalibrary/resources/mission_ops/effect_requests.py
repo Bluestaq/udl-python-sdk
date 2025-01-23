@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import date, datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -51,13 +52,11 @@ class EffectRequestsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         effect_list: List[str],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         context: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         deadline_type: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_request_id: str | NotGiven = NOT_GIVEN,
@@ -65,7 +64,6 @@ class EffectRequestsResource(SyncAPIResource):
         metric_weights: Iterable[float] | NotGiven = NOT_GIVEN,
         model_class: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         priority: str | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
@@ -115,11 +113,6 @@ class EffectRequestsResource(SyncAPIResource):
 
           context: Specific descriptive instantiation of the effect, e.g., playbook to be used.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           deadline_type: The indicator of deadline of the bid request (e.g. BETWEEN, IMMEDIATE,
               NOEARLIERTHAN, NOLATERTHAN, etc.): BETWEEN:&nbsp;Produce effect any time between
               the given start and end times, equal penalty for being early or late
@@ -149,9 +142,6 @@ class EffectRequestsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           priority: The priority (LOW, MEDIUM, HIGH) of this request.
 
@@ -184,8 +174,6 @@ class EffectRequestsResource(SyncAPIResource):
                     "source": source,
                     "id": id,
                     "context": context,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "deadline_type": deadline_type,
                     "end_time": end_time,
                     "external_request_id": external_request_id,
@@ -193,7 +181,6 @@ class EffectRequestsResource(SyncAPIResource):
                     "metric_weights": metric_weights,
                     "model_class": model_class,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "priority": priority,
                     "start_time": start_time,
                     "state": state,
@@ -274,13 +261,11 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         effect_list: List[str],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         context: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         deadline_type: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_request_id: str | NotGiven = NOT_GIVEN,
@@ -288,7 +273,6 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         metric_weights: Iterable[float] | NotGiven = NOT_GIVEN,
         model_class: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         priority: str | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
@@ -338,11 +322,6 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
 
           context: Specific descriptive instantiation of the effect, e.g., playbook to be used.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           deadline_type: The indicator of deadline of the bid request (e.g. BETWEEN, IMMEDIATE,
               NOEARLIERTHAN, NOLATERTHAN, etc.): BETWEEN:&nbsp;Produce effect any time between
               the given start and end times, equal penalty for being early or late
@@ -372,9 +351,6 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           priority: The priority (LOW, MEDIUM, HIGH) of this request.
 
@@ -407,8 +383,6 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                     "source": source,
                     "id": id,
                     "context": context,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "deadline_type": deadline_type,
                     "end_time": end_time,
                     "external_request_id": external_request_id,
@@ -416,7 +390,6 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                     "metric_weights": metric_weights,
                     "model_class": model_class,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "priority": priority,
                     "start_time": start_time,
                     "state": state,

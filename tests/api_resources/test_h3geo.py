@@ -21,17 +21,17 @@ class TestH3geo:
         h3geo = client.h3geo.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
         )
         assert h3geo is None
 
@@ -40,45 +40,41 @@ class TestH3geo:
         h3geo = client.h3geo.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "id": "id",
-                    "alt_mean": 0,
-                    "alt_sigma": 0,
-                    "anom_score_interference": 0,
-                    "anom_score_spoofing": 0,
-                    "coverage": 0,
-                    "created_at": "2019-12-27T18:11:19.117Z",
-                    "created_by": "createdBy",
-                    "id_h3_geo": "idH3Geo",
-                    "origin": "origin",
-                    "orig_network": "origNetwork",
-                    "rpm_max": 0,
-                    "rpm_mean": 0,
-                    "rpm_median": 0,
-                    "rpm_min": 0,
-                    "rpm_sigma": 0,
-                    "source_dl": "sourceDL",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "id": "443fg911-4ab6-3d74-1991-372149d87f89",
+                    "alt_mean": 450.1,
+                    "alt_sigma": 400.1,
+                    "anom_score_interference": 0.125,
+                    "anom_score_spoofing": 0.125,
+                    "coverage": 8,
+                    "created_at": "2018-01-01T16:00:00.123Z",
+                    "created_by": "some.user",
+                    "id_h3_geo": "026dd511-8ba5-47d3-9909-836149f87686",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_network": "OPS1",
+                    "rpm_max": 50.1,
+                    "rpm_mean": 47.953125,
+                    "rpm_median": 48.375,
+                    "rpm_min": 43.1,
+                    "rpm_sigma": 1.23,
+                    "source_dl": "AXE",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id="id",
-            center_freq=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            origin="origin",
-            orig_network="origNetwork",
-            resolution=0,
-            source_dl="sourceDL",
-            tags=["string"],
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
+            id="026dd511-8ba5-47d3-9909-836149f87686",
+            center_freq=1575.42,
+            end_time=parse_datetime("2024-07-03T00:00:00.123Z"),
+            origin="THIRD_PARTY_DATASOURCE",
+            resolution=3,
+            tags=["TAG1", "TAG2"],
+            type="Cell Towers",
         )
         assert h3geo is None
 
@@ -87,17 +83,17 @@ class TestH3geo:
         response = client.h3geo.with_raw_response.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
         )
 
         assert response.is_closed is True
@@ -110,17 +106,17 @@ class TestH3geo:
         with client.h3geo.with_streaming_response.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -139,17 +135,17 @@ class TestAsyncH3geo:
         h3geo = await async_client.h3geo.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
         )
         assert h3geo is None
 
@@ -158,45 +154,41 @@ class TestAsyncH3geo:
         h3geo = await async_client.h3geo.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "id": "id",
-                    "alt_mean": 0,
-                    "alt_sigma": 0,
-                    "anom_score_interference": 0,
-                    "anom_score_spoofing": 0,
-                    "coverage": 0,
-                    "created_at": "2019-12-27T18:11:19.117Z",
-                    "created_by": "createdBy",
-                    "id_h3_geo": "idH3Geo",
-                    "origin": "origin",
-                    "orig_network": "origNetwork",
-                    "rpm_max": 0,
-                    "rpm_mean": 0,
-                    "rpm_median": 0,
-                    "rpm_min": 0,
-                    "rpm_sigma": 0,
-                    "source_dl": "sourceDL",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "id": "443fg911-4ab6-3d74-1991-372149d87f89",
+                    "alt_mean": 450.1,
+                    "alt_sigma": 400.1,
+                    "anom_score_interference": 0.125,
+                    "anom_score_spoofing": 0.125,
+                    "coverage": 8,
+                    "created_at": "2018-01-01T16:00:00.123Z",
+                    "created_by": "some.user",
+                    "id_h3_geo": "026dd511-8ba5-47d3-9909-836149f87686",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_network": "OPS1",
+                    "rpm_max": 50.1,
+                    "rpm_mean": 47.953125,
+                    "rpm_median": 48.375,
+                    "rpm_min": 43.1,
+                    "rpm_sigma": 1.23,
+                    "source_dl": "AXE",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            id="id",
-            center_freq=0,
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            origin="origin",
-            orig_network="origNetwork",
-            resolution=0,
-            source_dl="sourceDL",
-            tags=["string"],
-            type="type",
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
+            id="026dd511-8ba5-47d3-9909-836149f87686",
+            center_freq=1575.42,
+            end_time=parse_datetime("2024-07-03T00:00:00.123Z"),
+            origin="THIRD_PARTY_DATASOURCE",
+            resolution=3,
+            tags=["TAG1", "TAG2"],
+            type="Cell Towers",
         )
         assert h3geo is None
 
@@ -205,17 +197,17 @@ class TestAsyncH3geo:
         response = await async_client.h3geo.with_raw_response.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
         )
 
         assert response.is_closed is True
@@ -228,17 +220,17 @@ class TestAsyncH3geo:
         async with async_client.h3geo.with_streaming_response.create(
             cells=[
                 {
-                    "cell_id": "cellId",
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
+                    "cell_id": "830b90fffffffff",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
                 }
             ],
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            num_cells=0,
-            source="source",
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            classification_marking="U",
+            data_mode="REAL",
+            num_cells=1,
+            source="Bluestaq",
+            start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

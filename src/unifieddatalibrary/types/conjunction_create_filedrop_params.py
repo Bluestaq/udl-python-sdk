@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -19,7 +19,7 @@ class BodyStateVector1(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -115,19 +115,10 @@ class BodyStateVector1(TypedDict, total=False):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Annotated[str, PropertyInfo(alias="covReferenceFrame")]
+    cov_reference_frame: Annotated[Literal["J2000", "UVW"], PropertyInfo(alias="covReferenceFrame")]
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     descriptor: str
@@ -245,13 +236,6 @@ class BodyStateVector1(TypedDict, total=False):
     iau1980_terms: Annotated[int, PropertyInfo(alias="iau1980Terms")]
     """Number of terms used in the IAU 1980 nutation model (4, 50, or 106)."""
 
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """Unique identifier of the satellite on-orbit object, if correlated.
-
-    For the public catalog, the idOnOrbit is typically the satellite number as a
-    string, but may be a UUID for analyst or other unknown or untracked satellites.
-    """
-
     id_orbit_determination: Annotated[str, PropertyInfo(alias="idOrbitDetermination")]
     """Unique identifier of the OD solution record that produced this state vector.
 
@@ -311,12 +295,6 @@ class BodyStateVector1(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
     """
     Optional identifier provided by state vector source to indicate the target
@@ -354,7 +332,9 @@ class BodyStateVector1(TypedDict, total=False):
     rec_od_span: Annotated[float, PropertyInfo(alias="recODSpan")]
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Annotated[str, PropertyInfo(alias="referenceFrame")]
+    reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="referenceFrame")
+    ]
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -418,19 +398,14 @@ class BodyStateVector1(TypedDict, total=False):
     match in size).
     """
 
-    sourced_data_types: Annotated[List[str], PropertyInfo(alias="sourcedDataTypes")]
+    sourced_data_types: Annotated[
+        List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]], PropertyInfo(alias="sourcedDataTypes")
+    ]
     """
     Optional array of UDL observation data types used to build this state vector
     (e.g. EO, RADAR, RF, DOA). See the associated sourcedData array for the specific
     UUIDs of observations for the positionally corresponding data types in this
     array (the two arrays must match in size).
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     srp_area: Annotated[float, PropertyInfo(alias="srpArea")]
@@ -651,7 +626,7 @@ class BodyStateVector2(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -747,19 +722,10 @@ class BodyStateVector2(TypedDict, total=False):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Annotated[str, PropertyInfo(alias="covReferenceFrame")]
+    cov_reference_frame: Annotated[Literal["J2000", "UVW"], PropertyInfo(alias="covReferenceFrame")]
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     descriptor: str
@@ -877,13 +843,6 @@ class BodyStateVector2(TypedDict, total=False):
     iau1980_terms: Annotated[int, PropertyInfo(alias="iau1980Terms")]
     """Number of terms used in the IAU 1980 nutation model (4, 50, or 106)."""
 
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """Unique identifier of the satellite on-orbit object, if correlated.
-
-    For the public catalog, the idOnOrbit is typically the satellite number as a
-    string, but may be a UUID for analyst or other unknown or untracked satellites.
-    """
-
     id_orbit_determination: Annotated[str, PropertyInfo(alias="idOrbitDetermination")]
     """Unique identifier of the OD solution record that produced this state vector.
 
@@ -943,12 +902,6 @@ class BodyStateVector2(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
     """
     Optional identifier provided by state vector source to indicate the target
@@ -986,7 +939,9 @@ class BodyStateVector2(TypedDict, total=False):
     rec_od_span: Annotated[float, PropertyInfo(alias="recODSpan")]
     """The recommended OD time span calculated for the object, expressed in days."""
 
-    reference_frame: Annotated[str, PropertyInfo(alias="referenceFrame")]
+    reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="referenceFrame")
+    ]
     """The reference frame of the cartesian orbital states.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -1050,19 +1005,14 @@ class BodyStateVector2(TypedDict, total=False):
     match in size).
     """
 
-    sourced_data_types: Annotated[List[str], PropertyInfo(alias="sourcedDataTypes")]
+    sourced_data_types: Annotated[
+        List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]], PropertyInfo(alias="sourcedDataTypes")
+    ]
     """
     Optional array of UDL observation data types used to build this state vector
     (e.g. EO, RADAR, RF, DOA). See the associated sourcedData array for the specific
     UUIDs of observations for the positionally corresponding data types in this
     array (the two arrays must match in size).
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """
 
     srp_area: Annotated[float, PropertyInfo(alias="srpArea")]
@@ -1283,7 +1233,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1360,12 +1310,6 @@ class Body(TypedDict, total=False):
     referred to as AGOM.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """Application user who created the row in the database."""
-
     descriptor: str
     """Optional source-provided and searchable metadata or descriptor of the data."""
 
@@ -1399,12 +1343,6 @@ class Body(TypedDict, total=False):
     In the case where multiple conjunction records are submitted for the same event,
     this field can be used to tie them together to the same event.
     """
-
-    id_on_orbit1: Annotated[str, PropertyInfo(alias="idOnOrbit1")]
-    """Unique identifier of the primary satellite on-orbit object, if correlated."""
-
-    id_on_orbit2: Annotated[str, PropertyInfo(alias="idOnOrbit2")]
-    """Unique identifier of the secondary satellite on-orbit object, if correlated."""
 
     id_state_vector1: Annotated[str, PropertyInfo(alias="idStateVector1")]
     """Optional ID of the UDL State Vector at TCA of the primary object.
@@ -1465,12 +1403,6 @@ class Body(TypedDict, total=False):
     """
     Creating agency or owner/operator (may be different than provider who submitted
     the conjunction message).
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
     """
 
     owner_contacted: Annotated[bool, PropertyInfo(alias="ownerContacted")]

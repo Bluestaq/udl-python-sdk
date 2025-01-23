@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -68,7 +69,7 @@ class EoObservationsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         ob_time: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -79,8 +80,6 @@ class EoObservationsResource(SyncAPIResource):
         bg_intensity: float | NotGiven = NOT_GIVEN,
         collect_method: str | NotGiven = NOT_GIVEN,
         corr_quality: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         declination: float | NotGiven = NOT_GIVEN,
         declination_bias: float | NotGiven = NOT_GIVEN,
         declination_rate: float | NotGiven = NOT_GIVEN,
@@ -97,7 +96,6 @@ class EoObservationsResource(SyncAPIResource):
         geolat: float | NotGiven = NOT_GIVEN,
         geolon: float | NotGiven = NOT_GIVEN,
         georange: float | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         id_sky_imagery: str | NotGiven = NOT_GIVEN,
         intensity: float | NotGiven = NOT_GIVEN,
@@ -115,7 +113,6 @@ class EoObservationsResource(SyncAPIResource):
         net_obj_sig_unc: float | NotGiven = NOT_GIVEN,
         ob_position: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         penumbra: bool | NotGiven = NOT_GIVEN,
@@ -131,13 +128,13 @@ class EoObservationsResource(SyncAPIResource):
         ra_rate: float | NotGiven = NOT_GIVEN,
         ra_unc: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
+        reference_frame: Literal["J2000", "GCRF", "ITRF", "TEME"] | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
         senalt: float | NotGiven = NOT_GIVEN,
         senlat: float | NotGiven = NOT_GIVEN,
         senlon: float | NotGiven = NOT_GIVEN,
         sen_quat: Iterable[float] | NotGiven = NOT_GIVEN,
-        sen_reference_frame: str | NotGiven = NOT_GIVEN,
+        sen_reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | NotGiven = NOT_GIVEN,
         senvelx: float | NotGiven = NOT_GIVEN,
         senvely: float | NotGiven = NOT_GIVEN,
         senvelz: float | NotGiven = NOT_GIVEN,
@@ -149,13 +146,11 @@ class EoObservationsResource(SyncAPIResource):
         solar_dec_angle: float | NotGiven = NOT_GIVEN,
         solar_eq_phase_angle: float | NotGiven = NOT_GIVEN,
         solar_phase_angle: float | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         timing_bias: float | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
         umbra: bool | NotGiven = NOT_GIVEN,
         zeroptd: float | NotGiven = NOT_GIVEN,
@@ -215,11 +210,6 @@ class EoObservationsResource(SyncAPIResource):
           corr_quality: Object Correlation Quality value (non-standardized). Users should consult data
               providers regarding the expected range of values.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           declination: Line of sight declination, in degrees, in the specified referenceFrame. If
               referenceFrame is null then J2K should be assumed.
 
@@ -254,8 +244,6 @@ class EoObservationsResource(SyncAPIResource):
           geolon: For GEO detections, the longitude in degrees east.
 
           georange: For GEO detections, the range in km.
-
-          id_on_orbit: Unique identifier of the target on-orbit object, if correlated.
 
           id_sensor: Unique identifier of the reporting sensor.
 
@@ -301,9 +289,6 @@ class EoObservationsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by observation source to indicate the target
               onorbit object of this observation. This may be an internal identifier and not
@@ -410,10 +395,6 @@ class EoObservationsResource(SyncAPIResource):
           solar_phase_angle: The angle, in degrees, between the target-to-observer vector and the
               target-to-sun vector.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -429,9 +410,6 @@ class EoObservationsResource(SyncAPIResource):
 
           transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
               produce this data.
-
-          type: Read only enumeration specifying the type of observation (e.g. OPTICAL, RADAR,
-              RF, etc).
 
           uct: Boolean indicating this observation is part of an uncorrelated track or was
               unable to be correlated to a known object. This flag should only be set to true
@@ -472,8 +450,6 @@ class EoObservationsResource(SyncAPIResource):
                     "bg_intensity": bg_intensity,
                     "collect_method": collect_method,
                     "corr_quality": corr_quality,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "declination": declination,
                     "declination_bias": declination_bias,
                     "declination_rate": declination_rate,
@@ -490,7 +466,6 @@ class EoObservationsResource(SyncAPIResource):
                     "geolat": geolat,
                     "geolon": geolon,
                     "georange": georange,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "id_sky_imagery": id_sky_imagery,
                     "intensity": intensity,
@@ -508,7 +483,6 @@ class EoObservationsResource(SyncAPIResource):
                     "net_obj_sig_unc": net_obj_sig_unc,
                     "ob_position": ob_position,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "penumbra": penumbra,
@@ -542,13 +516,11 @@ class EoObservationsResource(SyncAPIResource):
                     "solar_dec_angle": solar_dec_angle,
                     "solar_eq_phase_angle": solar_eq_phase_angle,
                     "solar_phase_angle": solar_phase_angle,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "task_id": task_id,
                     "timing_bias": timing_bias,
                     "track_id": track_id,
                     "transaction_id": transaction_id,
-                    "type": type,
                     "uct": uct,
                     "umbra": umbra,
                     "zeroptd": zeroptd,
@@ -722,7 +694,7 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         ob_time: Union[str, datetime],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -733,8 +705,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         bg_intensity: float | NotGiven = NOT_GIVEN,
         collect_method: str | NotGiven = NOT_GIVEN,
         corr_quality: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         declination: float | NotGiven = NOT_GIVEN,
         declination_bias: float | NotGiven = NOT_GIVEN,
         declination_rate: float | NotGiven = NOT_GIVEN,
@@ -751,7 +721,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         geolat: float | NotGiven = NOT_GIVEN,
         geolon: float | NotGiven = NOT_GIVEN,
         georange: float | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         id_sky_imagery: str | NotGiven = NOT_GIVEN,
         intensity: float | NotGiven = NOT_GIVEN,
@@ -769,7 +738,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         net_obj_sig_unc: float | NotGiven = NOT_GIVEN,
         ob_position: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         penumbra: bool | NotGiven = NOT_GIVEN,
@@ -785,13 +753,13 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         ra_rate: float | NotGiven = NOT_GIVEN,
         ra_unc: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
+        reference_frame: Literal["J2000", "GCRF", "ITRF", "TEME"] | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
         senalt: float | NotGiven = NOT_GIVEN,
         senlat: float | NotGiven = NOT_GIVEN,
         senlon: float | NotGiven = NOT_GIVEN,
         sen_quat: Iterable[float] | NotGiven = NOT_GIVEN,
-        sen_reference_frame: str | NotGiven = NOT_GIVEN,
+        sen_reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | NotGiven = NOT_GIVEN,
         senvelx: float | NotGiven = NOT_GIVEN,
         senvely: float | NotGiven = NOT_GIVEN,
         senvelz: float | NotGiven = NOT_GIVEN,
@@ -803,13 +771,11 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         solar_dec_angle: float | NotGiven = NOT_GIVEN,
         solar_eq_phase_angle: float | NotGiven = NOT_GIVEN,
         solar_phase_angle: float | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         timing_bias: float | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
         umbra: bool | NotGiven = NOT_GIVEN,
         zeroptd: float | NotGiven = NOT_GIVEN,
@@ -869,11 +835,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
           corr_quality: Object Correlation Quality value (non-standardized). Users should consult data
               providers regarding the expected range of values.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           declination: Line of sight declination, in degrees, in the specified referenceFrame. If
               referenceFrame is null then J2K should be assumed.
 
@@ -908,8 +869,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
           geolon: For GEO detections, the longitude in degrees east.
 
           georange: For GEO detections, the range in km.
-
-          id_on_orbit: Unique identifier of the target on-orbit object, if correlated.
 
           id_sensor: Unique identifier of the reporting sensor.
 
@@ -955,9 +914,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           orig_object_id: Optional identifier provided by observation source to indicate the target
               onorbit object of this observation. This may be an internal identifier and not
@@ -1064,10 +1020,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
           solar_phase_angle: The angle, in degrees, between the target-to-observer vector and the
               target-to-sun vector.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -1083,9 +1035,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
 
           transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
               produce this data.
-
-          type: Read only enumeration specifying the type of observation (e.g. OPTICAL, RADAR,
-              RF, etc).
 
           uct: Boolean indicating this observation is part of an uncorrelated track or was
               unable to be correlated to a known object. This flag should only be set to true
@@ -1126,8 +1075,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
                     "bg_intensity": bg_intensity,
                     "collect_method": collect_method,
                     "corr_quality": corr_quality,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "declination": declination,
                     "declination_bias": declination_bias,
                     "declination_rate": declination_rate,
@@ -1144,7 +1091,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
                     "geolat": geolat,
                     "geolon": geolon,
                     "georange": georange,
-                    "id_on_orbit": id_on_orbit,
                     "id_sensor": id_sensor,
                     "id_sky_imagery": id_sky_imagery,
                     "intensity": intensity,
@@ -1162,7 +1108,6 @@ class AsyncEoObservationsResource(AsyncAPIResource):
                     "net_obj_sig_unc": net_obj_sig_unc,
                     "ob_position": ob_position,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_object_id": orig_object_id,
                     "orig_sensor_id": orig_sensor_id,
                     "penumbra": penumbra,
@@ -1196,13 +1141,11 @@ class AsyncEoObservationsResource(AsyncAPIResource):
                     "solar_dec_angle": solar_dec_angle,
                     "solar_eq_phase_angle": solar_eq_phase_angle,
                     "solar_phase_angle": solar_phase_angle,
-                    "source_dl": source_dl,
                     "tags": tags,
                     "task_id": task_id,
                     "timing_bias": timing_bias,
                     "track_id": track_id,
                     "transaction_id": transaction_id,
-                    "type": type,
                     "uct": uct,
                     "umbra": umbra,
                     "zeroptd": zeroptd,

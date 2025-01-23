@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -72,14 +73,12 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceDetail]
         | NotGiven = NOT_GIVEN,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceRemark]
@@ -88,10 +87,6 @@ class DiplomaticClearanceResource(SyncAPIResource):
         doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_worksheet_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,11 +132,6 @@ class DiplomaticClearanceResource(SyncAPIResource):
           apacs_id: The Aircraft and Personnel Automated Clearance System (APACS) system identifier
               used to process and approve this clearance request.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           diplomatic_clearance_details: Collection of diplomatic clearance details.
 
           diplomatic_clearance_remarks: Collection of diplomatic clearance remarks.
@@ -160,18 +150,6 @@ class DiplomaticClearanceResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -193,18 +171,12 @@ class DiplomaticClearanceResource(SyncAPIResource):
                     "source": source,
                     "id": id,
                     "apacs_id": apacs_id,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "diplomatic_clearance_details": diplomatic_clearance_details,
                     "diplomatic_clearance_remarks": diplomatic_clearance_remarks,
                     "dip_worksheet_name": dip_worksheet_name,
                     "doc_deadline": doc_deadline,
                     "external_worksheet_id": external_worksheet_id,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 diplomatic_clearance_create_params.DiplomaticClearanceCreateParams,
             ),
@@ -253,14 +225,12 @@ class DiplomaticClearanceResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceDetail]
         | NotGiven = NOT_GIVEN,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceRemark]
@@ -269,10 +239,6 @@ class DiplomaticClearanceResource(SyncAPIResource):
         doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_worksheet_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -319,11 +285,6 @@ class DiplomaticClearanceResource(SyncAPIResource):
           apacs_id: The Aircraft and Personnel Automated Clearance System (APACS) system identifier
               used to process and approve this clearance request.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           diplomatic_clearance_details: Collection of diplomatic clearance details.
 
           diplomatic_clearance_remarks: Collection of diplomatic clearance remarks.
@@ -342,18 +303,6 @@ class DiplomaticClearanceResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -377,18 +326,12 @@ class DiplomaticClearanceResource(SyncAPIResource):
                     "source": source,
                     "id_2": id_2,
                     "apacs_id": apacs_id,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "diplomatic_clearance_details": diplomatic_clearance_details,
                     "diplomatic_clearance_remarks": diplomatic_clearance_remarks,
                     "dip_worksheet_name": dip_worksheet_name,
                     "doc_deadline": doc_deadline,
                     "external_worksheet_id": external_worksheet_id,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 diplomatic_clearance_update_params.DiplomaticClearanceUpdateParams,
             ),
@@ -607,7 +550,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           first_dep_date: The First Departure Date (FDD) the mission is scheduled for departure, in ISO
@@ -668,14 +611,12 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceDetail]
         | NotGiven = NOT_GIVEN,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceRemark]
@@ -684,10 +625,6 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_worksheet_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -733,11 +670,6 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
           apacs_id: The Aircraft and Personnel Automated Clearance System (APACS) system identifier
               used to process and approve this clearance request.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           diplomatic_clearance_details: Collection of diplomatic clearance details.
 
           diplomatic_clearance_remarks: Collection of diplomatic clearance remarks.
@@ -756,18 +688,6 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -789,18 +709,12 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
                     "source": source,
                     "id": id,
                     "apacs_id": apacs_id,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "diplomatic_clearance_details": diplomatic_clearance_details,
                     "diplomatic_clearance_remarks": diplomatic_clearance_remarks,
                     "dip_worksheet_name": dip_worksheet_name,
                     "doc_deadline": doc_deadline,
                     "external_worksheet_id": external_worksheet_id,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 diplomatic_clearance_create_params.DiplomaticClearanceCreateParams,
             ),
@@ -849,14 +763,12 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceDetail]
         | NotGiven = NOT_GIVEN,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceRemark]
@@ -865,10 +777,6 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_worksheet_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -915,11 +823,6 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
           apacs_id: The Aircraft and Personnel Automated Clearance System (APACS) system identifier
               used to process and approve this clearance request.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           diplomatic_clearance_details: Collection of diplomatic clearance details.
 
           diplomatic_clearance_remarks: Collection of diplomatic clearance remarks.
@@ -938,18 +841,6 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -973,18 +864,12 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
                     "source": source,
                     "id_2": id_2,
                     "apacs_id": apacs_id,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "diplomatic_clearance_details": diplomatic_clearance_details,
                     "diplomatic_clearance_remarks": diplomatic_clearance_remarks,
                     "dip_worksheet_name": dip_worksheet_name,
                     "doc_deadline": doc_deadline,
                     "external_worksheet_id": external_worksheet_id,
                     "origin": origin,
-                    "orig_network": orig_network,
-                    "source_dl": source_dl,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 diplomatic_clearance_update_params.DiplomaticClearanceUpdateParams,
             ),
@@ -1203,7 +1088,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           first_dep_date: The First Departure Date (FDD) the mission is scheduled for departure, in ISO

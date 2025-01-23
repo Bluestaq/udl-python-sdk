@@ -25,63 +25,60 @@ class TestEop:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
         assert eop is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            d_epsilon=0,
-            d_epsilon_b=0,
-            d_epsilon_unc=0,
-            d_psi=0,
-            d_psib=0,
-            d_psi_unc=0,
-            d_x=0,
-            d_xb=0,
-            d_x_unc=0,
-            d_y=0,
-            d_yb=0,
-            d_y_unc=0,
-            lod=0,
-            lod_unc=0,
-            nutation_state="nutationState",
-            origin="origin",
-            orig_network="origNetwork",
-            polar_motion_state="polarMotionState",
-            polar_motion_x=0,
-            polar_motion_xb=0,
-            polar_motion_x_unc=0,
-            polar_motion_y=0,
-            polar_motion_yb=0,
-            polar_motion_y_unc=0,
-            precession_nutation_std="precessionNutationStd",
-            raw_file_uri="rawFileURI",
-            ut1_utc=0,
-            ut1_utcb=0,
-            ut1_utc_state="ut1UTCState",
-            ut1_utc_unc=0,
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            id="EOP-ID",
+            d_epsilon=-0.917,
+            d_epsilon_b=-1.7,
+            d_epsilon_unc=0.165,
+            d_psi=-10.437,
+            d_psib=-9.9,
+            d_psi_unc=0.507,
+            d_x=-0.086,
+            d_xb=0.129,
+            d_x_unc=0.202,
+            d_y=0.13,
+            d_yb=-0.653,
+            d_y_unc=0.165,
+            lod=1.8335,
+            lod_unc=0.0201,
+            nutation_state="I",
+            origin="THIRD_PARTY_DATASOURCE",
+            polar_motion_state="I",
+            polar_motion_x=0.182987,
+            polar_motion_xb=0.1824,
+            polar_motion_x_unc=0.000672,
+            polar_motion_y=0.168775,
+            polar_motion_yb=0.1679,
+            polar_motion_y_unc=0.000345,
+            precession_nutation_std="IAU1980",
+            raw_file_uri="Example URI",
+            ut1_utc=-0.1251659,
+            ut1_utcb=-0.1253,
+            ut1_utc_state="I",
+            ut1_utc_unc=0.0000207,
         )
         assert eop is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.eop.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -92,10 +89,10 @@ class TestEop:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.eop.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -147,10 +144,10 @@ class TestEop:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
         assert eop is None
 
@@ -158,43 +155,40 @@ class TestEop:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            d_epsilon=0,
-            d_epsilon_b=0,
-            d_epsilon_unc=0,
-            d_psi=0,
-            d_psib=0,
-            d_psi_unc=0,
-            d_x=0,
-            d_xb=0,
-            d_x_unc=0,
-            d_y=0,
-            d_yb=0,
-            d_y_unc=0,
-            lod=0,
-            lod_unc=0,
-            nutation_state="nutationState",
-            origin="origin",
-            orig_network="origNetwork",
-            polar_motion_state="polarMotionState",
-            polar_motion_x=0,
-            polar_motion_xb=0,
-            polar_motion_x_unc=0,
-            polar_motion_y=0,
-            polar_motion_yb=0,
-            polar_motion_y_unc=0,
-            precession_nutation_std="precessionNutationStd",
-            raw_file_uri="rawFileURI",
-            ut1_utc=0,
-            ut1_utcb=0,
-            ut1_utc_state="ut1UTCState",
-            ut1_utc_unc=0,
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            id_2="EOP-ID",
+            d_epsilon=-0.917,
+            d_epsilon_b=-1.7,
+            d_epsilon_unc=0.165,
+            d_psi=-10.437,
+            d_psib=-9.9,
+            d_psi_unc=0.507,
+            d_x=-0.086,
+            d_xb=0.129,
+            d_x_unc=0.202,
+            d_y=0.13,
+            d_yb=-0.653,
+            d_y_unc=0.165,
+            lod=1.8335,
+            lod_unc=0.0201,
+            nutation_state="I",
+            origin="THIRD_PARTY_DATASOURCE",
+            polar_motion_state="I",
+            polar_motion_x=0.182987,
+            polar_motion_xb=0.1824,
+            polar_motion_x_unc=0.000672,
+            polar_motion_y=0.168775,
+            polar_motion_yb=0.1679,
+            polar_motion_y_unc=0.000345,
+            precession_nutation_std="IAU1980",
+            raw_file_uri="Example URI",
+            ut1_utc=-0.1251659,
+            ut1_utcb=-0.1253,
+            ut1_utc_state="I",
+            ut1_utc_unc=0.0000207,
         )
         assert eop is None
 
@@ -202,10 +196,10 @@ class TestEop:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.eop.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -217,10 +211,10 @@ class TestEop:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.eop.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -235,10 +229,10 @@ class TestEop:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.eop.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+                source="Bluestaq",
                 id_2="",
             )
 
@@ -408,63 +402,60 @@ class TestAsyncEop:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
         assert eop is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            id="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            d_epsilon=0,
-            d_epsilon_b=0,
-            d_epsilon_unc=0,
-            d_psi=0,
-            d_psib=0,
-            d_psi_unc=0,
-            d_x=0,
-            d_xb=0,
-            d_x_unc=0,
-            d_y=0,
-            d_yb=0,
-            d_y_unc=0,
-            lod=0,
-            lod_unc=0,
-            nutation_state="nutationState",
-            origin="origin",
-            orig_network="origNetwork",
-            polar_motion_state="polarMotionState",
-            polar_motion_x=0,
-            polar_motion_xb=0,
-            polar_motion_x_unc=0,
-            polar_motion_y=0,
-            polar_motion_yb=0,
-            polar_motion_y_unc=0,
-            precession_nutation_std="precessionNutationStd",
-            raw_file_uri="rawFileURI",
-            ut1_utc=0,
-            ut1_utcb=0,
-            ut1_utc_state="ut1UTCState",
-            ut1_utc_unc=0,
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            id="EOP-ID",
+            d_epsilon=-0.917,
+            d_epsilon_b=-1.7,
+            d_epsilon_unc=0.165,
+            d_psi=-10.437,
+            d_psib=-9.9,
+            d_psi_unc=0.507,
+            d_x=-0.086,
+            d_xb=0.129,
+            d_x_unc=0.202,
+            d_y=0.13,
+            d_yb=-0.653,
+            d_y_unc=0.165,
+            lod=1.8335,
+            lod_unc=0.0201,
+            nutation_state="I",
+            origin="THIRD_PARTY_DATASOURCE",
+            polar_motion_state="I",
+            polar_motion_x=0.182987,
+            polar_motion_xb=0.1824,
+            polar_motion_x_unc=0.000672,
+            polar_motion_y=0.168775,
+            polar_motion_yb=0.1679,
+            polar_motion_y_unc=0.000345,
+            precession_nutation_std="IAU1980",
+            raw_file_uri="Example URI",
+            ut1_utc=-0.1251659,
+            ut1_utcb=-0.1253,
+            ut1_utc_state="I",
+            ut1_utc_unc=0.0000207,
         )
         assert eop is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.eop.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -475,10 +466,10 @@ class TestAsyncEop:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.eop.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -530,10 +521,10 @@ class TestAsyncEop:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
         assert eop is None
 
@@ -541,43 +532,40 @@ class TestAsyncEop:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
-            id_2="id",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            d_epsilon=0,
-            d_epsilon_b=0,
-            d_epsilon_unc=0,
-            d_psi=0,
-            d_psib=0,
-            d_psi_unc=0,
-            d_x=0,
-            d_xb=0,
-            d_x_unc=0,
-            d_y=0,
-            d_yb=0,
-            d_y_unc=0,
-            lod=0,
-            lod_unc=0,
-            nutation_state="nutationState",
-            origin="origin",
-            orig_network="origNetwork",
-            polar_motion_state="polarMotionState",
-            polar_motion_x=0,
-            polar_motion_xb=0,
-            polar_motion_x_unc=0,
-            polar_motion_y=0,
-            polar_motion_yb=0,
-            polar_motion_y_unc=0,
-            precession_nutation_std="precessionNutationStd",
-            raw_file_uri="rawFileURI",
-            ut1_utc=0,
-            ut1_utcb=0,
-            ut1_utc_state="ut1UTCState",
-            ut1_utc_unc=0,
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
+            id_2="EOP-ID",
+            d_epsilon=-0.917,
+            d_epsilon_b=-1.7,
+            d_epsilon_unc=0.165,
+            d_psi=-10.437,
+            d_psib=-9.9,
+            d_psi_unc=0.507,
+            d_x=-0.086,
+            d_xb=0.129,
+            d_x_unc=0.202,
+            d_y=0.13,
+            d_yb=-0.653,
+            d_y_unc=0.165,
+            lod=1.8335,
+            lod_unc=0.0201,
+            nutation_state="I",
+            origin="THIRD_PARTY_DATASOURCE",
+            polar_motion_state="I",
+            polar_motion_x=0.182987,
+            polar_motion_xb=0.1824,
+            polar_motion_x_unc=0.000672,
+            polar_motion_y=0.168775,
+            polar_motion_yb=0.1679,
+            polar_motion_y_unc=0.000345,
+            precession_nutation_std="IAU1980",
+            raw_file_uri="Example URI",
+            ut1_utc=-0.1251659,
+            ut1_utcb=-0.1253,
+            ut1_utc_state="I",
+            ut1_utc_unc=0.0000207,
         )
         assert eop is None
 
@@ -585,10 +573,10 @@ class TestAsyncEop:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.eop.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         )
 
         assert response.is_closed is True
@@ -600,10 +588,10 @@ class TestAsyncEop:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.eop.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+            source="Bluestaq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -618,10 +606,10 @@ class TestAsyncEop:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.eop.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
+                source="Bluestaq",
                 id_2="",
             )
 

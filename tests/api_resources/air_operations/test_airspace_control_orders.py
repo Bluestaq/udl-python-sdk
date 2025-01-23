@@ -20,12 +20,12 @@ class TestAirspaceControlOrders:
         airspace_control_order = client.air_operations.airspace_control_orders.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestAirspaceControlOrders:
         response = client.air_operations.airspace_control_orders.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestAirspaceControlOrders:
         with client.air_operations.airspace_control_orders.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncAirspaceControlOrders:
         airspace_control_order = await async_client.air_operations.airspace_control_orders.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncAirspaceControlOrders:
         response = await async_client.air_operations.airspace_control_orders.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncAirspaceControlOrders:
         async with async_client.air_operations.airspace_control_orders.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "op_ex_name": "opExName",
-                    "originator": "originator",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": "2024-01-07T13:55:43.123Z",
                 }
             ],
         ) as response:

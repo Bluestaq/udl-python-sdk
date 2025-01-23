@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -20,7 +21,7 @@ class AnalyticImageryAbridged(BaseModel):
     PLOT, SCREENSHOT).
     """
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data."""
 
     description: str

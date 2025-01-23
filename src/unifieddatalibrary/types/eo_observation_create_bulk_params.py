@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -110,15 +110,6 @@ class BodyEoobservationDetails(TypedDict, total=False):
     pixels squared.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
-
     current_neutral_density_filter_num: Annotated[int, PropertyInfo(alias="currentNeutralDensityFilterNum")]
     """
     The reference number n, in neutralDensityFilters for the currently used neutral
@@ -132,7 +123,7 @@ class BodyEoobservationDetails(TypedDict, total=False):
     the corresponding spectralFilterNames.
     """
 
-    data_mode: Annotated[str, PropertyInfo(alias="dataMode")]
+    data_mode: Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -384,7 +375,7 @@ class BodyEoobservationDetails(TypedDict, total=False):
     solar_disk_frac: Annotated[float, PropertyInfo(alias="solarDiskFrac")]
     """Fraction of the sun that is illuminating the target object.
 
-    This indicates if the target is in the Earth�s penumbra or umbra. (It is 0 when
+    This indicates if the target is in the Earth’s penumbra or umbra. (It is 0 when
     object is in umbra and 1 when object is fully illuminated.).
     """
 
@@ -486,7 +477,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -537,15 +528,6 @@ class Body(TypedDict, total=False):
     """Object Correlation Quality value (non-standardized).
 
     Users should consult data providers regarding the expected range of values.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     declination: float
@@ -604,9 +586,6 @@ class Body(TypedDict, total=False):
 
     georange: float
     """For GEO detections, the range in km."""
-
-    id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
-    """Unique identifier of the target on-orbit object, if correlated."""
 
     id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
     """Unique identifier of the reporting sensor."""
@@ -687,12 +666,6 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     orig_object_id: Annotated[str, PropertyInfo(alias="origObjectId")]
     """
     Optional identifier provided by observation source to indicate the target
@@ -767,7 +740,7 @@ class Body(TypedDict, total=False):
     https://udl-hostname/scs/download?id= to this value.
     """
 
-    reference_frame: Annotated[str, PropertyInfo(alias="referenceFrame")]
+    reference_frame: Annotated[Literal["J2000", "GCRF", "ITRF", "TEME"], PropertyInfo(alias="referenceFrame")]
     """The reference frame of the EOObservation measurements.
 
     If the referenceFrame is null it is assumed to be J2000.
@@ -801,7 +774,9 @@ class Body(TypedDict, total=False):
     component first, followed by the three vector components (qc, q1, q2, q3).
     """
 
-    sen_reference_frame: Annotated[str, PropertyInfo(alias="senReferenceFrame")]
+    sen_reference_frame: Annotated[
+        Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"], PropertyInfo(alias="senReferenceFrame")
+    ]
     """The reference frame of the observing sensor state.
 
     If the senReferenceFrame is null it is assumed to be J2000.
@@ -875,13 +850,6 @@ class Body(TypedDict, total=False):
     target-to-sun vector.
     """
 
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
-    """
-
     tags: List[str]
     """
     Optional array of provider/source specific tags for this data, where each
@@ -907,12 +875,6 @@ class Body(TypedDict, total=False):
     """
     Optional identifier to track a commercial or marketplace transaction executed to
     produce this data.
-    """
-
-    type: str
-    """Read only enumeration specifying the type of observation (e.g.
-
-    OPTICAL, RADAR, RF, etc).
     """
 
     uct: bool

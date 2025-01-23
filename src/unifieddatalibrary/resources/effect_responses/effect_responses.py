@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import date, datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -71,7 +72,7 @@ class EffectResponsesResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -80,8 +81,6 @@ class EffectResponsesResource(SyncAPIResource):
         actor_src_type: str | NotGiven = NOT_GIVEN,
         coa_metrics: Iterable[effect_response_create_params.CoaMetric] | NotGiven = NOT_GIVEN,
         collateral_damage_est: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         decision_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_actions: List[str] | NotGiven = NOT_GIVEN,
         external_request_id: str | NotGiven = NOT_GIVEN,
@@ -89,7 +88,6 @@ class EffectResponsesResource(SyncAPIResource):
         munition_id: str | NotGiven = NOT_GIVEN,
         munition_type: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         probability_of_kill: float | NotGiven = NOT_GIVEN,
         red_target_src_id: str | NotGiven = NOT_GIVEN,
         red_target_src_type: str | NotGiven = NOT_GIVEN,
@@ -146,11 +144,6 @@ class EffectResponsesResource(SyncAPIResource):
 
           collateral_damage_est: The collateral damage estimate (CDE) of the munition being fired.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           decision_deadline: The deadline time to accept this COA before it's no longer valid, in ISO8601 UTC
               format.
 
@@ -169,9 +162,6 @@ class EffectResponsesResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           probability_of_kill: The probability of kill (0-1) of the target being destroyed.
 
@@ -209,8 +199,6 @@ class EffectResponsesResource(SyncAPIResource):
                     "actor_src_type": actor_src_type,
                     "coa_metrics": coa_metrics,
                     "collateral_damage_est": collateral_damage_est,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "decision_deadline": decision_deadline,
                     "external_actions": external_actions,
                     "external_request_id": external_request_id,
@@ -218,7 +206,6 @@ class EffectResponsesResource(SyncAPIResource):
                     "munition_id": munition_id,
                     "munition_type": munition_type,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "probability_of_kill": probability_of_kill,
                     "red_target_src_id": red_target_src_id,
                     "red_target_src_type": red_target_src_type,
@@ -438,7 +425,7 @@ class EffectResponsesResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           created_at: Time the row was created in the database, auto-populated by the system.
@@ -499,7 +486,7 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
@@ -508,8 +495,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         actor_src_type: str | NotGiven = NOT_GIVEN,
         coa_metrics: Iterable[effect_response_create_params.CoaMetric] | NotGiven = NOT_GIVEN,
         collateral_damage_est: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         decision_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
         external_actions: List[str] | NotGiven = NOT_GIVEN,
         external_request_id: str | NotGiven = NOT_GIVEN,
@@ -517,7 +502,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         munition_id: str | NotGiven = NOT_GIVEN,
         munition_type: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         probability_of_kill: float | NotGiven = NOT_GIVEN,
         red_target_src_id: str | NotGiven = NOT_GIVEN,
         red_target_src_type: str | NotGiven = NOT_GIVEN,
@@ -574,11 +558,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
 
           collateral_damage_est: The collateral damage estimate (CDE) of the munition being fired.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           decision_deadline: The deadline time to accept this COA before it's no longer valid, in ISO8601 UTC
               format.
 
@@ -597,9 +576,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           probability_of_kill: The probability of kill (0-1) of the target being destroyed.
 
@@ -637,8 +613,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
                     "actor_src_type": actor_src_type,
                     "coa_metrics": coa_metrics,
                     "collateral_damage_est": collateral_damage_est,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "decision_deadline": decision_deadline,
                     "external_actions": external_actions,
                     "external_request_id": external_request_id,
@@ -646,7 +620,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
                     "munition_id": munition_id,
                     "munition_type": munition_type,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "probability_of_kill": probability_of_kill,
                     "red_target_src_id": red_target_src_id,
                     "red_target_src_type": red_target_src_type,
@@ -868,7 +841,7 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           created_at: Time the row was created in the database, auto-populated by the system.

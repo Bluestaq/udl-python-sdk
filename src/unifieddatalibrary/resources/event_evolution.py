@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -56,7 +57,7 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         event_id: str,
         source: str,
         start_time: Union[str, datetime],
@@ -70,15 +71,12 @@ class EventEvolutionResource(SyncAPIResource):
         atype: str | NotGiven = NOT_GIVEN,
         category: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         data_description: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         geo_admin_level1: str | NotGiven = NOT_GIVEN,
         geo_admin_level2: str | NotGiven = NOT_GIVEN,
         geo_admin_level3: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         redact: bool | NotGiven = NOT_GIVEN,
         src_ids: List[str] | NotGiven = NOT_GIVEN,
         src_typs: List[str] | NotGiven = NOT_GIVEN,
@@ -157,14 +155,9 @@ class EventEvolutionResource(SyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           data_description: Optional description of the relationship between the records provided in the
               srcTyps/srcIds and the activity or event.
@@ -192,9 +185,6 @@ class EventEvolutionResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           redact: Flag indicating that this record is for the purpose of redacting one or more
               previously specified records from association with this activity or event. If
@@ -252,15 +242,12 @@ class EventEvolutionResource(SyncAPIResource):
                     "atype": atype,
                     "category": category,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "data_description": data_description,
                     "end_time": end_time,
                     "geo_admin_level1": geo_admin_level1,
                     "geo_admin_level2": geo_admin_level2,
                     "geo_admin_level3": geo_admin_level3,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "redact": redact,
                     "src_ids": src_ids,
                     "src_typs": src_typs,
@@ -449,7 +436,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         event_id: str,
         source: str,
         start_time: Union[str, datetime],
@@ -463,15 +450,12 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         atype: str | NotGiven = NOT_GIVEN,
         category: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         data_description: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         geo_admin_level1: str | NotGiven = NOT_GIVEN,
         geo_admin_level2: str | NotGiven = NOT_GIVEN,
         geo_admin_level3: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         redact: bool | NotGiven = NOT_GIVEN,
         src_ids: List[str] | NotGiven = NOT_GIVEN,
         src_typs: List[str] | NotGiven = NOT_GIVEN,
@@ -550,14 +534,9 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
               appear in the ISO document. The code must correspond to an existing country in
-              the UDL�s country API. Call udl/country/{code} to get any associated FIPS code,
+              the UDL’s country API. Call udl/country/{code} to get any associated FIPS code,
               ISO Alpha-3 code, or alternate code values that exist for the specified country
               code.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           data_description: Optional description of the relationship between the records provided in the
               srcTyps/srcIds and the activity or event.
@@ -585,9 +564,6 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           redact: Flag indicating that this record is for the purpose of redacting one or more
               previously specified records from association with this activity or event. If
@@ -645,15 +621,12 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                     "atype": atype,
                     "category": category,
                     "country_code": country_code,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "data_description": data_description,
                     "end_time": end_time,
                     "geo_admin_level1": geo_admin_level1,
                     "geo_admin_level2": geo_admin_level2,
                     "geo_admin_level3": geo_admin_level3,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "redact": redact,
                     "src_ids": src_ids,
                     "src_typs": src_typs,

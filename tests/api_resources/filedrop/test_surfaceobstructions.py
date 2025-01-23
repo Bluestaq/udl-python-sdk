@@ -20,10 +20,10 @@ class TestSurfaceobstructions:
         surfaceobstruction = client.filedrop.surfaceobstructions.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_surface": "idSurface",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestSurfaceobstructions:
         response = client.filedrop.surfaceobstructions.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_surface": "idSurface",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestSurfaceobstructions:
         with client.filedrop.surfaceobstructions.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_surface": "idSurface",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncSurfaceobstructions:
         surfaceobstruction = await async_client.filedrop.surfaceobstructions.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_surface": "idSurface",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncSurfaceobstructions:
         response = await async_client.filedrop.surfaceobstructions.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_surface": "idSurface",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncSurfaceobstructions:
         async with async_client.filedrop.surfaceobstructions.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "id_surface": "idSurface",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

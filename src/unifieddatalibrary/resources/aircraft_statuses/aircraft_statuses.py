@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -69,18 +70,16 @@ class AircraftStatusesResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_aircraft: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         additional_sys: List[str] | NotGiven = NOT_GIVEN,
-        air_to_air_status: str | NotGiven = NOT_GIVEN,
-        air_to_ground_status: str | NotGiven = NOT_GIVEN,
+        air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
+        air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
         alt_aircraft_id: str | NotGiven = NOT_GIVEN,
         contamination_status: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         current_icao: str | NotGiven = NOT_GIVEN,
         current_state: str | NotGiven = NOT_GIVEN,
         earliest_ta_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -112,11 +111,9 @@ class AircraftStatusesResource(SyncAPIResource):
         next_icao: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         park_location: str | NotGiven = NOT_GIVEN,
         park_location_system: str | NotGiven = NOT_GIVEN,
         previous_icao: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
         unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
@@ -174,11 +171,6 @@ class AircraftStatusesResource(SyncAPIResource):
           contamination_status: The contamination status of the aircraft (e.g. CLEAR, CONTAMINATED,
               DECONTAMINATED, UNKNOWN, etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           current_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               is currently located or has most recently departed, if airborne.
 
@@ -268,19 +260,12 @@ class AircraftStatusesResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           park_location: The parking location of this aircraft.
 
           park_location_system: The system that designated the parking location (e.g. EMOC, GDSS, PEX, etc.).
 
           previous_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               was previously located.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           ta_start_time: The turnaround start time, in ISO 8601 UTC format with millisecond precision.
 
@@ -314,8 +299,6 @@ class AircraftStatusesResource(SyncAPIResource):
                     "alpha_status_code": alpha_status_code,
                     "alt_aircraft_id": alt_aircraft_id,
                     "contamination_status": contamination_status,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "current_icao": current_icao,
                     "current_state": current_state,
                     "earliest_ta_end_time": earliest_ta_end_time,
@@ -347,11 +330,9 @@ class AircraftStatusesResource(SyncAPIResource):
                     "next_icao": next_icao,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "park_location": park_location,
                     "park_location_system": park_location_system,
                     "previous_icao": previous_icao,
-                    "source_dl": source_dl,
                     "ta_start_time": ta_start_time,
                     "troubleshoot_etic": troubleshoot_etic,
                     "unavailable_sys": unavailable_sys,
@@ -403,18 +384,16 @@ class AircraftStatusesResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_aircraft: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         additional_sys: List[str] | NotGiven = NOT_GIVEN,
-        air_to_air_status: str | NotGiven = NOT_GIVEN,
-        air_to_ground_status: str | NotGiven = NOT_GIVEN,
+        air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
+        air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
         alt_aircraft_id: str | NotGiven = NOT_GIVEN,
         contamination_status: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         current_icao: str | NotGiven = NOT_GIVEN,
         current_state: str | NotGiven = NOT_GIVEN,
         earliest_ta_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -446,11 +425,9 @@ class AircraftStatusesResource(SyncAPIResource):
         next_icao: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         park_location: str | NotGiven = NOT_GIVEN,
         park_location_system: str | NotGiven = NOT_GIVEN,
         previous_icao: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
         unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
@@ -508,11 +485,6 @@ class AircraftStatusesResource(SyncAPIResource):
           contamination_status: The contamination status of the aircraft (e.g. CLEAR, CONTAMINATED,
               DECONTAMINATED, UNKNOWN, etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           current_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               is currently located or has most recently departed, if airborne.
 
@@ -602,19 +574,12 @@ class AircraftStatusesResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           park_location: The parking location of this aircraft.
 
           park_location_system: The system that designated the parking location (e.g. EMOC, GDSS, PEX, etc.).
 
           previous_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               was previously located.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           ta_start_time: The turnaround start time, in ISO 8601 UTC format with millisecond precision.
 
@@ -650,8 +615,6 @@ class AircraftStatusesResource(SyncAPIResource):
                     "alpha_status_code": alpha_status_code,
                     "alt_aircraft_id": alt_aircraft_id,
                     "contamination_status": contamination_status,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "current_icao": current_icao,
                     "current_state": current_state,
                     "earliest_ta_end_time": earliest_ta_end_time,
@@ -683,11 +646,9 @@ class AircraftStatusesResource(SyncAPIResource):
                     "next_icao": next_icao,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "park_location": park_location,
                     "park_location_system": park_location_system,
                     "previous_icao": previous_icao,
-                    "source_dl": source_dl,
                     "ta_start_time": ta_start_time,
                     "troubleshoot_etic": troubleshoot_etic,
                     "unavailable_sys": unavailable_sys,
@@ -833,7 +794,7 @@ class AircraftStatusesResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers
@@ -885,18 +846,16 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_aircraft: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         additional_sys: List[str] | NotGiven = NOT_GIVEN,
-        air_to_air_status: str | NotGiven = NOT_GIVEN,
-        air_to_ground_status: str | NotGiven = NOT_GIVEN,
+        air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
+        air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
         alt_aircraft_id: str | NotGiven = NOT_GIVEN,
         contamination_status: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         current_icao: str | NotGiven = NOT_GIVEN,
         current_state: str | NotGiven = NOT_GIVEN,
         earliest_ta_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -928,11 +887,9 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         next_icao: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         park_location: str | NotGiven = NOT_GIVEN,
         park_location_system: str | NotGiven = NOT_GIVEN,
         previous_icao: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
         unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
@@ -990,11 +947,6 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
           contamination_status: The contamination status of the aircraft (e.g. CLEAR, CONTAMINATED,
               DECONTAMINATED, UNKNOWN, etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           current_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               is currently located or has most recently departed, if airborne.
 
@@ -1084,19 +1036,12 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           park_location: The parking location of this aircraft.
 
           park_location_system: The system that designated the parking location (e.g. EMOC, GDSS, PEX, etc.).
 
           previous_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               was previously located.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           ta_start_time: The turnaround start time, in ISO 8601 UTC format with millisecond precision.
 
@@ -1130,8 +1075,6 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
                     "alpha_status_code": alpha_status_code,
                     "alt_aircraft_id": alt_aircraft_id,
                     "contamination_status": contamination_status,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "current_icao": current_icao,
                     "current_state": current_state,
                     "earliest_ta_end_time": earliest_ta_end_time,
@@ -1163,11 +1106,9 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
                     "next_icao": next_icao,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "park_location": park_location,
                     "park_location_system": park_location_system,
                     "previous_icao": previous_icao,
-                    "source_dl": source_dl,
                     "ta_start_time": ta_start_time,
                     "troubleshoot_etic": troubleshoot_etic,
                     "unavailable_sys": unavailable_sys,
@@ -1219,18 +1160,16 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_aircraft: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         additional_sys: List[str] | NotGiven = NOT_GIVEN,
-        air_to_air_status: str | NotGiven = NOT_GIVEN,
-        air_to_ground_status: str | NotGiven = NOT_GIVEN,
+        air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
+        air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
         alt_aircraft_id: str | NotGiven = NOT_GIVEN,
         contamination_status: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         current_icao: str | NotGiven = NOT_GIVEN,
         current_state: str | NotGiven = NOT_GIVEN,
         earliest_ta_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -1262,11 +1201,9 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         next_icao: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         park_location: str | NotGiven = NOT_GIVEN,
         park_location_system: str | NotGiven = NOT_GIVEN,
         previous_icao: str | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
         unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
@@ -1324,11 +1261,6 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
           contamination_status: The contamination status of the aircraft (e.g. CLEAR, CONTAMINATED,
               DECONTAMINATED, UNKNOWN, etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           current_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               is currently located or has most recently departed, if airborne.
 
@@ -1418,19 +1350,12 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           park_location: The parking location of this aircraft.
 
           park_location_system: The system that designated the parking location (e.g. EMOC, GDSS, PEX, etc.).
 
           previous_icao: The International Civil Aviation Organization (ICAO) code at which this aircraft
               was previously located.
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           ta_start_time: The turnaround start time, in ISO 8601 UTC format with millisecond precision.
 
@@ -1466,8 +1391,6 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
                     "alpha_status_code": alpha_status_code,
                     "alt_aircraft_id": alt_aircraft_id,
                     "contamination_status": contamination_status,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "current_icao": current_icao,
                     "current_state": current_state,
                     "earliest_ta_end_time": earliest_ta_end_time,
@@ -1499,11 +1422,9 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
                     "next_icao": next_icao,
                     "notes": notes,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "park_location": park_location,
                     "park_location_system": park_location_system,
                     "previous_icao": previous_icao,
-                    "source_dl": source_dl,
                     "ta_start_time": ta_start_time,
                     "troubleshoot_etic": troubleshoot_etic,
                     "unavailable_sys": unavailable_sys,
@@ -1649,7 +1570,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           extra_headers: Send extra headers

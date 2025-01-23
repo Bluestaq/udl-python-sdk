@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +15,7 @@ class CrewUpdateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -54,7 +54,7 @@ class CrewUpdateParams(TypedDict, total=False):
     """The aircraft Model Design Series designation assigned for this crew."""
 
     alerted_time: Annotated[Union[str, datetime], PropertyInfo(alias="alertedTime", format="iso8601")]
-    """Time the crew was alerted, in ISO8601 UTC format, with millisecond precision."""
+    """Time the crew was alerted, in ISO 8601 UTC format, with millisecond precision."""
 
     arms_crew_unit: Annotated[str, PropertyInfo(alias="armsCrewUnit")]
     """The crew's Aviation Resource Management System (ARMS) unit.
@@ -67,15 +67,6 @@ class CrewUpdateParams(TypedDict, total=False):
 
     Intended to be an ICAO, but an air refueling track short name or drop zone ID
     can be used.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     crew_home: Annotated[bool, PropertyInfo(alias="crewHome")]
@@ -143,13 +134,13 @@ class CrewUpdateParams(TypedDict, total=False):
 
     legal_alert_time: Annotated[Union[str, datetime], PropertyInfo(alias="legalAlertTime", format="iso8601")]
     """
-    Time the crew is legal for alert, in ISO8601 UTC format, with millisecond
+    Time the crew is legal for alert, in ISO 8601 UTC format, with millisecond
     precision.
     """
 
     legal_bravo_time: Annotated[Union[str, datetime], PropertyInfo(alias="legalBravoTime", format="iso8601")]
     """
-    Time the crew is legal for bravo, in ISO8601 UTC format, with millisecond
+    Time the crew is legal for bravo, in ISO 8601 UTC format, with millisecond
     precision.
     """
 
@@ -173,12 +164,6 @@ class CrewUpdateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     post_rest_applied: Annotated[bool, PropertyInfo(alias="postRestApplied")]
     """
     Flag indicating whether post-mission crew rest is applied to the last sortie of
@@ -192,7 +177,7 @@ class CrewUpdateParams(TypedDict, total=False):
     """
 
     return_time: Annotated[Union[str, datetime], PropertyInfo(alias="returnTime", format="iso8601")]
-    """Scheduled return time, in ISO8601 UTC format, with millisecond precision."""
+    """Scheduled return time, in ISO 8601 UTC format, with millisecond precision."""
 
     stage_time: Annotated[Union[str, datetime], PropertyInfo(alias="stageTime", format="iso8601")]
     """
@@ -204,15 +189,6 @@ class CrewUpdateParams(TypedDict, total=False):
     """Crew status (e.g.
 
     NEEDCREW, ASSIGNED, APPROVED, NOTIFIED, PARTIAL, UNKNOWN, etc.).
-    """
-
-    updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    updated_by: Annotated[str, PropertyInfo(alias="updatedBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
 

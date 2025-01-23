@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from typing import Union, Iterable
-from datetime import date, datetime
+from datetime import date
+from typing_extensions import Literal
 
 import httpx
 
@@ -71,7 +72,7 @@ class AirTransportMissionsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         alias: str | NotGiven = NOT_GIVEN,
@@ -79,8 +80,6 @@ class AirTransportMissionsResource(SyncAPIResource):
         amc_mission_id: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cw: bool | NotGiven = NOT_GIVEN,
         dip_worksheet_name: str | NotGiven = NOT_GIVEN,
         first_pick_up: str | NotGiven = NOT_GIVEN,
@@ -96,18 +95,14 @@ class AirTransportMissionsResource(SyncAPIResource):
         operation: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         orig_mission_id: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         prev_amc_mission_id: str | NotGiven = NOT_GIVEN,
         prev_mission_id: str | NotGiven = NOT_GIVEN,
         purpose: str | NotGiven = NOT_GIVEN,
         remarks: Iterable[air_transport_mission_create_params.Remark] | NotGiven = NOT_GIVEN,
         requirements: Iterable[air_transport_mission_create_params.Requirement] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         source_sys_deviation: float | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -155,11 +150,6 @@ class AirTransportMissionsResource(SyncAPIResource):
 
           call_sign: The call sign for this mission.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cw: Flag indicating this is a close watch mission.
 
           dip_worksheet_name: Identifier of the Diplomatic Clearance Worksheet used to coordinate aircraft
@@ -201,9 +191,6 @@ class AirTransportMissionsResource(SyncAPIResource):
 
           orig_mission_id: The mission identifier provided by the originating source.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           prev_amc_mission_id: Air Mobility Command (AMC) mission identifier of the previous air transport
               mission. Provides a method for AMC to link air transport missions together
               chronologically for tasking and planning purposes.
@@ -221,21 +208,12 @@ class AirTransportMissionsResource(SyncAPIResource):
           requirements: Information related to the planning, load, status, and deployment or dispatch of
               one aircraft to carry out a mission.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           source_sys_deviation: The number of minutes a mission is off schedule based on the source system's
               business rules. Positive numbers are early, negative numbers are late.
 
           state: Current state of the mission.
 
           type: The type of mission (e.g. SAAM, CHNL, etc.).
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -259,8 +237,6 @@ class AirTransportMissionsResource(SyncAPIResource):
                     "amc_mission_id": amc_mission_id,
                     "apacs_id": apacs_id,
                     "call_sign": call_sign,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cw": cw,
                     "dip_worksheet_name": dip_worksheet_name,
                     "first_pick_up": first_pick_up,
@@ -276,18 +252,14 @@ class AirTransportMissionsResource(SyncAPIResource):
                     "operation": operation,
                     "origin": origin,
                     "orig_mission_id": orig_mission_id,
-                    "orig_network": orig_network,
                     "prev_amc_mission_id": prev_amc_mission_id,
                     "prev_mission_id": prev_mission_id,
                     "purpose": purpose,
                     "remarks": remarks,
                     "requirements": requirements,
-                    "source_dl": source_dl,
                     "source_sys_deviation": source_sys_deviation,
                     "state": state,
                     "type": type,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 air_transport_mission_create_params.AirTransportMissionCreateParams,
             ),
@@ -336,7 +308,7 @@ class AirTransportMissionsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         alias: str | NotGiven = NOT_GIVEN,
@@ -344,8 +316,6 @@ class AirTransportMissionsResource(SyncAPIResource):
         amc_mission_id: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cw: bool | NotGiven = NOT_GIVEN,
         dip_worksheet_name: str | NotGiven = NOT_GIVEN,
         first_pick_up: str | NotGiven = NOT_GIVEN,
@@ -361,18 +331,14 @@ class AirTransportMissionsResource(SyncAPIResource):
         operation: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         orig_mission_id: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         prev_amc_mission_id: str | NotGiven = NOT_GIVEN,
         prev_mission_id: str | NotGiven = NOT_GIVEN,
         purpose: str | NotGiven = NOT_GIVEN,
         remarks: Iterable[air_transport_mission_update_params.Remark] | NotGiven = NOT_GIVEN,
         requirements: Iterable[air_transport_mission_update_params.Requirement] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         source_sys_deviation: float | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -421,11 +387,6 @@ class AirTransportMissionsResource(SyncAPIResource):
 
           call_sign: The call sign for this mission.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cw: Flag indicating this is a close watch mission.
 
           dip_worksheet_name: Identifier of the Diplomatic Clearance Worksheet used to coordinate aircraft
@@ -467,9 +428,6 @@ class AirTransportMissionsResource(SyncAPIResource):
 
           orig_mission_id: The mission identifier provided by the originating source.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           prev_amc_mission_id: Air Mobility Command (AMC) mission identifier of the previous air transport
               mission. Provides a method for AMC to link air transport missions together
               chronologically for tasking and planning purposes.
@@ -487,21 +445,12 @@ class AirTransportMissionsResource(SyncAPIResource):
           requirements: Information related to the planning, load, status, and deployment or dispatch of
               one aircraft to carry out a mission.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           source_sys_deviation: The number of minutes a mission is off schedule based on the source system's
               business rules. Positive numbers are early, negative numbers are late.
 
           state: Current state of the mission.
 
           type: The type of mission (e.g. SAAM, CHNL, etc.).
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -527,8 +476,6 @@ class AirTransportMissionsResource(SyncAPIResource):
                     "amc_mission_id": amc_mission_id,
                     "apacs_id": apacs_id,
                     "call_sign": call_sign,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cw": cw,
                     "dip_worksheet_name": dip_worksheet_name,
                     "first_pick_up": first_pick_up,
@@ -544,18 +491,14 @@ class AirTransportMissionsResource(SyncAPIResource):
                     "operation": operation,
                     "origin": origin,
                     "orig_mission_id": orig_mission_id,
-                    "orig_network": orig_network,
                     "prev_amc_mission_id": prev_amc_mission_id,
                     "prev_mission_id": prev_mission_id,
                     "purpose": purpose,
                     "remarks": remarks,
                     "requirements": requirements,
-                    "source_dl": source_dl,
                     "source_sys_deviation": source_sys_deviation,
                     "state": state,
                     "type": type,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 air_transport_mission_update_params.AirTransportMissionUpdateParams,
             ),
@@ -701,7 +644,7 @@ class AirTransportMissionsResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           created_at: Time the row was created in the database, auto-populated by the system.
@@ -762,7 +705,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         alias: str | NotGiven = NOT_GIVEN,
@@ -770,8 +713,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         amc_mission_id: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cw: bool | NotGiven = NOT_GIVEN,
         dip_worksheet_name: str | NotGiven = NOT_GIVEN,
         first_pick_up: str | NotGiven = NOT_GIVEN,
@@ -787,18 +728,14 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         operation: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         orig_mission_id: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         prev_amc_mission_id: str | NotGiven = NOT_GIVEN,
         prev_mission_id: str | NotGiven = NOT_GIVEN,
         purpose: str | NotGiven = NOT_GIVEN,
         remarks: Iterable[air_transport_mission_create_params.Remark] | NotGiven = NOT_GIVEN,
         requirements: Iterable[air_transport_mission_create_params.Requirement] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         source_sys_deviation: float | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -846,11 +783,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
 
           call_sign: The call sign for this mission.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cw: Flag indicating this is a close watch mission.
 
           dip_worksheet_name: Identifier of the Diplomatic Clearance Worksheet used to coordinate aircraft
@@ -892,9 +824,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
 
           orig_mission_id: The mission identifier provided by the originating source.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           prev_amc_mission_id: Air Mobility Command (AMC) mission identifier of the previous air transport
               mission. Provides a method for AMC to link air transport missions together
               chronologically for tasking and planning purposes.
@@ -912,21 +841,12 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
           requirements: Information related to the planning, load, status, and deployment or dispatch of
               one aircraft to carry out a mission.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           source_sys_deviation: The number of minutes a mission is off schedule based on the source system's
               business rules. Positive numbers are early, negative numbers are late.
 
           state: Current state of the mission.
 
           type: The type of mission (e.g. SAAM, CHNL, etc.).
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -950,8 +870,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     "amc_mission_id": amc_mission_id,
                     "apacs_id": apacs_id,
                     "call_sign": call_sign,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cw": cw,
                     "dip_worksheet_name": dip_worksheet_name,
                     "first_pick_up": first_pick_up,
@@ -967,18 +885,14 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     "operation": operation,
                     "origin": origin,
                     "orig_mission_id": orig_mission_id,
-                    "orig_network": orig_network,
                     "prev_amc_mission_id": prev_amc_mission_id,
                     "prev_mission_id": prev_mission_id,
                     "purpose": purpose,
                     "remarks": remarks,
                     "requirements": requirements,
-                    "source_dl": source_dl,
                     "source_sys_deviation": source_sys_deviation,
                     "state": state,
                     "type": type,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 air_transport_mission_create_params.AirTransportMissionCreateParams,
             ),
@@ -1027,7 +941,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         alias: str | NotGiven = NOT_GIVEN,
@@ -1035,8 +949,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         amc_mission_id: str | NotGiven = NOT_GIVEN,
         apacs_id: str | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cw: bool | NotGiven = NOT_GIVEN,
         dip_worksheet_name: str | NotGiven = NOT_GIVEN,
         first_pick_up: str | NotGiven = NOT_GIVEN,
@@ -1052,18 +964,14 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         operation: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         orig_mission_id: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         prev_amc_mission_id: str | NotGiven = NOT_GIVEN,
         prev_mission_id: str | NotGiven = NOT_GIVEN,
         purpose: str | NotGiven = NOT_GIVEN,
         remarks: Iterable[air_transport_mission_update_params.Remark] | NotGiven = NOT_GIVEN,
         requirements: Iterable[air_transport_mission_update_params.Requirement] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         source_sys_deviation: float | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1112,11 +1020,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
 
           call_sign: The call sign for this mission.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cw: Flag indicating this is a close watch mission.
 
           dip_worksheet_name: Identifier of the Diplomatic Clearance Worksheet used to coordinate aircraft
@@ -1158,9 +1061,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
 
           orig_mission_id: The mission identifier provided by the originating source.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           prev_amc_mission_id: Air Mobility Command (AMC) mission identifier of the previous air transport
               mission. Provides a method for AMC to link air transport missions together
               chronologically for tasking and planning purposes.
@@ -1178,21 +1078,12 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
           requirements: Information related to the planning, load, status, and deployment or dispatch of
               one aircraft to carry out a mission.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           source_sys_deviation: The number of minutes a mission is off schedule based on the source system's
               business rules. Positive numbers are early, negative numbers are late.
 
           state: Current state of the mission.
 
           type: The type of mission (e.g. SAAM, CHNL, etc.).
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           extra_headers: Send extra headers
 
@@ -1218,8 +1109,6 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     "amc_mission_id": amc_mission_id,
                     "apacs_id": apacs_id,
                     "call_sign": call_sign,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cw": cw,
                     "dip_worksheet_name": dip_worksheet_name,
                     "first_pick_up": first_pick_up,
@@ -1235,18 +1124,14 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     "operation": operation,
                     "origin": origin,
                     "orig_mission_id": orig_mission_id,
-                    "orig_network": orig_network,
                     "prev_amc_mission_id": prev_amc_mission_id,
                     "prev_mission_id": prev_mission_id,
                     "purpose": purpose,
                     "remarks": remarks,
                     "requirements": requirements,
-                    "source_dl": source_dl,
                     "source_sys_deviation": source_sys_deviation,
                     "state": state,
                     "type": type,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                 },
                 air_transport_mission_update_params.AirTransportMissionUpdateParams,
             ),
@@ -1392,7 +1277,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           created_at: Time the row was created in the database, auto-populated by the system.

@@ -20,10 +20,10 @@ class TestEo:
         eo = client.filedrop.eo.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestEo:
         response = client.filedrop.eo.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestEo:
         with client.filedrop.eo.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncEo:
         eo = await async_client.filedrop.eo.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncEo:
         response = await async_client.filedrop.eo.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncEo:
         async with async_client.filedrop.eo.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

@@ -20,10 +20,10 @@ class TestOnboardnavigation:
         onboardnavigation = client.filedrop.observation.onboardnavigation.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
                 }
             ],
         )
@@ -34,10 +34,10 @@ class TestOnboardnavigation:
         response = client.filedrop.observation.onboardnavigation.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
                 }
             ],
         )
@@ -52,10 +52,10 @@ class TestOnboardnavigation:
         with client.filedrop.observation.onboardnavigation.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
                 }
             ],
         ) as response:
@@ -76,10 +76,10 @@ class TestAsyncOnboardnavigation:
         onboardnavigation = await async_client.filedrop.observation.onboardnavigation.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
                 }
             ],
         )
@@ -90,10 +90,10 @@ class TestAsyncOnboardnavigation:
         response = await async_client.filedrop.observation.onboardnavigation.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
                 }
             ],
         )
@@ -108,10 +108,10 @@ class TestAsyncOnboardnavigation:
         async with async_client.filedrop.observation.onboardnavigation.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
                 }
             ],
         ) as response:

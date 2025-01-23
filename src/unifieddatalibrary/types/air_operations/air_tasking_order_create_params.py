@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
@@ -300,7 +300,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -347,12 +347,6 @@ class Body(TypedDict, total=False):
     level tasking for this ATO.
     """
 
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """Application user who created the row in the database."""
-
     end_ts: Annotated[Union[str, datetime], PropertyInfo(alias="endTs", format="iso8601")]
     """
     The effective end time for this ATO in ISO 8601 UTC format with millisecond
@@ -386,24 +380,4 @@ class Body(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
-    """
-
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
-    raw_file_uri: Annotated[str, PropertyInfo(alias="rawFileURI")]
-    """
-    Optional URI location in the document repository of the raw file parsed by the
-    system to produce this record. To download the raw file, prepend
-    https://udl-hostname/scs/download?id= to this value.
-    """
-
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
     """

@@ -95,10 +95,10 @@ class TestEffectRequests:
         effect_request = client.effect_requests.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -109,10 +109,10 @@ class TestEffectRequests:
         response = client.effect_requests.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -127,10 +127,10 @@ class TestEffectRequests:
         with client.effect_requests.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -310,10 +310,10 @@ class TestAsyncEffectRequests:
         effect_request = await async_client.effect_requests.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -324,10 +324,10 @@ class TestAsyncEffectRequests:
         response = await async_client.effect_requests.with_raw_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -342,10 +342,10 @@ class TestAsyncEffectRequests:
         async with async_client.effect_requests.with_streaming_response.create_bulk(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "effect_list": ["string"],
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

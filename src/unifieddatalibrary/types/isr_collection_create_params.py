@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -90,7 +90,6 @@ class BodyCollectionRequirementExploitationRequirement(TypedDict, total=False):
     """Essential Elements of Information."""
 
     poc: BodyCollectionRequirementExploitationRequirementPoc
-    """Information about the Point of Contact (POC) for this ISR Collection."""
 
     reporting_criteria: Annotated[str, PropertyInfo(alias="reportingCriteria")]
     """The reporting criteria of the collection requirement."""
@@ -111,7 +110,6 @@ class BodyCollectionRequirement(TypedDict, total=False):
     """Collection Requirement Unique Identifier."""
 
     critical_times: Annotated[BodyCollectionRequirementCriticalTimes, PropertyInfo(alias="criticalTimes")]
-    """High priority time windows."""
 
     emphasized: bool
     """Is this collection requirement an emphasized/critical requirement."""
@@ -119,7 +117,6 @@ class BodyCollectionRequirement(TypedDict, total=False):
     exploitation_requirement: Annotated[
         BodyCollectionRequirementExploitationRequirement, PropertyInfo(alias="exploitationRequirement")
     ]
-    """What it is that is trying to be exploited."""
 
     hash: str
     """Encryption hashing algorithm."""
@@ -214,7 +211,6 @@ class BodyTaskingCollectionPeriods(TypedDict, total=False):
     """Actual start and stop for the collection."""
 
     planned: BodyTaskingCollectionPeriodsPlanned
-    """Planned start and stop for the collection."""
 
 
 class BodyTaskingTaskingCollectionRequirementCriticalTimes(TypedDict, total=False):
@@ -275,7 +271,6 @@ class BodyTaskingTaskingCollectionRequirementExploitationRequirement(TypedDict, 
     """Essential Elements of Information."""
 
     poc: BodyTaskingTaskingCollectionRequirementExploitationRequirementPoc
-    """Information about the Point of Contact (POC) for this ISR Collection."""
 
     reporting_criteria: Annotated[str, PropertyInfo(alias="reportingCriteria")]
     """The reporting criteria of the collection requirement."""
@@ -296,7 +291,6 @@ class BodyTaskingTaskingCollectionRequirement(TypedDict, total=False):
     """Collection Requirement Unique Identifier."""
 
     critical_times: Annotated[BodyTaskingTaskingCollectionRequirementCriticalTimes, PropertyInfo(alias="criticalTimes")]
-    """High priority time windows."""
 
     emphasized: bool
     """Is this collection requirement an emphasized/critical requirement."""
@@ -304,7 +298,6 @@ class BodyTaskingTaskingCollectionRequirement(TypedDict, total=False):
     exploitation_requirement: Annotated[
         BodyTaskingTaskingCollectionRequirementExploitationRequirement, PropertyInfo(alias="exploitationRequirement")
     ]
-    """What it is that is trying to be exploited."""
 
     hash: str
     """Encryption hashing algorithm."""
@@ -366,9 +359,11 @@ class BodyTasking(TypedDict, total=False):
     """Tasking Unique Identifier."""
 
     collection_periods: Annotated[BodyTaskingCollectionPeriods, PropertyInfo(alias="collectionPeriods")]
-    """Tasking collection periods."""
 
-    collection_type: Annotated[str, PropertyInfo(alias="collectionType")]
+    collection_type: Annotated[
+        Literal["Simultaneous", "Sequential", "Operationally", "Driven", "Priority", "Order"],
+        PropertyInfo(alias="collectionType"),
+    ]
     """Type of collection tasked."""
 
     eight_line: Annotated[str, PropertyInfo(alias="eightLine")]
@@ -426,7 +421,7 @@ class BodyTasking(TypedDict, total=False):
     """Time of retasking, in ISO 8601 UTC format."""
 
     tasking_role: Annotated[str, PropertyInfo(alias="taskingRole")]
-    """What is the primary objective(Role) of this task."""
+    """What is the primary objective (role) of this task."""
 
     tasking_secondary_intel_discipline: Annotated[str, PropertyInfo(alias="taskingSecondaryIntelDiscipline")]
     """Type of tasking intelligence to be collected second."""
@@ -458,7 +453,7 @@ class BodyTasking(TypedDict, total=False):
     process during a mission.
     """
 
-    type: str
+    type: Literal["Deliberate", "Dynamic", "Training", "Transit"]
     """Type of tasking."""
 
 
@@ -477,7 +472,7 @@ class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -504,15 +499,6 @@ class Body(TypedDict, total=False):
         Iterable[BodyCollectionRequirement], PropertyInfo(alias="collectionRequirements")
     ]
     """Mission desired collection requirements."""
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
-    """
 
     idex_version: Annotated[int, PropertyInfo(alias="idexVersion")]
     """Version of the IDEX software the request came from for compatibility."""
@@ -598,26 +584,8 @@ class Body(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     taskings: Iterable[BodyTasking]
     """Individual taskings to complete the mission."""
 
     transit: Iterable[BodyTransit]
     """Object for data dissemination."""
-
-    updated_at: Annotated[Union[str, datetime], PropertyInfo(alias="updatedAt", format="iso8601")]
-    """
-    Time the row was updated in the database, auto-populated by the system, example
-    = 2018-01-01T16:00:00.123Z.
-    """
-
-    updated_by: Annotated[str, PropertyInfo(alias="updatedBy")]
-    """
-    Application user who updated the row in the database, auto-populated by the
-    system.
-    """

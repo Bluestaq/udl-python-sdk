@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import datetime
+from typing import List
+from typing_extensions import Literal
 
 import httpx
 
@@ -52,19 +52,16 @@ class BatterydetailsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         capacity: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         discharge_depth: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
         model: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         technology: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -107,11 +104,6 @@ class BatterydetailsResource(SyncAPIResource):
 
           capacity: Battery capacity in Ah.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Battery description/notes.
 
           discharge_depth: Depth of discharge as a percentage/fraction.
@@ -124,9 +116,6 @@ class BatterydetailsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -155,14 +144,11 @@ class BatterydetailsResource(SyncAPIResource):
                     "source": source,
                     "id": id,
                     "capacity": capacity,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "discharge_depth": discharge_depth,
                     "manufacturer_org_id": manufacturer_org_id,
                     "model": model,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "tags": tags,
                     "technology": technology,
                 },
@@ -214,19 +200,16 @@ class BatterydetailsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         capacity: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         discharge_depth: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
         model: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         technology: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -269,11 +252,6 @@ class BatterydetailsResource(SyncAPIResource):
 
           capacity: Battery capacity in Ah.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Battery description/notes.
 
           discharge_depth: Depth of discharge as a percentage/fraction.
@@ -286,9 +264,6 @@ class BatterydetailsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -319,14 +294,11 @@ class BatterydetailsResource(SyncAPIResource):
                     "source": source,
                     "id_2": id_2,
                     "capacity": capacity,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "discharge_depth": discharge_depth,
                     "manufacturer_org_id": manufacturer_org_id,
                     "model": model,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "tags": tags,
                     "technology": technology,
                 },
@@ -424,19 +396,16 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         capacity: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         discharge_depth: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
         model: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         technology: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -479,11 +448,6 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
 
           capacity: Battery capacity in Ah.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Battery description/notes.
 
           discharge_depth: Depth of discharge as a percentage/fraction.
@@ -496,9 +460,6 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -527,14 +488,11 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
                     "source": source,
                     "id": id,
                     "capacity": capacity,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "discharge_depth": discharge_depth,
                     "manufacturer_org_id": manufacturer_org_id,
                     "model": model,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "tags": tags,
                     "technology": technology,
                 },
@@ -586,19 +544,16 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         capacity: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         discharge_depth: float | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
         model: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         technology: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -641,11 +596,6 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
 
           capacity: Battery capacity in Ah.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           description: Battery description/notes.
 
           discharge_depth: Depth of discharge as a percentage/fraction.
@@ -658,9 +608,6 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -691,14 +638,11 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
                     "source": source,
                     "id_2": id_2,
                     "capacity": capacity,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "description": description,
                     "discharge_depth": discharge_depth,
                     "manufacturer_org_id": manufacturer_org_id,
                     "model": model,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "tags": tags,
                     "technology": technology,
                 },

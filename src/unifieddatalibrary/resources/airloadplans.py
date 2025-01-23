@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -51,7 +52,7 @@ class AirloadplansResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         est_dep_time: Union[str, datetime],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -79,8 +80,6 @@ class AirloadplansResource(SyncAPIResource):
         cargo_moment: float | NotGiven = NOT_GIVEN,
         cargo_volume: float | NotGiven = NOT_GIVEN,
         cargo_weight: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         crew_size: int | NotGiven = NOT_GIVEN,
         dep_airfield: str | NotGiven = NOT_GIVEN,
         dep_icao: str | NotGiven = NOT_GIVEN,
@@ -107,17 +106,13 @@ class AirloadplansResource(SyncAPIResource):
         operating_moment: float | NotGiven = NOT_GIVEN,
         operating_weight: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         pp_onboard: int | NotGiven = NOT_GIVEN,
         pp_released: int | NotGiven = NOT_GIVEN,
         sched_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         seats_onboard: int | NotGiven = NOT_GIVEN,
         seats_released: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         tank_config: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         util_code: str | NotGiven = NOT_GIVEN,
         zero_fuel_cg: float | NotGiven = NOT_GIVEN,
         zero_fuel_moment: float | NotGiven = NOT_GIVEN,
@@ -154,8 +149,8 @@ class AirloadplansResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          est_dep_time: The current estimated time that the aircraft is planned to depart, in ISO 8601
-              UTC format with millisecond precision.
+          est_dep_time: The current estimated time that the Aircraft is planned to depart, in ISO 8601
+              UTC format.
 
           source: Source of the data.
 
@@ -221,11 +216,6 @@ class AirloadplansResource(SyncAPIResource):
           cargo_volume: The volume of cargo space in the aircraft in cubic meters.
 
           cargo_weight: The weight of the cargo on board the aircraft, in kilograms.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           crew_size: The number of crew members on the aircraft.
 
@@ -297,9 +287,6 @@ class AirloadplansResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           pp_onboard: Number of pallet positions on the aircraft.
 
           pp_released: Number of pallet positions released this leg.
@@ -311,19 +298,10 @@ class AirloadplansResource(SyncAPIResource):
 
           seats_released: Number of passenger seats released this leg.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           tail_number: The tail number of the aircraft supporting this load plan.
 
           tank_config: Description of the fuel tank(s) configuration (e.g. ER, NON-ER, etc.).
               Configuration meanings are determined by the data source.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           util_code: Alphanumeric code that describes general cargo-related utilization and
               characteristics for an itinerary point.
@@ -379,8 +357,6 @@ class AirloadplansResource(SyncAPIResource):
                     "cargo_moment": cargo_moment,
                     "cargo_volume": cargo_volume,
                     "cargo_weight": cargo_weight,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "crew_size": crew_size,
                     "dep_airfield": dep_airfield,
                     "dep_icao": dep_icao,
@@ -407,17 +383,13 @@ class AirloadplansResource(SyncAPIResource):
                     "operating_moment": operating_moment,
                     "operating_weight": operating_weight,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "pp_onboard": pp_onboard,
                     "pp_released": pp_released,
                     "sched_time": sched_time,
                     "seats_onboard": seats_onboard,
                     "seats_released": seats_released,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                     "tank_config": tank_config,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "util_code": util_code,
                     "zero_fuel_cg": zero_fuel_cg,
                     "zero_fuel_moment": zero_fuel_moment,
@@ -493,7 +465,7 @@ class AsyncAirloadplansResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         est_dep_time: Union[str, datetime],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -521,8 +493,6 @@ class AsyncAirloadplansResource(AsyncAPIResource):
         cargo_moment: float | NotGiven = NOT_GIVEN,
         cargo_volume: float | NotGiven = NOT_GIVEN,
         cargo_weight: float | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         crew_size: int | NotGiven = NOT_GIVEN,
         dep_airfield: str | NotGiven = NOT_GIVEN,
         dep_icao: str | NotGiven = NOT_GIVEN,
@@ -549,17 +519,13 @@ class AsyncAirloadplansResource(AsyncAPIResource):
         operating_moment: float | NotGiven = NOT_GIVEN,
         operating_weight: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         pp_onboard: int | NotGiven = NOT_GIVEN,
         pp_released: int | NotGiven = NOT_GIVEN,
         sched_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         seats_onboard: int | NotGiven = NOT_GIVEN,
         seats_released: int | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         tank_config: str | NotGiven = NOT_GIVEN,
-        updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         util_code: str | NotGiven = NOT_GIVEN,
         zero_fuel_cg: float | NotGiven = NOT_GIVEN,
         zero_fuel_moment: float | NotGiven = NOT_GIVEN,
@@ -596,8 +562,8 @@ class AsyncAirloadplansResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          est_dep_time: The current estimated time that the aircraft is planned to depart, in ISO 8601
-              UTC format with millisecond precision.
+          est_dep_time: The current estimated time that the Aircraft is planned to depart, in ISO 8601
+              UTC format.
 
           source: Source of the data.
 
@@ -663,11 +629,6 @@ class AsyncAirloadplansResource(AsyncAPIResource):
           cargo_volume: The volume of cargo space in the aircraft in cubic meters.
 
           cargo_weight: The weight of the cargo on board the aircraft, in kilograms.
-
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
 
           crew_size: The number of crew members on the aircraft.
 
@@ -739,9 +700,6 @@ class AsyncAirloadplansResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           pp_onboard: Number of pallet positions on the aircraft.
 
           pp_released: Number of pallet positions released this leg.
@@ -753,19 +711,10 @@ class AsyncAirloadplansResource(AsyncAPIResource):
 
           seats_released: Number of passenger seats released this leg.
 
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
-
           tail_number: The tail number of the aircraft supporting this load plan.
 
           tank_config: Description of the fuel tank(s) configuration (e.g. ER, NON-ER, etc.).
               Configuration meanings are determined by the data source.
-
-          updated_at: Time the row was updated in the database, auto-populated by the system.
-
-          updated_by: Application user who updated the row in the database, auto-populated by the
-              system.
 
           util_code: Alphanumeric code that describes general cargo-related utilization and
               characteristics for an itinerary point.
@@ -821,8 +770,6 @@ class AsyncAirloadplansResource(AsyncAPIResource):
                     "cargo_moment": cargo_moment,
                     "cargo_volume": cargo_volume,
                     "cargo_weight": cargo_weight,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "crew_size": crew_size,
                     "dep_airfield": dep_airfield,
                     "dep_icao": dep_icao,
@@ -849,17 +796,13 @@ class AsyncAirloadplansResource(AsyncAPIResource):
                     "operating_moment": operating_moment,
                     "operating_weight": operating_weight,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "pp_onboard": pp_onboard,
                     "pp_released": pp_released,
                     "sched_time": sched_time,
                     "seats_onboard": seats_onboard,
                     "seats_released": seats_released,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                     "tank_config": tank_config,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "util_code": util_code,
                     "zero_fuel_cg": zero_fuel_cg,
                     "zero_fuel_moment": zero_fuel_moment,

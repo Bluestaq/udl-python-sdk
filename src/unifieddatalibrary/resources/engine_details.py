@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import datetime
+from typing import List
+from typing_extensions import Literal
 
 import httpx
 
@@ -51,15 +51,13 @@ class EngineDetailsResource(SyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_engine: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         burn_time: float | NotGiven = NOT_GIVEN,
         chamber_pressure: float | NotGiven = NOT_GIVEN,
         characteristic_type: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cycle_type: str | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
@@ -67,7 +65,6 @@ class EngineDetailsResource(SyncAPIResource):
         notes: str | NotGiven = NOT_GIVEN,
         nozzle_expansion_ratio: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         oxidizer: str | NotGiven = NOT_GIVEN,
         propellant: str | NotGiven = NOT_GIVEN,
         sea_level_thrust: float | NotGiven = NOT_GIVEN,
@@ -121,11 +118,6 @@ class EngineDetailsResource(SyncAPIResource):
           characteristic_type: Engine characteristic type (e.g. Electric, Mono-propellant, Bi-propellant,
               etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cycle_type: Engine cycle type (e.g. Electrostatic Ion, Pressure Fed, Hall, Catalytic
               Decomposition, etc.).
 
@@ -143,9 +135,6 @@ class EngineDetailsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           oxidizer: Oxidizer type (e.g. Nitrogen Tetroxide, Liquid Oxygen, etc).
 
@@ -185,8 +174,6 @@ class EngineDetailsResource(SyncAPIResource):
                     "burn_time": burn_time,
                     "chamber_pressure": chamber_pressure,
                     "characteristic_type": characteristic_type,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cycle_type": cycle_type,
                     "family": family,
                     "manufacturer_org_id": manufacturer_org_id,
@@ -194,7 +181,6 @@ class EngineDetailsResource(SyncAPIResource):
                     "notes": notes,
                     "nozzle_expansion_ratio": nozzle_expansion_ratio,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "oxidizer": oxidizer,
                     "propellant": propellant,
                     "sea_level_thrust": sea_level_thrust,
@@ -251,15 +237,13 @@ class EngineDetailsResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_engine: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         burn_time: float | NotGiven = NOT_GIVEN,
         chamber_pressure: float | NotGiven = NOT_GIVEN,
         characteristic_type: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cycle_type: str | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
@@ -267,7 +251,6 @@ class EngineDetailsResource(SyncAPIResource):
         notes: str | NotGiven = NOT_GIVEN,
         nozzle_expansion_ratio: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         oxidizer: str | NotGiven = NOT_GIVEN,
         propellant: str | NotGiven = NOT_GIVEN,
         sea_level_thrust: float | NotGiven = NOT_GIVEN,
@@ -321,11 +304,6 @@ class EngineDetailsResource(SyncAPIResource):
           characteristic_type: Engine characteristic type (e.g. Electric, Mono-propellant, Bi-propellant,
               etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cycle_type: Engine cycle type (e.g. Electrostatic Ion, Pressure Fed, Hall, Catalytic
               Decomposition, etc.).
 
@@ -343,9 +321,6 @@ class EngineDetailsResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           oxidizer: Oxidizer type (e.g. Nitrogen Tetroxide, Liquid Oxygen, etc).
 
@@ -387,8 +362,6 @@ class EngineDetailsResource(SyncAPIResource):
                     "burn_time": burn_time,
                     "chamber_pressure": chamber_pressure,
                     "characteristic_type": characteristic_type,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cycle_type": cycle_type,
                     "family": family,
                     "manufacturer_org_id": manufacturer_org_id,
@@ -396,7 +369,6 @@ class EngineDetailsResource(SyncAPIResource):
                     "notes": notes,
                     "nozzle_expansion_ratio": nozzle_expansion_ratio,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "oxidizer": oxidizer,
                     "propellant": propellant,
                     "sea_level_thrust": sea_level_thrust,
@@ -476,15 +448,13 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
         self,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_engine: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         burn_time: float | NotGiven = NOT_GIVEN,
         chamber_pressure: float | NotGiven = NOT_GIVEN,
         characteristic_type: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cycle_type: str | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
@@ -492,7 +462,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
         notes: str | NotGiven = NOT_GIVEN,
         nozzle_expansion_ratio: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         oxidizer: str | NotGiven = NOT_GIVEN,
         propellant: str | NotGiven = NOT_GIVEN,
         sea_level_thrust: float | NotGiven = NOT_GIVEN,
@@ -546,11 +515,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
           characteristic_type: Engine characteristic type (e.g. Electric, Mono-propellant, Bi-propellant,
               etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cycle_type: Engine cycle type (e.g. Electrostatic Ion, Pressure Fed, Hall, Catalytic
               Decomposition, etc.).
 
@@ -568,9 +532,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           oxidizer: Oxidizer type (e.g. Nitrogen Tetroxide, Liquid Oxygen, etc).
 
@@ -610,8 +571,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
                     "burn_time": burn_time,
                     "chamber_pressure": chamber_pressure,
                     "characteristic_type": characteristic_type,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cycle_type": cycle_type,
                     "family": family,
                     "manufacturer_org_id": manufacturer_org_id,
@@ -619,7 +578,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
                     "notes": notes,
                     "nozzle_expansion_ratio": nozzle_expansion_ratio,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "oxidizer": oxidizer,
                     "propellant": propellant,
                     "sea_level_thrust": sea_level_thrust,
@@ -676,15 +634,13 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_engine: str,
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
         burn_time: float | NotGiven = NOT_GIVEN,
         chamber_pressure: float | NotGiven = NOT_GIVEN,
         characteristic_type: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         cycle_type: str | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
         manufacturer_org_id: str | NotGiven = NOT_GIVEN,
@@ -692,7 +648,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
         notes: str | NotGiven = NOT_GIVEN,
         nozzle_expansion_ratio: float | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         oxidizer: str | NotGiven = NOT_GIVEN,
         propellant: str | NotGiven = NOT_GIVEN,
         sea_level_thrust: float | NotGiven = NOT_GIVEN,
@@ -746,11 +701,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
           characteristic_type: Engine characteristic type (e.g. Electric, Mono-propellant, Bi-propellant,
               etc.).
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           cycle_type: Engine cycle type (e.g. Electrostatic Ion, Pressure Fed, Hall, Catalytic
               Decomposition, etc.).
 
@@ -768,9 +718,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
-
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
 
           oxidizer: Oxidizer type (e.g. Nitrogen Tetroxide, Liquid Oxygen, etc).
 
@@ -812,8 +759,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
                     "burn_time": burn_time,
                     "chamber_pressure": chamber_pressure,
                     "characteristic_type": characteristic_type,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "cycle_type": cycle_type,
                     "family": family,
                     "manufacturer_org_id": manufacturer_org_id,
@@ -821,7 +766,6 @@ class AsyncEngineDetailsResource(AsyncAPIResource):
                     "notes": notes,
                     "nozzle_expansion_ratio": nozzle_expansion_ratio,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "oxidizer": oxidizer,
                     "propellant": propellant,
                     "sea_level_thrust": sea_level_thrust,

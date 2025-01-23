@@ -20,13 +20,13 @@ class TestOrbitDetermination:
         orbit_determination = client.filedrop.orbit_determination.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "end_time": "2019-12-27T18:11:19.117Z",
-                    "initial_od": True,
-                    "method": "method",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "end_time": "2023-08-28T15:20:21.247192Z",
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": "2023-08-28T11:20:21.247192Z",
                 }
             ],
         )
@@ -37,13 +37,13 @@ class TestOrbitDetermination:
         response = client.filedrop.orbit_determination.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "end_time": "2019-12-27T18:11:19.117Z",
-                    "initial_od": True,
-                    "method": "method",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "end_time": "2023-08-28T15:20:21.247192Z",
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": "2023-08-28T11:20:21.247192Z",
                 }
             ],
         )
@@ -58,13 +58,13 @@ class TestOrbitDetermination:
         with client.filedrop.orbit_determination.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "end_time": "2019-12-27T18:11:19.117Z",
-                    "initial_od": True,
-                    "method": "method",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "end_time": "2023-08-28T15:20:21.247192Z",
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": "2023-08-28T11:20:21.247192Z",
                 }
             ],
         ) as response:
@@ -85,13 +85,13 @@ class TestAsyncOrbitDetermination:
         orbit_determination = await async_client.filedrop.orbit_determination.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "end_time": "2019-12-27T18:11:19.117Z",
-                    "initial_od": True,
-                    "method": "method",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "end_time": "2023-08-28T15:20:21.247192Z",
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": "2023-08-28T11:20:21.247192Z",
                 }
             ],
         )
@@ -102,13 +102,13 @@ class TestAsyncOrbitDetermination:
         response = await async_client.filedrop.orbit_determination.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "end_time": "2019-12-27T18:11:19.117Z",
-                    "initial_od": True,
-                    "method": "method",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "end_time": "2023-08-28T15:20:21.247192Z",
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": "2023-08-28T11:20:21.247192Z",
                 }
             ],
         )
@@ -123,13 +123,13 @@ class TestAsyncOrbitDetermination:
         async with async_client.filedrop.orbit_determination.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "end_time": "2019-12-27T18:11:19.117Z",
-                    "initial_od": True,
-                    "method": "method",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "end_time": "2023-08-28T15:20:21.247192Z",
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": "2023-08-28T11:20:21.247192Z",
                 }
             ],
         ) as response:

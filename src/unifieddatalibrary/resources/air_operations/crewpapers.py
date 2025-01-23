@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
@@ -48,7 +50,7 @@ class CrewpapersResource(SyncAPIResource):
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
-        paper_status: str,
+        paper_status: Literal["PUBLISHED", "DELETED", "UPDATED", "READ"],
         papers_version: str,
         body: FileTypes,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -170,7 +172,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
-        paper_status: str,
+        paper_status: Literal["PUBLISHED", "DELETED", "UPDATED", "READ"],
         papers_version: str,
         body: FileTypes,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -15,7 +15,7 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: Required[Annotated[str, PropertyInfo(alias="dataMode")]]
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -44,6 +44,15 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     alt_airfield_id: Annotated[str, PropertyInfo(alias="altAirfieldId")]
     """Alternate airfield identifier provided by the source."""
 
+    approved_by: Annotated[str, PropertyInfo(alias="approvedBy")]
+    """The name of the person who approved the airfield survey review."""
+
+    approved_date: Annotated[Union[str, datetime], PropertyInfo(alias="approvedDate", format="iso8601")]
+    """
+    The date that survey review changes were approved for this airfield, in ISO 8601
+    UTC format with millisecond precision.
+    """
+
     arff_cat: Annotated[str, PropertyInfo(alias="arffCat")]
     """
     The category of aircraft rescue and fire fighting (ARFF) services that are
@@ -55,15 +64,6 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     """
     Maximum on ground (MOG) number of high-reach/wide-body cargo aircraft that can
     be serviced simultaneously based on spacing and manpower at the time of status.
-    """
-
-    created_at: Annotated[Union[str, datetime], PropertyInfo(alias="createdAt", format="iso8601")]
-    """Time the row was created in the database, auto-populated by the system."""
-
-    created_by: Annotated[str, PropertyInfo(alias="createdBy")]
-    """
-    Application user who created the row in the database, auto-populated by the
-    system.
     """
 
     fleet_service_mog: Annotated[int, PropertyInfo(alias="fleetServiceMOG")]
@@ -153,12 +153,6 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    orig_network: Annotated[str, PropertyInfo(alias="origNetwork")]
-    """
-    The originating source network on which this record was created, auto-populated
-    by the system.
-    """
-
     passenger_service_mog: Annotated[int, PropertyInfo(alias="passengerServiceMOG")]
     """
     Maximum on ground (MOG) number of high-reach/wide-body passenger aircraft that
@@ -171,6 +165,15 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
 
     pri_rwy_num: Annotated[str, PropertyInfo(alias="priRwyNum")]
     """The number or ID of primary runway at the airfield."""
+
+    reviewed_by: Annotated[str, PropertyInfo(alias="reviewedBy")]
+    """The name of the person who reviewed the airfield survey."""
+
+    reviewed_date: Annotated[Union[str, datetime], PropertyInfo(alias="reviewedDate", format="iso8601")]
+    """
+    The date the airfield survey was reviewed, in ISO 8601 UTC format with
+    millisecond precision.
+    """
 
     rwy_cond_reading: Annotated[int, PropertyInfo(alias="rwyCondReading")]
     """
@@ -195,21 +198,24 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     order to consume a slot at this location.
     """
 
-    source_dl: Annotated[str, PropertyInfo(alias="sourceDL")]
-    """The source data library from which this record was received.
-
-    This could be a remote or tactical UDL or another data library. If null, the
-    record should be assumed to have originated from the primary Enterprise UDL.
+    survey_date: Annotated[Union[str, datetime], PropertyInfo(alias="surveyDate", format="iso8601")]
+    """
+    The date the airfield survey was performed, in ISO 8601 UTC format with
+    millisecond precision.
     """
 
     wide_parking_mog: Annotated[int, PropertyInfo(alias="wideParkingMOG")]
     """
     Maximum on ground (MOG) number of parking wide-body aircraft based on spacing
-    and manpower at the time of status.
+    and manpower at the time of status. Additional information about this field as
+    it pertains to specific aircraft type may be available in an associated
+    SiteOperations record.
     """
 
     wide_working_mog: Annotated[int, PropertyInfo(alias="wideWorkingMOG")]
     """
     Maximum on ground (MOG) number of working wide-body aircraft based on spacing
-    and manpower at the time of status.
+    and manpower at the time of status. Additional information about this field as
+    it pertains to specific aircraft type may be available in an associated
+    SiteOperations record.
     """

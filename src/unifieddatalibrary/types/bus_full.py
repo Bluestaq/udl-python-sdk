@@ -1,14 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .entity_full import EntityFull
 
 __all__ = ["BusFull"]
 
@@ -17,7 +16,7 @@ class BusFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -78,7 +77,7 @@ class BusFull(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -95,7 +94,7 @@ class BusFull(BaseModel):
     description: Optional[str] = None
     """Notes/description of the bus."""
 
-    entity: Optional["EntityFull"] = None
+    entity: Optional[EntityFull] = None
     """
     An entity is a generic representation of any object within a space/SSA system
     such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
@@ -251,11 +250,3 @@ class BusFull(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-from .entity_full import EntityFull
-
-if PYDANTIC_V2:
-    BusFull.model_rebuild()
-else:
-    BusFull.update_forward_refs()  # type: ignore

@@ -20,12 +20,12 @@ class TestEventevolutions:
         eventevolution = client.filedrop.eventevolutions.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestEventevolutions:
         response = client.filedrop.eventevolutions.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestEventevolutions:
         with client.filedrop.eventevolutions.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncEventevolutions:
         eventevolution = await async_client.filedrop.eventevolutions.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncEventevolutions:
         response = await async_client.filedrop.eventevolutions.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncEventevolutions:
         async with async_client.filedrop.eventevolutions.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "event_id": "eventId",
-                    "source": "source",
-                    "start_time": "2019-12-27T18:11:19.117Z",
-                    "summary": "summary",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
                 }
             ],
         ) as response:

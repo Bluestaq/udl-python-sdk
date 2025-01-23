@@ -20,13 +20,13 @@ class TestWeatherReports:
         weather_report = client.filedrop.weather_reports.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "lat": 0,
-                    "lon": 0,
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "report_type": "reportType",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -37,13 +37,13 @@ class TestWeatherReports:
         response = client.filedrop.weather_reports.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "lat": 0,
-                    "lon": 0,
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "report_type": "reportType",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -58,13 +58,13 @@ class TestWeatherReports:
         with client.filedrop.weather_reports.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "lat": 0,
-                    "lon": 0,
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "report_type": "reportType",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -85,13 +85,13 @@ class TestAsyncWeatherReports:
         weather_report = await async_client.filedrop.weather_reports.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "lat": 0,
-                    "lon": 0,
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "report_type": "reportType",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -102,13 +102,13 @@ class TestAsyncWeatherReports:
         response = await async_client.filedrop.weather_reports.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "lat": 0,
-                    "lon": 0,
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "report_type": "reportType",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -123,13 +123,13 @@ class TestAsyncWeatherReports:
         async with async_client.filedrop.weather_reports.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "data_mode": "dataMode",
-                    "lat": 0,
-                    "lon": 0,
-                    "ob_time": "2019-12-27T18:11:19.117Z",
-                    "report_type": "reportType",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import date, datetime
-from typing_extensions import TypeAlias
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -47,7 +47,7 @@ class EntityGetAllTypesResponseItemLocation(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -78,7 +78,7 @@ class EntityGetAllTypesResponseItemLocation(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -135,7 +135,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetailManufacture
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -326,7 +326,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetailManufacture
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -370,7 +370,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetailManufacture
 
     This value is typically the ISO 3166 Alpha-2 two-character country code.
     However, it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -395,7 +395,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetailManufacture
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -437,7 +437,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetail(BaseModel)
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -509,7 +509,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetail(BaseModel)
     manufacturer_org_id: Optional[str] = FieldInfo(alias="manufacturerOrgId", default=None)
     """ID of the organization that manufactures the antenna."""
 
-    mode: Optional[str] = None
+    mode: Optional[Literal["TX", "RX"]] = None
     """Antenna mode (e.g. TX,RX)."""
 
     origin: Optional[str] = None
@@ -570,7 +570,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntennaAntennaAntennaDetail(BaseModel)
 
 
 class EntityGetAllTypesResponseItemOnOrbitAntennaAntenna(BaseModel):
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -642,7 +642,7 @@ class EntityGetAllTypesResponseItemOnOrbitAntenna(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -715,7 +715,7 @@ class EntityGetAllTypesResponseItemOnOrbitBatteryBatteryBatteryDetailManufacture
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -906,7 +906,7 @@ class EntityGetAllTypesResponseItemOnOrbitBatteryBatteryBatteryDetailManufacture
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -950,7 +950,7 @@ class EntityGetAllTypesResponseItemOnOrbitBatteryBatteryBatteryDetailManufacture
 
     This value is typically the ISO 3166 Alpha-2 two-character country code.
     However, it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -975,7 +975,7 @@ class EntityGetAllTypesResponseItemOnOrbitBatteryBatteryBatteryDetailManufacture
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -1017,7 +1017,7 @@ class EntityGetAllTypesResponseItemOnOrbitBatteryBatteryBatteryDetail(BaseModel)
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1114,7 +1114,7 @@ class EntityGetAllTypesResponseItemOnOrbitBatteryBatteryBatteryDetail(BaseModel)
 
 
 class EntityGetAllTypesResponseItemOnOrbitBatteryBattery(BaseModel):
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1186,7 +1186,7 @@ class EntityGetAllTypesResponseItemOnOrbitBattery(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1258,7 +1258,7 @@ class EntityGetAllTypesResponseItemOnOrbitOnorbitDetail(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1481,7 +1481,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArraySolarArrayDetailMa
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1672,7 +1672,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArraySolarArrayDetailMa
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1716,7 +1716,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArraySolarArrayDetailMa
 
     This value is typically the ISO 3166 Alpha-2 two-character country code.
     However, it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -1741,7 +1741,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArraySolarArrayDetailMa
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -1783,7 +1783,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArraySolarArrayDetail(B
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1883,7 +1883,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArraySolarArrayDetail(B
 
 
 class EntityGetAllTypesResponseItemOnOrbitSolarArraySolarArray(BaseModel):
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -1955,7 +1955,7 @@ class EntityGetAllTypesResponseItemOnOrbitSolarArray(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2036,7 +2036,7 @@ class EntityGetAllTypesResponseItemOnOrbitThrusterEngineEngineDetail(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2159,7 +2159,7 @@ class EntityGetAllTypesResponseItemOnOrbitThrusterEngine(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2231,7 +2231,7 @@ class EntityGetAllTypesResponseItemOnOrbitThruster(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2315,7 +2315,7 @@ class EntityGetAllTypesResponseItemOnOrbit(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2347,7 +2347,23 @@ class EntityGetAllTypesResponseItemOnOrbit(BaseModel):
     batteries: Optional[List[EntityGetAllTypesResponseItemOnOrbitBattery]] = None
     """Read-only collection of batteries on this on-orbit object."""
 
-    category: Optional[str] = None
+    category: Optional[
+        Literal[
+            "Unknown",
+            "On-Orbit",
+            "Decayed",
+            "Cataloged Without State",
+            "Launch Nominal",
+            "Analyst Satellite",
+            "Cislunar",
+            "Lunar",
+            "Hyperbolic",
+            "Heliocentric",
+            "Interplanetary",
+            "Lagrangian",
+            "Docked",
+        ]
+    ] = None
     """Category of the on-orbit object.
 
     (Unknown, On-Orbit, Decayed, Cataloged Without State, Launch Nominal, Analyst
@@ -2366,7 +2382,7 @@ class EntityGetAllTypesResponseItemOnOrbit(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -2409,7 +2425,9 @@ class EntityGetAllTypesResponseItemOnOrbit(BaseModel):
     mission_number: Optional[str] = FieldInfo(alias="missionNumber", default=None)
     """Mission number of the on-orbit object."""
 
-    object_type: Optional[str] = FieldInfo(alias="objectType", default=None)
+    object_type: Optional[Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"]] = FieldInfo(
+        alias="objectType", default=None
+    )
     """
     Type of on-orbit object: ROCKET BODY, DEBRIS, PAYLOAD, PLATFORM, MANNED,
     UNKNOWN.
@@ -2456,7 +2474,7 @@ class EntityGetAllTypesResponseItemOperatingUnitLocation(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2487,7 +2505,7 @@ class EntityGetAllTypesResponseItemOperatingUnitLocation(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -2544,7 +2562,7 @@ class EntityGetAllTypesResponseItemOperatingUnitOperatingUnitRemark(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2620,7 +2638,7 @@ class EntityGetAllTypesResponseItemOperatingUnitOrganizationOrganizationDetail(B
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2811,7 +2829,7 @@ class EntityGetAllTypesResponseItemOperatingUnitOrganization(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -2855,7 +2873,7 @@ class EntityGetAllTypesResponseItemOperatingUnitOrganization(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code.
     However, it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -2880,7 +2898,7 @@ class EntityGetAllTypesResponseItemOperatingUnitOrganization(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -2922,7 +2940,7 @@ class EntityGetAllTypesResponseItemOperatingUnit(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -3400,7 +3418,7 @@ class EntityGetAllTypesResponseItemRfBand(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -3490,7 +3508,7 @@ class EntityGetAllTypesResponseItemRfBand(BaseModel):
     freq_min: Optional[float] = FieldInfo(alias="freqMin", default=None)
     """Start/minimum of transmit RF frequency range, if applicable, in Mhz."""
 
-    mode: Optional[str] = None
+    mode: Optional[Literal["TX", "RX"]] = None
     """RF Band mode (e.g. TX, RX)."""
 
     origin: Optional[str] = None
@@ -3510,7 +3528,7 @@ class EntityGetAllTypesResponseItemRfBand(BaseModel):
     peak_gain: Optional[float] = FieldInfo(alias="peakGain", default=None)
     """RF Range maximum gain, in dBi."""
 
-    polarization: Optional[str] = None
+    polarization: Optional[Literal["H", "V", "R", "L"]] = None
     """Transponder polarization e.g.
 
     H - (Horizontally Polarized) Perpendicular to Earth's surface, V - (Vertically
@@ -3519,7 +3537,7 @@ class EntityGetAllTypesResponseItemRfBand(BaseModel):
     Polarized) Rotating right relative to the Earth's surface.
     """
 
-    purpose: Optional[str] = None
+    purpose: Optional[Literal["COMM", "TTC", "OPS", "OTHER"]] = None
     """
     Purpose or use of the RF Band -- COMM = communications, TTC =
     Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
@@ -3539,7 +3557,7 @@ class EntityGetAllTypesResponseItemStatusCollectionSubStatusCollection(BaseModel
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -3562,13 +3580,13 @@ class EntityGetAllTypesResponseItemStatusCollectionSubStatusCollection(BaseModel
     source: str
     """Source of the data."""
 
-    status: str
+    status: Literal["FMC", "NMC", "PMC", "UNK"]
     """Status of the sub-system/capability, e.g. FMC, NMC, PMC, UNK."""
 
     status_id: str = FieldInfo(alias="statusId")
     """Id of the parent status."""
 
-    type: str
+    type: Literal["mwCap", "ssCap", "mdCap"]
     """Parent entity's sub-system or capability status: mwCap, mdCap, ssCap, etc."""
 
     id: Optional[str] = None
@@ -3611,7 +3629,7 @@ class EntityGetAllTypesResponseItemStatusCollection(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -3661,7 +3679,7 @@ class EntityGetAllTypesResponseItemStatusCollection(BaseModel):
     notes: Optional[str] = None
     """Comments describing the status creation and or updates to an entity."""
 
-    ops_cap: Optional[str] = FieldInfo(alias="opsCap", default=None)
+    ops_cap: Optional[Literal["FMC", "NMC", "PMC", "UNK"]] = FieldInfo(alias="opsCap", default=None)
     """Operation capability of the entity, if applicable (e.g. FMC, NMC, PMC, UNK)."""
 
     origin: Optional[str] = None
@@ -3678,7 +3696,7 @@ class EntityGetAllTypesResponseItemStatusCollection(BaseModel):
     by the system.
     """
 
-    state: Optional[str] = None
+    state: Optional[Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"]] = None
     """Overall state of the entity, if applicable (e.g.
 
     UNKNOWN, DEAD, ACTIVE, RF ACTIVE, STANDBY).
@@ -3688,7 +3706,7 @@ class EntityGetAllTypesResponseItemStatusCollection(BaseModel):
         alias="subStatusCollection", default=None
     )
 
-    sys_cap: Optional[str] = FieldInfo(alias="sysCap", default=None)
+    sys_cap: Optional[Literal["FMC", "NMC", "PMC", "UNK"]] = FieldInfo(alias="sysCap", default=None)
     """System capability of the entity, if applicable (e.g. FMC, NMC, PMC, UNK)."""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
@@ -3705,7 +3723,7 @@ class EntityGetAllTypesResponseItem(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
-    data_mode: str = FieldInfo(alias="dataMode")
+    data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
     EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -3728,7 +3746,9 @@ class EntityGetAllTypesResponseItem(BaseModel):
     source: str
     """Source of the data."""
 
-    type: str
+    type: Literal[
+        "AIRCRAFT", "BUS", "COMM", "IR", "NAVIGATION", "ONORBIT", "RFEMITTER", "SCIENTIFIC", "SENSOR", "SITE", "VESSEL"
+    ]
     """
     The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
     NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
@@ -3739,7 +3759,7 @@ class EntityGetAllTypesResponseItem(BaseModel):
 
     This value is typically the ISO 3166 Alpha-2 two-character country code, however
     it can also represent various consortiums that do not appear in the ISO
-    document. The code must correspond to an existing country in the UDL�s country
+    document. The code must correspond to an existing country in the UDL’s country
     API. Call udl/country/{code} to get any associated FIPS code, ISO Alpha-3 code,
     or alternate code values that exist for the specified country code.
     """
@@ -3801,7 +3821,9 @@ class EntityGetAllTypesResponseItem(BaseModel):
     by the system.
     """
 
-    owner_type: Optional[str] = FieldInfo(alias="ownerType", default=None)
+    owner_type: Optional[Literal["Commercial", "Government", "Academic", "Consortium", "Other"]] = FieldInfo(
+        alias="ownerType", default=None
+    )
     """Type of organization which owns this entity (e.g.
 
     Commercial, Government, Academic, Consortium, etc).

@@ -20,12 +20,12 @@ class TestUdlSar:
         udl_sar = client.udl_sar.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "collection_end": "2019-12-27T18:11:19.117Z",
-                    "collection_start": "2019-12-27T18:11:19.117Z",
-                    "data_mode": "dataMode",
-                    "sar_mode": "sarMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_start": "2023-04-22T17:35:00.123456Z",
+                    "data_mode": "REAL",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -36,12 +36,12 @@ class TestUdlSar:
         response = client.udl_sar.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "collection_end": "2019-12-27T18:11:19.117Z",
-                    "collection_start": "2019-12-27T18:11:19.117Z",
-                    "data_mode": "dataMode",
-                    "sar_mode": "sarMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_start": "2023-04-22T17:35:00.123456Z",
+                    "data_mode": "REAL",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -56,12 +56,12 @@ class TestUdlSar:
         with client.udl_sar.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "collection_end": "2019-12-27T18:11:19.117Z",
-                    "collection_start": "2019-12-27T18:11:19.117Z",
-                    "data_mode": "dataMode",
-                    "sar_mode": "sarMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_start": "2023-04-22T17:35:00.123456Z",
+                    "data_mode": "REAL",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:
@@ -82,12 +82,12 @@ class TestAsyncUdlSar:
         udl_sar = await async_client.udl_sar.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "collection_end": "2019-12-27T18:11:19.117Z",
-                    "collection_start": "2019-12-27T18:11:19.117Z",
-                    "data_mode": "dataMode",
-                    "sar_mode": "sarMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_start": "2023-04-22T17:35:00.123456Z",
+                    "data_mode": "REAL",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -98,12 +98,12 @@ class TestAsyncUdlSar:
         response = await async_client.udl_sar.with_raw_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "collection_end": "2019-12-27T18:11:19.117Z",
-                    "collection_start": "2019-12-27T18:11:19.117Z",
-                    "data_mode": "dataMode",
-                    "sar_mode": "sarMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_start": "2023-04-22T17:35:00.123456Z",
+                    "data_mode": "REAL",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
                 }
             ],
         )
@@ -118,12 +118,12 @@ class TestAsyncUdlSar:
         async with async_client.udl_sar.with_streaming_response.create(
             body=[
                 {
-                    "classification_marking": "classificationMarking",
-                    "collection_end": "2019-12-27T18:11:19.117Z",
-                    "collection_start": "2019-12-27T18:11:19.117Z",
-                    "data_mode": "dataMode",
-                    "sar_mode": "sarMode",
-                    "source": "source",
+                    "classification_marking": "U",
+                    "collection_end": "2023-04-22T17:38:10.201770Z",
+                    "collection_start": "2023-04-22T17:35:00.123456Z",
+                    "data_mode": "REAL",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
                 }
             ],
         ) as response:

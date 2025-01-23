@@ -27,12 +27,11 @@ pip install git+ssh://git@github.com/stainless-sdks/unifieddatalibrary-python.gi
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-import os
 from unifieddatalibrary import Unifieddatalibrary
 
 client = Unifieddatalibrary(
-    username=os.environ.get("HTTP_BASIC_AUTH_USERNAME"),  # This is the default and can be omitted
-    password=os.environ.get("HTTP_BASIC_AUTH_PASSWORD"),  # This is the default and can be omitted
+    username="My Username",
+    password="My Password",
 )
 
 conjunction_full = client.conjunctions.retrieve(
@@ -41,23 +40,17 @@ conjunction_full = client.conjunctions.retrieve(
 print(conjunction_full.id)
 ```
 
-While you can provide a `username` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `HTTP_BASIC_AUTH_USERNAME="My Username"` to your `.env` file
-so that your Username is not stored in source control.
-
 ## Async usage
 
 Simply import `AsyncUnifieddatalibrary` instead of `Unifieddatalibrary` and use `await` with each API call:
 
 ```python
-import os
 import asyncio
 from unifieddatalibrary import AsyncUnifieddatalibrary
 
 client = AsyncUnifieddatalibrary(
-    username=os.environ.get("HTTP_BASIC_AUTH_USERNAME"),  # This is the default and can be omitted
-    password=os.environ.get("HTTP_BASIC_AUTH_PASSWORD"),  # This is the default and can be omitted
+    username="My Username",
+    password="My Password",
 )
 
 
@@ -95,7 +88,10 @@ All errors inherit from `unifieddatalibrary.APIError`.
 import unifieddatalibrary
 from unifieddatalibrary import Unifieddatalibrary
 
-client = Unifieddatalibrary()
+client = Unifieddatalibrary(
+    username="My Username",
+    password="My Password",
+)
 
 try:
     client.conjunctions.retrieve(
@@ -140,6 +136,8 @@ from unifieddatalibrary import Unifieddatalibrary
 client = Unifieddatalibrary(
     # default is 2
     max_retries=0,
+    username="My Username",
+    password="My Password",
 )
 
 # Or, configure per-request:
@@ -160,11 +158,15 @@ from unifieddatalibrary import Unifieddatalibrary
 client = Unifieddatalibrary(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
+    username="My Username",
+    password="My Password",
 )
 
 # More granular control:
 client = Unifieddatalibrary(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+    username="My Username",
+    password="My Password",
 )
 
 # Override per-request:
@@ -210,7 +212,10 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from unifieddatalibrary import Unifieddatalibrary
 
-client = Unifieddatalibrary()
+client = Unifieddatalibrary(
+    username="My Username",
+    password="My Password",
+)
 response = client.conjunctions.with_raw_response.retrieve(
     "id",
 )
@@ -295,6 +300,8 @@ client = Unifieddatalibrary(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
+    username="My Username",
+    password="My Password",
 )
 ```
 
@@ -311,7 +318,10 @@ By default the library closes underlying HTTP connections whenever the client is
 ```py
 from unifieddatalibrary import Unifieddatalibrary
 
-with Unifieddatalibrary() as client:
+with Unifieddatalibrary(
+    username="My Username",
+    password="My Password",
+) as client:
   # make requests here
   ...
 

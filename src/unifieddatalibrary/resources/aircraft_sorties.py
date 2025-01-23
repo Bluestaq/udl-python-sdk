@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import date, datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -87,7 +88,7 @@ class AircraftSortiesResource(SyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         planned_dep_time: Union[str, datetime],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -112,8 +113,6 @@ class AircraftSortiesResource(SyncAPIResource):
         call_sign: str | NotGiven = NOT_GIVEN,
         cargo_config: str | NotGiven = NOT_GIVEN,
         commander_name: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         current_state: str | NotGiven = NOT_GIVEN,
         delay_code: str | NotGiven = NOT_GIVEN,
         dep_faa: str | NotGiven = NOT_GIVEN,
@@ -127,8 +126,6 @@ class AircraftSortiesResource(SyncAPIResource):
         est_block_in_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         est_block_out_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        filesize: int | NotGiven = NOT_GIVEN,
         flight_time: float | NotGiven = NOT_GIVEN,
         fm_desk_num: str | NotGiven = NOT_GIVEN,
         fm_name: str | NotGiven = NOT_GIVEN,
@@ -143,28 +140,23 @@ class AircraftSortiesResource(SyncAPIResource):
         mission_update: Union[str, datetime] | NotGiven = NOT_GIVEN,
         objective_remarks: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_sortie_id: str | NotGiven = NOT_GIVEN,
         oxy_on_crew: float | NotGiven = NOT_GIVEN,
         oxy_on_pax: float | NotGiven = NOT_GIVEN,
         oxy_req_crew: float | NotGiven = NOT_GIVEN,
         oxy_req_pax: float | NotGiven = NOT_GIVEN,
-        paper_status: str | NotGiven = NOT_GIVEN,
-        papers_version: str | NotGiven = NOT_GIVEN,
         parking_loc: str | NotGiven = NOT_GIVEN,
         passengers: int | NotGiven = NOT_GIVEN,
         planned_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ppr_status: str | NotGiven = NOT_GIVEN,
+        ppr_status: Literal["NOT REQUIRED", "REQUIRED NOT REQUESTED", "GRANTED", "PENDING"] | NotGiven = NOT_GIVEN,
         primary_scl: str | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
         req_config: str | NotGiven = NOT_GIVEN,
         result_remarks: str | NotGiven = NOT_GIVEN,
-        rvn_req: str | NotGiven = NOT_GIVEN,
+        rvn_req: Literal["N", "R", "C6", "R6"] | NotGiven = NOT_GIVEN,
         schedule_remarks: str | NotGiven = NOT_GIVEN,
         secondary_scl: str | NotGiven = NOT_GIVEN,
         soe: str | NotGiven = NOT_GIVEN,
         sortie_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -251,11 +243,6 @@ class AircraftSortiesResource(SyncAPIResource):
 
           commander_name: The last name of the aircraft commander.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           current_state: The current state of this sortie.
 
           delay_code: The primary delay code.
@@ -287,10 +274,6 @@ class AircraftSortiesResource(SyncAPIResource):
 
           est_dep_time: The current estimated time that the Aircraft is planned to depart, in ISO 8601
               UTC format with millisecond precision.
-
-          filename: Name of the uploaded PDF.
-
-          filesize: Size of the supporting PDF, in bytes.
 
           flight_time: The planned flight time for this sortie, in minutes.
 
@@ -328,9 +311,6 @@ class AircraftSortiesResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           orig_sortie_id: The sortie identifier provided by the originating source.
 
           oxy_on_crew: Liquid oxygen onboard the aircraft for the crew compartment, in liters.
@@ -340,10 +320,6 @@ class AircraftSortiesResource(SyncAPIResource):
           oxy_req_crew: Liquid oxygen required on the aircraft for the crew compartment, in liters.
 
           oxy_req_pax: Liquid oxygen required on the aircraft for the troop compartment, in liters.
-
-          paper_status: The status of the supporting document.
-
-          papers_version: The version number of the crew paper.
 
           parking_loc: The POI parking location.
 
@@ -355,11 +331,6 @@ class AircraftSortiesResource(SyncAPIResource):
           ppr_status: The prior permission required (PPR) status.
 
           primary_scl: The planned primary Standard Conventional Load of the aircraft for this sortie.
-
-          raw_file_uri: When crew papers are associated to this sortie, the system updates this value.
-              This field is the URI location in the document repository of that raw file. To
-              download the raw file, prepend https://udl-hostname/scs/download?id= to this
-              field's value.
 
           req_config: Aircraft configuration required for the mission.
 
@@ -380,10 +351,6 @@ class AircraftSortiesResource(SyncAPIResource):
 
           sortie_date: The scheduled UTC date for this sortie, in ISO 8601 date-only format (ex.
               YYYY-MM-DD).
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tail_number: The tail number of the aircraft assigned to this sortie.
 
@@ -428,8 +395,6 @@ class AircraftSortiesResource(SyncAPIResource):
                     "call_sign": call_sign,
                     "cargo_config": cargo_config,
                     "commander_name": commander_name,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "current_state": current_state,
                     "delay_code": delay_code,
                     "dep_faa": dep_faa,
@@ -443,8 +408,6 @@ class AircraftSortiesResource(SyncAPIResource):
                     "est_block_in_time": est_block_in_time,
                     "est_block_out_time": est_block_out_time,
                     "est_dep_time": est_dep_time,
-                    "filename": filename,
-                    "filesize": filesize,
                     "flight_time": flight_time,
                     "fm_desk_num": fm_desk_num,
                     "fm_name": fm_name,
@@ -459,20 +422,16 @@ class AircraftSortiesResource(SyncAPIResource):
                     "mission_update": mission_update,
                     "objective_remarks": objective_remarks,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_sortie_id": orig_sortie_id,
                     "oxy_on_crew": oxy_on_crew,
                     "oxy_on_pax": oxy_on_pax,
                     "oxy_req_crew": oxy_req_crew,
                     "oxy_req_pax": oxy_req_pax,
-                    "paper_status": paper_status,
-                    "papers_version": papers_version,
                     "parking_loc": parking_loc,
                     "passengers": passengers,
                     "planned_arr_time": planned_arr_time,
                     "ppr_status": ppr_status,
                     "primary_scl": primary_scl,
-                    "raw_file_uri": raw_file_uri,
                     "req_config": req_config,
                     "result_remarks": result_remarks,
                     "rvn_req": rvn_req,
@@ -480,7 +439,6 @@ class AircraftSortiesResource(SyncAPIResource):
                     "secondary_scl": secondary_scl,
                     "soe": soe,
                     "sortie_date": sortie_date,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                 },
                 aircraft_sorty_update_params.AircraftSortyUpdateParams,
@@ -539,7 +497,7 @@ class AircraftSortiesResource(SyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           planned_dep_time: The scheduled time that the Aircraft sortie is planned to depart, in ISO 8601
@@ -631,7 +589,7 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
         id_1: str,
         *,
         classification_marking: str,
-        data_mode: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         planned_dep_time: Union[str, datetime],
         source: str,
         id_2: str | NotGiven = NOT_GIVEN,
@@ -656,8 +614,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
         call_sign: str | NotGiven = NOT_GIVEN,
         cargo_config: str | NotGiven = NOT_GIVEN,
         commander_name: str | NotGiven = NOT_GIVEN,
-        created_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         current_state: str | NotGiven = NOT_GIVEN,
         delay_code: str | NotGiven = NOT_GIVEN,
         dep_faa: str | NotGiven = NOT_GIVEN,
@@ -671,8 +627,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
         est_block_in_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         est_block_out_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        filesize: int | NotGiven = NOT_GIVEN,
         flight_time: float | NotGiven = NOT_GIVEN,
         fm_desk_num: str | NotGiven = NOT_GIVEN,
         fm_name: str | NotGiven = NOT_GIVEN,
@@ -687,28 +641,23 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
         mission_update: Union[str, datetime] | NotGiven = NOT_GIVEN,
         objective_remarks: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        orig_network: str | NotGiven = NOT_GIVEN,
         orig_sortie_id: str | NotGiven = NOT_GIVEN,
         oxy_on_crew: float | NotGiven = NOT_GIVEN,
         oxy_on_pax: float | NotGiven = NOT_GIVEN,
         oxy_req_crew: float | NotGiven = NOT_GIVEN,
         oxy_req_pax: float | NotGiven = NOT_GIVEN,
-        paper_status: str | NotGiven = NOT_GIVEN,
-        papers_version: str | NotGiven = NOT_GIVEN,
         parking_loc: str | NotGiven = NOT_GIVEN,
         passengers: int | NotGiven = NOT_GIVEN,
         planned_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ppr_status: str | NotGiven = NOT_GIVEN,
+        ppr_status: Literal["NOT REQUIRED", "REQUIRED NOT REQUESTED", "GRANTED", "PENDING"] | NotGiven = NOT_GIVEN,
         primary_scl: str | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
         req_config: str | NotGiven = NOT_GIVEN,
         result_remarks: str | NotGiven = NOT_GIVEN,
-        rvn_req: str | NotGiven = NOT_GIVEN,
+        rvn_req: Literal["N", "R", "C6", "R6"] | NotGiven = NOT_GIVEN,
         schedule_remarks: str | NotGiven = NOT_GIVEN,
         secondary_scl: str | NotGiven = NOT_GIVEN,
         soe: str | NotGiven = NOT_GIVEN,
         sortie_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        source_dl: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -795,11 +744,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
 
           commander_name: The last name of the aircraft commander.
 
-          created_at: Time the row was created in the database, auto-populated by the system.
-
-          created_by: Application user who created the row in the database, auto-populated by the
-              system.
-
           current_state: The current state of this sortie.
 
           delay_code: The primary delay code.
@@ -831,10 +775,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
 
           est_dep_time: The current estimated time that the Aircraft is planned to depart, in ISO 8601
               UTC format with millisecond precision.
-
-          filename: Name of the uploaded PDF.
-
-          filesize: Size of the supporting PDF, in bytes.
 
           flight_time: The planned flight time for this sortie, in minutes.
 
@@ -872,9 +812,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          orig_network: The originating source network on which this record was created, auto-populated
-              by the system.
-
           orig_sortie_id: The sortie identifier provided by the originating source.
 
           oxy_on_crew: Liquid oxygen onboard the aircraft for the crew compartment, in liters.
@@ -884,10 +821,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
           oxy_req_crew: Liquid oxygen required on the aircraft for the crew compartment, in liters.
 
           oxy_req_pax: Liquid oxygen required on the aircraft for the troop compartment, in liters.
-
-          paper_status: The status of the supporting document.
-
-          papers_version: The version number of the crew paper.
 
           parking_loc: The POI parking location.
 
@@ -899,11 +832,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
           ppr_status: The prior permission required (PPR) status.
 
           primary_scl: The planned primary Standard Conventional Load of the aircraft for this sortie.
-
-          raw_file_uri: When crew papers are associated to this sortie, the system updates this value.
-              This field is the URI location in the document repository of that raw file. To
-              download the raw file, prepend https://udl-hostname/scs/download?id= to this
-              field's value.
 
           req_config: Aircraft configuration required for the mission.
 
@@ -924,10 +852,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
 
           sortie_date: The scheduled UTC date for this sortie, in ISO 8601 date-only format (ex.
               YYYY-MM-DD).
-
-          source_dl: The source data library from which this record was received. This could be a
-              remote or tactical UDL or another data library. If null, the record should be
-              assumed to have originated from the primary Enterprise UDL.
 
           tail_number: The tail number of the aircraft assigned to this sortie.
 
@@ -972,8 +896,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
                     "call_sign": call_sign,
                     "cargo_config": cargo_config,
                     "commander_name": commander_name,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "current_state": current_state,
                     "delay_code": delay_code,
                     "dep_faa": dep_faa,
@@ -987,8 +909,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
                     "est_block_in_time": est_block_in_time,
                     "est_block_out_time": est_block_out_time,
                     "est_dep_time": est_dep_time,
-                    "filename": filename,
-                    "filesize": filesize,
                     "flight_time": flight_time,
                     "fm_desk_num": fm_desk_num,
                     "fm_name": fm_name,
@@ -1003,20 +923,16 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
                     "mission_update": mission_update,
                     "objective_remarks": objective_remarks,
                     "origin": origin,
-                    "orig_network": orig_network,
                     "orig_sortie_id": orig_sortie_id,
                     "oxy_on_crew": oxy_on_crew,
                     "oxy_on_pax": oxy_on_pax,
                     "oxy_req_crew": oxy_req_crew,
                     "oxy_req_pax": oxy_req_pax,
-                    "paper_status": paper_status,
-                    "papers_version": papers_version,
                     "parking_loc": parking_loc,
                     "passengers": passengers,
                     "planned_arr_time": planned_arr_time,
                     "ppr_status": ppr_status,
                     "primary_scl": primary_scl,
-                    "raw_file_uri": raw_file_uri,
                     "req_config": req_config,
                     "result_remarks": result_remarks,
                     "rvn_req": rvn_req,
@@ -1024,7 +940,6 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
                     "secondary_scl": secondary_scl,
                     "soe": soe,
                     "sortie_date": sortie_date,
-                    "source_dl": source_dl,
                     "tail_number": tail_number,
                 },
                 aircraft_sorty_update_params.AircraftSortyUpdateParams,
@@ -1083,7 +998,7 @@ class AsyncAircraftSortiesResource(AsyncAPIResource):
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
               the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the �queryhelp� operation
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
           planned_dep_time: The scheduled time that the Aircraft sortie is planned to depart, in ISO 8601

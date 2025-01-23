@@ -14,7 +14,6 @@ from unifieddatalibrary.types import (
     ChannelListResponse,
     ChannelTupleResponse,
 )
-from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,50 +24,47 @@ class TestChannels:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
         assert channel is None
 
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
-            id="id",
-            apid="apid",
-            beam_name="beamName",
-            compression="compression",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            encryption="encryption",
-            id_beam="idBeam",
-            id_rf_band="idRFBand",
-            origin="origin",
-            orig_network="origNetwork",
-            owner="owner",
-            pkg="pkg",
-            res="res",
-            sid="sid",
-            type="type",
-            vpid="vpid",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
+            id="CHANNEL-ID",
+            apid="AP-ID",
+            beam_name="B8VD",
+            compression="Example compression",
+            encryption="Example encryption",
+            id_beam="REF-BEAM-ID",
+            id_rf_band="REF-RFBAND-ID",
+            origin="example_origin",
+            owner="example_owner",
+            pkg="Example pkg",
+            res="Example res",
+            sid="S-ID",
+            type="Example type",
+            vpid="VP-ID",
         )
         assert channel is None
 
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.channels.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
 
         assert response.is_closed is True
@@ -79,11 +75,11 @@ class TestChannels:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.channels.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -135,11 +131,11 @@ class TestChannels:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
         assert channel is None
 
@@ -147,28 +143,25 @@ class TestChannels:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
-            id_2="id",
-            apid="apid",
-            beam_name="beamName",
-            compression="compression",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            encryption="encryption",
-            id_beam="idBeam",
-            id_rf_band="idRFBand",
-            origin="origin",
-            orig_network="origNetwork",
-            owner="owner",
-            pkg="pkg",
-            res="res",
-            sid="sid",
-            type="type",
-            vpid="vpid",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
+            id_2="CHANNEL-ID",
+            apid="AP-ID",
+            beam_name="B8VD",
+            compression="Example compression",
+            encryption="Example encryption",
+            id_beam="REF-BEAM-ID",
+            id_rf_band="REF-RFBAND-ID",
+            origin="example_origin",
+            owner="example_owner",
+            pkg="Example pkg",
+            res="Example res",
+            sid="S-ID",
+            type="Example type",
+            vpid="VP-ID",
         )
         assert channel is None
 
@@ -176,11 +169,11 @@ class TestChannels:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.channels.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
 
         assert response.is_closed is True
@@ -192,11 +185,11 @@ class TestChannels:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.channels.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -211,11 +204,11 @@ class TestChannels:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             client.channels.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_transponder="idTransponder",
-                name="name",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                id_transponder="REF-TRANSPONDER-ID",
+                name="Example name",
+                source="system.source",
                 id_2="",
             )
 
@@ -370,50 +363,47 @@ class TestAsyncChannels:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
         assert channel is None
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
-            id="id",
-            apid="apid",
-            beam_name="beamName",
-            compression="compression",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            encryption="encryption",
-            id_beam="idBeam",
-            id_rf_band="idRFBand",
-            origin="origin",
-            orig_network="origNetwork",
-            owner="owner",
-            pkg="pkg",
-            res="res",
-            sid="sid",
-            type="type",
-            vpid="vpid",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
+            id="CHANNEL-ID",
+            apid="AP-ID",
+            beam_name="B8VD",
+            compression="Example compression",
+            encryption="Example encryption",
+            id_beam="REF-BEAM-ID",
+            id_rf_band="REF-RFBAND-ID",
+            origin="example_origin",
+            owner="example_owner",
+            pkg="Example pkg",
+            res="Example res",
+            sid="S-ID",
+            type="Example type",
+            vpid="VP-ID",
         )
         assert channel is None
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.channels.with_raw_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
 
         assert response.is_closed is True
@@ -424,11 +414,11 @@ class TestAsyncChannels:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.channels.with_streaming_response.create(
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -480,11 +470,11 @@ class TestAsyncChannels:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
         assert channel is None
 
@@ -492,28 +482,25 @@ class TestAsyncChannels:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
-            id_2="id",
-            apid="apid",
-            beam_name="beamName",
-            compression="compression",
-            created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
-            created_by="createdBy",
-            encryption="encryption",
-            id_beam="idBeam",
-            id_rf_band="idRFBand",
-            origin="origin",
-            orig_network="origNetwork",
-            owner="owner",
-            pkg="pkg",
-            res="res",
-            sid="sid",
-            type="type",
-            vpid="vpid",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
+            id_2="CHANNEL-ID",
+            apid="AP-ID",
+            beam_name="B8VD",
+            compression="Example compression",
+            encryption="Example encryption",
+            id_beam="REF-BEAM-ID",
+            id_rf_band="REF-RFBAND-ID",
+            origin="example_origin",
+            owner="example_owner",
+            pkg="Example pkg",
+            res="Example res",
+            sid="S-ID",
+            type="Example type",
+            vpid="VP-ID",
         )
         assert channel is None
 
@@ -521,11 +508,11 @@ class TestAsyncChannels:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.channels.with_raw_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         )
 
         assert response.is_closed is True
@@ -537,11 +524,11 @@ class TestAsyncChannels:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.channels.with_streaming_response.update(
             id_1="id",
-            classification_marking="classificationMarking",
-            data_mode="dataMode",
-            id_transponder="idTransponder",
-            name="name",
-            source="source",
+            classification_marking="U",
+            data_mode="REAL",
+            id_transponder="REF-TRANSPONDER-ID",
+            name="Example name",
+            source="system.source",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -556,11 +543,11 @@ class TestAsyncChannels:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
             await async_client.channels.with_raw_response.update(
                 id_1="",
-                classification_marking="classificationMarking",
-                data_mode="dataMode",
-                id_transponder="idTransponder",
-                name="name",
-                source="source",
+                classification_marking="U",
+                data_mode="REAL",
+                id_transponder="REF-TRANSPONDER-ID",
+                name="Example name",
+                source="system.source",
                 id_2="",
             )
 
