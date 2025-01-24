@@ -16,6 +16,14 @@ from .effect_requests import (
     EffectRequestsResourceWithStreamingResponse,
     AsyncEffectRequestsResourceWithStreamingResponse,
 )
+from .personnelrecovery import (
+    PersonnelrecoveryResource,
+    AsyncPersonnelrecoveryResource,
+    PersonnelrecoveryResourceWithRawResponse,
+    AsyncPersonnelrecoveryResourceWithRawResponse,
+    PersonnelrecoveryResourceWithStreamingResponse,
+    AsyncPersonnelrecoveryResourceWithStreamingResponse,
+)
 
 __all__ = [
     "EffectRequestsResource",
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncEffectRequestsResourceWithRawResponse",
     "EffectRequestsResourceWithStreamingResponse",
     "AsyncEffectRequestsResourceWithStreamingResponse",
+    "PersonnelrecoveryResource",
+    "AsyncPersonnelrecoveryResource",
+    "PersonnelrecoveryResourceWithRawResponse",
+    "AsyncPersonnelrecoveryResourceWithRawResponse",
+    "PersonnelrecoveryResourceWithStreamingResponse",
+    "AsyncPersonnelrecoveryResourceWithStreamingResponse",
     "MissionOpsResource",
     "AsyncMissionOpsResource",
     "MissionOpsResourceWithRawResponse",

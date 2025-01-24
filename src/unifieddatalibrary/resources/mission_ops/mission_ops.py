@@ -12,6 +12,14 @@ from .effect_requests import (
     EffectRequestsResourceWithStreamingResponse,
     AsyncEffectRequestsResourceWithStreamingResponse,
 )
+from .personnelrecovery.personnelrecovery import (
+    PersonnelrecoveryResource,
+    AsyncPersonnelrecoveryResource,
+    PersonnelrecoveryResourceWithRawResponse,
+    AsyncPersonnelrecoveryResourceWithRawResponse,
+    PersonnelrecoveryResourceWithStreamingResponse,
+    AsyncPersonnelrecoveryResourceWithStreamingResponse,
+)
 
 __all__ = ["MissionOpsResource", "AsyncMissionOpsResource"]
 
@@ -20,6 +28,10 @@ class MissionOpsResource(SyncAPIResource):
     @cached_property
     def effect_requests(self) -> EffectRequestsResource:
         return EffectRequestsResource(self._client)
+
+    @cached_property
+    def personnelrecovery(self) -> PersonnelrecoveryResource:
+        return PersonnelrecoveryResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> MissionOpsResourceWithRawResponse:
@@ -45,6 +57,10 @@ class AsyncMissionOpsResource(AsyncAPIResource):
     @cached_property
     def effect_requests(self) -> AsyncEffectRequestsResource:
         return AsyncEffectRequestsResource(self._client)
+
+    @cached_property
+    def personnelrecovery(self) -> AsyncPersonnelrecoveryResource:
+        return AsyncPersonnelrecoveryResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncMissionOpsResourceWithRawResponse:
@@ -74,6 +90,10 @@ class MissionOpsResourceWithRawResponse:
     def effect_requests(self) -> EffectRequestsResourceWithRawResponse:
         return EffectRequestsResourceWithRawResponse(self._mission_ops.effect_requests)
 
+    @cached_property
+    def personnelrecovery(self) -> PersonnelrecoveryResourceWithRawResponse:
+        return PersonnelrecoveryResourceWithRawResponse(self._mission_ops.personnelrecovery)
+
 
 class AsyncMissionOpsResourceWithRawResponse:
     def __init__(self, mission_ops: AsyncMissionOpsResource) -> None:
@@ -82,6 +102,10 @@ class AsyncMissionOpsResourceWithRawResponse:
     @cached_property
     def effect_requests(self) -> AsyncEffectRequestsResourceWithRawResponse:
         return AsyncEffectRequestsResourceWithRawResponse(self._mission_ops.effect_requests)
+
+    @cached_property
+    def personnelrecovery(self) -> AsyncPersonnelrecoveryResourceWithRawResponse:
+        return AsyncPersonnelrecoveryResourceWithRawResponse(self._mission_ops.personnelrecovery)
 
 
 class MissionOpsResourceWithStreamingResponse:
@@ -92,6 +116,10 @@ class MissionOpsResourceWithStreamingResponse:
     def effect_requests(self) -> EffectRequestsResourceWithStreamingResponse:
         return EffectRequestsResourceWithStreamingResponse(self._mission_ops.effect_requests)
 
+    @cached_property
+    def personnelrecovery(self) -> PersonnelrecoveryResourceWithStreamingResponse:
+        return PersonnelrecoveryResourceWithStreamingResponse(self._mission_ops.personnelrecovery)
+
 
 class AsyncMissionOpsResourceWithStreamingResponse:
     def __init__(self, mission_ops: AsyncMissionOpsResource) -> None:
@@ -100,3 +128,7 @@ class AsyncMissionOpsResourceWithStreamingResponse:
     @cached_property
     def effect_requests(self) -> AsyncEffectRequestsResourceWithStreamingResponse:
         return AsyncEffectRequestsResourceWithStreamingResponse(self._mission_ops.effect_requests)
+
+    @cached_property
+    def personnelrecovery(self) -> AsyncPersonnelrecoveryResourceWithStreamingResponse:
+        return AsyncPersonnelrecoveryResourceWithStreamingResponse(self._mission_ops.personnelrecovery)

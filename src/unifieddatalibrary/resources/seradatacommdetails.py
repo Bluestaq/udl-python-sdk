@@ -1,0 +1,1356 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Literal
+
+import httpx
+
+from ..types import (
+    seradatacommdetail_tuple_params,
+    seradatacommdetail_create_params,
+    seradatacommdetail_update_params,
+)
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from .._base_client import make_request_options
+from ..types.seradatacommdetail_get_response import SeradatacommdetailGetResponse
+from ..types.seradatacommdetail_list_response import SeradatacommdetailListResponse
+from ..types.seradatacommdetail_tuple_response import SeradatacommdetailTupleResponse
+
+__all__ = ["SeradatacommdetailsResource", "AsyncSeradatacommdetailsResource"]
+
+
+class SeradatacommdetailsResource(SyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> SeradatacommdetailsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        """
+        return SeradatacommdetailsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> SeradatacommdetailsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        """
+        return SeradatacommdetailsResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        classification_marking: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        source: str,
+        id: str | NotGiven = NOT_GIVEN,
+        band: str | NotGiven = NOT_GIVEN,
+        bandwidth: float | NotGiven = NOT_GIVEN,
+        eirp: float | NotGiven = NOT_GIVEN,
+        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
+        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
+        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
+        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        id_comm: str | NotGiven = NOT_GIVEN,
+        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
+        num_operational_transponders: int | NotGiven = NOT_GIVEN,
+        num_spare_transponders: int | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        payload_notes: str | NotGiven = NOT_GIVEN,
+        polarization: str | NotGiven = NOT_GIVEN,
+        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
+        spacecraft_id: str | NotGiven = NOT_GIVEN,
+        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
+        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
+        user_downlink_from: float | NotGiven = NOT_GIVEN,
+        user_downlink_to: float | NotGiven = NOT_GIVEN,
+        user_uplink_from: float | NotGiven = NOT_GIVEN,
+        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a single SeradataCommDetails as a POST body and ingest
+        into the database. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          source: Source of the data.
+
+          id: Unique identifier of the record, auto-generated by the system.
+
+          band: Name of the band of this RF range (e.g.
+              X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
+              details and descriptions of each band name.
+
+          bandwidth: Comm bandwidth in Mhz.
+
+          eirp: Effective isotropic radiated power in dB.
+
+          est_hts_total_capacity: Comm estimated HtsTotalCapacity in Gbps.
+
+          est_hts_total_user_downlink_bandwidth_per_beam: Comm estimated HtsTotalUserDownlinkBandwidthPerBeam in Mhz.
+
+          est_hts_total_user_uplink_bandwidth_per_beam: Comm estimated HtsTotalUserUplinkBandwidthPerBeam in Mhz.
+
+          gateway_downlink_from: Comm gatewayDownlinkFrom in Ghz.
+
+          gateway_downlink_to: Comm gatewayDownlinkTo in Ghz.
+
+          gateway_uplink_from: Comm gatewayUplinkFrom in Ghz.
+
+          gateway_uplink_to: Comm gatewayUplinkTo in Ghz.
+
+          hosted_for_company_org_id: Comm hostedForCompanyOrgId.
+
+          hts_num_user_spot_beams: Comm htsNumUserSpotBeams.
+
+          hts_user_downlink_bandwidth_per_beam: Comm htsUserDownlinkBandwidthPerBeam in Mhz.
+
+          hts_user_uplink_bandwidth_per_beam: Comm htsUserUplinkBandwidthPerBeam in Mhz.
+
+          id_comm: UUID of the parent Comm record.
+
+          manufacturer_org_id: Comm manufacturerOrgId.
+
+          num36_mhz_equivalent_transponders: Comm num36MhzEquivalentTransponders.
+
+          num_operational_transponders: Comm numOperationalTransponders.
+
+          num_spare_transponders: Comm numSpareTransponders.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          payload_notes: Payload notes.
+
+          polarization: Comm polarization.
+
+          solid_state_power_amp: Solid state power amplifier, in Watts.
+
+          spacecraft_id: Seradata ID of the spacecraft (SeradataSpacecraftDetails ID).
+
+          trade_lease_org_id: Comm tradeLeaseOrgId.
+
+          traveling_wave_tube_amplifier: Comm travelingWaveTubeAmplifier in Watts.
+
+          user_downlink_from: Comm userDownlinkFrom in Ghz.
+
+          user_downlink_to: Comm userDownlinkTo in Ghz.
+
+          user_uplink_from: Comm userUplinkFrom in Ghz.
+
+          user_uplink_to: Comm userUplinkTo in Ghz.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/udl/seradatacommdetails",
+            body=maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "source": source,
+                    "id": id,
+                    "band": band,
+                    "bandwidth": bandwidth,
+                    "eirp": eirp,
+                    "est_hts_total_capacity": est_hts_total_capacity,
+                    "est_hts_total_user_downlink_bandwidth_per_beam": est_hts_total_user_downlink_bandwidth_per_beam,
+                    "est_hts_total_user_uplink_bandwidth_per_beam": est_hts_total_user_uplink_bandwidth_per_beam,
+                    "gateway_downlink_from": gateway_downlink_from,
+                    "gateway_downlink_to": gateway_downlink_to,
+                    "gateway_uplink_from": gateway_uplink_from,
+                    "gateway_uplink_to": gateway_uplink_to,
+                    "hosted_for_company_org_id": hosted_for_company_org_id,
+                    "hts_num_user_spot_beams": hts_num_user_spot_beams,
+                    "hts_user_downlink_bandwidth_per_beam": hts_user_downlink_bandwidth_per_beam,
+                    "hts_user_uplink_bandwidth_per_beam": hts_user_uplink_bandwidth_per_beam,
+                    "id_comm": id_comm,
+                    "manufacturer_org_id": manufacturer_org_id,
+                    "num36_mhz_equivalent_transponders": num36_mhz_equivalent_transponders,
+                    "num_operational_transponders": num_operational_transponders,
+                    "num_spare_transponders": num_spare_transponders,
+                    "origin": origin,
+                    "payload_notes": payload_notes,
+                    "polarization": polarization,
+                    "solid_state_power_amp": solid_state_power_amp,
+                    "spacecraft_id": spacecraft_id,
+                    "trade_lease_org_id": trade_lease_org_id,
+                    "traveling_wave_tube_amplifier": traveling_wave_tube_amplifier,
+                    "user_downlink_from": user_downlink_from,
+                    "user_downlink_to": user_downlink_to,
+                    "user_uplink_from": user_uplink_from,
+                    "user_uplink_to": user_uplink_to,
+                },
+                seradatacommdetail_create_params.SeradatacommdetailCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def update(
+        self,
+        id_1: str,
+        *,
+        classification_marking: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        source: str,
+        id_2: str | NotGiven = NOT_GIVEN,
+        band: str | NotGiven = NOT_GIVEN,
+        bandwidth: float | NotGiven = NOT_GIVEN,
+        eirp: float | NotGiven = NOT_GIVEN,
+        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
+        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
+        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
+        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        id_comm: str | NotGiven = NOT_GIVEN,
+        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
+        num_operational_transponders: int | NotGiven = NOT_GIVEN,
+        num_spare_transponders: int | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        payload_notes: str | NotGiven = NOT_GIVEN,
+        polarization: str | NotGiven = NOT_GIVEN,
+        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
+        spacecraft_id: str | NotGiven = NOT_GIVEN,
+        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
+        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
+        user_downlink_from: float | NotGiven = NOT_GIVEN,
+        user_downlink_to: float | NotGiven = NOT_GIVEN,
+        user_uplink_from: float | NotGiven = NOT_GIVEN,
+        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to update an SeradataCommDetails.
+
+        A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          source: Source of the data.
+
+          id_2: Unique identifier of the record, auto-generated by the system.
+
+          band: Name of the band of this RF range (e.g.
+              X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
+              details and descriptions of each band name.
+
+          bandwidth: Comm bandwidth in Mhz.
+
+          eirp: Effective isotropic radiated power in dB.
+
+          est_hts_total_capacity: Comm estimated HtsTotalCapacity in Gbps.
+
+          est_hts_total_user_downlink_bandwidth_per_beam: Comm estimated HtsTotalUserDownlinkBandwidthPerBeam in Mhz.
+
+          est_hts_total_user_uplink_bandwidth_per_beam: Comm estimated HtsTotalUserUplinkBandwidthPerBeam in Mhz.
+
+          gateway_downlink_from: Comm gatewayDownlinkFrom in Ghz.
+
+          gateway_downlink_to: Comm gatewayDownlinkTo in Ghz.
+
+          gateway_uplink_from: Comm gatewayUplinkFrom in Ghz.
+
+          gateway_uplink_to: Comm gatewayUplinkTo in Ghz.
+
+          hosted_for_company_org_id: Comm hostedForCompanyOrgId.
+
+          hts_num_user_spot_beams: Comm htsNumUserSpotBeams.
+
+          hts_user_downlink_bandwidth_per_beam: Comm htsUserDownlinkBandwidthPerBeam in Mhz.
+
+          hts_user_uplink_bandwidth_per_beam: Comm htsUserUplinkBandwidthPerBeam in Mhz.
+
+          id_comm: UUID of the parent Comm record.
+
+          manufacturer_org_id: Comm manufacturerOrgId.
+
+          num36_mhz_equivalent_transponders: Comm num36MhzEquivalentTransponders.
+
+          num_operational_transponders: Comm numOperationalTransponders.
+
+          num_spare_transponders: Comm numSpareTransponders.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          payload_notes: Payload notes.
+
+          polarization: Comm polarization.
+
+          solid_state_power_amp: Solid state power amplifier, in Watts.
+
+          spacecraft_id: Seradata ID of the spacecraft (SeradataSpacecraftDetails ID).
+
+          trade_lease_org_id: Comm tradeLeaseOrgId.
+
+          traveling_wave_tube_amplifier: Comm travelingWaveTubeAmplifier in Watts.
+
+          user_downlink_from: Comm userDownlinkFrom in Ghz.
+
+          user_downlink_to: Comm userDownlinkTo in Ghz.
+
+          user_uplink_from: Comm userUplinkFrom in Ghz.
+
+          user_uplink_to: Comm userUplinkTo in Ghz.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id_1:
+            raise ValueError(f"Expected a non-empty value for `id_1` but received {id_1!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._put(
+            f"/udl/seradatacommdetails/{id_1}",
+            body=maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "source": source,
+                    "id_2": id_2,
+                    "band": band,
+                    "bandwidth": bandwidth,
+                    "eirp": eirp,
+                    "est_hts_total_capacity": est_hts_total_capacity,
+                    "est_hts_total_user_downlink_bandwidth_per_beam": est_hts_total_user_downlink_bandwidth_per_beam,
+                    "est_hts_total_user_uplink_bandwidth_per_beam": est_hts_total_user_uplink_bandwidth_per_beam,
+                    "gateway_downlink_from": gateway_downlink_from,
+                    "gateway_downlink_to": gateway_downlink_to,
+                    "gateway_uplink_from": gateway_uplink_from,
+                    "gateway_uplink_to": gateway_uplink_to,
+                    "hosted_for_company_org_id": hosted_for_company_org_id,
+                    "hts_num_user_spot_beams": hts_num_user_spot_beams,
+                    "hts_user_downlink_bandwidth_per_beam": hts_user_downlink_bandwidth_per_beam,
+                    "hts_user_uplink_bandwidth_per_beam": hts_user_uplink_bandwidth_per_beam,
+                    "id_comm": id_comm,
+                    "manufacturer_org_id": manufacturer_org_id,
+                    "num36_mhz_equivalent_transponders": num36_mhz_equivalent_transponders,
+                    "num_operational_transponders": num_operational_transponders,
+                    "num_spare_transponders": num_spare_transponders,
+                    "origin": origin,
+                    "payload_notes": payload_notes,
+                    "polarization": polarization,
+                    "solid_state_power_amp": solid_state_power_amp,
+                    "spacecraft_id": spacecraft_id,
+                    "trade_lease_org_id": trade_lease_org_id,
+                    "traveling_wave_tube_amplifier": traveling_wave_tube_amplifier,
+                    "user_downlink_from": user_downlink_from,
+                    "user_downlink_to": user_downlink_to,
+                    "user_uplink_from": user_uplink_from,
+                    "user_uplink_to": user_uplink_to,
+                },
+                seradatacommdetail_update_params.SeradatacommdetailUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SeradatacommdetailListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+        """
+        return self._get(
+            "/udl/seradatacommdetails",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SeradatacommdetailListResponse,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to delete an SeradataCommDetails specified by the passed ID
+        path parameter. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            f"/udl/seradatacommdetails/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def count(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return self._get(
+            "/udl/seradatacommdetails/count",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=str,
+        )
+
+    def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SeradatacommdetailGetResponse:
+        """
+        Service operation to get a single SeradataCommDetails by its unique ID passed as
+        a path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/seradatacommdetails/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SeradatacommdetailGetResponse,
+        )
+
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/seradatacommdetails/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SeradatacommdetailTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/seradatacommdetails/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"columns": columns}, seradatacommdetail_tuple_params.SeradatacommdetailTupleParams
+                ),
+            ),
+            cast_to=SeradatacommdetailTupleResponse,
+        )
+
+
+class AsyncSeradatacommdetailsResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncSeradatacommdetailsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncSeradatacommdetailsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncSeradatacommdetailsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        """
+        return AsyncSeradatacommdetailsResourceWithStreamingResponse(self)
+
+    async def create(
+        self,
+        *,
+        classification_marking: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        source: str,
+        id: str | NotGiven = NOT_GIVEN,
+        band: str | NotGiven = NOT_GIVEN,
+        bandwidth: float | NotGiven = NOT_GIVEN,
+        eirp: float | NotGiven = NOT_GIVEN,
+        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
+        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
+        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
+        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        id_comm: str | NotGiven = NOT_GIVEN,
+        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
+        num_operational_transponders: int | NotGiven = NOT_GIVEN,
+        num_spare_transponders: int | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        payload_notes: str | NotGiven = NOT_GIVEN,
+        polarization: str | NotGiven = NOT_GIVEN,
+        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
+        spacecraft_id: str | NotGiven = NOT_GIVEN,
+        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
+        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
+        user_downlink_from: float | NotGiven = NOT_GIVEN,
+        user_downlink_to: float | NotGiven = NOT_GIVEN,
+        user_uplink_from: float | NotGiven = NOT_GIVEN,
+        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a single SeradataCommDetails as a POST body and ingest
+        into the database. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          source: Source of the data.
+
+          id: Unique identifier of the record, auto-generated by the system.
+
+          band: Name of the band of this RF range (e.g.
+              X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
+              details and descriptions of each band name.
+
+          bandwidth: Comm bandwidth in Mhz.
+
+          eirp: Effective isotropic radiated power in dB.
+
+          est_hts_total_capacity: Comm estimated HtsTotalCapacity in Gbps.
+
+          est_hts_total_user_downlink_bandwidth_per_beam: Comm estimated HtsTotalUserDownlinkBandwidthPerBeam in Mhz.
+
+          est_hts_total_user_uplink_bandwidth_per_beam: Comm estimated HtsTotalUserUplinkBandwidthPerBeam in Mhz.
+
+          gateway_downlink_from: Comm gatewayDownlinkFrom in Ghz.
+
+          gateway_downlink_to: Comm gatewayDownlinkTo in Ghz.
+
+          gateway_uplink_from: Comm gatewayUplinkFrom in Ghz.
+
+          gateway_uplink_to: Comm gatewayUplinkTo in Ghz.
+
+          hosted_for_company_org_id: Comm hostedForCompanyOrgId.
+
+          hts_num_user_spot_beams: Comm htsNumUserSpotBeams.
+
+          hts_user_downlink_bandwidth_per_beam: Comm htsUserDownlinkBandwidthPerBeam in Mhz.
+
+          hts_user_uplink_bandwidth_per_beam: Comm htsUserUplinkBandwidthPerBeam in Mhz.
+
+          id_comm: UUID of the parent Comm record.
+
+          manufacturer_org_id: Comm manufacturerOrgId.
+
+          num36_mhz_equivalent_transponders: Comm num36MhzEquivalentTransponders.
+
+          num_operational_transponders: Comm numOperationalTransponders.
+
+          num_spare_transponders: Comm numSpareTransponders.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          payload_notes: Payload notes.
+
+          polarization: Comm polarization.
+
+          solid_state_power_amp: Solid state power amplifier, in Watts.
+
+          spacecraft_id: Seradata ID of the spacecraft (SeradataSpacecraftDetails ID).
+
+          trade_lease_org_id: Comm tradeLeaseOrgId.
+
+          traveling_wave_tube_amplifier: Comm travelingWaveTubeAmplifier in Watts.
+
+          user_downlink_from: Comm userDownlinkFrom in Ghz.
+
+          user_downlink_to: Comm userDownlinkTo in Ghz.
+
+          user_uplink_from: Comm userUplinkFrom in Ghz.
+
+          user_uplink_to: Comm userUplinkTo in Ghz.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/udl/seradatacommdetails",
+            body=await async_maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "source": source,
+                    "id": id,
+                    "band": band,
+                    "bandwidth": bandwidth,
+                    "eirp": eirp,
+                    "est_hts_total_capacity": est_hts_total_capacity,
+                    "est_hts_total_user_downlink_bandwidth_per_beam": est_hts_total_user_downlink_bandwidth_per_beam,
+                    "est_hts_total_user_uplink_bandwidth_per_beam": est_hts_total_user_uplink_bandwidth_per_beam,
+                    "gateway_downlink_from": gateway_downlink_from,
+                    "gateway_downlink_to": gateway_downlink_to,
+                    "gateway_uplink_from": gateway_uplink_from,
+                    "gateway_uplink_to": gateway_uplink_to,
+                    "hosted_for_company_org_id": hosted_for_company_org_id,
+                    "hts_num_user_spot_beams": hts_num_user_spot_beams,
+                    "hts_user_downlink_bandwidth_per_beam": hts_user_downlink_bandwidth_per_beam,
+                    "hts_user_uplink_bandwidth_per_beam": hts_user_uplink_bandwidth_per_beam,
+                    "id_comm": id_comm,
+                    "manufacturer_org_id": manufacturer_org_id,
+                    "num36_mhz_equivalent_transponders": num36_mhz_equivalent_transponders,
+                    "num_operational_transponders": num_operational_transponders,
+                    "num_spare_transponders": num_spare_transponders,
+                    "origin": origin,
+                    "payload_notes": payload_notes,
+                    "polarization": polarization,
+                    "solid_state_power_amp": solid_state_power_amp,
+                    "spacecraft_id": spacecraft_id,
+                    "trade_lease_org_id": trade_lease_org_id,
+                    "traveling_wave_tube_amplifier": traveling_wave_tube_amplifier,
+                    "user_downlink_from": user_downlink_from,
+                    "user_downlink_to": user_downlink_to,
+                    "user_uplink_from": user_uplink_from,
+                    "user_uplink_to": user_uplink_to,
+                },
+                seradatacommdetail_create_params.SeradatacommdetailCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def update(
+        self,
+        id_1: str,
+        *,
+        classification_marking: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        source: str,
+        id_2: str | NotGiven = NOT_GIVEN,
+        band: str | NotGiven = NOT_GIVEN,
+        bandwidth: float | NotGiven = NOT_GIVEN,
+        eirp: float | NotGiven = NOT_GIVEN,
+        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
+        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
+        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
+        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
+        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
+        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
+        id_comm: str | NotGiven = NOT_GIVEN,
+        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
+        num_operational_transponders: int | NotGiven = NOT_GIVEN,
+        num_spare_transponders: int | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        payload_notes: str | NotGiven = NOT_GIVEN,
+        polarization: str | NotGiven = NOT_GIVEN,
+        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
+        spacecraft_id: str | NotGiven = NOT_GIVEN,
+        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
+        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
+        user_downlink_from: float | NotGiven = NOT_GIVEN,
+        user_downlink_to: float | NotGiven = NOT_GIVEN,
+        user_uplink_from: float | NotGiven = NOT_GIVEN,
+        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to update an SeradataCommDetails.
+
+        A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          source: Source of the data.
+
+          id_2: Unique identifier of the record, auto-generated by the system.
+
+          band: Name of the band of this RF range (e.g.
+              X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
+              details and descriptions of each band name.
+
+          bandwidth: Comm bandwidth in Mhz.
+
+          eirp: Effective isotropic radiated power in dB.
+
+          est_hts_total_capacity: Comm estimated HtsTotalCapacity in Gbps.
+
+          est_hts_total_user_downlink_bandwidth_per_beam: Comm estimated HtsTotalUserDownlinkBandwidthPerBeam in Mhz.
+
+          est_hts_total_user_uplink_bandwidth_per_beam: Comm estimated HtsTotalUserUplinkBandwidthPerBeam in Mhz.
+
+          gateway_downlink_from: Comm gatewayDownlinkFrom in Ghz.
+
+          gateway_downlink_to: Comm gatewayDownlinkTo in Ghz.
+
+          gateway_uplink_from: Comm gatewayUplinkFrom in Ghz.
+
+          gateway_uplink_to: Comm gatewayUplinkTo in Ghz.
+
+          hosted_for_company_org_id: Comm hostedForCompanyOrgId.
+
+          hts_num_user_spot_beams: Comm htsNumUserSpotBeams.
+
+          hts_user_downlink_bandwidth_per_beam: Comm htsUserDownlinkBandwidthPerBeam in Mhz.
+
+          hts_user_uplink_bandwidth_per_beam: Comm htsUserUplinkBandwidthPerBeam in Mhz.
+
+          id_comm: UUID of the parent Comm record.
+
+          manufacturer_org_id: Comm manufacturerOrgId.
+
+          num36_mhz_equivalent_transponders: Comm num36MhzEquivalentTransponders.
+
+          num_operational_transponders: Comm numOperationalTransponders.
+
+          num_spare_transponders: Comm numSpareTransponders.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          payload_notes: Payload notes.
+
+          polarization: Comm polarization.
+
+          solid_state_power_amp: Solid state power amplifier, in Watts.
+
+          spacecraft_id: Seradata ID of the spacecraft (SeradataSpacecraftDetails ID).
+
+          trade_lease_org_id: Comm tradeLeaseOrgId.
+
+          traveling_wave_tube_amplifier: Comm travelingWaveTubeAmplifier in Watts.
+
+          user_downlink_from: Comm userDownlinkFrom in Ghz.
+
+          user_downlink_to: Comm userDownlinkTo in Ghz.
+
+          user_uplink_from: Comm userUplinkFrom in Ghz.
+
+          user_uplink_to: Comm userUplinkTo in Ghz.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id_1:
+            raise ValueError(f"Expected a non-empty value for `id_1` but received {id_1!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._put(
+            f"/udl/seradatacommdetails/{id_1}",
+            body=await async_maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "source": source,
+                    "id_2": id_2,
+                    "band": band,
+                    "bandwidth": bandwidth,
+                    "eirp": eirp,
+                    "est_hts_total_capacity": est_hts_total_capacity,
+                    "est_hts_total_user_downlink_bandwidth_per_beam": est_hts_total_user_downlink_bandwidth_per_beam,
+                    "est_hts_total_user_uplink_bandwidth_per_beam": est_hts_total_user_uplink_bandwidth_per_beam,
+                    "gateway_downlink_from": gateway_downlink_from,
+                    "gateway_downlink_to": gateway_downlink_to,
+                    "gateway_uplink_from": gateway_uplink_from,
+                    "gateway_uplink_to": gateway_uplink_to,
+                    "hosted_for_company_org_id": hosted_for_company_org_id,
+                    "hts_num_user_spot_beams": hts_num_user_spot_beams,
+                    "hts_user_downlink_bandwidth_per_beam": hts_user_downlink_bandwidth_per_beam,
+                    "hts_user_uplink_bandwidth_per_beam": hts_user_uplink_bandwidth_per_beam,
+                    "id_comm": id_comm,
+                    "manufacturer_org_id": manufacturer_org_id,
+                    "num36_mhz_equivalent_transponders": num36_mhz_equivalent_transponders,
+                    "num_operational_transponders": num_operational_transponders,
+                    "num_spare_transponders": num_spare_transponders,
+                    "origin": origin,
+                    "payload_notes": payload_notes,
+                    "polarization": polarization,
+                    "solid_state_power_amp": solid_state_power_amp,
+                    "spacecraft_id": spacecraft_id,
+                    "trade_lease_org_id": trade_lease_org_id,
+                    "traveling_wave_tube_amplifier": traveling_wave_tube_amplifier,
+                    "user_downlink_from": user_downlink_from,
+                    "user_downlink_to": user_downlink_to,
+                    "user_uplink_from": user_uplink_from,
+                    "user_uplink_to": user_uplink_to,
+                },
+                seradatacommdetail_update_params.SeradatacommdetailUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SeradatacommdetailListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+        """
+        return await self._get(
+            "/udl/seradatacommdetails",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SeradatacommdetailListResponse,
+        )
+
+    async def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to delete an SeradataCommDetails specified by the passed ID
+        path parameter. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            f"/udl/seradatacommdetails/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def count(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return await self._get(
+            "/udl/seradatacommdetails/count",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=str,
+        )
+
+    async def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SeradatacommdetailGetResponse:
+        """
+        Service operation to get a single SeradataCommDetails by its unique ID passed as
+        a path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/seradatacommdetails/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SeradatacommdetailGetResponse,
+        )
+
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/seradatacommdetails/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SeradatacommdetailTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/seradatacommdetails/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"columns": columns}, seradatacommdetail_tuple_params.SeradatacommdetailTupleParams
+                ),
+            ),
+            cast_to=SeradatacommdetailTupleResponse,
+        )
+
+
+class SeradatacommdetailsResourceWithRawResponse:
+    def __init__(self, seradatacommdetails: SeradatacommdetailsResource) -> None:
+        self._seradatacommdetails = seradatacommdetails
+
+        self.create = to_raw_response_wrapper(
+            seradatacommdetails.create,
+        )
+        self.update = to_raw_response_wrapper(
+            seradatacommdetails.update,
+        )
+        self.list = to_raw_response_wrapper(
+            seradatacommdetails.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            seradatacommdetails.delete,
+        )
+        self.count = to_raw_response_wrapper(
+            seradatacommdetails.count,
+        )
+        self.get = to_raw_response_wrapper(
+            seradatacommdetails.get,
+        )
+        self.queryhelp = to_raw_response_wrapper(
+            seradatacommdetails.queryhelp,
+        )
+        self.tuple = to_raw_response_wrapper(
+            seradatacommdetails.tuple,
+        )
+
+
+class AsyncSeradatacommdetailsResourceWithRawResponse:
+    def __init__(self, seradatacommdetails: AsyncSeradatacommdetailsResource) -> None:
+        self._seradatacommdetails = seradatacommdetails
+
+        self.create = async_to_raw_response_wrapper(
+            seradatacommdetails.create,
+        )
+        self.update = async_to_raw_response_wrapper(
+            seradatacommdetails.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            seradatacommdetails.list,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            seradatacommdetails.delete,
+        )
+        self.count = async_to_raw_response_wrapper(
+            seradatacommdetails.count,
+        )
+        self.get = async_to_raw_response_wrapper(
+            seradatacommdetails.get,
+        )
+        self.queryhelp = async_to_raw_response_wrapper(
+            seradatacommdetails.queryhelp,
+        )
+        self.tuple = async_to_raw_response_wrapper(
+            seradatacommdetails.tuple,
+        )
+
+
+class SeradatacommdetailsResourceWithStreamingResponse:
+    def __init__(self, seradatacommdetails: SeradatacommdetailsResource) -> None:
+        self._seradatacommdetails = seradatacommdetails
+
+        self.create = to_streamed_response_wrapper(
+            seradatacommdetails.create,
+        )
+        self.update = to_streamed_response_wrapper(
+            seradatacommdetails.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            seradatacommdetails.list,
+        )
+        self.delete = to_streamed_response_wrapper(
+            seradatacommdetails.delete,
+        )
+        self.count = to_streamed_response_wrapper(
+            seradatacommdetails.count,
+        )
+        self.get = to_streamed_response_wrapper(
+            seradatacommdetails.get,
+        )
+        self.queryhelp = to_streamed_response_wrapper(
+            seradatacommdetails.queryhelp,
+        )
+        self.tuple = to_streamed_response_wrapper(
+            seradatacommdetails.tuple,
+        )
+
+
+class AsyncSeradatacommdetailsResourceWithStreamingResponse:
+    def __init__(self, seradatacommdetails: AsyncSeradatacommdetailsResource) -> None:
+        self._seradatacommdetails = seradatacommdetails
+
+        self.create = async_to_streamed_response_wrapper(
+            seradatacommdetails.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            seradatacommdetails.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            seradatacommdetails.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            seradatacommdetails.delete,
+        )
+        self.count = async_to_streamed_response_wrapper(
+            seradatacommdetails.count,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            seradatacommdetails.get,
+        )
+        self.queryhelp = async_to_streamed_response_wrapper(
+            seradatacommdetails.queryhelp,
+        )
+        self.tuple = async_to_streamed_response_wrapper(
+            seradatacommdetails.tuple,
+        )

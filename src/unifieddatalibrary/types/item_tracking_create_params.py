@@ -2,20 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import List, Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ItemTrackingCreateParams", "Body"]
+__all__ = ["ItemTrackingCreateParams"]
 
 
 class ItemTrackingCreateParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
-
-
-class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -19,7 +19,8 @@ from .ecpsdr import (
     AsyncEcpsdrResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
-from .monoradar import (
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from .monoradar.monoradar import (
     MonoradarResource,
     AsyncMonoradarResource,
     MonoradarResourceWithRawResponse,
@@ -27,12 +28,31 @@ from .monoradar import (
     MonoradarResourceWithStreamingResponse,
     AsyncMonoradarResourceWithStreamingResponse,
 )
-from ..._resource import SyncAPIResource, AsyncAPIResource
+from .rfobservation.rfobservation import (
+    RfobservationResource,
+    AsyncRfobservationResource,
+    RfobservationResourceWithRawResponse,
+    AsyncRfobservationResourceWithRawResponse,
+    RfobservationResourceWithStreamingResponse,
+    AsyncRfobservationResourceWithStreamingResponse,
+)
+from .radarobservation.radarobservation import (
+    RadarobservationResource,
+    AsyncRadarobservationResource,
+    RadarobservationResourceWithRawResponse,
+    AsyncRadarobservationResourceWithRawResponse,
+    RadarobservationResourceWithStreamingResponse,
+    AsyncRadarobservationResourceWithStreamingResponse,
+)
 
 __all__ = ["ObservationsResource", "AsyncObservationsResource"]
 
 
 class ObservationsResource(SyncAPIResource):
+    @cached_property
+    def ecpsdr(self) -> EcpsdrResource:
+        return EcpsdrResource(self._client)
+
     @cached_property
     def monoradar(self) -> MonoradarResource:
         return MonoradarResource(self._client)
@@ -42,8 +62,12 @@ class ObservationsResource(SyncAPIResource):
         return SwirResource(self._client)
 
     @cached_property
-    def ecpsdr(self) -> EcpsdrResource:
-        return EcpsdrResource(self._client)
+    def radarobservation(self) -> RadarobservationResource:
+        return RadarobservationResource(self._client)
+
+    @cached_property
+    def rfobservation(self) -> RfobservationResource:
+        return RfobservationResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ObservationsResourceWithRawResponse:
@@ -67,6 +91,10 @@ class ObservationsResource(SyncAPIResource):
 
 class AsyncObservationsResource(AsyncAPIResource):
     @cached_property
+    def ecpsdr(self) -> AsyncEcpsdrResource:
+        return AsyncEcpsdrResource(self._client)
+
+    @cached_property
     def monoradar(self) -> AsyncMonoradarResource:
         return AsyncMonoradarResource(self._client)
 
@@ -75,8 +103,12 @@ class AsyncObservationsResource(AsyncAPIResource):
         return AsyncSwirResource(self._client)
 
     @cached_property
-    def ecpsdr(self) -> AsyncEcpsdrResource:
-        return AsyncEcpsdrResource(self._client)
+    def radarobservation(self) -> AsyncRadarobservationResource:
+        return AsyncRadarobservationResource(self._client)
+
+    @cached_property
+    def rfobservation(self) -> AsyncRfobservationResource:
+        return AsyncRfobservationResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncObservationsResourceWithRawResponse:
@@ -103,6 +135,10 @@ class ObservationsResourceWithRawResponse:
         self._observations = observations
 
     @cached_property
+    def ecpsdr(self) -> EcpsdrResourceWithRawResponse:
+        return EcpsdrResourceWithRawResponse(self._observations.ecpsdr)
+
+    @cached_property
     def monoradar(self) -> MonoradarResourceWithRawResponse:
         return MonoradarResourceWithRawResponse(self._observations.monoradar)
 
@@ -111,13 +147,21 @@ class ObservationsResourceWithRawResponse:
         return SwirResourceWithRawResponse(self._observations.swir)
 
     @cached_property
-    def ecpsdr(self) -> EcpsdrResourceWithRawResponse:
-        return EcpsdrResourceWithRawResponse(self._observations.ecpsdr)
+    def radarobservation(self) -> RadarobservationResourceWithRawResponse:
+        return RadarobservationResourceWithRawResponse(self._observations.radarobservation)
+
+    @cached_property
+    def rfobservation(self) -> RfobservationResourceWithRawResponse:
+        return RfobservationResourceWithRawResponse(self._observations.rfobservation)
 
 
 class AsyncObservationsResourceWithRawResponse:
     def __init__(self, observations: AsyncObservationsResource) -> None:
         self._observations = observations
+
+    @cached_property
+    def ecpsdr(self) -> AsyncEcpsdrResourceWithRawResponse:
+        return AsyncEcpsdrResourceWithRawResponse(self._observations.ecpsdr)
 
     @cached_property
     def monoradar(self) -> AsyncMonoradarResourceWithRawResponse:
@@ -128,13 +172,21 @@ class AsyncObservationsResourceWithRawResponse:
         return AsyncSwirResourceWithRawResponse(self._observations.swir)
 
     @cached_property
-    def ecpsdr(self) -> AsyncEcpsdrResourceWithRawResponse:
-        return AsyncEcpsdrResourceWithRawResponse(self._observations.ecpsdr)
+    def radarobservation(self) -> AsyncRadarobservationResourceWithRawResponse:
+        return AsyncRadarobservationResourceWithRawResponse(self._observations.radarobservation)
+
+    @cached_property
+    def rfobservation(self) -> AsyncRfobservationResourceWithRawResponse:
+        return AsyncRfobservationResourceWithRawResponse(self._observations.rfobservation)
 
 
 class ObservationsResourceWithStreamingResponse:
     def __init__(self, observations: ObservationsResource) -> None:
         self._observations = observations
+
+    @cached_property
+    def ecpsdr(self) -> EcpsdrResourceWithStreamingResponse:
+        return EcpsdrResourceWithStreamingResponse(self._observations.ecpsdr)
 
     @cached_property
     def monoradar(self) -> MonoradarResourceWithStreamingResponse:
@@ -145,13 +197,21 @@ class ObservationsResourceWithStreamingResponse:
         return SwirResourceWithStreamingResponse(self._observations.swir)
 
     @cached_property
-    def ecpsdr(self) -> EcpsdrResourceWithStreamingResponse:
-        return EcpsdrResourceWithStreamingResponse(self._observations.ecpsdr)
+    def radarobservation(self) -> RadarobservationResourceWithStreamingResponse:
+        return RadarobservationResourceWithStreamingResponse(self._observations.radarobservation)
+
+    @cached_property
+    def rfobservation(self) -> RfobservationResourceWithStreamingResponse:
+        return RfobservationResourceWithStreamingResponse(self._observations.rfobservation)
 
 
 class AsyncObservationsResourceWithStreamingResponse:
     def __init__(self, observations: AsyncObservationsResource) -> None:
         self._observations = observations
+
+    @cached_property
+    def ecpsdr(self) -> AsyncEcpsdrResourceWithStreamingResponse:
+        return AsyncEcpsdrResourceWithStreamingResponse(self._observations.ecpsdr)
 
     @cached_property
     def monoradar(self) -> AsyncMonoradarResourceWithStreamingResponse:
@@ -162,5 +222,9 @@ class AsyncObservationsResourceWithStreamingResponse:
         return AsyncSwirResourceWithStreamingResponse(self._observations.swir)
 
     @cached_property
-    def ecpsdr(self) -> AsyncEcpsdrResourceWithStreamingResponse:
-        return AsyncEcpsdrResourceWithStreamingResponse(self._observations.ecpsdr)
+    def radarobservation(self) -> AsyncRadarobservationResourceWithStreamingResponse:
+        return AsyncRadarobservationResourceWithStreamingResponse(self._observations.radarobservation)
+
+    @cached_property
+    def rfobservation(self) -> AsyncRfobservationResourceWithStreamingResponse:
+        return AsyncRfobservationResourceWithStreamingResponse(self._observations.rfobservation)

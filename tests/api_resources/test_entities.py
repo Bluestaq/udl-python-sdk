@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EntityFull,
+    EntityListResponse,
     EntityTupleResponse,
     EntityGetAllTypesResponse,
 )
@@ -276,6 +277,31 @@ class TestEntities:
                 source="Bluestaq",
                 type="AIRCRAFT",
             )
+
+    @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        entity = client.entities.list()
+        assert_matches_type(EntityListResponse, entity, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.entities.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(EntityListResponse, entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.entities.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(EntityListResponse, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_delete(self, client: Unifieddatalibrary) -> None:
@@ -680,6 +706,31 @@ class TestAsyncEntities:
                 source="Bluestaq",
                 type="AIRCRAFT",
             )
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        entity = await async_client.entities.list()
+        assert_matches_type(EntityListResponse, entity, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.entities.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = await response.parse()
+        assert_matches_type(EntityListResponse, entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.entities.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(EntityListResponse, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncUnifieddatalibrary) -> None:

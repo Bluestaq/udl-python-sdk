@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EphemerisListResponse,
+    EphemerisTupleResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -106,6 +107,40 @@ class TestEphemeris:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_tuple(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.tuple(
+            columns="columns",
+            es_id="esId",
+        )
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
+        response = client.ephemeris.with_raw_response.tuple(
+            columns="columns",
+            es_id="esId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ephemeris = response.parse()
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
+        with client.ephemeris.with_streaming_response.tuple(
+            columns="columns",
+            es_id="esId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ephemeris = response.parse()
+            assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncEphemeris:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -194,5 +229,39 @@ class TestAsyncEphemeris:
 
             ephemeris = await response.parse()
             assert ephemeris is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.tuple(
+            columns="columns",
+            es_id="esId",
+        )
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ephemeris.with_raw_response.tuple(
+            columns="columns",
+            es_id="esId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ephemeris = await response.parse()
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ephemeris.with_streaming_response.tuple(
+            columns="columns",
+            es_id="esId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ephemeris = await response.parse()
+            assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 
         assert cast(Any, response.is_closed) is True

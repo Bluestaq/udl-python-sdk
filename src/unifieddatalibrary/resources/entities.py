@@ -23,6 +23,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.entity_full import EntityFull
+from ..types.entity_list_response import EntityListResponse
 from ..types.entity_tuple_response import EntityTupleResponse
 from ..types.entity_get_all_types_response import EntityGetAllTypesResponse
 
@@ -366,6 +367,30 @@ class EntitiesResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EntityListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+        """
+        return self._get(
+            "/udl/entity",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EntityListResponse,
         )
 
     def delete(
@@ -859,6 +884,30 @@ class AsyncEntitiesResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EntityListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+        """
+        return await self._get(
+            "/udl/entity",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EntityListResponse,
+        )
+
     async def delete(
         self,
         id: str,
@@ -1024,6 +1073,9 @@ class EntitiesResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             entities.update,
         )
+        self.list = to_raw_response_wrapper(
+            entities.list,
+        )
         self.delete = to_raw_response_wrapper(
             entities.delete,
         )
@@ -1053,6 +1105,9 @@ class AsyncEntitiesResourceWithRawResponse:
         )
         self.update = async_to_raw_response_wrapper(
             entities.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            entities.list,
         )
         self.delete = async_to_raw_response_wrapper(
             entities.delete,
@@ -1084,6 +1139,9 @@ class EntitiesResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             entities.update,
         )
+        self.list = to_streamed_response_wrapper(
+            entities.list,
+        )
         self.delete = to_streamed_response_wrapper(
             entities.delete,
         )
@@ -1113,6 +1171,9 @@ class AsyncEntitiesResourceWithStreamingResponse:
         )
         self.update = async_to_streamed_response_wrapper(
             entities.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            entities.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             entities.delete,

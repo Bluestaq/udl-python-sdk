@@ -50,16 +50,16 @@ __all__ = ["SupportingDataResource", "AsyncSupportingDataResource"]
 
 class SupportingDataResource(SyncAPIResource):
     @cached_property
+    def data_types(self) -> DataTypesResource:
+        return DataTypesResource(self._client)
+
+    @cached_property
     def dataowner(self) -> DataownerResource:
         return DataownerResource(self._client)
 
     @cached_property
     def dataowner_types(self) -> DataownerTypesResource:
         return DataownerTypesResource(self._client)
-
-    @cached_property
-    def data_types(self) -> DataTypesResource:
-        return DataTypesResource(self._client)
 
     @cached_property
     def provider_metadata(self) -> ProviderMetadataResource:
@@ -91,16 +91,16 @@ class SupportingDataResource(SyncAPIResource):
 
 class AsyncSupportingDataResource(AsyncAPIResource):
     @cached_property
+    def data_types(self) -> AsyncDataTypesResource:
+        return AsyncDataTypesResource(self._client)
+
+    @cached_property
     def dataowner(self) -> AsyncDataownerResource:
         return AsyncDataownerResource(self._client)
 
     @cached_property
     def dataowner_types(self) -> AsyncDataownerTypesResource:
         return AsyncDataownerTypesResource(self._client)
-
-    @cached_property
-    def data_types(self) -> AsyncDataTypesResource:
-        return AsyncDataTypesResource(self._client)
 
     @cached_property
     def provider_metadata(self) -> AsyncProviderMetadataResource:
@@ -135,16 +135,16 @@ class SupportingDataResourceWithRawResponse:
         self._supporting_data = supporting_data
 
     @cached_property
+    def data_types(self) -> DataTypesResourceWithRawResponse:
+        return DataTypesResourceWithRawResponse(self._supporting_data.data_types)
+
+    @cached_property
     def dataowner(self) -> DataownerResourceWithRawResponse:
         return DataownerResourceWithRawResponse(self._supporting_data.dataowner)
 
     @cached_property
     def dataowner_types(self) -> DataownerTypesResourceWithRawResponse:
         return DataownerTypesResourceWithRawResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def data_types(self) -> DataTypesResourceWithRawResponse:
-        return DataTypesResourceWithRawResponse(self._supporting_data.data_types)
 
     @cached_property
     def provider_metadata(self) -> ProviderMetadataResourceWithRawResponse:
@@ -160,16 +160,16 @@ class AsyncSupportingDataResourceWithRawResponse:
         self._supporting_data = supporting_data
 
     @cached_property
+    def data_types(self) -> AsyncDataTypesResourceWithRawResponse:
+        return AsyncDataTypesResourceWithRawResponse(self._supporting_data.data_types)
+
+    @cached_property
     def dataowner(self) -> AsyncDataownerResourceWithRawResponse:
         return AsyncDataownerResourceWithRawResponse(self._supporting_data.dataowner)
 
     @cached_property
     def dataowner_types(self) -> AsyncDataownerTypesResourceWithRawResponse:
         return AsyncDataownerTypesResourceWithRawResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def data_types(self) -> AsyncDataTypesResourceWithRawResponse:
-        return AsyncDataTypesResourceWithRawResponse(self._supporting_data.data_types)
 
     @cached_property
     def provider_metadata(self) -> AsyncProviderMetadataResourceWithRawResponse:
@@ -185,16 +185,16 @@ class SupportingDataResourceWithStreamingResponse:
         self._supporting_data = supporting_data
 
     @cached_property
+    def data_types(self) -> DataTypesResourceWithStreamingResponse:
+        return DataTypesResourceWithStreamingResponse(self._supporting_data.data_types)
+
+    @cached_property
     def dataowner(self) -> DataownerResourceWithStreamingResponse:
         return DataownerResourceWithStreamingResponse(self._supporting_data.dataowner)
 
     @cached_property
     def dataowner_types(self) -> DataownerTypesResourceWithStreamingResponse:
         return DataownerTypesResourceWithStreamingResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def data_types(self) -> DataTypesResourceWithStreamingResponse:
-        return DataTypesResourceWithStreamingResponse(self._supporting_data.data_types)
 
     @cached_property
     def provider_metadata(self) -> ProviderMetadataResourceWithStreamingResponse:
@@ -210,16 +210,16 @@ class AsyncSupportingDataResourceWithStreamingResponse:
         self._supporting_data = supporting_data
 
     @cached_property
+    def data_types(self) -> AsyncDataTypesResourceWithStreamingResponse:
+        return AsyncDataTypesResourceWithStreamingResponse(self._supporting_data.data_types)
+
+    @cached_property
     def dataowner(self) -> AsyncDataownerResourceWithStreamingResponse:
         return AsyncDataownerResourceWithStreamingResponse(self._supporting_data.dataowner)
 
     @cached_property
     def dataowner_types(self) -> AsyncDataownerTypesResourceWithStreamingResponse:
         return AsyncDataownerTypesResourceWithStreamingResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def data_types(self) -> AsyncDataTypesResourceWithStreamingResponse:
-        return AsyncDataTypesResourceWithStreamingResponse(self._supporting_data.data_types)
 
     @cached_property
     def provider_metadata(self) -> AsyncProviderMetadataResourceWithStreamingResponse:
