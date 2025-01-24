@@ -8,14 +8,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ItemCreateParams", "Body"]
+__all__ = ["ItemCreateParams"]
 
 
 class ItemCreateParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
-
-
-class Body(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

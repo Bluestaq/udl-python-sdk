@@ -36,8 +36,8 @@ from unifieddatalibrary._base_client import (
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-username = "My Username"
 password = "My Password"
+username = "My Username"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -60,7 +60,7 @@ def _get_open_connections(client: Unifieddatalibrary | AsyncUnifieddatalibrary) 
 
 class TestUnifieddatalibrary:
     client = Unifieddatalibrary(
-        base_url=base_url, username=username, password=password, _strict_response_validation=True
+        base_url=base_url, password=password, username=username, _strict_response_validation=True
     )
 
     @pytest.mark.respx(base_url=base_url)
@@ -87,13 +87,13 @@ class TestUnifieddatalibrary:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(username="another My Username")
-        assert copied.username == "another My Username"
-        assert self.client.username == "My Username"
-
         copied = self.client.copy(password="another My Password")
         assert copied.password == "another My Password"
         assert self.client.password == "My Password"
+
+        copied = self.client.copy(username="another My Username")
+        assert copied.username == "another My Username"
+        assert self.client.username == "My Username"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -114,8 +114,8 @@ class TestUnifieddatalibrary:
     def test_copy_default_headers(self) -> None:
         client = Unifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -152,8 +152,8 @@ class TestUnifieddatalibrary:
     def test_copy_default_query(self) -> None:
         client = Unifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_query={"foo": "bar"},
         )
@@ -281,8 +281,8 @@ class TestUnifieddatalibrary:
     def test_client_timeout_option(self) -> None:
         client = Unifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             timeout=httpx.Timeout(0),
         )
@@ -296,8 +296,8 @@ class TestUnifieddatalibrary:
         with httpx.Client(timeout=None) as http_client:
             client = Unifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -310,8 +310,8 @@ class TestUnifieddatalibrary:
         with httpx.Client() as http_client:
             client = Unifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -324,8 +324,8 @@ class TestUnifieddatalibrary:
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
             client = Unifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -339,8 +339,8 @@ class TestUnifieddatalibrary:
             async with httpx.AsyncClient() as http_client:
                 Unifieddatalibrary(
                     base_url=base_url,
-                    username=username,
                     password=password,
+                    username=username,
                     _strict_response_validation=True,
                     http_client=cast(Any, http_client),
                 )
@@ -348,8 +348,8 @@ class TestUnifieddatalibrary:
     def test_default_headers_option(self) -> None:
         client = Unifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -359,8 +359,8 @@ class TestUnifieddatalibrary:
 
         client2 = Unifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -374,8 +374,8 @@ class TestUnifieddatalibrary:
     def test_default_query_option(self) -> None:
         client = Unifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -579,8 +579,8 @@ class TestUnifieddatalibrary:
     def test_base_url_setter(self) -> None:
         client = Unifieddatalibrary(
             base_url="https://example.com/from_init",
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -591,7 +591,7 @@ class TestUnifieddatalibrary:
 
     def test_base_url_env(self) -> None:
         with update_env(UNIFIEDDATALIBRARY_BASE_URL="http://localhost:5000/from/env"):
-            client = Unifieddatalibrary(username=username, password=password, _strict_response_validation=True)
+            client = Unifieddatalibrary(password=password, username=username, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -599,14 +599,14 @@ class TestUnifieddatalibrary:
         [
             Unifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
             ),
             Unifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -628,14 +628,14 @@ class TestUnifieddatalibrary:
         [
             Unifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
             ),
             Unifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -657,14 +657,14 @@ class TestUnifieddatalibrary:
         [
             Unifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
             ),
             Unifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -683,7 +683,7 @@ class TestUnifieddatalibrary:
 
     def test_copied_client_does_not_close_http(self) -> None:
         client = Unifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
         assert not client.is_closed()
 
@@ -696,7 +696,7 @@ class TestUnifieddatalibrary:
 
     def test_client_context_manager(self) -> None:
         client = Unifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
         with client as c2:
             assert c2 is client
@@ -720,8 +720,8 @@ class TestUnifieddatalibrary:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
             Unifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 max_retries=cast(Any, None),
             )
@@ -734,14 +734,14 @@ class TestUnifieddatalibrary:
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
         strict_client = Unifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
         client = Unifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=False
+            base_url=base_url, password=password, username=username, _strict_response_validation=False
         )
 
         response = client.get("/foo", cast_to=Model)
@@ -771,7 +771,7 @@ class TestUnifieddatalibrary:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
         client = Unifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
 
         headers = httpx.Headers({"retry-after": retry_after})
@@ -885,7 +885,7 @@ class TestUnifieddatalibrary:
 
 class TestAsyncUnifieddatalibrary:
     client = AsyncUnifieddatalibrary(
-        base_url=base_url, username=username, password=password, _strict_response_validation=True
+        base_url=base_url, password=password, username=username, _strict_response_validation=True
     )
 
     @pytest.mark.respx(base_url=base_url)
@@ -914,13 +914,13 @@ class TestAsyncUnifieddatalibrary:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(username="another My Username")
-        assert copied.username == "another My Username"
-        assert self.client.username == "My Username"
-
         copied = self.client.copy(password="another My Password")
         assert copied.password == "another My Password"
         assert self.client.password == "My Password"
+
+        copied = self.client.copy(username="another My Username")
+        assert copied.username == "another My Username"
+        assert self.client.username == "My Username"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -941,8 +941,8 @@ class TestAsyncUnifieddatalibrary:
     def test_copy_default_headers(self) -> None:
         client = AsyncUnifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -979,8 +979,8 @@ class TestAsyncUnifieddatalibrary:
     def test_copy_default_query(self) -> None:
         client = AsyncUnifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_query={"foo": "bar"},
         )
@@ -1108,8 +1108,8 @@ class TestAsyncUnifieddatalibrary:
     async def test_client_timeout_option(self) -> None:
         client = AsyncUnifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             timeout=httpx.Timeout(0),
         )
@@ -1123,8 +1123,8 @@ class TestAsyncUnifieddatalibrary:
         async with httpx.AsyncClient(timeout=None) as http_client:
             client = AsyncUnifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1137,8 +1137,8 @@ class TestAsyncUnifieddatalibrary:
         async with httpx.AsyncClient() as http_client:
             client = AsyncUnifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1151,8 +1151,8 @@ class TestAsyncUnifieddatalibrary:
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
             client = AsyncUnifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1166,8 +1166,8 @@ class TestAsyncUnifieddatalibrary:
             with httpx.Client() as http_client:
                 AsyncUnifieddatalibrary(
                     base_url=base_url,
-                    username=username,
                     password=password,
+                    username=username,
                     _strict_response_validation=True,
                     http_client=cast(Any, http_client),
                 )
@@ -1175,8 +1175,8 @@ class TestAsyncUnifieddatalibrary:
     def test_default_headers_option(self) -> None:
         client = AsyncUnifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -1186,8 +1186,8 @@ class TestAsyncUnifieddatalibrary:
 
         client2 = AsyncUnifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -1201,8 +1201,8 @@ class TestAsyncUnifieddatalibrary:
     def test_default_query_option(self) -> None:
         client = AsyncUnifieddatalibrary(
             base_url=base_url,
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -1406,8 +1406,8 @@ class TestAsyncUnifieddatalibrary:
     def test_base_url_setter(self) -> None:
         client = AsyncUnifieddatalibrary(
             base_url="https://example.com/from_init",
-            username=username,
             password=password,
+            username=username,
             _strict_response_validation=True,
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1418,7 +1418,7 @@ class TestAsyncUnifieddatalibrary:
 
     def test_base_url_env(self) -> None:
         with update_env(UNIFIEDDATALIBRARY_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncUnifieddatalibrary(username=username, password=password, _strict_response_validation=True)
+            client = AsyncUnifieddatalibrary(password=password, username=username, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -1426,14 +1426,14 @@ class TestAsyncUnifieddatalibrary:
         [
             AsyncUnifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
             ),
             AsyncUnifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1455,14 +1455,14 @@ class TestAsyncUnifieddatalibrary:
         [
             AsyncUnifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
             ),
             AsyncUnifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1484,14 +1484,14 @@ class TestAsyncUnifieddatalibrary:
         [
             AsyncUnifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
             ),
             AsyncUnifieddatalibrary(
                 base_url="http://localhost:5000/custom/path/",
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1510,7 +1510,7 @@ class TestAsyncUnifieddatalibrary:
 
     async def test_copied_client_does_not_close_http(self) -> None:
         client = AsyncUnifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
         assert not client.is_closed()
 
@@ -1524,7 +1524,7 @@ class TestAsyncUnifieddatalibrary:
 
     async def test_client_context_manager(self) -> None:
         client = AsyncUnifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
         async with client as c2:
             assert c2 is client
@@ -1549,8 +1549,8 @@ class TestAsyncUnifieddatalibrary:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
             AsyncUnifieddatalibrary(
                 base_url=base_url,
-                username=username,
                 password=password,
+                username=username,
                 _strict_response_validation=True,
                 max_retries=cast(Any, None),
             )
@@ -1564,14 +1564,14 @@ class TestAsyncUnifieddatalibrary:
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
         strict_client = AsyncUnifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
         client = AsyncUnifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=False
+            base_url=base_url, password=password, username=username, _strict_response_validation=False
         )
 
         response = await client.get("/foo", cast_to=Model)
@@ -1602,7 +1602,7 @@ class TestAsyncUnifieddatalibrary:
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
         client = AsyncUnifieddatalibrary(
-            base_url=base_url, username=username, password=password, _strict_response_validation=True
+            base_url=base_url, password=password, username=username, _strict_response_validation=True
         )
 
         headers = httpx.Headers({"retry-after": retry_after})

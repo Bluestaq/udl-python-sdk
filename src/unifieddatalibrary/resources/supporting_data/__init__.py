@@ -50,6 +50,12 @@ from .provider_metadata import (
 )
 
 __all__ = [
+    "DataTypesResource",
+    "AsyncDataTypesResource",
+    "DataTypesResourceWithRawResponse",
+    "AsyncDataTypesResourceWithRawResponse",
+    "DataTypesResourceWithStreamingResponse",
+    "AsyncDataTypesResourceWithStreamingResponse",
     "DataownerResource",
     "AsyncDataownerResource",
     "DataownerResourceWithRawResponse",
@@ -62,12 +68,6 @@ __all__ = [
     "AsyncDataownerTypesResourceWithRawResponse",
     "DataownerTypesResourceWithStreamingResponse",
     "AsyncDataownerTypesResourceWithStreamingResponse",
-    "DataTypesResource",
-    "AsyncDataTypesResource",
-    "DataTypesResourceWithRawResponse",
-    "AsyncDataTypesResourceWithRawResponse",
-    "DataTypesResourceWithStreamingResponse",
-    "AsyncDataTypesResourceWithStreamingResponse",
     "ProviderMetadataResource",
     "AsyncProviderMetadataResource",
     "ProviderMetadataResourceWithRawResponse",

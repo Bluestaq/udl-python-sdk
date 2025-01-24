@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .history import (
+    HistoryResource,
+    AsyncHistoryResource,
+    HistoryResourceWithRawResponse,
+    AsyncHistoryResourceWithRawResponse,
+    HistoryResourceWithStreamingResponse,
+    AsyncHistoryResourceWithStreamingResponse,
+)
 from .datalink import (
     DatalinkResource,
     AsyncDatalinkResource,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncDatalinkResourceWithRawResponse",
     "DatalinkResourceWithStreamingResponse",
     "AsyncDatalinkResourceWithStreamingResponse",
+    "HistoryResource",
+    "AsyncHistoryResource",
+    "HistoryResourceWithRawResponse",
+    "AsyncHistoryResourceWithRawResponse",
+    "HistoryResourceWithStreamingResponse",
+    "AsyncHistoryResourceWithStreamingResponse",
     "LinkStatusResource",
     "AsyncLinkStatusResource",
     "LinkStatusResourceWithRawResponse",

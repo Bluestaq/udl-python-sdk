@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import h3geo_create_params
+from ..types import h3geo_list_params, h3geo_count_params, h3geo_tuple_params, h3geo_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -23,6 +23,9 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.h3geo_get_response import H3geoGetResponse
+from ..types.h3geo_list_response import H3geoListResponse
+from ..types.h3geo_tuple_response import H3geoTupleResponse
 
 __all__ = ["H3geoResource", "AsyncH3geoResource"]
 
@@ -71,10 +74,12 @@ class H3geoResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take a single H3Geo record and many associated H3Geo hex
-        cell records as a POST body and ingest into the database. This operation is
-        intended to be used for automated feeds into UDL. A specific role is required to
-        perform this service operation. Please contact the UDL team for assistance.
+        Service operation to take a single H3Geo record as a POST body and ingest into
+        the database. This operation does not persist any H3GeoHexCell points that may
+        be present in the body of the request. This operation is not intended to be used
+        for automated feeds into UDL. Data providers should contact the UDL team for
+        specific role assignments and for instructions on setting up a permanent feed
+        through an alternate mechanism.
 
         Args:
           cells: The collection of hex cells contained in this H3 data set. The number of cells
@@ -138,7 +143,7 @@ class H3geoResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            "/filedrop/udl-h3geo",
+            "/udl/h3geo",
             body=maybe_transform(
                 {
                     "cells": cells,
@@ -161,6 +166,204 @@ class H3geoResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> H3geoListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/h3geo",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"start_time": start_time}, h3geo_list_params.H3geoListParams),
+            ),
+            cast_to=H3geoListResponse,
+        )
+
+    def count(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+
+        Args:
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return self._get(
+            "/udl/h3geo/count",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"start_time": start_time}, h3geo_count_params.H3geoCountParams),
+            ),
+            cast_to=str,
+        )
+
+    def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> H3geoGetResponse:
+        """
+        Service operation to get a single RF geolocation by its unique ID passed as a
+        path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/h3geo/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=H3geoGetResponse,
+        )
+
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/h3geo/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> H3geoTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/h3geo/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    h3geo_tuple_params.H3geoTupleParams,
+                ),
+            ),
+            cast_to=H3geoTupleResponse,
         )
 
 
@@ -208,10 +411,12 @@ class AsyncH3geoResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take a single H3Geo record and many associated H3Geo hex
-        cell records as a POST body and ingest into the database. This operation is
-        intended to be used for automated feeds into UDL. A specific role is required to
-        perform this service operation. Please contact the UDL team for assistance.
+        Service operation to take a single H3Geo record as a POST body and ingest into
+        the database. This operation does not persist any H3GeoHexCell points that may
+        be present in the body of the request. This operation is not intended to be used
+        for automated feeds into UDL. Data providers should contact the UDL team for
+        specific role assignments and for instructions on setting up a permanent feed
+        through an alternate mechanism.
 
         Args:
           cells: The collection of hex cells contained in this H3 data set. The number of cells
@@ -275,7 +480,7 @@ class AsyncH3geoResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            "/filedrop/udl-h3geo",
+            "/udl/h3geo",
             body=await async_maybe_transform(
                 {
                     "cells": cells,
@@ -300,6 +505,204 @@ class AsyncH3geoResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> H3geoListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/h3geo",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"start_time": start_time}, h3geo_list_params.H3geoListParams),
+            ),
+            cast_to=H3geoListResponse,
+        )
+
+    async def count(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+
+        Args:
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return await self._get(
+            "/udl/h3geo/count",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"start_time": start_time}, h3geo_count_params.H3geoCountParams),
+            ),
+            cast_to=str,
+        )
+
+    async def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> H3geoGetResponse:
+        """
+        Service operation to get a single RF geolocation by its unique ID passed as a
+        path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/h3geo/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=H3geoGetResponse,
+        )
+
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/h3geo/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> H3geoTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/h3geo/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    h3geo_tuple_params.H3geoTupleParams,
+                ),
+            ),
+            cast_to=H3geoTupleResponse,
+        )
+
 
 class H3geoResourceWithRawResponse:
     def __init__(self, h3geo: H3geoResource) -> None:
@@ -307,6 +710,21 @@ class H3geoResourceWithRawResponse:
 
         self.create = to_raw_response_wrapper(
             h3geo.create,
+        )
+        self.list = to_raw_response_wrapper(
+            h3geo.list,
+        )
+        self.count = to_raw_response_wrapper(
+            h3geo.count,
+        )
+        self.get = to_raw_response_wrapper(
+            h3geo.get,
+        )
+        self.queryhelp = to_raw_response_wrapper(
+            h3geo.queryhelp,
+        )
+        self.tuple = to_raw_response_wrapper(
+            h3geo.tuple,
         )
 
 
@@ -317,6 +735,21 @@ class AsyncH3geoResourceWithRawResponse:
         self.create = async_to_raw_response_wrapper(
             h3geo.create,
         )
+        self.list = async_to_raw_response_wrapper(
+            h3geo.list,
+        )
+        self.count = async_to_raw_response_wrapper(
+            h3geo.count,
+        )
+        self.get = async_to_raw_response_wrapper(
+            h3geo.get,
+        )
+        self.queryhelp = async_to_raw_response_wrapper(
+            h3geo.queryhelp,
+        )
+        self.tuple = async_to_raw_response_wrapper(
+            h3geo.tuple,
+        )
 
 
 class H3geoResourceWithStreamingResponse:
@@ -326,6 +759,21 @@ class H3geoResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             h3geo.create,
         )
+        self.list = to_streamed_response_wrapper(
+            h3geo.list,
+        )
+        self.count = to_streamed_response_wrapper(
+            h3geo.count,
+        )
+        self.get = to_streamed_response_wrapper(
+            h3geo.get,
+        )
+        self.queryhelp = to_streamed_response_wrapper(
+            h3geo.queryhelp,
+        )
+        self.tuple = to_streamed_response_wrapper(
+            h3geo.tuple,
+        )
 
 
 class AsyncH3geoResourceWithStreamingResponse:
@@ -334,4 +782,19 @@ class AsyncH3geoResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             h3geo.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            h3geo.list,
+        )
+        self.count = async_to_streamed_response_wrapper(
+            h3geo.count,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            h3geo.get,
+        )
+        self.queryhelp = async_to_streamed_response_wrapper(
+            h3geo.queryhelp,
+        )
+        self.tuple = async_to_streamed_response_wrapper(
+            h3geo.tuple,
         )

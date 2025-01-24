@@ -59,6 +59,22 @@ from .gnssrawif import (
     GnssrawifResourceWithStreamingResponse,
     AsyncGnssrawifResourceWithStreamingResponse,
 )
+from .udl_h3geo import (
+    UdlH3geoResource,
+    AsyncUdlH3geoResource,
+    UdlH3geoResourceWithRawResponse,
+    AsyncUdlH3geoResourceWithRawResponse,
+    UdlH3geoResourceWithStreamingResponse,
+    AsyncUdlH3geoResourceWithStreamingResponse,
+)
+from .udl_sigact import (
+    UdlSigactResource,
+    AsyncUdlSigactResource,
+    UdlSigactResourceWithRawResponse,
+    AsyncUdlSigactResourceWithRawResponse,
+    UdlSigactResourceWithStreamingResponse,
+    AsyncUdlSigactResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .flightplans import (
     FlightplansResource,
@@ -139,6 +155,14 @@ from .gnssobservations import (
     AsyncGnssobservationsResourceWithRawResponse,
     GnssobservationsResourceWithStreamingResponse,
     AsyncGnssobservationsResourceWithStreamingResponse,
+)
+from .udl_itemtracking import (
+    UdlItemtrackingResource,
+    AsyncUdlItemtrackingResource,
+    UdlItemtrackingResourceWithRawResponse,
+    AsyncUdlItemtrackingResourceWithRawResponse,
+    UdlItemtrackingResourceWithStreamingResponse,
+    AsyncUdlItemtrackingResourceWithStreamingResponse,
 )
 from .orbit_determination import (
     OrbitDeterminationResource,
@@ -226,6 +250,10 @@ class FiledropResource(SyncAPIResource):
         return GnssrawifResource(self._client)
 
     @cached_property
+    def mission_ops(self) -> MissionOpsResource:
+        return MissionOpsResource(self._client)
+
+    @cached_property
     def mti(self) -> MtiResource:
         return MtiResource(self._client)
 
@@ -242,20 +270,16 @@ class FiledropResource(SyncAPIResource):
         return OrbitTrackResource(self._client)
 
     @cached_property
-    def mission_ops(self) -> MissionOpsResource:
-        return MissionOpsResource(self._client)
-
-    @cached_property
     def report_and_activity(self) -> ReportAndActivityResource:
         return ReportAndActivityResource(self._client)
 
     @cached_property
-    def surfaceobstructions(self) -> SurfaceobstructionsResource:
-        return SurfaceobstructionsResource(self._client)
-
-    @cached_property
     def state_vectors(self) -> StateVectorsResource:
         return StateVectorsResource(self._client)
+
+    @cached_property
+    def surfaceobstructions(self) -> SurfaceobstructionsResource:
+        return SurfaceobstructionsResource(self._client)
 
     @cached_property
     def trackroutes(self) -> TrackroutesResource:
@@ -272,6 +296,18 @@ class FiledropResource(SyncAPIResource):
     @cached_property
     def weather_reports(self) -> WeatherReportsResource:
         return WeatherReportsResource(self._client)
+
+    @cached_property
+    def udl_h3geo(self) -> UdlH3geoResource:
+        return UdlH3geoResource(self._client)
+
+    @cached_property
+    def udl_itemtracking(self) -> UdlItemtrackingResource:
+        return UdlItemtrackingResource(self._client)
+
+    @cached_property
+    def udl_sigact(self) -> UdlSigactResource:
+        return UdlSigactResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> FiledropResourceWithRawResponse:
@@ -335,6 +371,10 @@ class AsyncFiledropResource(AsyncAPIResource):
         return AsyncGnssrawifResource(self._client)
 
     @cached_property
+    def mission_ops(self) -> AsyncMissionOpsResource:
+        return AsyncMissionOpsResource(self._client)
+
+    @cached_property
     def mti(self) -> AsyncMtiResource:
         return AsyncMtiResource(self._client)
 
@@ -351,20 +391,16 @@ class AsyncFiledropResource(AsyncAPIResource):
         return AsyncOrbitTrackResource(self._client)
 
     @cached_property
-    def mission_ops(self) -> AsyncMissionOpsResource:
-        return AsyncMissionOpsResource(self._client)
-
-    @cached_property
     def report_and_activity(self) -> AsyncReportAndActivityResource:
         return AsyncReportAndActivityResource(self._client)
 
     @cached_property
-    def surfaceobstructions(self) -> AsyncSurfaceobstructionsResource:
-        return AsyncSurfaceobstructionsResource(self._client)
-
-    @cached_property
     def state_vectors(self) -> AsyncStateVectorsResource:
         return AsyncStateVectorsResource(self._client)
+
+    @cached_property
+    def surfaceobstructions(self) -> AsyncSurfaceobstructionsResource:
+        return AsyncSurfaceobstructionsResource(self._client)
 
     @cached_property
     def trackroutes(self) -> AsyncTrackroutesResource:
@@ -381,6 +417,18 @@ class AsyncFiledropResource(AsyncAPIResource):
     @cached_property
     def weather_reports(self) -> AsyncWeatherReportsResource:
         return AsyncWeatherReportsResource(self._client)
+
+    @cached_property
+    def udl_h3geo(self) -> AsyncUdlH3geoResource:
+        return AsyncUdlH3geoResource(self._client)
+
+    @cached_property
+    def udl_itemtracking(self) -> AsyncUdlItemtrackingResource:
+        return AsyncUdlItemtrackingResource(self._client)
+
+    @cached_property
+    def udl_sigact(self) -> AsyncUdlSigactResource:
+        return AsyncUdlSigactResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncFiledropResourceWithRawResponse:
@@ -447,6 +495,10 @@ class FiledropResourceWithRawResponse:
         return GnssrawifResourceWithRawResponse(self._filedrop.gnssrawif)
 
     @cached_property
+    def mission_ops(self) -> MissionOpsResourceWithRawResponse:
+        return MissionOpsResourceWithRawResponse(self._filedrop.mission_ops)
+
+    @cached_property
     def mti(self) -> MtiResourceWithRawResponse:
         return MtiResourceWithRawResponse(self._filedrop.mti)
 
@@ -463,20 +515,16 @@ class FiledropResourceWithRawResponse:
         return OrbitTrackResourceWithRawResponse(self._filedrop.orbit_track)
 
     @cached_property
-    def mission_ops(self) -> MissionOpsResourceWithRawResponse:
-        return MissionOpsResourceWithRawResponse(self._filedrop.mission_ops)
-
-    @cached_property
     def report_and_activity(self) -> ReportAndActivityResourceWithRawResponse:
         return ReportAndActivityResourceWithRawResponse(self._filedrop.report_and_activity)
 
     @cached_property
-    def surfaceobstructions(self) -> SurfaceobstructionsResourceWithRawResponse:
-        return SurfaceobstructionsResourceWithRawResponse(self._filedrop.surfaceobstructions)
-
-    @cached_property
     def state_vectors(self) -> StateVectorsResourceWithRawResponse:
         return StateVectorsResourceWithRawResponse(self._filedrop.state_vectors)
+
+    @cached_property
+    def surfaceobstructions(self) -> SurfaceobstructionsResourceWithRawResponse:
+        return SurfaceobstructionsResourceWithRawResponse(self._filedrop.surfaceobstructions)
 
     @cached_property
     def trackroutes(self) -> TrackroutesResourceWithRawResponse:
@@ -493,6 +541,18 @@ class FiledropResourceWithRawResponse:
     @cached_property
     def weather_reports(self) -> WeatherReportsResourceWithRawResponse:
         return WeatherReportsResourceWithRawResponse(self._filedrop.weather_reports)
+
+    @cached_property
+    def udl_h3geo(self) -> UdlH3geoResourceWithRawResponse:
+        return UdlH3geoResourceWithRawResponse(self._filedrop.udl_h3geo)
+
+    @cached_property
+    def udl_itemtracking(self) -> UdlItemtrackingResourceWithRawResponse:
+        return UdlItemtrackingResourceWithRawResponse(self._filedrop.udl_itemtracking)
+
+    @cached_property
+    def udl_sigact(self) -> UdlSigactResourceWithRawResponse:
+        return UdlSigactResourceWithRawResponse(self._filedrop.udl_sigact)
 
 
 class AsyncFiledropResourceWithRawResponse:
@@ -540,6 +600,10 @@ class AsyncFiledropResourceWithRawResponse:
         return AsyncGnssrawifResourceWithRawResponse(self._filedrop.gnssrawif)
 
     @cached_property
+    def mission_ops(self) -> AsyncMissionOpsResourceWithRawResponse:
+        return AsyncMissionOpsResourceWithRawResponse(self._filedrop.mission_ops)
+
+    @cached_property
     def mti(self) -> AsyncMtiResourceWithRawResponse:
         return AsyncMtiResourceWithRawResponse(self._filedrop.mti)
 
@@ -556,20 +620,16 @@ class AsyncFiledropResourceWithRawResponse:
         return AsyncOrbitTrackResourceWithRawResponse(self._filedrop.orbit_track)
 
     @cached_property
-    def mission_ops(self) -> AsyncMissionOpsResourceWithRawResponse:
-        return AsyncMissionOpsResourceWithRawResponse(self._filedrop.mission_ops)
-
-    @cached_property
     def report_and_activity(self) -> AsyncReportAndActivityResourceWithRawResponse:
         return AsyncReportAndActivityResourceWithRawResponse(self._filedrop.report_and_activity)
 
     @cached_property
-    def surfaceobstructions(self) -> AsyncSurfaceobstructionsResourceWithRawResponse:
-        return AsyncSurfaceobstructionsResourceWithRawResponse(self._filedrop.surfaceobstructions)
-
-    @cached_property
     def state_vectors(self) -> AsyncStateVectorsResourceWithRawResponse:
         return AsyncStateVectorsResourceWithRawResponse(self._filedrop.state_vectors)
+
+    @cached_property
+    def surfaceobstructions(self) -> AsyncSurfaceobstructionsResourceWithRawResponse:
+        return AsyncSurfaceobstructionsResourceWithRawResponse(self._filedrop.surfaceobstructions)
 
     @cached_property
     def trackroutes(self) -> AsyncTrackroutesResourceWithRawResponse:
@@ -586,6 +646,18 @@ class AsyncFiledropResourceWithRawResponse:
     @cached_property
     def weather_reports(self) -> AsyncWeatherReportsResourceWithRawResponse:
         return AsyncWeatherReportsResourceWithRawResponse(self._filedrop.weather_reports)
+
+    @cached_property
+    def udl_h3geo(self) -> AsyncUdlH3geoResourceWithRawResponse:
+        return AsyncUdlH3geoResourceWithRawResponse(self._filedrop.udl_h3geo)
+
+    @cached_property
+    def udl_itemtracking(self) -> AsyncUdlItemtrackingResourceWithRawResponse:
+        return AsyncUdlItemtrackingResourceWithRawResponse(self._filedrop.udl_itemtracking)
+
+    @cached_property
+    def udl_sigact(self) -> AsyncUdlSigactResourceWithRawResponse:
+        return AsyncUdlSigactResourceWithRawResponse(self._filedrop.udl_sigact)
 
 
 class FiledropResourceWithStreamingResponse:
@@ -633,6 +705,10 @@ class FiledropResourceWithStreamingResponse:
         return GnssrawifResourceWithStreamingResponse(self._filedrop.gnssrawif)
 
     @cached_property
+    def mission_ops(self) -> MissionOpsResourceWithStreamingResponse:
+        return MissionOpsResourceWithStreamingResponse(self._filedrop.mission_ops)
+
+    @cached_property
     def mti(self) -> MtiResourceWithStreamingResponse:
         return MtiResourceWithStreamingResponse(self._filedrop.mti)
 
@@ -649,20 +725,16 @@ class FiledropResourceWithStreamingResponse:
         return OrbitTrackResourceWithStreamingResponse(self._filedrop.orbit_track)
 
     @cached_property
-    def mission_ops(self) -> MissionOpsResourceWithStreamingResponse:
-        return MissionOpsResourceWithStreamingResponse(self._filedrop.mission_ops)
-
-    @cached_property
     def report_and_activity(self) -> ReportAndActivityResourceWithStreamingResponse:
         return ReportAndActivityResourceWithStreamingResponse(self._filedrop.report_and_activity)
 
     @cached_property
-    def surfaceobstructions(self) -> SurfaceobstructionsResourceWithStreamingResponse:
-        return SurfaceobstructionsResourceWithStreamingResponse(self._filedrop.surfaceobstructions)
-
-    @cached_property
     def state_vectors(self) -> StateVectorsResourceWithStreamingResponse:
         return StateVectorsResourceWithStreamingResponse(self._filedrop.state_vectors)
+
+    @cached_property
+    def surfaceobstructions(self) -> SurfaceobstructionsResourceWithStreamingResponse:
+        return SurfaceobstructionsResourceWithStreamingResponse(self._filedrop.surfaceobstructions)
 
     @cached_property
     def trackroutes(self) -> TrackroutesResourceWithStreamingResponse:
@@ -679,6 +751,18 @@ class FiledropResourceWithStreamingResponse:
     @cached_property
     def weather_reports(self) -> WeatherReportsResourceWithStreamingResponse:
         return WeatherReportsResourceWithStreamingResponse(self._filedrop.weather_reports)
+
+    @cached_property
+    def udl_h3geo(self) -> UdlH3geoResourceWithStreamingResponse:
+        return UdlH3geoResourceWithStreamingResponse(self._filedrop.udl_h3geo)
+
+    @cached_property
+    def udl_itemtracking(self) -> UdlItemtrackingResourceWithStreamingResponse:
+        return UdlItemtrackingResourceWithStreamingResponse(self._filedrop.udl_itemtracking)
+
+    @cached_property
+    def udl_sigact(self) -> UdlSigactResourceWithStreamingResponse:
+        return UdlSigactResourceWithStreamingResponse(self._filedrop.udl_sigact)
 
 
 class AsyncFiledropResourceWithStreamingResponse:
@@ -726,6 +810,10 @@ class AsyncFiledropResourceWithStreamingResponse:
         return AsyncGnssrawifResourceWithStreamingResponse(self._filedrop.gnssrawif)
 
     @cached_property
+    def mission_ops(self) -> AsyncMissionOpsResourceWithStreamingResponse:
+        return AsyncMissionOpsResourceWithStreamingResponse(self._filedrop.mission_ops)
+
+    @cached_property
     def mti(self) -> AsyncMtiResourceWithStreamingResponse:
         return AsyncMtiResourceWithStreamingResponse(self._filedrop.mti)
 
@@ -742,20 +830,16 @@ class AsyncFiledropResourceWithStreamingResponse:
         return AsyncOrbitTrackResourceWithStreamingResponse(self._filedrop.orbit_track)
 
     @cached_property
-    def mission_ops(self) -> AsyncMissionOpsResourceWithStreamingResponse:
-        return AsyncMissionOpsResourceWithStreamingResponse(self._filedrop.mission_ops)
-
-    @cached_property
     def report_and_activity(self) -> AsyncReportAndActivityResourceWithStreamingResponse:
         return AsyncReportAndActivityResourceWithStreamingResponse(self._filedrop.report_and_activity)
 
     @cached_property
-    def surfaceobstructions(self) -> AsyncSurfaceobstructionsResourceWithStreamingResponse:
-        return AsyncSurfaceobstructionsResourceWithStreamingResponse(self._filedrop.surfaceobstructions)
-
-    @cached_property
     def state_vectors(self) -> AsyncStateVectorsResourceWithStreamingResponse:
         return AsyncStateVectorsResourceWithStreamingResponse(self._filedrop.state_vectors)
+
+    @cached_property
+    def surfaceobstructions(self) -> AsyncSurfaceobstructionsResourceWithStreamingResponse:
+        return AsyncSurfaceobstructionsResourceWithStreamingResponse(self._filedrop.surfaceobstructions)
 
     @cached_property
     def trackroutes(self) -> AsyncTrackroutesResourceWithStreamingResponse:
@@ -772,3 +856,15 @@ class AsyncFiledropResourceWithStreamingResponse:
     @cached_property
     def weather_reports(self) -> AsyncWeatherReportsResourceWithStreamingResponse:
         return AsyncWeatherReportsResourceWithStreamingResponse(self._filedrop.weather_reports)
+
+    @cached_property
+    def udl_h3geo(self) -> AsyncUdlH3geoResourceWithStreamingResponse:
+        return AsyncUdlH3geoResourceWithStreamingResponse(self._filedrop.udl_h3geo)
+
+    @cached_property
+    def udl_itemtracking(self) -> AsyncUdlItemtrackingResourceWithStreamingResponse:
+        return AsyncUdlItemtrackingResourceWithStreamingResponse(self._filedrop.udl_itemtracking)
+
+    @cached_property
+    def udl_sigact(self) -> AsyncUdlSigactResourceWithStreamingResponse:
+        return AsyncUdlSigactResourceWithStreamingResponse(self._filedrop.udl_sigact)

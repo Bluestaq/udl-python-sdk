@@ -52,6 +52,14 @@ from .airspace_control_orders import (
     AirspaceControlOrdersResourceWithStreamingResponse,
     AsyncAirspaceControlOrdersResourceWithStreamingResponse,
 )
+from .logistics_support.logistics_support import (
+    LogisticsSupportResource,
+    AsyncLogisticsSupportResource,
+    LogisticsSupportResourceWithRawResponse,
+    AsyncLogisticsSupportResourceWithRawResponse,
+    LogisticsSupportResourceWithStreamingResponse,
+    AsyncLogisticsSupportResourceWithStreamingResponse,
+)
 from .diplomatic_clearance.diplomatic_clearance import (
     DiplomaticClearanceResource,
     AsyncDiplomaticClearanceResource,
@@ -66,20 +74,8 @@ __all__ = ["AirOperationsResource", "AsyncAirOperationsResource"]
 
 class AirOperationsResource(SyncAPIResource):
     @cached_property
-    def crewpapers(self) -> CrewpapersResource:
-        return CrewpapersResource(self._client)
-
-    @cached_property
-    def aircraft_sorties(self) -> AircraftSortiesResource:
-        return AircraftSortiesResource(self._client)
-
-    @cached_property
     def air_events(self) -> AirEventsResource:
         return AirEventsResource(self._client)
-
-    @cached_property
-    def airspace_control_orders(self) -> AirspaceControlOrdersResource:
-        return AirspaceControlOrdersResource(self._client)
 
     @cached_property
     def air_tasking_orders(self) -> AirTaskingOrdersResource:
@@ -90,8 +86,24 @@ class AirOperationsResource(SyncAPIResource):
         return AircraftSortieResource(self._client)
 
     @cached_property
+    def aircraft_sorties(self) -> AircraftSortiesResource:
+        return AircraftSortiesResource(self._client)
+
+    @cached_property
+    def airspace_control_orders(self) -> AirspaceControlOrdersResource:
+        return AirspaceControlOrdersResource(self._client)
+
+    @cached_property
+    def crewpapers(self) -> CrewpapersResource:
+        return CrewpapersResource(self._client)
+
+    @cached_property
     def diplomatic_clearance(self) -> DiplomaticClearanceResource:
         return DiplomaticClearanceResource(self._client)
+
+    @cached_property
+    def logistics_support(self) -> LogisticsSupportResource:
+        return LogisticsSupportResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AirOperationsResourceWithRawResponse:
@@ -115,20 +127,8 @@ class AirOperationsResource(SyncAPIResource):
 
 class AsyncAirOperationsResource(AsyncAPIResource):
     @cached_property
-    def crewpapers(self) -> AsyncCrewpapersResource:
-        return AsyncCrewpapersResource(self._client)
-
-    @cached_property
-    def aircraft_sorties(self) -> AsyncAircraftSortiesResource:
-        return AsyncAircraftSortiesResource(self._client)
-
-    @cached_property
     def air_events(self) -> AsyncAirEventsResource:
         return AsyncAirEventsResource(self._client)
-
-    @cached_property
-    def airspace_control_orders(self) -> AsyncAirspaceControlOrdersResource:
-        return AsyncAirspaceControlOrdersResource(self._client)
 
     @cached_property
     def air_tasking_orders(self) -> AsyncAirTaskingOrdersResource:
@@ -139,8 +139,24 @@ class AsyncAirOperationsResource(AsyncAPIResource):
         return AsyncAircraftSortieResource(self._client)
 
     @cached_property
+    def aircraft_sorties(self) -> AsyncAircraftSortiesResource:
+        return AsyncAircraftSortiesResource(self._client)
+
+    @cached_property
+    def airspace_control_orders(self) -> AsyncAirspaceControlOrdersResource:
+        return AsyncAirspaceControlOrdersResource(self._client)
+
+    @cached_property
+    def crewpapers(self) -> AsyncCrewpapersResource:
+        return AsyncCrewpapersResource(self._client)
+
+    @cached_property
     def diplomatic_clearance(self) -> AsyncDiplomaticClearanceResource:
         return AsyncDiplomaticClearanceResource(self._client)
+
+    @cached_property
+    def logistics_support(self) -> AsyncLogisticsSupportResource:
+        return AsyncLogisticsSupportResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncAirOperationsResourceWithRawResponse:
@@ -167,20 +183,8 @@ class AirOperationsResourceWithRawResponse:
         self._air_operations = air_operations
 
     @cached_property
-    def crewpapers(self) -> CrewpapersResourceWithRawResponse:
-        return CrewpapersResourceWithRawResponse(self._air_operations.crewpapers)
-
-    @cached_property
-    def aircraft_sorties(self) -> AircraftSortiesResourceWithRawResponse:
-        return AircraftSortiesResourceWithRawResponse(self._air_operations.aircraft_sorties)
-
-    @cached_property
     def air_events(self) -> AirEventsResourceWithRawResponse:
         return AirEventsResourceWithRawResponse(self._air_operations.air_events)
-
-    @cached_property
-    def airspace_control_orders(self) -> AirspaceControlOrdersResourceWithRawResponse:
-        return AirspaceControlOrdersResourceWithRawResponse(self._air_operations.airspace_control_orders)
 
     @cached_property
     def air_tasking_orders(self) -> AirTaskingOrdersResourceWithRawResponse:
@@ -191,8 +195,24 @@ class AirOperationsResourceWithRawResponse:
         return AircraftSortieResourceWithRawResponse(self._air_operations.aircraft_sortie)
 
     @cached_property
+    def aircraft_sorties(self) -> AircraftSortiesResourceWithRawResponse:
+        return AircraftSortiesResourceWithRawResponse(self._air_operations.aircraft_sorties)
+
+    @cached_property
+    def airspace_control_orders(self) -> AirspaceControlOrdersResourceWithRawResponse:
+        return AirspaceControlOrdersResourceWithRawResponse(self._air_operations.airspace_control_orders)
+
+    @cached_property
+    def crewpapers(self) -> CrewpapersResourceWithRawResponse:
+        return CrewpapersResourceWithRawResponse(self._air_operations.crewpapers)
+
+    @cached_property
     def diplomatic_clearance(self) -> DiplomaticClearanceResourceWithRawResponse:
         return DiplomaticClearanceResourceWithRawResponse(self._air_operations.diplomatic_clearance)
+
+    @cached_property
+    def logistics_support(self) -> LogisticsSupportResourceWithRawResponse:
+        return LogisticsSupportResourceWithRawResponse(self._air_operations.logistics_support)
 
 
 class AsyncAirOperationsResourceWithRawResponse:
@@ -200,20 +220,8 @@ class AsyncAirOperationsResourceWithRawResponse:
         self._air_operations = air_operations
 
     @cached_property
-    def crewpapers(self) -> AsyncCrewpapersResourceWithRawResponse:
-        return AsyncCrewpapersResourceWithRawResponse(self._air_operations.crewpapers)
-
-    @cached_property
-    def aircraft_sorties(self) -> AsyncAircraftSortiesResourceWithRawResponse:
-        return AsyncAircraftSortiesResourceWithRawResponse(self._air_operations.aircraft_sorties)
-
-    @cached_property
     def air_events(self) -> AsyncAirEventsResourceWithRawResponse:
         return AsyncAirEventsResourceWithRawResponse(self._air_operations.air_events)
-
-    @cached_property
-    def airspace_control_orders(self) -> AsyncAirspaceControlOrdersResourceWithRawResponse:
-        return AsyncAirspaceControlOrdersResourceWithRawResponse(self._air_operations.airspace_control_orders)
 
     @cached_property
     def air_tasking_orders(self) -> AsyncAirTaskingOrdersResourceWithRawResponse:
@@ -224,8 +232,24 @@ class AsyncAirOperationsResourceWithRawResponse:
         return AsyncAircraftSortieResourceWithRawResponse(self._air_operations.aircraft_sortie)
 
     @cached_property
+    def aircraft_sorties(self) -> AsyncAircraftSortiesResourceWithRawResponse:
+        return AsyncAircraftSortiesResourceWithRawResponse(self._air_operations.aircraft_sorties)
+
+    @cached_property
+    def airspace_control_orders(self) -> AsyncAirspaceControlOrdersResourceWithRawResponse:
+        return AsyncAirspaceControlOrdersResourceWithRawResponse(self._air_operations.airspace_control_orders)
+
+    @cached_property
+    def crewpapers(self) -> AsyncCrewpapersResourceWithRawResponse:
+        return AsyncCrewpapersResourceWithRawResponse(self._air_operations.crewpapers)
+
+    @cached_property
     def diplomatic_clearance(self) -> AsyncDiplomaticClearanceResourceWithRawResponse:
         return AsyncDiplomaticClearanceResourceWithRawResponse(self._air_operations.diplomatic_clearance)
+
+    @cached_property
+    def logistics_support(self) -> AsyncLogisticsSupportResourceWithRawResponse:
+        return AsyncLogisticsSupportResourceWithRawResponse(self._air_operations.logistics_support)
 
 
 class AirOperationsResourceWithStreamingResponse:
@@ -233,20 +257,8 @@ class AirOperationsResourceWithStreamingResponse:
         self._air_operations = air_operations
 
     @cached_property
-    def crewpapers(self) -> CrewpapersResourceWithStreamingResponse:
-        return CrewpapersResourceWithStreamingResponse(self._air_operations.crewpapers)
-
-    @cached_property
-    def aircraft_sorties(self) -> AircraftSortiesResourceWithStreamingResponse:
-        return AircraftSortiesResourceWithStreamingResponse(self._air_operations.aircraft_sorties)
-
-    @cached_property
     def air_events(self) -> AirEventsResourceWithStreamingResponse:
         return AirEventsResourceWithStreamingResponse(self._air_operations.air_events)
-
-    @cached_property
-    def airspace_control_orders(self) -> AirspaceControlOrdersResourceWithStreamingResponse:
-        return AirspaceControlOrdersResourceWithStreamingResponse(self._air_operations.airspace_control_orders)
 
     @cached_property
     def air_tasking_orders(self) -> AirTaskingOrdersResourceWithStreamingResponse:
@@ -257,8 +269,24 @@ class AirOperationsResourceWithStreamingResponse:
         return AircraftSortieResourceWithStreamingResponse(self._air_operations.aircraft_sortie)
 
     @cached_property
+    def aircraft_sorties(self) -> AircraftSortiesResourceWithStreamingResponse:
+        return AircraftSortiesResourceWithStreamingResponse(self._air_operations.aircraft_sorties)
+
+    @cached_property
+    def airspace_control_orders(self) -> AirspaceControlOrdersResourceWithStreamingResponse:
+        return AirspaceControlOrdersResourceWithStreamingResponse(self._air_operations.airspace_control_orders)
+
+    @cached_property
+    def crewpapers(self) -> CrewpapersResourceWithStreamingResponse:
+        return CrewpapersResourceWithStreamingResponse(self._air_operations.crewpapers)
+
+    @cached_property
     def diplomatic_clearance(self) -> DiplomaticClearanceResourceWithStreamingResponse:
         return DiplomaticClearanceResourceWithStreamingResponse(self._air_operations.diplomatic_clearance)
+
+    @cached_property
+    def logistics_support(self) -> LogisticsSupportResourceWithStreamingResponse:
+        return LogisticsSupportResourceWithStreamingResponse(self._air_operations.logistics_support)
 
 
 class AsyncAirOperationsResourceWithStreamingResponse:
@@ -266,20 +294,8 @@ class AsyncAirOperationsResourceWithStreamingResponse:
         self._air_operations = air_operations
 
     @cached_property
-    def crewpapers(self) -> AsyncCrewpapersResourceWithStreamingResponse:
-        return AsyncCrewpapersResourceWithStreamingResponse(self._air_operations.crewpapers)
-
-    @cached_property
-    def aircraft_sorties(self) -> AsyncAircraftSortiesResourceWithStreamingResponse:
-        return AsyncAircraftSortiesResourceWithStreamingResponse(self._air_operations.aircraft_sorties)
-
-    @cached_property
     def air_events(self) -> AsyncAirEventsResourceWithStreamingResponse:
         return AsyncAirEventsResourceWithStreamingResponse(self._air_operations.air_events)
-
-    @cached_property
-    def airspace_control_orders(self) -> AsyncAirspaceControlOrdersResourceWithStreamingResponse:
-        return AsyncAirspaceControlOrdersResourceWithStreamingResponse(self._air_operations.airspace_control_orders)
 
     @cached_property
     def air_tasking_orders(self) -> AsyncAirTaskingOrdersResourceWithStreamingResponse:
@@ -290,5 +306,21 @@ class AsyncAirOperationsResourceWithStreamingResponse:
         return AsyncAircraftSortieResourceWithStreamingResponse(self._air_operations.aircraft_sortie)
 
     @cached_property
+    def aircraft_sorties(self) -> AsyncAircraftSortiesResourceWithStreamingResponse:
+        return AsyncAircraftSortiesResourceWithStreamingResponse(self._air_operations.aircraft_sorties)
+
+    @cached_property
+    def airspace_control_orders(self) -> AsyncAirspaceControlOrdersResourceWithStreamingResponse:
+        return AsyncAirspaceControlOrdersResourceWithStreamingResponse(self._air_operations.airspace_control_orders)
+
+    @cached_property
+    def crewpapers(self) -> AsyncCrewpapersResourceWithStreamingResponse:
+        return AsyncCrewpapersResourceWithStreamingResponse(self._air_operations.crewpapers)
+
+    @cached_property
     def diplomatic_clearance(self) -> AsyncDiplomaticClearanceResourceWithStreamingResponse:
         return AsyncDiplomaticClearanceResourceWithStreamingResponse(self._air_operations.diplomatic_clearance)
+
+    @cached_property
+    def logistics_support(self) -> AsyncLogisticsSupportResourceWithStreamingResponse:
+        return AsyncLogisticsSupportResourceWithStreamingResponse(self._air_operations.logistics_support)

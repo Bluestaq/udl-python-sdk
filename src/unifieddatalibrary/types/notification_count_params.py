@@ -1,0 +1,16 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Union
+from datetime import date
+from typing_extensions import Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
+
+__all__ = ["NotificationCountParams"]
+
+
+class NotificationCountParams(TypedDict, total=False):
+    created_at: Required[Annotated[Union[str, date], PropertyInfo(alias="createdAt", format="iso8601")]]
+    """Time the row was created in the database. (YYYY-MM-DDTHH:MM:SS.sssZ)"""

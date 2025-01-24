@@ -1,0 +1,23 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Annotated, TypedDict
+
+from .._utils import PropertyInfo
+
+__all__ = ["NavigationalobstructionCountParams"]
+
+
+class NavigationalobstructionCountParams(TypedDict, total=False):
+    cycle_date: Annotated[str, PropertyInfo(alias="cycleDate")]
+    """
+    (One or more of fields 'cycleDate, obstacleId' are required.) Start date of this
+    obstruction data set's currency, in ISO 8601 date-only format. (YYYY-MM-DD)
+    """
+
+    obstacle_id: Annotated[str, PropertyInfo(alias="obstacleId")]
+    """
+    (One or more of fields 'cycleDate, obstacleId' are required.) The ID of this
+    obstacle.
+    """

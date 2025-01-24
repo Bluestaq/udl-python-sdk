@@ -1,0 +1,651 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+import os
+from typing import Any, cast
+
+import pytest
+
+from tests.utils import assert_matches_type
+from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.types import (
+    LaunchvehicledetailGetResponse,
+    LaunchvehicledetailListResponse,
+)
+
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+
+
+class TestLaunchvehicledetails:
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    def test_method_create(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+            id="LAUNCHVEHICLEDETAILS-ID",
+            attitude_accuracy=10.23,
+            category="Example-category",
+            deployment_rotation_rate=10.23,
+            diameter=10.23,
+            est_launch_price=10.23,
+            est_launch_price_typical=10.23,
+            fairing_external_diameter=10.23,
+            fairing_internal_diameter=10.23,
+            fairing_length=10.23,
+            fairing_mass=10.23,
+            fairing_material="Example-fairing-material",
+            fairing_name="Example-fairing-name",
+            fairing_notes="Example notes",
+            family="Example-family",
+            geo_payload_mass=10.23,
+            gto_inj3_sig_accuracy_apogee_margin=10.23,
+            gto_inj3_sig_accuracy_apogee_target=10.23,
+            gto_inj3_sig_accuracy_inclination_margin=10.23,
+            gto_inj3_sig_accuracy_inclination_target=10.23,
+            gto_inj3_sig_accuracy_perigee_margin=10.23,
+            gto_inj3_sig_accuracy_perigee_target=10.23,
+            gto_payload_mass=10.23,
+            launch_mass=10.23,
+            launch_prefix="AX011",
+            length=10.23,
+            leo_payload_mass=10.23,
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_accel_load=10.23,
+            max_acoustic_level=10.23,
+            max_acoustic_level_range=10.23,
+            max_fairing_pressure_change=10.23,
+            max_flight_shock_force=10.23,
+            max_flight_shock_freq=10.23,
+            max_payload_freq_lat=10.23,
+            max_payload_freq_lon=10.23,
+            minor_variant="Example-minor-variant",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Bromine",
+            payload_notes="Example notes",
+            payload_separation_rate=10.23,
+            propellant="Nitrogen",
+            sound_pressure_level=10.23,
+            source_url="Example URL",
+            sso_payload_mass=10.23,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            variant="Example-variant",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
+        response = client.launchvehicledetails.with_raw_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = response.parse()
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
+        with client.launchvehicledetails.with_streaming_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = response.parse()
+            assert launchvehicledetail is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_update(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+            id_2="LAUNCHVEHICLEDETAILS-ID",
+            attitude_accuracy=10.23,
+            category="Example-category",
+            deployment_rotation_rate=10.23,
+            diameter=10.23,
+            est_launch_price=10.23,
+            est_launch_price_typical=10.23,
+            fairing_external_diameter=10.23,
+            fairing_internal_diameter=10.23,
+            fairing_length=10.23,
+            fairing_mass=10.23,
+            fairing_material="Example-fairing-material",
+            fairing_name="Example-fairing-name",
+            fairing_notes="Example notes",
+            family="Example-family",
+            geo_payload_mass=10.23,
+            gto_inj3_sig_accuracy_apogee_margin=10.23,
+            gto_inj3_sig_accuracy_apogee_target=10.23,
+            gto_inj3_sig_accuracy_inclination_margin=10.23,
+            gto_inj3_sig_accuracy_inclination_target=10.23,
+            gto_inj3_sig_accuracy_perigee_margin=10.23,
+            gto_inj3_sig_accuracy_perigee_target=10.23,
+            gto_payload_mass=10.23,
+            launch_mass=10.23,
+            launch_prefix="AX011",
+            length=10.23,
+            leo_payload_mass=10.23,
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_accel_load=10.23,
+            max_acoustic_level=10.23,
+            max_acoustic_level_range=10.23,
+            max_fairing_pressure_change=10.23,
+            max_flight_shock_force=10.23,
+            max_flight_shock_freq=10.23,
+            max_payload_freq_lat=10.23,
+            max_payload_freq_lon=10.23,
+            minor_variant="Example-minor-variant",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Bromine",
+            payload_notes="Example notes",
+            payload_separation_rate=10.23,
+            propellant="Nitrogen",
+            sound_pressure_level=10.23,
+            source_url="Example URL",
+            sso_payload_mass=10.23,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            variant="Example-variant",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
+        response = client.launchvehicledetails.with_raw_response.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = response.parse()
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
+        with client.launchvehicledetails.with_streaming_response.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = response.parse()
+            assert launchvehicledetail is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+            client.launchvehicledetails.with_raw_response.update(
+                id_1="",
+                classification_marking="U",
+                data_mode="REAL",
+                id_launch_vehicle="LAUNCHVEHICLE-ID",
+                source="Bluestaq",
+                id_2="",
+            )
+
+    @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.list()
+        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.launchvehicledetails.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = response.parse()
+        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.launchvehicledetails.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = response.parse()
+            assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_delete(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.delete(
+            "id",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_raw_response_delete(self, client: Unifieddatalibrary) -> None:
+        response = client.launchvehicledetails.with_raw_response.delete(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = response.parse()
+        assert launchvehicledetail is None
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Unifieddatalibrary) -> None:
+        with client.launchvehicledetails.with_streaming_response.delete(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = response.parse()
+            assert launchvehicledetail is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.launchvehicledetails.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    def test_method_get(self, client: Unifieddatalibrary) -> None:
+        launchvehicledetail = client.launchvehicledetails.get(
+            "id",
+        )
+        assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
+        response = client.launchvehicledetails.with_raw_response.get(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = response.parse()
+        assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
+        with client.launchvehicledetails.with_streaming_response.get(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = response.parse()
+            assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_get(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.launchvehicledetails.with_raw_response.get(
+                "",
+            )
+
+
+class TestAsyncLaunchvehicledetails:
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+            id="LAUNCHVEHICLEDETAILS-ID",
+            attitude_accuracy=10.23,
+            category="Example-category",
+            deployment_rotation_rate=10.23,
+            diameter=10.23,
+            est_launch_price=10.23,
+            est_launch_price_typical=10.23,
+            fairing_external_diameter=10.23,
+            fairing_internal_diameter=10.23,
+            fairing_length=10.23,
+            fairing_mass=10.23,
+            fairing_material="Example-fairing-material",
+            fairing_name="Example-fairing-name",
+            fairing_notes="Example notes",
+            family="Example-family",
+            geo_payload_mass=10.23,
+            gto_inj3_sig_accuracy_apogee_margin=10.23,
+            gto_inj3_sig_accuracy_apogee_target=10.23,
+            gto_inj3_sig_accuracy_inclination_margin=10.23,
+            gto_inj3_sig_accuracy_inclination_target=10.23,
+            gto_inj3_sig_accuracy_perigee_margin=10.23,
+            gto_inj3_sig_accuracy_perigee_target=10.23,
+            gto_payload_mass=10.23,
+            launch_mass=10.23,
+            launch_prefix="AX011",
+            length=10.23,
+            leo_payload_mass=10.23,
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_accel_load=10.23,
+            max_acoustic_level=10.23,
+            max_acoustic_level_range=10.23,
+            max_fairing_pressure_change=10.23,
+            max_flight_shock_force=10.23,
+            max_flight_shock_freq=10.23,
+            max_payload_freq_lat=10.23,
+            max_payload_freq_lon=10.23,
+            minor_variant="Example-minor-variant",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Bromine",
+            payload_notes="Example notes",
+            payload_separation_rate=10.23,
+            propellant="Nitrogen",
+            sound_pressure_level=10.23,
+            source_url="Example URL",
+            sso_payload_mass=10.23,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            variant="Example-variant",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.launchvehicledetails.with_raw_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = await response.parse()
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.launchvehicledetails.with_streaming_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = await response.parse()
+            assert launchvehicledetail is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+            id_2="LAUNCHVEHICLEDETAILS-ID",
+            attitude_accuracy=10.23,
+            category="Example-category",
+            deployment_rotation_rate=10.23,
+            diameter=10.23,
+            est_launch_price=10.23,
+            est_launch_price_typical=10.23,
+            fairing_external_diameter=10.23,
+            fairing_internal_diameter=10.23,
+            fairing_length=10.23,
+            fairing_mass=10.23,
+            fairing_material="Example-fairing-material",
+            fairing_name="Example-fairing-name",
+            fairing_notes="Example notes",
+            family="Example-family",
+            geo_payload_mass=10.23,
+            gto_inj3_sig_accuracy_apogee_margin=10.23,
+            gto_inj3_sig_accuracy_apogee_target=10.23,
+            gto_inj3_sig_accuracy_inclination_margin=10.23,
+            gto_inj3_sig_accuracy_inclination_target=10.23,
+            gto_inj3_sig_accuracy_perigee_margin=10.23,
+            gto_inj3_sig_accuracy_perigee_target=10.23,
+            gto_payload_mass=10.23,
+            launch_mass=10.23,
+            launch_prefix="AX011",
+            length=10.23,
+            leo_payload_mass=10.23,
+            manufacturer_org_id="MANUFACTURERORG-ID",
+            max_accel_load=10.23,
+            max_acoustic_level=10.23,
+            max_acoustic_level_range=10.23,
+            max_fairing_pressure_change=10.23,
+            max_flight_shock_force=10.23,
+            max_flight_shock_freq=10.23,
+            max_payload_freq_lat=10.23,
+            max_payload_freq_lon=10.23,
+            minor_variant="Example-minor-variant",
+            notes="Example notes",
+            origin="THIRD_PARTY_DATASOURCE",
+            oxidizer="Bromine",
+            payload_notes="Example notes",
+            payload_separation_rate=10.23,
+            propellant="Nitrogen",
+            sound_pressure_level=10.23,
+            source_url="Example URL",
+            sso_payload_mass=10.23,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            variant="Example-variant",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.launchvehicledetails.with_raw_response.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = await response.parse()
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.launchvehicledetails.with_streaming_response.update(
+            id_1="id",
+            classification_marking="U",
+            data_mode="REAL",
+            id_launch_vehicle="LAUNCHVEHICLE-ID",
+            source="Bluestaq",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = await response.parse()
+            assert launchvehicledetail is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+            await async_client.launchvehicledetails.with_raw_response.update(
+                id_1="",
+                classification_marking="U",
+                data_mode="REAL",
+                id_launch_vehicle="LAUNCHVEHICLE-ID",
+                source="Bluestaq",
+                id_2="",
+            )
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.list()
+        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.launchvehicledetails.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = await response.parse()
+        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.launchvehicledetails.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = await response.parse()
+            assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.delete(
+            "id",
+        )
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.launchvehicledetails.with_raw_response.delete(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = await response.parse()
+        assert launchvehicledetail is None
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.launchvehicledetails.with_streaming_response.delete(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = await response.parse()
+            assert launchvehicledetail is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.launchvehicledetails.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
+        launchvehicledetail = await async_client.launchvehicledetails.get(
+            "id",
+        )
+        assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.launchvehicledetails.with_raw_response.get(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        launchvehicledetail = await response.parse()
+        assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.launchvehicledetails.with_streaming_response.get(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            launchvehicledetail = await response.parse()
+            assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.launchvehicledetails.with_raw_response.get(
+                "",
+            )

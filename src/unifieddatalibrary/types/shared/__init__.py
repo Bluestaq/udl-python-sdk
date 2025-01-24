@@ -4,6 +4,7 @@ from .onorbit import Onorbit as Onorbit
 from .ais_full import AIsFull as AIsFull
 from .eop_full import EopFull as EopFull
 from .evac_full import EvacFull as EvacFull
+from .file_data import FileData as FileData
 from .drift_history import DriftHistory as DriftHistory
 from .ephemeris_full import EphemerisFull as EphemerisFull
 from .attitudeset_full import AttitudesetFull as AttitudesetFull
