@@ -2,19 +2,19 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
-from ..._models import BaseModel
+from .._compat import PYDANTIC_V2
+from .._models import BaseModel
 
-__all__ = ["HistoryListResponse", "HistoryListResponseItem"]
+__all__ = ["LauncheventGetResponse"]
 
 
-class HistoryListResponseItem(BaseModel):
+class LauncheventGetResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -107,11 +107,9 @@ class HistoryListResponseItem(BaseModel):
     """Satellite/catalog number of the target on-orbit object."""
 
 
-HistoryListResponse: TypeAlias = List[HistoryListResponseItem]
-
-from ..shared.onorbit import Onorbit
+from .shared.onorbit import Onorbit
 
 if PYDANTIC_V2:
-    HistoryListResponseItem.model_rebuild()
+    LauncheventGetResponse.model_rebuild()
 else:
-    HistoryListResponseItem.update_forward_refs()  # type: ignore
+    LauncheventGetResponse.update_forward_refs()  # type: ignore

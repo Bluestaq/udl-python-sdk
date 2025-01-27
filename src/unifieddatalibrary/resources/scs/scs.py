@@ -22,14 +22,6 @@ from .file import (
     FileResourceWithStreamingResponse,
     AsyncFileResourceWithStreamingResponse,
 )
-from .files import (
-    FilesResource,
-    AsyncFilesResource,
-    FilesResourceWithRawResponse,
-    AsyncFilesResourceWithRawResponse,
-    FilesResourceWithStreamingResponse,
-    AsyncFilesResourceWithStreamingResponse,
-)
 from .paths import (
     PathsResource,
     AsyncPathsResource,
@@ -129,10 +121,6 @@ class ScsResource(SyncAPIResource):
     @cached_property
     def groups(self) -> GroupsResource:
         return GroupsResource(self._client)
-
-    @cached_property
-    def files(self) -> FilesResource:
-        return FilesResource(self._client)
 
     @cached_property
     def file_metadata(self) -> FileMetadataResource:
@@ -612,10 +600,6 @@ class AsyncScsResource(AsyncAPIResource):
     @cached_property
     def groups(self) -> AsyncGroupsResource:
         return AsyncGroupsResource(self._client)
-
-    @cached_property
-    def files(self) -> AsyncFilesResource:
-        return AsyncFilesResource(self._client)
 
     @cached_property
     def file_metadata(self) -> AsyncFileMetadataResource:
@@ -1139,10 +1123,6 @@ class ScsResourceWithRawResponse:
         return GroupsResourceWithRawResponse(self._scs.groups)
 
     @cached_property
-    def files(self) -> FilesResourceWithRawResponse:
-        return FilesResourceWithRawResponse(self._scs.files)
-
-    @cached_property
     def file_metadata(self) -> FileMetadataResourceWithRawResponse:
         return FileMetadataResourceWithRawResponse(self._scs.file_metadata)
 
@@ -1217,10 +1197,6 @@ class AsyncScsResourceWithRawResponse:
     @cached_property
     def groups(self) -> AsyncGroupsResourceWithRawResponse:
         return AsyncGroupsResourceWithRawResponse(self._scs.groups)
-
-    @cached_property
-    def files(self) -> AsyncFilesResourceWithRawResponse:
-        return AsyncFilesResourceWithRawResponse(self._scs.files)
 
     @cached_property
     def file_metadata(self) -> AsyncFileMetadataResourceWithRawResponse:
@@ -1299,10 +1275,6 @@ class ScsResourceWithStreamingResponse:
         return GroupsResourceWithStreamingResponse(self._scs.groups)
 
     @cached_property
-    def files(self) -> FilesResourceWithStreamingResponse:
-        return FilesResourceWithStreamingResponse(self._scs.files)
-
-    @cached_property
     def file_metadata(self) -> FileMetadataResourceWithStreamingResponse:
         return FileMetadataResourceWithStreamingResponse(self._scs.file_metadata)
 
@@ -1377,10 +1349,6 @@ class AsyncScsResourceWithStreamingResponse:
     @cached_property
     def groups(self) -> AsyncGroupsResourceWithStreamingResponse:
         return AsyncGroupsResourceWithStreamingResponse(self._scs.groups)
-
-    @cached_property
-    def files(self) -> AsyncFilesResourceWithStreamingResponse:
-        return AsyncFilesResourceWithStreamingResponse(self._scs.files)
 
     @cached_property
     def file_metadata(self) -> AsyncFileMetadataResourceWithStreamingResponse:

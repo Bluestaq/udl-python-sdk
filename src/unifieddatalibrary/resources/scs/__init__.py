@@ -24,14 +24,6 @@ from .file import (
     FileResourceWithStreamingResponse,
     AsyncFileResourceWithStreamingResponse,
 )
-from .files import (
-    FilesResource,
-    AsyncFilesResource,
-    FilesResourceWithRawResponse,
-    AsyncFilesResourceWithRawResponse,
-    FilesResourceWithStreamingResponse,
-    AsyncFilesResourceWithStreamingResponse,
-)
 from .paths import (
     PathsResource,
     AsyncPathsResource,
@@ -100,12 +92,6 @@ __all__ = [
     "AsyncGroupsResourceWithRawResponse",
     "GroupsResourceWithStreamingResponse",
     "AsyncGroupsResourceWithStreamingResponse",
-    "FilesResource",
-    "AsyncFilesResource",
-    "FilesResourceWithRawResponse",
-    "AsyncFilesResourceWithRawResponse",
-    "FilesResourceWithStreamingResponse",
-    "AsyncFilesResourceWithStreamingResponse",
     "FileMetadataResource",
     "AsyncFileMetadataResource",
     "FileMetadataResourceWithRawResponse",

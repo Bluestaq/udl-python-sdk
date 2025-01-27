@@ -9,6 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.types.scs import FileListResponse
 from unifieddatalibrary.types.shared import FileData
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -114,6 +115,46 @@ class TestFile:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        file = client.scs.file.list(
+            path="path",
+        )
+        assert_matches_type(FileListResponse, file, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        file = client.scs.file.list(
+            path="path",
+            count=0,
+            offset=0,
+        )
+        assert_matches_type(FileListResponse, file, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.scs.file.with_raw_response.list(
+            path="path",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(FileListResponse, file, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.scs.file.with_streaming_response.list(
+            path="path",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = response.parse()
+            assert_matches_type(FileListResponse, file, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncFile:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -212,5 +253,45 @@ class TestAsyncFile:
 
             file = await response.parse()
             assert file is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        file = await async_client.scs.file.list(
+            path="path",
+        )
+        assert_matches_type(FileListResponse, file, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        file = await async_client.scs.file.list(
+            path="path",
+            count=0,
+            offset=0,
+        )
+        assert_matches_type(FileListResponse, file, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.scs.file.with_raw_response.list(
+            path="path",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = await response.parse()
+        assert_matches_type(FileListResponse, file, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.scs.file.with_streaming_response.list(
+            path="path",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            file = await response.parse()
+            assert_matches_type(FileListResponse, file, path=["response"])
 
         assert cast(Any, response.is_closed) is True

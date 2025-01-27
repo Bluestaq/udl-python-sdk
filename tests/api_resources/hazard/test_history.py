@@ -10,7 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_datetime
-from unifieddatalibrary.types.gnss_raw_if import (
+from unifieddatalibrary.types.hazard import (
     HistoryQueryResponse,
 )
 
@@ -21,16 +21,16 @@ class TestHistory:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_ador(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    def test_method_aodr(self, client: Unifieddatalibrary) -> None:
+        history = client.hazard.history.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert history is None
 
     @parametrize
-    def test_method_ador_with_all_params(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    def test_method_aodr_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.hazard.history.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             notification="notification",
             output_delimiter="outputDelimiter",
@@ -39,9 +39,9 @@ class TestHistory:
         assert history is None
 
     @parametrize
-    def test_raw_response_ador(self, client: Unifieddatalibrary) -> None:
-        response = client.gnss_raw_if.history.with_raw_response.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    def test_raw_response_aodr(self, client: Unifieddatalibrary) -> None:
+        response = client.hazard.history.with_raw_response.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -50,9 +50,9 @@ class TestHistory:
         assert history is None
 
     @parametrize
-    def test_streaming_response_ador(self, client: Unifieddatalibrary) -> None:
-        with client.gnss_raw_if.history.with_streaming_response.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    def test_streaming_response_aodr(self, client: Unifieddatalibrary) -> None:
+        with client.hazard.history.with_streaming_response.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,15 +64,15 @@ class TestHistory:
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.count(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        history = client.hazard.history.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, history, path=["response"])
 
     @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
-        response = client.gnss_raw_if.history.with_raw_response.count(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        response = client.hazard.history.with_raw_response.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -82,8 +82,8 @@ class TestHistory:
 
     @parametrize
     def test_streaming_response_count(self, client: Unifieddatalibrary) -> None:
-        with client.gnss_raw_if.history.with_streaming_response.count(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        with client.hazard.history.with_streaming_response.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -95,23 +95,23 @@ class TestHistory:
 
     @parametrize
     def test_method_query(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        history = client.hazard.history.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
     @parametrize
     def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        history = client.hazard.history.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
     @parametrize
     def test_raw_response_query(self, client: Unifieddatalibrary) -> None:
-        response = client.gnss_raw_if.history.with_raw_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        response = client.hazard.history.with_raw_response.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -121,8 +121,8 @@ class TestHistory:
 
     @parametrize
     def test_streaming_response_query(self, client: Unifieddatalibrary) -> None:
-        with client.gnss_raw_if.history.with_streaming_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        with client.hazard.history.with_streaming_response.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -137,16 +137,16 @@ class TestAsyncHistory:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_ador(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    async def test_method_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.hazard.history.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert history is None
 
     @parametrize
-    async def test_method_ador_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    async def test_method_aodr_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.hazard.history.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             notification="notification",
             output_delimiter="outputDelimiter",
@@ -155,9 +155,9 @@ class TestAsyncHistory:
         assert history is None
 
     @parametrize
-    async def test_raw_response_ador(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.gnss_raw_if.history.with_raw_response.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    async def test_raw_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.hazard.history.with_raw_response.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -166,9 +166,9 @@ class TestAsyncHistory:
         assert history is None
 
     @parametrize
-    async def test_streaming_response_ador(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.gnss_raw_if.history.with_streaming_response.ador(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+    async def test_streaming_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.hazard.history.with_streaming_response.aodr(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -180,15 +180,15 @@ class TestAsyncHistory:
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.count(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        history = await async_client.hazard.history.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, history, path=["response"])
 
     @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.gnss_raw_if.history.with_raw_response.count(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        response = await async_client.hazard.history.with_raw_response.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -198,8 +198,8 @@ class TestAsyncHistory:
 
     @parametrize
     async def test_streaming_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.gnss_raw_if.history.with_streaming_response.count(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        async with async_client.hazard.history.with_streaming_response.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -211,23 +211,23 @@ class TestAsyncHistory:
 
     @parametrize
     async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        history = await async_client.hazard.history.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
     @parametrize
     async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        history = await async_client.hazard.history.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
     @parametrize
     async def test_raw_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.gnss_raw_if.history.with_raw_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        response = await async_client.hazard.history.with_raw_response.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -237,8 +237,8 @@ class TestAsyncHistory:
 
     @parametrize
     async def test_streaming_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.gnss_raw_if.history.with_streaming_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        async with async_client.hazard.history.with_streaming_response.query(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

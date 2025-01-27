@@ -135,26 +135,7 @@ from unifieddatalibrary.types.air_operations import (
 
 Methods:
 
-- <code title="post /filedrop/udl-diplomaticclearance">client.air_operations.diplomatic_clearance.<a href="./src/unifieddatalibrary/resources/air_operations/diplomatic_clearance/diplomatic_clearance.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/diplomatic_clearance_create_params.py">params</a>) -> None</code>
-
-## LogisticsSupport
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.air_operations.logistics_support import (
-    HistoryListResponse,
-    HistoryCountResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/logisticssupport/history">client.air_operations.logistics_support.history.<a href="./src/unifieddatalibrary/resources/air_operations/logistics_support/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/logistics_support/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/logistics_support/history_list_response.py">HistoryListResponse</a></code>
-- <code title="get /udl/logisticssupport/history/aodr">client.air_operations.logistics_support.history.<a href="./src/unifieddatalibrary/resources/air_operations/logistics_support/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/logistics_support/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/logisticssupport/history/count">client.air_operations.logistics_support.history.<a href="./src/unifieddatalibrary/resources/air_operations/logistics_support/history.py">count</a>() -> str</code>
+- <code title="post /filedrop/udl-diplomaticclearance">client.air_operations.diplomatic_clearance.<a href="./src/unifieddatalibrary/resources/air_operations/diplomatic_clearance.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/diplomatic_clearance_create_params.py">params</a>) -> None</code>
 
 # AirTaskingOrders
 
@@ -1825,13 +1806,27 @@ from unifieddatalibrary.types import HazardListResponse, HazardCountResponse, Ha
 
 Methods:
 
-- <code title="post /udl/hazard">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/hazard">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard_list_response.py">HazardListResponse</a></code>
-- <code title="get /udl/hazard/count">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/hazard/createBulk">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/hazard/{id}">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/hazard/hazard_full.py">HazardFull</a></code>
-- <code title="get /udl/hazard/queryhelp">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">queryhelp</a>() -> None</code>
-- <code title="get /udl/hazard/tuple">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard_tuple_response.py">HazardTupleResponse</a></code>
+- <code title="post /udl/hazard">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/hazard">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard_list_response.py">HazardListResponse</a></code>
+- <code title="get /udl/hazard/count">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/hazard/createBulk">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/hazard/{id}">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/hazard/hazard_full.py">HazardFull</a></code>
+- <code title="get /udl/hazard/queryhelp">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">queryhelp</a>() -> None</code>
+- <code title="get /udl/hazard/tuple">client.hazard.<a href="./src/unifieddatalibrary/resources/hazard/hazard.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard_tuple_response.py">HazardTupleResponse</a></code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.hazard import HistoryCountResponse, HistoryQueryResponse
+```
+
+Methods:
+
+- <code title="get /udl/hazard/history/aodr">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/hazard/history/count">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/hazard/history">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard/history_query_response.py">HistoryQueryResponse</a></code>
 
 # Ionoobservation
 
@@ -1969,12 +1964,6 @@ Methods:
 - <code title="get /udl/itemtracking/history">client.item_trackings.history.<a href="./src/unifieddatalibrary/resources/item_trackings/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/item_trackings/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/item_trackings/history_list_response.py">HistoryListResponse</a></code>
 - <code title="get /udl/itemtracking/history/count">client.item_trackings.history.<a href="./src/unifieddatalibrary/resources/item_trackings/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/item_trackings/history_count_params.py">params</a>) -> str</code>
 
-# LaunchEvents
-
-Methods:
-
-- <code title="post /filedrop/udl-launchevent">client.launch_events.<a href="./src/unifieddatalibrary/resources/launch_events.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/launch_event_create_params.py">params</a>) -> None</code>
-
 # Launchdetection
 
 Types:
@@ -2007,6 +1996,7 @@ Types:
 from unifieddatalibrary.types import (
     LauncheventListResponse,
     LauncheventCountResponse,
+    LauncheventGetResponse,
     LauncheventTupleResponse,
 )
 ```
@@ -2018,7 +2008,7 @@ Methods:
 - <code title="get /udl/launchevent/count">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/launchevent_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/launchevent/createBulk">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/launchevent_create_bulk_params.py">params</a>) -> None</code>
 - <code title="post /filedrop/udl-launchevent">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/launchevent_file_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/launchevent/{id}">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/launchevent/launch_event_full.py">LaunchEventFull</a></code>
+- <code title="get /udl/launchevent/{id}">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/launchevent_get_response.py">LauncheventGetResponse</a></code>
 - <code title="get /udl/launchevent/queryhelp">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/launchevent/tuple">client.launchevent.<a href="./src/unifieddatalibrary/resources/launchevent.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/launchevent_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/launchevent_tuple_response.py">LauncheventTupleResponse</a></code>
 
@@ -2196,21 +2186,36 @@ Types:
 from unifieddatalibrary.types import (
     LogisticssupportListResponse,
     LogisticssupportCountResponse,
+    LogisticssupportGetResponse,
     LogisticssupportTupleResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /udl/logisticssupport">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/logisticssupport/{id}">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">update</a>(id_1, \*\*<a href="src/unifieddatalibrary/types/logisticssupport_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/logisticssupport">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">list</a>() -> <a href="./src/unifieddatalibrary/types/logisticssupport_list_response.py">LogisticssupportListResponse</a></code>
-- <code title="get /udl/logisticssupport/count">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">count</a>() -> str</code>
-- <code title="post /udl/logisticssupport/createBulk">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_create_bulk_params.py">params</a>) -> None</code>
-- <code title="post /filedrop/udl-logisticssupport">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_file_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/logisticssupport/{id}">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/logisticssupport/logistics_support_full.py">LogisticsSupportFull</a></code>
-- <code title="get /udl/logisticssupport/queryhelp">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">queryhelp</a>() -> None</code>
-- <code title="get /udl/logisticssupport/tuple">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/logisticssupport_tuple_response.py">LogisticssupportTupleResponse</a></code>
+- <code title="post /udl/logisticssupport">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/logisticssupport/{id}">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">update</a>(id_1, \*\*<a href="src/unifieddatalibrary/types/logisticssupport_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/logisticssupport">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">list</a>() -> <a href="./src/unifieddatalibrary/types/logisticssupport_list_response.py">LogisticssupportListResponse</a></code>
+- <code title="get /udl/logisticssupport/count">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">count</a>() -> str</code>
+- <code title="post /udl/logisticssupport/createBulk">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-logisticssupport">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_file_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/logisticssupport/{id}">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/logisticssupport_get_response.py">LogisticssupportGetResponse</a></code>
+- <code title="get /udl/logisticssupport/queryhelp">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">queryhelp</a>() -> None</code>
+- <code title="get /udl/logisticssupport/tuple">client.logisticssupport.<a href="./src/unifieddatalibrary/resources/logisticssupport/logisticssupport.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/logisticssupport_tuple_response.py">LogisticssupportTupleResponse</a></code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.logisticssupport import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/logisticssupport/history">client.logisticssupport.history.<a href="./src/unifieddatalibrary/resources/logisticssupport/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/logisticssupport/history_list_response.py">HistoryListResponse</a></code>
+- <code title="get /udl/logisticssupport/history/aodr">client.logisticssupport.history.<a href="./src/unifieddatalibrary/resources/logisticssupport/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/logisticssupport/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/logisticssupport/history/count">client.logisticssupport.history.<a href="./src/unifieddatalibrary/resources/logisticssupport/history.py">count</a>() -> str</code>
 
 # Maneuvers
 
@@ -4842,16 +4847,6 @@ Types:
 from unifieddatalibrary.types.udl.itemtracking import ItemTrackingFull
 ```
 
-## Launchevent
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.udl.launchevent import LaunchEventFull
-```
-
 ## Linkstatus
 
 ### History
@@ -4860,16 +4855,6 @@ Types:
 
 ```python
 from unifieddatalibrary.types.udl.linkstatus import LinkStatusFull
-```
-
-## Logisticssupport
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.udl.logisticssupport import LogisticsSupportFull
 ```
 
 ## Maneuver
@@ -5068,10 +5053,6 @@ Methods:
 
 # GnssRawIf
 
-Methods:
-
-- <code title="get /udl/gnssrawif/history/aodr">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">history_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_history_aodr_params.py">params</a>) -> None</code>
-
 ## History
 
 Types:
@@ -5082,27 +5063,9 @@ from unifieddatalibrary.types.gnss_raw_if import HistoryCountResponse, HistoryQu
 
 Methods:
 
+- <code title="get /udl/gnssrawif/history/aodr">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">ador</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_ador_params.py">params</a>) -> None</code>
 - <code title="get /udl/gnssrawif/history/count">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/gnssrawif/history">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if/history_query_response.py">HistoryQueryResponse</a></code>
-
-# Hazards
-
-Methods:
-
-- <code title="get /udl/hazard/history/aodr">client.hazards.<a href="./src/unifieddatalibrary/resources/hazards/hazards.py">history_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/hazard_history_aodr_params.py">params</a>) -> None</code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.hazards import HistoryCountResponse, HistoryQueryResponse
-```
-
-Methods:
-
-- <code title="get /udl/hazard/history/count">client.hazards.history.<a href="./src/unifieddatalibrary/resources/hazards/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/hazards/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/hazard/history">client.hazards.history.<a href="./src/unifieddatalibrary/resources/hazards/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/hazards/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazards/history_query_response.py">HistoryQueryResponse</a></code>
 
 # IonoObservation
 
@@ -5121,6 +5084,10 @@ Methods:
 - <code title="get /udl/ionoobservation/history/count">client.iono_observation.history.<a href="./src/unifieddatalibrary/resources/iono_observation/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation/history_count_params.py">params</a>) -> str</code>
 
 # LaunchEvent
+
+Methods:
+
+- <code title="post /filedrop/udl-launchevent">client.launch_event.<a href="./src/unifieddatalibrary/resources/launch_event/launch_event.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/launch_event_file_create_params.py">params</a>) -> None</code>
 
 ## History
 
@@ -5254,18 +5221,6 @@ Methods:
 
 - <code title="get /scs/groups">client.scs.groups.<a href="./src/unifieddatalibrary/resources/scs/groups.py">list</a>() -> <a href="./src/unifieddatalibrary/types/scs/group_list_response.py">GroupListResponse</a></code>
 
-## Files
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import FileListNonrecursiveResponse
-```
-
-Methods:
-
-- <code title="get /scs/list">client.scs.files.<a href="./src/unifieddatalibrary/resources/scs/files.py">list_nonrecursive</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_list_nonrecursive_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/file_list_nonrecursive_response.py">FileListNonrecursiveResponse</a></code>
-
 ## FileMetadata
 
 Types:
@@ -5322,10 +5277,17 @@ Methods:
 
 ## File
 
+Types:
+
+```python
+from unifieddatalibrary.types.scs import FileListResponse
+```
+
 Methods:
 
 - <code title="get /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">retrieve</a>() -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
 - <code title="patch /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_update_params.py">params</a>) -> None</code>
+- <code title="get /scs/list">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/file_list_response.py">FileListResponse</a></code>
 
 # ScsViews
 

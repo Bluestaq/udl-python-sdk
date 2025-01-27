@@ -10,11 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    LauncheventGetResponse,
     LauncheventListResponse,
     LauncheventTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
-from unifieddatalibrary.types.udl.launchevent import LaunchEventFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -255,7 +255,7 @@ class TestLaunchevent:
         launchevent = client.launchevent.get(
             "id",
         )
-        assert_matches_type(LaunchEventFull, launchevent, path=["response"])
+        assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -266,7 +266,7 @@ class TestLaunchevent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         launchevent = response.parse()
-        assert_matches_type(LaunchEventFull, launchevent, path=["response"])
+        assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -277,7 +277,7 @@ class TestLaunchevent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             launchevent = response.parse()
-            assert_matches_type(LaunchEventFull, launchevent, path=["response"])
+            assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -584,7 +584,7 @@ class TestAsyncLaunchevent:
         launchevent = await async_client.launchevent.get(
             "id",
         )
-        assert_matches_type(LaunchEventFull, launchevent, path=["response"])
+        assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -595,7 +595,7 @@ class TestAsyncLaunchevent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         launchevent = await response.parse()
-        assert_matches_type(LaunchEventFull, launchevent, path=["response"])
+        assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -606,7 +606,7 @@ class TestAsyncLaunchevent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             launchevent = await response.parse()
-            assert_matches_type(LaunchEventFull, launchevent, path=["response"])
+            assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

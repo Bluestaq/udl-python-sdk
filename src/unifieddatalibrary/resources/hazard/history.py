@@ -21,8 +21,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.gnss_raw_if import history_ador_params, history_count_params, history_query_params
-from ...types.gnss_raw_if.history_query_response import HistoryQueryResponse
+from ...types.hazard import history_aodr_params, history_count_params, history_query_params
+from ...types.hazard.history_query_response import HistoryQueryResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -47,10 +47,10 @@ class HistoryResource(SyncAPIResource):
         """
         return HistoryResourceWithStreamingResponse(self)
 
-    def ador(
+    def aodr(
         self,
         *,
-        start_time: Union[str, datetime],
+        detect_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
@@ -70,8 +70,8 @@ class HistoryResource(SyncAPIResource):
         parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          detect_time: The detect time, in ISO 8601 UTC format, with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -98,7 +98,7 @@ class HistoryResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            "/udl/gnssrawif/history/aodr",
+            "/udl/hazard/history/aodr",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -106,13 +106,13 @@ class HistoryResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_time": start_time,
+                        "detect_time": detect_time,
                         "columns": columns,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
                     },
-                    history_ador_params.HistoryAdorParams,
+                    history_aodr_params.HistoryAodrParams,
                 ),
             ),
             cast_to=NoneType,
@@ -121,7 +121,7 @@ class HistoryResource(SyncAPIResource):
     def count(
         self,
         *,
-        start_time: Union[str, datetime],
+        detect_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,8 +137,8 @@ class HistoryResource(SyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          detect_time: The detect time, in ISO 8601 UTC format, with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           extra_headers: Send extra headers
 
@@ -150,13 +150,13 @@ class HistoryResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
-            "/udl/gnssrawif/history/count",
+            "/udl/hazard/history/count",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, history_count_params.HistoryCountParams),
+                query=maybe_transform({"detect_time": detect_time}, history_count_params.HistoryCountParams),
             ),
             cast_to=str,
         )
@@ -164,7 +164,7 @@ class HistoryResource(SyncAPIResource):
     def query(
         self,
         *,
-        start_time: Union[str, datetime],
+        detect_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -180,8 +180,8 @@ class HistoryResource(SyncAPIResource):
         parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          detect_time: The detect time, in ISO 8601 UTC format, with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -196,7 +196,7 @@ class HistoryResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/udl/gnssrawif/history",
+            "/udl/hazard/history",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -204,7 +204,7 @@ class HistoryResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_time": start_time,
+                        "detect_time": detect_time,
                         "columns": columns,
                     },
                     history_query_params.HistoryQueryParams,
@@ -234,10 +234,10 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
-    async def ador(
+    async def aodr(
         self,
         *,
-        start_time: Union[str, datetime],
+        detect_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
@@ -257,8 +257,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          detect_time: The detect time, in ISO 8601 UTC format, with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -285,7 +285,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            "/udl/gnssrawif/history/aodr",
+            "/udl/hazard/history/aodr",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -293,13 +293,13 @@ class AsyncHistoryResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "start_time": start_time,
+                        "detect_time": detect_time,
                         "columns": columns,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
                     },
-                    history_ador_params.HistoryAdorParams,
+                    history_aodr_params.HistoryAodrParams,
                 ),
             ),
             cast_to=NoneType,
@@ -308,7 +308,7 @@ class AsyncHistoryResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        start_time: Union[str, datetime],
+        detect_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -324,8 +324,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          detect_time: The detect time, in ISO 8601 UTC format, with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           extra_headers: Send extra headers
 
@@ -337,13 +337,15 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
-            "/udl/gnssrawif/history/count",
+            "/udl/hazard/history/count",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"start_time": start_time}, history_count_params.HistoryCountParams),
+                query=await async_maybe_transform(
+                    {"detect_time": detect_time}, history_count_params.HistoryCountParams
+                ),
             ),
             cast_to=str,
         )
@@ -351,7 +353,7 @@ class AsyncHistoryResource(AsyncAPIResource):
     async def query(
         self,
         *,
-        start_time: Union[str, datetime],
+        detect_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -367,8 +369,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          detect_time: The detect time, in ISO 8601 UTC format, with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -383,7 +385,7 @@ class AsyncHistoryResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/udl/gnssrawif/history",
+            "/udl/hazard/history",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -391,7 +393,7 @@ class AsyncHistoryResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "start_time": start_time,
+                        "detect_time": detect_time,
                         "columns": columns,
                     },
                     history_query_params.HistoryQueryParams,
@@ -405,8 +407,8 @@ class HistoryResourceWithRawResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
-        self.ador = to_raw_response_wrapper(
-            history.ador,
+        self.aodr = to_raw_response_wrapper(
+            history.aodr,
         )
         self.count = to_raw_response_wrapper(
             history.count,
@@ -420,8 +422,8 @@ class AsyncHistoryResourceWithRawResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
-        self.ador = async_to_raw_response_wrapper(
-            history.ador,
+        self.aodr = async_to_raw_response_wrapper(
+            history.aodr,
         )
         self.count = async_to_raw_response_wrapper(
             history.count,
@@ -435,8 +437,8 @@ class HistoryResourceWithStreamingResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
-        self.ador = to_streamed_response_wrapper(
-            history.ador,
+        self.aodr = to_streamed_response_wrapper(
+            history.aodr,
         )
         self.count = to_streamed_response_wrapper(
             history.count,
@@ -450,8 +452,8 @@ class AsyncHistoryResourceWithStreamingResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
-        self.ador = async_to_streamed_response_wrapper(
-            history.ador,
+        self.aodr = async_to_streamed_response_wrapper(
+            history.aodr,
         )
         self.count = async_to_streamed_response_wrapper(
             history.count,

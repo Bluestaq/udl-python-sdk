@@ -32,14 +32,6 @@ from .aircraft_sorties import (
     AircraftSortiesResourceWithStreamingResponse,
     AsyncAircraftSortiesResourceWithStreamingResponse,
 )
-from .logistics_support import (
-    LogisticsSupportResource,
-    AsyncLogisticsSupportResource,
-    LogisticsSupportResourceWithRawResponse,
-    AsyncLogisticsSupportResourceWithRawResponse,
-    LogisticsSupportResourceWithStreamingResponse,
-    AsyncLogisticsSupportResourceWithStreamingResponse,
-)
 from .air_tasking_orders import (
     AirTaskingOrdersResource,
     AsyncAirTaskingOrdersResource,
@@ -102,12 +94,6 @@ __all__ = [
     "AsyncDiplomaticClearanceResourceWithRawResponse",
     "DiplomaticClearanceResourceWithStreamingResponse",
     "AsyncDiplomaticClearanceResourceWithStreamingResponse",
-    "LogisticsSupportResource",
-    "AsyncLogisticsSupportResource",
-    "LogisticsSupportResourceWithRawResponse",
-    "AsyncLogisticsSupportResourceWithRawResponse",
-    "LogisticsSupportResourceWithStreamingResponse",
-    "AsyncLogisticsSupportResourceWithStreamingResponse",
     "AirOperationsResource",
     "AsyncAirOperationsResource",
     "AirOperationsResourceWithRawResponse",
