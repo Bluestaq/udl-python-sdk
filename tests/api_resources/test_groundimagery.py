@@ -5,7 +5,9 @@ from __future__ import annotations
 import os
 from typing import Any, cast
 
+import httpx
 import pytest
+from respx import MockRouter
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
@@ -14,6 +16,12 @@ from unifieddatalibrary.types import (
     GroundimageryTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
+)
 from unifieddatalibrary.types.udl.groundimagery import GroundImageryFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -192,6 +200,56 @@ class TestGroundimagery:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.groundimagery.with_raw_response.get(
+                "",
+            )
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_get_file(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/groundimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        groundimagery = client.groundimagery.get_file(
+            "id",
+        )
+        assert groundimagery.is_closed
+        assert groundimagery.json() == {"foo": "bar"}
+        assert cast(Any, groundimagery.is_closed) is True
+        assert isinstance(groundimagery, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_get_file(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/groundimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        groundimagery = client.groundimagery.with_raw_response.get_file(
+            "id",
+        )
+
+        assert groundimagery.is_closed is True
+        assert groundimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert groundimagery.json() == {"foo": "bar"}
+        assert isinstance(groundimagery, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_get_file(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/groundimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.groundimagery.with_streaming_response.get_file(
+            "id",
+        ) as groundimagery:
+            assert not groundimagery.is_closed
+            assert groundimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert groundimagery.json() == {"foo": "bar"}
+            assert cast(Any, groundimagery.is_closed) is True
+            assert isinstance(groundimagery, StreamedBinaryAPIResponse)
+
+        assert cast(Any, groundimagery.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_path_params_get_file(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.groundimagery.with_raw_response.get_file(
                 "",
             )
 
@@ -428,6 +486,58 @@ class TestAsyncGroundimagery:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.groundimagery.with_raw_response.get(
+                "",
+            )
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_get_file(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/groundimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        groundimagery = await async_client.groundimagery.get_file(
+            "id",
+        )
+        assert groundimagery.is_closed
+        assert await groundimagery.json() == {"foo": "bar"}
+        assert cast(Any, groundimagery.is_closed) is True
+        assert isinstance(groundimagery, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_get_file(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/groundimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        groundimagery = await async_client.groundimagery.with_raw_response.get_file(
+            "id",
+        )
+
+        assert groundimagery.is_closed is True
+        assert groundimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await groundimagery.json() == {"foo": "bar"}
+        assert isinstance(groundimagery, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_get_file(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/udl/groundimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.groundimagery.with_streaming_response.get_file(
+            "id",
+        ) as groundimagery:
+            assert not groundimagery.is_closed
+            assert groundimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await groundimagery.json() == {"foo": "bar"}
+            assert cast(Any, groundimagery.is_closed) is True
+            assert isinstance(groundimagery, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, groundimagery.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_path_params_get_file(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.groundimagery.with_raw_response.get_file(
                 "",
             )
 

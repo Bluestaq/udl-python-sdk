@@ -22,10 +22,18 @@ from .._utils import (
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
 from ..types.groundimagery_list_response import GroundimageryListResponse
@@ -341,6 +349,42 @@ class GroundimageryResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=GroundImageryFull,
+        )
+
+    def get_file(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BinaryAPIResponse:
+        """
+        Service operation to get a single GroundImagery binary image by its unique ID
+        passed as a path parameter. The image is returned as an attachment
+        Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._get(
+            f"/udl/groundimagery/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
         )
 
     def queryhelp(
@@ -735,6 +779,42 @@ class AsyncGroundimageryResource(AsyncAPIResource):
             cast_to=GroundImageryFull,
         )
 
+    async def get_file(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Service operation to get a single GroundImagery binary image by its unique ID
+        passed as a path parameter. The image is returned as an attachment
+        Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._get(
+            f"/udl/groundimagery/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
     async def queryhelp(
         self,
         *,
@@ -831,6 +911,10 @@ class GroundimageryResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             groundimagery.get,
         )
+        self.get_file = to_custom_raw_response_wrapper(
+            groundimagery.get_file,
+            BinaryAPIResponse,
+        )
         self.queryhelp = to_raw_response_wrapper(
             groundimagery.queryhelp,
         )
@@ -854,6 +938,10 @@ class AsyncGroundimageryResourceWithRawResponse:
         )
         self.get = async_to_raw_response_wrapper(
             groundimagery.get,
+        )
+        self.get_file = async_to_custom_raw_response_wrapper(
+            groundimagery.get_file,
+            AsyncBinaryAPIResponse,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             groundimagery.queryhelp,
@@ -879,6 +967,10 @@ class GroundimageryResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             groundimagery.get,
         )
+        self.get_file = to_custom_streamed_response_wrapper(
+            groundimagery.get_file,
+            StreamedBinaryAPIResponse,
+        )
         self.queryhelp = to_streamed_response_wrapper(
             groundimagery.queryhelp,
         )
@@ -902,6 +994,10 @@ class AsyncGroundimageryResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             groundimagery.get,
+        )
+        self.get_file = async_to_custom_streamed_response_wrapper(
+            groundimagery.get_file,
+            AsyncStreamedBinaryAPIResponse,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             groundimagery.queryhelp,

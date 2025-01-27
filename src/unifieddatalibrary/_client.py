@@ -116,7 +116,6 @@ from .resources import (
     launchsitedetails,
     onboardnavigation,
     onorbitsolararray,
-    personnelrecovery,
     solararraydetails,
     air_tasking_orders,
     gnssobservationset,
@@ -201,6 +200,7 @@ from .resources.aircraft_statuses import aircraft_statuses
 from .resources.collect_responses import collect_responses
 from .resources.gnss_observations import gnss_observations
 from .resources.missionassignment import missionassignment
+from .resources.personnelrecovery import personnelrecovery
 from .resources.sensormaintenance import sensormaintenance
 from .resources.soiobservationset import soiobservationset
 from .resources.orbitdetermination import orbitdetermination

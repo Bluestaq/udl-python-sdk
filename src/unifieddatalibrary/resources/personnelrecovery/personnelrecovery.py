@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
+from ...types import (
     personnelrecovery_list_params,
     personnelrecovery_count_params,
     personnelrecovery_tuple_params,
@@ -16,28 +16,40 @@ from ..types import (
     personnelrecovery_create_bulk_params,
     personnelrecovery_file_create_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from .._utils import (
+from .history import (
+    HistoryResource,
+    AsyncHistoryResource,
+    HistoryResourceWithRawResponse,
+    AsyncHistoryResourceWithRawResponse,
+    HistoryResourceWithStreamingResponse,
+    AsyncHistoryResourceWithStreamingResponse,
+)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.personnelrecovery_list_response import PersonnelrecoveryListResponse
-from ..types.personnelrecovery_tuple_response import PersonnelrecoveryTupleResponse
-from ..types.udl.personnelrecovery.personnelrecovery_full import PersonnelrecoveryFull
+from ..._base_client import make_request_options
+from ...types.personnelrecovery_list_response import PersonnelrecoveryListResponse
+from ...types.personnelrecovery_tuple_response import PersonnelrecoveryTupleResponse
+from ...types.personnelrecovery.personnel_recovery_full import PersonnelRecoveryFull
 
 __all__ = ["PersonnelrecoveryResource", "AsyncPersonnelrecoveryResource"]
 
 
 class PersonnelrecoveryResource(SyncAPIResource):
+    @cached_property
+    def history(self) -> HistoryResource:
+        return HistoryResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> PersonnelrecoveryResourceWithRawResponse:
         """
@@ -473,7 +485,7 @@ class PersonnelrecoveryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonnelrecoveryFull:
+    ) -> PersonnelRecoveryFull:
         """
         Service operation to get a single PersonnelRecovery by its unique ID passed as a
         path parameter.
@@ -494,7 +506,7 @@ class PersonnelrecoveryResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonnelrecoveryFull,
+            cast_to=PersonnelRecoveryFull,
         )
 
     def queryhelp(
@@ -579,6 +591,10 @@ class PersonnelrecoveryResource(SyncAPIResource):
 
 
 class AsyncPersonnelrecoveryResource(AsyncAPIResource):
+    @cached_property
+    def history(self) -> AsyncHistoryResource:
+        return AsyncHistoryResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncPersonnelrecoveryResourceWithRawResponse:
         """
@@ -1014,7 +1030,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonnelrecoveryFull:
+    ) -> PersonnelRecoveryFull:
         """
         Service operation to get a single PersonnelRecovery by its unique ID passed as a
         path parameter.
@@ -1035,7 +1051,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonnelrecoveryFull,
+            cast_to=PersonnelRecoveryFull,
         )
 
     async def queryhelp(
@@ -1148,6 +1164,10 @@ class PersonnelrecoveryResourceWithRawResponse:
             personnelrecovery.tuple,
         )
 
+    @cached_property
+    def history(self) -> HistoryResourceWithRawResponse:
+        return HistoryResourceWithRawResponse(self._personnelrecovery.history)
+
 
 class AsyncPersonnelrecoveryResourceWithRawResponse:
     def __init__(self, personnelrecovery: AsyncPersonnelrecoveryResource) -> None:
@@ -1177,6 +1197,10 @@ class AsyncPersonnelrecoveryResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             personnelrecovery.tuple,
         )
+
+    @cached_property
+    def history(self) -> AsyncHistoryResourceWithRawResponse:
+        return AsyncHistoryResourceWithRawResponse(self._personnelrecovery.history)
 
 
 class PersonnelrecoveryResourceWithStreamingResponse:
@@ -1208,6 +1232,10 @@ class PersonnelrecoveryResourceWithStreamingResponse:
             personnelrecovery.tuple,
         )
 
+    @cached_property
+    def history(self) -> HistoryResourceWithStreamingResponse:
+        return HistoryResourceWithStreamingResponse(self._personnelrecovery.history)
+
 
 class AsyncPersonnelrecoveryResourceWithStreamingResponse:
     def __init__(self, personnelrecovery: AsyncPersonnelrecoveryResource) -> None:
@@ -1237,3 +1265,7 @@ class AsyncPersonnelrecoveryResourceWithStreamingResponse:
         self.tuple = async_to_streamed_response_wrapper(
             personnelrecovery.tuple,
         )
+
+    @cached_property
+    def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        return AsyncHistoryResourceWithStreamingResponse(self._personnelrecovery.history)

@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     EvacFull,
     EventEvolutionFull,
     FileData,
+    FileData,
     FlightPlanFull,
     Onorbit,
 )
@@ -1726,6 +1727,7 @@ Methods:
 - <code title="get /udl/gnssrawif">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/gnssrawif_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnssrawif_list_response.py">GnssrawifListResponse</a></code>
 - <code title="get /udl/gnssrawif/count">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnssrawif_count_params.py">params</a>) -> str</code>
 - <code title="post /filedrop/udl-gnssrawif">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/gnssrawif_file_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/gnssrawif/getFile/{id}">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">file_get</a>(id) -> BinaryAPIResponse</code>
 - <code title="get /udl/gnssrawif/{id}">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/gnssrawif/gnss_raw_if_full.py">GnssRawIfFull</a></code>
 - <code title="get /udl/gnssrawif/queryhelp">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/gnssrawif/tuple">client.gnssrawif.<a href="./src/unifieddatalibrary/resources/gnssrawif.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/gnssrawif_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnssrawif_tuple_response.py">GnssrawifTupleResponse</a></code>
@@ -1768,6 +1770,7 @@ Methods:
 - <code title="get /udl/groundimagery">client.groundimagery.<a href="./src/unifieddatalibrary/resources/groundimagery.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/groundimagery_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/groundimagery_list_response.py">GroundimageryListResponse</a></code>
 - <code title="get /udl/groundimagery/count">client.groundimagery.<a href="./src/unifieddatalibrary/resources/groundimagery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/groundimagery_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/groundimagery/{id}">client.groundimagery.<a href="./src/unifieddatalibrary/resources/groundimagery.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/groundimagery/ground_imagery_full.py">GroundImageryFull</a></code>
+- <code title="get /udl/groundimagery/getFile/{id}">client.groundimagery.<a href="./src/unifieddatalibrary/resources/groundimagery.py">get_file</a>(id) -> BinaryAPIResponse</code>
 - <code title="get /udl/groundimagery/queryhelp">client.groundimagery.<a href="./src/unifieddatalibrary/resources/groundimagery.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/groundimagery/tuple">client.groundimagery.<a href="./src/unifieddatalibrary/resources/groundimagery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/groundimagery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/groundimagery_tuple_response.py">GroundimageryTupleResponse</a></code>
 
@@ -3040,14 +3043,31 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="post /udl/personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/personnelrecovery_list_response.py">PersonnelrecoveryListResponse</a></code>
-- <code title="get /udl/personnelrecovery/count">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/personnelrecovery/createBulk">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_create_bulk_params.py">params</a>) -> None</code>
-- <code title="post /filedrop/udl-personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_file_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/personnelrecovery/{id}">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/personnelrecovery/personnelrecovery_full.py">PersonnelrecoveryFull</a></code>
-- <code title="get /udl/personnelrecovery/queryhelp">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">queryhelp</a>() -> None</code>
-- <code title="get /udl/personnelrecovery/tuple">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/personnelrecovery_tuple_response.py">PersonnelrecoveryTupleResponse</a></code>
+- <code title="post /udl/personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/personnelrecovery_list_response.py">PersonnelrecoveryListResponse</a></code>
+- <code title="get /udl/personnelrecovery/count">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/personnelrecovery/createBulk">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_file_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/personnelrecovery/{id}">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/personnelrecovery/personnel_recovery_full.py">PersonnelRecoveryFull</a></code>
+- <code title="get /udl/personnelrecovery/queryhelp">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">queryhelp</a>() -> None</code>
+- <code title="get /udl/personnelrecovery/tuple">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/personnelrecovery_tuple_response.py">PersonnelrecoveryTupleResponse</a></code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.personnelrecovery import (
+    PersonnelRecoveryFull,
+    HistoryListResponse,
+    HistoryCountResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/personnelrecovery/history">client.personnelrecovery.history.<a href="./src/unifieddatalibrary/resources/personnelrecovery/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/personnelrecovery/history_list_response.py">HistoryListResponse</a></code>
+- <code title="get /udl/personnelrecovery/history/count">client.personnelrecovery.history.<a href="./src/unifieddatalibrary/resources/personnelrecovery/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery/history_count_params.py">params</a>) -> str</code>
 
 # Poi
 
@@ -4042,7 +4062,6 @@ Types:
 from unifieddatalibrary.types import (
     StatevectorListResponse,
     StatevectorCountResponse,
-    StatevectorCurrentResponse,
     StatevectorTupleResponse,
 )
 ```
@@ -4053,7 +4072,6 @@ Methods:
 - <code title="get /udl/statevector">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/statevector_list_response.py">StatevectorListResponse</a></code>
 - <code title="get /udl/statevector/count">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/statevector/createBulk">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/statevector/current">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">current</a>() -> <a href="./src/unifieddatalibrary/types/statevector_current_response.py">StatevectorCurrentResponse</a></code>
 - <code title="post /filedrop/udl-sv">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_file_create_params.py">params</a>) -> None</code>
 - <code title="get /udl/statevector/{id}">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/statevector/state_vector_full.py">StateVectorFull</a></code>
 - <code title="get /udl/statevector/queryhelp">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">queryhelp</a>() -> None</code>
@@ -4076,6 +4094,18 @@ Methods:
 - <code title="get /udl/statevector/history">client.statevector.history.<a href="./src/unifieddatalibrary/resources/statevector/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/statevector/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/statevector/history_list_response.py">HistoryListResponse</a></code>
 - <code title="get /udl/statevector/history/aodr">client.statevector.history.<a href="./src/unifieddatalibrary/resources/statevector/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/statevector/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/statevector/history/count">client.statevector.history.<a href="./src/unifieddatalibrary/resources/statevector/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/statevector/history_count_params.py">params</a>) -> str</code>
+
+## Current
+
+Types:
+
+```python
+from unifieddatalibrary.types.statevector import StateVectorFull, CurrentTupleResponse
+```
+
+Methods:
+
+- <code title="get /udl/statevector/current/tuple">client.statevector.current.<a href="./src/unifieddatalibrary/resources/statevector/current.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/statevector/current_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/statevector/current_tuple_response.py">CurrentTupleResponse</a></code>
 
 # Status
 
@@ -5127,6 +5157,19 @@ Methods:
 - <code title="get /udl/poi/history/aodr">client.report_and_activity.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activity/poi/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activity/poi/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/poi/history/count">client.report_and_activity.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activity/poi/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activity/poi/history_count_params.py">params</a>) -> str</code>
 
+## UdlH3geo
+
+Methods:
+
+- <code title="post /filedrop/udl-h3geo">client.report_and_activity.udl_h3geo.<a href="./src/unifieddatalibrary/resources/report_and_activity/udl_h3geo.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activity/udl_h3geo_file_create_params.py">params</a>) -> None</code>
+
+## UdlSigact
+
+Methods:
+
+- <code title="post /filedrop/udl-sigact">client.report_and_activity.udl_sigact.<a href="./src/unifieddatalibrary/resources/report_and_activity/udl_sigact.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activity/udl_sigact_file_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/sigact/getFile/{id}">client.report_and_activity.udl_sigact.<a href="./src/unifieddatalibrary/resources/report_and_activity/udl_sigact.py">file_get</a>(id) -> BinaryAPIResponse</code>
+
 # SecureMessaging
 
 Types:
@@ -5147,11 +5190,27 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types import ScMoveResponse, ScSearchResponse
+from unifieddatalibrary.types import (
+    ScAggregateDocTypeResponse,
+    ScAllowableFileExtensionsResponse,
+    ScAllowableFileMimesResponse,
+    ScCopyResponse,
+    ScFileUploadResponse,
+    ScMoveResponse,
+    ScSearchResponse,
+)
 ```
 
 Methods:
 
+- <code title="delete /scs/delete">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">delete</a>() -> None</code>
+- <code title="get /scs/aggregateDocType">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">aggregate_doc_type</a>() -> <a href="./src/unifieddatalibrary/types/sc_aggregate_doc_type_response.py">ScAggregateDocTypeResponse</a></code>
+- <code title="get /scs/allowableFileExtensions">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_extensions</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_extensions_response.py">ScAllowableFileExtensionsResponse</a></code>
+- <code title="get /scs/allowableFileMimes">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_mimes</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_mimes_response.py">ScAllowableFileMimesResponse</a></code>
+- <code title="post /scs/copy">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/sc_copy_params.py">params</a>) -> str</code>
+- <code title="post /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_download_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>() -> BinaryAPIResponse</code>
+- <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
 - <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
 - <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
 - <code title="post /scs/search">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/sc_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_search_response.py">ScSearchResponse</a></code>
@@ -5260,6 +5319,13 @@ Methods:
 - <code title="post /scs/v2/file">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">file_upload</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_file_upload_params.py">params</a>) -> None</code>
 - <code title="post /scs/v2/folder">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">folder_create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_folder_create_params.py">params</a>) -> None</code>
 - <code title="put /scs/v2/move">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_move_params.py">params</a>) -> None</code>
+
+## File
+
+Methods:
+
+- <code title="get /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">retrieve</a>() -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
+- <code title="patch /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_update_params.py">params</a>) -> None</code>
 
 # ScsViews
 
