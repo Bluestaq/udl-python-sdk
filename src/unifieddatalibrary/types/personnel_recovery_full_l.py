@@ -6,10 +6,10 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._models import BaseModel
+from .._models import BaseModel
 
 __all__ = [
-    "PersonnelRecoveryFull",
+    "PersonnelRecoveryFullL",
     "ExecutionInfo",
     "ExecutionInfoEscortVehicle",
     "ExecutionInfoRecoveryVehicle",
@@ -135,7 +135,7 @@ class ObjectiveAreaInfo(BaseModel):
     """
 
 
-class PersonnelRecoveryFull(BaseModel):
+class PersonnelRecoveryFullL(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

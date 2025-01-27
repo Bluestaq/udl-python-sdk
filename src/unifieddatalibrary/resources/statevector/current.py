@@ -19,6 +19,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.statevector import current_tuple_params
+from ...types.statevector.current_list_response import CurrentListResponse
 from ...types.statevector.current_tuple_response import CurrentTupleResponse
 
 __all__ = ["CurrentResource", "AsyncCurrentResource"]
@@ -43,6 +44,36 @@ class CurrentResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return CurrentResourceWithStreamingResponse(self)
+
+    def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CurrentListResponse:
+        """
+        Service operation to dynamically query/filter current StateVector data within
+        the system by a variety of query parameters not specified in this API
+        documentation. A current StateVector is the currently active, latest StateVector
+        for an on-orbit object. Current state vectors are tracked by source and a source
+        should be provided as a query parameter to this service operation to view the
+        'current' catalog for a particular provider. Default current state vector
+        sources may vary by UDL environment. Please contact the UDL help desk for more
+        information, or explicitly specify the desired source. See the queryhelp
+        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
+        query parameter information.
+        """
+        return self._get(
+            "/udl/statevector/current",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CurrentListResponse,
+        )
 
     def tuple(
         self,
@@ -114,6 +145,36 @@ class AsyncCurrentResource(AsyncAPIResource):
         """
         return AsyncCurrentResourceWithStreamingResponse(self)
 
+    async def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CurrentListResponse:
+        """
+        Service operation to dynamically query/filter current StateVector data within
+        the system by a variety of query parameters not specified in this API
+        documentation. A current StateVector is the currently active, latest StateVector
+        for an on-orbit object. Current state vectors are tracked by source and a source
+        should be provided as a query parameter to this service operation to view the
+        'current' catalog for a particular provider. Default current state vector
+        sources may vary by UDL environment. Please contact the UDL help desk for more
+        information, or explicitly specify the desired source. See the queryhelp
+        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
+        query parameter information.
+        """
+        return await self._get(
+            "/udl/statevector/current",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CurrentListResponse,
+        )
+
     async def tuple(
         self,
         *,
@@ -168,6 +229,9 @@ class CurrentResourceWithRawResponse:
     def __init__(self, current: CurrentResource) -> None:
         self._current = current
 
+        self.list = to_raw_response_wrapper(
+            current.list,
+        )
         self.tuple = to_raw_response_wrapper(
             current.tuple,
         )
@@ -177,6 +241,9 @@ class AsyncCurrentResourceWithRawResponse:
     def __init__(self, current: AsyncCurrentResource) -> None:
         self._current = current
 
+        self.list = async_to_raw_response_wrapper(
+            current.list,
+        )
         self.tuple = async_to_raw_response_wrapper(
             current.tuple,
         )
@@ -186,6 +253,9 @@ class CurrentResourceWithStreamingResponse:
     def __init__(self, current: CurrentResource) -> None:
         self._current = current
 
+        self.list = to_streamed_response_wrapper(
+            current.list,
+        )
         self.tuple = to_streamed_response_wrapper(
             current.tuple,
         )
@@ -195,6 +265,9 @@ class AsyncCurrentResourceWithStreamingResponse:
     def __init__(self, current: AsyncCurrentResource) -> None:
         self._current = current
 
+        self.list = async_to_streamed_response_wrapper(
+            current.list,
+        )
         self.tuple = async_to_streamed_response_wrapper(
             current.tuple,
         )

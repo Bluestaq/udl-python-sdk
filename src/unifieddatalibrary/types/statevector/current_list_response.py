@@ -1,20 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
 from ..._models import BaseModel
 
-__all__ = ["StateVectorFull"]
+__all__ = ["CurrentListResponse", "CurrentListResponseItem"]
 
 
-class StateVectorFull(BaseModel):
+class CurrentListResponseItem(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -149,18 +146,6 @@ class StateVectorFull(BaseModel):
 
     edr: Optional[float] = None
     """Model parameter value for energy dissipation rate (EDR) (w/kg)."""
-
-    effective_from: Optional[datetime] = FieldInfo(alias="effectiveFrom", default=None)
-    """
-    Start time at which this state vector was the 'current' state vector for its
-    satellite.
-    """
-
-    effective_until: Optional[datetime] = FieldInfo(alias="effectiveUntil", default=None)
-    """
-    End time at which this state vector was no longer the 'current' state vector for
-    its satellite.
-    """
 
     eq_cov: Optional[List[float]] = FieldInfo(alias="eqCov", default=None)
     """
@@ -314,9 +299,6 @@ class StateVectorFull(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
-    """Model object representing on-orbit objects or satellites in the system."""
-
     origin: Optional[str] = None
     """
     Originating system or organization which produced the data, if different from
@@ -357,13 +339,6 @@ class StateVectorFull(BaseModel):
 
     pos_unc: Optional[float] = FieldInfo(alias="posUnc", default=None)
     """One sigma position uncertainty, in kilometers."""
-
-    raw_file_uri: Optional[str] = FieldInfo(alias="rawFileURI", default=None)
-    """
-    Optional URI location in the document repository of the raw file parsed by the
-    system to produce this record. To download the raw file, prepend
-    https://udl-hostname/scs/download?id= to this value.
-    """
 
     rec_od_span: Optional[float] = FieldInfo(alias="recODSpan", default=None)
     """The recommended OD time span calculated for the object, expressed in days."""
@@ -426,24 +401,6 @@ class StateVectorFull(BaseModel):
     solid_earth_tides: Optional[bool] = FieldInfo(alias="solidEarthTides", default=None)
     """Boolean indicating use of solid earth tide perturbations for this vector."""
 
-    sourced_data: Optional[List[str]] = FieldInfo(alias="sourcedData", default=None)
-    """Optional array of UDL data (observation) UUIDs used to build this state vector.
-
-    See the associated sourcedDataTypes array for the specific types of observations
-    for the positionally corresponding UUIDs in this array (the two arrays must
-    match in size).
-    """
-
-    sourced_data_types: Optional[List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]]] = FieldInfo(
-        alias="sourcedDataTypes", default=None
-    )
-    """
-    Optional array of UDL observation data types used to build this state vector
-    (e.g. EO, RADAR, RF, DOA). See the associated sourcedData array for the specific
-    UUIDs of observations for the positionally corresponding data types in this
-    array (the two arrays must match in size).
-    """
-
     source_dl: Optional[str] = FieldInfo(alias="sourceDL", default=None)
     """The source data library from which this record was received.
 
@@ -465,15 +422,6 @@ class StateVectorFull(BaseModel):
 
     step_size_selection: Optional[str] = FieldInfo(alias="stepSizeSelection", default=None)
     """Initial step size selection (AUTO or MANUAL)."""
-
-    tags: Optional[List[str]] = None
-    """
-    Optional array of provider/source specific tags for this data, where each
-    element is no longer than 32 characters, used for implementing data owner
-    conditional access controls to restrict access to the data. Should be left null
-    by data providers unless conditional access controls are coordinated with the
-    UDL team.
-    """
 
     tai_utc: Optional[float] = FieldInfo(alias="taiUtc", default=None)
     """
@@ -665,9 +613,4 @@ class StateVectorFull(BaseModel):
     """
 
 
-from ..shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    StateVectorFull.model_rebuild()
-else:
-    StateVectorFull.update_forward_refs()  # type: ignore
+CurrentListResponse: TypeAlias = List[CurrentListResponseItem]

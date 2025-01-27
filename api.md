@@ -15,7 +15,6 @@ from unifieddatalibrary.types import (
     EvacFull,
     EventEvolutionFull,
     FileData,
-    FileData,
     FlightPlanFull,
     Onorbit,
 )
@@ -3040,6 +3039,7 @@ Types:
 
 ```python
 from unifieddatalibrary.types import (
+    PersonnelRecoveryFullL,
     PersonnelrecoveryListResponse,
     PersonnelrecoveryCountResponse,
     PersonnelrecoveryTupleResponse,
@@ -3053,7 +3053,7 @@ Methods:
 - <code title="get /udl/personnelrecovery/count">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/personnelrecovery/createBulk">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_create_bulk_params.py">params</a>) -> None</code>
 - <code title="post /filedrop/udl-personnelrecovery">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_file_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/personnelrecovery/{id}">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/personnelrecovery/personnel_recovery_full.py">PersonnelRecoveryFull</a></code>
+- <code title="get /udl/personnelrecovery/{id}">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/personnel_recovery_full_l.py">PersonnelRecoveryFullL</a></code>
 - <code title="get /udl/personnelrecovery/queryhelp">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/personnelrecovery/tuple">client.personnelrecovery.<a href="./src/unifieddatalibrary/resources/personnelrecovery/personnelrecovery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/personnelrecovery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/personnelrecovery_tuple_response.py">PersonnelrecoveryTupleResponse</a></code>
 
@@ -3062,11 +3062,7 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.personnelrecovery import (
-    PersonnelRecoveryFull,
-    HistoryListResponse,
-    HistoryCountResponse,
-)
+from unifieddatalibrary.types.personnelrecovery import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
@@ -4065,6 +4061,7 @@ Types:
 
 ```python
 from unifieddatalibrary.types import (
+    StateVectorFull,
     StatevectorListResponse,
     StatevectorCountResponse,
     StatevectorTupleResponse,
@@ -4078,7 +4075,7 @@ Methods:
 - <code title="get /udl/statevector/count">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/statevector/createBulk">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_create_bulk_params.py">params</a>) -> None</code>
 - <code title="post /filedrop/udl-sv">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_file_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/statevector/{id}">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/statevector/state_vector_full.py">StateVectorFull</a></code>
+- <code title="get /udl/statevector/{id}">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/state_vector_full.py">StateVectorFull</a></code>
 - <code title="get /udl/statevector/queryhelp">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/statevector/tuple">client.statevector.<a href="./src/unifieddatalibrary/resources/statevector/statevector.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/statevector_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/statevector_tuple_response.py">StatevectorTupleResponse</a></code>
 
@@ -4087,11 +4084,7 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.statevector import (
-    StateVectorFull,
-    HistoryListResponse,
-    HistoryCountResponse,
-)
+from unifieddatalibrary.types.statevector import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
@@ -4105,11 +4098,12 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.statevector import StateVectorFull, CurrentTupleResponse
+from unifieddatalibrary.types.statevector import CurrentListResponse, CurrentTupleResponse
 ```
 
 Methods:
 
+- <code title="get /udl/statevector/current">client.statevector.current.<a href="./src/unifieddatalibrary/resources/statevector/current.py">list</a>() -> <a href="./src/unifieddatalibrary/types/statevector/current_list_response.py">CurrentListResponse</a></code>
 - <code title="get /udl/statevector/current/tuple">client.statevector.current.<a href="./src/unifieddatalibrary/resources/statevector/current.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/statevector/current_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/statevector/current_tuple_response.py">CurrentTupleResponse</a></code>
 
 # Status
@@ -4925,16 +4919,6 @@ Types:
 
 ```python
 from unifieddatalibrary.types.udl.passiveradarobservation import PassiveradarobservationFull
-```
-
-## Personnelrecovery
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.udl.personnelrecovery import PersonnelrecoveryFull
 ```
 
 ## Poi

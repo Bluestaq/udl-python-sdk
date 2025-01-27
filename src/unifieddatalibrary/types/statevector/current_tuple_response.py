@@ -9,4 +9,4 @@ __all__ = ["CurrentTupleResponse"]
 
 CurrentTupleResponse: TypeAlias = List["StateVectorFull"]
 
-from .state_vector_full import StateVectorFull
+from ..state_vector_full import StateVectorFull

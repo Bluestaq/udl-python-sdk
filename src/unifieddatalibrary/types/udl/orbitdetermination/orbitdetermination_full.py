@@ -289,7 +289,7 @@ class OrbitdeterminationFull(BaseModel):
 
 from ...elset import Elset
 from ...shared.onorbit import Onorbit
-from ...statevector.state_vector_full import StateVectorFull
+from ...state_vector_full import StateVectorFull
 
 if PYDANTIC_V2:
     OrbitdeterminationFull.model_rebuild()

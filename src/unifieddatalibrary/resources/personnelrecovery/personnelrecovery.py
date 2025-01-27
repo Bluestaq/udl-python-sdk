@@ -38,9 +38,9 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.personnel_recovery_full_l import PersonnelRecoveryFullL
 from ...types.personnelrecovery_list_response import PersonnelrecoveryListResponse
 from ...types.personnelrecovery_tuple_response import PersonnelrecoveryTupleResponse
-from ...types.personnelrecovery.personnel_recovery_full import PersonnelRecoveryFull
 
 __all__ = ["PersonnelrecoveryResource", "AsyncPersonnelrecoveryResource"]
 
@@ -485,7 +485,7 @@ class PersonnelrecoveryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonnelRecoveryFull:
+    ) -> PersonnelRecoveryFullL:
         """
         Service operation to get a single PersonnelRecovery by its unique ID passed as a
         path parameter.
@@ -506,7 +506,7 @@ class PersonnelrecoveryResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonnelRecoveryFull,
+            cast_to=PersonnelRecoveryFullL,
         )
 
     def queryhelp(
@@ -1030,7 +1030,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonnelRecoveryFull:
+    ) -> PersonnelRecoveryFullL:
         """
         Service operation to get a single PersonnelRecovery by its unique ID passed as a
         path parameter.
@@ -1051,7 +1051,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonnelRecoveryFull,
+            cast_to=PersonnelRecoveryFullL,
         )
 
     async def queryhelp(

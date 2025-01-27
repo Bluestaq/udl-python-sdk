@@ -242,7 +242,7 @@ class EphemerisSet(BaseModel):
 
 
 from .shared.onorbit import Onorbit
-from .statevector.state_vector_full import StateVectorFull
+from .state_vector_full import StateVectorFull
 
 if PYDANTIC_V2:
     EphemerisSet.model_rebuild()
