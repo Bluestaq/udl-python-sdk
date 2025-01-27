@@ -30,9 +30,9 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.launchevent_get_response import LauncheventGetResponse
 from ..types.launchevent_list_response import LauncheventListResponse
 from ..types.launchevent_tuple_response import LauncheventTupleResponse
-from ..types.udl.launchevent.launch_event_full import LaunchEventFull
 
 __all__ = ["LauncheventResource", "AsyncLauncheventResource"]
 
@@ -348,7 +348,7 @@ class LauncheventResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchEventFull:
+    ) -> LauncheventGetResponse:
         """
         Service operation to get a single LaunchEvent record by its unique ID passed as
         a path parameter.
@@ -369,7 +369,7 @@ class LauncheventResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LaunchEventFull,
+            cast_to=LauncheventGetResponse,
         )
 
     def queryhelp(
@@ -764,7 +764,7 @@ class AsyncLauncheventResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchEventFull:
+    ) -> LauncheventGetResponse:
         """
         Service operation to get a single LaunchEvent record by its unique ID passed as
         a path parameter.
@@ -785,7 +785,7 @@ class AsyncLauncheventResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LaunchEventFull,
+            cast_to=LauncheventGetResponse,
         )
 
     async def queryhelp(

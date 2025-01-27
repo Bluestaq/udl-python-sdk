@@ -6,15 +6,6 @@ from typing import Iterable
 
 import httpx
 
-from ...types import launch_event_file_create_params
-from .history import (
-    HistoryResource,
-    AsyncHistoryResource,
-    HistoryResourceWithRawResponse,
-    AsyncHistoryResourceWithRawResponse,
-    HistoryResourceWithStreamingResponse,
-    AsyncHistoryResourceWithStreamingResponse,
-)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -29,38 +20,35 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.air_operations import diplomatic_clearance_create_params
 
-__all__ = ["LaunchEventResource", "AsyncLaunchEventResource"]
+__all__ = ["DiplomaticClearanceResource", "AsyncDiplomaticClearanceResource"]
 
 
-class LaunchEventResource(SyncAPIResource):
+class DiplomaticClearanceResource(SyncAPIResource):
     @cached_property
-    def history(self) -> HistoryResource:
-        return HistoryResource(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> LaunchEventResourceWithRawResponse:
+    def with_raw_response(self) -> DiplomaticClearanceResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
         """
-        return LaunchEventResourceWithRawResponse(self)
+        return DiplomaticClearanceResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LaunchEventResourceWithStreamingResponse:
+    def with_streaming_response(self) -> DiplomaticClearanceResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
-        return LaunchEventResourceWithStreamingResponse(self)
+        return DiplomaticClearanceResourceWithStreamingResponse(self)
 
-    def file_create(
+    def create(
         self,
         *,
-        body: Iterable[launch_event_file_create_params.Body],
+        body: Iterable[diplomatic_clearance_create_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,10 +57,10 @@ class LaunchEventResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take LaunchEvent entries as a POST body and ingest into the
-        database. This operation is intended to be used for automated feeds into UDL. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
+        Service operation to take multiple Diplomatic Clearance records as a POST body
+        and ingest into the database. This operation is intended to be used for
+        automated feeds into UDL. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -85,8 +73,8 @@ class LaunchEventResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            "/filedrop/udl-launchevent",
-            body=maybe_transform(body, Iterable[launch_event_file_create_params.Body]),
+            "/filedrop/udl-diplomaticclearance",
+            body=maybe_transform(body, Iterable[diplomatic_clearance_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -94,34 +82,30 @@ class LaunchEventResource(SyncAPIResource):
         )
 
 
-class AsyncLaunchEventResource(AsyncAPIResource):
+class AsyncDiplomaticClearanceResource(AsyncAPIResource):
     @cached_property
-    def history(self) -> AsyncHistoryResource:
-        return AsyncHistoryResource(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> AsyncLaunchEventResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncDiplomaticClearanceResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncLaunchEventResourceWithRawResponse(self)
+        return AsyncDiplomaticClearanceResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLaunchEventResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncDiplomaticClearanceResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
-        return AsyncLaunchEventResourceWithStreamingResponse(self)
+        return AsyncDiplomaticClearanceResourceWithStreamingResponse(self)
 
-    async def file_create(
+    async def create(
         self,
         *,
-        body: Iterable[launch_event_file_create_params.Body],
+        body: Iterable[diplomatic_clearance_create_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,10 +114,10 @@ class AsyncLaunchEventResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take LaunchEvent entries as a POST body and ingest into the
-        database. This operation is intended to be used for automated feeds into UDL. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
+        Service operation to take multiple Diplomatic Clearance records as a POST body
+        and ingest into the database. This operation is intended to be used for
+        automated feeds into UDL. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -146,8 +130,8 @@ class AsyncLaunchEventResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            "/filedrop/udl-launchevent",
-            body=await async_maybe_transform(body, Iterable[launch_event_file_create_params.Body]),
+            "/filedrop/udl-diplomaticclearance",
+            body=await async_maybe_transform(body, Iterable[diplomatic_clearance_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -155,53 +139,37 @@ class AsyncLaunchEventResource(AsyncAPIResource):
         )
 
 
-class LaunchEventResourceWithRawResponse:
-    def __init__(self, launch_event: LaunchEventResource) -> None:
-        self._launch_event = launch_event
+class DiplomaticClearanceResourceWithRawResponse:
+    def __init__(self, diplomatic_clearance: DiplomaticClearanceResource) -> None:
+        self._diplomatic_clearance = diplomatic_clearance
 
-        self.file_create = to_raw_response_wrapper(
-            launch_event.file_create,
+        self.create = to_raw_response_wrapper(
+            diplomatic_clearance.create,
         )
 
-    @cached_property
-    def history(self) -> HistoryResourceWithRawResponse:
-        return HistoryResourceWithRawResponse(self._launch_event.history)
 
+class AsyncDiplomaticClearanceResourceWithRawResponse:
+    def __init__(self, diplomatic_clearance: AsyncDiplomaticClearanceResource) -> None:
+        self._diplomatic_clearance = diplomatic_clearance
 
-class AsyncLaunchEventResourceWithRawResponse:
-    def __init__(self, launch_event: AsyncLaunchEventResource) -> None:
-        self._launch_event = launch_event
-
-        self.file_create = async_to_raw_response_wrapper(
-            launch_event.file_create,
+        self.create = async_to_raw_response_wrapper(
+            diplomatic_clearance.create,
         )
 
-    @cached_property
-    def history(self) -> AsyncHistoryResourceWithRawResponse:
-        return AsyncHistoryResourceWithRawResponse(self._launch_event.history)
 
+class DiplomaticClearanceResourceWithStreamingResponse:
+    def __init__(self, diplomatic_clearance: DiplomaticClearanceResource) -> None:
+        self._diplomatic_clearance = diplomatic_clearance
 
-class LaunchEventResourceWithStreamingResponse:
-    def __init__(self, launch_event: LaunchEventResource) -> None:
-        self._launch_event = launch_event
-
-        self.file_create = to_streamed_response_wrapper(
-            launch_event.file_create,
+        self.create = to_streamed_response_wrapper(
+            diplomatic_clearance.create,
         )
 
-    @cached_property
-    def history(self) -> HistoryResourceWithStreamingResponse:
-        return HistoryResourceWithStreamingResponse(self._launch_event.history)
 
+class AsyncDiplomaticClearanceResourceWithStreamingResponse:
+    def __init__(self, diplomatic_clearance: AsyncDiplomaticClearanceResource) -> None:
+        self._diplomatic_clearance = diplomatic_clearance
 
-class AsyncLaunchEventResourceWithStreamingResponse:
-    def __init__(self, launch_event: AsyncLaunchEventResource) -> None:
-        self._launch_event = launch_event
-
-        self.file_create = async_to_streamed_response_wrapper(
-            launch_event.file_create,
+        self.create = async_to_streamed_response_wrapper(
+            diplomatic_clearance.create,
         )
-
-    @cached_property
-    def history(self) -> AsyncHistoryResourceWithStreamingResponse:
-        return AsyncHistoryResourceWithStreamingResponse(self._launch_event.history)

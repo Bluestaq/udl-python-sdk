@@ -36,6 +36,14 @@ from .air_tasking_orders import (
     AirTaskingOrdersResourceWithStreamingResponse,
     AsyncAirTaskingOrdersResourceWithStreamingResponse,
 )
+from .diplomatic_clearance import (
+    DiplomaticClearanceResource,
+    AsyncDiplomaticClearanceResource,
+    DiplomaticClearanceResourceWithRawResponse,
+    AsyncDiplomaticClearanceResourceWithRawResponse,
+    DiplomaticClearanceResourceWithStreamingResponse,
+    AsyncDiplomaticClearanceResourceWithStreamingResponse,
+)
 from .airspace_control_orders import (
     AirspaceControlOrdersResource,
     AsyncAirspaceControlOrdersResource,
@@ -43,22 +51,6 @@ from .airspace_control_orders import (
     AsyncAirspaceControlOrdersResourceWithRawResponse,
     AirspaceControlOrdersResourceWithStreamingResponse,
     AsyncAirspaceControlOrdersResourceWithStreamingResponse,
-)
-from .logistics_support.logistics_support import (
-    LogisticsSupportResource,
-    AsyncLogisticsSupportResource,
-    LogisticsSupportResourceWithRawResponse,
-    AsyncLogisticsSupportResourceWithRawResponse,
-    LogisticsSupportResourceWithStreamingResponse,
-    AsyncLogisticsSupportResourceWithStreamingResponse,
-)
-from .diplomatic_clearance.diplomatic_clearance import (
-    DiplomaticClearanceResource,
-    AsyncDiplomaticClearanceResource,
-    DiplomaticClearanceResourceWithRawResponse,
-    AsyncDiplomaticClearanceResourceWithRawResponse,
-    DiplomaticClearanceResourceWithStreamingResponse,
-    AsyncDiplomaticClearanceResourceWithStreamingResponse,
 )
 
 __all__ = ["AirOperationsResource", "AsyncAirOperationsResource"]
@@ -88,10 +80,6 @@ class AirOperationsResource(SyncAPIResource):
     @cached_property
     def diplomatic_clearance(self) -> DiplomaticClearanceResource:
         return DiplomaticClearanceResource(self._client)
-
-    @cached_property
-    def logistics_support(self) -> LogisticsSupportResource:
-        return LogisticsSupportResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AirOperationsResourceWithRawResponse:
@@ -137,10 +125,6 @@ class AsyncAirOperationsResource(AsyncAPIResource):
     @cached_property
     def diplomatic_clearance(self) -> AsyncDiplomaticClearanceResource:
         return AsyncDiplomaticClearanceResource(self._client)
-
-    @cached_property
-    def logistics_support(self) -> AsyncLogisticsSupportResource:
-        return AsyncLogisticsSupportResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncAirOperationsResourceWithRawResponse:
@@ -190,10 +174,6 @@ class AirOperationsResourceWithRawResponse:
     def diplomatic_clearance(self) -> DiplomaticClearanceResourceWithRawResponse:
         return DiplomaticClearanceResourceWithRawResponse(self._air_operations.diplomatic_clearance)
 
-    @cached_property
-    def logistics_support(self) -> LogisticsSupportResourceWithRawResponse:
-        return LogisticsSupportResourceWithRawResponse(self._air_operations.logistics_support)
-
 
 class AsyncAirOperationsResourceWithRawResponse:
     def __init__(self, air_operations: AsyncAirOperationsResource) -> None:
@@ -222,10 +202,6 @@ class AsyncAirOperationsResourceWithRawResponse:
     @cached_property
     def diplomatic_clearance(self) -> AsyncDiplomaticClearanceResourceWithRawResponse:
         return AsyncDiplomaticClearanceResourceWithRawResponse(self._air_operations.diplomatic_clearance)
-
-    @cached_property
-    def logistics_support(self) -> AsyncLogisticsSupportResourceWithRawResponse:
-        return AsyncLogisticsSupportResourceWithRawResponse(self._air_operations.logistics_support)
 
 
 class AirOperationsResourceWithStreamingResponse:
@@ -256,10 +232,6 @@ class AirOperationsResourceWithStreamingResponse:
     def diplomatic_clearance(self) -> DiplomaticClearanceResourceWithStreamingResponse:
         return DiplomaticClearanceResourceWithStreamingResponse(self._air_operations.diplomatic_clearance)
 
-    @cached_property
-    def logistics_support(self) -> LogisticsSupportResourceWithStreamingResponse:
-        return LogisticsSupportResourceWithStreamingResponse(self._air_operations.logistics_support)
-
 
 class AsyncAirOperationsResourceWithStreamingResponse:
     def __init__(self, air_operations: AsyncAirOperationsResource) -> None:
@@ -288,7 +260,3 @@ class AsyncAirOperationsResourceWithStreamingResponse:
     @cached_property
     def diplomatic_clearance(self) -> AsyncDiplomaticClearanceResourceWithStreamingResponse:
         return AsyncDiplomaticClearanceResourceWithStreamingResponse(self._air_operations.diplomatic_clearance)
-
-    @cached_property
-    def logistics_support(self) -> AsyncLogisticsSupportResourceWithStreamingResponse:
-        return AsyncLogisticsSupportResourceWithStreamingResponse(self._air_operations.logistics_support)

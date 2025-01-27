@@ -40,7 +40,6 @@ from .resources import (
     h3geo,
     stage,
     ecpsdr,
-    hazard,
     rfband,
     sensor,
     status,
@@ -87,7 +86,6 @@ from .resources import (
     drift_history,
     enginedetails,
     groundimagery,
-    launch_events,
     launchvehicle,
     manifoldelset,
     operatingunit,
@@ -108,7 +106,6 @@ from .resources import (
     airtaskingorders,
     analytic_imagery,
     equipmentremarks,
-    logisticssupport,
     objectofinterest,
     radarobservation,
     rfemitterdetails,
@@ -154,9 +151,9 @@ from .resources.swir import swir
 from .resources.track import track
 from .resources.video import video
 from .resources.elsets import elsets
+from .resources.hazard import hazard
 from .resources.sigact import sigact
 from .resources.taiutc import taiutc
-from .resources.hazards import hazards
 from .resources.onorbit import onorbit
 from .resources.ephemeris import ephemeris
 from .resources.maneuvers import maneuvers
@@ -196,6 +193,7 @@ from .resources.supporting_data import supporting_data
 from .resources.collect_requests import collect_requests
 from .resources.effect_responses import effect_responses
 from .resources.iono_observation import iono_observation
+from .resources.logisticssupport import logisticssupport
 from .resources.aircraft_statuses import aircraft_statuses
 from .resources.collect_responses import collect_responses
 from .resources.gnss_observations import gnss_observations
@@ -297,7 +295,6 @@ class Unifieddatalibrary(SyncAPIClient):
     isr_collections: isr_collections.IsrCollectionsResource
     item: item.ItemResource
     item_trackings: item_trackings.ItemTrackingsResource
-    launch_events: launch_events.LaunchEventsResource
     launchdetection: launchdetection.LaunchdetectionResource
     launchevent: launchevent.LauncheventResource
     launchsite: launchsite.LaunchsiteResource
@@ -393,7 +390,6 @@ class Unifieddatalibrary(SyncAPIClient):
     udl: udl.UdlResource
     gnss_observations: gnss_observations.GnssObservationsResource
     gnss_raw_if: gnss_raw_if.GnssRawIfResource
-    hazards: hazards.HazardsResource
     iono_observation: iono_observation.IonoObservationResource
     launch_event: launch_event.LaunchEventResource
     report_and_activity: report_and_activity.ReportAndActivityResource
@@ -542,7 +538,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.isr_collections = isr_collections.IsrCollectionsResource(self)
         self.item = item.ItemResource(self)
         self.item_trackings = item_trackings.ItemTrackingsResource(self)
-        self.launch_events = launch_events.LaunchEventsResource(self)
         self.launchdetection = launchdetection.LaunchdetectionResource(self)
         self.launchevent = launchevent.LauncheventResource(self)
         self.launchsite = launchsite.LaunchsiteResource(self)
@@ -638,7 +633,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.udl = udl.UdlResource(self)
         self.gnss_observations = gnss_observations.GnssObservationsResource(self)
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResource(self)
-        self.hazards = hazards.HazardsResource(self)
         self.iono_observation = iono_observation.IonoObservationResource(self)
         self.launch_event = launch_event.LaunchEventResource(self)
         self.report_and_activity = report_and_activity.ReportAndActivityResource(self)
@@ -830,7 +824,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     isr_collections: isr_collections.AsyncIsrCollectionsResource
     item: item.AsyncItemResource
     item_trackings: item_trackings.AsyncItemTrackingsResource
-    launch_events: launch_events.AsyncLaunchEventsResource
     launchdetection: launchdetection.AsyncLaunchdetectionResource
     launchevent: launchevent.AsyncLauncheventResource
     launchsite: launchsite.AsyncLaunchsiteResource
@@ -926,7 +919,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     udl: udl.AsyncUdlResource
     gnss_observations: gnss_observations.AsyncGnssObservationsResource
     gnss_raw_if: gnss_raw_if.AsyncGnssRawIfResource
-    hazards: hazards.AsyncHazardsResource
     iono_observation: iono_observation.AsyncIonoObservationResource
     launch_event: launch_event.AsyncLaunchEventResource
     report_and_activity: report_and_activity.AsyncReportAndActivityResource
@@ -1075,7 +1067,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.isr_collections = isr_collections.AsyncIsrCollectionsResource(self)
         self.item = item.AsyncItemResource(self)
         self.item_trackings = item_trackings.AsyncItemTrackingsResource(self)
-        self.launch_events = launch_events.AsyncLaunchEventsResource(self)
         self.launchdetection = launchdetection.AsyncLaunchdetectionResource(self)
         self.launchevent = launchevent.AsyncLauncheventResource(self)
         self.launchsite = launchsite.AsyncLaunchsiteResource(self)
@@ -1171,7 +1162,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.udl = udl.AsyncUdlResource(self)
         self.gnss_observations = gnss_observations.AsyncGnssObservationsResource(self)
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResource(self)
-        self.hazards = hazards.AsyncHazardsResource(self)
         self.iono_observation = iono_observation.AsyncIonoObservationResource(self)
         self.launch_event = launch_event.AsyncLaunchEventResource(self)
         self.report_and_activity = report_and_activity.AsyncReportAndActivityResource(self)
@@ -1378,7 +1368,6 @@ class UnifieddatalibraryWithRawResponse:
         self.isr_collections = isr_collections.IsrCollectionsResourceWithRawResponse(client.isr_collections)
         self.item = item.ItemResourceWithRawResponse(client.item)
         self.item_trackings = item_trackings.ItemTrackingsResourceWithRawResponse(client.item_trackings)
-        self.launch_events = launch_events.LaunchEventsResourceWithRawResponse(client.launch_events)
         self.launchdetection = launchdetection.LaunchdetectionResourceWithRawResponse(client.launchdetection)
         self.launchevent = launchevent.LauncheventResourceWithRawResponse(client.launchevent)
         self.launchsite = launchsite.LaunchsiteResourceWithRawResponse(client.launchsite)
@@ -1508,7 +1497,6 @@ class UnifieddatalibraryWithRawResponse:
         self.udl = udl.UdlResourceWithRawResponse(client.udl)
         self.gnss_observations = gnss_observations.GnssObservationsResourceWithRawResponse(client.gnss_observations)
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResourceWithRawResponse(client.gnss_raw_if)
-        self.hazards = hazards.HazardsResourceWithRawResponse(client.hazards)
         self.iono_observation = iono_observation.IonoObservationResourceWithRawResponse(client.iono_observation)
         self.launch_event = launch_event.LaunchEventResourceWithRawResponse(client.launch_event)
         self.report_and_activity = report_and_activity.ReportAndActivityResourceWithRawResponse(
@@ -1614,7 +1602,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithRawResponse(client.isr_collections)
         self.item = item.AsyncItemResourceWithRawResponse(client.item)
         self.item_trackings = item_trackings.AsyncItemTrackingsResourceWithRawResponse(client.item_trackings)
-        self.launch_events = launch_events.AsyncLaunchEventsResourceWithRawResponse(client.launch_events)
         self.launchdetection = launchdetection.AsyncLaunchdetectionResourceWithRawResponse(client.launchdetection)
         self.launchevent = launchevent.AsyncLauncheventResourceWithRawResponse(client.launchevent)
         self.launchsite = launchsite.AsyncLaunchsiteResourceWithRawResponse(client.launchsite)
@@ -1764,7 +1751,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResourceWithRawResponse(client.gnss_raw_if)
-        self.hazards = hazards.AsyncHazardsResourceWithRawResponse(client.hazards)
         self.iono_observation = iono_observation.AsyncIonoObservationResourceWithRawResponse(client.iono_observation)
         self.launch_event = launch_event.AsyncLaunchEventResourceWithRawResponse(client.launch_event)
         self.report_and_activity = report_and_activity.AsyncReportAndActivityResourceWithRawResponse(
@@ -1870,7 +1856,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.isr_collections = isr_collections.IsrCollectionsResourceWithStreamingResponse(client.isr_collections)
         self.item = item.ItemResourceWithStreamingResponse(client.item)
         self.item_trackings = item_trackings.ItemTrackingsResourceWithStreamingResponse(client.item_trackings)
-        self.launch_events = launch_events.LaunchEventsResourceWithStreamingResponse(client.launch_events)
         self.launchdetection = launchdetection.LaunchdetectionResourceWithStreamingResponse(client.launchdetection)
         self.launchevent = launchevent.LauncheventResourceWithStreamingResponse(client.launchevent)
         self.launchsite = launchsite.LaunchsiteResourceWithStreamingResponse(client.launchsite)
@@ -2020,7 +2005,6 @@ class UnifieddatalibraryWithStreamedResponse:
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResourceWithStreamingResponse(client.gnss_raw_if)
-        self.hazards = hazards.HazardsResourceWithStreamingResponse(client.hazards)
         self.iono_observation = iono_observation.IonoObservationResourceWithStreamingResponse(client.iono_observation)
         self.launch_event = launch_event.LaunchEventResourceWithStreamingResponse(client.launch_event)
         self.report_and_activity = report_and_activity.ReportAndActivityResourceWithStreamingResponse(
@@ -2140,7 +2124,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithStreamingResponse(client.isr_collections)
         self.item = item.AsyncItemResourceWithStreamingResponse(client.item)
         self.item_trackings = item_trackings.AsyncItemTrackingsResourceWithStreamingResponse(client.item_trackings)
-        self.launch_events = launch_events.AsyncLaunchEventsResourceWithStreamingResponse(client.launch_events)
         self.launchdetection = launchdetection.AsyncLaunchdetectionResourceWithStreamingResponse(client.launchdetection)
         self.launchevent = launchevent.AsyncLauncheventResourceWithStreamingResponse(client.launchevent)
         self.launchsite = launchsite.AsyncLaunchsiteResourceWithStreamingResponse(client.launchsite)
@@ -2302,7 +2285,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResourceWithStreamingResponse(client.gnss_raw_if)
-        self.hazards = hazards.AsyncHazardsResourceWithStreamingResponse(client.hazards)
         self.iono_observation = iono_observation.AsyncIonoObservationResourceWithStreamingResponse(
             client.iono_observation
         )

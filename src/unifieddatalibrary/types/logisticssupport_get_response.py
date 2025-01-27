@@ -2,29 +2,28 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
 __all__ = [
-    "LogisticssupportTupleResponse",
-    "LogisticssupportTupleResponseItem",
-    "LogisticssupportTupleResponseItemLogisticsDiscrepancyInfo",
-    "LogisticssupportTupleResponseItemLogisticsRemark",
-    "LogisticssupportTupleResponseItemLogisticsSupportItem",
-    "LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPart",
-    "LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPartLogisticsStock",
-    "LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsRemark",
-    "LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsSpecialty",
-    "LogisticssupportTupleResponseItemLogisticsTransportationPlan",
-    "LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsSegment",
-    "LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsTransportationPlansRemark",
+    "LogisticssupportGetResponse",
+    "LogisticsDiscrepancyInfo",
+    "LogisticsRemark",
+    "LogisticsSupportItem",
+    "LogisticsSupportItemLogisticsPart",
+    "LogisticsSupportItemLogisticsPartLogisticsStock",
+    "LogisticsSupportItemLogisticsRemark",
+    "LogisticsSupportItemLogisticsSpecialty",
+    "LogisticsTransportationPlan",
+    "LogisticsTransportationPlanLogisticsSegment",
+    "LogisticsTransportationPlanLogisticsTransportationPlansRemark",
 ]
 
 
-class LogisticssupportTupleResponseItemLogisticsDiscrepancyInfo(BaseModel):
+class LogisticsDiscrepancyInfo(BaseModel):
     closure_time: Optional[datetime] = FieldInfo(alias="closureTime", default=None)
     """
     The discrepancy closure time, in ISO 8601 UTC format with millisecond precision.
@@ -40,7 +39,7 @@ class LogisticssupportTupleResponseItemLogisticsDiscrepancyInfo(BaseModel):
     """The job start time, in ISO 8601 UTC format with millisecond precision."""
 
 
-class LogisticssupportTupleResponseItemLogisticsRemark(BaseModel):
+class LogisticsRemark(BaseModel):
     last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
     """
     Date the remark was published or updated, in ISO 8601 UTC format, with
@@ -54,7 +53,7 @@ class LogisticssupportTupleResponseItemLogisticsRemark(BaseModel):
     """User who published the remark."""
 
 
-class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
+class LogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
     quantity: Optional[int] = None
     """The quantity of available parts needed from sourceICAO."""
 
@@ -71,7 +70,7 @@ class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPartLogistic
     """The point of contact at the sourced location."""
 
 
-class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPart(BaseModel):
+class LogisticsSupportItemLogisticsPart(BaseModel):
     figure_number: Optional[str] = FieldInfo(alias="figureNumber", default=None)
     """Technical order manual figure number for the requested / supplied part."""
 
@@ -84,9 +83,9 @@ class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPart(BaseMod
     requested parts.
     """
 
-    logistics_stocks: Optional[
-        List[LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPartLogisticsStock]
-    ] = FieldInfo(alias="logisticsStocks", default=None)
+    logistics_stocks: Optional[List[LogisticsSupportItemLogisticsPartLogisticsStock]] = FieldInfo(
+        alias="logisticsStocks", default=None
+    )
     """The supply stocks for this support item."""
 
     measurement_unit_code: Optional[str] = FieldInfo(alias="measurementUnitCode", default=None)
@@ -114,7 +113,7 @@ class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPart(BaseMod
     """Work Unit Code (WUC), or for some aircraft types, the Reference Designator."""
 
 
-class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsRemark(BaseModel):
+class LogisticsSupportItemLogisticsRemark(BaseModel):
     last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
     """
     Date the remark was published or updated, in ISO 8601 UTC format, with
@@ -128,7 +127,7 @@ class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsRemark(BaseM
     """User who published the remark."""
 
 
-class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsSpecialty(BaseModel):
+class LogisticsSupportItemLogisticsSpecialty(BaseModel):
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
     """The first name of the specialist."""
 
@@ -158,7 +157,7 @@ class LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsSpecialty(Ba
     """
 
 
-class LogisticssupportTupleResponseItemLogisticsSupportItem(BaseModel):
+class LogisticsSupportItem(BaseModel):
     cannibalized: Optional[bool] = None
     """
     This element indicates whether or not the supplied item is contained within
@@ -192,18 +191,16 @@ class LogisticssupportTupleResponseItemLogisticsSupportItem(BaseModel):
     sequence numbers, and 10-12 are a three-digit supplemental number.
     """
 
-    logistics_parts: Optional[List[LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsPart]] = FieldInfo(
-        alias="logisticsParts", default=None
-    )
+    logistics_parts: Optional[List[LogisticsSupportItemLogisticsPart]] = FieldInfo(alias="logisticsParts", default=None)
     """The parts associated with this support item."""
 
-    logistics_remarks: Optional[List[LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsRemark]] = FieldInfo(
+    logistics_remarks: Optional[List[LogisticsSupportItemLogisticsRemark]] = FieldInfo(
         alias="logisticsRemarks", default=None
     )
     """Remarks associated with this support item."""
 
-    logistics_specialties: Optional[List[LogisticssupportTupleResponseItemLogisticsSupportItemLogisticsSpecialty]] = (
-        FieldInfo(alias="logisticsSpecialties", default=None)
+    logistics_specialties: Optional[List[LogisticsSupportItemLogisticsSpecialty]] = FieldInfo(
+        alias="logisticsSpecialties", default=None
     )
     """The specialties required to implement this support item."""
 
@@ -268,7 +265,7 @@ class LogisticssupportTupleResponseItemLogisticsSupportItem(BaseModel):
     """
 
 
-class LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsSegment(BaseModel):
+class LogisticsTransportationPlanLogisticsSegment(BaseModel):
     arrival_icao: Optional[str] = FieldInfo(alias="arrivalICAO", default=None)
     """Airport ICAO arrival code."""
 
@@ -343,7 +340,7 @@ class LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsSegme
     """The identifier that represents a specific aircraft within an aircraft type."""
 
 
-class LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsTransportationPlansRemark(BaseModel):
+class LogisticsTransportationPlanLogisticsTransportationPlansRemark(BaseModel):
     last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
     """
     Date the remark was published or updated, in ISO 8601 UTC format, with
@@ -357,7 +354,7 @@ class LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsTrans
     """User who published the remark."""
 
 
-class LogisticssupportTupleResponseItemLogisticsTransportationPlan(BaseModel):
+class LogisticsTransportationPlan(BaseModel):
     act_dep_time: Optional[datetime] = FieldInfo(alias="actDepTime", default=None)
     """
     Actual time of departure of first segment, in ISO 8601 UTC format with
@@ -423,13 +420,13 @@ class LogisticssupportTupleResponseItemLogisticsTransportationPlan(BaseModel):
     logistic_master_record_id: Optional[str] = FieldInfo(alias="logisticMasterRecordId", default=None)
     """The identifier that represents a Logistics Master Record."""
 
-    logistics_segments: Optional[List[LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsSegment]] = (
-        FieldInfo(alias="logisticsSegments", default=None)
+    logistics_segments: Optional[List[LogisticsTransportationPlanLogisticsSegment]] = FieldInfo(
+        alias="logisticsSegments", default=None
     )
     """The transportation segments associated with this transportation plan."""
 
     logistics_transportation_plans_remarks: Optional[
-        List[LogisticssupportTupleResponseItemLogisticsTransportationPlanLogisticsTransportationPlansRemark]
+        List[LogisticsTransportationPlanLogisticsTransportationPlansRemark]
     ] = FieldInfo(alias="logisticsTransportationPlansRemarks", default=None)
     """Remarks associated with this transportation plan."""
 
@@ -484,7 +481,7 @@ class LogisticssupportTupleResponseItemLogisticsTransportationPlan(BaseModel):
     """Contains the tail number displayed by GDSS2."""
 
 
-class LogisticssupportTupleResponseItem(BaseModel):
+class LogisticssupportGetResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -566,7 +563,7 @@ class LogisticssupportTupleResponseItem(BaseModel):
     EQ+hhh.h (EQ=equipment), MRT+hhh.h (MRT=maintenance recovery team).
     """
 
-    logistics_discrepancy_infos: Optional[List[LogisticssupportTupleResponseItemLogisticsDiscrepancyInfo]] = FieldInfo(
+    logistics_discrepancy_infos: Optional[List[LogisticsDiscrepancyInfo]] = FieldInfo(
         alias="logisticsDiscrepancyInfos", default=None
     )
     """Discrepancy information associated with this LogisticsSupport record."""
@@ -574,18 +571,16 @@ class LogisticssupportTupleResponseItem(BaseModel):
     logistics_record_id: Optional[str] = FieldInfo(alias="logisticsRecordId", default=None)
     """The identifier that represents a Logistics Master Record."""
 
-    logistics_remarks: Optional[List[LogisticssupportTupleResponseItemLogisticsRemark]] = FieldInfo(
-        alias="logisticsRemarks", default=None
-    )
+    logistics_remarks: Optional[List[LogisticsRemark]] = FieldInfo(alias="logisticsRemarks", default=None)
     """Remarks associated with this LogisticsSupport record."""
 
-    logistics_support_items: Optional[List[LogisticssupportTupleResponseItemLogisticsSupportItem]] = FieldInfo(
+    logistics_support_items: Optional[List[LogisticsSupportItem]] = FieldInfo(
         alias="logisticsSupportItems", default=None
     )
     """Support items associated with this LogisticsSupport record."""
 
-    logistics_transportation_plans: Optional[List[LogisticssupportTupleResponseItemLogisticsTransportationPlan]] = (
-        FieldInfo(alias="logisticsTransportationPlans", default=None)
+    logistics_transportation_plans: Optional[List[LogisticsTransportationPlan]] = FieldInfo(
+        alias="logisticsTransportationPlans", default=None
     )
     """
     Transportation plans associated with this LogisticsSupport record, used to
@@ -657,6 +652,3 @@ class LogisticssupportTupleResponseItem(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-LogisticssupportTupleResponse: TypeAlias = List[LogisticssupportTupleResponseItem]

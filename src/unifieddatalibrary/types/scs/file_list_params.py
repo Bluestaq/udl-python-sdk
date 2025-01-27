@@ -1,0 +1,18 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, TypedDict
+
+__all__ = ["FileListParams"]
+
+
+class FileListParams(TypedDict, total=False):
+    path: Required[str]
+    """The base path to list"""
+
+    count: int
+    """Number of items per page"""
+
+    offset: int
+    """First result to return"""
