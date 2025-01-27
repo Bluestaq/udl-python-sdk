@@ -10,5 +10,8 @@ __all__ = ["ScMoveParams"]
 
 
 class ScMoveParams(TypedDict, total=False):
+    id: Required[str]
+    """The path of the item to copy"""
+
     target_path: Required[Annotated[str, PropertyInfo(alias="targetPath")]]
     """The path to copy to"""

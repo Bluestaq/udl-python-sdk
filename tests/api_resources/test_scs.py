@@ -32,12 +32,16 @@ class TestScs:
 
     @parametrize
     def test_method_delete(self, client: Unifieddatalibrary) -> None:
-        sc = client.scs.delete()
+        sc = client.scs.delete(
+            id="id",
+        )
         assert sc is None
 
     @parametrize
     def test_raw_response_delete(self, client: Unifieddatalibrary) -> None:
-        response = client.scs.with_raw_response.delete()
+        response = client.scs.with_raw_response.delete(
+            id="id",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -46,7 +50,9 @@ class TestScs:
 
     @parametrize
     def test_streaming_response_delete(self, client: Unifieddatalibrary) -> None:
-        with client.scs.with_streaming_response.delete() as response:
+        with client.scs.with_streaming_response.delete(
+            id="id",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -133,6 +139,7 @@ class TestScs:
     @parametrize
     def test_method_copy(self, client: Unifieddatalibrary) -> None:
         sc = client.scs.copy(
+            id="id",
             target_path="targetPath",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -140,6 +147,7 @@ class TestScs:
     @parametrize
     def test_raw_response_copy(self, client: Unifieddatalibrary) -> None:
         response = client.scs.with_raw_response.copy(
+            id="id",
             target_path="targetPath",
         )
 
@@ -151,6 +159,7 @@ class TestScs:
     @parametrize
     def test_streaming_response_copy(self, client: Unifieddatalibrary) -> None:
         with client.scs.with_streaming_response.copy(
+            id="id",
             target_path="targetPath",
         ) as response:
             assert not response.is_closed
@@ -207,7 +216,9 @@ class TestScs:
     @pytest.mark.respx(base_url=base_url)
     def test_method_file_download(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        sc = client.scs.file_download()
+        sc = client.scs.file_download(
+            id="id",
+        )
         assert sc.is_closed
         assert sc.json() == {"foo": "bar"}
         assert cast(Any, sc.is_closed) is True
@@ -218,7 +229,9 @@ class TestScs:
     def test_raw_response_file_download(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        sc = client.scs.with_raw_response.file_download()
+        sc = client.scs.with_raw_response.file_download(
+            id="id",
+        )
 
         assert sc.is_closed is True
         assert sc.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -229,7 +242,9 @@ class TestScs:
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_file_download(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        with client.scs.with_streaming_response.file_download() as sc:
+        with client.scs.with_streaming_response.file_download(
+            id="id",
+        ) as sc:
             assert not sc.is_closed
             assert sc.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -294,6 +309,7 @@ class TestScs:
     @parametrize
     def test_method_move(self, client: Unifieddatalibrary) -> None:
         sc = client.scs.move(
+            id="id",
             target_path="targetPath",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -301,6 +317,7 @@ class TestScs:
     @parametrize
     def test_raw_response_move(self, client: Unifieddatalibrary) -> None:
         response = client.scs.with_raw_response.move(
+            id="id",
             target_path="targetPath",
         )
 
@@ -312,6 +329,7 @@ class TestScs:
     @parametrize
     def test_streaming_response_move(self, client: Unifieddatalibrary) -> None:
         with client.scs.with_streaming_response.move(
+            id="id",
             target_path="targetPath",
         ) as response:
             assert not response.is_closed
@@ -325,6 +343,7 @@ class TestScs:
     @parametrize
     def test_method_rename(self, client: Unifieddatalibrary) -> None:
         sc = client.scs.rename(
+            id="id",
             new_name="newName",
         )
         assert sc is None
@@ -332,6 +351,7 @@ class TestScs:
     @parametrize
     def test_raw_response_rename(self, client: Unifieddatalibrary) -> None:
         response = client.scs.with_raw_response.rename(
+            id="id",
             new_name="newName",
         )
 
@@ -343,6 +363,7 @@ class TestScs:
     @parametrize
     def test_streaming_response_rename(self, client: Unifieddatalibrary) -> None:
         with client.scs.with_streaming_response.rename(
+            id="id",
             new_name="newName",
         ) as response:
             assert not response.is_closed
@@ -438,12 +459,16 @@ class TestAsyncScs:
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sc = await async_client.scs.delete()
+        sc = await async_client.scs.delete(
+            id="id",
+        )
         assert sc is None
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.scs.with_raw_response.delete()
+        response = await async_client.scs.with_raw_response.delete(
+            id="id",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -452,7 +477,9 @@ class TestAsyncScs:
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.scs.with_streaming_response.delete() as response:
+        async with async_client.scs.with_streaming_response.delete(
+            id="id",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -539,6 +566,7 @@ class TestAsyncScs:
     @parametrize
     async def test_method_copy(self, async_client: AsyncUnifieddatalibrary) -> None:
         sc = await async_client.scs.copy(
+            id="id",
             target_path="targetPath",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -546,6 +574,7 @@ class TestAsyncScs:
     @parametrize
     async def test_raw_response_copy(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.with_raw_response.copy(
+            id="id",
             target_path="targetPath",
         )
 
@@ -557,6 +586,7 @@ class TestAsyncScs:
     @parametrize
     async def test_streaming_response_copy(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.with_streaming_response.copy(
+            id="id",
             target_path="targetPath",
         ) as response:
             assert not response.is_closed
@@ -615,7 +645,9 @@ class TestAsyncScs:
     @pytest.mark.respx(base_url=base_url)
     async def test_method_file_download(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        sc = await async_client.scs.file_download()
+        sc = await async_client.scs.file_download(
+            id="id",
+        )
         assert sc.is_closed
         assert await sc.json() == {"foo": "bar"}
         assert cast(Any, sc.is_closed) is True
@@ -628,7 +660,9 @@ class TestAsyncScs:
     ) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
-        sc = await async_client.scs.with_raw_response.file_download()
+        sc = await async_client.scs.with_raw_response.file_download(
+            id="id",
+        )
 
         assert sc.is_closed is True
         assert sc.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -641,7 +675,9 @@ class TestAsyncScs:
         self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
     ) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        async with async_client.scs.with_streaming_response.file_download() as sc:
+        async with async_client.scs.with_streaming_response.file_download(
+            id="id",
+        ) as sc:
             assert not sc.is_closed
             assert sc.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -706,6 +742,7 @@ class TestAsyncScs:
     @parametrize
     async def test_method_move(self, async_client: AsyncUnifieddatalibrary) -> None:
         sc = await async_client.scs.move(
+            id="id",
             target_path="targetPath",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -713,6 +750,7 @@ class TestAsyncScs:
     @parametrize
     async def test_raw_response_move(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.with_raw_response.move(
+            id="id",
             target_path="targetPath",
         )
 
@@ -724,6 +762,7 @@ class TestAsyncScs:
     @parametrize
     async def test_streaming_response_move(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.with_streaming_response.move(
+            id="id",
             target_path="targetPath",
         ) as response:
             assert not response.is_closed
@@ -737,6 +776,7 @@ class TestAsyncScs:
     @parametrize
     async def test_method_rename(self, async_client: AsyncUnifieddatalibrary) -> None:
         sc = await async_client.scs.rename(
+            id="id",
             new_name="newName",
         )
         assert sc is None
@@ -744,6 +784,7 @@ class TestAsyncScs:
     @parametrize
     async def test_raw_response_rename(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.with_raw_response.rename(
+            id="id",
             new_name="newName",
         )
 
@@ -755,6 +796,7 @@ class TestAsyncScs:
     @parametrize
     async def test_streaming_response_rename(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.with_streaming_response.rename(
+            id="id",
             new_name="newName",
         ) as response:
             assert not response.is_closed
