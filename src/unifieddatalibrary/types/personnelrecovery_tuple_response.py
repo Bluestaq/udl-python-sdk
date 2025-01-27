@@ -3,8 +3,8 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .personnelrecovery.personnel_recovery_full import PersonnelRecoveryFull
+from .personnel_recovery_full_l import PersonnelRecoveryFullL
 
 __all__ = ["PersonnelrecoveryTupleResponse"]
 
-PersonnelrecoveryTupleResponse: TypeAlias = List[PersonnelRecoveryFull]
+PersonnelrecoveryTupleResponse: TypeAlias = List[PersonnelRecoveryFullL]

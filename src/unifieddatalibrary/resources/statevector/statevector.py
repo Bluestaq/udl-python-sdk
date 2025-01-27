@@ -46,9 +46,9 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.state_vector_full import StateVectorFull
 from ...types.statevector_list_response import StatevectorListResponse
 from ...types.statevector_tuple_response import StatevectorTupleResponse
-from ...types.statevector.state_vector_full import StateVectorFull
 
 __all__ = ["StatevectorResource", "AsyncStatevectorResource"]
 

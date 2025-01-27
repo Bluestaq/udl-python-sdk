@@ -9,4 +9,4 @@ __all__ = ["StatevectorTupleResponse"]
 
 StatevectorTupleResponse: TypeAlias = List["StateVectorFull"]
 
-from .statevector.state_vector_full import StateVectorFull
+from .state_vector_full import StateVectorFull

@@ -114,6 +114,7 @@ from .sgi_list_response import SgiListResponse as SgiListResponse
 from .sgi_update_params import SgiUpdateParams as SgiUpdateParams
 from .site_get_response import SiteGetResponse as SiteGetResponse
 from .site_tuple_params import SiteTupleParams as SiteTupleParams
+from .state_vector_full import StateVectorFull as StateVectorFull
 from .swir_count_params import SwirCountParams as SwirCountParams
 from .swir_tuple_params import SwirTupleParams as SwirTupleParams
 from .track_list_params import TrackListParams as TrackListParams
@@ -564,6 +565,7 @@ from .orbittrack_count_response import OrbittrackCountResponse as OrbittrackCoun
 from .orbittrack_tuple_response import OrbittrackTupleResponse as OrbittrackTupleResponse
 from .organization_get_response import OrganizationGetResponse as OrganizationGetResponse
 from .organization_tuple_params import OrganizationTupleParams as OrganizationTupleParams
+from .personnel_recovery_full_l import PersonnelRecoveryFullL as PersonnelRecoveryFullL
 from .rfbandtype_count_response import RfbandtypeCountResponse as RfbandtypeCountResponse
 from .rfbandtype_tuple_response import RfbandtypeTupleResponse as RfbandtypeTupleResponse
 from .rfgeolocation_list_params import RfgeolocationListParams as RfgeolocationListParams

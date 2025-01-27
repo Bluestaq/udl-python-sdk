@@ -537,8 +537,8 @@ class CollectRequestFull(BaseModel):
 
 from ..elset import Elset
 from .onorbit import Onorbit
+from ..state_vector_full import StateVectorFull
 from .collect_response_full import CollectResponseFull
-from ..statevector.state_vector_full import StateVectorFull
 
 if PYDANTIC_V2:
     CollectRequestFull.model_rebuild()
