@@ -14,6 +14,7 @@ from ..types import (
     radarobservation_tuple_params,
     radarobservation_create_params,
     radarobservation_create_bulk_params,
+    radarobservation_file_create_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -471,6 +472,42 @@ class RadarobservationResource(SyncAPIResource):
         return self._post(
             "/udl/radarobservation/createBulk",
             body=maybe_transform(body, Iterable[radarobservation_create_bulk_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def file_create(
+        self,
+        *,
+        body: Iterable[radarobservation_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple radar observations as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-radar",
+            body=maybe_transform(body, Iterable[radarobservation_file_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1037,6 +1074,42 @@ class AsyncRadarobservationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def file_create(
+        self,
+        *,
+        body: Iterable[radarobservation_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple radar observations as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-radar",
+            body=await async_maybe_transform(body, Iterable[radarobservation_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def get(
         self,
         id: str,
@@ -1168,6 +1241,9 @@ class RadarobservationResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             radarobservation.create_bulk,
         )
+        self.file_create = to_raw_response_wrapper(
+            radarobservation.file_create,
+        )
         self.get = to_raw_response_wrapper(
             radarobservation.get,
         )
@@ -1194,6 +1270,9 @@ class AsyncRadarobservationResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             radarobservation.create_bulk,
+        )
+        self.file_create = async_to_raw_response_wrapper(
+            radarobservation.file_create,
         )
         self.get = async_to_raw_response_wrapper(
             radarobservation.get,
@@ -1222,6 +1301,9 @@ class RadarobservationResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             radarobservation.create_bulk,
         )
+        self.file_create = to_streamed_response_wrapper(
+            radarobservation.file_create,
+        )
         self.get = to_streamed_response_wrapper(
             radarobservation.get,
         )
@@ -1248,6 +1330,9 @@ class AsyncRadarobservationResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             radarobservation.create_bulk,
+        )
+        self.file_create = async_to_streamed_response_wrapper(
+            radarobservation.file_create,
         )
         self.get = async_to_streamed_response_wrapper(
             radarobservation.get,

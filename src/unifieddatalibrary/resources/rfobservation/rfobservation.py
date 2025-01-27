@@ -14,6 +14,7 @@ from ...types import (
     rfobservation_tuple_params,
     rfobservation_create_params,
     rfobservation_create_bulk_params,
+    rfobservation_afile_create_params,
 )
 from .history import (
     HistoryResource,
@@ -571,6 +572,42 @@ class RfobservationResource(SyncAPIResource):
                 query=maybe_transform({"ob_time": ob_time}, rfobservation_list_params.RfobservationListParams),
             ),
             cast_to=RfobservationListResponse,
+        )
+
+    def afile_create(
+        self,
+        *,
+        body: Iterable[rfobservation_afile_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple RF observations as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-rf",
+            body=maybe_transform(body, Iterable[rfobservation_afile_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
     def count(
@@ -1299,6 +1336,42 @@ class AsyncRfobservationResource(AsyncAPIResource):
             cast_to=RfobservationListResponse,
         )
 
+    async def afile_create(
+        self,
+        *,
+        body: Iterable[rfobservation_afile_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple RF observations as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-rf",
+            body=await async_maybe_transform(body, Iterable[rfobservation_afile_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def count(
         self,
         *,
@@ -1506,6 +1579,9 @@ class RfobservationResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             rfobservation.list,
         )
+        self.afile_create = to_raw_response_wrapper(
+            rfobservation.afile_create,
+        )
         self.count = to_raw_response_wrapper(
             rfobservation.count,
         )
@@ -1536,6 +1612,9 @@ class AsyncRfobservationResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             rfobservation.list,
+        )
+        self.afile_create = async_to_raw_response_wrapper(
+            rfobservation.afile_create,
         )
         self.count = async_to_raw_response_wrapper(
             rfobservation.count,
@@ -1568,6 +1647,9 @@ class RfobservationResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             rfobservation.list,
         )
+        self.afile_create = to_streamed_response_wrapper(
+            rfobservation.afile_create,
+        )
         self.count = to_streamed_response_wrapper(
             rfobservation.count,
         )
@@ -1598,6 +1680,9 @@ class AsyncRfobservationResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             rfobservation.list,
+        )
+        self.afile_create = async_to_streamed_response_wrapper(
+            rfobservation.afile_create,
         )
         self.count = async_to_streamed_response_wrapper(
             rfobservation.count,

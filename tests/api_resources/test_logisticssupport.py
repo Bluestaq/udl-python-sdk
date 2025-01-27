@@ -533,6 +533,58 @@ class TestLogisticssupport:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        logisticssupport = client.logisticssupport.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert logisticssupport is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.logisticssupport.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        logisticssupport = response.parse()
+        assert logisticssupport is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.logisticssupport.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            logisticssupport = response.parse()
+            assert logisticssupport is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.get(
             "id",
@@ -1123,6 +1175,58 @@ class TestAsyncLogisticssupport:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.logisticssupport.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            logisticssupport = await response.parse()
+            assert logisticssupport is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        logisticssupport = await async_client.logisticssupport.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert logisticssupport is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.logisticssupport.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        logisticssupport = await response.parse()
+        assert logisticssupport is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.logisticssupport.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

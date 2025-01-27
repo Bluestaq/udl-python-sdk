@@ -193,6 +193,64 @@ class TestItemTrackings:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        item_tracking = client.item_trackings.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
+                }
+            ],
+        )
+        assert item_tracking is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.item_trackings.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        item_tracking = response.parse()
+        assert item_tracking is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.item_trackings.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            item_tracking = response.parse()
+            assert item_tracking is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         item_tracking = client.item_trackings.get(
             "id",
@@ -460,6 +518,64 @@ class TestAsyncItemTrackings:
 
             item_tracking = await response.parse()
             assert_matches_type(str, item_tracking, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        item_tracking = await async_client.item_trackings.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
+                }
+            ],
+        )
+        assert item_tracking is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.item_trackings.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        item_tracking = await response.parse()
+        assert item_tracking is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.item_trackings.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "scan_code": "ABC1234",
+                    "scanner_id": "2051M",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2023-03-21T14:22:00.123Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            item_tracking = await response.parse()
+            assert item_tracking is None
 
         assert cast(Any, response.is_closed) is True
 

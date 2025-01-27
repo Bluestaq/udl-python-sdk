@@ -244,6 +244,58 @@ class TestPassiveradarobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        passiveradarobservation = client.passiveradarobservation.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert passiveradarobservation is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.passiveradarobservation.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        passiveradarobservation = response.parse()
+        assert passiveradarobservation is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.passiveradarobservation.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            passiveradarobservation = response.parse()
+            assert passiveradarobservation is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         passiveradarobservation = client.passiveradarobservation.get(
             "id",
@@ -548,6 +600,58 @@ class TestAsyncPassiveradarobservation:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.passiveradarobservation.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            passiveradarobservation = await response.parse()
+            assert passiveradarobservation is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        passiveradarobservation = await async_client.passiveradarobservation.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert passiveradarobservation is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.passiveradarobservation.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        passiveradarobservation = await response.parse()
+        assert passiveradarobservation is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.passiveradarobservation.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

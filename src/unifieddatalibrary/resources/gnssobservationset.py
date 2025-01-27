@@ -12,6 +12,7 @@ from ..types import (
     gnssobservationset_count_params,
     gnssobservationset_tuple_params,
     gnssobservationset_create_bulk_params,
+    gnssobservationset_file_create_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -170,6 +171,42 @@ class GnssobservationsetResource(SyncAPIResource):
         return self._post(
             "/udl/gnssobservationset/createBulk",
             body=maybe_transform(body, Iterable[gnssobservationset_create_bulk_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def file_create(
+        self,
+        *,
+        body: Iterable[gnssobservationset_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to accept one or more GNSSObservationSet(s) and associated
+        GNSS Observation(s) as a POST body and ingest into the database. This operation
+        is intended to be used for automated feeds into UDL. A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-gnssobset",
+            body=maybe_transform(body, Iterable[gnssobservationset_file_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -405,6 +442,42 @@ class AsyncGnssobservationsetResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def file_create(
+        self,
+        *,
+        body: Iterable[gnssobservationset_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to accept one or more GNSSObservationSet(s) and associated
+        GNSS Observation(s) as a POST body and ingest into the database. This operation
+        is intended to be used for automated feeds into UDL. A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-gnssobset",
+            body=await async_maybe_transform(body, Iterable[gnssobservationset_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def queryhelp(
         self,
         *,
@@ -500,6 +573,9 @@ class GnssobservationsetResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             gnssobservationset.create_bulk,
         )
+        self.file_create = to_raw_response_wrapper(
+            gnssobservationset.file_create,
+        )
         self.queryhelp = to_raw_response_wrapper(
             gnssobservationset.queryhelp,
         )
@@ -520,6 +596,9 @@ class AsyncGnssobservationsetResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             gnssobservationset.create_bulk,
+        )
+        self.file_create = async_to_raw_response_wrapper(
+            gnssobservationset.file_create,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             gnssobservationset.queryhelp,
@@ -542,6 +621,9 @@ class GnssobservationsetResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             gnssobservationset.create_bulk,
         )
+        self.file_create = to_streamed_response_wrapper(
+            gnssobservationset.file_create,
+        )
         self.queryhelp = to_streamed_response_wrapper(
             gnssobservationset.queryhelp,
         )
@@ -562,6 +644,9 @@ class AsyncGnssobservationsetResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             gnssobservationset.create_bulk,
+        )
+        self.file_create = async_to_streamed_response_wrapper(
+            gnssobservationset.file_create,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             gnssobservationset.queryhelp,

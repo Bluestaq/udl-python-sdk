@@ -14,6 +14,7 @@ from ...types import (
     weatherdata_tuple_params,
     weatherdata_create_params,
     weatherdata_create_bulk_params,
+    weatherdata_file_create_params,
 )
 from .history import (
     HistoryResource,
@@ -422,6 +423,42 @@ class WeatherdataResource(SyncAPIResource):
         return self._post(
             "/udl/weatherdata/createBulk",
             body=maybe_transform(body, Iterable[weatherdata_create_bulk_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def file_create(
+        self,
+        *,
+        body: Iterable[weatherdata_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of WeatherData as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-weatherdata",
+            body=maybe_transform(body, Iterable[weatherdata_file_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -929,6 +966,42 @@ class AsyncWeatherdataResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def file_create(
+        self,
+        *,
+        body: Iterable[weatherdata_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of WeatherData as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-weatherdata",
+            body=await async_maybe_transform(body, Iterable[weatherdata_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def get(
         self,
         id: str,
@@ -1060,6 +1133,9 @@ class WeatherdataResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             weatherdata.create_bulk,
         )
+        self.file_create = to_raw_response_wrapper(
+            weatherdata.file_create,
+        )
         self.get = to_raw_response_wrapper(
             weatherdata.get,
         )
@@ -1090,6 +1166,9 @@ class AsyncWeatherdataResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             weatherdata.create_bulk,
+        )
+        self.file_create = async_to_raw_response_wrapper(
+            weatherdata.file_create,
         )
         self.get = async_to_raw_response_wrapper(
             weatherdata.get,
@@ -1122,6 +1201,9 @@ class WeatherdataResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             weatherdata.create_bulk,
         )
+        self.file_create = to_streamed_response_wrapper(
+            weatherdata.file_create,
+        )
         self.get = to_streamed_response_wrapper(
             weatherdata.get,
         )
@@ -1152,6 +1234,9 @@ class AsyncWeatherdataResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             weatherdata.create_bulk,
+        )
+        self.file_create = async_to_streamed_response_wrapper(
+            weatherdata.file_create,
         )
         self.get = async_to_streamed_response_wrapper(
             weatherdata.get,

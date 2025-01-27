@@ -8,7 +8,13 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import status_tuple_params, status_create_params, status_update_params
+from ..types import (
+    status_tuple_params,
+    status_create_params,
+    status_update_params,
+    status_get_by_entity_id_params,
+    status_get_by_entity_type_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -26,6 +32,8 @@ from .._base_client import make_request_options
 from ..types.status_get_response import StatusGetResponse
 from ..types.status_list_response import StatusListResponse
 from ..types.status_tuple_response import StatusTupleResponse
+from ..types.status_get_by_entity_id_response import StatusGetByEntityIDResponse
+from ..types.status_get_by_entity_type_response import StatusGetByEntityTypeResponse
 
 __all__ = ["StatusResource", "AsyncStatusResource"]
 
@@ -393,6 +401,90 @@ class StatusResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=StatusGetResponse,
+        )
+
+    def get_by_entity_id(
+        self,
+        id_entity_1: str,
+        *,
+        id_entity_2: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StatusGetByEntityIDResponse:
+        """
+        Service operation to get all statuses related to a particular entity.
+
+        Args:
+          id_entity_2: The entity id to find the list of statuses for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id_entity_1:
+            raise ValueError(f"Expected a non-empty value for `id_entity_1` but received {id_entity_1!r}")
+        return self._get(
+            f"/udl/status/byIdEntity/{id_entity_1}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"id_entity_2": id_entity_2}, status_get_by_entity_id_params.StatusGetByEntityIDParams
+                ),
+            ),
+            cast_to=StatusGetByEntityIDResponse,
+        )
+
+    def get_by_entity_type(
+        self,
+        entity_type_1: str,
+        *,
+        entity_type_2: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StatusGetByEntityTypeResponse:
+        """
+        Service operation to get all statuses related to a particular entity type.
+
+        Args:
+          entity_type_2: The entity type of the Status to find.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not entity_type_1:
+            raise ValueError(f"Expected a non-empty value for `entity_type_1` but received {entity_type_1!r}")
+        return self._get(
+            f"/udl/status/byEntityType/{entity_type_1}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_type_2": entity_type_2}, status_get_by_entity_type_params.StatusGetByEntityTypeParams
+                ),
+            ),
+            cast_to=StatusGetByEntityTypeResponse,
         )
 
     def queryhelp(
@@ -831,6 +923,90 @@ class AsyncStatusResource(AsyncAPIResource):
             cast_to=StatusGetResponse,
         )
 
+    async def get_by_entity_id(
+        self,
+        id_entity_1: str,
+        *,
+        id_entity_2: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StatusGetByEntityIDResponse:
+        """
+        Service operation to get all statuses related to a particular entity.
+
+        Args:
+          id_entity_2: The entity id to find the list of statuses for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id_entity_1:
+            raise ValueError(f"Expected a non-empty value for `id_entity_1` but received {id_entity_1!r}")
+        return await self._get(
+            f"/udl/status/byIdEntity/{id_entity_1}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"id_entity_2": id_entity_2}, status_get_by_entity_id_params.StatusGetByEntityIDParams
+                ),
+            ),
+            cast_to=StatusGetByEntityIDResponse,
+        )
+
+    async def get_by_entity_type(
+        self,
+        entity_type_1: str,
+        *,
+        entity_type_2: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StatusGetByEntityTypeResponse:
+        """
+        Service operation to get all statuses related to a particular entity type.
+
+        Args:
+          entity_type_2: The entity type of the Status to find.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not entity_type_1:
+            raise ValueError(f"Expected a non-empty value for `entity_type_1` but received {entity_type_1!r}")
+        return await self._get(
+            f"/udl/status/byEntityType/{entity_type_1}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_type_2": entity_type_2}, status_get_by_entity_type_params.StatusGetByEntityTypeParams
+                ),
+            ),
+            cast_to=StatusGetByEntityTypeResponse,
+        )
+
     async def queryhelp(
         self,
         *,
@@ -924,6 +1100,12 @@ class StatusResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             status.get,
         )
+        self.get_by_entity_id = to_raw_response_wrapper(
+            status.get_by_entity_id,
+        )
+        self.get_by_entity_type = to_raw_response_wrapper(
+            status.get_by_entity_type,
+        )
         self.queryhelp = to_raw_response_wrapper(
             status.queryhelp,
         )
@@ -953,6 +1135,12 @@ class AsyncStatusResourceWithRawResponse:
         )
         self.get = async_to_raw_response_wrapper(
             status.get,
+        )
+        self.get_by_entity_id = async_to_raw_response_wrapper(
+            status.get_by_entity_id,
+        )
+        self.get_by_entity_type = async_to_raw_response_wrapper(
+            status.get_by_entity_type,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             status.queryhelp,
@@ -984,6 +1172,12 @@ class StatusResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             status.get,
         )
+        self.get_by_entity_id = to_streamed_response_wrapper(
+            status.get_by_entity_id,
+        )
+        self.get_by_entity_type = to_streamed_response_wrapper(
+            status.get_by_entity_type,
+        )
         self.queryhelp = to_streamed_response_wrapper(
             status.queryhelp,
         )
@@ -1013,6 +1207,12 @@ class AsyncStatusResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             status.get,
+        )
+        self.get_by_entity_id = async_to_streamed_response_wrapper(
+            status.get_by_entity_id,
+        )
+        self.get_by_entity_type = async_to_streamed_response_wrapper(
+            status.get_by_entity_type,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             status.queryhelp,

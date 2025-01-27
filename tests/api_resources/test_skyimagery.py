@@ -5,7 +5,9 @@ from __future__ import annotations
 import os
 from typing import Any, cast
 
+import httpx
 import pytest
+from respx import MockRouter
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
@@ -14,6 +16,12 @@ from unifieddatalibrary.types import (
     SkyimageryTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
+)
 from unifieddatalibrary.types.udl.skyimagery import SkyimageryFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -356,6 +364,56 @@ class TestSkyimagery:
             assert skyimagery is None
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        skyimagery = client.skyimagery.file_get(
+            "id",
+        )
+        assert skyimagery.is_closed
+        assert skyimagery.json() == {"foo": "bar"}
+        assert cast(Any, skyimagery.is_closed) is True
+        assert isinstance(skyimagery, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_raw_response_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        skyimagery = client.skyimagery.with_raw_response.file_get(
+            "id",
+        )
+
+        assert skyimagery.is_closed is True
+        assert skyimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert skyimagery.json() == {"foo": "bar"}
+        assert isinstance(skyimagery, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        with client.skyimagery.with_streaming_response.file_get(
+            "id",
+        ) as skyimagery:
+            assert not skyimagery.is_closed
+            assert skyimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert skyimagery.json() == {"foo": "bar"}
+            assert cast(Any, skyimagery.is_closed) is True
+            assert isinstance(skyimagery, StreamedBinaryAPIResponse)
+
+        assert cast(Any, skyimagery.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_path_params_file_get(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.skyimagery.with_raw_response.file_get(
+                "",
+            )
 
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
@@ -792,6 +850,58 @@ class TestAsyncSkyimagery:
             assert skyimagery is None
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_file_get(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        skyimagery = await async_client.skyimagery.file_get(
+            "id",
+        )
+        assert skyimagery.is_closed
+        assert await skyimagery.json() == {"foo": "bar"}
+        assert cast(Any, skyimagery.is_closed) is True
+        assert isinstance(skyimagery, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_raw_response_file_get(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        skyimagery = await async_client.skyimagery.with_raw_response.file_get(
+            "id",
+        )
+
+        assert skyimagery.is_closed is True
+        assert skyimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+        assert await skyimagery.json() == {"foo": "bar"}
+        assert isinstance(skyimagery, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response_file_get(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        async with async_client.skyimagery.with_streaming_response.file_get(
+            "id",
+        ) as skyimagery:
+            assert not skyimagery.is_closed
+            assert skyimagery.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            assert await skyimagery.json() == {"foo": "bar"}
+            assert cast(Any, skyimagery.is_closed) is True
+            assert isinstance(skyimagery, AsyncStreamedBinaryAPIResponse)
+
+        assert cast(Any, skyimagery.is_closed) is True
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_path_params_file_get(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.skyimagery.with_raw_response.file_get(
+                "",
+            )
 
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:

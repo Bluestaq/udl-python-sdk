@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    EffectRequestListResponse,
     EffectRequestTupleResponse,
+    EffectRequestRetrieveResponse,
 )
-from unifieddatalibrary._utils import parse_date
-from unifieddatalibrary.types.mission_ops import EffectRequest
+from unifieddatalibrary._utils import parse_date, parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,11 +23,75 @@ class TestEffectRequests:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
+    def test_method_create(self, client: Unifieddatalibrary) -> None:
+        effect_request = client.effect_requests.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+        )
+        assert effect_request is None
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
+        effect_request = client.effect_requests.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+            id="EFFECTREQUEST-ID",
+            context="Example Notes",
+            deadline_type="NoLaterThan",
+            end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            external_request_id="EXTERNALREQUEST-ID",
+            metric_types=["COST", "RISK"],
+            metric_weights=[0.5, 0.6],
+            model_class="Preference model",
+            origin="THIRD_PARTY_DATASOURCE",
+            priority="LOW",
+            start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            state="CREATED",
+            target_src_id="TARGETSRC-ID",
+            target_src_type="POI",
+        )
+        assert effect_request is None
+
+    @parametrize
+    def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
+        response = client.effect_requests.with_raw_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        effect_request = response.parse()
+        assert effect_request is None
+
+    @parametrize
+    def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
+        with client.effect_requests.with_streaming_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            effect_request = response.parse()
+            assert effect_request is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         effect_request = client.effect_requests.retrieve(
             "id",
         )
-        assert_matches_type(EffectRequest, effect_request, path=["response"])
+        assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
@@ -37,7 +102,7 @@ class TestEffectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = response.parse()
-        assert_matches_type(EffectRequest, effect_request, path=["response"])
+        assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
@@ -48,7 +113,7 @@ class TestEffectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = response.parse()
-            assert_matches_type(EffectRequest, effect_request, path=["response"])
+            assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -58,6 +123,37 @@ class TestEffectRequests:
             client.effect_requests.with_raw_response.retrieve(
                 "",
             )
+
+    @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        effect_request = client.effect_requests.list(
+            created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.effect_requests.with_raw_response.list(
+            created_at=parse_date("2019-12-27"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        effect_request = response.parse()
+        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.effect_requests.with_streaming_response.list(
+            created_at=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            effect_request = response.parse()
+            assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
@@ -143,33 +239,54 @@ class TestEffectRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_history_count(self, client: Unifieddatalibrary) -> None:
-        effect_request = client.effect_requests.history_count(
-            created_at=parse_date("2019-12-27"),
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        effect_request = client.effect_requests.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
+                }
+            ],
         )
-        assert_matches_type(str, effect_request, path=["response"])
+        assert effect_request is None
 
     @parametrize
-    def test_raw_response_history_count(self, client: Unifieddatalibrary) -> None:
-        response = client.effect_requests.with_raw_response.history_count(
-            created_at=parse_date("2019-12-27"),
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.effect_requests.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
+                }
+            ],
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = response.parse()
-        assert_matches_type(str, effect_request, path=["response"])
+        assert effect_request is None
 
     @parametrize
-    def test_streaming_response_history_count(self, client: Unifieddatalibrary) -> None:
-        with client.effect_requests.with_streaming_response.history_count(
-            created_at=parse_date("2019-12-27"),
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.effect_requests.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = response.parse()
-            assert_matches_type(str, effect_request, path=["response"])
+            assert effect_request is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -237,11 +354,75 @@ class TestAsyncEffectRequests:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
+    async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_request = await async_client.effect_requests.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+        )
+        assert effect_request is None
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_request = await async_client.effect_requests.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+            id="EFFECTREQUEST-ID",
+            context="Example Notes",
+            deadline_type="NoLaterThan",
+            end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            external_request_id="EXTERNALREQUEST-ID",
+            metric_types=["COST", "RISK"],
+            metric_weights=[0.5, 0.6],
+            model_class="Preference model",
+            origin="THIRD_PARTY_DATASOURCE",
+            priority="LOW",
+            start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            state="CREATED",
+            target_src_id="TARGETSRC-ID",
+            target_src_type="POI",
+        )
+        assert effect_request is None
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.effect_requests.with_raw_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        effect_request = await response.parse()
+        assert effect_request is None
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.effect_requests.with_streaming_response.create(
+            classification_marking="U",
+            data_mode="REAL",
+            effect_list=["COVER", "DECEIVE"],
+            source="Bluestaq",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            effect_request = await response.parse()
+            assert effect_request is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_request = await async_client.effect_requests.retrieve(
             "id",
         )
-        assert_matches_type(EffectRequest, effect_request, path=["response"])
+        assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -252,7 +433,7 @@ class TestAsyncEffectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = await response.parse()
-        assert_matches_type(EffectRequest, effect_request, path=["response"])
+        assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -263,7 +444,7 @@ class TestAsyncEffectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = await response.parse()
-            assert_matches_type(EffectRequest, effect_request, path=["response"])
+            assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -273,6 +454,37 @@ class TestAsyncEffectRequests:
             await async_client.effect_requests.with_raw_response.retrieve(
                 "",
             )
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_request = await async_client.effect_requests.list(
+            created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.effect_requests.with_raw_response.list(
+            created_at=parse_date("2019-12-27"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        effect_request = await response.parse()
+        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.effect_requests.with_streaming_response.list(
+            created_at=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            effect_request = await response.parse()
+            assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -358,33 +570,54 @@ class TestAsyncEffectRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_history_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        effect_request = await async_client.effect_requests.history_count(
-            created_at=parse_date("2019-12-27"),
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_request = await async_client.effect_requests.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
+                }
+            ],
         )
-        assert_matches_type(str, effect_request, path=["response"])
+        assert effect_request is None
 
     @parametrize
-    async def test_raw_response_history_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.effect_requests.with_raw_response.history_count(
-            created_at=parse_date("2019-12-27"),
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.effect_requests.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
+                }
+            ],
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = await response.parse()
-        assert_matches_type(str, effect_request, path=["response"])
+        assert effect_request is None
 
     @parametrize
-    async def test_streaming_response_history_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.effect_requests.with_streaming_response.history_count(
-            created_at=parse_date("2019-12-27"),
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.effect_requests.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "effect_list": ["COVER", "DECEIVE"],
+                    "source": "Bluestaq",
+                }
+            ],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = await response.parse()
-            assert_matches_type(str, effect_request, path=["response"])
+            assert effect_request is None
 
         assert cast(Any, response.is_closed) is True
 

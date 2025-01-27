@@ -278,6 +278,58 @@ class TestEffectResponses:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        effect_response = client.effect_responses.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
+                }
+            ],
+        )
+        assert effect_response is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.effect_responses.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        effect_response = response.parse()
+        assert effect_response is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.effect_responses.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            effect_response = response.parse()
+            assert effect_response is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.query_help()
         assert effect_response is None
@@ -578,6 +630,58 @@ class TestAsyncEffectResponses:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.effect_responses.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            effect_response = await response.parse()
+            assert effect_response is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_response = await async_client.effect_responses.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
+                }
+            ],
+        )
+        assert effect_response is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.effect_responses.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "type": "COA",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        effect_response = await response.parse()
+        assert effect_response is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.effect_responses.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

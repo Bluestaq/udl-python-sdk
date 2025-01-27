@@ -252,6 +252,58 @@ class TestSurfaceobstruction:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        surfaceobstruction = client.surfaceobstruction.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert surfaceobstruction is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.surfaceobstruction.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        surfaceobstruction = response.parse()
+        assert surfaceobstruction is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.surfaceobstruction.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            surfaceobstruction = response.parse()
+            assert surfaceobstruction is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.get(
             "id",
@@ -576,6 +628,58 @@ class TestAsyncSurfaceobstruction:
 
             surfaceobstruction = await response.parse()
             assert_matches_type(str, surfaceobstruction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        surfaceobstruction = await async_client.surfaceobstruction.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert surfaceobstruction is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.surfaceobstruction.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        surfaceobstruction = await response.parse()
+        assert surfaceobstruction is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.surfaceobstruction.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            surfaceobstruction = await response.parse()
+            assert surfaceobstruction is None
 
         assert cast(Any, response.is_closed) is True
 

@@ -48,7 +48,6 @@ from .resources import (
     engines,
     surface,
     aircraft,
-    airevent,
     antennas,
     channels,
     entities,
@@ -73,7 +72,6 @@ from .resources import (
     siteremark,
     solararray,
     ais_objects,
-    ephemerides,
     launchevent,
     onorbitlist,
     transponder,
@@ -103,7 +101,6 @@ from .resources import (
     onorbitbattery,
     onorbitdetails,
     airfield_status,
-    event_evolution,
     ionoobservation,
     launchdetection,
     onorbitthruster,
@@ -116,7 +113,6 @@ from .resources import (
     radarobservation,
     rfemitterdetails,
     secure_messaging,
-    iono_observations,
     launchsitedetails,
     onboardnavigation,
     onorbitsolararray,
@@ -124,7 +120,6 @@ from .resources import (
     solararraydetails,
     air_tasking_orders,
     gnssobservationset,
-    logistics_supports,
     seradatanavigation,
     surfaceobstruction,
     operatingunitremark,
@@ -164,7 +159,6 @@ from .resources.sigact import sigact
 from .resources.taiutc import taiutc
 from .resources.hazards import hazards
 from .resources.onorbit import onorbit
-from .resources.filedrop import filedrop
 from .resources.ephemeris import ephemeris
 from .resources.maneuvers import maneuvers
 from .resources.sortieppr import sortieppr
@@ -177,7 +171,6 @@ from .resources.skyimagery import skyimagery
 from .resources.trackroute import trackroute
 from .resources.gnss_raw_if import gnss_raw_if
 from .resources.link_status import link_status
-from .resources.mission_ops import mission_ops
 from .resources.starcatalog import starcatalog
 from .resources.statevector import statevector
 from .resources.weatherdata import weatherdata
@@ -198,7 +191,7 @@ from .resources.missile_tracks import missile_tracks
 from .resources.sarobservation import sarobservation
 from .resources.effect_requests import effect_requests
 from .resources.eo_observations import eo_observations
-from .resources.eventevolutions import eventevolutions
+from .resources.event_evolution import event_evolution
 from .resources.isr_collections import isr_collections
 from .resources.supporting_data import supporting_data
 from .resources.collect_requests import collect_requests
@@ -241,7 +234,6 @@ class Unifieddatalibrary(SyncAPIClient):
     aircraft_status_remarks: aircraft_status_remarks.AircraftStatusRemarksResource
     aircraft_statuses: aircraft_statuses.AircraftStatusesResource
     aircraftstatusremark: aircraftstatusremark.AircraftstatusremarkResource
-    airevent: airevent.AireventResource
     airfield_slots: airfield_slots.AirfieldSlotsResource
     airfield_status: airfield_status.AirfieldStatusResource
     airfields: airfields.AirfieldsResource
@@ -285,15 +277,12 @@ class Unifieddatalibrary(SyncAPIClient):
     eo_observations: eo_observations.EoObservationsResource
     eoobservations: eoobservations.EoobservationsResource
     eop: eop.EopResource
-    ephemerides: ephemerides.EphemeridesResource
     ephemeris: ephemeris.EphemerisResource
     ephemeris_sets: ephemeris_sets.EphemerisSetsResource
     equipment: equipment.EquipmentResource
     equipmentremarks: equipmentremarks.EquipmentremarksResource
     evac: evac.EvacResource
     event_evolution: event_evolution.EventEvolutionResource
-    eventevolutions: eventevolutions.EventevolutionsResource
-    filedrop: filedrop.FiledropResource
     flightplan: flightplan.FlightplanResource
     geostatus: geostatus.GeostatusResource
     gnssobservationset: gnssobservationset.GnssobservationsetResource
@@ -303,7 +292,6 @@ class Unifieddatalibrary(SyncAPIClient):
     h3geo: h3geo.H3geoResource
     h3geohexcell: h3geohexcell.H3geohexcellResource
     hazard: hazard.HazardResource
-    iono_observations: iono_observations.IonoObservationsResource
     ionoobservation: ionoobservation.IonoobservationResource
     ir: ir.IrResource
     isr_collections: isr_collections.IsrCollectionsResource
@@ -318,13 +306,11 @@ class Unifieddatalibrary(SyncAPIClient):
     launchvehicledetails: launchvehicledetails.LaunchvehicledetailsResource
     link_status: link_status.LinkStatusResource
     location: location.LocationResource
-    logistics_supports: logistics_supports.LogisticsSupportsResource
     logisticssupport: logisticssupport.LogisticssupportResource
     maneuvers: maneuvers.ManeuversResource
     manifold: manifold.ManifoldResource
     manifoldelset: manifoldelset.ManifoldelsetResource
     missile_tracks: missile_tracks.MissileTracksResource
-    mission_ops: mission_ops.MissionOpsResource
     missionassignment: missionassignment.MissionassignmentResource
     monoradar: monoradar.MonoradarResource
     mti: mti.MtiResource
@@ -493,7 +479,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.aircraft_status_remarks = aircraft_status_remarks.AircraftStatusRemarksResource(self)
         self.aircraft_statuses = aircraft_statuses.AircraftStatusesResource(self)
         self.aircraftstatusremark = aircraftstatusremark.AircraftstatusremarkResource(self)
-        self.airevent = airevent.AireventResource(self)
         self.airfield_slots = airfield_slots.AirfieldSlotsResource(self)
         self.airfield_status = airfield_status.AirfieldStatusResource(self)
         self.airfields = airfields.AirfieldsResource(self)
@@ -537,15 +522,12 @@ class Unifieddatalibrary(SyncAPIClient):
         self.eo_observations = eo_observations.EoObservationsResource(self)
         self.eoobservations = eoobservations.EoobservationsResource(self)
         self.eop = eop.EopResource(self)
-        self.ephemerides = ephemerides.EphemeridesResource(self)
         self.ephemeris = ephemeris.EphemerisResource(self)
         self.ephemeris_sets = ephemeris_sets.EphemerisSetsResource(self)
         self.equipment = equipment.EquipmentResource(self)
         self.equipmentremarks = equipmentremarks.EquipmentremarksResource(self)
         self.evac = evac.EvacResource(self)
         self.event_evolution = event_evolution.EventEvolutionResource(self)
-        self.eventevolutions = eventevolutions.EventevolutionsResource(self)
-        self.filedrop = filedrop.FiledropResource(self)
         self.flightplan = flightplan.FlightplanResource(self)
         self.geostatus = geostatus.GeostatusResource(self)
         self.gnssobservationset = gnssobservationset.GnssobservationsetResource(self)
@@ -555,7 +537,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.h3geo = h3geo.H3geoResource(self)
         self.h3geohexcell = h3geohexcell.H3geohexcellResource(self)
         self.hazard = hazard.HazardResource(self)
-        self.iono_observations = iono_observations.IonoObservationsResource(self)
         self.ionoobservation = ionoobservation.IonoobservationResource(self)
         self.ir = ir.IrResource(self)
         self.isr_collections = isr_collections.IsrCollectionsResource(self)
@@ -570,13 +551,11 @@ class Unifieddatalibrary(SyncAPIClient):
         self.launchvehicledetails = launchvehicledetails.LaunchvehicledetailsResource(self)
         self.link_status = link_status.LinkStatusResource(self)
         self.location = location.LocationResource(self)
-        self.logistics_supports = logistics_supports.LogisticsSupportsResource(self)
         self.logisticssupport = logisticssupport.LogisticssupportResource(self)
         self.maneuvers = maneuvers.ManeuversResource(self)
         self.manifold = manifold.ManifoldResource(self)
         self.manifoldelset = manifoldelset.ManifoldelsetResource(self)
         self.missile_tracks = missile_tracks.MissileTracksResource(self)
-        self.mission_ops = mission_ops.MissionOpsResource(self)
         self.missionassignment = missionassignment.MissionassignmentResource(self)
         self.monoradar = monoradar.MonoradarResource(self)
         self.mti = mti.MtiResource(self)
@@ -788,7 +767,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     aircraft_status_remarks: aircraft_status_remarks.AsyncAircraftStatusRemarksResource
     aircraft_statuses: aircraft_statuses.AsyncAircraftStatusesResource
     aircraftstatusremark: aircraftstatusremark.AsyncAircraftstatusremarkResource
-    airevent: airevent.AsyncAireventResource
     airfield_slots: airfield_slots.AsyncAirfieldSlotsResource
     airfield_status: airfield_status.AsyncAirfieldStatusResource
     airfields: airfields.AsyncAirfieldsResource
@@ -832,15 +810,12 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     eo_observations: eo_observations.AsyncEoObservationsResource
     eoobservations: eoobservations.AsyncEoobservationsResource
     eop: eop.AsyncEopResource
-    ephemerides: ephemerides.AsyncEphemeridesResource
     ephemeris: ephemeris.AsyncEphemerisResource
     ephemeris_sets: ephemeris_sets.AsyncEphemerisSetsResource
     equipment: equipment.AsyncEquipmentResource
     equipmentremarks: equipmentremarks.AsyncEquipmentremarksResource
     evac: evac.AsyncEvacResource
     event_evolution: event_evolution.AsyncEventEvolutionResource
-    eventevolutions: eventevolutions.AsyncEventevolutionsResource
-    filedrop: filedrop.AsyncFiledropResource
     flightplan: flightplan.AsyncFlightplanResource
     geostatus: geostatus.AsyncGeostatusResource
     gnssobservationset: gnssobservationset.AsyncGnssobservationsetResource
@@ -850,7 +825,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     h3geo: h3geo.AsyncH3geoResource
     h3geohexcell: h3geohexcell.AsyncH3geohexcellResource
     hazard: hazard.AsyncHazardResource
-    iono_observations: iono_observations.AsyncIonoObservationsResource
     ionoobservation: ionoobservation.AsyncIonoobservationResource
     ir: ir.AsyncIrResource
     isr_collections: isr_collections.AsyncIsrCollectionsResource
@@ -865,13 +839,11 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     launchvehicledetails: launchvehicledetails.AsyncLaunchvehicledetailsResource
     link_status: link_status.AsyncLinkStatusResource
     location: location.AsyncLocationResource
-    logistics_supports: logistics_supports.AsyncLogisticsSupportsResource
     logisticssupport: logisticssupport.AsyncLogisticssupportResource
     maneuvers: maneuvers.AsyncManeuversResource
     manifold: manifold.AsyncManifoldResource
     manifoldelset: manifoldelset.AsyncManifoldelsetResource
     missile_tracks: missile_tracks.AsyncMissileTracksResource
-    mission_ops: mission_ops.AsyncMissionOpsResource
     missionassignment: missionassignment.AsyncMissionassignmentResource
     monoradar: monoradar.AsyncMonoradarResource
     mti: mti.AsyncMtiResource
@@ -1040,7 +1012,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.aircraft_status_remarks = aircraft_status_remarks.AsyncAircraftStatusRemarksResource(self)
         self.aircraft_statuses = aircraft_statuses.AsyncAircraftStatusesResource(self)
         self.aircraftstatusremark = aircraftstatusremark.AsyncAircraftstatusremarkResource(self)
-        self.airevent = airevent.AsyncAireventResource(self)
         self.airfield_slots = airfield_slots.AsyncAirfieldSlotsResource(self)
         self.airfield_status = airfield_status.AsyncAirfieldStatusResource(self)
         self.airfields = airfields.AsyncAirfieldsResource(self)
@@ -1084,15 +1055,12 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.eo_observations = eo_observations.AsyncEoObservationsResource(self)
         self.eoobservations = eoobservations.AsyncEoobservationsResource(self)
         self.eop = eop.AsyncEopResource(self)
-        self.ephemerides = ephemerides.AsyncEphemeridesResource(self)
         self.ephemeris = ephemeris.AsyncEphemerisResource(self)
         self.ephemeris_sets = ephemeris_sets.AsyncEphemerisSetsResource(self)
         self.equipment = equipment.AsyncEquipmentResource(self)
         self.equipmentremarks = equipmentremarks.AsyncEquipmentremarksResource(self)
         self.evac = evac.AsyncEvacResource(self)
         self.event_evolution = event_evolution.AsyncEventEvolutionResource(self)
-        self.eventevolutions = eventevolutions.AsyncEventevolutionsResource(self)
-        self.filedrop = filedrop.AsyncFiledropResource(self)
         self.flightplan = flightplan.AsyncFlightplanResource(self)
         self.geostatus = geostatus.AsyncGeostatusResource(self)
         self.gnssobservationset = gnssobservationset.AsyncGnssobservationsetResource(self)
@@ -1102,7 +1070,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.h3geo = h3geo.AsyncH3geoResource(self)
         self.h3geohexcell = h3geohexcell.AsyncH3geohexcellResource(self)
         self.hazard = hazard.AsyncHazardResource(self)
-        self.iono_observations = iono_observations.AsyncIonoObservationsResource(self)
         self.ionoobservation = ionoobservation.AsyncIonoobservationResource(self)
         self.ir = ir.AsyncIrResource(self)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResource(self)
@@ -1117,13 +1084,11 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.launchvehicledetails = launchvehicledetails.AsyncLaunchvehicledetailsResource(self)
         self.link_status = link_status.AsyncLinkStatusResource(self)
         self.location = location.AsyncLocationResource(self)
-        self.logistics_supports = logistics_supports.AsyncLogisticsSupportsResource(self)
         self.logisticssupport = logisticssupport.AsyncLogisticssupportResource(self)
         self.maneuvers = maneuvers.AsyncManeuversResource(self)
         self.manifold = manifold.AsyncManifoldResource(self)
         self.manifoldelset = manifoldelset.AsyncManifoldelsetResource(self)
         self.missile_tracks = missile_tracks.AsyncMissileTracksResource(self)
-        self.mission_ops = mission_ops.AsyncMissionOpsResource(self)
         self.missionassignment = missionassignment.AsyncMissionassignmentResource(self)
         self.monoradar = monoradar.AsyncMonoradarResource(self)
         self.mti = mti.AsyncMtiResource(self)
@@ -1342,7 +1307,6 @@ class UnifieddatalibraryWithRawResponse:
         self.aircraftstatusremark = aircraftstatusremark.AircraftstatusremarkResourceWithRawResponse(
             client.aircraftstatusremark
         )
-        self.airevent = airevent.AireventResourceWithRawResponse(client.airevent)
         self.airfield_slots = airfield_slots.AirfieldSlotsResourceWithRawResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AirfieldStatusResourceWithRawResponse(client.airfield_status)
         self.airfields = airfields.AirfieldsResourceWithRawResponse(client.airfields)
@@ -1392,15 +1356,12 @@ class UnifieddatalibraryWithRawResponse:
         self.eo_observations = eo_observations.EoObservationsResourceWithRawResponse(client.eo_observations)
         self.eoobservations = eoobservations.EoobservationsResourceWithRawResponse(client.eoobservations)
         self.eop = eop.EopResourceWithRawResponse(client.eop)
-        self.ephemerides = ephemerides.EphemeridesResourceWithRawResponse(client.ephemerides)
         self.ephemeris = ephemeris.EphemerisResourceWithRawResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.EphemerisSetsResourceWithRawResponse(client.ephemeris_sets)
         self.equipment = equipment.EquipmentResourceWithRawResponse(client.equipment)
         self.equipmentremarks = equipmentremarks.EquipmentremarksResourceWithRawResponse(client.equipmentremarks)
         self.evac = evac.EvacResourceWithRawResponse(client.evac)
         self.event_evolution = event_evolution.EventEvolutionResourceWithRawResponse(client.event_evolution)
-        self.eventevolutions = eventevolutions.EventevolutionsResourceWithRawResponse(client.eventevolutions)
-        self.filedrop = filedrop.FiledropResourceWithRawResponse(client.filedrop)
         self.flightplan = flightplan.FlightplanResourceWithRawResponse(client.flightplan)
         self.geostatus = geostatus.GeostatusResourceWithRawResponse(client.geostatus)
         self.gnssobservationset = gnssobservationset.GnssobservationsetResourceWithRawResponse(
@@ -1412,7 +1373,6 @@ class UnifieddatalibraryWithRawResponse:
         self.h3geo = h3geo.H3geoResourceWithRawResponse(client.h3geo)
         self.h3geohexcell = h3geohexcell.H3geohexcellResourceWithRawResponse(client.h3geohexcell)
         self.hazard = hazard.HazardResourceWithRawResponse(client.hazard)
-        self.iono_observations = iono_observations.IonoObservationsResourceWithRawResponse(client.iono_observations)
         self.ionoobservation = ionoobservation.IonoobservationResourceWithRawResponse(client.ionoobservation)
         self.ir = ir.IrResourceWithRawResponse(client.ir)
         self.isr_collections = isr_collections.IsrCollectionsResourceWithRawResponse(client.isr_collections)
@@ -1429,13 +1389,11 @@ class UnifieddatalibraryWithRawResponse:
         )
         self.link_status = link_status.LinkStatusResourceWithRawResponse(client.link_status)
         self.location = location.LocationResourceWithRawResponse(client.location)
-        self.logistics_supports = logistics_supports.LogisticsSupportsResourceWithRawResponse(client.logistics_supports)
         self.logisticssupport = logisticssupport.LogisticssupportResourceWithRawResponse(client.logisticssupport)
         self.maneuvers = maneuvers.ManeuversResourceWithRawResponse(client.maneuvers)
         self.manifold = manifold.ManifoldResourceWithRawResponse(client.manifold)
         self.manifoldelset = manifoldelset.ManifoldelsetResourceWithRawResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.MissileTracksResourceWithRawResponse(client.missile_tracks)
-        self.mission_ops = mission_ops.MissionOpsResourceWithRawResponse(client.mission_ops)
         self.missionassignment = missionassignment.MissionassignmentResourceWithRawResponse(client.missionassignment)
         self.monoradar = monoradar.MonoradarResourceWithRawResponse(client.monoradar)
         self.mti = mti.MtiResourceWithRawResponse(client.mti)
@@ -1583,7 +1541,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.aircraftstatusremark = aircraftstatusremark.AsyncAircraftstatusremarkResourceWithRawResponse(
             client.aircraftstatusremark
         )
-        self.airevent = airevent.AsyncAireventResourceWithRawResponse(client.airevent)
         self.airfield_slots = airfield_slots.AsyncAirfieldSlotsResourceWithRawResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AsyncAirfieldStatusResourceWithRawResponse(client.airfield_status)
         self.airfields = airfields.AsyncAirfieldsResourceWithRawResponse(client.airfields)
@@ -1635,15 +1592,12 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.eo_observations = eo_observations.AsyncEoObservationsResourceWithRawResponse(client.eo_observations)
         self.eoobservations = eoobservations.AsyncEoobservationsResourceWithRawResponse(client.eoobservations)
         self.eop = eop.AsyncEopResourceWithRawResponse(client.eop)
-        self.ephemerides = ephemerides.AsyncEphemeridesResourceWithRawResponse(client.ephemerides)
         self.ephemeris = ephemeris.AsyncEphemerisResourceWithRawResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.AsyncEphemerisSetsResourceWithRawResponse(client.ephemeris_sets)
         self.equipment = equipment.AsyncEquipmentResourceWithRawResponse(client.equipment)
         self.equipmentremarks = equipmentremarks.AsyncEquipmentremarksResourceWithRawResponse(client.equipmentremarks)
         self.evac = evac.AsyncEvacResourceWithRawResponse(client.evac)
         self.event_evolution = event_evolution.AsyncEventEvolutionResourceWithRawResponse(client.event_evolution)
-        self.eventevolutions = eventevolutions.AsyncEventevolutionsResourceWithRawResponse(client.eventevolutions)
-        self.filedrop = filedrop.AsyncFiledropResourceWithRawResponse(client.filedrop)
         self.flightplan = flightplan.AsyncFlightplanResourceWithRawResponse(client.flightplan)
         self.geostatus = geostatus.AsyncGeostatusResourceWithRawResponse(client.geostatus)
         self.gnssobservationset = gnssobservationset.AsyncGnssobservationsetResourceWithRawResponse(
@@ -1655,9 +1609,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.h3geo = h3geo.AsyncH3geoResourceWithRawResponse(client.h3geo)
         self.h3geohexcell = h3geohexcell.AsyncH3geohexcellResourceWithRawResponse(client.h3geohexcell)
         self.hazard = hazard.AsyncHazardResourceWithRawResponse(client.hazard)
-        self.iono_observations = iono_observations.AsyncIonoObservationsResourceWithRawResponse(
-            client.iono_observations
-        )
         self.ionoobservation = ionoobservation.AsyncIonoobservationResourceWithRawResponse(client.ionoobservation)
         self.ir = ir.AsyncIrResourceWithRawResponse(client.ir)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithRawResponse(client.isr_collections)
@@ -1676,15 +1627,11 @@ class AsyncUnifieddatalibraryWithRawResponse:
         )
         self.link_status = link_status.AsyncLinkStatusResourceWithRawResponse(client.link_status)
         self.location = location.AsyncLocationResourceWithRawResponse(client.location)
-        self.logistics_supports = logistics_supports.AsyncLogisticsSupportsResourceWithRawResponse(
-            client.logistics_supports
-        )
         self.logisticssupport = logisticssupport.AsyncLogisticssupportResourceWithRawResponse(client.logisticssupport)
         self.maneuvers = maneuvers.AsyncManeuversResourceWithRawResponse(client.maneuvers)
         self.manifold = manifold.AsyncManifoldResourceWithRawResponse(client.manifold)
         self.manifoldelset = manifoldelset.AsyncManifoldelsetResourceWithRawResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.AsyncMissileTracksResourceWithRawResponse(client.missile_tracks)
-        self.mission_ops = mission_ops.AsyncMissionOpsResourceWithRawResponse(client.mission_ops)
         self.missionassignment = missionassignment.AsyncMissionassignmentResourceWithRawResponse(
             client.missionassignment
         )
@@ -1850,7 +1797,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.aircraftstatusremark = aircraftstatusremark.AircraftstatusremarkResourceWithStreamingResponse(
             client.aircraftstatusremark
         )
-        self.airevent = airevent.AireventResourceWithStreamingResponse(client.airevent)
         self.airfield_slots = airfield_slots.AirfieldSlotsResourceWithStreamingResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AirfieldStatusResourceWithStreamingResponse(client.airfield_status)
         self.airfields = airfields.AirfieldsResourceWithStreamingResponse(client.airfields)
@@ -1902,15 +1848,12 @@ class UnifieddatalibraryWithStreamedResponse:
         self.eo_observations = eo_observations.EoObservationsResourceWithStreamingResponse(client.eo_observations)
         self.eoobservations = eoobservations.EoobservationsResourceWithStreamingResponse(client.eoobservations)
         self.eop = eop.EopResourceWithStreamingResponse(client.eop)
-        self.ephemerides = ephemerides.EphemeridesResourceWithStreamingResponse(client.ephemerides)
         self.ephemeris = ephemeris.EphemerisResourceWithStreamingResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.EphemerisSetsResourceWithStreamingResponse(client.ephemeris_sets)
         self.equipment = equipment.EquipmentResourceWithStreamingResponse(client.equipment)
         self.equipmentremarks = equipmentremarks.EquipmentremarksResourceWithStreamingResponse(client.equipmentremarks)
         self.evac = evac.EvacResourceWithStreamingResponse(client.evac)
         self.event_evolution = event_evolution.EventEvolutionResourceWithStreamingResponse(client.event_evolution)
-        self.eventevolutions = eventevolutions.EventevolutionsResourceWithStreamingResponse(client.eventevolutions)
-        self.filedrop = filedrop.FiledropResourceWithStreamingResponse(client.filedrop)
         self.flightplan = flightplan.FlightplanResourceWithStreamingResponse(client.flightplan)
         self.geostatus = geostatus.GeostatusResourceWithStreamingResponse(client.geostatus)
         self.gnssobservationset = gnssobservationset.GnssobservationsetResourceWithStreamingResponse(
@@ -1922,9 +1865,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.h3geo = h3geo.H3geoResourceWithStreamingResponse(client.h3geo)
         self.h3geohexcell = h3geohexcell.H3geohexcellResourceWithStreamingResponse(client.h3geohexcell)
         self.hazard = hazard.HazardResourceWithStreamingResponse(client.hazard)
-        self.iono_observations = iono_observations.IonoObservationsResourceWithStreamingResponse(
-            client.iono_observations
-        )
         self.ionoobservation = ionoobservation.IonoobservationResourceWithStreamingResponse(client.ionoobservation)
         self.ir = ir.IrResourceWithStreamingResponse(client.ir)
         self.isr_collections = isr_collections.IsrCollectionsResourceWithStreamingResponse(client.isr_collections)
@@ -1943,15 +1883,11 @@ class UnifieddatalibraryWithStreamedResponse:
         )
         self.link_status = link_status.LinkStatusResourceWithStreamingResponse(client.link_status)
         self.location = location.LocationResourceWithStreamingResponse(client.location)
-        self.logistics_supports = logistics_supports.LogisticsSupportsResourceWithStreamingResponse(
-            client.logistics_supports
-        )
         self.logisticssupport = logisticssupport.LogisticssupportResourceWithStreamingResponse(client.logisticssupport)
         self.maneuvers = maneuvers.ManeuversResourceWithStreamingResponse(client.maneuvers)
         self.manifold = manifold.ManifoldResourceWithStreamingResponse(client.manifold)
         self.manifoldelset = manifoldelset.ManifoldelsetResourceWithStreamingResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.MissileTracksResourceWithStreamingResponse(client.missile_tracks)
-        self.mission_ops = mission_ops.MissionOpsResourceWithStreamingResponse(client.mission_ops)
         self.missionassignment = missionassignment.MissionassignmentResourceWithStreamingResponse(
             client.missionassignment
         )
@@ -2119,7 +2055,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.aircraftstatusremark = aircraftstatusremark.AsyncAircraftstatusremarkResourceWithStreamingResponse(
             client.aircraftstatusremark
         )
-        self.airevent = airevent.AsyncAireventResourceWithStreamingResponse(client.airevent)
         self.airfield_slots = airfield_slots.AsyncAirfieldSlotsResourceWithStreamingResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AsyncAirfieldStatusResourceWithStreamingResponse(client.airfield_status)
         self.airfields = airfields.AsyncAirfieldsResourceWithStreamingResponse(client.airfields)
@@ -2181,7 +2116,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.eo_observations = eo_observations.AsyncEoObservationsResourceWithStreamingResponse(client.eo_observations)
         self.eoobservations = eoobservations.AsyncEoobservationsResourceWithStreamingResponse(client.eoobservations)
         self.eop = eop.AsyncEopResourceWithStreamingResponse(client.eop)
-        self.ephemerides = ephemerides.AsyncEphemeridesResourceWithStreamingResponse(client.ephemerides)
         self.ephemeris = ephemeris.AsyncEphemerisResourceWithStreamingResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.AsyncEphemerisSetsResourceWithStreamingResponse(client.ephemeris_sets)
         self.equipment = equipment.AsyncEquipmentResourceWithStreamingResponse(client.equipment)
@@ -2190,8 +2124,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         )
         self.evac = evac.AsyncEvacResourceWithStreamingResponse(client.evac)
         self.event_evolution = event_evolution.AsyncEventEvolutionResourceWithStreamingResponse(client.event_evolution)
-        self.eventevolutions = eventevolutions.AsyncEventevolutionsResourceWithStreamingResponse(client.eventevolutions)
-        self.filedrop = filedrop.AsyncFiledropResourceWithStreamingResponse(client.filedrop)
         self.flightplan = flightplan.AsyncFlightplanResourceWithStreamingResponse(client.flightplan)
         self.geostatus = geostatus.AsyncGeostatusResourceWithStreamingResponse(client.geostatus)
         self.gnssobservationset = gnssobservationset.AsyncGnssobservationsetResourceWithStreamingResponse(
@@ -2203,9 +2135,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.h3geo = h3geo.AsyncH3geoResourceWithStreamingResponse(client.h3geo)
         self.h3geohexcell = h3geohexcell.AsyncH3geohexcellResourceWithStreamingResponse(client.h3geohexcell)
         self.hazard = hazard.AsyncHazardResourceWithStreamingResponse(client.hazard)
-        self.iono_observations = iono_observations.AsyncIonoObservationsResourceWithStreamingResponse(
-            client.iono_observations
-        )
         self.ionoobservation = ionoobservation.AsyncIonoobservationResourceWithStreamingResponse(client.ionoobservation)
         self.ir = ir.AsyncIrResourceWithStreamingResponse(client.ir)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithStreamingResponse(client.isr_collections)
@@ -2224,9 +2153,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         )
         self.link_status = link_status.AsyncLinkStatusResourceWithStreamingResponse(client.link_status)
         self.location = location.AsyncLocationResourceWithStreamingResponse(client.location)
-        self.logistics_supports = logistics_supports.AsyncLogisticsSupportsResourceWithStreamingResponse(
-            client.logistics_supports
-        )
         self.logisticssupport = logisticssupport.AsyncLogisticssupportResourceWithStreamingResponse(
             client.logisticssupport
         )
@@ -2234,7 +2160,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.manifold = manifold.AsyncManifoldResourceWithStreamingResponse(client.manifold)
         self.manifoldelset = manifoldelset.AsyncManifoldelsetResourceWithStreamingResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.AsyncMissileTracksResourceWithStreamingResponse(client.missile_tracks)
-        self.mission_ops = mission_ops.AsyncMissionOpsResourceWithStreamingResponse(client.mission_ops)
         self.missionassignment = missionassignment.AsyncMissionassignmentResourceWithStreamingResponse(
             client.missionassignment
         )

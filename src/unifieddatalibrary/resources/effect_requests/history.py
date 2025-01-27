@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.effect_requests import history_aodr_params, history_list_params
+from ...types.effect_requests import history_aodr_params, history_list_params, history_count_params
 from ...types.effect_requests.history_list_response import HistoryListResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
@@ -170,6 +170,49 @@ class HistoryResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def count(
+        self,
+        *,
+        created_at: Union[str, date],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+
+        Args:
+          created_at: Time the row was created in the database, auto-populated by the system.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return self._get(
+            "/udl/effectrequest/history/count",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"created_at": created_at}, history_count_params.HistoryCountParams),
+            ),
+            cast_to=str,
+        )
+
 
 class AsyncHistoryResource(AsyncAPIResource):
     @cached_property
@@ -314,6 +357,49 @@ class AsyncHistoryResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def count(
+        self,
+        *,
+        created_at: Union[str, date],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+
+        Args:
+          created_at: Time the row was created in the database, auto-populated by the system.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return await self._get(
+            "/udl/effectrequest/history/count",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"created_at": created_at}, history_count_params.HistoryCountParams),
+            ),
+            cast_to=str,
+        )
+
 
 class HistoryResourceWithRawResponse:
     def __init__(self, history: HistoryResource) -> None:
@@ -324,6 +410,9 @@ class HistoryResourceWithRawResponse:
         )
         self.aodr = to_raw_response_wrapper(
             history.aodr,
+        )
+        self.count = to_raw_response_wrapper(
+            history.count,
         )
 
 
@@ -337,6 +426,9 @@ class AsyncHistoryResourceWithRawResponse:
         self.aodr = async_to_raw_response_wrapper(
             history.aodr,
         )
+        self.count = async_to_raw_response_wrapper(
+            history.count,
+        )
 
 
 class HistoryResourceWithStreamingResponse:
@@ -349,6 +441,9 @@ class HistoryResourceWithStreamingResponse:
         self.aodr = to_streamed_response_wrapper(
             history.aodr,
         )
+        self.count = to_streamed_response_wrapper(
+            history.count,
+        )
 
 
 class AsyncHistoryResourceWithStreamingResponse:
@@ -360,4 +455,7 @@ class AsyncHistoryResourceWithStreamingResponse:
         )
         self.aodr = async_to_streamed_response_wrapper(
             history.aodr,
+        )
+        self.count = async_to_streamed_response_wrapper(
+            history.count,
         )

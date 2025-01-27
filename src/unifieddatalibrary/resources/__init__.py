@@ -288,14 +288,6 @@ from .aircraft import (
     AircraftResourceWithStreamingResponse,
     AsyncAircraftResourceWithStreamingResponse,
 )
-from .airevent import (
-    AireventResource,
-    AsyncAireventResource,
-    AireventResourceWithRawResponse,
-    AsyncAireventResourceWithRawResponse,
-    AireventResourceWithStreamingResponse,
-    AsyncAireventResourceWithStreamingResponse,
-)
 from .antennas import (
     AntennasResource,
     AsyncAntennasResource,
@@ -319,14 +311,6 @@ from .entities import (
     AsyncEntitiesResourceWithRawResponse,
     EntitiesResourceWithStreamingResponse,
     AsyncEntitiesResourceWithStreamingResponse,
-)
-from .filedrop import (
-    FiledropResource,
-    AsyncFiledropResource,
-    FiledropResourceWithRawResponse,
-    AsyncFiledropResourceWithRawResponse,
-    FiledropResourceWithStreamingResponse,
-    AsyncFiledropResourceWithStreamingResponse,
 )
 from .location import (
     LocationResource,
@@ -576,14 +560,6 @@ from .ais_objects import (
     AIsObjectsResourceWithStreamingResponse,
     AsyncAIsObjectsResourceWithStreamingResponse,
 )
-from .ephemerides import (
-    EphemeridesResource,
-    AsyncEphemeridesResource,
-    EphemeridesResourceWithRawResponse,
-    AsyncEphemeridesResourceWithRawResponse,
-    EphemeridesResourceWithStreamingResponse,
-    AsyncEphemeridesResourceWithStreamingResponse,
-)
 from .gnss_raw_if import (
     GnssRawIfResource,
     AsyncGnssRawIfResource,
@@ -607,14 +583,6 @@ from .link_status import (
     AsyncLinkStatusResourceWithRawResponse,
     LinkStatusResourceWithStreamingResponse,
     AsyncLinkStatusResourceWithStreamingResponse,
-)
-from .mission_ops import (
-    MissionOpsResource,
-    AsyncMissionOpsResource,
-    MissionOpsResourceWithRawResponse,
-    AsyncMissionOpsResourceWithRawResponse,
-    MissionOpsResourceWithStreamingResponse,
-    AsyncMissionOpsResourceWithStreamingResponse,
 )
 from .onorbitlist import (
     OnorbitlistResource,
@@ -1008,14 +976,6 @@ from .event_evolution import (
     EventEvolutionResourceWithStreamingResponse,
     AsyncEventEvolutionResourceWithStreamingResponse,
 )
-from .eventevolutions import (
-    EventevolutionsResource,
-    AsyncEventevolutionsResource,
-    EventevolutionsResourceWithRawResponse,
-    AsyncEventevolutionsResourceWithRawResponse,
-    EventevolutionsResourceWithStreamingResponse,
-    AsyncEventevolutionsResourceWithStreamingResponse,
-)
 from .ionoobservation import (
     IonoobservationResource,
     AsyncIonoobservationResource,
@@ -1176,14 +1136,6 @@ from .gnss_observations import (
     GnssObservationsResourceWithStreamingResponse,
     AsyncGnssObservationsResourceWithStreamingResponse,
 )
-from .iono_observations import (
-    IonoObservationsResource,
-    AsyncIonoObservationsResource,
-    IonoObservationsResourceWithRawResponse,
-    AsyncIonoObservationsResourceWithRawResponse,
-    IonoObservationsResourceWithStreamingResponse,
-    AsyncIonoObservationsResourceWithStreamingResponse,
-)
 from .launchsitedetails import (
     LaunchsitedetailsResource,
     AsyncLaunchsitedetailsResource,
@@ -1263,14 +1215,6 @@ from .gnssobservationset import (
     AsyncGnssobservationsetResourceWithRawResponse,
     GnssobservationsetResourceWithStreamingResponse,
     AsyncGnssobservationsetResourceWithStreamingResponse,
-)
-from .logistics_supports import (
-    LogisticsSupportsResource,
-    AsyncLogisticsSupportsResource,
-    LogisticsSupportsResourceWithRawResponse,
-    AsyncLogisticsSupportsResourceWithRawResponse,
-    LogisticsSupportsResourceWithStreamingResponse,
-    AsyncLogisticsSupportsResourceWithStreamingResponse,
 )
 from .orbitdetermination import (
     OrbitdeterminationResource,
@@ -1526,12 +1470,6 @@ __all__ = [
     "AsyncAircraftstatusremarkResourceWithRawResponse",
     "AircraftstatusremarkResourceWithStreamingResponse",
     "AsyncAircraftstatusremarkResourceWithStreamingResponse",
-    "AireventResource",
-    "AsyncAireventResource",
-    "AireventResourceWithRawResponse",
-    "AsyncAireventResourceWithRawResponse",
-    "AireventResourceWithStreamingResponse",
-    "AsyncAireventResourceWithStreamingResponse",
     "AirfieldSlotsResource",
     "AsyncAirfieldSlotsResource",
     "AirfieldSlotsResourceWithRawResponse",
@@ -1790,12 +1728,6 @@ __all__ = [
     "AsyncEopResourceWithRawResponse",
     "EopResourceWithStreamingResponse",
     "AsyncEopResourceWithStreamingResponse",
-    "EphemeridesResource",
-    "AsyncEphemeridesResource",
-    "EphemeridesResourceWithRawResponse",
-    "AsyncEphemeridesResourceWithRawResponse",
-    "EphemeridesResourceWithStreamingResponse",
-    "AsyncEphemeridesResourceWithStreamingResponse",
     "EphemerisResource",
     "AsyncEphemerisResource",
     "EphemerisResourceWithRawResponse",
@@ -1832,18 +1764,6 @@ __all__ = [
     "AsyncEventEvolutionResourceWithRawResponse",
     "EventEvolutionResourceWithStreamingResponse",
     "AsyncEventEvolutionResourceWithStreamingResponse",
-    "EventevolutionsResource",
-    "AsyncEventevolutionsResource",
-    "EventevolutionsResourceWithRawResponse",
-    "AsyncEventevolutionsResourceWithRawResponse",
-    "EventevolutionsResourceWithStreamingResponse",
-    "AsyncEventevolutionsResourceWithStreamingResponse",
-    "FiledropResource",
-    "AsyncFiledropResource",
-    "FiledropResourceWithRawResponse",
-    "AsyncFiledropResourceWithRawResponse",
-    "FiledropResourceWithStreamingResponse",
-    "AsyncFiledropResourceWithStreamingResponse",
     "FlightplanResource",
     "AsyncFlightplanResource",
     "FlightplanResourceWithRawResponse",
@@ -1898,12 +1818,6 @@ __all__ = [
     "AsyncHazardResourceWithRawResponse",
     "HazardResourceWithStreamingResponse",
     "AsyncHazardResourceWithStreamingResponse",
-    "IonoObservationsResource",
-    "AsyncIonoObservationsResource",
-    "IonoObservationsResourceWithRawResponse",
-    "AsyncIonoObservationsResourceWithRawResponse",
-    "IonoObservationsResourceWithStreamingResponse",
-    "AsyncIonoObservationsResourceWithStreamingResponse",
     "IonoobservationResource",
     "AsyncIonoobservationResource",
     "IonoobservationResourceWithRawResponse",
@@ -1988,12 +1902,6 @@ __all__ = [
     "AsyncLocationResourceWithRawResponse",
     "LocationResourceWithStreamingResponse",
     "AsyncLocationResourceWithStreamingResponse",
-    "LogisticsSupportsResource",
-    "AsyncLogisticsSupportsResource",
-    "LogisticsSupportsResourceWithRawResponse",
-    "AsyncLogisticsSupportsResourceWithRawResponse",
-    "LogisticsSupportsResourceWithStreamingResponse",
-    "AsyncLogisticsSupportsResourceWithStreamingResponse",
     "LogisticssupportResource",
     "AsyncLogisticssupportResource",
     "LogisticssupportResourceWithRawResponse",
@@ -2024,12 +1932,6 @@ __all__ = [
     "AsyncMissileTracksResourceWithRawResponse",
     "MissileTracksResourceWithStreamingResponse",
     "AsyncMissileTracksResourceWithStreamingResponse",
-    "MissionOpsResource",
-    "AsyncMissionOpsResource",
-    "MissionOpsResourceWithRawResponse",
-    "AsyncMissionOpsResourceWithRawResponse",
-    "MissionOpsResourceWithStreamingResponse",
-    "AsyncMissionOpsResourceWithStreamingResponse",
     "MissionassignmentResource",
     "AsyncMissionassignmentResource",
     "MissionassignmentResourceWithRawResponse",

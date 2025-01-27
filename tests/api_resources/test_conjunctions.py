@@ -124,58 +124,6 @@ class TestConjunctions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_filedrop(self, client: Unifieddatalibrary) -> None:
-        conjunction = client.conjunctions.create_filedrop(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "source": "Bluestaq",
-                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        )
-        assert conjunction is None
-
-    @parametrize
-    def test_raw_response_create_filedrop(self, client: Unifieddatalibrary) -> None:
-        response = client.conjunctions.with_raw_response.create_filedrop(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "source": "Bluestaq",
-                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        conjunction = response.parse()
-        assert conjunction is None
-
-    @parametrize
-    def test_streaming_response_create_filedrop(self, client: Unifieddatalibrary) -> None:
-        with client.conjunctions.with_streaming_response.create_filedrop(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "source": "Bluestaq",
-                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            conjunction = response.parse()
-            assert conjunction is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_create_udl(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.create_udl(
             classification_marking="U",
@@ -539,6 +487,58 @@ class TestConjunctions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        conjunction = client.conjunctions.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                }
+            ],
+        )
+        assert conjunction is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.conjunctions.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        conjunction = response.parse()
+        assert conjunction is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.conjunctions.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            conjunction = response.parse()
+            assert conjunction is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get_history(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.get_history(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -737,58 +737,6 @@ class TestAsyncConjunctions:
 
             conjunction = await response.parse()
             assert_matches_type(str, conjunction, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_filedrop(self, async_client: AsyncUnifieddatalibrary) -> None:
-        conjunction = await async_client.conjunctions.create_filedrop(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "source": "Bluestaq",
-                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        )
-        assert conjunction is None
-
-    @parametrize
-    async def test_raw_response_create_filedrop(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.conjunctions.with_raw_response.create_filedrop(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "source": "Bluestaq",
-                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        conjunction = await response.parse()
-        assert conjunction is None
-
-    @parametrize
-    async def test_streaming_response_create_filedrop(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.conjunctions.with_streaming_response.create_filedrop(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "source": "Bluestaq",
-                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            conjunction = await response.parse()
-            assert conjunction is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1138,6 +1086,58 @@ class TestAsyncConjunctions:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.conjunctions.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            conjunction = await response.parse()
+            assert conjunction is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        conjunction = await async_client.conjunctions.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                }
+            ],
+        )
+        assert conjunction is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.conjunctions.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        conjunction = await response.parse()
+        assert conjunction is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.conjunctions.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

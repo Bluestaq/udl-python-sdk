@@ -11,8 +11,10 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EventEvolutionListResponse,
+    EventEvolutionTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.types.shared import EventEvolutionFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -98,6 +100,44 @@ class TestEventEvolution:
             assert event_evolution is None
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.retrieve(
+            "id",
+        )
+        assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
+        response = client.event_evolution.with_raw_response.retrieve(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = response.parse()
+        assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
+        with client.event_evolution.with_streaming_response.retrieve(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = response.parse()
+            assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.event_evolution.with_raw_response.retrieve(
+                "",
+            )
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
@@ -223,6 +263,129 @@ class TestEventEvolution:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+        assert event_evolution is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.event_evolution.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = response.parse()
+        assert event_evolution is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.event_evolution.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = response.parse()
+            assert event_evolution is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.queryhelp()
+        assert event_evolution is None
+
+    @parametrize
+    def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
+        response = client.event_evolution.with_raw_response.queryhelp()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = response.parse()
+        assert event_evolution is None
+
+    @parametrize
+    def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
+        with client.event_evolution.with_streaming_response.queryhelp() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = response.parse()
+            assert event_evolution is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_tuple(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.tuple(
+            columns="columns",
+        )
+        assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.tuple(
+            columns="columns",
+            event_id="eventId",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+    @parametrize
+    def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
+        response = client.event_evolution.with_raw_response.tuple(
+            columns="columns",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = response.parse()
+        assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+    @parametrize
+    def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
+        with client.event_evolution.with_streaming_response.tuple(
+            columns="columns",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = response.parse()
+            assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncEventEvolution:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -305,6 +468,44 @@ class TestAsyncEventEvolution:
             assert event_evolution is None
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.retrieve(
+            "id",
+        )
+        assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.event_evolution.with_raw_response.retrieve(
+            "id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = await response.parse()
+        assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.event_evolution.with_streaming_response.retrieve(
+            "id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = await response.parse()
+            assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.event_evolution.with_raw_response.retrieve(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -427,5 +628,128 @@ class TestAsyncEventEvolution:
 
             event_evolution = await response.parse()
             assert event_evolution is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+        assert event_evolution is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.event_evolution.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = await response.parse()
+        assert event_evolution is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.event_evolution.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = await response.parse()
+            assert event_evolution is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.queryhelp()
+        assert event_evolution is None
+
+    @parametrize
+    async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.event_evolution.with_raw_response.queryhelp()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = await response.parse()
+        assert event_evolution is None
+
+    @parametrize
+    async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.event_evolution.with_streaming_response.queryhelp() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = await response.parse()
+            assert event_evolution is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.tuple(
+            columns="columns",
+        )
+        assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.tuple(
+            columns="columns",
+            event_id="eventId",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+    @parametrize
+    async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.event_evolution.with_raw_response.tuple(
+            columns="columns",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = await response.parse()
+        assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.event_evolution.with_streaming_response.tuple(
+            columns="columns",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = await response.parse()
+            assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True

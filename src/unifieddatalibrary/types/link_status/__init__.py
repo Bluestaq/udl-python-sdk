@@ -15,4 +15,4 @@ from .datalink_list_response import DatalinkListResponse as DatalinkListResponse
 from .history_count_response import HistoryCountResponse as HistoryCountResponse
 from .datalink_count_response import DatalinkCountResponse as DatalinkCountResponse
 from .datalink_tuple_response import DatalinkTupleResponse as DatalinkTupleResponse
-from .datalink_create_file_drop_params import DatalinkCreateFileDropParams as DatalinkCreateFileDropParams
+from .datalink_file_create_params import DatalinkFileCreateParams as DatalinkFileCreateParams

@@ -136,6 +136,58 @@ class TestTrack:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        track = client.track.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                }
+            ],
+        )
+        assert track is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.track.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        track = response.parse()
+        assert track is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.track.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            track = response.parse()
+            assert track is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         track = client.track.queryhelp()
         assert track is None
@@ -295,6 +347,58 @@ class TestAsyncTrack:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.track.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            track = await response.parse()
+            assert track is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        track = await async_client.track.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                }
+            ],
+        )
+        assert track is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.track.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        track = await response.parse()
+        assert track is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.track.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

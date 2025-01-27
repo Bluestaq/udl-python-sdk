@@ -223,6 +223,67 @@ class TestWeatherreport:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        weatherreport = client.weatherreport.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert weatherreport is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.weatherreport.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        weatherreport = response.parse()
+        assert weatherreport is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.weatherreport.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            weatherreport = response.parse()
+            assert weatherreport is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         weatherreport = client.weatherreport.get(
             "id",
@@ -520,6 +581,67 @@ class TestAsyncWeatherreport:
 
             weatherreport = await response.parse()
             assert_matches_type(str, weatherreport, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        weatherreport = await async_client.weatherreport.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert weatherreport is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.weatherreport.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        weatherreport = await response.parse()
+        assert weatherreport is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.weatherreport.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 56.12,
+                    "lon": -156.6,
+                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "report_type": "FORECAST",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            weatherreport = await response.parse()
+            assert weatherreport is None
 
         assert cast(Any, response.is_closed) is True
 

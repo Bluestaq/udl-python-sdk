@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .air_events import (
-    AirEventsResource,
-    AsyncAirEventsResource,
-    AirEventsResourceWithRawResponse,
-    AsyncAirEventsResourceWithRawResponse,
-    AirEventsResourceWithStreamingResponse,
-    AsyncAirEventsResourceWithStreamingResponse,
-)
 from .crewpapers import (
     CrewpapersResource,
     AsyncCrewpapersResource,
@@ -74,12 +66,6 @@ from .airspace_control_orders import (
 )
 
 __all__ = [
-    "AirEventsResource",
-    "AsyncAirEventsResource",
-    "AirEventsResourceWithRawResponse",
-    "AsyncAirEventsResourceWithRawResponse",
-    "AirEventsResourceWithStreamingResponse",
-    "AsyncAirEventsResourceWithStreamingResponse",
     "AirTaskingOrdersResource",
     "AsyncAirTaskingOrdersResource",
     "AirTaskingOrdersResourceWithRawResponse",
