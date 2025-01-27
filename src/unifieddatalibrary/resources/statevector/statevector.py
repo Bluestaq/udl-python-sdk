@@ -16,6 +16,14 @@ from ...types import (
     statevector_create_bulk_params,
     statevector_file_create_params,
 )
+from .current import (
+    CurrentResource,
+    AsyncCurrentResource,
+    CurrentResourceWithRawResponse,
+    AsyncCurrentResourceWithRawResponse,
+    CurrentResourceWithStreamingResponse,
+    AsyncCurrentResourceWithStreamingResponse,
+)
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -40,7 +48,6 @@ from ..._response import (
 from ..._base_client import make_request_options
 from ...types.statevector_list_response import StatevectorListResponse
 from ...types.statevector_tuple_response import StatevectorTupleResponse
-from ...types.statevector_current_response import StatevectorCurrentResponse
 from ...types.statevector.state_vector_full import StateVectorFull
 
 __all__ = ["StatevectorResource", "AsyncStatevectorResource"]
@@ -50,6 +57,10 @@ class StatevectorResource(SyncAPIResource):
     @cached_property
     def history(self) -> HistoryResource:
         return HistoryResource(self._client)
+
+    @cached_property
+    def current(self) -> CurrentResource:
+        return CurrentResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> StatevectorResourceWithRawResponse:
@@ -825,36 +836,6 @@ class StatevectorResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def current(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StatevectorCurrentResponse:
-        """
-        Service operation to dynamically query/filter current StateVector data within
-        the system by a variety of query parameters not specified in this API
-        documentation. A current StateVector is the currently active, latest StateVector
-        for an on-orbit object. Current state vectors are tracked by source and a source
-        should be provided as a query parameter to this service operation to view the
-        'current' catalog for a particular provider. Default current state vector
-        sources may vary by UDL environment. Please contact the UDL help desk for more
-        information, or explicitly specify the desired source. See the queryhelp
-        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
-        query parameter information.
-        """
-        return self._get(
-            "/udl/statevector/current",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=StatevectorCurrentResponse,
-        )
-
     def file_create(
         self,
         *,
@@ -1010,6 +991,10 @@ class AsyncStatevectorResource(AsyncAPIResource):
     @cached_property
     def history(self) -> AsyncHistoryResource:
         return AsyncHistoryResource(self._client)
+
+    @cached_property
+    def current(self) -> AsyncCurrentResource:
+        return AsyncCurrentResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncStatevectorResourceWithRawResponse:
@@ -1785,36 +1770,6 @@ class AsyncStatevectorResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def current(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StatevectorCurrentResponse:
-        """
-        Service operation to dynamically query/filter current StateVector data within
-        the system by a variety of query parameters not specified in this API
-        documentation. A current StateVector is the currently active, latest StateVector
-        for an on-orbit object. Current state vectors are tracked by source and a source
-        should be provided as a query parameter to this service operation to view the
-        'current' catalog for a particular provider. Default current state vector
-        sources may vary by UDL environment. Please contact the UDL help desk for more
-        information, or explicitly specify the desired source. See the queryhelp
-        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
-        query parameter information.
-        """
-        return await self._get(
-            "/udl/statevector/current",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=StatevectorCurrentResponse,
-        )
-
     async def file_create(
         self,
         *,
@@ -1982,9 +1937,6 @@ class StatevectorResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             statevector.create_bulk,
         )
-        self.current = to_raw_response_wrapper(
-            statevector.current,
-        )
         self.file_create = to_raw_response_wrapper(
             statevector.file_create,
         )
@@ -2001,6 +1953,10 @@ class StatevectorResourceWithRawResponse:
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
         return HistoryResourceWithRawResponse(self._statevector.history)
+
+    @cached_property
+    def current(self) -> CurrentResourceWithRawResponse:
+        return CurrentResourceWithRawResponse(self._statevector.current)
 
 
 class AsyncStatevectorResourceWithRawResponse:
@@ -2019,9 +1975,6 @@ class AsyncStatevectorResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             statevector.create_bulk,
         )
-        self.current = async_to_raw_response_wrapper(
-            statevector.current,
-        )
         self.file_create = async_to_raw_response_wrapper(
             statevector.file_create,
         )
@@ -2038,6 +1991,10 @@ class AsyncStatevectorResourceWithRawResponse:
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
         return AsyncHistoryResourceWithRawResponse(self._statevector.history)
+
+    @cached_property
+    def current(self) -> AsyncCurrentResourceWithRawResponse:
+        return AsyncCurrentResourceWithRawResponse(self._statevector.current)
 
 
 class StatevectorResourceWithStreamingResponse:
@@ -2056,9 +2013,6 @@ class StatevectorResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             statevector.create_bulk,
         )
-        self.current = to_streamed_response_wrapper(
-            statevector.current,
-        )
         self.file_create = to_streamed_response_wrapper(
             statevector.file_create,
         )
@@ -2075,6 +2029,10 @@ class StatevectorResourceWithStreamingResponse:
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
         return HistoryResourceWithStreamingResponse(self._statevector.history)
+
+    @cached_property
+    def current(self) -> CurrentResourceWithStreamingResponse:
+        return CurrentResourceWithStreamingResponse(self._statevector.current)
 
 
 class AsyncStatevectorResourceWithStreamingResponse:
@@ -2093,9 +2051,6 @@ class AsyncStatevectorResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             statevector.create_bulk,
         )
-        self.current = async_to_streamed_response_wrapper(
-            statevector.current,
-        )
         self.file_create = async_to_streamed_response_wrapper(
             statevector.file_create,
         )
@@ -2112,3 +2067,7 @@ class AsyncStatevectorResourceWithStreamingResponse:
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
         return AsyncHistoryResourceWithStreamingResponse(self._statevector.history)
+
+    @cached_property
+    def current(self) -> AsyncCurrentResourceWithStreamingResponse:
+        return AsyncCurrentResourceWithStreamingResponse(self._statevector.current)

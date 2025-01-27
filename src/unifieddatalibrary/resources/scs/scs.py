@@ -14,6 +14,14 @@ from .v2 import (
     V2ResourceWithStreamingResponse,
     AsyncV2ResourceWithStreamingResponse,
 )
+from .file import (
+    FileResource,
+    AsyncFileResource,
+    FileResourceWithRawResponse,
+    AsyncFileResourceWithRawResponse,
+    FileResourceWithStreamingResponse,
+    AsyncFileResourceWithStreamingResponse,
+)
 from .files import (
     FilesResource,
     AsyncFilesResource,
@@ -38,7 +46,15 @@ from .groups import (
     GroupsResourceWithStreamingResponse,
     AsyncGroupsResourceWithStreamingResponse,
 )
-from ...types import sc_move_params, sc_rename_params, sc_search_params, sc_update_tags_params
+from ...types import (
+    sc_copy_params,
+    sc_move_params,
+    sc_rename_params,
+    sc_search_params,
+    sc_download_params,
+    sc_file_upload_params,
+    sc_update_tags_params,
+)
 from .folders import (
     FoldersResource,
     AsyncFoldersResource,
@@ -47,7 +63,7 @@ from .folders import (
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
 from ..._utils import (
     maybe_transform,
     async_maybe_transform,
@@ -55,10 +71,18 @@ from ..._utils import (
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from .file_metadata import (
     FileMetadataResource,
@@ -86,6 +110,9 @@ from .classification_markings import (
     AsyncClassificationMarkingsResourceWithStreamingResponse,
 )
 from ...types.sc_search_response import ScSearchResponse
+from ...types.sc_aggregate_doc_type_response import ScAggregateDocTypeResponse
+from ...types.sc_allowable_file_mimes_response import ScAllowableFileMimesResponse
+from ...types.sc_allowable_file_extensions_response import ScAllowableFileExtensionsResponse
 
 __all__ = ["ScsResource", "AsyncScsResource"]
 
@@ -124,6 +151,10 @@ class ScsResource(SyncAPIResource):
         return V2Resource(self._client)
 
     @cached_property
+    def file(self) -> FileResource:
+        return FileResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> ScsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -141,6 +172,241 @@ class ScsResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return ScsResourceWithStreamingResponse(self)
+
+    def delete(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Deletes the requested File or folder in the passed path directory that is
+        visible to the calling user. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            "/scs/delete",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def aggregate_doc_type(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScAggregateDocTypeResponse:
+        """Returns a map of document types and counts in root folder."""
+        return self._get(
+            "/scs/aggregateDocType",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ScAggregateDocTypeResponse,
+        )
+
+    def allowable_file_extensions(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScAllowableFileExtensionsResponse:
+        """Returns a list of allowable file extensions for upload."""
+        return self._get(
+            "/scs/allowableFileExtensions",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ScAllowableFileExtensionsResponse,
+        )
+
+    def allowable_file_mimes(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScAllowableFileMimesResponse:
+        """Returns a list of allowable file mime types for upload."""
+        return self._get(
+            "/scs/allowableFileMimes",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ScAllowableFileMimesResponse,
+        )
+
+    def copy(
+        self,
+        *,
+        target_path: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """operation to copy folders or files.
+
+        A specific role is required to perform this
+        service operation. Please contact the UDL team for assistance.
+
+        Args:
+          target_path: The path to copy to
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/scs/copy",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"target_path": target_path}, sc_copy_params.ScCopyParams),
+            ),
+            cast_to=str,
+        )
+
+    def download(
+        self,
+        *,
+        body: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BinaryAPIResponse:
+        """
+        Downloads a zip of one or more files and/or folders.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._post(
+            "/scs/download",
+            body=maybe_transform(body, sc_download_params.ScDownloadParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def file_download(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BinaryAPIResponse:
+        """Download a single file from SCS."""
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._get(
+            "/scs/download",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def file_upload(
+        self,
+        *,
+        classification_marking: str,
+        file_name: str,
+        path: str,
+        body: FileTypes,
+        description: str | NotGiven = NOT_GIVEN,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """Operation to upload a file.
+
+        A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification (ex. U//FOUO)
+
+          file_name: FileName (ex. dog.jpg)
+
+          path: The base path to upload file (ex. images)
+
+          description: Description
+
+          tags: Tags
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/scs/file",
+            body=maybe_transform(body, sc_file_upload_params.ScFileUploadParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "classification_marking": classification_marking,
+                        "file_name": file_name,
+                        "path": path,
+                        "description": description,
+                        "tags": tags,
+                    },
+                    sc_file_upload_params.ScFileUploadParams,
+                ),
+            ),
+            cast_to=str,
+        )
 
     def move(
         self,
@@ -368,6 +634,10 @@ class AsyncScsResource(AsyncAPIResource):
         return AsyncV2Resource(self._client)
 
     @cached_property
+    def file(self) -> AsyncFileResource:
+        return AsyncFileResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncScsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -385,6 +655,241 @@ class AsyncScsResource(AsyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return AsyncScsResourceWithStreamingResponse(self)
+
+    async def delete(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Deletes the requested File or folder in the passed path directory that is
+        visible to the calling user. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            "/scs/delete",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def aggregate_doc_type(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScAggregateDocTypeResponse:
+        """Returns a map of document types and counts in root folder."""
+        return await self._get(
+            "/scs/aggregateDocType",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ScAggregateDocTypeResponse,
+        )
+
+    async def allowable_file_extensions(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScAllowableFileExtensionsResponse:
+        """Returns a list of allowable file extensions for upload."""
+        return await self._get(
+            "/scs/allowableFileExtensions",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ScAllowableFileExtensionsResponse,
+        )
+
+    async def allowable_file_mimes(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScAllowableFileMimesResponse:
+        """Returns a list of allowable file mime types for upload."""
+        return await self._get(
+            "/scs/allowableFileMimes",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ScAllowableFileMimesResponse,
+        )
+
+    async def copy(
+        self,
+        *,
+        target_path: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """operation to copy folders or files.
+
+        A specific role is required to perform this
+        service operation. Please contact the UDL team for assistance.
+
+        Args:
+          target_path: The path to copy to
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/scs/copy",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"target_path": target_path}, sc_copy_params.ScCopyParams),
+            ),
+            cast_to=str,
+        )
+
+    async def download(
+        self,
+        *,
+        body: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Downloads a zip of one or more files and/or folders.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._post(
+            "/scs/download",
+            body=await async_maybe_transform(body, sc_download_params.ScDownloadParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def file_download(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncBinaryAPIResponse:
+        """Download a single file from SCS."""
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._get(
+            "/scs/download",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def file_upload(
+        self,
+        *,
+        classification_marking: str,
+        file_name: str,
+        path: str,
+        body: FileTypes,
+        description: str | NotGiven = NOT_GIVEN,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """Operation to upload a file.
+
+        A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          classification_marking: Classification (ex. U//FOUO)
+
+          file_name: FileName (ex. dog.jpg)
+
+          path: The base path to upload file (ex. images)
+
+          description: Description
+
+          tags: Tags
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/scs/file",
+            body=await async_maybe_transform(body, sc_file_upload_params.ScFileUploadParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "classification_marking": classification_marking,
+                        "file_name": file_name,
+                        "path": path,
+                        "description": description,
+                        "tags": tags,
+                    },
+                    sc_file_upload_params.ScFileUploadParams,
+                ),
+            ),
+            cast_to=str,
+        )
 
     async def move(
         self,
@@ -582,6 +1087,32 @@ class ScsResourceWithRawResponse:
     def __init__(self, scs: ScsResource) -> None:
         self._scs = scs
 
+        self.delete = to_raw_response_wrapper(
+            scs.delete,
+        )
+        self.aggregate_doc_type = to_raw_response_wrapper(
+            scs.aggregate_doc_type,
+        )
+        self.allowable_file_extensions = to_raw_response_wrapper(
+            scs.allowable_file_extensions,
+        )
+        self.allowable_file_mimes = to_raw_response_wrapper(
+            scs.allowable_file_mimes,
+        )
+        self.copy = to_raw_response_wrapper(
+            scs.copy,
+        )
+        self.download = to_custom_raw_response_wrapper(
+            scs.download,
+            BinaryAPIResponse,
+        )
+        self.file_download = to_custom_raw_response_wrapper(
+            scs.file_download,
+            BinaryAPIResponse,
+        )
+        self.file_upload = to_raw_response_wrapper(
+            scs.file_upload,
+        )
         self.move = to_raw_response_wrapper(
             scs.move,
         )
@@ -627,11 +1158,41 @@ class ScsResourceWithRawResponse:
     def v2(self) -> V2ResourceWithRawResponse:
         return V2ResourceWithRawResponse(self._scs.v2)
 
+    @cached_property
+    def file(self) -> FileResourceWithRawResponse:
+        return FileResourceWithRawResponse(self._scs.file)
+
 
 class AsyncScsResourceWithRawResponse:
     def __init__(self, scs: AsyncScsResource) -> None:
         self._scs = scs
 
+        self.delete = async_to_raw_response_wrapper(
+            scs.delete,
+        )
+        self.aggregate_doc_type = async_to_raw_response_wrapper(
+            scs.aggregate_doc_type,
+        )
+        self.allowable_file_extensions = async_to_raw_response_wrapper(
+            scs.allowable_file_extensions,
+        )
+        self.allowable_file_mimes = async_to_raw_response_wrapper(
+            scs.allowable_file_mimes,
+        )
+        self.copy = async_to_raw_response_wrapper(
+            scs.copy,
+        )
+        self.download = async_to_custom_raw_response_wrapper(
+            scs.download,
+            AsyncBinaryAPIResponse,
+        )
+        self.file_download = async_to_custom_raw_response_wrapper(
+            scs.file_download,
+            AsyncBinaryAPIResponse,
+        )
+        self.file_upload = async_to_raw_response_wrapper(
+            scs.file_upload,
+        )
         self.move = async_to_raw_response_wrapper(
             scs.move,
         )
@@ -677,11 +1238,41 @@ class AsyncScsResourceWithRawResponse:
     def v2(self) -> AsyncV2ResourceWithRawResponse:
         return AsyncV2ResourceWithRawResponse(self._scs.v2)
 
+    @cached_property
+    def file(self) -> AsyncFileResourceWithRawResponse:
+        return AsyncFileResourceWithRawResponse(self._scs.file)
+
 
 class ScsResourceWithStreamingResponse:
     def __init__(self, scs: ScsResource) -> None:
         self._scs = scs
 
+        self.delete = to_streamed_response_wrapper(
+            scs.delete,
+        )
+        self.aggregate_doc_type = to_streamed_response_wrapper(
+            scs.aggregate_doc_type,
+        )
+        self.allowable_file_extensions = to_streamed_response_wrapper(
+            scs.allowable_file_extensions,
+        )
+        self.allowable_file_mimes = to_streamed_response_wrapper(
+            scs.allowable_file_mimes,
+        )
+        self.copy = to_streamed_response_wrapper(
+            scs.copy,
+        )
+        self.download = to_custom_streamed_response_wrapper(
+            scs.download,
+            StreamedBinaryAPIResponse,
+        )
+        self.file_download = to_custom_streamed_response_wrapper(
+            scs.file_download,
+            StreamedBinaryAPIResponse,
+        )
+        self.file_upload = to_streamed_response_wrapper(
+            scs.file_upload,
+        )
         self.move = to_streamed_response_wrapper(
             scs.move,
         )
@@ -727,11 +1318,41 @@ class ScsResourceWithStreamingResponse:
     def v2(self) -> V2ResourceWithStreamingResponse:
         return V2ResourceWithStreamingResponse(self._scs.v2)
 
+    @cached_property
+    def file(self) -> FileResourceWithStreamingResponse:
+        return FileResourceWithStreamingResponse(self._scs.file)
+
 
 class AsyncScsResourceWithStreamingResponse:
     def __init__(self, scs: AsyncScsResource) -> None:
         self._scs = scs
 
+        self.delete = async_to_streamed_response_wrapper(
+            scs.delete,
+        )
+        self.aggregate_doc_type = async_to_streamed_response_wrapper(
+            scs.aggregate_doc_type,
+        )
+        self.allowable_file_extensions = async_to_streamed_response_wrapper(
+            scs.allowable_file_extensions,
+        )
+        self.allowable_file_mimes = async_to_streamed_response_wrapper(
+            scs.allowable_file_mimes,
+        )
+        self.copy = async_to_streamed_response_wrapper(
+            scs.copy,
+        )
+        self.download = async_to_custom_streamed_response_wrapper(
+            scs.download,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.file_download = async_to_custom_streamed_response_wrapper(
+            scs.file_download,
+            AsyncStreamedBinaryAPIResponse,
+        )
+        self.file_upload = async_to_streamed_response_wrapper(
+            scs.file_upload,
+        )
         self.move = async_to_streamed_response_wrapper(
             scs.move,
         )
@@ -776,3 +1397,7 @@ class AsyncScsResourceWithStreamingResponse:
     @cached_property
     def v2(self) -> AsyncV2ResourceWithStreamingResponse:
         return AsyncV2ResourceWithStreamingResponse(self._scs.v2)
+
+    @cached_property
+    def file(self) -> AsyncFileResourceWithStreamingResponse:
+        return AsyncFileResourceWithStreamingResponse(self._scs.file)

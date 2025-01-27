@@ -14,7 +14,7 @@ from unifieddatalibrary.types import (
     PersonnelrecoveryTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
-from unifieddatalibrary.types.udl.personnelrecovery import PersonnelrecoveryFull
+from unifieddatalibrary.types.personnelrecovery import PersonnelRecoveryFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -332,7 +332,7 @@ class TestPersonnelrecovery:
         personnelrecovery = client.personnelrecovery.get(
             "id",
         )
-        assert_matches_type(PersonnelrecoveryFull, personnelrecovery, path=["response"])
+        assert_matches_type(PersonnelRecoveryFull, personnelrecovery, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -343,7 +343,7 @@ class TestPersonnelrecovery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         personnelrecovery = response.parse()
-        assert_matches_type(PersonnelrecoveryFull, personnelrecovery, path=["response"])
+        assert_matches_type(PersonnelRecoveryFull, personnelrecovery, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -354,7 +354,7 @@ class TestPersonnelrecovery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             personnelrecovery = response.parse()
-            assert_matches_type(PersonnelrecoveryFull, personnelrecovery, path=["response"])
+            assert_matches_type(PersonnelRecoveryFull, personnelrecovery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -738,7 +738,7 @@ class TestAsyncPersonnelrecovery:
         personnelrecovery = await async_client.personnelrecovery.get(
             "id",
         )
-        assert_matches_type(PersonnelrecoveryFull, personnelrecovery, path=["response"])
+        assert_matches_type(PersonnelRecoveryFull, personnelrecovery, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -749,7 +749,7 @@ class TestAsyncPersonnelrecovery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         personnelrecovery = await response.parse()
-        assert_matches_type(PersonnelrecoveryFull, personnelrecovery, path=["response"])
+        assert_matches_type(PersonnelRecoveryFull, personnelrecovery, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -760,7 +760,7 @@ class TestAsyncPersonnelrecovery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             personnelrecovery = await response.parse()
-            assert_matches_type(PersonnelrecoveryFull, personnelrecovery, path=["response"])
+            assert_matches_type(PersonnelRecoveryFull, personnelrecovery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

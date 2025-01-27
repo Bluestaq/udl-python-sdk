@@ -22,10 +22,18 @@ from .._utils import (
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
 from ..types.gnssrawif_list_response import GnssrawifListResponse
@@ -399,6 +407,41 @@ class GnssrawifResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def file_get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BinaryAPIResponse:
+        """
+        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
+        a path parameter. The file is returned as an attachment Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._get(
+            f"/udl/gnssrawif/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
         )
 
     def get(
@@ -886,6 +929,41 @@ class AsyncGnssrawifResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def file_get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
+        a path parameter. The file is returned as an attachment Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._get(
+            f"/udl/gnssrawif/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
     async def get(
         self,
         id: str,
@@ -1014,6 +1092,10 @@ class GnssrawifResourceWithRawResponse:
         self.file_create = to_raw_response_wrapper(
             gnssrawif.file_create,
         )
+        self.file_get = to_custom_raw_response_wrapper(
+            gnssrawif.file_get,
+            BinaryAPIResponse,
+        )
         self.get = to_raw_response_wrapper(
             gnssrawif.get,
         )
@@ -1037,6 +1119,10 @@ class AsyncGnssrawifResourceWithRawResponse:
         )
         self.file_create = async_to_raw_response_wrapper(
             gnssrawif.file_create,
+        )
+        self.file_get = async_to_custom_raw_response_wrapper(
+            gnssrawif.file_get,
+            AsyncBinaryAPIResponse,
         )
         self.get = async_to_raw_response_wrapper(
             gnssrawif.get,
@@ -1062,6 +1148,10 @@ class GnssrawifResourceWithStreamingResponse:
         self.file_create = to_streamed_response_wrapper(
             gnssrawif.file_create,
         )
+        self.file_get = to_custom_streamed_response_wrapper(
+            gnssrawif.file_get,
+            StreamedBinaryAPIResponse,
+        )
         self.get = to_streamed_response_wrapper(
             gnssrawif.get,
         )
@@ -1085,6 +1175,10 @@ class AsyncGnssrawifResourceWithStreamingResponse:
         )
         self.file_create = async_to_streamed_response_wrapper(
             gnssrawif.file_create,
+        )
+        self.file_get = async_to_custom_streamed_response_wrapper(
+            gnssrawif.file_get,
+            AsyncStreamedBinaryAPIResponse,
         )
         self.get = async_to_streamed_response_wrapper(
             gnssrawif.get,

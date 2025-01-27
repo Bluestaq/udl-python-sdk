@@ -16,6 +16,14 @@ from .scs import (
     ScsResourceWithStreamingResponse,
     AsyncScsResourceWithStreamingResponse,
 )
+from .file import (
+    FileResource,
+    AsyncFileResource,
+    FileResourceWithRawResponse,
+    AsyncFileResourceWithRawResponse,
+    FileResourceWithStreamingResponse,
+    AsyncFileResourceWithStreamingResponse,
+)
 from .files import (
     FilesResource,
     AsyncFilesResource,
@@ -122,6 +130,12 @@ __all__ = [
     "AsyncV2ResourceWithRawResponse",
     "V2ResourceWithStreamingResponse",
     "AsyncV2ResourceWithStreamingResponse",
+    "FileResource",
+    "AsyncFileResource",
+    "FileResourceWithRawResponse",
+    "AsyncFileResourceWithRawResponse",
+    "FileResourceWithStreamingResponse",
+    "AsyncFileResourceWithStreamingResponse",
     "ScsResource",
     "AsyncScsResource",
     "ScsResourceWithRawResponse",

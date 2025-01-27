@@ -9,6 +9,7 @@ from .v2_move_params import V2MoveParams as V2MoveParams
 from .v2_delete_params import V2DeleteParams as V2DeleteParams
 from .v2_list_response import V2ListResponse as V2ListResponse
 from .v2_update_params import V2UpdateParams as V2UpdateParams
+from .file_update_params import FileUpdateParams as FileUpdateParams
 from .path_create_params import PathCreateParams as PathCreateParams
 from .group_list_response import GroupListResponse as GroupListResponse
 from .folder_create_params import FolderCreateParams as FolderCreateParams

@@ -44,6 +44,7 @@ from .topic_details import TopicDetails as TopicDetails
 from .ai_list_params import AIListParams as AIListParams
 from .elset_abridged import ElsetAbridged as ElsetAbridged
 from .equipment_full import EquipmentFull as EquipmentFull
+from .sc_copy_params import ScCopyParams as ScCopyParams
 from .sc_move_params import ScMoveParams as ScMoveParams
 from .ai_count_params import AICountParams as AICountParams
 from .ai_tuple_params import AITupleParams as AITupleParams
@@ -73,6 +74,7 @@ from .mti_count_params import MtiCountParams as MtiCountParams
 from .mti_tuple_params import MtiTupleParams as MtiTupleParams
 from .poi_count_params import PoiCountParams as PoiCountParams
 from .poi_tuple_params import PoiTupleParams as PoiTupleParams
+from .sc_copy_response import ScCopyResponse as ScCopyResponse
 from .sc_move_response import ScMoveResponse as ScMoveResponse
 from .sc_rename_params import ScRenameParams as ScRenameParams
 from .sc_search_params import ScSearchParams as ScSearchParams
@@ -147,6 +149,7 @@ from .poi_tuple_response import PoiTupleResponse as PoiTupleResponse
 from .port_create_params import PortCreateParams as PortCreateParams
 from .port_list_response import PortListResponse as PortListResponse
 from .port_update_params import PortUpdateParams as PortUpdateParams
+from .sc_download_params import ScDownloadParams as ScDownloadParams
 from .sc_search_response import ScSearchResponse as ScSearchResponse
 from .sgi_count_response import SgiCountResponse as SgiCountResponse
 from .sgi_tuple_response import SgiTupleResponse as SgiTupleResponse
@@ -293,6 +296,7 @@ from .onorbit_list_response import OnorbitListResponse as OnorbitListResponse
 from .onorbit_update_params import OnorbitUpdateParams as OnorbitUpdateParams
 from .rfband_count_response import RfbandCountResponse as RfbandCountResponse
 from .rfband_tuple_response import RfbandTupleResponse as RfbandTupleResponse
+from .sc_file_upload_params import ScFileUploadParams as ScFileUploadParams
 from .sc_update_tags_params import ScUpdateTagsParams as ScUpdateTagsParams
 from .sensor_count_response import SensorCountResponse as SensorCountResponse
 from .sensor_tuple_response import SensorTupleResponse as SensorTupleResponse
@@ -411,6 +415,7 @@ from .rfbandtype_tuple_params import RfbandtypeTupleParams as RfbandtypeTuplePar
 from .rfemitter_create_params import RfemitterCreateParams as RfemitterCreateParams
 from .rfemitter_list_response import RfemitterListResponse as RfemitterListResponse
 from .rfemitter_update_params import RfemitterUpdateParams as RfemitterUpdateParams
+from .sc_file_upload_response import ScFileUploadResponse as ScFileUploadResponse
 from .scientific_get_response import ScientificGetResponse as ScientificGetResponse
 from .scientific_tuple_params import ScientificTupleParams as ScientificTupleParams
 from .sensorplan_count_params import SensorplanCountParams as SensorplanCountParams
@@ -803,7 +808,6 @@ from .sarobservation_list_response import SarobservationListResponse as Sarobser
 from .solararraydetail_list_params import SolararraydetailListParams as SolararraydetailListParams
 from .sortieppr_create_bulk_params import SortiepprCreateBulkParams as SortiepprCreateBulkParams
 from .sortieppr_file_create_params import SortiepprFileCreateParams as SortiepprFileCreateParams
-from .statevector_current_response import StatevectorCurrentResponse as StatevectorCurrentResponse
 from .video_get_stream_file_params import VideoGetStreamFileParams as VideoGetStreamFileParams
 from .weatherreport_count_response import WeatherreportCountResponse as WeatherreportCountResponse
 from .weatherreport_tuple_response import WeatherreportTupleResponse as WeatherreportTupleResponse
@@ -917,6 +921,7 @@ from .radarobservation_create_params import RadarobservationCreateParams as Rada
 from .radarobservation_list_response import RadarobservationListResponse as RadarobservationListResponse
 from .rfemitterdetail_count_response import RfemitterdetailCountResponse as RfemitterdetailCountResponse
 from .rfemitterdetail_tuple_response import RfemitterdetailTupleResponse as RfemitterdetailTupleResponse
+from .sc_aggregate_doc_type_response import ScAggregateDocTypeResponse as ScAggregateDocTypeResponse
 from .sensormaintenance_count_params import SensormaintenanceCountParams as SensormaintenanceCountParams
 from .sensormaintenance_tuple_params import SensormaintenanceTupleParams as SensormaintenanceTupleParams
 from .soiobservationset_count_params import SoiobservationsetCountParams as SoiobservationsetCountParams
@@ -1000,6 +1005,7 @@ from .personnelrecovery_tuple_response import PersonnelrecoveryTupleResponse as 
 from .rfgeolocation_create_bulk_params import RfgeolocationCreateBulkParams as RfgeolocationCreateBulkParams
 from .rfgeolocation_file_create_params import RfgeolocationFileCreateParams as RfgeolocationFileCreateParams
 from .rfobservation_create_bulk_params import RfobservationCreateBulkParams as RfobservationCreateBulkParams
+from .sc_allowable_file_mimes_response import ScAllowableFileMimesResponse as ScAllowableFileMimesResponse
 from .sensormaintenance_count_response import SensormaintenanceCountResponse as SensormaintenanceCountResponse
 from .sensormaintenance_tuple_response import SensormaintenanceTupleResponse as SensormaintenanceTupleResponse
 from .seradatacommdetail_create_params import SeradatacommdetailCreateParams as SeradatacommdetailCreateParams
@@ -1218,6 +1224,9 @@ from .passiveradarobservation_create_params import (
 )
 from .passiveradarobservation_list_response import (
     PassiveradarobservationListResponse as PassiveradarobservationListResponse,
+)
+from .sc_allowable_file_extensions_response import (
+    ScAllowableFileExtensionsResponse as ScAllowableFileExtensionsResponse,
 )
 from .secure_messaging_list_topics_response import (
     SecureMessagingListTopicsResponse as SecureMessagingListTopicsResponse,
