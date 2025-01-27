@@ -523,7 +523,7 @@ class DatalinkResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def create_file_drop(
+    def file_create(
         self,
         *,
         body: Iterable[DatalinkIngestParam],
@@ -1130,7 +1130,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def create_file_drop(
+    async def file_create(
         self,
         *,
         body: Iterable[DatalinkIngestParam],
@@ -1260,8 +1260,8 @@ class DatalinkResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             datalink.count,
         )
-        self.create_file_drop = to_raw_response_wrapper(
-            datalink.create_file_drop,
+        self.file_create = to_raw_response_wrapper(
+            datalink.file_create,
         )
         self.queryhelp = to_raw_response_wrapper(
             datalink.queryhelp,
@@ -1284,8 +1284,8 @@ class AsyncDatalinkResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             datalink.count,
         )
-        self.create_file_drop = async_to_raw_response_wrapper(
-            datalink.create_file_drop,
+        self.file_create = async_to_raw_response_wrapper(
+            datalink.file_create,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             datalink.queryhelp,
@@ -1308,8 +1308,8 @@ class DatalinkResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             datalink.count,
         )
-        self.create_file_drop = to_streamed_response_wrapper(
-            datalink.create_file_drop,
+        self.file_create = to_streamed_response_wrapper(
+            datalink.file_create,
         )
         self.queryhelp = to_streamed_response_wrapper(
             datalink.queryhelp,
@@ -1332,8 +1332,8 @@ class AsyncDatalinkResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             datalink.count,
         )
-        self.create_file_drop = async_to_streamed_response_wrapper(
-            datalink.create_file_drop,
+        self.file_create = async_to_streamed_response_wrapper(
+            datalink.file_create,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             datalink.queryhelp,

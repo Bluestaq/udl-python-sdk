@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import flightplan_tuple_params, flightplan_create_params
+from ...types import flightplan_tuple_params, flightplan_create_params, flightplan_file_create_params
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -585,6 +585,42 @@ class FlightplanResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=str,
+        )
+
+    def file_create(
+        self,
+        *,
+        body: Iterable[flightplan_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take one or many flight plan records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-flightplan",
+            body=maybe_transform(body, Iterable[flightplan_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
     def queryhelp(
@@ -1208,6 +1244,42 @@ class AsyncFlightplanResource(AsyncAPIResource):
             cast_to=str,
         )
 
+    async def file_create(
+        self,
+        *,
+        body: Iterable[flightplan_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take one or many flight plan records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-flightplan",
+            body=await async_maybe_transform(body, Iterable[flightplan_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def queryhelp(
         self,
         *,
@@ -1292,6 +1364,9 @@ class FlightplanResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             flightplan.count,
         )
+        self.file_create = to_raw_response_wrapper(
+            flightplan.file_create,
+        )
         self.queryhelp = to_raw_response_wrapper(
             flightplan.queryhelp,
         )
@@ -1316,6 +1391,9 @@ class AsyncFlightplanResourceWithRawResponse:
         )
         self.count = async_to_raw_response_wrapper(
             flightplan.count,
+        )
+        self.file_create = async_to_raw_response_wrapper(
+            flightplan.file_create,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             flightplan.queryhelp,
@@ -1342,6 +1420,9 @@ class FlightplanResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             flightplan.count,
         )
+        self.file_create = to_streamed_response_wrapper(
+            flightplan.file_create,
+        )
         self.queryhelp = to_streamed_response_wrapper(
             flightplan.queryhelp,
         )
@@ -1366,6 +1447,9 @@ class AsyncFlightplanResourceWithStreamingResponse:
         )
         self.count = async_to_streamed_response_wrapper(
             flightplan.count,
+        )
+        self.file_create = async_to_streamed_response_wrapper(
+            flightplan.file_create,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             flightplan.queryhelp,

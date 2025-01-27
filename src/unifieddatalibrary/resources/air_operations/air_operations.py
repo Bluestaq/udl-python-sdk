@@ -3,14 +3,6 @@
 from __future__ import annotations
 
 from ..._compat import cached_property
-from .air_events import (
-    AirEventsResource,
-    AsyncAirEventsResource,
-    AirEventsResourceWithRawResponse,
-    AsyncAirEventsResourceWithRawResponse,
-    AirEventsResourceWithStreamingResponse,
-    AsyncAirEventsResourceWithStreamingResponse,
-)
 from .crewpapers import (
     CrewpapersResource,
     AsyncCrewpapersResource,
@@ -74,10 +66,6 @@ __all__ = ["AirOperationsResource", "AsyncAirOperationsResource"]
 
 class AirOperationsResource(SyncAPIResource):
     @cached_property
-    def air_events(self) -> AirEventsResource:
-        return AirEventsResource(self._client)
-
-    @cached_property
     def air_tasking_orders(self) -> AirTaskingOrdersResource:
         return AirTaskingOrdersResource(self._client)
 
@@ -126,10 +114,6 @@ class AirOperationsResource(SyncAPIResource):
 
 
 class AsyncAirOperationsResource(AsyncAPIResource):
-    @cached_property
-    def air_events(self) -> AsyncAirEventsResource:
-        return AsyncAirEventsResource(self._client)
-
     @cached_property
     def air_tasking_orders(self) -> AsyncAirTaskingOrdersResource:
         return AsyncAirTaskingOrdersResource(self._client)
@@ -183,10 +167,6 @@ class AirOperationsResourceWithRawResponse:
         self._air_operations = air_operations
 
     @cached_property
-    def air_events(self) -> AirEventsResourceWithRawResponse:
-        return AirEventsResourceWithRawResponse(self._air_operations.air_events)
-
-    @cached_property
     def air_tasking_orders(self) -> AirTaskingOrdersResourceWithRawResponse:
         return AirTaskingOrdersResourceWithRawResponse(self._air_operations.air_tasking_orders)
 
@@ -218,10 +198,6 @@ class AirOperationsResourceWithRawResponse:
 class AsyncAirOperationsResourceWithRawResponse:
     def __init__(self, air_operations: AsyncAirOperationsResource) -> None:
         self._air_operations = air_operations
-
-    @cached_property
-    def air_events(self) -> AsyncAirEventsResourceWithRawResponse:
-        return AsyncAirEventsResourceWithRawResponse(self._air_operations.air_events)
 
     @cached_property
     def air_tasking_orders(self) -> AsyncAirTaskingOrdersResourceWithRawResponse:
@@ -257,10 +233,6 @@ class AirOperationsResourceWithStreamingResponse:
         self._air_operations = air_operations
 
     @cached_property
-    def air_events(self) -> AirEventsResourceWithStreamingResponse:
-        return AirEventsResourceWithStreamingResponse(self._air_operations.air_events)
-
-    @cached_property
     def air_tasking_orders(self) -> AirTaskingOrdersResourceWithStreamingResponse:
         return AirTaskingOrdersResourceWithStreamingResponse(self._air_operations.air_tasking_orders)
 
@@ -292,10 +264,6 @@ class AirOperationsResourceWithStreamingResponse:
 class AsyncAirOperationsResourceWithStreamingResponse:
     def __init__(self, air_operations: AsyncAirOperationsResource) -> None:
         self._air_operations = air_operations
-
-    @cached_property
-    def air_events(self) -> AsyncAirEventsResourceWithStreamingResponse:
-        return AsyncAirEventsResourceWithStreamingResponse(self._air_operations.air_events)
 
     @cached_property
     def air_tasking_orders(self) -> AsyncAirTaskingOrdersResourceWithStreamingResponse:

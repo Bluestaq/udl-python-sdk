@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .aircraftsortie_full import AircraftsortieFull as AircraftsortieFull
-from .air_event_create_params import AirEventCreateParams as AirEventCreateParams
 from .aircraftsortie_abridged import AircraftsortieAbridged as AircraftsortieAbridged
 from .crewpaper_create_params import CrewpaperCreateParams as CrewpaperCreateParams
 from .diplomaticclearance_full import DiplomaticclearanceFull as DiplomaticclearanceFull

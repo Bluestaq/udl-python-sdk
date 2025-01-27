@@ -13,6 +13,8 @@ from unifieddatalibrary.types import (
     StatusGetResponse,
     StatusListResponse,
     StatusTupleResponse,
+    StatusGetByEntityIDResponse,
+    StatusGetByEntityTypeResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 
@@ -312,6 +314,90 @@ class TestStatus:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.status.with_raw_response.get(
                 "",
+            )
+
+    @parametrize
+    def test_method_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
+        status = client.status.get_by_entity_id(
+            id_entity_1="idEntity",
+            id_entity_2="idEntity",
+        )
+        assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
+
+    @parametrize
+    def test_raw_response_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
+        response = client.status.with_raw_response.get_by_entity_id(
+            id_entity_1="idEntity",
+            id_entity_2="idEntity",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        status = response.parse()
+        assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
+
+    @parametrize
+    def test_streaming_response_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
+        with client.status.with_streaming_response.get_by_entity_id(
+            id_entity_1="idEntity",
+            id_entity_2="idEntity",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            status = response.parse()
+            assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_entity_1` but received ''"):
+            client.status.with_raw_response.get_by_entity_id(
+                id_entity_1="",
+                id_entity_2="",
+            )
+
+    @parametrize
+    def test_method_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
+        status = client.status.get_by_entity_type(
+            entity_type_1="entityType",
+            entity_type_2="entityType",
+        )
+        assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
+
+    @parametrize
+    def test_raw_response_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
+        response = client.status.with_raw_response.get_by_entity_type(
+            entity_type_1="entityType",
+            entity_type_2="entityType",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        status = response.parse()
+        assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
+
+    @parametrize
+    def test_streaming_response_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
+        with client.status.with_streaming_response.get_by_entity_type(
+            entity_type_1="entityType",
+            entity_type_2="entityType",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            status = response.parse()
+            assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_type_1` but received ''"):
+            client.status.with_raw_response.get_by_entity_type(
+                entity_type_1="",
+                entity_type_2="",
             )
 
     @parametrize
@@ -664,6 +750,90 @@ class TestAsyncStatus:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.status.with_raw_response.get(
                 "",
+            )
+
+    @parametrize
+    async def test_method_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
+        status = await async_client.status.get_by_entity_id(
+            id_entity_1="idEntity",
+            id_entity_2="idEntity",
+        )
+        assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
+
+    @parametrize
+    async def test_raw_response_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.status.with_raw_response.get_by_entity_id(
+            id_entity_1="idEntity",
+            id_entity_2="idEntity",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        status = await response.parse()
+        assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.status.with_streaming_response.get_by_entity_id(
+            id_entity_1="idEntity",
+            id_entity_2="idEntity",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            status = await response.parse()
+            assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_entity_1` but received ''"):
+            await async_client.status.with_raw_response.get_by_entity_id(
+                id_entity_1="",
+                id_entity_2="",
+            )
+
+    @parametrize
+    async def test_method_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
+        status = await async_client.status.get_by_entity_type(
+            entity_type_1="entityType",
+            entity_type_2="entityType",
+        )
+        assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
+
+    @parametrize
+    async def test_raw_response_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.status.with_raw_response.get_by_entity_type(
+            entity_type_1="entityType",
+            entity_type_2="entityType",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        status = await response.parse()
+        assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.status.with_streaming_response.get_by_entity_type(
+            entity_type_1="entityType",
+            entity_type_2="entityType",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            status = await response.parse()
+            assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_type_1` but received ''"):
+            await async_client.status.with_raw_response.get_by_entity_type(
+                entity_type_1="",
+                entity_type_2="",
             )
 
     @parametrize

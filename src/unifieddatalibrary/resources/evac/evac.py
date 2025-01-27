@@ -16,7 +16,13 @@ from .tuple import (
     TupleResourceWithStreamingResponse,
     AsyncTupleResourceWithStreamingResponse,
 )
-from ...types import evac_list_params, evac_count_params, evac_create_params, evac_create_bulk_params
+from ...types import (
+    evac_list_params,
+    evac_count_params,
+    evac_create_params,
+    evac_create_bulk_params,
+    evac_file_create_params,
+)
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -434,6 +440,41 @@ class EvacResource(SyncAPIResource):
         return self._post(
             "/udl/evac/createBulk",
             body=maybe_transform(body, Iterable[evac_create_bulk_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def file_create(
+        self,
+        *,
+        body: Iterable[evac_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of Evac events as a POST body and ingest into
+        the database. Requires a specific role, please contact the UDL team to gain
+        access. This operation is intended to be used for automated feeds into UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-evac",
+            body=maybe_transform(body, Iterable[evac_file_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -859,6 +900,41 @@ class AsyncEvacResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def file_create(
+        self,
+        *,
+        body: Iterable[evac_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of Evac events as a POST body and ingest into
+        the database. Requires a specific role, please contact the UDL team to gain
+        access. This operation is intended to be used for automated feeds into UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-evac",
+            body=await async_maybe_transform(body, Iterable[evac_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def query_help(
         self,
         *,
@@ -902,6 +978,9 @@ class EvacResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             evac.create_bulk,
         )
+        self.file_create = to_raw_response_wrapper(
+            evac.file_create,
+        )
         self.query_help = to_raw_response_wrapper(
             evac.query_help,
         )
@@ -933,6 +1012,9 @@ class AsyncEvacResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             evac.create_bulk,
+        )
+        self.file_create = async_to_raw_response_wrapper(
+            evac.file_create,
         )
         self.query_help = async_to_raw_response_wrapper(
             evac.query_help,
@@ -966,6 +1048,9 @@ class EvacResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             evac.create_bulk,
         )
+        self.file_create = to_streamed_response_wrapper(
+            evac.file_create,
+        )
         self.query_help = to_streamed_response_wrapper(
             evac.query_help,
         )
@@ -997,6 +1082,9 @@ class AsyncEvacResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             evac.create_bulk,
+        )
+        self.file_create = async_to_streamed_response_wrapper(
+            evac.file_create,
         )
         self.query_help = async_to_streamed_response_wrapper(
             evac.query_help,

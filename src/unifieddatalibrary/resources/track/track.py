@@ -7,7 +7,13 @@ from datetime import datetime
 
 import httpx
 
-from ...types import track_list_params, track_count_params, track_tuple_params, track_create_bulk_params
+from ...types import (
+    track_list_params,
+    track_count_params,
+    track_tuple_params,
+    track_create_bulk_params,
+    track_file_create_params,
+)
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -173,6 +179,42 @@ class TrackResource(SyncAPIResource):
         return self._post(
             "/udl/track/createBulk",
             body=maybe_transform(body, Iterable[track_create_bulk_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def file_create(
+        self,
+        *,
+        body: Iterable[track_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple tracks as a POST body and ingest into the
+        database. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-tracks",
+            body=maybe_transform(body, Iterable[track_file_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -402,6 +444,42 @@ class AsyncTrackResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def file_create(
+        self,
+        *,
+        body: Iterable[track_file_create_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple tracks as a POST body and ingest into the
+        database. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-tracks",
+            body=await async_maybe_transform(body, Iterable[track_file_create_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def queryhelp(
         self,
         *,
@@ -495,6 +573,9 @@ class TrackResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             track.create_bulk,
         )
+        self.file_create = to_raw_response_wrapper(
+            track.file_create,
+        )
         self.queryhelp = to_raw_response_wrapper(
             track.queryhelp,
         )
@@ -519,6 +600,9 @@ class AsyncTrackResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             track.create_bulk,
+        )
+        self.file_create = async_to_raw_response_wrapper(
+            track.file_create,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             track.queryhelp,
@@ -545,6 +629,9 @@ class TrackResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             track.create_bulk,
         )
+        self.file_create = to_streamed_response_wrapper(
+            track.file_create,
+        )
         self.queryhelp = to_streamed_response_wrapper(
             track.queryhelp,
         )
@@ -569,6 +656,9 @@ class AsyncTrackResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             track.create_bulk,
+        )
+        self.file_create = async_to_streamed_response_wrapper(
+            track.file_create,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             track.queryhelp,

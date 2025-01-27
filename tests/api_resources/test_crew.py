@@ -337,6 +337,58 @@ class TestCrew:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        crew = client.crew.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert crew is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.crew.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        crew = response.parse()
+        assert crew is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.crew.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            crew = response.parse()
+            assert crew is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.queryhelp()
         assert crew is None
@@ -707,6 +759,58 @@ class TestAsyncCrew:
 
             crew = await response.parse()
             assert_matches_type(str, crew, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        crew = await async_client.crew.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert crew is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.crew.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        crew = await response.parse()
+        assert crew is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.crew.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            crew = await response.parse()
+            assert crew is None
 
         assert cast(Any, response.is_closed) is True
 

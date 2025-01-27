@@ -267,6 +267,67 @@ class TestPersonnelrecovery:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        personnelrecovery = client.personnelrecovery.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
+                }
+            ],
+        )
+        assert personnelrecovery is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.personnelrecovery.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        personnelrecovery = response.parse()
+        assert personnelrecovery is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.personnelrecovery.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            personnelrecovery = response.parse()
+            assert personnelrecovery is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         personnelrecovery = client.personnelrecovery.get(
             "id",
@@ -591,6 +652,67 @@ class TestAsyncPersonnelrecovery:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.personnelrecovery.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            personnelrecovery = await response.parse()
+            assert personnelrecovery is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        personnelrecovery = await async_client.personnelrecovery.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
+                }
+            ],
+        )
+        assert personnelrecovery is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.personnelrecovery.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "pickup_lat": 75.1234,
+                    "pickup_lon": 175.1234,
+                    "source": "Bluestaq",
+                    "type": "MEDICAL",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        personnelrecovery = await response.parse()
+        assert personnelrecovery is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.personnelrecovery.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

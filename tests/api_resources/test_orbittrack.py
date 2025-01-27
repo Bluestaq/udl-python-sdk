@@ -142,6 +142,64 @@ class TestOrbittrack:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_orbit_track(self, client: Unifieddatalibrary) -> None:
+        orbittrack = client.orbittrack.orbit_track(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 19.88550102,
+                    "lon": 46.74596844,
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+        assert orbittrack is None
+
+    @parametrize
+    def test_raw_response_orbit_track(self, client: Unifieddatalibrary) -> None:
+        response = client.orbittrack.with_raw_response.orbit_track(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 19.88550102,
+                    "lon": 46.74596844,
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        orbittrack = response.parse()
+        assert orbittrack is None
+
+    @parametrize
+    def test_streaming_response_orbit_track(self, client: Unifieddatalibrary) -> None:
+        with client.orbittrack.with_streaming_response.orbit_track(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 19.88550102,
+                    "lon": 46.74596844,
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            orbittrack = response.parse()
+            assert orbittrack is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         orbittrack = client.orbittrack.queryhelp()
         assert orbittrack is None
@@ -305,6 +363,64 @@ class TestAsyncOrbittrack:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.orbittrack.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 19.88550102,
+                    "lon": 46.74596844,
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            orbittrack = await response.parse()
+            assert orbittrack is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_orbit_track(self, async_client: AsyncUnifieddatalibrary) -> None:
+        orbittrack = await async_client.orbittrack.orbit_track(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 19.88550102,
+                    "lon": 46.74596844,
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+        assert orbittrack is None
+
+    @parametrize
+    async def test_raw_response_orbit_track(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.orbittrack.with_raw_response.orbit_track(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "lat": 19.88550102,
+                    "lon": 46.74596844,
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        orbittrack = await response.parse()
+        assert orbittrack is None
+
+    @parametrize
+    async def test_streaming_response_orbit_track(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.orbittrack.with_streaming_response.orbit_track(
             body=[
                 {
                     "classification_marking": "U",

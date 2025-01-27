@@ -136,6 +136,58 @@ class TestOnboardnavigation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        onboardnavigation = client.onboardnavigation.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
+                }
+            ],
+        )
+        assert onboardnavigation is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.onboardnavigation.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        onboardnavigation = response.parse()
+        assert onboardnavigation is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.onboardnavigation.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            onboardnavigation = response.parse()
+            assert onboardnavigation is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         onboardnavigation = client.onboardnavigation.queryhelp()
         assert onboardnavigation is None
@@ -295,6 +347,58 @@ class TestAsyncOnboardnavigation:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onboardnavigation.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            onboardnavigation = await response.parse()
+            assert onboardnavigation is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onboardnavigation = await async_client.onboardnavigation.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
+                }
+            ],
+        )
+        assert onboardnavigation is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.onboardnavigation.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2021-07-20T01:02:03.123456Z",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        onboardnavigation = await response.parse()
+        assert onboardnavigation is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.onboardnavigation.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",

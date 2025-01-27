@@ -451,6 +451,61 @@ class TestCollectRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
+        collect_request = client.collect_requests.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "DWELL",
+                }
+            ],
+        )
+        assert collect_request is None
+
+    @parametrize
+    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
+        response = client.collect_requests.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "DWELL",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        collect_request = response.parse()
+        assert collect_request is None
+
+    @parametrize
+    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
+        with client.collect_requests.with_streaming_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "DWELL",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            collect_request = response.parse()
+            assert collect_request is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         collect_request = client.collect_requests.query_help()
         assert collect_request is None
@@ -923,6 +978,61 @@ class TestAsyncCollectRequests:
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.collect_requests.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "DWELL",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            collect_request = await response.parse()
+            assert collect_request is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        collect_request = await async_client.collect_requests.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "DWELL",
+                }
+            ],
+        )
+        assert collect_request is None
+
+    @parametrize
+    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.collect_requests.with_raw_response.file_create(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "source": "Bluestaq",
+                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "type": "DWELL",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        collect_request = await response.parse()
+        assert collect_request is None
+
+    @parametrize
+    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.collect_requests.with_streaming_response.file_create(
             body=[
                 {
                     "classification_marking": "U",
