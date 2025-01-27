@@ -4129,8 +4129,8 @@ Methods:
 - <code title="delete /udl/status/{id}">client.status.<a href="./src/unifieddatalibrary/resources/status.py">delete</a>(id) -> None</code>
 - <code title="get /udl/status/count">client.status.<a href="./src/unifieddatalibrary/resources/status.py">count</a>() -> str</code>
 - <code title="get /udl/status/{id}">client.status.<a href="./src/unifieddatalibrary/resources/status.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/status_get_response.py">StatusGetResponse</a></code>
-- <code title="get /udl/status/byIdEntity/{idEntity}">client.status.<a href="./src/unifieddatalibrary/resources/status.py">get_by_entity_id</a>(id_entity_1, \*\*<a href="src/unifieddatalibrary/types/status_get_by_entity_id_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/status_get_by_entity_id_response.py">StatusGetByEntityIDResponse</a></code>
-- <code title="get /udl/status/byEntityType/{entityType}">client.status.<a href="./src/unifieddatalibrary/resources/status.py">get_by_entity_type</a>(entity_type_1, \*\*<a href="src/unifieddatalibrary/types/status_get_by_entity_type_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/status_get_by_entity_type_response.py">StatusGetByEntityTypeResponse</a></code>
+- <code title="get /udl/status/byIdEntity/{idEntity}">client.status.<a href="./src/unifieddatalibrary/resources/status.py">get_by_entity_id</a>(id_entity) -> <a href="./src/unifieddatalibrary/types/status_get_by_entity_id_response.py">StatusGetByEntityIDResponse</a></code>
+- <code title="get /udl/status/byEntityType/{entityType}">client.status.<a href="./src/unifieddatalibrary/resources/status.py">get_by_entity_type</a>(entity_type) -> <a href="./src/unifieddatalibrary/types/status_get_by_entity_type_response.py">StatusGetByEntityTypeResponse</a></code>
 - <code title="get /udl/status/queryhelp">client.status.<a href="./src/unifieddatalibrary/resources/status.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/status/tuple">client.status.<a href="./src/unifieddatalibrary/resources/status.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/status_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/status_tuple_response.py">StatusTupleResponse</a></code>
 
@@ -5131,9 +5131,9 @@ from unifieddatalibrary.types import TopicDetails, SecureMessagingListTopicsResp
 
 Methods:
 
-- <code title="get /sm/describeTopic/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">describe_topic</a>(topic_1, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_describe_topic_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/topic_details.py">TopicDetails</a></code>
-- <code title="get /sm/getLatestOffset/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_latest_offset</a>(topic_1, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_get_latest_offset_params.py">params</a>) -> None</code>
-- <code title="get /sm/getMessages/{topic}/{offset}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_messages</a>(offset_1, \*, topic_1, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_get_messages_params.py">params</a>) -> None</code>
+- <code title="get /sm/describeTopic/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">describe_topic</a>(topic) -> <a href="./src/unifieddatalibrary/types/topic_details.py">TopicDetails</a></code>
+- <code title="get /sm/getLatestOffset/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_latest_offset</a>(topic) -> None</code>
+- <code title="get /sm/getMessages/{topic}/{offset}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_messages</a>(offset, \*, topic) -> None</code>
 - <code title="get /sm/listTopics">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">list_topics</a>() -> <a href="./src/unifieddatalibrary/types/secure_messaging_list_topics_response.py">SecureMessagingListTopicsResponse</a></code>
 
 # Scs
@@ -5154,13 +5154,13 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="delete /scs/delete">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">delete</a>() -> None</code>
+- <code title="delete /scs/delete">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/sc_delete_params.py">params</a>) -> None</code>
 - <code title="get /scs/aggregateDocType">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">aggregate_doc_type</a>() -> <a href="./src/unifieddatalibrary/types/sc_aggregate_doc_type_response.py">ScAggregateDocTypeResponse</a></code>
 - <code title="get /scs/allowableFileExtensions">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_extensions</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_extensions_response.py">ScAllowableFileExtensionsResponse</a></code>
 - <code title="get /scs/allowableFileMimes">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_mimes</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_mimes_response.py">ScAllowableFileMimesResponse</a></code>
 - <code title="post /scs/copy">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/sc_copy_params.py">params</a>) -> str</code>
 - <code title="post /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_download_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>() -> BinaryAPIResponse</code>
+- <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_download_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
 - <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
 - <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
@@ -5178,7 +5178,7 @@ from unifieddatalibrary.types.scs import FolderCreateResponse
 Methods:
 
 - <code title="post /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_create_params.py">params</a>) -> str</code>
-- <code title="get /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">retrieve</a>() -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
+- <code title="get /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
 - <code title="patch /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_update_params.py">params</a>) -> None</code>
 
 ## ClassificationMarkings
@@ -5269,7 +5269,7 @@ from unifieddatalibrary.types.scs import FileListResponse
 
 Methods:
 
-- <code title="get /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">retrieve</a>() -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
+- <code title="get /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
 - <code title="patch /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_update_params.py">params</a>) -> None</code>
 - <code title="get /scs/list">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/file_list_response.py">FileListResponse</a></code>
 

@@ -20,12 +20,16 @@ class TestFile:
 
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.retrieve()
+        file = client.scs.file.retrieve(
+            id="id",
+        )
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        response = client.scs.file.with_raw_response.retrieve()
+        response = client.scs.file.with_raw_response.retrieve(
+            id="id",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -34,7 +38,9 @@ class TestFile:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        with client.scs.file.with_streaming_response.retrieve() as response:
+        with client.scs.file.with_streaming_response.retrieve(
+            id="id",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -161,12 +167,16 @@ class TestAsyncFile:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.retrieve()
+        file = await async_client.scs.file.retrieve(
+            id="id",
+        )
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.scs.file.with_raw_response.retrieve()
+        response = await async_client.scs.file.with_raw_response.retrieve(
+            id="id",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -175,7 +185,9 @@ class TestAsyncFile:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.scs.file.with_streaming_response.retrieve() as response:
+        async with async_client.scs.file.with_streaming_response.retrieve(
+            id="id",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
