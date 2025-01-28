@@ -173,7 +173,7 @@ class TestDiffofarrival:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -187,7 +187,7 @@ class TestDiffofarrival:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -205,7 +205,7 @@ class TestDiffofarrival:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -375,7 +375,7 @@ class TestAsyncDiffofarrival:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -389,7 +389,7 @@ class TestAsyncDiffofarrival:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -407,7 +407,7 @@ class TestAsyncDiffofarrival:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],

@@ -47,10 +47,7 @@ class TestOnorbitsolararray:
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
-                "created_at": "2018-01-01T16:00:00.123Z",
-                "created_by": "some.user",
                 "origin": "THIRD_PARTY_DATASOURCE",
-                "orig_network": "ORIG",
             },
         )
         assert onorbitsolararray is None
@@ -116,10 +113,7 @@ class TestOnorbitsolararray:
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
-                "created_at": "2018-01-01T16:00:00.123Z",
-                "created_by": "some.user",
                 "origin": "THIRD_PARTY_DATASOURCE",
-                "orig_network": "ORIG",
             },
         )
         assert onorbitsolararray is None
@@ -303,10 +297,7 @@ class TestAsyncOnorbitsolararray:
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
-                "created_at": "2018-01-01T16:00:00.123Z",
-                "created_by": "some.user",
                 "origin": "THIRD_PARTY_DATASOURCE",
-                "orig_network": "ORIG",
             },
         )
         assert onorbitsolararray is None
@@ -372,10 +363,7 @@ class TestAsyncOnorbitsolararray:
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
-                "created_at": "2018-01-01T16:00:00.123Z",
-                "created_by": "some.user",
                 "origin": "THIRD_PARTY_DATASOURCE",
-                "orig_network": "ORIG",
             },
         )
         assert onorbitsolararray is None

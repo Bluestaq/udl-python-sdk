@@ -198,7 +198,7 @@ class TestPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -212,7 +212,7 @@ class TestPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -230,7 +230,7 @@ class TestPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -250,7 +250,7 @@ class TestPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -264,7 +264,7 @@ class TestPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -282,7 +282,7 @@ class TestPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -572,7 +572,7 @@ class TestAsyncPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -586,7 +586,7 @@ class TestAsyncPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -604,7 +604,7 @@ class TestAsyncPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -624,7 +624,7 @@ class TestAsyncPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -638,7 +638,7 @@ class TestAsyncPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -656,7 +656,7 @@ class TestAsyncPassiveradarobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-01-24T23:35:26.518152Z",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
             ],

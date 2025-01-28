@@ -50,11 +50,11 @@ class TestAirTaskingOrders:
                     "unit_designator": "AMPHIB5DIV",
                     "ac_msn_loc_seg": [
                         {
-                            "start_time": "2021-10-25T12:00:00.123Z",
+                            "start_time": parse_datetime("2021-10-25T12:00:00.123Z"),
                             "air_msn_pri": "1A",
                             "alt": 210,
                             "area_geo_rad": 1000,
-                            "end_time": "2021-10-25T12:00:00.123Z",
+                            "end_time": parse_datetime("2021-10-25T12:00:00.123Z"),
                             "msn_loc_name": "KLSV",
                             "msn_loc_pt_bar_t": "330T-PT ALFA-50NM",
                             "msn_loc_pt_lat": -90,
@@ -68,7 +68,7 @@ class TestAirTaskingOrders:
                     "dep_loc_lon": -180,
                     "dep_loc_name": "ICAO:KBIF",
                     "dep_loc_utm": "32WDL123123",
-                    "dep_time": "2021-10-25T12:00:00.123Z",
+                    "dep_time": parse_datetime("2021-10-25T12:00:00.123Z"),
                     "ind_ac_tasking": [
                         {
                             "acft_type": "F35A",
@@ -92,7 +92,10 @@ class TestAirTaskingOrders:
                     "rcvy_loc_lon": [2.2945, -73.9866],
                     "rcvy_loc_name": ["ARRLOC:KBIF", "ARRLOC:KDZ7"],
                     "rcvy_loc_utm": ["ARRUTMO:32WDL123123", "ARRUTMO:32WDL321321"],
-                    "rcvy_time": ["2021-10-25T16:00:00.234Z", "2021-10-26T16:00:00.234Z"],
+                    "rcvy_time": [
+                        parse_datetime("2021-10-25T16:00:00.234Z"),
+                        parse_datetime("2021-10-26T16:00:00.234Z"),
+                    ],
                     "res_msn_ind": "N",
                     "sec_msn_type": "SEAD",
                     "unit_loc_name": "ICAO:KXXQ",
@@ -112,9 +115,9 @@ class TestAirTaskingOrders:
             naval_flt_ops=[
                 {
                     "ship_name": "USS WASP",
-                    "flt_op_start": "2021-02-25T12:00:00.123Z",
-                    "flt_op_stop": "2021-02-25T12:00:00.123Z",
-                    "schd_launch_rcvy_time": ["2021-02-25T12:00:00.123Z"],
+                    "flt_op_start": parse_datetime("2021-02-25T12:00:00.123Z"),
+                    "flt_op_stop": parse_datetime("2021-02-25T12:00:00.123Z"),
+                    "schd_launch_rcvy_time": [parse_datetime("2021-02-25T12:00:00.123Z")],
                 }
             ],
             origin="THIRD_PARTY_DATASOURCE",
@@ -305,11 +308,11 @@ class TestAsyncAirTaskingOrders:
                     "unit_designator": "AMPHIB5DIV",
                     "ac_msn_loc_seg": [
                         {
-                            "start_time": "2021-10-25T12:00:00.123Z",
+                            "start_time": parse_datetime("2021-10-25T12:00:00.123Z"),
                             "air_msn_pri": "1A",
                             "alt": 210,
                             "area_geo_rad": 1000,
-                            "end_time": "2021-10-25T12:00:00.123Z",
+                            "end_time": parse_datetime("2021-10-25T12:00:00.123Z"),
                             "msn_loc_name": "KLSV",
                             "msn_loc_pt_bar_t": "330T-PT ALFA-50NM",
                             "msn_loc_pt_lat": -90,
@@ -323,7 +326,7 @@ class TestAsyncAirTaskingOrders:
                     "dep_loc_lon": -180,
                     "dep_loc_name": "ICAO:KBIF",
                     "dep_loc_utm": "32WDL123123",
-                    "dep_time": "2021-10-25T12:00:00.123Z",
+                    "dep_time": parse_datetime("2021-10-25T12:00:00.123Z"),
                     "ind_ac_tasking": [
                         {
                             "acft_type": "F35A",
@@ -347,7 +350,10 @@ class TestAsyncAirTaskingOrders:
                     "rcvy_loc_lon": [2.2945, -73.9866],
                     "rcvy_loc_name": ["ARRLOC:KBIF", "ARRLOC:KDZ7"],
                     "rcvy_loc_utm": ["ARRUTMO:32WDL123123", "ARRUTMO:32WDL321321"],
-                    "rcvy_time": ["2021-10-25T16:00:00.234Z", "2021-10-26T16:00:00.234Z"],
+                    "rcvy_time": [
+                        parse_datetime("2021-10-25T16:00:00.234Z"),
+                        parse_datetime("2021-10-26T16:00:00.234Z"),
+                    ],
                     "res_msn_ind": "N",
                     "sec_msn_type": "SEAD",
                     "unit_loc_name": "ICAO:KXXQ",
@@ -367,9 +373,9 @@ class TestAsyncAirTaskingOrders:
             naval_flt_ops=[
                 {
                     "ship_name": "USS WASP",
-                    "flt_op_start": "2021-02-25T12:00:00.123Z",
-                    "flt_op_stop": "2021-02-25T12:00:00.123Z",
-                    "schd_launch_rcvy_time": ["2021-02-25T12:00:00.123Z"],
+                    "flt_op_start": parse_datetime("2021-02-25T12:00:00.123Z"),
+                    "flt_op_stop": parse_datetime("2021-02-25T12:00:00.123Z"),
+                    "schd_launch_rcvy_time": [parse_datetime("2021-02-25T12:00:00.123Z")],
                 }
             ],
             origin="THIRD_PARTY_DATASOURCE",

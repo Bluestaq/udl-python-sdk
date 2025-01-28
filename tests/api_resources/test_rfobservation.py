@@ -201,7 +201,7 @@ class TestRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -216,7 +216,7 @@ class TestRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -235,7 +235,7 @@ class TestRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -287,7 +287,7 @@ class TestRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -302,7 +302,7 @@ class TestRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -321,7 +321,7 @@ class TestRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -615,7 +615,7 @@ class TestAsyncRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -630,7 +630,7 @@ class TestAsyncRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -649,7 +649,7 @@ class TestAsyncRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -701,7 +701,7 @@ class TestAsyncRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -716,7 +716,7 @@ class TestAsyncRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }
@@ -735,7 +735,7 @@ class TestAsyncRfobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "type": "RF",
                 }

@@ -88,7 +88,7 @@ class TestEvac:
                         {
                             "health_state_code": "BLUE",
                             "med_conf_factor": 1,
-                            "time": "2021-10-15T16:00:00.123Z",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
                             "type": "COGNITIVE",
                         }
                     ],
@@ -119,7 +119,7 @@ class TestEvac:
                     "pay_grade": "CIVILIAN",
                     "priority": "ROUTINE",
                     "report_gen": "DEVICE",
-                    "report_time": "2021-10-15T16:00:00.123Z",
+                    "report_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "service": "CIV",
                     "spec_med_equip": ["OXYGEN", "HOIST"],
                     "treatment": [
@@ -133,7 +133,7 @@ class TestEvac:
                     "vital_sign_data": [
                         {
                             "med_conf_factor": 1,
-                            "time": "2021-10-15T16:00:00.123Z",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
                             "vital_sign": "HEART RATE",
                             "vital_sign1": 120,
                             "vital_sign2": 80,
@@ -324,7 +324,7 @@ class TestEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -341,7 +341,7 @@ class TestEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -362,7 +362,7 @@ class TestEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -385,7 +385,7 @@ class TestEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -402,7 +402,7 @@ class TestEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -423,7 +423,7 @@ class TestEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -533,7 +533,7 @@ class TestAsyncEvac:
                         {
                             "health_state_code": "BLUE",
                             "med_conf_factor": 1,
-                            "time": "2021-10-15T16:00:00.123Z",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
                             "type": "COGNITIVE",
                         }
                     ],
@@ -564,7 +564,7 @@ class TestAsyncEvac:
                     "pay_grade": "CIVILIAN",
                     "priority": "ROUTINE",
                     "report_gen": "DEVICE",
-                    "report_time": "2021-10-15T16:00:00.123Z",
+                    "report_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "service": "CIV",
                     "spec_med_equip": ["OXYGEN", "HOIST"],
                     "treatment": [
@@ -578,7 +578,7 @@ class TestAsyncEvac:
                     "vital_sign_data": [
                         {
                             "med_conf_factor": 1,
-                            "time": "2021-10-15T16:00:00.123Z",
+                            "time": parse_datetime("2021-10-15T16:00:00.123Z"),
                             "vital_sign": "HEART RATE",
                             "vital_sign1": 120,
                             "vital_sign2": 80,
@@ -769,7 +769,7 @@ class TestAsyncEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -786,7 +786,7 @@ class TestAsyncEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -807,7 +807,7 @@ class TestAsyncEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -830,7 +830,7 @@ class TestAsyncEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -847,7 +847,7 @@ class TestAsyncEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }
@@ -868,7 +868,7 @@ class TestAsyncEvac:
                     "data_mode": "REAL",
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
-                    "req_time": "2021-10-15T16:00:00.123Z",
+                    "req_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "REQUEST",
                 }

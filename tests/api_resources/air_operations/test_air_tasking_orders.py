@@ -8,6 +8,7 @@ from typing import Any, cast
 import pytest
 
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +21,7 @@ class TestAirTaskingOrders:
         air_tasking_order = client.air_operations.air_tasking_orders.create(
             body=[
                 {
-                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "op_exer_name": "DESERT WIND",
@@ -35,7 +36,7 @@ class TestAirTaskingOrders:
         response = client.air_operations.air_tasking_orders.with_raw_response.create(
             body=[
                 {
-                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "op_exer_name": "DESERT WIND",
@@ -54,7 +55,7 @@ class TestAirTaskingOrders:
         with client.air_operations.air_tasking_orders.with_streaming_response.create(
             body=[
                 {
-                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "op_exer_name": "DESERT WIND",
@@ -79,7 +80,7 @@ class TestAsyncAirTaskingOrders:
         air_tasking_order = await async_client.air_operations.air_tasking_orders.create(
             body=[
                 {
-                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "op_exer_name": "DESERT WIND",
@@ -94,7 +95,7 @@ class TestAsyncAirTaskingOrders:
         response = await async_client.air_operations.air_tasking_orders.with_raw_response.create(
             body=[
                 {
-                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "op_exer_name": "DESERT WIND",
@@ -113,7 +114,7 @@ class TestAsyncAirTaskingOrders:
         async with async_client.air_operations.air_tasking_orders.with_streaming_response.create(
             body=[
                 {
-                    "begin_ts": "2023-10-25T12:00:00.123Z",
+                    "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "op_exer_name": "DESERT WIND",

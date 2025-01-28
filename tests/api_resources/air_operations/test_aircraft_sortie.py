@@ -207,7 +207,7 @@ class TestAircraftSortie:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "planned_dep_time": "2021-01-01T01:01:01.123Z",
+                    "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -221,7 +221,7 @@ class TestAircraftSortie:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "planned_dep_time": "2021-01-01T01:01:01.123Z",
+                    "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -239,7 +239,7 @@ class TestAircraftSortie:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "planned_dep_time": "2021-01-01T01:01:01.123Z",
+                    "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -554,7 +554,7 @@ class TestAsyncAircraftSortie:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "planned_dep_time": "2021-01-01T01:01:01.123Z",
+                    "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -568,7 +568,7 @@ class TestAsyncAircraftSortie:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "planned_dep_time": "2021-01-01T01:01:01.123Z",
+                    "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -586,7 +586,7 @@ class TestAsyncAircraftSortie:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "planned_dep_time": "2021-01-01T01:01:01.123Z",
+                    "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],

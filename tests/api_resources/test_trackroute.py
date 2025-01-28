@@ -376,7 +376,7 @@ class TestTrackroute:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "last_update_date": "2024-09-17T16:00:00.123Z",
+                    "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
                 }
@@ -391,7 +391,7 @@ class TestTrackroute:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "last_update_date": "2024-09-17T16:00:00.123Z",
+                    "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
                 }
@@ -410,7 +410,7 @@ class TestTrackroute:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "last_update_date": "2024-09-17T16:00:00.123Z",
+                    "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
                 }
@@ -994,7 +994,7 @@ class TestAsyncTrackroute:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "last_update_date": "2024-09-17T16:00:00.123Z",
+                    "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
                 }
@@ -1009,7 +1009,7 @@ class TestAsyncTrackroute:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "last_update_date": "2024-09-17T16:00:00.123Z",
+                    "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
                 }
@@ -1028,7 +1028,7 @@ class TestAsyncTrackroute:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "last_update_date": "2024-09-17T16:00:00.123Z",
+                    "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
                 }

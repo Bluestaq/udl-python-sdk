@@ -214,7 +214,7 @@ class TestEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -230,7 +230,7 @@ class TestEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -250,7 +250,7 @@ class TestEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -272,7 +272,7 @@ class TestEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -288,7 +288,7 @@ class TestEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -308,7 +308,7 @@ class TestEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -582,7 +582,7 @@ class TestAsyncEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -598,7 +598,7 @@ class TestAsyncEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -618,7 +618,7 @@ class TestAsyncEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -640,7 +640,7 @@ class TestAsyncEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -656,7 +656,7 @@ class TestAsyncEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],
@@ -676,7 +676,7 @@ class TestAsyncEventEvolution:
                     "data_mode": "REAL",
                     "event_id": "EVENT_ID",
                     "source": "Bluestaq",
-                    "start_time": "2021-12-02T16:00:00.123Z",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
                     "summary": "Example summary of the event.",
                 }
             ],

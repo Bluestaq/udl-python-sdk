@@ -8,6 +8,7 @@ from typing import Any, cast
 import pytest
 
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +23,7 @@ class TestLaunchEvent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -36,7 +37,7 @@ class TestLaunchEvent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -54,7 +55,7 @@ class TestLaunchEvent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -78,7 +79,7 @@ class TestAsyncLaunchEvent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -92,7 +93,7 @@ class TestAsyncLaunchEvent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -110,7 +111,7 @@ class TestAsyncLaunchEvent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],

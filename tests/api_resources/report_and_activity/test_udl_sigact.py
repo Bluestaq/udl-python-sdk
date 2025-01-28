@@ -10,6 +10,7 @@ import pytest
 from respx import MockRouter
 
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -30,7 +31,7 @@ class TestUdlSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -44,7 +45,7 @@ class TestUdlSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -62,7 +63,7 @@ class TestUdlSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -136,7 +137,7 @@ class TestAsyncUdlSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -150,7 +151,7 @@ class TestAsyncUdlSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -168,7 +169,7 @@ class TestAsyncUdlSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],

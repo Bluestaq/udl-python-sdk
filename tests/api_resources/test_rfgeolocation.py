@@ -219,9 +219,9 @@ class TestRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -235,9 +235,9 @@ class TestRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -255,9 +255,9 @@ class TestRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         ) as response:
@@ -277,9 +277,9 @@ class TestRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -293,9 +293,9 @@ class TestRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -313,9 +313,9 @@ class TestRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         ) as response:
@@ -625,9 +625,9 @@ class TestAsyncRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -641,9 +641,9 @@ class TestAsyncRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -661,9 +661,9 @@ class TestAsyncRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         ) as response:
@@ -683,9 +683,9 @@ class TestAsyncRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -699,9 +699,9 @@ class TestAsyncRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         )
@@ -719,9 +719,9 @@ class TestAsyncRfgeolocation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "order_id": "155240",
-                    "received_ts": "2024-05-31T21:16:58.123456Z",
+                    "received_ts": parse_datetime("2024-05-31T21:16:58.123456Z"),
                     "source": "Bluestaq",
-                    "start_time": "2024-05-31T21:12:12.123456Z",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
                 }
             ],
         ) as response:

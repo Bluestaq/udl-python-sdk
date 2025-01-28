@@ -107,7 +107,7 @@ class TestAirspaceControlOrders:
                     "ref_si_cs": ["RCA", "FN:4503B"],
                     "ref_s_id": "A",
                     "ref_special_notation": "NOTAL",
-                    "ref_ts": "2024-01-07T13:55:43.123Z",
+                    "ref_ts": parse_datetime("2024-01-07T13:55:43.123Z"),
                     "ref_type": "NBC1",
                 }
             ],
@@ -263,7 +263,7 @@ class TestAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -279,7 +279,7 @@ class TestAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -299,7 +299,7 @@ class TestAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         ) as response:
@@ -456,7 +456,7 @@ class TestAsyncAirspaceControlOrders:
                     "ref_si_cs": ["RCA", "FN:4503B"],
                     "ref_s_id": "A",
                     "ref_special_notation": "NOTAL",
-                    "ref_ts": "2024-01-07T13:55:43.123Z",
+                    "ref_ts": parse_datetime("2024-01-07T13:55:43.123Z"),
                     "ref_type": "NBC1",
                 }
             ],
@@ -612,7 +612,7 @@ class TestAsyncAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -628,7 +628,7 @@ class TestAsyncAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -648,7 +648,7 @@ class TestAsyncAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         ) as response:

@@ -8,6 +8,7 @@ from typing import Any, cast
 import pytest
 
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +23,7 @@ class TestDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -37,7 +38,7 @@ class TestDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -56,7 +57,7 @@ class TestDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -81,7 +82,7 @@ class TestAsyncDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -96,7 +97,7 @@ class TestAsyncDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -115,7 +116,7 @@ class TestAsyncDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }

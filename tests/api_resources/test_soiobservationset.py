@@ -57,7 +57,7 @@ class TestSoiobservationset:
                     "cal_num_detected_stars": 1,
                     "cal_sky_bg": 30086.25,
                     "cal_spectral_filter_solar_mag": 19.23664587,
-                    "cal_time": "2023-01-02T16:00:00.123Z",
+                    "cal_time": parse_datetime("2023-01-02T16:00:00.123Z"),
                     "cal_type": "PRE",
                     "cal_zero_point": 25.15682157,
                 }
@@ -79,7 +79,7 @@ class TestSoiobservationset:
             num_spectral_filters=10,
             optical_soi_observation_list=[
                 {
-                    "ob_start_time": "2018-01-01T16:00:00.888456Z",
+                    "ob_start_time": parse_datetime("2018-01-01T16:00:00.888456Z"),
                     "current_spectral_filter_num": 0,
                     "declinations": [-0.45, -0.45, -0.45],
                     "exp_duration": 0.455,
@@ -87,9 +87,9 @@ class TestSoiobservationset:
                     "extinction_coeffs_unc": [0.06, 0.06, 0.06],
                     "intensities": [1.1, 1.1, 1.1],
                     "intensity_times": [
-                        "2018-01-01T16:00:00.888456Z",
-                        "2018-01-01T16:00:00.898456Z",
-                        "2018-01-01T16:00:00.998456Z",
+                        parse_datetime("2018-01-01T16:00:00.888456Z"),
+                        parse_datetime("2018-01-01T16:00:00.898456Z"),
+                        parse_datetime("2018-01-01T16:00:00.998456Z"),
                     ],
                     "local_sky_bgs": [100625.375, 100625.375, 100625.375],
                     "local_sky_bgs_unc": [0.065, 0.065, 0.065],
@@ -121,7 +121,7 @@ class TestSoiobservationset:
             polar_angle_start=1.1,
             radar_soi_observation_list=[
                 {
-                    "ob_start_time": "2018-01-01T16:00:00.888456Z",
+                    "ob_start_time": parse_datetime("2018-01-01T16:00:00.888456Z"),
                     "aspect_angles": [4.278, 4.278, 4.278],
                     "azimuth_biases": [45.23, 45.23, 45.23],
                     "azimuth_rates": [-1.481, -1.481, -1.481],
@@ -298,7 +298,7 @@ class TestSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -314,7 +314,7 @@ class TestSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -334,7 +334,7 @@ class TestSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -356,7 +356,7 @@ class TestSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -372,7 +372,7 @@ class TestSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -392,7 +392,7 @@ class TestSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -541,7 +541,7 @@ class TestAsyncSoiobservationset:
                     "cal_num_detected_stars": 1,
                     "cal_sky_bg": 30086.25,
                     "cal_spectral_filter_solar_mag": 19.23664587,
-                    "cal_time": "2023-01-02T16:00:00.123Z",
+                    "cal_time": parse_datetime("2023-01-02T16:00:00.123Z"),
                     "cal_type": "PRE",
                     "cal_zero_point": 25.15682157,
                 }
@@ -563,7 +563,7 @@ class TestAsyncSoiobservationset:
             num_spectral_filters=10,
             optical_soi_observation_list=[
                 {
-                    "ob_start_time": "2018-01-01T16:00:00.888456Z",
+                    "ob_start_time": parse_datetime("2018-01-01T16:00:00.888456Z"),
                     "current_spectral_filter_num": 0,
                     "declinations": [-0.45, -0.45, -0.45],
                     "exp_duration": 0.455,
@@ -571,9 +571,9 @@ class TestAsyncSoiobservationset:
                     "extinction_coeffs_unc": [0.06, 0.06, 0.06],
                     "intensities": [1.1, 1.1, 1.1],
                     "intensity_times": [
-                        "2018-01-01T16:00:00.888456Z",
-                        "2018-01-01T16:00:00.898456Z",
-                        "2018-01-01T16:00:00.998456Z",
+                        parse_datetime("2018-01-01T16:00:00.888456Z"),
+                        parse_datetime("2018-01-01T16:00:00.898456Z"),
+                        parse_datetime("2018-01-01T16:00:00.998456Z"),
                     ],
                     "local_sky_bgs": [100625.375, 100625.375, 100625.375],
                     "local_sky_bgs_unc": [0.065, 0.065, 0.065],
@@ -605,7 +605,7 @@ class TestAsyncSoiobservationset:
             polar_angle_start=1.1,
             radar_soi_observation_list=[
                 {
-                    "ob_start_time": "2018-01-01T16:00:00.888456Z",
+                    "ob_start_time": parse_datetime("2018-01-01T16:00:00.888456Z"),
                     "aspect_angles": [4.278, 4.278, 4.278],
                     "azimuth_biases": [45.23, 45.23, 45.23],
                     "azimuth_rates": [-1.481, -1.481, -1.481],
@@ -782,7 +782,7 @@ class TestAsyncSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -798,7 +798,7 @@ class TestAsyncSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -818,7 +818,7 @@ class TestAsyncSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -840,7 +840,7 @@ class TestAsyncSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -856,7 +856,7 @@ class TestAsyncSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],
@@ -876,7 +876,7 @@ class TestAsyncSoiobservationset:
                     "data_mode": "REAL",
                     "num_obs": 1,
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "OPTICAL",
                 }
             ],

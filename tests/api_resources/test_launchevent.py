@@ -153,7 +153,7 @@ class TestLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -167,7 +167,7 @@ class TestLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -185,7 +185,7 @@ class TestLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -205,7 +205,7 @@ class TestLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -219,7 +219,7 @@ class TestLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -237,7 +237,7 @@ class TestLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -482,7 +482,7 @@ class TestAsyncLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -496,7 +496,7 @@ class TestAsyncLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -514,7 +514,7 @@ class TestAsyncLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -534,7 +534,7 @@ class TestAsyncLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -548,7 +548,7 @@ class TestAsyncLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -566,7 +566,7 @@ class TestAsyncLaunchevent:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_create_date": "2020-01-01T00:00:00.123Z",
+                    "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],

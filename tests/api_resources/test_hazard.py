@@ -185,7 +185,7 @@ class TestHazard:
                     "alarm_values": [2.7, 2.9],
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "detect_time": "2022-03-07T14:51:39.653Z",
+                    "detect_time": parse_datetime("2022-03-07T14:51:39.653Z"),
                     "detect_type": "Chemical",
                     "source": "Bluestaq",
                 }
@@ -202,7 +202,7 @@ class TestHazard:
                     "alarm_values": [2.7, 2.9],
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "detect_time": "2022-03-07T14:51:39.653Z",
+                    "detect_time": parse_datetime("2022-03-07T14:51:39.653Z"),
                     "detect_type": "Chemical",
                     "source": "Bluestaq",
                 }
@@ -223,7 +223,7 @@ class TestHazard:
                     "alarm_values": [2.7, 2.9],
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "detect_time": "2022-03-07T14:51:39.653Z",
+                    "detect_time": parse_datetime("2022-03-07T14:51:39.653Z"),
                     "detect_type": "Chemical",
                     "source": "Bluestaq",
                 }
@@ -501,7 +501,7 @@ class TestAsyncHazard:
                     "alarm_values": [2.7, 2.9],
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "detect_time": "2022-03-07T14:51:39.653Z",
+                    "detect_time": parse_datetime("2022-03-07T14:51:39.653Z"),
                     "detect_type": "Chemical",
                     "source": "Bluestaq",
                 }
@@ -518,7 +518,7 @@ class TestAsyncHazard:
                     "alarm_values": [2.7, 2.9],
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "detect_time": "2022-03-07T14:51:39.653Z",
+                    "detect_time": parse_datetime("2022-03-07T14:51:39.653Z"),
                     "detect_type": "Chemical",
                     "source": "Bluestaq",
                 }
@@ -539,7 +539,7 @@ class TestAsyncHazard:
                     "alarm_values": [2.7, 2.9],
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "detect_time": "2022-03-07T14:51:39.653Z",
+                    "detect_time": parse_datetime("2022-03-07T14:51:39.653Z"),
                     "detect_type": "Chemical",
                     "source": "Bluestaq",
                 }

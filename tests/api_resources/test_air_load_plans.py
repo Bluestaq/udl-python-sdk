@@ -68,7 +68,7 @@ class TestAirLoadPlans:
                 {
                     "container": "Metal",
                     "escort": "Jane Doe",
-                    "hr_est_arr_time": "2024-01-01T01:00:00.123Z",
+                    "hr_est_arr_time": parse_datetime("2024-01-01T01:00:00.123Z"),
                     "hr_off_icao": "KDEN",
                     "hr_off_itin": 200,
                     "hr_on_icao": "KCOS",
@@ -423,7 +423,7 @@ class TestAsyncAirLoadPlans:
                 {
                     "container": "Metal",
                     "escort": "Jane Doe",
-                    "hr_est_arr_time": "2024-01-01T01:00:00.123Z",
+                    "hr_est_arr_time": parse_datetime("2024-01-01T01:00:00.123Z"),
                     "hr_off_icao": "KDEN",
                     "hr_off_itin": 200,
                     "hr_on_icao": "KCOS",

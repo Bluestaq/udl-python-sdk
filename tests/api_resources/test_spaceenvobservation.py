@@ -90,7 +90,7 @@ class TestSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -104,7 +104,7 @@ class TestSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -122,7 +122,7 @@ class TestSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -142,7 +142,7 @@ class TestSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -156,7 +156,7 @@ class TestSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -174,7 +174,7 @@ class TestSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -319,7 +319,7 @@ class TestAsyncSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -333,7 +333,7 @@ class TestAsyncSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -351,7 +351,7 @@ class TestAsyncSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -371,7 +371,7 @@ class TestAsyncSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -385,7 +385,7 @@ class TestAsyncSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -403,7 +403,7 @@ class TestAsyncSpaceenvobservation:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2023-06-07T14:17:39.653Z",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
             ],

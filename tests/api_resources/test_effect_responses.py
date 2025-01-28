@@ -44,7 +44,7 @@ class TestEffectResponses:
                 {
                     "action_actor_src_id": "ACTIONACTORSRC-ID",
                     "action_actor_src_type": "AIRCRAFT",
-                    "action_end_time": "2021-01-01T00:00:00.123456Z",
+                    "action_end_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
                     "action_id": "ACTION-ID",
                     "action_metrics": [
                         {
@@ -54,7 +54,7 @@ class TestEffectResponses:
                             "relative_value": 10.1,
                         }
                     ],
-                    "action_start_time": "2021-01-01T00:00:00.123456Z",
+                    "action_start_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
                     "actor_intercept_alt": 1.1,
                     "actor_intercept_lat": 45.1,
                     "actor_intercept_lon": 180.1,
@@ -62,8 +62,8 @@ class TestEffectResponses:
                     "summary": "Example summary",
                     "target_src_id": "TARGETSRC-ID",
                     "target_src_type": "POI",
-                    "tot_end_time": "2021-01-01T00:00:00.123456Z",
-                    "tot_start_time": "2021-01-01T00:00:00.123456Z",
+                    "tot_end_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
+                    "tot_start_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
                     "weapon_intercept_alt": 1.1,
                     "weapon_intercept_lat": 45.1,
                     "weapon_intercept_lon": 180.1,
@@ -414,7 +414,7 @@ class TestAsyncEffectResponses:
                 {
                     "action_actor_src_id": "ACTIONACTORSRC-ID",
                     "action_actor_src_type": "AIRCRAFT",
-                    "action_end_time": "2021-01-01T00:00:00.123456Z",
+                    "action_end_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
                     "action_id": "ACTION-ID",
                     "action_metrics": [
                         {
@@ -424,7 +424,7 @@ class TestAsyncEffectResponses:
                             "relative_value": 10.1,
                         }
                     ],
-                    "action_start_time": "2021-01-01T00:00:00.123456Z",
+                    "action_start_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
                     "actor_intercept_alt": 1.1,
                     "actor_intercept_lat": 45.1,
                     "actor_intercept_lon": 180.1,
@@ -432,8 +432,8 @@ class TestAsyncEffectResponses:
                     "summary": "Example summary",
                     "target_src_id": "TARGETSRC-ID",
                     "target_src_type": "POI",
-                    "tot_end_time": "2021-01-01T00:00:00.123456Z",
-                    "tot_start_time": "2021-01-01T00:00:00.123456Z",
+                    "tot_end_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
+                    "tot_start_time": parse_datetime("2021-01-01T00:00:00.123456Z"),
                     "weapon_intercept_alt": 1.1,
                     "weapon_intercept_lat": 45.1,
                     "weapon_intercept_lon": 180.1,
