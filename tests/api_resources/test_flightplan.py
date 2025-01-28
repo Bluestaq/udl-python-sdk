@@ -103,7 +103,7 @@ class TestFlightplan:
                     "etops_time": "01:23",
                     "flight_plan_points": [
                         {
-                            "fpp_eta": "2023-09-09T01:00:00.123Z",
+                            "fpp_eta": parse_datetime("2023-09-09T01:00:00.123Z"),
                             "fpp_lat": -90,
                             "fpp_lon": -180,
                             "fpp_req_fuel": 4250.1,
@@ -333,7 +333,7 @@ class TestFlightplan:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "dep_airfield": "KSLV",
-                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -349,7 +349,7 @@ class TestFlightplan:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "dep_airfield": "KSLV",
-                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -369,7 +369,7 @@ class TestFlightplan:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "dep_airfield": "KSLV",
-                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -524,7 +524,7 @@ class TestAsyncFlightplan:
                     "etops_time": "01:23",
                     "flight_plan_points": [
                         {
-                            "fpp_eta": "2023-09-09T01:00:00.123Z",
+                            "fpp_eta": parse_datetime("2023-09-09T01:00:00.123Z"),
                             "fpp_lat": -90,
                             "fpp_lon": -180,
                             "fpp_req_fuel": 4250.1,
@@ -754,7 +754,7 @@ class TestAsyncFlightplan:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "dep_airfield": "KSLV",
-                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -770,7 +770,7 @@ class TestAsyncFlightplan:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "dep_airfield": "KSLV",
-                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -790,7 +790,7 @@ class TestAsyncFlightplan:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "dep_airfield": "KSLV",
-                    "gen_ts": "2023-05-01T01:01:01.123Z",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
             ],

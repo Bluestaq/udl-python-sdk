@@ -73,8 +73,6 @@ class TestEoObservations:
                 "classification_marking": "U",
                 "color_coeffs": [1.1, 2.1, 3.1],
                 "column_variance": 0.1,
-                "created_at": "2018-01-01T16:00:00.123Z",
-                "created_by": "some.user",
                 "current_neutral_density_filter_num": 3,
                 "current_spectral_filter_num": 23,
                 "data_mode": "REAL",
@@ -97,7 +95,7 @@ class TestEoObservations:
                 "num_neutral_density_filters": 12,
                 "num_spectral_filters": 10,
                 "obj_sun_range": 123.2,
-                "ob_time": "2018-01-01T16:00:00.123456Z",
+                "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "optical_cross_section": 123.3,
                 "optical_cross_section_unc": 123.3,
                 "pcal_num_stars": 23,
@@ -306,7 +304,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -320,7 +318,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "id": "EOOBSERVATION-ID",
                     "azimuth": 1.1,
@@ -330,8 +328,6 @@ class TestEoObservations:
                     "bg_intensity": 1.1,
                     "collect_method": "AUTOTRACK",
                     "corr_quality": 1.1,
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "declination": 1.1,
                     "declination_bias": 1.1,
                     "declination_rate": 1.1,
@@ -360,8 +356,6 @@ class TestEoObservations:
                         "classification_marking": "U",
                         "color_coeffs": [1.1, 2.1, 3.1],
                         "column_variance": 0.1,
-                        "created_at": "2018-01-01T16:00:00.123Z",
-                        "created_by": "some.user",
                         "current_neutral_density_filter_num": 3,
                         "current_spectral_filter_num": 23,
                         "data_mode": "REAL",
@@ -384,7 +378,7 @@ class TestEoObservations:
                         "num_neutral_density_filters": 12,
                         "num_spectral_filters": 10,
                         "obj_sun_range": 123.2,
-                        "ob_time": "2018-01-01T16:00:00.123456Z",
+                        "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "optical_cross_section": 123.3,
                         "optical_cross_section_unc": 123.3,
                         "pcal_num_stars": 23,
@@ -432,7 +426,6 @@ class TestEoObservations:
                     "geolat": 1.1,
                     "geolon": 1.1,
                     "georange": 1.1,
-                    "id_on_orbit": "ONORBIT-ID",
                     "id_sensor": "SENSOR-ID",
                     "id_sky_imagery": "SKYIMAGERY-ID",
                     "intensity": 1.1,
@@ -450,7 +443,6 @@ class TestEoObservations:
                     "net_obj_sig_unc": 1.1,
                     "ob_position": "FIRST",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "ORIG",
                     "orig_object_id": "ORIGOBJECT-ID",
                     "orig_sensor_id": "ORIGSENSOR-ID",
                     "penumbra": False,
@@ -484,7 +476,6 @@ class TestEoObservations:
                     "solar_dec_angle": 1.1,
                     "solar_eq_phase_angle": 1.1,
                     "solar_phase_angle": 1.1,
-                    "source_dl": "AXE",
                     "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                     "task_id": "TASK-ID",
                     "timing_bias": 1.1,
@@ -507,7 +498,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -525,7 +516,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -545,7 +536,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -559,7 +550,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -577,7 +568,7 @@ class TestEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -647,8 +638,6 @@ class TestAsyncEoObservations:
                 "classification_marking": "U",
                 "color_coeffs": [1.1, 2.1, 3.1],
                 "column_variance": 0.1,
-                "created_at": "2018-01-01T16:00:00.123Z",
-                "created_by": "some.user",
                 "current_neutral_density_filter_num": 3,
                 "current_spectral_filter_num": 23,
                 "data_mode": "REAL",
@@ -671,7 +660,7 @@ class TestAsyncEoObservations:
                 "num_neutral_density_filters": 12,
                 "num_spectral_filters": 10,
                 "obj_sun_range": 123.2,
-                "ob_time": "2018-01-01T16:00:00.123456Z",
+                "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "optical_cross_section": 123.3,
                 "optical_cross_section_unc": 123.3,
                 "pcal_num_stars": 23,
@@ -880,7 +869,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -894,7 +883,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "id": "EOOBSERVATION-ID",
                     "azimuth": 1.1,
@@ -904,8 +893,6 @@ class TestAsyncEoObservations:
                     "bg_intensity": 1.1,
                     "collect_method": "AUTOTRACK",
                     "corr_quality": 1.1,
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "declination": 1.1,
                     "declination_bias": 1.1,
                     "declination_rate": 1.1,
@@ -934,8 +921,6 @@ class TestAsyncEoObservations:
                         "classification_marking": "U",
                         "color_coeffs": [1.1, 2.1, 3.1],
                         "column_variance": 0.1,
-                        "created_at": "2018-01-01T16:00:00.123Z",
-                        "created_by": "some.user",
                         "current_neutral_density_filter_num": 3,
                         "current_spectral_filter_num": 23,
                         "data_mode": "REAL",
@@ -958,7 +943,7 @@ class TestAsyncEoObservations:
                         "num_neutral_density_filters": 12,
                         "num_spectral_filters": 10,
                         "obj_sun_range": 123.2,
-                        "ob_time": "2018-01-01T16:00:00.123456Z",
+                        "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "optical_cross_section": 123.3,
                         "optical_cross_section_unc": 123.3,
                         "pcal_num_stars": 23,
@@ -1006,7 +991,6 @@ class TestAsyncEoObservations:
                     "geolat": 1.1,
                     "geolon": 1.1,
                     "georange": 1.1,
-                    "id_on_orbit": "ONORBIT-ID",
                     "id_sensor": "SENSOR-ID",
                     "id_sky_imagery": "SKYIMAGERY-ID",
                     "intensity": 1.1,
@@ -1024,7 +1008,6 @@ class TestAsyncEoObservations:
                     "net_obj_sig_unc": 1.1,
                     "ob_position": "FIRST",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "ORIG",
                     "orig_object_id": "ORIGOBJECT-ID",
                     "orig_sensor_id": "ORIGSENSOR-ID",
                     "penumbra": False,
@@ -1058,7 +1041,6 @@ class TestAsyncEoObservations:
                     "solar_dec_angle": 1.1,
                     "solar_eq_phase_angle": 1.1,
                     "solar_phase_angle": 1.1,
-                    "source_dl": "AXE",
                     "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                     "task_id": "TASK-ID",
                     "timing_bias": 1.1,
@@ -1081,7 +1063,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1099,7 +1081,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1119,7 +1101,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1133,7 +1115,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1151,7 +1133,7 @@ class TestAsyncEoObservations:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
             ],

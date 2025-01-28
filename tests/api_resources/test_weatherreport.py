@@ -231,7 +231,7 @@ class TestWeatherreport:
                     "data_mode": "REAL",
                     "lat": 56.12,
                     "lon": -156.6,
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "report_type": "FORECAST",
                     "source": "Bluestaq",
                 }
@@ -248,7 +248,7 @@ class TestWeatherreport:
                     "data_mode": "REAL",
                     "lat": 56.12,
                     "lon": -156.6,
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "report_type": "FORECAST",
                     "source": "Bluestaq",
                 }
@@ -269,7 +269,7 @@ class TestWeatherreport:
                     "data_mode": "REAL",
                     "lat": 56.12,
                     "lon": -156.6,
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "report_type": "FORECAST",
                     "source": "Bluestaq",
                 }
@@ -593,7 +593,7 @@ class TestAsyncWeatherreport:
                     "data_mode": "REAL",
                     "lat": 56.12,
                     "lon": -156.6,
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "report_type": "FORECAST",
                     "source": "Bluestaq",
                 }
@@ -610,7 +610,7 @@ class TestAsyncWeatherreport:
                     "data_mode": "REAL",
                     "lat": 56.12,
                     "lon": -156.6,
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "report_type": "FORECAST",
                     "source": "Bluestaq",
                 }
@@ -631,7 +631,7 @@ class TestAsyncWeatherreport:
                     "data_mode": "REAL",
                     "lat": 56.12,
                     "lon": -156.6,
-                    "ob_time": "2018-01-01T16:00:00.123456Z",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "report_type": "FORECAST",
                     "source": "Bluestaq",
                 }

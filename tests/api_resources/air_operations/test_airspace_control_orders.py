@@ -8,6 +8,7 @@ from typing import Any, cast
 import pytest
 
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,7 +26,7 @@ class TestAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -41,7 +42,7 @@ class TestAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -61,7 +62,7 @@ class TestAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         ) as response:
@@ -87,7 +88,7 @@ class TestAsyncAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -103,7 +104,7 @@ class TestAsyncAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -123,7 +124,7 @@ class TestAsyncAirspaceControlOrders:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         ) as response:

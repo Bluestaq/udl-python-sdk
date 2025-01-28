@@ -310,10 +310,10 @@ class TestSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -326,27 +326,23 @@ class TestSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "id": "SENSORMAINTENANCE-ID",
                     "activity": "Activity Description",
                     "approver": "approver",
                     "changer": "changer",
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "duration": "128:16:52",
                     "eow_id": "eowId",
                     "equip_status": "FMC",
                     "id_sensor": "idSensor",
                     "impacted_faces": "impactedFaces",
-                    "inactive_date": "2018-01-01T16:00:00.123Z",
                     "line_number": "lineNumber",
                     "md_ops_cap": "R",
                     "mw_ops_cap": "G",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "ORIG",
                     "priority": "low",
                     "recall": "128:16:52",
                     "rel": "rel",
@@ -369,10 +365,10 @@ class TestSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -389,10 +385,10 @@ class TestSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 }
             ],
         ) as response:
@@ -823,10 +819,10 @@ class TestAsyncSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -839,27 +835,23 @@ class TestAsyncSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "id": "SENSORMAINTENANCE-ID",
                     "activity": "Activity Description",
                     "approver": "approver",
                     "changer": "changer",
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "duration": "128:16:52",
                     "eow_id": "eowId",
                     "equip_status": "FMC",
                     "id_sensor": "idSensor",
                     "impacted_faces": "impactedFaces",
-                    "inactive_date": "2018-01-01T16:00:00.123Z",
                     "line_number": "lineNumber",
                     "md_ops_cap": "R",
                     "mw_ops_cap": "G",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "ORIG",
                     "priority": "low",
                     "recall": "128:16:52",
                     "rel": "rel",
@@ -882,10 +874,10 @@ class TestAsyncSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 }
             ],
         )
@@ -902,10 +894,10 @@ class TestAsyncSensormaintenance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "end_time": "2018-01-01T16:00:00.123456Z",
+                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
-                    "start_time": "2018-01-01T16:00:00.123456Z",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 }
             ],
         ) as response:

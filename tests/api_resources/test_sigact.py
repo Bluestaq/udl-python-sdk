@@ -90,7 +90,7 @@ class TestSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -104,7 +104,7 @@ class TestSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -122,7 +122,7 @@ class TestSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -406,7 +406,7 @@ class TestAsyncSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -420,7 +420,7 @@ class TestAsyncSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -438,7 +438,7 @@ class TestAsyncSigact:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "report_date": "2018-01-01T16:00:00.123Z",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],

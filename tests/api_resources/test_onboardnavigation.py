@@ -91,7 +91,7 @@ class TestOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -105,7 +105,7 @@ class TestOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -123,7 +123,7 @@ class TestOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         ) as response:
@@ -143,7 +143,7 @@ class TestOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -157,7 +157,7 @@ class TestOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -175,7 +175,7 @@ class TestOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         ) as response:
@@ -320,7 +320,7 @@ class TestAsyncOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -334,7 +334,7 @@ class TestAsyncOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -352,7 +352,7 @@ class TestAsyncOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         ) as response:
@@ -372,7 +372,7 @@ class TestAsyncOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -386,7 +386,7 @@ class TestAsyncOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         )
@@ -404,7 +404,7 @@ class TestAsyncOnboardnavigation:
                     "classification_marking": "U",
                     "data_mode": "REAL",
                     "source": "Bluestaq",
-                    "start_time": "2021-07-20T01:02:03.123456Z",
+                    "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
             ],
         ) as response:

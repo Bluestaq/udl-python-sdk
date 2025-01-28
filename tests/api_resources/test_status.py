@@ -59,10 +59,7 @@ class TestStatus:
                     "status_id": "REF-STATUS-ID",
                     "type": "mwCap",
                     "id": "SUBSTATUS-ID",
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "TST1",
                 }
             ],
             sys_cap="FMC",
@@ -136,10 +133,7 @@ class TestStatus:
                     "status_id": "REF-STATUS-ID",
                     "type": "mwCap",
                     "id": "SUBSTATUS-ID",
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "TST1",
                 }
             ],
             sys_cap="FMC",
@@ -487,10 +481,7 @@ class TestAsyncStatus:
                     "status_id": "REF-STATUS-ID",
                     "type": "mwCap",
                     "id": "SUBSTATUS-ID",
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "TST1",
                 }
             ],
             sys_cap="FMC",
@@ -564,10 +555,7 @@ class TestAsyncStatus:
                     "status_id": "REF-STATUS-ID",
                     "type": "mwCap",
                     "id": "SUBSTATUS-ID",
-                    "created_at": "2018-01-01T16:00:00.123Z",
-                    "created_by": "some.user",
                     "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_network": "TST1",
                 }
             ],
             sys_cap="FMC",

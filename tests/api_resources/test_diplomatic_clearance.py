@@ -52,9 +52,9 @@ class TestDiplomaticClearance:
                     "cleared_call_sign": "FALCN09",
                     "country_code": "NL",
                     "country_name": "NETHERLANDS",
-                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_net": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "entry_point": "LOMOS",
-                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_nlt": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "exit_point": "BUDOP",
                     "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
                     "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
@@ -66,8 +66,8 @@ class TestDiplomaticClearance:
                     "sequence_num": 3,
                     "status": "IN WORK",
                     "valid_desc": "CY2023",
-                    "valid_end_time": "2024-01-01T01:01:01.123Z",
-                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "valid_end_time": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "valid_start_time": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "window_remark": "Period remarks",
                 }
             ],
@@ -188,9 +188,9 @@ class TestDiplomaticClearance:
                     "cleared_call_sign": "FALCN09",
                     "country_code": "NL",
                     "country_name": "NETHERLANDS",
-                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_net": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "entry_point": "LOMOS",
-                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_nlt": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "exit_point": "BUDOP",
                     "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
                     "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
@@ -202,8 +202,8 @@ class TestDiplomaticClearance:
                     "sequence_num": 3,
                     "status": "IN WORK",
                     "valid_desc": "CY2023",
-                    "valid_end_time": "2024-01-01T01:01:01.123Z",
-                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "valid_end_time": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "valid_start_time": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "window_remark": "Period remarks",
                 }
             ],
@@ -376,7 +376,7 @@ class TestDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -391,7 +391,7 @@ class TestDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -410,7 +410,7 @@ class TestDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -517,9 +517,9 @@ class TestAsyncDiplomaticClearance:
                     "cleared_call_sign": "FALCN09",
                     "country_code": "NL",
                     "country_name": "NETHERLANDS",
-                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_net": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "entry_point": "LOMOS",
-                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_nlt": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "exit_point": "BUDOP",
                     "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
                     "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
@@ -531,8 +531,8 @@ class TestAsyncDiplomaticClearance:
                     "sequence_num": 3,
                     "status": "IN WORK",
                     "valid_desc": "CY2023",
-                    "valid_end_time": "2024-01-01T01:01:01.123Z",
-                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "valid_end_time": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "valid_start_time": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "window_remark": "Period remarks",
                 }
             ],
@@ -653,9 +653,9 @@ class TestAsyncDiplomaticClearance:
                     "cleared_call_sign": "FALCN09",
                     "country_code": "NL",
                     "country_name": "NETHERLANDS",
-                    "entry_net": "2024-01-01T01:01:01.123Z",
+                    "entry_net": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "entry_point": "LOMOS",
-                    "exit_nlt": "2024-01-01T01:01:01.123Z",
+                    "exit_nlt": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "exit_point": "BUDOP",
                     "external_clearance_id": "aa714f4d52a37ab1a00b21af9566e379",
                     "id_sortie": "207010e0-f97d-431c-8c00-7e46acfef0f5",
@@ -667,8 +667,8 @@ class TestAsyncDiplomaticClearance:
                     "sequence_num": 3,
                     "status": "IN WORK",
                     "valid_desc": "CY2023",
-                    "valid_end_time": "2024-01-01T01:01:01.123Z",
-                    "valid_start_time": "2024-01-01T01:01:01.123Z",
+                    "valid_end_time": parse_datetime("2024-01-01T01:01:01.123Z"),
+                    "valid_start_time": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "window_remark": "Period remarks",
                 }
             ],
@@ -841,7 +841,7 @@ class TestAsyncDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -856,7 +856,7 @@ class TestAsyncDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }
@@ -875,7 +875,7 @@ class TestAsyncDiplomaticClearance:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "first_dep_date": "2024-01-01T01:01:01.123Z",
+                    "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
                 }

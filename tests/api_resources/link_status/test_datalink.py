@@ -96,8 +96,8 @@ class TestDatalink:
                 {
                     "link_details": "Link details",
                     "link_name": "Link-16",
-                    "link_start_time": "2024-01-07T13:55:43.123Z",
-                    "link_stop_time": "2024-01-08T13:55:43.123Z",
+                    "link_start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                    "link_stop_time": parse_datetime("2024-01-08T13:55:43.123Z"),
                     "link_stop_time_mod": "AFTER",
                 }
             ],
@@ -119,13 +119,13 @@ class TestDatalink:
                     "ref_serial_num": "1402001",
                     "ref_si_cs": ["RDU", "C-123-92"],
                     "ref_special_notation": "NOTAL",
-                    "ref_ts": "2024-01-07T13:55:43.123Z",
+                    "ref_ts": parse_datetime("2024-01-07T13:55:43.123Z"),
                     "ref_type": "ABSTAT",
                 }
             ],
             ref_points=[
                 {
-                    "eff_event_time": "2024-01-08T13:55:43.123Z",
+                    "eff_event_time": parse_datetime("2024-01-08T13:55:43.123Z"),
                     "ref_des": "L5",
                     "ref_lat": 45.23,
                     "ref_loc_name": "FORT BRAGG",
@@ -272,7 +272,7 @@ class TestDatalink:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -288,7 +288,7 @@ class TestDatalink:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -308,7 +308,7 @@ class TestDatalink:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         ) as response:
@@ -458,8 +458,8 @@ class TestAsyncDatalink:
                 {
                     "link_details": "Link details",
                     "link_name": "Link-16",
-                    "link_start_time": "2024-01-07T13:55:43.123Z",
-                    "link_stop_time": "2024-01-08T13:55:43.123Z",
+                    "link_start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                    "link_stop_time": parse_datetime("2024-01-08T13:55:43.123Z"),
                     "link_stop_time_mod": "AFTER",
                 }
             ],
@@ -481,13 +481,13 @@ class TestAsyncDatalink:
                     "ref_serial_num": "1402001",
                     "ref_si_cs": ["RDU", "C-123-92"],
                     "ref_special_notation": "NOTAL",
-                    "ref_ts": "2024-01-07T13:55:43.123Z",
+                    "ref_ts": parse_datetime("2024-01-07T13:55:43.123Z"),
                     "ref_type": "ABSTAT",
                 }
             ],
             ref_points=[
                 {
-                    "eff_event_time": "2024-01-08T13:55:43.123Z",
+                    "eff_event_time": parse_datetime("2024-01-08T13:55:43.123Z"),
                     "ref_des": "L5",
                     "ref_lat": 45.23,
                     "ref_loc_name": "FORT BRAGG",
@@ -634,7 +634,7 @@ class TestAsyncDatalink:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -650,7 +650,7 @@ class TestAsyncDatalink:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         )
@@ -670,7 +670,7 @@ class TestAsyncDatalink:
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
-                    "start_time": "2024-01-07T13:55:43.123Z",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
                 }
             ],
         ) as response:

@@ -205,7 +205,7 @@ class TestOnorbitthrusterstatus:
                     "data_mode": "REAL",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
-                    "status_time": "2024-01-01T16:00:00.123Z",
+                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
                 }
             ],
         )
@@ -220,7 +220,7 @@ class TestOnorbitthrusterstatus:
                     "data_mode": "REAL",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
-                    "status_time": "2024-01-01T16:00:00.123Z",
+                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
                 }
             ],
         )
@@ -239,7 +239,7 @@ class TestOnorbitthrusterstatus:
                     "data_mode": "REAL",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
-                    "status_time": "2024-01-01T16:00:00.123Z",
+                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
                 }
             ],
         ) as response:
@@ -541,7 +541,7 @@ class TestAsyncOnorbitthrusterstatus:
                     "data_mode": "REAL",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
-                    "status_time": "2024-01-01T16:00:00.123Z",
+                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
                 }
             ],
         )
@@ -556,7 +556,7 @@ class TestAsyncOnorbitthrusterstatus:
                     "data_mode": "REAL",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
-                    "status_time": "2024-01-01T16:00:00.123Z",
+                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
                 }
             ],
         )
@@ -575,7 +575,7 @@ class TestAsyncOnorbitthrusterstatus:
                     "data_mode": "REAL",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
-                    "status_time": "2024-01-01T16:00:00.123Z",
+                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
                 }
             ],
         ) as response:

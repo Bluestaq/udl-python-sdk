@@ -360,7 +360,7 @@ class TestNavigationalobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "cycle_date": "2024-06-13",
+                    "cycle_date": parse_date("2024-06-13"),
                     "data_mode": "REAL",
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
@@ -376,7 +376,7 @@ class TestNavigationalobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "cycle_date": "2024-06-13",
+                    "cycle_date": parse_date("2024-06-13"),
                     "data_mode": "REAL",
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
@@ -396,7 +396,7 @@ class TestNavigationalobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "cycle_date": "2024-06-13",
+                    "cycle_date": parse_date("2024-06-13"),
                     "data_mode": "REAL",
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
@@ -857,7 +857,7 @@ class TestAsyncNavigationalobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "cycle_date": "2024-06-13",
+                    "cycle_date": parse_date("2024-06-13"),
                     "data_mode": "REAL",
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
@@ -873,7 +873,7 @@ class TestAsyncNavigationalobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "cycle_date": "2024-06-13",
+                    "cycle_date": parse_date("2024-06-13"),
                     "data_mode": "REAL",
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
@@ -893,7 +893,7 @@ class TestAsyncNavigationalobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "cycle_date": "2024-06-13",
+                    "cycle_date": parse_date("2024-06-13"),
                     "data_mode": "REAL",
                     "obstacle_id": "359655",
                     "obstacle_type": "V",

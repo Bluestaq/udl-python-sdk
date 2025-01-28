@@ -48,16 +48,16 @@ class TestLogisticssupport:
             logistic_action="WA",
             logistics_discrepancy_infos=[
                 {
-                    "closure_time": "2023-07-17T10:30:00.123Z",
+                    "closure_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "discrepancy_info": "PILOT WINDSHIELD PANEL ASSY CRACKED, AND ARCING REQ R2 IAW 56.11.10",
                     "jcn": "231942400",
-                    "job_st_time": "2023-07-17T10:30:00.123Z",
+                    "job_st_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                 }
             ],
             logistics_record_id="L62017",
             logistics_remarks=[
                 {
-                    "last_changed": "2023-07-17T10:30:00.123Z",
+                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "remark": "EXAMPLE REMARK",
                     "username": "JSMITH",
                 }
@@ -67,7 +67,7 @@ class TestLogisticssupport:
                     "cannibalized": True,
                     "deploy_plan_number": "T89003",
                     "description": "HOIST ADAPTER KIT",
-                    "item_last_changed_date": "2023-07-17T19:04:00.123Z",
+                    "item_last_changed_date": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "job_control_number": "231942400",
                     "logistics_parts": [
                         {
@@ -78,7 +78,7 @@ class TestLogisticssupport:
                                 {
                                     "quantity": 4,
                                     "source_icao": "PHIK",
-                                    "stock_check_time": "2023-07-13T13:47:00.123Z",
+                                    "stock_check_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                                     "stock_poc": "SMITH, JOHN J",
                                 }
                             ],
@@ -93,7 +93,7 @@ class TestLogisticssupport:
                     ],
                     "logistics_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -110,8 +110,8 @@ class TestLogisticssupport:
                         }
                     ],
                     "quantity": 1,
-                    "ready_time": "2023-07-17T19:04:00.123Z",
-                    "received_time": "2023-07-17T19:04:00.123Z",
+                    "ready_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                    "received_time": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "recovery_request_type_code": "E",
                     "redeploy_plan_number": "T89003",
                     "redeploy_shipment_unit_id": "X400LA31949108",
@@ -124,18 +124,18 @@ class TestLogisticssupport:
             ],
             logistics_transportation_plans=[
                 {
-                    "act_dep_time": "2023-07-14T19:37:00.123Z",
+                    "act_dep_time": parse_datetime("2023-07-14T19:37:00.123Z"),
                     "aircraft_status": "NMCMU",
-                    "approx_arr_time": "2023-07-14T20:37:00.123Z",
-                    "cancelled_date": "2023-07-14T20:37:00.123Z",
-                    "closed_date": "2023-07-14T20:37:00.123Z",
+                    "approx_arr_time": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "cancelled_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "closed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "coordinator": "SMITH, JOHN",
                     "coordinator_unit": "TACC",
                     "destination_icao": "YBCS",
                     "duration": "086:20",
-                    "est_arr_time": "2023-07-15T14:25:00.123Z",
-                    "est_dep_time": "2023-07-15T14:25:00.123Z",
-                    "last_changed_date": "2023-07-14T20:37:00.123Z",
+                    "est_arr_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "est_dep_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "last_changed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "logistic_master_record_id": "L62126",
                     "logistics_segments": [
                         {
@@ -147,18 +147,18 @@ class TestLogisticssupport:
                             "mission_number": "TAM308901196",
                             "mission_type": "SAAM",
                             "mode_code": "A",
-                            "seg_act_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_act_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_act_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_act_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "seg_aircraft_mds": "B7772E",
-                            "seg_est_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_est_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_est_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_est_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "segment_number": 3,
                             "seg_tail_number": "N819AX",
                         }
                     ],
                     "logistics_transportation_plans_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -246,16 +246,16 @@ class TestLogisticssupport:
             logistic_action="WA",
             logistics_discrepancy_infos=[
                 {
-                    "closure_time": "2023-07-17T10:30:00.123Z",
+                    "closure_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "discrepancy_info": "PILOT WINDSHIELD PANEL ASSY CRACKED, AND ARCING REQ R2 IAW 56.11.10",
                     "jcn": "231942400",
-                    "job_st_time": "2023-07-17T10:30:00.123Z",
+                    "job_st_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                 }
             ],
             logistics_record_id="L62017",
             logistics_remarks=[
                 {
-                    "last_changed": "2023-07-17T10:30:00.123Z",
+                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "remark": "EXAMPLE REMARK",
                     "username": "JSMITH",
                 }
@@ -265,7 +265,7 @@ class TestLogisticssupport:
                     "cannibalized": True,
                     "deploy_plan_number": "T89003",
                     "description": "HOIST ADAPTER KIT",
-                    "item_last_changed_date": "2023-07-17T19:04:00.123Z",
+                    "item_last_changed_date": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "job_control_number": "231942400",
                     "logistics_parts": [
                         {
@@ -276,7 +276,7 @@ class TestLogisticssupport:
                                 {
                                     "quantity": 4,
                                     "source_icao": "PHIK",
-                                    "stock_check_time": "2023-07-13T13:47:00.123Z",
+                                    "stock_check_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                                     "stock_poc": "SMITH, JOHN J",
                                 }
                             ],
@@ -291,7 +291,7 @@ class TestLogisticssupport:
                     ],
                     "logistics_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -308,8 +308,8 @@ class TestLogisticssupport:
                         }
                     ],
                     "quantity": 1,
-                    "ready_time": "2023-07-17T19:04:00.123Z",
-                    "received_time": "2023-07-17T19:04:00.123Z",
+                    "ready_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                    "received_time": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "recovery_request_type_code": "E",
                     "redeploy_plan_number": "T89003",
                     "redeploy_shipment_unit_id": "X400LA31949108",
@@ -322,18 +322,18 @@ class TestLogisticssupport:
             ],
             logistics_transportation_plans=[
                 {
-                    "act_dep_time": "2023-07-14T19:37:00.123Z",
+                    "act_dep_time": parse_datetime("2023-07-14T19:37:00.123Z"),
                     "aircraft_status": "NMCMU",
-                    "approx_arr_time": "2023-07-14T20:37:00.123Z",
-                    "cancelled_date": "2023-07-14T20:37:00.123Z",
-                    "closed_date": "2023-07-14T20:37:00.123Z",
+                    "approx_arr_time": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "cancelled_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "closed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "coordinator": "SMITH, JOHN",
                     "coordinator_unit": "TACC",
                     "destination_icao": "YBCS",
                     "duration": "086:20",
-                    "est_arr_time": "2023-07-15T14:25:00.123Z",
-                    "est_dep_time": "2023-07-15T14:25:00.123Z",
-                    "last_changed_date": "2023-07-14T20:37:00.123Z",
+                    "est_arr_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "est_dep_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "last_changed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "logistic_master_record_id": "L62126",
                     "logistics_segments": [
                         {
@@ -345,18 +345,18 @@ class TestLogisticssupport:
                             "mission_number": "TAM308901196",
                             "mission_type": "SAAM",
                             "mode_code": "A",
-                            "seg_act_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_act_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_act_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_act_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "seg_aircraft_mds": "B7772E",
-                            "seg_est_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_est_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_est_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_est_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "segment_number": 3,
                             "seg_tail_number": "N819AX",
                         }
                     ],
                     "logistics_transportation_plans_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -487,7 +487,7 @@ class TestLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -501,7 +501,7 @@ class TestLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -519,7 +519,7 @@ class TestLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -539,7 +539,7 @@ class TestLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -553,7 +553,7 @@ class TestLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -571,7 +571,7 @@ class TestLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -708,16 +708,16 @@ class TestAsyncLogisticssupport:
             logistic_action="WA",
             logistics_discrepancy_infos=[
                 {
-                    "closure_time": "2023-07-17T10:30:00.123Z",
+                    "closure_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "discrepancy_info": "PILOT WINDSHIELD PANEL ASSY CRACKED, AND ARCING REQ R2 IAW 56.11.10",
                     "jcn": "231942400",
-                    "job_st_time": "2023-07-17T10:30:00.123Z",
+                    "job_st_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                 }
             ],
             logistics_record_id="L62017",
             logistics_remarks=[
                 {
-                    "last_changed": "2023-07-17T10:30:00.123Z",
+                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "remark": "EXAMPLE REMARK",
                     "username": "JSMITH",
                 }
@@ -727,7 +727,7 @@ class TestAsyncLogisticssupport:
                     "cannibalized": True,
                     "deploy_plan_number": "T89003",
                     "description": "HOIST ADAPTER KIT",
-                    "item_last_changed_date": "2023-07-17T19:04:00.123Z",
+                    "item_last_changed_date": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "job_control_number": "231942400",
                     "logistics_parts": [
                         {
@@ -738,7 +738,7 @@ class TestAsyncLogisticssupport:
                                 {
                                     "quantity": 4,
                                     "source_icao": "PHIK",
-                                    "stock_check_time": "2023-07-13T13:47:00.123Z",
+                                    "stock_check_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                                     "stock_poc": "SMITH, JOHN J",
                                 }
                             ],
@@ -753,7 +753,7 @@ class TestAsyncLogisticssupport:
                     ],
                     "logistics_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -770,8 +770,8 @@ class TestAsyncLogisticssupport:
                         }
                     ],
                     "quantity": 1,
-                    "ready_time": "2023-07-17T19:04:00.123Z",
-                    "received_time": "2023-07-17T19:04:00.123Z",
+                    "ready_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                    "received_time": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "recovery_request_type_code": "E",
                     "redeploy_plan_number": "T89003",
                     "redeploy_shipment_unit_id": "X400LA31949108",
@@ -784,18 +784,18 @@ class TestAsyncLogisticssupport:
             ],
             logistics_transportation_plans=[
                 {
-                    "act_dep_time": "2023-07-14T19:37:00.123Z",
+                    "act_dep_time": parse_datetime("2023-07-14T19:37:00.123Z"),
                     "aircraft_status": "NMCMU",
-                    "approx_arr_time": "2023-07-14T20:37:00.123Z",
-                    "cancelled_date": "2023-07-14T20:37:00.123Z",
-                    "closed_date": "2023-07-14T20:37:00.123Z",
+                    "approx_arr_time": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "cancelled_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "closed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "coordinator": "SMITH, JOHN",
                     "coordinator_unit": "TACC",
                     "destination_icao": "YBCS",
                     "duration": "086:20",
-                    "est_arr_time": "2023-07-15T14:25:00.123Z",
-                    "est_dep_time": "2023-07-15T14:25:00.123Z",
-                    "last_changed_date": "2023-07-14T20:37:00.123Z",
+                    "est_arr_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "est_dep_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "last_changed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "logistic_master_record_id": "L62126",
                     "logistics_segments": [
                         {
@@ -807,18 +807,18 @@ class TestAsyncLogisticssupport:
                             "mission_number": "TAM308901196",
                             "mission_type": "SAAM",
                             "mode_code": "A",
-                            "seg_act_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_act_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_act_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_act_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "seg_aircraft_mds": "B7772E",
-                            "seg_est_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_est_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_est_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_est_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "segment_number": 3,
                             "seg_tail_number": "N819AX",
                         }
                     ],
                     "logistics_transportation_plans_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -906,16 +906,16 @@ class TestAsyncLogisticssupport:
             logistic_action="WA",
             logistics_discrepancy_infos=[
                 {
-                    "closure_time": "2023-07-17T10:30:00.123Z",
+                    "closure_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "discrepancy_info": "PILOT WINDSHIELD PANEL ASSY CRACKED, AND ARCING REQ R2 IAW 56.11.10",
                     "jcn": "231942400",
-                    "job_st_time": "2023-07-17T10:30:00.123Z",
+                    "job_st_time": parse_datetime("2023-07-17T10:30:00.123Z"),
                 }
             ],
             logistics_record_id="L62017",
             logistics_remarks=[
                 {
-                    "last_changed": "2023-07-17T10:30:00.123Z",
+                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                     "remark": "EXAMPLE REMARK",
                     "username": "JSMITH",
                 }
@@ -925,7 +925,7 @@ class TestAsyncLogisticssupport:
                     "cannibalized": True,
                     "deploy_plan_number": "T89003",
                     "description": "HOIST ADAPTER KIT",
-                    "item_last_changed_date": "2023-07-17T19:04:00.123Z",
+                    "item_last_changed_date": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "job_control_number": "231942400",
                     "logistics_parts": [
                         {
@@ -936,7 +936,7 @@ class TestAsyncLogisticssupport:
                                 {
                                     "quantity": 4,
                                     "source_icao": "PHIK",
-                                    "stock_check_time": "2023-07-13T13:47:00.123Z",
+                                    "stock_check_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                                     "stock_poc": "SMITH, JOHN J",
                                 }
                             ],
@@ -951,7 +951,7 @@ class TestAsyncLogisticssupport:
                     ],
                     "logistics_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -968,8 +968,8 @@ class TestAsyncLogisticssupport:
                         }
                     ],
                     "quantity": 1,
-                    "ready_time": "2023-07-17T19:04:00.123Z",
-                    "received_time": "2023-07-17T19:04:00.123Z",
+                    "ready_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                    "received_time": parse_datetime("2023-07-17T19:04:00.123Z"),
                     "recovery_request_type_code": "E",
                     "redeploy_plan_number": "T89003",
                     "redeploy_shipment_unit_id": "X400LA31949108",
@@ -982,18 +982,18 @@ class TestAsyncLogisticssupport:
             ],
             logistics_transportation_plans=[
                 {
-                    "act_dep_time": "2023-07-14T19:37:00.123Z",
+                    "act_dep_time": parse_datetime("2023-07-14T19:37:00.123Z"),
                     "aircraft_status": "NMCMU",
-                    "approx_arr_time": "2023-07-14T20:37:00.123Z",
-                    "cancelled_date": "2023-07-14T20:37:00.123Z",
-                    "closed_date": "2023-07-14T20:37:00.123Z",
+                    "approx_arr_time": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "cancelled_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                    "closed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "coordinator": "SMITH, JOHN",
                     "coordinator_unit": "TACC",
                     "destination_icao": "YBCS",
                     "duration": "086:20",
-                    "est_arr_time": "2023-07-15T14:25:00.123Z",
-                    "est_dep_time": "2023-07-15T14:25:00.123Z",
-                    "last_changed_date": "2023-07-14T20:37:00.123Z",
+                    "est_arr_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "est_dep_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                    "last_changed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
                     "logistic_master_record_id": "L62126",
                     "logistics_segments": [
                         {
@@ -1005,18 +1005,18 @@ class TestAsyncLogisticssupport:
                             "mission_number": "TAM308901196",
                             "mission_type": "SAAM",
                             "mode_code": "A",
-                            "seg_act_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_act_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_act_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_act_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "seg_aircraft_mds": "B7772E",
-                            "seg_est_arr_time": "2023-07-17T19:20:00.123Z",
-                            "seg_est_dep_time": "2023-07-17T19:20:00.123Z",
+                            "seg_est_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                            "seg_est_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
                             "segment_number": 3,
                             "seg_tail_number": "N819AX",
                         }
                     ],
                     "logistics_transportation_plans_remarks": [
                         {
-                            "last_changed": "2023-07-17T10:30:00.123Z",
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
                             "remark": "EXAMPLE REMARK",
                             "username": "JSMITH",
                         }
@@ -1147,7 +1147,7 @@ class TestAsyncLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1161,7 +1161,7 @@ class TestAsyncLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1179,7 +1179,7 @@ class TestAsyncLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1199,7 +1199,7 @@ class TestAsyncLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1213,7 +1213,7 @@ class TestAsyncLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],
@@ -1231,7 +1231,7 @@ class TestAsyncLogisticssupport:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "rpt_created_time": "2023-07-13T13:47:00.123Z",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
             ],

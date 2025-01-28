@@ -212,7 +212,7 @@ class TestPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -229,7 +229,7 @@ class TestPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -250,7 +250,7 @@ class TestPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -273,7 +273,7 @@ class TestPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -290,7 +290,7 @@ class TestPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -311,7 +311,7 @@ class TestPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -618,7 +618,7 @@ class TestAsyncPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -635,7 +635,7 @@ class TestAsyncPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -656,7 +656,7 @@ class TestAsyncPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -679,7 +679,7 @@ class TestAsyncPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -696,7 +696,7 @@ class TestAsyncPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
@@ -717,7 +717,7 @@ class TestAsyncPersonnelrecovery:
                 {
                     "classification_marking": "U",
                     "data_mode": "REAL",
-                    "msg_time": "2021-10-15T16:00:00.123Z",
+                    "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
                     "source": "Bluestaq",
