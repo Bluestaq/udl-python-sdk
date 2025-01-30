@@ -27,9 +27,13 @@ pip install git+ssh://git@github.com/stainless-sdks/unifieddatalibrary-python.gi
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from unifieddatalibrary import Unifieddatalibrary
 
-client = Unifieddatalibrary()
+client = Unifieddatalibrary(
+    username=os.environ.get("HTTP_BASIC_AUTH_USERNAME"),  # This is the default and can be omitted
+    password=os.environ.get("HTTP_BASIC_AUTH_PASSWORD"),  # This is the default and can be omitted
+)
 
 conjunction_full = client.conjunctions.retrieve(
     "id",
@@ -47,10 +51,14 @@ so that your Username is not stored in source control.
 Simply import `AsyncUnifieddatalibrary` instead of `Unifieddatalibrary` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from unifieddatalibrary import AsyncUnifieddatalibrary
 
-client = AsyncUnifieddatalibrary()
+client = AsyncUnifieddatalibrary(
+    username=os.environ.get("HTTP_BASIC_AUTH_USERNAME"),  # This is the default and can be omitted
+    password=os.environ.get("HTTP_BASIC_AUTH_PASSWORD"),  # This is the default and can be omitted
+)
 
 
 async def main() -> None:
