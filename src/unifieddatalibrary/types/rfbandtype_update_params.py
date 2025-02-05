@@ -10,7 +10,7 @@ __all__ = ["RfbandtypeUpdateParams"]
 
 
 class RfbandtypeUpdateParams(TypedDict, total=False):
-    id_2: Required[Annotated[str, PropertyInfo(alias="id")]]
+    body_id: Required[Annotated[str, PropertyInfo(alias="id")]]
     """Unique identifier for the RF band (e.g. X, K, Ku, etc)."""
 
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]

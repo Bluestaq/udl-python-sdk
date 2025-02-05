@@ -88,7 +88,7 @@ class TestSubstatus:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -102,7 +102,7 @@ class TestSubstatus:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -110,7 +110,7 @@ class TestSubstatus:
             status="FMC",
             status_id="REF-STATUS-ID",
             type="mwCap",
-            id_2="SUBSTATUS-ID",
+            body_id="SUBSTATUS-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert substatus is None
@@ -118,7 +118,7 @@ class TestSubstatus:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.substatus.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -136,7 +136,7 @@ class TestSubstatus:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.substatus.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -155,9 +155,9 @@ class TestSubstatus:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.substatus.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 notes="Sample Notes",
@@ -165,7 +165,7 @@ class TestSubstatus:
                 status="FMC",
                 status_id="REF-STATUS-ID",
                 type="mwCap",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -421,7 +421,7 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -435,7 +435,7 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -443,7 +443,7 @@ class TestAsyncSubstatus:
             status="FMC",
             status_id="REF-STATUS-ID",
             type="mwCap",
-            id_2="SUBSTATUS-ID",
+            body_id="SUBSTATUS-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert substatus is None
@@ -451,7 +451,7 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.substatus.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -469,7 +469,7 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.substatus.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             notes="Sample Notes",
@@ -488,9 +488,9 @@ class TestAsyncSubstatus:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.substatus.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 notes="Sample Notes",
@@ -498,7 +498,7 @@ class TestAsyncSubstatus:
                 status="FMC",
                 status_id="REF-STATUS-ID",
                 type="mwCap",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

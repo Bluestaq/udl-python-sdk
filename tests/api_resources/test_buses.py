@@ -210,7 +210,7 @@ class TestBuses:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
@@ -221,12 +221,12 @@ class TestBuses:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
             source="Bluestaq",
-            id_2="BUS-ID",
+            body_id="BUS-ID",
             aocs_notes="Example notes",
             avg_dry_mass=2879.1,
             avg_payload_mass=10.1,
@@ -329,7 +329,7 @@ class TestBuses:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.buses.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
@@ -344,7 +344,7 @@ class TestBuses:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.buses.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
@@ -360,14 +360,14 @@ class TestBuses:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.buses.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="Example name",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -706,7 +706,7 @@ class TestAsyncBuses:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
@@ -717,12 +717,12 @@ class TestAsyncBuses:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
             source="Bluestaq",
-            id_2="BUS-ID",
+            body_id="BUS-ID",
             aocs_notes="Example notes",
             avg_dry_mass=2879.1,
             avg_payload_mass=10.1,
@@ -825,7 +825,7 @@ class TestAsyncBuses:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.buses.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
@@ -840,7 +840,7 @@ class TestAsyncBuses:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.buses.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="Example name",
@@ -856,14 +856,14 @@ class TestAsyncBuses:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.buses.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="Example name",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

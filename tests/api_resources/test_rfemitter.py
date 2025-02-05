@@ -127,7 +127,7 @@ class TestRfemitter:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         rfemitter = client.rfemitter.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
@@ -138,12 +138,12 @@ class TestRfemitter:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfemitter = client.rfemitter.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
             source="Bluestaq",
-            id_2="RFEMITTER-ID",
+            body_id="RFEMITTER-ID",
             entity={
                 "classification_marking": "U",
                 "data_mode": "REAL",
@@ -201,7 +201,7 @@ class TestRfemitter:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.rfemitter.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
@@ -216,7 +216,7 @@ class TestRfemitter:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.rfemitter.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
@@ -232,14 +232,14 @@ class TestRfemitter:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.rfemitter.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="RF_NAME",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -533,7 +533,7 @@ class TestAsyncRfemitter:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitter = await async_client.rfemitter.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
@@ -544,12 +544,12 @@ class TestAsyncRfemitter:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitter = await async_client.rfemitter.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
             source="Bluestaq",
-            id_2="RFEMITTER-ID",
+            body_id="RFEMITTER-ID",
             entity={
                 "classification_marking": "U",
                 "data_mode": "REAL",
@@ -607,7 +607,7 @@ class TestAsyncRfemitter:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfemitter.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
@@ -622,7 +622,7 @@ class TestAsyncRfemitter:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfemitter.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="RF_NAME",
@@ -638,14 +638,14 @@ class TestAsyncRfemitter:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.rfemitter.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="RF_NAME",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

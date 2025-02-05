@@ -87,7 +87,7 @@ class TestSurfaceobstruction:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -98,12 +98,12 @@ class TestSurfaceobstruction:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
-            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
             advisory_required=["C20", "C17"],
             approval_required=["C20", "C17"],
             distance_from_center_line=17.8,
@@ -122,7 +122,7 @@ class TestSurfaceobstruction:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.surfaceobstruction.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -137,7 +137,7 @@ class TestSurfaceobstruction:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.surfaceobstruction.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -153,14 +153,14 @@ class TestSurfaceobstruction:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.surfaceobstruction.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -467,7 +467,7 @@ class TestAsyncSurfaceobstruction:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -478,12 +478,12 @@ class TestAsyncSurfaceobstruction:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
-            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
             advisory_required=["C20", "C17"],
             approval_required=["C20", "C17"],
             distance_from_center_line=17.8,
@@ -502,7 +502,7 @@ class TestAsyncSurfaceobstruction:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.surfaceobstruction.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -517,7 +517,7 @@ class TestAsyncSurfaceobstruction:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.surfaceobstruction.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -533,14 +533,14 @@ class TestAsyncSurfaceobstruction:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.surfaceobstruction.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

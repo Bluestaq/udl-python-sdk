@@ -101,7 +101,7 @@ class TestSeradatacommdetails:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         seradatacommdetail = client.seradatacommdetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -111,11 +111,11 @@ class TestSeradatacommdetails:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatacommdetail = client.seradatacommdetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="SERADATACOMMDETAILS-ID",
+            body_id="SERADATACOMMDETAILS-ID",
             band="X",
             bandwidth=1.23,
             eirp=1.23,
@@ -152,7 +152,7 @@ class TestSeradatacommdetails:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.seradatacommdetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -166,7 +166,7 @@ class TestSeradatacommdetails:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.seradatacommdetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -181,13 +181,13 @@ class TestSeradatacommdetails:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.seradatacommdetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -456,7 +456,7 @@ class TestAsyncSeradatacommdetails:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatacommdetail = await async_client.seradatacommdetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -466,11 +466,11 @@ class TestAsyncSeradatacommdetails:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatacommdetail = await async_client.seradatacommdetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="SERADATACOMMDETAILS-ID",
+            body_id="SERADATACOMMDETAILS-ID",
             band="X",
             bandwidth=1.23,
             eirp=1.23,
@@ -507,7 +507,7 @@ class TestAsyncSeradatacommdetails:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatacommdetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -521,7 +521,7 @@ class TestAsyncSeradatacommdetails:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradatacommdetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -536,13 +536,13 @@ class TestAsyncSeradatacommdetails:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.seradatacommdetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

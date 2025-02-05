@@ -162,7 +162,7 @@ class TestAirEvents:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -173,12 +173,12 @@ class TestAirEvents:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
             type="FUEL TRANSFER",
-            id_2="026dd511-8ba5-47d3-9909-836149f87686",
+            body_id="026dd511-8ba5-47d3-9909-836149f87686",
             actual_arr_time=parse_datetime("2024-01-07T14:00:03.123Z"),
             actual_dep_time=parse_datetime("2024-01-07T14:17:03.123Z"),
             arct=parse_datetime("2024-01-07T15:11:27.123Z"),
@@ -271,7 +271,7 @@ class TestAirEvents:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.air_events.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -286,7 +286,7 @@ class TestAirEvents:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.air_events.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -302,14 +302,14 @@ class TestAirEvents:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.air_events.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
                 type="FUEL TRANSFER",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -742,7 +742,7 @@ class TestAsyncAirEvents:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -753,12 +753,12 @@ class TestAsyncAirEvents:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
             type="FUEL TRANSFER",
-            id_2="026dd511-8ba5-47d3-9909-836149f87686",
+            body_id="026dd511-8ba5-47d3-9909-836149f87686",
             actual_arr_time=parse_datetime("2024-01-07T14:00:03.123Z"),
             actual_dep_time=parse_datetime("2024-01-07T14:17:03.123Z"),
             arct=parse_datetime("2024-01-07T15:11:27.123Z"),
@@ -851,7 +851,7 @@ class TestAsyncAirEvents:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_events.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -866,7 +866,7 @@ class TestAsyncAirEvents:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_events.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -882,14 +882,14 @@ class TestAsyncAirEvents:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.air_events.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
                 type="FUEL TRANSFER",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

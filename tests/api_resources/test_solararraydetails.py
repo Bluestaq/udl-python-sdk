@@ -83,7 +83,7 @@ class TestSolararraydetails:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         solararraydetail = client.solararraydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
@@ -94,12 +94,12 @@ class TestSolararraydetails:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         solararraydetail = client.solararraydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
-            id_2="SOLARARRAYDETAILS-ID",
+            body_id="SOLARARRAYDETAILS-ID",
             area=123.4,
             description="Example notes",
             junction_technology="Triple",
@@ -115,7 +115,7 @@ class TestSolararraydetails:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.solararraydetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
@@ -130,7 +130,7 @@ class TestSolararraydetails:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.solararraydetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
@@ -146,14 +146,14 @@ class TestSolararraydetails:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.solararraydetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -333,7 +333,7 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararraydetail = await async_client.solararraydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
@@ -344,12 +344,12 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararraydetail = await async_client.solararraydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
-            id_2="SOLARARRAYDETAILS-ID",
+            body_id="SOLARARRAYDETAILS-ID",
             area=123.4,
             description="Example notes",
             junction_technology="Triple",
@@ -365,7 +365,7 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.solararraydetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
@@ -380,7 +380,7 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.solararraydetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_solar_array="SOLARARRAY-ID",
@@ -396,14 +396,14 @@ class TestAsyncSolararraydetails:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.solararraydetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

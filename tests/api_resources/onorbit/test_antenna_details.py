@@ -129,7 +129,7 @@ class TestAntennaDetails:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
@@ -140,12 +140,12 @@ class TestAntennaDetails:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
-            id_2="ANTENNADETAILS-ID",
+            body_id="ANTENNADETAILS-ID",
             beam_forming=False,
             beamwidth=14.1,
             description="Description of antenna A",
@@ -169,7 +169,7 @@ class TestAntennaDetails:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.onorbit.antenna_details.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
@@ -184,7 +184,7 @@ class TestAntennaDetails:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.onorbit.antenna_details.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
@@ -200,14 +200,14 @@ class TestAntennaDetails:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.onorbit.antenna_details.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_antenna="ANTENNA-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -386,7 +386,7 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
@@ -397,12 +397,12 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
-            id_2="ANTENNADETAILS-ID",
+            body_id="ANTENNADETAILS-ID",
             beam_forming=False,
             beamwidth=14.1,
             description="Description of antenna A",
@@ -426,7 +426,7 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbit.antenna_details.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
@@ -441,7 +441,7 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbit.antenna_details.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_antenna="ANTENNA-ID",
@@ -457,14 +457,14 @@ class TestAsyncAntennaDetails:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.onorbit.antenna_details.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_antenna="ANTENNA-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

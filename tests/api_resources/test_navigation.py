@@ -127,7 +127,7 @@ class TestNavigation:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
@@ -138,12 +138,12 @@ class TestNavigation:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
             source="Bluestaq",
-            id_2="NAVIGATION-ID",
+            body_id="NAVIGATION-ID",
             description="DESCRIPTION",
             entity={
                 "classification_marking": "U",
@@ -201,7 +201,7 @@ class TestNavigation:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.navigation.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
@@ -216,7 +216,7 @@ class TestNavigation:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.navigation.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
@@ -232,14 +232,14 @@ class TestNavigation:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.navigation.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="NAME",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -533,7 +533,7 @@ class TestAsyncNavigation:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
@@ -544,12 +544,12 @@ class TestAsyncNavigation:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
             source="Bluestaq",
-            id_2="NAVIGATION-ID",
+            body_id="NAVIGATION-ID",
             description="DESCRIPTION",
             entity={
                 "classification_marking": "U",
@@ -607,7 +607,7 @@ class TestAsyncNavigation:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.navigation.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
@@ -622,7 +622,7 @@ class TestAsyncNavigation:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.navigation.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="NAME",
@@ -638,14 +638,14 @@ class TestAsyncNavigation:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.navigation.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="NAME",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

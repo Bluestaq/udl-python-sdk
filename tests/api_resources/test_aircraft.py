@@ -176,7 +176,7 @@ class TestAircraft:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         aircraft = client.aircraft.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
@@ -187,12 +187,12 @@ class TestAircraft:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft = client.aircraft.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             category="M",
             command="HQACC",
             cruise_speed=915,
@@ -261,7 +261,7 @@ class TestAircraft:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
@@ -276,7 +276,7 @@ class TestAircraft:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.aircraft.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
@@ -292,14 +292,14 @@ class TestAircraft:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.aircraft.with_raw_response.update(
-                id_1="",
+                path_id="",
                 aircraft_mds="E-2C HAWKEYE",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -566,7 +566,7 @@ class TestAsyncAircraft:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft = await async_client.aircraft.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
@@ -577,12 +577,12 @@ class TestAsyncAircraft:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft = await async_client.aircraft.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             category="M",
             command="HQACC",
             cruise_speed=915,
@@ -651,7 +651,7 @@ class TestAsyncAircraft:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraft.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
@@ -666,7 +666,7 @@ class TestAsyncAircraft:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraft.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
             data_mode="REAL",
@@ -682,14 +682,14 @@ class TestAsyncAircraft:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.aircraft.with_raw_response.update(
-                id_1="",
+                path_id="",
                 aircraft_mds="E-2C HAWKEYE",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

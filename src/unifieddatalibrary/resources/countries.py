@@ -171,9 +171,9 @@ class CountriesResource(SyncAPIResource):
 
     def update(
         self,
-        code_1: str,
+        path_code: str,
         *,
-        code_2: str,
+        body_code: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         code_alt: str | NotGiven = NOT_GIVEN,
@@ -193,7 +193,7 @@ class CountriesResource(SyncAPIResource):
         perform this service operation. Please contact the UDL team for assistance.
 
         Args:
-          code_2: The country code. Optimally, this value is the ISO 3166 Alpha-2-two-character
+          body_code: The country code. Optimally, this value is the ISO 3166 Alpha-2-two-character
               country code, however it can represent various consortiums that do not appear in
               the ISO document.
 
@@ -236,14 +236,14 @@ class CountriesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not code_1:
-            raise ValueError(f"Expected a non-empty value for `code_1` but received {code_1!r}")
+        if not path_code:
+            raise ValueError(f"Expected a non-empty value for `path_code` but received {path_code!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/udl/country/{code_1}",
+            f"/udl/country/{path_code}",
             body=maybe_transform(
                 {
-                    "code_2": code_2,
+                    "body_code": body_code,
                     "data_mode": data_mode,
                     "source": source,
                     "code_alt": code_alt,
@@ -559,9 +559,9 @@ class AsyncCountriesResource(AsyncAPIResource):
 
     async def update(
         self,
-        code_1: str,
+        path_code: str,
         *,
-        code_2: str,
+        body_code: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         code_alt: str | NotGiven = NOT_GIVEN,
@@ -581,7 +581,7 @@ class AsyncCountriesResource(AsyncAPIResource):
         perform this service operation. Please contact the UDL team for assistance.
 
         Args:
-          code_2: The country code. Optimally, this value is the ISO 3166 Alpha-2-two-character
+          body_code: The country code. Optimally, this value is the ISO 3166 Alpha-2-two-character
               country code, however it can represent various consortiums that do not appear in
               the ISO document.
 
@@ -624,14 +624,14 @@ class AsyncCountriesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not code_1:
-            raise ValueError(f"Expected a non-empty value for `code_1` but received {code_1!r}")
+        if not path_code:
+            raise ValueError(f"Expected a non-empty value for `path_code` but received {path_code!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/udl/country/{code_1}",
+            f"/udl/country/{path_code}",
             body=await async_maybe_transform(
                 {
-                    "code_2": code_2,
+                    "body_code": body_code,
                     "data_mode": data_mode,
                     "source": source,
                     "code_alt": code_alt,

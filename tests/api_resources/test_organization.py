@@ -88,7 +88,7 @@ class TestOrganization:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
@@ -100,13 +100,13 @@ class TestOrganization:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
             source="some.user",
             type="GOVERNMENT",
-            id_2="ORGANIZATION-ID",
+            body_id="ORGANIZATION-ID",
             active=False,
             category="Private company",
             country_code="US",
@@ -120,7 +120,7 @@ class TestOrganization:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.organization.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
@@ -136,7 +136,7 @@ class TestOrganization:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.organization.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
@@ -153,15 +153,15 @@ class TestOrganization:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.organization.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="some.user",
                 source="some.user",
                 type="GOVERNMENT",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -465,7 +465,7 @@ class TestAsyncOrganization:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         organization = await async_client.organization.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
@@ -477,13 +477,13 @@ class TestAsyncOrganization:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         organization = await async_client.organization.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
             source="some.user",
             type="GOVERNMENT",
-            id_2="ORGANIZATION-ID",
+            body_id="ORGANIZATION-ID",
             active=False,
             category="Private company",
             country_code="US",
@@ -497,7 +497,7 @@ class TestAsyncOrganization:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.organization.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
@@ -513,7 +513,7 @@ class TestAsyncOrganization:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.organization.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="some.user",
@@ -530,15 +530,15 @@ class TestAsyncOrganization:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.organization.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="some.user",
                 source="some.user",
                 type="GOVERNMENT",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

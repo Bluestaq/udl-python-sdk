@@ -10,7 +10,7 @@ __all__ = ["CountryUpdateParams"]
 
 
 class CountryUpdateParams(TypedDict, total=False):
-    code_2: Required[Annotated[str, PropertyInfo(alias="code")]]
+    body_code: Required[Annotated[str, PropertyInfo(alias="code")]]
     """The country code.
 
     Optimally, this value is the ISO 3166 Alpha-2-two-character country code,

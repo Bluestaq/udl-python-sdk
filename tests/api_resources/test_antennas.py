@@ -110,7 +110,7 @@ class TestAntennas:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
@@ -120,11 +120,11 @@ class TestAntennas:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
-            id_2="ANTENNA-ID",
+            body_id="ANTENNA-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert antenna is None
@@ -132,7 +132,7 @@ class TestAntennas:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.antennas.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
@@ -146,7 +146,7 @@ class TestAntennas:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.antennas.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
@@ -161,13 +161,13 @@ class TestAntennas:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.antennas.with_raw_response.update(
-                id_1="",
+                path_id="",
                 data_mode="REAL",
                 name="IRIDIUM NEXT 121-ANTENNA-10075",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -407,7 +407,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
@@ -417,11 +417,11 @@ class TestAsyncAntennas:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
-            id_2="ANTENNA-ID",
+            body_id="ANTENNA-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert antenna is None
@@ -429,7 +429,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.antennas.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
@@ -443,7 +443,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.antennas.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
@@ -458,13 +458,13 @@ class TestAsyncAntennas:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.antennas.with_raw_response.update(
-                id_1="",
+                path_id="",
                 data_mode="REAL",
                 name="IRIDIUM NEXT 121-ANTENNA-10075",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

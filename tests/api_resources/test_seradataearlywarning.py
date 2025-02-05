@@ -89,7 +89,7 @@ class TestSeradataearlywarning:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -100,12 +100,12 @@ class TestSeradataearlywarning:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
-            id_2="SERADATAEARLYWARNING-ID",
+            body_id="SERADATAEARLYWARNING-ID",
             best_resolution=1.23,
             earth_pointing=True,
             frequency_limits="frequencyLimits",
@@ -126,7 +126,7 @@ class TestSeradataearlywarning:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.seradataearlywarning.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -141,7 +141,7 @@ class TestSeradataearlywarning:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.seradataearlywarning.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -157,14 +157,14 @@ class TestSeradataearlywarning:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.seradataearlywarning.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -421,7 +421,7 @@ class TestAsyncSeradataearlywarning:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -432,12 +432,12 @@ class TestAsyncSeradataearlywarning:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
-            id_2="SERADATAEARLYWARNING-ID",
+            body_id="SERADATAEARLYWARNING-ID",
             best_resolution=1.23,
             earth_pointing=True,
             frequency_limits="frequencyLimits",
@@ -458,7 +458,7 @@ class TestAsyncSeradataearlywarning:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataearlywarning.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -473,7 +473,7 @@ class TestAsyncSeradataearlywarning:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradataearlywarning.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -489,14 +489,14 @@ class TestAsyncSeradataearlywarning:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.seradataearlywarning.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

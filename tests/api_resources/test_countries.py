@@ -112,8 +112,8 @@ class TestCountries:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         country = client.countries.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
         )
@@ -122,8 +122,8 @@ class TestCountries:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         country = client.countries.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
             code_alt="US",
@@ -136,8 +136,8 @@ class TestCountries:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.countries.with_raw_response.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
         )
@@ -150,8 +150,8 @@ class TestCountries:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.countries.with_streaming_response.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
         ) as response:
@@ -165,10 +165,10 @@ class TestCountries:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `code_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_code` but received ''"):
             client.countries.with_raw_response.update(
-                code_1="",
-                code_2="",
+                path_code="",
+                body_code="",
                 data_mode="REAL",
                 source="Bluestaq",
             )
@@ -412,8 +412,8 @@ class TestAsyncCountries:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
         )
@@ -422,8 +422,8 @@ class TestAsyncCountries:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
             code_alt="US",
@@ -436,8 +436,8 @@ class TestAsyncCountries:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.countries.with_raw_response.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
         )
@@ -450,8 +450,8 @@ class TestAsyncCountries:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.countries.with_streaming_response.update(
-            code_1="code",
-            code_2="US",
+            path_code="code",
+            body_code="US",
             data_mode="REAL",
             source="Bluestaq",
         ) as response:
@@ -465,10 +465,10 @@ class TestAsyncCountries:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `code_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_code` but received ''"):
             await async_client.countries.with_raw_response.update(
-                code_1="",
-                code_2="",
+                path_code="",
+                body_code="",
                 data_mode="REAL",
                 source="Bluestaq",
             )

@@ -125,7 +125,7 @@ class TestStarcatalog:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         starcatalog = client.starcatalog.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -140,7 +140,7 @@ class TestStarcatalog:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         starcatalog = client.starcatalog.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -149,7 +149,7 @@ class TestStarcatalog:
             ra=14.43,
             source="Bluestaq",
             star_epoch=2016,
-            id_2="STAR-CAT-DATASET-ID",
+            body_id="STAR-CAT-DATASET-ID",
             bpmag=0.04559,
             bpmag_unc=0.2227,
             cat_version="1.23",
@@ -190,7 +190,7 @@ class TestStarcatalog:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.starcatalog.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -209,7 +209,7 @@ class TestStarcatalog:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.starcatalog.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -229,9 +229,9 @@ class TestStarcatalog:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.starcatalog.with_raw_response.update(
-                id_1="",
+                path_id="",
                 astrometry_origin="GAIADR3",
                 classification_marking="U",
                 cs_id=12345,
@@ -240,7 +240,7 @@ class TestStarcatalog:
                 ra=14.43,
                 source="Bluestaq",
                 star_epoch=2016,
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -686,7 +686,7 @@ class TestAsyncStarcatalog:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         starcatalog = await async_client.starcatalog.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -701,7 +701,7 @@ class TestAsyncStarcatalog:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         starcatalog = await async_client.starcatalog.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -710,7 +710,7 @@ class TestAsyncStarcatalog:
             ra=14.43,
             source="Bluestaq",
             star_epoch=2016,
-            id_2="STAR-CAT-DATASET-ID",
+            body_id="STAR-CAT-DATASET-ID",
             bpmag=0.04559,
             bpmag_unc=0.2227,
             cat_version="1.23",
@@ -751,7 +751,7 @@ class TestAsyncStarcatalog:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.starcatalog.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -770,7 +770,7 @@ class TestAsyncStarcatalog:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.starcatalog.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             astrometry_origin="GAIADR3",
             classification_marking="U",
             cs_id=12345,
@@ -790,9 +790,9 @@ class TestAsyncStarcatalog:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.starcatalog.with_raw_response.update(
-                id_1="",
+                path_id="",
                 astrometry_origin="GAIADR3",
                 classification_marking="U",
                 cs_id=12345,
@@ -801,7 +801,7 @@ class TestAsyncStarcatalog:
                 ra=14.43,
                 source="Bluestaq",
                 star_epoch=2016,
-                id_2="",
+                body_id="",
             )
 
     @parametrize

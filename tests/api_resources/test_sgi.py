@@ -124,7 +124,7 @@ class TestSgi:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -136,13 +136,13 @@ class TestSgi:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
-            id_2="SGI-ID",
+            body_id="SGI-ID",
             analyzer_attenuation=5.1,
             ap=1.23,
             ap_duration=3,
@@ -193,7 +193,7 @@ class TestSgi:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.sgi.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -209,7 +209,7 @@ class TestSgi:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.sgi.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -226,15 +226,15 @@ class TestSgi:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.sgi.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -693,7 +693,7 @@ class TestAsyncSgi:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -705,13 +705,13 @@ class TestAsyncSgi:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
-            id_2="SGI-ID",
+            body_id="SGI-ID",
             analyzer_attenuation=5.1,
             ap=1.23,
             ap_duration=3,
@@ -762,7 +762,7 @@ class TestAsyncSgi:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sgi.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -778,7 +778,7 @@ class TestAsyncSgi:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sgi.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -795,15 +795,15 @@ class TestAsyncSgi:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.sgi.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

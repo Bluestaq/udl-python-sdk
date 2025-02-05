@@ -159,7 +159,7 @@ class TestDiplomaticClearance:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
@@ -171,13 +171,13 @@ class TestDiplomaticClearance:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
-            id_2="25059135-4afc-45c2-b78b-d6e843dbd96d",
+            body_id="25059135-4afc-45c2-b78b-d6e843dbd96d",
             apacs_id="1083034",
             diplomatic_clearance_details=[
                 {
@@ -225,7 +225,7 @@ class TestDiplomaticClearance:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.diplomatic_clearance.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
@@ -241,7 +241,7 @@ class TestDiplomaticClearance:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.diplomatic_clearance.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
@@ -258,15 +258,15 @@ class TestDiplomaticClearance:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.diplomatic_clearance.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
                 id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -624,7 +624,7 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
@@ -636,13 +636,13 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
-            id_2="25059135-4afc-45c2-b78b-d6e843dbd96d",
+            body_id="25059135-4afc-45c2-b78b-d6e843dbd96d",
             apacs_id="1083034",
             diplomatic_clearance_details=[
                 {
@@ -690,7 +690,7 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.diplomatic_clearance.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
@@ -706,7 +706,7 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.diplomatic_clearance.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
@@ -723,15 +723,15 @@ class TestAsyncDiplomaticClearance:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.diplomatic_clearance.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
                 id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

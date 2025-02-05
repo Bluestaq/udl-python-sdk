@@ -87,7 +87,7 @@ class TestOnorbitsolararray:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         onorbitsolararray = client.onorbitsolararray.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
@@ -99,13 +99,13 @@ class TestOnorbitsolararray:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitsolararray = client.onorbitsolararray.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
-            id_2="ONORBITSOLARARRAY-ID",
+            body_id="ONORBITSOLARARRAY-ID",
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             solar_array={
@@ -121,7 +121,7 @@ class TestOnorbitsolararray:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitsolararray.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
@@ -137,7 +137,7 @@ class TestOnorbitsolararray:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.onorbitsolararray.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
@@ -154,15 +154,15 @@ class TestOnorbitsolararray:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.onorbitsolararray.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_on_orbit="ONORBIT-ID",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -337,7 +337,7 @@ class TestAsyncOnorbitsolararray:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitsolararray = await async_client.onorbitsolararray.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
@@ -349,13 +349,13 @@ class TestAsyncOnorbitsolararray:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitsolararray = await async_client.onorbitsolararray.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
-            id_2="ONORBITSOLARARRAY-ID",
+            body_id="ONORBITSOLARARRAY-ID",
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             solar_array={
@@ -371,7 +371,7 @@ class TestAsyncOnorbitsolararray:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitsolararray.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
@@ -387,7 +387,7 @@ class TestAsyncOnorbitsolararray:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitsolararray.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="ONORBIT-ID",
@@ -404,15 +404,15 @@ class TestAsyncOnorbitsolararray:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.onorbitsolararray.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_on_orbit="ONORBIT-ID",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

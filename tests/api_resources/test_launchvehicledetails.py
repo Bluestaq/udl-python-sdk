@@ -121,7 +121,7 @@ class TestLaunchvehicledetails:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         launchvehicledetail = client.launchvehicledetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
@@ -132,12 +132,12 @@ class TestLaunchvehicledetails:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchvehicledetail = client.launchvehicledetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
-            id_2="LAUNCHVEHICLEDETAILS-ID",
+            body_id="LAUNCHVEHICLEDETAILS-ID",
             attitude_accuracy=10.23,
             category="Example-category",
             deployment_rotation_rate=10.23,
@@ -191,7 +191,7 @@ class TestLaunchvehicledetails:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.launchvehicledetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
@@ -206,7 +206,7 @@ class TestLaunchvehicledetails:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.launchvehicledetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
@@ -222,14 +222,14 @@ class TestLaunchvehicledetails:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.launchvehicledetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -438,7 +438,7 @@ class TestAsyncLaunchvehicledetails:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicledetail = await async_client.launchvehicledetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
@@ -449,12 +449,12 @@ class TestAsyncLaunchvehicledetails:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicledetail = await async_client.launchvehicledetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
-            id_2="LAUNCHVEHICLEDETAILS-ID",
+            body_id="LAUNCHVEHICLEDETAILS-ID",
             attitude_accuracy=10.23,
             category="Example-category",
             deployment_rotation_rate=10.23,
@@ -508,7 +508,7 @@ class TestAsyncLaunchvehicledetails:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchvehicledetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
@@ -523,7 +523,7 @@ class TestAsyncLaunchvehicledetails:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchvehicledetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
@@ -539,14 +539,14 @@ class TestAsyncLaunchvehicledetails:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.launchvehicledetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
