@@ -80,7 +80,7 @@ class TestTaiutc:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         taiutc = client.taiutc.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
@@ -91,12 +91,12 @@ class TestTaiutc:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         taiutc = client.taiutc.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="TAIUTC-ID",
+            body_id="TAIUTC-ID",
             multiplication_factor=0.001296,
             origin="THIRD_PARTY_DATASOURCE",
             raw_file_uri="/TAI/2019/01/22/4318471007562436-tai-utc.dat",
@@ -107,7 +107,7 @@ class TestTaiutc:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.taiutc.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
@@ -122,7 +122,7 @@ class TestTaiutc:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.taiutc.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
@@ -138,14 +138,14 @@ class TestTaiutc:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.taiutc.with_raw_response.update(
-                id_1="",
+                path_id="",
                 adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -407,7 +407,7 @@ class TestAsyncTaiutc:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         taiutc = await async_client.taiutc.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
@@ -418,12 +418,12 @@ class TestAsyncTaiutc:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         taiutc = await async_client.taiutc.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="TAIUTC-ID",
+            body_id="TAIUTC-ID",
             multiplication_factor=0.001296,
             origin="THIRD_PARTY_DATASOURCE",
             raw_file_uri="/TAI/2019/01/22/4318471007562436-tai-utc.dat",
@@ -434,7 +434,7 @@ class TestAsyncTaiutc:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.taiutc.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
@@ -449,7 +449,7 @@ class TestAsyncTaiutc:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.taiutc.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
             data_mode="REAL",
@@ -465,14 +465,14 @@ class TestAsyncTaiutc:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.taiutc.with_raw_response.update(
-                id_1="",
+                path_id="",
                 adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

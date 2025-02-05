@@ -81,7 +81,7 @@ class TestOnorbitthruster:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -93,13 +93,13 @@ class TestOnorbitthruster:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
-            id_2="ONORBITTHRUSTER-ID",
+            body_id="ONORBITTHRUSTER-ID",
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             type="Hydrazine REA",
@@ -109,7 +109,7 @@ class TestOnorbitthruster:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitthruster.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -125,7 +125,7 @@ class TestOnorbitthruster:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.onorbitthruster.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -142,15 +142,15 @@ class TestOnorbitthruster:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.onorbitthruster.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_engine="ENGINE-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -319,7 +319,7 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -331,13 +331,13 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
-            id_2="ONORBITTHRUSTER-ID",
+            body_id="ONORBITTHRUSTER-ID",
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             type="Hydrazine REA",
@@ -347,7 +347,7 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitthruster.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -363,7 +363,7 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitthruster.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -380,15 +380,15 @@ class TestAsyncOnorbitthruster:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.onorbitthruster.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_engine="ENGINE-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

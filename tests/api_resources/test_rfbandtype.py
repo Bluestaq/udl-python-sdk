@@ -81,8 +81,8 @@ class TestRfbandtype:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         rfbandtype = client.rfbandtype.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -93,8 +93,8 @@ class TestRfbandtype:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfbandtype = client.rfbandtype.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -108,8 +108,8 @@ class TestRfbandtype:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.rfbandtype.with_raw_response.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -124,8 +124,8 @@ class TestRfbandtype:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.rfbandtype.with_streaming_response.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -141,10 +141,10 @@ class TestRfbandtype:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.rfbandtype.with_raw_response.update(
-                id_1="",
-                id_2="",
+                path_id="",
+                body_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 description="Example description",
@@ -397,8 +397,8 @@ class TestAsyncRfbandtype:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfbandtype = await async_client.rfbandtype.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -409,8 +409,8 @@ class TestAsyncRfbandtype:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfbandtype = await async_client.rfbandtype.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -424,8 +424,8 @@ class TestAsyncRfbandtype:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfbandtype.with_raw_response.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -440,8 +440,8 @@ class TestAsyncRfbandtype:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfbandtype.with_streaming_response.update(
-            id_1="id",
-            id_2="Ku",
+            path_id="id",
+            body_id="Ku",
             classification_marking="U",
             data_mode="REAL",
             description="Example description",
@@ -457,10 +457,10 @@ class TestAsyncRfbandtype:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.rfbandtype.with_raw_response.update(
-                id_1="",
-                id_2="",
+                path_id="",
+                body_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 description="Example description",

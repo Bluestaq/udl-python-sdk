@@ -120,7 +120,7 @@ class TestBatterydetails:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         batterydetail = client.batterydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
@@ -131,12 +131,12 @@ class TestBatterydetails:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         batterydetail = client.batterydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
             source="Bluestaq",
-            id_2="BATTERYDETAILS-ID",
+            body_id="BATTERYDETAILS-ID",
             capacity=10.1,
             description="example notes",
             discharge_depth=0.2,
@@ -151,7 +151,7 @@ class TestBatterydetails:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.batterydetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
@@ -166,7 +166,7 @@ class TestBatterydetails:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.batterydetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
@@ -182,14 +182,14 @@ class TestBatterydetails:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.batterydetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_battery="BATTERY-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -359,7 +359,7 @@ class TestAsyncBatterydetails:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         batterydetail = await async_client.batterydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
@@ -370,12 +370,12 @@ class TestAsyncBatterydetails:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         batterydetail = await async_client.batterydetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
             source="Bluestaq",
-            id_2="BATTERYDETAILS-ID",
+            body_id="BATTERYDETAILS-ID",
             capacity=10.1,
             description="example notes",
             discharge_depth=0.2,
@@ -390,7 +390,7 @@ class TestAsyncBatterydetails:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batterydetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
@@ -405,7 +405,7 @@ class TestAsyncBatterydetails:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.batterydetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_battery="BATTERY-ID",
@@ -421,14 +421,14 @@ class TestAsyncBatterydetails:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.batterydetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_battery="BATTERY-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

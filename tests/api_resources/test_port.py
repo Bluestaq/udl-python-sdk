@@ -86,7 +86,7 @@ class TestPort:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         port = client.port.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -96,11 +96,11 @@ class TestPort:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         port = client.port.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="026dd511-8ba5-47d3-9909-836149f87686",
+            body_id="026dd511-8ba5-47d3-9909-836149f87686",
             avg_duration=41.1,
             country_code="US",
             external_id="fe4ad5dc-0128-4ce8-b09c-0b404322025e",
@@ -122,7 +122,7 @@ class TestPort:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.port.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -136,7 +136,7 @@ class TestPort:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.port.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -151,13 +151,13 @@ class TestPort:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.port.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -422,7 +422,7 @@ class TestAsyncPort:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -432,11 +432,11 @@ class TestAsyncPort:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
-            id_2="026dd511-8ba5-47d3-9909-836149f87686",
+            body_id="026dd511-8ba5-47d3-9909-836149f87686",
             avg_duration=41.1,
             country_code="US",
             external_id="fe4ad5dc-0128-4ce8-b09c-0b404322025e",
@@ -458,7 +458,7 @@ class TestAsyncPort:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.port.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -472,7 +472,7 @@ class TestAsyncPort:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.port.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -487,13 +487,13 @@ class TestAsyncPort:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.port.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

@@ -19,7 +19,7 @@ class TestAirloadplans:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         airloadplan = client.airloadplans.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
@@ -30,12 +30,12 @@ class TestAirloadplans:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         airloadplan = client.airloadplans.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
-            id_2="0457f578-e29c-312e-85aa-0a04a430bdd0",
+            body_id="0457f578-e29c-312e-85aa-0a04a430bdd0",
             acl_onboard=500.1,
             acl_released=200.1,
             aircraft_mds="C17A",
@@ -183,7 +183,7 @@ class TestAirloadplans:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.airloadplans.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
@@ -198,7 +198,7 @@ class TestAirloadplans:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.airloadplans.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
@@ -214,14 +214,14 @@ class TestAirloadplans:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.airloadplans.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -269,7 +269,7 @@ class TestAsyncAirloadplans:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         airloadplan = await async_client.airloadplans.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
@@ -280,12 +280,12 @@ class TestAsyncAirloadplans:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airloadplan = await async_client.airloadplans.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
-            id_2="0457f578-e29c-312e-85aa-0a04a430bdd0",
+            body_id="0457f578-e29c-312e-85aa-0a04a430bdd0",
             acl_onboard=500.1,
             acl_released=200.1,
             aircraft_mds="C17A",
@@ -433,7 +433,7 @@ class TestAsyncAirloadplans:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airloadplans.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
@@ -448,7 +448,7 @@ class TestAsyncAirloadplans:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airloadplans.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
@@ -464,14 +464,14 @@ class TestAsyncAirloadplans:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.airloadplans.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

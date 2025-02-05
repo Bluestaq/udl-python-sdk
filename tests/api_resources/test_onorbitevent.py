@@ -122,7 +122,7 @@ class TestOnorbitevent:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         onorbitevent = client.onorbitevent.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -133,12 +133,12 @@ class TestOnorbitevent:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitevent = client.onorbitevent.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
-            id_2="ONORBITEVENT-ID",
+            body_id="ONORBITEVENT-ID",
             achieved_flight_phase="Phase 2",
             age_at_event=5.23,
             capability_loss=0.5,
@@ -191,7 +191,7 @@ class TestOnorbitevent:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitevent.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -206,7 +206,7 @@ class TestOnorbitevent:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.onorbitevent.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -222,14 +222,14 @@ class TestOnorbitevent:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.onorbitevent.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -518,7 +518,7 @@ class TestAsyncOnorbitevent:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitevent = await async_client.onorbitevent.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -529,12 +529,12 @@ class TestAsyncOnorbitevent:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitevent = await async_client.onorbitevent.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
-            id_2="ONORBITEVENT-ID",
+            body_id="ONORBITEVENT-ID",
             achieved_flight_phase="Phase 2",
             age_at_event=5.23,
             capability_loss=0.5,
@@ -587,7 +587,7 @@ class TestAsyncOnorbitevent:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitevent.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -602,7 +602,7 @@ class TestAsyncOnorbitevent:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitevent.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -618,14 +618,14 @@ class TestAsyncOnorbitevent:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.onorbitevent.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

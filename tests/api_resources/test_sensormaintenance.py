@@ -105,7 +105,7 @@ class TestSensormaintenance:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -118,14 +118,14 @@ class TestSensormaintenance:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            id_2="SENSORMAINTENANCE-ID",
+            body_id="SENSORMAINTENANCE-ID",
             activity="Activity Description",
             approver="approver",
             changer="changer",
@@ -152,7 +152,7 @@ class TestSensormaintenance:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.sensormaintenance.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -169,7 +169,7 @@ class TestSensormaintenance:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.sensormaintenance.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -187,16 +187,16 @@ class TestSensormaintenance:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.sensormaintenance.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 site_code="site01",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -614,7 +614,7 @@ class TestAsyncSensormaintenance:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -627,14 +627,14 @@ class TestAsyncSensormaintenance:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            id_2="SENSORMAINTENANCE-ID",
+            body_id="SENSORMAINTENANCE-ID",
             activity="Activity Description",
             approver="approver",
             changer="changer",
@@ -661,7 +661,7 @@ class TestAsyncSensormaintenance:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensormaintenance.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -678,7 +678,7 @@ class TestAsyncSensormaintenance:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensormaintenance.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -696,16 +696,16 @@ class TestAsyncSensormaintenance:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.sensormaintenance.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 site_code="site01",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-                id_2="",
+                body_id="",
             )
 
     @parametrize

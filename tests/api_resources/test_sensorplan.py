@@ -313,7 +313,7 @@ class TestSensorplan:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         sensorplan = client.sensorplan.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
@@ -326,14 +326,14 @@ class TestSensorplan:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensorplan = client.sensorplan.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="PLAN",
-            id_2="SENSORPLAN-ID",
+            body_id="SENSORPLAN-ID",
             collect_requests=[
                 {
                     "classification_marking": "U",
@@ -569,7 +569,7 @@ class TestSensorplan:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.sensorplan.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
@@ -586,7 +586,7 @@ class TestSensorplan:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.sensorplan.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
@@ -604,16 +604,16 @@ class TestSensorplan:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.sensorplan.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 rec_type="COLLECT",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 type="PLAN",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -1128,7 +1128,7 @@ class TestAsyncSensorplan:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorplan = await async_client.sensorplan.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
@@ -1141,14 +1141,14 @@ class TestAsyncSensorplan:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorplan = await async_client.sensorplan.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="PLAN",
-            id_2="SENSORPLAN-ID",
+            body_id="SENSORPLAN-ID",
             collect_requests=[
                 {
                     "classification_marking": "U",
@@ -1384,7 +1384,7 @@ class TestAsyncSensorplan:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensorplan.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
@@ -1401,7 +1401,7 @@ class TestAsyncSensorplan:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensorplan.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             rec_type="COLLECT",
@@ -1419,16 +1419,16 @@ class TestAsyncSensorplan:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.sensorplan.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 rec_type="COLLECT",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 type="PLAN",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

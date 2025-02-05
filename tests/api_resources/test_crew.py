@@ -168,7 +168,7 @@ class TestCrew:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
@@ -179,12 +179,12 @@ class TestCrew:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
-            id_2="bdad6945-c9e4-b829-f7be-1ad075541921",
+            body_id="bdad6945-c9e4-b829-f7be-1ad075541921",
             adj_return_time=parse_datetime("2024-01-01T16:00:00.123Z"),
             adj_return_time_approver="Smith",
             aircraft_mds="C017A",
@@ -245,7 +245,7 @@ class TestCrew:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.crew.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
@@ -260,7 +260,7 @@ class TestCrew:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.crew.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
@@ -276,14 +276,14 @@ class TestCrew:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.crew.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 orig_crew_id="JHJDHjhuu929o92",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -594,7 +594,7 @@ class TestAsyncCrew:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
@@ -605,12 +605,12 @@ class TestAsyncCrew:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
-            id_2="bdad6945-c9e4-b829-f7be-1ad075541921",
+            body_id="bdad6945-c9e4-b829-f7be-1ad075541921",
             adj_return_time=parse_datetime("2024-01-01T16:00:00.123Z"),
             adj_return_time_approver="Smith",
             aircraft_mds="C017A",
@@ -671,7 +671,7 @@ class TestAsyncCrew:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.crew.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
@@ -686,7 +686,7 @@ class TestAsyncCrew:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.crew.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             orig_crew_id="JHJDHjhuu929o92",
@@ -702,14 +702,14 @@ class TestAsyncCrew:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.crew.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 orig_crew_id="JHJDHjhuu929o92",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

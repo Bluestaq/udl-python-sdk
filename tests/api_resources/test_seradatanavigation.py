@@ -88,7 +88,7 @@ class TestSeradatanavigation:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         seradatanavigation = client.seradatanavigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -99,12 +99,12 @@ class TestSeradatanavigation:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatanavigation = client.seradatanavigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
-            id_2="SERADATANAVIGATION-ID",
+            body_id="SERADATANAVIGATION-ID",
             area_coverage="Worldwide",
             clock_type="Rubidium",
             hosted_for_company_org_id="hostedForCompanyOrgId",
@@ -124,7 +124,7 @@ class TestSeradatanavigation:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.seradatanavigation.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -139,7 +139,7 @@ class TestSeradatanavigation:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.seradatanavigation.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -155,14 +155,14 @@ class TestSeradatanavigation:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.seradatanavigation.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -418,7 +418,7 @@ class TestAsyncSeradatanavigation:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatanavigation = await async_client.seradatanavigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -429,12 +429,12 @@ class TestAsyncSeradatanavigation:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatanavigation = await async_client.seradatanavigation.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
-            id_2="SERADATANAVIGATION-ID",
+            body_id="SERADATANAVIGATION-ID",
             area_coverage="Worldwide",
             clock_type="Rubidium",
             hosted_for_company_org_id="hostedForCompanyOrgId",
@@ -454,7 +454,7 @@ class TestAsyncSeradatanavigation:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatanavigation.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -469,7 +469,7 @@ class TestAsyncSeradatanavigation:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradatanavigation.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             source="Bluestaq",
@@ -485,14 +485,14 @@ class TestAsyncSeradatanavigation:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.seradatanavigation.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

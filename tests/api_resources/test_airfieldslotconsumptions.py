@@ -151,7 +151,7 @@ class TestAirfieldslotconsumptions:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         airfieldslotconsumption = client.airfieldslotconsumptions.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -165,7 +165,7 @@ class TestAirfieldslotconsumptions:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfieldslotconsumption = client.airfieldslotconsumptions.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -173,7 +173,7 @@ class TestAirfieldslotconsumptions:
             num_aircraft=1,
             source="Bluestaq",
             start_time=parse_datetime("2023-01-01T01:01:01.123Z"),
-            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
             alt_arr_sortie_id="ALT-SORTIE-ID",
             alt_dep_sortie_id="ALT-SORTIE-ID",
             app_comment="The request was denied due to inoperable fuel pumps.",
@@ -205,7 +205,7 @@ class TestAirfieldslotconsumptions:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldslotconsumptions.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -223,7 +223,7 @@ class TestAirfieldslotconsumptions:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.airfieldslotconsumptions.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -242,9 +242,9 @@ class TestAirfieldslotconsumptions:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.airfieldslotconsumptions.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -252,7 +252,7 @@ class TestAirfieldslotconsumptions:
                 num_aircraft=1,
                 source="Bluestaq",
                 start_time=parse_datetime("2023-01-01T01:01:01.123Z"),
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -532,7 +532,7 @@ class TestAsyncAirfieldslotconsumptions:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -546,7 +546,7 @@ class TestAsyncAirfieldslotconsumptions:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -554,7 +554,7 @@ class TestAsyncAirfieldslotconsumptions:
             num_aircraft=1,
             source="Bluestaq",
             start_time=parse_datetime("2023-01-01T01:01:01.123Z"),
-            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
             alt_arr_sortie_id="ALT-SORTIE-ID",
             alt_dep_sortie_id="ALT-SORTIE-ID",
             app_comment="The request was denied due to inoperable fuel pumps.",
@@ -586,7 +586,7 @@ class TestAsyncAirfieldslotconsumptions:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldslotconsumptions.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -604,7 +604,7 @@ class TestAsyncAirfieldslotconsumptions:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfieldslotconsumptions.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -623,9 +623,9 @@ class TestAsyncAirfieldslotconsumptions:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.airfieldslotconsumptions.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
@@ -633,7 +633,7 @@ class TestAsyncAirfieldslotconsumptions:
                 num_aircraft=1,
                 source="Bluestaq",
                 start_time=parse_datetime("2023-01-01T01:01:01.123Z"),
-                id_2="",
+                body_id="",
             )
 
     @parametrize

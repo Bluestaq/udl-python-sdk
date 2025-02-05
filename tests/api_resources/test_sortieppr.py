@@ -85,7 +85,7 @@ class TestSortieppr:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
@@ -96,12 +96,12 @@ class TestSortieppr:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
-            id_2="SORTIEPPR-ID",
+            body_id="SORTIEPPR-ID",
             end_time=parse_datetime("2024-01-01T01:01:01.123Z"),
             external_id="aa714f4d52a37ab1a00b21af9566e379",
             grantor="SMITH",
@@ -117,7 +117,7 @@ class TestSortieppr:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.sortieppr.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
@@ -132,7 +132,7 @@ class TestSortieppr:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.sortieppr.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
@@ -148,14 +148,14 @@ class TestSortieppr:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.sortieppr.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -526,7 +526,7 @@ class TestAsyncSortieppr:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
@@ -537,12 +537,12 @@ class TestAsyncSortieppr:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
-            id_2="SORTIEPPR-ID",
+            body_id="SORTIEPPR-ID",
             end_time=parse_datetime("2024-01-01T01:01:01.123Z"),
             external_id="aa714f4d52a37ab1a00b21af9566e379",
             grantor="SMITH",
@@ -558,7 +558,7 @@ class TestAsyncSortieppr:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sortieppr.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
@@ -573,7 +573,7 @@ class TestAsyncSortieppr:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sortieppr.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
@@ -589,14 +589,14 @@ class TestAsyncSortieppr:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.sortieppr.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

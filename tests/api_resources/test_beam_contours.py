@@ -127,7 +127,7 @@ class TestBeamContours:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
@@ -139,13 +139,13 @@ class TestBeamContours:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
-            id_2="BEAMCONTOUR-ID",
+            body_id="BEAMCONTOUR-ID",
             contour_idx=0,
             gain=17.1,
             geography="POLYGON((26.156175339112 67.3291113966927,26.0910220642717 67.2580009640721,26.6637992964562 67.1795862381682,26.730115808233 67.2501237475598,26.156175339112 67.3291113966927))",
@@ -162,7 +162,7 @@ class TestBeamContours:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.beam_contours.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
@@ -178,7 +178,7 @@ class TestBeamContours:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.beam_contours.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
@@ -195,15 +195,15 @@ class TestBeamContours:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.beam_contours.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_beam="REF-BEAM-ID",
                 source="Bluestaq",
                 type="BORESIGHT",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -530,7 +530,7 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
@@ -542,13 +542,13 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
-            id_2="BEAMCONTOUR-ID",
+            body_id="BEAMCONTOUR-ID",
             contour_idx=0,
             gain=17.1,
             geography="POLYGON((26.156175339112 67.3291113966927,26.0910220642717 67.2580009640721,26.6637992964562 67.1795862381682,26.730115808233 67.2501237475598,26.156175339112 67.3291113966927))",
@@ -565,7 +565,7 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.beam_contours.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
@@ -581,7 +581,7 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.beam_contours.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_beam="REF-BEAM-ID",
@@ -598,15 +598,15 @@ class TestAsyncBeamContours:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.beam_contours.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_beam="REF-BEAM-ID",
                 source="Bluestaq",
                 type="BORESIGHT",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

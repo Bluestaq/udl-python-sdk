@@ -110,7 +110,7 @@ class TestBatteries:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
@@ -120,11 +120,11 @@ class TestBatteries:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
-            id_2="BATTERY-ID",
+            body_id="BATTERY-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert battery is None
@@ -132,7 +132,7 @@ class TestBatteries:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.batteries.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
@@ -146,7 +146,7 @@ class TestBatteries:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.batteries.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
@@ -161,13 +161,13 @@ class TestBatteries:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.batteries.with_raw_response.update(
-                id_1="",
+                path_id="",
                 data_mode="REAL",
                 name="JAK-BATTERY-1479",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -407,7 +407,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
@@ -417,11 +417,11 @@ class TestAsyncBatteries:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
-            id_2="BATTERY-ID",
+            body_id="BATTERY-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert battery is None
@@ -429,7 +429,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batteries.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
@@ -443,7 +443,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.batteries.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             data_mode="REAL",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
@@ -458,13 +458,13 @@ class TestAsyncBatteries:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.batteries.with_raw_response.update(
-                id_1="",
+                path_id="",
                 data_mode="REAL",
                 name="JAK-BATTERY-1479",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

@@ -149,7 +149,7 @@ class TestNavigationalobstruction:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         navigationalobstruction = client.navigationalobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
@@ -162,14 +162,14 @@ class TestNavigationalobstruction:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigationalobstruction = client.navigationalobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
             obstacle_id="359655",
             obstacle_type="V",
             source="Bluestaq",
-            id_2="026dd511-8ba5-47d3-9909-836149f87686",
+            body_id="026dd511-8ba5-47d3-9909-836149f87686",
             act_del_code="A",
             airac_cycle=2406,
             base_airac_cycle=2405,
@@ -241,7 +241,7 @@ class TestNavigationalobstruction:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.navigationalobstruction.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
@@ -258,7 +258,7 @@ class TestNavigationalobstruction:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.navigationalobstruction.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
@@ -276,16 +276,16 @@ class TestNavigationalobstruction:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.navigationalobstruction.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 cycle_date=parse_date("2024-06-13"),
                 data_mode="REAL",
                 obstacle_id="359655",
                 obstacle_type="V",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -646,7 +646,7 @@ class TestAsyncNavigationalobstruction:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigationalobstruction = await async_client.navigationalobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
@@ -659,14 +659,14 @@ class TestAsyncNavigationalobstruction:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigationalobstruction = await async_client.navigationalobstruction.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
             obstacle_id="359655",
             obstacle_type="V",
             source="Bluestaq",
-            id_2="026dd511-8ba5-47d3-9909-836149f87686",
+            body_id="026dd511-8ba5-47d3-9909-836149f87686",
             act_del_code="A",
             airac_cycle=2406,
             base_airac_cycle=2405,
@@ -738,7 +738,7 @@ class TestAsyncNavigationalobstruction:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.navigationalobstruction.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
@@ -755,7 +755,7 @@ class TestAsyncNavigationalobstruction:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.navigationalobstruction.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             cycle_date=parse_date("2024-06-13"),
             data_mode="REAL",
@@ -773,16 +773,16 @@ class TestAsyncNavigationalobstruction:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.navigationalobstruction.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 cycle_date=parse_date("2024-06-13"),
                 data_mode="REAL",
                 obstacle_id="359655",
                 obstacle_type="V",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

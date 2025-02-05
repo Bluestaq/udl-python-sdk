@@ -121,7 +121,7 @@ class TestItem:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         item = client.item.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
@@ -133,13 +133,13 @@ class TestItem:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         item = client.item.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
             source="Bluestaq",
             type="CARGO",
-            id_2="22f1f6da-a568-655a-ea37-76d013d04853",
+            body_id="22f1f6da-a568-655a-ea37-76d013d04853",
             acc_sys_keys=["System key1", "System key2"],
             acc_sys_notes="Accepting System Notes",
             acc_system="Accepting System",
@@ -187,7 +187,7 @@ class TestItem:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.item.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
@@ -203,7 +203,7 @@ class TestItem:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.item.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
@@ -220,15 +220,15 @@ class TestItem:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.item.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 scan_code="12345ABCD",
                 source="Bluestaq",
                 type="CARGO",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -571,7 +571,7 @@ class TestAsyncItem:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         item = await async_client.item.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
@@ -583,13 +583,13 @@ class TestAsyncItem:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         item = await async_client.item.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
             source="Bluestaq",
             type="CARGO",
-            id_2="22f1f6da-a568-655a-ea37-76d013d04853",
+            body_id="22f1f6da-a568-655a-ea37-76d013d04853",
             acc_sys_keys=["System key1", "System key2"],
             acc_sys_notes="Accepting System Notes",
             acc_system="Accepting System",
@@ -637,7 +637,7 @@ class TestAsyncItem:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.item.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
@@ -653,7 +653,7 @@ class TestAsyncItem:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.item.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             scan_code="12345ABCD",
@@ -670,15 +670,15 @@ class TestAsyncItem:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.item.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 scan_code="12345ABCD",
                 source="Bluestaq",
                 type="CARGO",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

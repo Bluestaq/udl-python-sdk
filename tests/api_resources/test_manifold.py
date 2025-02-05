@@ -80,7 +80,7 @@ class TestManifold:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
@@ -91,12 +91,12 @@ class TestManifold:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
-            id_2="MANIFOLD-ID",
+            body_id="MANIFOLD-ID",
             delta_t=10.23,
             delta_v=10.23,
             origin="THIRD_PARTY_DATASOURCE",
@@ -108,7 +108,7 @@ class TestManifold:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.manifold.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
@@ -123,7 +123,7 @@ class TestManifold:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.manifold.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
@@ -139,14 +139,14 @@ class TestManifold:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.manifold.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_object_of_interest="OBJECTOFINTEREST-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -446,7 +446,7 @@ class TestAsyncManifold:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
@@ -457,12 +457,12 @@ class TestAsyncManifold:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
-            id_2="MANIFOLD-ID",
+            body_id="MANIFOLD-ID",
             delta_t=10.23,
             delta_v=10.23,
             origin="THIRD_PARTY_DATASOURCE",
@@ -474,7 +474,7 @@ class TestAsyncManifold:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.manifold.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
@@ -489,7 +489,7 @@ class TestAsyncManifold:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.manifold.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_object_of_interest="OBJECTOFINTEREST-ID",
@@ -505,14 +505,14 @@ class TestAsyncManifold:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.manifold.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_object_of_interest="OBJECTOFINTEREST-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

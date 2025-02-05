@@ -166,7 +166,7 @@ class TestEquipment:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
@@ -179,14 +179,14 @@ class TestEquipment:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
             lat=39.019242,
             lon=-104.251659,
             source="Bluestaq",
-            id_2="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             air_def_area="AL006",
             allegiance="OTHR",
             alt_allegiance="HL",
@@ -237,7 +237,7 @@ class TestEquipment:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.equipment.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
@@ -254,7 +254,7 @@ class TestEquipment:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.equipment.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
@@ -272,16 +272,16 @@ class TestEquipment:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.equipment.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 country_code="IQ",
                 data_mode="REAL",
                 lat=39.019242,
                 lon=-104.251659,
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -634,7 +634,7 @@ class TestAsyncEquipment:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
@@ -647,14 +647,14 @@ class TestAsyncEquipment:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
             lat=39.019242,
             lon=-104.251659,
             source="Bluestaq",
-            id_2="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             air_def_area="AL006",
             allegiance="OTHR",
             alt_allegiance="HL",
@@ -705,7 +705,7 @@ class TestAsyncEquipment:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.equipment.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
@@ -722,7 +722,7 @@ class TestAsyncEquipment:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.equipment.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             country_code="IQ",
             data_mode="REAL",
@@ -740,16 +740,16 @@ class TestAsyncEquipment:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.equipment.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 country_code="IQ",
                 data_mode="REAL",
                 lat=39.019242,
                 lon=-104.251659,
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

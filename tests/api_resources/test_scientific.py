@@ -135,7 +135,7 @@ class TestScientific:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
@@ -147,13 +147,13 @@ class TestScientific:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
-            id_2="SCIENTIFIC-ID",
+            body_id="SCIENTIFIC-ID",
             entity={
                 "classification_marking": "U",
                 "data_mode": "REAL",
@@ -215,7 +215,7 @@ class TestScientific:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.scientific.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
@@ -231,7 +231,7 @@ class TestScientific:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.scientific.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
@@ -248,15 +248,15 @@ class TestScientific:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.scientific.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="SEM/MAG",
                 source="Bluestaq",
                 spacecraft_id="REF-SPACECRAFT-ID",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -558,7 +558,7 @@ class TestAsyncScientific:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
@@ -570,13 +570,13 @@ class TestAsyncScientific:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
-            id_2="SCIENTIFIC-ID",
+            body_id="SCIENTIFIC-ID",
             entity={
                 "classification_marking": "U",
                 "data_mode": "REAL",
@@ -638,7 +638,7 @@ class TestAsyncScientific:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scientific.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
@@ -654,7 +654,7 @@ class TestAsyncScientific:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scientific.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="SEM/MAG",
@@ -671,15 +671,15 @@ class TestAsyncScientific:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.scientific.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="SEM/MAG",
                 source="Bluestaq",
                 spacecraft_id="REF-SPACECRAFT-ID",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

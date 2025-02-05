@@ -99,7 +99,7 @@ class TestManifoldelset:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         manifoldelset = client.manifoldelset.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -112,14 +112,14 @@ class TestManifoldelset:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifoldelset = client.manifoldelset.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
             tmp_sat_no=10,
-            id_2="MANIFOLDELSET-ID",
+            body_id="MANIFOLDELSET-ID",
             apogee=10.23,
             arg_of_perigee=10.23,
             b_star=10.23,
@@ -141,7 +141,7 @@ class TestManifoldelset:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.manifoldelset.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -158,7 +158,7 @@ class TestManifoldelset:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.manifoldelset.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -176,16 +176,16 @@ class TestManifoldelset:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.manifoldelset.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
                 id_manifold="REF-MANIFOLD-ID",
                 source="Bluestaq",
                 tmp_sat_no=10,
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -524,7 +524,7 @@ class TestAsyncManifoldelset:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifoldelset = await async_client.manifoldelset.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -537,14 +537,14 @@ class TestAsyncManifoldelset:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifoldelset = await async_client.manifoldelset.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
             tmp_sat_no=10,
-            id_2="MANIFOLDELSET-ID",
+            body_id="MANIFOLDELSET-ID",
             apogee=10.23,
             arg_of_perigee=10.23,
             b_star=10.23,
@@ -566,7 +566,7 @@ class TestAsyncManifoldelset:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.manifoldelset.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -583,7 +583,7 @@ class TestAsyncManifoldelset:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.manifoldelset.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -601,16 +601,16 @@ class TestAsyncManifoldelset:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.manifoldelset.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
                 id_manifold="REF-MANIFOLD-ID",
                 source="Bluestaq",
                 tmp_sat_no=10,
-                id_2="",
+                body_id="",
             )
 
     @parametrize

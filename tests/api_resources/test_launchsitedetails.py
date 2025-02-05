@@ -92,7 +92,7 @@ class TestLaunchsitedetails:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         launchsitedetail = client.launchsitedetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
@@ -103,12 +103,12 @@ class TestLaunchsitedetails:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchsitedetail = client.launchsitedetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
-            id_2="LAUNCHSITEDETAILS-ID",
+            body_id="LAUNCHSITEDETAILS-ID",
             available_inclinations=[10.23, 10.23, 12.23, 14.23],
             description="Example notes",
             id_location="LOCATION-ID",
@@ -132,7 +132,7 @@ class TestLaunchsitedetails:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.launchsitedetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
@@ -147,7 +147,7 @@ class TestLaunchsitedetails:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.launchsitedetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
@@ -163,14 +163,14 @@ class TestLaunchsitedetails:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.launchsitedetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_launch_site="LAUNCHSITE-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -380,7 +380,7 @@ class TestAsyncLaunchsitedetails:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsitedetail = await async_client.launchsitedetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
@@ -391,12 +391,12 @@ class TestAsyncLaunchsitedetails:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsitedetail = await async_client.launchsitedetails.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
-            id_2="LAUNCHSITEDETAILS-ID",
+            body_id="LAUNCHSITEDETAILS-ID",
             available_inclinations=[10.23, 10.23, 12.23, 14.23],
             description="Example notes",
             id_location="LOCATION-ID",
@@ -420,7 +420,7 @@ class TestAsyncLaunchsitedetails:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchsitedetails.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
@@ -435,7 +435,7 @@ class TestAsyncLaunchsitedetails:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchsitedetails.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_launch_site="LAUNCHSITE-ID",
@@ -451,14 +451,14 @@ class TestAsyncLaunchsitedetails:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.launchsitedetails.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_launch_site="LAUNCHSITE-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

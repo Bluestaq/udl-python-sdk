@@ -165,7 +165,7 @@ class TestComm:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
@@ -176,12 +176,12 @@ class TestComm:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
-            id_2="COMM-ID",
+            body_id="COMM-ID",
             description="Description for comm A",
             id_entity="ENTITY-ID",
             origin="THIRD_PARTY_DATASOURCE",
@@ -191,7 +191,7 @@ class TestComm:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.comm.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
@@ -206,7 +206,7 @@ class TestComm:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.comm.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
@@ -222,14 +222,14 @@ class TestComm:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.comm.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="DSCS II C-7-COMM Payload",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -523,7 +523,7 @@ class TestAsyncComm:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
@@ -534,12 +534,12 @@ class TestAsyncComm:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
-            id_2="COMM-ID",
+            body_id="COMM-ID",
             description="Description for comm A",
             id_entity="ENTITY-ID",
             origin="THIRD_PARTY_DATASOURCE",
@@ -549,7 +549,7 @@ class TestAsyncComm:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.comm.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
@@ -564,7 +564,7 @@ class TestAsyncComm:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.comm.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="DSCS II C-7-COMM Payload",
@@ -580,14 +580,14 @@ class TestAsyncComm:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.comm.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="DSCS II C-7-COMM Payload",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

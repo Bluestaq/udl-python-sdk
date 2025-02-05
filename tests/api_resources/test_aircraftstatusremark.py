@@ -19,7 +19,7 @@ class TestAircraftstatusremark:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         aircraftstatusremark = client.aircraftstatusremark.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
@@ -31,13 +31,13 @@ class TestAircraftstatusremark:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraftstatusremark = client.aircraftstatusremark.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
-            id_2="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             alt_rmk_id="GDSSBL022307131714250077",
             last_updated_at=parse_datetime("2024-01-01T16:00:00.123Z"),
             last_updated_by="JOHN SMITH",
@@ -50,7 +50,7 @@ class TestAircraftstatusremark:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.aircraftstatusremark.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
@@ -66,7 +66,7 @@ class TestAircraftstatusremark:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.aircraftstatusremark.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
@@ -83,15 +83,15 @@ class TestAircraftstatusremark:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.aircraftstatusremark.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
                 source="Bluestaq",
                 text="Remark text",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -139,7 +139,7 @@ class TestAsyncAircraftstatusremark:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraftstatusremark = await async_client.aircraftstatusremark.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
@@ -151,13 +151,13 @@ class TestAsyncAircraftstatusremark:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraftstatusremark = await async_client.aircraftstatusremark.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
-            id_2="0167f577-e06c-358e-85aa-0a07a730bdd0",
+            body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             alt_rmk_id="GDSSBL022307131714250077",
             last_updated_at=parse_datetime("2024-01-01T16:00:00.123Z"),
             last_updated_by="JOHN SMITH",
@@ -170,7 +170,7 @@ class TestAsyncAircraftstatusremark:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraftstatusremark.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
@@ -186,7 +186,7 @@ class TestAsyncAircraftstatusremark:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraftstatusremark.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
@@ -203,15 +203,15 @@ class TestAsyncAircraftstatusremark:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.aircraftstatusremark.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
                 source="Bluestaq",
                 text="Remark text",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

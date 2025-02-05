@@ -62,7 +62,7 @@ class TestAircraftSorties:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         aircraft_sorty = client.aircraft_sorties.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
@@ -73,12 +73,12 @@ class TestAircraftSorties:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_sorty = client.aircraft_sorties.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
-            id_2="AIRCRAFTSORTIE-ID",
+            body_id="AIRCRAFTSORTIE-ID",
             actual_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             actual_block_in_time=parse_datetime("2021-01-01T01:06:01.123Z"),
             actual_block_out_time=parse_datetime("2021-01-01T00:55:01.123Z"),
@@ -151,7 +151,7 @@ class TestAircraftSorties:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft_sorties.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
@@ -166,7 +166,7 @@ class TestAircraftSorties:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.aircraft_sorties.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
@@ -182,14 +182,14 @@ class TestAircraftSorties:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.aircraft_sorties.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -296,7 +296,7 @@ class TestAsyncAircraftSorties:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sorty = await async_client.aircraft_sorties.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
@@ -307,12 +307,12 @@ class TestAsyncAircraftSorties:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sorty = await async_client.aircraft_sorties.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
-            id_2="AIRCRAFTSORTIE-ID",
+            body_id="AIRCRAFTSORTIE-ID",
             actual_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             actual_block_in_time=parse_datetime("2021-01-01T01:06:01.123Z"),
             actual_block_out_time=parse_datetime("2021-01-01T00:55:01.123Z"),
@@ -385,7 +385,7 @@ class TestAsyncAircraftSorties:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraft_sorties.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
@@ -400,7 +400,7 @@ class TestAsyncAircraftSorties:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraft_sorties.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
@@ -416,14 +416,14 @@ class TestAsyncAircraftSorties:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.aircraft_sorties.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

@@ -110,7 +110,7 @@ class TestStage:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -122,13 +122,13 @@ class TestStage:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
-            id_2="STAGE-ID",
+            body_id="STAGE-ID",
             avionics_notes="Sample Notes",
             burn_time=256.3,
             control_thruster1="controlThruster1",
@@ -166,7 +166,7 @@ class TestStage:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.stage.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -182,7 +182,7 @@ class TestStage:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.stage.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -199,15 +199,15 @@ class TestStage:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.stage.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_engine="ENGINE-ID",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -485,7 +485,7 @@ class TestAsyncStage:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -497,13 +497,13 @@ class TestAsyncStage:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
-            id_2="STAGE-ID",
+            body_id="STAGE-ID",
             avionics_notes="Sample Notes",
             burn_time=256.3,
             control_thruster1="controlThruster1",
@@ -541,7 +541,7 @@ class TestAsyncStage:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.stage.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -557,7 +557,7 @@ class TestAsyncStage:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.stage.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_engine="ENGINE-ID",
@@ -574,15 +574,15 @@ class TestAsyncStage:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.stage.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_engine="ENGINE-ID",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

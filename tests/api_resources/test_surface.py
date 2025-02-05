@@ -142,7 +142,7 @@ class TestSurface:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
@@ -154,13 +154,13 @@ class TestSurface:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
-            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
             alt_site_id="ORIG-SITE-ID",
             condition="GOOD",
             ddt_wt_kip=833.5,
@@ -230,7 +230,7 @@ class TestSurface:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.surface.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
@@ -246,7 +246,7 @@ class TestSurface:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.surface.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
@@ -263,15 +263,15 @@ class TestSurface:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.surface.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="West lot",
                 source="Bluestaq",
                 type="PARKING",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -581,7 +581,7 @@ class TestAsyncSurface:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
@@ -593,13 +593,13 @@ class TestAsyncSurface:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
-            id_2="be831d39-1822-da9f-7ace-6cc5643397dc",
+            body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
             alt_site_id="ORIG-SITE-ID",
             condition="GOOD",
             ddt_wt_kip=833.5,
@@ -669,7 +669,7 @@ class TestAsyncSurface:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.surface.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
@@ -685,7 +685,7 @@ class TestAsyncSurface:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.surface.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="West lot",
@@ -702,15 +702,15 @@ class TestAsyncSurface:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.surface.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="West lot",
                 source="Bluestaq",
                 type="PARKING",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

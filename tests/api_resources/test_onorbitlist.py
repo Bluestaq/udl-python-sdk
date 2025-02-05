@@ -78,7 +78,7 @@ class TestOnorbitlist:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
@@ -89,12 +89,12 @@ class TestOnorbitlist:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
             source="Bluestaq",
-            id_2="ONORBITLIST-ID",
+            body_id="ONORBITLIST-ID",
             description="DESCRIPTION_OF_LIST",
             onorbits=["ID1", "ID2"],
             origin="THIRD_PARTY_DATASOURCE",
@@ -104,7 +104,7 @@ class TestOnorbitlist:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitlist.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
@@ -119,7 +119,7 @@ class TestOnorbitlist:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.onorbitlist.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
@@ -135,14 +135,14 @@ class TestOnorbitlist:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.onorbitlist.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="People",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -388,7 +388,7 @@ class TestAsyncOnorbitlist:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
@@ -399,12 +399,12 @@ class TestAsyncOnorbitlist:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
             source="Bluestaq",
-            id_2="ONORBITLIST-ID",
+            body_id="ONORBITLIST-ID",
             description="DESCRIPTION_OF_LIST",
             onorbits=["ID1", "ID2"],
             origin="THIRD_PARTY_DATASOURCE",
@@ -414,7 +414,7 @@ class TestAsyncOnorbitlist:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitlist.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
@@ -429,7 +429,7 @@ class TestAsyncOnorbitlist:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitlist.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             name="People",
@@ -445,14 +445,14 @@ class TestAsyncOnorbitlist:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.onorbitlist.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 name="People",
                 source="Bluestaq",
-                id_2="",
+                body_id="",
             )
 
     @parametrize

@@ -118,7 +118,7 @@ class TestObjectofinterest:
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         objectofinterest = client.objectofinterest.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
@@ -131,14 +131,14 @@ class TestObjectofinterest:
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         objectofinterest = client.objectofinterest.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
             status_date=parse_datetime("2021-01-01T01:01:01.123Z"),
-            id_2="OBJECTOFINTEREST-ID",
+            body_id="OBJECTOFINTEREST-ID",
             affected_objects=["AFFECTEDOBJECT1-ID", "AFFECTEDOBJECT2-ID"],
             apogee=123.4,
             arg_of_perigee=123.4,
@@ -179,7 +179,7 @@ class TestObjectofinterest:
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.objectofinterest.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
@@ -196,7 +196,7 @@ class TestObjectofinterest:
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.objectofinterest.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
@@ -214,16 +214,16 @@ class TestObjectofinterest:
 
     @parametrize
     def test_path_params_update(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.objectofinterest.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_on_orbit="REF-ONORBIT-ID",
                 sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
                 status_date=parse_datetime("2021-01-01T01:01:01.123Z"),
-                id_2="",
+                body_id="",
             )
 
     @parametrize
@@ -508,7 +508,7 @@ class TestAsyncObjectofinterest:
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         objectofinterest = await async_client.objectofinterest.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
@@ -521,14 +521,14 @@ class TestAsyncObjectofinterest:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         objectofinterest = await async_client.objectofinterest.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
             status_date=parse_datetime("2021-01-01T01:01:01.123Z"),
-            id_2="OBJECTOFINTEREST-ID",
+            body_id="OBJECTOFINTEREST-ID",
             affected_objects=["AFFECTEDOBJECT1-ID", "AFFECTEDOBJECT2-ID"],
             apogee=123.4,
             arg_of_perigee=123.4,
@@ -569,7 +569,7 @@ class TestAsyncObjectofinterest:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.objectofinterest.with_raw_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
@@ -586,7 +586,7 @@ class TestAsyncObjectofinterest:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.objectofinterest.with_streaming_response.update(
-            id_1="id",
+            path_id="id",
             classification_marking="U",
             data_mode="REAL",
             id_on_orbit="REF-ONORBIT-ID",
@@ -604,16 +604,16 @@ class TestAsyncObjectofinterest:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_1` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.objectofinterest.with_raw_response.update(
-                id_1="",
+                path_id="",
                 classification_marking="U",
                 data_mode="REAL",
                 id_on_orbit="REF-ONORBIT-ID",
                 sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
                 status_date=parse_datetime("2021-01-01T01:01:01.123Z"),
-                id_2="",
+                body_id="",
             )
 
     @parametrize

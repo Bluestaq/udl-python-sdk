@@ -137,9 +137,9 @@ class RfbandtypeResource(SyncAPIResource):
 
     def update(
         self,
-        id_1: str,
+        path_id: str,
         *,
-        id_2: str,
+        body_id: str,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         description: str,
@@ -160,7 +160,7 @@ class RfbandtypeResource(SyncAPIResource):
         perform this service operation. Please contact the UDL team for assistance.
 
         Args:
-          id_2: Unique identifier for the RF band (e.g. X, K, Ku, etc).
+          body_id: Unique identifier for the RF band (e.g. X, K, Ku, etc).
 
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
@@ -201,14 +201,14 @@ class RfbandtypeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not id_1:
-            raise ValueError(f"Expected a non-empty value for `id_1` but received {id_1!r}")
+        if not path_id:
+            raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/udl/rfbandtype/{id_1}",
+            f"/udl/rfbandtype/{path_id}",
             body=maybe_transform(
                 {
-                    "id_2": id_2,
+                    "body_id": body_id,
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
                     "description": description,
@@ -525,9 +525,9 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
 
     async def update(
         self,
-        id_1: str,
+        path_id: str,
         *,
-        id_2: str,
+        body_id: str,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         description: str,
@@ -548,7 +548,7 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
         perform this service operation. Please contact the UDL team for assistance.
 
         Args:
-          id_2: Unique identifier for the RF band (e.g. X, K, Ku, etc).
+          body_id: Unique identifier for the RF band (e.g. X, K, Ku, etc).
 
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
@@ -589,14 +589,14 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not id_1:
-            raise ValueError(f"Expected a non-empty value for `id_1` but received {id_1!r}")
+        if not path_id:
+            raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/udl/rfbandtype/{id_1}",
+            f"/udl/rfbandtype/{path_id}",
             body=await async_maybe_transform(
                 {
-                    "id_2": id_2,
+                    "body_id": body_id,
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
                     "description": description,
