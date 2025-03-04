@@ -58,7 +58,7 @@ class TestDatalink:
             course_diff=60,
             dec_exempt_codes=["X1", "X2"],
             dec_inst_dates=["AT EXERCISE ENDEX", "DATE:25NOV1997"],
-            decorr_win_mult=2,
+            decorr_win_mult=1.7,
             geo_datum="EUR-T",
             jre_call_sign="CHARLIE ONE",
             jre_details="JRE details",
@@ -161,8 +161,8 @@ class TestDatalink:
                     "voice_net_des": "VPN",
                 }
             ],
-            win_size_min=1,
-            win_size_mult=1.5,
+            win_size_min=1.25,
+            win_size_mult=2.1,
         )
         assert datalink is None
 
@@ -420,7 +420,7 @@ class TestAsyncDatalink:
             course_diff=60,
             dec_exempt_codes=["X1", "X2"],
             dec_inst_dates=["AT EXERCISE ENDEX", "DATE:25NOV1997"],
-            decorr_win_mult=2,
+            decorr_win_mult=1.7,
             geo_datum="EUR-T",
             jre_call_sign="CHARLIE ONE",
             jre_details="JRE details",
@@ -523,8 +523,8 @@ class TestAsyncDatalink:
                     "voice_net_des": "VPN",
                 }
             ],
-            win_size_min=1,
-            win_size_mult=1.5,
+            win_size_min=1.25,
+            win_size_mult=2.1,
         )
         assert datalink is None
 

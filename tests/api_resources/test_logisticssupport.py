@@ -482,6 +482,11 @@ class TestLogisticssupport:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        logisticssupport = client.logisticssupport.create_bulk()
+        assert logisticssupport is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.create_bulk(
             body=[
                 {
@@ -489,6 +494,152 @@ class TestLogisticssupport:
                     "data_mode": "REAL",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
+                    "id": "LOGISTICS-SUPPORT-DETAILS UUID",
+                    "aircraft_mds": "CO17A",
+                    "curr_icao": "KCOS",
+                    "etic": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "etmc": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "ext_system_id": "GDSSBL012307131347070165",
+                    "logistic_action": "WA",
+                    "logistics_discrepancy_infos": [
+                        {
+                            "closure_time": parse_datetime("2023-07-17T10:30:00.123Z"),
+                            "discrepancy_info": "PILOT WINDSHIELD PANEL ASSY CRACKED, AND ARCING REQ R2 IAW 56.11.10",
+                            "jcn": "231942400",
+                            "job_st_time": parse_datetime("2023-07-17T10:30:00.123Z"),
+                        }
+                    ],
+                    "logistics_record_id": "L62017",
+                    "logistics_remarks": [
+                        {
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
+                            "remark": "EXAMPLE REMARK",
+                            "username": "JSMITH",
+                        }
+                    ],
+                    "logistics_support_items": [
+                        {
+                            "cannibalized": True,
+                            "deploy_plan_number": "T89003",
+                            "description": "HOIST ADAPTER KIT",
+                            "item_last_changed_date": parse_datetime("2023-07-17T19:04:00.123Z"),
+                            "job_control_number": "231942400",
+                            "logistics_parts": [
+                                {
+                                    "figure_number": "3",
+                                    "index_number": "4",
+                                    "location_verifier": "JANE DOE",
+                                    "logistics_stocks": [
+                                        {
+                                            "quantity": 4,
+                                            "source_icao": "PHIK",
+                                            "stock_check_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                                            "stock_poc": "SMITH, JOHN J",
+                                        }
+                                    ],
+                                    "measurement_unit_code": "EA",
+                                    "national_stock_number": "5310-00-045-3299",
+                                    "part_number": "MS35338-42",
+                                    "request_verifier": "JOHN SMITH",
+                                    "supply_document_number": "J223FU31908300",
+                                    "technical_order_text": "1C-17A-4",
+                                    "work_unit_code": "5611UU001",
+                                }
+                            ],
+                            "logistics_remarks": [
+                                {
+                                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
+                                    "remark": "EXAMPLE REMARK",
+                                    "username": "JSMITH",
+                                }
+                            ],
+                            "logistics_specialties": [
+                                {
+                                    "first_name": "JOHN",
+                                    "last4_ssn": "9999",
+                                    "last_name": "SMITH",
+                                    "rank_code": "MAJ",
+                                    "role_type_code": "TC",
+                                    "skill_level": 3,
+                                    "specialty": "ELEN",
+                                }
+                            ],
+                            "quantity": 1,
+                            "ready_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                            "received_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                            "recovery_request_type_code": "E",
+                            "redeploy_plan_number": "T89003",
+                            "redeploy_shipment_unit_id": "X400LA31949108",
+                            "request_number": "89208",
+                            "resupport_flag": True,
+                            "shipment_unit_id": "FB44273196X501XXX",
+                            "si_poc": "SMITH, JOHN J",
+                            "source_icao": "PHIK",
+                        }
+                    ],
+                    "logistics_transportation_plans": [
+                        {
+                            "act_dep_time": parse_datetime("2023-07-14T19:37:00.123Z"),
+                            "aircraft_status": "NMCMU",
+                            "approx_arr_time": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "cancelled_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "closed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "coordinator": "SMITH, JOHN",
+                            "coordinator_unit": "TACC",
+                            "destination_icao": "YBCS",
+                            "duration": "086:20",
+                            "est_arr_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                            "est_dep_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                            "last_changed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "logistic_master_record_id": "L62126",
+                            "logistics_segments": [
+                                {
+                                    "arrival_icao": "YBCS",
+                                    "departure_icao": "PHIK",
+                                    "ext_mission_id": "2001101RF01202307062205",
+                                    "id_mission": "EXAMPLE-UUID",
+                                    "itin": 200,
+                                    "mission_number": "TAM308901196",
+                                    "mission_type": "SAAM",
+                                    "mode_code": "A",
+                                    "seg_act_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "seg_act_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "seg_aircraft_mds": "B7772E",
+                                    "seg_est_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "seg_est_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "segment_number": 3,
+                                    "seg_tail_number": "N819AX",
+                                }
+                            ],
+                            "logistics_transportation_plans_remarks": [
+                                {
+                                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
+                                    "remark": "EXAMPLE REMARK",
+                                    "username": "JSMITH",
+                                }
+                            ],
+                            "majcom": "HQAMC",
+                            "mission_change": False,
+                            "num_enroute_stops": 4,
+                            "num_trans_loads": 3,
+                            "origin_icao": "KATL",
+                            "plan_definition": "DEPLOY",
+                            "plans_number": "T89002",
+                            "serial_number": "9009209",
+                            "status_code": "N",
+                            "tp_aircraft_mds": "C17A",
+                            "tp_tail_number": "99209",
+                        }
+                    ],
+                    "maint_status_code": "NMCMU",
+                    "mc_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "me_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "owner": "EXAMPLE_OWNER",
+                    "reopen_flag": True,
+                    "rpt_closed_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "supp_icao": "KCOS",
+                    "tail_number": "99290",
                 }
             ],
         )
@@ -496,16 +647,7 @@ class TestLogisticssupport:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.logisticssupport.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = client.logisticssupport.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -514,16 +656,7 @@ class TestLogisticssupport:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.logisticssupport.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        with client.logisticssupport.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -1142,6 +1275,11 @@ class TestAsyncLogisticssupport:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        logisticssupport = await async_client.logisticssupport.create_bulk()
+        assert logisticssupport is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.create_bulk(
             body=[
                 {
@@ -1149,6 +1287,152 @@ class TestAsyncLogisticssupport:
                     "data_mode": "REAL",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
+                    "id": "LOGISTICS-SUPPORT-DETAILS UUID",
+                    "aircraft_mds": "CO17A",
+                    "curr_icao": "KCOS",
+                    "etic": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "etmc": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "ext_system_id": "GDSSBL012307131347070165",
+                    "logistic_action": "WA",
+                    "logistics_discrepancy_infos": [
+                        {
+                            "closure_time": parse_datetime("2023-07-17T10:30:00.123Z"),
+                            "discrepancy_info": "PILOT WINDSHIELD PANEL ASSY CRACKED, AND ARCING REQ R2 IAW 56.11.10",
+                            "jcn": "231942400",
+                            "job_st_time": parse_datetime("2023-07-17T10:30:00.123Z"),
+                        }
+                    ],
+                    "logistics_record_id": "L62017",
+                    "logistics_remarks": [
+                        {
+                            "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
+                            "remark": "EXAMPLE REMARK",
+                            "username": "JSMITH",
+                        }
+                    ],
+                    "logistics_support_items": [
+                        {
+                            "cannibalized": True,
+                            "deploy_plan_number": "T89003",
+                            "description": "HOIST ADAPTER KIT",
+                            "item_last_changed_date": parse_datetime("2023-07-17T19:04:00.123Z"),
+                            "job_control_number": "231942400",
+                            "logistics_parts": [
+                                {
+                                    "figure_number": "3",
+                                    "index_number": "4",
+                                    "location_verifier": "JANE DOE",
+                                    "logistics_stocks": [
+                                        {
+                                            "quantity": 4,
+                                            "source_icao": "PHIK",
+                                            "stock_check_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                                            "stock_poc": "SMITH, JOHN J",
+                                        }
+                                    ],
+                                    "measurement_unit_code": "EA",
+                                    "national_stock_number": "5310-00-045-3299",
+                                    "part_number": "MS35338-42",
+                                    "request_verifier": "JOHN SMITH",
+                                    "supply_document_number": "J223FU31908300",
+                                    "technical_order_text": "1C-17A-4",
+                                    "work_unit_code": "5611UU001",
+                                }
+                            ],
+                            "logistics_remarks": [
+                                {
+                                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
+                                    "remark": "EXAMPLE REMARK",
+                                    "username": "JSMITH",
+                                }
+                            ],
+                            "logistics_specialties": [
+                                {
+                                    "first_name": "JOHN",
+                                    "last4_ssn": "9999",
+                                    "last_name": "SMITH",
+                                    "rank_code": "MAJ",
+                                    "role_type_code": "TC",
+                                    "skill_level": 3,
+                                    "specialty": "ELEN",
+                                }
+                            ],
+                            "quantity": 1,
+                            "ready_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                            "received_time": parse_datetime("2023-07-17T19:04:00.123Z"),
+                            "recovery_request_type_code": "E",
+                            "redeploy_plan_number": "T89003",
+                            "redeploy_shipment_unit_id": "X400LA31949108",
+                            "request_number": "89208",
+                            "resupport_flag": True,
+                            "shipment_unit_id": "FB44273196X501XXX",
+                            "si_poc": "SMITH, JOHN J",
+                            "source_icao": "PHIK",
+                        }
+                    ],
+                    "logistics_transportation_plans": [
+                        {
+                            "act_dep_time": parse_datetime("2023-07-14T19:37:00.123Z"),
+                            "aircraft_status": "NMCMU",
+                            "approx_arr_time": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "cancelled_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "closed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "coordinator": "SMITH, JOHN",
+                            "coordinator_unit": "TACC",
+                            "destination_icao": "YBCS",
+                            "duration": "086:20",
+                            "est_arr_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                            "est_dep_time": parse_datetime("2023-07-15T14:25:00.123Z"),
+                            "last_changed_date": parse_datetime("2023-07-14T20:37:00.123Z"),
+                            "logistic_master_record_id": "L62126",
+                            "logistics_segments": [
+                                {
+                                    "arrival_icao": "YBCS",
+                                    "departure_icao": "PHIK",
+                                    "ext_mission_id": "2001101RF01202307062205",
+                                    "id_mission": "EXAMPLE-UUID",
+                                    "itin": 200,
+                                    "mission_number": "TAM308901196",
+                                    "mission_type": "SAAM",
+                                    "mode_code": "A",
+                                    "seg_act_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "seg_act_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "seg_aircraft_mds": "B7772E",
+                                    "seg_est_arr_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "seg_est_dep_time": parse_datetime("2023-07-17T19:20:00.123Z"),
+                                    "segment_number": 3,
+                                    "seg_tail_number": "N819AX",
+                                }
+                            ],
+                            "logistics_transportation_plans_remarks": [
+                                {
+                                    "last_changed": parse_datetime("2023-07-17T10:30:00.123Z"),
+                                    "remark": "EXAMPLE REMARK",
+                                    "username": "JSMITH",
+                                }
+                            ],
+                            "majcom": "HQAMC",
+                            "mission_change": False,
+                            "num_enroute_stops": 4,
+                            "num_trans_loads": 3,
+                            "origin_icao": "KATL",
+                            "plan_definition": "DEPLOY",
+                            "plans_number": "T89002",
+                            "serial_number": "9009209",
+                            "status_code": "N",
+                            "tp_aircraft_mds": "C17A",
+                            "tp_tail_number": "99209",
+                        }
+                    ],
+                    "maint_status_code": "NMCMU",
+                    "mc_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "me_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "owner": "EXAMPLE_OWNER",
+                    "reopen_flag": True,
+                    "rpt_closed_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "supp_icao": "KCOS",
+                    "tail_number": "99290",
                 }
             ],
         )
@@ -1156,16 +1440,7 @@ class TestAsyncLogisticssupport:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.logisticssupport.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = await async_client.logisticssupport.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1174,16 +1449,7 @@ class TestAsyncLogisticssupport:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.logisticssupport.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        async with async_client.logisticssupport.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

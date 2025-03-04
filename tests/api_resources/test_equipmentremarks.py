@@ -171,6 +171,11 @@ class TestEquipmentremarks:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        equipmentremark = client.equipmentremarks.create_bulk()
+        assert equipmentremark is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipmentremark = client.equipmentremarks.create_bulk(
             body=[
                 {
@@ -179,6 +184,12 @@ class TestEquipmentremarks:
                     "id_equipment": "EQUIPMENT-ID",
                     "source": "Bluestaq",
                     "text": "This is a remark",
+                    "id": "0167f577-e06c-358e-85aa-0a07a730bdd0",
+                    "alt_rmk_id": "123456ABC",
+                    "code": "M",
+                    "name": "Remark name",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "type": "Restriction",
                 }
             ],
         )
@@ -186,17 +197,7 @@ class TestEquipmentremarks:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.equipmentremarks.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_equipment": "EQUIPMENT-ID",
-                    "source": "Bluestaq",
-                    "text": "This is a remark",
-                }
-            ],
-        )
+        response = client.equipmentremarks.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -205,17 +206,7 @@ class TestEquipmentremarks:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.equipmentremarks.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_equipment": "EQUIPMENT-ID",
-                    "source": "Bluestaq",
-                    "text": "This is a remark",
-                }
-            ],
-        ) as response:
+        with client.equipmentremarks.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -434,6 +425,11 @@ class TestAsyncEquipmentremarks:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        equipmentremark = await async_client.equipmentremarks.create_bulk()
+        assert equipmentremark is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipmentremark = await async_client.equipmentremarks.create_bulk(
             body=[
                 {
@@ -442,6 +438,12 @@ class TestAsyncEquipmentremarks:
                     "id_equipment": "EQUIPMENT-ID",
                     "source": "Bluestaq",
                     "text": "This is a remark",
+                    "id": "0167f577-e06c-358e-85aa-0a07a730bdd0",
+                    "alt_rmk_id": "123456ABC",
+                    "code": "M",
+                    "name": "Remark name",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "type": "Restriction",
                 }
             ],
         )
@@ -449,17 +451,7 @@ class TestAsyncEquipmentremarks:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.equipmentremarks.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_equipment": "EQUIPMENT-ID",
-                    "source": "Bluestaq",
-                    "text": "This is a remark",
-                }
-            ],
-        )
+        response = await async_client.equipmentremarks.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -468,17 +460,7 @@ class TestAsyncEquipmentremarks:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.equipmentremarks.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_equipment": "EQUIPMENT-ID",
-                    "source": "Bluestaq",
-                    "text": "This is a remark",
-                }
-            ],
-        ) as response:
+        async with async_client.equipmentremarks.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

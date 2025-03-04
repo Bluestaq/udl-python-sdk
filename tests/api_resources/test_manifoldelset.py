@@ -290,6 +290,11 @@ class TestManifoldelset:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        manifoldelset = client.manifoldelset.create_bulk()
+        assert manifoldelset is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifoldelset = client.manifoldelset.create_bulk(
             body=[
                 {
@@ -299,6 +304,22 @@ class TestManifoldelset:
                     "id_manifold": "REF-MANIFOLD-ID",
                     "source": "Bluestaq",
                     "tmp_sat_no": 10,
+                    "id": "MANIFOLDELSET-ID",
+                    "apogee": 10.23,
+                    "arg_of_perigee": 10.23,
+                    "b_star": 10.23,
+                    "eccentricity": 0.5,
+                    "inclination": 90.23,
+                    "mean_anomaly": 10.23,
+                    "mean_motion": 10.23,
+                    "mean_motion_d_dot": 10.23,
+                    "mean_motion_dot": 10.23,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "perigee": 10.23,
+                    "period": 10.23,
+                    "raan": 10.23,
+                    "rev_no": 123,
+                    "semi_major_axis": 10.23,
                 }
             ],
         )
@@ -306,18 +327,7 @@ class TestManifoldelset:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.manifoldelset.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "id_manifold": "REF-MANIFOLD-ID",
-                    "source": "Bluestaq",
-                    "tmp_sat_no": 10,
-                }
-            ],
-        )
+        response = client.manifoldelset.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -326,18 +336,7 @@ class TestManifoldelset:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.manifoldelset.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "id_manifold": "REF-MANIFOLD-ID",
-                    "source": "Bluestaq",
-                    "tmp_sat_no": 10,
-                }
-            ],
-        ) as response:
+        with client.manifoldelset.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -715,6 +714,11 @@ class TestAsyncManifoldelset:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        manifoldelset = await async_client.manifoldelset.create_bulk()
+        assert manifoldelset is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifoldelset = await async_client.manifoldelset.create_bulk(
             body=[
                 {
@@ -724,6 +728,22 @@ class TestAsyncManifoldelset:
                     "id_manifold": "REF-MANIFOLD-ID",
                     "source": "Bluestaq",
                     "tmp_sat_no": 10,
+                    "id": "MANIFOLDELSET-ID",
+                    "apogee": 10.23,
+                    "arg_of_perigee": 10.23,
+                    "b_star": 10.23,
+                    "eccentricity": 0.5,
+                    "inclination": 90.23,
+                    "mean_anomaly": 10.23,
+                    "mean_motion": 10.23,
+                    "mean_motion_d_dot": 10.23,
+                    "mean_motion_dot": 10.23,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "perigee": 10.23,
+                    "period": 10.23,
+                    "raan": 10.23,
+                    "rev_no": 123,
+                    "semi_major_axis": 10.23,
                 }
             ],
         )
@@ -731,18 +751,7 @@ class TestAsyncManifoldelset:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.manifoldelset.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "id_manifold": "REF-MANIFOLD-ID",
-                    "source": "Bluestaq",
-                    "tmp_sat_no": 10,
-                }
-            ],
-        )
+        response = await async_client.manifoldelset.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -751,18 +760,7 @@ class TestAsyncManifoldelset:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.manifoldelset.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "id_manifold": "REF-MANIFOLD-ID",
-                    "source": "Bluestaq",
-                    "tmp_sat_no": 10,
-                }
-            ],
-        ) as response:
+        async with async_client.manifoldelset.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

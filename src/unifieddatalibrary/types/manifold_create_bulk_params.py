@@ -11,7 +11,7 @@ __all__ = ["ManifoldCreateBulkParams", "Body"]
 
 
 class ManifoldCreateBulkParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
+    body: Iterable[Body]
 
 
 class Body(TypedDict, total=False):

@@ -198,6 +198,11 @@ class TestOnorbitthrusterstatus:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        onorbitthrusterstatus = client.onorbitthrusterstatus.create_bulk()
+        assert onorbitthrusterstatus is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitthrusterstatus = client.onorbitthrusterstatus.create_bulk(
             body=[
                 {
@@ -206,6 +211,22 @@ class TestOnorbitthrusterstatus:
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
                     "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "id": "af103c-1f917dc-002c1bd",
+                    "est_delta_v": 10.1,
+                    "fuel_mass": 100.1,
+                    "fuel_mass_unc": 10.1,
+                    "isp": 300.1,
+                    "max_delta_v": 100.1,
+                    "min_delta_v": 0.1,
+                    "name": "REA1",
+                    "operational": True,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "prop_mass_avg": 907.6,
+                    "prop_mass_max": 2333.3,
+                    "prop_mass_median": 200.1,
+                    "prop_mass_min": 0.1,
+                    "thrust_max": 22.1,
+                    "total_delta_v": 100.1,
                 }
             ],
         )
@@ -213,17 +234,7 @@ class TestOnorbitthrusterstatus:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.onorbitthrusterstatus.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
-                    "source": "Bluestaq",
-                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
-                }
-            ],
-        )
+        response = client.onorbitthrusterstatus.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,17 +243,7 @@ class TestOnorbitthrusterstatus:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.onorbitthrusterstatus.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
-                    "source": "Bluestaq",
-                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
-                }
-            ],
-        ) as response:
+        with client.onorbitthrusterstatus.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -534,6 +535,11 @@ class TestAsyncOnorbitthrusterstatus:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitthrusterstatus = await async_client.onorbitthrusterstatus.create_bulk()
+        assert onorbitthrusterstatus is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.create_bulk(
             body=[
                 {
@@ -542,6 +548,22 @@ class TestAsyncOnorbitthrusterstatus:
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
                     "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "id": "af103c-1f917dc-002c1bd",
+                    "est_delta_v": 10.1,
+                    "fuel_mass": 100.1,
+                    "fuel_mass_unc": 10.1,
+                    "isp": 300.1,
+                    "max_delta_v": 100.1,
+                    "min_delta_v": 0.1,
+                    "name": "REA1",
+                    "operational": True,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "prop_mass_avg": 907.6,
+                    "prop_mass_max": 2333.3,
+                    "prop_mass_median": 200.1,
+                    "prop_mass_min": 0.1,
+                    "thrust_max": 22.1,
+                    "total_delta_v": 100.1,
                 }
             ],
         )
@@ -549,17 +571,7 @@ class TestAsyncOnorbitthrusterstatus:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.onorbitthrusterstatus.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
-                    "source": "Bluestaq",
-                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
-                }
-            ],
-        )
+        response = await async_client.onorbitthrusterstatus.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -568,17 +580,7 @@ class TestAsyncOnorbitthrusterstatus:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.onorbitthrusterstatus.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
-                    "source": "Bluestaq",
-                    "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
-                }
-            ],
-        ) as response:
+        async with async_client.onorbitthrusterstatus.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

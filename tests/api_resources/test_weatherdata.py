@@ -168,6 +168,11 @@ class TestWeatherdata:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        weatherdata = client.weatherdata.create_bulk()
+        assert weatherdata is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         weatherdata = client.weatherdata.create_bulk(
             body=[
                 {
@@ -175,6 +180,38 @@ class TestWeatherdata:
                     "data_mode": "REAL",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
+                    "id": "WEATHER-DATA-ID",
+                    "angle_orientation": 75.7,
+                    "avg_ref_pwr": 714.9,
+                    "avg_tx_pwr": 20.23,
+                    "checksum": 133,
+                    "co_integs": [4, 3],
+                    "cons_recs": [5, 2],
+                    "dopp_vels": [44.4, 467.3],
+                    "file_creation": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "first_guess_avgs": [16, 1],
+                    "id_sensor": "0129f577-e04c-441e-65ca-0a04a750bed9",
+                    "interpulse_periods": [1000.3, 1000.2],
+                    "light_det_sensors": [11, 28, 190],
+                    "light_event_num": 9,
+                    "noise_lvls": [58.2, 58.3],
+                    "num_elements": 640,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_sensor_id": "ORIGSENSOR-ID",
+                    "pos_confidence": 0.1,
+                    "qc_value": 4,
+                    "sector_num": 20,
+                    "semi_major_axis": 3.4,
+                    "semi_minor_axis": 0.3,
+                    "sig_pwrs": [116.5, 121.6],
+                    "sig_strength": 163.7,
+                    "snrs": [14.5, -16.2],
+                    "spec_avgs": [4, 3],
+                    "spec_widths": [0.3, 0.6],
+                    "src_ids": ["1b23ba93-0957-4654-b5ca-8c3703f3ec57", "32944ee4-0437-4d94-95ce-2f2823ffa001"],
+                    "src_typs": ["SENSOR", "WEATHERREPORT"],
+                    "td_avg_sample_nums": [32, 30],
+                    "term_alt": 19505.1,
                 }
             ],
         )
@@ -182,16 +219,7 @@ class TestWeatherdata:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.weatherdata.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = client.weatherdata.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -200,16 +228,7 @@ class TestWeatherdata:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.weatherdata.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        with client.weatherdata.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -517,6 +536,11 @@ class TestAsyncWeatherdata:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        weatherdata = await async_client.weatherdata.create_bulk()
+        assert weatherdata is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         weatherdata = await async_client.weatherdata.create_bulk(
             body=[
                 {
@@ -524,6 +548,38 @@ class TestAsyncWeatherdata:
                     "data_mode": "REAL",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
+                    "id": "WEATHER-DATA-ID",
+                    "angle_orientation": 75.7,
+                    "avg_ref_pwr": 714.9,
+                    "avg_tx_pwr": 20.23,
+                    "checksum": 133,
+                    "co_integs": [4, 3],
+                    "cons_recs": [5, 2],
+                    "dopp_vels": [44.4, 467.3],
+                    "file_creation": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "first_guess_avgs": [16, 1],
+                    "id_sensor": "0129f577-e04c-441e-65ca-0a04a750bed9",
+                    "interpulse_periods": [1000.3, 1000.2],
+                    "light_det_sensors": [11, 28, 190],
+                    "light_event_num": 9,
+                    "noise_lvls": [58.2, 58.3],
+                    "num_elements": 640,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_sensor_id": "ORIGSENSOR-ID",
+                    "pos_confidence": 0.1,
+                    "qc_value": 4,
+                    "sector_num": 20,
+                    "semi_major_axis": 3.4,
+                    "semi_minor_axis": 0.3,
+                    "sig_pwrs": [116.5, 121.6],
+                    "sig_strength": 163.7,
+                    "snrs": [14.5, -16.2],
+                    "spec_avgs": [4, 3],
+                    "spec_widths": [0.3, 0.6],
+                    "src_ids": ["1b23ba93-0957-4654-b5ca-8c3703f3ec57", "32944ee4-0437-4d94-95ce-2f2823ffa001"],
+                    "src_typs": ["SENSOR", "WEATHERREPORT"],
+                    "td_avg_sample_nums": [32, 30],
+                    "term_alt": 19505.1,
                 }
             ],
         )
@@ -531,16 +587,7 @@ class TestAsyncWeatherdata:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.weatherdata.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = await async_client.weatherdata.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -549,16 +596,7 @@ class TestAsyncWeatherdata:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.weatherdata.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        async with async_client.weatherdata.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

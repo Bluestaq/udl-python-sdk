@@ -356,6 +356,11 @@ class TestNavigationalobstruction:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        navigationalobstruction = client.navigationalobstruction.create_bulk()
+        assert navigationalobstruction is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigationalobstruction = client.navigationalobstruction.create_bulk(
             body=[
                 {
@@ -365,6 +370,72 @@ class TestNavigationalobstruction:
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
                     "source": "Bluestaq",
+                    "id": "026dd511-8ba5-47d3-9909-836149f87686",
+                    "act_del_code": "A",
+                    "airac_cycle": 2406,
+                    "base_airac_cycle": 2405,
+                    "baseline_cutoff_date": parse_date("2024-04-23"),
+                    "bound_ne_lat": 29.1,
+                    "bound_ne_lon": 99.1,
+                    "bound_sw_lat": -44.1,
+                    "bound_sw_lon": -144.1,
+                    "country_code": "US",
+                    "cutoff_date": parse_date("2024-05-21"),
+                    "data_set_remarks": "Data set remarks",
+                    "deleting_org": "ACME",
+                    "deriving_org": "ACME",
+                    "directivity_code": 2,
+                    "elevation": 840.1,
+                    "elevation_acc": 17.1,
+                    "external_id": "OU812",
+                    "facc": "AT040",
+                    "feature_code": "540",
+                    "feature_description": "Powerline Pylon, General",
+                    "feature_name": "PYLON",
+                    "feature_type": "540",
+                    "height_agl": 314.1,
+                    "height_agl_acc": 30.1,
+                    "height_msl": 1154.1,
+                    "height_msl_acc": 34.1,
+                    "horiz_acc": 8.1,
+                    "horiz_datum_code": "WGS-84",
+                    "init_record_date": parse_date("1991-03-28"),
+                    "keys": ["key1", "key2"],
+                    "lighting_code": "U",
+                    "line_ne_lat": 49.000584,
+                    "line_ne_lon": -122.197891,
+                    "lines_filename": "lines.txt",
+                    "line_sw_lat": 48.507027,
+                    "line_sw_lon": -122.722946,
+                    "min_height_agl": 20.1,
+                    "mult_obs": "S",
+                    "next_cycle_date": parse_date("2024-07-11"),
+                    "num_lines": 45993,
+                    "num_obs": 1,
+                    "num_points": 21830590,
+                    "obstacle_remarks": "Obstacle remarks",
+                    "orig_id": "L0000002289",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "owner_country_code": "US",
+                    "point_lat": 46.757211,
+                    "point_lon": -67.759494,
+                    "points_filename": "points.txt",
+                    "process_code": "OT",
+                    "producer": "ACME",
+                    "province_code": "23",
+                    "quality": "0",
+                    "rev_date": parse_date("2020-02-26"),
+                    "seg_end_point": 359655,
+                    "seg_num": 1,
+                    "seg_start_point": 359655,
+                    "source_date": parse_date("2016-04-01"),
+                    "surface_mat_code": "U",
+                    "transaction_code": "V",
+                    "validation_code": 3,
+                    "values": ["value1", "value2"],
+                    "vectors_filename": "vectors.txt",
+                    "wac": "262",
+                    "wac_innr": "0409-00039",
                 }
             ],
         )
@@ -372,18 +443,7 @@ class TestNavigationalobstruction:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.navigationalobstruction.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "cycle_date": parse_date("2024-06-13"),
-                    "data_mode": "REAL",
-                    "obstacle_id": "359655",
-                    "obstacle_type": "V",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = client.navigationalobstruction.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -392,18 +452,7 @@ class TestNavigationalobstruction:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.navigationalobstruction.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "cycle_date": parse_date("2024-06-13"),
-                    "data_mode": "REAL",
-                    "obstacle_id": "359655",
-                    "obstacle_type": "V",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        with client.navigationalobstruction.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -853,6 +902,11 @@ class TestAsyncNavigationalobstruction:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        navigationalobstruction = await async_client.navigationalobstruction.create_bulk()
+        assert navigationalobstruction is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigationalobstruction = await async_client.navigationalobstruction.create_bulk(
             body=[
                 {
@@ -862,6 +916,72 @@ class TestAsyncNavigationalobstruction:
                     "obstacle_id": "359655",
                     "obstacle_type": "V",
                     "source": "Bluestaq",
+                    "id": "026dd511-8ba5-47d3-9909-836149f87686",
+                    "act_del_code": "A",
+                    "airac_cycle": 2406,
+                    "base_airac_cycle": 2405,
+                    "baseline_cutoff_date": parse_date("2024-04-23"),
+                    "bound_ne_lat": 29.1,
+                    "bound_ne_lon": 99.1,
+                    "bound_sw_lat": -44.1,
+                    "bound_sw_lon": -144.1,
+                    "country_code": "US",
+                    "cutoff_date": parse_date("2024-05-21"),
+                    "data_set_remarks": "Data set remarks",
+                    "deleting_org": "ACME",
+                    "deriving_org": "ACME",
+                    "directivity_code": 2,
+                    "elevation": 840.1,
+                    "elevation_acc": 17.1,
+                    "external_id": "OU812",
+                    "facc": "AT040",
+                    "feature_code": "540",
+                    "feature_description": "Powerline Pylon, General",
+                    "feature_name": "PYLON",
+                    "feature_type": "540",
+                    "height_agl": 314.1,
+                    "height_agl_acc": 30.1,
+                    "height_msl": 1154.1,
+                    "height_msl_acc": 34.1,
+                    "horiz_acc": 8.1,
+                    "horiz_datum_code": "WGS-84",
+                    "init_record_date": parse_date("1991-03-28"),
+                    "keys": ["key1", "key2"],
+                    "lighting_code": "U",
+                    "line_ne_lat": 49.000584,
+                    "line_ne_lon": -122.197891,
+                    "lines_filename": "lines.txt",
+                    "line_sw_lat": 48.507027,
+                    "line_sw_lon": -122.722946,
+                    "min_height_agl": 20.1,
+                    "mult_obs": "S",
+                    "next_cycle_date": parse_date("2024-07-11"),
+                    "num_lines": 45993,
+                    "num_obs": 1,
+                    "num_points": 21830590,
+                    "obstacle_remarks": "Obstacle remarks",
+                    "orig_id": "L0000002289",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "owner_country_code": "US",
+                    "point_lat": 46.757211,
+                    "point_lon": -67.759494,
+                    "points_filename": "points.txt",
+                    "process_code": "OT",
+                    "producer": "ACME",
+                    "province_code": "23",
+                    "quality": "0",
+                    "rev_date": parse_date("2020-02-26"),
+                    "seg_end_point": 359655,
+                    "seg_num": 1,
+                    "seg_start_point": 359655,
+                    "source_date": parse_date("2016-04-01"),
+                    "surface_mat_code": "U",
+                    "transaction_code": "V",
+                    "validation_code": 3,
+                    "values": ["value1", "value2"],
+                    "vectors_filename": "vectors.txt",
+                    "wac": "262",
+                    "wac_innr": "0409-00039",
                 }
             ],
         )
@@ -869,18 +989,7 @@ class TestAsyncNavigationalobstruction:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.navigationalobstruction.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "cycle_date": parse_date("2024-06-13"),
-                    "data_mode": "REAL",
-                    "obstacle_id": "359655",
-                    "obstacle_type": "V",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = await async_client.navigationalobstruction.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -889,18 +998,7 @@ class TestAsyncNavigationalobstruction:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.navigationalobstruction.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "cycle_date": parse_date("2024-06-13"),
-                    "data_mode": "REAL",
-                    "obstacle_id": "359655",
-                    "obstacle_type": "V",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        async with async_client.navigationalobstruction.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

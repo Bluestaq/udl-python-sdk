@@ -12,7 +12,7 @@ __all__ = ["OnorbitthrusterstatusCreateBulkParams", "Body"]
 
 
 class OnorbitthrusterstatusCreateBulkParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
+    body: Iterable[Body]
 
 
 class Body(TypedDict, total=False):

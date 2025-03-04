@@ -25,7 +25,7 @@ __all__ = [
 
 
 class LogisticssupportCreateBulkParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
+    body: Iterable[Body]
 
 
 class BodyLogisticsDiscrepancyInfo(TypedDict, total=False):

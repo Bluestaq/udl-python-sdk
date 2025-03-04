@@ -305,23 +305,14 @@ class TestSensormaintenance:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
-        sensormaintenance = client.sensormaintenance.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "site_code": "site01",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
+        sensormaintenance = client.sensormaintenance.create_bulk()
         assert sensormaintenance is None
 
     @parametrize
     def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.create_bulk(
+            origin="origin",
+            source="source",
             body=[
                 {
                     "classification_marking": "U",
@@ -353,25 +344,12 @@ class TestSensormaintenance:
                     "ss_ops_cap": "Y",
                 }
             ],
-            origin="origin",
-            source="source",
         )
         assert sensormaintenance is None
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.sensormaintenance.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "site_code": "site01",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
+        response = client.sensormaintenance.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -380,18 +358,7 @@ class TestSensormaintenance:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.sensormaintenance.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "site_code": "site01",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                }
-            ],
-        ) as response:
+        with client.sensormaintenance.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -814,23 +781,14 @@ class TestAsyncSensormaintenance:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sensormaintenance = await async_client.sensormaintenance.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "site_code": "site01",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
+        sensormaintenance = await async_client.sensormaintenance.create_bulk()
         assert sensormaintenance is None
 
     @parametrize
     async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.create_bulk(
+            origin="origin",
+            source="source",
             body=[
                 {
                     "classification_marking": "U",
@@ -862,25 +820,12 @@ class TestAsyncSensormaintenance:
                     "ss_ops_cap": "Y",
                 }
             ],
-            origin="origin",
-            source="source",
         )
         assert sensormaintenance is None
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensormaintenance.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "site_code": "site01",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
+        response = await async_client.sensormaintenance.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -889,18 +834,7 @@ class TestAsyncSensormaintenance:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensormaintenance.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "site_code": "site01",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                }
-            ],
-        ) as response:
+        async with async_client.sensormaintenance.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
