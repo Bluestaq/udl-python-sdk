@@ -427,7 +427,7 @@ class Unifieddatalibrary(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous unifieddatalibrary client instance.
+        """Construct a new synchronous Unifieddatalibrary client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `password` from `HTTP_BASIC_AUTH_PASSWORD`
@@ -956,7 +956,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async unifieddatalibrary client instance.
+        """Construct a new async AsyncUnifieddatalibrary client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `password` from `HTTP_BASIC_AUTH_PASSWORD`
