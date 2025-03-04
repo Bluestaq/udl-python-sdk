@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.scs import folder_create_params, folder_update_params
+from ...types.scs import folder_create_params, folder_update_params, folder_retrieve_params
 from ..._base_client import make_request_options
 from ...types.shared.file_data import FileData
 
@@ -49,6 +49,7 @@ class FoldersResource(SyncAPIResource):
     def create(
         self,
         *,
+        id: str,
         classification_marking: str,
         description: str | NotGiven = NOT_GIVEN,
         read: str | NotGiven = NOT_GIVEN,
@@ -68,6 +69,8 @@ class FoldersResource(SyncAPIResource):
         assistance.
 
         Args:
+          id: Path to create folder.
+
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
           description: Optional description to include on folder.
@@ -95,6 +98,7 @@ class FoldersResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "id": id,
                         "classification_marking": classification_marking,
                         "description": description,
                         "read": read,
@@ -110,6 +114,7 @@ class FoldersResource(SyncAPIResource):
     def retrieve(
         self,
         *,
+        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -120,11 +125,26 @@ class FoldersResource(SyncAPIResource):
         """
         Returns a FileData object representing the folder ID that is visible to the
         calling user.
+
+        Args:
+          id: The folder ID
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/scs/folder",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"id": id}, folder_retrieve_params.FolderRetrieveParams),
             ),
             cast_to=FileData,
         )
@@ -203,6 +223,7 @@ class AsyncFoldersResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        id: str,
         classification_marking: str,
         description: str | NotGiven = NOT_GIVEN,
         read: str | NotGiven = NOT_GIVEN,
@@ -222,6 +243,8 @@ class AsyncFoldersResource(AsyncAPIResource):
         assistance.
 
         Args:
+          id: Path to create folder.
+
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
           description: Optional description to include on folder.
@@ -249,6 +272,7 @@ class AsyncFoldersResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "id": id,
                         "classification_marking": classification_marking,
                         "description": description,
                         "read": read,
@@ -264,6 +288,7 @@ class AsyncFoldersResource(AsyncAPIResource):
     async def retrieve(
         self,
         *,
+        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -274,11 +299,26 @@ class AsyncFoldersResource(AsyncAPIResource):
         """
         Returns a FileData object representing the folder ID that is visible to the
         calling user.
+
+        Args:
+          id: The folder ID
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/scs/folder",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"id": id}, folder_retrieve_params.FolderRetrieveParams),
             ),
             cast_to=FileData,
         )
