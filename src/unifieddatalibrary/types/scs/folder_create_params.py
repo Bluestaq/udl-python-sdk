@@ -10,9 +10,6 @@ __all__ = ["FolderCreateParams"]
 
 
 class FolderCreateParams(TypedDict, total=False):
-    id: Required[str]
-    """Path to create folder."""
-
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

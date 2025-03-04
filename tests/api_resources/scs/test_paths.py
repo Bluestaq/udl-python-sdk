@@ -19,7 +19,6 @@ class TestPaths:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         path = client.scs.paths.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
         )
@@ -28,7 +27,6 @@ class TestPaths:
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         path = client.scs.paths.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
             description="description",
@@ -39,7 +37,6 @@ class TestPaths:
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.scs.paths.with_raw_response.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
         )
@@ -52,7 +49,6 @@ class TestPaths:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.scs.paths.with_streaming_response.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
         ) as response:
@@ -71,7 +67,6 @@ class TestAsyncPaths:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         path = await async_client.scs.paths.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
         )
@@ -80,7 +75,6 @@ class TestAsyncPaths:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         path = await async_client.scs.paths.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
             description="description",
@@ -91,7 +85,6 @@ class TestAsyncPaths:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.paths.with_raw_response.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
         )
@@ -104,7 +97,6 @@ class TestAsyncPaths:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.paths.with_streaming_response.create(
-            id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
         ) as response:

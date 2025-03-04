@@ -4,7 +4,16 @@ from __future__ import annotations
 
 import httpx
 
+from ..types import (
+    secure_messaging_get_messages_params,
+    secure_messaging_describe_topic_params,
+    secure_messaging_get_latest_offset_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -42,8 +51,9 @@ class SecureMessagingResource(SyncAPIResource):
 
     def describe_topic(
         self,
-        topic: str,
+        path_topic: str,
         *,
+        query_topic: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -55,6 +65,8 @@ class SecureMessagingResource(SyncAPIResource):
         Retrieve the details of the specified topic or data type.
 
         Args:
+          query_topic: The topic to be described.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -63,20 +75,28 @@ class SecureMessagingResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not topic:
-            raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
+        if not path_topic:
+            raise ValueError(f"Expected a non-empty value for `path_topic` but received {path_topic!r}")
         return self._get(
-            f"/sm/describeTopic/{topic}",
+            f"/sm/describeTopic/{path_topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"query_topic": query_topic},
+                    secure_messaging_describe_topic_params.SecureMessagingDescribeTopicParams,
+                ),
             ),
             cast_to=TopicDetails,
         )
 
     def get_latest_offset(
         self,
-        topic: str,
+        path_topic: str,
         *,
+        query_topic: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -88,6 +108,8 @@ class SecureMessagingResource(SyncAPIResource):
         Returns the current/latest offset for the passed topic name.
 
         Args:
+          query_topic: The topic name to return the latest offset.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -96,22 +118,31 @@ class SecureMessagingResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not topic:
-            raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
+        if not path_topic:
+            raise ValueError(f"Expected a non-empty value for `path_topic` but received {path_topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            f"/sm/getLatestOffset/{topic}",
+            f"/sm/getLatestOffset/{path_topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"query_topic": query_topic},
+                    secure_messaging_get_latest_offset_params.SecureMessagingGetLatestOffsetParams,
+                ),
             ),
             cast_to=NoneType,
         )
 
     def get_messages(
         self,
-        offset: int,
+        path_offset: str,
         *,
-        topic: str,
+        path_topic: str,
+        query_offset: int,
+        query_topic: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -125,6 +156,10 @@ class SecureMessagingResource(SyncAPIResource):
         Secure Messaging API on Storefront for more details on how to use getMessages.
 
         Args:
+          query_offset: The message offset.
+
+          query_topic: The topic from which messages are to be retrieved.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -133,13 +168,25 @@ class SecureMessagingResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not topic:
-            raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
+        if not path_topic:
+            raise ValueError(f"Expected a non-empty value for `path_topic` but received {path_topic!r}")
+        if not path_offset:
+            raise ValueError(f"Expected a non-empty value for `path_offset` but received {path_offset!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            f"/sm/getMessages/{topic}/{offset}",
+            f"/sm/getMessages/{path_topic}/{path_offset}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "query_offset": query_offset,
+                        "query_topic": query_topic,
+                    },
+                    secure_messaging_get_messages_params.SecureMessagingGetMessagesParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -186,8 +233,9 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
 
     async def describe_topic(
         self,
-        topic: str,
+        path_topic: str,
         *,
+        query_topic: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -199,6 +247,8 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         Retrieve the details of the specified topic or data type.
 
         Args:
+          query_topic: The topic to be described.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -207,20 +257,28 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not topic:
-            raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
+        if not path_topic:
+            raise ValueError(f"Expected a non-empty value for `path_topic` but received {path_topic!r}")
         return await self._get(
-            f"/sm/describeTopic/{topic}",
+            f"/sm/describeTopic/{path_topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"query_topic": query_topic},
+                    secure_messaging_describe_topic_params.SecureMessagingDescribeTopicParams,
+                ),
             ),
             cast_to=TopicDetails,
         )
 
     async def get_latest_offset(
         self,
-        topic: str,
+        path_topic: str,
         *,
+        query_topic: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -232,6 +290,8 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         Returns the current/latest offset for the passed topic name.
 
         Args:
+          query_topic: The topic name to return the latest offset.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -240,22 +300,31 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not topic:
-            raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
+        if not path_topic:
+            raise ValueError(f"Expected a non-empty value for `path_topic` but received {path_topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            f"/sm/getLatestOffset/{topic}",
+            f"/sm/getLatestOffset/{path_topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"query_topic": query_topic},
+                    secure_messaging_get_latest_offset_params.SecureMessagingGetLatestOffsetParams,
+                ),
             ),
             cast_to=NoneType,
         )
 
     async def get_messages(
         self,
-        offset: int,
+        path_offset: str,
         *,
-        topic: str,
+        path_topic: str,
+        query_offset: int,
+        query_topic: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -269,6 +338,10 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         Secure Messaging API on Storefront for more details on how to use getMessages.
 
         Args:
+          query_offset: The message offset.
+
+          query_topic: The topic from which messages are to be retrieved.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -277,13 +350,25 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not topic:
-            raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
+        if not path_topic:
+            raise ValueError(f"Expected a non-empty value for `path_topic` but received {path_topic!r}")
+        if not path_offset:
+            raise ValueError(f"Expected a non-empty value for `path_offset` but received {path_offset!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            f"/sm/getMessages/{topic}/{offset}",
+            f"/sm/getMessages/{path_topic}/{path_offset}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "query_offset": query_offset,
+                        "query_topic": query_topic,
+                    },
+                    secure_messaging_get_messages_params.SecureMessagingGetMessagesParams,
+                ),
             ),
             cast_to=NoneType,
         )

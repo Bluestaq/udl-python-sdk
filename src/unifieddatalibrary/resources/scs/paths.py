@@ -46,7 +46,6 @@ class PathsResource(SyncAPIResource):
     def create(
         self,
         *,
-        id: str,
         classification_marking: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
@@ -65,8 +64,6 @@ class PathsResource(SyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The full path to create, including path and file name
-
           classification_marking: Classification (ex. U//FOUO)
 
           description: Description
@@ -91,7 +88,6 @@ class PathsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
                         "classification_marking": classification_marking,
                         "description": description,
                         "tags": tags,
@@ -126,7 +122,6 @@ class AsyncPathsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        id: str,
         classification_marking: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
@@ -145,8 +140,6 @@ class AsyncPathsResource(AsyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The full path to create, including path and file name
-
           classification_marking: Classification (ex. U//FOUO)
 
           description: Description
@@ -171,7 +164,6 @@ class AsyncPathsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "id": id,
                         "classification_marking": classification_marking,
                         "description": description,
                         "tags": tags,

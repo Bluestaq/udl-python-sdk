@@ -20,7 +20,6 @@ class TestFolders:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         folder = client.scs.folders.create(
-            id="id",
             classification_marking="classificationMarking",
         )
         assert_matches_type(str, folder, path=["response"])
@@ -28,7 +27,6 @@ class TestFolders:
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         folder = client.scs.folders.create(
-            id="id",
             classification_marking="classificationMarking",
             description="description",
             read="read",
@@ -40,7 +38,6 @@ class TestFolders:
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.scs.folders.with_raw_response.create(
-            id="id",
             classification_marking="classificationMarking",
         )
 
@@ -52,7 +49,6 @@ class TestFolders:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.scs.folders.with_streaming_response.create(
-            id="id",
             classification_marking="classificationMarking",
         ) as response:
             assert not response.is_closed
@@ -65,16 +61,12 @@ class TestFolders:
 
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
-        folder = client.scs.folders.retrieve(
-            id="id",
-        )
+        folder = client.scs.folders.retrieve()
         assert_matches_type(FileData, folder, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        response = client.scs.folders.with_raw_response.retrieve(
-            id="id",
-        )
+        response = client.scs.folders.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -83,9 +75,7 @@ class TestFolders:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        with client.scs.folders.with_streaming_response.retrieve(
-            id="id",
-        ) as response:
+        with client.scs.folders.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -169,7 +159,6 @@ class TestAsyncFolders:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         folder = await async_client.scs.folders.create(
-            id="id",
             classification_marking="classificationMarking",
         )
         assert_matches_type(str, folder, path=["response"])
@@ -177,7 +166,6 @@ class TestAsyncFolders:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         folder = await async_client.scs.folders.create(
-            id="id",
             classification_marking="classificationMarking",
             description="description",
             read="read",
@@ -189,7 +177,6 @@ class TestAsyncFolders:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.folders.with_raw_response.create(
-            id="id",
             classification_marking="classificationMarking",
         )
 
@@ -201,7 +188,6 @@ class TestAsyncFolders:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.folders.with_streaming_response.create(
-            id="id",
             classification_marking="classificationMarking",
         ) as response:
             assert not response.is_closed
@@ -214,16 +200,12 @@ class TestAsyncFolders:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        folder = await async_client.scs.folders.retrieve(
-            id="id",
-        )
+        folder = await async_client.scs.folders.retrieve()
         assert_matches_type(FileData, folder, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.scs.folders.with_raw_response.retrieve(
-            id="id",
-        )
+        response = await async_client.scs.folders.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,9 +214,7 @@ class TestAsyncFolders:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.scs.folders.with_streaming_response.retrieve(
-            id="id",
-        ) as response:
+        async with async_client.scs.folders.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

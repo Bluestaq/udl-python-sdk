@@ -11,9 +11,6 @@ __all__ = ["PathCreateParams"]
 
 
 class PathCreateParams(TypedDict, total=False):
-    id: Required[str]
-    """The full path to create, including path and file name"""
-
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification (ex. U//FOUO)"""
 
