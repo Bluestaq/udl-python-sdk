@@ -41,13 +41,11 @@ from .groups import (
 from ...types import (
     sc_copy_params,
     sc_move_params,
-    sc_delete_params,
     sc_rename_params,
     sc_search_params,
     sc_download_params,
     sc_file_upload_params,
     sc_update_tags_params,
-    sc_file_download_params,
 )
 from .folders import (
     FoldersResource,
@@ -166,7 +164,6 @@ class ScsResource(SyncAPIResource):
     def delete(
         self,
         *,
-        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -178,27 +175,12 @@ class ScsResource(SyncAPIResource):
         Deletes the requested File or folder in the passed path directory that is
         visible to the calling user. A specific role is required to perform this service
         operation. Please contact the UDL team for assistance.
-
-        Args:
-          id: The id of the item to delete
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             "/scs/delete",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"id": id}, sc_delete_params.ScDeleteParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
@@ -263,7 +245,6 @@ class ScsResource(SyncAPIResource):
     def copy(
         self,
         *,
-        id: str,
         target_path: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -278,8 +259,6 @@ class ScsResource(SyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to copy
-
           target_path: The path to copy to
 
           extra_headers: Send extra headers
@@ -297,13 +276,7 @@ class ScsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "id": id,
-                        "target_path": target_path,
-                    },
-                    sc_copy_params.ScCopyParams,
-                ),
+                query=maybe_transform({"target_path": target_path}, sc_copy_params.ScCopyParams),
             ),
             cast_to=str,
         )
@@ -344,7 +317,6 @@ class ScsResource(SyncAPIResource):
     def file_download(
         self,
         *,
-        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -352,29 +324,12 @@ class ScsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BinaryAPIResponse:
-        """
-        Download a single file from SCS.
-
-        Args:
-          id: The complete path and filename of the file to download.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
+        """Download a single file from SCS."""
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._get(
             "/scs/download",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"id": id}, sc_file_download_params.ScFileDownloadParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -444,7 +399,6 @@ class ScsResource(SyncAPIResource):
     def move(
         self,
         *,
-        id: str,
         target_path: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -459,8 +413,6 @@ class ScsResource(SyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to copy
-
           target_path: The path to copy to
 
           extra_headers: Send extra headers
@@ -478,13 +430,7 @@ class ScsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "id": id,
-                        "target_path": target_path,
-                    },
-                    sc_move_params.ScMoveParams,
-                ),
+                query=maybe_transform({"target_path": target_path}, sc_move_params.ScMoveParams),
             ),
             cast_to=str,
         )
@@ -492,7 +438,6 @@ class ScsResource(SyncAPIResource):
     def rename(
         self,
         *,
-        id: str,
         new_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -507,8 +452,6 @@ class ScsResource(SyncAPIResource):
         this service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to rename.
-
           new_name: The new name for the file or folder. Do not include the path.
 
           extra_headers: Send extra headers
@@ -527,13 +470,7 @@ class ScsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "id": id,
-                        "new_name": new_name,
-                    },
-                    sc_rename_params.ScRenameParams,
-                ),
+                query=maybe_transform({"new_name": new_name}, sc_rename_params.ScRenameParams),
             ),
             cast_to=NoneType,
         )
@@ -706,7 +643,6 @@ class AsyncScsResource(AsyncAPIResource):
     async def delete(
         self,
         *,
-        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -718,27 +654,12 @@ class AsyncScsResource(AsyncAPIResource):
         Deletes the requested File or folder in the passed path directory that is
         visible to the calling user. A specific role is required to perform this service
         operation. Please contact the UDL team for assistance.
-
-        Args:
-          id: The id of the item to delete
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             "/scs/delete",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"id": id}, sc_delete_params.ScDeleteParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
@@ -803,7 +724,6 @@ class AsyncScsResource(AsyncAPIResource):
     async def copy(
         self,
         *,
-        id: str,
         target_path: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -818,8 +738,6 @@ class AsyncScsResource(AsyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to copy
-
           target_path: The path to copy to
 
           extra_headers: Send extra headers
@@ -837,13 +755,7 @@ class AsyncScsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "id": id,
-                        "target_path": target_path,
-                    },
-                    sc_copy_params.ScCopyParams,
-                ),
+                query=await async_maybe_transform({"target_path": target_path}, sc_copy_params.ScCopyParams),
             ),
             cast_to=str,
         )
@@ -884,7 +796,6 @@ class AsyncScsResource(AsyncAPIResource):
     async def file_download(
         self,
         *,
-        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -892,29 +803,12 @@ class AsyncScsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncBinaryAPIResponse:
-        """
-        Download a single file from SCS.
-
-        Args:
-          id: The complete path and filename of the file to download.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
+        """Download a single file from SCS."""
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._get(
             "/scs/download",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"id": id}, sc_file_download_params.ScFileDownloadParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
@@ -984,7 +878,6 @@ class AsyncScsResource(AsyncAPIResource):
     async def move(
         self,
         *,
-        id: str,
         target_path: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -999,8 +892,6 @@ class AsyncScsResource(AsyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to copy
-
           target_path: The path to copy to
 
           extra_headers: Send extra headers
@@ -1018,13 +909,7 @@ class AsyncScsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "id": id,
-                        "target_path": target_path,
-                    },
-                    sc_move_params.ScMoveParams,
-                ),
+                query=await async_maybe_transform({"target_path": target_path}, sc_move_params.ScMoveParams),
             ),
             cast_to=str,
         )
@@ -1032,7 +917,6 @@ class AsyncScsResource(AsyncAPIResource):
     async def rename(
         self,
         *,
-        id: str,
         new_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1047,8 +931,6 @@ class AsyncScsResource(AsyncAPIResource):
         this service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to rename.
-
           new_name: The new name for the file or folder. Do not include the path.
 
           extra_headers: Send extra headers
@@ -1067,13 +949,7 @@ class AsyncScsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "id": id,
-                        "new_name": new_name,
-                    },
-                    sc_rename_params.ScRenameParams,
-                ),
+                query=await async_maybe_transform({"new_name": new_name}, sc_rename_params.ScRenameParams),
             ),
             cast_to=NoneType,
         )

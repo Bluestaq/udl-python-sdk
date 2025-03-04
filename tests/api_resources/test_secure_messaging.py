@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types import TopicDetails, SecureMessagingListTopicsResponse
+from unifieddatalibrary.types import (
+    TopicDetails,
+    SecureMessagingListTopicsResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,14 +23,16 @@ class TestSecureMessaging:
     @parametrize
     def test_method_describe_topic(self, client: Unifieddatalibrary) -> None:
         secure_messaging = client.secure_messaging.describe_topic(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
         assert_matches_type(TopicDetails, secure_messaging, path=["response"])
 
     @parametrize
     def test_raw_response_describe_topic(self, client: Unifieddatalibrary) -> None:
         response = client.secure_messaging.with_raw_response.describe_topic(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
 
         assert response.is_closed is True
@@ -38,7 +43,8 @@ class TestSecureMessaging:
     @parametrize
     def test_streaming_response_describe_topic(self, client: Unifieddatalibrary) -> None:
         with client.secure_messaging.with_streaming_response.describe_topic(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -50,22 +56,25 @@ class TestSecureMessaging:
 
     @parametrize
     def test_path_params_describe_topic(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `topic` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_topic` but received ''"):
             client.secure_messaging.with_raw_response.describe_topic(
-                "",
+                path_topic="",
+                query_topic="",
             )
 
     @parametrize
     def test_method_get_latest_offset(self, client: Unifieddatalibrary) -> None:
         secure_messaging = client.secure_messaging.get_latest_offset(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
         assert secure_messaging is None
 
     @parametrize
     def test_raw_response_get_latest_offset(self, client: Unifieddatalibrary) -> None:
         response = client.secure_messaging.with_raw_response.get_latest_offset(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
 
         assert response.is_closed is True
@@ -76,7 +85,8 @@ class TestSecureMessaging:
     @parametrize
     def test_streaming_response_get_latest_offset(self, client: Unifieddatalibrary) -> None:
         with client.secure_messaging.with_streaming_response.get_latest_offset(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,24 +98,29 @@ class TestSecureMessaging:
 
     @parametrize
     def test_path_params_get_latest_offset(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `topic` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_topic` but received ''"):
             client.secure_messaging.with_raw_response.get_latest_offset(
-                "",
+                path_topic="",
+                query_topic="",
             )
 
     @parametrize
     def test_method_get_messages(self, client: Unifieddatalibrary) -> None:
         secure_messaging = client.secure_messaging.get_messages(
-            offset=0,
-            topic="topic",
+            path_offset="offset",
+            path_topic="topic",
+            query_offset=0,
+            query_topic="topic",
         )
         assert secure_messaging is None
 
     @parametrize
     def test_raw_response_get_messages(self, client: Unifieddatalibrary) -> None:
         response = client.secure_messaging.with_raw_response.get_messages(
-            offset=0,
-            topic="topic",
+            path_offset="offset",
+            path_topic="topic",
+            query_offset=0,
+            query_topic="topic",
         )
 
         assert response.is_closed is True
@@ -116,8 +131,10 @@ class TestSecureMessaging:
     @parametrize
     def test_streaming_response_get_messages(self, client: Unifieddatalibrary) -> None:
         with client.secure_messaging.with_streaming_response.get_messages(
-            offset=0,
-            topic="topic",
+            path_offset="offset",
+            path_topic="topic",
+            query_offset=0,
+            query_topic="topic",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -129,10 +146,20 @@ class TestSecureMessaging:
 
     @parametrize
     def test_path_params_get_messages(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `topic` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_topic` but received ''"):
             client.secure_messaging.with_raw_response.get_messages(
-                offset=0,
-                topic="",
+                path_offset="offset",
+                path_topic="",
+                query_offset=0,
+                query_topic="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_offset` but received ''"):
+            client.secure_messaging.with_raw_response.get_messages(
+                path_offset="",
+                path_topic="topic",
+                query_offset="",
+                query_topic="topic",
             )
 
     @parametrize
@@ -167,14 +194,16 @@ class TestAsyncSecureMessaging:
     @parametrize
     async def test_method_describe_topic(self, async_client: AsyncUnifieddatalibrary) -> None:
         secure_messaging = await async_client.secure_messaging.describe_topic(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
         assert_matches_type(TopicDetails, secure_messaging, path=["response"])
 
     @parametrize
     async def test_raw_response_describe_topic(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.secure_messaging.with_raw_response.describe_topic(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
 
         assert response.is_closed is True
@@ -185,7 +214,8 @@ class TestAsyncSecureMessaging:
     @parametrize
     async def test_streaming_response_describe_topic(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.secure_messaging.with_streaming_response.describe_topic(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -197,22 +227,25 @@ class TestAsyncSecureMessaging:
 
     @parametrize
     async def test_path_params_describe_topic(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `topic` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_topic` but received ''"):
             await async_client.secure_messaging.with_raw_response.describe_topic(
-                "",
+                path_topic="",
+                query_topic="",
             )
 
     @parametrize
     async def test_method_get_latest_offset(self, async_client: AsyncUnifieddatalibrary) -> None:
         secure_messaging = await async_client.secure_messaging.get_latest_offset(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
         assert secure_messaging is None
 
     @parametrize
     async def test_raw_response_get_latest_offset(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.secure_messaging.with_raw_response.get_latest_offset(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         )
 
         assert response.is_closed is True
@@ -223,7 +256,8 @@ class TestAsyncSecureMessaging:
     @parametrize
     async def test_streaming_response_get_latest_offset(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.secure_messaging.with_streaming_response.get_latest_offset(
-            "topic",
+            path_topic="topic",
+            query_topic="topic",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -235,24 +269,29 @@ class TestAsyncSecureMessaging:
 
     @parametrize
     async def test_path_params_get_latest_offset(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `topic` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_topic` but received ''"):
             await async_client.secure_messaging.with_raw_response.get_latest_offset(
-                "",
+                path_topic="",
+                query_topic="",
             )
 
     @parametrize
     async def test_method_get_messages(self, async_client: AsyncUnifieddatalibrary) -> None:
         secure_messaging = await async_client.secure_messaging.get_messages(
-            offset=0,
-            topic="topic",
+            path_offset="offset",
+            path_topic="topic",
+            query_offset=0,
+            query_topic="topic",
         )
         assert secure_messaging is None
 
     @parametrize
     async def test_raw_response_get_messages(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.secure_messaging.with_raw_response.get_messages(
-            offset=0,
-            topic="topic",
+            path_offset="offset",
+            path_topic="topic",
+            query_offset=0,
+            query_topic="topic",
         )
 
         assert response.is_closed is True
@@ -263,8 +302,10 @@ class TestAsyncSecureMessaging:
     @parametrize
     async def test_streaming_response_get_messages(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.secure_messaging.with_streaming_response.get_messages(
-            offset=0,
-            topic="topic",
+            path_offset="offset",
+            path_topic="topic",
+            query_offset=0,
+            query_topic="topic",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -276,10 +317,20 @@ class TestAsyncSecureMessaging:
 
     @parametrize
     async def test_path_params_get_messages(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `topic` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_topic` but received ''"):
             await async_client.secure_messaging.with_raw_response.get_messages(
-                offset=0,
-                topic="",
+                path_offset="offset",
+                path_topic="",
+                query_offset=0,
+                query_topic="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_offset` but received ''"):
+            await async_client.secure_messaging.with_raw_response.get_messages(
+                path_offset="",
+                path_topic="topic",
+                query_offset="",
+                query_topic="topic",
             )
 
     @parametrize

@@ -10,8 +10,5 @@ __all__ = ["ScRenameParams"]
 
 
 class ScRenameParams(TypedDict, total=False):
-    id: Required[str]
-    """The path of the item to rename."""
-
     new_name: Required[Annotated[str, PropertyInfo(alias="newName")]]
     """The new name for the file or folder. Do not include the path."""

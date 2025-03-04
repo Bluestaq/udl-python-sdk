@@ -313,14 +313,16 @@ class TestStatus:
     @parametrize
     def test_method_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
         status = client.status.get_by_entity_id(
-            "idEntity",
+            path_id_entity="idEntity",
+            query_id_entity="idEntity",
         )
         assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
 
     @parametrize
     def test_raw_response_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
         response = client.status.with_raw_response.get_by_entity_id(
-            "idEntity",
+            path_id_entity="idEntity",
+            query_id_entity="idEntity",
         )
 
         assert response.is_closed is True
@@ -331,7 +333,8 @@ class TestStatus:
     @parametrize
     def test_streaming_response_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
         with client.status.with_streaming_response.get_by_entity_id(
-            "idEntity",
+            path_id_entity="idEntity",
+            query_id_entity="idEntity",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -343,22 +346,25 @@ class TestStatus:
 
     @parametrize
     def test_path_params_get_by_entity_id(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_entity` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id_entity` but received ''"):
             client.status.with_raw_response.get_by_entity_id(
-                "",
+                path_id_entity="",
+                query_id_entity="",
             )
 
     @parametrize
     def test_method_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
         status = client.status.get_by_entity_type(
-            "entityType",
+            path_entity_type="entityType",
+            query_entity_type="entityType",
         )
         assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
 
     @parametrize
     def test_raw_response_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
         response = client.status.with_raw_response.get_by_entity_type(
-            "entityType",
+            path_entity_type="entityType",
+            query_entity_type="entityType",
         )
 
         assert response.is_closed is True
@@ -369,7 +375,8 @@ class TestStatus:
     @parametrize
     def test_streaming_response_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
         with client.status.with_streaming_response.get_by_entity_type(
-            "entityType",
+            path_entity_type="entityType",
+            query_entity_type="entityType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -381,9 +388,10 @@ class TestStatus:
 
     @parametrize
     def test_path_params_get_by_entity_type(self, client: Unifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_type` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_entity_type` but received ''"):
             client.status.with_raw_response.get_by_entity_type(
-                "",
+                path_entity_type="",
+                query_entity_type="",
             )
 
     @parametrize
@@ -735,14 +743,16 @@ class TestAsyncStatus:
     @parametrize
     async def test_method_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.get_by_entity_id(
-            "idEntity",
+            path_id_entity="idEntity",
+            query_id_entity="idEntity",
         )
         assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
 
     @parametrize
     async def test_raw_response_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.status.with_raw_response.get_by_entity_id(
-            "idEntity",
+            path_id_entity="idEntity",
+            query_id_entity="idEntity",
         )
 
         assert response.is_closed is True
@@ -753,7 +763,8 @@ class TestAsyncStatus:
     @parametrize
     async def test_streaming_response_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.status.with_streaming_response.get_by_entity_id(
-            "idEntity",
+            path_id_entity="idEntity",
+            query_id_entity="idEntity",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -765,22 +776,25 @@ class TestAsyncStatus:
 
     @parametrize
     async def test_path_params_get_by_entity_id(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id_entity` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id_entity` but received ''"):
             await async_client.status.with_raw_response.get_by_entity_id(
-                "",
+                path_id_entity="",
+                query_id_entity="",
             )
 
     @parametrize
     async def test_method_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.get_by_entity_type(
-            "entityType",
+            path_entity_type="entityType",
+            query_entity_type="entityType",
         )
         assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
 
     @parametrize
     async def test_raw_response_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.status.with_raw_response.get_by_entity_type(
-            "entityType",
+            path_entity_type="entityType",
+            query_entity_type="entityType",
         )
 
         assert response.is_closed is True
@@ -791,7 +805,8 @@ class TestAsyncStatus:
     @parametrize
     async def test_streaming_response_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.status.with_streaming_response.get_by_entity_type(
-            "entityType",
+            path_entity_type="entityType",
+            query_entity_type="entityType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -803,9 +818,10 @@ class TestAsyncStatus:
 
     @parametrize
     async def test_path_params_get_by_entity_type(self, async_client: AsyncUnifieddatalibrary) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_type` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_entity_type` but received ''"):
             await async_client.status.with_raw_response.get_by_entity_type(
-                "",
+                path_entity_type="",
+                query_entity_type="",
             )
 
     @parametrize
