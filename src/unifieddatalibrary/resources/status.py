@@ -8,13 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
-    status_tuple_params,
-    status_create_params,
-    status_update_params,
-    status_get_by_entity_id_params,
-    status_get_by_entity_type_params,
-)
+from ..types import status_tuple_params, status_create_params, status_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -405,9 +399,8 @@ class StatusResource(SyncAPIResource):
 
     def get_by_entity_id(
         self,
-        path_id_entity: str,
+        id_entity: str,
         *,
-        query_id_entity: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -419,8 +412,6 @@ class StatusResource(SyncAPIResource):
         Service operation to get all statuses related to a particular entity.
 
         Args:
-          query_id_entity: The entity id to find the list of statuses for.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -429,27 +420,20 @@ class StatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_id_entity:
-            raise ValueError(f"Expected a non-empty value for `path_id_entity` but received {path_id_entity!r}")
+        if not id_entity:
+            raise ValueError(f"Expected a non-empty value for `id_entity` but received {id_entity!r}")
         return self._get(
-            f"/udl/status/byIdEntity/{path_id_entity}",
+            f"/udl/status/byIdEntity/{id_entity}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"query_id_entity": query_id_entity}, status_get_by_entity_id_params.StatusGetByEntityIDParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=StatusGetByEntityIDResponse,
         )
 
     def get_by_entity_type(
         self,
-        path_entity_type: str,
+        entity_type: str,
         *,
-        query_entity_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -461,8 +445,6 @@ class StatusResource(SyncAPIResource):
         Service operation to get all statuses related to a particular entity type.
 
         Args:
-          query_entity_type: The entity type of the Status to find.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -471,19 +453,12 @@ class StatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_entity_type:
-            raise ValueError(f"Expected a non-empty value for `path_entity_type` but received {path_entity_type!r}")
+        if not entity_type:
+            raise ValueError(f"Expected a non-empty value for `entity_type` but received {entity_type!r}")
         return self._get(
-            f"/udl/status/byEntityType/{path_entity_type}",
+            f"/udl/status/byEntityType/{entity_type}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"query_entity_type": query_entity_type},
-                    status_get_by_entity_type_params.StatusGetByEntityTypeParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=StatusGetByEntityTypeResponse,
         )
@@ -926,9 +901,8 @@ class AsyncStatusResource(AsyncAPIResource):
 
     async def get_by_entity_id(
         self,
-        path_id_entity: str,
+        id_entity: str,
         *,
-        query_id_entity: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -940,8 +914,6 @@ class AsyncStatusResource(AsyncAPIResource):
         Service operation to get all statuses related to a particular entity.
 
         Args:
-          query_id_entity: The entity id to find the list of statuses for.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -950,27 +922,20 @@ class AsyncStatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_id_entity:
-            raise ValueError(f"Expected a non-empty value for `path_id_entity` but received {path_id_entity!r}")
+        if not id_entity:
+            raise ValueError(f"Expected a non-empty value for `id_entity` but received {id_entity!r}")
         return await self._get(
-            f"/udl/status/byIdEntity/{path_id_entity}",
+            f"/udl/status/byIdEntity/{id_entity}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"query_id_entity": query_id_entity}, status_get_by_entity_id_params.StatusGetByEntityIDParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=StatusGetByEntityIDResponse,
         )
 
     async def get_by_entity_type(
         self,
-        path_entity_type: str,
+        entity_type: str,
         *,
-        query_entity_type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -982,8 +947,6 @@ class AsyncStatusResource(AsyncAPIResource):
         Service operation to get all statuses related to a particular entity type.
 
         Args:
-          query_entity_type: The entity type of the Status to find.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -992,19 +955,12 @@ class AsyncStatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_entity_type:
-            raise ValueError(f"Expected a non-empty value for `path_entity_type` but received {path_entity_type!r}")
+        if not entity_type:
+            raise ValueError(f"Expected a non-empty value for `entity_type` but received {entity_type!r}")
         return await self._get(
-            f"/udl/status/byEntityType/{path_entity_type}",
+            f"/udl/status/byEntityType/{entity_type}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"query_entity_type": query_entity_type},
-                    status_get_by_entity_type_params.StatusGetByEntityTypeParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=StatusGetByEntityTypeResponse,
         )

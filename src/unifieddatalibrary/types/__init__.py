@@ -75,6 +75,7 @@ from .mti_tuple_params import MtiTupleParams as MtiTupleParams
 from .poi_count_params import PoiCountParams as PoiCountParams
 from .poi_tuple_params import PoiTupleParams as PoiTupleParams
 from .sc_copy_response import ScCopyResponse as ScCopyResponse
+from .sc_delete_params import ScDeleteParams as ScDeleteParams
 from .sc_move_response import ScMoveResponse as ScMoveResponse
 from .sc_rename_params import ScRenameParams as ScRenameParams
 from .sc_search_params import ScSearchParams as ScSearchParams
@@ -416,6 +417,7 @@ from .rfbandtype_tuple_params import RfbandtypeTupleParams as RfbandtypeTuplePar
 from .rfemitter_create_params import RfemitterCreateParams as RfemitterCreateParams
 from .rfemitter_list_response import RfemitterListResponse as RfemitterListResponse
 from .rfemitter_update_params import RfemitterUpdateParams as RfemitterUpdateParams
+from .sc_file_download_params import ScFileDownloadParams as ScFileDownloadParams
 from .sc_file_upload_response import ScFileUploadResponse as ScFileUploadResponse
 from .scientific_get_response import ScientificGetResponse as ScientificGetResponse
 from .scientific_tuple_params import ScientificTupleParams as ScientificTupleParams
@@ -935,7 +937,6 @@ from .starcatalog_create_bulk_params import StarcatalogCreateBulkParams as Starc
 from .starcatalog_file_create_params import StarcatalogFileCreateParams as StarcatalogFileCreateParams
 from .statevector_create_bulk_params import StatevectorCreateBulkParams as StatevectorCreateBulkParams
 from .statevector_file_create_params import StatevectorFileCreateParams as StatevectorFileCreateParams
-from .status_get_by_entity_id_params import StatusGetByEntityIDParams as StatusGetByEntityIDParams
 from .trackdetail_create_bulk_params import TrackdetailCreateBulkParams as TrackdetailCreateBulkParams
 from .video_get_stream_file_response import VideoGetStreamFileResponse as VideoGetStreamFileResponse
 from .weatherdata_create_bulk_params import WeatherdataCreateBulkParams as WeatherdataCreateBulkParams
@@ -1021,7 +1022,6 @@ from .soiobservationset_tuple_response import SoiobservationsetTupleResponse as 
 from .spaceenvobservation_count_params import SpaceenvobservationCountParams as SpaceenvobservationCountParams
 from .spaceenvobservation_tuple_params import SpaceenvobservationTupleParams as SpaceenvobservationTupleParams
 from .status_get_by_entity_id_response import StatusGetByEntityIDResponse as StatusGetByEntityIDResponse
-from .status_get_by_entity_type_params import StatusGetByEntityTypeParams as StatusGetByEntityTypeParams
 from .surfaceobstruction_create_params import SurfaceobstructionCreateParams as SurfaceobstructionCreateParams
 from .surfaceobstruction_list_response import SurfaceobstructionListResponse as SurfaceobstructionListResponse
 from .surfaceobstruction_update_params import SurfaceobstructionUpdateParams as SurfaceobstructionUpdateParams
@@ -1157,7 +1157,6 @@ from .passiveradarobservation_tuple_params import (
 )
 from .personnelrecovery_create_bulk_params import PersonnelrecoveryCreateBulkParams as PersonnelrecoveryCreateBulkParams
 from .personnelrecovery_file_create_params import PersonnelrecoveryFileCreateParams as PersonnelrecoveryFileCreateParams
-from .secure_messaging_get_messages_params import SecureMessagingGetMessagesParams as SecureMessagingGetMessagesParams
 from .sensormaintenance_create_bulk_params import SensormaintenanceCreateBulkParams as SensormaintenanceCreateBulkParams
 from .seradataopticalpayload_create_params import (
     SeradataopticalpayloadCreateParams as SeradataopticalpayloadCreateParams,
@@ -1272,9 +1271,6 @@ from .passiveradarobservation_count_response import (
 from .passiveradarobservation_tuple_response import (
     PassiveradarobservationTupleResponse as PassiveradarobservationTupleResponse,
 )
-from .secure_messaging_describe_topic_params import (
-    SecureMessagingDescribeTopicParams as SecureMessagingDescribeTopicParams,
-)
 from .seradataspacecraftdetail_create_params import (
     SeradataspacecraftdetailCreateParams as SeradataspacecraftdetailCreateParams,
 )
@@ -1319,9 +1315,6 @@ from .video_get_player_streaming_info_response import (
 )
 from .airspace_control_order_create_bulk_params import (
     AirspaceControlOrderCreateBulkParams as AirspaceControlOrderCreateBulkParams,
-)
-from .secure_messaging_get_latest_offset_params import (
-    SecureMessagingGetLatestOffsetParams as SecureMessagingGetLatestOffsetParams,
 )
 from .video_get_publisher_streaming_info_params import (
     VideoGetPublisherStreamingInfoParams as VideoGetPublisherStreamingInfoParams,
