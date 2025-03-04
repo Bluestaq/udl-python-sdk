@@ -12,7 +12,7 @@ __all__ = ["OrbitdeterminationCreateBulkParams", "Body", "BodyAprioriElset", "Bo
 
 
 class OrbitdeterminationCreateBulkParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
+    body: Iterable[Body]
 
 
 class BodyAprioriElset(TypedDict, total=False):

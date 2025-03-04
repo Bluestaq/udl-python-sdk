@@ -1076,7 +1076,7 @@ class EquipmentResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[equipment_create_bulk_params.Body],
+        body: Iterable[equipment_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2220,7 +2220,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[equipment_create_bulk_params.Body],
+        body: Iterable[equipment_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

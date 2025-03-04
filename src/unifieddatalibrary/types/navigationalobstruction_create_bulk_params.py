@@ -12,7 +12,7 @@ __all__ = ["NavigationalobstructionCreateBulkParams", "Body"]
 
 
 class NavigationalobstructionCreateBulkParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
+    body: Iterable[Body]
 
 
 class Body(TypedDict, total=False):

@@ -226,6 +226,11 @@ class TestStatevector:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        statevector = client.statevector.create_bulk()
+        assert statevector is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         statevector = client.statevector.create_bulk(
             body=[
                 {
@@ -233,6 +238,96 @@ class TestStatevector:
                     "data_mode": "REAL",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
+                    "actual_od_span": 3.5,
+                    "algorithm": "SAMPLE_ALGORITHM",
+                    "alt1_reference_frame": "TEME",
+                    "alt2_reference_frame": "EFG/TDR",
+                    "area": 5.065,
+                    "b_dot": 1.23,
+                    "cm_offset": 1.23,
+                    "cov": [1.1, 2.2],
+                    "cov_method": "CALCULATED",
+                    "cov_reference_frame": "J2000",
+                    "descriptor": "descriptor",
+                    "drag_area": 4.739,
+                    "drag_coeff": 0.0224391269775,
+                    "drag_model": "JAC70",
+                    "edr": 1.23,
+                    "eq_cov": [1.1, 2.2],
+                    "error_control": 1.23,
+                    "fixed_step": True,
+                    "geopotential_model": "EGM-96",
+                    "iau1980_terms": 4,
+                    "id_orbit_determination": "026dd511-8ba5-47d3-9909-836149f87686",
+                    "id_state_vector": "STATEVECTOR-ID",
+                    "integrator_mode": "integratorMode",
+                    "in_track_thrust": True,
+                    "last_ob_end": parse_datetime("2022-11-09T11:20:21.247192Z"),
+                    "last_ob_start": parse_datetime("2022-11-09T11:20:21.247192Z"),
+                    "leap_second_time": parse_datetime("2021-01-01T01:01:01.123Z"),
+                    "lunar_solar": True,
+                    "mass": 164.5,
+                    "obs_available": 376,
+                    "obs_used": 374,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "partials": "ANALYTIC",
+                    "pedigree": "CONJUNCTION",
+                    "polar_motion_x": 1.23,
+                    "polar_motion_y": 1.23,
+                    "pos_unc": 0.333399744452,
+                    "raw_file_uri": "rawFileURI",
+                    "rec_od_span": 3.5,
+                    "reference_frame": "J2000",
+                    "residuals_acc": 99.5,
+                    "rev_no": 7205,
+                    "rms": 0.991,
+                    "sat_no": 12,
+                    "sigma_pos_uvw": [1.23, 4.56],
+                    "sigma_vel_uvw": [1.23, 4.56],
+                    "solar_flux_ap_avg": 1.23,
+                    "solar_flux_f10": 1.23,
+                    "solar_flux_f10_avg": 1.23,
+                    "solar_rad_press": True,
+                    "solar_rad_press_coeff": 0.0244394,
+                    "solid_earth_tides": True,
+                    "sourced_data": ["DATA1", "DATA2"],
+                    "sourced_data_types": ["EO"],
+                    "srp_area": 4.311,
+                    "step_mode": "AUTO",
+                    "step_size": 1.23,
+                    "step_size_selection": "AUTO",
+                    "tags": ["TAG1", "TAG2"],
+                    "tai_utc": 1.23,
+                    "thrust_accel": 1.23,
+                    "tracks_avail": 163,
+                    "tracks_used": 163,
+                    "transaction_id": "transactionId",
+                    "uct": True,
+                    "ut1_rate": 1.23,
+                    "ut1_utc": 1.23,
+                    "vel_unc": 0.000004,
+                    "xaccel": -2.12621392,
+                    "xpos": -1118.577381,
+                    "xpos_alt1": -1145.688502,
+                    "xpos_alt2": -1456.915926,
+                    "xvel": -4.25242784,
+                    "xvel_alt1": -4.270832252,
+                    "xvel_alt2": -1.219814294,
+                    "yaccel": 2.645553717,
+                    "ypos": 3026.231084,
+                    "ypos_alt1": 3020.729572,
+                    "ypos_alt2": -2883.540406,
+                    "yvel": 5.291107434,
+                    "yvel_alt1": 5.27074276,
+                    "yvel_alt2": -6.602080212,
+                    "zaccel": -1.06310696,
+                    "zpos": 6167.831808,
+                    "zpos_alt1": 6165.55187,
+                    "zpos_alt2": 6165.55187,
+                    "zvel": -3.356493869,
+                    "zvel_alt1": -3.365155181,
+                    "zvel_alt2": -3.365155181,
                 }
             ],
         )
@@ -240,16 +335,7 @@ class TestStatevector:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.statevector.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = client.statevector.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -258,16 +344,7 @@ class TestStatevector:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.statevector.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        with client.statevector.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -633,6 +710,11 @@ class TestAsyncStatevector:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        statevector = await async_client.statevector.create_bulk()
+        assert statevector is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         statevector = await async_client.statevector.create_bulk(
             body=[
                 {
@@ -640,6 +722,96 @@ class TestAsyncStatevector:
                     "data_mode": "REAL",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
+                    "actual_od_span": 3.5,
+                    "algorithm": "SAMPLE_ALGORITHM",
+                    "alt1_reference_frame": "TEME",
+                    "alt2_reference_frame": "EFG/TDR",
+                    "area": 5.065,
+                    "b_dot": 1.23,
+                    "cm_offset": 1.23,
+                    "cov": [1.1, 2.2],
+                    "cov_method": "CALCULATED",
+                    "cov_reference_frame": "J2000",
+                    "descriptor": "descriptor",
+                    "drag_area": 4.739,
+                    "drag_coeff": 0.0224391269775,
+                    "drag_model": "JAC70",
+                    "edr": 1.23,
+                    "eq_cov": [1.1, 2.2],
+                    "error_control": 1.23,
+                    "fixed_step": True,
+                    "geopotential_model": "EGM-96",
+                    "iau1980_terms": 4,
+                    "id_orbit_determination": "026dd511-8ba5-47d3-9909-836149f87686",
+                    "id_state_vector": "STATEVECTOR-ID",
+                    "integrator_mode": "integratorMode",
+                    "in_track_thrust": True,
+                    "last_ob_end": parse_datetime("2022-11-09T11:20:21.247192Z"),
+                    "last_ob_start": parse_datetime("2022-11-09T11:20:21.247192Z"),
+                    "leap_second_time": parse_datetime("2021-01-01T01:01:01.123Z"),
+                    "lunar_solar": True,
+                    "mass": 164.5,
+                    "obs_available": 376,
+                    "obs_used": 374,
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "partials": "ANALYTIC",
+                    "pedigree": "CONJUNCTION",
+                    "polar_motion_x": 1.23,
+                    "polar_motion_y": 1.23,
+                    "pos_unc": 0.333399744452,
+                    "raw_file_uri": "rawFileURI",
+                    "rec_od_span": 3.5,
+                    "reference_frame": "J2000",
+                    "residuals_acc": 99.5,
+                    "rev_no": 7205,
+                    "rms": 0.991,
+                    "sat_no": 12,
+                    "sigma_pos_uvw": [1.23, 4.56],
+                    "sigma_vel_uvw": [1.23, 4.56],
+                    "solar_flux_ap_avg": 1.23,
+                    "solar_flux_f10": 1.23,
+                    "solar_flux_f10_avg": 1.23,
+                    "solar_rad_press": True,
+                    "solar_rad_press_coeff": 0.0244394,
+                    "solid_earth_tides": True,
+                    "sourced_data": ["DATA1", "DATA2"],
+                    "sourced_data_types": ["EO"],
+                    "srp_area": 4.311,
+                    "step_mode": "AUTO",
+                    "step_size": 1.23,
+                    "step_size_selection": "AUTO",
+                    "tags": ["TAG1", "TAG2"],
+                    "tai_utc": 1.23,
+                    "thrust_accel": 1.23,
+                    "tracks_avail": 163,
+                    "tracks_used": 163,
+                    "transaction_id": "transactionId",
+                    "uct": True,
+                    "ut1_rate": 1.23,
+                    "ut1_utc": 1.23,
+                    "vel_unc": 0.000004,
+                    "xaccel": -2.12621392,
+                    "xpos": -1118.577381,
+                    "xpos_alt1": -1145.688502,
+                    "xpos_alt2": -1456.915926,
+                    "xvel": -4.25242784,
+                    "xvel_alt1": -4.270832252,
+                    "xvel_alt2": -1.219814294,
+                    "yaccel": 2.645553717,
+                    "ypos": 3026.231084,
+                    "ypos_alt1": 3020.729572,
+                    "ypos_alt2": -2883.540406,
+                    "yvel": 5.291107434,
+                    "yvel_alt1": 5.27074276,
+                    "yvel_alt2": -6.602080212,
+                    "zaccel": -1.06310696,
+                    "zpos": 6167.831808,
+                    "zpos_alt1": 6165.55187,
+                    "zpos_alt2": 6165.55187,
+                    "zvel": -3.356493869,
+                    "zvel_alt1": -3.365155181,
+                    "zvel_alt2": -3.365155181,
                 }
             ],
         )
@@ -647,16 +819,7 @@ class TestAsyncStatevector:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.statevector.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
+        response = await async_client.statevector.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -665,16 +828,7 @@ class TestAsyncStatevector:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.statevector.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
+        async with async_client.statevector.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

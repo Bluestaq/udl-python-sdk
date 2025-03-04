@@ -365,6 +365,11 @@ class TestMissionassignment:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
+        missionassignment = client.missionassignment.create_bulk()
+        assert missionassignment is None
+
+    @parametrize
+    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         missionassignment = client.missionassignment.create_bulk(
             body=[
                 {
@@ -373,6 +378,64 @@ class TestMissionassignment:
                     "mad": "MAD",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "id": "MISSIONASSIGNMENT-ID",
+                    "c1associateddmpis": 3,
+                    "c2air": "C2AIR",
+                    "c2alt": 3,
+                    "c2crs": 3,
+                    "c2exerciseindicator": "C2EXERCISE",
+                    "c2exercisemof": "MOF",
+                    "c2id": "C2ID",
+                    "c2idamplifyingdescriptor": "C2IDAMP",
+                    "c2lnd": "C2LND",
+                    "c2spc": "C2SPC",
+                    "c2spd": 3,
+                    "c2specialinterestindicator": "C2SPECIAL",
+                    "c2sur": "C2SUR",
+                    "c3elv": 10.23,
+                    "c3lat": 10.23,
+                    "c3lon": 10.23,
+                    "c3ptl": "C3PTL",
+                    "c3ptnum": "C3PTNUM",
+                    "c4colon": 5,
+                    "c4def": "C4DEF",
+                    "c4egress": 4,
+                    "c4mod": 5,
+                    "c4numberofstores": 3,
+                    "c4runin": 5,
+                    "c4tgt": "C4TGT",
+                    "c4timediscrete": "C4TIMED",
+                    "c4tm": 4,
+                    "c4typeofstores": 2,
+                    "c5colon": 5,
+                    "c5elevationlsbs": 5,
+                    "c5haeadj": 5,
+                    "c5latlsb": 5,
+                    "c5lonlsb": 5,
+                    "c5tgtbrng": 5,
+                    "c5tw": 5,
+                    "c6dspc": "C6DSPC",
+                    "c6dspct": "C6DSPCT",
+                    "c6fplpm": "C6FPLPM",
+                    "c6intel": 5,
+                    "c6laser": 5,
+                    "c6longpm": "C6LONGPM",
+                    "c6tnr3": 5,
+                    "c7elang2": 5.23,
+                    "c7in3p": 3,
+                    "c7tnor": "C7TNOR",
+                    "env": "ENV",
+                    "index": 5,
+                    "lat": 45.23,
+                    "lon": 45.23,
+                    "orginx": "ORIGIN",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "rc": "RC-123",
+                    "rr": 2,
+                    "sz": "STRENGTH",
+                    "tno": "TRACK_NUMBER",
+                    "trk_id": "TRK-ID",
+                    "twenv": "THREAT_WARNING",
                 }
             ],
         )
@@ -380,17 +443,7 @@ class TestMissionassignment:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.missionassignment.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "mad": "MAD",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        )
+        response = client.missionassignment.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -399,17 +452,7 @@ class TestMissionassignment:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.missionassignment.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "mad": "MAD",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        ) as response:
+        with client.missionassignment.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -862,6 +905,11 @@ class TestAsyncMissionassignment:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
+        missionassignment = await async_client.missionassignment.create_bulk()
+        assert missionassignment is None
+
+    @parametrize
+    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         missionassignment = await async_client.missionassignment.create_bulk(
             body=[
                 {
@@ -870,6 +918,64 @@ class TestAsyncMissionassignment:
                     "mad": "MAD",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "id": "MISSIONASSIGNMENT-ID",
+                    "c1associateddmpis": 3,
+                    "c2air": "C2AIR",
+                    "c2alt": 3,
+                    "c2crs": 3,
+                    "c2exerciseindicator": "C2EXERCISE",
+                    "c2exercisemof": "MOF",
+                    "c2id": "C2ID",
+                    "c2idamplifyingdescriptor": "C2IDAMP",
+                    "c2lnd": "C2LND",
+                    "c2spc": "C2SPC",
+                    "c2spd": 3,
+                    "c2specialinterestindicator": "C2SPECIAL",
+                    "c2sur": "C2SUR",
+                    "c3elv": 10.23,
+                    "c3lat": 10.23,
+                    "c3lon": 10.23,
+                    "c3ptl": "C3PTL",
+                    "c3ptnum": "C3PTNUM",
+                    "c4colon": 5,
+                    "c4def": "C4DEF",
+                    "c4egress": 4,
+                    "c4mod": 5,
+                    "c4numberofstores": 3,
+                    "c4runin": 5,
+                    "c4tgt": "C4TGT",
+                    "c4timediscrete": "C4TIMED",
+                    "c4tm": 4,
+                    "c4typeofstores": 2,
+                    "c5colon": 5,
+                    "c5elevationlsbs": 5,
+                    "c5haeadj": 5,
+                    "c5latlsb": 5,
+                    "c5lonlsb": 5,
+                    "c5tgtbrng": 5,
+                    "c5tw": 5,
+                    "c6dspc": "C6DSPC",
+                    "c6dspct": "C6DSPCT",
+                    "c6fplpm": "C6FPLPM",
+                    "c6intel": 5,
+                    "c6laser": 5,
+                    "c6longpm": "C6LONGPM",
+                    "c6tnr3": 5,
+                    "c7elang2": 5.23,
+                    "c7in3p": 3,
+                    "c7tnor": "C7TNOR",
+                    "env": "ENV",
+                    "index": 5,
+                    "lat": 45.23,
+                    "lon": 45.23,
+                    "orginx": "ORIGIN",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "rc": "RC-123",
+                    "rr": 2,
+                    "sz": "STRENGTH",
+                    "tno": "TRACK_NUMBER",
+                    "trk_id": "TRK-ID",
+                    "twenv": "THREAT_WARNING",
                 }
             ],
         )
@@ -877,17 +983,7 @@ class TestAsyncMissionassignment:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.missionassignment.with_raw_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "mad": "MAD",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        )
+        response = await async_client.missionassignment.with_raw_response.create_bulk()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -896,17 +992,7 @@ class TestAsyncMissionassignment:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.missionassignment.with_streaming_response.create_bulk(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "mad": "MAD",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                }
-            ],
-        ) as response:
+        async with async_client.missionassignment.with_streaming_response.create_bulk() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
