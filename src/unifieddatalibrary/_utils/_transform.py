@@ -214,6 +214,8 @@ def _transform_recursive(
 def _format_data(data: object, format_: PropertyFormat, format_template: str | None) -> object:
     if isinstance(data, (date, datetime)):
         if format_ == "iso8601":
+            if isinstance(data, datetime):
+                return data.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
             return data.isoformat()
 
         if format_ == "custom" and format_template is not None:
@@ -362,6 +364,8 @@ async def _async_transform_recursive(
 async def _async_format_data(data: object, format_: PropertyFormat, format_template: str | None) -> object:
     if isinstance(data, (date, datetime)):
         if format_ == "iso8601":
+            if isinstance(data, datetime):
+                return data.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
             return data.isoformat()
 
         if format_ == "custom" and format_template is not None:

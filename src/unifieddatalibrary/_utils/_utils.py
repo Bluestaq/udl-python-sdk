@@ -409,6 +409,6 @@ def json_safe(data: object) -> object:
         return [json_safe(item) for item in data]
 
     if isinstance(data, (datetime, date)):
-        return data.isoformat()
+        return data.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
     return data
