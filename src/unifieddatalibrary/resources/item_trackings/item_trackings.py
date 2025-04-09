@@ -13,7 +13,7 @@ from ...types import (
     item_tracking_count_params,
     item_tracking_tuple_params,
     item_tracking_create_params,
-    item_tracking_file_create_params,
+    item_tracking_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -324,10 +324,10 @@ class ItemTrackingsResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[item_tracking_file_create_params.Body],
+        body: Iterable[item_tracking_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -353,7 +353,7 @@ class ItemTrackingsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-itemtracking",
-            body=maybe_transform(body, Iterable[item_tracking_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[item_tracking_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -755,10 +755,10 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[item_tracking_file_create_params.Body],
+        body: Iterable[item_tracking_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -784,7 +784,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-itemtracking",
-            body=await async_maybe_transform(body, Iterable[item_tracking_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[item_tracking_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -922,8 +922,8 @@ class ItemTrackingsResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             item_trackings.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            item_trackings.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            item_trackings.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             item_trackings.get,
@@ -956,8 +956,8 @@ class AsyncItemTrackingsResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             item_trackings.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            item_trackings.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            item_trackings.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             item_trackings.get,
@@ -990,8 +990,8 @@ class ItemTrackingsResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             item_trackings.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            item_trackings.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            item_trackings.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             item_trackings.get,
@@ -1024,8 +1024,8 @@ class AsyncItemTrackingsResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             item_trackings.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            item_trackings.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            item_trackings.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             item_trackings.get,

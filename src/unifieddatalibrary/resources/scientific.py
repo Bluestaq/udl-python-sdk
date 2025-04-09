@@ -6,7 +6,11 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import scientific_tuple_params, scientific_create_params, scientific_update_params
+from ..types import (
+    scientific_tuple_params,
+    scientific_create_params,
+    scientific_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -21,6 +25,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.scientific_get_response import ScientificGetResponse
 from ..types.scientific_list_response import ScientificListResponse
 from ..types.scientific_tuple_response import ScientificTupleResponse
@@ -57,7 +62,7 @@ class ScientificResource(SyncAPIResource):
         source: str,
         spacecraft_id: str,
         id: str | NotGiven = NOT_GIVEN,
-        entity: scientific_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         frequency_band: str | NotGiven = NOT_GIVEN,
         hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
@@ -171,7 +176,7 @@ class ScientificResource(SyncAPIResource):
         source: str,
         spacecraft_id: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        entity: scientific_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         frequency_band: str | NotGiven = NOT_GIVEN,
         hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
@@ -497,7 +502,7 @@ class AsyncScientificResource(AsyncAPIResource):
         source: str,
         spacecraft_id: str,
         id: str | NotGiven = NOT_GIVEN,
-        entity: scientific_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         frequency_band: str | NotGiven = NOT_GIVEN,
         hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
@@ -611,7 +616,7 @@ class AsyncScientificResource(AsyncAPIResource):
         source: str,
         spacecraft_id: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        entity: scientific_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         frequency_band: str | NotGiven = NOT_GIVEN,
         hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,

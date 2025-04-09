@@ -10,7 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    OrganizationGetResponse,
+    OrganizationFull,
     OrganizationListResponse,
     OrganizationTupleResponse,
     OrganizationGetOrganizationTypesResponse,
@@ -257,7 +257,7 @@ class TestOrganization:
         organization = client.organization.get(
             "id",
         )
-        assert_matches_type(OrganizationGetResponse, organization, path=["response"])
+        assert_matches_type(OrganizationFull, organization, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -268,7 +268,7 @@ class TestOrganization:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         organization = response.parse()
-        assert_matches_type(OrganizationGetResponse, organization, path=["response"])
+        assert_matches_type(OrganizationFull, organization, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -279,7 +279,7 @@ class TestOrganization:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             organization = response.parse()
-            assert_matches_type(OrganizationGetResponse, organization, path=["response"])
+            assert_matches_type(OrganizationFull, organization, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -634,7 +634,7 @@ class TestAsyncOrganization:
         organization = await async_client.organization.get(
             "id",
         )
-        assert_matches_type(OrganizationGetResponse, organization, path=["response"])
+        assert_matches_type(OrganizationFull, organization, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -645,7 +645,7 @@ class TestAsyncOrganization:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         organization = await response.parse()
-        assert_matches_type(OrganizationGetResponse, organization, path=["response"])
+        assert_matches_type(OrganizationFull, organization, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -656,7 +656,7 @@ class TestAsyncOrganization:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             organization = await response.parse()
-            assert_matches_type(OrganizationGetResponse, organization, path=["response"])
+            assert_matches_type(OrganizationFull, organization, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

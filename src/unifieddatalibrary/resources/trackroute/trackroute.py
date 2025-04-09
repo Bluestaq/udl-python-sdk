@@ -15,7 +15,7 @@ from ...types import (
     trackroute_create_params,
     trackroute_update_params,
     trackroute_create_bulk_params,
-    trackroute_file_create_params,
+    trackroute_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -625,7 +625,7 @@ class TrackrouteResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
         classification_marking: str,
@@ -634,7 +634,7 @@ class TrackrouteResource(SyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[trackroute_file_create_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[trackroute_create_bulk_v2_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -645,13 +645,13 @@ class TrackrouteResource(SyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[trackroute_file_create_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[trackroute_create_bulk_v2_params.Poc] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[trackroute_file_create_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[trackroute_create_bulk_v2_params.RoutePoint] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -813,7 +813,7 @@ class TrackrouteResource(SyncAPIResource):
                     "track_name": track_name,
                     "type_code": type_code,
                 },
-                trackroute_file_create_params.TrackrouteFileCreateParams,
+                trackroute_create_bulk_v2_params.TrackrouteCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1515,7 +1515,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
         classification_marking: str,
@@ -1524,7 +1524,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[trackroute_file_create_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[trackroute_create_bulk_v2_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -1535,13 +1535,13 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[trackroute_file_create_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[trackroute_create_bulk_v2_params.Poc] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[trackroute_file_create_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[trackroute_create_bulk_v2_params.RoutePoint] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -1703,7 +1703,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                     "track_name": track_name,
                     "type_code": type_code,
                 },
-                trackroute_file_create_params.TrackrouteFileCreateParams,
+                trackroute_create_bulk_v2_params.TrackrouteCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1848,8 +1848,8 @@ class TrackrouteResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             trackroute.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            trackroute.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            trackroute.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             trackroute.get,
@@ -1888,8 +1888,8 @@ class AsyncTrackrouteResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             trackroute.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            trackroute.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            trackroute.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             trackroute.get,
@@ -1928,8 +1928,8 @@ class TrackrouteResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             trackroute.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            trackroute.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            trackroute.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             trackroute.get,
@@ -1968,8 +1968,8 @@ class AsyncTrackrouteResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             trackroute.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            trackroute.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            trackroute.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             trackroute.get,

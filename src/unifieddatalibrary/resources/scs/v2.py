@@ -29,6 +29,7 @@ from ...types.scs import (
     v2_folder_create_params,
 )
 from ..._base_client import make_request_options
+from ...types.scs.attachment_param import AttachmentParam
 from ...types.scs.v2_list_response import V2ListResponse
 
 __all__ = ["V2Resource", "AsyncV2Resource"]
@@ -59,7 +60,7 @@ class V2Resource(SyncAPIResource):
         *,
         path: str,
         id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_update_params.Attachment | NotGiven = NOT_GIVEN,
+        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
         created_at: str | NotGiven = NOT_GIVEN,
         created_by: str | NotGiven = NOT_GIVEN,
@@ -345,7 +346,7 @@ class V2Resource(SyncAPIResource):
         *,
         path: str,
         id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_folder_create_params.Attachment | NotGiven = NOT_GIVEN,
+        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
         created_at: str | NotGiven = NOT_GIVEN,
         created_by: str | NotGiven = NOT_GIVEN,
@@ -516,7 +517,7 @@ class AsyncV2Resource(AsyncAPIResource):
         *,
         path: str,
         id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_update_params.Attachment | NotGiven = NOT_GIVEN,
+        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
         created_at: str | NotGiven = NOT_GIVEN,
         created_by: str | NotGiven = NOT_GIVEN,
@@ -802,7 +803,7 @@ class AsyncV2Resource(AsyncAPIResource):
         *,
         path: str,
         id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_folder_create_params.Attachment | NotGiven = NOT_GIVEN,
+        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
         created_at: str | NotGiven = NOT_GIVEN,
         created_by: str | NotGiven = NOT_GIVEN,

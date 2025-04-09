@@ -14,7 +14,6 @@ from ...types import (
     elset_tuple_params,
     elset_create_params,
     elset_create_bulk_params,
-    elset_file_create_params,
     elset_create_bulk_from_tle_params,
 )
 from .current import (
@@ -48,6 +47,7 @@ from ..._response import (
 )
 from ...types.elset import Elset
 from ..._base_client import make_request_options
+from ...types.elset_ingest_param import ElsetIngestParam
 from ...types.elset_list_response import ElsetListResponse
 from ...types.elset_tuple_response import ElsetTupleResponse
 
@@ -470,7 +470,7 @@ class ElsetsResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[elset_create_bulk_params.Body],
+        body: Iterable[ElsetIngestParam],
         dupe_check: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -502,7 +502,7 @@ class ElsetsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/udl/elset/createBulk",
-            body=maybe_transform(body, Iterable[elset_create_bulk_params.Body]),
+            body=maybe_transform(body, Iterable[ElsetIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -593,10 +593,10 @@ class ElsetsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[elset_file_create_params.Body],
+        body: Iterable[ElsetIngestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -621,7 +621,7 @@ class ElsetsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-elset",
-            body=maybe_transform(body, Iterable[elset_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[ElsetIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1148,7 +1148,7 @@ class AsyncElsetsResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[elset_create_bulk_params.Body],
+        body: Iterable[ElsetIngestParam],
         dupe_check: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1180,7 +1180,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/udl/elset/createBulk",
-            body=await async_maybe_transform(body, Iterable[elset_create_bulk_params.Body]),
+            body=await async_maybe_transform(body, Iterable[ElsetIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1273,10 +1273,10 @@ class AsyncElsetsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[elset_file_create_params.Body],
+        body: Iterable[ElsetIngestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1301,7 +1301,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-elset",
-            body=await async_maybe_transform(body, Iterable[elset_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[ElsetIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1434,8 +1434,8 @@ class ElsetsResourceWithRawResponse:
         self.create_bulk_from_tle = to_raw_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.file_create = to_raw_response_wrapper(
-            elsets.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            elsets.create_bulk_v2,
         )
         self.query_current_elset_help = to_raw_response_wrapper(
             elsets.query_current_elset_help,
@@ -1478,8 +1478,8 @@ class AsyncElsetsResourceWithRawResponse:
         self.create_bulk_from_tle = async_to_raw_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            elsets.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            elsets.create_bulk_v2,
         )
         self.query_current_elset_help = async_to_raw_response_wrapper(
             elsets.query_current_elset_help,
@@ -1522,8 +1522,8 @@ class ElsetsResourceWithStreamingResponse:
         self.create_bulk_from_tle = to_streamed_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.file_create = to_streamed_response_wrapper(
-            elsets.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            elsets.create_bulk_v2,
         )
         self.query_current_elset_help = to_streamed_response_wrapper(
             elsets.query_current_elset_help,
@@ -1566,8 +1566,8 @@ class AsyncElsetsResourceWithStreamingResponse:
         self.create_bulk_from_tle = async_to_streamed_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            elsets.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            elsets.create_bulk_v2,
         )
         self.query_current_elset_help = async_to_streamed_response_wrapper(
             elsets.query_current_elset_help,

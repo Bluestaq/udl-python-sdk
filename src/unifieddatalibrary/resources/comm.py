@@ -24,6 +24,7 @@ from .._base_client import make_request_options
 from ..types.comm_full import CommFull
 from ..types.comm_list_response import CommListResponse
 from ..types.comm_tuple_response import CommTupleResponse
+from ..types.entity_ingest_param import EntityIngestParam
 
 __all__ = ["CommResource", "AsyncCommResource"]
 
@@ -57,7 +58,7 @@ class CommResource(SyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: comm_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -456,7 +457,7 @@ class AsyncCommResource(AsyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: comm_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

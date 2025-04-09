@@ -28,7 +28,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.observations import monoradar_create_params
+from ....types.observations import monoradar_create_bulk_v2_params
 
 __all__ = ["MonoradarResource", "AsyncMonoradarResource"]
 
@@ -57,10 +57,10 @@ class MonoradarResource(SyncAPIResource):
         """
         return MonoradarResourceWithStreamingResponse(self)
 
-    def create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[monoradar_create_params.Body],
+        body: Iterable[monoradar_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -86,7 +86,7 @@ class MonoradarResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/monoradar",
-            body=maybe_transform(body, Iterable[monoradar_create_params.Body]),
+            body=maybe_transform(body, Iterable[monoradar_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -118,10 +118,10 @@ class AsyncMonoradarResource(AsyncAPIResource):
         """
         return AsyncMonoradarResourceWithStreamingResponse(self)
 
-    async def create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[monoradar_create_params.Body],
+        body: Iterable[monoradar_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -147,7 +147,7 @@ class AsyncMonoradarResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/monoradar",
-            body=await async_maybe_transform(body, Iterable[monoradar_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[monoradar_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -159,8 +159,8 @@ class MonoradarResourceWithRawResponse:
     def __init__(self, monoradar: MonoradarResource) -> None:
         self._monoradar = monoradar
 
-        self.create = to_raw_response_wrapper(
-            monoradar.create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            monoradar.create_bulk_v2,
         )
 
     @cached_property
@@ -172,8 +172,8 @@ class AsyncMonoradarResourceWithRawResponse:
     def __init__(self, monoradar: AsyncMonoradarResource) -> None:
         self._monoradar = monoradar
 
-        self.create = async_to_raw_response_wrapper(
-            monoradar.create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            monoradar.create_bulk_v2,
         )
 
     @cached_property
@@ -185,8 +185,8 @@ class MonoradarResourceWithStreamingResponse:
     def __init__(self, monoradar: MonoradarResource) -> None:
         self._monoradar = monoradar
 
-        self.create = to_streamed_response_wrapper(
-            monoradar.create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            monoradar.create_bulk_v2,
         )
 
     @cached_property
@@ -198,8 +198,8 @@ class AsyncMonoradarResourceWithStreamingResponse:
     def __init__(self, monoradar: AsyncMonoradarResource) -> None:
         self._monoradar = monoradar
 
-        self.create = async_to_streamed_response_wrapper(
-            monoradar.create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            monoradar.create_bulk_v2,
         )
 
     @cached_property

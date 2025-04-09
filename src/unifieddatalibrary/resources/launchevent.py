@@ -14,7 +14,7 @@ from ..types import (
     launchevent_tuple_params,
     launchevent_create_params,
     launchevent_create_bulk_params,
-    launchevent_file_create_params,
+    launchevent_create_bulk_v2_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -302,10 +302,10 @@ class LauncheventResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[launchevent_file_create_params.Body],
+        body: Iterable[launchevent_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -331,7 +331,7 @@ class LauncheventResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-launchevent",
-            body=maybe_transform(body, Iterable[launchevent_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[launchevent_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -718,10 +718,10 @@ class AsyncLauncheventResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[launchevent_file_create_params.Body],
+        body: Iterable[launchevent_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -747,7 +747,7 @@ class AsyncLauncheventResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-launchevent",
-            body=await async_maybe_transform(body, Iterable[launchevent_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[launchevent_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -885,8 +885,8 @@ class LauncheventResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             launchevent.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            launchevent.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            launchevent.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             launchevent.get,
@@ -915,8 +915,8 @@ class AsyncLauncheventResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             launchevent.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            launchevent.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            launchevent.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             launchevent.get,
@@ -945,8 +945,8 @@ class LauncheventResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             launchevent.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            launchevent.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            launchevent.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             launchevent.get,
@@ -975,8 +975,8 @@ class AsyncLauncheventResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             launchevent.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            launchevent.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            launchevent.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             launchevent.get,

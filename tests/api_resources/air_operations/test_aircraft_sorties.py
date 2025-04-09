@@ -17,8 +17,8 @@ class TestAircraftSorties:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: Unifieddatalibrary) -> None:
-        aircraft_sorty = client.air_operations.aircraft_sorties.create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        aircraft_sorty = client.air_operations.aircraft_sorties.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -31,8 +31,8 @@ class TestAircraftSorties:
         assert aircraft_sorty is None
 
     @parametrize
-    def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
-        response = client.air_operations.aircraft_sorties.with_raw_response.create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.air_operations.aircraft_sorties.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -49,8 +49,8 @@ class TestAircraftSorties:
         assert aircraft_sorty is None
 
     @parametrize
-    def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
-        with client.air_operations.aircraft_sorties.with_streaming_response.create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.air_operations.aircraft_sorties.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -73,8 +73,8 @@ class TestAsyncAircraftSorties:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        aircraft_sorty = await async_client.air_operations.aircraft_sorties.create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft_sorty = await async_client.air_operations.aircraft_sorties.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -87,8 +87,8 @@ class TestAsyncAircraftSorties:
         assert aircraft_sorty is None
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.air_operations.aircraft_sorties.with_raw_response.create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.air_operations.aircraft_sorties.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -105,8 +105,8 @@ class TestAsyncAircraftSorties:
         assert aircraft_sorty is None
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.air_operations.aircraft_sorties.with_streaming_response.create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.air_operations.aircraft_sorties.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

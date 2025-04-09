@@ -92,7 +92,7 @@ from unifieddatalibrary import Unifieddatalibrary
 
 client = Unifieddatalibrary()
 
-client.air_operations.crewpapers.create(
+client.air_operations.crewpapers.upload_pdf(
     aircraft_sortie_ids="aircraftSortieIds",
     classification_marking="x",
     paper_status="PUBLISHED",

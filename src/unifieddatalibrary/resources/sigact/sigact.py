@@ -12,8 +12,8 @@ from ...types import (
     sigact_list_params,
     sigact_count_params,
     sigact_tuple_params,
+    sigact_upload_zip_params,
     sigact_create_bulk_params,
-    sigact_file_create_params,
 )
 from .history import (
     HistoryResource,
@@ -187,7 +187,86 @@ class SigactResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/sigact/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        report_date: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SigactTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          report_date: Date of the report or filing. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/sigact/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "report_date": report_date,
+                    },
+                    sigact_tuple_params.SigactTupleParams,
+                ),
+            ),
+            cast_to=SigactTupleResponse,
+        )
+
+    def upload_zip(
         self,
         *,
         classification_marking: str,
@@ -252,7 +331,7 @@ class SigactResource(SyncAPIResource):
         num_sources: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         province: str | NotGiven = NOT_GIVEN,
-        related_docs: Iterable[sigact_file_create_params.RelatedDoc] | NotGiven = NOT_GIVEN,
+        related_docs: Iterable[sigact_upload_zip_params.RelatedDoc] | NotGiven = NOT_GIVEN,
         rep_unit: str | NotGiven = NOT_GIVEN,
         rep_unit_activity: str | NotGiven = NOT_GIVEN,
         rep_unit_type: str | NotGiven = NOT_GIVEN,
@@ -641,91 +720,12 @@ class SigactResource(SyncAPIResource):
                     "theater": theater,
                     "type_of_attack": type_of_attack,
                 },
-                sigact_file_create_params.SigactFileCreateParams,
+                sigact_upload_zip_params.SigactUploadZipParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/sigact/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def tuple(
-        self,
-        *,
-        columns: str,
-        report_date: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SigactTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          report_date: Date of the report or filing. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/sigact/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "columns": columns,
-                        "report_date": report_date,
-                    },
-                    sigact_tuple_params.SigactTupleParams,
-                ),
-            ),
-            cast_to=SigactTupleResponse,
         )
 
 
@@ -873,7 +873,86 @@ class AsyncSigactResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/sigact/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        report_date: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SigactTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          report_date: Date of the report or filing. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/sigact/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "report_date": report_date,
+                    },
+                    sigact_tuple_params.SigactTupleParams,
+                ),
+            ),
+            cast_to=SigactTupleResponse,
+        )
+
+    async def upload_zip(
         self,
         *,
         classification_marking: str,
@@ -938,7 +1017,7 @@ class AsyncSigactResource(AsyncAPIResource):
         num_sources: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         province: str | NotGiven = NOT_GIVEN,
-        related_docs: Iterable[sigact_file_create_params.RelatedDoc] | NotGiven = NOT_GIVEN,
+        related_docs: Iterable[sigact_upload_zip_params.RelatedDoc] | NotGiven = NOT_GIVEN,
         rep_unit: str | NotGiven = NOT_GIVEN,
         rep_unit_activity: str | NotGiven = NOT_GIVEN,
         rep_unit_type: str | NotGiven = NOT_GIVEN,
@@ -1327,91 +1406,12 @@ class AsyncSigactResource(AsyncAPIResource):
                     "theater": theater,
                     "type_of_attack": type_of_attack,
                 },
-                sigact_file_create_params.SigactFileCreateParams,
+                sigact_upload_zip_params.SigactUploadZipParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/sigact/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def tuple(
-        self,
-        *,
-        columns: str,
-        report_date: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SigactTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          report_date: Date of the report or filing. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/sigact/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "columns": columns,
-                        "report_date": report_date,
-                    },
-                    sigact_tuple_params.SigactTupleParams,
-                ),
-            ),
-            cast_to=SigactTupleResponse,
         )
 
 
@@ -1428,14 +1428,14 @@ class SigactResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             sigact.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            sigact.file_create,
-        )
         self.queryhelp = to_raw_response_wrapper(
             sigact.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
             sigact.tuple,
+        )
+        self.upload_zip = to_raw_response_wrapper(
+            sigact.upload_zip,
         )
 
     @cached_property
@@ -1456,14 +1456,14 @@ class AsyncSigactResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             sigact.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            sigact.file_create,
-        )
         self.queryhelp = async_to_raw_response_wrapper(
             sigact.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
             sigact.tuple,
+        )
+        self.upload_zip = async_to_raw_response_wrapper(
+            sigact.upload_zip,
         )
 
     @cached_property
@@ -1484,14 +1484,14 @@ class SigactResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             sigact.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            sigact.file_create,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             sigact.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
             sigact.tuple,
+        )
+        self.upload_zip = to_streamed_response_wrapper(
+            sigact.upload_zip,
         )
 
     @cached_property
@@ -1512,14 +1512,14 @@ class AsyncSigactResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             sigact.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            sigact.file_create,
-        )
         self.queryhelp = async_to_streamed_response_wrapper(
             sigact.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
             sigact.tuple,
+        )
+        self.upload_zip = async_to_streamed_response_wrapper(
+            sigact.upload_zip,
         )
 
     @cached_property

@@ -26,7 +26,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.solararraydetail_get_response import SolararraydetailGetResponse
+from ..types.solar_array_details_full import SolarArrayDetailsFull
 from ..types.solararraydetail_list_response import SolararraydetailListResponse
 
 __all__ = ["SolararraydetailsResource", "AsyncSolararraydetailsResource"]
@@ -391,7 +391,7 @@ class SolararraydetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SolararraydetailGetResponse:
+    ) -> SolarArrayDetailsFull:
         """
         Service operation to get a single SolarArrayDetails record by its unique ID
         passed as a path parameter. A SolarArray may have multiple details records
@@ -413,7 +413,7 @@ class SolararraydetailsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SolararraydetailGetResponse,
+            cast_to=SolarArrayDetailsFull,
         )
 
 
@@ -776,7 +776,7 @@ class AsyncSolararraydetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SolararraydetailGetResponse:
+    ) -> SolarArrayDetailsFull:
         """
         Service operation to get a single SolarArrayDetails record by its unique ID
         passed as a path parameter. A SolarArray may have multiple details records
@@ -798,7 +798,7 @@ class AsyncSolararraydetailsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SolararraydetailGetResponse,
+            cast_to=SolarArrayDetailsFull,
         )
 
 

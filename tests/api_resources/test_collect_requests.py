@@ -441,8 +441,8 @@ class TestCollectRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
-        collect_request = client.collect_requests.file_create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        collect_request = client.collect_requests.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -456,8 +456,8 @@ class TestCollectRequests:
         assert collect_request is None
 
     @parametrize
-    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
-        response = client.collect_requests.with_raw_response.file_create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.collect_requests.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -475,8 +475,8 @@ class TestCollectRequests:
         assert collect_request is None
 
     @parametrize
-    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
-        with client.collect_requests.with_streaming_response.file_create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.collect_requests.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -977,8 +977,8 @@ class TestAsyncCollectRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        collect_request = await async_client.collect_requests.file_create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        collect_request = await async_client.collect_requests.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -992,8 +992,8 @@ class TestAsyncCollectRequests:
         assert collect_request is None
 
     @parametrize
-    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.collect_requests.with_raw_response.file_create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.collect_requests.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -1011,8 +1011,8 @@ class TestAsyncCollectRequests:
         assert collect_request is None
 
     @parametrize
-    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.collect_requests.with_streaming_response.file_create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.collect_requests.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

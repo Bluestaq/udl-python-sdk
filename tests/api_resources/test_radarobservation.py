@@ -237,8 +237,8 @@ class TestRadarobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
-        radarobservation = client.radarobservation.file_create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        radarobservation = client.radarobservation.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -251,8 +251,8 @@ class TestRadarobservation:
         assert radarobservation is None
 
     @parametrize
-    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
-        response = client.radarobservation.with_raw_response.file_create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.radarobservation.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -269,8 +269,8 @@ class TestRadarobservation:
         assert radarobservation is None
 
     @parametrize
-    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
-        with client.radarobservation.with_streaming_response.file_create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.radarobservation.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -604,8 +604,8 @@ class TestAsyncRadarobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        radarobservation = await async_client.radarobservation.file_create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        radarobservation = await async_client.radarobservation.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -618,8 +618,8 @@ class TestAsyncRadarobservation:
         assert radarobservation is None
 
     @parametrize
-    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.radarobservation.with_raw_response.file_create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.radarobservation.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -636,8 +636,8 @@ class TestAsyncRadarobservation:
         assert radarobservation is None
 
     @parametrize
-    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.radarobservation.with_streaming_response.file_create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.radarobservation.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

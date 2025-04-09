@@ -25,8 +25,8 @@ class TestUdlSigact:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
-        udl_sigact = client.report_and_activity.udl_sigact.file_create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        udl_sigact = client.report_and_activity.udl_sigact.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -39,8 +39,8 @@ class TestUdlSigact:
         assert udl_sigact is None
 
     @parametrize
-    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
-        response = client.report_and_activity.udl_sigact.with_raw_response.file_create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.report_and_activity.udl_sigact.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -57,8 +57,8 @@ class TestUdlSigact:
         assert udl_sigact is None
 
     @parametrize
-    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
-        with client.report_and_activity.udl_sigact.with_streaming_response.file_create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.report_and_activity.udl_sigact.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -131,8 +131,8 @@ class TestAsyncUdlSigact:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        udl_sigact = await async_client.report_and_activity.udl_sigact.file_create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        udl_sigact = await async_client.report_and_activity.udl_sigact.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -145,8 +145,8 @@ class TestAsyncUdlSigact:
         assert udl_sigact is None
 
     @parametrize
-    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.report_and_activity.udl_sigact.with_raw_response.file_create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.report_and_activity.udl_sigact.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -163,8 +163,8 @@ class TestAsyncUdlSigact:
         assert udl_sigact is None
 
     @parametrize
-    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.report_and_activity.udl_sigact.with_streaming_response.file_create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.report_and_activity.udl_sigact.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

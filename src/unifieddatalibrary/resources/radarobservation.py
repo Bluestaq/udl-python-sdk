@@ -14,7 +14,7 @@ from ..types import (
     radarobservation_tuple_params,
     radarobservation_create_params,
     radarobservation_create_bulk_params,
-    radarobservation_file_create_params,
+    radarobservation_create_bulk_v2_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -478,10 +478,10 @@ class RadarobservationResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[radarobservation_file_create_params.Body],
+        body: Iterable[radarobservation_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -507,7 +507,7 @@ class RadarobservationResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-radar",
-            body=maybe_transform(body, Iterable[radarobservation_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[radarobservation_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1074,10 +1074,10 @@ class AsyncRadarobservationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[radarobservation_file_create_params.Body],
+        body: Iterable[radarobservation_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1103,7 +1103,7 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-radar",
-            body=await async_maybe_transform(body, Iterable[radarobservation_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[radarobservation_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1241,8 +1241,8 @@ class RadarobservationResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             radarobservation.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            radarobservation.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            radarobservation.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             radarobservation.get,
@@ -1271,8 +1271,8 @@ class AsyncRadarobservationResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             radarobservation.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            radarobservation.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            radarobservation.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             radarobservation.get,
@@ -1301,8 +1301,8 @@ class RadarobservationResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             radarobservation.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            radarobservation.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            radarobservation.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             radarobservation.get,
@@ -1331,8 +1331,8 @@ class AsyncRadarobservationResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             radarobservation.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            radarobservation.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            radarobservation.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             radarobservation.get,

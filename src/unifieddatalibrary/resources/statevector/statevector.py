@@ -13,8 +13,6 @@ from ...types import (
     statevector_count_params,
     statevector_tuple_params,
     statevector_create_params,
-    statevector_create_bulk_params,
-    statevector_file_create_params,
 )
 from .current import (
     CurrentResource,
@@ -47,6 +45,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.state_vector_full import StateVectorFull
+from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.statevector_list_response import StatevectorListResponse
 from ...types.statevector_tuple_response import StatevectorTupleResponse
 
@@ -802,7 +801,7 @@ class StatevectorResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[statevector_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[StateVectorIngestParam] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -829,17 +828,17 @@ class StatevectorResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/udl/statevector/createBulk",
-            body=maybe_transform(body, Iterable[statevector_create_bulk_params.Body]),
+            body=maybe_transform(body, Iterable[StateVectorIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[statevector_file_create_params.Body],
+        body: Iterable[StateVectorIngestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -865,7 +864,7 @@ class StatevectorResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-sv",
-            body=maybe_transform(body, Iterable[statevector_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[StateVectorIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1736,7 +1735,7 @@ class AsyncStatevectorResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[statevector_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[StateVectorIngestParam] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1763,17 +1762,17 @@ class AsyncStatevectorResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/udl/statevector/createBulk",
-            body=await async_maybe_transform(body, Iterable[statevector_create_bulk_params.Body]),
+            body=await async_maybe_transform(body, Iterable[StateVectorIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[statevector_file_create_params.Body],
+        body: Iterable[StateVectorIngestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1799,7 +1798,7 @@ class AsyncStatevectorResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-sv",
-            body=await async_maybe_transform(body, Iterable[statevector_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[StateVectorIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1937,8 +1936,8 @@ class StatevectorResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             statevector.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            statevector.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            statevector.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             statevector.get,
@@ -1975,8 +1974,8 @@ class AsyncStatevectorResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             statevector.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            statevector.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            statevector.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             statevector.get,
@@ -2013,8 +2012,8 @@ class StatevectorResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             statevector.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            statevector.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            statevector.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             statevector.get,
@@ -2051,8 +2050,8 @@ class AsyncStatevectorResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             statevector.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            statevector.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            statevector.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             statevector.get,

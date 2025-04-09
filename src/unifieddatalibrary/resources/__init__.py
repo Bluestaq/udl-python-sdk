@@ -784,14 +784,6 @@ from .operatingunit import (
     OperatingunitResourceWithStreamingResponse,
     AsyncOperatingunitResourceWithStreamingResponse,
 )
-from .rfgeolocation import (
-    RfgeolocationResource,
-    AsyncRfgeolocationResource,
-    RfgeolocationResourceWithRawResponse,
-    AsyncRfgeolocationResourceWithRawResponse,
-    RfgeolocationResourceWithStreamingResponse,
-    AsyncRfgeolocationResourceWithStreamingResponse,
-)
 from .rfobservation import (
     RfobservationResource,
     AsyncRfobservationResource,
@@ -2108,12 +2100,6 @@ __all__ = [
     "AsyncRfemitterdetailsResourceWithRawResponse",
     "RfemitterdetailsResourceWithStreamingResponse",
     "AsyncRfemitterdetailsResourceWithStreamingResponse",
-    "RfgeolocationResource",
-    "AsyncRfgeolocationResource",
-    "RfgeolocationResourceWithRawResponse",
-    "AsyncRfgeolocationResourceWithRawResponse",
-    "RfgeolocationResourceWithStreamingResponse",
-    "AsyncRfgeolocationResourceWithStreamingResponse",
     "RfobservationResource",
     "AsyncRfobservationResource",
     "RfobservationResourceWithRawResponse",

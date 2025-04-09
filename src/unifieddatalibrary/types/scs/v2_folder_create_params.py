@@ -6,8 +6,9 @@ from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from .attachment_param import AttachmentParam
 
-__all__ = ["V2FolderCreateParams", "Attachment"]
+__all__ = ["V2FolderCreateParams"]
 
 
 class V2FolderCreateParams(TypedDict, total=False):
@@ -20,7 +21,7 @@ class V2FolderCreateParams(TypedDict, total=False):
 
     id: str
 
-    attachment: Attachment
+    attachment: AttachmentParam
 
     classification_marking: Annotated[str, PropertyInfo(alias="classificationMarking")]
     """Classification marking of the folder or file in IC/CAPCO portion-marked format."""
@@ -69,21 +70,3 @@ class V2FolderCreateParams(TypedDict, total=False):
     Comma separated list of user and group ids that should have write access on this
     folder and the items nested in it.
     """
-
-
-class Attachment(TypedDict, total=False):
-    author: str
-
-    content: str
-
-    content_length: int
-
-    content_type: str
-
-    date: str
-
-    keywords: str
-
-    language: str
-
-    title: str

@@ -10,7 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    OrganizationdetailGetResponse,
+    OrganizationDetailsFull,
     OrganizationdetailListResponse,
     OrganizationdetailFindBySourceResponse,
 )
@@ -313,7 +313,7 @@ class TestOrganizationdetails:
         organizationdetail = client.organizationdetails.get(
             "id",
         )
-        assert_matches_type(OrganizationdetailGetResponse, organizationdetail, path=["response"])
+        assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -324,7 +324,7 @@ class TestOrganizationdetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         organizationdetail = response.parse()
-        assert_matches_type(OrganizationdetailGetResponse, organizationdetail, path=["response"])
+        assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -335,7 +335,7 @@ class TestOrganizationdetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             organizationdetail = response.parse()
-            assert_matches_type(OrganizationdetailGetResponse, organizationdetail, path=["response"])
+            assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -641,7 +641,7 @@ class TestAsyncOrganizationdetails:
         organizationdetail = await async_client.organizationdetails.get(
             "id",
         )
-        assert_matches_type(OrganizationdetailGetResponse, organizationdetail, path=["response"])
+        assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -652,7 +652,7 @@ class TestAsyncOrganizationdetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         organizationdetail = await response.parse()
-        assert_matches_type(OrganizationdetailGetResponse, organizationdetail, path=["response"])
+        assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -663,7 +663,7 @@ class TestAsyncOrganizationdetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             organizationdetail = await response.parse()
-            assert_matches_type(OrganizationdetailGetResponse, organizationdetail, path=["response"])
+            assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

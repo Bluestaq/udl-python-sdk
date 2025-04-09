@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import item_tuple_params, item_create_params, item_update_params, item_file_create_params
+from ..types import item_tuple_params, item_create_params, item_update_params, item_create_bulk_v2_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -684,10 +684,10 @@ class ItemResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[item_file_create_params.Body],
+        body: Iterable[item_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -713,7 +713,7 @@ class ItemResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-item",
-            body=maybe_transform(body, Iterable[item_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[item_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1479,10 +1479,10 @@ class AsyncItemResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[item_file_create_params.Body],
+        body: Iterable[item_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1508,7 +1508,7 @@ class AsyncItemResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-item",
-            body=await async_maybe_transform(body, Iterable[item_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[item_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1639,8 +1639,8 @@ class ItemResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             item.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            item.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            item.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             item.get,
@@ -1672,8 +1672,8 @@ class AsyncItemResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             item.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            item.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            item.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             item.get,
@@ -1705,8 +1705,8 @@ class ItemResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             item.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            item.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            item.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             item.get,
@@ -1738,8 +1738,8 @@ class AsyncItemResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             item.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            item.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            item.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             item.get,

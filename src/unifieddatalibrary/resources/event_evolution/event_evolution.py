@@ -14,7 +14,7 @@ from ...types import (
     event_evolution_tuple_params,
     event_evolution_create_params,
     event_evolution_create_bulk_params,
-    event_evolution_file_create_params,
+    event_evolution_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -461,10 +461,10 @@ class EventEvolutionResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[event_evolution_file_create_params.Body],
+        body: Iterable[event_evolution_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -490,7 +490,7 @@ class EventEvolutionResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-eventevolution",
-            body=maybe_transform(body, Iterable[event_evolution_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[event_evolution_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1002,10 +1002,10 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[event_evolution_file_create_params.Body],
+        body: Iterable[event_evolution_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1031,7 +1031,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-eventevolution",
-            body=await async_maybe_transform(body, Iterable[event_evolution_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[event_evolution_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1146,8 +1146,8 @@ class EventEvolutionResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            event_evolution.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            event_evolution.create_bulk_v2,
         )
         self.queryhelp = to_raw_response_wrapper(
             event_evolution.queryhelp,
@@ -1180,8 +1180,8 @@ class AsyncEventEvolutionResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            event_evolution.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            event_evolution.create_bulk_v2,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             event_evolution.queryhelp,
@@ -1214,8 +1214,8 @@ class EventEvolutionResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            event_evolution.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            event_evolution.create_bulk_v2,
         )
         self.queryhelp = to_streamed_response_wrapper(
             event_evolution.queryhelp,
@@ -1248,8 +1248,8 @@ class AsyncEventEvolutionResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            event_evolution.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            event_evolution.create_bulk_v2,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             event_evolution.queryhelp,

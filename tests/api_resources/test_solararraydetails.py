@@ -10,7 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    SolararraydetailGetResponse,
+    SolarArrayDetailsFull,
     SolararraydetailListResponse,
 )
 
@@ -233,7 +233,7 @@ class TestSolararraydetails:
         solararraydetail = client.solararraydetails.get(
             "id",
         )
-        assert_matches_type(SolararraydetailGetResponse, solararraydetail, path=["response"])
+        assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -244,7 +244,7 @@ class TestSolararraydetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         solararraydetail = response.parse()
-        assert_matches_type(SolararraydetailGetResponse, solararraydetail, path=["response"])
+        assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -255,7 +255,7 @@ class TestSolararraydetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             solararraydetail = response.parse()
-            assert_matches_type(SolararraydetailGetResponse, solararraydetail, path=["response"])
+            assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -483,7 +483,7 @@ class TestAsyncSolararraydetails:
         solararraydetail = await async_client.solararraydetails.get(
             "id",
         )
-        assert_matches_type(SolararraydetailGetResponse, solararraydetail, path=["response"])
+        assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -494,7 +494,7 @@ class TestAsyncSolararraydetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         solararraydetail = await response.parse()
-        assert_matches_type(SolararraydetailGetResponse, solararraydetail, path=["response"])
+        assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -505,7 +505,7 @@ class TestAsyncSolararraydetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             solararraydetail = await response.parse()
-            assert_matches_type(SolararraydetailGetResponse, solararraydetail, path=["response"])
+            assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

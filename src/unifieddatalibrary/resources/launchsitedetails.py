@@ -26,6 +26,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.location_ingest_param import LocationIngestParam
 from ..types.launchsitedetail_get_response import LaunchsitedetailGetResponse
 from ..types.launchsitedetail_list_response import LaunchsitedetailListResponse
 from ..types.launchsitedetail_find_by_source_response import LaunchsitedetailFindBySourceResponse
@@ -65,7 +66,7 @@ class LaunchsitedetailsResource(SyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         launch_group: str | NotGiven = NOT_GIVEN,
-        location: launchsitedetail_create_params.Location | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -173,7 +174,7 @@ class LaunchsitedetailsResource(SyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         launch_group: str | NotGiven = NOT_GIVEN,
-        location: launchsitedetail_update_params.Location | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -443,7 +444,7 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         launch_group: str | NotGiven = NOT_GIVEN,
-        location: launchsitedetail_create_params.Location | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -551,7 +552,7 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         id_location: str | NotGiven = NOT_GIVEN,
         launch_group: str | NotGiven = NOT_GIVEN,
-        location: launchsitedetail_update_params.Location | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

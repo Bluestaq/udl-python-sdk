@@ -9,7 +9,9 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types import DiffofarrivalTupleResponse
+from unifieddatalibrary.types import (
+    DiffofarrivalTupleResponse,
+)
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.types.tdoa_fdoa import DiffofarrivalFull
 
@@ -18,58 +20,6 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 class TestDiffofarrival:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
-
-    @parametrize
-    def test_method_create(self, client: Unifieddatalibrary) -> None:
-        diffofarrival = client.diffofarrival.create(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert diffofarrival is None
-
-    @parametrize
-    def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
-        response = client.diffofarrival.with_raw_response.create(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        diffofarrival = response.parse()
-        assert diffofarrival is None
-
-    @parametrize
-    def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
-        with client.diffofarrival.with_streaming_response.create(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            diffofarrival = response.parse()
-            assert diffofarrival is None
-
-        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
@@ -108,6 +58,58 @@ class TestDiffofarrival:
             client.diffofarrival.with_raw_response.retrieve(
                 "",
             )
+
+    @parametrize
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        diffofarrival = client.diffofarrival.create_bulk_v2(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert diffofarrival is None
+
+    @parametrize
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.diffofarrival.with_raw_response.create_bulk_v2(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        diffofarrival = response.parse()
+        assert diffofarrival is None
+
+    @parametrize
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.diffofarrival.with_streaming_response.create_bulk_v2(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            diffofarrival = response.parse()
+            assert diffofarrival is None
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -173,58 +175,6 @@ class TestAsyncDiffofarrival:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        diffofarrival = await async_client.diffofarrival.create(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert diffofarrival is None
-
-    @parametrize
-    async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.diffofarrival.with_raw_response.create(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        diffofarrival = await response.parse()
-        assert diffofarrival is None
-
-    @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.diffofarrival.with_streaming_response.create(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "REAL",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            diffofarrival = await response.parse()
-            assert diffofarrival is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         diffofarrival = await async_client.diffofarrival.retrieve(
             "id",
@@ -261,6 +211,58 @@ class TestAsyncDiffofarrival:
             await async_client.diffofarrival.with_raw_response.retrieve(
                 "",
             )
+
+    @parametrize
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        diffofarrival = await async_client.diffofarrival.create_bulk_v2(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert diffofarrival is None
+
+    @parametrize
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.diffofarrival.with_raw_response.create_bulk_v2(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        diffofarrival = await response.parse()
+        assert diffofarrival is None
+
+    @parametrize
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.diffofarrival.with_streaming_response.create_bulk_v2(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "REAL",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            diffofarrival = await response.parse()
+            assert diffofarrival is None
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:

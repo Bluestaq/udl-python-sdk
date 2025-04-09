@@ -25,6 +25,7 @@ from .._base_client import make_request_options
 from ..types.bus_full import BusFull
 from ..types.bus_list_response import BusListResponse
 from ..types.bus_tuple_response import BusTupleResponse
+from ..types.entity_ingest_param import EntityIngestParam
 
 __all__ = ["BusesResource", "AsyncBusesResource"]
 
@@ -69,7 +70,7 @@ class BusesResource(SyncAPIResource):
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: bus_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         launch_envelope_dimension_x: float | NotGiven = NOT_GIVEN,
@@ -390,7 +391,7 @@ class BusesResource(SyncAPIResource):
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: bus_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         launch_envelope_dimension_x: float | NotGiven = NOT_GIVEN,
@@ -855,7 +856,7 @@ class AsyncBusesResource(AsyncAPIResource):
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: bus_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         launch_envelope_dimension_x: float | NotGiven = NOT_GIVEN,
@@ -1176,7 +1177,7 @@ class AsyncBusesResource(AsyncAPIResource):
         bus_kit_designer_org_id: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: bus_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         generic: bool | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         launch_envelope_dimension_x: float | NotGiven = NOT_GIVEN,

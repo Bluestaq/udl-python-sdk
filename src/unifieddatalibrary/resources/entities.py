@@ -7,7 +7,11 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import entity_tuple_params, entity_create_params, entity_update_params
+from ..types import (
+    entity_tuple_params,
+    entity_create_params,
+    entity_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -24,7 +28,9 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.entity_full import EntityFull
 from ..types.entity_list_response import EntityListResponse
+from ..types.onorbit_ingest_param import OnorbitIngestParam
 from ..types.entity_tuple_response import EntityTupleResponse
+from ..types.location_ingest_param import LocationIngestParam
 from ..types.entity_get_all_types_response import EntityGetAllTypesResponse
 
 __all__ = ["EntitiesResource", "AsyncEntitiesResource"]
@@ -75,8 +81,8 @@ class EntitiesResource(SyncAPIResource):
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: entity_create_params.Location | NotGiven = NOT_GIVEN,
-        on_orbit: entity_create_params.OnOrbit | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
+        on_orbit: OnorbitIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
@@ -251,8 +257,8 @@ class EntitiesResource(SyncAPIResource):
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: entity_update_params.Location | NotGiven = NOT_GIVEN,
-        on_orbit: entity_update_params.OnOrbit | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
+        on_orbit: OnorbitIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
@@ -590,8 +596,8 @@ class AsyncEntitiesResource(AsyncAPIResource):
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: entity_create_params.Location | NotGiven = NOT_GIVEN,
-        on_orbit: entity_create_params.OnOrbit | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
+        on_orbit: OnorbitIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,
@@ -766,8 +772,8 @@ class AsyncEntitiesResource(AsyncAPIResource):
         id_location: str | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: entity_update_params.Location | NotGiven = NOT_GIVEN,
-        on_orbit: entity_update_params.OnOrbit | NotGiven = NOT_GIVEN,
+        location: LocationIngestParam | NotGiven = NOT_GIVEN,
+        on_orbit: OnorbitIngestParam | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
         taskable: bool | NotGiven = NOT_GIVEN,

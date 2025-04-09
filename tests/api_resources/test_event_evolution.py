@@ -264,8 +264,8 @@ class TestEventEvolution:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
-        event_evolution = client.event_evolution.file_create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -280,8 +280,8 @@ class TestEventEvolution:
         assert event_evolution is None
 
     @parametrize
-    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
-        response = client.event_evolution.with_raw_response.file_create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.event_evolution.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -300,8 +300,8 @@ class TestEventEvolution:
         assert event_evolution is None
 
     @parametrize
-    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
-        with client.event_evolution.with_streaming_response.file_create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.event_evolution.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -632,8 +632,8 @@ class TestAsyncEventEvolution:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        event_evolution = await async_client.event_evolution.file_create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -648,8 +648,8 @@ class TestAsyncEventEvolution:
         assert event_evolution is None
 
     @parametrize
-    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.event_evolution.with_raw_response.file_create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.event_evolution.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -668,8 +668,8 @@ class TestAsyncEventEvolution:
         assert event_evolution is None
 
     @parametrize
-    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.event_evolution.with_streaming_response.file_create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.event_evolution.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

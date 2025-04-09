@@ -28,7 +28,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.organizationdetail_get_response import OrganizationdetailGetResponse
+from ..types.organization_details_full import OrganizationDetailsFull
 from ..types.organizationdetail_list_response import OrganizationdetailListResponse
 from ..types.organizationdetail_find_by_source_response import OrganizationdetailFindBySourceResponse
 
@@ -616,7 +616,7 @@ class OrganizationdetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationdetailGetResponse:
+    ) -> OrganizationDetailsFull:
         """
         Service operation to get a single OrganizationDetails by its unique ID passed as
         a path parameter. OrganizationDetails represent details of organizations such as
@@ -639,7 +639,7 @@ class OrganizationdetailsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=OrganizationdetailGetResponse,
+            cast_to=OrganizationDetailsFull,
         )
 
 
@@ -1226,7 +1226,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationdetailGetResponse:
+    ) -> OrganizationDetailsFull:
         """
         Service operation to get a single OrganizationDetails by its unique ID passed as
         a path parameter. OrganizationDetails represent details of organizations such as
@@ -1249,7 +1249,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=OrganizationdetailGetResponse,
+            cast_to=OrganizationDetailsFull,
         )
 
 

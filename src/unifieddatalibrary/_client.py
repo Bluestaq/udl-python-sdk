@@ -89,7 +89,6 @@ from .resources import (
     launchvehicle,
     manifoldelset,
     operatingunit,
-    rfgeolocation,
     air_load_plans,
     airfield_slots,
     batterydetails,
@@ -341,7 +340,6 @@ class Unifieddatalibrary(SyncAPIClient):
     rfbandtype: rfbandtype.RfbandtypeResource
     rfemitter: rfemitter.RfemitterResource
     rfemitterdetails: rfemitterdetails.RfemitterdetailsResource
-    rfgeolocation: rfgeolocation.RfgeolocationResource
     rfobservation: rfobservation.RfobservationResource
     sarobservation: sarobservation.SarobservationResource
     scientific: scientific.ScientificResource
@@ -584,7 +582,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.rfbandtype = rfbandtype.RfbandtypeResource(self)
         self.rfemitter = rfemitter.RfemitterResource(self)
         self.rfemitterdetails = rfemitterdetails.RfemitterdetailsResource(self)
-        self.rfgeolocation = rfgeolocation.RfgeolocationResource(self)
         self.rfobservation = rfobservation.RfobservationResource(self)
         self.sarobservation = sarobservation.SarobservationResource(self)
         self.scientific = scientific.ScientificResource(self)
@@ -870,7 +867,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     rfbandtype: rfbandtype.AsyncRfbandtypeResource
     rfemitter: rfemitter.AsyncRfemitterResource
     rfemitterdetails: rfemitterdetails.AsyncRfemitterdetailsResource
-    rfgeolocation: rfgeolocation.AsyncRfgeolocationResource
     rfobservation: rfobservation.AsyncRfobservationResource
     sarobservation: sarobservation.AsyncSarobservationResource
     scientific: scientific.AsyncScientificResource
@@ -1113,7 +1109,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.rfbandtype = rfbandtype.AsyncRfbandtypeResource(self)
         self.rfemitter = rfemitter.AsyncRfemitterResource(self)
         self.rfemitterdetails = rfemitterdetails.AsyncRfemitterdetailsResource(self)
-        self.rfgeolocation = rfgeolocation.AsyncRfgeolocationResource(self)
         self.rfobservation = rfobservation.AsyncRfobservationResource(self)
         self.sarobservation = sarobservation.AsyncSarobservationResource(self)
         self.scientific = scientific.AsyncScientificResource(self)
@@ -1428,7 +1423,6 @@ class UnifieddatalibraryWithRawResponse:
         self.rfbandtype = rfbandtype.RfbandtypeResourceWithRawResponse(client.rfbandtype)
         self.rfemitter = rfemitter.RfemitterResourceWithRawResponse(client.rfemitter)
         self.rfemitterdetails = rfemitterdetails.RfemitterdetailsResourceWithRawResponse(client.rfemitterdetails)
-        self.rfgeolocation = rfgeolocation.RfgeolocationResourceWithRawResponse(client.rfgeolocation)
         self.rfobservation = rfobservation.RfobservationResourceWithRawResponse(client.rfobservation)
         self.sarobservation = sarobservation.SarobservationResourceWithRawResponse(client.sarobservation)
         self.scientific = scientific.ScientificResourceWithRawResponse(client.scientific)
@@ -1672,7 +1666,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.rfbandtype = rfbandtype.AsyncRfbandtypeResourceWithRawResponse(client.rfbandtype)
         self.rfemitter = rfemitter.AsyncRfemitterResourceWithRawResponse(client.rfemitter)
         self.rfemitterdetails = rfemitterdetails.AsyncRfemitterdetailsResourceWithRawResponse(client.rfemitterdetails)
-        self.rfgeolocation = rfgeolocation.AsyncRfgeolocationResourceWithRawResponse(client.rfgeolocation)
         self.rfobservation = rfobservation.AsyncRfobservationResourceWithRawResponse(client.rfobservation)
         self.sarobservation = sarobservation.AsyncSarobservationResourceWithRawResponse(client.sarobservation)
         self.scientific = scientific.AsyncScientificResourceWithRawResponse(client.scientific)
@@ -1926,7 +1919,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.rfbandtype = rfbandtype.RfbandtypeResourceWithStreamingResponse(client.rfbandtype)
         self.rfemitter = rfemitter.RfemitterResourceWithStreamingResponse(client.rfemitter)
         self.rfemitterdetails = rfemitterdetails.RfemitterdetailsResourceWithStreamingResponse(client.rfemitterdetails)
-        self.rfgeolocation = rfgeolocation.RfgeolocationResourceWithStreamingResponse(client.rfgeolocation)
         self.rfobservation = rfobservation.RfobservationResourceWithStreamingResponse(client.rfobservation)
         self.sarobservation = sarobservation.SarobservationResourceWithStreamingResponse(client.sarobservation)
         self.scientific = scientific.ScientificResourceWithStreamingResponse(client.scientific)
@@ -2206,7 +2198,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.rfemitterdetails = rfemitterdetails.AsyncRfemitterdetailsResourceWithStreamingResponse(
             client.rfemitterdetails
         )
-        self.rfgeolocation = rfgeolocation.AsyncRfgeolocationResourceWithStreamingResponse(client.rfgeolocation)
         self.rfobservation = rfobservation.AsyncRfobservationResourceWithStreamingResponse(client.rfobservation)
         self.sarobservation = sarobservation.AsyncSarobservationResourceWithStreamingResponse(client.sarobservation)
         self.scientific = scientific.AsyncScientificResourceWithStreamingResponse(client.scientific)

@@ -25,6 +25,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.site_get_response import SiteGetResponse
 from ..types.site_list_response import SiteListResponse
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.site_tuple_response import SiteTupleResponse
 
 __all__ = ["SiteResource", "AsyncSiteResource"]
@@ -74,7 +75,7 @@ class SiteResource(SyncAPIResource):
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
-        entity: site_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         eval: int | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
         fpa: str | NotGiven = NOT_GIVEN,
@@ -619,7 +620,7 @@ class SiteResource(SyncAPIResource):
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
-        entity: site_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         eval: int | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
         fpa: str | NotGiven = NOT_GIVEN,
@@ -1340,7 +1341,7 @@ class AsyncSiteResource(AsyncAPIResource):
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
-        entity: site_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         eval: int | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
         fpa: str | NotGiven = NOT_GIVEN,
@@ -1885,7 +1886,7 @@ class AsyncSiteResource(AsyncAPIResource):
         elev_msl: float | NotGiven = NOT_GIVEN,
         elev_msl_conf_lvl: int | NotGiven = NOT_GIVEN,
         elev_msl_deriv_acc: float | NotGiven = NOT_GIVEN,
-        entity: site_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         eval: int | NotGiven = NOT_GIVEN,
         faa: str | NotGiven = NOT_GIVEN,
         fpa: str | NotGiven = NOT_GIVEN,

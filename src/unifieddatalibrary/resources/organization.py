@@ -21,7 +21,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.organization_get_response import OrganizationGetResponse
+from ..types.organization_full import OrganizationFull
 from ..types.organization_list_response import OrganizationListResponse
 from ..types.organization_tuple_response import OrganizationTupleResponse
 from ..types.organization_get_organization_types_response import OrganizationGetOrganizationTypesResponse
@@ -385,7 +385,7 @@ class OrganizationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationGetResponse:
+    ) -> OrganizationFull:
         """
         Service operation to get a single Organization by its unique ID passed as a path
         parameter.
@@ -406,7 +406,7 @@ class OrganizationResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=OrganizationGetResponse,
+            cast_to=OrganizationFull,
         )
 
     def get_organization_categories(
@@ -873,7 +873,7 @@ class AsyncOrganizationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationGetResponse:
+    ) -> OrganizationFull:
         """
         Service operation to get a single Organization by its unique ID passed as a path
         parameter.
@@ -894,7 +894,7 @@ class AsyncOrganizationResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=OrganizationGetResponse,
+            cast_to=OrganizationFull,
         )
 
     async def get_organization_categories(

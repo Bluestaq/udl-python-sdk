@@ -21,7 +21,7 @@ from ...types import (
     collect_response_count_params,
     collect_response_create_params,
     collect_response_create_bulk_params,
-    collect_response_file_create_params,
+    collect_response_create_bulk_v2_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
@@ -442,10 +442,10 @@ class CollectResponsesResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[collect_response_file_create_params.Body],
+        body: Iterable[collect_response_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -471,7 +471,7 @@ class CollectResponsesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-collectresponse",
-            body=maybe_transform(body, Iterable[collect_response_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[collect_response_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -893,10 +893,10 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[collect_response_file_create_params.Body],
+        body: Iterable[collect_response_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -922,7 +922,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-collectresponse",
-            body=await async_maybe_transform(body, Iterable[collect_response_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[collect_response_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -972,8 +972,8 @@ class CollectResponsesResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             collect_responses.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            collect_responses.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            collect_responses.create_bulk_v2,
         )
         self.query_help = to_raw_response_wrapper(
             collect_responses.query_help,
@@ -1007,8 +1007,8 @@ class AsyncCollectResponsesResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             collect_responses.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            collect_responses.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            collect_responses.create_bulk_v2,
         )
         self.query_help = async_to_raw_response_wrapper(
             collect_responses.query_help,
@@ -1042,8 +1042,8 @@ class CollectResponsesResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             collect_responses.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            collect_responses.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            collect_responses.create_bulk_v2,
         )
         self.query_help = to_streamed_response_wrapper(
             collect_responses.query_help,
@@ -1077,8 +1077,8 @@ class AsyncCollectResponsesResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             collect_responses.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            collect_responses.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            collect_responses.create_bulk_v2,
         )
         self.query_help = async_to_streamed_response_wrapper(
             collect_responses.query_help,

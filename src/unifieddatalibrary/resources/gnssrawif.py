@@ -12,7 +12,7 @@ from ..types import (
     gnssrawif_list_params,
     gnssrawif_count_params,
     gnssrawif_tuple_params,
-    gnssrawif_file_create_params,
+    gnssrawif_upload_zip_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -147,7 +147,156 @@ class GnssrawifResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def file_get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BinaryAPIResponse:
+        """
+        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
+        a path parameter. The file is returned as an attachment Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._get(
+            f"/udl/gnssrawif/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> GnssRawIfFull:
+        """
+        Service operation to get a single GNSSRawIF by its unique ID passed as a path
+        parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/gnssrawif/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=GnssRawIfFull,
+        )
+
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/gnssrawif/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> GnssrawifTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
+              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/gnssrawif/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    gnssrawif_tuple_params.GnssrawifTupleParams,
+                ),
+            ),
+            cast_to=GnssrawifTupleResponse,
+        )
+
+    def upload_zip(
         self,
         *,
         center_freq: Iterable[float],
@@ -401,161 +550,12 @@ class GnssrawifResource(SyncAPIResource):
                     "start_lon": start_lon,
                     "tags": tags,
                 },
-                gnssrawif_file_create_params.GnssrawifFileCreateParams,
+                gnssrawif_upload_zip_params.GnssrawifUploadZipParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def file_get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BinaryAPIResponse:
-        """
-        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
-        a path parameter. The file is returned as an attachment Content-Disposition.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return self._get(
-            f"/udl/gnssrawif/getFile/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BinaryAPIResponse,
-        )
-
-    def get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfFull:
-        """
-        Service operation to get a single GNSSRawIF by its unique ID passed as a path
-        parameter.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/udl/gnssrawif/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=GnssRawIfFull,
-        )
-
-    def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/gnssrawif/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def tuple(
-        self,
-        *,
-        columns: str,
-        start_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssrawifTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/gnssrawif/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "columns": columns,
-                        "start_time": start_time,
-                    },
-                    gnssrawif_tuple_params.GnssrawifTupleParams,
-                ),
-            ),
-            cast_to=GnssrawifTupleResponse,
         )
 
 
@@ -667,7 +667,156 @@ class AsyncGnssrawifResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def file_get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
+        a path parameter. The file is returned as an attachment Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._get(
+            f"/udl/gnssrawif/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> GnssRawIfFull:
+        """
+        Service operation to get a single GNSSRawIF by its unique ID passed as a path
+        parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/gnssrawif/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=GnssRawIfFull,
+        )
+
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/gnssrawif/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> GnssrawifTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
+              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/gnssrawif/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    gnssrawif_tuple_params.GnssrawifTupleParams,
+                ),
+            ),
+            cast_to=GnssrawifTupleResponse,
+        )
+
+    async def upload_zip(
         self,
         *,
         center_freq: Iterable[float],
@@ -921,161 +1070,12 @@ class AsyncGnssrawifResource(AsyncAPIResource):
                     "start_lon": start_lon,
                     "tags": tags,
                 },
-                gnssrawif_file_create_params.GnssrawifFileCreateParams,
+                gnssrawif_upload_zip_params.GnssrawifUploadZipParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def file_get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncBinaryAPIResponse:
-        """
-        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
-        a path parameter. The file is returned as an attachment Content-Disposition.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return await self._get(
-            f"/udl/gnssrawif/getFile/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AsyncBinaryAPIResponse,
-        )
-
-    async def get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfFull:
-        """
-        Service operation to get a single GNSSRawIF by its unique ID passed as a path
-        parameter.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/udl/gnssrawif/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=GnssRawIfFull,
-        )
-
-    async def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/gnssrawif/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def tuple(
-        self,
-        *,
-        columns: str,
-        start_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssrawifTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/gnssrawif/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "columns": columns,
-                        "start_time": start_time,
-                    },
-                    gnssrawif_tuple_params.GnssrawifTupleParams,
-                ),
-            ),
-            cast_to=GnssrawifTupleResponse,
         )
 
 
@@ -1088,9 +1088,6 @@ class GnssrawifResourceWithRawResponse:
         )
         self.count = to_raw_response_wrapper(
             gnssrawif.count,
-        )
-        self.file_create = to_raw_response_wrapper(
-            gnssrawif.file_create,
         )
         self.file_get = to_custom_raw_response_wrapper(
             gnssrawif.file_get,
@@ -1105,6 +1102,9 @@ class GnssrawifResourceWithRawResponse:
         self.tuple = to_raw_response_wrapper(
             gnssrawif.tuple,
         )
+        self.upload_zip = to_raw_response_wrapper(
+            gnssrawif.upload_zip,
+        )
 
 
 class AsyncGnssrawifResourceWithRawResponse:
@@ -1116,9 +1116,6 @@ class AsyncGnssrawifResourceWithRawResponse:
         )
         self.count = async_to_raw_response_wrapper(
             gnssrawif.count,
-        )
-        self.file_create = async_to_raw_response_wrapper(
-            gnssrawif.file_create,
         )
         self.file_get = async_to_custom_raw_response_wrapper(
             gnssrawif.file_get,
@@ -1133,6 +1130,9 @@ class AsyncGnssrawifResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             gnssrawif.tuple,
         )
+        self.upload_zip = async_to_raw_response_wrapper(
+            gnssrawif.upload_zip,
+        )
 
 
 class GnssrawifResourceWithStreamingResponse:
@@ -1144,9 +1144,6 @@ class GnssrawifResourceWithStreamingResponse:
         )
         self.count = to_streamed_response_wrapper(
             gnssrawif.count,
-        )
-        self.file_create = to_streamed_response_wrapper(
-            gnssrawif.file_create,
         )
         self.file_get = to_custom_streamed_response_wrapper(
             gnssrawif.file_get,
@@ -1161,6 +1158,9 @@ class GnssrawifResourceWithStreamingResponse:
         self.tuple = to_streamed_response_wrapper(
             gnssrawif.tuple,
         )
+        self.upload_zip = to_streamed_response_wrapper(
+            gnssrawif.upload_zip,
+        )
 
 
 class AsyncGnssrawifResourceWithStreamingResponse:
@@ -1172,9 +1172,6 @@ class AsyncGnssrawifResourceWithStreamingResponse:
         )
         self.count = async_to_streamed_response_wrapper(
             gnssrawif.count,
-        )
-        self.file_create = async_to_streamed_response_wrapper(
-            gnssrawif.file_create,
         )
         self.file_get = async_to_custom_streamed_response_wrapper(
             gnssrawif.file_get,
@@ -1188,4 +1185,7 @@ class AsyncGnssrawifResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             gnssrawif.tuple,
+        )
+        self.upload_zip = async_to_streamed_response_wrapper(
+            gnssrawif.upload_zip,
         )

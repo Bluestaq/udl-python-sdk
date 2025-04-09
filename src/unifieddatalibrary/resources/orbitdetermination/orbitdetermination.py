@@ -14,7 +14,7 @@ from ...types import (
     orbitdetermination_tuple_params,
     orbitdetermination_create_params,
     orbitdetermination_create_bulk_params,
-    orbitdetermination_file_create_params,
+    orbitdetermination_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -38,6 +38,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.elset_ingest_param import ElsetIngestParam
+from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.orbitdetermination_list_response import OrbitdeterminationListResponse
 from ...types.orbitdetermination_tuple_response import OrbitdeterminationTupleResponse
 from ...types.udl.orbitdetermination.orbitdetermination_full import OrbitdeterminationFull
@@ -84,10 +86,10 @@ class OrbitdeterminationResource(SyncAPIResource):
         accepted_ob_typs: List[str] | NotGiven = NOT_GIVEN,
         agom_est: bool | NotGiven = NOT_GIVEN,
         agom_model: str | NotGiven = NOT_GIVEN,
-        apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
+        apriori_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         apriori_id_elset: str | NotGiven = NOT_GIVEN,
         apriori_id_state_vector: str | NotGiven = NOT_GIVEN,
-        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | NotGiven = NOT_GIVEN,
+        apriori_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         ballistic_coeff_est: bool | NotGiven = NOT_GIVEN,
         ballistic_coeff_model: str | NotGiven = NOT_GIVEN,
         best_pass_wrms: float | NotGiven = NOT_GIVEN,
@@ -481,10 +483,10 @@ class OrbitdeterminationResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[orbitdetermination_file_create_params.Body],
+        body: Iterable[orbitdetermination_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -510,7 +512,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-orbitdetermination",
-            body=maybe_transform(body, Iterable[orbitdetermination_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[orbitdetermination_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -680,10 +682,10 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         accepted_ob_typs: List[str] | NotGiven = NOT_GIVEN,
         agom_est: bool | NotGiven = NOT_GIVEN,
         agom_model: str | NotGiven = NOT_GIVEN,
-        apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
+        apriori_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         apriori_id_elset: str | NotGiven = NOT_GIVEN,
         apriori_id_state_vector: str | NotGiven = NOT_GIVEN,
-        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | NotGiven = NOT_GIVEN,
+        apriori_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         ballistic_coeff_est: bool | NotGiven = NOT_GIVEN,
         ballistic_coeff_model: str | NotGiven = NOT_GIVEN,
         best_pass_wrms: float | NotGiven = NOT_GIVEN,
@@ -1077,10 +1079,10 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[orbitdetermination_file_create_params.Body],
+        body: Iterable[orbitdetermination_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1106,7 +1108,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-orbitdetermination",
-            body=await async_maybe_transform(body, Iterable[orbitdetermination_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[orbitdetermination_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1253,8 +1255,8 @@ class OrbitdeterminationResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             orbitdetermination.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            orbitdetermination.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            orbitdetermination.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             orbitdetermination.get,
@@ -1287,8 +1289,8 @@ class AsyncOrbitdeterminationResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             orbitdetermination.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            orbitdetermination.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            orbitdetermination.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             orbitdetermination.get,
@@ -1321,8 +1323,8 @@ class OrbitdeterminationResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             orbitdetermination.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            orbitdetermination.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            orbitdetermination.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             orbitdetermination.get,
@@ -1355,8 +1357,8 @@ class AsyncOrbitdeterminationResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             orbitdetermination.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            orbitdetermination.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            orbitdetermination.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             orbitdetermination.get,

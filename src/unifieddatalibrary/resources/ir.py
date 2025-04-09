@@ -24,6 +24,7 @@ from .._base_client import make_request_options
 from ..types.ir_get_response import IrGetResponse
 from ..types.ir_list_response import IrListResponse
 from ..types.ir_tuple_response import IrTupleResponse
+from ..types.entity_ingest_param import EntityIngestParam
 
 __all__ = ["IrResource", "AsyncIrResource"]
 
@@ -57,7 +58,7 @@ class IrResource(SyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: ir_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -151,7 +152,7 @@ class IrResource(SyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: ir_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -458,7 +459,7 @@ class AsyncIrResource(AsyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: ir_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -552,7 +553,7 @@ class AsyncIrResource(AsyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: ir_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

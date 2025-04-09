@@ -142,8 +142,8 @@ class TestOrbittrack:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_orbit_track(self, client: Unifieddatalibrary) -> None:
-        orbittrack = client.orbittrack.orbit_track(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        orbittrack = client.orbittrack.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -158,8 +158,8 @@ class TestOrbittrack:
         assert orbittrack is None
 
     @parametrize
-    def test_raw_response_orbit_track(self, client: Unifieddatalibrary) -> None:
-        response = client.orbittrack.with_raw_response.orbit_track(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.orbittrack.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -178,8 +178,8 @@ class TestOrbittrack:
         assert orbittrack is None
 
     @parametrize
-    def test_streaming_response_orbit_track(self, client: Unifieddatalibrary) -> None:
-        with client.orbittrack.with_streaming_response.orbit_track(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.orbittrack.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -383,8 +383,8 @@ class TestAsyncOrbittrack:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_orbit_track(self, async_client: AsyncUnifieddatalibrary) -> None:
-        orbittrack = await async_client.orbittrack.orbit_track(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        orbittrack = await async_client.orbittrack.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -399,8 +399,8 @@ class TestAsyncOrbittrack:
         assert orbittrack is None
 
     @parametrize
-    async def test_raw_response_orbit_track(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.orbittrack.with_raw_response.orbit_track(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.orbittrack.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -419,8 +419,8 @@ class TestAsyncOrbittrack:
         assert orbittrack is None
 
     @parametrize
-    async def test_streaming_response_orbit_track(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.orbittrack.with_streaming_response.orbit_track(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.orbittrack.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

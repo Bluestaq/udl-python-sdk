@@ -11,8 +11,8 @@ from ...types import (
     missile_track_list_params,
     missile_track_count_params,
     missile_track_tuple_params,
-    missile_track_create_params,
     missile_track_create_bulk_params,
+    missile_track_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -65,42 +65,6 @@ class MissileTracksResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return MissileTracksResourceWithStreamingResponse(self)
-
-    def create(
-        self,
-        *,
-        body: Iterable[missile_track_create_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple missile track records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-missiletrack",
-            body=maybe_transform(body, Iterable[missile_track_create_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
 
     def list(
         self,
@@ -223,6 +187,42 @@ class MissileTracksResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def create_bulk_v2(
+        self,
+        *,
+        body: Iterable[missile_track_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple missile track records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-missiletrack",
+            body=maybe_transform(body, Iterable[missile_track_create_bulk_v2_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def queryhelp(
         self,
         *,
@@ -327,42 +327,6 @@ class AsyncMissileTracksResource(AsyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return AsyncMissileTracksResourceWithStreamingResponse(self)
-
-    async def create(
-        self,
-        *,
-        body: Iterable[missile_track_create_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple missile track records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-missiletrack",
-            body=await async_maybe_transform(body, Iterable[missile_track_create_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
 
     async def list(
         self,
@@ -485,6 +449,42 @@ class AsyncMissileTracksResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def create_bulk_v2(
+        self,
+        *,
+        body: Iterable[missile_track_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple missile track records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-missiletrack",
+            body=await async_maybe_transform(body, Iterable[missile_track_create_bulk_v2_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def queryhelp(
         self,
         *,
@@ -570,9 +570,6 @@ class MissileTracksResourceWithRawResponse:
     def __init__(self, missile_tracks: MissileTracksResource) -> None:
         self._missile_tracks = missile_tracks
 
-        self.create = to_raw_response_wrapper(
-            missile_tracks.create,
-        )
         self.list = to_raw_response_wrapper(
             missile_tracks.list,
         )
@@ -581,6 +578,9 @@ class MissileTracksResourceWithRawResponse:
         )
         self.create_bulk = to_raw_response_wrapper(
             missile_tracks.create_bulk,
+        )
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            missile_tracks.create_bulk_v2,
         )
         self.queryhelp = to_raw_response_wrapper(
             missile_tracks.queryhelp,
@@ -598,9 +598,6 @@ class AsyncMissileTracksResourceWithRawResponse:
     def __init__(self, missile_tracks: AsyncMissileTracksResource) -> None:
         self._missile_tracks = missile_tracks
 
-        self.create = async_to_raw_response_wrapper(
-            missile_tracks.create,
-        )
         self.list = async_to_raw_response_wrapper(
             missile_tracks.list,
         )
@@ -609,6 +606,9 @@ class AsyncMissileTracksResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             missile_tracks.create_bulk,
+        )
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            missile_tracks.create_bulk_v2,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             missile_tracks.queryhelp,
@@ -626,9 +626,6 @@ class MissileTracksResourceWithStreamingResponse:
     def __init__(self, missile_tracks: MissileTracksResource) -> None:
         self._missile_tracks = missile_tracks
 
-        self.create = to_streamed_response_wrapper(
-            missile_tracks.create,
-        )
         self.list = to_streamed_response_wrapper(
             missile_tracks.list,
         )
@@ -637,6 +634,9 @@ class MissileTracksResourceWithStreamingResponse:
         )
         self.create_bulk = to_streamed_response_wrapper(
             missile_tracks.create_bulk,
+        )
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            missile_tracks.create_bulk_v2,
         )
         self.queryhelp = to_streamed_response_wrapper(
             missile_tracks.queryhelp,
@@ -654,9 +654,6 @@ class AsyncMissileTracksResourceWithStreamingResponse:
     def __init__(self, missile_tracks: AsyncMissileTracksResource) -> None:
         self._missile_tracks = missile_tracks
 
-        self.create = async_to_streamed_response_wrapper(
-            missile_tracks.create,
-        )
         self.list = async_to_streamed_response_wrapper(
             missile_tracks.list,
         )
@@ -665,6 +662,9 @@ class AsyncMissileTracksResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             missile_tracks.create_bulk,
+        )
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            missile_tracks.create_bulk_v2,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             missile_tracks.queryhelp,

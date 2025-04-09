@@ -12,7 +12,7 @@ from ...types import (
     skyimagery_list_params,
     skyimagery_count_params,
     skyimagery_tuple_params,
-    skyimagery_file_create_params,
+    skyimagery_upload_zip_params,
 )
 from .history import (
     HistoryResource,
@@ -161,7 +161,158 @@ class SkyimageryResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def file_get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BinaryAPIResponse:
+        """
+        Service operation to get a single SkyImagery binary image by its unique ID
+        passed as a path parameter. The image is returned as an attachment
+        Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._get(
+            f"/udl/skyimagery/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
+    def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SkyimageryFull:
+        """
+        Service operation to get a single SkyImagery record by its unique ID passed as a
+        path parameter. SkyImagery represents metadata about a sky image, as well as the
+        actual binary image data.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/skyimagery/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SkyimageryFull,
+        )
+
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/skyimagery/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        exp_start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SkyimageryTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          exp_start_time: Start time of the exposure, in ISO 8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/skyimagery/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "exp_start_time": exp_start_time,
+                    },
+                    skyimagery_tuple_params.SkyimageryTupleParams,
+                ),
+            ),
+            cast_to=SkyimageryTupleResponse,
+        )
+
+    def upload_zip(
         self,
         *,
         classification_marking: str,
@@ -173,7 +324,7 @@ class SkyimageryResource(SyncAPIResource):
         annotation_key: str | NotGiven = NOT_GIVEN,
         calibration_key: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        eo_observations: Iterable[skyimagery_file_create_params.EoObservation] | NotGiven = NOT_GIVEN,
+        eo_observations: Iterable[skyimagery_upload_zip_params.EoObservation] | NotGiven = NOT_GIVEN,
         exp_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         filename: str | NotGiven = NOT_GIVEN,
         filesize: int | NotGiven = NOT_GIVEN,
@@ -422,163 +573,12 @@ class SkyimageryResource(SyncAPIResource):
                     "top_left_stop_el": top_left_stop_el,
                     "transaction_id": transaction_id,
                 },
-                skyimagery_file_create_params.SkyimageryFileCreateParams,
+                skyimagery_upload_zip_params.SkyimageryUploadZipParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def file_get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BinaryAPIResponse:
-        """
-        Service operation to get a single SkyImagery binary image by its unique ID
-        passed as a path parameter. The image is returned as an attachment
-        Content-Disposition.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return self._get(
-            f"/udl/skyimagery/getFile/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BinaryAPIResponse,
-        )
-
-    def get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SkyimageryFull:
-        """
-        Service operation to get a single SkyImagery record by its unique ID passed as a
-        path parameter. SkyImagery represents metadata about a sky image, as well as the
-        actual binary image data.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/udl/skyimagery/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SkyimageryFull,
-        )
-
-    def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/skyimagery/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def tuple(
-        self,
-        *,
-        columns: str,
-        exp_start_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SkyimageryTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          exp_start_time: Start time of the exposure, in ISO 8601 UTC format with microsecond precision.
-              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/skyimagery/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "columns": columns,
-                        "exp_start_time": exp_start_time,
-                    },
-                    skyimagery_tuple_params.SkyimageryTupleParams,
-                ),
-            ),
-            cast_to=SkyimageryTupleResponse,
         )
 
 
@@ -694,7 +694,158 @@ class AsyncSkyimageryResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def file_get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncBinaryAPIResponse:
+        """
+        Service operation to get a single SkyImagery binary image by its unique ID
+        passed as a path parameter. The image is returned as an attachment
+        Content-Disposition.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._get(
+            f"/udl/skyimagery/getFile/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
+    async def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SkyimageryFull:
+        """
+        Service operation to get a single SkyImagery record by its unique ID passed as a
+        path parameter. SkyImagery represents metadata about a sky image, as well as the
+        actual binary image data.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/skyimagery/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SkyimageryFull,
+        )
+
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/skyimagery/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        exp_start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SkyimageryTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          exp_start_time: Start time of the exposure, in ISO 8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/skyimagery/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "exp_start_time": exp_start_time,
+                    },
+                    skyimagery_tuple_params.SkyimageryTupleParams,
+                ),
+            ),
+            cast_to=SkyimageryTupleResponse,
+        )
+
+    async def upload_zip(
         self,
         *,
         classification_marking: str,
@@ -706,7 +857,7 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         annotation_key: str | NotGiven = NOT_GIVEN,
         calibration_key: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        eo_observations: Iterable[skyimagery_file_create_params.EoObservation] | NotGiven = NOT_GIVEN,
+        eo_observations: Iterable[skyimagery_upload_zip_params.EoObservation] | NotGiven = NOT_GIVEN,
         exp_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         filename: str | NotGiven = NOT_GIVEN,
         filesize: int | NotGiven = NOT_GIVEN,
@@ -955,163 +1106,12 @@ class AsyncSkyimageryResource(AsyncAPIResource):
                     "top_left_stop_el": top_left_stop_el,
                     "transaction_id": transaction_id,
                 },
-                skyimagery_file_create_params.SkyimageryFileCreateParams,
+                skyimagery_upload_zip_params.SkyimageryUploadZipParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def file_get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncBinaryAPIResponse:
-        """
-        Service operation to get a single SkyImagery binary image by its unique ID
-        passed as a path parameter. The image is returned as an attachment
-        Content-Disposition.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return await self._get(
-            f"/udl/skyimagery/getFile/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AsyncBinaryAPIResponse,
-        )
-
-    async def get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SkyimageryFull:
-        """
-        Service operation to get a single SkyImagery record by its unique ID passed as a
-        path parameter. SkyImagery represents metadata about a sky image, as well as the
-        actual binary image data.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/udl/skyimagery/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SkyimageryFull,
-        )
-
-    async def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/skyimagery/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def tuple(
-        self,
-        *,
-        columns: str,
-        exp_start_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SkyimageryTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          exp_start_time: Start time of the exposure, in ISO 8601 UTC format with microsecond precision.
-              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/skyimagery/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "columns": columns,
-                        "exp_start_time": exp_start_time,
-                    },
-                    skyimagery_tuple_params.SkyimageryTupleParams,
-                ),
-            ),
-            cast_to=SkyimageryTupleResponse,
         )
 
 
@@ -1125,9 +1125,6 @@ class SkyimageryResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             skyimagery.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            skyimagery.file_create,
-        )
         self.file_get = to_custom_raw_response_wrapper(
             skyimagery.file_get,
             BinaryAPIResponse,
@@ -1140,6 +1137,9 @@ class SkyimageryResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             skyimagery.tuple,
+        )
+        self.upload_zip = to_raw_response_wrapper(
+            skyimagery.upload_zip,
         )
 
     @cached_property
@@ -1157,9 +1157,6 @@ class AsyncSkyimageryResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             skyimagery.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            skyimagery.file_create,
-        )
         self.file_get = async_to_custom_raw_response_wrapper(
             skyimagery.file_get,
             AsyncBinaryAPIResponse,
@@ -1172,6 +1169,9 @@ class AsyncSkyimageryResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             skyimagery.tuple,
+        )
+        self.upload_zip = async_to_raw_response_wrapper(
+            skyimagery.upload_zip,
         )
 
     @cached_property
@@ -1189,9 +1189,6 @@ class SkyimageryResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             skyimagery.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            skyimagery.file_create,
-        )
         self.file_get = to_custom_streamed_response_wrapper(
             skyimagery.file_get,
             StreamedBinaryAPIResponse,
@@ -1204,6 +1201,9 @@ class SkyimageryResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             skyimagery.tuple,
+        )
+        self.upload_zip = to_streamed_response_wrapper(
+            skyimagery.upload_zip,
         )
 
     @cached_property
@@ -1221,9 +1221,6 @@ class AsyncSkyimageryResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             skyimagery.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            skyimagery.file_create,
-        )
         self.file_get = async_to_custom_streamed_response_wrapper(
             skyimagery.file_get,
             AsyncStreamedBinaryAPIResponse,
@@ -1236,6 +1233,9 @@ class AsyncSkyimageryResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             skyimagery.tuple,
+        )
+        self.upload_zip = async_to_streamed_response_wrapper(
+            skyimagery.upload_zip,
         )
 
     @cached_property

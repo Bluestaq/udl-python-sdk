@@ -20,7 +20,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.air_operations import airspace_control_order_create_params
+from ...types.air_operations import airspace_control_order_create_bulk_v2_params
 
 __all__ = ["AirspaceControlOrdersResource", "AsyncAirspaceControlOrdersResource"]
 
@@ -45,10 +45,10 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         """
         return AirspaceControlOrdersResourceWithStreamingResponse(self)
 
-    def create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[airspace_control_order_create_params.Body],
+        body: Iterable[airspace_control_order_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,7 +74,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-airspacecontrolorder",
-            body=maybe_transform(body, Iterable[airspace_control_order_create_params.Body]),
+            body=maybe_transform(body, Iterable[airspace_control_order_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -102,10 +102,10 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         """
         return AsyncAirspaceControlOrdersResourceWithStreamingResponse(self)
 
-    async def create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[airspace_control_order_create_params.Body],
+        body: Iterable[airspace_control_order_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,7 +131,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-airspacecontrolorder",
-            body=await async_maybe_transform(body, Iterable[airspace_control_order_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[airspace_control_order_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -143,8 +143,8 @@ class AirspaceControlOrdersResourceWithRawResponse:
     def __init__(self, airspace_control_orders: AirspaceControlOrdersResource) -> None:
         self._airspace_control_orders = airspace_control_orders
 
-        self.create = to_raw_response_wrapper(
-            airspace_control_orders.create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            airspace_control_orders.create_bulk_v2,
         )
 
 
@@ -152,8 +152,8 @@ class AsyncAirspaceControlOrdersResourceWithRawResponse:
     def __init__(self, airspace_control_orders: AsyncAirspaceControlOrdersResource) -> None:
         self._airspace_control_orders = airspace_control_orders
 
-        self.create = async_to_raw_response_wrapper(
-            airspace_control_orders.create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            airspace_control_orders.create_bulk_v2,
         )
 
 
@@ -161,8 +161,8 @@ class AirspaceControlOrdersResourceWithStreamingResponse:
     def __init__(self, airspace_control_orders: AirspaceControlOrdersResource) -> None:
         self._airspace_control_orders = airspace_control_orders
 
-        self.create = to_streamed_response_wrapper(
-            airspace_control_orders.create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            airspace_control_orders.create_bulk_v2,
         )
 
 
@@ -170,6 +170,6 @@ class AsyncAirspaceControlOrdersResourceWithStreamingResponse:
     def __init__(self, airspace_control_orders: AsyncAirspaceControlOrdersResource) -> None:
         self._airspace_control_orders = airspace_control_orders
 
-        self.create = async_to_streamed_response_wrapper(
-            airspace_control_orders.create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            airspace_control_orders.create_bulk_v2,
         )
