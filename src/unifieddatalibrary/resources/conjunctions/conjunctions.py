@@ -14,8 +14,9 @@ from ...types import (
     conjunction_tuple_params,
     conjunction_create_udl_params,
     conjunction_create_bulk_params,
-    conjunction_file_create_params,
     conjunction_get_history_params,
+    conjunction_create_bulk_v2_params,
+    conjunction_upload_conjunction_data_message_params,
 )
 from .history import (
     HistoryResource,
@@ -25,7 +26,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
 from ..._utils import (
     maybe_transform,
     async_maybe_transform,
@@ -41,6 +42,7 @@ from ..._response import (
 from ..._base_client import make_request_options
 from ...types.conjunction_full import ConjunctionFull
 from ...types.conjunction_list_response import ConjunctionListResponse
+from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.conjunction_tuple_response import ConjunctionTupleResponse
 from ...types.conjunction_get_history_response import ConjunctionGetHistoryResponse
 
@@ -187,6 +189,43 @@ class ConjunctionsResource(SyncAPIResource):
             cast_to=str,
         )
 
+    def create_bulk_v2(
+        self,
+        *,
+        body: Iterable[conjunction_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of Conjunctions as a POST body and ingest into
+        the database. A Conjunction is analysis of probability of collision; the data
+        can include state vectors for primary and secondary satellites. This operation
+        is intended to be used for automated feeds into UDL. A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-conjunction",
+            body=maybe_transform(body, Iterable[conjunction_create_bulk_v2_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def create_udl(
         self,
         *,
@@ -244,8 +283,8 @@ class ConjunctionsResource(SyncAPIResource):
         small_cov_warning: bool | NotGiven = NOT_GIVEN,
         small_rel_vel_warning: bool | NotGiven = NOT_GIVEN,
         state_dept_notified: bool | NotGiven = NOT_GIVEN,
-        state_vector1: conjunction_create_udl_params.StateVector1 | NotGiven = NOT_GIVEN,
-        state_vector2: conjunction_create_udl_params.StateVector2 | NotGiven = NOT_GIVEN,
+        state_vector1: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        state_vector2: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         thrust_accel1: float | NotGiven = NOT_GIVEN,
         thrust_accel2: float | NotGiven = NOT_GIVEN,
@@ -606,43 +645,6 @@ class ConjunctionsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
-        self,
-        *,
-        body: Iterable[conjunction_file_create_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of Conjunctions as a POST body and ingest into
-        the database. A Conjunction is analysis of probability of collision; the data
-        can include state vectors for primary and secondary satellites. This operation
-        is intended to be used for automated feeds into UDL. A specific role is required
-        to perform this service operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-conjunction",
-            body=maybe_transform(body, Iterable[conjunction_file_create_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get_history(
         self,
         *,
@@ -771,6 +773,81 @@ class ConjunctionsResource(SyncAPIResource):
                 ),
             ),
             cast_to=ConjunctionTupleResponse,
+        )
+
+    def upload_conjunction_data_message(
+        self,
+        *,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        filename: str,
+        source: str,
+        body: FileTypes,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service to accept multiple CDMs in as zip file or a single CDM as payload.
+
+        The
+        service converts key-value pair formatted CDMs to UDL formats and stores them.
+        The CDM format is as described in https://ccsds.org document CCSDS 508.0-B-1. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        **Example:**
+        /filedrop/cdms?filename=conj.zip&classification=U&dataMode=TEST&source=Bluestaq&tags=tag1,tag2
+
+        Args:
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          filename: Filename of the payload.
+
+          source: Source of the data.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/cdms",
+            body=maybe_transform(
+                body, conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "filename": filename,
+                        "source": source,
+                        "tags": tags,
+                    },
+                    conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams,
+                ),
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -914,6 +991,43 @@ class AsyncConjunctionsResource(AsyncAPIResource):
             cast_to=str,
         )
 
+    async def create_bulk_v2(
+        self,
+        *,
+        body: Iterable[conjunction_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of Conjunctions as a POST body and ingest into
+        the database. A Conjunction is analysis of probability of collision; the data
+        can include state vectors for primary and secondary satellites. This operation
+        is intended to be used for automated feeds into UDL. A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-conjunction",
+            body=await async_maybe_transform(body, Iterable[conjunction_create_bulk_v2_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def create_udl(
         self,
         *,
@@ -971,8 +1085,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         small_cov_warning: bool | NotGiven = NOT_GIVEN,
         small_rel_vel_warning: bool | NotGiven = NOT_GIVEN,
         state_dept_notified: bool | NotGiven = NOT_GIVEN,
-        state_vector1: conjunction_create_udl_params.StateVector1 | NotGiven = NOT_GIVEN,
-        state_vector2: conjunction_create_udl_params.StateVector2 | NotGiven = NOT_GIVEN,
+        state_vector1: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        state_vector2: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         thrust_accel1: float | NotGiven = NOT_GIVEN,
         thrust_accel2: float | NotGiven = NOT_GIVEN,
@@ -1333,43 +1447,6 @@ class AsyncConjunctionsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
-        self,
-        *,
-        body: Iterable[conjunction_file_create_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of Conjunctions as a POST body and ingest into
-        the database. A Conjunction is analysis of probability of collision; the data
-        can include state vectors for primary and secondary satellites. This operation
-        is intended to be used for automated feeds into UDL. A specific role is required
-        to perform this service operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-conjunction",
-            body=await async_maybe_transform(body, Iterable[conjunction_file_create_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get_history(
         self,
         *,
@@ -1500,6 +1577,81 @@ class AsyncConjunctionsResource(AsyncAPIResource):
             cast_to=ConjunctionTupleResponse,
         )
 
+    async def upload_conjunction_data_message(
+        self,
+        *,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        filename: str,
+        source: str,
+        body: FileTypes,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service to accept multiple CDMs in as zip file or a single CDM as payload.
+
+        The
+        service converts key-value pair formatted CDMs to UDL formats and stores them.
+        The CDM format is as described in https://ccsds.org document CCSDS 508.0-B-1. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        **Example:**
+        /filedrop/cdms?filename=conj.zip&classification=U&dataMode=TEST&source=Bluestaq&tags=tag1,tag2
+
+        Args:
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          filename: Filename of the payload.
+
+          source: Source of the data.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/cdms",
+            body=await async_maybe_transform(
+                body, conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "filename": filename,
+                        "source": source,
+                        "tags": tags,
+                    },
+                    conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams,
+                ),
+            ),
+            cast_to=NoneType,
+        )
+
 
 class ConjunctionsResourceWithRawResponse:
     def __init__(self, conjunctions: ConjunctionsResource) -> None:
@@ -1514,14 +1666,14 @@ class ConjunctionsResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             conjunctions.count,
         )
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            conjunctions.create_bulk_v2,
+        )
         self.create_udl = to_raw_response_wrapper(
             conjunctions.create_udl,
         )
         self.create_bulk = to_raw_response_wrapper(
             conjunctions.create_bulk,
-        )
-        self.file_create = to_raw_response_wrapper(
-            conjunctions.file_create,
         )
         self.get_history = to_raw_response_wrapper(
             conjunctions.get_history,
@@ -1531,6 +1683,9 @@ class ConjunctionsResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             conjunctions.tuple,
+        )
+        self.upload_conjunction_data_message = to_raw_response_wrapper(
+            conjunctions.upload_conjunction_data_message,
         )
 
     @cached_property
@@ -1551,14 +1706,14 @@ class AsyncConjunctionsResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             conjunctions.count,
         )
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            conjunctions.create_bulk_v2,
+        )
         self.create_udl = async_to_raw_response_wrapper(
             conjunctions.create_udl,
         )
         self.create_bulk = async_to_raw_response_wrapper(
             conjunctions.create_bulk,
-        )
-        self.file_create = async_to_raw_response_wrapper(
-            conjunctions.file_create,
         )
         self.get_history = async_to_raw_response_wrapper(
             conjunctions.get_history,
@@ -1568,6 +1723,9 @@ class AsyncConjunctionsResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             conjunctions.tuple,
+        )
+        self.upload_conjunction_data_message = async_to_raw_response_wrapper(
+            conjunctions.upload_conjunction_data_message,
         )
 
     @cached_property
@@ -1588,14 +1746,14 @@ class ConjunctionsResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             conjunctions.count,
         )
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            conjunctions.create_bulk_v2,
+        )
         self.create_udl = to_streamed_response_wrapper(
             conjunctions.create_udl,
         )
         self.create_bulk = to_streamed_response_wrapper(
             conjunctions.create_bulk,
-        )
-        self.file_create = to_streamed_response_wrapper(
-            conjunctions.file_create,
         )
         self.get_history = to_streamed_response_wrapper(
             conjunctions.get_history,
@@ -1605,6 +1763,9 @@ class ConjunctionsResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             conjunctions.tuple,
+        )
+        self.upload_conjunction_data_message = to_streamed_response_wrapper(
+            conjunctions.upload_conjunction_data_message,
         )
 
     @cached_property
@@ -1625,14 +1786,14 @@ class AsyncConjunctionsResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             conjunctions.count,
         )
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            conjunctions.create_bulk_v2,
+        )
         self.create_udl = async_to_streamed_response_wrapper(
             conjunctions.create_udl,
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             conjunctions.create_bulk,
-        )
-        self.file_create = async_to_streamed_response_wrapper(
-            conjunctions.file_create,
         )
         self.get_history = async_to_streamed_response_wrapper(
             conjunctions.get_history,
@@ -1642,6 +1803,9 @@ class AsyncConjunctionsResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             conjunctions.tuple,
+        )
+        self.upload_conjunction_data_message = async_to_streamed_response_wrapper(
+            conjunctions.upload_conjunction_data_message,
         )
 
     @cached_property

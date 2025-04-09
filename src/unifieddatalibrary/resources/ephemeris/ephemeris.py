@@ -12,8 +12,8 @@ from ...types import (
     ephemeris_list_params,
     ephemeris_count_params,
     ephemeris_tuple_params,
-    ephemeris_create_params,
-    ephemeris_file_create_params,
+    ephemeris_file_upload_params,
+    ephemeris_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -78,99 +78,6 @@ class EphemerisResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return EphemerisResourceWithStreamingResponse(self)
-
-    def create(
-        self,
-        *,
-        category: str,
-        classification: str,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
-        has_mnvr: bool,
-        sat_no: int,
-        source: str,
-        type: str,
-        body: str,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """Service operation to post/store Ephemeris data.
-
-        This operation is intended to be
-        used for automated feeds into UDL. The payload is in Ephemeris format as
-        described by the "Flight Safety Handbook" published by 18th Space Command. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
-
-        **Example:**
-        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
-
-        Args:
-          category: Ephemeris category.
-
-          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
-
-          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
-
-          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
-
-          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
-
-          sat_no: Satellite/Catalog number of the target on-orbit object.
-
-          source: Source of the Ephemeris data.
-
-          type: Ephemeris type.
-
-          origin: Optional origin of the Ephemeris.
-
-          tags: Optional array of provider/source specific tags for this data, where each
-              element is no longer than 32 characters, used for implementing data owner
-              conditional access controls to restrict access to the data. Should be left null
-              by data providers unless conditional access controls are coordinated with the
-              UDL team.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/ephem",
-            body=maybe_transform(body, ephemeris_create_params.EphemerisCreateParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "category": category,
-                        "classification": classification,
-                        "data_mode": data_mode,
-                        "ephem_format_type": ephem_format_type,
-                        "has_mnvr": has_mnvr,
-                        "sat_no": sat_no,
-                        "source": source,
-                        "type": type,
-                        "origin": origin,
-                        "tags": tags,
-                    },
-                    ephemeris_create_params.EphemerisCreateParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
 
     def list(
         self,
@@ -258,7 +165,7 @@ class EphemerisResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
         category: str,
@@ -278,7 +185,7 @@ class EphemerisResource(SyncAPIResource):
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
         edr: float | NotGiven = NOT_GIVEN,
-        ephemeris_list: Iterable[ephemeris_file_create_params.EphemerisList] | NotGiven = NOT_GIVEN,
+        ephemeris_list: Iterable[ephemeris_create_bulk_v2_params.EphemerisList] | NotGiven = NOT_GIVEN,
         filename: str | NotGiven = NOT_GIVEN,
         geopotential_model: str | NotGiven = NOT_GIVEN,
         has_accel: bool | NotGiven = NOT_GIVEN,
@@ -501,10 +408,103 @@ class EphemerisResource(SyncAPIResource):
                     "usable_end_time": usable_end_time,
                     "usable_start_time": usable_start_time,
                 },
-                ephemeris_file_create_params.EphemerisFileCreateParams,
+                ephemeris_create_bulk_v2_params.EphemerisCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def file_upload(
+        self,
+        *,
+        category: str,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
+        has_mnvr: bool,
+        sat_no: int,
+        source: str,
+        type: str,
+        body: str,
+        origin: str | NotGiven = NOT_GIVEN,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to post/store Ephemeris data.
+
+        This operation is intended to be
+        used for automated feeds into UDL. The payload is in Ephemeris format as
+        described by the "Flight Safety Handbook" published by 18th Space Command. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        **Example:**
+        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
+
+        Args:
+          category: Ephemeris category.
+
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
+
+          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
+
+          sat_no: Satellite/Catalog number of the target on-orbit object.
+
+          source: Source of the Ephemeris data.
+
+          type: Ephemeris type.
+
+          origin: Optional origin of the Ephemeris.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/ephem",
+            body=maybe_transform(body, ephemeris_file_upload_params.EphemerisFileUploadParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "category": category,
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "ephem_format_type": ephem_format_type,
+                        "has_mnvr": has_mnvr,
+                        "sat_no": sat_no,
+                        "source": source,
+                        "type": type,
+                        "origin": origin,
+                        "tags": tags,
+                    },
+                    ephemeris_file_upload_params.EphemerisFileUploadParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -619,99 +619,6 @@ class AsyncEphemerisResource(AsyncAPIResource):
         """
         return AsyncEphemerisResourceWithStreamingResponse(self)
 
-    async def create(
-        self,
-        *,
-        category: str,
-        classification: str,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
-        has_mnvr: bool,
-        sat_no: int,
-        source: str,
-        type: str,
-        body: str,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """Service operation to post/store Ephemeris data.
-
-        This operation is intended to be
-        used for automated feeds into UDL. The payload is in Ephemeris format as
-        described by the "Flight Safety Handbook" published by 18th Space Command. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
-
-        **Example:**
-        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
-
-        Args:
-          category: Ephemeris category.
-
-          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
-
-          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
-
-          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
-
-          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
-
-          sat_no: Satellite/Catalog number of the target on-orbit object.
-
-          source: Source of the Ephemeris data.
-
-          type: Ephemeris type.
-
-          origin: Optional origin of the Ephemeris.
-
-          tags: Optional array of provider/source specific tags for this data, where each
-              element is no longer than 32 characters, used for implementing data owner
-              conditional access controls to restrict access to the data. Should be left null
-              by data providers unless conditional access controls are coordinated with the
-              UDL team.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/ephem",
-            body=await async_maybe_transform(body, ephemeris_create_params.EphemerisCreateParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "category": category,
-                        "classification": classification,
-                        "data_mode": data_mode,
-                        "ephem_format_type": ephem_format_type,
-                        "has_mnvr": has_mnvr,
-                        "sat_no": sat_no,
-                        "source": source,
-                        "type": type,
-                        "origin": origin,
-                        "tags": tags,
-                    },
-                    ephemeris_create_params.EphemerisCreateParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
     async def list(
         self,
         *,
@@ -798,7 +705,7 @@ class AsyncEphemerisResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
         category: str,
@@ -818,7 +725,7 @@ class AsyncEphemerisResource(AsyncAPIResource):
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
         edr: float | NotGiven = NOT_GIVEN,
-        ephemeris_list: Iterable[ephemeris_file_create_params.EphemerisList] | NotGiven = NOT_GIVEN,
+        ephemeris_list: Iterable[ephemeris_create_bulk_v2_params.EphemerisList] | NotGiven = NOT_GIVEN,
         filename: str | NotGiven = NOT_GIVEN,
         geopotential_model: str | NotGiven = NOT_GIVEN,
         has_accel: bool | NotGiven = NOT_GIVEN,
@@ -1041,10 +948,103 @@ class AsyncEphemerisResource(AsyncAPIResource):
                     "usable_end_time": usable_end_time,
                     "usable_start_time": usable_start_time,
                 },
-                ephemeris_file_create_params.EphemerisFileCreateParams,
+                ephemeris_create_bulk_v2_params.EphemerisCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def file_upload(
+        self,
+        *,
+        category: str,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
+        has_mnvr: bool,
+        sat_no: int,
+        source: str,
+        type: str,
+        body: str,
+        origin: str | NotGiven = NOT_GIVEN,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to post/store Ephemeris data.
+
+        This operation is intended to be
+        used for automated feeds into UDL. The payload is in Ephemeris format as
+        described by the "Flight Safety Handbook" published by 18th Space Command. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        **Example:**
+        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
+
+        Args:
+          category: Ephemeris category.
+
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
+
+          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
+
+          sat_no: Satellite/Catalog number of the target on-orbit object.
+
+          source: Source of the Ephemeris data.
+
+          type: Ephemeris type.
+
+          origin: Optional origin of the Ephemeris.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/ephem",
+            body=await async_maybe_transform(body, ephemeris_file_upload_params.EphemerisFileUploadParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "category": category,
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "ephem_format_type": ephem_format_type,
+                        "has_mnvr": has_mnvr,
+                        "sat_no": sat_no,
+                        "source": source,
+                        "type": type,
+                        "origin": origin,
+                        "tags": tags,
+                    },
+                    ephemeris_file_upload_params.EphemerisFileUploadParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -1135,17 +1135,17 @@ class EphemerisResourceWithRawResponse:
     def __init__(self, ephemeris: EphemerisResource) -> None:
         self._ephemeris = ephemeris
 
-        self.create = to_raw_response_wrapper(
-            ephemeris.create,
-        )
         self.list = to_raw_response_wrapper(
             ephemeris.list,
         )
         self.count = to_raw_response_wrapper(
             ephemeris.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            ephemeris.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            ephemeris.create_bulk_v2,
+        )
+        self.file_upload = to_raw_response_wrapper(
+            ephemeris.file_upload,
         )
         self.queryhelp = to_raw_response_wrapper(
             ephemeris.queryhelp,
@@ -1167,17 +1167,17 @@ class AsyncEphemerisResourceWithRawResponse:
     def __init__(self, ephemeris: AsyncEphemerisResource) -> None:
         self._ephemeris = ephemeris
 
-        self.create = async_to_raw_response_wrapper(
-            ephemeris.create,
-        )
         self.list = async_to_raw_response_wrapper(
             ephemeris.list,
         )
         self.count = async_to_raw_response_wrapper(
             ephemeris.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            ephemeris.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            ephemeris.create_bulk_v2,
+        )
+        self.file_upload = async_to_raw_response_wrapper(
+            ephemeris.file_upload,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             ephemeris.queryhelp,
@@ -1199,17 +1199,17 @@ class EphemerisResourceWithStreamingResponse:
     def __init__(self, ephemeris: EphemerisResource) -> None:
         self._ephemeris = ephemeris
 
-        self.create = to_streamed_response_wrapper(
-            ephemeris.create,
-        )
         self.list = to_streamed_response_wrapper(
             ephemeris.list,
         )
         self.count = to_streamed_response_wrapper(
             ephemeris.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            ephemeris.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            ephemeris.create_bulk_v2,
+        )
+        self.file_upload = to_streamed_response_wrapper(
+            ephemeris.file_upload,
         )
         self.queryhelp = to_streamed_response_wrapper(
             ephemeris.queryhelp,
@@ -1231,17 +1231,17 @@ class AsyncEphemerisResourceWithStreamingResponse:
     def __init__(self, ephemeris: AsyncEphemerisResource) -> None:
         self._ephemeris = ephemeris
 
-        self.create = async_to_streamed_response_wrapper(
-            ephemeris.create,
-        )
         self.list = async_to_streamed_response_wrapper(
             ephemeris.list,
         )
         self.count = async_to_streamed_response_wrapper(
             ephemeris.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            ephemeris.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            ephemeris.create_bulk_v2,
+        )
+        self.file_upload = async_to_streamed_response_wrapper(
+            ephemeris.file_upload,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             ephemeris.queryhelp,

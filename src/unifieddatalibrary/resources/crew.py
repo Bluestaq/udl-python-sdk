@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import crew_tuple_params, crew_create_params, crew_update_params, crew_file_create_params
+from ..types import crew_tuple_params, crew_create_params, crew_update_params, crew_create_bulk_v2_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -585,10 +585,10 @@ class CrewResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[crew_file_create_params.Body],
+        body: Iterable[crew_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -614,7 +614,7 @@ class CrewResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-crew",
-            body=maybe_transform(body, Iterable[crew_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[crew_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1247,10 +1247,10 @@ class AsyncCrewResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[crew_file_create_params.Body],
+        body: Iterable[crew_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1276,7 +1276,7 @@ class AsyncCrewResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-crew",
-            body=await async_maybe_transform(body, Iterable[crew_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[crew_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1373,8 +1373,8 @@ class CrewResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             crew.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            crew.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            crew.create_bulk_v2,
         )
         self.queryhelp = to_raw_response_wrapper(
             crew.queryhelp,
@@ -1403,8 +1403,8 @@ class AsyncCrewResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             crew.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            crew.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            crew.create_bulk_v2,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             crew.queryhelp,
@@ -1433,8 +1433,8 @@ class CrewResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             crew.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            crew.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            crew.create_bulk_v2,
         )
         self.queryhelp = to_streamed_response_wrapper(
             crew.queryhelp,
@@ -1463,8 +1463,8 @@ class AsyncCrewResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             crew.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            crew.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            crew.create_bulk_v2,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             crew.queryhelp,

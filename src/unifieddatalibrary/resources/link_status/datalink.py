@@ -523,7 +523,7 @@ class DatalinkResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
         body: Iterable[DatalinkIngestParam],
@@ -1130,7 +1130,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
         body: Iterable[DatalinkIngestParam],
@@ -1260,8 +1260,8 @@ class DatalinkResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             datalink.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            datalink.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            datalink.create_bulk_v2,
         )
         self.queryhelp = to_raw_response_wrapper(
             datalink.queryhelp,
@@ -1284,8 +1284,8 @@ class AsyncDatalinkResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             datalink.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            datalink.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            datalink.create_bulk_v2,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             datalink.queryhelp,
@@ -1308,8 +1308,8 @@ class DatalinkResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             datalink.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            datalink.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            datalink.create_bulk_v2,
         )
         self.queryhelp = to_streamed_response_wrapper(
             datalink.queryhelp,
@@ -1332,8 +1332,8 @@ class AsyncDatalinkResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             datalink.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            datalink.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            datalink.create_bulk_v2,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             datalink.queryhelp,

@@ -2,5 +2,5 @@
 
 from __future__ import annotations
 
-from .udl_h3geo_file_create_params import UdlH3geoFileCreateParams as UdlH3geoFileCreateParams
-from .udl_sigact_file_create_params import UdlSigactFileCreateParams as UdlSigactFileCreateParams
+from .udl_h3geo_create_bulk_v2_params import UdlH3geoCreateBulkV2Params as UdlH3geoCreateBulkV2Params
+from .udl_sigact_create_bulk_v2_params import UdlSigactCreateBulkV2Params as UdlSigactCreateBulkV2Params

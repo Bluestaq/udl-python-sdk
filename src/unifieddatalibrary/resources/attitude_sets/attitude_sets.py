@@ -13,7 +13,7 @@ from ...types import (
     attitude_set_count_params,
     attitude_set_tuple_params,
     attitude_set_create_params,
-    attitude_set_file_create_params,
+    attitude_set_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -371,7 +371,7 @@ class AttitudeSetsResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
         classification_marking: str,
@@ -385,7 +385,7 @@ class AttitudeSetsResource(SyncAPIResource):
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_file_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
+        attitude_list: Iterable[attitude_set_create_bulk_v2_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -576,7 +576,7 @@ class AttitudeSetsResource(SyncAPIResource):
                     "spin_angle_init": spin_angle_init,
                     "step_size": step_size,
                 },
-                attitude_set_file_create_params.AttitudeSetFileCreateParams,
+                attitude_set_create_bulk_v2_params.AttitudeSetCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -999,7 +999,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
         classification_marking: str,
@@ -1013,7 +1013,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_file_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
+        attitude_list: Iterable[attitude_set_create_bulk_v2_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -1204,7 +1204,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                     "spin_angle_init": spin_angle_init,
                     "step_size": step_size,
                 },
-                attitude_set_file_create_params.AttitudeSetFileCreateParams,
+                attitude_set_create_bulk_v2_params.AttitudeSetCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1308,8 +1308,8 @@ class AttitudeSetsResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             attitude_sets.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            attitude_sets.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            attitude_sets.create_bulk_v2,
         )
         self.query_help = to_raw_response_wrapper(
             attitude_sets.query_help,
@@ -1336,8 +1336,8 @@ class AsyncAttitudeSetsResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             attitude_sets.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            attitude_sets.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            attitude_sets.create_bulk_v2,
         )
         self.query_help = async_to_raw_response_wrapper(
             attitude_sets.query_help,
@@ -1364,8 +1364,8 @@ class AttitudeSetsResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             attitude_sets.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            attitude_sets.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            attitude_sets.create_bulk_v2,
         )
         self.query_help = to_streamed_response_wrapper(
             attitude_sets.query_help,
@@ -1392,8 +1392,8 @@ class AsyncAttitudeSetsResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             attitude_sets.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            attitude_sets.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            attitude_sets.create_bulk_v2,
         )
         self.query_help = async_to_streamed_response_wrapper(
             attitude_sets.query_help,

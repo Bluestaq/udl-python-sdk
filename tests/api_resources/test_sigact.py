@@ -136,8 +136,67 @@ class TestSigact:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
-        sigact = client.sigact.file_create(
+    def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.queryhelp()
+        assert sigact is None
+
+    @parametrize
+    def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
+        response = client.sigact.with_raw_response.queryhelp()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sigact = response.parse()
+        assert sigact is None
+
+    @parametrize
+    def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
+        with client.sigact.with_streaming_response.queryhelp() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sigact = response.parse()
+            assert sigact is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_tuple(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+    @parametrize
+    def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
+        response = client.sigact.with_raw_response.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sigact = response.parse()
+        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+    @parametrize
+    def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
+        with client.sigact.with_streaming_response.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sigact = response.parse()
+            assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_upload_zip(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -146,8 +205,8 @@ class TestSigact:
         assert sigact is None
 
     @parametrize
-    def test_method_file_create_with_all_params(self, client: Unifieddatalibrary) -> None:
-        sigact = client.sigact.file_create(
+    def test_method_upload_zip_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -245,8 +304,8 @@ class TestSigact:
         assert sigact is None
 
     @parametrize
-    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
-        response = client.sigact.with_raw_response.file_create(
+    def test_raw_response_upload_zip(self, client: Unifieddatalibrary) -> None:
+        response = client.sigact.with_raw_response.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -259,8 +318,8 @@ class TestSigact:
         assert sigact is None
 
     @parametrize
-    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
-        with client.sigact.with_streaming_response.file_create(
+    def test_streaming_response_upload_zip(self, client: Unifieddatalibrary) -> None:
+        with client.sigact.with_streaming_response.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -271,65 +330,6 @@ class TestSigact:
 
             sigact = response.parse()
             assert sigact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
-        sigact = client.sigact.queryhelp()
-        assert sigact is None
-
-    @parametrize
-    def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
-        response = client.sigact.with_raw_response.queryhelp()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sigact = response.parse()
-        assert sigact is None
-
-    @parametrize
-    def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
-        with client.sigact.with_streaming_response.queryhelp() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sigact = response.parse()
-            assert sigact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_tuple(self, client: Unifieddatalibrary) -> None:
-        sigact = client.sigact.tuple(
-            columns="columns",
-            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
-
-    @parametrize
-    def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
-        response = client.sigact.with_raw_response.tuple(
-            columns="columns",
-            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sigact = response.parse()
-        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
-
-    @parametrize
-    def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
-        with client.sigact.with_streaming_response.tuple(
-            columns="columns",
-            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sigact = response.parse()
-            assert_matches_type(SigactTupleResponse, sigact, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -452,8 +452,67 @@ class TestAsyncSigact:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sigact = await async_client.sigact.file_create(
+    async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.queryhelp()
+        assert sigact is None
+
+    @parametrize
+    async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sigact.with_raw_response.queryhelp()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sigact = await response.parse()
+        assert sigact is None
+
+    @parametrize
+    async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sigact.with_streaming_response.queryhelp() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sigact = await response.parse()
+            assert sigact is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+    @parametrize
+    async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sigact.with_raw_response.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sigact = await response.parse()
+        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sigact.with_streaming_response.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sigact = await response.parse()
+            assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -462,8 +521,8 @@ class TestAsyncSigact:
         assert sigact is None
 
     @parametrize
-    async def test_method_file_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sigact = await async_client.sigact.file_create(
+    async def test_method_upload_zip_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -561,8 +620,8 @@ class TestAsyncSigact:
         assert sigact is None
 
     @parametrize
-    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sigact.with_raw_response.file_create(
+    async def test_raw_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sigact.with_raw_response.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -575,8 +634,8 @@ class TestAsyncSigact:
         assert sigact is None
 
     @parametrize
-    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sigact.with_streaming_response.file_create(
+    async def test_streaming_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sigact.with_streaming_response.upload_zip(
             classification_marking="U",
             data_mode="REAL",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
@@ -587,64 +646,5 @@ class TestAsyncSigact:
 
             sigact = await response.parse()
             assert sigact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sigact = await async_client.sigact.queryhelp()
-        assert sigact is None
-
-    @parametrize
-    async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sigact.with_raw_response.queryhelp()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sigact = await response.parse()
-        assert sigact is None
-
-    @parametrize
-    async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sigact.with_streaming_response.queryhelp() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sigact = await response.parse()
-            assert sigact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sigact = await async_client.sigact.tuple(
-            columns="columns",
-            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
-
-    @parametrize
-    async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sigact.with_raw_response.tuple(
-            columns="columns",
-            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sigact = await response.parse()
-        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sigact.with_streaming_response.tuple(
-            columns="columns",
-            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sigact = await response.parse()
-            assert_matches_type(SigactTupleResponse, sigact, path=["response"])
 
         assert cast(Any, response.is_closed) is True

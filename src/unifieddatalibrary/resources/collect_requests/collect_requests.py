@@ -14,7 +14,7 @@ from ...types import (
     collect_request_tuple_params,
     collect_request_create_params,
     collect_request_create_bulk_params,
-    collect_request_file_create_params,
+    collect_request_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -38,6 +38,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.elset_ingest_param import ElsetIngestParam
+from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.shared.collect_request_full import CollectRequestFull
 from ...types.collect_request_list_response import CollectRequestListResponse
 from ...types.collect_request_tuple_response import CollectRequestTupleResponse
@@ -87,7 +89,7 @@ class CollectRequestsResource(SyncAPIResource):
         dwell_id: str | NotGiven = NOT_GIVEN,
         eccentricity: float | NotGiven = NOT_GIVEN,
         el: float | NotGiven = NOT_GIVEN,
-        elset: collect_request_create_params.Elset | NotGiven = NOT_GIVEN,
+        elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         epoch: Union[str, datetime] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
@@ -139,7 +141,7 @@ class CollectRequestsResource(SyncAPIResource):
         spectral_model: str | NotGiven = NOT_GIVEN,
         srch_inc: float | NotGiven = NOT_GIVEN,
         srch_pattern: str | NotGiven = NOT_GIVEN,
-        state_vector: collect_request_create_params.StateVector | NotGiven = NOT_GIVEN,
+        state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         stop_alt: float | NotGiven = NOT_GIVEN,
         stop_lat: float | NotGiven = NOT_GIVEN,
         stop_lon: float | NotGiven = NOT_GIVEN,
@@ -715,10 +717,10 @@ class CollectRequestsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[collect_request_file_create_params.Body],
+        body: Iterable[collect_request_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -744,7 +746,7 @@ class CollectRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-collectrequest",
-            body=maybe_transform(body, Iterable[collect_request_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[collect_request_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -874,7 +876,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         dwell_id: str | NotGiven = NOT_GIVEN,
         eccentricity: float | NotGiven = NOT_GIVEN,
         el: float | NotGiven = NOT_GIVEN,
-        elset: collect_request_create_params.Elset | NotGiven = NOT_GIVEN,
+        elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         epoch: Union[str, datetime] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
@@ -926,7 +928,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         spectral_model: str | NotGiven = NOT_GIVEN,
         srch_inc: float | NotGiven = NOT_GIVEN,
         srch_pattern: str | NotGiven = NOT_GIVEN,
-        state_vector: collect_request_create_params.StateVector | NotGiven = NOT_GIVEN,
+        state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         stop_alt: float | NotGiven = NOT_GIVEN,
         stop_lat: float | NotGiven = NOT_GIVEN,
         stop_lon: float | NotGiven = NOT_GIVEN,
@@ -1504,10 +1506,10 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[collect_request_file_create_params.Body],
+        body: Iterable[collect_request_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1533,7 +1535,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-collectrequest",
-            body=await async_maybe_transform(body, Iterable[collect_request_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[collect_request_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1640,8 +1642,8 @@ class CollectRequestsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             collect_requests.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            collect_requests.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            collect_requests.create_bulk_v2,
         )
         self.query_help = to_raw_response_wrapper(
             collect_requests.query_help,
@@ -1674,8 +1676,8 @@ class AsyncCollectRequestsResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             collect_requests.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            collect_requests.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            collect_requests.create_bulk_v2,
         )
         self.query_help = async_to_raw_response_wrapper(
             collect_requests.query_help,
@@ -1708,8 +1710,8 @@ class CollectRequestsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             collect_requests.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            collect_requests.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            collect_requests.create_bulk_v2,
         )
         self.query_help = to_streamed_response_wrapper(
             collect_requests.query_help,
@@ -1742,8 +1744,8 @@ class AsyncCollectRequestsResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             collect_requests.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            collect_requests.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            collect_requests.create_bulk_v2,
         )
         self.query_help = async_to_streamed_response_wrapper(
             collect_requests.query_help,

@@ -14,7 +14,7 @@ from ...types import (
     sensorplan_tuple_params,
     sensorplan_create_params,
     sensorplan_update_params,
-    sensorplan_file_create_params,
+    sensorplan_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -442,10 +442,10 @@ class SensorplanResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[sensorplan_file_create_params.Body],
+        body: Iterable[sensorplan_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -471,7 +471,7 @@ class SensorplanResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-sensorplan",
-            body=maybe_transform(body, Iterable[sensorplan_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[sensorplan_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -994,10 +994,10 @@ class AsyncSensorplanResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[sensorplan_file_create_params.Body],
+        body: Iterable[sensorplan_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1023,7 +1023,7 @@ class AsyncSensorplanResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-sensorplan",
-            body=await async_maybe_transform(body, Iterable[sensorplan_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[sensorplan_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1161,8 +1161,8 @@ class SensorplanResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             sensorplan.count,
         )
-        self.file_create = to_raw_response_wrapper(
-            sensorplan.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            sensorplan.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             sensorplan.get,
@@ -1195,8 +1195,8 @@ class AsyncSensorplanResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             sensorplan.count,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            sensorplan.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            sensorplan.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             sensorplan.get,
@@ -1229,8 +1229,8 @@ class SensorplanResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             sensorplan.count,
         )
-        self.file_create = to_streamed_response_wrapper(
-            sensorplan.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            sensorplan.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             sensorplan.get,
@@ -1263,8 +1263,8 @@ class AsyncSensorplanResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             sensorplan.count,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            sensorplan.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            sensorplan.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             sensorplan.get,

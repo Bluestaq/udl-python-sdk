@@ -7,7 +7,7 @@ from datetime import datetime
 
 import httpx
 
-from ...types import diffofarrival_tuple_params, diffofarrival_create_params
+from ...types import diffofarrival_tuple_params, diffofarrival_create_bulk_v2_params
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -60,42 +60,6 @@ class DiffofarrivalResource(SyncAPIResource):
         """
         return DiffofarrivalResourceWithStreamingResponse(self)
 
-    def create(
-        self,
-        *,
-        body: Iterable[diffofarrival_create_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple TDOA/FDOA records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-diffofarrival",
-            body=maybe_transform(body, Iterable[diffofarrival_create_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def retrieve(
         self,
         id: str,
@@ -128,6 +92,42 @@ class DiffofarrivalResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=DiffofarrivalFull,
+        )
+
+    def create_bulk_v2(
+        self,
+        *,
+        body: Iterable[diffofarrival_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple TDOA/FDOA records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-diffofarrival",
+            body=maybe_transform(body, Iterable[diffofarrival_create_bulk_v2_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
     def queryhelp(
@@ -235,42 +235,6 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         """
         return AsyncDiffofarrivalResourceWithStreamingResponse(self)
 
-    async def create(
-        self,
-        *,
-        body: Iterable[diffofarrival_create_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple TDOA/FDOA records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-diffofarrival",
-            body=await async_maybe_transform(body, Iterable[diffofarrival_create_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def retrieve(
         self,
         id: str,
@@ -303,6 +267,42 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=DiffofarrivalFull,
+        )
+
+    async def create_bulk_v2(
+        self,
+        *,
+        body: Iterable[diffofarrival_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple TDOA/FDOA records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-diffofarrival",
+            body=await async_maybe_transform(body, Iterable[diffofarrival_create_bulk_v2_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
     async def queryhelp(
@@ -390,11 +390,11 @@ class DiffofarrivalResourceWithRawResponse:
     def __init__(self, diffofarrival: DiffofarrivalResource) -> None:
         self._diffofarrival = diffofarrival
 
-        self.create = to_raw_response_wrapper(
-            diffofarrival.create,
-        )
         self.retrieve = to_raw_response_wrapper(
             diffofarrival.retrieve,
+        )
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            diffofarrival.create_bulk_v2,
         )
         self.queryhelp = to_raw_response_wrapper(
             diffofarrival.queryhelp,
@@ -412,11 +412,11 @@ class AsyncDiffofarrivalResourceWithRawResponse:
     def __init__(self, diffofarrival: AsyncDiffofarrivalResource) -> None:
         self._diffofarrival = diffofarrival
 
-        self.create = async_to_raw_response_wrapper(
-            diffofarrival.create,
-        )
         self.retrieve = async_to_raw_response_wrapper(
             diffofarrival.retrieve,
+        )
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            diffofarrival.create_bulk_v2,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             diffofarrival.queryhelp,
@@ -434,11 +434,11 @@ class DiffofarrivalResourceWithStreamingResponse:
     def __init__(self, diffofarrival: DiffofarrivalResource) -> None:
         self._diffofarrival = diffofarrival
 
-        self.create = to_streamed_response_wrapper(
-            diffofarrival.create,
-        )
         self.retrieve = to_streamed_response_wrapper(
             diffofarrival.retrieve,
+        )
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            diffofarrival.create_bulk_v2,
         )
         self.queryhelp = to_streamed_response_wrapper(
             diffofarrival.queryhelp,
@@ -456,11 +456,11 @@ class AsyncDiffofarrivalResourceWithStreamingResponse:
     def __init__(self, diffofarrival: AsyncDiffofarrivalResource) -> None:
         self._diffofarrival = diffofarrival
 
-        self.create = async_to_streamed_response_wrapper(
-            diffofarrival.create,
-        )
         self.retrieve = async_to_streamed_response_wrapper(
             diffofarrival.retrieve,
+        )
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            diffofarrival.create_bulk_v2,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             diffofarrival.queryhelp,

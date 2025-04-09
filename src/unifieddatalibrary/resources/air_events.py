@@ -13,7 +13,7 @@ from ..types import (
     air_event_create_params,
     air_event_update_params,
     air_event_create_bulk_params,
-    air_event_file_create_params,
+    air_event_create_bulk_v2_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -666,10 +666,10 @@ class AirEventsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[air_event_file_create_params.Body],
+        body: Iterable[air_event_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -695,7 +695,7 @@ class AirEventsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-airevent",
-            body=maybe_transform(body, Iterable[air_event_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[air_event_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1437,10 +1437,10 @@ class AsyncAirEventsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[air_event_file_create_params.Body],
+        body: Iterable[air_event_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1466,7 +1466,7 @@ class AsyncAirEventsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-airevent",
-            body=await async_maybe_transform(body, Iterable[air_event_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[air_event_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1600,8 +1600,8 @@ class AirEventsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             air_events.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            air_events.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            air_events.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             air_events.get,
@@ -1636,8 +1636,8 @@ class AsyncAirEventsResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             air_events.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            air_events.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            air_events.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             air_events.get,
@@ -1672,8 +1672,8 @@ class AirEventsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             air_events.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            air_events.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            air_events.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             air_events.get,
@@ -1708,8 +1708,8 @@ class AsyncAirEventsResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             air_events.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            air_events.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            air_events.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             air_events.get,

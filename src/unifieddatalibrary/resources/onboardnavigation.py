@@ -12,7 +12,7 @@ from ..types import (
     onboardnavigation_count_params,
     onboardnavigation_tuple_params,
     onboardnavigation_create_bulk_params,
-    onboardnavigation_file_create_params,
+    onboardnavigation_create_bulk_v2_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -179,10 +179,10 @@ class OnboardnavigationResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[onboardnavigation_file_create_params.Body],
+        body: Iterable[onboardnavigation_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -208,7 +208,7 @@ class OnboardnavigationResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-onboardnavigation",
-            body=maybe_transform(body, Iterable[onboardnavigation_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[onboardnavigation_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -441,10 +441,10 @@ class AsyncOnboardnavigationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[onboardnavigation_file_create_params.Body],
+        body: Iterable[onboardnavigation_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -470,7 +470,7 @@ class AsyncOnboardnavigationResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-onboardnavigation",
-            body=await async_maybe_transform(body, Iterable[onboardnavigation_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[onboardnavigation_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -571,8 +571,8 @@ class OnboardnavigationResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            onboardnavigation.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            onboardnavigation.create_bulk_v2,
         )
         self.queryhelp = to_raw_response_wrapper(
             onboardnavigation.queryhelp,
@@ -595,8 +595,8 @@ class AsyncOnboardnavigationResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            onboardnavigation.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            onboardnavigation.create_bulk_v2,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             onboardnavigation.queryhelp,
@@ -619,8 +619,8 @@ class OnboardnavigationResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            onboardnavigation.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            onboardnavigation.create_bulk_v2,
         )
         self.queryhelp = to_streamed_response_wrapper(
             onboardnavigation.queryhelp,
@@ -643,8 +643,8 @@ class AsyncOnboardnavigationResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            onboardnavigation.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            onboardnavigation.create_bulk_v2,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             onboardnavigation.queryhelp,

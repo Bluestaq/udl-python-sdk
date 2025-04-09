@@ -28,7 +28,7 @@ from ..._response import (
     async_to_custom_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.report_and_activity import udl_sigact_file_create_params
+from ...types.report_and_activity import udl_sigact_create_bulk_v2_params
 
 __all__ = ["UdlSigactResource", "AsyncUdlSigactResource"]
 
@@ -53,10 +53,10 @@ class UdlSigactResource(SyncAPIResource):
         """
         return UdlSigactResourceWithStreamingResponse(self)
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[udl_sigact_file_create_params.Body],
+        body: Iterable[udl_sigact_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -82,7 +82,7 @@ class UdlSigactResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-sigact",
-            body=maybe_transform(body, Iterable[udl_sigact_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[udl_sigact_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -145,10 +145,10 @@ class AsyncUdlSigactResource(AsyncAPIResource):
         """
         return AsyncUdlSigactResourceWithStreamingResponse(self)
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[udl_sigact_file_create_params.Body],
+        body: Iterable[udl_sigact_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -174,7 +174,7 @@ class AsyncUdlSigactResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-sigact",
-            body=await async_maybe_transform(body, Iterable[udl_sigact_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[udl_sigact_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -221,8 +221,8 @@ class UdlSigactResourceWithRawResponse:
     def __init__(self, udl_sigact: UdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.file_create = to_raw_response_wrapper(
-            udl_sigact.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            udl_sigact.create_bulk_v2,
         )
         self.file_get = to_custom_raw_response_wrapper(
             udl_sigact.file_get,
@@ -234,8 +234,8 @@ class AsyncUdlSigactResourceWithRawResponse:
     def __init__(self, udl_sigact: AsyncUdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.file_create = async_to_raw_response_wrapper(
-            udl_sigact.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            udl_sigact.create_bulk_v2,
         )
         self.file_get = async_to_custom_raw_response_wrapper(
             udl_sigact.file_get,
@@ -247,8 +247,8 @@ class UdlSigactResourceWithStreamingResponse:
     def __init__(self, udl_sigact: UdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.file_create = to_streamed_response_wrapper(
-            udl_sigact.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            udl_sigact.create_bulk_v2,
         )
         self.file_get = to_custom_streamed_response_wrapper(
             udl_sigact.file_get,
@@ -260,8 +260,8 @@ class AsyncUdlSigactResourceWithStreamingResponse:
     def __init__(self, udl_sigact: AsyncUdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.file_create = async_to_streamed_response_wrapper(
-            udl_sigact.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            udl_sigact.create_bulk_v2,
         )
         self.file_get = async_to_custom_streamed_response_wrapper(
             udl_sigact.file_get,

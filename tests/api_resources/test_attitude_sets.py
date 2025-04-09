@@ -202,8 +202,8 @@ class TestAttitudeSets:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_file_create(self, client: Unifieddatalibrary) -> None:
-        attitude_set = client.attitude_sets.file_create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        attitude_set = client.attitude_sets.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -217,8 +217,8 @@ class TestAttitudeSets:
         assert attitude_set is None
 
     @parametrize
-    def test_method_file_create_with_all_params(self, client: Unifieddatalibrary) -> None:
-        attitude_set = client.attitude_sets.file_create(
+    def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_set = client.attitude_sets.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -280,8 +280,8 @@ class TestAttitudeSets:
         assert attitude_set is None
 
     @parametrize
-    def test_raw_response_file_create(self, client: Unifieddatalibrary) -> None:
-        response = client.attitude_sets.with_raw_response.file_create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.attitude_sets.with_raw_response.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -299,8 +299,8 @@ class TestAttitudeSets:
         assert attitude_set is None
 
     @parametrize
-    def test_streaming_response_file_create(self, client: Unifieddatalibrary) -> None:
-        with client.attitude_sets.with_streaming_response.file_create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.attitude_sets.with_streaming_response.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -563,8 +563,8 @@ class TestAsyncAttitudeSets:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        attitude_set = await async_client.attitude_sets.file_create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_set = await async_client.attitude_sets.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -578,8 +578,8 @@ class TestAsyncAttitudeSets:
         assert attitude_set is None
 
     @parametrize
-    async def test_method_file_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        attitude_set = await async_client.attitude_sets.file_create(
+    async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_set = await async_client.attitude_sets.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -641,8 +641,8 @@ class TestAsyncAttitudeSets:
         assert attitude_set is None
 
     @parametrize
-    async def test_raw_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.attitude_sets.with_raw_response.file_create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.attitude_sets.with_raw_response.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
@@ -660,8 +660,8 @@ class TestAsyncAttitudeSets:
         assert attitude_set is None
 
     @parametrize
-    async def test_streaming_response_file_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.attitude_sets.with_streaming_response.file_create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.attitude_sets.with_streaming_response.create_bulk_v2(
             classification_marking="U",
             data_mode="REAL",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),

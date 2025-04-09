@@ -14,7 +14,7 @@ from ...types import (
     maneuver_tuple_params,
     maneuver_create_params,
     maneuver_create_bulk_params,
-    maneuver_file_create_params,
+    maneuver_create_bulk_v2_params,
 )
 from .history import (
     HistoryResource,
@@ -38,8 +38,10 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.elset_ingest_param import ElsetIngestParam
 from ...types.maneuver_list_response import ManeuverListResponse
 from ...types.maneuver_tuple_response import ManeuverTupleResponse
+from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.udl.maneuver.maneuver_full import ManeuverFull
 
 __all__ = ["ManeuversResource", "AsyncManeuversResource"]
@@ -110,10 +112,10 @@ class ManeuversResource(SyncAPIResource):
         post_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         post_drift_rate: float | NotGiven = NOT_GIVEN,
         post_eccentricity: float | NotGiven = NOT_GIVEN,
-        post_event_elset: maneuver_create_params.PostEventElset | NotGiven = NOT_GIVEN,
+        post_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         post_event_id_elset: str | NotGiven = NOT_GIVEN,
         post_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        post_event_state_vector: maneuver_create_params.PostEventStateVector | NotGiven = NOT_GIVEN,
+        post_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         post_geo_longitude: float | NotGiven = NOT_GIVEN,
         post_inclination: float | NotGiven = NOT_GIVEN,
         post_mass: float | NotGiven = NOT_GIVEN,
@@ -135,10 +137,10 @@ class ManeuversResource(SyncAPIResource):
         pre_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         pre_drift_rate: float | NotGiven = NOT_GIVEN,
         pre_eccentricity: float | NotGiven = NOT_GIVEN,
-        pre_event_elset: maneuver_create_params.PreEventElset | NotGiven = NOT_GIVEN,
+        pre_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         pre_event_id_elset: str | NotGiven = NOT_GIVEN,
         pre_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        pre_event_state_vector: maneuver_create_params.PreEventStateVector | NotGiven = NOT_GIVEN,
+        pre_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         pre_geo_longitude: float | NotGiven = NOT_GIVEN,
         pre_inclination: float | NotGiven = NOT_GIVEN,
         pre_perigee: float | NotGiven = NOT_GIVEN,
@@ -730,10 +732,10 @@ class ManeuversResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[maneuver_file_create_params.Body],
+        body: Iterable[maneuver_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -759,7 +761,7 @@ class ManeuversResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-maneuver",
-            body=maybe_transform(body, Iterable[maneuver_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[maneuver_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -947,10 +949,10 @@ class AsyncManeuversResource(AsyncAPIResource):
         post_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         post_drift_rate: float | NotGiven = NOT_GIVEN,
         post_eccentricity: float | NotGiven = NOT_GIVEN,
-        post_event_elset: maneuver_create_params.PostEventElset | NotGiven = NOT_GIVEN,
+        post_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         post_event_id_elset: str | NotGiven = NOT_GIVEN,
         post_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        post_event_state_vector: maneuver_create_params.PostEventStateVector | NotGiven = NOT_GIVEN,
+        post_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         post_geo_longitude: float | NotGiven = NOT_GIVEN,
         post_inclination: float | NotGiven = NOT_GIVEN,
         post_mass: float | NotGiven = NOT_GIVEN,
@@ -972,10 +974,10 @@ class AsyncManeuversResource(AsyncAPIResource):
         pre_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         pre_drift_rate: float | NotGiven = NOT_GIVEN,
         pre_eccentricity: float | NotGiven = NOT_GIVEN,
-        pre_event_elset: maneuver_create_params.PreEventElset | NotGiven = NOT_GIVEN,
+        pre_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
         pre_event_id_elset: str | NotGiven = NOT_GIVEN,
         pre_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        pre_event_state_vector: maneuver_create_params.PreEventStateVector | NotGiven = NOT_GIVEN,
+        pre_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
         pre_geo_longitude: float | NotGiven = NOT_GIVEN,
         pre_inclination: float | NotGiven = NOT_GIVEN,
         pre_perigee: float | NotGiven = NOT_GIVEN,
@@ -1569,10 +1571,10 @@ class AsyncManeuversResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[maneuver_file_create_params.Body],
+        body: Iterable[maneuver_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1598,7 +1600,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-maneuver",
-            body=await async_maybe_transform(body, Iterable[maneuver_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[maneuver_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1737,8 +1739,8 @@ class ManeuversResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             maneuvers.create_bulk,
         )
-        self.file_create = to_raw_response_wrapper(
-            maneuvers.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            maneuvers.create_bulk_v2,
         )
         self.get = to_raw_response_wrapper(
             maneuvers.get,
@@ -1771,8 +1773,8 @@ class AsyncManeuversResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             maneuvers.create_bulk,
         )
-        self.file_create = async_to_raw_response_wrapper(
-            maneuvers.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            maneuvers.create_bulk_v2,
         )
         self.get = async_to_raw_response_wrapper(
             maneuvers.get,
@@ -1805,8 +1807,8 @@ class ManeuversResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             maneuvers.create_bulk,
         )
-        self.file_create = to_streamed_response_wrapper(
-            maneuvers.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            maneuvers.create_bulk_v2,
         )
         self.get = to_streamed_response_wrapper(
             maneuvers.get,
@@ -1839,8 +1841,8 @@ class AsyncManeuversResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             maneuvers.create_bulk,
         )
-        self.file_create = async_to_streamed_response_wrapper(
-            maneuvers.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            maneuvers.create_bulk_v2,
         )
         self.get = async_to_streamed_response_wrapper(
             maneuvers.get,

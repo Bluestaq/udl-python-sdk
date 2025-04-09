@@ -28,6 +28,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.vessel_get_response import VesselGetResponse
 from ..types.vessel_list_response import VesselListResponse
 from ..types.vessel_tuple_response import VesselTupleResponse
@@ -64,7 +65,7 @@ class VesselResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         alt_vessel_id: str | NotGiven = NOT_GIVEN,
         callsign: str | NotGiven = NOT_GIVEN,
-        entity: vessel_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
         hull_num: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
@@ -264,7 +265,7 @@ class VesselResource(SyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         alt_vessel_id: str | NotGiven = NOT_GIVEN,
         callsign: str | NotGiven = NOT_GIVEN,
-        entity: vessel_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
         hull_num: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
@@ -677,7 +678,7 @@ class AsyncVesselResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         alt_vessel_id: str | NotGiven = NOT_GIVEN,
         callsign: str | NotGiven = NOT_GIVEN,
-        entity: vessel_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
         hull_num: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
@@ -877,7 +878,7 @@ class AsyncVesselResource(AsyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         alt_vessel_id: str | NotGiven = NOT_GIVEN,
         callsign: str | NotGiven = NOT_GIVEN,
-        entity: vessel_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
         hull_num: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,

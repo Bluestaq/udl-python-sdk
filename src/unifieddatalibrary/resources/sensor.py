@@ -22,6 +22,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.sensor_get_response import SensorGetResponse
 from ..types.sensor_list_response import SensorListResponse
 from ..types.sensor_tuple_response import SensorTupleResponse
@@ -60,7 +61,7 @@ class SensorResource(SyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -203,7 +204,7 @@ class SensorResource(SyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -558,7 +559,7 @@ class AsyncSensorResource(AsyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -701,7 +702,7 @@ class AsyncSensorResource(AsyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,

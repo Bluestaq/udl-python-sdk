@@ -17,8 +17,8 @@ class TestMonoradar:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: Unifieddatalibrary) -> None:
-        monoradar = client.observations.monoradar.create(
+    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        monoradar = client.observations.monoradar.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -34,8 +34,8 @@ class TestMonoradar:
         assert monoradar is None
 
     @parametrize
-    def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
-        response = client.observations.monoradar.with_raw_response.create(
+    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        response = client.observations.monoradar.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -55,8 +55,8 @@ class TestMonoradar:
         assert monoradar is None
 
     @parametrize
-    def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
-        with client.observations.monoradar.with_streaming_response.create(
+    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
+        with client.observations.monoradar.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -82,8 +82,8 @@ class TestAsyncMonoradar:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        monoradar = await async_client.observations.monoradar.create(
+    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        monoradar = await async_client.observations.monoradar.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -99,8 +99,8 @@ class TestAsyncMonoradar:
         assert monoradar is None
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.observations.monoradar.with_raw_response.create(
+    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.observations.monoradar.with_raw_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",
@@ -120,8 +120,8 @@ class TestAsyncMonoradar:
         assert monoradar is None
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.observations.monoradar.with_streaming_response.create(
+    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.observations.monoradar.with_streaming_response.create_bulk_v2(
             body=[
                 {
                     "classification_marking": "U",

@@ -20,7 +20,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.air_operations import air_tasking_order_create_params
+from ...types.air_operations import air_tasking_order_create_bulk_v2_params
 
 __all__ = ["AirTaskingOrdersResource", "AsyncAirTaskingOrdersResource"]
 
@@ -45,10 +45,10 @@ class AirTaskingOrdersResource(SyncAPIResource):
         """
         return AirTaskingOrdersResourceWithStreamingResponse(self)
 
-    def create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[air_tasking_order_create_params.Body],
+        body: Iterable[air_tasking_order_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,7 +74,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-airtaskingorder",
-            body=maybe_transform(body, Iterable[air_tasking_order_create_params.Body]),
+            body=maybe_transform(body, Iterable[air_tasking_order_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -102,10 +102,10 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         """
         return AsyncAirTaskingOrdersResourceWithStreamingResponse(self)
 
-    async def create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[air_tasking_order_create_params.Body],
+        body: Iterable[air_tasking_order_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,7 +131,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-airtaskingorder",
-            body=await async_maybe_transform(body, Iterable[air_tasking_order_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[air_tasking_order_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -143,8 +143,8 @@ class AirTaskingOrdersResourceWithRawResponse:
     def __init__(self, air_tasking_orders: AirTaskingOrdersResource) -> None:
         self._air_tasking_orders = air_tasking_orders
 
-        self.create = to_raw_response_wrapper(
-            air_tasking_orders.create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            air_tasking_orders.create_bulk_v2,
         )
 
 
@@ -152,8 +152,8 @@ class AsyncAirTaskingOrdersResourceWithRawResponse:
     def __init__(self, air_tasking_orders: AsyncAirTaskingOrdersResource) -> None:
         self._air_tasking_orders = air_tasking_orders
 
-        self.create = async_to_raw_response_wrapper(
-            air_tasking_orders.create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            air_tasking_orders.create_bulk_v2,
         )
 
 
@@ -161,8 +161,8 @@ class AirTaskingOrdersResourceWithStreamingResponse:
     def __init__(self, air_tasking_orders: AirTaskingOrdersResource) -> None:
         self._air_tasking_orders = air_tasking_orders
 
-        self.create = to_streamed_response_wrapper(
-            air_tasking_orders.create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            air_tasking_orders.create_bulk_v2,
         )
 
 
@@ -170,6 +170,6 @@ class AsyncAirTaskingOrdersResourceWithStreamingResponse:
     def __init__(self, air_tasking_orders: AsyncAirTaskingOrdersResource) -> None:
         self._air_tasking_orders = air_tasking_orders
 
-        self.create = async_to_streamed_response_wrapper(
-            air_tasking_orders.create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            air_tasking_orders.create_bulk_v2,
         )

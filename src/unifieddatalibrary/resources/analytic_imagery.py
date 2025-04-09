@@ -12,10 +12,10 @@ from ..types import (
     analytic_imagery_list_params,
     analytic_imagery_count_params,
     analytic_imagery_tuple_params,
-    analytic_imagery_create_params,
     analytic_imagery_history_params,
     analytic_imagery_history_aodr_params,
     analytic_imagery_history_count_params,
+    analytic_imagery_create_bulk_v2_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -67,7 +67,126 @@ class AnalyticImageryResource(SyncAPIResource):
         """
         return AnalyticImageryResourceWithStreamingResponse(self)
 
-    def create(
+    def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AnalyticImageryFull:
+        """
+        Service operation to get a single AnalyticImagery record by its unique ID passed
+        as a path parameter. AnalyticImagery represents metadata about an image, as well
+        as the actual binary image data.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/analyticimagery/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AnalyticImageryFull,
+        )
+
+    def list(
+        self,
+        *,
+        msg_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AnalyticImageryListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/analyticimagery",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"msg_time": msg_time}, analytic_imagery_list_params.AnalyticImageryListParams),
+            ),
+            cast_to=AnalyticImageryListResponse,
+        )
+
+    def count(
+        self,
+        *,
+        msg_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+
+        Args:
+          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return self._get(
+            "/udl/analyticimagery/count",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams),
+            ),
+            cast_to=str,
+        )
+
+    def create_bulk_v2(
         self,
         *,
         classification_marking: str,
@@ -293,131 +412,12 @@ class AnalyticImageryResource(SyncAPIResource):
                     "y_units": y_units,
                     "z_units": z_units,
                 },
-                analytic_imagery_create_params.AnalyticImageryCreateParams,
+                analytic_imagery_create_bulk_v2_params.AnalyticImageryCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def retrieve(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryFull:
-        """
-        Service operation to get a single AnalyticImagery record by its unique ID passed
-        as a path parameter. AnalyticImagery represents metadata about an image, as well
-        as the actual binary image data.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/udl/analyticimagery/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AnalyticImageryFull,
-        )
-
-    def list(
-        self,
-        *,
-        msg_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryListResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/analyticimagery",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"msg_time": msg_time}, analytic_imagery_list_params.AnalyticImageryListParams),
-            ),
-            cast_to=AnalyticImageryListResponse,
-        )
-
-    def count(
-        self,
-        *,
-        msg_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
-        """
-        Service operation to return the count of records satisfying the specified query
-        parameters. This operation is useful to determine how many records pass a
-        particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
-        valid/required query parameter information.
-
-        Args:
-          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
-        return self._get(
-            "/udl/analyticimagery/count",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams),
-            ),
-            cast_to=str,
         )
 
     def file_get(
@@ -725,7 +725,130 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         """
         return AsyncAnalyticImageryResourceWithStreamingResponse(self)
 
-    async def create(
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AnalyticImageryFull:
+        """
+        Service operation to get a single AnalyticImagery record by its unique ID passed
+        as a path parameter. AnalyticImagery represents metadata about an image, as well
+        as the actual binary image data.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/analyticimagery/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AnalyticImageryFull,
+        )
+
+    async def list(
+        self,
+        *,
+        msg_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AnalyticImageryListResponse:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/analyticimagery",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"msg_time": msg_time}, analytic_imagery_list_params.AnalyticImageryListParams
+                ),
+            ),
+            cast_to=AnalyticImageryListResponse,
+        )
+
+    async def count(
+        self,
+        *,
+        msg_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Service operation to return the count of records satisfying the specified query
+        parameters. This operation is useful to determine how many records pass a
+        particular query criteria without retrieving large amounts of data. See the
+        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        valid/required query parameter information.
+
+        Args:
+          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return await self._get(
+            "/udl/analyticimagery/count",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams
+                ),
+            ),
+            cast_to=str,
+        )
+
+    async def create_bulk_v2(
         self,
         *,
         classification_marking: str,
@@ -951,135 +1074,12 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     "y_units": y_units,
                     "z_units": z_units,
                 },
-                analytic_imagery_create_params.AnalyticImageryCreateParams,
+                analytic_imagery_create_bulk_v2_params.AnalyticImageryCreateBulkV2Params,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def retrieve(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryFull:
-        """
-        Service operation to get a single AnalyticImagery record by its unique ID passed
-        as a path parameter. AnalyticImagery represents metadata about an image, as well
-        as the actual binary image data.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/udl/analyticimagery/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AnalyticImageryFull,
-        )
-
-    async def list(
-        self,
-        *,
-        msg_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryListResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/analyticimagery",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"msg_time": msg_time}, analytic_imagery_list_params.AnalyticImageryListParams
-                ),
-            ),
-            cast_to=AnalyticImageryListResponse,
-        )
-
-    async def count(
-        self,
-        *,
-        msg_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
-        """
-        Service operation to return the count of records satisfying the specified query
-        parameters. This operation is useful to determine how many records pass a
-        particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
-        valid/required query parameter information.
-
-        Args:
-          msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
-        return await self._get(
-            "/udl/analyticimagery/count",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams
-                ),
-            ),
-            cast_to=str,
         )
 
     async def file_get(
@@ -1371,9 +1371,6 @@ class AnalyticImageryResourceWithRawResponse:
     def __init__(self, analytic_imagery: AnalyticImageryResource) -> None:
         self._analytic_imagery = analytic_imagery
 
-        self.create = to_raw_response_wrapper(
-            analytic_imagery.create,
-        )
         self.retrieve = to_raw_response_wrapper(
             analytic_imagery.retrieve,
         )
@@ -1382,6 +1379,9 @@ class AnalyticImageryResourceWithRawResponse:
         )
         self.count = to_raw_response_wrapper(
             analytic_imagery.count,
+        )
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            analytic_imagery.create_bulk_v2,
         )
         self.file_get = to_custom_raw_response_wrapper(
             analytic_imagery.file_get,
@@ -1408,9 +1408,6 @@ class AsyncAnalyticImageryResourceWithRawResponse:
     def __init__(self, analytic_imagery: AsyncAnalyticImageryResource) -> None:
         self._analytic_imagery = analytic_imagery
 
-        self.create = async_to_raw_response_wrapper(
-            analytic_imagery.create,
-        )
         self.retrieve = async_to_raw_response_wrapper(
             analytic_imagery.retrieve,
         )
@@ -1419,6 +1416,9 @@ class AsyncAnalyticImageryResourceWithRawResponse:
         )
         self.count = async_to_raw_response_wrapper(
             analytic_imagery.count,
+        )
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            analytic_imagery.create_bulk_v2,
         )
         self.file_get = async_to_custom_raw_response_wrapper(
             analytic_imagery.file_get,
@@ -1445,9 +1445,6 @@ class AnalyticImageryResourceWithStreamingResponse:
     def __init__(self, analytic_imagery: AnalyticImageryResource) -> None:
         self._analytic_imagery = analytic_imagery
 
-        self.create = to_streamed_response_wrapper(
-            analytic_imagery.create,
-        )
         self.retrieve = to_streamed_response_wrapper(
             analytic_imagery.retrieve,
         )
@@ -1456,6 +1453,9 @@ class AnalyticImageryResourceWithStreamingResponse:
         )
         self.count = to_streamed_response_wrapper(
             analytic_imagery.count,
+        )
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            analytic_imagery.create_bulk_v2,
         )
         self.file_get = to_custom_streamed_response_wrapper(
             analytic_imagery.file_get,
@@ -1482,9 +1482,6 @@ class AsyncAnalyticImageryResourceWithStreamingResponse:
     def __init__(self, analytic_imagery: AsyncAnalyticImageryResource) -> None:
         self._analytic_imagery = analytic_imagery
 
-        self.create = async_to_streamed_response_wrapper(
-            analytic_imagery.create,
-        )
         self.retrieve = async_to_streamed_response_wrapper(
             analytic_imagery.retrieve,
         )
@@ -1493,6 +1490,9 @@ class AsyncAnalyticImageryResourceWithStreamingResponse:
         )
         self.count = async_to_streamed_response_wrapper(
             analytic_imagery.count,
+        )
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            analytic_imagery.create_bulk_v2,
         )
         self.file_get = async_to_custom_streamed_response_wrapper(
             analytic_imagery.file_get,

@@ -6,7 +6,11 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import navigation_tuple_params, navigation_create_params, navigation_update_params
+from ..types import (
+    navigation_tuple_params,
+    navigation_create_params,
+    navigation_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -21,6 +25,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.navigation_get_response import NavigationGetResponse
 from ..types.navigation_list_response import NavigationListResponse
 from ..types.navigation_tuple_response import NavigationTupleResponse
@@ -57,7 +62,7 @@ class NavigationResource(SyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: navigation_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -152,7 +157,7 @@ class NavigationResource(SyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: navigation_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -460,7 +465,7 @@ class AsyncNavigationResource(AsyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: navigation_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -555,7 +560,7 @@ class AsyncNavigationResource(AsyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        entity: navigation_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

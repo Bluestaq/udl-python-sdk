@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ...types import launch_event_file_create_params
+from ...types import launch_event_create_bulk_v2_params
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -57,10 +57,10 @@ class LaunchEventResource(SyncAPIResource):
         """
         return LaunchEventResourceWithStreamingResponse(self)
 
-    def file_create(
+    def create_bulk_v2(
         self,
         *,
-        body: Iterable[launch_event_file_create_params.Body],
+        body: Iterable[launch_event_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -86,7 +86,7 @@ class LaunchEventResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-launchevent",
-            body=maybe_transform(body, Iterable[launch_event_file_create_params.Body]),
+            body=maybe_transform(body, Iterable[launch_event_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -118,10 +118,10 @@ class AsyncLaunchEventResource(AsyncAPIResource):
         """
         return AsyncLaunchEventResourceWithStreamingResponse(self)
 
-    async def file_create(
+    async def create_bulk_v2(
         self,
         *,
-        body: Iterable[launch_event_file_create_params.Body],
+        body: Iterable[launch_event_create_bulk_v2_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -147,7 +147,7 @@ class AsyncLaunchEventResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-launchevent",
-            body=await async_maybe_transform(body, Iterable[launch_event_file_create_params.Body]),
+            body=await async_maybe_transform(body, Iterable[launch_event_create_bulk_v2_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -159,8 +159,8 @@ class LaunchEventResourceWithRawResponse:
     def __init__(self, launch_event: LaunchEventResource) -> None:
         self._launch_event = launch_event
 
-        self.file_create = to_raw_response_wrapper(
-            launch_event.file_create,
+        self.create_bulk_v2 = to_raw_response_wrapper(
+            launch_event.create_bulk_v2,
         )
 
     @cached_property
@@ -172,8 +172,8 @@ class AsyncLaunchEventResourceWithRawResponse:
     def __init__(self, launch_event: AsyncLaunchEventResource) -> None:
         self._launch_event = launch_event
 
-        self.file_create = async_to_raw_response_wrapper(
-            launch_event.file_create,
+        self.create_bulk_v2 = async_to_raw_response_wrapper(
+            launch_event.create_bulk_v2,
         )
 
     @cached_property
@@ -185,8 +185,8 @@ class LaunchEventResourceWithStreamingResponse:
     def __init__(self, launch_event: LaunchEventResource) -> None:
         self._launch_event = launch_event
 
-        self.file_create = to_streamed_response_wrapper(
-            launch_event.file_create,
+        self.create_bulk_v2 = to_streamed_response_wrapper(
+            launch_event.create_bulk_v2,
         )
 
     @cached_property
@@ -198,8 +198,8 @@ class AsyncLaunchEventResourceWithStreamingResponse:
     def __init__(self, launch_event: AsyncLaunchEventResource) -> None:
         self._launch_event = launch_event
 
-        self.file_create = async_to_streamed_response_wrapper(
-            launch_event.file_create,
+        self.create_bulk_v2 = async_to_streamed_response_wrapper(
+            launch_event.create_bulk_v2,
         )
 
     @cached_property

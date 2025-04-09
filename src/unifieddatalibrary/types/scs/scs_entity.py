@@ -5,26 +5,9 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from .attachment import Attachment
 
-__all__ = ["ScsEntity", "Attachment"]
-
-
-class Attachment(BaseModel):
-    author: Optional[str] = None
-
-    content: Optional[str] = None
-
-    content_length: Optional[int] = None
-
-    content_type: Optional[str] = None
-
-    date: Optional[str] = None
-
-    keywords: Optional[str] = None
-
-    language: Optional[str] = None
-
-    title: Optional[str] = None
+__all__ = ["ScsEntity"]
 
 
 class ScsEntity(BaseModel):

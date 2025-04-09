@@ -6,7 +6,11 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import rfemitter_tuple_params, rfemitter_create_params, rfemitter_update_params
+from ..types import (
+    rfemitter_tuple_params,
+    rfemitter_create_params,
+    rfemitter_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -21,6 +25,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.rfemitter_get_response import RfemitterGetResponse
 from ..types.rfemitter_list_response import RfemitterListResponse
 from ..types.rfemitter_tuple_response import RfemitterTupleResponse
@@ -56,7 +61,7 @@ class RfemitterResource(SyncAPIResource):
         name: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        entity: rfemitter_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -150,7 +155,7 @@ class RfemitterResource(SyncAPIResource):
         name: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        entity: rfemitter_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -456,7 +461,7 @@ class AsyncRfemitterResource(AsyncAPIResource):
         name: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        entity: rfemitter_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -550,7 +555,7 @@ class AsyncRfemitterResource(AsyncAPIResource):
         name: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        entity: rfemitter_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,

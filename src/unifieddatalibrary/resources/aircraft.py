@@ -6,7 +6,11 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import aircraft_create_params, aircraft_update_params, aircraft_tuple_query_params
+from ..types import (
+    aircraft_create_params,
+    aircraft_update_params,
+    aircraft_tuple_query_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -22,6 +26,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.aircraft_full import AircraftFull
+from ..types.entity_ingest_param import EntityIngestParam
 from ..types.aircraft_list_response import AircraftListResponse
 from ..types.aircraft_tuple_query_response import AircraftTupleQueryResponse
 
@@ -60,7 +65,7 @@ class AircraftResource(SyncAPIResource):
         command: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
-        entity: aircraft_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         max_speed: float | NotGiven = NOT_GIVEN,
         min_req_runway_ft: int | NotGiven = NOT_GIVEN,
@@ -241,7 +246,7 @@ class AircraftResource(SyncAPIResource):
         command: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
-        entity: aircraft_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         max_speed: float | NotGiven = NOT_GIVEN,
         min_req_runway_ft: int | NotGiven = NOT_GIVEN,
@@ -530,7 +535,7 @@ class AsyncAircraftResource(AsyncAPIResource):
         command: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
-        entity: aircraft_create_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         max_speed: float | NotGiven = NOT_GIVEN,
         min_req_runway_ft: int | NotGiven = NOT_GIVEN,
@@ -711,7 +716,7 @@ class AsyncAircraftResource(AsyncAPIResource):
         command: str | NotGiven = NOT_GIVEN,
         cruise_speed: float | NotGiven = NOT_GIVEN,
         dtd: str | NotGiven = NOT_GIVEN,
-        entity: aircraft_update_params.Entity | NotGiven = NOT_GIVEN,
+        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         max_speed: float | NotGiven = NOT_GIVEN,
         min_req_runway_ft: int | NotGiven = NOT_GIVEN,
