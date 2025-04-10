@@ -26,7 +26,7 @@ class TestElsets:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         elset = client.elsets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestElsets:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         elset = client.elsets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             agom=0.0126,
@@ -65,7 +65,7 @@ class TestElsets:
             sat_no=12,
             semi_major_axis=1.1,
             sourced_data=["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-            sourced_data_types=["EO", "RADAR"],
+            sourced_data_types=["RADAR", "RF"],
             tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
             transaction_id="TRANSACTION-ID",
             uct=False,
@@ -76,7 +76,7 @@ class TestElsets:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.elsets.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -90,7 +90,7 @@ class TestElsets:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.elsets.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -208,7 +208,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -222,7 +222,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "agom": 0.0126,
@@ -251,7 +251,7 @@ class TestElsets:
                     "sat_no": 12,
                     "semi_major_axis": 1.1,
                     "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                    "sourced_data_types": ["EO", "RADAR"],
+                    "sourced_data_types": ["RADAR", "RF"],
                     "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                     "transaction_id": "TRANSACTION-ID",
                     "uct": False,
@@ -267,7 +267,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -285,7 +285,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -359,7 +359,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -373,7 +373,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -391,7 +391,7 @@ class TestElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -497,7 +497,7 @@ class TestAsyncElsets:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         elset = await async_client.elsets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -507,7 +507,7 @@ class TestAsyncElsets:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         elset = await async_client.elsets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             agom=0.0126,
@@ -536,7 +536,7 @@ class TestAsyncElsets:
             sat_no=12,
             semi_major_axis=1.1,
             sourced_data=["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-            sourced_data_types=["EO", "RADAR"],
+            sourced_data_types=["RADAR", "RF"],
             tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
             transaction_id="TRANSACTION-ID",
             uct=False,
@@ -547,7 +547,7 @@ class TestAsyncElsets:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.elsets.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -561,7 +561,7 @@ class TestAsyncElsets:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.elsets.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -679,7 +679,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -693,7 +693,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "agom": 0.0126,
@@ -722,7 +722,7 @@ class TestAsyncElsets:
                     "sat_no": 12,
                     "semi_major_axis": 1.1,
                     "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                    "sourced_data_types": ["EO", "RADAR"],
+                    "sourced_data_types": ["RADAR", "RF"],
                     "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                     "transaction_id": "TRANSACTION-ID",
                     "uct": False,
@@ -738,7 +738,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -756,7 +756,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -830,7 +830,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -844,7 +844,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -862,7 +862,7 @@ class TestAsyncElsets:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }

@@ -26,7 +26,7 @@ class TestStatevector:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         statevector = client.statevector.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestStatevector:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         statevector = client.statevector.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             actual_od_span=3.5,
@@ -93,7 +93,7 @@ class TestStatevector:
             solar_rad_press_coeff=0.0244394,
             solid_earth_tides=True,
             sourced_data=["DATA1", "DATA2"],
-            sourced_data_types=["EO"],
+            sourced_data_types=["RADAR"],
             srp_area=4.311,
             step_mode="AUTO",
             step_size=1.23,
@@ -136,7 +136,7 @@ class TestStatevector:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.statevector.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -150,7 +150,7 @@ class TestStatevector:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.statevector.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -235,7 +235,7 @@ class TestStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "actual_od_span": 3.5,
@@ -292,7 +292,7 @@ class TestStatevector:
                     "solar_rad_press_coeff": 0.0244394,
                     "solid_earth_tides": True,
                     "sourced_data": ["DATA1", "DATA2"],
-                    "sourced_data_types": ["EO"],
+                    "sourced_data_types": ["RADAR"],
                     "srp_area": 4.311,
                     "step_mode": "AUTO",
                     "step_size": 1.23,
@@ -359,7 +359,7 @@ class TestStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -373,7 +373,7 @@ class TestStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -391,7 +391,7 @@ class TestStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -510,7 +510,7 @@ class TestAsyncStatevector:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         statevector = await async_client.statevector.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -520,7 +520,7 @@ class TestAsyncStatevector:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         statevector = await async_client.statevector.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             actual_od_span=3.5,
@@ -577,7 +577,7 @@ class TestAsyncStatevector:
             solar_rad_press_coeff=0.0244394,
             solid_earth_tides=True,
             sourced_data=["DATA1", "DATA2"],
-            sourced_data_types=["EO"],
+            sourced_data_types=["RADAR"],
             srp_area=4.311,
             step_mode="AUTO",
             step_size=1.23,
@@ -620,7 +620,7 @@ class TestAsyncStatevector:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.statevector.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -634,7 +634,7 @@ class TestAsyncStatevector:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.statevector.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -719,7 +719,7 @@ class TestAsyncStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "actual_od_span": 3.5,
@@ -776,7 +776,7 @@ class TestAsyncStatevector:
                     "solar_rad_press_coeff": 0.0244394,
                     "solid_earth_tides": True,
                     "sourced_data": ["DATA1", "DATA2"],
-                    "sourced_data_types": ["EO"],
+                    "sourced_data_types": ["RADAR"],
                     "srp_area": 4.311,
                     "step_mode": "AUTO",
                     "step_size": 1.23,
@@ -843,7 +843,7 @@ class TestAsyncStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -857,7 +857,7 @@ class TestAsyncStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -875,7 +875,7 @@ class TestAsyncStatevector:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }

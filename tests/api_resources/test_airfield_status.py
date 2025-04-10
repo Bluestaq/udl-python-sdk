@@ -63,7 +63,7 @@ class TestAirfieldStatus:
         airfield_status = client.airfield_status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -74,7 +74,7 @@ class TestAirfieldStatus:
         airfield_status = client.airfield_status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
             body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -113,7 +113,7 @@ class TestAirfieldStatus:
         response = client.airfield_status.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -128,7 +128,7 @@ class TestAirfieldStatus:
         with client.airfield_status.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         ) as response:
@@ -146,7 +146,7 @@ class TestAirfieldStatus:
             client.airfield_status.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
                 source="Bluestaq",
             )
@@ -267,7 +267,7 @@ class TestAsyncAirfieldStatus:
         airfield_status = await async_client.airfield_status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -278,7 +278,7 @@ class TestAsyncAirfieldStatus:
         airfield_status = await async_client.airfield_status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
             body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -317,7 +317,7 @@ class TestAsyncAirfieldStatus:
         response = await async_client.airfield_status.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -332,7 +332,7 @@ class TestAsyncAirfieldStatus:
         async with async_client.airfield_status.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         ) as response:
@@ -350,7 +350,7 @@ class TestAsyncAirfieldStatus:
             await async_client.airfield_status.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
                 source="Bluestaq",
             )

@@ -26,7 +26,7 @@ class TestScientific:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -37,17 +37,17 @@ class TestScientific:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
             id="SCIENTIFIC-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -55,7 +55,7 @@ class TestScientific:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -67,11 +67,11 @@ class TestScientific:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -82,7 +82,7 @@ class TestScientific:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -104,7 +104,7 @@ class TestScientific:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.scientific.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -119,7 +119,7 @@ class TestScientific:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.scientific.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -137,7 +137,7 @@ class TestScientific:
         scientific = client.scientific.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -149,17 +149,17 @@ class TestScientific:
         scientific = client.scientific.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
             body_id="SCIENTIFIC-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -167,7 +167,7 @@ class TestScientific:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -179,11 +179,11 @@ class TestScientific:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -194,7 +194,7 @@ class TestScientific:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -217,7 +217,7 @@ class TestScientific:
         response = client.scientific.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -233,7 +233,7 @@ class TestScientific:
         with client.scientific.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -252,7 +252,7 @@ class TestScientific:
             client.scientific.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="SEM/MAG",
                 source="Bluestaq",
                 spacecraft_id="REF-SPACECRAFT-ID",
@@ -448,7 +448,7 @@ class TestAsyncScientific:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -459,17 +459,17 @@ class TestAsyncScientific:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
             id="SCIENTIFIC-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -477,7 +477,7 @@ class TestAsyncScientific:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -489,11 +489,11 @@ class TestAsyncScientific:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -504,7 +504,7 @@ class TestAsyncScientific:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -526,7 +526,7 @@ class TestAsyncScientific:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scientific.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -541,7 +541,7 @@ class TestAsyncScientific:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scientific.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -559,7 +559,7 @@ class TestAsyncScientific:
         scientific = await async_client.scientific.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -571,17 +571,17 @@ class TestAsyncScientific:
         scientific = await async_client.scientific.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
             body_id="SCIENTIFIC-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -589,7 +589,7 @@ class TestAsyncScientific:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -601,11 +601,11 @@ class TestAsyncScientific:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -616,7 +616,7 @@ class TestAsyncScientific:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -639,7 +639,7 @@ class TestAsyncScientific:
         response = await async_client.scientific.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -655,7 +655,7 @@ class TestAsyncScientific:
         async with async_client.scientific.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SEM/MAG",
             source="Bluestaq",
             spacecraft_id="REF-SPACECRAFT-ID",
@@ -674,7 +674,7 @@ class TestAsyncScientific:
             await async_client.scientific.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="SEM/MAG",
                 source="Bluestaq",
                 spacecraft_id="REF-SPACECRAFT-ID",

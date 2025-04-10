@@ -22,7 +22,7 @@ class TestAirspaceControlOrders:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -38,7 +38,7 @@ class TestAirspaceControlOrders:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -58,7 +58,7 @@ class TestAirspaceControlOrders:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -84,7 +84,7 @@ class TestAsyncAirspaceControlOrders:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -100,7 +100,7 @@ class TestAsyncAirspaceControlOrders:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -120,7 +120,7 @@ class TestAsyncAirspaceControlOrders:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",

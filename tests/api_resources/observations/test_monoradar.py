@@ -22,7 +22,7 @@ class TestMonoradar:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msgfmt": "CAT48",
                     "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "msgtyp": "BCN",
@@ -39,7 +39,7 @@ class TestMonoradar:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msgfmt": "CAT48",
                     "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "msgtyp": "BCN",
@@ -60,7 +60,7 @@ class TestMonoradar:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msgfmt": "CAT48",
                     "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "msgtyp": "BCN",
@@ -87,7 +87,7 @@ class TestAsyncMonoradar:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msgfmt": "CAT48",
                     "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "msgtyp": "BCN",
@@ -104,7 +104,7 @@ class TestAsyncMonoradar:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msgfmt": "CAT48",
                     "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "msgtyp": "BCN",
@@ -125,7 +125,7 @@ class TestAsyncMonoradar:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msgfmt": "CAT48",
                     "msgts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "msgtyp": "BCN",

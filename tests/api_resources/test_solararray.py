@@ -24,7 +24,7 @@ class TestSolararray:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         solararray = client.solararray.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -33,7 +33,7 @@ class TestSolararray:
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         solararray = client.solararray.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
             id="SOLARARRAY-ID",
@@ -44,7 +44,7 @@ class TestSolararray:
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.solararray.with_raw_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -57,7 +57,7 @@ class TestSolararray:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.solararray.with_streaming_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         ) as response:
@@ -73,7 +73,7 @@ class TestSolararray:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         solararray = client.solararray.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -83,7 +83,7 @@ class TestSolararray:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         solararray = client.solararray.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
             body_id="SOLARARRAY-ID",
@@ -95,7 +95,7 @@ class TestSolararray:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.solararray.with_raw_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -109,7 +109,7 @@ class TestSolararray:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.solararray.with_streaming_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         ) as response:
@@ -126,7 +126,7 @@ class TestSolararray:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.solararray.with_raw_response.update(
                 path_id="",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Solar1",
                 source="Bluestaq",
             )
@@ -320,7 +320,7 @@ class TestAsyncSolararray:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararray = await async_client.solararray.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -329,7 +329,7 @@ class TestAsyncSolararray:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararray = await async_client.solararray.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
             id="SOLARARRAY-ID",
@@ -340,7 +340,7 @@ class TestAsyncSolararray:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.solararray.with_raw_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -353,7 +353,7 @@ class TestAsyncSolararray:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.solararray.with_streaming_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         ) as response:
@@ -369,7 +369,7 @@ class TestAsyncSolararray:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararray = await async_client.solararray.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -379,7 +379,7 @@ class TestAsyncSolararray:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararray = await async_client.solararray.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
             body_id="SOLARARRAY-ID",
@@ -391,7 +391,7 @@ class TestAsyncSolararray:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.solararray.with_raw_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         )
@@ -405,7 +405,7 @@ class TestAsyncSolararray:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.solararray.with_streaming_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Solar1",
             source="Bluestaq",
         ) as response:
@@ -422,7 +422,7 @@ class TestAsyncSolararray:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.solararray.with_raw_response.update(
                 path_id="",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Solar1",
                 source="Bluestaq",
             )

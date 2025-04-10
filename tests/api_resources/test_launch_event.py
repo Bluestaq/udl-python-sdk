@@ -22,7 +22,7 @@ class TestLaunchEvent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -36,7 +36,7 @@ class TestLaunchEvent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -54,7 +54,7 @@ class TestLaunchEvent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -78,7 +78,7 @@ class TestAsyncLaunchEvent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -92,7 +92,7 @@ class TestAsyncLaunchEvent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -110,7 +110,7 @@ class TestAsyncLaunchEvent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }

@@ -26,7 +26,7 @@ class TestPoi:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         poi = client.poi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -38,7 +38,7 @@ class TestPoi:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         poi = client.poi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -92,7 +92,7 @@ class TestPoi:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.poi.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -108,7 +108,7 @@ class TestPoi:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.poi.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -190,7 +190,7 @@ class TestPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -206,7 +206,7 @@ class TestPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -226,7 +226,7 @@ class TestPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -248,7 +248,7 @@ class TestPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -264,7 +264,7 @@ class TestPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -284,7 +284,7 @@ class TestPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -405,7 +405,7 @@ class TestAsyncPoi:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         poi = await async_client.poi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -417,7 +417,7 @@ class TestAsyncPoi:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         poi = await async_client.poi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -471,7 +471,7 @@ class TestAsyncPoi:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.poi.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -487,7 +487,7 @@ class TestAsyncPoi:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.poi.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="POI_NAME",
             poiid="POI-ID",
             source="Bluestaq",
@@ -569,7 +569,7 @@ class TestAsyncPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -585,7 +585,7 @@ class TestAsyncPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -605,7 +605,7 @@ class TestAsyncPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -627,7 +627,7 @@ class TestAsyncPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -643,7 +643,7 @@ class TestAsyncPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",
@@ -663,7 +663,7 @@ class TestAsyncPoi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "POI_NAME",
                     "poiid": "POI-ID",
                     "source": "Bluestaq",

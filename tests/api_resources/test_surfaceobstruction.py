@@ -25,7 +25,7 @@ class TestSurfaceobstruction:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestSurfaceobstruction:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
             id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -58,7 +58,7 @@ class TestSurfaceobstruction:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.surfaceobstruction.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -72,7 +72,7 @@ class TestSurfaceobstruction:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.surfaceobstruction.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         ) as response:
@@ -89,7 +89,7 @@ class TestSurfaceobstruction:
         surfaceobstruction = client.surfaceobstruction.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -100,7 +100,7 @@ class TestSurfaceobstruction:
         surfaceobstruction = client.surfaceobstruction.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
             body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -124,7 +124,7 @@ class TestSurfaceobstruction:
         response = client.surfaceobstruction.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -139,7 +139,7 @@ class TestSurfaceobstruction:
         with client.surfaceobstruction.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         ) as response:
@@ -157,7 +157,7 @@ class TestSurfaceobstruction:
             client.surfaceobstruction.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
                 source="Bluestaq",
             )
@@ -256,7 +256,7 @@ class TestSurfaceobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
                     "source": "Bluestaq",
                 }
@@ -270,7 +270,7 @@ class TestSurfaceobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
                     "source": "Bluestaq",
                 }
@@ -288,7 +288,7 @@ class TestSurfaceobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
                     "source": "Bluestaq",
                 }
@@ -404,7 +404,7 @@ class TestAsyncSurfaceobstruction:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -414,7 +414,7 @@ class TestAsyncSurfaceobstruction:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
             id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -437,7 +437,7 @@ class TestAsyncSurfaceobstruction:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.surfaceobstruction.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -451,7 +451,7 @@ class TestAsyncSurfaceobstruction:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.surfaceobstruction.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         ) as response:
@@ -468,7 +468,7 @@ class TestAsyncSurfaceobstruction:
         surfaceobstruction = await async_client.surfaceobstruction.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -479,7 +479,7 @@ class TestAsyncSurfaceobstruction:
         surfaceobstruction = await async_client.surfaceobstruction.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
             body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -503,7 +503,7 @@ class TestAsyncSurfaceobstruction:
         response = await async_client.surfaceobstruction.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         )
@@ -518,7 +518,7 @@ class TestAsyncSurfaceobstruction:
         async with async_client.surfaceobstruction.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
             source="Bluestaq",
         ) as response:
@@ -536,7 +536,7 @@ class TestAsyncSurfaceobstruction:
             await async_client.surfaceobstruction.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
                 source="Bluestaq",
             )
@@ -635,7 +635,7 @@ class TestAsyncSurfaceobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
                     "source": "Bluestaq",
                 }
@@ -649,7 +649,7 @@ class TestAsyncSurfaceobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
                     "source": "Bluestaq",
                 }
@@ -667,7 +667,7 @@ class TestAsyncSurfaceobstruction:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
                     "source": "Bluestaq",
                 }

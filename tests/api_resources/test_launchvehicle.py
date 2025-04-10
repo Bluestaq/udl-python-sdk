@@ -25,7 +25,7 @@ class TestLaunchvehicle:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         launchvehicle = client.launchvehicle.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestLaunchvehicle:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchvehicle = client.launchvehicle.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
             id="LAUNCHVEHICLE-ID",
@@ -48,7 +48,7 @@ class TestLaunchvehicle:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.launchvehicle.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -62,7 +62,7 @@ class TestLaunchvehicle:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.launchvehicle.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         ) as response:
@@ -79,7 +79,7 @@ class TestLaunchvehicle:
         launchvehicle = client.launchvehicle.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -90,7 +90,7 @@ class TestLaunchvehicle:
         launchvehicle = client.launchvehicle.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
             body_id="LAUNCHVEHICLE-ID",
@@ -104,7 +104,7 @@ class TestLaunchvehicle:
         response = client.launchvehicle.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -119,7 +119,7 @@ class TestLaunchvehicle:
         with client.launchvehicle.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         ) as response:
@@ -137,7 +137,7 @@ class TestLaunchvehicle:
             client.launchvehicle.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example-name",
                 source="Bluestaq",
             )
@@ -332,7 +332,7 @@ class TestAsyncLaunchvehicle:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicle = await async_client.launchvehicle.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -342,7 +342,7 @@ class TestAsyncLaunchvehicle:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicle = await async_client.launchvehicle.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
             id="LAUNCHVEHICLE-ID",
@@ -355,7 +355,7 @@ class TestAsyncLaunchvehicle:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchvehicle.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -369,7 +369,7 @@ class TestAsyncLaunchvehicle:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchvehicle.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         ) as response:
@@ -386,7 +386,7 @@ class TestAsyncLaunchvehicle:
         launchvehicle = await async_client.launchvehicle.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -397,7 +397,7 @@ class TestAsyncLaunchvehicle:
         launchvehicle = await async_client.launchvehicle.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
             body_id="LAUNCHVEHICLE-ID",
@@ -411,7 +411,7 @@ class TestAsyncLaunchvehicle:
         response = await async_client.launchvehicle.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         )
@@ -426,7 +426,7 @@ class TestAsyncLaunchvehicle:
         async with async_client.launchvehicle.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example-name",
             source="Bluestaq",
         ) as response:
@@ -444,7 +444,7 @@ class TestAsyncLaunchvehicle:
             await async_client.launchvehicle.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example-name",
                 source="Bluestaq",
             )

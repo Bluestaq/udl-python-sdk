@@ -26,7 +26,7 @@ class TestManifoldelset:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         manifoldelset = client.manifoldelset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -38,7 +38,7 @@ class TestManifoldelset:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifoldelset = client.manifoldelset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -66,7 +66,7 @@ class TestManifoldelset:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.manifoldelset.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -82,7 +82,7 @@ class TestManifoldelset:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.manifoldelset.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -101,7 +101,7 @@ class TestManifoldelset:
         manifoldelset = client.manifoldelset.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -114,7 +114,7 @@ class TestManifoldelset:
         manifoldelset = client.manifoldelset.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -143,7 +143,7 @@ class TestManifoldelset:
         response = client.manifoldelset.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -160,7 +160,7 @@ class TestManifoldelset:
         with client.manifoldelset.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -180,7 +180,7 @@ class TestManifoldelset:
             client.manifoldelset.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
                 id_manifold="REF-MANIFOLD-ID",
                 source="Bluestaq",
@@ -298,7 +298,7 @@ class TestManifoldelset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "id_manifold": "REF-MANIFOLD-ID",
                     "source": "Bluestaq",
@@ -449,7 +449,7 @@ class TestAsyncManifoldelset:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifoldelset = await async_client.manifoldelset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -461,7 +461,7 @@ class TestAsyncManifoldelset:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifoldelset = await async_client.manifoldelset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -489,7 +489,7 @@ class TestAsyncManifoldelset:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.manifoldelset.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -505,7 +505,7 @@ class TestAsyncManifoldelset:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.manifoldelset.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -524,7 +524,7 @@ class TestAsyncManifoldelset:
         manifoldelset = await async_client.manifoldelset.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -537,7 +537,7 @@ class TestAsyncManifoldelset:
         manifoldelset = await async_client.manifoldelset.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -566,7 +566,7 @@ class TestAsyncManifoldelset:
         response = await async_client.manifoldelset.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -583,7 +583,7 @@ class TestAsyncManifoldelset:
         async with async_client.manifoldelset.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id_manifold="REF-MANIFOLD-ID",
             source="Bluestaq",
@@ -603,7 +603,7 @@ class TestAsyncManifoldelset:
             await async_client.manifoldelset.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 epoch=parse_datetime("2021-01-01T01:01:01.123456Z"),
                 id_manifold="REF-MANIFOLD-ID",
                 source="Bluestaq",
@@ -721,7 +721,7 @@ class TestAsyncManifoldelset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "epoch": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "id_manifold": "REF-MANIFOLD-ID",
                     "source": "Bluestaq",

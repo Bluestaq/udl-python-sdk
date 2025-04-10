@@ -25,7 +25,7 @@ class TestBeamContours:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -36,7 +36,7 @@ class TestBeamContours:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -58,7 +58,7 @@ class TestBeamContours:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.beam_contours.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -73,7 +73,7 @@ class TestBeamContours:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.beam_contours.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -129,7 +129,7 @@ class TestBeamContours:
         beam_contour = client.beam_contours.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -141,7 +141,7 @@ class TestBeamContours:
         beam_contour = client.beam_contours.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -164,7 +164,7 @@ class TestBeamContours:
         response = client.beam_contours.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -180,7 +180,7 @@ class TestBeamContours:
         with client.beam_contours.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -199,7 +199,7 @@ class TestBeamContours:
             client.beam_contours.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_beam="REF-BEAM-ID",
                 source="Bluestaq",
                 type="BORESIGHT",
@@ -311,7 +311,7 @@ class TestBeamContours:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_beam": "REF-BEAM-ID",
                     "source": "Bluestaq",
                     "type": "BORESIGHT",
@@ -326,7 +326,7 @@ class TestBeamContours:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_beam": "REF-BEAM-ID",
                     "source": "Bluestaq",
                     "type": "BORESIGHT",
@@ -345,7 +345,7 @@ class TestBeamContours:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_beam": "REF-BEAM-ID",
                     "source": "Bluestaq",
                     "type": "BORESIGHT",
@@ -427,7 +427,7 @@ class TestAsyncBeamContours:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -438,7 +438,7 @@ class TestAsyncBeamContours:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -460,7 +460,7 @@ class TestAsyncBeamContours:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.beam_contours.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -475,7 +475,7 @@ class TestAsyncBeamContours:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.beam_contours.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -531,7 +531,7 @@ class TestAsyncBeamContours:
         beam_contour = await async_client.beam_contours.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -543,7 +543,7 @@ class TestAsyncBeamContours:
         beam_contour = await async_client.beam_contours.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -566,7 +566,7 @@ class TestAsyncBeamContours:
         response = await async_client.beam_contours.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -582,7 +582,7 @@ class TestAsyncBeamContours:
         async with async_client.beam_contours.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_beam="REF-BEAM-ID",
             source="Bluestaq",
             type="BORESIGHT",
@@ -601,7 +601,7 @@ class TestAsyncBeamContours:
             await async_client.beam_contours.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_beam="REF-BEAM-ID",
                 source="Bluestaq",
                 type="BORESIGHT",
@@ -713,7 +713,7 @@ class TestAsyncBeamContours:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_beam": "REF-BEAM-ID",
                     "source": "Bluestaq",
                     "type": "BORESIGHT",
@@ -728,7 +728,7 @@ class TestAsyncBeamContours:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_beam": "REF-BEAM-ID",
                     "source": "Bluestaq",
                     "type": "BORESIGHT",
@@ -747,7 +747,7 @@ class TestAsyncBeamContours:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_beam": "REF-BEAM-ID",
                     "source": "Bluestaq",
                     "type": "BORESIGHT",

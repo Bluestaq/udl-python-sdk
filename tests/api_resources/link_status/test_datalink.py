@@ -25,7 +25,7 @@ class TestDatalink:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         datalink = client.link_status.datalink.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -37,7 +37,7 @@ class TestDatalink:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         datalink = client.link_status.datalink.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -170,7 +170,7 @@ class TestDatalink:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.link_status.datalink.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -186,7 +186,7 @@ class TestDatalink:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.link_status.datalink.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -268,7 +268,7 @@ class TestDatalink:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -284,7 +284,7 @@ class TestDatalink:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -304,7 +304,7 @@ class TestDatalink:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -387,7 +387,7 @@ class TestAsyncDatalink:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         datalink = await async_client.link_status.datalink.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -399,7 +399,7 @@ class TestAsyncDatalink:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         datalink = await async_client.link_status.datalink.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -532,7 +532,7 @@ class TestAsyncDatalink:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.link_status.datalink.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -548,7 +548,7 @@ class TestAsyncDatalink:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.link_status.datalink.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_ex_name="DESERT WIND",
             originator="USCENTCOM",
             source="Bluestaq",
@@ -630,7 +630,7 @@ class TestAsyncDatalink:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -646,7 +646,7 @@ class TestAsyncDatalink:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",
@@ -666,7 +666,7 @@ class TestAsyncDatalink:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_ex_name": "DESERT WIND",
                     "originator": "USCENTCOM",
                     "source": "Bluestaq",

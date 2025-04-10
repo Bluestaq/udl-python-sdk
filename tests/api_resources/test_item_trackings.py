@@ -26,7 +26,7 @@ class TestItemTrackings:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         item_tracking = client.item_trackings.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -38,7 +38,7 @@ class TestItemTrackings:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         item_tracking = client.item_trackings.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -62,7 +62,7 @@ class TestItemTrackings:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.item_trackings.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -78,7 +78,7 @@ class TestItemTrackings:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.item_trackings.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -198,7 +198,7 @@ class TestItemTrackings:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "scan_code": "ABC1234",
                     "scanner_id": "2051M",
                     "source": "Bluestaq",
@@ -214,7 +214,7 @@ class TestItemTrackings:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "scan_code": "ABC1234",
                     "scanner_id": "2051M",
                     "source": "Bluestaq",
@@ -234,7 +234,7 @@ class TestItemTrackings:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "scan_code": "ABC1234",
                     "scanner_id": "2051M",
                     "source": "Bluestaq",
@@ -355,7 +355,7 @@ class TestAsyncItemTrackings:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         item_tracking = await async_client.item_trackings.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -367,7 +367,7 @@ class TestAsyncItemTrackings:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         item_tracking = await async_client.item_trackings.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -391,7 +391,7 @@ class TestAsyncItemTrackings:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.item_trackings.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -407,7 +407,7 @@ class TestAsyncItemTrackings:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.item_trackings.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             scan_code="ABC1234",
             scanner_id="2051M",
             source="Bluestaq",
@@ -527,7 +527,7 @@ class TestAsyncItemTrackings:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "scan_code": "ABC1234",
                     "scanner_id": "2051M",
                     "source": "Bluestaq",
@@ -543,7 +543,7 @@ class TestAsyncItemTrackings:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "scan_code": "ABC1234",
                     "scanner_id": "2051M",
                     "source": "Bluestaq",
@@ -563,7 +563,7 @@ class TestAsyncItemTrackings:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "scan_code": "ABC1234",
                     "scanner_id": "2051M",
                     "source": "Bluestaq",

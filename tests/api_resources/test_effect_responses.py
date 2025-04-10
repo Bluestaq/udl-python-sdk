@@ -26,7 +26,7 @@ class TestEffectResponses:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
         )
@@ -36,7 +36,7 @@ class TestEffectResponses:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
             id="EFFECTRESPONSE-ID",
@@ -99,7 +99,7 @@ class TestEffectResponses:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.effect_responses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
         )
@@ -113,7 +113,7 @@ class TestEffectResponses:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.effect_responses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
         ) as response:
@@ -231,7 +231,7 @@ class TestEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -245,7 +245,7 @@ class TestEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -263,7 +263,7 @@ class TestEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -283,7 +283,7 @@ class TestEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -297,7 +297,7 @@ class TestEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -315,7 +315,7 @@ class TestEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -396,7 +396,7 @@ class TestAsyncEffectResponses:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
         )
@@ -406,7 +406,7 @@ class TestAsyncEffectResponses:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
             id="EFFECTRESPONSE-ID",
@@ -469,7 +469,7 @@ class TestAsyncEffectResponses:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.effect_responses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
         )
@@ -483,7 +483,7 @@ class TestAsyncEffectResponses:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.effect_responses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="COA",
         ) as response:
@@ -601,7 +601,7 @@ class TestAsyncEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -615,7 +615,7 @@ class TestAsyncEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -633,7 +633,7 @@ class TestAsyncEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -653,7 +653,7 @@ class TestAsyncEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -667,7 +667,7 @@ class TestAsyncEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }
@@ -685,7 +685,7 @@ class TestAsyncEffectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "COA",
                 }

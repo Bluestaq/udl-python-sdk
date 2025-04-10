@@ -25,7 +25,7 @@ class TestLaunchsitedetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         launchsitedetail = client.launchsitedetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestLaunchsitedetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchsitedetail = client.launchsitedetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
             id="LAUNCHSITEDETAILS-ID",
@@ -45,7 +45,7 @@ class TestLaunchsitedetails:
             launch_group="Example-group-name",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -63,7 +63,7 @@ class TestLaunchsitedetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.launchsitedetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -77,7 +77,7 @@ class TestLaunchsitedetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.launchsitedetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         ) as response:
@@ -94,7 +94,7 @@ class TestLaunchsitedetails:
         launchsitedetail = client.launchsitedetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -105,7 +105,7 @@ class TestLaunchsitedetails:
         launchsitedetail = client.launchsitedetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
             body_id="LAUNCHSITEDETAILS-ID",
@@ -115,7 +115,7 @@ class TestLaunchsitedetails:
             launch_group="Example-group-name",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -134,7 +134,7 @@ class TestLaunchsitedetails:
         response = client.launchsitedetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -149,7 +149,7 @@ class TestLaunchsitedetails:
         with client.launchsitedetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         ) as response:
@@ -167,7 +167,7 @@ class TestLaunchsitedetails:
             client.launchsitedetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_launch_site="LAUNCHSITE-ID",
                 source="Bluestaq",
             )
@@ -312,7 +312,7 @@ class TestAsyncLaunchsitedetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsitedetail = await async_client.launchsitedetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -322,7 +322,7 @@ class TestAsyncLaunchsitedetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsitedetail = await async_client.launchsitedetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
             id="LAUNCHSITEDETAILS-ID",
@@ -332,7 +332,7 @@ class TestAsyncLaunchsitedetails:
             launch_group="Example-group-name",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -350,7 +350,7 @@ class TestAsyncLaunchsitedetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchsitedetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -364,7 +364,7 @@ class TestAsyncLaunchsitedetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchsitedetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         ) as response:
@@ -381,7 +381,7 @@ class TestAsyncLaunchsitedetails:
         launchsitedetail = await async_client.launchsitedetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -392,7 +392,7 @@ class TestAsyncLaunchsitedetails:
         launchsitedetail = await async_client.launchsitedetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
             body_id="LAUNCHSITEDETAILS-ID",
@@ -402,7 +402,7 @@ class TestAsyncLaunchsitedetails:
             launch_group="Example-group-name",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -421,7 +421,7 @@ class TestAsyncLaunchsitedetails:
         response = await async_client.launchsitedetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         )
@@ -436,7 +436,7 @@ class TestAsyncLaunchsitedetails:
         async with async_client.launchsitedetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_site="LAUNCHSITE-ID",
             source="Bluestaq",
         ) as response:
@@ -454,7 +454,7 @@ class TestAsyncLaunchsitedetails:
             await async_client.launchsitedetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_launch_site="LAUNCHSITE-ID",
                 source="Bluestaq",
             )

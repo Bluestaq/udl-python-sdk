@@ -26,7 +26,7 @@ class TestBuses:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestBuses:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             id="BUS-ID",
@@ -54,10 +54,10 @@ class TestBuses:
             description="Dedicated small spacecraft bus.",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -65,7 +65,7 @@ class TestBuses:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -77,11 +77,11 @@ class TestBuses:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -92,7 +92,7 @@ class TestBuses:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -143,7 +143,7 @@ class TestBuses:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.buses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -157,7 +157,7 @@ class TestBuses:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.buses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -212,7 +212,7 @@ class TestBuses:
         bus = client.buses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -223,7 +223,7 @@ class TestBuses:
         bus = client.buses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             body_id="BUS-ID",
@@ -241,10 +241,10 @@ class TestBuses:
             description="Dedicated small spacecraft bus.",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -252,7 +252,7 @@ class TestBuses:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -264,11 +264,11 @@ class TestBuses:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -279,7 +279,7 @@ class TestBuses:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -331,7 +331,7 @@ class TestBuses:
         response = client.buses.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -346,7 +346,7 @@ class TestBuses:
         with client.buses.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -364,7 +364,7 @@ class TestBuses:
             client.buses.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example name",
                 source="Bluestaq",
             )
@@ -521,7 +521,7 @@ class TestAsyncBuses:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -531,7 +531,7 @@ class TestAsyncBuses:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             id="BUS-ID",
@@ -549,10 +549,10 @@ class TestAsyncBuses:
             description="Dedicated small spacecraft bus.",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -560,7 +560,7 @@ class TestAsyncBuses:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -572,11 +572,11 @@ class TestAsyncBuses:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -587,7 +587,7 @@ class TestAsyncBuses:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -638,7 +638,7 @@ class TestAsyncBuses:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.buses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -652,7 +652,7 @@ class TestAsyncBuses:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.buses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -707,7 +707,7 @@ class TestAsyncBuses:
         bus = await async_client.buses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -718,7 +718,7 @@ class TestAsyncBuses:
         bus = await async_client.buses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             body_id="BUS-ID",
@@ -736,10 +736,10 @@ class TestAsyncBuses:
             description="Dedicated small spacecraft bus.",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -747,7 +747,7 @@ class TestAsyncBuses:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -759,11 +759,11 @@ class TestAsyncBuses:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -774,7 +774,7 @@ class TestAsyncBuses:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -826,7 +826,7 @@ class TestAsyncBuses:
         response = await async_client.buses.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -841,7 +841,7 @@ class TestAsyncBuses:
         async with async_client.buses.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -859,7 +859,7 @@ class TestAsyncBuses:
             await async_client.buses.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example name",
                 source="Bluestaq",
             )

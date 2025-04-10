@@ -24,7 +24,7 @@ class TestAntennaDetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -34,7 +34,7 @@ class TestAntennaDetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
             id="ANTENNADETAILS-ID",
@@ -62,7 +62,7 @@ class TestAntennaDetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbit.antenna_details.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -76,7 +76,7 @@ class TestAntennaDetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbit.antenna_details.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         ) as response:
@@ -131,7 +131,7 @@ class TestAntennaDetails:
         antenna_detail = client.onorbit.antenna_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -142,7 +142,7 @@ class TestAntennaDetails:
         antenna_detail = client.onorbit.antenna_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
             body_id="ANTENNADETAILS-ID",
@@ -171,7 +171,7 @@ class TestAntennaDetails:
         response = client.onorbit.antenna_details.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -186,7 +186,7 @@ class TestAntennaDetails:
         with client.onorbit.antenna_details.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         ) as response:
@@ -204,7 +204,7 @@ class TestAntennaDetails:
             client.onorbit.antenna_details.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_antenna="ANTENNA-ID",
                 source="Bluestaq",
             )
@@ -280,7 +280,7 @@ class TestAsyncAntennaDetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -290,7 +290,7 @@ class TestAsyncAntennaDetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
             id="ANTENNADETAILS-ID",
@@ -318,7 +318,7 @@ class TestAsyncAntennaDetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbit.antenna_details.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -332,7 +332,7 @@ class TestAsyncAntennaDetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbit.antenna_details.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         ) as response:
@@ -387,7 +387,7 @@ class TestAsyncAntennaDetails:
         antenna_detail = await async_client.onorbit.antenna_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -398,7 +398,7 @@ class TestAsyncAntennaDetails:
         antenna_detail = await async_client.onorbit.antenna_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
             body_id="ANTENNADETAILS-ID",
@@ -427,7 +427,7 @@ class TestAsyncAntennaDetails:
         response = await async_client.onorbit.antenna_details.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         )
@@ -442,7 +442,7 @@ class TestAsyncAntennaDetails:
         async with async_client.onorbit.antenna_details.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             source="Bluestaq",
         ) as response:
@@ -460,7 +460,7 @@ class TestAsyncAntennaDetails:
             await async_client.onorbit.antenna_details.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_antenna="ANTENNA-ID",
                 source="Bluestaq",
             )

@@ -26,7 +26,7 @@ class TestComm:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -36,17 +36,17 @@ class TestComm:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
             id="COMM-ID",
             description="Description for comm A",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -54,7 +54,7 @@ class TestComm:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -66,11 +66,11 @@ class TestComm:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -81,7 +81,7 @@ class TestComm:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -98,7 +98,7 @@ class TestComm:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.comm.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -112,7 +112,7 @@ class TestComm:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.comm.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         ) as response:
@@ -167,7 +167,7 @@ class TestComm:
         comm = client.comm.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -178,7 +178,7 @@ class TestComm:
         comm = client.comm.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
             body_id="COMM-ID",
@@ -193,7 +193,7 @@ class TestComm:
         response = client.comm.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -208,7 +208,7 @@ class TestComm:
         with client.comm.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         ) as response:
@@ -226,7 +226,7 @@ class TestComm:
             client.comm.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="DSCS II C-7-COMM Payload",
                 source="Bluestaq",
             )
@@ -383,7 +383,7 @@ class TestAsyncComm:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -393,17 +393,17 @@ class TestAsyncComm:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
             id="COMM-ID",
             description="Description for comm A",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -411,7 +411,7 @@ class TestAsyncComm:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -423,11 +423,11 @@ class TestAsyncComm:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -438,7 +438,7 @@ class TestAsyncComm:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -455,7 +455,7 @@ class TestAsyncComm:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.comm.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -469,7 +469,7 @@ class TestAsyncComm:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.comm.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         ) as response:
@@ -524,7 +524,7 @@ class TestAsyncComm:
         comm = await async_client.comm.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -535,7 +535,7 @@ class TestAsyncComm:
         comm = await async_client.comm.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
             body_id="COMM-ID",
@@ -550,7 +550,7 @@ class TestAsyncComm:
         response = await async_client.comm.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         )
@@ -565,7 +565,7 @@ class TestAsyncComm:
         async with async_client.comm.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="DSCS II C-7-COMM Payload",
             source="Bluestaq",
         ) as response:
@@ -583,7 +583,7 @@ class TestAsyncComm:
             await async_client.comm.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="DSCS II C-7-COMM Payload",
                 source="Bluestaq",
             )

@@ -24,7 +24,7 @@ class TestSolararraydetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         solararraydetail = client.solararraydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -34,7 +34,7 @@ class TestSolararraydetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         solararraydetail = client.solararraydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
             id="SOLARARRAYDETAILS-ID",
@@ -54,7 +54,7 @@ class TestSolararraydetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.solararraydetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -68,7 +68,7 @@ class TestSolararraydetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.solararraydetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         ) as response:
@@ -85,7 +85,7 @@ class TestSolararraydetails:
         solararraydetail = client.solararraydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -96,7 +96,7 @@ class TestSolararraydetails:
         solararraydetail = client.solararraydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
             body_id="SOLARARRAYDETAILS-ID",
@@ -117,7 +117,7 @@ class TestSolararraydetails:
         response = client.solararraydetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -132,7 +132,7 @@ class TestSolararraydetails:
         with client.solararraydetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         ) as response:
@@ -150,7 +150,7 @@ class TestSolararraydetails:
             client.solararraydetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
             )
@@ -273,7 +273,7 @@ class TestAsyncSolararraydetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararraydetail = await async_client.solararraydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -283,7 +283,7 @@ class TestAsyncSolararraydetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararraydetail = await async_client.solararraydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
             id="SOLARARRAYDETAILS-ID",
@@ -303,7 +303,7 @@ class TestAsyncSolararraydetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.solararraydetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -317,7 +317,7 @@ class TestAsyncSolararraydetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.solararraydetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         ) as response:
@@ -334,7 +334,7 @@ class TestAsyncSolararraydetails:
         solararraydetail = await async_client.solararraydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -345,7 +345,7 @@ class TestAsyncSolararraydetails:
         solararraydetail = await async_client.solararraydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
             body_id="SOLARARRAYDETAILS-ID",
@@ -366,7 +366,7 @@ class TestAsyncSolararraydetails:
         response = await async_client.solararraydetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         )
@@ -381,7 +381,7 @@ class TestAsyncSolararraydetails:
         async with async_client.solararraydetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
         ) as response:
@@ -399,7 +399,7 @@ class TestAsyncSolararraydetails:
             await async_client.solararraydetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
             )

@@ -26,7 +26,7 @@ class TestSeradataspacecraftdetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         seradataspacecraftdetail = client.seradataspacecraftdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestSeradataspacecraftdetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataspacecraftdetail = client.seradataspacecraftdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
             id="SERADATASPACECRAFTDETAILS-ID",
@@ -134,7 +134,7 @@ class TestSeradataspacecraftdetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.seradataspacecraftdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -148,7 +148,7 @@ class TestSeradataspacecraftdetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.seradataspacecraftdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         ) as response:
@@ -165,7 +165,7 @@ class TestSeradataspacecraftdetails:
         seradataspacecraftdetail = client.seradataspacecraftdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -176,7 +176,7 @@ class TestSeradataspacecraftdetails:
         seradataspacecraftdetail = client.seradataspacecraftdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
             body_id="SERADATASPACECRAFTDETAILS-ID",
@@ -275,7 +275,7 @@ class TestSeradataspacecraftdetails:
         response = client.seradataspacecraftdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -290,7 +290,7 @@ class TestSeradataspacecraftdetails:
         with client.seradataspacecraftdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         ) as response:
@@ -308,7 +308,7 @@ class TestSeradataspacecraftdetails:
             client.seradataspacecraftdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="name",
                 source="Bluestaq",
             )
@@ -503,7 +503,7 @@ class TestAsyncSeradataspacecraftdetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -513,7 +513,7 @@ class TestAsyncSeradataspacecraftdetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
             id="SERADATASPACECRAFTDETAILS-ID",
@@ -611,7 +611,7 @@ class TestAsyncSeradataspacecraftdetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataspacecraftdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -625,7 +625,7 @@ class TestAsyncSeradataspacecraftdetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradataspacecraftdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         ) as response:
@@ -642,7 +642,7 @@ class TestAsyncSeradataspacecraftdetails:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -653,7 +653,7 @@ class TestAsyncSeradataspacecraftdetails:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
             body_id="SERADATASPACECRAFTDETAILS-ID",
@@ -752,7 +752,7 @@ class TestAsyncSeradataspacecraftdetails:
         response = await async_client.seradataspacecraftdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         )
@@ -767,7 +767,7 @@ class TestAsyncSeradataspacecraftdetails:
         async with async_client.seradataspacecraftdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="name",
             source="Bluestaq",
         ) as response:
@@ -785,7 +785,7 @@ class TestAsyncSeradataspacecraftdetails:
             await async_client.seradataspacecraftdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="name",
                 source="Bluestaq",
             )

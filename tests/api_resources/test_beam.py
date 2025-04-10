@@ -26,7 +26,7 @@ class TestBeam:
         beam = client.beam.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert beam is None
@@ -36,7 +36,7 @@ class TestBeam:
         beam = client.beam.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="BEAM-ID",
             notes="Example notes",
@@ -49,7 +49,7 @@ class TestBeam:
         response = client.beam.with_raw_response.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -63,7 +63,7 @@ class TestBeam:
         with client.beam.with_streaming_response.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -118,7 +118,7 @@ class TestBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert beam is None
@@ -129,7 +129,7 @@ class TestBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="BEAM-ID",
             notes="Example notes",
@@ -143,7 +143,7 @@ class TestBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -158,7 +158,7 @@ class TestBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -176,7 +176,7 @@ class TestBeam:
                 path_id="",
                 beam_name="BEAMNAME-ID",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -333,7 +333,7 @@ class TestAsyncBeam:
         beam = await async_client.beam.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert beam is None
@@ -343,7 +343,7 @@ class TestAsyncBeam:
         beam = await async_client.beam.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="BEAM-ID",
             notes="Example notes",
@@ -356,7 +356,7 @@ class TestAsyncBeam:
         response = await async_client.beam.with_raw_response.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -370,7 +370,7 @@ class TestAsyncBeam:
         async with async_client.beam.with_streaming_response.create(
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -425,7 +425,7 @@ class TestAsyncBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert beam is None
@@ -436,7 +436,7 @@ class TestAsyncBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="BEAM-ID",
             notes="Example notes",
@@ -450,7 +450,7 @@ class TestAsyncBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -465,7 +465,7 @@ class TestAsyncBeam:
             path_id="id",
             beam_name="BEAMNAME-ID",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -483,7 +483,7 @@ class TestAsyncBeam:
                 path_id="",
                 beam_name="BEAMNAME-ID",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 

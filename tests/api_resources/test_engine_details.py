@@ -21,7 +21,7 @@ class TestEngineDetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         engine_detail = client.engine_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -31,7 +31,7 @@ class TestEngineDetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         engine_detail = client.engine_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
             id="ENGINEDETAILS-ID",
@@ -58,7 +58,7 @@ class TestEngineDetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.engine_details.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -72,7 +72,7 @@ class TestEngineDetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.engine_details.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         ) as response:
@@ -127,7 +127,7 @@ class TestEngineDetails:
         engine_detail = client.engine_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -138,7 +138,7 @@ class TestEngineDetails:
         engine_detail = client.engine_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
             body_id="ENGINEDETAILS-ID",
@@ -166,7 +166,7 @@ class TestEngineDetails:
         response = client.engine_details.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -181,7 +181,7 @@ class TestEngineDetails:
         with client.engine_details.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         ) as response:
@@ -199,7 +199,7 @@ class TestEngineDetails:
             client.engine_details.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_engine="ENGINE-ID",
                 source="Bluestaq",
             )
@@ -250,7 +250,7 @@ class TestAsyncEngineDetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine_detail = await async_client.engine_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -260,7 +260,7 @@ class TestAsyncEngineDetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine_detail = await async_client.engine_details.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
             id="ENGINEDETAILS-ID",
@@ -287,7 +287,7 @@ class TestAsyncEngineDetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.engine_details.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -301,7 +301,7 @@ class TestAsyncEngineDetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.engine_details.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         ) as response:
@@ -356,7 +356,7 @@ class TestAsyncEngineDetails:
         engine_detail = await async_client.engine_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -367,7 +367,7 @@ class TestAsyncEngineDetails:
         engine_detail = await async_client.engine_details.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
             body_id="ENGINEDETAILS-ID",
@@ -395,7 +395,7 @@ class TestAsyncEngineDetails:
         response = await async_client.engine_details.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         )
@@ -410,7 +410,7 @@ class TestAsyncEngineDetails:
         async with async_client.engine_details.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             source="Bluestaq",
         ) as response:
@@ -428,7 +428,7 @@ class TestAsyncEngineDetails:
             await async_client.engine_details.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_engine="ENGINE-ID",
                 source="Bluestaq",
             )

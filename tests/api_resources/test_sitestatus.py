@@ -26,7 +26,7 @@ class TestSitestatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sitestatus = client.sitestatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -36,19 +36,19 @@ class TestSitestatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sitestatus = client.sitestatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
             id="SITESTATUS-ID",
             cat="COLD",
             cold_inventory=1,
             comm_impairment="commImpairment",
-            cpcon="1",
-            eoc="COLD",
-            fpcon="NORMAL",
+            cpcon="4",
+            eoc="WARM",
+            fpcon="BRAVO",
             hot_inventory=1,
-            hpcon="0",
-            inst_status="FMC",
+            hpcon="CHARLIE",
+            inst_status="PMC",
             link=["ATDL", "IJMS", "LINK-1"],
             link_status=["AVAILABLE", "DEGRADED", "NOT AVAILABLE"],
             missile=["GMD", "HARPOON", "JAVELIN"],
@@ -76,7 +76,7 @@ class TestSitestatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sitestatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -90,7 +90,7 @@ class TestSitestatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sitestatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         ) as response:
@@ -107,7 +107,7 @@ class TestSitestatus:
         sitestatus = client.sitestatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -118,19 +118,19 @@ class TestSitestatus:
         sitestatus = client.sitestatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
             body_id="SITESTATUS-ID",
             cat="COLD",
             cold_inventory=1,
             comm_impairment="commImpairment",
-            cpcon="1",
-            eoc="COLD",
-            fpcon="NORMAL",
+            cpcon="4",
+            eoc="WARM",
+            fpcon="BRAVO",
             hot_inventory=1,
-            hpcon="0",
-            inst_status="FMC",
+            hpcon="CHARLIE",
+            inst_status="PMC",
             link=["ATDL", "IJMS", "LINK-1"],
             link_status=["AVAILABLE", "DEGRADED", "NOT AVAILABLE"],
             missile=["GMD", "HARPOON", "JAVELIN"],
@@ -159,7 +159,7 @@ class TestSitestatus:
         response = client.sitestatus.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -174,7 +174,7 @@ class TestSitestatus:
         with client.sitestatus.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         ) as response:
@@ -192,7 +192,7 @@ class TestSitestatus:
             client.sitestatus.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
                 source="Bluestaq",
             )
@@ -387,7 +387,7 @@ class TestAsyncSitestatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sitestatus = await async_client.sitestatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -397,19 +397,19 @@ class TestAsyncSitestatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sitestatus = await async_client.sitestatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
             id="SITESTATUS-ID",
             cat="COLD",
             cold_inventory=1,
             comm_impairment="commImpairment",
-            cpcon="1",
-            eoc="COLD",
-            fpcon="NORMAL",
+            cpcon="4",
+            eoc="WARM",
+            fpcon="BRAVO",
             hot_inventory=1,
-            hpcon="0",
-            inst_status="FMC",
+            hpcon="CHARLIE",
+            inst_status="PMC",
             link=["ATDL", "IJMS", "LINK-1"],
             link_status=["AVAILABLE", "DEGRADED", "NOT AVAILABLE"],
             missile=["GMD", "HARPOON", "JAVELIN"],
@@ -437,7 +437,7 @@ class TestAsyncSitestatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sitestatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -451,7 +451,7 @@ class TestAsyncSitestatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sitestatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         ) as response:
@@ -468,7 +468,7 @@ class TestAsyncSitestatus:
         sitestatus = await async_client.sitestatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -479,19 +479,19 @@ class TestAsyncSitestatus:
         sitestatus = await async_client.sitestatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
             body_id="SITESTATUS-ID",
             cat="COLD",
             cold_inventory=1,
             comm_impairment="commImpairment",
-            cpcon="1",
-            eoc="COLD",
-            fpcon="NORMAL",
+            cpcon="4",
+            eoc="WARM",
+            fpcon="BRAVO",
             hot_inventory=1,
-            hpcon="0",
-            inst_status="FMC",
+            hpcon="CHARLIE",
+            inst_status="PMC",
             link=["ATDL", "IJMS", "LINK-1"],
             link_status=["AVAILABLE", "DEGRADED", "NOT AVAILABLE"],
             missile=["GMD", "HARPOON", "JAVELIN"],
@@ -520,7 +520,7 @@ class TestAsyncSitestatus:
         response = await async_client.sitestatus.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         )
@@ -535,7 +535,7 @@ class TestAsyncSitestatus:
         async with async_client.sitestatus.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
             source="Bluestaq",
         ) as response:
@@ -553,7 +553,7 @@ class TestAsyncSitestatus:
             await async_client.sitestatus.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
                 source="Bluestaq",
             )

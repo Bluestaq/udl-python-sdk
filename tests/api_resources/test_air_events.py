@@ -26,7 +26,7 @@ class TestAirEvents:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -36,7 +36,7 @@ class TestAirEvents:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
             id="026dd511-8ba5-47d3-9909-836149f87686",
@@ -133,7 +133,7 @@ class TestAirEvents:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.air_events.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -147,7 +147,7 @@ class TestAirEvents:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.air_events.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         ) as response:
@@ -164,7 +164,7 @@ class TestAirEvents:
         air_event = client.air_events.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -175,7 +175,7 @@ class TestAirEvents:
         air_event = client.air_events.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
             body_id="026dd511-8ba5-47d3-9909-836149f87686",
@@ -273,7 +273,7 @@ class TestAirEvents:
         response = client.air_events.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -288,7 +288,7 @@ class TestAirEvents:
         with client.air_events.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         ) as response:
@@ -306,7 +306,7 @@ class TestAirEvents:
             client.air_events.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 type="FUEL TRANSFER",
             )
@@ -405,7 +405,7 @@ class TestAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -419,7 +419,7 @@ class TestAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -437,7 +437,7 @@ class TestAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -457,7 +457,7 @@ class TestAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -471,7 +471,7 @@ class TestAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -489,7 +489,7 @@ class TestAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -605,7 +605,7 @@ class TestAsyncAirEvents:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -615,7 +615,7 @@ class TestAsyncAirEvents:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
             id="026dd511-8ba5-47d3-9909-836149f87686",
@@ -712,7 +712,7 @@ class TestAsyncAirEvents:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_events.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -726,7 +726,7 @@ class TestAsyncAirEvents:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_events.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         ) as response:
@@ -743,7 +743,7 @@ class TestAsyncAirEvents:
         air_event = await async_client.air_events.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -754,7 +754,7 @@ class TestAsyncAirEvents:
         air_event = await async_client.air_events.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
             body_id="026dd511-8ba5-47d3-9909-836149f87686",
@@ -852,7 +852,7 @@ class TestAsyncAirEvents:
         response = await async_client.air_events.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         )
@@ -867,7 +867,7 @@ class TestAsyncAirEvents:
         async with async_client.air_events.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             type="FUEL TRANSFER",
         ) as response:
@@ -885,7 +885,7 @@ class TestAsyncAirEvents:
             await async_client.air_events.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 type="FUEL TRANSFER",
             )
@@ -984,7 +984,7 @@ class TestAsyncAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -998,7 +998,7 @@ class TestAsyncAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -1016,7 +1016,7 @@ class TestAsyncAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -1036,7 +1036,7 @@ class TestAsyncAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -1050,7 +1050,7 @@ class TestAsyncAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }
@@ -1068,7 +1068,7 @@ class TestAsyncAirEvents:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "type": "FUEL TRANSFER",
                 }

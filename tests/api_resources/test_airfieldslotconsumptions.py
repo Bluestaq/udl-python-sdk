@@ -26,7 +26,7 @@ class TestAirfieldslotconsumptions:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         airfieldslotconsumption = client.airfieldslotconsumptions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -39,7 +39,7 @@ class TestAirfieldslotconsumptions:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfieldslotconsumption = client.airfieldslotconsumptions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -69,7 +69,7 @@ class TestAirfieldslotconsumptions:
             res_reason="Maintenance needed",
             res_tail_number="N702JG",
             res_type="M",
-            status="REQUESTED",
+            status="APPROVED",
             target_time=parse_datetime("2023-01-01T01:01:01.123Z"),
         )
         assert airfieldslotconsumption is None
@@ -78,7 +78,7 @@ class TestAirfieldslotconsumptions:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldslotconsumptions.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -95,7 +95,7 @@ class TestAirfieldslotconsumptions:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.airfieldslotconsumptions.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -153,7 +153,7 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -167,7 +167,7 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -197,7 +197,7 @@ class TestAirfieldslotconsumptions:
             res_reason="Maintenance needed",
             res_tail_number="N702JG",
             res_type="M",
-            status="REQUESTED",
+            status="APPROVED",
             target_time=parse_datetime("2023-01-01T01:01:01.123Z"),
         )
         assert airfieldslotconsumption is None
@@ -207,7 +207,7 @@ class TestAirfieldslotconsumptions:
         response = client.airfieldslotconsumptions.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -225,7 +225,7 @@ class TestAirfieldslotconsumptions:
         with client.airfieldslotconsumptions.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -246,7 +246,7 @@ class TestAirfieldslotconsumptions:
             client.airfieldslotconsumptions.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
                 id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
                 num_aircraft=1,
@@ -406,7 +406,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -419,7 +419,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -449,7 +449,7 @@ class TestAsyncAirfieldslotconsumptions:
             res_reason="Maintenance needed",
             res_tail_number="N702JG",
             res_type="M",
-            status="REQUESTED",
+            status="APPROVED",
             target_time=parse_datetime("2023-01-01T01:01:01.123Z"),
         )
         assert airfieldslotconsumption is None
@@ -458,7 +458,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldslotconsumptions.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -475,7 +475,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfieldslotconsumptions.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -533,7 +533,7 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -547,7 +547,7 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -577,7 +577,7 @@ class TestAsyncAirfieldslotconsumptions:
             res_reason="Maintenance needed",
             res_tail_number="N702JG",
             res_type="M",
-            status="REQUESTED",
+            status="APPROVED",
             target_time=parse_datetime("2023-01-01T01:01:01.123Z"),
         )
         assert airfieldslotconsumption is None
@@ -587,7 +587,7 @@ class TestAsyncAirfieldslotconsumptions:
         response = await async_client.airfieldslotconsumptions.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -605,7 +605,7 @@ class TestAsyncAirfieldslotconsumptions:
         async with async_client.airfieldslotconsumptions.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
@@ -626,7 +626,7 @@ class TestAsyncAirfieldslotconsumptions:
             await async_client.airfieldslotconsumptions.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
                 id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
                 num_aircraft=1,

@@ -22,7 +22,7 @@ class TestAIsObjects:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
@@ -36,7 +36,7 @@ class TestAIsObjects:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
@@ -54,7 +54,7 @@ class TestAIsObjects:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
@@ -78,7 +78,7 @@ class TestAsyncAIsObjects:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
@@ -92,7 +92,7 @@ class TestAsyncAIsObjects:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }
@@ -110,7 +110,7 @@ class TestAsyncAIsObjects:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
                 }

@@ -26,7 +26,7 @@ class TestIr:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         ir = client.ir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -36,17 +36,17 @@ class TestIr:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         ir = client.ir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             id="IR-ID",
             description="Example description",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -54,7 +54,7 @@ class TestIr:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -66,11 +66,11 @@ class TestIr:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -81,7 +81,7 @@ class TestIr:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -98,7 +98,7 @@ class TestIr:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.ir.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -112,7 +112,7 @@ class TestIr:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.ir.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -129,7 +129,7 @@ class TestIr:
         ir = client.ir.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -140,17 +140,17 @@ class TestIr:
         ir = client.ir.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             body_id="IR-ID",
             description="Example description",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -158,7 +158,7 @@ class TestIr:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -170,11 +170,11 @@ class TestIr:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -185,7 +185,7 @@ class TestIr:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -203,7 +203,7 @@ class TestIr:
         response = client.ir.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -218,7 +218,7 @@ class TestIr:
         with client.ir.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -236,7 +236,7 @@ class TestIr:
             client.ir.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example name",
                 source="Bluestaq",
             )
@@ -431,7 +431,7 @@ class TestAsyncIr:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         ir = await async_client.ir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -441,17 +441,17 @@ class TestAsyncIr:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ir = await async_client.ir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             id="IR-ID",
             description="Example description",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -459,7 +459,7 @@ class TestAsyncIr:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -471,11 +471,11 @@ class TestAsyncIr:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -486,7 +486,7 @@ class TestAsyncIr:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -503,7 +503,7 @@ class TestAsyncIr:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.ir.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -517,7 +517,7 @@ class TestAsyncIr:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.ir.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -534,7 +534,7 @@ class TestAsyncIr:
         ir = await async_client.ir.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -545,17 +545,17 @@ class TestAsyncIr:
         ir = await async_client.ir.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
             body_id="IR-ID",
             description="Example description",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -563,7 +563,7 @@ class TestAsyncIr:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -575,11 +575,11 @@ class TestAsyncIr:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -590,7 +590,7 @@ class TestAsyncIr:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -608,7 +608,7 @@ class TestAsyncIr:
         response = await async_client.ir.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         )
@@ -623,7 +623,7 @@ class TestAsyncIr:
         async with async_client.ir.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
         ) as response:
@@ -641,7 +641,7 @@ class TestAsyncIr:
             await async_client.ir.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example name",
                 source="Bluestaq",
             )

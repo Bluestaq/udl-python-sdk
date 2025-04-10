@@ -26,7 +26,7 @@ class TestCollectRequests:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         collect_request = client.collect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -37,7 +37,7 @@ class TestCollectRequests:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         collect_request = client.collect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -53,7 +53,7 @@ class TestCollectRequests:
             el=1.1,
             elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -82,7 +82,7 @@ class TestCollectRequests:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -140,7 +140,7 @@ class TestCollectRequests:
             srch_pattern="SCAN",
             state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -197,7 +197,7 @@ class TestCollectRequests:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -257,7 +257,7 @@ class TestCollectRequests:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.collect_requests.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -272,7 +272,7 @@ class TestCollectRequests:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.collect_requests.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -391,7 +391,7 @@ class TestCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -406,7 +406,7 @@ class TestCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -425,7 +425,7 @@ class TestCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -446,7 +446,7 @@ class TestCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -461,7 +461,7 @@ class TestCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -480,7 +480,7 @@ class TestCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -562,7 +562,7 @@ class TestAsyncCollectRequests:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_request = await async_client.collect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -573,7 +573,7 @@ class TestAsyncCollectRequests:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_request = await async_client.collect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -589,7 +589,7 @@ class TestAsyncCollectRequests:
             el=1.1,
             elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -618,7 +618,7 @@ class TestAsyncCollectRequests:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -676,7 +676,7 @@ class TestAsyncCollectRequests:
             srch_pattern="SCAN",
             state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -733,7 +733,7 @@ class TestAsyncCollectRequests:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -793,7 +793,7 @@ class TestAsyncCollectRequests:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.collect_requests.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -808,7 +808,7 @@ class TestAsyncCollectRequests:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.collect_requests.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             type="DWELL",
@@ -927,7 +927,7 @@ class TestAsyncCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -942,7 +942,7 @@ class TestAsyncCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -961,7 +961,7 @@ class TestAsyncCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -982,7 +982,7 @@ class TestAsyncCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -997,7 +997,7 @@ class TestAsyncCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -1016,7 +1016,7 @@ class TestAsyncCollectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",

@@ -26,7 +26,7 @@ class TestLinkStatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         link_status = client.link_status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -44,7 +44,7 @@ class TestLinkStatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         link_status = client.link_status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -76,7 +76,7 @@ class TestLinkStatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.link_status.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -98,7 +98,7 @@ class TestLinkStatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.link_status.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -298,7 +298,7 @@ class TestAsyncLinkStatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         link_status = await async_client.link_status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -316,7 +316,7 @@ class TestAsyncLinkStatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         link_status = await async_client.link_status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -348,7 +348,7 @@ class TestAsyncLinkStatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.link_status.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",
@@ -370,7 +370,7 @@ class TestAsyncLinkStatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.link_status.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_point1_lat=45.23,
             end_point1_lon=80.23,
             end_point1_name="Example endpoint",

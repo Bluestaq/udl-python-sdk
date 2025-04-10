@@ -25,7 +25,7 @@ class TestOnorbitdetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitdetail = client.onorbitdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestOnorbitdetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitdetail = client.onorbitdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
             id="ONORBITDETAILS-ID",
@@ -87,7 +87,7 @@ class TestOnorbitdetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -101,7 +101,7 @@ class TestOnorbitdetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         ) as response:
@@ -118,7 +118,7 @@ class TestOnorbitdetails:
         onorbitdetail = client.onorbitdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -129,7 +129,7 @@ class TestOnorbitdetails:
         onorbitdetail = client.onorbitdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
             body_id="ONORBITDETAILS-ID",
@@ -182,7 +182,7 @@ class TestOnorbitdetails:
         response = client.onorbitdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -197,7 +197,7 @@ class TestOnorbitdetails:
         with client.onorbitdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         ) as response:
@@ -215,7 +215,7 @@ class TestOnorbitdetails:
             client.onorbitdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_on_orbit="REF-ONORBIT-ID",
                 source="Bluestaq",
             )
@@ -329,7 +329,7 @@ class TestAsyncOnorbitdetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitdetail = await async_client.onorbitdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -339,7 +339,7 @@ class TestAsyncOnorbitdetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitdetail = await async_client.onorbitdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
             id="ONORBITDETAILS-ID",
@@ -391,7 +391,7 @@ class TestAsyncOnorbitdetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -405,7 +405,7 @@ class TestAsyncOnorbitdetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         ) as response:
@@ -422,7 +422,7 @@ class TestAsyncOnorbitdetails:
         onorbitdetail = await async_client.onorbitdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -433,7 +433,7 @@ class TestAsyncOnorbitdetails:
         onorbitdetail = await async_client.onorbitdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
             body_id="ONORBITDETAILS-ID",
@@ -486,7 +486,7 @@ class TestAsyncOnorbitdetails:
         response = await async_client.onorbitdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         )
@@ -501,7 +501,7 @@ class TestAsyncOnorbitdetails:
         async with async_client.onorbitdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             source="Bluestaq",
         ) as response:
@@ -519,7 +519,7 @@ class TestAsyncOnorbitdetails:
             await async_client.onorbitdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_on_orbit="REF-ONORBIT-ID",
                 source="Bluestaq",
             )

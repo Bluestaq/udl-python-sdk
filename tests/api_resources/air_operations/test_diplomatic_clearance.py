@@ -22,7 +22,7 @@ class TestDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
@@ -37,7 +37,7 @@ class TestDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
@@ -56,7 +56,7 @@ class TestDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
@@ -81,7 +81,7 @@ class TestAsyncDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
@@ -96,7 +96,7 @@ class TestAsyncDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
@@ -115,7 +115,7 @@ class TestAsyncDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",

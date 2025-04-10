@@ -25,7 +25,7 @@ class TestAircraftSortie:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         aircraft_sortie = client.air_operations.aircraft_sortie.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestAircraftSortie:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_sortie = client.air_operations.aircraft_sortie.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
             id="AIRCRAFTSORTIE-ID",
@@ -95,11 +95,11 @@ class TestAircraftSortie:
             parking_loc="KCOS",
             passengers=17,
             planned_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
-            ppr_status="NOT REQUIRED",
+            ppr_status="PENDING",
             primary_scl="ABC",
             req_config="C-1",
             result_remarks="Some remark about aircraft A",
-            rvn_req="N",
+            rvn_req="R",
             schedule_remarks="Some schedule remark about aircraft A",
             secondary_scl="ABC",
             soe="OPS",
@@ -112,7 +112,7 @@ class TestAircraftSortie:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.air_operations.aircraft_sortie.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -126,7 +126,7 @@ class TestAircraftSortie:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.air_operations.aircraft_sortie.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         ) as response:
@@ -206,7 +206,7 @@ class TestAircraftSortie:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -220,7 +220,7 @@ class TestAircraftSortie:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -238,7 +238,7 @@ class TestAircraftSortie:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -372,7 +372,7 @@ class TestAsyncAircraftSortie:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sortie = await async_client.air_operations.aircraft_sortie.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -382,7 +382,7 @@ class TestAsyncAircraftSortie:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sortie = await async_client.air_operations.aircraft_sortie.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
             id="AIRCRAFTSORTIE-ID",
@@ -442,11 +442,11 @@ class TestAsyncAircraftSortie:
             parking_loc="KCOS",
             passengers=17,
             planned_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
-            ppr_status="NOT REQUIRED",
+            ppr_status="PENDING",
             primary_scl="ABC",
             req_config="C-1",
             result_remarks="Some remark about aircraft A",
-            rvn_req="N",
+            rvn_req="R",
             schedule_remarks="Some schedule remark about aircraft A",
             secondary_scl="ABC",
             soe="OPS",
@@ -459,7 +459,7 @@ class TestAsyncAircraftSortie:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_operations.aircraft_sortie.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -473,7 +473,7 @@ class TestAsyncAircraftSortie:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_operations.aircraft_sortie.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         ) as response:
@@ -553,7 +553,7 @@ class TestAsyncAircraftSortie:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -567,7 +567,7 @@ class TestAsyncAircraftSortie:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -585,7 +585,7 @@ class TestAsyncAircraftSortie:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }

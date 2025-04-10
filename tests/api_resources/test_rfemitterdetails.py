@@ -25,7 +25,7 @@ class TestRfemitterdetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         rfemitterdetail = client.rfemitterdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestRfemitterdetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfemitterdetail = client.rfemitterdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
             id="RFEMITTERDETAILS-ID",
@@ -73,7 +73,7 @@ class TestRfemitterdetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.rfemitterdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -87,7 +87,7 @@ class TestRfemitterdetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.rfemitterdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         ) as response:
@@ -104,7 +104,7 @@ class TestRfemitterdetails:
         rfemitterdetail = client.rfemitterdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -115,7 +115,7 @@ class TestRfemitterdetails:
         rfemitterdetail = client.rfemitterdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
             body_id="RFEMITTERDETAILS-ID",
@@ -154,7 +154,7 @@ class TestRfemitterdetails:
         response = client.rfemitterdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -169,7 +169,7 @@ class TestRfemitterdetails:
         with client.rfemitterdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         ) as response:
@@ -187,7 +187,7 @@ class TestRfemitterdetails:
             client.rfemitterdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_rf_emitter="RFEMITTER-ID",
                 source="Bluestaq",
             )
@@ -382,7 +382,7 @@ class TestAsyncRfemitterdetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitterdetail = await async_client.rfemitterdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -392,7 +392,7 @@ class TestAsyncRfemitterdetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitterdetail = await async_client.rfemitterdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
             id="RFEMITTERDETAILS-ID",
@@ -430,7 +430,7 @@ class TestAsyncRfemitterdetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfemitterdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -444,7 +444,7 @@ class TestAsyncRfemitterdetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfemitterdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         ) as response:
@@ -461,7 +461,7 @@ class TestAsyncRfemitterdetails:
         rfemitterdetail = await async_client.rfemitterdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -472,7 +472,7 @@ class TestAsyncRfemitterdetails:
         rfemitterdetail = await async_client.rfemitterdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
             body_id="RFEMITTERDETAILS-ID",
@@ -511,7 +511,7 @@ class TestAsyncRfemitterdetails:
         response = await async_client.rfemitterdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         )
@@ -526,7 +526,7 @@ class TestAsyncRfemitterdetails:
         async with async_client.rfemitterdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
         ) as response:
@@ -544,7 +544,7 @@ class TestAsyncRfemitterdetails:
             await async_client.rfemitterdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_rf_emitter="RFEMITTER-ID",
                 source="Bluestaq",
             )

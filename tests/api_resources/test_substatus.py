@@ -25,12 +25,12 @@ class TestSubstatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
         assert substatus is None
 
@@ -38,12 +38,12 @@ class TestSubstatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
             id="SUBSTATUS-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
@@ -53,12 +53,12 @@ class TestSubstatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.substatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
 
         assert response.is_closed is True
@@ -70,12 +70,12 @@ class TestSubstatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.substatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -90,12 +90,12 @@ class TestSubstatus:
         substatus = client.substatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
         assert substatus is None
 
@@ -104,12 +104,12 @@ class TestSubstatus:
         substatus = client.substatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
             body_id="SUBSTATUS-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
@@ -120,12 +120,12 @@ class TestSubstatus:
         response = client.substatus.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
 
         assert response.is_closed is True
@@ -138,12 +138,12 @@ class TestSubstatus:
         with client.substatus.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestSubstatus:
             client.substatus.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 notes="Sample Notes",
                 source="Bluestaq",
                 status="FMC",
                 status_id="REF-STATUS-ID",
-                type="mwCap",
+                type="mdCap",
             )
 
     @parametrize
@@ -357,12 +357,12 @@ class TestAsyncSubstatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
         assert substatus is None
 
@@ -370,12 +370,12 @@ class TestAsyncSubstatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
             id="SUBSTATUS-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
@@ -385,12 +385,12 @@ class TestAsyncSubstatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.substatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
 
         assert response.is_closed is True
@@ -402,12 +402,12 @@ class TestAsyncSubstatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.substatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -422,12 +422,12 @@ class TestAsyncSubstatus:
         substatus = await async_client.substatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
         assert substatus is None
 
@@ -436,12 +436,12 @@ class TestAsyncSubstatus:
         substatus = await async_client.substatus.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
             body_id="SUBSTATUS-ID",
             origin="THIRD_PARTY_DATASOURCE",
         )
@@ -452,12 +452,12 @@ class TestAsyncSubstatus:
         response = await async_client.substatus.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         )
 
         assert response.is_closed is True
@@ -470,12 +470,12 @@ class TestAsyncSubstatus:
         async with async_client.substatus.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             notes="Sample Notes",
             source="Bluestaq",
             status="FMC",
             status_id="REF-STATUS-ID",
-            type="mwCap",
+            type="mdCap",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -491,12 +491,12 @@ class TestAsyncSubstatus:
             await async_client.substatus.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 notes="Sample Notes",
                 source="Bluestaq",
                 status="FMC",
                 status_id="REF-STATUS-ID",
-                type="mwCap",
+                type="mdCap",
             )
 
     @parametrize

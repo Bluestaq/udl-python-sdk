@@ -26,7 +26,7 @@ class TestSwir:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         swir = client.swir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -36,7 +36,7 @@ class TestSwir:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         swir = client.swir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id="SWIR-ID",
@@ -59,7 +59,7 @@ class TestSwir:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.swir.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -73,7 +73,7 @@ class TestSwir:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.swir.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
         ) as response:
@@ -153,7 +153,7 @@ class TestSwir:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -167,7 +167,7 @@ class TestSwir:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -185,7 +185,7 @@ class TestSwir:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -304,7 +304,7 @@ class TestAsyncSwir:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         swir = await async_client.swir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -314,7 +314,7 @@ class TestAsyncSwir:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         swir = await async_client.swir.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
             id="SWIR-ID",
@@ -337,7 +337,7 @@ class TestAsyncSwir:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.swir.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -351,7 +351,7 @@ class TestAsyncSwir:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.swir.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
         ) as response:
@@ -431,7 +431,7 @@ class TestAsyncSwir:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -445,7 +445,7 @@ class TestAsyncSwir:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -463,7 +463,7 @@ class TestAsyncSwir:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }

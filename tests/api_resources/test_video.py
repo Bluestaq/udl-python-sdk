@@ -29,7 +29,7 @@ class TestVideo:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         video = client.video.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -40,7 +40,7 @@ class TestVideo:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         video = client.video.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -55,7 +55,7 @@ class TestVideo:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.video.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -70,7 +70,7 @@ class TestVideo:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.video.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -337,7 +337,7 @@ class TestAsyncVideo:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         video = await async_client.video.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -348,7 +348,7 @@ class TestAsyncVideo:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         video = await async_client.video.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -363,7 +363,7 @@ class TestAsyncVideo:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.video.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",
@@ -378,7 +378,7 @@ class TestAsyncVideo:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.video.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="description",
             name="name",
             source="Bluestaq",

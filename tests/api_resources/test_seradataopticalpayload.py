@@ -25,7 +25,7 @@ class TestSeradataopticalpayload:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         seradataopticalpayload = client.seradataopticalpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -35,7 +35,7 @@ class TestSeradataopticalpayload:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataopticalpayload = client.seradataopticalpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATAOPTICALPAYLOAD-ID",
@@ -64,7 +64,7 @@ class TestSeradataopticalpayload:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.seradataopticalpayload.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -78,7 +78,7 @@ class TestSeradataopticalpayload:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.seradataopticalpayload.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -95,7 +95,7 @@ class TestSeradataopticalpayload:
         seradataopticalpayload = client.seradataopticalpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -106,7 +106,7 @@ class TestSeradataopticalpayload:
         seradataopticalpayload = client.seradataopticalpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATAOPTICALPAYLOAD-ID",
@@ -136,7 +136,7 @@ class TestSeradataopticalpayload:
         response = client.seradataopticalpayload.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -151,7 +151,7 @@ class TestSeradataopticalpayload:
         with client.seradataopticalpayload.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -169,7 +169,7 @@ class TestSeradataopticalpayload:
             client.seradataopticalpayload.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )
@@ -364,7 +364,7 @@ class TestAsyncSeradataopticalpayload:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataopticalpayload = await async_client.seradataopticalpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -374,7 +374,7 @@ class TestAsyncSeradataopticalpayload:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataopticalpayload = await async_client.seradataopticalpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATAOPTICALPAYLOAD-ID",
@@ -403,7 +403,7 @@ class TestAsyncSeradataopticalpayload:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataopticalpayload.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -417,7 +417,7 @@ class TestAsyncSeradataopticalpayload:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradataopticalpayload.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -434,7 +434,7 @@ class TestAsyncSeradataopticalpayload:
         seradataopticalpayload = await async_client.seradataopticalpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -445,7 +445,7 @@ class TestAsyncSeradataopticalpayload:
         seradataopticalpayload = await async_client.seradataopticalpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATAOPTICALPAYLOAD-ID",
@@ -475,7 +475,7 @@ class TestAsyncSeradataopticalpayload:
         response = await async_client.seradataopticalpayload.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -490,7 +490,7 @@ class TestAsyncSeradataopticalpayload:
         async with async_client.seradataopticalpayload.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -508,7 +508,7 @@ class TestAsyncSeradataopticalpayload:
             await async_client.seradataopticalpayload.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )

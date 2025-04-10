@@ -26,7 +26,7 @@ class TestOrganizationdetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         organizationdetail = client.organizationdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -37,7 +37,7 @@ class TestOrganizationdetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         organizationdetail = client.organizationdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -77,7 +77,7 @@ class TestOrganizationdetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.organizationdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -92,7 +92,7 @@ class TestOrganizationdetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.organizationdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -110,7 +110,7 @@ class TestOrganizationdetails:
         organizationdetail = client.organizationdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -122,7 +122,7 @@ class TestOrganizationdetails:
         organizationdetail = client.organizationdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -163,7 +163,7 @@ class TestOrganizationdetails:
         response = client.organizationdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -179,7 +179,7 @@ class TestOrganizationdetails:
         with client.organizationdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -198,7 +198,7 @@ class TestOrganizationdetails:
             client.organizationdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_organization="ORGANIZATION-ID",
                 name="some.user",
                 source="some.user",
@@ -353,7 +353,7 @@ class TestAsyncOrganizationdetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         organizationdetail = await async_client.organizationdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -364,7 +364,7 @@ class TestAsyncOrganizationdetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         organizationdetail = await async_client.organizationdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -404,7 +404,7 @@ class TestAsyncOrganizationdetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.organizationdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -419,7 +419,7 @@ class TestAsyncOrganizationdetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.organizationdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -437,7 +437,7 @@ class TestAsyncOrganizationdetails:
         organizationdetail = await async_client.organizationdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -449,7 +449,7 @@ class TestAsyncOrganizationdetails:
         organizationdetail = await async_client.organizationdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -490,7 +490,7 @@ class TestAsyncOrganizationdetails:
         response = await async_client.organizationdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -506,7 +506,7 @@ class TestAsyncOrganizationdetails:
         async with async_client.organizationdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_organization="ORGANIZATION-ID",
             name="some.user",
             source="some.user",
@@ -525,7 +525,7 @@ class TestAsyncOrganizationdetails:
             await async_client.organizationdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_organization="ORGANIZATION-ID",
                 name="some.user",
                 source="some.user",

@@ -26,7 +26,7 @@ class TestSoiobservationset:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         soiobservationset = client.soiobservationset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -38,7 +38,7 @@ class TestSoiobservationset:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         soiobservationset = client.soiobservationset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -197,7 +197,7 @@ class TestSoiobservationset:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.soiobservationset.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -213,7 +213,7 @@ class TestSoiobservationset:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.soiobservationset.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -295,7 +295,7 @@ class TestSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -311,7 +311,7 @@ class TestSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -331,7 +331,7 @@ class TestSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -353,7 +353,7 @@ class TestSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -369,7 +369,7 @@ class TestSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -389,7 +389,7 @@ class TestSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -510,7 +510,7 @@ class TestAsyncSoiobservationset:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         soiobservationset = await async_client.soiobservationset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -522,7 +522,7 @@ class TestAsyncSoiobservationset:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         soiobservationset = await async_client.soiobservationset.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -681,7 +681,7 @@ class TestAsyncSoiobservationset:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.soiobservationset.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -697,7 +697,7 @@ class TestAsyncSoiobservationset:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.soiobservationset.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_obs=1,
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -779,7 +779,7 @@ class TestAsyncSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -795,7 +795,7 @@ class TestAsyncSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -815,7 +815,7 @@ class TestAsyncSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -837,7 +837,7 @@ class TestAsyncSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -853,7 +853,7 @@ class TestAsyncSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -873,7 +873,7 @@ class TestAsyncSoiobservationset:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "num_obs": 1,
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),

@@ -26,7 +26,7 @@ class TestCrew:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestCrew:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
             id="bdad6945-c9e4-b829-f7be-1ad075541921",
@@ -101,7 +101,7 @@ class TestCrew:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.crew.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -115,7 +115,7 @@ class TestCrew:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.crew.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         ) as response:
@@ -170,7 +170,7 @@ class TestCrew:
         crew = client.crew.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -181,7 +181,7 @@ class TestCrew:
         crew = client.crew.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
             body_id="bdad6945-c9e4-b829-f7be-1ad075541921",
@@ -247,7 +247,7 @@ class TestCrew:
         response = client.crew.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -262,7 +262,7 @@ class TestCrew:
         with client.crew.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         ) as response:
@@ -280,7 +280,7 @@ class TestCrew:
             client.crew.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 orig_crew_id="JHJDHjhuu929o92",
                 source="Bluestaq",
             )
@@ -341,7 +341,7 @@ class TestCrew:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "orig_crew_id": "JHJDHjhuu929o92",
                     "source": "Bluestaq",
                 }
@@ -355,7 +355,7 @@ class TestCrew:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "orig_crew_id": "JHJDHjhuu929o92",
                     "source": "Bluestaq",
                 }
@@ -373,7 +373,7 @@ class TestCrew:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "orig_crew_id": "JHJDHjhuu929o92",
                     "source": "Bluestaq",
                 }
@@ -451,7 +451,7 @@ class TestAsyncCrew:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -461,7 +461,7 @@ class TestAsyncCrew:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
             id="bdad6945-c9e4-b829-f7be-1ad075541921",
@@ -526,7 +526,7 @@ class TestAsyncCrew:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.crew.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -540,7 +540,7 @@ class TestAsyncCrew:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.crew.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         ) as response:
@@ -595,7 +595,7 @@ class TestAsyncCrew:
         crew = await async_client.crew.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -606,7 +606,7 @@ class TestAsyncCrew:
         crew = await async_client.crew.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
             body_id="bdad6945-c9e4-b829-f7be-1ad075541921",
@@ -672,7 +672,7 @@ class TestAsyncCrew:
         response = await async_client.crew.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         )
@@ -687,7 +687,7 @@ class TestAsyncCrew:
         async with async_client.crew.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             orig_crew_id="JHJDHjhuu929o92",
             source="Bluestaq",
         ) as response:
@@ -705,7 +705,7 @@ class TestAsyncCrew:
             await async_client.crew.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 orig_crew_id="JHJDHjhuu929o92",
                 source="Bluestaq",
             )
@@ -766,7 +766,7 @@ class TestAsyncCrew:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "orig_crew_id": "JHJDHjhuu929o92",
                     "source": "Bluestaq",
                 }
@@ -780,7 +780,7 @@ class TestAsyncCrew:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "orig_crew_id": "JHJDHjhuu929o92",
                     "source": "Bluestaq",
                 }
@@ -798,7 +798,7 @@ class TestAsyncCrew:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "orig_crew_id": "JHJDHjhuu929o92",
                     "source": "Bluestaq",
                 }

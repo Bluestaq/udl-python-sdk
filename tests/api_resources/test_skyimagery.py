@@ -243,7 +243,7 @@ class TestSkyimagery:
     def test_method_upload_zip(self, client: Unifieddatalibrary) -> None:
         skyimagery = client.skyimagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -254,7 +254,7 @@ class TestSkyimagery:
     def test_method_upload_zip_with_all_params(self, client: Unifieddatalibrary) -> None:
         skyimagery = client.skyimagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -265,7 +265,7 @@ class TestSkyimagery:
             eo_observations=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "id": "EOOBSERVATION-ID",
@@ -306,7 +306,7 @@ class TestSkyimagery:
                         "column_variance": 0.1,
                         "current_neutral_density_filter_num": 3,
                         "current_spectral_filter_num": 23,
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "declination_cov": 123.2,
                         "dist_from_streak_center": [-127.153, -126.153, -125.153],
                         "does": 123.2,
@@ -477,7 +477,7 @@ class TestSkyimagery:
     def test_raw_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         response = client.skyimagery.with_raw_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -492,7 +492,7 @@ class TestSkyimagery:
     def test_streaming_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         with client.skyimagery.with_streaming_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -724,7 +724,7 @@ class TestAsyncSkyimagery:
     async def test_method_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         skyimagery = await async_client.skyimagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -735,7 +735,7 @@ class TestAsyncSkyimagery:
     async def test_method_upload_zip_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         skyimagery = await async_client.skyimagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -746,7 +746,7 @@ class TestAsyncSkyimagery:
             eo_observations=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "id": "EOOBSERVATION-ID",
@@ -787,7 +787,7 @@ class TestAsyncSkyimagery:
                         "column_variance": 0.1,
                         "current_neutral_density_filter_num": 3,
                         "current_spectral_filter_num": 23,
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "declination_cov": 123.2,
                         "dist_from_streak_center": [-127.153, -126.153, -125.153],
                         "does": 123.2,
@@ -958,7 +958,7 @@ class TestAsyncSkyimagery:
     async def test_raw_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.skyimagery.with_raw_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",
@@ -973,7 +973,7 @@ class TestAsyncSkyimagery:
     async def test_streaming_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.skyimagery.with_streaming_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             exp_start_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             image_type="imageType",
             source="Bluestaq",

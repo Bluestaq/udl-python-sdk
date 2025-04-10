@@ -24,7 +24,7 @@ class TestOnorbitsolararray:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitsolararray = client.onorbitsolararray.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -35,7 +35,7 @@ class TestOnorbitsolararray:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitsolararray = client.onorbitsolararray.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -43,7 +43,7 @@ class TestOnorbitsolararray:
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             solar_array={
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
@@ -56,7 +56,7 @@ class TestOnorbitsolararray:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitsolararray.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -71,7 +71,7 @@ class TestOnorbitsolararray:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitsolararray.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -89,7 +89,7 @@ class TestOnorbitsolararray:
         onorbitsolararray = client.onorbitsolararray.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -101,7 +101,7 @@ class TestOnorbitsolararray:
         onorbitsolararray = client.onorbitsolararray.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -109,7 +109,7 @@ class TestOnorbitsolararray:
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             solar_array={
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
@@ -123,7 +123,7 @@ class TestOnorbitsolararray:
         response = client.onorbitsolararray.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -139,7 +139,7 @@ class TestOnorbitsolararray:
         with client.onorbitsolararray.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -158,7 +158,7 @@ class TestOnorbitsolararray:
             client.onorbitsolararray.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_on_orbit="ONORBIT-ID",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
@@ -273,7 +273,7 @@ class TestAsyncOnorbitsolararray:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitsolararray = await async_client.onorbitsolararray.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -284,7 +284,7 @@ class TestAsyncOnorbitsolararray:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitsolararray = await async_client.onorbitsolararray.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -292,7 +292,7 @@ class TestAsyncOnorbitsolararray:
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             solar_array={
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
@@ -305,7 +305,7 @@ class TestAsyncOnorbitsolararray:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitsolararray.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -320,7 +320,7 @@ class TestAsyncOnorbitsolararray:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitsolararray.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -338,7 +338,7 @@ class TestAsyncOnorbitsolararray:
         onorbitsolararray = await async_client.onorbitsolararray.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -350,7 +350,7 @@ class TestAsyncOnorbitsolararray:
         onorbitsolararray = await async_client.onorbitsolararray.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -358,7 +358,7 @@ class TestAsyncOnorbitsolararray:
             origin="THIRD_PARTY_DATASOURCE",
             quantity=10,
             solar_array={
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Solar1",
                 "source": "Bluestaq",
                 "id": "SOLARARRAY-ID",
@@ -372,7 +372,7 @@ class TestAsyncOnorbitsolararray:
         response = await async_client.onorbitsolararray.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -388,7 +388,7 @@ class TestAsyncOnorbitsolararray:
         async with async_client.onorbitsolararray.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="ONORBIT-ID",
             id_solar_array="SOLARARRAY-ID",
             source="Bluestaq",
@@ -407,7 +407,7 @@ class TestAsyncOnorbitsolararray:
             await async_client.onorbitsolararray.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_on_orbit="ONORBIT-ID",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",

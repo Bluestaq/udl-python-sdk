@@ -25,7 +25,7 @@ class TestAttitudeSets:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         attitude_set = client.attitude_sets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -40,7 +40,7 @@ class TestAttitudeSets:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         attitude_set = client.attitude_sets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -53,7 +53,7 @@ class TestAttitudeSets:
             attitude_list=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2022-03-07T14:51:39.653043Z"),
                     "id": "ATTITUDEDATA-ID",
@@ -103,7 +103,7 @@ class TestAttitudeSets:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.attitude_sets.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -122,7 +122,7 @@ class TestAttitudeSets:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.attitude_sets.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -205,7 +205,7 @@ class TestAttitudeSets:
     def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         attitude_set = client.attitude_sets.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -220,7 +220,7 @@ class TestAttitudeSets:
     def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
         attitude_set = client.attitude_sets.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -233,7 +233,7 @@ class TestAttitudeSets:
             attitude_list=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2022-03-07T14:51:39.653043Z"),
                     "id": "ATTITUDEDATA-ID",
@@ -283,7 +283,7 @@ class TestAttitudeSets:
     def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         response = client.attitude_sets.with_raw_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -302,7 +302,7 @@ class TestAttitudeSets:
     def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         with client.attitude_sets.with_streaming_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -386,7 +386,7 @@ class TestAsyncAttitudeSets:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_set = await async_client.attitude_sets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -401,7 +401,7 @@ class TestAsyncAttitudeSets:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_set = await async_client.attitude_sets.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -414,7 +414,7 @@ class TestAsyncAttitudeSets:
             attitude_list=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2022-03-07T14:51:39.653043Z"),
                     "id": "ATTITUDEDATA-ID",
@@ -464,7 +464,7 @@ class TestAsyncAttitudeSets:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.attitude_sets.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -483,7 +483,7 @@ class TestAsyncAttitudeSets:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.attitude_sets.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -566,7 +566,7 @@ class TestAsyncAttitudeSets:
     async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_set = await async_client.attitude_sets.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -581,7 +581,7 @@ class TestAsyncAttitudeSets:
     async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_set = await async_client.attitude_sets.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -594,7 +594,7 @@ class TestAsyncAttitudeSets:
             attitude_list=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2022-03-07T14:51:39.653043Z"),
                     "id": "ATTITUDEDATA-ID",
@@ -644,7 +644,7 @@ class TestAsyncAttitudeSets:
     async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.attitude_sets.with_raw_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",
@@ -663,7 +663,7 @@ class TestAsyncAttitudeSets:
     async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.attitude_sets.with_streaming_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-07-07T18:00:00.654321Z"),
             frame1="SCBODY",
             frame2="J2000",

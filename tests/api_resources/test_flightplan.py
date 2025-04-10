@@ -26,7 +26,7 @@ class TestFlightplan:
         flightplan = client.flightplan.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -38,7 +38,7 @@ class TestFlightplan:
         flightplan = client.flightplan.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -245,7 +245,7 @@ class TestFlightplan:
         response = client.flightplan.with_raw_response.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -261,7 +261,7 @@ class TestFlightplan:
         with client.flightplan.with_streaming_response.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -331,7 +331,7 @@ class TestFlightplan:
                 {
                     "arr_airfield": "KCHS",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "dep_airfield": "KSLV",
                     "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
@@ -347,7 +347,7 @@ class TestFlightplan:
                 {
                     "arr_airfield": "KCHS",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "dep_airfield": "KSLV",
                     "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
@@ -367,7 +367,7 @@ class TestFlightplan:
                 {
                     "arr_airfield": "KCHS",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "dep_airfield": "KSLV",
                     "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
@@ -447,7 +447,7 @@ class TestAsyncFlightplan:
         flightplan = await async_client.flightplan.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -459,7 +459,7 @@ class TestAsyncFlightplan:
         flightplan = await async_client.flightplan.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -666,7 +666,7 @@ class TestAsyncFlightplan:
         response = await async_client.flightplan.with_raw_response.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -682,7 +682,7 @@ class TestAsyncFlightplan:
         async with async_client.flightplan.with_streaming_response.create(
             arr_airfield="KCHS",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             dep_airfield="KSLV",
             gen_ts=parse_datetime("2023-05-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -752,7 +752,7 @@ class TestAsyncFlightplan:
                 {
                     "arr_airfield": "KCHS",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "dep_airfield": "KSLV",
                     "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
@@ -768,7 +768,7 @@ class TestAsyncFlightplan:
                 {
                     "arr_airfield": "KCHS",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "dep_airfield": "KSLV",
                     "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",
@@ -788,7 +788,7 @@ class TestAsyncFlightplan:
                 {
                     "arr_airfield": "KCHS",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "dep_airfield": "KSLV",
                     "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
                     "source": "Bluestaq",

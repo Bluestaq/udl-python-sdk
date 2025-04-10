@@ -26,7 +26,7 @@ class TestRfemitter:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         rfemitter = client.rfemitter.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -36,16 +36,16 @@ class TestRfemitter:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfemitter = client.rfemitter.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
             id="RFEMITTER-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -53,7 +53,7 @@ class TestRfemitter:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -65,11 +65,11 @@ class TestRfemitter:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -80,7 +80,7 @@ class TestRfemitter:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -98,7 +98,7 @@ class TestRfemitter:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.rfemitter.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -112,7 +112,7 @@ class TestRfemitter:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.rfemitter.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         ) as response:
@@ -129,7 +129,7 @@ class TestRfemitter:
         rfemitter = client.rfemitter.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -140,16 +140,16 @@ class TestRfemitter:
         rfemitter = client.rfemitter.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
             body_id="RFEMITTER-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -157,7 +157,7 @@ class TestRfemitter:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -169,11 +169,11 @@ class TestRfemitter:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -184,7 +184,7 @@ class TestRfemitter:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -203,7 +203,7 @@ class TestRfemitter:
         response = client.rfemitter.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -218,7 +218,7 @@ class TestRfemitter:
         with client.rfemitter.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         ) as response:
@@ -236,7 +236,7 @@ class TestRfemitter:
             client.rfemitter.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="RF_NAME",
                 source="Bluestaq",
             )
@@ -431,7 +431,7 @@ class TestAsyncRfemitter:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitter = await async_client.rfemitter.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -441,16 +441,16 @@ class TestAsyncRfemitter:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitter = await async_client.rfemitter.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
             id="RFEMITTER-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -458,7 +458,7 @@ class TestAsyncRfemitter:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -470,11 +470,11 @@ class TestAsyncRfemitter:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -485,7 +485,7 @@ class TestAsyncRfemitter:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -503,7 +503,7 @@ class TestAsyncRfemitter:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfemitter.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -517,7 +517,7 @@ class TestAsyncRfemitter:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfemitter.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         ) as response:
@@ -534,7 +534,7 @@ class TestAsyncRfemitter:
         rfemitter = await async_client.rfemitter.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -545,16 +545,16 @@ class TestAsyncRfemitter:
         rfemitter = await async_client.rfemitter.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
             body_id="RFEMITTER-ID",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -562,7 +562,7 @@ class TestAsyncRfemitter:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -574,11 +574,11 @@ class TestAsyncRfemitter:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -589,7 +589,7 @@ class TestAsyncRfemitter:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -608,7 +608,7 @@ class TestAsyncRfemitter:
         response = await async_client.rfemitter.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         )
@@ -623,7 +623,7 @@ class TestAsyncRfemitter:
         async with async_client.rfemitter.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
         ) as response:
@@ -641,7 +641,7 @@ class TestAsyncRfemitter:
             await async_client.rfemitter.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="RF_NAME",
                 source="Bluestaq",
             )

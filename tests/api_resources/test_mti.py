@@ -94,7 +94,7 @@ class TestMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id": "MTI-ID",
                     "dwells": [
@@ -317,7 +317,7 @@ class TestMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -330,7 +330,7 @@ class TestMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -347,7 +347,7 @@ class TestMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -496,7 +496,7 @@ class TestAsyncMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id": "MTI-ID",
                     "dwells": [
@@ -719,7 +719,7 @@ class TestAsyncMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -732,7 +732,7 @@ class TestAsyncMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -749,7 +749,7 @@ class TestAsyncMti:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],

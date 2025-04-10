@@ -26,7 +26,7 @@ class TestManeuvers:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         maneuver = client.maneuvers.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestManeuvers:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         maneuver = client.maneuvers.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
             id="MANEUVER-ID",
@@ -75,7 +75,7 @@ class TestManeuvers:
             post_eccentricity=0.000164,
             post_event_elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -104,7 +104,7 @@ class TestManeuvers:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -113,7 +113,7 @@ class TestManeuvers:
             post_event_id_state_vector="d83a23f8-1496-485a-bd88-ec5808c73299",
             post_event_state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -170,7 +170,7 @@ class TestManeuvers:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -230,7 +230,7 @@ class TestManeuvers:
             pre_eccentricity=0.00017,
             pre_event_elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -259,7 +259,7 @@ class TestManeuvers:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -268,7 +268,7 @@ class TestManeuvers:
             pre_event_id_state_vector="6e291992-8ae3-4592-bb0f-055715bf4803",
             pre_event_state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -325,7 +325,7 @@ class TestManeuvers:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -396,7 +396,7 @@ class TestManeuvers:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.maneuvers.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
         )
@@ -410,7 +410,7 @@ class TestManeuvers:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.maneuvers.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
         ) as response:
@@ -490,7 +490,7 @@ class TestManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -504,7 +504,7 @@ class TestManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -522,7 +522,7 @@ class TestManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -542,7 +542,7 @@ class TestManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -556,7 +556,7 @@ class TestManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -574,7 +574,7 @@ class TestManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -693,7 +693,7 @@ class TestAsyncManeuvers:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         maneuver = await async_client.maneuvers.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
         )
@@ -703,7 +703,7 @@ class TestAsyncManeuvers:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         maneuver = await async_client.maneuvers.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
             id="MANEUVER-ID",
@@ -742,7 +742,7 @@ class TestAsyncManeuvers:
             post_eccentricity=0.000164,
             post_event_elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -771,7 +771,7 @@ class TestAsyncManeuvers:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -780,7 +780,7 @@ class TestAsyncManeuvers:
             post_event_id_state_vector="d83a23f8-1496-485a-bd88-ec5808c73299",
             post_event_state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -837,7 +837,7 @@ class TestAsyncManeuvers:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -897,7 +897,7 @@ class TestAsyncManeuvers:
             pre_eccentricity=0.00017,
             pre_event_elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -926,7 +926,7 @@ class TestAsyncManeuvers:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -935,7 +935,7 @@ class TestAsyncManeuvers:
             pre_event_id_state_vector="6e291992-8ae3-4592-bb0f-055715bf4803",
             pre_event_state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -992,7 +992,7 @@ class TestAsyncManeuvers:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -1063,7 +1063,7 @@ class TestAsyncManeuvers:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.maneuvers.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
         )
@@ -1077,7 +1077,7 @@ class TestAsyncManeuvers:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.maneuvers.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_start_time=parse_datetime("2023-11-16T01:05:16.835689Z"),
             source="Bluestaq",
         ) as response:
@@ -1157,7 +1157,7 @@ class TestAsyncManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -1171,7 +1171,7 @@ class TestAsyncManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -1189,7 +1189,7 @@ class TestAsyncManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -1209,7 +1209,7 @@ class TestAsyncManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -1223,7 +1223,7 @@ class TestAsyncManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }
@@ -1241,7 +1241,7 @@ class TestAsyncManeuvers:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
                     "source": "Bluestaq",
                 }

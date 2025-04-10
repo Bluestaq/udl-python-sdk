@@ -25,7 +25,7 @@ class TestEngines:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         engine = client.engines.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestEngines:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         engine = client.engines.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
             id="ENGINE-ID",
@@ -47,7 +47,7 @@ class TestEngines:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.engines.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -61,7 +61,7 @@ class TestEngines:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.engines.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         ) as response:
@@ -116,7 +116,7 @@ class TestEngines:
         engine = client.engines.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -127,7 +127,7 @@ class TestEngines:
         engine = client.engines.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
             body_id="ENGINE-ID",
@@ -140,7 +140,7 @@ class TestEngines:
         response = client.engines.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -155,7 +155,7 @@ class TestEngines:
         with client.engines.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         ) as response:
@@ -173,7 +173,7 @@ class TestEngines:
             client.engines.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="ENGINE_VARIANT1",
                 source="Bluestaq",
             )
@@ -330,7 +330,7 @@ class TestAsyncEngines:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine = await async_client.engines.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -340,7 +340,7 @@ class TestAsyncEngines:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine = await async_client.engines.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
             id="ENGINE-ID",
@@ -352,7 +352,7 @@ class TestAsyncEngines:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.engines.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -366,7 +366,7 @@ class TestAsyncEngines:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.engines.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         ) as response:
@@ -421,7 +421,7 @@ class TestAsyncEngines:
         engine = await async_client.engines.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -432,7 +432,7 @@ class TestAsyncEngines:
         engine = await async_client.engines.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
             body_id="ENGINE-ID",
@@ -445,7 +445,7 @@ class TestAsyncEngines:
         response = await async_client.engines.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         )
@@ -460,7 +460,7 @@ class TestAsyncEngines:
         async with async_client.engines.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="ENGINE_VARIANT1",
             source="Bluestaq",
         ) as response:
@@ -478,7 +478,7 @@ class TestAsyncEngines:
             await async_client.engines.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="ENGINE_VARIANT1",
                 source="Bluestaq",
             )

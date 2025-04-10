@@ -89,7 +89,7 @@ class TestIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -106,7 +106,7 @@ class TestIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -127,7 +127,7 @@ class TestIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -150,7 +150,7 @@ class TestIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -167,7 +167,7 @@ class TestIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -188,7 +188,7 @@ class TestIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -336,7 +336,7 @@ class TestAsyncIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -353,7 +353,7 @@ class TestAsyncIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -374,7 +374,7 @@ class TestAsyncIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -397,7 +397,7 @@ class TestAsyncIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -414,7 +414,7 @@ class TestAsyncIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",
@@ -435,7 +435,7 @@ class TestAsyncIonoobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
                     "station_id": "STATION-ID",

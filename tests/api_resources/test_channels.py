@@ -25,7 +25,7 @@ class TestChannels:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -36,7 +36,7 @@ class TestChannels:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -61,7 +61,7 @@ class TestChannels:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.channels.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -76,7 +76,7 @@ class TestChannels:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.channels.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -132,7 +132,7 @@ class TestChannels:
         channel = client.channels.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -144,7 +144,7 @@ class TestChannels:
         channel = client.channels.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -170,7 +170,7 @@ class TestChannels:
         response = client.channels.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -186,7 +186,7 @@ class TestChannels:
         with client.channels.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -205,7 +205,7 @@ class TestChannels:
             client.channels.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_transponder="REF-TRANSPONDER-ID",
                 name="Example name",
                 source="system.source",
@@ -363,7 +363,7 @@ class TestAsyncChannels:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -374,7 +374,7 @@ class TestAsyncChannels:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -399,7 +399,7 @@ class TestAsyncChannels:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.channels.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -414,7 +414,7 @@ class TestAsyncChannels:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.channels.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -470,7 +470,7 @@ class TestAsyncChannels:
         channel = await async_client.channels.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -482,7 +482,7 @@ class TestAsyncChannels:
         channel = await async_client.channels.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -508,7 +508,7 @@ class TestAsyncChannels:
         response = await async_client.channels.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -524,7 +524,7 @@ class TestAsyncChannels:
         async with async_client.channels.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_transponder="REF-TRANSPONDER-ID",
             name="Example name",
             source="system.source",
@@ -543,7 +543,7 @@ class TestAsyncChannels:
             await async_client.channels.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_transponder="REF-TRANSPONDER-ID",
                 name="Example name",
                 source="system.source",

@@ -27,7 +27,7 @@ class TestTaiutc:
         taiutc = client.taiutc.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert taiutc is None
@@ -37,7 +37,7 @@ class TestTaiutc:
         taiutc = client.taiutc.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="TAIUTC-ID",
             multiplication_factor=0.001296,
@@ -52,7 +52,7 @@ class TestTaiutc:
         response = client.taiutc.with_raw_response.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -66,7 +66,7 @@ class TestTaiutc:
         with client.taiutc.with_streaming_response.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -83,7 +83,7 @@ class TestTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert taiutc is None
@@ -94,7 +94,7 @@ class TestTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="TAIUTC-ID",
             multiplication_factor=0.001296,
@@ -110,7 +110,7 @@ class TestTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -125,7 +125,7 @@ class TestTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -143,7 +143,7 @@ class TestTaiutc:
                 path_id="",
                 adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -353,7 +353,7 @@ class TestAsyncTaiutc:
         taiutc = await async_client.taiutc.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert taiutc is None
@@ -363,7 +363,7 @@ class TestAsyncTaiutc:
         taiutc = await async_client.taiutc.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="TAIUTC-ID",
             multiplication_factor=0.001296,
@@ -378,7 +378,7 @@ class TestAsyncTaiutc:
         response = await async_client.taiutc.with_raw_response.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -392,7 +392,7 @@ class TestAsyncTaiutc:
         async with async_client.taiutc.with_streaming_response.create(
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -409,7 +409,7 @@ class TestAsyncTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert taiutc is None
@@ -420,7 +420,7 @@ class TestAsyncTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="TAIUTC-ID",
             multiplication_factor=0.001296,
@@ -436,7 +436,7 @@ class TestAsyncTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -451,7 +451,7 @@ class TestAsyncTaiutc:
             path_id="id",
             adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -469,7 +469,7 @@ class TestAsyncTaiutc:
                 path_id="",
                 adjustment_date=parse_datetime("2017-01-01T00:00:00.123Z"),
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 

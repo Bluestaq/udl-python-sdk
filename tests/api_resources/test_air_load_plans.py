@@ -26,7 +26,7 @@ class TestAirLoadPlans:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         air_load_plan = client.air_load_plans.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -36,7 +36,7 @@ class TestAirLoadPlans:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_load_plan = client.air_load_plans.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             id="0457f578-e29c-312e-85aa-0a04a430bdd0",
@@ -188,7 +188,7 @@ class TestAirLoadPlans:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.air_load_plans.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -202,7 +202,7 @@ class TestAirLoadPlans:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.air_load_plans.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
@@ -381,7 +381,7 @@ class TestAsyncAirLoadPlans:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_load_plan = await async_client.air_load_plans.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -391,7 +391,7 @@ class TestAsyncAirLoadPlans:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_load_plan = await async_client.air_load_plans.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             id="0457f578-e29c-312e-85aa-0a04a430bdd0",
@@ -543,7 +543,7 @@ class TestAsyncAirLoadPlans:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_load_plans.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -557,7 +557,7 @@ class TestAsyncAirLoadPlans:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_load_plans.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:

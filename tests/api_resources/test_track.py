@@ -89,7 +89,7 @@ class TestTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -103,7 +103,7 @@ class TestTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -121,7 +121,7 @@ class TestTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -141,7 +141,7 @@ class TestTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -155,7 +155,7 @@ class TestTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -173,7 +173,7 @@ class TestTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -318,7 +318,7 @@ class TestAsyncTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -332,7 +332,7 @@ class TestAsyncTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -350,7 +350,7 @@ class TestAsyncTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -370,7 +370,7 @@ class TestAsyncTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -384,7 +384,7 @@ class TestAsyncTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }
@@ -402,7 +402,7 @@ class TestAsyncTrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
                 }

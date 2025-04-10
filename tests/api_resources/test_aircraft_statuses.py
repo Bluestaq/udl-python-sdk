@@ -26,7 +26,7 @@ class TestAircraftStatuses:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         aircraft_status = client.aircraft_statuses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestAircraftStatuses:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_status = client.aircraft_statuses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
             id="0167f577-e06c-358e-85aa-0a07a730bdd0",
@@ -90,7 +90,7 @@ class TestAircraftStatuses:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft_statuses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -104,7 +104,7 @@ class TestAircraftStatuses:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.aircraft_statuses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         ) as response:
@@ -159,7 +159,7 @@ class TestAircraftStatuses:
         aircraft_status = client.aircraft_statuses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -170,7 +170,7 @@ class TestAircraftStatuses:
         aircraft_status = client.aircraft_statuses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
             body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
@@ -225,7 +225,7 @@ class TestAircraftStatuses:
         response = client.aircraft_statuses.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -240,7 +240,7 @@ class TestAircraftStatuses:
         with client.aircraft_statuses.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         ) as response:
@@ -258,7 +258,7 @@ class TestAircraftStatuses:
             client.aircraft_statuses.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
                 source="Bluestaq",
             )
@@ -415,7 +415,7 @@ class TestAsyncAircraftStatuses:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status = await async_client.aircraft_statuses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -425,7 +425,7 @@ class TestAsyncAircraftStatuses:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status = await async_client.aircraft_statuses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
             id="0167f577-e06c-358e-85aa-0a07a730bdd0",
@@ -479,7 +479,7 @@ class TestAsyncAircraftStatuses:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraft_statuses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -493,7 +493,7 @@ class TestAsyncAircraftStatuses:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraft_statuses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         ) as response:
@@ -548,7 +548,7 @@ class TestAsyncAircraftStatuses:
         aircraft_status = await async_client.aircraft_statuses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -559,7 +559,7 @@ class TestAsyncAircraftStatuses:
         aircraft_status = await async_client.aircraft_statuses.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
             body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
@@ -614,7 +614,7 @@ class TestAsyncAircraftStatuses:
         response = await async_client.aircraft_statuses.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         )
@@ -629,7 +629,7 @@ class TestAsyncAircraftStatuses:
         async with async_client.aircraft_statuses.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
             source="Bluestaq",
         ) as response:
@@ -647,7 +647,7 @@ class TestAsyncAircraftStatuses:
             await async_client.aircraft_statuses.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
                 source="Bluestaq",
             )

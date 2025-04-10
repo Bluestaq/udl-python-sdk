@@ -26,7 +26,7 @@ class TestObjectofinterest:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         objectofinterest = client.objectofinterest.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -38,7 +38,7 @@ class TestObjectofinterest:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         objectofinterest = client.objectofinterest.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -85,7 +85,7 @@ class TestObjectofinterest:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.objectofinterest.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -101,7 +101,7 @@ class TestObjectofinterest:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.objectofinterest.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -120,7 +120,7 @@ class TestObjectofinterest:
         objectofinterest = client.objectofinterest.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -133,7 +133,7 @@ class TestObjectofinterest:
         objectofinterest = client.objectofinterest.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -181,7 +181,7 @@ class TestObjectofinterest:
         response = client.objectofinterest.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -198,7 +198,7 @@ class TestObjectofinterest:
         with client.objectofinterest.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -218,7 +218,7 @@ class TestObjectofinterest:
             client.objectofinterest.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_on_orbit="REF-ONORBIT-ID",
                 sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
@@ -415,7 +415,7 @@ class TestAsyncObjectofinterest:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         objectofinterest = await async_client.objectofinterest.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -427,7 +427,7 @@ class TestAsyncObjectofinterest:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         objectofinterest = await async_client.objectofinterest.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -474,7 +474,7 @@ class TestAsyncObjectofinterest:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.objectofinterest.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -490,7 +490,7 @@ class TestAsyncObjectofinterest:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.objectofinterest.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -509,7 +509,7 @@ class TestAsyncObjectofinterest:
         objectofinterest = await async_client.objectofinterest.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -522,7 +522,7 @@ class TestAsyncObjectofinterest:
         objectofinterest = await async_client.objectofinterest.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -570,7 +570,7 @@ class TestAsyncObjectofinterest:
         response = await async_client.objectofinterest.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -587,7 +587,7 @@ class TestAsyncObjectofinterest:
         async with async_client.objectofinterest.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_on_orbit="REF-ONORBIT-ID",
             sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
@@ -607,7 +607,7 @@ class TestAsyncObjectofinterest:
             await async_client.objectofinterest.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_on_orbit="REF-ONORBIT-ID",
                 sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",

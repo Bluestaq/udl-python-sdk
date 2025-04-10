@@ -26,7 +26,7 @@ class TestTrackroute:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         trackroute = client.trackroute.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -37,7 +37,7 @@ class TestTrackroute:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         trackroute = client.trackroute.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -109,7 +109,7 @@ class TestTrackroute:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.trackroute.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -124,7 +124,7 @@ class TestTrackroute:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.trackroute.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -142,7 +142,7 @@ class TestTrackroute:
         trackroute = client.trackroute.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -154,7 +154,7 @@ class TestTrackroute:
         trackroute = client.trackroute.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -227,7 +227,7 @@ class TestTrackroute:
         response = client.trackroute.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -243,7 +243,7 @@ class TestTrackroute:
         with client.trackroute.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -262,7 +262,7 @@ class TestTrackroute:
             client.trackroute.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
                 source="Bluestaq",
                 type="AIR REFUELING",
@@ -374,7 +374,7 @@ class TestTrackroute:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
@@ -389,7 +389,7 @@ class TestTrackroute:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
@@ -408,7 +408,7 @@ class TestTrackroute:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
@@ -427,7 +427,7 @@ class TestTrackroute:
     def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         trackroute = client.trackroute.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -438,7 +438,7 @@ class TestTrackroute:
     def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
         trackroute = client.trackroute.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -510,7 +510,7 @@ class TestTrackroute:
     def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         response = client.trackroute.with_raw_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -525,7 +525,7 @@ class TestTrackroute:
     def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         with client.trackroute.with_streaming_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -643,7 +643,7 @@ class TestAsyncTrackroute:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         trackroute = await async_client.trackroute.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -654,7 +654,7 @@ class TestAsyncTrackroute:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         trackroute = await async_client.trackroute.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -726,7 +726,7 @@ class TestAsyncTrackroute:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.trackroute.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -741,7 +741,7 @@ class TestAsyncTrackroute:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.trackroute.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -759,7 +759,7 @@ class TestAsyncTrackroute:
         trackroute = await async_client.trackroute.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -771,7 +771,7 @@ class TestAsyncTrackroute:
         trackroute = await async_client.trackroute.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -844,7 +844,7 @@ class TestAsyncTrackroute:
         response = await async_client.trackroute.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -860,7 +860,7 @@ class TestAsyncTrackroute:
         async with async_client.trackroute.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -879,7 +879,7 @@ class TestAsyncTrackroute:
             await async_client.trackroute.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
                 source="Bluestaq",
                 type="AIR REFUELING",
@@ -991,7 +991,7 @@ class TestAsyncTrackroute:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
@@ -1006,7 +1006,7 @@ class TestAsyncTrackroute:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
@@ -1025,7 +1025,7 @@ class TestAsyncTrackroute:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "last_update_date": parse_datetime("2024-09-17T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "AIR REFUELING",
@@ -1044,7 +1044,7 @@ class TestAsyncTrackroute:
     async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         trackroute = await async_client.trackroute.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -1055,7 +1055,7 @@ class TestAsyncTrackroute:
     async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         trackroute = await async_client.trackroute.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -1127,7 +1127,7 @@ class TestAsyncTrackroute:
     async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.trackroute.with_raw_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",
@@ -1142,7 +1142,7 @@ class TestAsyncTrackroute:
     async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.trackroute.with_streaming_response.create_bulk_v2(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
             source="Bluestaq",
             type="AIR REFUELING",

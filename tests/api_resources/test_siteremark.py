@@ -25,7 +25,7 @@ class TestSiteremark:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         siteremark = client.siteremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -36,7 +36,7 @@ class TestSiteremark:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         siteremark = client.siteremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -53,7 +53,7 @@ class TestSiteremark:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.siteremark.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -68,7 +68,7 @@ class TestSiteremark:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.siteremark.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -233,7 +233,7 @@ class TestAsyncSiteremark:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         siteremark = await async_client.siteremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -244,7 +244,7 @@ class TestAsyncSiteremark:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         siteremark = await async_client.siteremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -261,7 +261,7 @@ class TestAsyncSiteremark:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.siteremark.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -276,7 +276,7 @@ class TestAsyncSiteremark:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.siteremark.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_site="SITE-ID",
             source="Bluestaq",
             text="This is a remark",

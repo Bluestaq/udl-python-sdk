@@ -25,7 +25,7 @@ class TestCollectResponses:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         collect_response = client.collect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestCollectResponses:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         collect_response = client.collect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
             id="COLLECTRESPONSE-ID",
@@ -64,7 +64,7 @@ class TestCollectResponses:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.collect_responses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
         )
@@ -78,7 +78,7 @@ class TestCollectResponses:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.collect_responses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
         ) as response:
@@ -196,7 +196,7 @@ class TestCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -210,7 +210,7 @@ class TestCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -228,7 +228,7 @@ class TestCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -248,7 +248,7 @@ class TestCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -262,7 +262,7 @@ class TestCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -280,7 +280,7 @@ class TestCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -327,7 +327,7 @@ class TestAsyncCollectResponses:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_response = await async_client.collect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
         )
@@ -337,7 +337,7 @@ class TestAsyncCollectResponses:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_response = await async_client.collect_responses.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
             id="COLLECTRESPONSE-ID",
@@ -366,7 +366,7 @@ class TestAsyncCollectResponses:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.collect_responses.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
         )
@@ -380,7 +380,7 @@ class TestAsyncCollectResponses:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.collect_responses.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_request="REF-REQUEST-ID",
             source="Bluestaq",
         ) as response:
@@ -498,7 +498,7 @@ class TestAsyncCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -512,7 +512,7 @@ class TestAsyncCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -530,7 +530,7 @@ class TestAsyncCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -550,7 +550,7 @@ class TestAsyncCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -564,7 +564,7 @@ class TestAsyncCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }
@@ -582,7 +582,7 @@ class TestAsyncCollectResponses:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_request": "REF-REQUEST-ID",
                     "source": "Bluestaq",
                 }

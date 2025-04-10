@@ -21,7 +21,7 @@ class TestAirloadplans:
         airloadplan = client.airloadplans.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -32,7 +32,7 @@ class TestAirloadplans:
         airloadplan = client.airloadplans.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             body_id="0457f578-e29c-312e-85aa-0a04a430bdd0",
@@ -185,7 +185,7 @@ class TestAirloadplans:
         response = client.airloadplans.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -200,7 +200,7 @@ class TestAirloadplans:
         with client.airloadplans.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
@@ -218,7 +218,7 @@ class TestAirloadplans:
             client.airloadplans.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
             )
@@ -270,7 +270,7 @@ class TestAsyncAirloadplans:
         airloadplan = await async_client.airloadplans.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -281,7 +281,7 @@ class TestAsyncAirloadplans:
         airloadplan = await async_client.airloadplans.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
             body_id="0457f578-e29c-312e-85aa-0a04a430bdd0",
@@ -434,7 +434,7 @@ class TestAsyncAirloadplans:
         response = await async_client.airloadplans.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         )
@@ -449,7 +449,7 @@ class TestAsyncAirloadplans:
         async with async_client.airloadplans.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
             source="source",
         ) as response:
@@ -467,7 +467,7 @@ class TestAsyncAirloadplans:
             await async_client.airloadplans.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
             )

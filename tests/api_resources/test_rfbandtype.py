@@ -26,7 +26,7 @@ class TestRfbandtype:
         rfbandtype = client.rfbandtype.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -37,7 +37,7 @@ class TestRfbandtype:
         rfbandtype = client.rfbandtype.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
             end_freq=123.4,
@@ -51,7 +51,7 @@ class TestRfbandtype:
         response = client.rfbandtype.with_raw_response.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -66,7 +66,7 @@ class TestRfbandtype:
         with client.rfbandtype.with_streaming_response.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         ) as response:
@@ -84,7 +84,7 @@ class TestRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -96,7 +96,7 @@ class TestRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
             end_freq=123.4,
@@ -111,7 +111,7 @@ class TestRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -127,7 +127,7 @@ class TestRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         ) as response:
@@ -146,7 +146,7 @@ class TestRfbandtype:
                 path_id="",
                 body_id="Ku",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 description="Example description",
                 source="Bluestaq",
             )
@@ -342,7 +342,7 @@ class TestAsyncRfbandtype:
         rfbandtype = await async_client.rfbandtype.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -353,7 +353,7 @@ class TestAsyncRfbandtype:
         rfbandtype = await async_client.rfbandtype.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
             end_freq=123.4,
@@ -367,7 +367,7 @@ class TestAsyncRfbandtype:
         response = await async_client.rfbandtype.with_raw_response.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -382,7 +382,7 @@ class TestAsyncRfbandtype:
         async with async_client.rfbandtype.with_streaming_response.create(
             id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         ) as response:
@@ -400,7 +400,7 @@ class TestAsyncRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -412,7 +412,7 @@ class TestAsyncRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
             end_freq=123.4,
@@ -427,7 +427,7 @@ class TestAsyncRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         )
@@ -443,7 +443,7 @@ class TestAsyncRfbandtype:
             path_id="id",
             body_id="Ku",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Example description",
             source="Bluestaq",
         ) as response:
@@ -462,7 +462,7 @@ class TestAsyncRfbandtype:
                 path_id="",
                 body_id="Ku",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 description="Example description",
                 source="Bluestaq",
             )

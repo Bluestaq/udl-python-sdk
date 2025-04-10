@@ -25,7 +25,7 @@ class TestCountries:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         country = client.countries.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert country is None
@@ -34,7 +34,7 @@ class TestCountries:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         country = client.countries.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             code_alt="US",
             fips_code="US",
@@ -47,7 +47,7 @@ class TestCountries:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.countries.with_raw_response.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -60,7 +60,7 @@ class TestCountries:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.countries.with_streaming_response.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -114,7 +114,7 @@ class TestCountries:
         country = client.countries.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert country is None
@@ -124,7 +124,7 @@ class TestCountries:
         country = client.countries.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             code_alt="US",
             fips_code="US",
@@ -138,7 +138,7 @@ class TestCountries:
         response = client.countries.with_raw_response.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -152,7 +152,7 @@ class TestCountries:
         with client.countries.with_streaming_response.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -169,7 +169,7 @@ class TestCountries:
             client.countries.with_raw_response.update(
                 path_code="",
                 body_code="US",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -325,7 +325,7 @@ class TestAsyncCountries:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert country is None
@@ -334,7 +334,7 @@ class TestAsyncCountries:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             code_alt="US",
             fips_code="US",
@@ -347,7 +347,7 @@ class TestAsyncCountries:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.countries.with_raw_response.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -360,7 +360,7 @@ class TestAsyncCountries:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.countries.with_streaming_response.create(
             code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -414,7 +414,7 @@ class TestAsyncCountries:
         country = await async_client.countries.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert country is None
@@ -424,7 +424,7 @@ class TestAsyncCountries:
         country = await async_client.countries.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             code_alt="US",
             fips_code="US",
@@ -438,7 +438,7 @@ class TestAsyncCountries:
         response = await async_client.countries.with_raw_response.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -452,7 +452,7 @@ class TestAsyncCountries:
         async with async_client.countries.with_streaming_response.update(
             path_code="code",
             body_code="US",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -469,7 +469,7 @@ class TestAsyncCountries:
             await async_client.countries.with_raw_response.update(
                 path_code="",
                 body_code="US",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 

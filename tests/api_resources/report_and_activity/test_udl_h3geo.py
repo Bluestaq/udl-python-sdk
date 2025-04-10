@@ -23,12 +23,12 @@ class TestUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -42,7 +42,7 @@ class TestUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id": "443fg911-4ab6-3d74-1991-372149d87f89",
                     "alt_mean": 450.1,
@@ -60,7 +60,7 @@ class TestUdlH3geo:
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -81,12 +81,12 @@ class TestUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -104,12 +104,12 @@ class TestUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -133,12 +133,12 @@ class TestAsyncUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -152,7 +152,7 @@ class TestAsyncUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id": "443fg911-4ab6-3d74-1991-372149d87f89",
                     "alt_mean": 450.1,
@@ -170,7 +170,7 @@ class TestAsyncUdlH3geo:
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -191,12 +191,12 @@ class TestAsyncUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),
@@ -214,12 +214,12 @@ class TestAsyncUdlH3geo:
                 {
                     "cell_id": "830b90fffffffff",
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_cells=1,
             source="Bluestaq",
             start_time=parse_datetime("2024-07-02T00:00:00.123Z"),

@@ -89,7 +89,7 @@ class TestSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -103,7 +103,7 @@ class TestSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -121,7 +121,7 @@ class TestSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -141,7 +141,7 @@ class TestSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -155,7 +155,7 @@ class TestSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -173,7 +173,7 @@ class TestSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -318,7 +318,7 @@ class TestAsyncSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -332,7 +332,7 @@ class TestAsyncSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -350,7 +350,7 @@ class TestAsyncSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -370,7 +370,7 @@ class TestAsyncSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -384,7 +384,7 @@ class TestAsyncSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }
@@ -402,7 +402,7 @@ class TestAsyncSpaceenvobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
                     "source": "Bluestaq",
                 }

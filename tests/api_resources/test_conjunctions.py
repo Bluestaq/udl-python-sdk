@@ -129,7 +129,7 @@ class TestConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -143,7 +143,7 @@ class TestConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -161,7 +161,7 @@ class TestConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -179,7 +179,7 @@ class TestConjunctions:
     def test_method_create_udl(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -189,7 +189,7 @@ class TestConjunctions:
     def test_method_create_udl_with_all_params(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
             convert_pos_vel=True,
@@ -244,7 +244,7 @@ class TestConjunctions:
             state_dept_notified=False,
             state_vector1={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -301,7 +301,7 @@ class TestConjunctions:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -340,7 +340,7 @@ class TestConjunctions:
             },
             state_vector2={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -397,7 +397,7 @@ class TestConjunctions:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -450,7 +450,7 @@ class TestConjunctions:
     def test_raw_response_create_udl(self, client: Unifieddatalibrary) -> None:
         response = client.conjunctions.with_raw_response.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -464,7 +464,7 @@ class TestConjunctions:
     def test_streaming_response_create_udl(self, client: Unifieddatalibrary) -> None:
         with client.conjunctions.with_streaming_response.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
         ) as response:
@@ -482,7 +482,7 @@ class TestConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -496,7 +496,7 @@ class TestConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -514,7 +514,7 @@ class TestConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -791,7 +791,7 @@ class TestAsyncConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -805,7 +805,7 @@ class TestAsyncConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -823,7 +823,7 @@ class TestAsyncConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -841,7 +841,7 @@ class TestAsyncConjunctions:
     async def test_method_create_udl(self, async_client: AsyncUnifieddatalibrary) -> None:
         conjunction = await async_client.conjunctions.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -851,7 +851,7 @@ class TestAsyncConjunctions:
     async def test_method_create_udl_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         conjunction = await async_client.conjunctions.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
             convert_pos_vel=True,
@@ -906,7 +906,7 @@ class TestAsyncConjunctions:
             state_dept_notified=False,
             state_vector1={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -963,7 +963,7 @@ class TestAsyncConjunctions:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -1002,7 +1002,7 @@ class TestAsyncConjunctions:
             },
             state_vector2={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -1059,7 +1059,7 @@ class TestAsyncConjunctions:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -1112,7 +1112,7 @@ class TestAsyncConjunctions:
     async def test_raw_response_create_udl(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.conjunctions.with_raw_response.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
         )
@@ -1126,7 +1126,7 @@ class TestAsyncConjunctions:
     async def test_streaming_response_create_udl(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.conjunctions.with_streaming_response.create_udl(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             tca=parse_datetime("2021-01-01T01:01:01.123456Z"),
         ) as response:
@@ -1144,7 +1144,7 @@ class TestAsyncConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -1158,7 +1158,7 @@ class TestAsyncConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }
@@ -1176,7 +1176,7 @@ class TestAsyncConjunctions:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "tca": parse_datetime("2021-01-01T01:01:01.123456Z"),
                 }

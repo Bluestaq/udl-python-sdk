@@ -26,7 +26,7 @@ class TestSortieppr:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestSortieppr:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
             id="SORTIEPPR-ID",
@@ -56,7 +56,7 @@ class TestSortieppr:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sortieppr.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -70,7 +70,7 @@ class TestSortieppr:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sortieppr.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         ) as response:
@@ -87,7 +87,7 @@ class TestSortieppr:
         sortieppr = client.sortieppr.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -98,7 +98,7 @@ class TestSortieppr:
         sortieppr = client.sortieppr.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
             body_id="SORTIEPPR-ID",
@@ -119,7 +119,7 @@ class TestSortieppr:
         response = client.sortieppr.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -134,7 +134,7 @@ class TestSortieppr:
         with client.sortieppr.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         ) as response:
@@ -152,7 +152,7 @@ class TestSortieppr:
             client.sortieppr.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                 source="Bluestaq",
             )
@@ -263,7 +263,7 @@ class TestSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -277,7 +277,7 @@ class TestSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -295,7 +295,7 @@ class TestSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -315,7 +315,7 @@ class TestSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -329,7 +329,7 @@ class TestSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -347,7 +347,7 @@ class TestSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -466,7 +466,7 @@ class TestAsyncSortieppr:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -476,7 +476,7 @@ class TestAsyncSortieppr:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
             id="SORTIEPPR-ID",
@@ -496,7 +496,7 @@ class TestAsyncSortieppr:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sortieppr.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -510,7 +510,7 @@ class TestAsyncSortieppr:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sortieppr.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         ) as response:
@@ -527,7 +527,7 @@ class TestAsyncSortieppr:
         sortieppr = await async_client.sortieppr.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -538,7 +538,7 @@ class TestAsyncSortieppr:
         sortieppr = await async_client.sortieppr.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
             body_id="SORTIEPPR-ID",
@@ -559,7 +559,7 @@ class TestAsyncSortieppr:
         response = await async_client.sortieppr.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         )
@@ -574,7 +574,7 @@ class TestAsyncSortieppr:
         async with async_client.sortieppr.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
             source="Bluestaq",
         ) as response:
@@ -592,7 +592,7 @@ class TestAsyncSortieppr:
             await async_client.sortieppr.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                 source="Bluestaq",
             )
@@ -703,7 +703,7 @@ class TestAsyncSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -717,7 +717,7 @@ class TestAsyncSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -735,7 +735,7 @@ class TestAsyncSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -755,7 +755,7 @@ class TestAsyncSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -769,7 +769,7 @@ class TestAsyncSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }
@@ -787,7 +787,7 @@ class TestAsyncSortieppr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                     "source": "Bluestaq",
                 }

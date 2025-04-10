@@ -28,7 +28,7 @@ class TestStatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         status = client.status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -38,7 +38,7 @@ class TestStatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         status = client.status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
             id="STATUS-ID",
@@ -48,16 +48,16 @@ class TestStatus:
             notes="Example Notes",
             ops_cap="FMC",
             origin="THIRD_PARTY_DATASOURCE",
-            state="UNKNOWN",
+            state="ACTIVE",
             sub_status_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "notes": "Sample Notes",
                     "source": "Bluestaq",
                     "status": "FMC",
                     "status_id": "REF-STATUS-ID",
-                    "type": "mwCap",
+                    "type": "mdCap",
                     "id": "SUBSTATUS-ID",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 }
@@ -70,7 +70,7 @@ class TestStatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.status.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -84,7 +84,7 @@ class TestStatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.status.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         ) as response:
@@ -101,7 +101,7 @@ class TestStatus:
         status = client.status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -112,7 +112,7 @@ class TestStatus:
         status = client.status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
             body_id="STATUS-ID",
@@ -122,16 +122,16 @@ class TestStatus:
             notes="Example Notes",
             ops_cap="FMC",
             origin="THIRD_PARTY_DATASOURCE",
-            state="UNKNOWN",
+            state="ACTIVE",
             sub_status_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "notes": "Sample Notes",
                     "source": "Bluestaq",
                     "status": "FMC",
                     "status_id": "REF-STATUS-ID",
-                    "type": "mwCap",
+                    "type": "mdCap",
                     "id": "SUBSTATUS-ID",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 }
@@ -145,7 +145,7 @@ class TestStatus:
         response = client.status.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -160,7 +160,7 @@ class TestStatus:
         with client.status.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         ) as response:
@@ -178,7 +178,7 @@ class TestStatus:
             client.status.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_entity="ENTITY-ID",
                 source="Bluestaq",
             )
@@ -449,7 +449,7 @@ class TestAsyncStatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -459,7 +459,7 @@ class TestAsyncStatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
             id="STATUS-ID",
@@ -469,16 +469,16 @@ class TestAsyncStatus:
             notes="Example Notes",
             ops_cap="FMC",
             origin="THIRD_PARTY_DATASOURCE",
-            state="UNKNOWN",
+            state="ACTIVE",
             sub_status_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "notes": "Sample Notes",
                     "source": "Bluestaq",
                     "status": "FMC",
                     "status_id": "REF-STATUS-ID",
-                    "type": "mwCap",
+                    "type": "mdCap",
                     "id": "SUBSTATUS-ID",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 }
@@ -491,7 +491,7 @@ class TestAsyncStatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.status.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -505,7 +505,7 @@ class TestAsyncStatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.status.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         ) as response:
@@ -522,7 +522,7 @@ class TestAsyncStatus:
         status = await async_client.status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -533,7 +533,7 @@ class TestAsyncStatus:
         status = await async_client.status.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
             body_id="STATUS-ID",
@@ -543,16 +543,16 @@ class TestAsyncStatus:
             notes="Example Notes",
             ops_cap="FMC",
             origin="THIRD_PARTY_DATASOURCE",
-            state="UNKNOWN",
+            state="ACTIVE",
             sub_status_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "notes": "Sample Notes",
                     "source": "Bluestaq",
                     "status": "FMC",
                     "status_id": "REF-STATUS-ID",
-                    "type": "mwCap",
+                    "type": "mdCap",
                     "id": "SUBSTATUS-ID",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 }
@@ -566,7 +566,7 @@ class TestAsyncStatus:
         response = await async_client.status.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         )
@@ -581,7 +581,7 @@ class TestAsyncStatus:
         async with async_client.status.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             source="Bluestaq",
         ) as response:
@@ -599,7 +599,7 @@ class TestAsyncStatus:
             await async_client.status.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_entity="ENTITY-ID",
                 source="Bluestaq",
             )

@@ -64,7 +64,7 @@ class TestAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -76,7 +76,7 @@ class TestAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
             body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -100,7 +100,7 @@ class TestAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -116,7 +116,7 @@ class TestAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         ) as response:
@@ -135,7 +135,7 @@ class TestAirfieldslots:
                 path_id="",
                 airfield_name="USAF Academy AFLD",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Apron 5",
                 source="Bluestaq",
             )
@@ -307,7 +307,7 @@ class TestAsyncAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -319,7 +319,7 @@ class TestAsyncAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
             body_id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -343,7 +343,7 @@ class TestAsyncAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -359,7 +359,7 @@ class TestAsyncAirfieldslots:
             path_id="id",
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         ) as response:
@@ -378,7 +378,7 @@ class TestAsyncAirfieldslots:
                 path_id="",
                 airfield_name="USAF Academy AFLD",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Apron 5",
                 source="Bluestaq",
             )

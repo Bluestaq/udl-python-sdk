@@ -25,7 +25,7 @@ class TestRfband:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         rfband = client.rfband.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -36,7 +36,7 @@ class TestRfband:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfband = client.rfband.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -54,7 +54,7 @@ class TestRfband:
             origin="THIRD_PARTY_DATASOURCE",
             peak_gain=120.23,
             polarization="H",
-            purpose="COMM",
+            purpose="TTC",
         )
         assert rfband is None
 
@@ -62,7 +62,7 @@ class TestRfband:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.rfband.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -77,7 +77,7 @@ class TestRfband:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.rfband.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -95,7 +95,7 @@ class TestRfband:
         rfband = client.rfband.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -107,7 +107,7 @@ class TestRfband:
         rfband = client.rfband.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -125,7 +125,7 @@ class TestRfband:
             origin="THIRD_PARTY_DATASOURCE",
             peak_gain=120.23,
             polarization="H",
-            purpose="COMM",
+            purpose="TTC",
         )
         assert rfband is None
 
@@ -134,7 +134,7 @@ class TestRfband:
         response = client.rfband.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -150,7 +150,7 @@ class TestRfband:
         with client.rfband.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -169,7 +169,7 @@ class TestRfband:
             client.rfband.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_entity="ENTITY-ID",
                 name="BAND_NAME",
                 source="Bluestaq",
@@ -365,7 +365,7 @@ class TestAsyncRfband:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfband = await async_client.rfband.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -376,7 +376,7 @@ class TestAsyncRfband:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfband = await async_client.rfband.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -394,7 +394,7 @@ class TestAsyncRfband:
             origin="THIRD_PARTY_DATASOURCE",
             peak_gain=120.23,
             polarization="H",
-            purpose="COMM",
+            purpose="TTC",
         )
         assert rfband is None
 
@@ -402,7 +402,7 @@ class TestAsyncRfband:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfband.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -417,7 +417,7 @@ class TestAsyncRfband:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfband.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -435,7 +435,7 @@ class TestAsyncRfband:
         rfband = await async_client.rfband.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -447,7 +447,7 @@ class TestAsyncRfband:
         rfband = await async_client.rfband.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -465,7 +465,7 @@ class TestAsyncRfband:
             origin="THIRD_PARTY_DATASOURCE",
             peak_gain=120.23,
             polarization="H",
-            purpose="COMM",
+            purpose="TTC",
         )
         assert rfband is None
 
@@ -474,7 +474,7 @@ class TestAsyncRfband:
         response = await async_client.rfband.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -490,7 +490,7 @@ class TestAsyncRfband:
         async with async_client.rfband.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_entity="ENTITY-ID",
             name="BAND_NAME",
             source="Bluestaq",
@@ -509,7 +509,7 @@ class TestAsyncRfband:
             await async_client.rfband.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_entity="ENTITY-ID",
                 name="BAND_NAME",
                 source="Bluestaq",

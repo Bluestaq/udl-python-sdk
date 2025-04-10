@@ -26,7 +26,7 @@ class TestOnorbitthrusterstatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitthrusterstatus = client.onorbitthrusterstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -37,7 +37,7 @@ class TestOnorbitthrusterstatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitthrusterstatus = client.onorbitthrusterstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -64,7 +64,7 @@ class TestOnorbitthrusterstatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitthrusterstatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -79,7 +79,7 @@ class TestOnorbitthrusterstatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitthrusterstatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -207,7 +207,7 @@ class TestOnorbitthrusterstatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
                     "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -363,7 +363,7 @@ class TestAsyncOnorbitthrusterstatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -374,7 +374,7 @@ class TestAsyncOnorbitthrusterstatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -401,7 +401,7 @@ class TestAsyncOnorbitthrusterstatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitthrusterstatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -416,7 +416,7 @@ class TestAsyncOnorbitthrusterstatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitthrusterstatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_onorbit_thruster="ff7dc909-e8b4-4a54-8529-1963d4e9b353",
             source="Bluestaq",
             status_time=parse_datetime("2024-01-01T16:00:00.123Z"),
@@ -544,7 +544,7 @@ class TestAsyncOnorbitthrusterstatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_onorbit_thruster": "ff7dc909-e8b4-4a54-8529-1963d4e9b353",
                     "source": "Bluestaq",
                     "status_time": parse_datetime("2024-01-01T16:00:00.123Z"),

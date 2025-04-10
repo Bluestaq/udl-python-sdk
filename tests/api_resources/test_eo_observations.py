@@ -24,7 +24,7 @@ class TestEoObservations:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         eo_observation = client.eo_observations.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -34,7 +34,7 @@ class TestEoObservations:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         eo_observation = client.eo_observations.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             id="EOOBSERVATION-ID",
@@ -75,7 +75,7 @@ class TestEoObservations:
                 "column_variance": 0.1,
                 "current_neutral_density_filter_num": 3,
                 "current_spectral_filter_num": 23,
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "declination_cov": 123.2,
                 "dist_from_streak_center": [-127.153, -126.153, -125.153],
                 "does": 123.2,
@@ -209,7 +209,7 @@ class TestEoObservations:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.eo_observations.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -223,7 +223,7 @@ class TestEoObservations:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.eo_observations.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -303,7 +303,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -317,7 +317,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "id": "EOOBSERVATION-ID",
@@ -358,7 +358,7 @@ class TestEoObservations:
                         "column_variance": 0.1,
                         "current_neutral_density_filter_num": 3,
                         "current_spectral_filter_num": 23,
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "declination_cov": 123.2,
                         "dist_from_streak_center": [-127.153, -126.153, -125.153],
                         "does": 123.2,
@@ -497,7 +497,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -515,7 +515,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -535,7 +535,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -549,7 +549,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -567,7 +567,7 @@ class TestEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -589,7 +589,7 @@ class TestAsyncEoObservations:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         eo_observation = await async_client.eo_observations.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -599,7 +599,7 @@ class TestAsyncEoObservations:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         eo_observation = await async_client.eo_observations.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             id="EOOBSERVATION-ID",
@@ -640,7 +640,7 @@ class TestAsyncEoObservations:
                 "column_variance": 0.1,
                 "current_neutral_density_filter_num": 3,
                 "current_spectral_filter_num": 23,
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "declination_cov": 123.2,
                 "dist_from_streak_center": [-127.153, -126.153, -125.153],
                 "does": 123.2,
@@ -774,7 +774,7 @@ class TestAsyncEoObservations:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.eo_observations.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -788,7 +788,7 @@ class TestAsyncEoObservations:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.eo_observations.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -868,7 +868,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -882,7 +882,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                     "id": "EOOBSERVATION-ID",
@@ -923,7 +923,7 @@ class TestAsyncEoObservations:
                         "column_variance": 0.1,
                         "current_neutral_density_filter_num": 3,
                         "current_spectral_filter_num": 23,
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "declination_cov": 123.2,
                         "dist_from_streak_center": [-127.153, -126.153, -125.153],
                         "does": 123.2,
@@ -1062,7 +1062,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -1080,7 +1080,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -1100,7 +1100,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -1114,7 +1114,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -1132,7 +1132,7 @@ class TestAsyncEoObservations:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }

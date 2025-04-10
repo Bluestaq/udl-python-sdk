@@ -26,7 +26,7 @@ class TestNotification:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         notification = client.notification.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -37,7 +37,7 @@ class TestNotification:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         notification = client.notification.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -51,7 +51,7 @@ class TestNotification:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.notification.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -66,7 +66,7 @@ class TestNotification:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.notification.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -306,7 +306,7 @@ class TestAsyncNotification:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         notification = await async_client.notification.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -317,7 +317,7 @@ class TestAsyncNotification:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         notification = await async_client.notification.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -331,7 +331,7 @@ class TestAsyncNotification:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.notification.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",
@@ -346,7 +346,7 @@ class TestAsyncNotification:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.notification.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_body="msgBody",
             msg_type="msgType",
             source="Bluestaq",

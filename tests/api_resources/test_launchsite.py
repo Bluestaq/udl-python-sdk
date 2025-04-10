@@ -26,7 +26,7 @@ class TestLaunchsite:
         launchsite = client.launchsite.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -37,7 +37,7 @@ class TestLaunchsite:
         launchsite = client.launchsite.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
             id="LAUNCHSITE-ID",
@@ -53,7 +53,7 @@ class TestLaunchsite:
         response = client.launchsite.with_raw_response.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -68,7 +68,7 @@ class TestLaunchsite:
         with client.launchsite.with_streaming_response.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         ) as response:
@@ -86,7 +86,7 @@ class TestLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -98,7 +98,7 @@ class TestLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
             body_id="LAUNCHSITE-ID",
@@ -115,7 +115,7 @@ class TestLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -131,7 +131,7 @@ class TestLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         ) as response:
@@ -150,7 +150,7 @@ class TestLaunchsite:
                 path_id="",
                 classification_marking="U",
                 code="SAN MARCO",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example launch site name",
                 source="Bluestaq",
             )
@@ -346,7 +346,7 @@ class TestAsyncLaunchsite:
         launchsite = await async_client.launchsite.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -357,7 +357,7 @@ class TestAsyncLaunchsite:
         launchsite = await async_client.launchsite.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
             id="LAUNCHSITE-ID",
@@ -373,7 +373,7 @@ class TestAsyncLaunchsite:
         response = await async_client.launchsite.with_raw_response.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -388,7 +388,7 @@ class TestAsyncLaunchsite:
         async with async_client.launchsite.with_streaming_response.create(
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         ) as response:
@@ -406,7 +406,7 @@ class TestAsyncLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -418,7 +418,7 @@ class TestAsyncLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
             body_id="LAUNCHSITE-ID",
@@ -435,7 +435,7 @@ class TestAsyncLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         )
@@ -451,7 +451,7 @@ class TestAsyncLaunchsite:
             path_id="id",
             classification_marking="U",
             code="SAN MARCO",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example launch site name",
             source="Bluestaq",
         ) as response:
@@ -470,7 +470,7 @@ class TestAsyncLaunchsite:
                 path_id="",
                 classification_marking="U",
                 code="SAN MARCO",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example launch site name",
                 source="Bluestaq",
             )

@@ -26,7 +26,7 @@ class TestEcpsdr:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -37,7 +37,7 @@ class TestEcpsdr:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -91,7 +91,7 @@ class TestEcpsdr:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.observations.ecpsdr.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -106,7 +106,7 @@ class TestEcpsdr:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.observations.ecpsdr.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -225,7 +225,7 @@ class TestEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -240,7 +240,7 @@ class TestEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -259,7 +259,7 @@ class TestEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -341,7 +341,7 @@ class TestAsyncEcpsdr:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -352,7 +352,7 @@ class TestAsyncEcpsdr:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -406,7 +406,7 @@ class TestAsyncEcpsdr:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.observations.ecpsdr.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -421,7 +421,7 @@ class TestAsyncEcpsdr:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.observations.ecpsdr.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             type="STANDARD",
@@ -540,7 +540,7 @@ class TestAsyncEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -555,7 +555,7 @@ class TestAsyncEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -574,7 +574,7 @@ class TestAsyncEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",

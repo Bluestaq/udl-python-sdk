@@ -26,7 +26,7 @@ class TestRadarobservation:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         radarobservation = client.radarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestRadarobservation:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         radarobservation = client.radarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             id="RADAROBSERVATION-ID",
@@ -96,7 +96,7 @@ class TestRadarobservation:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.radarobservation.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -110,7 +110,7 @@ class TestRadarobservation:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.radarobservation.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -190,7 +190,7 @@ class TestRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -204,7 +204,7 @@ class TestRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -222,7 +222,7 @@ class TestRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -242,7 +242,7 @@ class TestRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -256,7 +256,7 @@ class TestRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -274,7 +274,7 @@ class TestRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -393,7 +393,7 @@ class TestAsyncRadarobservation:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         radarobservation = await async_client.radarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -403,7 +403,7 @@ class TestAsyncRadarobservation:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         radarobservation = await async_client.radarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
             id="RADAROBSERVATION-ID",
@@ -463,7 +463,7 @@ class TestAsyncRadarobservation:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.radarobservation.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         )
@@ -477,7 +477,7 @@ class TestAsyncRadarobservation:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.radarobservation.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             source="Bluestaq",
         ) as response:
@@ -557,7 +557,7 @@ class TestAsyncRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -571,7 +571,7 @@ class TestAsyncRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -589,7 +589,7 @@ class TestAsyncRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -609,7 +609,7 @@ class TestAsyncRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -623,7 +623,7 @@ class TestAsyncRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }
@@ -641,7 +641,7 @@ class TestAsyncRadarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "source": "Bluestaq",
                 }

@@ -22,7 +22,7 @@ class TestAirfieldSlots:
         airfield_slot = client.airfield_slots.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -33,7 +33,7 @@ class TestAirfieldSlots:
         airfield_slot = client.airfield_slots.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
             id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -56,7 +56,7 @@ class TestAirfieldSlots:
         response = client.airfield_slots.with_raw_response.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -71,7 +71,7 @@ class TestAirfieldSlots:
         with client.airfield_slots.with_streaming_response.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         ) as response:
@@ -117,7 +117,7 @@ class TestAsyncAirfieldSlots:
         airfield_slot = await async_client.airfield_slots.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -128,7 +128,7 @@ class TestAsyncAirfieldSlots:
         airfield_slot = await async_client.airfield_slots.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
             id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -151,7 +151,7 @@ class TestAsyncAirfieldSlots:
         response = await async_client.airfield_slots.with_raw_response.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         )
@@ -166,7 +166,7 @@ class TestAsyncAirfieldSlots:
         async with async_client.airfield_slots.with_streaming_response.create(
             airfield_name="USAF Academy AFLD",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Apron 5",
             source="Bluestaq",
         ) as response:

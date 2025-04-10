@@ -25,7 +25,7 @@ class TestManifold:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestManifold:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
             id="MANIFOLD-ID",
@@ -51,7 +51,7 @@ class TestManifold:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.manifold.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -65,7 +65,7 @@ class TestManifold:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.manifold.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         ) as response:
@@ -82,7 +82,7 @@ class TestManifold:
         manifold = client.manifold.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -93,7 +93,7 @@ class TestManifold:
         manifold = client.manifold.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
             body_id="MANIFOLD-ID",
@@ -110,7 +110,7 @@ class TestManifold:
         response = client.manifold.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -125,7 +125,7 @@ class TestManifold:
         with client.manifold.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         ) as response:
@@ -143,7 +143,7 @@ class TestManifold:
             client.manifold.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_object_of_interest="OBJECTOFINTEREST-ID",
                 source="Bluestaq",
             )
@@ -247,7 +247,7 @@ class TestManifold:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_object_of_interest": "OBJECTOFINTEREST-ID",
                     "source": "Bluestaq",
                     "id": "MANIFOLD-ID",
@@ -383,7 +383,7 @@ class TestAsyncManifold:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -393,7 +393,7 @@ class TestAsyncManifold:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
             id="MANIFOLD-ID",
@@ -409,7 +409,7 @@ class TestAsyncManifold:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.manifold.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -423,7 +423,7 @@ class TestAsyncManifold:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.manifold.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         ) as response:
@@ -440,7 +440,7 @@ class TestAsyncManifold:
         manifold = await async_client.manifold.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -451,7 +451,7 @@ class TestAsyncManifold:
         manifold = await async_client.manifold.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
             body_id="MANIFOLD-ID",
@@ -468,7 +468,7 @@ class TestAsyncManifold:
         response = await async_client.manifold.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         )
@@ -483,7 +483,7 @@ class TestAsyncManifold:
         async with async_client.manifold.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_object_of_interest="OBJECTOFINTEREST-ID",
             source="Bluestaq",
         ) as response:
@@ -501,7 +501,7 @@ class TestAsyncManifold:
             await async_client.manifold.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_object_of_interest="OBJECTOFINTEREST-ID",
                 source="Bluestaq",
             )
@@ -605,7 +605,7 @@ class TestAsyncManifold:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_object_of_interest": "OBJECTOFINTEREST-ID",
                     "source": "Bluestaq",
                     "id": "MANIFOLD-ID",

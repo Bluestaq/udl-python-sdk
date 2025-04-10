@@ -89,7 +89,7 @@ class TestIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -102,7 +102,7 @@ class TestIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -119,7 +119,7 @@ class TestIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -138,7 +138,7 @@ class TestIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -151,7 +151,7 @@ class TestIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -168,7 +168,7 @@ class TestIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -312,7 +312,7 @@ class TestAsyncIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -325,7 +325,7 @@ class TestAsyncIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -342,7 +342,7 @@ class TestAsyncIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -361,7 +361,7 @@ class TestAsyncIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -374,7 +374,7 @@ class TestAsyncIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -391,7 +391,7 @@ class TestAsyncIsrCollections:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],

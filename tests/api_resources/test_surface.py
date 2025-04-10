@@ -25,7 +25,7 @@ class TestSurface:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -36,7 +36,7 @@ class TestSurface:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -111,7 +111,7 @@ class TestSurface:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.surface.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -126,7 +126,7 @@ class TestSurface:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.surface.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -144,7 +144,7 @@ class TestSurface:
         surface = client.surface.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -156,7 +156,7 @@ class TestSurface:
         surface = client.surface.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -232,7 +232,7 @@ class TestSurface:
         response = client.surface.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -248,7 +248,7 @@ class TestSurface:
         with client.surface.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -267,7 +267,7 @@ class TestSurface:
             client.surface.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="West lot",
                 source="Bluestaq",
                 type="PARKING",
@@ -463,7 +463,7 @@ class TestAsyncSurface:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -474,7 +474,7 @@ class TestAsyncSurface:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -549,7 +549,7 @@ class TestAsyncSurface:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.surface.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -564,7 +564,7 @@ class TestAsyncSurface:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.surface.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -582,7 +582,7 @@ class TestAsyncSurface:
         surface = await async_client.surface.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -594,7 +594,7 @@ class TestAsyncSurface:
         surface = await async_client.surface.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -670,7 +670,7 @@ class TestAsyncSurface:
         response = await async_client.surface.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -686,7 +686,7 @@ class TestAsyncSurface:
         async with async_client.surface.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="West lot",
             source="Bluestaq",
             type="PARKING",
@@ -705,7 +705,7 @@ class TestAsyncSurface:
             await async_client.surface.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="West lot",
                 source="Bluestaq",
                 type="PARKING",

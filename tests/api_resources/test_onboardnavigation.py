@@ -89,7 +89,7 @@ class TestOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -103,7 +103,7 @@ class TestOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -121,7 +121,7 @@ class TestOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -141,7 +141,7 @@ class TestOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -155,7 +155,7 @@ class TestOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -173,7 +173,7 @@ class TestOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -318,7 +318,7 @@ class TestAsyncOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -332,7 +332,7 @@ class TestAsyncOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -350,7 +350,7 @@ class TestAsyncOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -370,7 +370,7 @@ class TestAsyncOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -384,7 +384,7 @@ class TestAsyncOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }
@@ -402,7 +402,7 @@ class TestAsyncOnboardnavigation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2021-07-20T01:02:03.123456Z"),
                 }

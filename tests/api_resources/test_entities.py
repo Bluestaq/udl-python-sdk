@@ -27,10 +27,10 @@ class TestEntities:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         entity = client.entities.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
         assert entity is None
 
@@ -38,10 +38,10 @@ class TestEntities:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         entity = client.entities.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
             country_code="US",
             id_entity="ENTITY-ID",
             id_location="LOCATION-ID",
@@ -49,7 +49,7 @@ class TestEntities:
             id_operating_unit="OPERATINGUNIT-ID",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -61,11 +61,11 @@ class TestEntities:
             },
             on_orbit={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "sat_no": 1,
                 "source": "Bluestaq",
                 "alt_name": "Alternate Name",
-                "category": "Unknown",
+                "category": "Lunar",
                 "common_name": "Example common name",
                 "constellation": "Big Dipper",
                 "country_code": "US",
@@ -76,7 +76,7 @@ class TestEntities:
                 "launch_site_id": "LAUNCHSITE-ID",
                 "lifetime_years": 10,
                 "mission_number": "Expedition 1",
-                "object_type": "ROCKET BODY",
+                "object_type": "PAYLOAD",
                 "origin": "THIRD_PARTY_DATASOURCE",
             },
             origin="THIRD_PARTY_DATASOURCE",
@@ -90,10 +90,10 @@ class TestEntities:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.entities.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
 
         assert response.is_closed is True
@@ -105,10 +105,10 @@ class TestEntities:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.entities.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -161,10 +161,10 @@ class TestEntities:
         entity = client.entities.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
         assert entity is None
 
@@ -173,10 +173,10 @@ class TestEntities:
         entity = client.entities.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
             country_code="US",
             id_entity="ENTITY-ID",
             id_location="LOCATION-ID",
@@ -184,7 +184,7 @@ class TestEntities:
             id_operating_unit="OPERATINGUNIT-ID",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -196,11 +196,11 @@ class TestEntities:
             },
             on_orbit={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "sat_no": 1,
                 "source": "Bluestaq",
                 "alt_name": "Alternate Name",
-                "category": "Unknown",
+                "category": "Lunar",
                 "common_name": "Example common name",
                 "constellation": "Big Dipper",
                 "country_code": "US",
@@ -211,7 +211,7 @@ class TestEntities:
                 "launch_site_id": "LAUNCHSITE-ID",
                 "lifetime_years": 10,
                 "mission_number": "Expedition 1",
-                "object_type": "ROCKET BODY",
+                "object_type": "PAYLOAD",
                 "origin": "THIRD_PARTY_DATASOURCE",
             },
             origin="THIRD_PARTY_DATASOURCE",
@@ -226,10 +226,10 @@ class TestEntities:
         response = client.entities.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
 
         assert response.is_closed is True
@@ -242,10 +242,10 @@ class TestEntities:
         with client.entities.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -261,10 +261,10 @@ class TestEntities:
             client.entities.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example name",
                 source="Bluestaq",
-                type="AIRCRAFT",
+                type="ONORBIT",
             )
 
     @parametrize
@@ -444,10 +444,10 @@ class TestAsyncEntities:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         entity = await async_client.entities.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
         assert entity is None
 
@@ -455,10 +455,10 @@ class TestAsyncEntities:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         entity = await async_client.entities.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
             country_code="US",
             id_entity="ENTITY-ID",
             id_location="LOCATION-ID",
@@ -466,7 +466,7 @@ class TestAsyncEntities:
             id_operating_unit="OPERATINGUNIT-ID",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -478,11 +478,11 @@ class TestAsyncEntities:
             },
             on_orbit={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "sat_no": 1,
                 "source": "Bluestaq",
                 "alt_name": "Alternate Name",
-                "category": "Unknown",
+                "category": "Lunar",
                 "common_name": "Example common name",
                 "constellation": "Big Dipper",
                 "country_code": "US",
@@ -493,7 +493,7 @@ class TestAsyncEntities:
                 "launch_site_id": "LAUNCHSITE-ID",
                 "lifetime_years": 10,
                 "mission_number": "Expedition 1",
-                "object_type": "ROCKET BODY",
+                "object_type": "PAYLOAD",
                 "origin": "THIRD_PARTY_DATASOURCE",
             },
             origin="THIRD_PARTY_DATASOURCE",
@@ -507,10 +507,10 @@ class TestAsyncEntities:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.entities.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
 
         assert response.is_closed is True
@@ -522,10 +522,10 @@ class TestAsyncEntities:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.entities.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -578,10 +578,10 @@ class TestAsyncEntities:
         entity = await async_client.entities.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
         assert entity is None
 
@@ -590,10 +590,10 @@ class TestAsyncEntities:
         entity = await async_client.entities.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
             country_code="US",
             id_entity="ENTITY-ID",
             id_location="LOCATION-ID",
@@ -601,7 +601,7 @@ class TestAsyncEntities:
             id_operating_unit="OPERATINGUNIT-ID",
             location={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example location",
                 "source": "Bluestaq",
                 "altitude": 10.23,
@@ -613,11 +613,11 @@ class TestAsyncEntities:
             },
             on_orbit={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "sat_no": 1,
                 "source": "Bluestaq",
                 "alt_name": "Alternate Name",
-                "category": "Unknown",
+                "category": "Lunar",
                 "common_name": "Example common name",
                 "constellation": "Big Dipper",
                 "country_code": "US",
@@ -628,7 +628,7 @@ class TestAsyncEntities:
                 "launch_site_id": "LAUNCHSITE-ID",
                 "lifetime_years": 10,
                 "mission_number": "Expedition 1",
-                "object_type": "ROCKET BODY",
+                "object_type": "PAYLOAD",
                 "origin": "THIRD_PARTY_DATASOURCE",
             },
             origin="THIRD_PARTY_DATASOURCE",
@@ -643,10 +643,10 @@ class TestAsyncEntities:
         response = await async_client.entities.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         )
 
         assert response.is_closed is True
@@ -659,10 +659,10 @@ class TestAsyncEntities:
         async with async_client.entities.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example name",
             source="Bluestaq",
-            type="AIRCRAFT",
+            type="ONORBIT",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -678,10 +678,10 @@ class TestAsyncEntities:
             await async_client.entities.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example name",
                 source="Bluestaq",
-                type="AIRCRAFT",
+                type="ONORBIT",
             )
 
     @parametrize
