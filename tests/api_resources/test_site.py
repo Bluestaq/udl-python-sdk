@@ -26,7 +26,7 @@ class TestSite:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         site = client.site.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestSite:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         site = client.site.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
             id="SITE-ID",
@@ -58,10 +58,10 @@ class TestSite:
             elev_msl_deriv_acc=12.34,
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -69,7 +69,7 @@ class TestSite:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -81,11 +81,11 @@ class TestSite:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -96,7 +96,7 @@ class TestSite:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -152,7 +152,7 @@ class TestSite:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.site.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -166,7 +166,7 @@ class TestSite:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.site.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         ) as response:
@@ -183,7 +183,7 @@ class TestSite:
         site = client.site.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -194,7 +194,7 @@ class TestSite:
         site = client.site.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
             body_id="SITE-ID",
@@ -216,10 +216,10 @@ class TestSite:
             elev_msl_deriv_acc=12.34,
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -227,7 +227,7 @@ class TestSite:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -239,11 +239,11 @@ class TestSite:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -254,7 +254,7 @@ class TestSite:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -311,7 +311,7 @@ class TestSite:
         response = client.site.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -326,7 +326,7 @@ class TestSite:
         with client.site.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         ) as response:
@@ -344,7 +344,7 @@ class TestSite:
             client.site.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Site Name",
                 source="Bluestaq",
             )
@@ -501,7 +501,7 @@ class TestAsyncSite:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -511,7 +511,7 @@ class TestAsyncSite:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
             id="SITE-ID",
@@ -533,10 +533,10 @@ class TestAsyncSite:
             elev_msl_deriv_acc=12.34,
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -544,7 +544,7 @@ class TestAsyncSite:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -556,11 +556,11 @@ class TestAsyncSite:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -571,7 +571,7 @@ class TestAsyncSite:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -627,7 +627,7 @@ class TestAsyncSite:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.site.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -641,7 +641,7 @@ class TestAsyncSite:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.site.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         ) as response:
@@ -658,7 +658,7 @@ class TestAsyncSite:
         site = await async_client.site.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -669,7 +669,7 @@ class TestAsyncSite:
         site = await async_client.site.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
             body_id="SITE-ID",
@@ -691,10 +691,10 @@ class TestAsyncSite:
             elev_msl_deriv_acc=12.34,
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -702,7 +702,7 @@ class TestAsyncSite:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -714,11 +714,11 @@ class TestAsyncSite:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -729,7 +729,7 @@ class TestAsyncSite:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -786,7 +786,7 @@ class TestAsyncSite:
         response = await async_client.site.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         )
@@ -801,7 +801,7 @@ class TestAsyncSite:
         async with async_client.site.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Site Name",
             source="Bluestaq",
         ) as response:
@@ -819,7 +819,7 @@ class TestAsyncSite:
             await async_client.site.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Site Name",
                 source="Bluestaq",
             )

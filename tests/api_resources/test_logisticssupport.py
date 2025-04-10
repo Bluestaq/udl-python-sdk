@@ -26,7 +26,7 @@ class TestLogisticssupport:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestLogisticssupport:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
             id="LOGISTICS-SUPPORT-DETAILS UUID",
@@ -192,7 +192,7 @@ class TestLogisticssupport:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.logisticssupport.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -206,7 +206,7 @@ class TestLogisticssupport:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.logisticssupport.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -223,7 +223,7 @@ class TestLogisticssupport:
         logisticssupport = client.logisticssupport.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -234,7 +234,7 @@ class TestLogisticssupport:
         logisticssupport = client.logisticssupport.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
             body_id="LOGISTICS-SUPPORT-DETAILS UUID",
@@ -391,7 +391,7 @@ class TestLogisticssupport:
         response = client.logisticssupport.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -406,7 +406,7 @@ class TestLogisticssupport:
         with client.logisticssupport.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -424,7 +424,7 @@ class TestLogisticssupport:
             client.logisticssupport.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
                 source="Bluestaq",
             )
@@ -490,7 +490,7 @@ class TestLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                     "id": "LOGISTICS-SUPPORT-DETAILS UUID",
@@ -670,7 +670,7 @@ class TestLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -684,7 +684,7 @@ class TestLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -702,7 +702,7 @@ class TestLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -818,7 +818,7 @@ class TestAsyncLogisticssupport:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -828,7 +828,7 @@ class TestAsyncLogisticssupport:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
             id="LOGISTICS-SUPPORT-DETAILS UUID",
@@ -984,7 +984,7 @@ class TestAsyncLogisticssupport:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.logisticssupport.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -998,7 +998,7 @@ class TestAsyncLogisticssupport:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.logisticssupport.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -1015,7 +1015,7 @@ class TestAsyncLogisticssupport:
         logisticssupport = await async_client.logisticssupport.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -1026,7 +1026,7 @@ class TestAsyncLogisticssupport:
         logisticssupport = await async_client.logisticssupport.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
             body_id="LOGISTICS-SUPPORT-DETAILS UUID",
@@ -1183,7 +1183,7 @@ class TestAsyncLogisticssupport:
         response = await async_client.logisticssupport.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         )
@@ -1198,7 +1198,7 @@ class TestAsyncLogisticssupport:
         async with async_client.logisticssupport.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -1216,7 +1216,7 @@ class TestAsyncLogisticssupport:
             await async_client.logisticssupport.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
                 source="Bluestaq",
             )
@@ -1282,7 +1282,7 @@ class TestAsyncLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                     "id": "LOGISTICS-SUPPORT-DETAILS UUID",
@@ -1462,7 +1462,7 @@ class TestAsyncLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -1476,7 +1476,7 @@ class TestAsyncLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -1494,7 +1494,7 @@ class TestAsyncLogisticssupport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
                     "source": "Bluestaq",
                 }

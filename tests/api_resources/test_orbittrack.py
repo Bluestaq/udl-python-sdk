@@ -89,7 +89,7 @@ class TestOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -105,7 +105,7 @@ class TestOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -125,7 +125,7 @@ class TestOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -147,7 +147,7 @@ class TestOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -163,7 +163,7 @@ class TestOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -183,7 +183,7 @@ class TestOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -330,7 +330,7 @@ class TestAsyncOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -346,7 +346,7 @@ class TestAsyncOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -366,7 +366,7 @@ class TestAsyncOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -388,7 +388,7 @@ class TestAsyncOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -404,7 +404,7 @@ class TestAsyncOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -424,7 +424,7 @@ class TestAsyncOrbittrack:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",

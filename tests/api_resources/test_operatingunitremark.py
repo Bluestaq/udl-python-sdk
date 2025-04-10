@@ -25,7 +25,7 @@ class TestOperatingunitremark:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -36,7 +36,7 @@ class TestOperatingunitremark:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -53,7 +53,7 @@ class TestOperatingunitremark:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.operatingunitremark.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -68,7 +68,7 @@ class TestOperatingunitremark:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.operatingunitremark.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -137,7 +137,7 @@ class TestOperatingunitremark:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_operating_unit": "OperatingUnit-ID",
                     "source": "some.user",
                     "text": "This is a remark",
@@ -152,7 +152,7 @@ class TestOperatingunitremark:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_operating_unit": "OperatingUnit-ID",
                     "source": "some.user",
                     "text": "This is a remark",
@@ -171,7 +171,7 @@ class TestOperatingunitremark:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_operating_unit": "OperatingUnit-ID",
                     "source": "some.user",
                     "text": "This is a remark",
@@ -288,7 +288,7 @@ class TestAsyncOperatingunitremark:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -299,7 +299,7 @@ class TestAsyncOperatingunitremark:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -316,7 +316,7 @@ class TestAsyncOperatingunitremark:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.operatingunitremark.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -331,7 +331,7 @@ class TestAsyncOperatingunitremark:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.operatingunitremark.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_operating_unit="OperatingUnit-ID",
             source="some.user",
             text="This is a remark",
@@ -400,7 +400,7 @@ class TestAsyncOperatingunitremark:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_operating_unit": "OperatingUnit-ID",
                     "source": "some.user",
                     "text": "This is a remark",
@@ -415,7 +415,7 @@ class TestAsyncOperatingunitremark:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_operating_unit": "OperatingUnit-ID",
                     "source": "some.user",
                     "text": "This is a remark",
@@ -434,7 +434,7 @@ class TestAsyncOperatingunitremark:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_operating_unit": "OperatingUnit-ID",
                     "source": "some.user",
                     "text": "This is a remark",

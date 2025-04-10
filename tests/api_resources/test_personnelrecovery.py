@@ -26,7 +26,7 @@ class TestPersonnelrecovery:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         personnelrecovery = client.personnelrecovery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -39,7 +39,7 @@ class TestPersonnelrecovery:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         personnelrecovery = client.personnelrecovery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -111,7 +111,7 @@ class TestPersonnelrecovery:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.personnelrecovery.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -128,7 +128,7 @@ class TestPersonnelrecovery:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.personnelrecovery.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -211,7 +211,7 @@ class TestPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -228,7 +228,7 @@ class TestPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -249,7 +249,7 @@ class TestPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -272,7 +272,7 @@ class TestPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -289,7 +289,7 @@ class TestPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -310,7 +310,7 @@ class TestPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -432,7 +432,7 @@ class TestAsyncPersonnelrecovery:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         personnelrecovery = await async_client.personnelrecovery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -445,7 +445,7 @@ class TestAsyncPersonnelrecovery:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         personnelrecovery = await async_client.personnelrecovery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -517,7 +517,7 @@ class TestAsyncPersonnelrecovery:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.personnelrecovery.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -534,7 +534,7 @@ class TestAsyncPersonnelrecovery:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.personnelrecovery.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_time=parse_datetime("2021-10-15T16:00:00.123Z"),
             pickup_lat=75.1234,
             pickup_lon=175.1234,
@@ -617,7 +617,7 @@ class TestAsyncPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -634,7 +634,7 @@ class TestAsyncPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -655,7 +655,7 @@ class TestAsyncPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -678,7 +678,7 @@ class TestAsyncPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -695,7 +695,7 @@ class TestAsyncPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,
@@ -716,7 +716,7 @@ class TestAsyncPersonnelrecovery:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2021-10-15T16:00:00.123Z"),
                     "pickup_lat": 75.1234,
                     "pickup_lon": 175.1234,

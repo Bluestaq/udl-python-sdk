@@ -27,7 +27,7 @@ class TestAircraft:
         aircraft = client.aircraft.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert aircraft is None
@@ -37,7 +37,7 @@ class TestAircraft:
         aircraft = client.aircraft.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             category="M",
@@ -46,10 +46,10 @@ class TestAircraft:
             dtd="005",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -57,7 +57,7 @@ class TestAircraft:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -69,11 +69,11 @@ class TestAircraft:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -84,7 +84,7 @@ class TestAircraft:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -110,7 +110,7 @@ class TestAircraft:
         response = client.aircraft.with_raw_response.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -124,7 +124,7 @@ class TestAircraft:
         with client.aircraft.with_streaming_response.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -179,7 +179,7 @@ class TestAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert aircraft is None
@@ -190,7 +190,7 @@ class TestAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             category="M",
@@ -199,10 +199,10 @@ class TestAircraft:
             dtd="005",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -210,7 +210,7 @@ class TestAircraft:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -222,11 +222,11 @@ class TestAircraft:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -237,7 +237,7 @@ class TestAircraft:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -264,7 +264,7 @@ class TestAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -279,7 +279,7 @@ class TestAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -297,7 +297,7 @@ class TestAircraft:
                 path_id="",
                 aircraft_mds="E-2C HAWKEYE",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -416,7 +416,7 @@ class TestAsyncAircraft:
         aircraft = await async_client.aircraft.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert aircraft is None
@@ -426,7 +426,7 @@ class TestAsyncAircraft:
         aircraft = await async_client.aircraft.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             category="M",
@@ -435,10 +435,10 @@ class TestAsyncAircraft:
             dtd="005",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -446,7 +446,7 @@ class TestAsyncAircraft:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -458,11 +458,11 @@ class TestAsyncAircraft:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -473,7 +473,7 @@ class TestAsyncAircraft:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -499,7 +499,7 @@ class TestAsyncAircraft:
         response = await async_client.aircraft.with_raw_response.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -513,7 +513,7 @@ class TestAsyncAircraft:
         async with async_client.aircraft.with_streaming_response.create(
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -568,7 +568,7 @@ class TestAsyncAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert aircraft is None
@@ -579,7 +579,7 @@ class TestAsyncAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="0167f577-e06c-358e-85aa-0a07a730bdd0",
             category="M",
@@ -588,10 +588,10 @@ class TestAsyncAircraft:
             dtd="005",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -599,7 +599,7 @@ class TestAsyncAircraft:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -611,11 +611,11 @@ class TestAsyncAircraft:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -626,7 +626,7 @@ class TestAsyncAircraft:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -653,7 +653,7 @@ class TestAsyncAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -668,7 +668,7 @@ class TestAsyncAircraft:
             path_id="id",
             aircraft_mds="E-2C HAWKEYE",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -686,7 +686,7 @@ class TestAsyncAircraft:
                 path_id="",
                 aircraft_mds="E-2C HAWKEYE",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 

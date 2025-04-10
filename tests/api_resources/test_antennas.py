@@ -24,7 +24,7 @@ class TestAntennas:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -33,7 +33,7 @@ class TestAntennas:
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
             id="ANTENNA-ID",
@@ -44,7 +44,7 @@ class TestAntennas:
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.antennas.with_raw_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -57,7 +57,7 @@ class TestAntennas:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.antennas.with_streaming_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         ) as response:
@@ -111,7 +111,7 @@ class TestAntennas:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -121,7 +121,7 @@ class TestAntennas:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
             body_id="ANTENNA-ID",
@@ -133,7 +133,7 @@ class TestAntennas:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.antennas.with_raw_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -147,7 +147,7 @@ class TestAntennas:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.antennas.with_streaming_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         ) as response:
@@ -164,7 +164,7 @@ class TestAntennas:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.antennas.with_raw_response.update(
                 path_id="",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="IRIDIUM NEXT 121-ANTENNA-10075",
                 source="Bluestaq",
             )
@@ -320,7 +320,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -329,7 +329,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
             id="ANTENNA-ID",
@@ -340,7 +340,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.antennas.with_raw_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -353,7 +353,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.antennas.with_streaming_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         ) as response:
@@ -407,7 +407,7 @@ class TestAsyncAntennas:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -417,7 +417,7 @@ class TestAsyncAntennas:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
             body_id="ANTENNA-ID",
@@ -429,7 +429,7 @@ class TestAsyncAntennas:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.antennas.with_raw_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         )
@@ -443,7 +443,7 @@ class TestAsyncAntennas:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.antennas.with_streaming_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="IRIDIUM NEXT 121-ANTENNA-10075",
             source="Bluestaq",
         ) as response:
@@ -460,7 +460,7 @@ class TestAsyncAntennas:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.antennas.with_raw_response.update(
                 path_id="",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="IRIDIUM NEXT 121-ANTENNA-10075",
                 source="Bluestaq",
             )

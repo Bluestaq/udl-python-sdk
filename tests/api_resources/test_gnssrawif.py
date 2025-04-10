@@ -244,7 +244,7 @@ class TestGnssrawif:
         gnssrawif = client.gnssrawif.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -257,7 +257,7 @@ class TestGnssrawif:
         gnssrawif = client.gnssrawif.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -299,7 +299,7 @@ class TestGnssrawif:
         response = client.gnssrawif.with_raw_response.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -316,7 +316,7 @@ class TestGnssrawif:
         with client.gnssrawif.with_streaming_response.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -550,7 +550,7 @@ class TestAsyncGnssrawif:
         gnssrawif = await async_client.gnssrawif.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -563,7 +563,7 @@ class TestAsyncGnssrawif:
         gnssrawif = await async_client.gnssrawif.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -605,7 +605,7 @@ class TestAsyncGnssrawif:
         response = await async_client.gnssrawif.with_raw_response.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",
@@ -622,7 +622,7 @@ class TestAsyncGnssrawif:
         async with async_client.gnssrawif.with_streaming_response.upload_zip(
             center_freq=[1227.6, 1575.4],
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2022-04-09T18:12:28.919768Z"),
             file_name="somefile.hdf5",
             source="Bluestaq",

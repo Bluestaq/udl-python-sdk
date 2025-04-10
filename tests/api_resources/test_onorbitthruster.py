@@ -24,7 +24,7 @@ class TestOnorbitthruster:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -35,7 +35,7 @@ class TestOnorbitthruster:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -50,7 +50,7 @@ class TestOnorbitthruster:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitthruster.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -65,7 +65,7 @@ class TestOnorbitthruster:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitthruster.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -83,7 +83,7 @@ class TestOnorbitthruster:
         onorbitthruster = client.onorbitthruster.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -95,7 +95,7 @@ class TestOnorbitthruster:
         onorbitthruster = client.onorbitthruster.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -111,7 +111,7 @@ class TestOnorbitthruster:
         response = client.onorbitthruster.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -127,7 +127,7 @@ class TestOnorbitthruster:
         with client.onorbitthruster.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -146,7 +146,7 @@ class TestOnorbitthruster:
             client.onorbitthruster.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_engine="ENGINE-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
@@ -261,7 +261,7 @@ class TestAsyncOnorbitthruster:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -272,7 +272,7 @@ class TestAsyncOnorbitthruster:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -287,7 +287,7 @@ class TestAsyncOnorbitthruster:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitthruster.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -302,7 +302,7 @@ class TestAsyncOnorbitthruster:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitthruster.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -320,7 +320,7 @@ class TestAsyncOnorbitthruster:
         onorbitthruster = await async_client.onorbitthruster.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -332,7 +332,7 @@ class TestAsyncOnorbitthruster:
         onorbitthruster = await async_client.onorbitthruster.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -348,7 +348,7 @@ class TestAsyncOnorbitthruster:
         response = await async_client.onorbitthruster.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -364,7 +364,7 @@ class TestAsyncOnorbitthruster:
         async with async_client.onorbitthruster.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -383,7 +383,7 @@ class TestAsyncOnorbitthruster:
             await async_client.onorbitthruster.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_engine="ENGINE-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",

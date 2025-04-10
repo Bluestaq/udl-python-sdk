@@ -21,7 +21,7 @@ class TestAircraftstatusremark:
         aircraftstatusremark = client.aircraftstatusremark.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -33,7 +33,7 @@ class TestAircraftstatusremark:
         aircraftstatusremark = client.aircraftstatusremark.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -52,7 +52,7 @@ class TestAircraftstatusremark:
         response = client.aircraftstatusremark.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -68,7 +68,7 @@ class TestAircraftstatusremark:
         with client.aircraftstatusremark.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -87,7 +87,7 @@ class TestAircraftstatusremark:
             client.aircraftstatusremark.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
                 source="Bluestaq",
                 text="Remark text",
@@ -140,7 +140,7 @@ class TestAsyncAircraftstatusremark:
         aircraftstatusremark = await async_client.aircraftstatusremark.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -152,7 +152,7 @@ class TestAsyncAircraftstatusremark:
         aircraftstatusremark = await async_client.aircraftstatusremark.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -171,7 +171,7 @@ class TestAsyncAircraftstatusremark:
         response = await async_client.aircraftstatusremark.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -187,7 +187,7 @@ class TestAsyncAircraftstatusremark:
         async with async_client.aircraftstatusremark.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -206,7 +206,7 @@ class TestAsyncAircraftstatusremark:
             await async_client.aircraftstatusremark.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
                 source="Bluestaq",
                 text="Remark text",

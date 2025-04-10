@@ -89,7 +89,7 @@ class TestSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -103,7 +103,7 @@ class TestSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -121,7 +121,7 @@ class TestSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -198,7 +198,7 @@ class TestSigact:
     def test_method_upload_zip(self, client: Unifieddatalibrary) -> None:
         sigact = client.sigact.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -208,7 +208,7 @@ class TestSigact:
     def test_method_upload_zip_with_all_params(self, client: Unifieddatalibrary) -> None:
         sigact = client.sigact.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             id="SIGACT-ID",
@@ -307,7 +307,7 @@ class TestSigact:
     def test_raw_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         response = client.sigact.with_raw_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -321,7 +321,7 @@ class TestSigact:
     def test_streaming_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         with client.sigact.with_streaming_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -405,7 +405,7 @@ class TestAsyncSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -419,7 +419,7 @@ class TestAsyncSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -437,7 +437,7 @@ class TestAsyncSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -514,7 +514,7 @@ class TestAsyncSigact:
     async def test_method_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         sigact = await async_client.sigact.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -524,7 +524,7 @@ class TestAsyncSigact:
     async def test_method_upload_zip_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sigact = await async_client.sigact.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             id="SIGACT-ID",
@@ -623,7 +623,7 @@ class TestAsyncSigact:
     async def test_raw_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sigact.with_raw_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -637,7 +637,7 @@ class TestAsyncSigact:
     async def test_streaming_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sigact.with_streaming_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             report_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:

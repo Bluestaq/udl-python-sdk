@@ -26,7 +26,7 @@ class TestWeatherreport:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         weatherreport = client.weatherreport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -39,7 +39,7 @@ class TestWeatherreport:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         weatherreport = client.weatherreport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -128,7 +128,7 @@ class TestWeatherreport:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.weatherreport.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -145,7 +145,7 @@ class TestWeatherreport:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.weatherreport.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -228,7 +228,7 @@ class TestWeatherreport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 56.12,
                     "lon": -156.6,
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -245,7 +245,7 @@ class TestWeatherreport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 56.12,
                     "lon": -156.6,
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -266,7 +266,7 @@ class TestWeatherreport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 56.12,
                     "lon": -156.6,
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -388,7 +388,7 @@ class TestAsyncWeatherreport:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         weatherreport = await async_client.weatherreport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -401,7 +401,7 @@ class TestAsyncWeatherreport:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         weatherreport = await async_client.weatherreport.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -490,7 +490,7 @@ class TestAsyncWeatherreport:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.weatherreport.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -507,7 +507,7 @@ class TestAsyncWeatherreport:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.weatherreport.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             lat=56.12,
             lon=-156.6,
             ob_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -590,7 +590,7 @@ class TestAsyncWeatherreport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 56.12,
                     "lon": -156.6,
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -607,7 +607,7 @@ class TestAsyncWeatherreport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 56.12,
                     "lon": -156.6,
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -628,7 +628,7 @@ class TestAsyncWeatherreport:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 56.12,
                     "lon": -156.6,
                     "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),

@@ -26,7 +26,7 @@ class TestSensor:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sensor = client.sensor.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -36,7 +36,7 @@ class TestSensor:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensor = client.sensor.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
             active=True,
@@ -45,10 +45,10 @@ class TestSensor:
             data_control="observations",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -56,7 +56,7 @@ class TestSensor:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -68,11 +68,11 @@ class TestSensor:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -83,7 +83,7 @@ class TestSensor:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -97,7 +97,7 @@ class TestSensor:
             sensorcharacteristics=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
                     "id": "SENSORCHARACTERISTICS-ID",
@@ -177,7 +177,7 @@ class TestSensor:
             sensorlimits_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
@@ -199,7 +199,7 @@ class TestSensor:
             sensor_stats=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "idSensor",
                     "source": "Bluestaq",
                     "id": "SENSORSTATS-ID",
@@ -218,7 +218,7 @@ class TestSensor:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sensor.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -232,7 +232,7 @@ class TestSensor:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sensor.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         ) as response:
@@ -249,7 +249,7 @@ class TestSensor:
         sensor = client.sensor.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -260,7 +260,7 @@ class TestSensor:
         sensor = client.sensor.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
             active=True,
@@ -269,10 +269,10 @@ class TestSensor:
             data_control="observations",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -280,7 +280,7 @@ class TestSensor:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -292,11 +292,11 @@ class TestSensor:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -307,7 +307,7 @@ class TestSensor:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -321,7 +321,7 @@ class TestSensor:
             sensorcharacteristics=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
                     "id": "SENSORCHARACTERISTICS-ID",
@@ -401,7 +401,7 @@ class TestSensor:
             sensorlimits_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
@@ -423,7 +423,7 @@ class TestSensor:
             sensor_stats=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "idSensor",
                     "source": "Bluestaq",
                     "id": "SENSORSTATS-ID",
@@ -443,7 +443,7 @@ class TestSensor:
         response = client.sensor.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -458,7 +458,7 @@ class TestSensor:
         with client.sensor.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         ) as response:
@@ -476,7 +476,7 @@ class TestSensor:
             client.sensor.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 sensor_name="SENSOR_NAME",
                 source="some.user",
             )
@@ -671,7 +671,7 @@ class TestAsyncSensor:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensor = await async_client.sensor.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -681,7 +681,7 @@ class TestAsyncSensor:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensor = await async_client.sensor.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
             active=True,
@@ -690,10 +690,10 @@ class TestAsyncSensor:
             data_control="observations",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -701,7 +701,7 @@ class TestAsyncSensor:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -713,11 +713,11 @@ class TestAsyncSensor:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -728,7 +728,7 @@ class TestAsyncSensor:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -742,7 +742,7 @@ class TestAsyncSensor:
             sensorcharacteristics=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
                     "id": "SENSORCHARACTERISTICS-ID",
@@ -822,7 +822,7 @@ class TestAsyncSensor:
             sensorlimits_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
@@ -844,7 +844,7 @@ class TestAsyncSensor:
             sensor_stats=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "idSensor",
                     "source": "Bluestaq",
                     "id": "SENSORSTATS-ID",
@@ -863,7 +863,7 @@ class TestAsyncSensor:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensor.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -877,7 +877,7 @@ class TestAsyncSensor:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensor.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         ) as response:
@@ -894,7 +894,7 @@ class TestAsyncSensor:
         sensor = await async_client.sensor.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -905,7 +905,7 @@ class TestAsyncSensor:
         sensor = await async_client.sensor.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
             active=True,
@@ -914,10 +914,10 @@ class TestAsyncSensor:
             data_control="observations",
             entity={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "name": "Example name",
                 "source": "Bluestaq",
-                "type": "AIRCRAFT",
+                "type": "ONORBIT",
                 "country_code": "US",
                 "id_entity": "ENTITY-ID",
                 "id_location": "LOCATION-ID",
@@ -925,7 +925,7 @@ class TestAsyncSensor:
                 "id_operating_unit": "OPERATINGUNIT-ID",
                 "location": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "name": "Example location",
                     "source": "Bluestaq",
                     "altitude": 10.23,
@@ -937,11 +937,11 @@ class TestAsyncSensor:
                 },
                 "on_orbit": {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sat_no": 1,
                     "source": "Bluestaq",
                     "alt_name": "Alternate Name",
-                    "category": "Unknown",
+                    "category": "Lunar",
                     "common_name": "Example common name",
                     "constellation": "Big Dipper",
                     "country_code": "US",
@@ -952,7 +952,7 @@ class TestAsyncSensor:
                     "launch_site_id": "LAUNCHSITE-ID",
                     "lifetime_years": 10,
                     "mission_number": "Expedition 1",
-                    "object_type": "ROCKET BODY",
+                    "object_type": "PAYLOAD",
                     "origin": "THIRD_PARTY_DATASOURCE",
                 },
                 "origin": "THIRD_PARTY_DATASOURCE",
@@ -966,7 +966,7 @@ class TestAsyncSensor:
             sensorcharacteristics=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
                     "id": "SENSORCHARACTERISTICS-ID",
@@ -1046,7 +1046,7 @@ class TestAsyncSensor:
             sensorlimits_collection=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
@@ -1068,7 +1068,7 @@ class TestAsyncSensor:
             sensor_stats=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_sensor": "idSensor",
                     "source": "Bluestaq",
                     "id": "SENSORSTATS-ID",
@@ -1088,7 +1088,7 @@ class TestAsyncSensor:
         response = await async_client.sensor.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         )
@@ -1103,7 +1103,7 @@ class TestAsyncSensor:
         async with async_client.sensor.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sensor_name="SENSOR_NAME",
             source="some.user",
         ) as response:
@@ -1121,7 +1121,7 @@ class TestAsyncSensor:
             await async_client.sensor.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 sensor_name="SENSOR_NAME",
                 source="some.user",
             )

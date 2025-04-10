@@ -25,7 +25,7 @@ class TestOnorbitlist:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestOnorbitlist:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
             id="ONORBITLIST-ID",
@@ -49,7 +49,7 @@ class TestOnorbitlist:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitlist.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -63,7 +63,7 @@ class TestOnorbitlist:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitlist.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         ) as response:
@@ -80,7 +80,7 @@ class TestOnorbitlist:
         onorbitlist = client.onorbitlist.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -91,7 +91,7 @@ class TestOnorbitlist:
         onorbitlist = client.onorbitlist.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
             body_id="ONORBITLIST-ID",
@@ -106,7 +106,7 @@ class TestOnorbitlist:
         response = client.onorbitlist.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -121,7 +121,7 @@ class TestOnorbitlist:
         with client.onorbitlist.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         ) as response:
@@ -139,7 +139,7 @@ class TestOnorbitlist:
             client.onorbitlist.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="People",
                 source="Bluestaq",
             )
@@ -334,7 +334,7 @@ class TestAsyncOnorbitlist:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -344,7 +344,7 @@ class TestAsyncOnorbitlist:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
             id="ONORBITLIST-ID",
@@ -358,7 +358,7 @@ class TestAsyncOnorbitlist:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitlist.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -372,7 +372,7 @@ class TestAsyncOnorbitlist:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitlist.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         ) as response:
@@ -389,7 +389,7 @@ class TestAsyncOnorbitlist:
         onorbitlist = await async_client.onorbitlist.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -400,7 +400,7 @@ class TestAsyncOnorbitlist:
         onorbitlist = await async_client.onorbitlist.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
             body_id="ONORBITLIST-ID",
@@ -415,7 +415,7 @@ class TestAsyncOnorbitlist:
         response = await async_client.onorbitlist.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         )
@@ -430,7 +430,7 @@ class TestAsyncOnorbitlist:
         async with async_client.onorbitlist.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="People",
             source="Bluestaq",
         ) as response:
@@ -448,7 +448,7 @@ class TestAsyncOnorbitlist:
             await async_client.onorbitlist.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="People",
                 source="Bluestaq",
             )

@@ -25,7 +25,7 @@ class TestSeradatacommdetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         seradatacommdetail = client.seradatacommdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert seradatacommdetail is None
@@ -34,7 +34,7 @@ class TestSeradatacommdetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatacommdetail = client.seradatacommdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="SERADATACOMMDETAILS-ID",
             band="X",
@@ -74,7 +74,7 @@ class TestSeradatacommdetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.seradatacommdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -87,7 +87,7 @@ class TestSeradatacommdetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.seradatacommdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -103,7 +103,7 @@ class TestSeradatacommdetails:
         seradatacommdetail = client.seradatacommdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert seradatacommdetail is None
@@ -113,7 +113,7 @@ class TestSeradatacommdetails:
         seradatacommdetail = client.seradatacommdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="SERADATACOMMDETAILS-ID",
             band="X",
@@ -154,7 +154,7 @@ class TestSeradatacommdetails:
         response = client.seradatacommdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -168,7 +168,7 @@ class TestSeradatacommdetails:
         with client.seradatacommdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -185,7 +185,7 @@ class TestSeradatacommdetails:
             client.seradatacommdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -379,7 +379,7 @@ class TestAsyncSeradatacommdetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatacommdetail = await async_client.seradatacommdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert seradatacommdetail is None
@@ -388,7 +388,7 @@ class TestAsyncSeradatacommdetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatacommdetail = await async_client.seradatacommdetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="SERADATACOMMDETAILS-ID",
             band="X",
@@ -428,7 +428,7 @@ class TestAsyncSeradatacommdetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatacommdetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -441,7 +441,7 @@ class TestAsyncSeradatacommdetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradatacommdetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -457,7 +457,7 @@ class TestAsyncSeradatacommdetails:
         seradatacommdetail = await async_client.seradatacommdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert seradatacommdetail is None
@@ -467,7 +467,7 @@ class TestAsyncSeradatacommdetails:
         seradatacommdetail = await async_client.seradatacommdetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="SERADATACOMMDETAILS-ID",
             band="X",
@@ -508,7 +508,7 @@ class TestAsyncSeradatacommdetails:
         response = await async_client.seradatacommdetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -522,7 +522,7 @@ class TestAsyncSeradatacommdetails:
         async with async_client.seradatacommdetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -539,7 +539,7 @@ class TestAsyncSeradatacommdetails:
             await async_client.seradatacommdetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 

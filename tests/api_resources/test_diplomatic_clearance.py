@@ -26,7 +26,7 @@ class TestDiplomaticClearance:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -37,7 +37,7 @@ class TestDiplomaticClearance:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -90,7 +90,7 @@ class TestDiplomaticClearance:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.diplomatic_clearance.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -105,7 +105,7 @@ class TestDiplomaticClearance:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.diplomatic_clearance.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -161,7 +161,7 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.diplomatic_clearance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -173,7 +173,7 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.diplomatic_clearance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -227,7 +227,7 @@ class TestDiplomaticClearance:
         response = client.diplomatic_clearance.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -243,7 +243,7 @@ class TestDiplomaticClearance:
         with client.diplomatic_clearance.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -262,7 +262,7 @@ class TestDiplomaticClearance:
             client.diplomatic_clearance.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
                 id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                 source="Bluestaq",
@@ -379,7 +379,7 @@ class TestDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",
@@ -517,7 +517,7 @@ class TestAsyncDiplomaticClearance:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -528,7 +528,7 @@ class TestAsyncDiplomaticClearance:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -581,7 +581,7 @@ class TestAsyncDiplomaticClearance:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.diplomatic_clearance.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -596,7 +596,7 @@ class TestAsyncDiplomaticClearance:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.diplomatic_clearance.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -652,7 +652,7 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.diplomatic_clearance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -664,7 +664,7 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.diplomatic_clearance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -718,7 +718,7 @@ class TestAsyncDiplomaticClearance:
         response = await async_client.diplomatic_clearance.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -734,7 +734,7 @@ class TestAsyncDiplomaticClearance:
         async with async_client.diplomatic_clearance.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
             id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
             source="Bluestaq",
@@ -753,7 +753,7 @@ class TestAsyncDiplomaticClearance:
             await async_client.diplomatic_clearance.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 first_dep_date=parse_datetime("2024-01-01T01:01:01.123Z"),
                 id_mission="0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                 source="Bluestaq",
@@ -870,7 +870,7 @@ class TestAsyncDiplomaticClearance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "first_dep_date": parse_datetime("2024-01-01T01:01:01.123Z"),
                     "id_mission": "0dba1363-2d09-49fa-a784-4bb4cbb1674a",
                     "source": "Bluestaq",

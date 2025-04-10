@@ -64,7 +64,7 @@ class TestAircraftSorties:
         aircraft_sorty = client.aircraft_sorties.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -75,7 +75,7 @@ class TestAircraftSorties:
         aircraft_sorty = client.aircraft_sorties.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
             body_id="AIRCRAFTSORTIE-ID",
@@ -135,11 +135,11 @@ class TestAircraftSorties:
             parking_loc="KCOS",
             passengers=17,
             planned_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
-            ppr_status="NOT REQUIRED",
+            ppr_status="PENDING",
             primary_scl="ABC",
             req_config="C-1",
             result_remarks="Some remark about aircraft A",
-            rvn_req="N",
+            rvn_req="R",
             schedule_remarks="Some schedule remark about aircraft A",
             secondary_scl="ABC",
             soe="OPS",
@@ -153,7 +153,7 @@ class TestAircraftSorties:
         response = client.aircraft_sorties.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -168,7 +168,7 @@ class TestAircraftSorties:
         with client.aircraft_sorties.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         ) as response:
@@ -186,7 +186,7 @@ class TestAircraftSorties:
             client.aircraft_sorties.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
             )
@@ -297,7 +297,7 @@ class TestAsyncAircraftSorties:
         aircraft_sorty = await async_client.aircraft_sorties.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -308,7 +308,7 @@ class TestAsyncAircraftSorties:
         aircraft_sorty = await async_client.aircraft_sorties.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
             body_id="AIRCRAFTSORTIE-ID",
@@ -368,11 +368,11 @@ class TestAsyncAircraftSorties:
             parking_loc="KCOS",
             passengers=17,
             planned_arr_time=parse_datetime("2021-01-01T01:01:01.123Z"),
-            ppr_status="NOT REQUIRED",
+            ppr_status="PENDING",
             primary_scl="ABC",
             req_config="C-1",
             result_remarks="Some remark about aircraft A",
-            rvn_req="N",
+            rvn_req="R",
             schedule_remarks="Some schedule remark about aircraft A",
             secondary_scl="ABC",
             soe="OPS",
@@ -386,7 +386,7 @@ class TestAsyncAircraftSorties:
         response = await async_client.aircraft_sorties.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         )
@@ -401,7 +401,7 @@ class TestAsyncAircraftSorties:
         async with async_client.aircraft_sorties.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
             source="Bluestaq",
         ) as response:
@@ -419,7 +419,7 @@ class TestAsyncAircraftSorties:
             await async_client.aircraft_sorties.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
             )

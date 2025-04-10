@@ -22,7 +22,7 @@ class TestAircraftSorties:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -36,7 +36,7 @@ class TestAircraftSorties:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -54,7 +54,7 @@ class TestAircraftSorties:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -78,7 +78,7 @@ class TestAsyncAircraftSorties:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -92,7 +92,7 @@ class TestAsyncAircraftSorties:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }
@@ -110,7 +110,7 @@ class TestAsyncAircraftSorties:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "planned_dep_time": parse_datetime("2021-01-01T01:01:01.123Z"),
                     "source": "Bluestaq",
                 }

@@ -24,7 +24,7 @@ class TestOnorbitantenna:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitantenna = client.onorbitantenna.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -35,7 +35,7 @@ class TestOnorbitantenna:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitantenna = client.onorbitantenna.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -48,7 +48,7 @@ class TestOnorbitantenna:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitantenna.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -63,7 +63,7 @@ class TestOnorbitantenna:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitantenna.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -81,7 +81,7 @@ class TestOnorbitantenna:
         onorbitantenna = client.onorbitantenna.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -93,7 +93,7 @@ class TestOnorbitantenna:
         onorbitantenna = client.onorbitantenna.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -107,7 +107,7 @@ class TestOnorbitantenna:
         response = client.onorbitantenna.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -123,7 +123,7 @@ class TestOnorbitantenna:
         with client.onorbitantenna.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -142,7 +142,7 @@ class TestOnorbitantenna:
             client.onorbitantenna.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_antenna="ANTENNA-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
@@ -257,7 +257,7 @@ class TestAsyncOnorbitantenna:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitantenna = await async_client.onorbitantenna.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -268,7 +268,7 @@ class TestAsyncOnorbitantenna:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitantenna = await async_client.onorbitantenna.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -281,7 +281,7 @@ class TestAsyncOnorbitantenna:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitantenna.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -296,7 +296,7 @@ class TestAsyncOnorbitantenna:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitantenna.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -314,7 +314,7 @@ class TestAsyncOnorbitantenna:
         onorbitantenna = await async_client.onorbitantenna.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -326,7 +326,7 @@ class TestAsyncOnorbitantenna:
         onorbitantenna = await async_client.onorbitantenna.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -340,7 +340,7 @@ class TestAsyncOnorbitantenna:
         response = await async_client.onorbitantenna.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -356,7 +356,7 @@ class TestAsyncOnorbitantenna:
         async with async_client.onorbitantenna.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_antenna="ANTENNA-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -375,7 +375,7 @@ class TestAsyncOnorbitantenna:
             await async_client.onorbitantenna.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_antenna="ANTENNA-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",

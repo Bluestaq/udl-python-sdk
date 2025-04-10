@@ -26,7 +26,7 @@ class TestLaunchevent:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         launchevent = client.launchevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestLaunchevent:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchevent = client.launchevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
             id="LAUNCHEVENT-ID",
@@ -58,7 +58,7 @@ class TestLaunchevent:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.launchevent.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
         )
@@ -72,7 +72,7 @@ class TestLaunchevent:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.launchevent.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -152,7 +152,7 @@ class TestLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -166,7 +166,7 @@ class TestLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -184,7 +184,7 @@ class TestLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -204,7 +204,7 @@ class TestLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -218,7 +218,7 @@ class TestLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -236,7 +236,7 @@ class TestLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -355,7 +355,7 @@ class TestAsyncLaunchevent:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchevent = await async_client.launchevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
         )
@@ -365,7 +365,7 @@ class TestAsyncLaunchevent:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchevent = await async_client.launchevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
             id="LAUNCHEVENT-ID",
@@ -387,7 +387,7 @@ class TestAsyncLaunchevent:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchevent.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
         )
@@ -401,7 +401,7 @@ class TestAsyncLaunchevent:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchevent.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             msg_create_date=parse_datetime("2020-01-01T00:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -481,7 +481,7 @@ class TestAsyncLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -495,7 +495,7 @@ class TestAsyncLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -513,7 +513,7 @@ class TestAsyncLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -533,7 +533,7 @@ class TestAsyncLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -547,7 +547,7 @@ class TestAsyncLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -565,7 +565,7 @@ class TestAsyncLaunchevent:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_create_date": parse_datetime("2020-01-01T00:00:00.123Z"),
                     "source": "Bluestaq",
                 }

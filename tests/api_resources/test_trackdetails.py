@@ -89,7 +89,7 @@ class TestTrackdetails:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -105,7 +105,7 @@ class TestTrackdetails:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -125,7 +125,7 @@ class TestTrackdetails:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -272,7 +272,7 @@ class TestAsyncTrackdetails:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -288,7 +288,7 @@ class TestAsyncTrackdetails:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",
@@ -308,7 +308,7 @@ class TestAsyncTrackdetails:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "lat": 19.88550102,
                     "lon": 46.74596844,
                     "source": "Bluestaq",

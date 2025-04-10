@@ -26,7 +26,7 @@ class TestOrbitdetermination:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -39,7 +39,7 @@ class TestOrbitdetermination:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -52,7 +52,7 @@ class TestOrbitdetermination:
             agom_model="RandomWalk",
             apriori_elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -81,7 +81,7 @@ class TestOrbitdetermination:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -90,7 +90,7 @@ class TestOrbitdetermination:
             apriori_id_state_vector="6e291992-8ae3-4592-bb0f-055715bf4803",
             apriori_state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -147,7 +147,7 @@ class TestOrbitdetermination:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -214,7 +214,7 @@ class TestOrbitdetermination:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.orbitdetermination.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -231,7 +231,7 @@ class TestOrbitdetermination:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.orbitdetermination.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -323,7 +323,7 @@ class TestOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -336,7 +336,7 @@ class TestOrbitdetermination:
                     "agom_model": "RandomWalk",
                     "apriori_elset": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "agom": 0.0126,
@@ -365,7 +365,7 @@ class TestOrbitdetermination:
                         "sat_no": 12,
                         "semi_major_axis": 1.1,
                         "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                        "sourced_data_types": ["EO", "RADAR"],
+                        "sourced_data_types": ["RADAR", "RF"],
                         "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                         "transaction_id": "TRANSACTION-ID",
                         "uct": False,
@@ -374,7 +374,7 @@ class TestOrbitdetermination:
                     "apriori_id_state_vector": "6e291992-8ae3-4592-bb0f-055715bf4803",
                     "apriori_state_vector": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "actual_od_span": 3.5,
@@ -431,7 +431,7 @@ class TestOrbitdetermination:
                         "solar_rad_press_coeff": 0.0244394,
                         "solid_earth_tides": True,
                         "sourced_data": ["DATA1", "DATA2"],
-                        "sourced_data_types": ["EO"],
+                        "sourced_data_types": ["RADAR"],
                         "srp_area": 4.311,
                         "step_mode": "AUTO",
                         "step_size": 1.23,
@@ -522,7 +522,7 @@ class TestOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -539,7 +539,7 @@ class TestOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -560,7 +560,7 @@ class TestOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -688,7 +688,7 @@ class TestAsyncOrbitdetermination:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -701,7 +701,7 @@ class TestAsyncOrbitdetermination:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -714,7 +714,7 @@ class TestAsyncOrbitdetermination:
             agom_model="RandomWalk",
             apriori_elset={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "agom": 0.0126,
@@ -743,7 +743,7 @@ class TestAsyncOrbitdetermination:
                 "sat_no": 12,
                 "semi_major_axis": 1.1,
                 "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                "sourced_data_types": ["EO", "RADAR"],
+                "sourced_data_types": ["RADAR", "RF"],
                 "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                 "transaction_id": "TRANSACTION-ID",
                 "uct": False,
@@ -752,7 +752,7 @@ class TestAsyncOrbitdetermination:
             apriori_id_state_vector="6e291992-8ae3-4592-bb0f-055715bf4803",
             apriori_state_vector={
                 "classification_marking": "U",
-                "data_mode": "REAL",
+                "data_mode": "TEST",
                 "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                 "source": "Bluestaq",
                 "actual_od_span": 3.5,
@@ -809,7 +809,7 @@ class TestAsyncOrbitdetermination:
                 "solar_rad_press_coeff": 0.0244394,
                 "solid_earth_tides": True,
                 "sourced_data": ["DATA1", "DATA2"],
-                "sourced_data_types": ["EO"],
+                "sourced_data_types": ["RADAR"],
                 "srp_area": 4.311,
                 "step_mode": "AUTO",
                 "step_size": 1.23,
@@ -876,7 +876,7 @@ class TestAsyncOrbitdetermination:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.orbitdetermination.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -893,7 +893,7 @@ class TestAsyncOrbitdetermination:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.orbitdetermination.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2023-08-28T15:20:21.247192Z"),
             initial_od=False,
             method="BLS",
@@ -985,7 +985,7 @@ class TestAsyncOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -998,7 +998,7 @@ class TestAsyncOrbitdetermination:
                     "agom_model": "RandomWalk",
                     "apriori_elset": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "agom": 0.0126,
@@ -1027,7 +1027,7 @@ class TestAsyncOrbitdetermination:
                         "sat_no": 12,
                         "semi_major_axis": 1.1,
                         "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                        "sourced_data_types": ["EO", "RADAR"],
+                        "sourced_data_types": ["RADAR", "RF"],
                         "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                         "transaction_id": "TRANSACTION-ID",
                         "uct": False,
@@ -1036,7 +1036,7 @@ class TestAsyncOrbitdetermination:
                     "apriori_id_state_vector": "6e291992-8ae3-4592-bb0f-055715bf4803",
                     "apriori_state_vector": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "actual_od_span": 3.5,
@@ -1093,7 +1093,7 @@ class TestAsyncOrbitdetermination:
                         "solar_rad_press_coeff": 0.0244394,
                         "solid_earth_tides": True,
                         "sourced_data": ["DATA1", "DATA2"],
-                        "sourced_data_types": ["EO"],
+                        "sourced_data_types": ["RADAR"],
                         "srp_area": 4.311,
                         "step_mode": "AUTO",
                         "step_size": 1.23,
@@ -1184,7 +1184,7 @@ class TestAsyncOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -1201,7 +1201,7 @@ class TestAsyncOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",
@@ -1222,7 +1222,7 @@ class TestAsyncOrbitdetermination:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
                     "initial_od": False,
                     "method": "BLS",

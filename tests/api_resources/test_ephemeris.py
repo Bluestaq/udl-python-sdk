@@ -88,7 +88,7 @@ class TestEphemeris:
         ephemeris = client.ephemeris.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -102,7 +102,7 @@ class TestEphemeris:
         ephemeris = client.ephemeris.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -120,7 +120,7 @@ class TestEphemeris:
             ephemeris_list=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "xpos": 1.1,
@@ -171,7 +171,7 @@ class TestEphemeris:
         response = client.ephemeris.with_raw_response.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -189,7 +189,7 @@ class TestEphemeris:
         with client.ephemeris.with_streaming_response.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -406,7 +406,7 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -420,7 +420,7 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -438,7 +438,7 @@ class TestAsyncEphemeris:
             ephemeris_list=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "xpos": 1.1,
@@ -489,7 +489,7 @@ class TestAsyncEphemeris:
         response = await async_client.ephemeris.with_raw_response.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -507,7 +507,7 @@ class TestAsyncEphemeris:
         async with async_client.ephemeris.with_streaming_response.create_bulk_v2(
             category="ANALYST",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             num_points=1,
             point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),

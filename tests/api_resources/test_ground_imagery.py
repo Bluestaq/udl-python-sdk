@@ -62,7 +62,7 @@ class TestGroundImagery:
     def test_method_upload_zip(self, client: Unifieddatalibrary) -> None:
         ground_imagery = client.ground_imagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -73,7 +73,7 @@ class TestGroundImagery:
     def test_method_upload_zip_with_all_params(self, client: Unifieddatalibrary) -> None:
         ground_imagery = client.ground_imagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -103,7 +103,7 @@ class TestGroundImagery:
     def test_raw_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         response = client.ground_imagery.with_raw_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -118,7 +118,7 @@ class TestGroundImagery:
     def test_streaming_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         with client.ground_imagery.with_streaming_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -181,7 +181,7 @@ class TestAsyncGroundImagery:
     async def test_method_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         ground_imagery = await async_client.ground_imagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -192,7 +192,7 @@ class TestAsyncGroundImagery:
     async def test_method_upload_zip_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ground_imagery = await async_client.ground_imagery.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -222,7 +222,7 @@ class TestAsyncGroundImagery:
     async def test_raw_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.ground_imagery.with_raw_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -237,7 +237,7 @@ class TestAsyncGroundImagery:
     async def test_streaming_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.ground_imagery.with_streaming_response.upload_zip(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",

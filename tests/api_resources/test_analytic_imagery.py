@@ -136,7 +136,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -151,7 +151,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -193,7 +193,7 @@ class TestAnalyticImagery:
         response = client.analytic_imagery.with_raw_response.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -212,7 +212,7 @@ class TestAnalyticImagery:
         with client.analytic_imagery.with_streaming_response.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -558,7 +558,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -573,7 +573,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -615,7 +615,7 @@ class TestAsyncAnalyticImagery:
         response = await async_client.analytic_imagery.with_raw_response.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,
@@ -634,7 +634,7 @@ class TestAsyncAnalyticImagery:
         async with async_client.analytic_imagery.with_streaming_response.create_bulk_v2(
             classification_marking="U",
             content="CONTOUR",
-            data_mode="REAL",
+            data_mode="TEST",
             description="Image description",
             filename="IMAGE-NAME",
             filesize=7654321,

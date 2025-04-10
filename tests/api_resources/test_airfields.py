@@ -25,7 +25,7 @@ class TestAirfields:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -36,7 +36,7 @@ class TestAirfields:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -73,7 +73,7 @@ class TestAirfields:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.airfields.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -88,7 +88,7 @@ class TestAirfields:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.airfields.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -144,7 +144,7 @@ class TestAirfields:
         airfield = client.airfields.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -156,7 +156,7 @@ class TestAirfields:
         airfield = client.airfields.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -194,7 +194,7 @@ class TestAirfields:
         response = client.airfields.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -210,7 +210,7 @@ class TestAirfields:
         with client.airfields.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -229,7 +229,7 @@ class TestAirfields:
             client.airfields.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="USAF Academy AFLD",
                 source="Bluestaq",
                 type="Commercial",
@@ -349,7 +349,7 @@ class TestAsyncAirfields:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -360,7 +360,7 @@ class TestAsyncAirfields:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -397,7 +397,7 @@ class TestAsyncAirfields:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfields.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -412,7 +412,7 @@ class TestAsyncAirfields:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfields.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -468,7 +468,7 @@ class TestAsyncAirfields:
         airfield = await async_client.airfields.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -480,7 +480,7 @@ class TestAsyncAirfields:
         airfield = await async_client.airfields.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -518,7 +518,7 @@ class TestAsyncAirfields:
         response = await async_client.airfields.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -534,7 +534,7 @@ class TestAsyncAirfields:
         async with async_client.airfields.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="USAF Academy AFLD",
             source="Bluestaq",
             type="Commercial",
@@ -553,7 +553,7 @@ class TestAsyncAirfields:
             await async_client.airfields.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="USAF Academy AFLD",
                 source="Bluestaq",
                 type="Commercial",

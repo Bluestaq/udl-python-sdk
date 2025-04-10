@@ -24,7 +24,7 @@ class TestLaunchvehicledetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         launchvehicledetail = client.launchvehicledetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -34,7 +34,7 @@ class TestLaunchvehicledetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchvehicledetail = client.launchvehicledetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
             id="LAUNCHVEHICLEDETAILS-ID",
@@ -92,7 +92,7 @@ class TestLaunchvehicledetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.launchvehicledetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -106,7 +106,7 @@ class TestLaunchvehicledetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.launchvehicledetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         ) as response:
@@ -123,7 +123,7 @@ class TestLaunchvehicledetails:
         launchvehicledetail = client.launchvehicledetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -134,7 +134,7 @@ class TestLaunchvehicledetails:
         launchvehicledetail = client.launchvehicledetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
             body_id="LAUNCHVEHICLEDETAILS-ID",
@@ -193,7 +193,7 @@ class TestLaunchvehicledetails:
         response = client.launchvehicledetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -208,7 +208,7 @@ class TestLaunchvehicledetails:
         with client.launchvehicledetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         ) as response:
@@ -226,7 +226,7 @@ class TestLaunchvehicledetails:
             client.launchvehicledetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
             )
@@ -340,7 +340,7 @@ class TestAsyncLaunchvehicledetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicledetail = await async_client.launchvehicledetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -350,7 +350,7 @@ class TestAsyncLaunchvehicledetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicledetail = await async_client.launchvehicledetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
             id="LAUNCHVEHICLEDETAILS-ID",
@@ -408,7 +408,7 @@ class TestAsyncLaunchvehicledetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchvehicledetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -422,7 +422,7 @@ class TestAsyncLaunchvehicledetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchvehicledetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         ) as response:
@@ -439,7 +439,7 @@ class TestAsyncLaunchvehicledetails:
         launchvehicledetail = await async_client.launchvehicledetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -450,7 +450,7 @@ class TestAsyncLaunchvehicledetails:
         launchvehicledetail = await async_client.launchvehicledetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
             body_id="LAUNCHVEHICLEDETAILS-ID",
@@ -509,7 +509,7 @@ class TestAsyncLaunchvehicledetails:
         response = await async_client.launchvehicledetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         )
@@ -524,7 +524,7 @@ class TestAsyncLaunchvehicledetails:
         async with async_client.launchvehicledetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
         ) as response:
@@ -542,7 +542,7 @@ class TestAsyncLaunchvehicledetails:
             await async_client.launchvehicledetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
             )

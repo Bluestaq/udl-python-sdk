@@ -34,7 +34,7 @@ class TestGroundimagery:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         groundimagery = client.groundimagery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -45,7 +45,7 @@ class TestGroundimagery:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         groundimagery = client.groundimagery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -75,7 +75,7 @@ class TestGroundimagery:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.groundimagery.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -90,7 +90,7 @@ class TestGroundimagery:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.groundimagery.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -320,7 +320,7 @@ class TestAsyncGroundimagery:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         groundimagery = await async_client.groundimagery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -331,7 +331,7 @@ class TestAsyncGroundimagery:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         groundimagery = await async_client.groundimagery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -361,7 +361,7 @@ class TestAsyncGroundimagery:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.groundimagery.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",
@@ -376,7 +376,7 @@ class TestAsyncGroundimagery:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.groundimagery.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             filename="Example file name",
             image_time=parse_datetime("2021-01-01T01:01:01.123456Z"),
             source="Bluestaq",

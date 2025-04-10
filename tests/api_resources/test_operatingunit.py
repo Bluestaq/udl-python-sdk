@@ -26,7 +26,7 @@ class TestOperatingunit:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         operatingunit = client.operatingunit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -36,7 +36,7 @@ class TestOperatingunit:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         operatingunit = client.operatingunit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
             air_def_area="AL006",
@@ -100,7 +100,7 @@ class TestOperatingunit:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.operatingunit.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -114,7 +114,7 @@ class TestOperatingunit:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.operatingunit.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         ) as response:
@@ -131,7 +131,7 @@ class TestOperatingunit:
         operatingunit = client.operatingunit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -142,7 +142,7 @@ class TestOperatingunit:
         operatingunit = client.operatingunit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
             air_def_area="AL006",
@@ -207,7 +207,7 @@ class TestOperatingunit:
         response = client.operatingunit.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -222,7 +222,7 @@ class TestOperatingunit:
         with client.operatingunit.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         ) as response:
@@ -240,7 +240,7 @@ class TestOperatingunit:
             client.operatingunit.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="SOME_NAME",
                 source="some.user",
             )
@@ -435,7 +435,7 @@ class TestAsyncOperatingunit:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunit = await async_client.operatingunit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -445,7 +445,7 @@ class TestAsyncOperatingunit:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunit = await async_client.operatingunit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
             air_def_area="AL006",
@@ -509,7 +509,7 @@ class TestAsyncOperatingunit:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.operatingunit.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -523,7 +523,7 @@ class TestAsyncOperatingunit:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.operatingunit.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         ) as response:
@@ -540,7 +540,7 @@ class TestAsyncOperatingunit:
         operatingunit = await async_client.operatingunit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -551,7 +551,7 @@ class TestAsyncOperatingunit:
         operatingunit = await async_client.operatingunit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
             air_def_area="AL006",
@@ -616,7 +616,7 @@ class TestAsyncOperatingunit:
         response = await async_client.operatingunit.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         )
@@ -631,7 +631,7 @@ class TestAsyncOperatingunit:
         async with async_client.operatingunit.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="SOME_NAME",
             source="some.user",
         ) as response:
@@ -649,7 +649,7 @@ class TestAsyncOperatingunit:
             await async_client.operatingunit.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="SOME_NAME",
                 source="some.user",
             )

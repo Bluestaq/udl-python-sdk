@@ -26,7 +26,7 @@ class TestPassiveradarobservation:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         passiveradarobservation = client.passiveradarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestPassiveradarobservation:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         passiveradarobservation = client.passiveradarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
             id="bdcacfb0-3c47-4bd0-9d6c-9fa7d2c4fbb0",
@@ -103,7 +103,7 @@ class TestPassiveradarobservation:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.passiveradarobservation.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
         )
@@ -117,7 +117,7 @@ class TestPassiveradarobservation:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.passiveradarobservation.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
         ) as response:
@@ -202,7 +202,7 @@ class TestPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                     "id": "bdcacfb0-3c47-4bd0-9d6c-9fa7d2c4fbb0",
@@ -293,7 +293,7 @@ class TestPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
@@ -307,7 +307,7 @@ class TestPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
@@ -325,7 +325,7 @@ class TestPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
@@ -444,7 +444,7 @@ class TestAsyncPassiveradarobservation:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         passiveradarobservation = await async_client.passiveradarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
         )
@@ -454,7 +454,7 @@ class TestAsyncPassiveradarobservation:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         passiveradarobservation = await async_client.passiveradarobservation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
             id="bdcacfb0-3c47-4bd0-9d6c-9fa7d2c4fbb0",
@@ -521,7 +521,7 @@ class TestAsyncPassiveradarobservation:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.passiveradarobservation.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
         )
@@ -535,7 +535,7 @@ class TestAsyncPassiveradarobservation:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.passiveradarobservation.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             ob_time=parse_datetime("2023-01-24T23:35:26.518152Z"),
             source="Bluestaq",
         ) as response:
@@ -620,7 +620,7 @@ class TestAsyncPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                     "id": "bdcacfb0-3c47-4bd0-9d6c-9fa7d2c4fbb0",
@@ -711,7 +711,7 @@ class TestAsyncPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
@@ -725,7 +725,7 @@ class TestAsyncPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }
@@ -743,7 +743,7 @@ class TestAsyncPassiveradarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
                 }

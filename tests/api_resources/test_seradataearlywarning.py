@@ -25,7 +25,7 @@ class TestSeradataearlywarning:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -35,7 +35,7 @@ class TestSeradataearlywarning:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATAEARLYWARNING-ID",
@@ -60,7 +60,7 @@ class TestSeradataearlywarning:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.seradataearlywarning.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -74,7 +74,7 @@ class TestSeradataearlywarning:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.seradataearlywarning.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -91,7 +91,7 @@ class TestSeradataearlywarning:
         seradataearlywarning = client.seradataearlywarning.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -102,7 +102,7 @@ class TestSeradataearlywarning:
         seradataearlywarning = client.seradataearlywarning.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATAEARLYWARNING-ID",
@@ -128,7 +128,7 @@ class TestSeradataearlywarning:
         response = client.seradataearlywarning.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -143,7 +143,7 @@ class TestSeradataearlywarning:
         with client.seradataearlywarning.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -161,7 +161,7 @@ class TestSeradataearlywarning:
             client.seradataearlywarning.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )
@@ -356,7 +356,7 @@ class TestAsyncSeradataearlywarning:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -366,7 +366,7 @@ class TestAsyncSeradataearlywarning:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATAEARLYWARNING-ID",
@@ -391,7 +391,7 @@ class TestAsyncSeradataearlywarning:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataearlywarning.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -405,7 +405,7 @@ class TestAsyncSeradataearlywarning:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradataearlywarning.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -422,7 +422,7 @@ class TestAsyncSeradataearlywarning:
         seradataearlywarning = await async_client.seradataearlywarning.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -433,7 +433,7 @@ class TestAsyncSeradataearlywarning:
         seradataearlywarning = await async_client.seradataearlywarning.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATAEARLYWARNING-ID",
@@ -459,7 +459,7 @@ class TestAsyncSeradataearlywarning:
         response = await async_client.seradataearlywarning.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -474,7 +474,7 @@ class TestAsyncSeradataearlywarning:
         async with async_client.seradataearlywarning.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -492,7 +492,7 @@ class TestAsyncSeradataearlywarning:
             await async_client.seradataearlywarning.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )

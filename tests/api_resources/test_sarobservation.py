@@ -28,7 +28,7 @@ class TestSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
         )
@@ -40,7 +40,7 @@ class TestSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
             id="SAROBSERVATION-ID",
@@ -110,7 +110,7 @@ class TestSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
         )
@@ -126,7 +126,7 @@ class TestSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
         ) as response:
@@ -208,7 +208,7 @@ class TestSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -224,7 +224,7 @@ class TestSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -244,7 +244,7 @@ class TestSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -266,7 +266,7 @@ class TestSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -282,7 +282,7 @@ class TestSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -302,7 +302,7 @@ class TestSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -423,7 +423,7 @@ class TestAsyncSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
         )
@@ -435,7 +435,7 @@ class TestAsyncSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
             id="SAROBSERVATION-ID",
@@ -505,7 +505,7 @@ class TestAsyncSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
         )
@@ -521,7 +521,7 @@ class TestAsyncSarobservation:
             classification_marking="U",
             collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
-            data_mode="REAL",
+            data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
         ) as response:
@@ -603,7 +603,7 @@ class TestAsyncSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -619,7 +619,7 @@ class TestAsyncSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -639,7 +639,7 @@ class TestAsyncSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -661,7 +661,7 @@ class TestAsyncSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -677,7 +677,7 @@ class TestAsyncSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }
@@ -697,7 +697,7 @@ class TestAsyncSarobservation:
                     "classification_marking": "U",
                     "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
                     "source": "Bluestaq",
                 }

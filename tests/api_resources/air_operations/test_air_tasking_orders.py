@@ -23,7 +23,7 @@ class TestAirTaskingOrders:
                 {
                     "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_exer_name": "DESERT WIND",
                     "source": "Bluestaq",
                 }
@@ -38,7 +38,7 @@ class TestAirTaskingOrders:
                 {
                     "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_exer_name": "DESERT WIND",
                     "source": "Bluestaq",
                 }
@@ -57,7 +57,7 @@ class TestAirTaskingOrders:
                 {
                     "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_exer_name": "DESERT WIND",
                     "source": "Bluestaq",
                 }
@@ -82,7 +82,7 @@ class TestAsyncAirTaskingOrders:
                 {
                     "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_exer_name": "DESERT WIND",
                     "source": "Bluestaq",
                 }
@@ -97,7 +97,7 @@ class TestAsyncAirTaskingOrders:
                 {
                     "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_exer_name": "DESERT WIND",
                     "source": "Bluestaq",
                 }
@@ -116,7 +116,7 @@ class TestAsyncAirTaskingOrders:
                 {
                     "begin_ts": parse_datetime("2023-10-25T12:00:00.123Z"),
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "op_exer_name": "DESERT WIND",
                     "source": "Bluestaq",
                 }

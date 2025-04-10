@@ -26,7 +26,7 @@ class TestOnorbitevent:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitevent = client.onorbitevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestOnorbitevent:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitevent = client.onorbitevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             id="ONORBITEVENT-ID",
@@ -93,7 +93,7 @@ class TestOnorbitevent:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitevent.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -107,7 +107,7 @@ class TestOnorbitevent:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitevent.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -124,7 +124,7 @@ class TestOnorbitevent:
         onorbitevent = client.onorbitevent.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -135,7 +135,7 @@ class TestOnorbitevent:
         onorbitevent = client.onorbitevent.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             body_id="ONORBITEVENT-ID",
@@ -193,7 +193,7 @@ class TestOnorbitevent:
         response = client.onorbitevent.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -208,7 +208,7 @@ class TestOnorbitevent:
         with client.onorbitevent.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -226,7 +226,7 @@ class TestOnorbitevent:
             client.onorbitevent.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
             )
@@ -421,7 +421,7 @@ class TestAsyncOnorbitevent:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitevent = await async_client.onorbitevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -431,7 +431,7 @@ class TestAsyncOnorbitevent:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitevent = await async_client.onorbitevent.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             id="ONORBITEVENT-ID",
@@ -488,7 +488,7 @@ class TestAsyncOnorbitevent:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitevent.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -502,7 +502,7 @@ class TestAsyncOnorbitevent:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitevent.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -519,7 +519,7 @@ class TestAsyncOnorbitevent:
         onorbitevent = await async_client.onorbitevent.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -530,7 +530,7 @@ class TestAsyncOnorbitevent:
         onorbitevent = await async_client.onorbitevent.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             body_id="ONORBITEVENT-ID",
@@ -588,7 +588,7 @@ class TestAsyncOnorbitevent:
         response = await async_client.onorbitevent.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -603,7 +603,7 @@ class TestAsyncOnorbitevent:
         async with async_client.onorbitevent.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -621,7 +621,7 @@ class TestAsyncOnorbitevent:
             await async_client.onorbitevent.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
             )

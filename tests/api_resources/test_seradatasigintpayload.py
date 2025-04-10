@@ -25,7 +25,7 @@ class TestSeradatasigintpayload:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -35,7 +35,7 @@ class TestSeradatasigintpayload:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATASIGINTPAYLOAD-ID",
@@ -59,7 +59,7 @@ class TestSeradatasigintpayload:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.seradatasigintpayload.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -73,7 +73,7 @@ class TestSeradatasigintpayload:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.seradatasigintpayload.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -90,7 +90,7 @@ class TestSeradatasigintpayload:
         seradatasigintpayload = client.seradatasigintpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -101,7 +101,7 @@ class TestSeradatasigintpayload:
         seradatasigintpayload = client.seradatasigintpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATASIGINTPAYLOAD-ID",
@@ -126,7 +126,7 @@ class TestSeradatasigintpayload:
         response = client.seradatasigintpayload.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -141,7 +141,7 @@ class TestSeradatasigintpayload:
         with client.seradatasigintpayload.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -159,7 +159,7 @@ class TestSeradatasigintpayload:
             client.seradatasigintpayload.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )
@@ -354,7 +354,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -364,7 +364,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATASIGINTPAYLOAD-ID",
@@ -388,7 +388,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatasigintpayload.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -402,7 +402,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradatasigintpayload.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -419,7 +419,7 @@ class TestAsyncSeradatasigintpayload:
         seradatasigintpayload = await async_client.seradatasigintpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -430,7 +430,7 @@ class TestAsyncSeradatasigintpayload:
         seradatasigintpayload = await async_client.seradatasigintpayload.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATASIGINTPAYLOAD-ID",
@@ -455,7 +455,7 @@ class TestAsyncSeradatasigintpayload:
         response = await async_client.seradatasigintpayload.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -470,7 +470,7 @@ class TestAsyncSeradatasigintpayload:
         async with async_client.seradatasigintpayload.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -488,7 +488,7 @@ class TestAsyncSeradatasigintpayload:
             await async_client.seradatasigintpayload.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )

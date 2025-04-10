@@ -26,7 +26,7 @@ class TestLaunchdetection:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         launchdetection = client.launchdetection.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -40,7 +40,7 @@ class TestLaunchdetection:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchdetection = client.launchdetection.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -68,7 +68,7 @@ class TestLaunchdetection:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.launchdetection.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -86,7 +86,7 @@ class TestLaunchdetection:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.launchdetection.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -107,7 +107,7 @@ class TestLaunchdetection:
         launchdetection = client.launchdetection.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -122,7 +122,7 @@ class TestLaunchdetection:
         launchdetection = client.launchdetection.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -151,7 +151,7 @@ class TestLaunchdetection:
         response = client.launchdetection.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -170,7 +170,7 @@ class TestLaunchdetection:
         with client.launchdetection.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -192,7 +192,7 @@ class TestLaunchdetection:
             client.launchdetection.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 message_type="Example-Msg-Type",
                 observation_latitude=45.23,
                 observation_longitude=1.23,
@@ -391,7 +391,7 @@ class TestAsyncLaunchdetection:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchdetection = await async_client.launchdetection.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -405,7 +405,7 @@ class TestAsyncLaunchdetection:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchdetection = await async_client.launchdetection.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -433,7 +433,7 @@ class TestAsyncLaunchdetection:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.launchdetection.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -451,7 +451,7 @@ class TestAsyncLaunchdetection:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.launchdetection.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -472,7 +472,7 @@ class TestAsyncLaunchdetection:
         launchdetection = await async_client.launchdetection.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -487,7 +487,7 @@ class TestAsyncLaunchdetection:
         launchdetection = await async_client.launchdetection.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -516,7 +516,7 @@ class TestAsyncLaunchdetection:
         response = await async_client.launchdetection.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -535,7 +535,7 @@ class TestAsyncLaunchdetection:
         async with async_client.launchdetection.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             message_type="Example-Msg-Type",
             observation_latitude=45.23,
             observation_longitude=1.23,
@@ -557,7 +557,7 @@ class TestAsyncLaunchdetection:
             await async_client.launchdetection.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 message_type="Example-Msg-Type",
                 observation_latitude=45.23,
                 observation_longitude=1.23,

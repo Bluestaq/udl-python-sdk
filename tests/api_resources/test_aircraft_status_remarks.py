@@ -26,7 +26,7 @@ class TestAircraftStatusRemarks:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         aircraft_status_remark = client.aircraft_status_remarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -37,7 +37,7 @@ class TestAircraftStatusRemarks:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_status_remark = client.aircraft_status_remarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -55,7 +55,7 @@ class TestAircraftStatusRemarks:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft_status_remarks.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -70,7 +70,7 @@ class TestAircraftStatusRemarks:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.aircraft_status_remarks.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -235,7 +235,7 @@ class TestAsyncAircraftStatusRemarks:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status_remark = await async_client.aircraft_status_remarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -246,7 +246,7 @@ class TestAsyncAircraftStatusRemarks:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status_remark = await async_client.aircraft_status_remarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -264,7 +264,7 @@ class TestAsyncAircraftStatusRemarks:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraft_status_remarks.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",
@@ -279,7 +279,7 @@ class TestAsyncAircraftStatusRemarks:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraft_status_remarks.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
             source="Bluestaq",
             text="Remark text",

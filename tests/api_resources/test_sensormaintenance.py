@@ -27,7 +27,7 @@ class TestSensormaintenance:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -39,7 +39,7 @@ class TestSensormaintenance:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -72,7 +72,7 @@ class TestSensormaintenance:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sensormaintenance.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -88,7 +88,7 @@ class TestSensormaintenance:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sensormaintenance.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -107,7 +107,7 @@ class TestSensormaintenance:
         sensormaintenance = client.sensormaintenance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -120,7 +120,7 @@ class TestSensormaintenance:
         sensormaintenance = client.sensormaintenance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -154,7 +154,7 @@ class TestSensormaintenance:
         response = client.sensormaintenance.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -171,7 +171,7 @@ class TestSensormaintenance:
         with client.sensormaintenance.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -191,7 +191,7 @@ class TestSensormaintenance:
             client.sensormaintenance.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 site_code="site01",
                 source="Bluestaq",
@@ -315,7 +315,7 @@ class TestSensormaintenance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",
@@ -502,7 +502,7 @@ class TestAsyncSensormaintenance:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -514,7 +514,7 @@ class TestAsyncSensormaintenance:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -547,7 +547,7 @@ class TestAsyncSensormaintenance:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensormaintenance.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -563,7 +563,7 @@ class TestAsyncSensormaintenance:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensormaintenance.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -582,7 +582,7 @@ class TestAsyncSensormaintenance:
         sensormaintenance = await async_client.sensormaintenance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -595,7 +595,7 @@ class TestAsyncSensormaintenance:
         sensormaintenance = await async_client.sensormaintenance.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -629,7 +629,7 @@ class TestAsyncSensormaintenance:
         response = await async_client.sensormaintenance.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -646,7 +646,7 @@ class TestAsyncSensormaintenance:
         async with async_client.sensormaintenance.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
             site_code="site01",
             source="Bluestaq",
@@ -666,7 +666,7 @@ class TestAsyncSensormaintenance:
             await async_client.sensormaintenance.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 site_code="site01",
                 source="Bluestaq",
@@ -790,7 +790,7 @@ class TestAsyncSensormaintenance:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "end_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "site_code": "site01",
                     "source": "Bluestaq",

@@ -25,7 +25,7 @@ class TestPort:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         port = client.port.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert port is None
@@ -34,7 +34,7 @@ class TestPort:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         port = client.port.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="026dd511-8ba5-47d3-9909-836149f87686",
             avg_duration=41.1,
@@ -59,7 +59,7 @@ class TestPort:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.port.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -72,7 +72,7 @@ class TestPort:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.port.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -88,7 +88,7 @@ class TestPort:
         port = client.port.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert port is None
@@ -98,7 +98,7 @@ class TestPort:
         port = client.port.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="026dd511-8ba5-47d3-9909-836149f87686",
             avg_duration=41.1,
@@ -124,7 +124,7 @@ class TestPort:
         response = client.port.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -138,7 +138,7 @@ class TestPort:
         with client.port.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -155,7 +155,7 @@ class TestPort:
             client.port.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -215,7 +215,7 @@ class TestPort:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -228,7 +228,7 @@ class TestPort:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -245,7 +245,7 @@ class TestPort:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -360,7 +360,7 @@ class TestAsyncPort:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert port is None
@@ -369,7 +369,7 @@ class TestAsyncPort:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="026dd511-8ba5-47d3-9909-836149f87686",
             avg_duration=41.1,
@@ -394,7 +394,7 @@ class TestAsyncPort:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.port.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -407,7 +407,7 @@ class TestAsyncPort:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.port.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -423,7 +423,7 @@ class TestAsyncPort:
         port = await async_client.port.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert port is None
@@ -433,7 +433,7 @@ class TestAsyncPort:
         port = await async_client.port.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="026dd511-8ba5-47d3-9909-836149f87686",
             avg_duration=41.1,
@@ -459,7 +459,7 @@ class TestAsyncPort:
         response = await async_client.port.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -473,7 +473,7 @@ class TestAsyncPort:
         async with async_client.port.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -490,7 +490,7 @@ class TestAsyncPort:
             await async_client.port.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -550,7 +550,7 @@ class TestAsyncPort:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -563,7 +563,7 @@ class TestAsyncPort:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -580,7 +580,7 @@ class TestAsyncPort:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],

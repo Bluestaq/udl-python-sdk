@@ -24,7 +24,7 @@ class TestOnorbitbattery:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbitbattery = client.onorbitbattery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -35,7 +35,7 @@ class TestOnorbitbattery:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitbattery = client.onorbitbattery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -49,7 +49,7 @@ class TestOnorbitbattery:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitbattery.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -64,7 +64,7 @@ class TestOnorbitbattery:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbitbattery.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -82,7 +82,7 @@ class TestOnorbitbattery:
         onorbitbattery = client.onorbitbattery.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -94,7 +94,7 @@ class TestOnorbitbattery:
         onorbitbattery = client.onorbitbattery.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -109,7 +109,7 @@ class TestOnorbitbattery:
         response = client.onorbitbattery.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -125,7 +125,7 @@ class TestOnorbitbattery:
         with client.onorbitbattery.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -144,7 +144,7 @@ class TestOnorbitbattery:
             client.onorbitbattery.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_battery="BATTERY-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
@@ -259,7 +259,7 @@ class TestAsyncOnorbitbattery:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitbattery = await async_client.onorbitbattery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -270,7 +270,7 @@ class TestAsyncOnorbitbattery:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitbattery = await async_client.onorbitbattery.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -284,7 +284,7 @@ class TestAsyncOnorbitbattery:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitbattery.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -299,7 +299,7 @@ class TestAsyncOnorbitbattery:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitbattery.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -317,7 +317,7 @@ class TestAsyncOnorbitbattery:
         onorbitbattery = await async_client.onorbitbattery.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -329,7 +329,7 @@ class TestAsyncOnorbitbattery:
         onorbitbattery = await async_client.onorbitbattery.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -344,7 +344,7 @@ class TestAsyncOnorbitbattery:
         response = await async_client.onorbitbattery.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -360,7 +360,7 @@ class TestAsyncOnorbitbattery:
         async with async_client.onorbitbattery.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
@@ -379,7 +379,7 @@ class TestAsyncOnorbitbattery:
             await async_client.onorbitbattery.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_battery="BATTERY-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",

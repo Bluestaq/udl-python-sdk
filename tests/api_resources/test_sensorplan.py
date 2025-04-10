@@ -26,7 +26,7 @@ class TestSensorplan:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sensorplan = client.sensorplan.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -38,7 +38,7 @@ class TestSensorplan:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensorplan = client.sensorplan.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -47,7 +47,7 @@ class TestSensorplan:
             collect_requests=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -63,7 +63,7 @@ class TestSensorplan:
                     "el": 1.1,
                     "elset": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "agom": 0.0126,
@@ -92,7 +92,7 @@ class TestSensorplan:
                         "sat_no": 12,
                         "semi_major_axis": 1.1,
                         "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                        "sourced_data_types": ["EO", "RADAR"],
+                        "sourced_data_types": ["RADAR", "RF"],
                         "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                         "transaction_id": "TRANSACTION-ID",
                         "uct": False,
@@ -150,7 +150,7 @@ class TestSensorplan:
                     "srch_pattern": "SCAN",
                     "state_vector": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "actual_od_span": 3.5,
@@ -207,7 +207,7 @@ class TestSensorplan:
                         "solar_rad_press_coeff": 0.0244394,
                         "solid_earth_tides": True,
                         "sourced_data": ["DATA1", "DATA2"],
-                        "sourced_data_types": ["EO"],
+                        "sourced_data_types": ["RADAR"],
                         "srp_area": 4.311,
                         "step_mode": "AUTO",
                         "step_size": 1.23,
@@ -280,7 +280,7 @@ class TestSensorplan:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sensorplan.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -296,7 +296,7 @@ class TestSensorplan:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sensorplan.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -315,7 +315,7 @@ class TestSensorplan:
         sensorplan = client.sensorplan.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -328,7 +328,7 @@ class TestSensorplan:
         sensorplan = client.sensorplan.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -337,7 +337,7 @@ class TestSensorplan:
             collect_requests=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -353,7 +353,7 @@ class TestSensorplan:
                     "el": 1.1,
                     "elset": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "agom": 0.0126,
@@ -382,7 +382,7 @@ class TestSensorplan:
                         "sat_no": 12,
                         "semi_major_axis": 1.1,
                         "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                        "sourced_data_types": ["EO", "RADAR"],
+                        "sourced_data_types": ["RADAR", "RF"],
                         "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                         "transaction_id": "TRANSACTION-ID",
                         "uct": False,
@@ -440,7 +440,7 @@ class TestSensorplan:
                     "srch_pattern": "SCAN",
                     "state_vector": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "actual_od_span": 3.5,
@@ -497,7 +497,7 @@ class TestSensorplan:
                         "solar_rad_press_coeff": 0.0244394,
                         "solid_earth_tides": True,
                         "sourced_data": ["DATA1", "DATA2"],
-                        "sourced_data_types": ["EO"],
+                        "sourced_data_types": ["RADAR"],
                         "srp_area": 4.311,
                         "step_mode": "AUTO",
                         "step_size": 1.23,
@@ -571,7 +571,7 @@ class TestSensorplan:
         response = client.sensorplan.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -588,7 +588,7 @@ class TestSensorplan:
         with client.sensorplan.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -608,7 +608,7 @@ class TestSensorplan:
             client.sensorplan.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 rec_type="COLLECT",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -683,7 +683,7 @@ class TestSensorplan:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rec_type": "COLLECT",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -699,7 +699,7 @@ class TestSensorplan:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rec_type": "COLLECT",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -719,7 +719,7 @@ class TestSensorplan:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rec_type": "COLLECT",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -840,7 +840,7 @@ class TestAsyncSensorplan:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorplan = await async_client.sensorplan.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -852,7 +852,7 @@ class TestAsyncSensorplan:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorplan = await async_client.sensorplan.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -861,7 +861,7 @@ class TestAsyncSensorplan:
             collect_requests=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -877,7 +877,7 @@ class TestAsyncSensorplan:
                     "el": 1.1,
                     "elset": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "agom": 0.0126,
@@ -906,7 +906,7 @@ class TestAsyncSensorplan:
                         "sat_no": 12,
                         "semi_major_axis": 1.1,
                         "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                        "sourced_data_types": ["EO", "RADAR"],
+                        "sourced_data_types": ["RADAR", "RF"],
                         "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                         "transaction_id": "TRANSACTION-ID",
                         "uct": False,
@@ -964,7 +964,7 @@ class TestAsyncSensorplan:
                     "srch_pattern": "SCAN",
                     "state_vector": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "actual_od_span": 3.5,
@@ -1021,7 +1021,7 @@ class TestAsyncSensorplan:
                         "solar_rad_press_coeff": 0.0244394,
                         "solid_earth_tides": True,
                         "sourced_data": ["DATA1", "DATA2"],
-                        "sourced_data_types": ["EO"],
+                        "sourced_data_types": ["RADAR"],
                         "srp_area": 4.311,
                         "step_mode": "AUTO",
                         "step_size": 1.23,
@@ -1094,7 +1094,7 @@ class TestAsyncSensorplan:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensorplan.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1110,7 +1110,7 @@ class TestAsyncSensorplan:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensorplan.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1129,7 +1129,7 @@ class TestAsyncSensorplan:
         sensorplan = await async_client.sensorplan.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1142,7 +1142,7 @@ class TestAsyncSensorplan:
         sensorplan = await async_client.sensorplan.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1151,7 +1151,7 @@ class TestAsyncSensorplan:
             collect_requests=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
                     "type": "DWELL",
@@ -1167,7 +1167,7 @@ class TestAsyncSensorplan:
                     "el": 1.1,
                     "elset": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "agom": 0.0126,
@@ -1196,7 +1196,7 @@ class TestAsyncSensorplan:
                         "sat_no": 12,
                         "semi_major_axis": 1.1,
                         "sourced_data": ["OBSERVATION_UUID1", "OBSERVATION_UUID2"],
-                        "sourced_data_types": ["EO", "RADAR"],
+                        "sourced_data_types": ["RADAR", "RF"],
                         "tags": ["PROVIDER_TAG1", "PROVIDER_TAG2"],
                         "transaction_id": "TRANSACTION-ID",
                         "uct": False,
@@ -1254,7 +1254,7 @@ class TestAsyncSensorplan:
                     "srch_pattern": "SCAN",
                     "state_vector": {
                         "classification_marking": "U",
-                        "data_mode": "REAL",
+                        "data_mode": "TEST",
                         "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
                         "source": "Bluestaq",
                         "actual_od_span": 3.5,
@@ -1311,7 +1311,7 @@ class TestAsyncSensorplan:
                         "solar_rad_press_coeff": 0.0244394,
                         "solid_earth_tides": True,
                         "sourced_data": ["DATA1", "DATA2"],
-                        "sourced_data_types": ["EO"],
+                        "sourced_data_types": ["RADAR"],
                         "srp_area": 4.311,
                         "step_mode": "AUTO",
                         "step_size": 1.23,
@@ -1385,7 +1385,7 @@ class TestAsyncSensorplan:
         response = await async_client.sensorplan.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1402,7 +1402,7 @@ class TestAsyncSensorplan:
         async with async_client.sensorplan.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             rec_type="COLLECT",
             source="Bluestaq",
             start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1422,7 +1422,7 @@ class TestAsyncSensorplan:
             await async_client.sensorplan.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 rec_type="COLLECT",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1497,7 +1497,7 @@ class TestAsyncSensorplan:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rec_type": "COLLECT",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1513,7 +1513,7 @@ class TestAsyncSensorplan:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rec_type": "COLLECT",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
@@ -1533,7 +1533,7 @@ class TestAsyncSensorplan:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "rec_type": "COLLECT",
                     "source": "Bluestaq",
                     "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),

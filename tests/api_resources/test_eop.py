@@ -26,7 +26,7 @@ class TestEop:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestEop:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             id="EOP-ID",
@@ -76,7 +76,7 @@ class TestEop:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.eop.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -90,7 +90,7 @@ class TestEop:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.eop.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -145,7 +145,7 @@ class TestEop:
         eop = client.eop.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -156,7 +156,7 @@ class TestEop:
         eop = client.eop.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             body_id="EOP-ID",
@@ -197,7 +197,7 @@ class TestEop:
         response = client.eop.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -212,7 +212,7 @@ class TestEop:
         with client.eop.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -230,7 +230,7 @@ class TestEop:
             client.eop.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
             )
@@ -402,7 +402,7 @@ class TestAsyncEop:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -412,7 +412,7 @@ class TestAsyncEop:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             id="EOP-ID",
@@ -452,7 +452,7 @@ class TestAsyncEop:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.eop.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -466,7 +466,7 @@ class TestAsyncEop:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.eop.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -521,7 +521,7 @@ class TestAsyncEop:
         eop = await async_client.eop.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -532,7 +532,7 @@ class TestAsyncEop:
         eop = await async_client.eop.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
             body_id="EOP-ID",
@@ -573,7 +573,7 @@ class TestAsyncEop:
         response = await async_client.eop.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         )
@@ -588,7 +588,7 @@ class TestAsyncEop:
         async with async_client.eop.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
         ) as response:
@@ -606,7 +606,7 @@ class TestAsyncEop:
             await async_client.eop.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 eop_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
             )

@@ -25,7 +25,7 @@ class TestEquipmentremarks:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         equipmentremark = client.equipmentremarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -36,7 +36,7 @@ class TestEquipmentremarks:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipmentremark = client.equipmentremarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -53,7 +53,7 @@ class TestEquipmentremarks:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.equipmentremarks.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -68,7 +68,7 @@ class TestEquipmentremarks:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.equipmentremarks.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -180,7 +180,7 @@ class TestEquipmentremarks:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_equipment": "EQUIPMENT-ID",
                     "source": "Bluestaq",
                     "text": "This is a remark",
@@ -279,7 +279,7 @@ class TestAsyncEquipmentremarks:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipmentremark = await async_client.equipmentremarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -290,7 +290,7 @@ class TestAsyncEquipmentremarks:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipmentremark = await async_client.equipmentremarks.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -307,7 +307,7 @@ class TestAsyncEquipmentremarks:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.equipmentremarks.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -322,7 +322,7 @@ class TestAsyncEquipmentremarks:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.equipmentremarks.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_equipment="EQUIPMENT-ID",
             source="Bluestaq",
             text="This is a remark",
@@ -434,7 +434,7 @@ class TestAsyncEquipmentremarks:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "id_equipment": "EQUIPMENT-ID",
                     "source": "Bluestaq",
                     "text": "This is a remark",

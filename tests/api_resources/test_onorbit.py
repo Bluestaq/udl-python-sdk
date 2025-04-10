@@ -27,7 +27,7 @@ class TestOnorbit:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         onorbit = client.onorbit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -37,11 +37,11 @@ class TestOnorbit:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbit = client.onorbit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
             alt_name="Alternate Name",
-            category="Unknown",
+            category="Lunar",
             common_name="Example common name",
             constellation="Big Dipper",
             country_code="US",
@@ -52,7 +52,7 @@ class TestOnorbit:
             launch_site_id="LAUNCHSITE-ID",
             lifetime_years=10,
             mission_number="Expedition 1",
-            object_type="ROCKET BODY",
+            object_type="PAYLOAD",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbit is None
@@ -61,7 +61,7 @@ class TestOnorbit:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.onorbit.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -75,7 +75,7 @@ class TestOnorbit:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.onorbit.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         ) as response:
@@ -92,7 +92,7 @@ class TestOnorbit:
         onorbit = client.onorbit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -103,11 +103,11 @@ class TestOnorbit:
         onorbit = client.onorbit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
             alt_name="Alternate Name",
-            category="Unknown",
+            category="Lunar",
             common_name="Example common name",
             constellation="Big Dipper",
             country_code="US",
@@ -118,7 +118,7 @@ class TestOnorbit:
             launch_site_id="LAUNCHSITE-ID",
             lifetime_years=10,
             mission_number="Expedition 1",
-            object_type="ROCKET BODY",
+            object_type="PAYLOAD",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbit is None
@@ -128,7 +128,7 @@ class TestOnorbit:
         response = client.onorbit.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -143,7 +143,7 @@ class TestOnorbit:
         with client.onorbit.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         ) as response:
@@ -161,7 +161,7 @@ class TestOnorbit:
             client.onorbit.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 sat_no=1,
                 source="Bluestaq",
             )
@@ -387,7 +387,7 @@ class TestAsyncOnorbit:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbit = await async_client.onorbit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -397,11 +397,11 @@ class TestAsyncOnorbit:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbit = await async_client.onorbit.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
             alt_name="Alternate Name",
-            category="Unknown",
+            category="Lunar",
             common_name="Example common name",
             constellation="Big Dipper",
             country_code="US",
@@ -412,7 +412,7 @@ class TestAsyncOnorbit:
             launch_site_id="LAUNCHSITE-ID",
             lifetime_years=10,
             mission_number="Expedition 1",
-            object_type="ROCKET BODY",
+            object_type="PAYLOAD",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbit is None
@@ -421,7 +421,7 @@ class TestAsyncOnorbit:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbit.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -435,7 +435,7 @@ class TestAsyncOnorbit:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbit.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         ) as response:
@@ -452,7 +452,7 @@ class TestAsyncOnorbit:
         onorbit = await async_client.onorbit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -463,11 +463,11 @@ class TestAsyncOnorbit:
         onorbit = await async_client.onorbit.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
             alt_name="Alternate Name",
-            category="Unknown",
+            category="Lunar",
             common_name="Example common name",
             constellation="Big Dipper",
             country_code="US",
@@ -478,7 +478,7 @@ class TestAsyncOnorbit:
             launch_site_id="LAUNCHSITE-ID",
             lifetime_years=10,
             mission_number="Expedition 1",
-            object_type="ROCKET BODY",
+            object_type="PAYLOAD",
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbit is None
@@ -488,7 +488,7 @@ class TestAsyncOnorbit:
         response = await async_client.onorbit.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         )
@@ -503,7 +503,7 @@ class TestAsyncOnorbit:
         async with async_client.onorbit.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             sat_no=1,
             source="Bluestaq",
         ) as response:
@@ -521,7 +521,7 @@ class TestAsyncOnorbit:
             await async_client.onorbit.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 sat_no=1,
                 source="Bluestaq",
             )

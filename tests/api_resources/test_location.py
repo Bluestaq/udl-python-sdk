@@ -25,7 +25,7 @@ class TestLocation:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         location = client.location.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestLocation:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         location = client.location.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
             altitude=10.23,
@@ -51,7 +51,7 @@ class TestLocation:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.location.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -65,7 +65,7 @@ class TestLocation:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.location.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         ) as response:
@@ -82,7 +82,7 @@ class TestLocation:
         location = client.location.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -93,7 +93,7 @@ class TestLocation:
         location = client.location.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
             altitude=10.23,
@@ -110,7 +110,7 @@ class TestLocation:
         response = client.location.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -125,7 +125,7 @@ class TestLocation:
         with client.location.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         ) as response:
@@ -143,7 +143,7 @@ class TestLocation:
             client.location.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example location",
                 source="Bluestaq",
             )
@@ -338,7 +338,7 @@ class TestAsyncLocation:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         location = await async_client.location.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -348,7 +348,7 @@ class TestAsyncLocation:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         location = await async_client.location.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
             altitude=10.23,
@@ -364,7 +364,7 @@ class TestAsyncLocation:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.location.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -378,7 +378,7 @@ class TestAsyncLocation:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.location.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         ) as response:
@@ -395,7 +395,7 @@ class TestAsyncLocation:
         location = await async_client.location.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -406,7 +406,7 @@ class TestAsyncLocation:
         location = await async_client.location.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
             altitude=10.23,
@@ -423,7 +423,7 @@ class TestAsyncLocation:
         response = await async_client.location.with_raw_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         )
@@ -438,7 +438,7 @@ class TestAsyncLocation:
         async with async_client.location.with_streaming_response.update(
             id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             name="Example location",
             source="Bluestaq",
         ) as response:
@@ -456,7 +456,7 @@ class TestAsyncLocation:
             await async_client.location.with_raw_response.update(
                 id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="Example location",
                 source="Bluestaq",
             )

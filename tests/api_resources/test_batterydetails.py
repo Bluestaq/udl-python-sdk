@@ -24,7 +24,7 @@ class TestBatterydetails:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         batterydetail = client.batterydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -34,7 +34,7 @@ class TestBatterydetails:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         batterydetail = client.batterydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
             id="BATTERYDETAILS-ID",
@@ -53,7 +53,7 @@ class TestBatterydetails:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.batterydetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -67,7 +67,7 @@ class TestBatterydetails:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.batterydetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         ) as response:
@@ -122,7 +122,7 @@ class TestBatterydetails:
         batterydetail = client.batterydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -133,7 +133,7 @@ class TestBatterydetails:
         batterydetail = client.batterydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
             body_id="BATTERYDETAILS-ID",
@@ -153,7 +153,7 @@ class TestBatterydetails:
         response = client.batterydetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -168,7 +168,7 @@ class TestBatterydetails:
         with client.batterydetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         ) as response:
@@ -186,7 +186,7 @@ class TestBatterydetails:
             client.batterydetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_battery="BATTERY-ID",
                 source="Bluestaq",
             )
@@ -262,7 +262,7 @@ class TestAsyncBatterydetails:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         batterydetail = await async_client.batterydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -272,7 +272,7 @@ class TestAsyncBatterydetails:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         batterydetail = await async_client.batterydetails.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
             id="BATTERYDETAILS-ID",
@@ -291,7 +291,7 @@ class TestAsyncBatterydetails:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batterydetails.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -305,7 +305,7 @@ class TestAsyncBatterydetails:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.batterydetails.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         ) as response:
@@ -360,7 +360,7 @@ class TestAsyncBatterydetails:
         batterydetail = await async_client.batterydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -371,7 +371,7 @@ class TestAsyncBatterydetails:
         batterydetail = await async_client.batterydetails.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
             body_id="BATTERYDETAILS-ID",
@@ -391,7 +391,7 @@ class TestAsyncBatterydetails:
         response = await async_client.batterydetails.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         )
@@ -406,7 +406,7 @@ class TestAsyncBatterydetails:
         async with async_client.batterydetails.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_battery="BATTERY-ID",
             source="Bluestaq",
         ) as response:
@@ -424,7 +424,7 @@ class TestAsyncBatterydetails:
             await async_client.batterydetails.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_battery="BATTERY-ID",
                 source="Bluestaq",
             )

@@ -26,7 +26,7 @@ class TestAirTaskingOrders:
         air_tasking_order = client.air_tasking_orders.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
         )
@@ -37,7 +37,7 @@ class TestAirTaskingOrders:
         air_tasking_order = client.air_tasking_orders.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
             id="POI-ID",
@@ -129,7 +129,7 @@ class TestAirTaskingOrders:
         response = client.air_tasking_orders.with_raw_response.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
         )
@@ -144,7 +144,7 @@ class TestAirTaskingOrders:
         with client.air_tasking_orders.with_streaming_response.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
         ) as response:
@@ -284,7 +284,7 @@ class TestAsyncAirTaskingOrders:
         air_tasking_order = await async_client.air_tasking_orders.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
         )
@@ -295,7 +295,7 @@ class TestAsyncAirTaskingOrders:
         air_tasking_order = await async_client.air_tasking_orders.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
             id="POI-ID",
@@ -387,7 +387,7 @@ class TestAsyncAirTaskingOrders:
         response = await async_client.air_tasking_orders.with_raw_response.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
         )
@@ -402,7 +402,7 @@ class TestAsyncAirTaskingOrders:
         async with async_client.air_tasking_orders.with_streaming_response.create(
             begin_ts=parse_datetime("2023-10-25T12:00:00.123Z"),
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             op_exer_name="DESERT WIND",
             source="Bluestaq",
         ) as response:

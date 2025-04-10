@@ -22,7 +22,7 @@ class TestEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -37,7 +37,7 @@ class TestEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -56,7 +56,7 @@ class TestEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -81,7 +81,7 @@ class TestAsyncEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -96,7 +96,7 @@ class TestAsyncEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",
@@ -115,7 +115,7 @@ class TestAsyncEcpsdr:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "msg_time": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                     "type": "STANDARD",

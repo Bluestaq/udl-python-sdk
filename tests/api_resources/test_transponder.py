@@ -25,7 +25,7 @@ class TestTransponder:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -35,7 +35,7 @@ class TestTransponder:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
             id="TRANSPONDER-ID",
@@ -56,7 +56,7 @@ class TestTransponder:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.transponder.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -70,7 +70,7 @@ class TestTransponder:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.transponder.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         ) as response:
@@ -87,7 +87,7 @@ class TestTransponder:
         transponder = client.transponder.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -98,7 +98,7 @@ class TestTransponder:
         transponder = client.transponder.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
             body_id="TRANSPONDER-ID",
@@ -120,7 +120,7 @@ class TestTransponder:
         response = client.transponder.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -135,7 +135,7 @@ class TestTransponder:
         with client.transponder.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         ) as response:
@@ -153,7 +153,7 @@ class TestTransponder:
             client.transponder.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_comm="REF-COMM-ID",
                 source="Bluestaq",
             )
@@ -348,7 +348,7 @@ class TestAsyncTransponder:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -358,7 +358,7 @@ class TestAsyncTransponder:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
             id="TRANSPONDER-ID",
@@ -379,7 +379,7 @@ class TestAsyncTransponder:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.transponder.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -393,7 +393,7 @@ class TestAsyncTransponder:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.transponder.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         ) as response:
@@ -410,7 +410,7 @@ class TestAsyncTransponder:
         transponder = await async_client.transponder.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -421,7 +421,7 @@ class TestAsyncTransponder:
         transponder = await async_client.transponder.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
             body_id="TRANSPONDER-ID",
@@ -443,7 +443,7 @@ class TestAsyncTransponder:
         response = await async_client.transponder.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         )
@@ -458,7 +458,7 @@ class TestAsyncTransponder:
         async with async_client.transponder.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_comm="REF-COMM-ID",
             source="Bluestaq",
         ) as response:
@@ -476,7 +476,7 @@ class TestAsyncTransponder:
             await async_client.transponder.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_comm="REF-COMM-ID",
                 source="Bluestaq",
             )

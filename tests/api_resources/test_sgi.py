@@ -26,7 +26,7 @@ class TestSgi:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -37,7 +37,7 @@ class TestSgi:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -70,7 +70,7 @@ class TestSgi:
             origin="THIRD_PARTY_DATASOURCE",
             orig_sensor_id="ORIGSENSOR-ID",
             powers=[67.1, 65.2, 68.1, 74.3, 68.1, 96.4, 97.3, 68.1],
-            precedence="O",
+            precedence="R",
             raw_file_uri="rawFileURI",
             rb_duration=24,
             rb_index=1.02947164506,
@@ -93,7 +93,7 @@ class TestSgi:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sgi.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -108,7 +108,7 @@ class TestSgi:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sgi.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -126,7 +126,7 @@ class TestSgi:
         sgi = client.sgi.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -138,7 +138,7 @@ class TestSgi:
         sgi = client.sgi.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -171,7 +171,7 @@ class TestSgi:
             origin="THIRD_PARTY_DATASOURCE",
             orig_sensor_id="ORIGSENSOR-ID",
             powers=[67.1, 65.2, 68.1, 74.3, 68.1, 96.4, 97.3, 68.1],
-            precedence="O",
+            precedence="R",
             raw_file_uri="rawFileURI",
             rb_duration=24,
             rb_index=1.02947164506,
@@ -195,7 +195,7 @@ class TestSgi:
         response = client.sgi.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -211,7 +211,7 @@ class TestSgi:
         with client.sgi.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -230,7 +230,7 @@ class TestSgi:
             client.sgi.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
@@ -346,7 +346,7 @@ class TestSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -361,7 +361,7 @@ class TestSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -380,7 +380,7 @@ class TestSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -401,7 +401,7 @@ class TestSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -416,7 +416,7 @@ class TestSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -435,7 +435,7 @@ class TestSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -594,7 +594,7 @@ class TestAsyncSgi:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -605,7 +605,7 @@ class TestAsyncSgi:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -638,7 +638,7 @@ class TestAsyncSgi:
             origin="THIRD_PARTY_DATASOURCE",
             orig_sensor_id="ORIGSENSOR-ID",
             powers=[67.1, 65.2, 68.1, 74.3, 68.1, 96.4, 97.3, 68.1],
-            precedence="O",
+            precedence="R",
             raw_file_uri="rawFileURI",
             rb_duration=24,
             rb_index=1.02947164506,
@@ -661,7 +661,7 @@ class TestAsyncSgi:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sgi.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -676,7 +676,7 @@ class TestAsyncSgi:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sgi.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -694,7 +694,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -706,7 +706,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -739,7 +739,7 @@ class TestAsyncSgi:
             origin="THIRD_PARTY_DATASOURCE",
             orig_sensor_id="ORIGSENSOR-ID",
             powers=[67.1, 65.2, 68.1, 74.3, 68.1, 96.4, 97.3, 68.1],
-            precedence="O",
+            precedence="R",
             raw_file_uri="rawFileURI",
             rb_duration=24,
             rb_index=1.02947164506,
@@ -763,7 +763,7 @@ class TestAsyncSgi:
         response = await async_client.sgi.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -779,7 +779,7 @@ class TestAsyncSgi:
         async with async_client.sgi.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
             source="Bluestaq",
@@ -798,7 +798,7 @@ class TestAsyncSgi:
             await async_client.sgi.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 effective_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 sgi_date=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
@@ -914,7 +914,7 @@ class TestAsyncSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -929,7 +929,7 @@ class TestAsyncSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -948,7 +948,7 @@ class TestAsyncSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -969,7 +969,7 @@ class TestAsyncSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -984,7 +984,7 @@ class TestAsyncSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
@@ -1003,7 +1003,7 @@ class TestAsyncSgi:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",

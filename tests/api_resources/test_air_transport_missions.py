@@ -26,7 +26,7 @@ class TestAirTransportMissions:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         air_transport_mission = client.air_transport_missions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert air_transport_mission is None
@@ -35,7 +35,7 @@ class TestAirTransportMissions:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_transport_mission = client.air_transport_missions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="bdad6945-c9e4-b829-f7be-1ad075541921",
             alias="PACIFIC DEPLOY / CHAP 3 MOVEMENT",
@@ -121,7 +121,7 @@ class TestAirTransportMissions:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.air_transport_missions.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -134,7 +134,7 @@ class TestAirTransportMissions:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.air_transport_missions.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -188,7 +188,7 @@ class TestAirTransportMissions:
         air_transport_mission = client.air_transport_missions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert air_transport_mission is None
@@ -198,7 +198,7 @@ class TestAirTransportMissions:
         air_transport_mission = client.air_transport_missions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="bdad6945-c9e4-b829-f7be-1ad075541921",
             alias="PACIFIC DEPLOY / CHAP 3 MOVEMENT",
@@ -285,7 +285,7 @@ class TestAirTransportMissions:
         response = client.air_transport_missions.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -299,7 +299,7 @@ class TestAirTransportMissions:
         with client.air_transport_missions.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -316,7 +316,7 @@ class TestAirTransportMissions:
             client.air_transport_missions.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 
@@ -449,7 +449,7 @@ class TestAsyncAirTransportMissions:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_transport_mission = await async_client.air_transport_missions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert air_transport_mission is None
@@ -458,7 +458,7 @@ class TestAsyncAirTransportMissions:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_transport_mission = await async_client.air_transport_missions.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="bdad6945-c9e4-b829-f7be-1ad075541921",
             alias="PACIFIC DEPLOY / CHAP 3 MOVEMENT",
@@ -544,7 +544,7 @@ class TestAsyncAirTransportMissions:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_transport_missions.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -557,7 +557,7 @@ class TestAsyncAirTransportMissions:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_transport_missions.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -611,7 +611,7 @@ class TestAsyncAirTransportMissions:
         air_transport_mission = await async_client.air_transport_missions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert air_transport_mission is None
@@ -621,7 +621,7 @@ class TestAsyncAirTransportMissions:
         air_transport_mission = await async_client.air_transport_missions.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             body_id="bdad6945-c9e4-b829-f7be-1ad075541921",
             alias="PACIFIC DEPLOY / CHAP 3 MOVEMENT",
@@ -708,7 +708,7 @@ class TestAsyncAirTransportMissions:
         response = await async_client.air_transport_missions.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -722,7 +722,7 @@ class TestAsyncAirTransportMissions:
         async with async_client.air_transport_missions.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -739,7 +739,7 @@ class TestAsyncAirTransportMissions:
             await async_client.air_transport_missions.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
             )
 

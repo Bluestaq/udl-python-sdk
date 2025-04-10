@@ -25,7 +25,7 @@ class TestSeradatanavigation:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         seradatanavigation = client.seradatanavigation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -35,7 +35,7 @@ class TestSeradatanavigation:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatanavigation = client.seradatanavigation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATANAVIGATION-ID",
@@ -59,7 +59,7 @@ class TestSeradatanavigation:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.seradatanavigation.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -73,7 +73,7 @@ class TestSeradatanavigation:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.seradatanavigation.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -90,7 +90,7 @@ class TestSeradatanavigation:
         seradatanavigation = client.seradatanavigation.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -101,7 +101,7 @@ class TestSeradatanavigation:
         seradatanavigation = client.seradatanavigation.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATANAVIGATION-ID",
@@ -126,7 +126,7 @@ class TestSeradatanavigation:
         response = client.seradatanavigation.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -141,7 +141,7 @@ class TestSeradatanavigation:
         with client.seradatanavigation.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -159,7 +159,7 @@ class TestSeradatanavigation:
             client.seradatanavigation.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )
@@ -354,7 +354,7 @@ class TestAsyncSeradatanavigation:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatanavigation = await async_client.seradatanavigation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -364,7 +364,7 @@ class TestAsyncSeradatanavigation:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatanavigation = await async_client.seradatanavigation.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             id="SERADATANAVIGATION-ID",
@@ -388,7 +388,7 @@ class TestAsyncSeradatanavigation:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatanavigation.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -402,7 +402,7 @@ class TestAsyncSeradatanavigation:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradatanavigation.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -419,7 +419,7 @@ class TestAsyncSeradatanavigation:
         seradatanavigation = await async_client.seradatanavigation.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -430,7 +430,7 @@ class TestAsyncSeradatanavigation:
         seradatanavigation = await async_client.seradatanavigation.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
             body_id="SERADATANAVIGATION-ID",
@@ -455,7 +455,7 @@ class TestAsyncSeradatanavigation:
         response = await async_client.seradatanavigation.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         )
@@ -470,7 +470,7 @@ class TestAsyncSeradatanavigation:
         async with async_client.seradatanavigation.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             spacecraft_id="spacecraftId",
         ) as response:
@@ -488,7 +488,7 @@ class TestAsyncSeradatanavigation:
             await async_client.seradatanavigation.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
             )

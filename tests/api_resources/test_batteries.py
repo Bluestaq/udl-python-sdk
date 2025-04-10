@@ -24,7 +24,7 @@ class TestBatteries:
     @parametrize
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -33,7 +33,7 @@ class TestBatteries:
     @parametrize
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
             id="BATTERY-ID",
@@ -44,7 +44,7 @@ class TestBatteries:
     @parametrize
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.batteries.with_raw_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -57,7 +57,7 @@ class TestBatteries:
     @parametrize
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.batteries.with_streaming_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         ) as response:
@@ -111,7 +111,7 @@ class TestBatteries:
     def test_method_update(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -121,7 +121,7 @@ class TestBatteries:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
             body_id="BATTERY-ID",
@@ -133,7 +133,7 @@ class TestBatteries:
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
         response = client.batteries.with_raw_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -147,7 +147,7 @@ class TestBatteries:
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
         with client.batteries.with_streaming_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         ) as response:
@@ -164,7 +164,7 @@ class TestBatteries:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.batteries.with_raw_response.update(
                 path_id="",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="JAK-BATTERY-1479",
                 source="Bluestaq",
             )
@@ -320,7 +320,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -329,7 +329,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
             id="BATTERY-ID",
@@ -340,7 +340,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batteries.with_raw_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -353,7 +353,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.batteries.with_streaming_response.create(
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         ) as response:
@@ -407,7 +407,7 @@ class TestAsyncBatteries:
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -417,7 +417,7 @@ class TestAsyncBatteries:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
             body_id="BATTERY-ID",
@@ -429,7 +429,7 @@ class TestAsyncBatteries:
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batteries.with_raw_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         )
@@ -443,7 +443,7 @@ class TestAsyncBatteries:
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.batteries.with_streaming_response.update(
             path_id="id",
-            data_mode="REAL",
+            data_mode="TEST",
             name="JAK-BATTERY-1479",
             source="Bluestaq",
         ) as response:
@@ -460,7 +460,7 @@ class TestAsyncBatteries:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.batteries.with_raw_response.update(
                 path_id="",
-                data_mode="REAL",
+                data_mode="TEST",
                 name="JAK-BATTERY-1479",
                 source="Bluestaq",
             )

@@ -25,7 +25,7 @@ class TestStage:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -36,7 +36,7 @@ class TestStage:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -79,7 +79,7 @@ class TestStage:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.stage.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -94,7 +94,7 @@ class TestStage:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.stage.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -112,7 +112,7 @@ class TestStage:
         stage = client.stage.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -124,7 +124,7 @@ class TestStage:
         stage = client.stage.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -168,7 +168,7 @@ class TestStage:
         response = client.stage.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -184,7 +184,7 @@ class TestStage:
         with client.stage.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -203,7 +203,7 @@ class TestStage:
             client.stage.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_engine="ENGINE-ID",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
@@ -399,7 +399,7 @@ class TestAsyncStage:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -410,7 +410,7 @@ class TestAsyncStage:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -453,7 +453,7 @@ class TestAsyncStage:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.stage.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -468,7 +468,7 @@ class TestAsyncStage:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.stage.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -486,7 +486,7 @@ class TestAsyncStage:
         stage = await async_client.stage.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -498,7 +498,7 @@ class TestAsyncStage:
         stage = await async_client.stage.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -542,7 +542,7 @@ class TestAsyncStage:
         response = await async_client.stage.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -558,7 +558,7 @@ class TestAsyncStage:
         async with async_client.stage.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_engine="ENGINE-ID",
             id_launch_vehicle="LAUNCHVEHICLE-ID",
             source="Bluestaq",
@@ -577,7 +577,7 @@ class TestAsyncStage:
             await async_client.stage.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 id_engine="ENGINE-ID",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",

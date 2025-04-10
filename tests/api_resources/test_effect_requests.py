@@ -26,7 +26,7 @@ class TestEffectRequests:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         effect_request = client.effect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
         )
@@ -36,7 +36,7 @@ class TestEffectRequests:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         effect_request = client.effect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
             id="EFFECTREQUEST-ID",
@@ -60,7 +60,7 @@ class TestEffectRequests:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.effect_requests.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
         )
@@ -74,7 +74,7 @@ class TestEffectRequests:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.effect_requests.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
         ) as response:
@@ -192,7 +192,7 @@ class TestEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -206,7 +206,7 @@ class TestEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -224,7 +224,7 @@ class TestEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -244,7 +244,7 @@ class TestEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -258,7 +258,7 @@ class TestEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -276,7 +276,7 @@ class TestEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -357,7 +357,7 @@ class TestAsyncEffectRequests:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_request = await async_client.effect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
         )
@@ -367,7 +367,7 @@ class TestAsyncEffectRequests:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_request = await async_client.effect_requests.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
             id="EFFECTREQUEST-ID",
@@ -391,7 +391,7 @@ class TestAsyncEffectRequests:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.effect_requests.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
         )
@@ -405,7 +405,7 @@ class TestAsyncEffectRequests:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.effect_requests.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             effect_list=["COVER", "DECEIVE"],
             source="Bluestaq",
         ) as response:
@@ -523,7 +523,7 @@ class TestAsyncEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -537,7 +537,7 @@ class TestAsyncEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -555,7 +555,7 @@ class TestAsyncEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -575,7 +575,7 @@ class TestAsyncEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -589,7 +589,7 @@ class TestAsyncEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }
@@ -607,7 +607,7 @@ class TestAsyncEffectRequests:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "effect_list": ["COVER", "DECEIVE"],
                     "source": "Bluestaq",
                 }

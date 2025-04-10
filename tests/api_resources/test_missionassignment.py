@@ -26,7 +26,7 @@ class TestMissionassignment:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         missionassignment = client.missionassignment.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -37,7 +37,7 @@ class TestMissionassignment:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         missionassignment = client.missionassignment.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -106,7 +106,7 @@ class TestMissionassignment:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.missionassignment.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -121,7 +121,7 @@ class TestMissionassignment:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.missionassignment.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -139,7 +139,7 @@ class TestMissionassignment:
         missionassignment = client.missionassignment.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -151,7 +151,7 @@ class TestMissionassignment:
         missionassignment = client.missionassignment.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -221,7 +221,7 @@ class TestMissionassignment:
         response = client.missionassignment.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -237,7 +237,7 @@ class TestMissionassignment:
         with client.missionassignment.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -256,7 +256,7 @@ class TestMissionassignment:
             client.missionassignment.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 mad="MAD",
                 source="Bluestaq",
                 ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -373,7 +373,7 @@ class TestMissionassignment:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "mad": "MAD",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -565,7 +565,7 @@ class TestAsyncMissionassignment:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         missionassignment = await async_client.missionassignment.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -576,7 +576,7 @@ class TestAsyncMissionassignment:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         missionassignment = await async_client.missionassignment.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -645,7 +645,7 @@ class TestAsyncMissionassignment:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.missionassignment.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -660,7 +660,7 @@ class TestAsyncMissionassignment:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.missionassignment.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -678,7 +678,7 @@ class TestAsyncMissionassignment:
         missionassignment = await async_client.missionassignment.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -690,7 +690,7 @@ class TestAsyncMissionassignment:
         missionassignment = await async_client.missionassignment.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -760,7 +760,7 @@ class TestAsyncMissionassignment:
         response = await async_client.missionassignment.with_raw_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -776,7 +776,7 @@ class TestAsyncMissionassignment:
         async with async_client.missionassignment.with_streaming_response.update(
             path_id="id",
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             mad="MAD",
             source="Bluestaq",
             ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -795,7 +795,7 @@ class TestAsyncMissionassignment:
             await async_client.missionassignment.with_raw_response.update(
                 path_id="",
                 classification_marking="U",
-                data_mode="REAL",
+                data_mode="TEST",
                 mad="MAD",
                 source="Bluestaq",
                 ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
@@ -912,7 +912,7 @@ class TestAsyncMissionassignment:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "mad": "MAD",
                     "source": "Bluestaq",
                     "ts": parse_datetime("2021-01-01T01:01:01.123456Z"),

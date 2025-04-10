@@ -23,7 +23,7 @@ class TestAirfieldstatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         airfieldstatus = client.airfieldstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -33,7 +33,7 @@ class TestAirfieldstatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfieldstatus = client.airfieldstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
             id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -71,7 +71,7 @@ class TestAirfieldstatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldstatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -85,7 +85,7 @@ class TestAirfieldstatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.airfieldstatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         ) as response:
@@ -180,7 +180,7 @@ class TestAsyncAirfieldstatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldstatus = await async_client.airfieldstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -190,7 +190,7 @@ class TestAsyncAirfieldstatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldstatus = await async_client.airfieldstatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
             id="be831d39-1822-da9f-7ace-6cc5643397dc",
@@ -228,7 +228,7 @@ class TestAsyncAirfieldstatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldstatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         )
@@ -242,7 +242,7 @@ class TestAsyncAirfieldstatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfieldstatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
             source="Bluestaq",
         ) as response:

@@ -26,7 +26,7 @@ class TestGeostatus:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         geostatus = client.geostatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert geostatus is None
@@ -35,7 +35,7 @@ class TestGeostatus:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         geostatus = client.geostatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="GEOSTATUS-ID",
             confidence_level="Low",
@@ -61,7 +61,7 @@ class TestGeostatus:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.geostatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -74,7 +74,7 @@ class TestGeostatus:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.geostatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -153,7 +153,7 @@ class TestGeostatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -166,7 +166,7 @@ class TestGeostatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -183,7 +183,7 @@ class TestGeostatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -301,7 +301,7 @@ class TestAsyncGeostatus:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         geostatus = await async_client.geostatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
         assert geostatus is None
@@ -310,7 +310,7 @@ class TestAsyncGeostatus:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         geostatus = await async_client.geostatus.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
             id="GEOSTATUS-ID",
             confidence_level="Low",
@@ -336,7 +336,7 @@ class TestAsyncGeostatus:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.geostatus.with_raw_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         )
 
@@ -349,7 +349,7 @@ class TestAsyncGeostatus:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.geostatus.with_streaming_response.create(
             classification_marking="U",
-            data_mode="REAL",
+            data_mode="TEST",
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -428,7 +428,7 @@ class TestAsyncGeostatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -441,7 +441,7 @@ class TestAsyncGeostatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],
@@ -458,7 +458,7 @@ class TestAsyncGeostatus:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "source": "Bluestaq",
                 }
             ],

@@ -30,7 +30,7 @@ class TestUdlSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -44,7 +44,7 @@ class TestUdlSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -62,7 +62,7 @@ class TestUdlSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -136,7 +136,7 @@ class TestAsyncUdlSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -150,7 +150,7 @@ class TestAsyncUdlSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
@@ -168,7 +168,7 @@ class TestAsyncUdlSigact:
             body=[
                 {
                     "classification_marking": "U",
-                    "data_mode": "REAL",
+                    "data_mode": "TEST",
                     "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
                     "source": "Bluestaq",
                 }
