@@ -427,7 +427,6 @@ class TestLogisticssupport:
                 data_mode="REAL",
                 rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -1220,7 +1219,6 @@ class TestAsyncLogisticssupport:
                 data_mode="REAL",
                 rpt_created_time=parse_datetime("2023-07-13T13:47:00.123Z"),
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

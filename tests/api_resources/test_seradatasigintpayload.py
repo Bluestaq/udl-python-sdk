@@ -162,7 +162,6 @@ class TestSeradatasigintpayload:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize
@@ -492,7 +491,6 @@ class TestAsyncSeradatasigintpayload:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize

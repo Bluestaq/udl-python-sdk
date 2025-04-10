@@ -228,7 +228,6 @@ class TestItem:
                 scan_code="12345ABCD",
                 source="Bluestaq",
                 type="CARGO",
-                body_id="",
             )
 
     @parametrize
@@ -678,7 +677,6 @@ class TestAsyncItem:
                 scan_code="12345ABCD",
                 source="Bluestaq",
                 type="CARGO",
-                body_id="",
             )
 
     @parametrize

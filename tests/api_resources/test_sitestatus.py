@@ -195,7 +195,6 @@ class TestSitestatus:
                 data_mode="REAL",
                 id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -557,7 +556,6 @@ class TestAsyncSitestatus:
                 data_mode="REAL",
                 id_site="41e3e554-9790-40b9-bd7b-f30d864dcad8",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

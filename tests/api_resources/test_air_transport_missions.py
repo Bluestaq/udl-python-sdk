@@ -318,7 +318,6 @@ class TestAirTransportMissions:
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -742,7 +741,6 @@ class TestAsyncAirTransportMissions:
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

@@ -239,7 +239,6 @@ class TestIr:
                 data_mode="REAL",
                 name="Example name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -645,7 +644,6 @@ class TestAsyncIr:
                 data_mode="REAL",
                 name="Example name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

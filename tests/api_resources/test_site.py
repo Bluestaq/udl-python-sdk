@@ -347,7 +347,6 @@ class TestSite:
                 data_mode="REAL",
                 name="Site Name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -823,7 +822,6 @@ class TestAsyncSite:
                 data_mode="REAL",
                 name="Site Name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

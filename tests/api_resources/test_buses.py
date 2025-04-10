@@ -367,7 +367,6 @@ class TestBuses:
                 data_mode="REAL",
                 name="Example name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -863,7 +862,6 @@ class TestAsyncBuses:
                 data_mode="REAL",
                 name="Example name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

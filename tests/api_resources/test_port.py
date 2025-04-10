@@ -157,7 +157,6 @@ class TestPort:
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -493,7 +492,6 @@ class TestAsyncPort:
                 classification_marking="U",
                 data_mode="REAL",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

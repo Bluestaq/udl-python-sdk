@@ -173,7 +173,6 @@ class TestRfband:
                 id_entity="ENTITY-ID",
                 name="BAND_NAME",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -514,7 +513,6 @@ class TestAsyncRfband:
                 id_entity="ENTITY-ID",
                 name="BAND_NAME",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

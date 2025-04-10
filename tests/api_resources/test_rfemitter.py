@@ -239,7 +239,6 @@ class TestRfemitter:
                 data_mode="REAL",
                 name="RF_NAME",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -645,7 +644,6 @@ class TestAsyncRfemitter:
                 data_mode="REAL",
                 name="RF_NAME",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

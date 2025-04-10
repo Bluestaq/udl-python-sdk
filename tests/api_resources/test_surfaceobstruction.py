@@ -160,7 +160,6 @@ class TestSurfaceobstruction:
                 data_mode="REAL",
                 id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -540,7 +539,6 @@ class TestAsyncSurfaceobstruction:
                 data_mode="REAL",
                 id_surface="be831d39-1822-da9f-7ace-6cc5643397dc",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

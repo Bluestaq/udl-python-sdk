@@ -229,7 +229,6 @@ class TestComm:
                 data_mode="REAL",
                 name="DSCS II C-7-COMM Payload",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -587,7 +586,6 @@ class TestAsyncComm:
                 data_mode="REAL",
                 name="DSCS II C-7-COMM Payload",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

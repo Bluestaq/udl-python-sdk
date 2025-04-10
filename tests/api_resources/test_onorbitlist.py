@@ -142,7 +142,6 @@ class TestOnorbitlist:
                 data_mode="REAL",
                 name="People",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -452,7 +451,6 @@ class TestAsyncOnorbitlist:
                 data_mode="REAL",
                 name="People",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

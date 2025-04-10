@@ -256,7 +256,6 @@ class TestScientific:
                 name="SEM/MAG",
                 source="Bluestaq",
                 spacecraft_id="REF-SPACECRAFT-ID",
-                body_id="",
             )
 
     @parametrize
@@ -679,7 +678,6 @@ class TestAsyncScientific:
                 name="SEM/MAG",
                 source="Bluestaq",
                 spacecraft_id="REF-SPACECRAFT-ID",
-                body_id="",
             )
 
     @parametrize

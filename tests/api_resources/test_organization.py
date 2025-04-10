@@ -161,7 +161,6 @@ class TestOrganization:
                 name="some.user",
                 source="some.user",
                 type="GOVERNMENT",
-                body_id="",
             )
 
     @parametrize
@@ -538,7 +537,6 @@ class TestAsyncOrganization:
                 name="some.user",
                 source="some.user",
                 type="GOVERNMENT",
-                body_id="",
             )
 
     @parametrize

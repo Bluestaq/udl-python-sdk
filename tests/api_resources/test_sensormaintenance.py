@@ -196,7 +196,6 @@ class TestSensormaintenance:
                 site_code="site01",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-                body_id="",
             )
 
     @parametrize
@@ -672,7 +671,6 @@ class TestAsyncSensormaintenance:
                 site_code="site01",
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-                body_id="",
             )
 
     @parametrize

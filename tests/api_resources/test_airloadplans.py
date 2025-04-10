@@ -221,7 +221,6 @@ class TestAirloadplans:
                 data_mode="REAL",
                 est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
-                body_id="",
             )
 
     @parametrize
@@ -471,7 +470,6 @@ class TestAsyncAirloadplans:
                 data_mode="REAL",
                 est_dep_time=parse_datetime("2024-01-01T01:00:00.123Z"),
                 source="source",
-                body_id="",
             )
 
     @parametrize

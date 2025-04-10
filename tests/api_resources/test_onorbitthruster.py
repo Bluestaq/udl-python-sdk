@@ -150,7 +150,6 @@ class TestOnorbitthruster:
                 id_engine="ENGINE-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -388,7 +387,6 @@ class TestAsyncOnorbitthruster:
                 id_engine="ENGINE-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

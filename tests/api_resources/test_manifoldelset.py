@@ -185,7 +185,6 @@ class TestManifoldelset:
                 id_manifold="REF-MANIFOLD-ID",
                 source="Bluestaq",
                 tmp_sat_no=10,
-                body_id="",
             )
 
     @parametrize
@@ -609,7 +608,6 @@ class TestAsyncManifoldelset:
                 id_manifold="REF-MANIFOLD-ID",
                 source="Bluestaq",
                 tmp_sat_no=10,
-                body_id="",
             )
 
     @parametrize

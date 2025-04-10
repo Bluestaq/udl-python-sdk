@@ -167,7 +167,6 @@ class TestBatteries:
                 data_mode="REAL",
                 name="JAK-BATTERY-1479",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -464,7 +463,6 @@ class TestAsyncBatteries:
                 data_mode="REAL",
                 name="JAK-BATTERY-1479",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

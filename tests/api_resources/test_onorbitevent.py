@@ -229,7 +229,6 @@ class TestOnorbitevent:
                 data_mode="REAL",
                 event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -625,7 +624,6 @@ class TestAsyncOnorbitevent:
                 data_mode="REAL",
                 event_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

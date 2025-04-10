@@ -168,7 +168,7 @@ class TestCountries:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_code` but received ''"):
             client.countries.with_raw_response.update(
                 path_code="",
-                body_code="",
+                body_code="US",
                 data_mode="REAL",
                 source="Bluestaq",
             )
@@ -468,7 +468,7 @@ class TestAsyncCountries:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_code` but received ''"):
             await async_client.countries.with_raw_response.update(
                 path_code="",
-                body_code="",
+                body_code="US",
                 data_mode="REAL",
                 source="Bluestaq",
             )

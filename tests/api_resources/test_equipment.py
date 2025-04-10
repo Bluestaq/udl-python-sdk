@@ -281,7 +281,6 @@ class TestEquipment:
                 lat=39.019242,
                 lon=-104.251659,
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -777,7 +776,6 @@ class TestAsyncEquipment:
                 lat=39.019242,
                 lon=-104.251659,
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

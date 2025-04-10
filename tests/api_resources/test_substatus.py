@@ -165,7 +165,6 @@ class TestSubstatus:
                 status="FMC",
                 status_id="REF-STATUS-ID",
                 type="mwCap",
-                body_id="",
             )
 
     @parametrize
@@ -498,7 +497,6 @@ class TestAsyncSubstatus:
                 status="FMC",
                 status_id="REF-STATUS-ID",
                 type="mwCap",
-                body_id="",
             )
 
     @parametrize

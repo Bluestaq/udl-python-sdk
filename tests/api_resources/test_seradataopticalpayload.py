@@ -172,7 +172,6 @@ class TestSeradataopticalpayload:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize
@@ -512,7 +511,6 @@ class TestAsyncSeradataopticalpayload:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize

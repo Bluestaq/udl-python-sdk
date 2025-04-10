@@ -170,7 +170,6 @@ class TestLaunchsitedetails:
                 data_mode="REAL",
                 id_launch_site="LAUNCHSITE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -458,7 +457,6 @@ class TestAsyncLaunchsitedetails:
                 data_mode="REAL",
                 id_launch_site="LAUNCHSITE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

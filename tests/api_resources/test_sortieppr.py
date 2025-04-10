@@ -155,7 +155,6 @@ class TestSortieppr:
                 data_mode="REAL",
                 id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -596,7 +595,6 @@ class TestAsyncSortieppr:
                 data_mode="REAL",
                 id_sortie="4ef3d1e8-ab08-ab70-498f-edc479734e5c",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

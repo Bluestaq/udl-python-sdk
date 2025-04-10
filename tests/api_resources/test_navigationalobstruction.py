@@ -285,7 +285,6 @@ class TestNavigationalobstruction:
                 obstacle_id="359655",
                 obstacle_type="V",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -831,7 +830,6 @@ class TestAsyncNavigationalobstruction:
                 obstacle_id="359655",
                 obstacle_type="V",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

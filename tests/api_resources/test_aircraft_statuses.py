@@ -261,7 +261,6 @@ class TestAircraftStatuses:
                 data_mode="REAL",
                 id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -651,7 +650,6 @@ class TestAsyncAircraftStatuses:
                 data_mode="REAL",
                 id_aircraft="29232269-e4c2-45c9-aa21-039a33209340",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

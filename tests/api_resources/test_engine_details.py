@@ -202,7 +202,6 @@ class TestEngineDetails:
                 data_mode="REAL",
                 id_engine="ENGINE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -432,7 +431,6 @@ class TestAsyncEngineDetails:
                 data_mode="REAL",
                 id_engine="ENGINE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

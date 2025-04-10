@@ -240,7 +240,6 @@ class TestStarcatalog:
                 ra=14.43,
                 source="Bluestaq",
                 star_epoch=2016,
-                body_id="",
             )
 
     @parametrize
@@ -801,7 +800,6 @@ class TestAsyncStarcatalog:
                 ra=14.43,
                 source="Bluestaq",
                 star_epoch=2016,
-                body_id="",
             )
 
     @parametrize

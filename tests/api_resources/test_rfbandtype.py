@@ -144,7 +144,7 @@ class TestRfbandtype:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             client.rfbandtype.with_raw_response.update(
                 path_id="",
-                body_id="",
+                body_id="Ku",
                 classification_marking="U",
                 data_mode="REAL",
                 description="Example description",
@@ -460,7 +460,7 @@ class TestAsyncRfbandtype:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_id` but received ''"):
             await async_client.rfbandtype.with_raw_response.update(
                 path_id="",
-                body_id="",
+                body_id="Ku",
                 classification_marking="U",
                 data_mode="REAL",
                 description="Example description",

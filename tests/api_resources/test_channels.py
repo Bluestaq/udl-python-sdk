@@ -209,7 +209,6 @@ class TestChannels:
                 id_transponder="REF-TRANSPONDER-ID",
                 name="Example name",
                 source="system.source",
-                body_id="",
             )
 
     @parametrize
@@ -548,7 +547,6 @@ class TestAsyncChannels:
                 id_transponder="REF-TRANSPONDER-ID",
                 name="Example name",
                 source="system.source",
-                body_id="",
             )
 
     @parametrize

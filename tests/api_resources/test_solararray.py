@@ -129,7 +129,6 @@ class TestSolararray:
                 data_mode="REAL",
                 name="Solar1",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -426,7 +425,6 @@ class TestAsyncSolararray:
                 data_mode="REAL",
                 name="Solar1",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
