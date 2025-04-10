@@ -148,7 +148,6 @@ class TestOnorbitbattery:
                 id_battery="BATTERY-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -384,7 +383,6 @@ class TestAsyncOnorbitbattery:
                 id_battery="BATTERY-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

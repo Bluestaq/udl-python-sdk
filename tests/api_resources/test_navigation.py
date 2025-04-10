@@ -239,7 +239,6 @@ class TestNavigation:
                 data_mode="REAL",
                 name="NAME",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -645,7 +644,6 @@ class TestAsyncNavigation:
                 data_mode="REAL",
                 name="NAME",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

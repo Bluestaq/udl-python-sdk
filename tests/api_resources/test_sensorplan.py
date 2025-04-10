@@ -613,7 +613,6 @@ class TestSensorplan:
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 type="PLAN",
-                body_id="",
             )
 
     @parametrize
@@ -1428,7 +1427,6 @@ class TestAsyncSensorplan:
                 source="Bluestaq",
                 start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
                 type="PLAN",
-                body_id="",
             )
 
     @parametrize

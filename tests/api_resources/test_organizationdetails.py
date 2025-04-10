@@ -202,7 +202,6 @@ class TestOrganizationdetails:
                 id_organization="ORGANIZATION-ID",
                 name="some.user",
                 source="some.user",
-                body_id="",
             )
 
     @parametrize
@@ -530,7 +529,6 @@ class TestAsyncOrganizationdetails:
                 id_organization="ORGANIZATION-ID",
                 name="some.user",
                 source="some.user",
-                body_id="",
             )
 
     @parametrize

@@ -271,7 +271,6 @@ class TestSurface:
                 name="West lot",
                 source="Bluestaq",
                 type="PARKING",
-                body_id="",
             )
 
     @parametrize
@@ -710,7 +709,6 @@ class TestAsyncSurface:
                 name="West lot",
                 source="Bluestaq",
                 type="PARKING",
-                body_id="",
             )
 
     @parametrize

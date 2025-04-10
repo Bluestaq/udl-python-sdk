@@ -176,7 +176,6 @@ class TestEngines:
                 data_mode="REAL",
                 name="ENGINE_VARIANT1",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -482,7 +481,6 @@ class TestAsyncEngines:
                 data_mode="REAL",
                 name="ENGINE_VARIANT1",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

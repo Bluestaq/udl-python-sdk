@@ -252,7 +252,6 @@ class TestAirfieldslotconsumptions:
                 num_aircraft=1,
                 source="Bluestaq",
                 start_time=parse_datetime("2023-01-01T01:01:01.123Z"),
-                body_id="",
             )
 
     @parametrize
@@ -633,7 +632,6 @@ class TestAsyncAirfieldslotconsumptions:
                 num_aircraft=1,
                 source="Bluestaq",
                 start_time=parse_datetime("2023-01-01T01:01:01.123Z"),
-                body_id="",
             )
 
     @parametrize

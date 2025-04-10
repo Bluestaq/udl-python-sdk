@@ -223,7 +223,6 @@ class TestObjectofinterest:
                 sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
                 status_date=parse_datetime("2021-01-01T01:01:01.123Z"),
-                body_id="",
             )
 
     @parametrize
@@ -613,7 +612,6 @@ class TestAsyncObjectofinterest:
                 sensor_tasking_start_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
                 status_date=parse_datetime("2021-01-01T01:01:01.123Z"),
-                body_id="",
             )
 
     @parametrize

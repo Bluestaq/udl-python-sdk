@@ -164,7 +164,6 @@ class TestSeradataearlywarning:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize
@@ -496,7 +495,6 @@ class TestAsyncSeradataearlywarning:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize

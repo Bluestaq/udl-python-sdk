@@ -146,7 +146,6 @@ class TestOnorbitantenna:
                 id_antenna="ANTENNA-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -380,7 +379,6 @@ class TestAsyncOnorbitantenna:
                 id_antenna="ANTENNA-ID",
                 id_on_orbit="ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

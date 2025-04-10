@@ -233,7 +233,6 @@ class TestAirfields:
                 name="USAF Academy AFLD",
                 source="Bluestaq",
                 type="Commercial",
-                body_id="",
             )
 
     @parametrize
@@ -558,7 +557,6 @@ class TestAsyncAirfields:
                 name="USAF Academy AFLD",
                 source="Bluestaq",
                 type="Commercial",
-                body_id="",
             )
 
     @parametrize

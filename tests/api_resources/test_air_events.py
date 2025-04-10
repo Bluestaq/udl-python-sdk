@@ -309,7 +309,6 @@ class TestAirEvents:
                 data_mode="REAL",
                 source="Bluestaq",
                 type="FUEL TRANSFER",
-                body_id="",
             )
 
     @parametrize
@@ -889,7 +888,6 @@ class TestAsyncAirEvents:
                 data_mode="REAL",
                 source="Bluestaq",
                 type="FUEL TRANSFER",
-                body_id="",
             )
 
     @parametrize

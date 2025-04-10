@@ -218,7 +218,6 @@ class TestOnorbitdetails:
                 data_mode="REAL",
                 id_on_orbit="REF-ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -523,7 +522,6 @@ class TestAsyncOnorbitdetails:
                 data_mode="REAL",
                 id_on_orbit="REF-ONORBIT-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

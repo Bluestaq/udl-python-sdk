@@ -167,7 +167,6 @@ class TestAntennas:
                 data_mode="REAL",
                 name="IRIDIUM NEXT 121-ANTENNA-10075",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -464,7 +463,6 @@ class TestAsyncAntennas:
                 data_mode="REAL",
                 name="IRIDIUM NEXT 121-ANTENNA-10075",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

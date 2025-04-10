@@ -149,7 +149,6 @@ class TestAirfieldStatus:
                 data_mode="REAL",
                 id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -354,7 +353,6 @@ class TestAsyncAirfieldStatus:
                 data_mode="REAL",
                 id_airfield="3136498f-2969-3535-1432-e984b2e2e686",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

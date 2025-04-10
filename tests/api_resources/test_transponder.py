@@ -156,7 +156,6 @@ class TestTransponder:
                 data_mode="REAL",
                 id_comm="REF-COMM-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -480,7 +479,6 @@ class TestAsyncTransponder:
                 data_mode="REAL",
                 id_comm="REF-COMM-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

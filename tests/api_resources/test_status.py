@@ -181,7 +181,6 @@ class TestStatus:
                 data_mode="REAL",
                 id_entity="ENTITY-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -603,7 +602,6 @@ class TestAsyncStatus:
                 data_mode="REAL",
                 id_entity="ENTITY-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

@@ -260,7 +260,6 @@ class TestMissionassignment:
                 mad="MAD",
                 source="Bluestaq",
                 ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
-                body_id="",
             )
 
     @parametrize
@@ -800,7 +799,6 @@ class TestAsyncMissionassignment:
                 mad="MAD",
                 source="Bluestaq",
                 ts=parse_datetime("2021-01-01T01:01:01.123456Z"),
-                body_id="",
             )
 
     @parametrize

@@ -91,7 +91,6 @@ class TestAircraftstatusremark:
                 id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
                 source="Bluestaq",
                 text="Remark text",
-                body_id="",
             )
 
     @parametrize
@@ -211,7 +210,6 @@ class TestAsyncAircraftstatusremark:
                 id_aircraft_status="388b1f64-ccff-4113-b049-3cf5542c2a42",
                 source="Bluestaq",
                 text="Remark text",
-                body_id="",
             )
 
     @parametrize

@@ -207,7 +207,6 @@ class TestAntennaDetails:
                 data_mode="REAL",
                 id_antenna="ANTENNA-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -464,7 +463,6 @@ class TestAsyncAntennaDetails:
                 data_mode="REAL",
                 id_antenna="ANTENNA-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

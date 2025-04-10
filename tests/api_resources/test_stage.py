@@ -207,7 +207,6 @@ class TestStage:
                 id_engine="ENGINE-ID",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -582,7 +581,6 @@ class TestAsyncStage:
                 id_engine="ENGINE-ID",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

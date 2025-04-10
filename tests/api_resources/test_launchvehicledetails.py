@@ -229,7 +229,6 @@ class TestLaunchvehicledetails:
                 data_mode="REAL",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -546,7 +545,6 @@ class TestAsyncLaunchvehicledetails:
                 data_mode="REAL",
                 id_launch_vehicle="LAUNCHVEHICLE-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

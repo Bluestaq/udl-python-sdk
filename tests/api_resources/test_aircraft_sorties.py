@@ -189,7 +189,6 @@ class TestAircraftSorties:
                 data_mode="REAL",
                 planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -423,7 +422,6 @@ class TestAsyncAircraftSorties:
                 data_mode="REAL",
                 planned_dep_time=parse_datetime("2021-01-01T01:01:01.123Z"),
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

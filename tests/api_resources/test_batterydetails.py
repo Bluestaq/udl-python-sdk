@@ -189,7 +189,6 @@ class TestBatterydetails:
                 data_mode="REAL",
                 id_battery="BATTERY-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -428,7 +427,6 @@ class TestAsyncBatterydetails:
                 data_mode="REAL",
                 id_battery="BATTERY-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

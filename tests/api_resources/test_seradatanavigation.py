@@ -162,7 +162,6 @@ class TestSeradatanavigation:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize
@@ -492,7 +491,6 @@ class TestAsyncSeradatanavigation:
                 data_mode="REAL",
                 source="Bluestaq",
                 spacecraft_id="spacecraftId",
-                body_id="",
             )
 
     @parametrize

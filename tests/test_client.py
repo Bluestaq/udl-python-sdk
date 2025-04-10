@@ -1773,7 +1773,7 @@ class TestAsyncUnifieddatalibrary:
         import threading
 
         from unifieddatalibrary._utils import asyncify
-        from unifieddatalibrary._base_client import get_platform 
+        from unifieddatalibrary._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()

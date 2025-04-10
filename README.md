@@ -82,26 +82,73 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
-## File uploads
+from unifieddatalibrary.\_utils import parse_datetime
+from unifieddatalibrary.\_utils import parse_date
 
-Request parameters that correspond to file uploads can be passed as `bytes`, a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance or a tuple of `(filename, contents, media type)`.
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from pathlib import Path
 from unifieddatalibrary import Unifieddatalibrary
 
 client = Unifieddatalibrary()
 
-client.air_operations.crewpapers.upload_pdf(
-    aircraft_sortie_ids="aircraftSortieIds",
-    classification_marking="x",
-    paper_status="PUBLISHED",
-    papers_version="x",
-    body=Path("/path/to/file"),
+client.aircraft.create(
+    aircraft_mds="E-2C HAWKEYE",
+    classification_marking="U",
+    data_mode="REAL",
+    source="Bluestaq",
+    entity={
+        "classification_marking": "U",
+        "data_mode": "REAL",
+        "name": "Example name",
+        "source": "Bluestaq",
+        "type": "AIRCRAFT",
+        "country_code": "US",
+        "id_entity": "ENTITY-ID",
+        "id_location": "LOCATION-ID",
+        "id_on_orbit": "ONORBIT-ID",
+        "id_operating_unit": "OPERATINGUNIT-ID",
+        "location": {
+            "classification_marking": "U",
+            "data_mode": "REAL",
+            "name": "Example location",
+            "source": "Bluestaq",
+            "altitude": 10.23,
+            "country_code": "US",
+            "id_location": "LOCATION-ID",
+            "lat": 45.23,
+            "lon": 179.1,
+            "origin": "THIRD_PARTY_DATASOURCE",
+        },
+        "on_orbit": {
+            "classification_marking": "U",
+            "data_mode": "REAL",
+            "sat_no": 1,
+            "source": "Bluestaq",
+            "alt_name": "Alternate Name",
+            "category": "Unknown",
+            "common_name": "Example common name",
+            "constellation": "Big Dipper",
+            "country_code": "US",
+            "decay_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+            "id_on_orbit": "ONORBIT-ID",
+            "intl_des": "2021123ABC",
+            "launch_date": parse_date("2018-01-01"),
+            "launch_site_id": "LAUNCHSITE-ID",
+            "lifetime_years": 10,
+            "mission_number": "Expedition 1",
+            "object_type": "ROCKET BODY",
+            "origin": "THIRD_PARTY_DATASOURCE",
+        },
+        "origin": "THIRD_PARTY_DATASOURCE",
+        "owner_type": "Commercial",
+        "taskable": False,
+        "urls": ["URL1", "URL2"],
+    },
 )
 ```
-
-The async client uses the exact same interface. If you pass a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance, the file contents will be read asynchronously automatically.
 
 ## Handling errors
 

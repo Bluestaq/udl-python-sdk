@@ -162,7 +162,6 @@ class TestOnorbitsolararray:
                 id_on_orbit="ONORBIT-ID",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -412,7 +411,6 @@ class TestAsyncOnorbitsolararray:
                 id_on_orbit="ONORBIT-ID",
                 id_solar_array="SOLARARRAY-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

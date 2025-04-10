@@ -203,7 +203,6 @@ class TestBeamContours:
                 id_beam="REF-BEAM-ID",
                 source="Bluestaq",
                 type="BORESIGHT",
-                body_id="",
             )
 
     @parametrize
@@ -606,7 +605,6 @@ class TestAsyncBeamContours:
                 id_beam="REF-BEAM-ID",
                 source="Bluestaq",
                 type="BORESIGHT",
-                body_id="",
             )
 
     @parametrize

@@ -146,7 +146,6 @@ class TestManifold:
                 data_mode="REAL",
                 id_object_of_interest="OBJECTOFINTEREST-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -505,7 +504,6 @@ class TestAsyncManifold:
                 data_mode="REAL",
                 id_object_of_interest="OBJECTOFINTEREST-ID",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

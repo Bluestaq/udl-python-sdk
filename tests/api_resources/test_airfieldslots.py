@@ -138,7 +138,6 @@ class TestAirfieldslots:
                 data_mode="REAL",
                 name="Apron 5",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -382,7 +381,6 @@ class TestAsyncAirfieldslots:
                 data_mode="REAL",
                 name="Apron 5",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

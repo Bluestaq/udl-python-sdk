@@ -199,7 +199,6 @@ class TestLaunchdetection:
                 observation_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 sequence_number=5,
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -565,7 +564,6 @@ class TestAsyncLaunchdetection:
                 observation_time=parse_datetime("2018-01-01T16:00:00.123Z"),
                 sequence_number=5,
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

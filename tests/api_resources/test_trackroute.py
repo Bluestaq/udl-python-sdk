@@ -266,7 +266,6 @@ class TestTrackroute:
                 last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
                 source="Bluestaq",
                 type="AIR REFUELING",
-                body_id="",
             )
 
     @parametrize
@@ -884,7 +883,6 @@ class TestAsyncTrackroute:
                 last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
                 source="Bluestaq",
                 type="AIR REFUELING",
-                body_id="",
             )
 
     @parametrize

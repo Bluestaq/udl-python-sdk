@@ -311,7 +311,6 @@ class TestSeradataspacecraftdetails:
                 data_mode="REAL",
                 name="name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -789,7 +788,6 @@ class TestAsyncSeradataspacecraftdetails:
                 data_mode="REAL",
                 name="name",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize

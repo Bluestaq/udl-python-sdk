@@ -283,7 +283,6 @@ class TestCrew:
                 data_mode="REAL",
                 orig_crew_id="JHJDHjhuu929o92",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
@@ -709,7 +708,6 @@ class TestAsyncCrew:
                 data_mode="REAL",
                 orig_crew_id="JHJDHjhuu929o92",
                 source="Bluestaq",
-                body_id="",
             )
 
     @parametrize
