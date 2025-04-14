@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["LauncheventTupleResponse", "LauncheventTupleResponseItem"]
 
@@ -80,7 +78,7 @@ class LauncheventTupleResponseItem(BaseModel):
     launch_failure_code: Optional[str] = FieldInfo(alias="launchFailureCode", default=None)
     """The DISOB launch Failure Code, if applicable."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -108,10 +106,3 @@ class LauncheventTupleResponseItem(BaseModel):
 
 
 LauncheventTupleResponse: TypeAlias = List[LauncheventTupleResponseItem]
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    LauncheventTupleResponseItem.model_rebuild()
-else:
-    LauncheventTupleResponseItem.update_forward_refs()  # type: ignore

@@ -209,12 +209,14 @@ class AnalyticImageryResource(SyncAPIResource):
         atype: str | NotGiven = NOT_GIVEN,
         data_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         data_stop: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        id_sensor: str | NotGiven = NOT_GIVEN,
         image_set_id: str | NotGiven = NOT_GIVEN,
         image_set_length: int | NotGiven = NOT_GIVEN,
         img_height: int | NotGiven = NOT_GIVEN,
         img_width: int | NotGiven = NOT_GIVEN,
         keywords: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
+        orig_sensor_id: str | NotGiven = NOT_GIVEN,
         sat_id: List[str] | NotGiven = NOT_GIVEN,
         sat_id_conf: Iterable[float] | NotGiven = NOT_GIVEN,
         sequence_id: int | NotGiven = NOT_GIVEN,
@@ -233,17 +235,23 @@ class AnalyticImageryResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        The analytic imagery service allows for contribution of general images, such as
-        data plots, graphs, heatmaps, and other graphics not supported as UDL ground or
-        sky imagery. This service operation requires a zip file in the body of the POST
-        request. The zip file must contain exactly two files. <h3> 1) A json file with
-        any file name that ends in .json e.g. MyFitsFile.json The contents of the json
-        file must be valid according to the schema for Analytic Imagery. 2) A binary
-        image file of the specified types allowed for AnalyticImagery. </h3> The
-        metadata and image files will be stored and associated with each other allowing
-        queries of the data retrieval of the binary images. This operation is intended
-        to be used for automated feeds into UDL. A specific role is required to perform
-        this service operation. Please contact the UDL team for assistance.
+        Upload a new image with its metadata.
+
+        The request body requires a zip file containing exactly two files:\\
+        1\\)) A file with the `.json` file extension whose content conforms to the `AnalyticImagery_Ingest`
+        schema.\\
+        2\\)) A binary image file of the allowed types for this service.
+
+        The JSON and image files will be associated with each other via the `id` field.
+        Query the metadata via `GET /udl/analyticimagery` and use
+        `GET /udl/analyticimagery/getFile/{id}` to retrieve the binary image file.
+
+        This operation only accepts application/zip media. The application/json request
+        body is documented to provide a convenient reference to the ingest schema.
+
+        This operation is intended to be used for automated feeds into UDL. A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -307,6 +315,8 @@ class AnalyticImageryResource(SyncAPIResource):
           data_stop: The stop time, in ISO8601 UTC format with millisecond precision, of the data
               used in the analysis or composition of the image content, when applicable.
 
+          id_sensor: Unique identifier of the reporting sensor.
+
           image_set_id: User-defined set ID of a sequence of images. Used to associate related analytic
               image records.
 
@@ -322,6 +332,10 @@ class AnalyticImageryResource(SyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
+
+          orig_sensor_id: Optional identifier provided by the source to indicate the sensor for this
+              collection. This may be an internal identifier and not necessarily a valid
+              sensor ID.
 
           sat_id: Assessed satellite ID (NORAD RSO object number). The 'satId' and 'satIdConf'
               arrays must match in size.
@@ -395,12 +409,14 @@ class AnalyticImageryResource(SyncAPIResource):
                     "atype": atype,
                     "data_start": data_start,
                     "data_stop": data_stop,
+                    "id_sensor": id_sensor,
                     "image_set_id": image_set_id,
                     "image_set_length": image_set_length,
                     "img_height": img_height,
                     "img_width": img_width,
                     "keywords": keywords,
                     "origin": origin,
+                    "orig_sensor_id": orig_sensor_id,
                     "sat_id": sat_id,
                     "sat_id_conf": sat_id_conf,
                     "sequence_id": sequence_id,
@@ -871,12 +887,14 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         atype: str | NotGiven = NOT_GIVEN,
         data_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         data_stop: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        id_sensor: str | NotGiven = NOT_GIVEN,
         image_set_id: str | NotGiven = NOT_GIVEN,
         image_set_length: int | NotGiven = NOT_GIVEN,
         img_height: int | NotGiven = NOT_GIVEN,
         img_width: int | NotGiven = NOT_GIVEN,
         keywords: List[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
+        orig_sensor_id: str | NotGiven = NOT_GIVEN,
         sat_id: List[str] | NotGiven = NOT_GIVEN,
         sat_id_conf: Iterable[float] | NotGiven = NOT_GIVEN,
         sequence_id: int | NotGiven = NOT_GIVEN,
@@ -895,17 +913,23 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        The analytic imagery service allows for contribution of general images, such as
-        data plots, graphs, heatmaps, and other graphics not supported as UDL ground or
-        sky imagery. This service operation requires a zip file in the body of the POST
-        request. The zip file must contain exactly two files. <h3> 1) A json file with
-        any file name that ends in .json e.g. MyFitsFile.json The contents of the json
-        file must be valid according to the schema for Analytic Imagery. 2) A binary
-        image file of the specified types allowed for AnalyticImagery. </h3> The
-        metadata and image files will be stored and associated with each other allowing
-        queries of the data retrieval of the binary images. This operation is intended
-        to be used for automated feeds into UDL. A specific role is required to perform
-        this service operation. Please contact the UDL team for assistance.
+        Upload a new image with its metadata.
+
+        The request body requires a zip file containing exactly two files:\\
+        1\\)) A file with the `.json` file extension whose content conforms to the `AnalyticImagery_Ingest`
+        schema.\\
+        2\\)) A binary image file of the allowed types for this service.
+
+        The JSON and image files will be associated with each other via the `id` field.
+        Query the metadata via `GET /udl/analyticimagery` and use
+        `GET /udl/analyticimagery/getFile/{id}` to retrieve the binary image file.
+
+        This operation only accepts application/zip media. The application/json request
+        body is documented to provide a convenient reference to the ingest schema.
+
+        This operation is intended to be used for automated feeds into UDL. A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -969,6 +993,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
           data_stop: The stop time, in ISO8601 UTC format with millisecond precision, of the data
               used in the analysis or composition of the image content, when applicable.
 
+          id_sensor: Unique identifier of the reporting sensor.
+
           image_set_id: User-defined set ID of a sequence of images. Used to associate related analytic
               image records.
 
@@ -984,6 +1010,10 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
+
+          orig_sensor_id: Optional identifier provided by the source to indicate the sensor for this
+              collection. This may be an internal identifier and not necessarily a valid
+              sensor ID.
 
           sat_id: Assessed satellite ID (NORAD RSO object number). The 'satId' and 'satIdConf'
               arrays must match in size.
@@ -1057,12 +1087,14 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     "atype": atype,
                     "data_start": data_start,
                     "data_stop": data_stop,
+                    "id_sensor": id_sensor,
                     "image_set_id": image_set_id,
                     "image_set_length": image_set_length,
                     "img_height": img_height,
                     "img_width": img_width,
                     "keywords": keywords,
                     "origin": origin,
+                    "orig_sensor_id": orig_sensor_id,
                     "sat_id": sat_id,
                     "sat_id_conf": sat_id_conf,
                     "sequence_id": sequence_id,

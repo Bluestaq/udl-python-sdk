@@ -425,7 +425,7 @@ class AirloadplanFull(BaseModel):
     """
 
     cargo_volume: Optional[float] = FieldInfo(alias="cargoVolume", default=None)
-    """The volume of cargo space in the aircraft in cubic meters."""
+    """Volume of cargo space in the aircraft, in cubic meters."""
 
     cargo_weight: Optional[float] = FieldInfo(alias="cargoWeight", default=None)
     """The weight of the cargo on board the aircraft, in kilograms."""

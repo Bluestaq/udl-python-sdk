@@ -193,11 +193,6 @@ class TestPassiveradarobservation:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
-        passiveradarobservation = client.passiveradarobservation.create_bulk()
-        assert passiveradarobservation is None
-
-    @parametrize
-    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         passiveradarobservation = client.passiveradarobservation.create_bulk(
             body=[
                 {
@@ -205,63 +200,6 @@ class TestPassiveradarobservation:
                     "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
-                    "id": "bdcacfb0-3c47-4bd0-9d6c-9fa7d2c4fbb0",
-                    "accel": 1.23,
-                    "accel_unc": 0.1,
-                    "alt": 478.056378,
-                    "azimuth": 134.5,
-                    "azimuth_bias": 0.123,
-                    "azimuth_rate": 0.5,
-                    "azimuth_unc": 0.5,
-                    "bistatic_range": 754.8212,
-                    "bistatic_range_accel": 1.23,
-                    "bistatic_range_accel_unc": 0.1,
-                    "bistatic_range_bias": 2.34,
-                    "bistatic_range_rate": -0.30222,
-                    "bistatic_range_rate_unc": 0.123,
-                    "bistatic_range_unc": 5.1,
-                    "coning": 60.1,
-                    "coning_unc": 0.5,
-                    "declination": 10.23,
-                    "delay": 0.00505820232809312,
-                    "delay_bias": 0.00000123,
-                    "delay_unc": 0.0000031,
-                    "descriptor": "Descriptor",
-                    "doppler": -101.781641000597,
-                    "doppler_unc": 0.2,
-                    "elevation": 76.1,
-                    "elevation_bias": 0.123,
-                    "elevation_rate": 0.5,
-                    "elevation_unc": 0.5,
-                    "ext_observation_id": "26892",
-                    "id_rf_emitter": "RED_CLIFFS_3ABCRN",
-                    "id_sensor": "OCULUSA",
-                    "id_sensor_ref_receiver": "OculusRef1",
-                    "lat": -35.1181763996856,
-                    "lon": 139.613567052763,
-                    "ob_position": "FIRST",
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_object_id": "ORIGOBJECT-ID",
-                    "orig_sensor_id": "ORIGSENSOR-ID",
-                    "orthogonal_rcs": 10.23,
-                    "orthogonal_rcs_unc": 1.23,
-                    "ra": 1.23,
-                    "rcs": 100.23,
-                    "rcs_unc": 1.23,
-                    "sat_no": 40699,
-                    "snr": 17.292053,
-                    "tags": ["TAG1", "TAG2"],
-                    "task_id": "TASK-ID",
-                    "timing_bias": 1.23,
-                    "tof": 0.00592856674135648,
-                    "tof_bias": 0.00000123,
-                    "tof_unc": 0.0000031,
-                    "track_id": "12212",
-                    "transaction_id": "TRANSACTION-ID",
-                    "uct": False,
-                    "xvel": 1.23,
-                    "yvel": 3.21,
-                    "zvel": 3.12,
                 }
             ],
         )
@@ -269,7 +207,16 @@ class TestPassiveradarobservation:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.passiveradarobservation.with_raw_response.create_bulk()
+        response = client.passiveradarobservation.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -278,7 +225,16 @@ class TestPassiveradarobservation:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.passiveradarobservation.with_streaming_response.create_bulk() as response:
+        with client.passiveradarobservation.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -611,11 +567,6 @@ class TestAsyncPassiveradarobservation:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        passiveradarobservation = await async_client.passiveradarobservation.create_bulk()
-        assert passiveradarobservation is None
-
-    @parametrize
-    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         passiveradarobservation = await async_client.passiveradarobservation.create_bulk(
             body=[
                 {
@@ -623,63 +574,6 @@ class TestAsyncPassiveradarobservation:
                     "data_mode": "TEST",
                     "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
                     "source": "Bluestaq",
-                    "id": "bdcacfb0-3c47-4bd0-9d6c-9fa7d2c4fbb0",
-                    "accel": 1.23,
-                    "accel_unc": 0.1,
-                    "alt": 478.056378,
-                    "azimuth": 134.5,
-                    "azimuth_bias": 0.123,
-                    "azimuth_rate": 0.5,
-                    "azimuth_unc": 0.5,
-                    "bistatic_range": 754.8212,
-                    "bistatic_range_accel": 1.23,
-                    "bistatic_range_accel_unc": 0.1,
-                    "bistatic_range_bias": 2.34,
-                    "bistatic_range_rate": -0.30222,
-                    "bistatic_range_rate_unc": 0.123,
-                    "bistatic_range_unc": 5.1,
-                    "coning": 60.1,
-                    "coning_unc": 0.5,
-                    "declination": 10.23,
-                    "delay": 0.00505820232809312,
-                    "delay_bias": 0.00000123,
-                    "delay_unc": 0.0000031,
-                    "descriptor": "Descriptor",
-                    "doppler": -101.781641000597,
-                    "doppler_unc": 0.2,
-                    "elevation": 76.1,
-                    "elevation_bias": 0.123,
-                    "elevation_rate": 0.5,
-                    "elevation_unc": 0.5,
-                    "ext_observation_id": "26892",
-                    "id_rf_emitter": "RED_CLIFFS_3ABCRN",
-                    "id_sensor": "OCULUSA",
-                    "id_sensor_ref_receiver": "OculusRef1",
-                    "lat": -35.1181763996856,
-                    "lon": 139.613567052763,
-                    "ob_position": "FIRST",
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_object_id": "ORIGOBJECT-ID",
-                    "orig_sensor_id": "ORIGSENSOR-ID",
-                    "orthogonal_rcs": 10.23,
-                    "orthogonal_rcs_unc": 1.23,
-                    "ra": 1.23,
-                    "rcs": 100.23,
-                    "rcs_unc": 1.23,
-                    "sat_no": 40699,
-                    "snr": 17.292053,
-                    "tags": ["TAG1", "TAG2"],
-                    "task_id": "TASK-ID",
-                    "timing_bias": 1.23,
-                    "tof": 0.00592856674135648,
-                    "tof_bias": 0.00000123,
-                    "tof_unc": 0.0000031,
-                    "track_id": "12212",
-                    "transaction_id": "TRANSACTION-ID",
-                    "uct": False,
-                    "xvel": 1.23,
-                    "yvel": 3.21,
-                    "zvel": 3.12,
                 }
             ],
         )
@@ -687,7 +581,16 @@ class TestAsyncPassiveradarobservation:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.passiveradarobservation.with_raw_response.create_bulk()
+        response = await async_client.passiveradarobservation.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -696,7 +599,16 @@ class TestAsyncPassiveradarobservation:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.passiveradarobservation.with_streaming_response.create_bulk() as response:
+        async with async_client.passiveradarobservation.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-01-24T23:35:26.518152Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

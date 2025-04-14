@@ -192,27 +192,31 @@ class RadarSoiObservationList(BaseModel):
     aspect_angles: Optional[List[float]] = FieldInfo(alias="aspectAngles", default=None)
     """Array of the aspect angle at the center of the image in degrees.
 
-    The 'tov' and 'aspectAngle' arrays must match in size.
+    The 'tovs' and 'aspectAngles' arrays must match in size, if 'aspectAngles' is
+    provided.
     """
 
     azimuth_biases: Optional[List[float]] = FieldInfo(alias="azimuthBiases", default=None)
     """Array of sensor azimuth angle biases in degrees.
 
-    The 'tov' and 'azimuthBias' arrays must match in size.
+    The 'tovs' and 'azimuthBiases' arrays must match in size, if 'azimuthBiases' is
+    provided.
     """
 
     azimuth_rates: Optional[List[float]] = FieldInfo(alias="azimuthRates", default=None)
-    """Array of the azimuth rates of target in degrees per second.
+    """Array of the azimuth rate of target at image center in degrees per second.
 
-    The 'tov' and 'azimuthRate' arrays must match in size. If there is an associated
-    image the azimuth rate is assumed to be at image center.
+    The 'tovs' and 'azimuthRates' arrays must match in size, if 'azimuthRates' is
+    provided. If there is an associated image the azimuth rate is assumed to be at
+    image center.
     """
 
     azimuths: Optional[List[float]] = None
-    """Array of the azimuth angles to target in degrees.
+    """Array of the azimuth angle to target at image center in degrees.
 
-    The 'tov' and 'azimuth' arrays must match in size. If there is an associated
-    image the azimuth angle is assumed to be at image center.
+    The 'tovs' and 'azimuths' arrays must match in size, if 'azimuths' is provided.
+    If there is an associated image the azimuth angle is assumed to be at image
+    center.
     """
 
     beta: Optional[float] = None
@@ -224,39 +228,45 @@ class RadarSoiObservationList(BaseModel):
     cross_range_res: Optional[List[float]] = FieldInfo(alias="crossRangeRes", default=None)
     """
     Array of cross-range resolutions (accounting for weighting function) in
-    kilometers. The 'tov' and 'crossRangeRes' arrays must match in size.
+    kilometers. The 'tovs' and 'crossRangeRes' arrays must match in size, if
+    'crossRangeRes' is provided.
     """
 
     delta_times: Optional[List[float]] = FieldInfo(alias="deltaTimes", default=None)
     """Array of average Interpulse spacing in seconds.
 
-    The 'tov' and 'deltaTime' arrays must match in size.
+    The 'tovs' and 'deltaTimes' arrays must match in size, if 'deltaTimes' is
+    provided.
     """
 
     doppler2_x_rs: Optional[List[float]] = FieldInfo(alias="doppler2XRs", default=None)
     """Array of conversion factors between Doppler in hertz and cross-range in meters.
 
-    The 'tov' and 'doppler2XR' arrays must match in size.
+    The 'tovs' and 'doppler2XRs' arrays must match in size, if 'doppler2XRs' is
+    provided.
     """
 
     elevation_biases: Optional[List[float]] = FieldInfo(alias="elevationBiases", default=None)
     """Array of sensor elevation biases in degrees.
 
-    The 'tov' and 'elevationBias' arrays must match in size.
+    The 'tovs' and 'elevationBiases' arrays must match in size, if 'elevationBiases'
+    is provided.
     """
 
     elevation_rates: Optional[List[float]] = FieldInfo(alias="elevationRates", default=None)
-    """Array of the elevation rates of target in degrees per second.
+    """Array of the elevation rate of target at image center in degrees per second.
 
-    The 'tov' and 'elevationRate' arrays must match in size. If there is an
-    associated image the elevation rate is assumed to be at image center.
+    The 'tovs' and 'elevationRates' arrays must match in size, if 'elevationRates'
+    is provided. If there is an associated image the elevation rate is assumed to be
+    at image center.
     """
 
     elevations: Optional[List[float]] = None
-    """Array of the elevation angles to target in degrees.
+    """Array of the elevation angle to target at image center in degrees.
 
-    The 'tov' and 'elevation' arrays must match in size. If there is an associated
-    image the elevation angle is assumed to be at image center.
+    The 'tovs' and 'elevations' arrays must match in size, if 'elevations' is
+    provided. If there is an associated image the elevation angle is assumed to be
+    at image center.
     """
 
     id_attitude_set: Optional[str] = FieldInfo(alias="idAttitudeSet", default=None)
@@ -268,7 +278,8 @@ class RadarSoiObservationList(BaseModel):
     integration_angles: Optional[List[float]] = FieldInfo(alias="integrationAngles", default=None)
     """Array of Integration angles in degrees.
 
-    The 'tov' and 'integrationAngle' arrays must match in size.
+    The 'tovs' and 'integrationAngles' arrays must match in size, if
+    'integrationAngles' is provided.
     """
 
     kappa: Optional[float] = None
@@ -277,7 +288,8 @@ class RadarSoiObservationList(BaseModel):
     peak_amplitudes: Optional[List[float]] = FieldInfo(alias="peakAmplitudes", default=None)
     """Array of the peak pixel amplitude for each image in decibels.
 
-    The 'tov' and 'peakAmplitude' arrays must match in size.
+    The 'tovs' and 'peakAmplitudes' arrays must match in size, if 'peakAmplitudes'
+    is provided.
     """
 
     polarizations: Optional[List[str]] = None
@@ -294,7 +306,8 @@ class RadarSoiObservationList(BaseModel):
     proj_ang_vels: Optional[List[float]] = FieldInfo(alias="projAngVels", default=None)
     """
     Array of the component of target angular velocity observable by radar in radians
-    per second. The 'tov' and 'projAngVel' arrays must match in size.
+    per second. The 'tovs' and 'projAngVels' arrays must match in size, if
+    'projAngVels' is provided.
     """
 
     pulse_bandwidth: Optional[float] = FieldInfo(alias="pulseBandwidth", default=None)
@@ -303,32 +316,35 @@ class RadarSoiObservationList(BaseModel):
     range_accels: Optional[List[float]] = FieldInfo(alias="rangeAccels", default=None)
     """Array of the range acceleratons of target in kilometers per second squared.
 
-    The 'tov' and 'rangeAccels' arrays must match in size. If there is an associated
-    image the range acceleration is assumed to be at image center.
+    The 'tovs' and 'rangeAccels' arrays must match in size, if 'rangeAccels' is
+    provided. If there is an associated image the range acceleration is assumed to
+    be at image center.
     """
 
     range_biases: Optional[List[float]] = FieldInfo(alias="rangeBiases", default=None)
     """Array of sensor range biases in kilometers.
 
-    The 'tov' and 'rangeBias' arrays must match in size.
+    The 'tovs' and 'rangeBiases' arrays must match in size, if 'rangeBiases' is
+    provided.
     """
 
     range_rates: Optional[List[float]] = FieldInfo(alias="rangeRates", default=None)
-    """Array of the range rates of target in kilometers per second.
+    """Array of the range rate of target at image center in kilometers per second.
 
-    The 'tov' and 'rangeRate' arrays must match in size. If there is an associated
-    image the range rate is assumed to be at image center.
+    The 'tovs' and 'rangeRates' arrays must match in size, if 'rangeRates' is
+    provided. If there is an associated image the range rate is assumed to be at
+    image center.
     """
 
     ranges: Optional[List[float]] = None
-    """Array of the ranges to target in kilometers.
+    """Array of the range to target at image center in kilometers.
 
-    The 'tov' and 'range' arrays must match in size. If there is an associated image
-    the range is assumed to be at image center.
+    The 'tovs' and 'ranges' arrays must match in size, if 'ranges' is provided. If
+    there is an associated image the range is assumed to be at image center.
     """
 
     rcs_error_ests: Optional[List[float]] = FieldInfo(alias="rcsErrorEsts", default=None)
-    """Array of error estimates of RCS vaues, in square meters."""
+    """Array of error estimates of RCS values, in square meters."""
 
     rcs_values: Optional[List[float]] = FieldInfo(alias="rcsValues", default=None)
     """Array of observed radar cross section (RCS) values, in square meters."""
@@ -336,7 +352,7 @@ class RadarSoiObservationList(BaseModel):
     rspaces: Optional[List[float]] = None
     """Array of range sample spacing in meters.
 
-    The 'tov' and 'rspace' arrays must match in size.
+    The 'tovs' and 'rspaces' arrays must match in size, if 'rspaces' is provided.
     """
 
     spectral_widths: Optional[List[float]] = FieldInfo(alias="spectralWidths", default=None)
@@ -358,69 +374,69 @@ class RadarSoiObservationList(BaseModel):
     """
     Array of the cartesian X accelerations, in kilometers per second squared, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'xaccel' arrays must match in size.
+    The 'tovs' and 'xaccel' arrays must match in size, if 'xaccel' is provided.
     """
 
     xpos: Optional[List[float]] = None
     """
     Array of the cartesian X positions of the target, in kilometers, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'xpos' arrays must match in size.
+    The 'tovs' and 'xpos' arrays must match in size, if 'xpos' is provided.
     """
 
     xspaces: Optional[List[float]] = None
     """Array of cross-range sample spacing in meters.
 
-    The 'tov' and 'xspace' arrays must match in size.
+    The 'tovs' and 'xspaces' arrays must match in size, if 'xspaces' is provided.
     """
 
     xvel: Optional[List[float]] = None
     """
     Array of the cartesian X velocities of target, in kilometers per second, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'xvel' arrays must match in size.
+    The 'tovs' and 'xvel' arrays must match in size, if 'xvel' is provided.
     """
 
     yaccel: Optional[List[float]] = None
     """
     Array of the cartesian Y accelerations, in kilometers per second squared, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'yaccel' arrays must match in size.
+    The 'tovs' and 'yaccel' arrays must match in size, if 'yaccel' is provided.
     """
 
     ypos: Optional[List[float]] = None
     """
     Array of the cartesian Y positions of the target, in kilometers, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'ypos' arrays must match in size.
+    The 'tovs' and 'ypos' arrays must match in size, if 'ypos' is provided.
     """
 
     yvel: Optional[List[float]] = None
     """
     Array of the cartesian Y velocities of target, in kilometers per second, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'yvel' arrays must match in size.
+    The 'tovs' and 'yvel' arrays must match in size, if 'yvel' is provided.
     """
 
     zaccel: Optional[List[float]] = None
     """
     Array of the cartesian Z accelerations, in kilometers per second squared, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'zaccel' arrays must match in size.
+    The 'tovs' and 'zaccel' arrays must match in size, if 'zaccel' is provided.
     """
 
     zpos: Optional[List[float]] = None
     """
     Array of the cartesian Z positions of the target, in kilometers, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'zpos' arrays must match in size.
+    The 'tovs' and 'zpos' arrays must match in size, if 'zpos' is provided.
     """
 
     zvel: Optional[List[float]] = None
     """
     Array of the cartesian Z velocities of target, in kilometers per second, in the
     specified referenceFrame. If referenceFrame is null then J2K should be assumed.
-    The 'tov' and 'zvel' arrays must match in size.
+    The 'tovs' and 'zvel' arrays must match in size, if 'zvel' is provided.
     """
 
 

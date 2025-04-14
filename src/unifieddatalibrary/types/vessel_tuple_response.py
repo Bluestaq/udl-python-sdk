@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .entity_full import EntityFull
 
 __all__ = ["VesselTupleResponse", "VesselTupleResponseItem"]
 
@@ -61,7 +59,7 @@ class VesselTupleResponseItem(BaseModel):
     system.
     """
 
-    entity: Optional["EntityFull"] = None
+    entity: Optional[EntityFull] = None
     """
     An entity is a generic representation of any object within a space/SSA system
     such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
@@ -205,10 +203,3 @@ class VesselTupleResponseItem(BaseModel):
 
 
 VesselTupleResponse: TypeAlias = List[VesselTupleResponseItem]
-
-from .entity_full import EntityFull
-
-if PYDANTIC_V2:
-    VesselTupleResponseItem.model_rebuild()
-else:
-    VesselTupleResponseItem.update_forward_refs()  # type: ignore

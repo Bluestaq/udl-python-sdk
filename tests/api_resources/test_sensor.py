@@ -89,6 +89,7 @@ class TestSensor:
                 "origin": "THIRD_PARTY_DATASOURCE",
                 "owner_type": "Commercial",
                 "taskable": False,
+                "terrestrial_id": "TERRESTRIAL-ID",
                 "urls": ["URL1", "URL2"],
             },
             id_entity="ENTITY-ID",
@@ -193,7 +194,7 @@ class TestSensor:
             ],
             sensor_number=1234,
             sensor_observation_type={
-                "id": "x",
+                "id": "3",
                 "type": "5",
             },
             sensor_stats=[
@@ -313,6 +314,7 @@ class TestSensor:
                 "origin": "THIRD_PARTY_DATASOURCE",
                 "owner_type": "Commercial",
                 "taskable": False,
+                "terrestrial_id": "TERRESTRIAL-ID",
                 "urls": ["URL1", "URL2"],
             },
             id_entity="ENTITY-ID",
@@ -417,7 +419,7 @@ class TestSensor:
             ],
             sensor_number=1234,
             sensor_observation_type={
-                "id": "x",
+                "id": "3",
                 "type": "5",
             },
             sensor_stats=[
@@ -734,6 +736,7 @@ class TestAsyncSensor:
                 "origin": "THIRD_PARTY_DATASOURCE",
                 "owner_type": "Commercial",
                 "taskable": False,
+                "terrestrial_id": "TERRESTRIAL-ID",
                 "urls": ["URL1", "URL2"],
             },
             id_entity="ENTITY-ID",
@@ -838,7 +841,7 @@ class TestAsyncSensor:
             ],
             sensor_number=1234,
             sensor_observation_type={
-                "id": "x",
+                "id": "3",
                 "type": "5",
             },
             sensor_stats=[
@@ -958,6 +961,7 @@ class TestAsyncSensor:
                 "origin": "THIRD_PARTY_DATASOURCE",
                 "owner_type": "Commercial",
                 "taskable": False,
+                "terrestrial_id": "TERRESTRIAL-ID",
                 "urls": ["URL1", "URL2"],
             },
             id_entity="ENTITY-ID",
@@ -1062,7 +1066,7 @@ class TestAsyncSensor:
             ],
             sensor_number=1234,
             sensor_observation_type={
-                "id": "x",
+                "id": "3",
                 "type": "5",
             },
             sensor_stats=[

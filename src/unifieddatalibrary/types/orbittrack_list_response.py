@@ -230,7 +230,7 @@ class OrbittrackListResponseItem(BaseModel):
     """Unique identifier of the target on-orbit object, if correlated."""
 
     iff: Optional[str] = None
-    """A text aplifier displaying IFF/SIF/AIS Identification modes and codes."""
+    """A text amplifier displaying IFF/SIF/AIS Identification modes and codes."""
 
     installation: Optional[bool] = None
     """Flag indicating that this track represents an installation.

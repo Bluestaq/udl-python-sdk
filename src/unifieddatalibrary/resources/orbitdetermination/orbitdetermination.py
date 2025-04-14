@@ -38,8 +38,6 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.elset_ingest_param import ElsetIngestParam
-from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.orbitdetermination_list_response import OrbitdeterminationListResponse
 from ...types.orbitdetermination_tuple_response import OrbitdeterminationTupleResponse
 from ...types.udl.orbitdetermination.orbitdetermination_full import OrbitdeterminationFull
@@ -86,10 +84,10 @@ class OrbitdeterminationResource(SyncAPIResource):
         accepted_ob_typs: List[str] | NotGiven = NOT_GIVEN,
         agom_est: bool | NotGiven = NOT_GIVEN,
         agom_model: str | NotGiven = NOT_GIVEN,
-        apriori_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
         apriori_id_elset: str | NotGiven = NOT_GIVEN,
         apriori_id_state_vector: str | NotGiven = NOT_GIVEN,
-        apriori_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | NotGiven = NOT_GIVEN,
         ballistic_coeff_est: bool | NotGiven = NOT_GIVEN,
         ballistic_coeff_model: str | NotGiven = NOT_GIVEN,
         best_pass_wrms: float | NotGiven = NOT_GIVEN,
@@ -449,7 +447,7 @@ class OrbitdeterminationResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[orbitdetermination_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[orbitdetermination_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -682,10 +680,10 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         accepted_ob_typs: List[str] | NotGiven = NOT_GIVEN,
         agom_est: bool | NotGiven = NOT_GIVEN,
         agom_model: str | NotGiven = NOT_GIVEN,
-        apriori_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
         apriori_id_elset: str | NotGiven = NOT_GIVEN,
         apriori_id_state_vector: str | NotGiven = NOT_GIVEN,
-        apriori_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | NotGiven = NOT_GIVEN,
         ballistic_coeff_est: bool | NotGiven = NOT_GIVEN,
         ballistic_coeff_model: str | NotGiven = NOT_GIVEN,
         best_pass_wrms: float | NotGiven = NOT_GIVEN,
@@ -1045,7 +1043,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[orbitdetermination_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[orbitdetermination_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

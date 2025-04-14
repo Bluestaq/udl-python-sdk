@@ -149,7 +149,7 @@ class TestNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
         )
         assert notification is None
 
@@ -161,7 +161,7 @@ class TestNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
             msg_id="msgId",
             tags=["string"],
         )
@@ -175,7 +175,7 @@ class TestNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
         )
 
         assert response.is_closed is True
@@ -191,7 +191,7 @@ class TestNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -429,7 +429,7 @@ class TestAsyncNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
         )
         assert notification is None
 
@@ -441,7 +441,7 @@ class TestAsyncNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
             msg_id="msgId",
             tags=["string"],
         )
@@ -455,7 +455,7 @@ class TestAsyncNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
         )
 
         assert response.is_closed is True
@@ -471,7 +471,7 @@ class TestAsyncNotification:
             msg_type="msgType",
             origin="origin",
             source="source",
-            body="body",
+            body='{ "Alert": "Warning",  "Code": 12345 }',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

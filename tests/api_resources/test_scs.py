@@ -175,7 +175,10 @@ class TestScs:
     def test_method_download(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.post("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         sc = client.scs.download(
-            body="body",
+            body=[
+                "/processPalantirXml/media/PT_MEDIA6831731772984708680",
+                "/processPalantirXml/media/PT_MEDIA7297147303810886654",
+            ],
         )
         assert sc.is_closed
         assert sc.json() == {"foo": "bar"}
@@ -188,7 +191,10 @@ class TestScs:
         respx_mock.post("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         sc = client.scs.with_raw_response.download(
-            body="body",
+            body=[
+                "/processPalantirXml/media/PT_MEDIA6831731772984708680",
+                "/processPalantirXml/media/PT_MEDIA7297147303810886654",
+            ],
         )
 
         assert sc.is_closed is True
@@ -201,7 +207,10 @@ class TestScs:
     def test_streaming_response_download(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.post("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.scs.with_streaming_response.download(
-            body="body",
+            body=[
+                "/processPalantirXml/media/PT_MEDIA6831731772984708680",
+                "/processPalantirXml/media/PT_MEDIA7297147303810886654",
+            ],
         ) as sc:
             assert not sc.is_closed
             assert sc.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -272,6 +281,7 @@ class TestScs:
             path="path",
             body=b"raw file contents",
             description="description",
+            overwrite=True,
             tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -602,7 +612,10 @@ class TestAsyncScs:
     async def test_method_download(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.post("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         sc = await async_client.scs.download(
-            body="body",
+            body=[
+                "/processPalantirXml/media/PT_MEDIA6831731772984708680",
+                "/processPalantirXml/media/PT_MEDIA7297147303810886654",
+            ],
         )
         assert sc.is_closed
         assert await sc.json() == {"foo": "bar"}
@@ -615,7 +628,10 @@ class TestAsyncScs:
         respx_mock.post("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         sc = await async_client.scs.with_raw_response.download(
-            body="body",
+            body=[
+                "/processPalantirXml/media/PT_MEDIA6831731772984708680",
+                "/processPalantirXml/media/PT_MEDIA7297147303810886654",
+            ],
         )
 
         assert sc.is_closed is True
@@ -630,7 +646,10 @@ class TestAsyncScs:
     ) -> None:
         respx_mock.post("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.scs.with_streaming_response.download(
-            body="body",
+            body=[
+                "/processPalantirXml/media/PT_MEDIA6831731772984708680",
+                "/processPalantirXml/media/PT_MEDIA7297147303810886654",
+            ],
         ) as sc:
             assert not sc.is_closed
             assert sc.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -705,6 +724,7 @@ class TestAsyncScs:
             path="path",
             body=b"raw file contents",
             description="description",
+            overwrite=True,
             tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])

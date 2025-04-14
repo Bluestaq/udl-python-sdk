@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["Elset"]
 
@@ -197,7 +195,7 @@ class Elset(BaseModel):
     Units are revolutions per day squared.
     """
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -318,11 +316,3 @@ class Elset(BaseModel):
     'origObjectId' field may be populated with an internal data provider specific
     identifier.
     """
-
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    Elset.model_rebuild()
-else:
-    Elset.update_forward_refs()  # type: ignore

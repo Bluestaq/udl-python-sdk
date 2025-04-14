@@ -20,14 +20,6 @@ from .geostatus.geostatus import (
     GeostatusResourceWithStreamingResponse,
     AsyncGeostatusResourceWithStreamingResponse,
 )
-from .flightplan.flightplan import (
-    FlightplanResource,
-    AsyncFlightplanResource,
-    FlightplanResourceWithRawResponse,
-    AsyncFlightplanResourceWithRawResponse,
-    FlightplanResourceWithStreamingResponse,
-    AsyncFlightplanResourceWithStreamingResponse,
-)
 from .notification.notification import (
     NotificationResource,
     AsyncNotificationResource,
@@ -65,10 +57,6 @@ __all__ = ["UdlResource", "AsyncUdlResource"]
 
 
 class UdlResource(SyncAPIResource):
-    @cached_property
-    def flightplan(self) -> FlightplanResource:
-        return FlightplanResource(self._client)
-
     @cached_property
     def geostatus(self) -> GeostatusResource:
         return GeostatusResource(self._client)
@@ -114,10 +102,6 @@ class UdlResource(SyncAPIResource):
 
 
 class AsyncUdlResource(AsyncAPIResource):
-    @cached_property
-    def flightplan(self) -> AsyncFlightplanResource:
-        return AsyncFlightplanResource(self._client)
-
     @cached_property
     def geostatus(self) -> AsyncGeostatusResource:
         return AsyncGeostatusResource(self._client)
@@ -167,10 +151,6 @@ class UdlResourceWithRawResponse:
         self._udl = udl
 
     @cached_property
-    def flightplan(self) -> FlightplanResourceWithRawResponse:
-        return FlightplanResourceWithRawResponse(self._udl.flightplan)
-
-    @cached_property
     def geostatus(self) -> GeostatusResourceWithRawResponse:
         return GeostatusResourceWithRawResponse(self._udl.geostatus)
 
@@ -198,10 +178,6 @@ class UdlResourceWithRawResponse:
 class AsyncUdlResourceWithRawResponse:
     def __init__(self, udl: AsyncUdlResource) -> None:
         self._udl = udl
-
-    @cached_property
-    def flightplan(self) -> AsyncFlightplanResourceWithRawResponse:
-        return AsyncFlightplanResourceWithRawResponse(self._udl.flightplan)
 
     @cached_property
     def geostatus(self) -> AsyncGeostatusResourceWithRawResponse:
@@ -233,10 +209,6 @@ class UdlResourceWithStreamingResponse:
         self._udl = udl
 
     @cached_property
-    def flightplan(self) -> FlightplanResourceWithStreamingResponse:
-        return FlightplanResourceWithStreamingResponse(self._udl.flightplan)
-
-    @cached_property
     def geostatus(self) -> GeostatusResourceWithStreamingResponse:
         return GeostatusResourceWithStreamingResponse(self._udl.geostatus)
 
@@ -264,10 +236,6 @@ class UdlResourceWithStreamingResponse:
 class AsyncUdlResourceWithStreamingResponse:
     def __init__(self, udl: AsyncUdlResource) -> None:
         self._udl = udl
-
-    @cached_property
-    def flightplan(self) -> AsyncFlightplanResourceWithStreamingResponse:
-        return AsyncFlightplanResourceWithStreamingResponse(self._udl.flightplan)
 
     @cached_property
     def geostatus(self) -> AsyncGeostatusResourceWithStreamingResponse:

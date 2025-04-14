@@ -24,14 +24,6 @@ from .geostatus import (
     GeostatusResourceWithStreamingResponse,
     AsyncGeostatusResourceWithStreamingResponse,
 )
-from .flightplan import (
-    FlightplanResource,
-    AsyncFlightplanResource,
-    FlightplanResourceWithRawResponse,
-    AsyncFlightplanResourceWithRawResponse,
-    FlightplanResourceWithStreamingResponse,
-    AsyncFlightplanResourceWithStreamingResponse,
-)
 from .notification import (
     NotificationResource,
     AsyncNotificationResource,
@@ -66,12 +58,6 @@ from .onorbitthrusterstatus import (
 )
 
 __all__ = [
-    "FlightplanResource",
-    "AsyncFlightplanResource",
-    "FlightplanResourceWithRawResponse",
-    "AsyncFlightplanResourceWithRawResponse",
-    "FlightplanResourceWithStreamingResponse",
-    "AsyncFlightplanResourceWithStreamingResponse",
     "GeostatusResource",
     "AsyncGeostatusResource",
     "GeostatusResourceWithRawResponse",

@@ -8,18 +8,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AirfieldslotconsumptionTupleParams"]
+__all__ = ["AirfieldslotconsumptionListParams"]
 
 
-class AirfieldslotconsumptionTupleParams(TypedDict, total=False):
-    columns: Required[str]
-    """
-    Comma-separated list of valid field names for this data type to be returned in
-    the response. Only the fields specified will be returned as well as the
-    classification marking of the data, if applicable. See the ‘queryhelp’ operation
-    for a complete list of possible fields.
-    """
-
+class AirfieldslotconsumptionListParams(TypedDict, total=False):
     start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]]
     """The start of the slot window, in ISO 8601 UTC format.
 

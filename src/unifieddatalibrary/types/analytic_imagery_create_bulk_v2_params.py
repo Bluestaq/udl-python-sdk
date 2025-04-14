@@ -114,6 +114,9 @@ class AnalyticImageryCreateBulkV2Params(TypedDict, total=False):
     used in the analysis or composition of the image content, when applicable.
     """
 
+    id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
+    """Unique identifier of the reporting sensor."""
+
     image_set_id: Annotated[str, PropertyInfo(alias="imageSetId")]
     """User-defined set ID of a sequence of images.
 
@@ -138,6 +141,13 @@ class AnalyticImageryCreateBulkV2Params(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
+    """
+
+    orig_sensor_id: Annotated[str, PropertyInfo(alias="origSensorId")]
+    """
+    Optional identifier provided by the source to indicate the sensor for this
+    collection. This may be an internal identifier and not necessarily a valid
+    sensor ID.
     """
 
     sat_id: Annotated[List[str], PropertyInfo(alias="satId")]

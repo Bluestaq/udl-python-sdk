@@ -77,7 +77,6 @@ class PersonnelrecoveryListResponseItemExecutionInfo(BaseModel):
     escort_vehicle: Optional[PersonnelrecoveryListResponseItemExecutionInfoEscortVehicle] = FieldInfo(
         alias="escortVehicle", default=None
     )
-    """Information regarding the recovery vehicle."""
 
     ingress: Optional[float] = None
     """The heading, in degrees clockwise from North, of entering the recovery zone."""
@@ -97,7 +96,6 @@ class PersonnelrecoveryListResponseItemExecutionInfo(BaseModel):
     recovery_vehicle: Optional[PersonnelrecoveryListResponseItemExecutionInfoRecoveryVehicle] = FieldInfo(
         alias="recoveryVehicle", default=None
     )
-    """Information regarding the recovery vehicle."""
 
 
 class PersonnelrecoveryListResponseItemObjectiveAreaInfoEnemyData(BaseModel):
@@ -256,7 +254,6 @@ class PersonnelrecoveryListResponseItem(BaseModel):
     execution_info: Optional[PersonnelrecoveryListResponseItemExecutionInfo] = FieldInfo(
         alias="executionInfo", default=None
     )
-    """Information pertaining to the details of executing the recovery."""
 
     identity: Optional[str] = None
     """
@@ -307,7 +304,6 @@ class PersonnelrecoveryListResponseItem(BaseModel):
     objective_area_info: Optional[PersonnelrecoveryListResponseItemObjectiveAreaInfo] = FieldInfo(
         alias="objectiveAreaInfo", default=None
     )
-    """Objective Area Information."""
 
     origin: Optional[str] = None
     """

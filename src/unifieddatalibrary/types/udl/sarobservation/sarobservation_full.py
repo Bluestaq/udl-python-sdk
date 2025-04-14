@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ...._compat import PYDANTIC_V2
 from ...._models import BaseModel
+from ...shared.onorbit import Onorbit
 
 __all__ = ["SarobservationFull"]
 
@@ -84,6 +82,12 @@ class SarobservationFull(BaseModel):
     atype: Optional[str] = None
     """Type of region as projected on the ground (POLYGON, POINT, LINE)."""
 
+    azimuth_angle: Optional[float] = FieldInfo(alias="azimuthAngle", default=None)
+    """
+    The azimuth angle, in degrees, of the SAR satellite nadir subpoint measured
+    clockwise from true north at the subpoint.
+    """
+
     center_time: Optional[datetime] = FieldInfo(alias="centerTime", default=None)
     """
     The datetime at the center point of the collection in ISO 8601 UTC format with
@@ -145,6 +149,12 @@ class SarobservationFull(BaseModel):
     graze_angle: Optional[float] = FieldInfo(alias="grazeAngle", default=None)
     """The graze angle (also referred to as look angle) for the collection in degrees."""
 
+    ground_resolution_projection: Optional[float] = FieldInfo(alias="groundResolutionProjection", default=None)
+    """
+    Distance between independent measurements, representing the physical dimension
+    that represents a pixel of the image.
+    """
+
     id_on_orbit: Optional[str] = FieldInfo(alias="idOnOrbit", default=None)
     """
     Unique identifier of the spacecraft hosting the sensor associated with this
@@ -163,6 +173,13 @@ class SarobservationFull(BaseModel):
     looks_range: Optional[int] = FieldInfo(alias="looksRange", default=None)
     """The number of looks in the range direction."""
 
+    multilook_number: Optional[float] = FieldInfo(alias="multilookNumber", default=None)
+    """
+    Averages the input synthetic aperture radar (SAR) data by looks in range and
+    azimuth to approximate square pixels, mitigates speckle, and reduces SAR tool
+    processing time.
+    """
+
     near_range: Optional[float] = FieldInfo(alias="nearRange", default=None)
     """
     Specifies the closest range, in kilometers, from the flight path to target
@@ -172,7 +189,7 @@ class SarobservationFull(BaseModel):
     ob_direction: Optional[str] = FieldInfo(alias="obDirection", default=None)
     """The antenna pointing direction (LEFT, RIGHT)."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     operating_band: Optional[str] = FieldInfo(alias="operatingBand", default=None)
@@ -358,11 +375,3 @@ class SarobservationFull(BaseModel):
     Rotating left relative to the earth's surface, R - (Right Hand Circularly
     Polarized) Rotating right relative to the earth's surface.
     """
-
-
-from ...shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    SarobservationFull.model_rebuild()
-else:
-    SarobservationFull.update_forward_refs()  # type: ignore

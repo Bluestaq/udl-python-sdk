@@ -38,8 +38,6 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.elset_ingest_param import ElsetIngestParam
-from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.shared.collect_request_full import CollectRequestFull
 from ...types.collect_request_list_response import CollectRequestListResponse
 from ...types.collect_request_tuple_response import CollectRequestTupleResponse
@@ -89,7 +87,7 @@ class CollectRequestsResource(SyncAPIResource):
         dwell_id: str | NotGiven = NOT_GIVEN,
         eccentricity: float | NotGiven = NOT_GIVEN,
         el: float | NotGiven = NOT_GIVEN,
-        elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        elset: collect_request_create_params.Elset | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         epoch: Union[str, datetime] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
@@ -141,7 +139,7 @@ class CollectRequestsResource(SyncAPIResource):
         spectral_model: str | NotGiven = NOT_GIVEN,
         srch_inc: float | NotGiven = NOT_GIVEN,
         srch_pattern: str | NotGiven = NOT_GIVEN,
-        state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        state_vector: collect_request_create_params.StateVector | NotGiven = NOT_GIVEN,
         stop_alt: float | NotGiven = NOT_GIVEN,
         stop_lat: float | NotGiven = NOT_GIVEN,
         stop_lon: float | NotGiven = NOT_GIVEN,
@@ -151,6 +149,7 @@ class CollectRequestsResource(SyncAPIResource):
         task_category: int | NotGiven = NOT_GIVEN,
         task_group: str | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
+        transaction_id: str | NotGiven = NOT_GIVEN,
         true_anomoly: float | NotGiven = NOT_GIVEN,
         uct_follow_up: bool | NotGiven = NOT_GIVEN,
         vis_mag: float | NotGiven = NOT_GIVEN,
@@ -429,6 +428,9 @@ class CollectRequestsResource(SyncAPIResource):
               collect request or may be used to tie together the sub-requests of a full
               collect, for example a DWELL consisting of many dwell points.
 
+          transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
+              produce this data.
+
           true_anomoly: The true anomaly defines the angular position, in degrees, of the object on it's
               orbital path as measured from the orbit focal point at epoch. The true anomaly
               is referenced from perigee.
@@ -544,6 +546,7 @@ class CollectRequestsResource(SyncAPIResource):
                     "task_category": task_category,
                     "task_group": task_group,
                     "task_id": task_id,
+                    "transaction_id": transaction_id,
                     "true_anomoly": true_anomoly,
                     "uct_follow_up": uct_follow_up,
                     "vis_mag": vis_mag,
@@ -876,7 +879,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         dwell_id: str | NotGiven = NOT_GIVEN,
         eccentricity: float | NotGiven = NOT_GIVEN,
         el: float | NotGiven = NOT_GIVEN,
-        elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        elset: collect_request_create_params.Elset | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         epoch: Union[str, datetime] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
@@ -928,7 +931,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         spectral_model: str | NotGiven = NOT_GIVEN,
         srch_inc: float | NotGiven = NOT_GIVEN,
         srch_pattern: str | NotGiven = NOT_GIVEN,
-        state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        state_vector: collect_request_create_params.StateVector | NotGiven = NOT_GIVEN,
         stop_alt: float | NotGiven = NOT_GIVEN,
         stop_lat: float | NotGiven = NOT_GIVEN,
         stop_lon: float | NotGiven = NOT_GIVEN,
@@ -938,6 +941,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         task_category: int | NotGiven = NOT_GIVEN,
         task_group: str | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
+        transaction_id: str | NotGiven = NOT_GIVEN,
         true_anomoly: float | NotGiven = NOT_GIVEN,
         uct_follow_up: bool | NotGiven = NOT_GIVEN,
         vis_mag: float | NotGiven = NOT_GIVEN,
@@ -1216,6 +1220,9 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
               collect request or may be used to tie together the sub-requests of a full
               collect, for example a DWELL consisting of many dwell points.
 
+          transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
+              produce this data.
+
           true_anomoly: The true anomaly defines the angular position, in degrees, of the object on it's
               orbital path as measured from the orbit focal point at epoch. The true anomaly
               is referenced from perigee.
@@ -1331,6 +1338,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                     "task_category": task_category,
                     "task_group": task_group,
                     "task_id": task_id,
+                    "transaction_id": transaction_id,
                     "true_anomoly": true_anomoly,
                     "uct_follow_up": uct_follow_up,
                     "vis_mag": vis_mag,

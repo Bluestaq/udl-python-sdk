@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import List, Union, Iterable
+from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -42,6 +43,15 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
 
     alt_airfield_id: Annotated[str, PropertyInfo(alias="altAirfieldId")]
     """Alternate airfield identifier provided by the source."""
+
+    approved_by: Annotated[str, PropertyInfo(alias="approvedBy")]
+    """The name of the person who approved the airfield survey review."""
+
+    approved_date: Annotated[Union[str, datetime], PropertyInfo(alias="approvedDate", format="iso8601")]
+    """
+    The date that survey review changes were approved for this airfield, in ISO 8601
+    UTC format with millisecond precision.
+    """
 
     arff_cat: Annotated[str, PropertyInfo(alias="arffCat")]
     """
@@ -156,6 +166,15 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     pri_rwy_num: Annotated[str, PropertyInfo(alias="priRwyNum")]
     """The number or ID of primary runway at the airfield."""
 
+    reviewed_by: Annotated[str, PropertyInfo(alias="reviewedBy")]
+    """The name of the person who reviewed the airfield survey."""
+
+    reviewed_date: Annotated[Union[str, datetime], PropertyInfo(alias="reviewedDate", format="iso8601")]
+    """
+    The date the airfield survey was reviewed, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
     rwy_cond_reading: Annotated[int, PropertyInfo(alias="rwyCondReading")]
     """
     The primary runway condition reading value used for determining runway braking
@@ -179,14 +198,24 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     order to consume a slot at this location.
     """
 
+    survey_date: Annotated[Union[str, datetime], PropertyInfo(alias="surveyDate", format="iso8601")]
+    """
+    The date the airfield survey was performed, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
     wide_parking_mog: Annotated[int, PropertyInfo(alias="wideParkingMOG")]
     """
     Maximum on ground (MOG) number of parking wide-body aircraft based on spacing
-    and manpower at the time of status.
+    and manpower at the time of status. Additional information about this field as
+    it pertains to specific aircraft type may be available in an associated
+    SiteOperations record.
     """
 
     wide_working_mog: Annotated[int, PropertyInfo(alias="wideWorkingMOG")]
     """
     Maximum on ground (MOG) number of working wide-body aircraft based on spacing
-    and manpower at the time of status.
+    and manpower at the time of status. Additional information about this field as
+    it pertains to specific aircraft type may be available in an associated
+    SiteOperations record.
     """

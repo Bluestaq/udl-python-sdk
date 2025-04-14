@@ -40,6 +40,13 @@ class TestOnorbitbattery:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             id="ONORBITBATTERY-ID",
+            battery={
+                "data_mode": "TEST",
+                "name": "JAK-BATTERY-1479",
+                "source": "Bluestaq",
+                "id": "BATTERY-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
             quantity=5,
         )
@@ -99,6 +106,13 @@ class TestOnorbitbattery:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             body_id="ONORBITBATTERY-ID",
+            battery={
+                "data_mode": "TEST",
+                "name": "JAK-BATTERY-1479",
+                "source": "Bluestaq",
+                "id": "BATTERY-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
             quantity=5,
         )
@@ -275,6 +289,13 @@ class TestAsyncOnorbitbattery:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             id="ONORBITBATTERY-ID",
+            battery={
+                "data_mode": "TEST",
+                "name": "JAK-BATTERY-1479",
+                "source": "Bluestaq",
+                "id": "BATTERY-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
             quantity=5,
         )
@@ -334,6 +355,13 @@ class TestAsyncOnorbitbattery:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             body_id="ONORBITBATTERY-ID",
+            battery={
+                "data_mode": "TEST",
+                "name": "JAK-BATTERY-1479",
+                "source": "Bluestaq",
+                "id": "BATTERY-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
             quantity=5,
         )

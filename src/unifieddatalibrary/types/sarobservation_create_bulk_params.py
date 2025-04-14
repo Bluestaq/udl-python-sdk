@@ -85,6 +85,12 @@ class Body(TypedDict, total=False):
     atype: str
     """Type of region as projected on the ground (POLYGON, POINT, LINE)."""
 
+    azimuth_angle: Annotated[float, PropertyInfo(alias="azimuthAngle")]
+    """
+    The azimuth angle, in degrees, of the SAR satellite nadir subpoint measured
+    clockwise from true north at the subpoint.
+    """
+
     center_time: Annotated[Union[str, datetime], PropertyInfo(alias="centerTime", format="iso8601")]
     """
     The datetime at the center point of the collection in ISO 8601 UTC format with
@@ -137,6 +143,12 @@ class Body(TypedDict, total=False):
     graze_angle: Annotated[float, PropertyInfo(alias="grazeAngle")]
     """The graze angle (also referred to as look angle) for the collection in degrees."""
 
+    ground_resolution_projection: Annotated[float, PropertyInfo(alias="groundResolutionProjection")]
+    """
+    Distance between independent measurements, representing the physical dimension
+    that represents a pixel of the image.
+    """
+
     id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
     """Unique identifier of the reporting sensor."""
 
@@ -148,6 +160,13 @@ class Body(TypedDict, total=False):
 
     looks_range: Annotated[int, PropertyInfo(alias="looksRange")]
     """The number of looks in the range direction."""
+
+    multilook_number: Annotated[float, PropertyInfo(alias="multilookNumber")]
+    """
+    Averages the input synthetic aperture radar (SAR) data by looks in range and
+    azimuth to approximate square pixels, mitigates speckle, and reduces SAR tool
+    processing time.
+    """
 
     near_range: Annotated[float, PropertyInfo(alias="nearRange")]
     """

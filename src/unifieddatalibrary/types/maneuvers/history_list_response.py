@@ -1,12 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 from typing_extensions import TypeAlias
 
+from ..udl.maneuver.maneuver_full import ManeuverFull
+
 __all__ = ["HistoryListResponse"]
 
-HistoryListResponse: TypeAlias = List["ManeuverFull"]
-
-from ..udl.maneuver.maneuver_full import ManeuverFull
+HistoryListResponse: TypeAlias = List[ManeuverFull]

@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = [
     "ObjectofinterestTupleResponse",
@@ -253,7 +251,7 @@ class ObjectofinterestTupleResponseItem(BaseModel):
     name: Optional[str] = None
     """Unique name of the object of interest event."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -353,12 +351,3 @@ class ObjectofinterestTupleResponseItem(BaseModel):
 
 
 ObjectofinterestTupleResponse: TypeAlias = List[ObjectofinterestTupleResponseItem]
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    ObjectofinterestTupleResponseItem.model_rebuild()
-    ObjectofinterestTupleResponseItemManifold.model_rebuild()
-else:
-    ObjectofinterestTupleResponseItem.update_forward_refs()  # type: ignore
-    ObjectofinterestTupleResponseItemManifold.update_forward_refs()  # type: ignore

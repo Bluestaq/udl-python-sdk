@@ -22,5 +22,8 @@ class PathCreateParams(TypedDict, total=False):
     description: str
     """Description"""
 
+    overwrite: bool
+    """Whether or not to overwrite a file with the same name and path, if one exists."""
+
     tags: str
     """Tags"""

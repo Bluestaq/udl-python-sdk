@@ -121,7 +121,6 @@ class PersonnelrecoveryCreateParams(TypedDict, total=False):
     """
 
     execution_info: Annotated[ExecutionInfo, PropertyInfo(alias="executionInfo")]
-    """Information pertaining to the details of executing the recovery."""
 
     identity: str
     """
@@ -170,7 +169,6 @@ class PersonnelrecoveryCreateParams(TypedDict, total=False):
     """The count of persons requiring recovery."""
 
     objective_area_info: Annotated[ObjectiveAreaInfo, PropertyInfo(alias="objectiveAreaInfo")]
-    """Objective Area Information."""
 
     origin: str
     """
@@ -282,7 +280,6 @@ class ExecutionInfo(TypedDict, total=False):
     """
 
     escort_vehicle: Annotated[ExecutionInfoEscortVehicle, PropertyInfo(alias="escortVehicle")]
-    """Information regarding the recovery vehicle."""
 
     ingress: float
     """The heading, in degrees clockwise from North, of entering the recovery zone."""
@@ -300,7 +297,6 @@ class ExecutionInfo(TypedDict, total=False):
     """Description of the objective strategy plan."""
 
     recovery_vehicle: Annotated[ExecutionInfoRecoveryVehicle, PropertyInfo(alias="recoveryVehicle")]
-    """Information regarding the recovery vehicle."""
 
 
 class ObjectiveAreaInfoEnemyData(TypedDict, total=False):

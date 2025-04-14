@@ -12,7 +12,7 @@ __all__ = ["NavigationalobstructionCreateBulkParams", "Body"]
 
 
 class NavigationalobstructionCreateBulkParams(TypedDict, total=False):
-    body: Iterable[Body]
+    body: Required[Iterable[Body]]
 
 
 class Body(TypedDict, total=False):
@@ -180,8 +180,8 @@ class Body(TypedDict, total=False):
 
     height_agl_acc: Annotated[float, PropertyInfo(alias="heightAGLAcc")]
     """
-    The accuracy of the height Above Ground Level (AGL) AGL value for this point
-    obstacle in feet.
+    The accuracy of the height Above Ground Level (AGL) value for this point
+    obstacle, in feet.
     """
 
     height_msl: Annotated[float, PropertyInfo(alias="heightMSL")]

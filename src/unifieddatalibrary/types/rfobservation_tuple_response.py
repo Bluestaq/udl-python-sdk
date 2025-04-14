@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["RfobservationTupleResponse", "RfobservationTupleResponseItem"]
 
@@ -52,6 +50,13 @@ class RfobservationTupleResponseItem(BaseModel):
 
     azimuth: Optional[float] = None
     """azimuth angle in degrees and J2000 coordinate frame."""
+
+    azimuth_measured: Optional[bool] = FieldInfo(alias="azimuthMeasured", default=None)
+    """
+    Optional flag indicating whether the azimuth value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     azimuth_rate: Optional[float] = FieldInfo(alias="azimuthRate", default=None)
     """Rate of change of the azimuth in degrees per second."""
@@ -109,6 +114,13 @@ class RfobservationTupleResponseItem(BaseModel):
 
     elevation: Optional[float] = None
     """elevation in degrees and J2000 coordinate frame."""
+
+    elevation_measured: Optional[bool] = FieldInfo(alias="elevationMeasured", default=None)
+    """
+    Optional flag indicating whether the elevation value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     elevation_rate: Optional[float] = FieldInfo(alias="elevationRate", default=None)
     """Rate of change of the elevation in degrees per second."""
@@ -170,7 +182,7 @@ class RfobservationTupleResponseItem(BaseModel):
     nominal_snr: Optional[float] = FieldInfo(alias="nominalSnr", default=None)
     """Nominal or expected signal to noise ratio, in dB."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -235,8 +247,22 @@ class RfobservationTupleResponseItem(BaseModel):
     range: Optional[float] = None
     """Target range in km."""
 
+    range_measured: Optional[bool] = FieldInfo(alias="rangeMeasured", default=None)
+    """
+    Optional flag indicating whether the range value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range_rate: Optional[float] = FieldInfo(alias="rangeRate", default=None)
     """Rate of change of the range in km/sec."""
+
+    range_rate_measured: Optional[bool] = FieldInfo(alias="rangeRateMeasured", default=None)
+    """
+    Optional flag indicating whether the rangeRate value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     range_rate_unc: Optional[float] = FieldInfo(alias="rangeRateUnc", default=None)
     """One sigma uncertainty in the range rate measurement, in kilometers/second."""
@@ -367,10 +393,3 @@ class RfobservationTupleResponseItem(BaseModel):
 
 
 RfobservationTupleResponse: TypeAlias = List[RfobservationTupleResponseItem]
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    RfobservationTupleResponseItem.model_rebuild()
-else:
-    RfobservationTupleResponseItem.update_forward_refs()  # type: ignore

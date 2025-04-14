@@ -81,7 +81,6 @@ class CollectionRequirementExploitationRequirement(BaseModel):
     """Essential Elements of Information."""
 
     poc: Optional[CollectionRequirementExploitationRequirementPoc] = None
-    """Information about the Point of Contact (POC) for this ISR Collection."""
 
     reporting_criteria: Optional[str] = FieldInfo(alias="reportingCriteria", default=None)
     """The reporting criteria of the collection requirement."""
@@ -102,7 +101,6 @@ class CollectionRequirement(BaseModel):
     """Collection Requirement Unique Identifier."""
 
     critical_times: Optional[CollectionRequirementCriticalTimes] = FieldInfo(alias="criticalTimes", default=None)
-    """High priority time windows."""
 
     emphasized: Optional[bool] = None
     """Is this collection requirement an emphasized/critical requirement."""
@@ -110,7 +108,6 @@ class CollectionRequirement(BaseModel):
     exploitation_requirement: Optional[CollectionRequirementExploitationRequirement] = FieldInfo(
         alias="exploitationRequirement", default=None
     )
-    """What it is that is trying to be exploited."""
 
     hash: Optional[str] = None
     """Encryption hashing algorithm."""
@@ -205,7 +202,6 @@ class TaskingCollectionPeriods(BaseModel):
     """Actual start and stop for the collection."""
 
     planned: Optional[TaskingCollectionPeriodsPlanned] = None
-    """Planned start and stop for the collection."""
 
 
 class TaskingTaskingCollectionRequirementCriticalTimes(BaseModel):
@@ -262,7 +258,6 @@ class TaskingTaskingCollectionRequirementExploitationRequirement(BaseModel):
     """Essential Elements of Information."""
 
     poc: Optional[TaskingTaskingCollectionRequirementExploitationRequirementPoc] = None
-    """Information about the Point of Contact (POC) for this ISR Collection."""
 
     reporting_criteria: Optional[str] = FieldInfo(alias="reportingCriteria", default=None)
     """The reporting criteria of the collection requirement."""
@@ -285,7 +280,6 @@ class TaskingTaskingCollectionRequirement(BaseModel):
     critical_times: Optional[TaskingTaskingCollectionRequirementCriticalTimes] = FieldInfo(
         alias="criticalTimes", default=None
     )
-    """High priority time windows."""
 
     emphasized: Optional[bool] = None
     """Is this collection requirement an emphasized/critical requirement."""
@@ -293,7 +287,6 @@ class TaskingTaskingCollectionRequirement(BaseModel):
     exploitation_requirement: Optional[TaskingTaskingCollectionRequirementExploitationRequirement] = FieldInfo(
         alias="exploitationRequirement", default=None
     )
-    """What it is that is trying to be exploited."""
 
     hash: Optional[str] = None
     """Encryption hashing algorithm."""
@@ -355,7 +348,6 @@ class Tasking(BaseModel):
     """Tasking Unique Identifier."""
 
     collection_periods: Optional[TaskingCollectionPeriods] = FieldInfo(alias="collectionPeriods", default=None)
-    """Tasking collection periods."""
 
     collection_type: Optional[Literal["Simultaneous", "Sequential", "Operationally", "Driven", "Priority", "Order"]] = (
         FieldInfo(alias="collectionType", default=None)
@@ -417,7 +409,7 @@ class Tasking(BaseModel):
     """Time of retasking, in ISO 8601 UTC format."""
 
     tasking_role: Optional[str] = FieldInfo(alias="taskingRole", default=None)
-    """What is the primary objective(Role) of this task."""
+    """What is the primary objective (role) of this task."""
 
     tasking_secondary_intel_discipline: Optional[str] = FieldInfo(alias="taskingSecondaryIntelDiscipline", default=None)
     """Type of tasking intelligence to be collected second."""

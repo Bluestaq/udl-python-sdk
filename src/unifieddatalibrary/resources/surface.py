@@ -67,6 +67,8 @@ class SurfaceResource(SyncAPIResource):
         dd_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         dd_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         dd_wt_kn: float | NotGiven = NOT_GIVEN,
+        end_lat: float | NotGiven = NOT_GIVEN,
+        end_lon: float | NotGiven = NOT_GIVEN,
         id_site: str | NotGiven = NOT_GIVEN,
         lcn: int | NotGiven = NOT_GIVEN,
         lda_ft: float | NotGiven = NOT_GIVEN,
@@ -88,12 +90,15 @@ class SurfaceResource(SyncAPIResource):
         obstacle: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         pcn: str | NotGiven = NOT_GIVEN,
+        point_reference: str | NotGiven = NOT_GIVEN,
         primary: bool | NotGiven = NOT_GIVEN,
         raw_wbc: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kip: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kn: float | NotGiven = NOT_GIVEN,
+        start_lat: float | NotGiven = NOT_GIVEN,
+        start_lon: float | NotGiven = NOT_GIVEN,
         st_wt_kip: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
@@ -185,6 +190,12 @@ class SurfaceResource(SyncAPIResource):
               equivalent field is not converted by the UDL and may or may not be supplied by
               the provider. The provider/consumer is responsible for all unit conversions.
 
+          end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
+
           id_site: The unique identifier of the Site record that contains location information
               about this surface.
 
@@ -247,6 +258,8 @@ class SurfaceResource(SyncAPIResource):
 
           pcn: Pavement classification number (PCN) and tire pressure code.
 
+          point_reference: Description of the surface and its dimensions or how it is measured or oriented.
+
           primary: Flag indicating this is the primary runway. Applicable for runway surface types
               only.
 
@@ -271,6 +284,12 @@ class SurfaceResource(SyncAPIResource):
               corresponding equivalent field is not converted by the UDL and may or may not be
               supplied by the provider. The provider/consumer is responsible for all unit
               conversions.
+
+          start_lat: WGS-84 latitude of the coordinate representing the start-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          start_lon: WGS-84 longitude of the coordinate representing the start-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
 
           st_wt_kip: The max weight allowable on this surface type for an ST-type (single tandem)
               landing gear configuration, in kilopounds (kip).Note: The corresponding
@@ -411,6 +430,8 @@ class SurfaceResource(SyncAPIResource):
                     "dd_wt_kip_mod": dd_wt_kip_mod,
                     "dd_wt_kip_mod_note": dd_wt_kip_mod_note,
                     "dd_wt_kn": dd_wt_kn,
+                    "end_lat": end_lat,
+                    "end_lon": end_lon,
                     "id_site": id_site,
                     "lcn": lcn,
                     "lda_ft": lda_ft,
@@ -432,12 +453,15 @@ class SurfaceResource(SyncAPIResource):
                     "obstacle": obstacle,
                     "origin": origin,
                     "pcn": pcn,
+                    "point_reference": point_reference,
                     "primary": primary,
                     "raw_wbc": raw_wbc,
                     "sbtt_wt_kip": sbtt_wt_kip,
                     "sbtt_wt_kip_mod": sbtt_wt_kip_mod,
                     "sbtt_wt_kip_mod_note": sbtt_wt_kip_mod_note,
                     "sbtt_wt_kn": sbtt_wt_kn,
+                    "start_lat": start_lat,
+                    "start_lon": start_lon,
                     "st_wt_kip": st_wt_kip,
                     "st_wt_kip_mod": st_wt_kip_mod,
                     "st_wt_kip_mod_note": st_wt_kip_mod_note,
@@ -493,6 +517,8 @@ class SurfaceResource(SyncAPIResource):
         dd_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         dd_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         dd_wt_kn: float | NotGiven = NOT_GIVEN,
+        end_lat: float | NotGiven = NOT_GIVEN,
+        end_lon: float | NotGiven = NOT_GIVEN,
         id_site: str | NotGiven = NOT_GIVEN,
         lcn: int | NotGiven = NOT_GIVEN,
         lda_ft: float | NotGiven = NOT_GIVEN,
@@ -514,12 +540,15 @@ class SurfaceResource(SyncAPIResource):
         obstacle: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         pcn: str | NotGiven = NOT_GIVEN,
+        point_reference: str | NotGiven = NOT_GIVEN,
         primary: bool | NotGiven = NOT_GIVEN,
         raw_wbc: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kip: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kn: float | NotGiven = NOT_GIVEN,
+        start_lat: float | NotGiven = NOT_GIVEN,
+        start_lon: float | NotGiven = NOT_GIVEN,
         st_wt_kip: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
@@ -611,6 +640,12 @@ class SurfaceResource(SyncAPIResource):
               equivalent field is not converted by the UDL and may or may not be supplied by
               the provider. The provider/consumer is responsible for all unit conversions.
 
+          end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
+
           id_site: The unique identifier of the Site record that contains location information
               about this surface.
 
@@ -673,6 +708,8 @@ class SurfaceResource(SyncAPIResource):
 
           pcn: Pavement classification number (PCN) and tire pressure code.
 
+          point_reference: Description of the surface and its dimensions or how it is measured or oriented.
+
           primary: Flag indicating this is the primary runway. Applicable for runway surface types
               only.
 
@@ -697,6 +734,12 @@ class SurfaceResource(SyncAPIResource):
               corresponding equivalent field is not converted by the UDL and may or may not be
               supplied by the provider. The provider/consumer is responsible for all unit
               conversions.
+
+          start_lat: WGS-84 latitude of the coordinate representing the start-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          start_lon: WGS-84 longitude of the coordinate representing the start-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
 
           st_wt_kip: The max weight allowable on this surface type for an ST-type (single tandem)
               landing gear configuration, in kilopounds (kip).Note: The corresponding
@@ -839,6 +882,8 @@ class SurfaceResource(SyncAPIResource):
                     "dd_wt_kip_mod": dd_wt_kip_mod,
                     "dd_wt_kip_mod_note": dd_wt_kip_mod_note,
                     "dd_wt_kn": dd_wt_kn,
+                    "end_lat": end_lat,
+                    "end_lon": end_lon,
                     "id_site": id_site,
                     "lcn": lcn,
                     "lda_ft": lda_ft,
@@ -860,12 +905,15 @@ class SurfaceResource(SyncAPIResource):
                     "obstacle": obstacle,
                     "origin": origin,
                     "pcn": pcn,
+                    "point_reference": point_reference,
                     "primary": primary,
                     "raw_wbc": raw_wbc,
                     "sbtt_wt_kip": sbtt_wt_kip,
                     "sbtt_wt_kip_mod": sbtt_wt_kip_mod,
                     "sbtt_wt_kip_mod_note": sbtt_wt_kip_mod_note,
                     "sbtt_wt_kn": sbtt_wt_kn,
+                    "start_lat": start_lat,
+                    "start_lon": start_lon,
                     "st_wt_kip": st_wt_kip,
                     "st_wt_kip_mod": st_wt_kip_mod,
                     "st_wt_kip_mod_note": st_wt_kip_mod_note,
@@ -1131,6 +1179,8 @@ class AsyncSurfaceResource(AsyncAPIResource):
         dd_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         dd_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         dd_wt_kn: float | NotGiven = NOT_GIVEN,
+        end_lat: float | NotGiven = NOT_GIVEN,
+        end_lon: float | NotGiven = NOT_GIVEN,
         id_site: str | NotGiven = NOT_GIVEN,
         lcn: int | NotGiven = NOT_GIVEN,
         lda_ft: float | NotGiven = NOT_GIVEN,
@@ -1152,12 +1202,15 @@ class AsyncSurfaceResource(AsyncAPIResource):
         obstacle: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         pcn: str | NotGiven = NOT_GIVEN,
+        point_reference: str | NotGiven = NOT_GIVEN,
         primary: bool | NotGiven = NOT_GIVEN,
         raw_wbc: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kip: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kn: float | NotGiven = NOT_GIVEN,
+        start_lat: float | NotGiven = NOT_GIVEN,
+        start_lon: float | NotGiven = NOT_GIVEN,
         st_wt_kip: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
@@ -1249,6 +1302,12 @@ class AsyncSurfaceResource(AsyncAPIResource):
               equivalent field is not converted by the UDL and may or may not be supplied by
               the provider. The provider/consumer is responsible for all unit conversions.
 
+          end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
+
           id_site: The unique identifier of the Site record that contains location information
               about this surface.
 
@@ -1311,6 +1370,8 @@ class AsyncSurfaceResource(AsyncAPIResource):
 
           pcn: Pavement classification number (PCN) and tire pressure code.
 
+          point_reference: Description of the surface and its dimensions or how it is measured or oriented.
+
           primary: Flag indicating this is the primary runway. Applicable for runway surface types
               only.
 
@@ -1335,6 +1396,12 @@ class AsyncSurfaceResource(AsyncAPIResource):
               corresponding equivalent field is not converted by the UDL and may or may not be
               supplied by the provider. The provider/consumer is responsible for all unit
               conversions.
+
+          start_lat: WGS-84 latitude of the coordinate representing the start-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          start_lon: WGS-84 longitude of the coordinate representing the start-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
 
           st_wt_kip: The max weight allowable on this surface type for an ST-type (single tandem)
               landing gear configuration, in kilopounds (kip).Note: The corresponding
@@ -1475,6 +1542,8 @@ class AsyncSurfaceResource(AsyncAPIResource):
                     "dd_wt_kip_mod": dd_wt_kip_mod,
                     "dd_wt_kip_mod_note": dd_wt_kip_mod_note,
                     "dd_wt_kn": dd_wt_kn,
+                    "end_lat": end_lat,
+                    "end_lon": end_lon,
                     "id_site": id_site,
                     "lcn": lcn,
                     "lda_ft": lda_ft,
@@ -1496,12 +1565,15 @@ class AsyncSurfaceResource(AsyncAPIResource):
                     "obstacle": obstacle,
                     "origin": origin,
                     "pcn": pcn,
+                    "point_reference": point_reference,
                     "primary": primary,
                     "raw_wbc": raw_wbc,
                     "sbtt_wt_kip": sbtt_wt_kip,
                     "sbtt_wt_kip_mod": sbtt_wt_kip_mod,
                     "sbtt_wt_kip_mod_note": sbtt_wt_kip_mod_note,
                     "sbtt_wt_kn": sbtt_wt_kn,
+                    "start_lat": start_lat,
+                    "start_lon": start_lon,
                     "st_wt_kip": st_wt_kip,
                     "st_wt_kip_mod": st_wt_kip_mod,
                     "st_wt_kip_mod_note": st_wt_kip_mod_note,
@@ -1557,6 +1629,8 @@ class AsyncSurfaceResource(AsyncAPIResource):
         dd_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         dd_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         dd_wt_kn: float | NotGiven = NOT_GIVEN,
+        end_lat: float | NotGiven = NOT_GIVEN,
+        end_lon: float | NotGiven = NOT_GIVEN,
         id_site: str | NotGiven = NOT_GIVEN,
         lcn: int | NotGiven = NOT_GIVEN,
         lda_ft: float | NotGiven = NOT_GIVEN,
@@ -1578,12 +1652,15 @@ class AsyncSurfaceResource(AsyncAPIResource):
         obstacle: bool | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         pcn: str | NotGiven = NOT_GIVEN,
+        point_reference: str | NotGiven = NOT_GIVEN,
         primary: bool | NotGiven = NOT_GIVEN,
         raw_wbc: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kip: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         sbtt_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
         sbtt_wt_kn: float | NotGiven = NOT_GIVEN,
+        start_lat: float | NotGiven = NOT_GIVEN,
+        start_lon: float | NotGiven = NOT_GIVEN,
         st_wt_kip: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod: float | NotGiven = NOT_GIVEN,
         st_wt_kip_mod_note: str | NotGiven = NOT_GIVEN,
@@ -1675,6 +1752,12 @@ class AsyncSurfaceResource(AsyncAPIResource):
               equivalent field is not converted by the UDL and may or may not be supplied by
               the provider. The provider/consumer is responsible for all unit conversions.
 
+          end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
+
           id_site: The unique identifier of the Site record that contains location information
               about this surface.
 
@@ -1737,6 +1820,8 @@ class AsyncSurfaceResource(AsyncAPIResource):
 
           pcn: Pavement classification number (PCN) and tire pressure code.
 
+          point_reference: Description of the surface and its dimensions or how it is measured or oriented.
+
           primary: Flag indicating this is the primary runway. Applicable for runway surface types
               only.
 
@@ -1761,6 +1846,12 @@ class AsyncSurfaceResource(AsyncAPIResource):
               corresponding equivalent field is not converted by the UDL and may or may not be
               supplied by the provider. The provider/consumer is responsible for all unit
               conversions.
+
+          start_lat: WGS-84 latitude of the coordinate representing the start-point of a surface, in
+              degrees. -90 to 90 degrees (negative values south of equator).
+
+          start_lon: WGS-84 longitude of the coordinate representing the start-point of a surface, in
+              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
 
           st_wt_kip: The max weight allowable on this surface type for an ST-type (single tandem)
               landing gear configuration, in kilopounds (kip).Note: The corresponding
@@ -1903,6 +1994,8 @@ class AsyncSurfaceResource(AsyncAPIResource):
                     "dd_wt_kip_mod": dd_wt_kip_mod,
                     "dd_wt_kip_mod_note": dd_wt_kip_mod_note,
                     "dd_wt_kn": dd_wt_kn,
+                    "end_lat": end_lat,
+                    "end_lon": end_lon,
                     "id_site": id_site,
                     "lcn": lcn,
                     "lda_ft": lda_ft,
@@ -1924,12 +2017,15 @@ class AsyncSurfaceResource(AsyncAPIResource):
                     "obstacle": obstacle,
                     "origin": origin,
                     "pcn": pcn,
+                    "point_reference": point_reference,
                     "primary": primary,
                     "raw_wbc": raw_wbc,
                     "sbtt_wt_kip": sbtt_wt_kip,
                     "sbtt_wt_kip_mod": sbtt_wt_kip_mod,
                     "sbtt_wt_kip_mod_note": sbtt_wt_kip_mod_note,
                     "sbtt_wt_kn": sbtt_wt_kn,
+                    "start_lat": start_lat,
+                    "start_lon": start_lon,
                     "st_wt_kip": st_wt_kip,
                     "st_wt_kip_mod": st_wt_kip_mod,
                     "st_wt_kip_mod_note": st_wt_kip_mod_note,

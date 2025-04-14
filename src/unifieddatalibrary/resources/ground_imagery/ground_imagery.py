@@ -163,23 +163,28 @@ class GroundImageryResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """The ground imagery service allows for contribution of images.
+        """
+        Upload a new image with its metadata.
 
-        This service
-        operation requires a zip file in the body of the POST request. The zip file must
-        contain exactly two files. <h3> 1) A json file with any file name that ends in
-        .json e.g. MyDataFile.json The contents of the json file must be valid according
-        to the schema for Ground Imagery. 2) A binary image file of the specified types
-        allowed for GroundImagery. </h3> The metadata and image files will be stored and
-        associated with each other allowing queries of the data retrieval of the binary
-        images. This operation is intended to be used for automated feeds into UDL. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
+        The request body requires a zip file containing exactly two files:\\
+        1\\)) A file with the `.json` file extension whose content conforms to the `GroundImagery_Ingest`
+        schema. 2\\)) A binary image file of the allowed types for this service.
+
+        The JSON and image files will be associated with each other via the `id` field.
+        Query the metadata via `GET /udl/groundimagery` and use
+        `GET /udl/groundimagery/getFile/{id}` to retrieve the binary image file.
+
+        This operation only accepts application/zip media. The application/json request
+        body is documented to provide a convenient reference to the ingest schema.
+
+        This operation is intended to be used for automated feeds into UDL. A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          data_mode:
+          data_mode: 
               Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
               EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -437,23 +442,28 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """The ground imagery service allows for contribution of images.
+        """
+        Upload a new image with its metadata.
 
-        This service
-        operation requires a zip file in the body of the POST request. The zip file must
-        contain exactly two files. <h3> 1) A json file with any file name that ends in
-        .json e.g. MyDataFile.json The contents of the json file must be valid according
-        to the schema for Ground Imagery. 2) A binary image file of the specified types
-        allowed for GroundImagery. </h3> The metadata and image files will be stored and
-        associated with each other allowing queries of the data retrieval of the binary
-        images. This operation is intended to be used for automated feeds into UDL. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
+        The request body requires a zip file containing exactly two files:\\
+        1\\)) A file with the `.json` file extension whose content conforms to the `GroundImagery_Ingest`
+        schema. 2\\)) A binary image file of the allowed types for this service.
+
+        The JSON and image files will be associated with each other via the `id` field.
+        Query the metadata via `GET /udl/groundimagery` and use
+        `GET /udl/groundimagery/getFile/{id}` to retrieve the binary image file.
+
+        This operation only accepts application/zip media. The application/json request
+        body is documented to provide a convenient reference to the ingest schema.
+
+        This operation is intended to be used for automated feeds into UDL. A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          data_mode:
+          data_mode: 
               Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
               EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data

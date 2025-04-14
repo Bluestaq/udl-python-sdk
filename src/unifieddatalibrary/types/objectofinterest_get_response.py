@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["ObjectofinterestGetResponse", "Manifold"]
 
@@ -249,7 +247,7 @@ class ObjectofinterestGetResponse(BaseModel):
     name: Optional[str] = None
     """Unique name of the object of interest event."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -346,13 +344,3 @@ class ObjectofinterestGetResponse(BaseModel):
 
     zvel: Optional[float] = None
     """Last reported z velocity of the object in km/sec, in J2000 coordinates."""
-
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    ObjectofinterestGetResponse.model_rebuild()
-    Manifold.model_rebuild()
-else:
-    ObjectofinterestGetResponse.update_forward_refs()  # type: ignore
-    Manifold.update_forward_refs()  # type: ignore

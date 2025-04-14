@@ -84,7 +84,8 @@ class TrackResource(SyncAPIResource):
         parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -125,7 +126,8 @@ class TrackResource(SyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -272,7 +274,8 @@ class TrackResource(SyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -343,7 +346,8 @@ class AsyncTrackResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -384,7 +388,8 @@ class AsyncTrackResource(AsyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -531,7 +536,8 @@ class AsyncTrackResource(AsyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 

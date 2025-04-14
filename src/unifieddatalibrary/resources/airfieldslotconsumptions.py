@@ -9,6 +9,8 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    airfieldslotconsumption_list_params,
+    airfieldslotconsumption_count_params,
     airfieldslotconsumption_tuple_params,
     airfieldslotconsumption_create_params,
     airfieldslotconsumption_update_params,
@@ -59,7 +61,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -72,6 +73,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -121,8 +123,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -151,6 +151,8 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
+
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -214,7 +216,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -227,6 +228,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -294,7 +296,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -307,6 +308,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -357,8 +359,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -387,6 +387,8 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
+
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -452,7 +454,6 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -465,6 +466,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -495,6 +497,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
     def list(
         self,
         *,
+        start_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -507,11 +510,28 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          start_time: The start of the slot window, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/airfieldslotconsumption",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"start_time": start_time}, airfieldslotconsumption_list_params.AirfieldslotconsumptionListParams
+                ),
             ),
             cast_to=AirfieldslotconsumptionListResponse,
         )
@@ -555,6 +575,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
     def count(
         self,
         *,
+        start_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -568,12 +589,29 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          start_time: The start of the slot window, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
             "/udl/airfieldslotconsumption/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"start_time": start_time}, airfieldslotconsumption_count_params.AirfieldslotconsumptionCountParams
+                ),
             ),
             cast_to=str,
         )
@@ -605,6 +643,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        start_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -628,6 +667,8 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
+          start_time: The start of the slot window, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -644,7 +685,11 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"columns": columns}, airfieldslotconsumption_tuple_params.AirfieldslotconsumptionTupleParams
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    airfieldslotconsumption_tuple_params.AirfieldslotconsumptionTupleParams,
                 ),
             ),
             cast_to=AirfieldslotconsumptionTupleResponse,
@@ -676,7 +721,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -689,6 +733,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -738,8 +783,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -768,6 +811,8 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
+
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -831,7 +876,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -844,6 +888,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -911,7 +956,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         *,
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        end_time: Union[str, datetime],
         id_airfield_slot: str,
         num_aircraft: int,
         source: str,
@@ -924,6 +968,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         app_org: str | NotGiven = NOT_GIVEN,
         call_signs: List[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
         id_dep_sortie: str | NotGiven = NOT_GIVEN,
         mission_id: str | NotGiven = NOT_GIVEN,
@@ -974,8 +1019,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               requirements, and for validating technical, functional, and performance
               characteristics.
 
-          end_time: The end of the slot window, in ISO 8601 UTC format.
-
           id_airfield_slot: Unique identifier of the airfield slot for which this slot consumption record is
               referencing.
 
@@ -1004,6 +1047,8 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           consumer: Identifying name of the aircraft using this slot. Names are often Prior
               Permission Required (PPR) numbers or other similar human-readable identifiers.
+
+          end_time: The end of the slot window, in ISO 8601 UTC format.
 
           id_arr_sortie: Unique identifier of the sortie arriving at the slot start time.
 
@@ -1069,7 +1114,6 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 {
                     "classification_marking": classification_marking,
                     "data_mode": data_mode,
-                    "end_time": end_time,
                     "id_airfield_slot": id_airfield_slot,
                     "num_aircraft": num_aircraft,
                     "source": source,
@@ -1082,6 +1126,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     "app_org": app_org,
                     "call_signs": call_signs,
                     "consumer": consumer,
+                    "end_time": end_time,
                     "id_arr_sortie": id_arr_sortie,
                     "id_dep_sortie": id_dep_sortie,
                     "mission_id": mission_id,
@@ -1112,6 +1157,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        start_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1124,11 +1170,28 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          start_time: The start of the slot window, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/airfieldslotconsumption",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"start_time": start_time}, airfieldslotconsumption_list_params.AirfieldslotconsumptionListParams
+                ),
             ),
             cast_to=AirfieldslotconsumptionListResponse,
         )
@@ -1172,6 +1235,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        start_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1185,12 +1249,29 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          start_time: The start of the slot window, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
             "/udl/airfieldslotconsumption/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"start_time": start_time}, airfieldslotconsumption_count_params.AirfieldslotconsumptionCountParams
+                ),
             ),
             cast_to=str,
         )
@@ -1222,6 +1303,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        start_time: Union[str, datetime],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1245,6 +1327,8 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
+          start_time: The start of the slot window, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1261,7 +1345,11 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"columns": columns}, airfieldslotconsumption_tuple_params.AirfieldslotconsumptionTupleParams
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    airfieldslotconsumption_tuple_params.AirfieldslotconsumptionTupleParams,
                 ),
             ),
             cast_to=AirfieldslotconsumptionTupleResponse,

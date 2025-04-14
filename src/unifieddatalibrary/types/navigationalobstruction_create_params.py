@@ -176,8 +176,8 @@ class NavigationalobstructionCreateParams(TypedDict, total=False):
 
     height_agl_acc: Annotated[float, PropertyInfo(alias="heightAGLAcc")]
     """
-    The accuracy of the height Above Ground Level (AGL) AGL value for this point
-    obstacle in feet.
+    The accuracy of the height Above Ground Level (AGL) value for this point
+    obstacle, in feet.
     """
 
     height_msl: Annotated[float, PropertyInfo(alias="heightMSL")]

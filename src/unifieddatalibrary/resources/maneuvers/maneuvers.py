@@ -38,10 +38,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.elset_ingest_param import ElsetIngestParam
 from ...types.maneuver_list_response import ManeuverListResponse
 from ...types.maneuver_tuple_response import ManeuverTupleResponse
-from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.udl.maneuver.maneuver_full import ManeuverFull
 
 __all__ = ["ManeuversResource", "AsyncManeuversResource"]
@@ -112,10 +110,10 @@ class ManeuversResource(SyncAPIResource):
         post_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         post_drift_rate: float | NotGiven = NOT_GIVEN,
         post_eccentricity: float | NotGiven = NOT_GIVEN,
-        post_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        post_event_elset: maneuver_create_params.PostEventElset | NotGiven = NOT_GIVEN,
         post_event_id_elset: str | NotGiven = NOT_GIVEN,
         post_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        post_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        post_event_state_vector: maneuver_create_params.PostEventStateVector | NotGiven = NOT_GIVEN,
         post_geo_longitude: float | NotGiven = NOT_GIVEN,
         post_inclination: float | NotGiven = NOT_GIVEN,
         post_mass: float | NotGiven = NOT_GIVEN,
@@ -137,10 +135,10 @@ class ManeuversResource(SyncAPIResource):
         pre_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         pre_drift_rate: float | NotGiven = NOT_GIVEN,
         pre_eccentricity: float | NotGiven = NOT_GIVEN,
-        pre_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        pre_event_elset: maneuver_create_params.PreEventElset | NotGiven = NOT_GIVEN,
         pre_event_id_elset: str | NotGiven = NOT_GIVEN,
         pre_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        pre_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        pre_event_state_vector: maneuver_create_params.PreEventStateVector | NotGiven = NOT_GIVEN,
         pre_geo_longitude: float | NotGiven = NOT_GIVEN,
         pre_inclination: float | NotGiven = NOT_GIVEN,
         pre_perigee: float | NotGiven = NOT_GIVEN,
@@ -949,10 +947,10 @@ class AsyncManeuversResource(AsyncAPIResource):
         post_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         post_drift_rate: float | NotGiven = NOT_GIVEN,
         post_eccentricity: float | NotGiven = NOT_GIVEN,
-        post_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        post_event_elset: maneuver_create_params.PostEventElset | NotGiven = NOT_GIVEN,
         post_event_id_elset: str | NotGiven = NOT_GIVEN,
         post_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        post_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        post_event_state_vector: maneuver_create_params.PostEventStateVector | NotGiven = NOT_GIVEN,
         post_geo_longitude: float | NotGiven = NOT_GIVEN,
         post_inclination: float | NotGiven = NOT_GIVEN,
         post_mass: float | NotGiven = NOT_GIVEN,
@@ -974,10 +972,10 @@ class AsyncManeuversResource(AsyncAPIResource):
         pre_ballistic_coeff: float | NotGiven = NOT_GIVEN,
         pre_drift_rate: float | NotGiven = NOT_GIVEN,
         pre_eccentricity: float | NotGiven = NOT_GIVEN,
-        pre_event_elset: ElsetIngestParam | NotGiven = NOT_GIVEN,
+        pre_event_elset: maneuver_create_params.PreEventElset | NotGiven = NOT_GIVEN,
         pre_event_id_elset: str | NotGiven = NOT_GIVEN,
         pre_event_id_state_vector: str | NotGiven = NOT_GIVEN,
-        pre_event_state_vector: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        pre_event_state_vector: maneuver_create_params.PreEventStateVector | NotGiven = NOT_GIVEN,
         pre_geo_longitude: float | NotGiven = NOT_GIVEN,
         pre_inclination: float | NotGiven = NOT_GIVEN,
         pre_perigee: float | NotGiven = NOT_GIVEN,

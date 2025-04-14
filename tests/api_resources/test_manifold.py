@@ -238,11 +238,6 @@ class TestManifold:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
-        manifold = client.manifold.create_bulk()
-        assert manifold is None
-
-    @parametrize
-    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.create_bulk(
             body=[
                 {
@@ -250,12 +245,6 @@ class TestManifold:
                     "data_mode": "TEST",
                     "id_object_of_interest": "OBJECTOFINTEREST-ID",
                     "source": "Bluestaq",
-                    "id": "MANIFOLD-ID",
-                    "delta_t": 10.23,
-                    "delta_v": 10.23,
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "status": "PENDING",
-                    "weight": 0.3,
                 }
             ],
         )
@@ -263,7 +252,16 @@ class TestManifold:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.manifold.with_raw_response.create_bulk()
+        response = client.manifold.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_object_of_interest": "OBJECTOFINTEREST-ID",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -272,7 +270,16 @@ class TestManifold:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.manifold.with_streaming_response.create_bulk() as response:
+        with client.manifold.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_object_of_interest": "OBJECTOFINTEREST-ID",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -596,11 +603,6 @@ class TestAsyncManifold:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        manifold = await async_client.manifold.create_bulk()
-        assert manifold is None
-
-    @parametrize
-    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.create_bulk(
             body=[
                 {
@@ -608,12 +610,6 @@ class TestAsyncManifold:
                     "data_mode": "TEST",
                     "id_object_of_interest": "OBJECTOFINTEREST-ID",
                     "source": "Bluestaq",
-                    "id": "MANIFOLD-ID",
-                    "delta_t": 10.23,
-                    "delta_v": 10.23,
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "status": "PENDING",
-                    "weight": 0.3,
                 }
             ],
         )
@@ -621,7 +617,16 @@ class TestAsyncManifold:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.manifold.with_raw_response.create_bulk()
+        response = await async_client.manifold.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_object_of_interest": "OBJECTOFINTEREST-ID",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -630,7 +635,16 @@ class TestAsyncManifold:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.manifold.with_streaming_response.create_bulk() as response:
+        async with async_client.manifold.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_object_of_interest": "OBJECTOFINTEREST-ID",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

@@ -32,6 +32,7 @@ class TestPaths:
             classification_marking="classificationMarking",
             body=b"raw file contents",
             description="description",
+            overwrite=True,
             tags="tags",
         )
         assert_matches_type(str, path, path=["response"])
@@ -84,6 +85,7 @@ class TestAsyncPaths:
             classification_marking="classificationMarking",
             body=b"raw file contents",
             description="description",
+            overwrite=True,
             tags="tags",
         )
         assert_matches_type(str, path, path=["response"])

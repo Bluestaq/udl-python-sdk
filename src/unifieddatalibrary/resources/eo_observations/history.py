@@ -66,7 +66,8 @@ class HistoryResource(SyncAPIResource):
         parameter information.
 
         Args:
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
@@ -122,7 +123,8 @@ class HistoryResource(SyncAPIResource):
         parameter information.
 
         Args:
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
@@ -189,7 +191,8 @@ class HistoryResource(SyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
@@ -253,7 +256,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
@@ -309,7 +313,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
@@ -376,7 +381,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers

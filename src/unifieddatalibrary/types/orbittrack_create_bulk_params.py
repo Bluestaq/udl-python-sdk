@@ -229,7 +229,7 @@ class Body(TypedDict, total=False):
     """Unique identifier of the target on-orbit object, if correlated."""
 
     iff: str
-    """A text aplifier displaying IFF/SIF/AIS Identification modes and codes."""
+    """A text amplifier displaying IFF/SIF/AIS Identification modes and codes."""
 
     installation: bool
     """Flag indicating that this track represents an installation.

@@ -373,11 +373,6 @@ class TestEquipment:
 
     @parametrize
     def test_method_create_bulk(self, client: Unifieddatalibrary) -> None:
-        equipment = client.equipment.create_bulk()
-        assert equipment is None
-
-    @parametrize
-    def test_method_create_bulk_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.create_bulk(
             body=[
                 {
@@ -387,51 +382,6 @@ class TestEquipment:
                     "lat": 39.019242,
                     "lon": -104.251659,
                     "source": "Bluestaq",
-                    "id": "0167f577-e06c-358e-85aa-0a07a730bdd0",
-                    "air_def_area": "AL006",
-                    "allegiance": "OTHR",
-                    "alt_allegiance": "HL",
-                    "alt_country_code": "IZ",
-                    "alt_eqp_id": "ORIG-EQP-ID",
-                    "class_rating": "1",
-                    "condition": "RDY",
-                    "condition_avail": "A",
-                    "coord": "340000000N0430000000E",
-                    "coord_datum": "WGS",
-                    "coord_deriv_acc": 12.345,
-                    "elev_msl": 123.45,
-                    "elev_msl_conf_lvl": 50,
-                    "elev_msl_deriv_acc": 12.34,
-                    "eqp_code": "X12345",
-                    "eqp_id_num": "001",
-                    "eval": 7,
-                    "fpa": "NOB",
-                    "function": "OCC",
-                    "funct_primary": "JG",
-                    "geoidal_msl_sep": 12.34,
-                    "ident": "FRIEND",
-                    "id_operating_unit": "UNIT-ID",
-                    "id_parent_equipment": "PARENT-EQUIPMENT-ID",
-                    "id_site": "SITE-ID",
-                    "loc_reason": "GR",
-                    "mil_grid": "4QFJ12345678",
-                    "mil_grid_sys": "UTM",
-                    "nomen": "AMPHIBIOUS WARFARE SHIP",
-                    "oper_area_primary": "Territorial Sea",
-                    "oper_status": "OPR",
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "pol_subdiv": "IZ07",
-                    "qty_oh": 7,
-                    "rec_status": "A",
-                    "reference_doc": "Provider Reference Documentation",
-                    "res_prod": "RT",
-                    "review_date": parse_date("2008-06-10"),
-                    "seq_num": 5,
-                    "src_ids": ["SRC_ID_1"],
-                    "src_typs": ["AIRCRAFT"],
-                    "sym_code": "SOGPU----------",
-                    "utm": "19P4390691376966",
-                    "wac": "0427",
                 }
             ],
         )
@@ -439,7 +389,18 @@ class TestEquipment:
 
     @parametrize
     def test_raw_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        response = client.equipment.with_raw_response.create_bulk()
+        response = client.equipment.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "IQ",
+                    "data_mode": "TEST",
+                    "lat": 39.019242,
+                    "lon": -104.251659,
+                    "source": "Bluestaq",
+                }
+            ],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -448,7 +409,18 @@ class TestEquipment:
 
     @parametrize
     def test_streaming_response_create_bulk(self, client: Unifieddatalibrary) -> None:
-        with client.equipment.with_streaming_response.create_bulk() as response:
+        with client.equipment.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "IQ",
+                    "data_mode": "TEST",
+                    "lat": 39.019242,
+                    "lon": -104.251659,
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -868,11 +840,6 @@ class TestAsyncEquipment:
 
     @parametrize
     async def test_method_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        equipment = await async_client.equipment.create_bulk()
-        assert equipment is None
-
-    @parametrize
-    async def test_method_create_bulk_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.create_bulk(
             body=[
                 {
@@ -882,51 +849,6 @@ class TestAsyncEquipment:
                     "lat": 39.019242,
                     "lon": -104.251659,
                     "source": "Bluestaq",
-                    "id": "0167f577-e06c-358e-85aa-0a07a730bdd0",
-                    "air_def_area": "AL006",
-                    "allegiance": "OTHR",
-                    "alt_allegiance": "HL",
-                    "alt_country_code": "IZ",
-                    "alt_eqp_id": "ORIG-EQP-ID",
-                    "class_rating": "1",
-                    "condition": "RDY",
-                    "condition_avail": "A",
-                    "coord": "340000000N0430000000E",
-                    "coord_datum": "WGS",
-                    "coord_deriv_acc": 12.345,
-                    "elev_msl": 123.45,
-                    "elev_msl_conf_lvl": 50,
-                    "elev_msl_deriv_acc": 12.34,
-                    "eqp_code": "X12345",
-                    "eqp_id_num": "001",
-                    "eval": 7,
-                    "fpa": "NOB",
-                    "function": "OCC",
-                    "funct_primary": "JG",
-                    "geoidal_msl_sep": 12.34,
-                    "ident": "FRIEND",
-                    "id_operating_unit": "UNIT-ID",
-                    "id_parent_equipment": "PARENT-EQUIPMENT-ID",
-                    "id_site": "SITE-ID",
-                    "loc_reason": "GR",
-                    "mil_grid": "4QFJ12345678",
-                    "mil_grid_sys": "UTM",
-                    "nomen": "AMPHIBIOUS WARFARE SHIP",
-                    "oper_area_primary": "Territorial Sea",
-                    "oper_status": "OPR",
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "pol_subdiv": "IZ07",
-                    "qty_oh": 7,
-                    "rec_status": "A",
-                    "reference_doc": "Provider Reference Documentation",
-                    "res_prod": "RT",
-                    "review_date": parse_date("2008-06-10"),
-                    "seq_num": 5,
-                    "src_ids": ["SRC_ID_1"],
-                    "src_typs": ["AIRCRAFT"],
-                    "sym_code": "SOGPU----------",
-                    "utm": "19P4390691376966",
-                    "wac": "0427",
                 }
             ],
         )
@@ -934,7 +856,18 @@ class TestAsyncEquipment:
 
     @parametrize
     async def test_raw_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.equipment.with_raw_response.create_bulk()
+        response = await async_client.equipment.with_raw_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "IQ",
+                    "data_mode": "TEST",
+                    "lat": 39.019242,
+                    "lon": -104.251659,
+                    "source": "Bluestaq",
+                }
+            ],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -943,7 +876,18 @@ class TestAsyncEquipment:
 
     @parametrize
     async def test_streaming_response_create_bulk(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.equipment.with_streaming_response.create_bulk() as response:
+        async with async_client.equipment.with_streaming_response.create_bulk(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "IQ",
+                    "data_mode": "TEST",
+                    "lat": 39.019242,
+                    "lon": -104.251659,
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

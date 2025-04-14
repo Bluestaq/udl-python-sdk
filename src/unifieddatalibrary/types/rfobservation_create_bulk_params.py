@@ -54,6 +54,13 @@ class Body(TypedDict, total=False):
     azimuth: float
     """azimuth angle in degrees and J2000 coordinate frame."""
 
+    azimuth_measured: Annotated[bool, PropertyInfo(alias="azimuthMeasured")]
+    """
+    Optional flag indicating whether the azimuth value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     azimuth_rate: Annotated[float, PropertyInfo(alias="azimuthRate")]
     """Rate of change of the azimuth in degrees per second."""
 
@@ -137,6 +144,13 @@ class Body(TypedDict, total=False):
 
     elevation: float
     """elevation in degrees and J2000 coordinate frame."""
+
+    elevation_measured: Annotated[bool, PropertyInfo(alias="elevationMeasured")]
+    """
+    Optional flag indicating whether the elevation value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     elevation_rate: Annotated[float, PropertyInfo(alias="elevationRate")]
     """Rate of change of the elevation in degrees per second."""
@@ -266,8 +280,22 @@ class Body(TypedDict, total=False):
     range: float
     """Target range in km."""
 
+    range_measured: Annotated[bool, PropertyInfo(alias="rangeMeasured")]
+    """
+    Optional flag indicating whether the range value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range_rate: Annotated[float, PropertyInfo(alias="rangeRate")]
     """Rate of change of the range in km/sec."""
+
+    range_rate_measured: Annotated[bool, PropertyInfo(alias="rangeRateMeasured")]
+    """
+    Optional flag indicating whether the rangeRate value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     range_rate_unc: Annotated[float, PropertyInfo(alias="rangeRateUnc")]
     """One sigma uncertainty in the range rate measurement, in kilometers/second."""

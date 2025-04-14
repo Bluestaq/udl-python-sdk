@@ -92,6 +92,8 @@ class SgiResource(SyncAPIResource):
         e10: float | NotGiven = NOT_GIVEN,
         e54: float | NotGiven = NOT_GIVEN,
         f10: float | NotGiven = NOT_GIVEN,
+        f10_high: float | NotGiven = NOT_GIVEN,
+        f10_low: float | NotGiven = NOT_GIVEN,
         f54: float | NotGiven = NOT_GIVEN,
         f81: float | NotGiven = NOT_GIVEN,
         frequencies: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -119,6 +121,9 @@ class SgiResource(SyncAPIResource):
         station_name: str | NotGiven = NOT_GIVEN,
         stce: Iterable[float] | NotGiven = NOT_GIVEN,
         stci: Iterable[float] | NotGiven = NOT_GIVEN,
+        sunspot_num: float | NotGiven = NOT_GIVEN,
+        sunspot_num_high: float | NotGiven = NOT_GIVEN,
+        sunspot_num_low: float | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -203,6 +208,14 @@ class SgiResource(SyncAPIResource):
 
           f10: Daily solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
+          f10_high: Daily F10.7 index - high range, in x10-22 Watts per meter squared per Hertz.
+              This field usually applies to forecast values, based on the consensus of the
+              Solar Cycle 24 Prediction Panel.
+
+          f10_low: Daily F10.7 index - low range, in x10-22 Watts per meter squared per Hertz. This
+              field usually applies to forecast values, based on the consensus of the Solar
+              Cycle 24 Prediction Panel.
+
           f54: 54 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
           f81: 81 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
@@ -307,6 +320,14 @@ class SgiResource(SyncAPIResource):
               temperature (DTX) difference. Each array element corresponds to the positional
               index of the coeffDegree and coeffOrder arrays.
 
+          sunspot_num: Daily sunspot number.
+
+          sunspot_num_high: Daily sunspot number - high range. This field usually applies to forecast
+              values, based on the consensus of the Solar Cycle 24 Prediction Panel.
+
+          sunspot_num_low: Daily sunspot number - low range. This field usually applies to forecast values,
+              based on the consensus of the Solar Cycle 24 Prediction Panel.
+
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -356,6 +377,8 @@ class SgiResource(SyncAPIResource):
                     "e10": e10,
                     "e54": e54,
                     "f10": f10,
+                    "f10_high": f10_high,
+                    "f10_low": f10_low,
                     "f54": f54,
                     "f81": f81,
                     "frequencies": frequencies,
@@ -383,6 +406,9 @@ class SgiResource(SyncAPIResource):
                     "station_name": station_name,
                     "stce": stce,
                     "stci": stci,
+                    "sunspot_num": sunspot_num,
+                    "sunspot_num_high": sunspot_num_high,
+                    "sunspot_num_low": sunspot_num_low,
                     "tags": tags,
                     "transaction_id": transaction_id,
                     "type": type,
@@ -419,6 +445,8 @@ class SgiResource(SyncAPIResource):
         e10: float | NotGiven = NOT_GIVEN,
         e54: float | NotGiven = NOT_GIVEN,
         f10: float | NotGiven = NOT_GIVEN,
+        f10_high: float | NotGiven = NOT_GIVEN,
+        f10_low: float | NotGiven = NOT_GIVEN,
         f54: float | NotGiven = NOT_GIVEN,
         f81: float | NotGiven = NOT_GIVEN,
         frequencies: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -446,6 +474,9 @@ class SgiResource(SyncAPIResource):
         station_name: str | NotGiven = NOT_GIVEN,
         stce: Iterable[float] | NotGiven = NOT_GIVEN,
         stci: Iterable[float] | NotGiven = NOT_GIVEN,
+        sunspot_num: float | NotGiven = NOT_GIVEN,
+        sunspot_num_high: float | NotGiven = NOT_GIVEN,
+        sunspot_num_low: float | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -530,6 +561,14 @@ class SgiResource(SyncAPIResource):
 
           f10: Daily solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
+          f10_high: Daily F10.7 index - high range, in x10-22 Watts per meter squared per Hertz.
+              This field usually applies to forecast values, based on the consensus of the
+              Solar Cycle 24 Prediction Panel.
+
+          f10_low: Daily F10.7 index - low range, in x10-22 Watts per meter squared per Hertz. This
+              field usually applies to forecast values, based on the consensus of the Solar
+              Cycle 24 Prediction Panel.
+
           f54: 54 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
           f81: 81 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
@@ -634,6 +673,14 @@ class SgiResource(SyncAPIResource):
               temperature (DTX) difference. Each array element corresponds to the positional
               index of the coeffDegree and coeffOrder arrays.
 
+          sunspot_num: Daily sunspot number.
+
+          sunspot_num_high: Daily sunspot number - high range. This field usually applies to forecast
+              values, based on the consensus of the Solar Cycle 24 Prediction Panel.
+
+          sunspot_num_low: Daily sunspot number - low range. This field usually applies to forecast values,
+              based on the consensus of the Solar Cycle 24 Prediction Panel.
+
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -685,6 +732,8 @@ class SgiResource(SyncAPIResource):
                     "e10": e10,
                     "e54": e54,
                     "f10": f10,
+                    "f10_high": f10_high,
+                    "f10_low": f10_low,
                     "f54": f54,
                     "f81": f81,
                     "frequencies": frequencies,
@@ -712,6 +761,9 @@ class SgiResource(SyncAPIResource):
                     "station_name": station_name,
                     "stce": stce,
                     "stci": stci,
+                    "sunspot_num": sunspot_num,
+                    "sunspot_num_high": sunspot_num_high,
+                    "sunspot_num_low": sunspot_num_low,
                     "tags": tags,
                     "transaction_id": transaction_id,
                     "type": type,
@@ -1168,6 +1220,8 @@ class AsyncSgiResource(AsyncAPIResource):
         e10: float | NotGiven = NOT_GIVEN,
         e54: float | NotGiven = NOT_GIVEN,
         f10: float | NotGiven = NOT_GIVEN,
+        f10_high: float | NotGiven = NOT_GIVEN,
+        f10_low: float | NotGiven = NOT_GIVEN,
         f54: float | NotGiven = NOT_GIVEN,
         f81: float | NotGiven = NOT_GIVEN,
         frequencies: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -1195,6 +1249,9 @@ class AsyncSgiResource(AsyncAPIResource):
         station_name: str | NotGiven = NOT_GIVEN,
         stce: Iterable[float] | NotGiven = NOT_GIVEN,
         stci: Iterable[float] | NotGiven = NOT_GIVEN,
+        sunspot_num: float | NotGiven = NOT_GIVEN,
+        sunspot_num_high: float | NotGiven = NOT_GIVEN,
+        sunspot_num_low: float | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -1279,6 +1336,14 @@ class AsyncSgiResource(AsyncAPIResource):
 
           f10: Daily solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
+          f10_high: Daily F10.7 index - high range, in x10-22 Watts per meter squared per Hertz.
+              This field usually applies to forecast values, based on the consensus of the
+              Solar Cycle 24 Prediction Panel.
+
+          f10_low: Daily F10.7 index - low range, in x10-22 Watts per meter squared per Hertz. This
+              field usually applies to forecast values, based on the consensus of the Solar
+              Cycle 24 Prediction Panel.
+
           f54: 54 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
           f81: 81 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
@@ -1383,6 +1448,14 @@ class AsyncSgiResource(AsyncAPIResource):
               temperature (DTX) difference. Each array element corresponds to the positional
               index of the coeffDegree and coeffOrder arrays.
 
+          sunspot_num: Daily sunspot number.
+
+          sunspot_num_high: Daily sunspot number - high range. This field usually applies to forecast
+              values, based on the consensus of the Solar Cycle 24 Prediction Panel.
+
+          sunspot_num_low: Daily sunspot number - low range. This field usually applies to forecast values,
+              based on the consensus of the Solar Cycle 24 Prediction Panel.
+
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -1432,6 +1505,8 @@ class AsyncSgiResource(AsyncAPIResource):
                     "e10": e10,
                     "e54": e54,
                     "f10": f10,
+                    "f10_high": f10_high,
+                    "f10_low": f10_low,
                     "f54": f54,
                     "f81": f81,
                     "frequencies": frequencies,
@@ -1459,6 +1534,9 @@ class AsyncSgiResource(AsyncAPIResource):
                     "station_name": station_name,
                     "stce": stce,
                     "stci": stci,
+                    "sunspot_num": sunspot_num,
+                    "sunspot_num_high": sunspot_num_high,
+                    "sunspot_num_low": sunspot_num_low,
                     "tags": tags,
                     "transaction_id": transaction_id,
                     "type": type,
@@ -1495,6 +1573,8 @@ class AsyncSgiResource(AsyncAPIResource):
         e10: float | NotGiven = NOT_GIVEN,
         e54: float | NotGiven = NOT_GIVEN,
         f10: float | NotGiven = NOT_GIVEN,
+        f10_high: float | NotGiven = NOT_GIVEN,
+        f10_low: float | NotGiven = NOT_GIVEN,
         f54: float | NotGiven = NOT_GIVEN,
         f81: float | NotGiven = NOT_GIVEN,
         frequencies: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -1522,6 +1602,9 @@ class AsyncSgiResource(AsyncAPIResource):
         station_name: str | NotGiven = NOT_GIVEN,
         stce: Iterable[float] | NotGiven = NOT_GIVEN,
         stci: Iterable[float] | NotGiven = NOT_GIVEN,
+        sunspot_num: float | NotGiven = NOT_GIVEN,
+        sunspot_num_high: float | NotGiven = NOT_GIVEN,
+        sunspot_num_low: float | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -1606,6 +1689,14 @@ class AsyncSgiResource(AsyncAPIResource):
 
           f10: Daily solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
+          f10_high: Daily F10.7 index - high range, in x10-22 Watts per meter squared per Hertz.
+              This field usually applies to forecast values, based on the consensus of the
+              Solar Cycle 24 Prediction Panel.
+
+          f10_low: Daily F10.7 index - low range, in x10-22 Watts per meter squared per Hertz. This
+              field usually applies to forecast values, based on the consensus of the Solar
+              Cycle 24 Prediction Panel.
+
           f54: 54 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
 
           f81: 81 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz.
@@ -1710,6 +1801,14 @@ class AsyncSgiResource(AsyncAPIResource):
               temperature (DTX) difference. Each array element corresponds to the positional
               index of the coeffDegree and coeffOrder arrays.
 
+          sunspot_num: Daily sunspot number.
+
+          sunspot_num_high: Daily sunspot number - high range. This field usually applies to forecast
+              values, based on the consensus of the Solar Cycle 24 Prediction Panel.
+
+          sunspot_num_low: Daily sunspot number - low range. This field usually applies to forecast values,
+              based on the consensus of the Solar Cycle 24 Prediction Panel.
+
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
               conditional access controls to restrict access to the data. Should be left null
@@ -1761,6 +1860,8 @@ class AsyncSgiResource(AsyncAPIResource):
                     "e10": e10,
                     "e54": e54,
                     "f10": f10,
+                    "f10_high": f10_high,
+                    "f10_low": f10_low,
                     "f54": f54,
                     "f81": f81,
                     "frequencies": frequencies,
@@ -1788,6 +1889,9 @@ class AsyncSgiResource(AsyncAPIResource):
                     "station_name": station_name,
                     "stce": stce,
                     "stci": stci,
+                    "sunspot_num": sunspot_num,
+                    "sunspot_num_high": sunspot_num_high,
+                    "sunspot_num_low": sunspot_num_low,
                     "tags": tags,
                     "transaction_id": transaction_id,
                     "type": type,

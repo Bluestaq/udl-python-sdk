@@ -1076,7 +1076,7 @@ class EquipmentResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[equipment_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[equipment_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1085,9 +1085,11 @@ class EquipmentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take multiple Equipment records as a POST body and ingest
-        into the database. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
+        Service operation intended for initial integration only, to take a list of
+        Equipment records as a POST body and ingest into the database. This operation is
+        not intended to be used for automated feeds into UDL. Data providers should
+        contact the UDL team for specific role assignments and for instructions on
+        setting up a permanent feed through an alternate mechanism.
 
         Args:
           extra_headers: Send extra headers
@@ -2220,7 +2222,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[equipment_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[equipment_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2229,9 +2231,11 @@ class AsyncEquipmentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take multiple Equipment records as a POST body and ingest
-        into the database. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
+        Service operation intended for initial integration only, to take a list of
+        Equipment records as a POST body and ingest into the database. This operation is
+        not intended to be used for automated feeds into UDL. Data providers should
+        contact the UDL team for specific role assignments and for instructions on
+        setting up a permanent feed through an alternate mechanism.
 
         Args:
           extra_headers: Send extra headers

@@ -30,32 +30,10 @@ class TestV2:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         v2 = client.scs.v2.update(
             path="path",
-            id="id",
-            attachment={
-                "author": "author",
-                "content": "content",
-                "content_length": 0,
-                "content_type": "content_type",
-                "date": "date",
-                "keywords": "keywords",
-                "language": "language",
-                "title": "title",
-            },
             classification_marking="U",
-            created_at="createdAt",
-            created_by="createdBy",
-            data="data",
             description="A description of the updated folder.",
-            file_name="fileName",
-            file_path="filePath",
-            keywords="keywords",
-            parent_path="parentPath",
-            path_type="pathType",
             read_acl="user.id1,group.id1",
-            size=0,
             tags=["TAG1", "TAG2"],
-            updated_at="updatedAt",
-            updated_by="updatedBy",
             write_acl="user.id1,group.id1",
         )
         assert v2 is None
@@ -196,6 +174,7 @@ class TestV2:
             path="path",
             body=b"raw file contents",
             description="description",
+            overwrite=True,
             tags="tags",
         )
         assert v2 is None
@@ -239,32 +218,10 @@ class TestV2:
     def test_method_folder_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         v2 = client.scs.v2.folder_create(
             path="path",
-            id="id",
-            attachment={
-                "author": "author",
-                "content": "content",
-                "content_length": 0,
-                "content_type": "content_type",
-                "date": "date",
-                "keywords": "keywords",
-                "language": "language",
-                "title": "title",
-            },
             classification_marking="U",
-            created_at="createdAt",
-            created_by="createdBy",
-            data="data",
             description="My first folder",
-            file_name="fileName",
-            file_path="filePath",
-            keywords="keywords",
-            parent_path="parentPath",
-            path_type="pathType",
             read_acl="user.id1,group.id1",
-            size=0,
             tags=["TAG1", "TAG2"],
-            updated_at="updatedAt",
-            updated_by="updatedBy",
             write_acl="user.id1,group.id1",
         )
         assert v2 is None
@@ -342,32 +299,10 @@ class TestAsyncV2:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.update(
             path="path",
-            id="id",
-            attachment={
-                "author": "author",
-                "content": "content",
-                "content_length": 0,
-                "content_type": "content_type",
-                "date": "date",
-                "keywords": "keywords",
-                "language": "language",
-                "title": "title",
-            },
             classification_marking="U",
-            created_at="createdAt",
-            created_by="createdBy",
-            data="data",
             description="A description of the updated folder.",
-            file_name="fileName",
-            file_path="filePath",
-            keywords="keywords",
-            parent_path="parentPath",
-            path_type="pathType",
             read_acl="user.id1,group.id1",
-            size=0,
             tags=["TAG1", "TAG2"],
-            updated_at="updatedAt",
-            updated_by="updatedBy",
             write_acl="user.id1,group.id1",
         )
         assert v2 is None
@@ -508,6 +443,7 @@ class TestAsyncV2:
             path="path",
             body=b"raw file contents",
             description="description",
+            overwrite=True,
             tags="tags",
         )
         assert v2 is None
@@ -551,32 +487,10 @@ class TestAsyncV2:
     async def test_method_folder_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.folder_create(
             path="path",
-            id="id",
-            attachment={
-                "author": "author",
-                "content": "content",
-                "content_length": 0,
-                "content_type": "content_type",
-                "date": "date",
-                "keywords": "keywords",
-                "language": "language",
-                "title": "title",
-            },
             classification_marking="U",
-            created_at="createdAt",
-            created_by="createdBy",
-            data="data",
             description="My first folder",
-            file_name="fileName",
-            file_path="filePath",
-            keywords="keywords",
-            parent_path="parentPath",
-            path_type="pathType",
             read_acl="user.id1,group.id1",
-            size=0,
             tags=["TAG1", "TAG2"],
-            updated_at="updatedAt",
-            updated_by="updatedBy",
             write_acl="user.id1,group.id1",
         )
         assert v2 is None

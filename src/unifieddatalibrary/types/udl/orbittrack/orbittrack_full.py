@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ...._compat import PYDANTIC_V2
 from ...._models import BaseModel
+from ...shared.onorbit import Onorbit
 
 __all__ = ["OrbittrackFull", "TrackSensor"]
 
@@ -233,7 +231,7 @@ class OrbittrackFull(BaseModel):
     """Unique identifier of the target on-orbit object, if correlated."""
 
     iff: Optional[str] = None
-    """A text aplifier displaying IFF/SIF/AIS Identification modes and codes."""
+    """A text amplifier displaying IFF/SIF/AIS Identification modes and codes."""
 
     installation: Optional[bool] = None
     """Flag indicating that this track represents an installation.
@@ -279,7 +277,7 @@ class OrbittrackFull(BaseModel):
     any standard identity.
     """
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -353,13 +351,3 @@ class OrbittrackFull(BaseModel):
 
     xref: Optional[str] = None
     """Source cross-reference code for the command that originated the track report."""
-
-
-from ...shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    OrbittrackFull.model_rebuild()
-    TrackSensor.model_rebuild()
-else:
-    OrbittrackFull.update_forward_refs()  # type: ignore
-    TrackSensor.update_forward_refs()  # type: ignore

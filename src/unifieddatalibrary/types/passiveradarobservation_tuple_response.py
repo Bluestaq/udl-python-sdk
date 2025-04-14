@@ -1,12 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 from typing_extensions import TypeAlias
 
+from .udl.passiveradarobservation.passiveradarobservation_full import PassiveradarobservationFull
+
 __all__ = ["PassiveradarobservationTupleResponse"]
 
-PassiveradarobservationTupleResponse: TypeAlias = List["PassiveradarobservationFull"]
-
-from .udl.passiveradarobservation.passiveradarobservation_full import PassiveradarobservationFull
+PassiveradarobservationTupleResponse: TypeAlias = List[PassiveradarobservationFull]

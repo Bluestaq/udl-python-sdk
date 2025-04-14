@@ -48,6 +48,13 @@ class RadarObservation(BaseModel):
     azimuth_bias: Optional[float] = FieldInfo(alias="azimuthBias", default=None)
     """Sensor azimuth angle bias in degrees."""
 
+    azimuth_measured: Optional[bool] = FieldInfo(alias="azimuthMeasured", default=None)
+    """
+    Optional flag indicating whether the azimuth value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     azimuth_rate: Optional[float] = FieldInfo(alias="azimuthRate", default=None)
     """Rate of change of the line of sight azimuth in degrees per second."""
 
@@ -72,6 +79,13 @@ class RadarObservation(BaseModel):
     declination: Optional[float] = None
     """Line of sight declination angle in degrees and J2000 coordinate frame."""
 
+    declination_measured: Optional[bool] = FieldInfo(alias="declinationMeasured", default=None)
+    """
+    Optional flag indicating whether the declination value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     descriptor: Optional[str] = None
     """Optional source-provided and searchable metadata or descriptor of the data."""
 
@@ -86,6 +100,13 @@ class RadarObservation(BaseModel):
 
     elevation_bias: Optional[float] = FieldInfo(alias="elevationBias", default=None)
     """Sensor elevation bias in degrees."""
+
+    elevation_measured: Optional[bool] = FieldInfo(alias="elevationMeasured", default=None)
+    """
+    Optional flag indicating whether the elevation value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     elevation_rate: Optional[float] = FieldInfo(alias="elevationRate", default=None)
     """Rate of change of the line of sight elevation in degrees per second."""
@@ -150,6 +171,13 @@ class RadarObservation(BaseModel):
     ra: Optional[float] = None
     """Line of sight right ascension in degrees and J2000 coordinate frame."""
 
+    ra_measured: Optional[bool] = FieldInfo(alias="raMeasured", default=None)
+    """
+    Optional flag indicating whether the ra value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range: Optional[float] = None
     """Target range in km."""
 
@@ -165,8 +193,22 @@ class RadarObservation(BaseModel):
     range_bias: Optional[float] = FieldInfo(alias="rangeBias", default=None)
     """Sensor range bias in km."""
 
+    range_measured: Optional[bool] = FieldInfo(alias="rangeMeasured", default=None)
+    """
+    Optional flag indicating whether the range value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range_rate: Optional[float] = FieldInfo(alias="rangeRate", default=None)
     """Rate of change of the line of sight range in km/sec."""
+
+    range_rate_measured: Optional[bool] = FieldInfo(alias="rangeRateMeasured", default=None)
+    """
+    Optional flag indicating whether the rangeRate value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     range_rate_unc: Optional[float] = FieldInfo(alias="rangeRateUnc", default=None)
     """One sigma uncertainty in the range rate measurement, in kilometers/second."""
@@ -240,6 +282,32 @@ class RadarObservation(BaseModel):
 
     track_id: Optional[str] = FieldInfo(alias="trackId", default=None)
     """Optional identifier of the track to which this observation belongs."""
+
+    tracking_state: Optional[str] = FieldInfo(alias="trackingState", default=None)
+    """
+    The beam type (or tracking state) in use at the time of collection of this
+    observation. Values include:
+
+    INIT ACQ WITH INIT VALUES: Initial acquisition based on predefined initial
+    values such as position, velocity, or other specific parameters.
+
+    INIT ACQ: Initial acquisition when no prior information or initial values such
+    as position or velocity are available.
+
+    TRACKING SINGLE BEAM: Continuously tracks and monitors a single target using one
+    specific radar beam.
+
+    TRACKING SEQUENTIAL ROVING: Sequentially tracks different targets or areas by
+    "roving" from one sector to the next in a systematic order.
+
+    SELF ACQ WITH INIT VALUES: Autonomously acquires targets using predefined
+    starting parameters or initial values.
+
+    SELF ACQ: Automatically detects and locks onto targets without the need for
+    predefined initial settings.
+
+    NON-TRACKING: Non-tracking.
+    """
 
     transaction_id: Optional[str] = FieldInfo(alias="transactionId", default=None)
     """
@@ -320,6 +388,13 @@ class RfObservation(BaseModel):
     azimuth: Optional[float] = None
     """azimuth angle in degrees and J2000 coordinate frame."""
 
+    azimuth_measured: Optional[bool] = FieldInfo(alias="azimuthMeasured", default=None)
+    """
+    Optional flag indicating whether the azimuth value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     azimuth_rate: Optional[float] = FieldInfo(alias="azimuthRate", default=None)
     """Rate of change of the azimuth in degrees per second."""
 
@@ -376,6 +451,13 @@ class RfObservation(BaseModel):
 
     elevation: Optional[float] = None
     """elevation in degrees and J2000 coordinate frame."""
+
+    elevation_measured: Optional[bool] = FieldInfo(alias="elevationMeasured", default=None)
+    """
+    Optional flag indicating whether the elevation value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     elevation_rate: Optional[float] = FieldInfo(alias="elevationRate", default=None)
     """Rate of change of the elevation in degrees per second."""
@@ -499,8 +581,22 @@ class RfObservation(BaseModel):
     range: Optional[float] = None
     """Target range in km."""
 
+    range_measured: Optional[bool] = FieldInfo(alias="rangeMeasured", default=None)
+    """
+    Optional flag indicating whether the range value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range_rate: Optional[float] = FieldInfo(alias="rangeRate", default=None)
     """Rate of change of the range in km/sec."""
+
+    range_rate_measured: Optional[bool] = FieldInfo(alias="rangeRateMeasured", default=None)
+    """
+    Optional flag indicating whether the rangeRate value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     range_rate_unc: Optional[float] = FieldInfo(alias="rangeRateUnc", default=None)
     """One sigma uncertainty in the range rate measurement, in kilometers/second."""

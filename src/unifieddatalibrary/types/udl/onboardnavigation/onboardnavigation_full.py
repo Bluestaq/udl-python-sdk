@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ...._compat import PYDANTIC_V2
 from ...._models import BaseModel
+from ...shared.onorbit import Onorbit
 
 __all__ = ["OnboardnavigationFull"]
 
@@ -81,7 +79,7 @@ class OnboardnavigationFull(BaseModel):
     based on the onboard magnetometer, at each epoch.
     """
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -143,11 +141,3 @@ class OnboardnavigationFull(BaseModel):
     The epochs are assumed to correspond to all sensor data in this record. If
     sensors do not share a common epoch then separate records should be generated.
     """
-
-
-from ...shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    OnboardnavigationFull.model_rebuild()
-else:
-    OnboardnavigationFull.update_forward_refs()  # type: ignore

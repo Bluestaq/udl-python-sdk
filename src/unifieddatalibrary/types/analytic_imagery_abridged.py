@@ -123,6 +123,9 @@ class AnalyticImageryAbridged(BaseModel):
     used in the analysis or composition of the image content, when applicable.
     """
 
+    id_sensor: Optional[str] = FieldInfo(alias="idSensor", default=None)
+    """Unique identifier of the reporting sensor."""
+
     image_set_id: Optional[str] = FieldInfo(alias="imageSetId", default=None)
     """User-defined set ID of a sequence of images.
 
@@ -153,6 +156,13 @@ class AnalyticImageryAbridged(BaseModel):
     """
     The originating source network on which this record was created, auto-populated
     by the system.
+    """
+
+    orig_sensor_id: Optional[str] = FieldInfo(alias="origSensorId", default=None)
+    """
+    Optional identifier provided by the source to indicate the sensor for this
+    collection. This may be an internal identifier and not necessarily a valid
+    sensor ID.
     """
 
     sat_id: Optional[List[str]] = FieldInfo(alias="satId", default=None)

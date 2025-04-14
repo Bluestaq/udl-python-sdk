@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .entity_full import EntityFull
 
 __all__ = ["NavigationGetResponse"]
 
@@ -56,7 +54,7 @@ class NavigationGetResponse(BaseModel):
     description: Optional[str] = None
     """Description of the Navigation entity."""
 
-    entity: Optional["EntityFull"] = None
+    entity: Optional[EntityFull] = None
     """
     An entity is a generic representation of any object within a space/SSA system
     such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
@@ -88,11 +86,3 @@ class NavigationGetResponse(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-from .entity_full import EntityFull
-
-if PYDANTIC_V2:
-    NavigationGetResponse.model_rebuild()
-else:
-    NavigationGetResponse.update_forward_refs()  # type: ignore
