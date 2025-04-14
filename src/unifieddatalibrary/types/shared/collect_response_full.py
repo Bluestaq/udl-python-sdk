@@ -1,14 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
+from .onorbit import Onorbit
 from ..._models import BaseModel
 
 __all__ = ["CollectResponseFull"]
@@ -90,7 +88,7 @@ class CollectResponseFull(BaseModel):
     notes: Optional[str] = None
     """Notes or comments associated with this response."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -196,11 +194,3 @@ class CollectResponseFull(BaseModel):
 
     task_id: Optional[str] = FieldInfo(alias="taskId", default=None)
     """Optional task ID associated with the request/response."""
-
-
-from .onorbit import Onorbit
-
-if PYDANTIC_V2:
-    CollectResponseFull.model_rebuild()
-else:
-    CollectResponseFull.update_forward_refs()  # type: ignore

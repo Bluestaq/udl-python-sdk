@@ -85,6 +85,7 @@ class SarobservationResource(SyncAPIResource):
         asrid: int | NotGiven = NOT_GIVEN,
         atext: str | NotGiven = NOT_GIVEN,
         atype: str | NotGiven = NOT_GIVEN,
+        azimuth_angle: float | NotGiven = NOT_GIVEN,
         center_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         collection_id: str | NotGiven = NOT_GIVEN,
         continuous_spot_angle: float | NotGiven = NOT_GIVEN,
@@ -96,10 +97,12 @@ class SarobservationResource(SyncAPIResource):
         external_id: str | NotGiven = NOT_GIVEN,
         far_range: float | NotGiven = NOT_GIVEN,
         graze_angle: float | NotGiven = NOT_GIVEN,
+        ground_resolution_projection: float | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         incidence_angle: float | NotGiven = NOT_GIVEN,
         looks_azimuth: int | NotGiven = NOT_GIVEN,
         looks_range: int | NotGiven = NOT_GIVEN,
+        multilook_number: float | NotGiven = NOT_GIVEN,
         near_range: float | NotGiven = NOT_GIVEN,
         ob_direction: str | NotGiven = NOT_GIVEN,
         operating_band: str | NotGiven = NOT_GIVEN,
@@ -198,6 +201,9 @@ class SarobservationResource(SyncAPIResource):
 
           atype: Type of region as projected on the ground (POLYGON, POINT, LINE).
 
+          azimuth_angle: The azimuth angle, in degrees, of the SAR satellite nadir subpoint measured
+              clockwise from true north at the subpoint.
+
           center_time: The datetime at the center point of the collection in ISO 8601 UTC format with
               microsecond precision.
 
@@ -227,6 +233,9 @@ class SarobservationResource(SyncAPIResource):
 
           graze_angle: The graze angle (also referred to as look angle) for the collection in degrees.
 
+          ground_resolution_projection: Distance between independent measurements, representing the physical dimension
+              that represents a pixel of the image.
+
           id_sensor: Unique identifier of the reporting sensor.
 
           incidence_angle: The center incidence angle in degrees.
@@ -234,6 +243,10 @@ class SarobservationResource(SyncAPIResource):
           looks_azimuth: The number of looks in the azimuth direction.
 
           looks_range: The number of looks in the range direction.
+
+          multilook_number: Averages the input synthetic aperture radar (SAR) data by looks in range and
+              azimuth to approximate square pixels, mitigates speckle, and reduces SAR tool
+              processing time.
 
           near_range: Specifies the closest range, in kilometers, from the flight path to target
               during the collection.
@@ -368,6 +381,7 @@ class SarobservationResource(SyncAPIResource):
                     "asrid": asrid,
                     "atext": atext,
                     "atype": atype,
+                    "azimuth_angle": azimuth_angle,
                     "center_time": center_time,
                     "collection_id": collection_id,
                     "continuous_spot_angle": continuous_spot_angle,
@@ -379,10 +393,12 @@ class SarobservationResource(SyncAPIResource):
                     "external_id": external_id,
                     "far_range": far_range,
                     "graze_angle": graze_angle,
+                    "ground_resolution_projection": ground_resolution_projection,
                     "id_sensor": id_sensor,
                     "incidence_angle": incidence_angle,
                     "looks_azimuth": looks_azimuth,
                     "looks_range": looks_range,
+                    "multilook_number": multilook_number,
                     "near_range": near_range,
                     "ob_direction": ob_direction,
                     "operating_band": operating_band,
@@ -744,6 +760,7 @@ class AsyncSarobservationResource(AsyncAPIResource):
         asrid: int | NotGiven = NOT_GIVEN,
         atext: str | NotGiven = NOT_GIVEN,
         atype: str | NotGiven = NOT_GIVEN,
+        azimuth_angle: float | NotGiven = NOT_GIVEN,
         center_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         collection_id: str | NotGiven = NOT_GIVEN,
         continuous_spot_angle: float | NotGiven = NOT_GIVEN,
@@ -755,10 +772,12 @@ class AsyncSarobservationResource(AsyncAPIResource):
         external_id: str | NotGiven = NOT_GIVEN,
         far_range: float | NotGiven = NOT_GIVEN,
         graze_angle: float | NotGiven = NOT_GIVEN,
+        ground_resolution_projection: float | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         incidence_angle: float | NotGiven = NOT_GIVEN,
         looks_azimuth: int | NotGiven = NOT_GIVEN,
         looks_range: int | NotGiven = NOT_GIVEN,
+        multilook_number: float | NotGiven = NOT_GIVEN,
         near_range: float | NotGiven = NOT_GIVEN,
         ob_direction: str | NotGiven = NOT_GIVEN,
         operating_band: str | NotGiven = NOT_GIVEN,
@@ -857,6 +876,9 @@ class AsyncSarobservationResource(AsyncAPIResource):
 
           atype: Type of region as projected on the ground (POLYGON, POINT, LINE).
 
+          azimuth_angle: The azimuth angle, in degrees, of the SAR satellite nadir subpoint measured
+              clockwise from true north at the subpoint.
+
           center_time: The datetime at the center point of the collection in ISO 8601 UTC format with
               microsecond precision.
 
@@ -886,6 +908,9 @@ class AsyncSarobservationResource(AsyncAPIResource):
 
           graze_angle: The graze angle (also referred to as look angle) for the collection in degrees.
 
+          ground_resolution_projection: Distance between independent measurements, representing the physical dimension
+              that represents a pixel of the image.
+
           id_sensor: Unique identifier of the reporting sensor.
 
           incidence_angle: The center incidence angle in degrees.
@@ -893,6 +918,10 @@ class AsyncSarobservationResource(AsyncAPIResource):
           looks_azimuth: The number of looks in the azimuth direction.
 
           looks_range: The number of looks in the range direction.
+
+          multilook_number: Averages the input synthetic aperture radar (SAR) data by looks in range and
+              azimuth to approximate square pixels, mitigates speckle, and reduces SAR tool
+              processing time.
 
           near_range: Specifies the closest range, in kilometers, from the flight path to target
               during the collection.
@@ -1027,6 +1056,7 @@ class AsyncSarobservationResource(AsyncAPIResource):
                     "asrid": asrid,
                     "atext": atext,
                     "atype": atype,
+                    "azimuth_angle": azimuth_angle,
                     "center_time": center_time,
                     "collection_id": collection_id,
                     "continuous_spot_angle": continuous_spot_angle,
@@ -1038,10 +1068,12 @@ class AsyncSarobservationResource(AsyncAPIResource):
                     "external_id": external_id,
                     "far_range": far_range,
                     "graze_angle": graze_angle,
+                    "ground_resolution_projection": ground_resolution_projection,
                     "id_sensor": id_sensor,
                     "incidence_angle": incidence_angle,
                     "looks_azimuth": looks_azimuth,
                     "looks_range": looks_range,
+                    "multilook_number": multilook_number,
                     "near_range": near_range,
                     "ob_direction": ob_direction,
                     "operating_band": operating_band,

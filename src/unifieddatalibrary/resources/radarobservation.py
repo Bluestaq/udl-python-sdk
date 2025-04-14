@@ -67,15 +67,18 @@ class RadarobservationResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         azimuth: float | NotGiven = NOT_GIVEN,
         azimuth_bias: float | NotGiven = NOT_GIVEN,
+        azimuth_measured: bool | NotGiven = NOT_GIVEN,
         azimuth_rate: float | NotGiven = NOT_GIVEN,
         azimuth_unc: float | NotGiven = NOT_GIVEN,
         beam: float | NotGiven = NOT_GIVEN,
         declination: float | NotGiven = NOT_GIVEN,
+        declination_measured: bool | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         doppler: float | NotGiven = NOT_GIVEN,
         doppler_unc: float | NotGiven = NOT_GIVEN,
         elevation: float | NotGiven = NOT_GIVEN,
         elevation_bias: float | NotGiven = NOT_GIVEN,
+        elevation_measured: bool | NotGiven = NOT_GIVEN,
         elevation_rate: float | NotGiven = NOT_GIVEN,
         elevation_unc: float | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -86,11 +89,14 @@ class RadarobservationResource(SyncAPIResource):
         orthogonal_rcs: float | NotGiven = NOT_GIVEN,
         orthogonal_rcs_unc: float | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
+        ra_measured: bool | NotGiven = NOT_GIVEN,
         range: float | NotGiven = NOT_GIVEN,
         range_accel: float | NotGiven = NOT_GIVEN,
         range_accel_unc: float | NotGiven = NOT_GIVEN,
         range_bias: float | NotGiven = NOT_GIVEN,
+        range_measured: bool | NotGiven = NOT_GIVEN,
         range_rate: float | NotGiven = NOT_GIVEN,
+        range_rate_measured: bool | NotGiven = NOT_GIVEN,
         range_rate_unc: float | NotGiven = NOT_GIVEN,
         range_unc: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
@@ -106,6 +112,7 @@ class RadarobservationResource(SyncAPIResource):
         task_id: str | NotGiven = NOT_GIVEN,
         timing_bias: float | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
+        tracking_state: str | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
         x: float | NotGiven = NOT_GIVEN,
@@ -157,6 +164,10 @@ class RadarobservationResource(SyncAPIResource):
 
           azimuth_bias: Sensor azimuth angle bias in degrees.
 
+          azimuth_measured: Optional flag indicating whether the azimuth value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
+
           azimuth_rate: Rate of change of the line of sight azimuth in degrees per second.
 
           azimuth_unc: One sigma uncertainty in the line of sight azimuth angle measurement, in
@@ -165,6 +176,10 @@ class RadarobservationResource(SyncAPIResource):
           beam: ID of the beam that produced this observation.
 
           declination: Line of sight declination angle in degrees and J2000 coordinate frame.
+
+          declination_measured: Optional flag indicating whether the declination value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           descriptor: Optional source-provided and searchable metadata or descriptor of the data.
 
@@ -175,6 +190,10 @@ class RadarobservationResource(SyncAPIResource):
           elevation: Line of sight elevation in degrees and topocentric frame.
 
           elevation_bias: Sensor elevation bias in degrees.
+
+          elevation_measured: Optional flag indicating whether the elevation value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           elevation_rate: Rate of change of the line of sight elevation in degrees per second.
 
@@ -207,6 +226,10 @@ class RadarobservationResource(SyncAPIResource):
 
           ra: Line of sight right ascension in degrees and J2000 coordinate frame.
 
+          ra_measured: Optional flag indicating whether the ra value is measured (true) or computed
+              (false). If null, consumers may consult the data provider for information
+              regarding whether the corresponding value is computed or measured.
+
           range: Target range in km.
 
           range_accel: Range accelaration in km/s2.
@@ -216,7 +239,15 @@ class RadarobservationResource(SyncAPIResource):
 
           range_bias: Sensor range bias in km.
 
+          range_measured: Optional flag indicating whether the range value is measured (true) or computed
+              (false). If null, consumers may consult the data provider for information
+              regarding whether the corresponding value is computed or measured.
+
           range_rate: Rate of change of the line of sight range in km/sec.
+
+          range_rate_measured: Optional flag indicating whether the rangeRate value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           range_rate_unc: One sigma uncertainty in the range rate measurement, in kilometers/second.
 
@@ -260,6 +291,29 @@ class RadarobservationResource(SyncAPIResource):
 
           track_id: Optional identifier of the track to which this observation belongs.
 
+          tracking_state: The beam type (or tracking state) in use at the time of collection of this
+              observation. Values include:
+
+              INIT ACQ WITH INIT VALUES: Initial acquisition based on predefined initial
+              values such as position, velocity, or other specific parameters.
+
+              INIT ACQ: Initial acquisition when no prior information or initial values such
+              as position or velocity are available.
+
+              TRACKING SINGLE BEAM: Continuously tracks and monitors a single target using one
+              specific radar beam.
+
+              TRACKING SEQUENTIAL ROVING: Sequentially tracks different targets or areas by
+              "roving" from one sector to the next in a systematic order.
+
+              SELF ACQ WITH INIT VALUES: Autonomously acquires targets using predefined
+              starting parameters or initial values.
+
+              SELF ACQ: Automatically detects and locks onto targets without the need for
+              predefined initial settings.
+
+              NON-TRACKING: Non-tracking.
+
           transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
               produce this data.
 
@@ -301,15 +355,18 @@ class RadarobservationResource(SyncAPIResource):
                     "id": id,
                     "azimuth": azimuth,
                     "azimuth_bias": azimuth_bias,
+                    "azimuth_measured": azimuth_measured,
                     "azimuth_rate": azimuth_rate,
                     "azimuth_unc": azimuth_unc,
                     "beam": beam,
                     "declination": declination,
+                    "declination_measured": declination_measured,
                     "descriptor": descriptor,
                     "doppler": doppler,
                     "doppler_unc": doppler_unc,
                     "elevation": elevation,
                     "elevation_bias": elevation_bias,
+                    "elevation_measured": elevation_measured,
                     "elevation_rate": elevation_rate,
                     "elevation_unc": elevation_unc,
                     "id_sensor": id_sensor,
@@ -320,11 +377,14 @@ class RadarobservationResource(SyncAPIResource):
                     "orthogonal_rcs": orthogonal_rcs,
                     "orthogonal_rcs_unc": orthogonal_rcs_unc,
                     "ra": ra,
+                    "ra_measured": ra_measured,
                     "range": range,
                     "range_accel": range_accel,
                     "range_accel_unc": range_accel_unc,
                     "range_bias": range_bias,
+                    "range_measured": range_measured,
                     "range_rate": range_rate,
+                    "range_rate_measured": range_rate_measured,
                     "range_rate_unc": range_rate_unc,
                     "range_unc": range_unc,
                     "raw_file_uri": raw_file_uri,
@@ -340,6 +400,7 @@ class RadarobservationResource(SyncAPIResource):
                     "task_id": task_id,
                     "timing_bias": timing_bias,
                     "track_id": track_id,
+                    "tracking_state": tracking_state,
                     "transaction_id": transaction_id,
                     "uct": uct,
                     "x": x,
@@ -659,15 +720,18 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         azimuth: float | NotGiven = NOT_GIVEN,
         azimuth_bias: float | NotGiven = NOT_GIVEN,
+        azimuth_measured: bool | NotGiven = NOT_GIVEN,
         azimuth_rate: float | NotGiven = NOT_GIVEN,
         azimuth_unc: float | NotGiven = NOT_GIVEN,
         beam: float | NotGiven = NOT_GIVEN,
         declination: float | NotGiven = NOT_GIVEN,
+        declination_measured: bool | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         doppler: float | NotGiven = NOT_GIVEN,
         doppler_unc: float | NotGiven = NOT_GIVEN,
         elevation: float | NotGiven = NOT_GIVEN,
         elevation_bias: float | NotGiven = NOT_GIVEN,
+        elevation_measured: bool | NotGiven = NOT_GIVEN,
         elevation_rate: float | NotGiven = NOT_GIVEN,
         elevation_unc: float | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -678,11 +742,14 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         orthogonal_rcs: float | NotGiven = NOT_GIVEN,
         orthogonal_rcs_unc: float | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
+        ra_measured: bool | NotGiven = NOT_GIVEN,
         range: float | NotGiven = NOT_GIVEN,
         range_accel: float | NotGiven = NOT_GIVEN,
         range_accel_unc: float | NotGiven = NOT_GIVEN,
         range_bias: float | NotGiven = NOT_GIVEN,
+        range_measured: bool | NotGiven = NOT_GIVEN,
         range_rate: float | NotGiven = NOT_GIVEN,
+        range_rate_measured: bool | NotGiven = NOT_GIVEN,
         range_rate_unc: float | NotGiven = NOT_GIVEN,
         range_unc: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
@@ -698,6 +765,7 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         task_id: str | NotGiven = NOT_GIVEN,
         timing_bias: float | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
+        tracking_state: str | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
         x: float | NotGiven = NOT_GIVEN,
@@ -749,6 +817,10 @@ class AsyncRadarobservationResource(AsyncAPIResource):
 
           azimuth_bias: Sensor azimuth angle bias in degrees.
 
+          azimuth_measured: Optional flag indicating whether the azimuth value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
+
           azimuth_rate: Rate of change of the line of sight azimuth in degrees per second.
 
           azimuth_unc: One sigma uncertainty in the line of sight azimuth angle measurement, in
@@ -757,6 +829,10 @@ class AsyncRadarobservationResource(AsyncAPIResource):
           beam: ID of the beam that produced this observation.
 
           declination: Line of sight declination angle in degrees and J2000 coordinate frame.
+
+          declination_measured: Optional flag indicating whether the declination value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           descriptor: Optional source-provided and searchable metadata or descriptor of the data.
 
@@ -767,6 +843,10 @@ class AsyncRadarobservationResource(AsyncAPIResource):
           elevation: Line of sight elevation in degrees and topocentric frame.
 
           elevation_bias: Sensor elevation bias in degrees.
+
+          elevation_measured: Optional flag indicating whether the elevation value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           elevation_rate: Rate of change of the line of sight elevation in degrees per second.
 
@@ -799,6 +879,10 @@ class AsyncRadarobservationResource(AsyncAPIResource):
 
           ra: Line of sight right ascension in degrees and J2000 coordinate frame.
 
+          ra_measured: Optional flag indicating whether the ra value is measured (true) or computed
+              (false). If null, consumers may consult the data provider for information
+              regarding whether the corresponding value is computed or measured.
+
           range: Target range in km.
 
           range_accel: Range accelaration in km/s2.
@@ -808,7 +892,15 @@ class AsyncRadarobservationResource(AsyncAPIResource):
 
           range_bias: Sensor range bias in km.
 
+          range_measured: Optional flag indicating whether the range value is measured (true) or computed
+              (false). If null, consumers may consult the data provider for information
+              regarding whether the corresponding value is computed or measured.
+
           range_rate: Rate of change of the line of sight range in km/sec.
+
+          range_rate_measured: Optional flag indicating whether the rangeRate value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           range_rate_unc: One sigma uncertainty in the range rate measurement, in kilometers/second.
 
@@ -852,6 +944,29 @@ class AsyncRadarobservationResource(AsyncAPIResource):
 
           track_id: Optional identifier of the track to which this observation belongs.
 
+          tracking_state: The beam type (or tracking state) in use at the time of collection of this
+              observation. Values include:
+
+              INIT ACQ WITH INIT VALUES: Initial acquisition based on predefined initial
+              values such as position, velocity, or other specific parameters.
+
+              INIT ACQ: Initial acquisition when no prior information or initial values such
+              as position or velocity are available.
+
+              TRACKING SINGLE BEAM: Continuously tracks and monitors a single target using one
+              specific radar beam.
+
+              TRACKING SEQUENTIAL ROVING: Sequentially tracks different targets or areas by
+              "roving" from one sector to the next in a systematic order.
+
+              SELF ACQ WITH INIT VALUES: Autonomously acquires targets using predefined
+              starting parameters or initial values.
+
+              SELF ACQ: Automatically detects and locks onto targets without the need for
+              predefined initial settings.
+
+              NON-TRACKING: Non-tracking.
+
           transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
               produce this data.
 
@@ -893,15 +1008,18 @@ class AsyncRadarobservationResource(AsyncAPIResource):
                     "id": id,
                     "azimuth": azimuth,
                     "azimuth_bias": azimuth_bias,
+                    "azimuth_measured": azimuth_measured,
                     "azimuth_rate": azimuth_rate,
                     "azimuth_unc": azimuth_unc,
                     "beam": beam,
                     "declination": declination,
+                    "declination_measured": declination_measured,
                     "descriptor": descriptor,
                     "doppler": doppler,
                     "doppler_unc": doppler_unc,
                     "elevation": elevation,
                     "elevation_bias": elevation_bias,
+                    "elevation_measured": elevation_measured,
                     "elevation_rate": elevation_rate,
                     "elevation_unc": elevation_unc,
                     "id_sensor": id_sensor,
@@ -912,11 +1030,14 @@ class AsyncRadarobservationResource(AsyncAPIResource):
                     "orthogonal_rcs": orthogonal_rcs,
                     "orthogonal_rcs_unc": orthogonal_rcs_unc,
                     "ra": ra,
+                    "ra_measured": ra_measured,
                     "range": range,
                     "range_accel": range_accel,
                     "range_accel_unc": range_accel_unc,
                     "range_bias": range_bias,
+                    "range_measured": range_measured,
                     "range_rate": range_rate,
+                    "range_rate_measured": range_rate_measured,
                     "range_rate_unc": range_rate_unc,
                     "range_unc": range_unc,
                     "raw_file_uri": raw_file_uri,
@@ -932,6 +1053,7 @@ class AsyncRadarobservationResource(AsyncAPIResource):
                     "task_id": task_id,
                     "timing_bias": timing_bias,
                     "track_id": track_id,
+                    "tracking_state": tracking_state,
                     "transaction_id": transaction_id,
                     "uct": uct,
                     "x": x,

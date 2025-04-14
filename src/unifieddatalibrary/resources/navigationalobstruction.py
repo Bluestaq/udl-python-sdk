@@ -247,8 +247,8 @@ class NavigationalobstructionResource(SyncAPIResource):
 
           height_agl: The height Above Ground Level (AGL) of the point obstacle in feet.
 
-          height_agl_acc: The accuracy of the height Above Ground Level (AGL) AGL value for this point
-              obstacle in feet.
+          height_agl_acc: The accuracy of the height Above Ground Level (AGL) value for this point
+              obstacle, in feet.
 
           height_msl: The height Above Mean Sea Level (AMSL) of the point obstacle in feet.
 
@@ -650,8 +650,8 @@ class NavigationalobstructionResource(SyncAPIResource):
 
           height_agl: The height Above Ground Level (AGL) of the point obstacle in feet.
 
-          height_agl_acc: The accuracy of the height Above Ground Level (AGL) AGL value for this point
-              obstacle in feet.
+          height_agl_acc: The accuracy of the height Above Ground Level (AGL) value for this point
+              obstacle, in feet.
 
           height_msl: The height Above Mean Sea Level (AMSL) of the point obstacle in feet.
 
@@ -866,7 +866,7 @@ class NavigationalobstructionResource(SyncAPIResource):
     def list(
         self,
         *,
-        cycle_date: str | NotGiven = NOT_GIVEN,
+        cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -917,7 +917,7 @@ class NavigationalobstructionResource(SyncAPIResource):
     def count(
         self,
         *,
-        cycle_date: str | NotGiven = NOT_GIVEN,
+        cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -970,7 +970,7 @@ class NavigationalobstructionResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[navigationalobstruction_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[navigationalobstruction_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1065,7 +1065,7 @@ class NavigationalobstructionResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        cycle_date: str | NotGiven = NOT_GIVEN,
+        cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1334,8 +1334,8 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
 
           height_agl: The height Above Ground Level (AGL) of the point obstacle in feet.
 
-          height_agl_acc: The accuracy of the height Above Ground Level (AGL) AGL value for this point
-              obstacle in feet.
+          height_agl_acc: The accuracy of the height Above Ground Level (AGL) value for this point
+              obstacle, in feet.
 
           height_msl: The height Above Mean Sea Level (AMSL) of the point obstacle in feet.
 
@@ -1737,8 +1737,8 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
 
           height_agl: The height Above Ground Level (AGL) of the point obstacle in feet.
 
-          height_agl_acc: The accuracy of the height Above Ground Level (AGL) AGL value for this point
-              obstacle in feet.
+          height_agl_acc: The accuracy of the height Above Ground Level (AGL) value for this point
+              obstacle, in feet.
 
           height_msl: The height Above Mean Sea Level (AMSL) of the point obstacle in feet.
 
@@ -1953,7 +1953,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        cycle_date: str | NotGiven = NOT_GIVEN,
+        cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2004,7 +2004,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        cycle_date: str | NotGiven = NOT_GIVEN,
+        cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2057,7 +2057,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[navigationalobstruction_create_bulk_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[navigationalobstruction_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2152,7 +2152,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        cycle_date: str | NotGiven = NOT_GIVEN,
+        cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

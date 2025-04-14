@@ -95,7 +95,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take a single airspacecontrolorder record as a POST body
+        Service operation to take a single AirspaceControlOrder record as a POST body
         and ingest into the database. A specific role is required to perform this
         service operation. Please contact the UDL team for assistance.
 
@@ -337,7 +337,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
-        airspacecontrolorder records as a POST body and ingest into the database. This
+        AirspaceControlOrder records as a POST body and ingest into the database. This
         operation is not intended to be used for automated feeds into UDL. Data
         providers should contact the UDL team for specific role assignments and for
         instructions on setting up a permanent feed through an alternate mechanism.
@@ -495,7 +495,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take a single airspacecontrolorder record as a POST body
+        Service operation to take a single AirspaceControlOrder record as a POST body
         and ingest into the database. A specific role is required to perform this
         service operation. Please contact the UDL team for assistance.
 
@@ -737,7 +737,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
-        airspacecontrolorder records as a POST body and ingest into the database. This
+        AirspaceControlOrder records as a POST body and ingest into the database. This
         operation is not intended to be used for automated feeds into UDL. Data
         providers should contact the UDL team for specific role assignments and for
         instructions on setting up a permanent feed through an alternate mechanism.

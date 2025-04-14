@@ -9,14 +9,6 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import flightplan_tuple_params, flightplan_create_params, flightplan_create_bulk_v2_params
-from .history import (
-    HistoryResource,
-    AsyncHistoryResource,
-    HistoryResourceWithRawResponse,
-    AsyncHistoryResourceWithRawResponse,
-    HistoryResourceWithStreamingResponse,
-    AsyncHistoryResourceWithStreamingResponse,
-)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -38,10 +30,6 @@ __all__ = ["FlightplanResource", "AsyncFlightplanResource"]
 
 
 class FlightplanResource(SyncAPIResource):
-    @cached_property
-    def history(self) -> HistoryResource:
-        return HistoryResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> FlightplanResourceWithRawResponse:
         """
@@ -140,6 +128,7 @@ class FlightplanResource(SyncAPIResource):
         route_string: str | NotGiven = NOT_GIVEN,
         sid: str | NotGiven = NOT_GIVEN,
         star: str | NotGiven = NOT_GIVEN,
+        status: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         takeoff_fuel: float | NotGiven = NOT_GIVEN,
         taxi_fuel: float | NotGiven = NOT_GIVEN,
@@ -379,6 +368,8 @@ class FlightplanResource(SyncAPIResource):
 
           star: Name of the planned Standard Terminal Arrival (STAR) procedure.
 
+          status: Status of this flight plan (e.g., ACTIVE, APPROVED, PLANNED, etc.).
+
           tail_number: The tail number of the aircraft associated with this flight plan.
 
           takeoff_fuel: Fuel at takeoff, which is calculated as the ramp fuel minus the taxi fuel in
@@ -512,6 +503,7 @@ class FlightplanResource(SyncAPIResource):
                     "route_string": route_string,
                     "sid": sid,
                     "star": star,
+                    "status": status,
                     "tail_number": tail_number,
                     "takeoff_fuel": takeoff_fuel,
                     "taxi_fuel": taxi_fuel,
@@ -696,10 +688,6 @@ class FlightplanResource(SyncAPIResource):
 
 class AsyncFlightplanResource(AsyncAPIResource):
     @cached_property
-    def history(self) -> AsyncHistoryResource:
-        return AsyncHistoryResource(self._client)
-
-    @cached_property
     def with_raw_response(self) -> AsyncFlightplanResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -797,6 +785,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
         route_string: str | NotGiven = NOT_GIVEN,
         sid: str | NotGiven = NOT_GIVEN,
         star: str | NotGiven = NOT_GIVEN,
+        status: str | NotGiven = NOT_GIVEN,
         tail_number: str | NotGiven = NOT_GIVEN,
         takeoff_fuel: float | NotGiven = NOT_GIVEN,
         taxi_fuel: float | NotGiven = NOT_GIVEN,
@@ -1036,6 +1025,8 @@ class AsyncFlightplanResource(AsyncAPIResource):
 
           star: Name of the planned Standard Terminal Arrival (STAR) procedure.
 
+          status: Status of this flight plan (e.g., ACTIVE, APPROVED, PLANNED, etc.).
+
           tail_number: The tail number of the aircraft associated with this flight plan.
 
           takeoff_fuel: Fuel at takeoff, which is calculated as the ramp fuel minus the taxi fuel in
@@ -1169,6 +1160,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
                     "route_string": route_string,
                     "sid": sid,
                     "star": star,
+                    "status": status,
                     "tail_number": tail_number,
                     "takeoff_fuel": takeoff_fuel,
                     "taxi_fuel": taxi_fuel,
@@ -1374,10 +1366,6 @@ class FlightplanResourceWithRawResponse:
             flightplan.tuple,
         )
 
-    @cached_property
-    def history(self) -> HistoryResourceWithRawResponse:
-        return HistoryResourceWithRawResponse(self._flightplan.history)
-
 
 class AsyncFlightplanResourceWithRawResponse:
     def __init__(self, flightplan: AsyncFlightplanResource) -> None:
@@ -1401,10 +1389,6 @@ class AsyncFlightplanResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             flightplan.tuple,
         )
-
-    @cached_property
-    def history(self) -> AsyncHistoryResourceWithRawResponse:
-        return AsyncHistoryResourceWithRawResponse(self._flightplan.history)
 
 
 class FlightplanResourceWithStreamingResponse:
@@ -1430,10 +1414,6 @@ class FlightplanResourceWithStreamingResponse:
             flightplan.tuple,
         )
 
-    @cached_property
-    def history(self) -> HistoryResourceWithStreamingResponse:
-        return HistoryResourceWithStreamingResponse(self._flightplan.history)
-
 
 class AsyncFlightplanResourceWithStreamingResponse:
     def __init__(self, flightplan: AsyncFlightplanResource) -> None:
@@ -1457,7 +1437,3 @@ class AsyncFlightplanResourceWithStreamingResponse:
         self.tuple = async_to_streamed_response_wrapper(
             flightplan.tuple,
         )
-
-    @cached_property
-    def history(self) -> AsyncHistoryResourceWithStreamingResponse:
-        return AsyncHistoryResourceWithStreamingResponse(self._flightplan.history)

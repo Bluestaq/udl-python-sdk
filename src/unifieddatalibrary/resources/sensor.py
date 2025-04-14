@@ -22,7 +22,6 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.entity_ingest_param import EntityIngestParam
 from ..types.sensor_get_response import SensorGetResponse
 from ..types.sensor_list_response import SensorListResponse
 from ..types.sensor_tuple_response import SensorTupleResponse
@@ -61,7 +60,7 @@ class SensorResource(SyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        entity: sensor_create_params.Entity | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -141,13 +140,7 @@ class SensorResource(SyncAPIResource):
               scheme, these numbers sometimes collide across sensors (especially commercial
               sensors). It is therefore not a unique identifier.
 
-          sensor_observation_type: Type of observations produced by this sensor. See the /udl/sensorobservationtype
-              service for a complete list of all available sensor types.
-
           sensor_stats: Collection of SensorStats which contain statistics of a sensor.
-
-          sensor_type: Sensor type..see the /udl/sensortype service for a complete list of all
-              available sensor types.
 
           short_name: Optional short name for the sensor.
 
@@ -204,7 +197,7 @@ class SensorResource(SyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        entity: sensor_update_params.Entity | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -284,13 +277,7 @@ class SensorResource(SyncAPIResource):
               scheme, these numbers sometimes collide across sensors (especially commercial
               sensors). It is therefore not a unique identifier.
 
-          sensor_observation_type: Type of observations produced by this sensor. See the /udl/sensorobservationtype
-              service for a complete list of all available sensor types.
-
           sensor_stats: Collection of SensorStats which contain statistics of a sensor.
-
-          sensor_type: Sensor type..see the /udl/sensortype service for a complete list of all
-              available sensor types.
 
           short_name: Optional short name for the sensor.
 
@@ -559,7 +546,7 @@ class AsyncSensorResource(AsyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        entity: sensor_create_params.Entity | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -639,13 +626,7 @@ class AsyncSensorResource(AsyncAPIResource):
               scheme, these numbers sometimes collide across sensors (especially commercial
               sensors). It is therefore not a unique identifier.
 
-          sensor_observation_type: Type of observations produced by this sensor. See the /udl/sensorobservationtype
-              service for a complete list of all available sensor types.
-
           sensor_stats: Collection of SensorStats which contain statistics of a sensor.
-
-          sensor_type: Sensor type..see the /udl/sensortype service for a complete list of all
-              available sensor types.
 
           short_name: Optional short name for the sensor.
 
@@ -702,7 +683,7 @@ class AsyncSensorResource(AsyncAPIResource):
         af_id: str | NotGiven = NOT_GIVEN,
         asr_type: str | NotGiven = NOT_GIVEN,
         data_control: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        entity: sensor_update_params.Entity | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -782,13 +763,7 @@ class AsyncSensorResource(AsyncAPIResource):
               scheme, these numbers sometimes collide across sensors (especially commercial
               sensors). It is therefore not a unique identifier.
 
-          sensor_observation_type: Type of observations produced by this sensor. See the /udl/sensorobservationtype
-              service for a complete list of all available sensor types.
-
           sensor_stats: Collection of SensorStats which contain statistics of a sensor.
-
-          sensor_type: Sensor type..see the /udl/sensortype service for a complete list of all
-              available sensor types.
 
           short_name: Optional short name for the sensor.
 

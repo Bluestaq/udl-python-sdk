@@ -74,7 +74,6 @@ class ExecutionInfo(BaseModel):
     """
 
     escort_vehicle: Optional[ExecutionInfoEscortVehicle] = FieldInfo(alias="escortVehicle", default=None)
-    """Information regarding the recovery vehicle."""
 
     ingress: Optional[float] = None
     """The heading, in degrees clockwise from North, of entering the recovery zone."""
@@ -92,7 +91,6 @@ class ExecutionInfo(BaseModel):
     """Description of the objective strategy plan."""
 
     recovery_vehicle: Optional[ExecutionInfoRecoveryVehicle] = FieldInfo(alias="recoveryVehicle", default=None)
-    """Information regarding the recovery vehicle."""
 
 
 class ObjectiveAreaInfoEnemyData(BaseModel):
@@ -247,7 +245,6 @@ class PersonnelRecoveryFullL(BaseModel):
     """
 
     execution_info: Optional[ExecutionInfo] = FieldInfo(alias="executionInfo", default=None)
-    """Information pertaining to the details of executing the recovery."""
 
     identity: Optional[str] = None
     """
@@ -296,7 +293,6 @@ class PersonnelRecoveryFullL(BaseModel):
     """The count of persons requiring recovery."""
 
     objective_area_info: Optional[ObjectiveAreaInfo] = FieldInfo(alias="objectiveAreaInfo", default=None)
-    """Objective Area Information."""
 
     origin: Optional[str] = None
     """

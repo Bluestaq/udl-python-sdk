@@ -121,7 +121,7 @@ class OperatingunitResource(SyncAPIResource):
         """
         Service operation to take a single Operatingunit as a POST body and ingest into
         the database. Operatingunit defines a unit or organization which operates or
-        controls an space-related Entity. A specific role is required to perform this
+        controls a space-related Entity. A specific role is required to perform this
         service operation. Please contact the UDL team for assistance.
 
         Args:
@@ -184,14 +184,30 @@ class OperatingunitResource(SyncAPIResource):
               in the referenceDoc field. If referenceDoc not provided, users may consult the
               data provider.
 
-          coord: "Indicates any of the magnitudes that serve to define the position of a point by
-              reference to a fixed figure, system of lines, etc. Pos. 1-2. Latitude Degrees
-              [00-90] Pos. 3-4. Latitude Minutes [00-59] Pos. 5-6. Latitude Seconds [00-59]
+          coord: Indicates any of the magnitudes that serve to define the position of a point by
+              reference to a fixed figure, system of lines, etc.
+
+              Pos. 1-2. Latitude Degrees [00-90]
+
+              Pos. 3-4. Latitude Minutes [00-59]
+
+              Pos. 5-6. Latitude Seconds [00-59]
+
               Pos. 7-9. Latitude Thousandths Of Seconds [000-999]
-              Pos. 10. Latitude Hemisphere [NS] Pos. 11-13. Longitude Degrees [00-180] Pos.
-              14-15. Longitude Minutes [00-59] Pos. 16-17. Longitude Seconds [00-59] Pos.
-              18-20. Longitude Thousandths Of Seconds [000-999] Pos. 21. Longitude Hemisphere
-              [EW] Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]]".
+
+              Pos. 10. Latitude Hemisphere [NS]
+
+              Pos. 11-13. Longitude Degrees [00-180]
+
+              Pos. 14-15. Longitude Minutes [00-59]
+
+              Pos. 16-17. Longitude Seconds [00-59]
+
+              Pos. 18-20. Longitude Thousandths Of Seconds [000-999]
+
+              Pos. 21. Longitude Hemisphere [EW]
+
+              Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]
 
           coord_datum: A mathematical model of the earth used to calculate coordinates on a map. US
               Forces use the World Geodetic System 1984 (WGS 84), but also use maps by allied
@@ -341,8 +357,12 @@ class OperatingunitResource(SyncAPIResource):
               location; easting is 1234 and northing is 5678, in this case specifying a
               location with 10 m resolution).
 
-          mil_grid_sys: "Indicates the grid system used in the development of the milGrid coordinates.
-              Values are: UPS - Universal Polar System UTM - Universal Transverse Mercator".
+          mil_grid_sys: Indicates the grid system used in the development of the milGrid coordinates.
+              Values are:
+
+              UPS - Universal Polar System
+
+              UTM - Universal Transverse Mercator
 
           msn_primary: Indicates the principal type of mission that an operating unit is organized and
               equipped to perform. The specific usage and enumerations contained in this field
@@ -563,7 +583,7 @@ class OperatingunitResource(SyncAPIResource):
         """Service operation to update a single Operatingunit.
 
         Operatingunit defines a unit
-        or organization which operates or controls an space-related Entity. A specific
+        or organization which operates or controls a space-related Entity. A specific
         role is required to perform this service operation. Please contact the UDL team
         for assistance.
 
@@ -627,14 +647,30 @@ class OperatingunitResource(SyncAPIResource):
               in the referenceDoc field. If referenceDoc not provided, users may consult the
               data provider.
 
-          coord: "Indicates any of the magnitudes that serve to define the position of a point by
-              reference to a fixed figure, system of lines, etc. Pos. 1-2. Latitude Degrees
-              [00-90] Pos. 3-4. Latitude Minutes [00-59] Pos. 5-6. Latitude Seconds [00-59]
+          coord: Indicates any of the magnitudes that serve to define the position of a point by
+              reference to a fixed figure, system of lines, etc.
+
+              Pos. 1-2. Latitude Degrees [00-90]
+
+              Pos. 3-4. Latitude Minutes [00-59]
+
+              Pos. 5-6. Latitude Seconds [00-59]
+
               Pos. 7-9. Latitude Thousandths Of Seconds [000-999]
-              Pos. 10. Latitude Hemisphere [NS] Pos. 11-13. Longitude Degrees [00-180] Pos.
-              14-15. Longitude Minutes [00-59] Pos. 16-17. Longitude Seconds [00-59] Pos.
-              18-20. Longitude Thousandths Of Seconds [000-999] Pos. 21. Longitude Hemisphere
-              [EW] Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]]".
+
+              Pos. 10. Latitude Hemisphere [NS]
+
+              Pos. 11-13. Longitude Degrees [00-180]
+
+              Pos. 14-15. Longitude Minutes [00-59]
+
+              Pos. 16-17. Longitude Seconds [00-59]
+
+              Pos. 18-20. Longitude Thousandths Of Seconds [000-999]
+
+              Pos. 21. Longitude Hemisphere [EW]
+
+              Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]
 
           coord_datum: A mathematical model of the earth used to calculate coordinates on a map. US
               Forces use the World Geodetic System 1984 (WGS 84), but also use maps by allied
@@ -784,8 +820,12 @@ class OperatingunitResource(SyncAPIResource):
               location; easting is 1234 and northing is 5678, in this case specifying a
               location with 10 m resolution).
 
-          mil_grid_sys: "Indicates the grid system used in the development of the milGrid coordinates.
-              Values are: UPS - Universal Polar System UTM - Universal Transverse Mercator".
+          mil_grid_sys: Indicates the grid system used in the development of the milGrid coordinates.
+              Values are:
+
+              UPS - Universal Polar System
+
+              UTM - Universal Transverse Mercator
 
           msn_primary: Indicates the principal type of mission that an operating unit is organized and
               equipped to perform. The specific usage and enumerations contained in this field
@@ -974,7 +1014,7 @@ class OperatingunitResource(SyncAPIResource):
         """
         Service operation to delete an Operatingunit object specified by the passed ID
         path parameter. Operatingunit defines a unit or organization which operates or
-        controls an space-related Entity. A specific role is required to perform this
+        controls a space-related Entity. A specific role is required to perform this
         service operation. Please contact the UDL team for assistance.
 
         Args:
@@ -1037,7 +1077,7 @@ class OperatingunitResource(SyncAPIResource):
         """
         Service operation to get a single Operatingunit record by its unique ID passed
         as a path parameter. Operatingunit defines a unit or organization which operates
-        or controls an space-related Entity.
+        or controls a space-related Entity.
 
         Args:
           extra_headers: Send extra headers
@@ -1220,7 +1260,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         """
         Service operation to take a single Operatingunit as a POST body and ingest into
         the database. Operatingunit defines a unit or organization which operates or
-        controls an space-related Entity. A specific role is required to perform this
+        controls a space-related Entity. A specific role is required to perform this
         service operation. Please contact the UDL team for assistance.
 
         Args:
@@ -1283,14 +1323,30 @@ class AsyncOperatingunitResource(AsyncAPIResource):
               in the referenceDoc field. If referenceDoc not provided, users may consult the
               data provider.
 
-          coord: "Indicates any of the magnitudes that serve to define the position of a point by
-              reference to a fixed figure, system of lines, etc. Pos. 1-2. Latitude Degrees
-              [00-90] Pos. 3-4. Latitude Minutes [00-59] Pos. 5-6. Latitude Seconds [00-59]
+          coord: Indicates any of the magnitudes that serve to define the position of a point by
+              reference to a fixed figure, system of lines, etc.
+
+              Pos. 1-2. Latitude Degrees [00-90]
+
+              Pos. 3-4. Latitude Minutes [00-59]
+
+              Pos. 5-6. Latitude Seconds [00-59]
+
               Pos. 7-9. Latitude Thousandths Of Seconds [000-999]
-              Pos. 10. Latitude Hemisphere [NS] Pos. 11-13. Longitude Degrees [00-180] Pos.
-              14-15. Longitude Minutes [00-59] Pos. 16-17. Longitude Seconds [00-59] Pos.
-              18-20. Longitude Thousandths Of Seconds [000-999] Pos. 21. Longitude Hemisphere
-              [EW] Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]]".
+
+              Pos. 10. Latitude Hemisphere [NS]
+
+              Pos. 11-13. Longitude Degrees [00-180]
+
+              Pos. 14-15. Longitude Minutes [00-59]
+
+              Pos. 16-17. Longitude Seconds [00-59]
+
+              Pos. 18-20. Longitude Thousandths Of Seconds [000-999]
+
+              Pos. 21. Longitude Hemisphere [EW]
+
+              Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]
 
           coord_datum: A mathematical model of the earth used to calculate coordinates on a map. US
               Forces use the World Geodetic System 1984 (WGS 84), but also use maps by allied
@@ -1440,8 +1496,12 @@ class AsyncOperatingunitResource(AsyncAPIResource):
               location; easting is 1234 and northing is 5678, in this case specifying a
               location with 10 m resolution).
 
-          mil_grid_sys: "Indicates the grid system used in the development of the milGrid coordinates.
-              Values are: UPS - Universal Polar System UTM - Universal Transverse Mercator".
+          mil_grid_sys: Indicates the grid system used in the development of the milGrid coordinates.
+              Values are:
+
+              UPS - Universal Polar System
+
+              UTM - Universal Transverse Mercator
 
           msn_primary: Indicates the principal type of mission that an operating unit is organized and
               equipped to perform. The specific usage and enumerations contained in this field
@@ -1662,7 +1722,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         """Service operation to update a single Operatingunit.
 
         Operatingunit defines a unit
-        or organization which operates or controls an space-related Entity. A specific
+        or organization which operates or controls a space-related Entity. A specific
         role is required to perform this service operation. Please contact the UDL team
         for assistance.
 
@@ -1726,14 +1786,30 @@ class AsyncOperatingunitResource(AsyncAPIResource):
               in the referenceDoc field. If referenceDoc not provided, users may consult the
               data provider.
 
-          coord: "Indicates any of the magnitudes that serve to define the position of a point by
-              reference to a fixed figure, system of lines, etc. Pos. 1-2. Latitude Degrees
-              [00-90] Pos. 3-4. Latitude Minutes [00-59] Pos. 5-6. Latitude Seconds [00-59]
+          coord: Indicates any of the magnitudes that serve to define the position of a point by
+              reference to a fixed figure, system of lines, etc.
+
+              Pos. 1-2. Latitude Degrees [00-90]
+
+              Pos. 3-4. Latitude Minutes [00-59]
+
+              Pos. 5-6. Latitude Seconds [00-59]
+
               Pos. 7-9. Latitude Thousandths Of Seconds [000-999]
-              Pos. 10. Latitude Hemisphere [NS] Pos. 11-13. Longitude Degrees [00-180] Pos.
-              14-15. Longitude Minutes [00-59] Pos. 16-17. Longitude Seconds [00-59] Pos.
-              18-20. Longitude Thousandths Of Seconds [000-999] Pos. 21. Longitude Hemisphere
-              [EW] Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]]".
+
+              Pos. 10. Latitude Hemisphere [NS]
+
+              Pos. 11-13. Longitude Degrees [00-180]
+
+              Pos. 14-15. Longitude Minutes [00-59]
+
+              Pos. 16-17. Longitude Seconds [00-59]
+
+              Pos. 18-20. Longitude Thousandths Of Seconds [000-999]
+
+              Pos. 21. Longitude Hemisphere [EW]
+
+              Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]
 
           coord_datum: A mathematical model of the earth used to calculate coordinates on a map. US
               Forces use the World Geodetic System 1984 (WGS 84), but also use maps by allied
@@ -1883,8 +1959,12 @@ class AsyncOperatingunitResource(AsyncAPIResource):
               location; easting is 1234 and northing is 5678, in this case specifying a
               location with 10 m resolution).
 
-          mil_grid_sys: "Indicates the grid system used in the development of the milGrid coordinates.
-              Values are: UPS - Universal Polar System UTM - Universal Transverse Mercator".
+          mil_grid_sys: Indicates the grid system used in the development of the milGrid coordinates.
+              Values are:
+
+              UPS - Universal Polar System
+
+              UTM - Universal Transverse Mercator
 
           msn_primary: Indicates the principal type of mission that an operating unit is organized and
               equipped to perform. The specific usage and enumerations contained in this field
@@ -2073,7 +2153,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         """
         Service operation to delete an Operatingunit object specified by the passed ID
         path parameter. Operatingunit defines a unit or organization which operates or
-        controls an space-related Entity. A specific role is required to perform this
+        controls a space-related Entity. A specific role is required to perform this
         service operation. Please contact the UDL team for assistance.
 
         Args:
@@ -2136,7 +2216,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         """
         Service operation to get a single Operatingunit record by its unique ID passed
         as a path parameter. Operatingunit defines a unit or organization which operates
-        or controls an space-related Entity.
+        or controls a space-related Entity.
 
         Args:
           extra_headers: Send extra headers

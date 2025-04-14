@@ -40,6 +40,13 @@ class TestOnorbitantenna:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             id="ONORBITANTENNA-ID",
+            antenna={
+                "data_mode": "TEST",
+                "name": "IRIDIUM NEXT 121-ANTENNA-10075",
+                "source": "Bluestaq",
+                "id": "ANTENNA-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbitantenna is None
@@ -98,6 +105,13 @@ class TestOnorbitantenna:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             body_id="ONORBITANTENNA-ID",
+            antenna={
+                "data_mode": "TEST",
+                "name": "IRIDIUM NEXT 121-ANTENNA-10075",
+                "source": "Bluestaq",
+                "id": "ANTENNA-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbitantenna is None
@@ -273,6 +287,13 @@ class TestAsyncOnorbitantenna:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             id="ONORBITANTENNA-ID",
+            antenna={
+                "data_mode": "TEST",
+                "name": "IRIDIUM NEXT 121-ANTENNA-10075",
+                "source": "Bluestaq",
+                "id": "ANTENNA-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbitantenna is None
@@ -331,6 +352,13 @@ class TestAsyncOnorbitantenna:
             id_on_orbit="ONORBIT-ID",
             source="Bluestaq",
             body_id="ONORBITANTENNA-ID",
+            antenna={
+                "data_mode": "TEST",
+                "name": "IRIDIUM NEXT 121-ANTENNA-10075",
+                "source": "Bluestaq",
+                "id": "ANTENNA-ID",
+                "origin": "THIRD_PARTY_DATASOURCE",
+            },
             origin="THIRD_PARTY_DATASOURCE",
         )
         assert onorbitantenna is None

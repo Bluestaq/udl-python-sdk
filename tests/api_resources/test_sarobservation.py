@@ -26,7 +26,7 @@ class TestSarobservation:
     def test_method_create(self, client: Unifieddatalibrary) -> None:
         sarobservation = client.sarobservation.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
@@ -38,33 +38,36 @@ class TestSarobservation:
     def test_method_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         sarobservation = client.sarobservation.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
             id="SAROBSERVATION-ID",
-            agjson='{"type":"Polygon","coordinates":[[[67.3291113966927,26.156175339112],[67.2580009640721,26.091022064271],[67.1795862381682,26.6637992964562],[67.2501237475598,26.730115808233],[67.3291113966927,26.156175339112]]]}',
+            agjson='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
             andims=3,
             area="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
             asrid=3,
             atext="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
             atype="POLYGON",
+            azimuth_angle=285.4481793,
             center_time=parse_datetime("2023-04-22T17:36:35.100885Z"),
             collection_id="COLLECTION-ID",
             continuous_spot_angle=45.1,
             coord_sys="ECEF",
-            detection_end=parse_datetime("2023-07-08T17:35:20.77219Z"),
+            detection_end=parse_datetime("2023-07-08T17:35:20.772190Z"),
             detection_id="DETECTION-ID",
             detection_start=parse_datetime("2023-07-08T17:35:01.615396Z"),
             dwell_time=79.156794,
             external_id="EXTERNAL-ID",
             far_range=34.1,
             graze_angle=45.1,
+            ground_resolution_projection=0.5,
             id_sensor="36036-1L",
             incidence_angle=45.1,
             looks_azimuth=2,
             looks_range=1,
+            multilook_number=5,
             near_range=12.1,
             ob_direction="RIGHT",
             operating_band="L",
@@ -108,7 +111,7 @@ class TestSarobservation:
     def test_raw_response_create(self, client: Unifieddatalibrary) -> None:
         response = client.sarobservation.with_raw_response.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
@@ -124,7 +127,7 @@ class TestSarobservation:
     def test_streaming_response_create(self, client: Unifieddatalibrary) -> None:
         with client.sarobservation.with_streaming_response.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
@@ -206,7 +209,7 @@ class TestSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -222,7 +225,7 @@ class TestSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -242,7 +245,7 @@ class TestSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -264,7 +267,7 @@ class TestSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -280,7 +283,7 @@ class TestSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -300,7 +303,7 @@ class TestSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -421,7 +424,7 @@ class TestAsyncSarobservation:
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         sarobservation = await async_client.sarobservation.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
@@ -433,33 +436,36 @@ class TestAsyncSarobservation:
     async def test_method_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sarobservation = await async_client.sarobservation.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
             source="Bluestaq",
             id="SAROBSERVATION-ID",
-            agjson='{"type":"Polygon","coordinates":[[[67.3291113966927,26.156175339112],[67.2580009640721,26.091022064271],[67.1795862381682,26.6637992964562],[67.2501237475598,26.730115808233],[67.3291113966927,26.156175339112]]]}',
+            agjson='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
             andims=3,
             area="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
             asrid=3,
             atext="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
             atype="POLYGON",
+            azimuth_angle=285.4481793,
             center_time=parse_datetime("2023-04-22T17:36:35.100885Z"),
             collection_id="COLLECTION-ID",
             continuous_spot_angle=45.1,
             coord_sys="ECEF",
-            detection_end=parse_datetime("2023-07-08T17:35:20.77219Z"),
+            detection_end=parse_datetime("2023-07-08T17:35:20.772190Z"),
             detection_id="DETECTION-ID",
             detection_start=parse_datetime("2023-07-08T17:35:01.615396Z"),
             dwell_time=79.156794,
             external_id="EXTERNAL-ID",
             far_range=34.1,
             graze_angle=45.1,
+            ground_resolution_projection=0.5,
             id_sensor="36036-1L",
             incidence_angle=45.1,
             looks_azimuth=2,
             looks_range=1,
+            multilook_number=5,
             near_range=12.1,
             ob_direction="RIGHT",
             operating_band="L",
@@ -503,7 +509,7 @@ class TestAsyncSarobservation:
     async def test_raw_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sarobservation.with_raw_response.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
@@ -519,7 +525,7 @@ class TestAsyncSarobservation:
     async def test_streaming_response_create(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sarobservation.with_streaming_response.create(
             classification_marking="U",
-            collection_end=parse_datetime("2023-04-22T17:38:10.20177Z"),
+            collection_end=parse_datetime("2023-04-22T17:38:10.201770Z"),
             collection_start=parse_datetime("2023-04-22T17:35:00.123456Z"),
             data_mode="TEST",
             sar_mode="SPOTLIGHT",
@@ -601,7 +607,7 @@ class TestAsyncSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -617,7 +623,7 @@ class TestAsyncSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -637,7 +643,7 @@ class TestAsyncSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -659,7 +665,7 @@ class TestAsyncSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -675,7 +681,7 @@ class TestAsyncSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",
@@ -695,7 +701,7 @@ class TestAsyncSarobservation:
             body=[
                 {
                     "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.20177Z"),
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
                     "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
                     "data_mode": "TEST",
                     "sar_mode": "SPOTLIGHT",

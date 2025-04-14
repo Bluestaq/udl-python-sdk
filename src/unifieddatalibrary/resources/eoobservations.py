@@ -133,7 +133,8 @@ class EoobservationsResource(SyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
@@ -268,7 +269,8 @@ class AsyncEoobservationsResource(AsyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
-          ob_time: Ob detection time in ISO 8601 UTC with microsecond precision.
+          ob_time: Ob detection time in ISO 8601 UTC, up to microsecond precision. Consumers should
+              contact the provider for details on their obTime specifications.
               (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers

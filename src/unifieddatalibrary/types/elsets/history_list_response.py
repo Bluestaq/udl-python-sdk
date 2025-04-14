@@ -1,12 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 from typing_extensions import TypeAlias
 
+from ..elset import Elset
+
 __all__ = ["HistoryListResponse"]
 
-HistoryListResponse: TypeAlias = List["Elset"]
-
-from ..elset import Elset
+HistoryListResponse: TypeAlias = List[Elset]

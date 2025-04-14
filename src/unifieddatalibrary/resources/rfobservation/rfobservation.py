@@ -80,6 +80,7 @@ class RfobservationResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         antenna_name: str | NotGiven = NOT_GIVEN,
         azimuth: float | NotGiven = NOT_GIVEN,
+        azimuth_measured: bool | NotGiven = NOT_GIVEN,
         azimuth_rate: float | NotGiven = NOT_GIVEN,
         azimuth_unc: float | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
@@ -102,6 +103,7 @@ class RfobservationResource(SyncAPIResource):
         detection_statuses: List[str] | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         elevation: float | NotGiven = NOT_GIVEN,
+        elevation_measured: bool | NotGiven = NOT_GIVEN,
         elevation_rate: float | NotGiven = NOT_GIVEN,
         elevation_unc: float | NotGiven = NOT_GIVEN,
         elnot: str | NotGiven = NOT_GIVEN,
@@ -133,7 +135,9 @@ class RfobservationResource(SyncAPIResource):
         power_over_noise: float | NotGiven = NOT_GIVEN,
         powers: Iterable[float] | NotGiven = NOT_GIVEN,
         range: float | NotGiven = NOT_GIVEN,
+        range_measured: bool | NotGiven = NOT_GIVEN,
         range_rate: float | NotGiven = NOT_GIVEN,
+        range_rate_measured: bool | NotGiven = NOT_GIVEN,
         range_rate_unc: float | NotGiven = NOT_GIVEN,
         range_unc: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
@@ -209,6 +213,10 @@ class RfobservationResource(SyncAPIResource):
 
           azimuth: azimuth angle in degrees and J2000 coordinate frame.
 
+          azimuth_measured: Optional flag indicating whether the azimuth value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
+
           azimuth_rate: Rate of change of the azimuth in degrees per second.
 
           azimuth_unc: One sigma uncertainty in the azimuth angle measurement, in degrees.
@@ -258,6 +266,10 @@ class RfobservationResource(SyncAPIResource):
           eirp: Measured Equivalent Isotopically Radiated Power in dBW.
 
           elevation: elevation in degrees and J2000 coordinate frame.
+
+          elevation_measured: Optional flag indicating whether the elevation value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           elevation_rate: Rate of change of the elevation in degrees per second.
 
@@ -338,7 +350,15 @@ class RfobservationResource(SyncAPIResource):
 
           range: Target range in km.
 
+          range_measured: Optional flag indicating whether the range value is measured (true) or computed
+              (false). If null, consumers may consult the data provider for information
+              regarding whether the corresponding value is computed or measured.
+
           range_rate: Rate of change of the range in km/sec.
+
+          range_rate_measured: Optional flag indicating whether the rangeRate value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           range_rate_unc: One sigma uncertainty in the range rate measurement, in kilometers/second.
 
@@ -440,6 +460,7 @@ class RfobservationResource(SyncAPIResource):
                     "id": id,
                     "antenna_name": antenna_name,
                     "azimuth": azimuth,
+                    "azimuth_measured": azimuth_measured,
                     "azimuth_rate": azimuth_rate,
                     "azimuth_unc": azimuth_unc,
                     "bandwidth": bandwidth,
@@ -462,6 +483,7 @@ class RfobservationResource(SyncAPIResource):
                     "detection_statuses": detection_statuses,
                     "eirp": eirp,
                     "elevation": elevation,
+                    "elevation_measured": elevation_measured,
                     "elevation_rate": elevation_rate,
                     "elevation_unc": elevation_unc,
                     "elnot": elnot,
@@ -493,7 +515,9 @@ class RfobservationResource(SyncAPIResource):
                     "power_over_noise": power_over_noise,
                     "powers": powers,
                     "range": range,
+                    "range_measured": range_measured,
                     "range_rate": range_rate,
+                    "range_rate_measured": range_rate_measured,
                     "range_rate_unc": range_rate_unc,
                     "range_unc": range_unc,
                     "raw_file_uri": raw_file_uri,
@@ -840,6 +864,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         antenna_name: str | NotGiven = NOT_GIVEN,
         azimuth: float | NotGiven = NOT_GIVEN,
+        azimuth_measured: bool | NotGiven = NOT_GIVEN,
         azimuth_rate: float | NotGiven = NOT_GIVEN,
         azimuth_unc: float | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
@@ -862,6 +887,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
         detection_statuses: List[str] | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         elevation: float | NotGiven = NOT_GIVEN,
+        elevation_measured: bool | NotGiven = NOT_GIVEN,
         elevation_rate: float | NotGiven = NOT_GIVEN,
         elevation_unc: float | NotGiven = NOT_GIVEN,
         elnot: str | NotGiven = NOT_GIVEN,
@@ -893,7 +919,9 @@ class AsyncRfobservationResource(AsyncAPIResource):
         power_over_noise: float | NotGiven = NOT_GIVEN,
         powers: Iterable[float] | NotGiven = NOT_GIVEN,
         range: float | NotGiven = NOT_GIVEN,
+        range_measured: bool | NotGiven = NOT_GIVEN,
         range_rate: float | NotGiven = NOT_GIVEN,
+        range_rate_measured: bool | NotGiven = NOT_GIVEN,
         range_rate_unc: float | NotGiven = NOT_GIVEN,
         range_unc: float | NotGiven = NOT_GIVEN,
         raw_file_uri: str | NotGiven = NOT_GIVEN,
@@ -969,6 +997,10 @@ class AsyncRfobservationResource(AsyncAPIResource):
 
           azimuth: azimuth angle in degrees and J2000 coordinate frame.
 
+          azimuth_measured: Optional flag indicating whether the azimuth value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
+
           azimuth_rate: Rate of change of the azimuth in degrees per second.
 
           azimuth_unc: One sigma uncertainty in the azimuth angle measurement, in degrees.
@@ -1018,6 +1050,10 @@ class AsyncRfobservationResource(AsyncAPIResource):
           eirp: Measured Equivalent Isotopically Radiated Power in dBW.
 
           elevation: elevation in degrees and J2000 coordinate frame.
+
+          elevation_measured: Optional flag indicating whether the elevation value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           elevation_rate: Rate of change of the elevation in degrees per second.
 
@@ -1098,7 +1134,15 @@ class AsyncRfobservationResource(AsyncAPIResource):
 
           range: Target range in km.
 
+          range_measured: Optional flag indicating whether the range value is measured (true) or computed
+              (false). If null, consumers may consult the data provider for information
+              regarding whether the corresponding value is computed or measured.
+
           range_rate: Rate of change of the range in km/sec.
+
+          range_rate_measured: Optional flag indicating whether the rangeRate value is measured (true) or
+              computed (false). If null, consumers may consult the data provider for
+              information regarding whether the corresponding value is computed or measured.
 
           range_rate_unc: One sigma uncertainty in the range rate measurement, in kilometers/second.
 
@@ -1200,6 +1244,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
                     "id": id,
                     "antenna_name": antenna_name,
                     "azimuth": azimuth,
+                    "azimuth_measured": azimuth_measured,
                     "azimuth_rate": azimuth_rate,
                     "azimuth_unc": azimuth_unc,
                     "bandwidth": bandwidth,
@@ -1222,6 +1267,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
                     "detection_statuses": detection_statuses,
                     "eirp": eirp,
                     "elevation": elevation,
+                    "elevation_measured": elevation_measured,
                     "elevation_rate": elevation_rate,
                     "elevation_unc": elevation_unc,
                     "elnot": elnot,
@@ -1253,7 +1299,9 @@ class AsyncRfobservationResource(AsyncAPIResource):
                     "power_over_noise": power_over_noise,
                     "powers": powers,
                     "range": range,
+                    "range_measured": range_measured,
                     "range_rate": range_rate,
+                    "range_rate_measured": range_rate_measured,
                     "range_rate_unc": range_rate_unc,
                     "range_unc": range_unc,
                     "raw_file_uri": raw_file_uri,

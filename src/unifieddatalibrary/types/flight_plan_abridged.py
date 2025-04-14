@@ -833,6 +833,9 @@ class FlightPlanAbridged(BaseModel):
     star: Optional[str] = None
     """Name of the planned Standard Terminal Arrival (STAR) procedure."""
 
+    status: Optional[str] = None
+    """Status of this flight plan (e.g., ACTIVE, APPROVED, PLANNED, etc.)."""
+
     tail_number: Optional[str] = FieldInfo(alias="tailNumber", default=None)
     """The tail number of the aircraft associated with this flight plan."""
 
@@ -865,6 +868,15 @@ class FlightPlanAbridged(BaseModel):
 
     unusable_fuel: Optional[float] = FieldInfo(alias="unusableFuel", default=None)
     """The amount of unusable fuel in pounds."""
+
+    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
+    """Time the row was last updated in the database, auto-populated by the system."""
+
+    updated_by: Optional[str] = FieldInfo(alias="updatedBy", default=None)
+    """
+    Application user who updated the row in the database, auto-populated by the
+    system.
+    """
 
     wake_turb_cat: Optional[str] = FieldInfo(alias="wakeTurbCat", default=None)
     """The wake turbulence category for this flight.

@@ -36,7 +36,7 @@ class SkyimageryListResponseItem(BaseModel):
     """Start time of the exposure, in ISO 8601 UTC format with microsecond precision."""
 
     image_type: str = FieldInfo(alias="imageType")
-    """The type of image associated with this record (e.g. FITS, EOSSA, EOCHIP)."""
+    """The type of image associated with this record (e.g. FITS, EOSSA, EOCHIP, MP4)."""
 
     source: str
     """Source of the data."""

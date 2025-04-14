@@ -24,7 +24,7 @@ __all__ = [
 
 
 class MtiCreateBulkParams(TypedDict, total=False):
-    body: Iterable[Body]
+    body: Required[Iterable[Body]]
 
 
 class BodyDwellD32(TypedDict, total=False):

@@ -108,6 +108,18 @@ class SurfaceListResponseItem(BaseModel):
     the provider. The provider/consumer is responsible for all unit conversions.
     """
 
+    end_lat: Optional[float] = FieldInfo(alias="endLat", default=None)
+    """
+    WGS-84 latitude of the coordinate representing the end-point of a surface, in
+    degrees. -90 to 90 degrees (negative values south of equator).
+    """
+
+    end_lon: Optional[float] = FieldInfo(alias="endLon", default=None)
+    """
+    WGS-84 longitude of the coordinate representing the end-point of a surface, in
+    degrees. -180 to 180 degrees (negative values west of Prime Meridian).
+    """
+
     id_site: Optional[str] = FieldInfo(alias="idSite", default=None)
     """
     The unique identifier of the Site record that contains location information
@@ -233,6 +245,11 @@ class SurfaceListResponseItem(BaseModel):
     pcn: Optional[str] = None
     """Pavement classification number (PCN) and tire pressure code."""
 
+    point_reference: Optional[str] = FieldInfo(alias="pointReference", default=None)
+    """
+    Description of the surface and its dimensions or how it is measured or oriented.
+    """
+
     primary: Optional[bool] = None
     """Flag indicating this is the primary runway.
 
@@ -272,6 +289,18 @@ class SurfaceListResponseItem(BaseModel):
     corresponding equivalent field is not converted by the UDL and may or may not be
     supplied by the provider. The provider/consumer is responsible for all unit
     conversions.
+    """
+
+    start_lat: Optional[float] = FieldInfo(alias="startLat", default=None)
+    """
+    WGS-84 latitude of the coordinate representing the start-point of a surface, in
+    degrees. -90 to 90 degrees (negative values south of equator).
+    """
+
+    start_lon: Optional[float] = FieldInfo(alias="startLon", default=None)
+    """
+    WGS-84 longitude of the coordinate representing the start-point of a surface, in
+    degrees. -180 to 180 degrees (negative values west of Prime Meridian).
     """
 
     st_wt_kip: Optional[float] = FieldInfo(alias="stWtKip", default=None)

@@ -75,6 +75,12 @@ class SarobservationListResponseItem(BaseModel):
     atype: Optional[str] = None
     """Type of region as projected on the ground (POLYGON, POINT, LINE)."""
 
+    azimuth_angle: Optional[float] = FieldInfo(alias="azimuthAngle", default=None)
+    """
+    The azimuth angle, in degrees, of the SAR satellite nadir subpoint measured
+    clockwise from true north at the subpoint.
+    """
+
     center_time: Optional[datetime] = FieldInfo(alias="centerTime", default=None)
     """
     The datetime at the center point of the collection in ISO 8601 UTC format with
@@ -136,6 +142,12 @@ class SarobservationListResponseItem(BaseModel):
     graze_angle: Optional[float] = FieldInfo(alias="grazeAngle", default=None)
     """The graze angle (also referred to as look angle) for the collection in degrees."""
 
+    ground_resolution_projection: Optional[float] = FieldInfo(alias="groundResolutionProjection", default=None)
+    """
+    Distance between independent measurements, representing the physical dimension
+    that represents a pixel of the image.
+    """
+
     id_on_orbit: Optional[str] = FieldInfo(alias="idOnOrbit", default=None)
     """
     Unique identifier of the spacecraft hosting the sensor associated with this
@@ -153,6 +165,13 @@ class SarobservationListResponseItem(BaseModel):
 
     looks_range: Optional[int] = FieldInfo(alias="looksRange", default=None)
     """The number of looks in the range direction."""
+
+    multilook_number: Optional[float] = FieldInfo(alias="multilookNumber", default=None)
+    """
+    Averages the input synthetic aperture radar (SAR) data by looks in range and
+    azimuth to approximate square pixels, mitigates speckle, and reduces SAR tool
+    processing time.
+    """
 
     near_range: Optional[float] = FieldInfo(alias="nearRange", default=None)
     """

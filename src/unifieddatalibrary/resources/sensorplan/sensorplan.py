@@ -454,10 +454,10 @@ class SensorplanResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take one sensorplan record as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
+        Service operation to take one or more sensorplan record(s) as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -1006,10 +1006,10 @@ class AsyncSensorplanResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take one sensorplan record as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
+        Service operation to take one or more sensorplan record(s) as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers

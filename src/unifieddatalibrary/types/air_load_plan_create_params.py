@@ -165,7 +165,7 @@ class AirLoadPlanCreateParams(TypedDict, total=False):
     """
 
     cargo_volume: Annotated[float, PropertyInfo(alias="cargoVolume")]
-    """The volume of cargo space in the aircraft in cubic meters."""
+    """Volume of cargo space in the aircraft, in cubic meters."""
 
     cargo_weight: Annotated[float, PropertyInfo(alias="cargoWeight")]
     """The weight of the cargo on board the aircraft, in kilograms."""

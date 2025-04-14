@@ -97,17 +97,5 @@ class SurfaceobstructionListResponseItem(BaseModel):
     record should be assumed to have originated from the primary Enterprise UDL.
     """
 
-    surface_end_lat: Optional[float] = FieldInfo(alias="surfaceEndLat", default=None)
-    """
-    WGS-84 latitude of the coordinate representing the end-point of a surface, in
-    degrees. -90 to 90 degrees (negative values south of equator).
-    """
-
-    surface_end_lon: Optional[float] = FieldInfo(alias="surfaceEndLon", default=None)
-    """
-    WGS-84 longitude of the coordinate representing the end-point of a surface, in
-    degrees. -180 to 180 degrees (negative values west of Prime Meridian).
-    """
-
 
 SurfaceobstructionListResponse: TypeAlias = List[SurfaceobstructionListResponseItem]

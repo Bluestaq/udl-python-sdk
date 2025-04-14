@@ -185,8 +185,8 @@ class NavigationalobstructionListResponseItem(BaseModel):
 
     height_agl_acc: Optional[float] = FieldInfo(alias="heightAGLAcc", default=None)
     """
-    The accuracy of the height Above Ground Level (AGL) AGL value for this point
-    obstacle in feet.
+    The accuracy of the height Above Ground Level (AGL) value for this point
+    obstacle, in feet.
     """
 
     height_msl: Optional[float] = FieldInfo(alias="heightMSL", default=None)

@@ -42,7 +42,6 @@ from ..._response import (
 from ..._base_client import make_request_options
 from ...types.conjunction_full import ConjunctionFull
 from ...types.conjunction_list_response import ConjunctionListResponse
-from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.conjunction_tuple_response import ConjunctionTupleResponse
 from ...types.conjunction_get_history_response import ConjunctionGetHistoryResponse
 
@@ -283,8 +282,8 @@ class ConjunctionsResource(SyncAPIResource):
         small_cov_warning: bool | NotGiven = NOT_GIVEN,
         small_rel_vel_warning: bool | NotGiven = NOT_GIVEN,
         state_dept_notified: bool | NotGiven = NOT_GIVEN,
-        state_vector1: StateVectorIngestParam | NotGiven = NOT_GIVEN,
-        state_vector2: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        state_vector1: conjunction_create_udl_params.StateVector1 | NotGiven = NOT_GIVEN,
+        state_vector2: conjunction_create_udl_params.StateVector2 | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         thrust_accel1: float | NotGiven = NOT_GIVEN,
         thrust_accel2: float | NotGiven = NOT_GIVEN,
@@ -1085,8 +1084,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         small_cov_warning: bool | NotGiven = NOT_GIVEN,
         small_rel_vel_warning: bool | NotGiven = NOT_GIVEN,
         state_dept_notified: bool | NotGiven = NOT_GIVEN,
-        state_vector1: StateVectorIngestParam | NotGiven = NOT_GIVEN,
-        state_vector2: StateVectorIngestParam | NotGiven = NOT_GIVEN,
+        state_vector1: conjunction_create_udl_params.StateVector1 | NotGiven = NOT_GIVEN,
+        state_vector2: conjunction_create_udl_params.StateVector2 | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         thrust_accel1: float | NotGiven = NOT_GIVEN,
         thrust_accel2: float | NotGiven = NOT_GIVEN,

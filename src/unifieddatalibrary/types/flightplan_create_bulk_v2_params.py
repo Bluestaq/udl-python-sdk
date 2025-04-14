@@ -814,6 +814,9 @@ class Body(TypedDict, total=False):
     star: str
     """Name of the planned Standard Terminal Arrival (STAR) procedure."""
 
+    status: str
+    """Status of this flight plan (e.g., ACTIVE, APPROVED, PLANNED, etc.)."""
+
     tail_number: Annotated[str, PropertyInfo(alias="tailNumber")]
     """The tail number of the aircraft associated with this flight plan."""
 

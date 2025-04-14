@@ -13,9 +13,10 @@ __all__ = ["HistoryListParams"]
 
 class HistoryListParams(TypedDict, total=False):
     ob_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="obTime", format="iso8601")]]
-    """Ob detection time in ISO 8601 UTC with microsecond precision.
+    """Ob detection time in ISO 8601 UTC, up to microsecond precision.
 
-    (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+    Consumers should contact the provider for details on their obTime
+    specifications. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
 
     columns: str

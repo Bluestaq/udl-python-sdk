@@ -12,7 +12,7 @@ __all__ = ["MissionassignmentCreateBulkParams", "Body"]
 
 
 class MissionassignmentCreateBulkParams(TypedDict, total=False):
-    body: Iterable[Body]
+    body: Required[Iterable[Body]]
 
 
 class Body(TypedDict, total=False):

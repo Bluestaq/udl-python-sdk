@@ -13,4 +13,7 @@ __all__ = ["HistoryCountParams"]
 
 class HistoryCountParams(TypedDict, total=False):
     ts: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
-    """Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)"""
+    """Track timestamp in ISO8601 UTC format with microsecond precision.
+
+    (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+    """

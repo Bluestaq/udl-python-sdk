@@ -17,7 +17,7 @@ __all__ = [
 
 
 class DiplomaticClearanceCreateBulkParams(TypedDict, total=False):
-    body: Iterable[Body]
+    body: Required[Iterable[Body]]
 
 
 class BodyDiplomaticClearanceDetail(TypedDict, total=False):

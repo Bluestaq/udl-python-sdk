@@ -192,8 +192,6 @@ class PersonnelrecoveryResource(SyncAPIResource):
               DEVICE, SIGNALLING PANEL, FRIENDLY FORCE TRACKER, GPS BEACON, LL PHONE, TACTICAL
               RADIO LOS, TACTICAL RADIO BLOS).
 
-          execution_info: Information pertaining to the details of executing the recovery.
-
           identity: The survivor service identity (UNKNOWN MILITARY, UNKNOWN CIVILIAN, FRIEND
               MILITARY, FRIEND CIVIILIAN, NEUTRAL MILITARY, NEUTRAL CIVILIAN, HOSTILE
               MILITARY, HOSTILE CIVILIAN).
@@ -222,8 +220,6 @@ class PersonnelrecoveryResource(SyncAPIResource):
           num_non_ambulatory: Number of littered personnel requiring recovery.
 
           num_persons: The count of persons requiring recovery.
-
-          objective_area_info: Objective Area Information.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
@@ -737,8 +733,6 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
               DEVICE, SIGNALLING PANEL, FRIENDLY FORCE TRACKER, GPS BEACON, LL PHONE, TACTICAL
               RADIO LOS, TACTICAL RADIO BLOS).
 
-          execution_info: Information pertaining to the details of executing the recovery.
-
           identity: The survivor service identity (UNKNOWN MILITARY, UNKNOWN CIVILIAN, FRIEND
               MILITARY, FRIEND CIVIILIAN, NEUTRAL MILITARY, NEUTRAL CIVILIAN, HOSTILE
               MILITARY, HOSTILE CIVILIAN).
@@ -767,8 +761,6 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
           num_non_ambulatory: Number of littered personnel requiring recovery.
 
           num_persons: The count of persons requiring recovery.
-
-          objective_area_info: Objective Area Information.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a

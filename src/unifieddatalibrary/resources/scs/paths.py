@@ -50,6 +50,7 @@ class PathsResource(SyncAPIResource):
         classification_marking: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
+        overwrite: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -70,6 +71,8 @@ class PathsResource(SyncAPIResource):
           classification_marking: Classification (ex. U//FOUO)
 
           description: Description
+
+          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
 
           tags: Tags
 
@@ -94,6 +97,7 @@ class PathsResource(SyncAPIResource):
                         "id": id,
                         "classification_marking": classification_marking,
                         "description": description,
+                        "overwrite": overwrite,
                         "tags": tags,
                     },
                     path_create_params.PathCreateParams,
@@ -130,6 +134,7 @@ class AsyncPathsResource(AsyncAPIResource):
         classification_marking: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
+        overwrite: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -150,6 +155,8 @@ class AsyncPathsResource(AsyncAPIResource):
           classification_marking: Classification (ex. U//FOUO)
 
           description: Description
+
+          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
 
           tags: Tags
 
@@ -174,6 +181,7 @@ class AsyncPathsResource(AsyncAPIResource):
                         "id": id,
                         "classification_marking": classification_marking,
                         "description": description,
+                        "overwrite": overwrite,
                         "tags": tags,
                     },
                     path_create_params.PathCreateParams,

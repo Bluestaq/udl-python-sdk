@@ -12,7 +12,7 @@ __all__ = ["WeatherdataCreateBulkParams", "Body"]
 
 
 class WeatherdataCreateBulkParams(TypedDict, total=False):
-    body: Iterable[Body]
+    body: Required[Iterable[Body]]
 
 
 class Body(TypedDict, total=False):

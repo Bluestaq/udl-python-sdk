@@ -118,6 +118,20 @@ class SgiUpdateParams(TypedDict, total=False):
     f10: float
     """Daily solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz."""
 
+    f10_high: Annotated[float, PropertyInfo(alias="f10High")]
+    """Daily F10.7 index - high range, in x10-22 Watts per meter squared per Hertz.
+
+    This field usually applies to forecast values, based on the consensus of the
+    Solar Cycle 24 Prediction Panel.
+    """
+
+    f10_low: Annotated[float, PropertyInfo(alias="f10Low")]
+    """Daily F10.7 index - low range, in x10-22 Watts per meter squared per Hertz.
+
+    This field usually applies to forecast values, based on the consensus of the
+    Solar Cycle 24 Prediction Panel.
+    """
+
     f54: float
     """54 day solar 10.7 cm radio flux in x10-22 Watts per meter squared per Hertz."""
 
@@ -294,6 +308,23 @@ class SgiUpdateParams(TypedDict, total=False):
     Array containing the sine spherical harmonic coefficients for Inflection
     temperature (DTX) difference. Each array element corresponds to the positional
     index of the coeffDegree and coeffOrder arrays.
+    """
+
+    sunspot_num: Annotated[float, PropertyInfo(alias="sunspotNum")]
+    """Daily sunspot number."""
+
+    sunspot_num_high: Annotated[float, PropertyInfo(alias="sunspotNumHigh")]
+    """Daily sunspot number - high range.
+
+    This field usually applies to forecast values, based on the consensus of the
+    Solar Cycle 24 Prediction Panel.
+    """
+
+    sunspot_num_low: Annotated[float, PropertyInfo(alias="sunspotNumLow")]
+    """Daily sunspot number - low range.
+
+    This field usually applies to forecast values, based on the consensus of the
+    Solar Cycle 24 Prediction Panel.
     """
 
     tags: List[str]

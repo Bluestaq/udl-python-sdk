@@ -1,12 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 from typing_extensions import TypeAlias
 
+from .udl.sensorplan.sensorplan_full import SensorplanFull
+
 __all__ = ["SensorplanTupleResponse"]
 
-SensorplanTupleResponse: TypeAlias = List["SensorplanFull"]
-
-from .udl.sensorplan.sensorplan_full import SensorplanFull
+SensorplanTupleResponse: TypeAlias = List[SensorplanFull]

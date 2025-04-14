@@ -377,9 +377,9 @@ Methods:
 - <code title="post /udl/airfieldslotconsumption">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/airfieldslotconsumption_create_params.py">params</a>) -> None</code>
 - <code title="get /udl/airfieldslotconsumption/{id}">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/airfieldslotconsumption_full.py">AirfieldslotconsumptionFull</a></code>
 - <code title="put /udl/airfieldslotconsumption/{id}">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/airfieldslotconsumption_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/airfieldslotconsumption">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">list</a>() -> <a href="./src/unifieddatalibrary/types/airfieldslotconsumption_list_response.py">AirfieldslotconsumptionListResponse</a></code>
+- <code title="get /udl/airfieldslotconsumption">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/airfieldslotconsumption_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfieldslotconsumption_list_response.py">AirfieldslotconsumptionListResponse</a></code>
 - <code title="delete /udl/airfieldslotconsumption/{id}">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">delete</a>(id) -> None</code>
-- <code title="get /udl/airfieldslotconsumption/count">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">count</a>() -> str</code>
+- <code title="get /udl/airfieldslotconsumption/count">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/airfieldslotconsumption_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/airfieldslotconsumption/queryhelp">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/airfieldslotconsumption/tuple">client.airfieldslotconsumptions.<a href="./src/unifieddatalibrary/resources/airfieldslotconsumptions.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/airfieldslotconsumption_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfieldslotconsumption_tuple_response.py">AirfieldslotconsumptionTupleResponse</a></code>
 
@@ -1637,18 +1637,6 @@ Methods:
 - <code title="post /filedrop/udl-flightplan">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan/flightplan.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/flightplan_create_bulk_v2_params.py">params</a>) -> None</code>
 - <code title="get /udl/flightplan/queryhelp">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan/flightplan.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/flightplan/tuple">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan/flightplan.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/flightplan_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/flightplan_tuple_response.py">FlightplanTupleResponse</a></code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.flightplan import HistoryListResponse
-```
-
-Methods:
-
-- <code title="get /udl/flightplan/history">client.flightplan.history.<a href="./src/unifieddatalibrary/resources/flightplan/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/flightplan/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/flightplan/history_list_response.py">HistoryListResponse</a></code>
 
 # Geostatus
 
@@ -4637,21 +4625,6 @@ Methods:
 - <code title="get /udl/weatherreport/history/count">client.weatherreport.history.<a href="./src/unifieddatalibrary/resources/weatherreport/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/weatherreport/history_count_params.py">params</a>) -> str</code>
 
 # Udl
-
-## Flightplan
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.udl.flightplan import HistoryCountResponse
-```
-
-Methods:
-
-- <code title="get /udl/flightplan/history/aodr">client.udl.flightplan.history.<a href="./src/unifieddatalibrary/resources/udl/flightplan/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/udl/flightplan/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/flightplan/history/count">client.udl.flightplan.history.<a href="./src/unifieddatalibrary/resources/udl/flightplan/history.py">count</a>() -> str</code>
 
 ## Geostatus
 

@@ -143,6 +143,12 @@ class Cell(TypedDict, total=False):
     / #total obs or coverage.
     """
 
+    change_score: Annotated[float, PropertyInfo(alias="changeScore")]
+    """
+    The percentage degree of change in the aggregated observables for a particular
+    H3 bin.
+    """
+
     coverage: int
     """
     The total number of available observations in the H3 cell during the start/end

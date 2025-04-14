@@ -1,12 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 from typing_extensions import TypeAlias
 
+from .shared.onorbit import Onorbit
+
 __all__ = ["OnorbitTupleResponse"]
 
-OnorbitTupleResponse: TypeAlias = List["Onorbit"]
-
-from .shared.onorbit import Onorbit
+OnorbitTupleResponse: TypeAlias = List[Onorbit]

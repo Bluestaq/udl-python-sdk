@@ -72,8 +72,6 @@ class SurfaceobstructionResource(SyncAPIResource):
         obstruction_height: float | NotGiven = NOT_GIVEN,
         obstruction_side_code: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        surface_end_lat: float | NotGiven = NOT_GIVEN,
-        surface_end_lon: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -124,12 +122,6 @@ class SurfaceobstructionResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          surface_end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
-              degrees. -90 to 90 degrees (negative values south of equator).
-
-          surface_end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
-              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -158,8 +150,6 @@ class SurfaceobstructionResource(SyncAPIResource):
                     "obstruction_height": obstruction_height,
                     "obstruction_side_code": obstruction_side_code,
                     "origin": origin,
-                    "surface_end_lat": surface_end_lat,
-                    "surface_end_lon": surface_end_lon,
                 },
                 surfaceobstruction_create_params.SurfaceobstructionCreateParams,
             ),
@@ -188,8 +178,6 @@ class SurfaceobstructionResource(SyncAPIResource):
         obstruction_height: float | NotGiven = NOT_GIVEN,
         obstruction_side_code: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        surface_end_lat: float | NotGiven = NOT_GIVEN,
-        surface_end_lon: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -241,12 +229,6 @@ class SurfaceobstructionResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          surface_end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
-              degrees. -90 to 90 degrees (negative values south of equator).
-
-          surface_end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
-              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -277,8 +259,6 @@ class SurfaceobstructionResource(SyncAPIResource):
                     "obstruction_height": obstruction_height,
                     "obstruction_side_code": obstruction_side_code,
                     "origin": origin,
-                    "surface_end_lat": surface_end_lat,
-                    "surface_end_lon": surface_end_lon,
                 },
                 surfaceobstruction_update_params.SurfaceobstructionUpdateParams,
             ),
@@ -555,8 +535,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         obstruction_height: float | NotGiven = NOT_GIVEN,
         obstruction_side_code: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        surface_end_lat: float | NotGiven = NOT_GIVEN,
-        surface_end_lon: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -607,12 +585,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          surface_end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
-              degrees. -90 to 90 degrees (negative values south of equator).
-
-          surface_end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
-              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -641,8 +613,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                     "obstruction_height": obstruction_height,
                     "obstruction_side_code": obstruction_side_code,
                     "origin": origin,
-                    "surface_end_lat": surface_end_lat,
-                    "surface_end_lon": surface_end_lon,
                 },
                 surfaceobstruction_create_params.SurfaceobstructionCreateParams,
             ),
@@ -671,8 +641,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         obstruction_height: float | NotGiven = NOT_GIVEN,
         obstruction_side_code: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        surface_end_lat: float | NotGiven = NOT_GIVEN,
-        surface_end_lon: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -724,12 +692,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          surface_end_lat: WGS-84 latitude of the coordinate representing the end-point of a surface, in
-              degrees. -90 to 90 degrees (negative values south of equator).
-
-          surface_end_lon: WGS-84 longitude of the coordinate representing the end-point of a surface, in
-              degrees. -180 to 180 degrees (negative values west of Prime Meridian).
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -760,8 +722,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                     "obstruction_height": obstruction_height,
                     "obstruction_side_code": obstruction_side_code,
                     "origin": origin,
-                    "surface_end_lat": surface_end_lat,
-                    "surface_end_lon": surface_end_lon,
                 },
                 surfaceobstruction_update_params.SurfaceobstructionUpdateParams,
             ),

@@ -44,7 +44,6 @@ from ...types import (
     sc_delete_params,
     sc_rename_params,
     sc_search_params,
-    sc_download_params,
     sc_file_upload_params,
     sc_update_tags_params,
     sc_file_download_params,
@@ -175,7 +174,7 @@ class ScsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Deletes the requested File or folder in the passed path directory that is
+        Deletes the requested file or folder in the passed path directory that is
         visible to the calling user. A specific role is required to perform this service
         operation. Please contact the UDL team for assistance.
 
@@ -311,7 +310,7 @@ class ScsResource(SyncAPIResource):
     def download(
         self,
         *,
-        body: str,
+        body: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -334,7 +333,7 @@ class ScsResource(SyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/download",
-            body=maybe_transform(body, sc_download_params.ScDownloadParams),
+            body=maybe_transform(body, List[str]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -387,6 +386,7 @@ class ScsResource(SyncAPIResource):
         path: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
+        overwrite: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -408,6 +408,8 @@ class ScsResource(SyncAPIResource):
           path: The base path to upload file (ex. images)
 
           description: Description
+
+          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
 
           tags: Tags
 
@@ -433,6 +435,7 @@ class ScsResource(SyncAPIResource):
                         "file_name": file_name,
                         "path": path,
                         "description": description,
+                        "overwrite": overwrite,
                         "tags": tags,
                     },
                     sc_file_upload_params.ScFileUploadParams,
@@ -715,7 +718,7 @@ class AsyncScsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Deletes the requested File or folder in the passed path directory that is
+        Deletes the requested file or folder in the passed path directory that is
         visible to the calling user. A specific role is required to perform this service
         operation. Please contact the UDL team for assistance.
 
@@ -851,7 +854,7 @@ class AsyncScsResource(AsyncAPIResource):
     async def download(
         self,
         *,
-        body: str,
+        body: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -874,7 +877,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/download",
-            body=await async_maybe_transform(body, sc_download_params.ScDownloadParams),
+            body=await async_maybe_transform(body, List[str]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -927,6 +930,7 @@ class AsyncScsResource(AsyncAPIResource):
         path: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
+        overwrite: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -948,6 +952,8 @@ class AsyncScsResource(AsyncAPIResource):
           path: The base path to upload file (ex. images)
 
           description: Description
+
+          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
 
           tags: Tags
 
@@ -973,6 +979,7 @@ class AsyncScsResource(AsyncAPIResource):
                         "file_name": file_name,
                         "path": path,
                         "description": description,
+                        "overwrite": overwrite,
                         "tags": tags,
                     },
                     sc_file_upload_params.ScFileUploadParams,

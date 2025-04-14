@@ -1,12 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 from typing_extensions import TypeAlias
 
+from .eo_observations.eo_observation_full import EoObservationFull
+
 __all__ = ["EoobservationTupleResponse"]
 
-EoobservationTupleResponse: TypeAlias = List["EoObservationFull"]
-
-from .eo_observations.eo_observation_full import EoObservationFull
+EoobservationTupleResponse: TypeAlias = List[EoObservationFull]

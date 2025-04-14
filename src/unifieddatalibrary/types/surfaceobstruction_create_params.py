@@ -73,15 +73,3 @@ class SurfaceobstructionCreateParams(TypedDict, total=False):
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
     """
-
-    surface_end_lat: Annotated[float, PropertyInfo(alias="surfaceEndLat")]
-    """
-    WGS-84 latitude of the coordinate representing the end-point of a surface, in
-    degrees. -90 to 90 degrees (negative values south of equator).
-    """
-
-    surface_end_lon: Annotated[float, PropertyInfo(alias="surfaceEndLon")]
-    """
-    WGS-84 longitude of the coordinate representing the end-point of a surface, in
-    degrees. -180 to 180 degrees (negative values west of Prime Meridian).
-    """

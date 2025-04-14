@@ -27,7 +27,6 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -40,7 +39,6 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -53,6 +51,7 @@ class TestAirfieldslotconsumptions:
             app_org="KCHS/BOPS",
             call_signs=["RCH123", "ABC123", "LLS442"],
             consumer="APRON1-230401001",
+            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_arr_sortie="be831d39-1822-da9f-7ace-6cc5643397dc",
             id_dep_sortie="1e6edeec-72e9-aaec-d33c-51147cb5ffdd",
             mission_id="AJM123456123",
@@ -79,7 +78,6 @@ class TestAirfieldslotconsumptions:
         response = client.airfieldslotconsumptions.with_raw_response.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -96,7 +94,6 @@ class TestAirfieldslotconsumptions:
         with client.airfieldslotconsumptions.with_streaming_response.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -154,7 +151,6 @@ class TestAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -168,7 +164,6 @@ class TestAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -181,6 +176,7 @@ class TestAirfieldslotconsumptions:
             app_org="KCHS/BOPS",
             call_signs=["RCH123", "ABC123", "LLS442"],
             consumer="APRON1-230401001",
+            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_arr_sortie="be831d39-1822-da9f-7ace-6cc5643397dc",
             id_dep_sortie="1e6edeec-72e9-aaec-d33c-51147cb5ffdd",
             mission_id="AJM123456123",
@@ -208,7 +204,6 @@ class TestAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -226,7 +221,6 @@ class TestAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -247,7 +241,6 @@ class TestAirfieldslotconsumptions:
                 path_id="",
                 classification_marking="U",
                 data_mode="TEST",
-                end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
                 id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
                 num_aircraft=1,
                 source="Bluestaq",
@@ -256,12 +249,16 @@ class TestAirfieldslotconsumptions:
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
-        airfieldslotconsumption = client.airfieldslotconsumptions.list()
+        airfieldslotconsumption = client.airfieldslotconsumptions.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
         assert_matches_type(AirfieldslotconsumptionListResponse, airfieldslotconsumption, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
-        response = client.airfieldslotconsumptions.with_raw_response.list()
+        response = client.airfieldslotconsumptions.with_raw_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -270,7 +267,9 @@ class TestAirfieldslotconsumptions:
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
-        with client.airfieldslotconsumptions.with_streaming_response.list() as response:
+        with client.airfieldslotconsumptions.with_streaming_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -319,12 +318,16 @@ class TestAirfieldslotconsumptions:
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
-        airfieldslotconsumption = client.airfieldslotconsumptions.count()
+        airfieldslotconsumption = client.airfieldslotconsumptions.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
         assert_matches_type(str, airfieldslotconsumption, path=["response"])
 
     @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
-        response = client.airfieldslotconsumptions.with_raw_response.count()
+        response = client.airfieldslotconsumptions.with_raw_response.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -333,7 +336,9 @@ class TestAirfieldslotconsumptions:
 
     @parametrize
     def test_streaming_response_count(self, client: Unifieddatalibrary) -> None:
-        with client.airfieldslotconsumptions.with_streaming_response.count() as response:
+        with client.airfieldslotconsumptions.with_streaming_response.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -371,6 +376,7 @@ class TestAirfieldslotconsumptions:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         airfieldslotconsumption = client.airfieldslotconsumptions.tuple(
             columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(AirfieldslotconsumptionTupleResponse, airfieldslotconsumption, path=["response"])
 
@@ -378,6 +384,7 @@ class TestAirfieldslotconsumptions:
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldslotconsumptions.with_raw_response.tuple(
             columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -389,6 +396,7 @@ class TestAirfieldslotconsumptions:
     def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
         with client.airfieldslotconsumptions.with_streaming_response.tuple(
             columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -407,7 +415,6 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -420,7 +427,6 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -433,6 +439,7 @@ class TestAsyncAirfieldslotconsumptions:
             app_org="KCHS/BOPS",
             call_signs=["RCH123", "ABC123", "LLS442"],
             consumer="APRON1-230401001",
+            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_arr_sortie="be831d39-1822-da9f-7ace-6cc5643397dc",
             id_dep_sortie="1e6edeec-72e9-aaec-d33c-51147cb5ffdd",
             mission_id="AJM123456123",
@@ -459,7 +466,6 @@ class TestAsyncAirfieldslotconsumptions:
         response = await async_client.airfieldslotconsumptions.with_raw_response.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -476,7 +482,6 @@ class TestAsyncAirfieldslotconsumptions:
         async with async_client.airfieldslotconsumptions.with_streaming_response.create(
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -534,7 +539,6 @@ class TestAsyncAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -548,7 +552,6 @@ class TestAsyncAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -561,6 +564,7 @@ class TestAsyncAirfieldslotconsumptions:
             app_org="KCHS/BOPS",
             call_signs=["RCH123", "ABC123", "LLS442"],
             consumer="APRON1-230401001",
+            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_arr_sortie="be831d39-1822-da9f-7ace-6cc5643397dc",
             id_dep_sortie="1e6edeec-72e9-aaec-d33c-51147cb5ffdd",
             mission_id="AJM123456123",
@@ -588,7 +592,6 @@ class TestAsyncAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -606,7 +609,6 @@ class TestAsyncAirfieldslotconsumptions:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
             id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
             num_aircraft=1,
             source="Bluestaq",
@@ -627,7 +629,6 @@ class TestAsyncAirfieldslotconsumptions:
                 path_id="",
                 classification_marking="U",
                 data_mode="TEST",
-                end_time=parse_datetime("2023-01-01T01:01:01.123Z"),
                 id_airfield_slot="3136498f-2969-3535-1432-e984b2e2e686",
                 num_aircraft=1,
                 source="Bluestaq",
@@ -636,12 +637,16 @@ class TestAsyncAirfieldslotconsumptions:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        airfieldslotconsumption = await async_client.airfieldslotconsumptions.list()
+        airfieldslotconsumption = await async_client.airfieldslotconsumptions.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
         assert_matches_type(AirfieldslotconsumptionListResponse, airfieldslotconsumption, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.airfieldslotconsumptions.with_raw_response.list()
+        response = await async_client.airfieldslotconsumptions.with_raw_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -650,7 +655,9 @@ class TestAsyncAirfieldslotconsumptions:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.airfieldslotconsumptions.with_streaming_response.list() as response:
+        async with async_client.airfieldslotconsumptions.with_streaming_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -699,12 +706,16 @@ class TestAsyncAirfieldslotconsumptions:
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        airfieldslotconsumption = await async_client.airfieldslotconsumptions.count()
+        airfieldslotconsumption = await async_client.airfieldslotconsumptions.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
         assert_matches_type(str, airfieldslotconsumption, path=["response"])
 
     @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.airfieldslotconsumptions.with_raw_response.count()
+        response = await async_client.airfieldslotconsumptions.with_raw_response.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -713,7 +724,9 @@ class TestAsyncAirfieldslotconsumptions:
 
     @parametrize
     async def test_streaming_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.airfieldslotconsumptions.with_streaming_response.count() as response:
+        async with async_client.airfieldslotconsumptions.with_streaming_response.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -751,6 +764,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.tuple(
             columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(AirfieldslotconsumptionTupleResponse, airfieldslotconsumption, path=["response"])
 
@@ -758,6 +772,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldslotconsumptions.with_raw_response.tuple(
             columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
@@ -769,6 +784,7 @@ class TestAsyncAirfieldslotconsumptions:
     async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.airfieldslotconsumptions.with_streaming_response.tuple(
             columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

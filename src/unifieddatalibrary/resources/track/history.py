@@ -66,7 +66,8 @@ class HistoryResource(SyncAPIResource):
         parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -121,7 +122,8 @@ class HistoryResource(SyncAPIResource):
         parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -187,7 +189,8 @@ class HistoryResource(SyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -250,7 +253,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -305,7 +309,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
               queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
@@ -371,7 +376,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          ts: Track timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)
+          ts: Track timestamp in ISO8601 UTC format with microsecond precision.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 

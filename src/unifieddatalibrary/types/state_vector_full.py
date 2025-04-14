@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
 
 __all__ = ["StateVectorFull"]
 
@@ -314,7 +312,7 @@ class StateVectorFull(BaseModel):
     obs_used: Optional[int] = FieldInfo(alias="obsUsed", default=None)
     """The number of observations accepted for the OD of the object."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -663,11 +661,3 @@ class StateVectorFull(BaseModel):
     allow a data source to provide an equivalent vector in a different cartesian
     frame than the primary vector.
     """
-
-
-from .shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    StateVectorFull.model_rebuild()
-else:
-    StateVectorFull.update_forward_refs()  # type: ignore

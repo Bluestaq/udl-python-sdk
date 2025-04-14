@@ -90,7 +90,6 @@ class BodyCollectionRequirementExploitationRequirement(TypedDict, total=False):
     """Essential Elements of Information."""
 
     poc: BodyCollectionRequirementExploitationRequirementPoc
-    """Information about the Point of Contact (POC) for this ISR Collection."""
 
     reporting_criteria: Annotated[str, PropertyInfo(alias="reportingCriteria")]
     """The reporting criteria of the collection requirement."""
@@ -111,7 +110,6 @@ class BodyCollectionRequirement(TypedDict, total=False):
     """Collection Requirement Unique Identifier."""
 
     critical_times: Annotated[BodyCollectionRequirementCriticalTimes, PropertyInfo(alias="criticalTimes")]
-    """High priority time windows."""
 
     emphasized: bool
     """Is this collection requirement an emphasized/critical requirement."""
@@ -119,7 +117,6 @@ class BodyCollectionRequirement(TypedDict, total=False):
     exploitation_requirement: Annotated[
         BodyCollectionRequirementExploitationRequirement, PropertyInfo(alias="exploitationRequirement")
     ]
-    """What it is that is trying to be exploited."""
 
     hash: str
     """Encryption hashing algorithm."""
@@ -214,7 +211,6 @@ class BodyTaskingCollectionPeriods(TypedDict, total=False):
     """Actual start and stop for the collection."""
 
     planned: BodyTaskingCollectionPeriodsPlanned
-    """Planned start and stop for the collection."""
 
 
 class BodyTaskingTaskingCollectionRequirementCriticalTimes(TypedDict, total=False):
@@ -275,7 +271,6 @@ class BodyTaskingTaskingCollectionRequirementExploitationRequirement(TypedDict, 
     """Essential Elements of Information."""
 
     poc: BodyTaskingTaskingCollectionRequirementExploitationRequirementPoc
-    """Information about the Point of Contact (POC) for this ISR Collection."""
 
     reporting_criteria: Annotated[str, PropertyInfo(alias="reportingCriteria")]
     """The reporting criteria of the collection requirement."""
@@ -296,7 +291,6 @@ class BodyTaskingTaskingCollectionRequirement(TypedDict, total=False):
     """Collection Requirement Unique Identifier."""
 
     critical_times: Annotated[BodyTaskingTaskingCollectionRequirementCriticalTimes, PropertyInfo(alias="criticalTimes")]
-    """High priority time windows."""
 
     emphasized: bool
     """Is this collection requirement an emphasized/critical requirement."""
@@ -304,7 +298,6 @@ class BodyTaskingTaskingCollectionRequirement(TypedDict, total=False):
     exploitation_requirement: Annotated[
         BodyTaskingTaskingCollectionRequirementExploitationRequirement, PropertyInfo(alias="exploitationRequirement")
     ]
-    """What it is that is trying to be exploited."""
 
     hash: str
     """Encryption hashing algorithm."""
@@ -366,7 +359,6 @@ class BodyTasking(TypedDict, total=False):
     """Tasking Unique Identifier."""
 
     collection_periods: Annotated[BodyTaskingCollectionPeriods, PropertyInfo(alias="collectionPeriods")]
-    """Tasking collection periods."""
 
     collection_type: Annotated[
         Literal["Simultaneous", "Sequential", "Operationally", "Driven", "Priority", "Order"],
@@ -429,7 +421,7 @@ class BodyTasking(TypedDict, total=False):
     """Time of retasking, in ISO 8601 UTC format."""
 
     tasking_role: Annotated[str, PropertyInfo(alias="taskingRole")]
-    """What is the primary objective(Role) of this task."""
+    """What is the primary objective (role) of this task."""
 
     tasking_secondary_intel_discipline: Annotated[str, PropertyInfo(alias="taskingSecondaryIntelDiscipline")]
     """Type of tasking intelligence to be collected second."""

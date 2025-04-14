@@ -177,14 +177,30 @@ class OperatingunitGetResponse(BaseModel):
 
     coord: Optional[str] = None
     """
-    "Indicates any of the magnitudes that serve to define the position of a point by
-    reference to a fixed figure, system of lines, etc. Pos. 1-2. Latitude Degrees
-    [00-90] Pos. 3-4. Latitude Minutes [00-59] Pos. 5-6. Latitude Seconds [00-59]
-    Pos. 7-9. Latitude Thousandths Of Seconds [000-999]  
-    Pos. 10. Latitude Hemisphere [NS] Pos. 11-13. Longitude Degrees [00-180] Pos.
-    14-15. Longitude Minutes [00-59] Pos. 16-17. Longitude Seconds [00-59] Pos.
-    18-20. Longitude Thousandths Of Seconds [000-999] Pos. 21. Longitude Hemisphere
-    [EW] Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]]".
+    Indicates any of the magnitudes that serve to define the position of a point by
+    reference to a fixed figure, system of lines, etc.
+
+    Pos. 1-2. Latitude Degrees [00-90]
+
+    Pos. 3-4. Latitude Minutes [00-59]
+
+    Pos. 5-6. Latitude Seconds [00-59]
+
+    Pos. 7-9. Latitude Thousandths Of Seconds [000-999]
+
+    Pos. 10. Latitude Hemisphere [NS]
+
+    Pos. 11-13. Longitude Degrees [00-180]
+
+    Pos. 14-15. Longitude Minutes [00-59]
+
+    Pos. 16-17. Longitude Seconds [00-59]
+
+    Pos. 18-20. Longitude Thousandths Of Seconds [000-999]
+
+    Pos. 21. Longitude Hemisphere [EW]
+
+    Pos. 1-21. Unknown Latitude and Unknown Longitude [000000000U000000000U]
     """
 
     coord_datum: Optional[str] = FieldInfo(alias="coordDatum", default=None)
@@ -426,9 +442,13 @@ class OperatingunitGetResponse(BaseModel):
     """
 
     mil_grid_sys: Optional[str] = FieldInfo(alias="milGridSys", default=None)
-    """\"Indicates the grid system used in the development of the milGrid coordinates.
+    """Indicates the grid system used in the development of the milGrid coordinates.
 
-    Values are: UPS - Universal Polar System UTM - Universal Transverse Mercator".
+    Values are:
+
+    UPS - Universal Polar System
+
+    UTM - Universal Transverse Mercator
     """
 
     msn_primary: Optional[str] = FieldInfo(alias="msnPrimary", default=None)

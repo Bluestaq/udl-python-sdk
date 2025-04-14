@@ -7,7 +7,6 @@ from .scs_entity import ScsEntity as ScsEntity
 from .v2_copy_params import V2CopyParams as V2CopyParams
 from .v2_list_params import V2ListParams as V2ListParams
 from .v2_move_params import V2MoveParams as V2MoveParams
-from .attachment_param import AttachmentParam as AttachmentParam
 from .file_list_params import FileListParams as FileListParams
 from .v2_delete_params import V2DeleteParams as V2DeleteParams
 from .v2_list_response import V2ListResponse as V2ListResponse

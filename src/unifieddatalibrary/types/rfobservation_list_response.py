@@ -50,6 +50,13 @@ class RfobservationListResponseItem(BaseModel):
     azimuth: Optional[float] = None
     """azimuth angle in degrees and J2000 coordinate frame."""
 
+    azimuth_measured: Optional[bool] = FieldInfo(alias="azimuthMeasured", default=None)
+    """
+    Optional flag indicating whether the azimuth value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     azimuth_rate: Optional[float] = FieldInfo(alias="azimuthRate", default=None)
     """Rate of change of the azimuth in degrees per second."""
 
@@ -106,6 +113,13 @@ class RfobservationListResponseItem(BaseModel):
 
     elevation: Optional[float] = None
     """elevation in degrees and J2000 coordinate frame."""
+
+    elevation_measured: Optional[bool] = FieldInfo(alias="elevationMeasured", default=None)
+    """
+    Optional flag indicating whether the elevation value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     elevation_rate: Optional[float] = FieldInfo(alias="elevationRate", default=None)
     """Rate of change of the elevation in degrees per second."""
@@ -229,8 +243,22 @@ class RfobservationListResponseItem(BaseModel):
     range: Optional[float] = None
     """Target range in km."""
 
+    range_measured: Optional[bool] = FieldInfo(alias="rangeMeasured", default=None)
+    """
+    Optional flag indicating whether the range value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range_rate: Optional[float] = FieldInfo(alias="rangeRate", default=None)
     """Rate of change of the range in km/sec."""
+
+    range_rate_measured: Optional[bool] = FieldInfo(alias="rangeRateMeasured", default=None)
+    """
+    Optional flag indicating whether the rangeRate value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     range_rate_unc: Optional[float] = FieldInfo(alias="rangeRateUnc", default=None)
     """One sigma uncertainty in the range rate measurement, in kilometers/second."""

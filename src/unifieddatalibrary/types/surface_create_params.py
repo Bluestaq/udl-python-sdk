@@ -97,6 +97,18 @@ class SurfaceCreateParams(TypedDict, total=False):
     the provider. The provider/consumer is responsible for all unit conversions.
     """
 
+    end_lat: Annotated[float, PropertyInfo(alias="endLat")]
+    """
+    WGS-84 latitude of the coordinate representing the end-point of a surface, in
+    degrees. -90 to 90 degrees (negative values south of equator).
+    """
+
+    end_lon: Annotated[float, PropertyInfo(alias="endLon")]
+    """
+    WGS-84 longitude of the coordinate representing the end-point of a surface, in
+    degrees. -180 to 180 degrees (negative values west of Prime Meridian).
+    """
+
     id_site: Annotated[str, PropertyInfo(alias="idSite")]
     """
     The unique identifier of the Site record that contains location information
@@ -216,6 +228,11 @@ class SurfaceCreateParams(TypedDict, total=False):
     pcn: str
     """Pavement classification number (PCN) and tire pressure code."""
 
+    point_reference: Annotated[str, PropertyInfo(alias="pointReference")]
+    """
+    Description of the surface and its dimensions or how it is measured or oriented.
+    """
+
     primary: bool
     """Flag indicating this is the primary runway.
 
@@ -255,6 +272,18 @@ class SurfaceCreateParams(TypedDict, total=False):
     corresponding equivalent field is not converted by the UDL and may or may not be
     supplied by the provider. The provider/consumer is responsible for all unit
     conversions.
+    """
+
+    start_lat: Annotated[float, PropertyInfo(alias="startLat")]
+    """
+    WGS-84 latitude of the coordinate representing the start-point of a surface, in
+    degrees. -90 to 90 degrees (negative values south of equator).
+    """
+
+    start_lon: Annotated[float, PropertyInfo(alias="startLon")]
+    """
+    WGS-84 longitude of the coordinate representing the start-point of a surface, in
+    degrees. -180 to 180 degrees (negative values west of Prime Meridian).
     """
 
     st_wt_kip: Annotated[float, PropertyInfo(alias="stWtKip")]

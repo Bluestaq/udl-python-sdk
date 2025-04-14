@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ...._compat import PYDANTIC_V2
 from ...._models import BaseModel
+from ...shared.onorbit import Onorbit
 
 __all__ = ["GeoStatusFull"]
 
@@ -79,7 +77,7 @@ class GeoStatusFull(BaseModel):
     object_status: Optional[str] = FieldInfo(alias="objectStatus", default=None)
     """Space object status. (Active, Dead, Unknown)."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -152,11 +150,3 @@ class GeoStatusFull(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-from ...shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    GeoStatusFull.model_rebuild()
-else:
-    GeoStatusFull.update_forward_refs()  # type: ignore

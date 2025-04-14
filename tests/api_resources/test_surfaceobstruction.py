@@ -49,8 +49,6 @@ class TestSurfaceobstruction:
             obstruction_height=35.25,
             obstruction_side_code="F",
             origin="THIRD_PARTY_DATASOURCE",
-            surface_end_lat=46.757211,
-            surface_end_lon=-67.759494,
         )
         assert surfaceobstruction is None
 
@@ -114,8 +112,6 @@ class TestSurfaceobstruction:
             obstruction_height=35.25,
             obstruction_side_code="F",
             origin="THIRD_PARTY_DATASOURCE",
-            surface_end_lat=46.757211,
-            surface_end_lon=-67.759494,
         )
         assert surfaceobstruction is None
 
@@ -428,8 +424,6 @@ class TestAsyncSurfaceobstruction:
             obstruction_height=35.25,
             obstruction_side_code="F",
             origin="THIRD_PARTY_DATASOURCE",
-            surface_end_lat=46.757211,
-            surface_end_lon=-67.759494,
         )
         assert surfaceobstruction is None
 
@@ -493,8 +487,6 @@ class TestAsyncSurfaceobstruction:
             obstruction_height=35.25,
             obstruction_side_code="F",
             origin="THIRD_PARTY_DATASOURCE",
-            surface_end_lat=46.757211,
-            surface_end_lon=-67.759494,
         )
         assert surfaceobstruction is None
 

@@ -1,15 +1,14 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._compat import PYDANTIC_V2
 from .._models import BaseModel
+from .shared.onorbit import Onorbit
+from .state_vector_full import StateVectorFull
 from .shared.ephemeris_full import EphemerisFull
 
 __all__ = ["EphemerisSet"]
@@ -154,7 +153,7 @@ class EphemerisSet(BaseModel):
     lunar_solar: Optional[bool] = FieldInfo(alias="lunarSolar", default=None)
     """Boolean indicating use of lunar/solar data in ephemeris generation."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -198,7 +197,7 @@ class EphemerisSet(BaseModel):
     solid_earth_tides: Optional[bool] = FieldInfo(alias="solidEarthTides", default=None)
     """Boolean indicating use of solid earth tide data in ephemeris generation."""
 
-    state_vector: Optional["StateVectorFull"] = FieldInfo(alias="stateVector", default=None)
+    state_vector: Optional[StateVectorFull] = FieldInfo(alias="stateVector", default=None)
     """
     This service provides operations for querying and manipulation of state vectors
     for OnOrbit objects. State vectors are cartesian vectors of position (r) and
@@ -239,12 +238,3 @@ class EphemerisSet(BaseModel):
     Optional start time of the usable time span for the ephemeris data, in ISO 8601
     UTC format with microsecond precision.
     """
-
-
-from .shared.onorbit import Onorbit
-from .state_vector_full import StateVectorFull
-
-if PYDANTIC_V2:
-    EphemerisSet.model_rebuild()
-else:
-    EphemerisSet.update_forward_refs()  # type: ignore

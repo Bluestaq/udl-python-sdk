@@ -29,7 +29,6 @@ from ...types.scs import (
     v2_folder_create_params,
 )
 from ..._base_client import make_request_options
-from ...types.scs.attachment_param import AttachmentParam
 from ...types.scs.v2_list_response import V2ListResponse
 
 __all__ = ["V2Resource", "AsyncV2Resource"]
@@ -59,23 +58,10 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
-        data: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        file_name: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -120,23 +106,10 @@ class V2Resource(SyncAPIResource):
             "/scs/v2/update",
             body=maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
-                    "data": data,
                     "description": description,
-                    "file_name": file_name,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_update_params.V2UpdateParams,
@@ -285,6 +258,7 @@ class V2Resource(SyncAPIResource):
         path: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
+        overwrite: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -306,6 +280,8 @@ class V2Resource(SyncAPIResource):
               folders in path if necessary. Must start with '/'.
 
           description: Optional description of uploaded document.
+
+          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
 
           tags: Optional array of provider/source specific tags for this data, used for
               implementing data owner conditional access controls to restrict access to the
@@ -333,6 +309,7 @@ class V2Resource(SyncAPIResource):
                         "classification_marking": classification_marking,
                         "path": path,
                         "description": description,
+                        "overwrite": overwrite,
                         "tags": tags,
                     },
                     v2_file_upload_params.V2FileUploadParams,
@@ -345,23 +322,10 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
-        data: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        file_name: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -410,23 +374,10 @@ class V2Resource(SyncAPIResource):
             "/scs/v2/folder",
             body=maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
-                    "data": data,
                     "description": description,
-                    "file_name": file_name,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_folder_create_params.V2FolderCreateParams,
@@ -516,23 +467,10 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
-        data: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        file_name: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -577,23 +515,10 @@ class AsyncV2Resource(AsyncAPIResource):
             "/scs/v2/update",
             body=await async_maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
-                    "data": data,
                     "description": description,
-                    "file_name": file_name,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_update_params.V2UpdateParams,
@@ -742,6 +667,7 @@ class AsyncV2Resource(AsyncAPIResource):
         path: str,
         body: FileTypes,
         description: str | NotGiven = NOT_GIVEN,
+        overwrite: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -763,6 +689,8 @@ class AsyncV2Resource(AsyncAPIResource):
               folders in path if necessary. Must start with '/'.
 
           description: Optional description of uploaded document.
+
+          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
 
           tags: Optional array of provider/source specific tags for this data, used for
               implementing data owner conditional access controls to restrict access to the
@@ -790,6 +718,7 @@ class AsyncV2Resource(AsyncAPIResource):
                         "classification_marking": classification_marking,
                         "path": path,
                         "description": description,
+                        "overwrite": overwrite,
                         "tags": tags,
                     },
                     v2_file_upload_params.V2FileUploadParams,
@@ -802,23 +731,10 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: AttachmentParam | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
-        data: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        file_name: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -867,23 +783,10 @@ class AsyncV2Resource(AsyncAPIResource):
             "/scs/v2/folder",
             body=await async_maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
-                    "data": data,
                     "description": description,
-                    "file_name": file_name,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_folder_create_params.V2FolderCreateParams,

@@ -65,6 +65,12 @@ class H3geohexcellTupleResponseItem(BaseModel):
     / #total obs or coverage.
     """
 
+    change_score: Optional[float] = FieldInfo(alias="changeScore", default=None)
+    """
+    The percentage degree of change in the aggregated observables for a particular
+    H3 bin.
+    """
+
     coverage: Optional[int] = None
     """
     The total number of available observations in the H3 cell during the start/end

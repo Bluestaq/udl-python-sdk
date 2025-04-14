@@ -89,7 +89,7 @@ class TestAirLoadPlans:
                     "pp_off_icao": "MBPV",
                     "pp_pieces": 3,
                     "pp_remarks": "Pallet remarks",
-                    "pp_tcn": "ppTcn",
+                    "pp_tcn": "M1358232245912XXX",
                     "pp_weight": 100.1,
                     "special_interest": True,
                 }
@@ -444,7 +444,7 @@ class TestAsyncAirLoadPlans:
                     "pp_off_icao": "MBPV",
                     "pp_pieces": 3,
                     "pp_remarks": "Pallet remarks",
-                    "pp_tcn": "ppTcn",
+                    "pp_tcn": "M1358232245912XXX",
                     "pp_weight": 100.1,
                     "special_interest": True,
                 }

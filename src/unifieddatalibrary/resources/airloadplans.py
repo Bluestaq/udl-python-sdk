@@ -213,7 +213,7 @@ class AirloadplansResource(SyncAPIResource):
               Each individual cargo moment is the weight of the cargo multiplied by the
               distance between the reference datum and the cargo's center of gravity.
 
-          cargo_volume: The volume of cargo space in the aircraft in cubic meters.
+          cargo_volume: Volume of cargo space in the aircraft, in cubic meters.
 
           cargo_weight: The weight of the cargo on board the aircraft, in kilograms.
 
@@ -626,7 +626,7 @@ class AsyncAirloadplansResource(AsyncAPIResource):
               Each individual cargo moment is the weight of the cargo multiplied by the
               distance between the reference datum and the cargo's center of gravity.
 
-          cargo_volume: The volume of cargo space in the aircraft in cubic meters.
+          cargo_volume: Volume of cargo space in the aircraft, in cubic meters.
 
           cargo_weight: The weight of the cargo on board the aircraft, in kilograms.
 

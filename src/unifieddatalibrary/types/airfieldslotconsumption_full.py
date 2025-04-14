@@ -32,9 +32,6 @@ class AirfieldslotconsumptionFull(BaseModel):
     characteristics.
     """
 
-    end_time: datetime = FieldInfo(alias="endTime")
-    """The end of the slot window, in ISO 8601 UTC format."""
-
     id_airfield_slot: str = FieldInfo(alias="idAirfieldSlot")
     """
     Unique identifier of the airfield slot for which this slot consumption record is
@@ -95,6 +92,9 @@ class AirfieldslotconsumptionFull(BaseModel):
     Application user who created the row in the database, auto-populated by the
     system.
     """
+
+    end_time: Optional[datetime] = FieldInfo(alias="endTime", default=None)
+    """The end of the slot window, in ISO 8601 UTC format."""
 
     id_arr_sortie: Optional[str] = FieldInfo(alias="idArrSortie", default=None)
     """Unique identifier of the sortie arriving at the slot start time."""

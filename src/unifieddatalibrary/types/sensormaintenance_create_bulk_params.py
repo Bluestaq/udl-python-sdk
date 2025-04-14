@@ -12,13 +12,13 @@ __all__ = ["SensormaintenanceCreateBulkParams", "Body"]
 
 
 class SensormaintenanceCreateBulkParams(TypedDict, total=False):
+    body: Required[Iterable[Body]]
+
     origin: str
     """Origin of the SensorMaintenance data."""
 
     source: str
     """Source of the SensorMaintenance data."""
-
-    body: Iterable[Body]
 
 
 class Body(TypedDict, total=False):

@@ -25,12 +25,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary, APIR
 from unifieddatalibrary._types import Omit
 from unifieddatalibrary._models import BaseModel, FinalRequestOptions
 from unifieddatalibrary._constants import RAW_RESPONSE_HEADER
-from unifieddatalibrary._exceptions import (
-    APIStatusError,
-    APITimeoutError,
-    UnifieddatalibraryError,
-    APIResponseValidationError,
-)
+from unifieddatalibrary._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from unifieddatalibrary._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -375,25 +370,6 @@ class TestUnifieddatalibrary:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
-
-    def test_validate_headers(self) -> None:
-        client = Unifieddatalibrary(
-            base_url=base_url, password=password, username=username, _strict_response_validation=True
-        )
-        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert "Basic" in request.headers.get("Authorization")
-
-        with pytest.raises(UnifieddatalibraryError):
-            with update_env(
-                **{
-                    "HTTP_BASIC_AUTH_USERNAME": Omit(),
-                    "HTTP_BASIC_AUTH_PASSWORD": Omit(),
-                }
-            ):
-                client2 = Unifieddatalibrary(
-                    base_url=base_url, password=None, username=None, _strict_response_validation=True
-                )
-            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Unifieddatalibrary(
@@ -1221,25 +1197,6 @@ class TestAsyncUnifieddatalibrary:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
-
-    def test_validate_headers(self) -> None:
-        client = AsyncUnifieddatalibrary(
-            base_url=base_url, password=password, username=username, _strict_response_validation=True
-        )
-        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert "Basic" in request.headers.get("Authorization")
-
-        with pytest.raises(UnifieddatalibraryError):
-            with update_env(
-                **{
-                    "HTTP_BASIC_AUTH_USERNAME": Omit(),
-                    "HTTP_BASIC_AUTH_PASSWORD": Omit(),
-                }
-            ):
-                client2 = AsyncUnifieddatalibrary(
-                    base_url=base_url, password=None, username=None, _strict_response_validation=True
-                )
-            _ = client2
 
     def test_default_query_option(self) -> None:
         client = AsyncUnifieddatalibrary(

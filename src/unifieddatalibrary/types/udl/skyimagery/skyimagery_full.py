@@ -1,15 +1,14 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ...._compat import PYDANTIC_V2
 from ...._models import BaseModel
+from ...shared.onorbit import Onorbit
+from ...eo_observations.eo_observation_full import EoObservationFull
 
 __all__ = ["SkyimageryFull"]
 
@@ -39,7 +38,7 @@ class SkyimageryFull(BaseModel):
     """Start time of the exposure, in ISO 8601 UTC format with microsecond precision."""
 
     image_type: str = FieldInfo(alias="imageType")
-    """The type of image associated with this record (e.g. FITS, EOSSA, EOCHIP)."""
+    """The type of image associated with this record (e.g. FITS, EOSSA, EOCHIP, MP4)."""
 
     source: str
     """Source of the data."""
@@ -71,7 +70,7 @@ class SkyimageryFull(BaseModel):
     description: Optional[str] = None
     """Optional name/description associated with this image."""
 
-    eo_observations: Optional[List["EoObservationFull"]] = FieldInfo(alias="eoObservations", default=None)
+    eo_observations: Optional[List[EoObservationFull]] = FieldInfo(alias="eoObservations", default=None)
     """Collection of linked EOObservations."""
 
     exp_end_time: Optional[datetime] = FieldInfo(alias="expEndTime", default=None)
@@ -122,7 +121,7 @@ class SkyimageryFull(BaseModel):
     image_source_info: Optional[str] = FieldInfo(alias="imageSourceInfo", default=None)
     """String that uniquely identifies the data source."""
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -259,12 +258,3 @@ class SkyimageryFull(BaseModel):
     Optional identifier to track a commercial or marketplace transaction executed to
     produce this data.
     """
-
-
-from ...shared.onorbit import Onorbit
-from ...eo_observations.eo_observation_full import EoObservationFull
-
-if PYDANTIC_V2:
-    SkyimageryFull.model_rebuild()
-else:
-    SkyimageryFull.update_forward_refs()  # type: ignore

@@ -51,6 +51,13 @@ class Body(TypedDict, total=False):
     azimuth_bias: Annotated[float, PropertyInfo(alias="azimuthBias")]
     """Sensor azimuth angle bias in degrees."""
 
+    azimuth_measured: Annotated[bool, PropertyInfo(alias="azimuthMeasured")]
+    """
+    Optional flag indicating whether the azimuth value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     azimuth_rate: Annotated[float, PropertyInfo(alias="azimuthRate")]
     """Rate of change of the line of sight azimuth in degrees per second."""
 
@@ -66,6 +73,13 @@ class Body(TypedDict, total=False):
     declination: float
     """Line of sight declination angle in degrees and J2000 coordinate frame."""
 
+    declination_measured: Annotated[bool, PropertyInfo(alias="declinationMeasured")]
+    """
+    Optional flag indicating whether the declination value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
+
     descriptor: str
     """Optional source-provided and searchable metadata or descriptor of the data."""
 
@@ -80,6 +94,13 @@ class Body(TypedDict, total=False):
 
     elevation_bias: Annotated[float, PropertyInfo(alias="elevationBias")]
     """Sensor elevation bias in degrees."""
+
+    elevation_measured: Annotated[bool, PropertyInfo(alias="elevationMeasured")]
+    """
+    Optional flag indicating whether the elevation value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     elevation_rate: Annotated[float, PropertyInfo(alias="elevationRate")]
     """Rate of change of the line of sight elevation in degrees per second."""
@@ -135,6 +156,13 @@ class Body(TypedDict, total=False):
     ra: float
     """Line of sight right ascension in degrees and J2000 coordinate frame."""
 
+    ra_measured: Annotated[bool, PropertyInfo(alias="raMeasured")]
+    """
+    Optional flag indicating whether the ra value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range: float
     """Target range in km."""
 
@@ -150,8 +178,22 @@ class Body(TypedDict, total=False):
     range_bias: Annotated[float, PropertyInfo(alias="rangeBias")]
     """Sensor range bias in km."""
 
+    range_measured: Annotated[bool, PropertyInfo(alias="rangeMeasured")]
+    """
+    Optional flag indicating whether the range value is measured (true) or computed
+    (false). If null, consumers may consult the data provider for information
+    regarding whether the corresponding value is computed or measured.
+    """
+
     range_rate: Annotated[float, PropertyInfo(alias="rangeRate")]
     """Rate of change of the line of sight range in km/sec."""
+
+    range_rate_measured: Annotated[bool, PropertyInfo(alias="rangeRateMeasured")]
+    """
+    Optional flag indicating whether the rangeRate value is measured (true) or
+    computed (false). If null, consumers may consult the data provider for
+    information regarding whether the corresponding value is computed or measured.
+    """
 
     range_rate_unc: Annotated[float, PropertyInfo(alias="rangeRateUnc")]
     """One sigma uncertainty in the range rate measurement, in kilometers/second."""
@@ -227,6 +269,32 @@ class Body(TypedDict, total=False):
 
     track_id: Annotated[str, PropertyInfo(alias="trackId")]
     """Optional identifier of the track to which this observation belongs."""
+
+    tracking_state: Annotated[str, PropertyInfo(alias="trackingState")]
+    """
+    The beam type (or tracking state) in use at the time of collection of this
+    observation. Values include:
+
+    INIT ACQ WITH INIT VALUES: Initial acquisition based on predefined initial
+    values such as position, velocity, or other specific parameters.
+
+    INIT ACQ: Initial acquisition when no prior information or initial values such
+    as position or velocity are available.
+
+    TRACKING SINGLE BEAM: Continuously tracks and monitors a single target using one
+    specific radar beam.
+
+    TRACKING SEQUENTIAL ROVING: Sequentially tracks different targets or areas by
+    "roving" from one sector to the next in a systematic order.
+
+    SELF ACQ WITH INIT VALUES: Autonomously acquires targets using predefined
+    starting parameters or initial values.
+
+    SELF ACQ: Automatically detects and locks onto targets without the need for
+    predefined initial settings.
+
+    NON-TRACKING: Non-tracking.
+    """
 
     transaction_id: Annotated[str, PropertyInfo(alias="transactionId")]
     """

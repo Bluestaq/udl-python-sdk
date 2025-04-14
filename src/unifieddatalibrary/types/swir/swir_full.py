@@ -1,15 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._compat import PYDANTIC_V2
 from ..._models import BaseModel
+from ..shared.onorbit import Onorbit
 
 __all__ = ["SwirFull"]
 
@@ -86,7 +84,7 @@ class SwirFull(BaseModel):
     -180 to 180 degrees (negative values west of Prime Meridian).
     """
 
-    on_orbit: Optional["Onorbit"] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
@@ -126,11 +124,3 @@ class SwirFull(BaseModel):
 
     This array should correspond with the same-sized array of absFluxes.
     """
-
-
-from ..shared.onorbit import Onorbit
-
-if PYDANTIC_V2:
-    SwirFull.model_rebuild()
-else:
-    SwirFull.update_forward_refs()  # type: ignore

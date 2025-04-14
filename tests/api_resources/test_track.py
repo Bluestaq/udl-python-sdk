@@ -91,7 +91,7 @@ class TestTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -105,7 +105,7 @@ class TestTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -123,7 +123,7 @@ class TestTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         ) as response:
@@ -143,7 +143,7 @@ class TestTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -157,7 +157,7 @@ class TestTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -175,7 +175,7 @@ class TestTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         ) as response:
@@ -320,7 +320,7 @@ class TestAsyncTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -334,7 +334,7 @@ class TestAsyncTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -352,7 +352,7 @@ class TestAsyncTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         ) as response:
@@ -372,7 +372,7 @@ class TestAsyncTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -386,7 +386,7 @@ class TestAsyncTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         )
@@ -404,7 +404,7 @@ class TestAsyncTrack:
                     "classification_marking": "U",
                     "data_mode": "TEST",
                     "source": "Bluestaq",
-                    "ts": parse_datetime("2021-06-07T14:17:39.653Z"),
+                    "ts": parse_datetime("2021-06-07T14:17:39.653043Z"),
                 }
             ],
         ) as response:
