@@ -278,6 +278,7 @@ from .channel_update_params import ChannelUpdateParams as ChannelUpdateParams
 from .country_create_params import CountryCreateParams as CountryCreateParams
 from .country_list_response import CountryListResponse as CountryListResponse
 from .country_update_params import CountryUpdateParams as CountryUpdateParams
+from .dropzone_tuple_params import DropzoneTupleParams as DropzoneTupleParams
 from .engine_count_response import EngineCountResponse as EngineCountResponse
 from .engine_tuple_response import EngineTupleResponse as EngineTupleResponse
 from .entity_count_response import EntityCountResponse as EntityCountResponse
@@ -335,6 +336,8 @@ from .channel_count_response import ChannelCountResponse as ChannelCountResponse
 from .channel_tuple_response import ChannelTupleResponse as ChannelTupleResponse
 from .country_count_response import CountryCountResponse as CountryCountResponse
 from .country_tuple_response import CountryTupleResponse as CountryTupleResponse
+from .dropzone_create_params import DropzoneCreateParams as DropzoneCreateParams
+from .dropzone_update_params import DropzoneUpdateParams as DropzoneUpdateParams
 from .ephemeris_count_params import EphemerisCountParams as EphemerisCountParams
 from .ephemeris_set_abridged import EphemerisSetAbridged as EphemerisSetAbridged
 from .ephemeris_tuple_params import EphemerisTupleParams as EphemerisTupleParams
@@ -361,6 +364,7 @@ from .orbittrack_list_params import OrbittrackListParams as OrbittrackListParams
 from .poi_create_bulk_params import PoiCreateBulkParams as PoiCreateBulkParams
 from .rfemitter_get_response import RfemitterGetResponse as RfemitterGetResponse
 from .rfemitter_tuple_params import RfemitterTupleParams as RfemitterTupleParams
+from .routestat_tuple_params import RoutestatTupleParams as RoutestatTupleParams
 from .sensorplan_list_params import SensorplanListParams as SensorplanListParams
 from .sgi_create_bulk_params import SgiCreateBulkParams as SgiCreateBulkParams
 from .skyimagery_list_params import SkyimageryListParams as SkyimageryListParams
@@ -382,6 +386,9 @@ from .airfield_tuple_response import AirfieldTupleResponse as AirfieldTupleRespo
 from .airfieldstatus_abridged import AirfieldstatusAbridged as AirfieldstatusAbridged
 from .batterydetails_abridged import BatterydetailsAbridged as BatterydetailsAbridged
 from .conjunction_list_params import ConjunctionListParams as ConjunctionListParams
+from .dropzone_count_response import DropzoneCountResponse as DropzoneCountResponse
+from .dropzone_query_response import DropzoneQueryResponse as DropzoneQueryResponse
+from .dropzone_tuple_response import DropzoneTupleResponse as DropzoneTupleResponse
 from .engine_details_abridged import EngineDetailsAbridged as EngineDetailsAbridged
 from .eo_observation_abridged import EoObservationAbridged as EoObservationAbridged
 from .eop_list_tuple_response import EopListTupleResponse as EopListTupleResponse
@@ -415,6 +422,8 @@ from .rfbandtype_tuple_params import RfbandtypeTupleParams as RfbandtypeTuplePar
 from .rfemitter_create_params import RfemitterCreateParams as RfemitterCreateParams
 from .rfemitter_list_response import RfemitterListResponse as RfemitterListResponse
 from .rfemitter_update_params import RfemitterUpdateParams as RfemitterUpdateParams
+from .routestat_create_params import RoutestatCreateParams as RoutestatCreateParams
+from .routestat_update_params import RoutestatUpdateParams as RoutestatUpdateParams
 from .sc_file_download_params import ScFileDownloadParams as ScFileDownloadParams
 from .sc_file_upload_response import ScFileUploadResponse as ScFileUploadResponse
 from .scientific_get_response import ScientificGetResponse as ScientificGetResponse
@@ -457,6 +466,7 @@ from .equipment_count_response import EquipmentCountResponse as EquipmentCountRe
 from .equipment_tuple_response import EquipmentTupleResponse as EquipmentTupleResponse
 from .flightplan_create_params import FlightplanCreateParams as FlightplanCreateParams
 from .flightplan_list_response import FlightplanListResponse as FlightplanListResponse
+from .flightplan_update_params import FlightplanUpdateParams as FlightplanUpdateParams
 from .geostatus_count_response import GeostatusCountResponse as GeostatusCountResponse
 from .geostatus_tuple_response import GeostatusTupleResponse as GeostatusTupleResponse
 from .gnssrawif_count_response import GnssrawifCountResponse as GnssrawifCountResponse
@@ -484,6 +494,9 @@ from .rfbandtype_list_response import RfbandtypeListResponse as RfbandtypeListRe
 from .rfbandtype_update_params import RfbandtypeUpdateParams as RfbandtypeUpdateParams
 from .rfemitter_count_response import RfemitterCountResponse as RfemitterCountResponse
 from .rfemitter_tuple_response import RfemitterTupleResponse as RfemitterTupleResponse
+from .routestat_count_response import RoutestatCountResponse as RoutestatCountResponse
+from .routestat_query_response import RoutestatQueryResponse as RoutestatQueryResponse
+from .routestat_tuple_response import RoutestatTupleResponse as RoutestatTupleResponse
 from .scientific_create_params import ScientificCreateParams as ScientificCreateParams
 from .scientific_list_response import ScientificListResponse as ScientificListResponse
 from .scientific_update_params import ScientificUpdateParams as ScientificUpdateParams
@@ -614,6 +627,7 @@ from .conjunction_tuple_response import ConjunctionTupleResponse as ConjunctionT
 from .crew_create_bulk_v2_params import CrewCreateBulkV2Params as CrewCreateBulkV2Params
 from .diffofarrival_tuple_params import DiffofarrivalTupleParams as DiffofarrivalTupleParams
 from .drift_history_tuple_params import DriftHistoryTupleParams as DriftHistoryTupleParams
+from .dropzone_retrieve_response import DropzoneRetrieveResponse as DropzoneRetrieveResponse
 from .effect_request_list_params import EffectRequestListParams as EffectRequestListParams
 from .enginedetail_list_response import EnginedetailListResponse as EnginedetailListResponse
 from .eo_observation_list_params import EoObservationListParams as EoObservationListParams
@@ -684,6 +698,7 @@ from .beam_contour_count_response import BeamContourCountResponse as BeamContour
 from .beam_contour_tuple_response import BeamContourTupleResponse as BeamContourTupleResponse
 from .collect_request_list_params import CollectRequestListParams as CollectRequestListParams
 from .drift_history_list_response import DriftHistoryListResponse as DriftHistoryListResponse
+from .dropzone_create_bulk_params import DropzoneCreateBulkParams as DropzoneCreateBulkParams
 from .effect_request_count_params import EffectRequestCountParams as EffectRequestCountParams
 from .effect_request_tuple_params import EffectRequestTupleParams as EffectRequestTupleParams
 from .effect_response_list_params import EffectResponseListParams as EffectResponseListParams
@@ -729,6 +744,7 @@ from .organization_count_response import OrganizationCountResponse as Organizati
 from .organization_tuple_response import OrganizationTupleResponse as OrganizationTupleResponse
 from .rfobservation_create_params import RfobservationCreateParams as RfobservationCreateParams
 from .rfobservation_list_response import RfobservationListResponse as RfobservationListResponse
+from .routestat_retrieve_response import RoutestatRetrieveResponse as RoutestatRetrieveResponse
 from .sarobservation_count_params import SarobservationCountParams as SarobservationCountParams
 from .sarobservation_tuple_params import SarobservationTupleParams as SarobservationTupleParams
 from .track_create_bulk_v2_params import TrackCreateBulkV2Params as TrackCreateBulkV2Params
@@ -798,6 +814,7 @@ from .rfemitterdetail_get_response import RfemitterdetailGetResponse as Rfemitte
 from .rfemitterdetail_tuple_params import RfemitterdetailTupleParams as RfemitterdetailTupleParams
 from .rfobservation_count_response import RfobservationCountResponse as RfobservationCountResponse
 from .rfobservation_tuple_response import RfobservationTupleResponse as RfobservationTupleResponse
+from .routestat_create_bulk_params import RoutestatCreateBulkParams as RoutestatCreateBulkParams
 from .sarobservation_create_params import SarobservationCreateParams as SarobservationCreateParams
 from .sarobservation_list_response import SarobservationListResponse as SarobservationListResponse
 from .skyimagery_upload_zip_params import SkyimageryUploadZipParams as SkyimageryUploadZipParams
@@ -872,12 +889,16 @@ from .collect_response_create_params import CollectResponseCreateParams as Colle
 from .collect_response_list_response import CollectResponseListResponse as CollectResponseListResponse
 from .conjunction_create_bulk_params import ConjunctionCreateBulkParams as ConjunctionCreateBulkParams
 from .conjunction_get_history_params import ConjunctionGetHistoryParams as ConjunctionGetHistoryParams
+from .dropzone_create_bulk_v2_params import DropzoneCreateBulkV2Params as DropzoneCreateBulkV2Params
 from .effect_response_count_response import EffectResponseCountResponse as EffectResponseCountResponse
 from .effect_response_tuple_response import EffectResponseTupleResponse as EffectResponseTupleResponse
 from .equipmentremark_count_response import EquipmentremarkCountResponse as EquipmentremarkCountResponse
 from .equipmentremark_tuple_response import EquipmentremarkTupleResponse as EquipmentremarkTupleResponse
 from .event_evolution_count_response import EventEvolutionCountResponse as EventEvolutionCountResponse
 from .event_evolution_tuple_response import EventEvolutionTupleResponse as EventEvolutionTupleResponse
+from .featureassessment_count_params import FeatureassessmentCountParams as FeatureassessmentCountParams
+from .featureassessment_query_params import FeatureassessmentQueryParams as FeatureassessmentQueryParams
+from .featureassessment_tuple_params import FeatureassessmentTupleParams as FeatureassessmentTupleParams
 from .gnssobservationset_list_params import GnssobservationsetListParams as GnssobservationsetListParams
 from .ionoobservation_count_response import IonoobservationCountResponse as IonoobservationCountResponse
 from .ionoobservation_tuple_response import IonoobservationTupleResponse as IonoobservationTupleResponse
@@ -929,7 +950,11 @@ from .analytic_imagery_history_params import AnalyticImageryHistoryParams as Ana
 from .analytic_imagery_tuple_response import AnalyticImageryTupleResponse as AnalyticImageryTupleResponse
 from .beam_contour_create_bulk_params import BeamContourCreateBulkParams as BeamContourCreateBulkParams
 from .collect_response_count_response import CollectResponseCountResponse as CollectResponseCountResponse
+from .emittergeolocation_count_params import EmittergeolocationCountParams as EmittergeolocationCountParams
+from .emittergeolocation_query_params import EmittergeolocationQueryParams as EmittergeolocationQueryParams
+from .emittergeolocation_tuple_params import EmittergeolocationTupleParams as EmittergeolocationTupleParams
 from .ephemeris_create_bulk_v2_params import EphemerisCreateBulkV2Params as EphemerisCreateBulkV2Params
+from .featureassessment_create_params import FeatureassessmentCreateParams as FeatureassessmentCreateParams
 from .gnssobservationset_count_params import GnssobservationsetCountParams as GnssobservationsetCountParams
 from .gnssobservationset_tuple_params import GnssobservationsetTupleParams as GnssobservationsetTupleParams
 from .logisticssupport_count_response import LogisticssupportCountResponse as LogisticssupportCountResponse
@@ -949,6 +974,7 @@ from .personnelrecovery_create_params import PersonnelrecoveryCreateParams as Pe
 from .personnelrecovery_list_response import PersonnelrecoveryListResponse as PersonnelrecoveryListResponse
 from .radarobservation_count_response import RadarobservationCountResponse as RadarobservationCountResponse
 from .radarobservation_tuple_response import RadarobservationTupleResponse as RadarobservationTupleResponse
+from .routestat_create_bulk_v2_params import RoutestatCreateBulkV2Params as RoutestatCreateBulkV2Params
 from .sensormaintenance_create_params import SensormaintenanceCreateParams as SensormaintenanceCreateParams
 from .sensormaintenance_list_response import SensormaintenanceListResponse as SensormaintenanceListResponse
 from .sensormaintenance_update_params import SensormaintenanceUpdateParams as SensormaintenanceUpdateParams
@@ -969,6 +995,10 @@ from .ais_object_create_bulk_v2_params import AIsObjectCreateBulkV2Params as AIs
 from .conjunction_get_history_response import ConjunctionGetHistoryResponse as ConjunctionGetHistoryResponse
 from .diplomatic_clearance_list_params import DiplomaticClearanceListParams as DiplomaticClearanceListParams
 from .effect_request_retrieve_response import EffectRequestRetrieveResponse as EffectRequestRetrieveResponse
+from .emittergeolocation_create_params import EmittergeolocationCreateParams as EmittergeolocationCreateParams
+from .featureassessment_count_response import FeatureassessmentCountResponse as FeatureassessmentCountResponse
+from .featureassessment_query_response import FeatureassessmentQueryResponse as FeatureassessmentQueryResponse
+from .featureassessment_tuple_response import FeatureassessmentTupleResponse as FeatureassessmentTupleResponse
 from .flightplan_create_bulk_v2_params import FlightplanCreateBulkV2Params as FlightplanCreateBulkV2Params
 from .gnssobservationset_list_response import GnssobservationsetListResponse as GnssobservationsetListResponse
 from .ground_imagery_upload_zip_params import GroundImageryUploadZipParams as GroundImageryUploadZipParams
@@ -1017,6 +1047,9 @@ from .diplomatic_clearance_tuple_params import DiplomaticClearanceTupleParams as
 from .effect_request_create_bulk_params import EffectRequestCreateBulkParams as EffectRequestCreateBulkParams
 from .effect_response_retrieve_response import EffectResponseRetrieveResponse as EffectResponseRetrieveResponse
 from .elset_create_bulk_from_tle_params import ElsetCreateBulkFromTleParams as ElsetCreateBulkFromTleParams
+from .emittergeolocation_count_response import EmittergeolocationCountResponse as EmittergeolocationCountResponse
+from .emittergeolocation_query_response import EmittergeolocationQueryResponse as EmittergeolocationQueryResponse
+from .emittergeolocation_tuple_response import EmittergeolocationTupleResponse as EmittergeolocationTupleResponse
 from .eo_observation_create_bulk_params import EoObservationCreateBulkParams as EoObservationCreateBulkParams
 from .gnssobservationset_count_response import GnssobservationsetCountResponse as GnssobservationsetCountResponse
 from .gnssobservationset_tuple_response import GnssobservationsetTupleResponse as GnssobservationsetTupleResponse
@@ -1082,10 +1115,17 @@ from .air_transport_mission_update_params import AirTransportMissionUpdateParams
 from .aircraft_status_remark_tuple_params import AircraftStatusRemarkTupleParams as AircraftStatusRemarkTupleParams
 from .airfieldslotconsumption_list_params import AirfieldslotconsumptionListParams as AirfieldslotconsumptionListParams
 from .airspace_control_order_tuple_params import AirspaceControlOrderTupleParams as AirspaceControlOrderTupleParams
+from .aviationriskmanagement_count_params import AviationriskmanagementCountParams as AviationriskmanagementCountParams
+from .aviationriskmanagement_query_params import AviationriskmanagementQueryParams as AviationriskmanagementQueryParams
+from .aviationriskmanagement_tuple_params import AviationriskmanagementTupleParams as AviationriskmanagementTupleParams
 from .collect_response_create_bulk_params import CollectResponseCreateBulkParams as CollectResponseCreateBulkParams
 from .diffofarrival_create_bulk_v2_params import DiffofarrivalCreateBulkV2Params as DiffofarrivalCreateBulkV2Params
 from .diplomatic_clearance_count_response import DiplomaticClearanceCountResponse as DiplomaticClearanceCountResponse
 from .diplomatic_clearance_tuple_response import DiplomaticClearanceTupleResponse as DiplomaticClearanceTupleResponse
+from .featureassessment_retrieve_response import FeatureassessmentRetrieveResponse as FeatureassessmentRetrieveResponse
+from .globalatmosphericmodel_count_params import GlobalatmosphericmodelCountParams as GlobalatmosphericmodelCountParams
+from .globalatmosphericmodel_query_params import GlobalatmosphericmodelQueryParams as GlobalatmosphericmodelQueryParams
+from .globalatmosphericmodel_tuple_params import GlobalatmosphericmodelTupleParams as GlobalatmosphericmodelTupleParams
 from .item_tracking_create_bulk_v2_params import ItemTrackingCreateBulkV2Params as ItemTrackingCreateBulkV2Params
 from .logisticssupport_create_bulk_params import LogisticssupportCreateBulkParams as LogisticssupportCreateBulkParams
 from .missile_track_create_bulk_v2_params import MissileTrackCreateBulkV2Params as MissileTrackCreateBulkV2Params
@@ -1119,8 +1159,18 @@ from .airfieldslotconsumption_tuple_params import (
 from .airspace_control_order_create_params import AirspaceControlOrderCreateParams as AirspaceControlOrderCreateParams
 from .airspace_control_order_list_response import AirspaceControlOrderListResponse as AirspaceControlOrderListResponse
 from .analytic_imagery_history_aodr_params import AnalyticImageryHistoryAodrParams as AnalyticImageryHistoryAodrParams
+from .aviationriskmanagement_create_params import (
+    AviationriskmanagementCreateParams as AviationriskmanagementCreateParams,
+)
+from .aviationriskmanagement_update_params import (
+    AviationriskmanagementUpdateParams as AviationriskmanagementUpdateParams,
+)
 from .effect_request_create_bulk_v2_params import EffectRequestCreateBulkV2Params as EffectRequestCreateBulkV2Params
+from .emittergeolocation_retrieve_response import (
+    EmittergeolocationRetrieveResponse as EmittergeolocationRetrieveResponse,
+)
 from .eo_observation_create_bulk_v2_params import EoObservationCreateBulkV2Params as EoObservationCreateBulkV2Params
+from .featureassessment_create_bulk_params import FeatureassessmentCreateBulkParams as FeatureassessmentCreateBulkParams
 from .isr_collection_create_bulk_v2_params import IsrCollectionCreateBulkV2Params as IsrCollectionCreateBulkV2Params
 from .missionassignment_create_bulk_params import MissionassignmentCreateBulkParams as MissionassignmentCreateBulkParams
 from .navigationalobstruction_count_params import (
@@ -1189,9 +1239,30 @@ from .airspace_control_order_tuple_response import (
 from .analytic_imagery_history_count_params import (
     AnalyticImageryHistoryCountParams as AnalyticImageryHistoryCountParams,
 )
+from .aviationriskmanagement_count_response import (
+    AviationriskmanagementCountResponse as AviationriskmanagementCountResponse,
+)
+from .aviationriskmanagement_query_response import (
+    AviationriskmanagementQueryResponse as AviationriskmanagementQueryResponse,
+)
+from .aviationriskmanagement_tuple_response import (
+    AviationriskmanagementTupleResponse as AviationriskmanagementTupleResponse,
+)
 from .collect_request_create_bulk_v2_params import CollectRequestCreateBulkV2Params as CollectRequestCreateBulkV2Params
 from .effect_response_create_bulk_v2_params import EffectResponseCreateBulkV2Params as EffectResponseCreateBulkV2Params
+from .emittergeolocation_create_bulk_params import (
+    EmittergeolocationCreateBulkParams as EmittergeolocationCreateBulkParams,
+)
 from .event_evolution_create_bulk_v2_params import EventEvolutionCreateBulkV2Params as EventEvolutionCreateBulkV2Params
+from .globalatmosphericmodel_count_response import (
+    GlobalatmosphericmodelCountResponse as GlobalatmosphericmodelCountResponse,
+)
+from .globalatmosphericmodel_query_response import (
+    GlobalatmosphericmodelQueryResponse as GlobalatmosphericmodelQueryResponse,
+)
+from .globalatmosphericmodel_tuple_response import (
+    GlobalatmosphericmodelTupleResponse as GlobalatmosphericmodelTupleResponse,
+)
 from .gnssobservationset_create_bulk_params import (
     GnssobservationsetCreateBulkParams as GnssobservationsetCreateBulkParams,
 )
@@ -1291,6 +1362,9 @@ from .analytic_imagery_history_count_response import (
 from .diplomatic_clearance_create_bulk_params import (
     DiplomaticClearanceCreateBulkParams as DiplomaticClearanceCreateBulkParams,
 )
+from .featureassessment_create_bulk_v2_params import (
+    FeatureassessmentCreateBulkV2Params as FeatureassessmentCreateBulkV2Params,
+)
 from .onboardnavigation_create_bulk_v2_params import (
     OnboardnavigationCreateBulkV2Params as OnboardnavigationCreateBulkV2Params,
 )
@@ -1302,6 +1376,15 @@ from .seradataspacecraftdetail_tuple_response import (
 )
 from .soiobservationset_create_bulk_v2_params import (
     SoiobservationsetCreateBulkV2Params as SoiobservationsetCreateBulkV2Params,
+)
+from .aviationriskmanagement_retrieve_response import (
+    AviationriskmanagementRetrieveResponse as AviationriskmanagementRetrieveResponse,
+)
+from .emittergeolocation_create_bulk_v2_params import (
+    EmittergeolocationCreateBulkV2Params as EmittergeolocationCreateBulkV2Params,
+)
+from .globalatmosphericmodel_retrieve_response import (
+    GlobalatmosphericmodelRetrieveResponse as GlobalatmosphericmodelRetrieveResponse,
 )
 from .gnssobservationset_create_bulk_v2_params import (
     GnssobservationsetCreateBulkV2Params as GnssobservationsetCreateBulkV2Params,
@@ -1327,6 +1410,9 @@ from .video_get_player_streaming_info_response import (
 from .airspace_control_order_create_bulk_params import (
     AirspaceControlOrderCreateBulkParams as AirspaceControlOrderCreateBulkParams,
 )
+from .aviationriskmanagement_create_bulk_params import (
+    AviationriskmanagementCreateBulkParams as AviationriskmanagementCreateBulkParams,
+)
 from .spaceenvobservation_create_bulk_v2_params import (
     SpaceenvobservationCreateBulkV2Params as SpaceenvobservationCreateBulkV2Params,
 )
@@ -1345,17 +1431,23 @@ from .passiveradarobservation_create_bulk_params import (
 from .passiveradarobservation_file_create_params import (
     PassiveradarobservationFileCreateParams as PassiveradarobservationFileCreateParams,
 )
+from .sgi_get_data_by_effective_as_of_date_params import (
+    SgiGetDataByEffectiveAsOfDateParams as SgiGetDataByEffectiveAsOfDateParams,
+)
 from .video_get_publisher_streaming_info_response import (
     VideoGetPublisherStreamingInfoResponse as VideoGetPublisherStreamingInfoResponse,
+)
+from .aviationriskmanagement_create_bulk_v2_params import (
+    AviationriskmanagementCreateBulkV2Params as AviationriskmanagementCreateBulkV2Params,
+)
+from .globalatmosphericmodel_create_bulk_v2_params import (
+    GlobalatmosphericmodelCreateBulkV2Params as GlobalatmosphericmodelCreateBulkV2Params,
 )
 from .organization_get_organization_types_response import (
     OrganizationGetOrganizationTypesResponse as OrganizationGetOrganizationTypesResponse,
 )
 from .organization_get_organization_categories_response import (
     OrganizationGetOrganizationCategoriesResponse as OrganizationGetOrganizationCategoriesResponse,
-)
-from .sgi_get_s_g_i_data_by_effective_as_of_date_params import (
-    SgiGetSGIDataByEffectiveAsOfDateParams as SgiGetSGIDataByEffectiveAsOfDateParams,
 )
 from .conjunction_upload_conjunction_data_message_params import (
     ConjunctionUploadConjunctionDataMessageParams as ConjunctionUploadConjunctionDataMessageParams,

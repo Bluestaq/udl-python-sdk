@@ -296,6 +296,14 @@ from .channels import (
     ChannelsResourceWithStreamingResponse,
     AsyncChannelsResourceWithStreamingResponse,
 )
+from .dropzone import (
+    DropzoneResource,
+    AsyncDropzoneResource,
+    DropzoneResourceWithRawResponse,
+    AsyncDropzoneResourceWithRawResponse,
+    DropzoneResourceWithStreamingResponse,
+    AsyncDropzoneResourceWithStreamingResponse,
+)
 from .entities import (
     EntitiesResource,
     AsyncEntitiesResource,
@@ -479,6 +487,14 @@ from .rfbandtype import (
     AsyncRfbandtypeResourceWithRawResponse,
     RfbandtypeResourceWithStreamingResponse,
     AsyncRfbandtypeResourceWithStreamingResponse,
+)
+from .routestats import (
+    RoutestatsResource,
+    AsyncRoutestatsResource,
+    RoutestatsResourceWithRawResponse,
+    AsyncRoutestatsResourceWithRawResponse,
+    RoutestatsResourceWithStreamingResponse,
+    AsyncRoutestatsResourceWithStreamingResponse,
 )
 from .scientific import (
     ScientificResource,
@@ -1104,6 +1120,14 @@ from .collect_responses import (
     CollectResponsesResourceWithStreamingResponse,
     AsyncCollectResponsesResourceWithStreamingResponse,
 )
+from .featureassessment import (
+    FeatureassessmentResource,
+    AsyncFeatureassessmentResource,
+    FeatureassessmentResourceWithRawResponse,
+    AsyncFeatureassessmentResourceWithRawResponse,
+    FeatureassessmentResourceWithStreamingResponse,
+    AsyncFeatureassessmentResourceWithStreamingResponse,
+)
 from .gnss_observations import (
     GnssObservationsResource,
     AsyncGnssObservationsResource,
@@ -1183,6 +1207,14 @@ from .air_tasking_orders import (
     AsyncAirTaskingOrdersResourceWithRawResponse,
     AirTaskingOrdersResourceWithStreamingResponse,
     AsyncAirTaskingOrdersResourceWithStreamingResponse,
+)
+from .emittergeolocation import (
+    EmittergeolocationResource,
+    AsyncEmittergeolocationResource,
+    EmittergeolocationResourceWithRawResponse,
+    AsyncEmittergeolocationResourceWithRawResponse,
+    EmittergeolocationResourceWithStreamingResponse,
+    AsyncEmittergeolocationResourceWithStreamingResponse,
 )
 from .gnssobservationset import (
     GnssobservationsetResource,
@@ -1327,6 +1359,22 @@ from .air_transport_missions import (
     AsyncAirTransportMissionsResourceWithRawResponse,
     AirTransportMissionsResourceWithStreamingResponse,
     AsyncAirTransportMissionsResourceWithStreamingResponse,
+)
+from .aviationriskmanagement import (
+    AviationriskmanagementResource,
+    AsyncAviationriskmanagementResource,
+    AviationriskmanagementResourceWithRawResponse,
+    AsyncAviationriskmanagementResourceWithRawResponse,
+    AviationriskmanagementResourceWithStreamingResponse,
+    AsyncAviationriskmanagementResourceWithStreamingResponse,
+)
+from .globalatmosphericmodel import (
+    GlobalatmosphericmodelResource,
+    AsyncGlobalatmosphericmodelResource,
+    GlobalatmosphericmodelResourceWithRawResponse,
+    AsyncGlobalatmosphericmodelResourceWithRawResponse,
+    GlobalatmosphericmodelResourceWithStreamingResponse,
+    AsyncGlobalatmosphericmodelResourceWithStreamingResponse,
 )
 from .seradataopticalpayload import (
     SeradataopticalpayloadResource,
@@ -1608,6 +1656,42 @@ __all__ = [
     "AsyncCotsResourceWithRawResponse",
     "CotsResourceWithStreamingResponse",
     "AsyncCotsResourceWithStreamingResponse",
+    "AviationriskmanagementResource",
+    "AsyncAviationriskmanagementResource",
+    "AviationriskmanagementResourceWithRawResponse",
+    "AsyncAviationriskmanagementResourceWithRawResponse",
+    "AviationriskmanagementResourceWithStreamingResponse",
+    "AsyncAviationriskmanagementResourceWithStreamingResponse",
+    "DropzoneResource",
+    "AsyncDropzoneResource",
+    "DropzoneResourceWithRawResponse",
+    "AsyncDropzoneResourceWithRawResponse",
+    "DropzoneResourceWithStreamingResponse",
+    "AsyncDropzoneResourceWithStreamingResponse",
+    "EmittergeolocationResource",
+    "AsyncEmittergeolocationResource",
+    "EmittergeolocationResourceWithRawResponse",
+    "AsyncEmittergeolocationResourceWithRawResponse",
+    "EmittergeolocationResourceWithStreamingResponse",
+    "AsyncEmittergeolocationResourceWithStreamingResponse",
+    "FeatureassessmentResource",
+    "AsyncFeatureassessmentResource",
+    "FeatureassessmentResourceWithRawResponse",
+    "AsyncFeatureassessmentResourceWithRawResponse",
+    "FeatureassessmentResourceWithStreamingResponse",
+    "AsyncFeatureassessmentResourceWithStreamingResponse",
+    "GlobalatmosphericmodelResource",
+    "AsyncGlobalatmosphericmodelResource",
+    "GlobalatmosphericmodelResourceWithRawResponse",
+    "AsyncGlobalatmosphericmodelResourceWithRawResponse",
+    "GlobalatmosphericmodelResourceWithStreamingResponse",
+    "AsyncGlobalatmosphericmodelResourceWithStreamingResponse",
+    "RoutestatsResource",
+    "AsyncRoutestatsResource",
+    "RoutestatsResourceWithRawResponse",
+    "AsyncRoutestatsResourceWithRawResponse",
+    "RoutestatsResourceWithStreamingResponse",
+    "AsyncRoutestatsResourceWithStreamingResponse",
     "CountriesResource",
     "AsyncCountriesResource",
     "CountriesResourceWithRawResponse",

@@ -1,4 +1,4 @@
-configured_endpoints: 1376
+configured_endpoints: 1473
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/bluestaq%2Funifieddatalibrary-1a4175ce156c350f65de6444652468826f141707c6ae484ff04a7f3624f5000e.yml
 openapi_spec_hash: 819ed6077f504b53c9e9d19a46464d7a
-config_hash: 170802860010f1d277f1f5d647a813a9
+config_hash: c42b0f8ace3def5538f4120daf9afba8

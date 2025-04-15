@@ -13,9 +13,9 @@ __all__ = ["HistoryAdorParams"]
 
 class HistoryAdorParams(TypedDict, total=False):
     start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]]
-    """
-    Start time of the data contained in the associated binary file, in ISO 8601 UTC
-    format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+    """Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+
+    (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
 
     columns: str

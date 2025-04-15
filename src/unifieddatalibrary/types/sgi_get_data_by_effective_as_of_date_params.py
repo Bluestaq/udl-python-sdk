@@ -8,10 +8,10 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["SgiGetSGIDataByEffectiveAsOfDateParams"]
+__all__ = ["SgiGetDataByEffectiveAsOfDateParams"]
 
 
-class SgiGetSGIDataByEffectiveAsOfDateParams(TypedDict, total=False):
+class SgiGetDataByEffectiveAsOfDateParams(TypedDict, total=False):
     effective_date: Annotated[Union[str, datetime], PropertyInfo(alias="effectiveDate", format="iso8601")]
     """
     (One or more of fields 'effectiveDate, sgiDate' are required.) ISO8601 UTC Time

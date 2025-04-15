@@ -8,30 +8,42 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import site_tuple_params, site_create_params, site_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from .._utils import (
+from ...types import site_tuple_params, site_create_params, site_update_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from .operations import (
+    OperationsResource,
+    AsyncOperationsResource,
+    OperationsResourceWithRawResponse,
+    AsyncOperationsResourceWithRawResponse,
+    OperationsResourceWithStreamingResponse,
+    AsyncOperationsResourceWithStreamingResponse,
+)
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.site_get_response import SiteGetResponse
-from ..types.site_list_response import SiteListResponse
-from ..types.entity_ingest_param import EntityIngestParam
-from ..types.site_tuple_response import SiteTupleResponse
+from ..._base_client import make_request_options
+from ...types.site_get_response import SiteGetResponse
+from ...types.site_list_response import SiteListResponse
+from ...types.entity_ingest_param import EntityIngestParam
+from ...types.site_tuple_response import SiteTupleResponse
 
 __all__ = ["SiteResource", "AsyncSiteResource"]
 
 
 class SiteResource(SyncAPIResource):
+    @cached_property
+    def operations(self) -> OperationsResource:
+        return OperationsResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> SiteResourceWithRawResponse:
         """
@@ -1298,6 +1310,10 @@ class SiteResource(SyncAPIResource):
 
 
 class AsyncSiteResource(AsyncAPIResource):
+    @cached_property
+    def operations(self) -> AsyncOperationsResource:
+        return AsyncOperationsResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncSiteResourceWithRawResponse:
         """
@@ -2589,6 +2605,10 @@ class SiteResourceWithRawResponse:
             site.tuple,
         )
 
+    @cached_property
+    def operations(self) -> OperationsResourceWithRawResponse:
+        return OperationsResourceWithRawResponse(self._site.operations)
+
 
 class AsyncSiteResourceWithRawResponse:
     def __init__(self, site: AsyncSiteResource) -> None:
@@ -2615,6 +2635,10 @@ class AsyncSiteResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             site.tuple,
         )
+
+    @cached_property
+    def operations(self) -> AsyncOperationsResourceWithRawResponse:
+        return AsyncOperationsResourceWithRawResponse(self._site.operations)
 
 
 class SiteResourceWithStreamingResponse:
@@ -2643,6 +2667,10 @@ class SiteResourceWithStreamingResponse:
             site.tuple,
         )
 
+    @cached_property
+    def operations(self) -> OperationsResourceWithStreamingResponse:
+        return OperationsResourceWithStreamingResponse(self._site.operations)
+
 
 class AsyncSiteResourceWithStreamingResponse:
     def __init__(self, site: AsyncSiteResource) -> None:
@@ -2669,3 +2697,7 @@ class AsyncSiteResourceWithStreamingResponse:
         self.tuple = async_to_streamed_response_wrapper(
             site.tuple,
         )
+
+    @cached_property
+    def operations(self) -> AsyncOperationsResourceWithStreamingResponse:
+        return AsyncOperationsResourceWithStreamingResponse(self._site.operations)

@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.gnss_raw_if import history_ador_params, history_count_params, history_query_params
+from ...types.gnss_raw_if import history_aodr_params, history_count_params, history_query_params
 from ...types.gnss_raw_if.history_query_response import HistoryQueryResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
@@ -47,7 +47,7 @@ class HistoryResource(SyncAPIResource):
         """
         return HistoryResourceWithStreamingResponse(self)
 
-    def ador(
+    def aodr(
         self,
         *,
         start_time: Union[str, datetime],
@@ -112,7 +112,7 @@ class HistoryResource(SyncAPIResource):
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
                     },
-                    history_ador_params.HistoryAdorParams,
+                    history_aodr_params.HistoryAodrParams,
                 ),
             ),
             cast_to=NoneType,
@@ -234,7 +234,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
-    async def ador(
+    async def aodr(
         self,
         *,
         start_time: Union[str, datetime],
@@ -299,7 +299,7 @@ class AsyncHistoryResource(AsyncAPIResource):
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
                     },
-                    history_ador_params.HistoryAdorParams,
+                    history_aodr_params.HistoryAodrParams,
                 ),
             ),
             cast_to=NoneType,
@@ -405,8 +405,8 @@ class HistoryResourceWithRawResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
-        self.ador = to_raw_response_wrapper(
-            history.ador,
+        self.aodr = to_raw_response_wrapper(
+            history.aodr,
         )
         self.count = to_raw_response_wrapper(
             history.count,
@@ -420,8 +420,8 @@ class AsyncHistoryResourceWithRawResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
-        self.ador = async_to_raw_response_wrapper(
-            history.ador,
+        self.aodr = async_to_raw_response_wrapper(
+            history.aodr,
         )
         self.count = async_to_raw_response_wrapper(
             history.count,
@@ -435,8 +435,8 @@ class HistoryResourceWithStreamingResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
-        self.ador = to_streamed_response_wrapper(
-            history.ador,
+        self.aodr = to_streamed_response_wrapper(
+            history.aodr,
         )
         self.count = to_streamed_response_wrapper(
             history.count,
@@ -450,8 +450,8 @@ class AsyncHistoryResourceWithStreamingResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
-        self.ador = async_to_streamed_response_wrapper(
-            history.ador,
+        self.aodr = async_to_streamed_response_wrapper(
+            history.aodr,
         )
         self.count = async_to_streamed_response_wrapper(
             history.count,

@@ -499,21 +499,21 @@ class TestSgi:
             )
 
     @parametrize
-    def test_method_get_s_g_i_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
-        sgi = client.sgi.get_s_g_i_data_by_effective_as_of_date()
+    def test_method_get_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
+        sgi = client.sgi.get_data_by_effective_as_of_date()
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
-    def test_method_get_s_g_i_data_by_effective_as_of_date_with_all_params(self, client: Unifieddatalibrary) -> None:
-        sgi = client.sgi.get_s_g_i_data_by_effective_as_of_date(
+    def test_method_get_data_by_effective_as_of_date_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sgi = client.sgi.get_data_by_effective_as_of_date(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
-    def test_raw_response_get_s_g_i_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
-        response = client.sgi.with_raw_response.get_s_g_i_data_by_effective_as_of_date()
+    def test_raw_response_get_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
+        response = client.sgi.with_raw_response.get_data_by_effective_as_of_date()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -521,8 +521,8 @@ class TestSgi:
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
-    def test_streaming_response_get_s_g_i_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
-        with client.sgi.with_streaming_response.get_s_g_i_data_by_effective_as_of_date() as response:
+    def test_streaming_response_get_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
+        with client.sgi.with_streaming_response.get_data_by_effective_as_of_date() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -1077,25 +1077,23 @@ class TestAsyncSgi:
             )
 
     @parametrize
-    async def test_method_get_s_g_i_data_by_effective_as_of_date(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sgi = await async_client.sgi.get_s_g_i_data_by_effective_as_of_date()
+    async def test_method_get_data_by_effective_as_of_date(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sgi = await async_client.sgi.get_data_by_effective_as_of_date()
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
-    async def test_method_get_s_g_i_data_by_effective_as_of_date_with_all_params(
+    async def test_method_get_data_by_effective_as_of_date_with_all_params(
         self, async_client: AsyncUnifieddatalibrary
     ) -> None:
-        sgi = await async_client.sgi.get_s_g_i_data_by_effective_as_of_date(
+        sgi = await async_client.sgi.get_data_by_effective_as_of_date(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
-    async def test_raw_response_get_s_g_i_data_by_effective_as_of_date(
-        self, async_client: AsyncUnifieddatalibrary
-    ) -> None:
-        response = await async_client.sgi.with_raw_response.get_s_g_i_data_by_effective_as_of_date()
+    async def test_raw_response_get_data_by_effective_as_of_date(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sgi.with_raw_response.get_data_by_effective_as_of_date()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1103,10 +1101,10 @@ class TestAsyncSgi:
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
-    async def test_streaming_response_get_s_g_i_data_by_effective_as_of_date(
+    async def test_streaming_response_get_data_by_effective_as_of_date(
         self, async_client: AsyncUnifieddatalibrary
     ) -> None:
-        async with async_client.sgi.with_streaming_response.get_s_g_i_data_by_effective_as_of_date() as response:
+        async with async_client.sgi.with_streaming_response.get_data_by_effective_as_of_date() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

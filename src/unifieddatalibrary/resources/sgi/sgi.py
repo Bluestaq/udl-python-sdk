@@ -16,7 +16,7 @@ from ...types import (
     sgi_update_params,
     sgi_create_bulk_params,
     sgi_create_bulk_v2_params,
-    sgi_get_s_g_i_data_by_effective_as_of_date_params,
+    sgi_get_data_by_effective_as_of_date_params,
 )
 from .history import (
     HistoryResource,
@@ -1033,7 +1033,7 @@ class SgiResource(SyncAPIResource):
             cast_to=SgiFull,
         )
 
-    def get_s_g_i_data_by_effective_as_of_date(
+    def get_data_by_effective_as_of_date(
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -1079,7 +1079,7 @@ class SgiResource(SyncAPIResource):
                         "effective_date": effective_date,
                         "sgi_date": sgi_date,
                     },
-                    sgi_get_s_g_i_data_by_effective_as_of_date_params.SgiGetSGIDataByEffectiveAsOfDateParams,
+                    sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
                 ),
             ),
             cast_to=SgiFull,
@@ -2161,7 +2161,7 @@ class AsyncSgiResource(AsyncAPIResource):
             cast_to=SgiFull,
         )
 
-    async def get_s_g_i_data_by_effective_as_of_date(
+    async def get_data_by_effective_as_of_date(
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -2207,7 +2207,7 @@ class AsyncSgiResource(AsyncAPIResource):
                         "effective_date": effective_date,
                         "sgi_date": sgi_date,
                     },
-                    sgi_get_s_g_i_data_by_effective_as_of_date_params.SgiGetSGIDataByEffectiveAsOfDateParams,
+                    sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
                 ),
             ),
             cast_to=SgiFull,
@@ -2331,8 +2331,8 @@ class SgiResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             sgi.get,
         )
-        self.get_s_g_i_data_by_effective_as_of_date = to_raw_response_wrapper(
-            sgi.get_s_g_i_data_by_effective_as_of_date,
+        self.get_data_by_effective_as_of_date = to_raw_response_wrapper(
+            sgi.get_data_by_effective_as_of_date,
         )
         self.queryhelp = to_raw_response_wrapper(
             sgi.queryhelp,
@@ -2374,8 +2374,8 @@ class AsyncSgiResourceWithRawResponse:
         self.get = async_to_raw_response_wrapper(
             sgi.get,
         )
-        self.get_s_g_i_data_by_effective_as_of_date = async_to_raw_response_wrapper(
-            sgi.get_s_g_i_data_by_effective_as_of_date,
+        self.get_data_by_effective_as_of_date = async_to_raw_response_wrapper(
+            sgi.get_data_by_effective_as_of_date,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             sgi.queryhelp,
@@ -2417,8 +2417,8 @@ class SgiResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             sgi.get,
         )
-        self.get_s_g_i_data_by_effective_as_of_date = to_streamed_response_wrapper(
-            sgi.get_s_g_i_data_by_effective_as_of_date,
+        self.get_data_by_effective_as_of_date = to_streamed_response_wrapper(
+            sgi.get_data_by_effective_as_of_date,
         )
         self.queryhelp = to_streamed_response_wrapper(
             sgi.queryhelp,
@@ -2460,8 +2460,8 @@ class AsyncSgiResourceWithStreamingResponse:
         self.get = async_to_streamed_response_wrapper(
             sgi.get,
         )
-        self.get_s_g_i_data_by_effective_as_of_date = async_to_streamed_response_wrapper(
-            sgi.get_s_g_i_data_by_effective_as_of_date,
+        self.get_data_by_effective_as_of_date = async_to_streamed_response_wrapper(
+            sgi.get_data_by_effective_as_of_date,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             sgi.queryhelp,
