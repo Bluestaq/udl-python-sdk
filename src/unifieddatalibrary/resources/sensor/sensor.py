@@ -7,29 +7,41 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import sensor_tuple_params, sensor_create_params, sensor_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from .._utils import (
+from ...types import sensor_tuple_params, sensor_create_params, sensor_update_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.sensor_get_response import SensorGetResponse
-from ..types.sensor_list_response import SensorListResponse
-from ..types.sensor_tuple_response import SensorTupleResponse
+from ..._base_client import make_request_options
+from .calibration.calibration import (
+    CalibrationResource,
+    AsyncCalibrationResource,
+    CalibrationResourceWithRawResponse,
+    AsyncCalibrationResourceWithRawResponse,
+    CalibrationResourceWithStreamingResponse,
+    AsyncCalibrationResourceWithStreamingResponse,
+)
+from ...types.sensor_get_response import SensorGetResponse
+from ...types.sensor_list_response import SensorListResponse
+from ...types.sensor_tuple_response import SensorTupleResponse
 
 __all__ = ["SensorResource", "AsyncSensorResource"]
 
 
 class SensorResource(SyncAPIResource):
+    @cached_property
+    def calibration(self) -> CalibrationResource:
+        return CalibrationResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> SensorResourceWithRawResponse:
         """
@@ -516,6 +528,10 @@ class SensorResource(SyncAPIResource):
 
 
 class AsyncSensorResource(AsyncAPIResource):
+    @cached_property
+    def calibration(self) -> AsyncCalibrationResource:
+        return AsyncCalibrationResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncSensorResourceWithRawResponse:
         """
@@ -1030,6 +1046,10 @@ class SensorResourceWithRawResponse:
             sensor.tuple,
         )
 
+    @cached_property
+    def calibration(self) -> CalibrationResourceWithRawResponse:
+        return CalibrationResourceWithRawResponse(self._sensor.calibration)
+
 
 class AsyncSensorResourceWithRawResponse:
     def __init__(self, sensor: AsyncSensorResource) -> None:
@@ -1059,6 +1079,10 @@ class AsyncSensorResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             sensor.tuple,
         )
+
+    @cached_property
+    def calibration(self) -> AsyncCalibrationResourceWithRawResponse:
+        return AsyncCalibrationResourceWithRawResponse(self._sensor.calibration)
 
 
 class SensorResourceWithStreamingResponse:
@@ -1090,6 +1114,10 @@ class SensorResourceWithStreamingResponse:
             sensor.tuple,
         )
 
+    @cached_property
+    def calibration(self) -> CalibrationResourceWithStreamingResponse:
+        return CalibrationResourceWithStreamingResponse(self._sensor.calibration)
+
 
 class AsyncSensorResourceWithStreamingResponse:
     def __init__(self, sensor: AsyncSensorResource) -> None:
@@ -1119,3 +1147,7 @@ class AsyncSensorResourceWithStreamingResponse:
         self.tuple = async_to_streamed_response_wrapper(
             sensor.tuple,
         )
+
+    @cached_property
+    def calibration(self) -> AsyncCalibrationResourceWithStreamingResponse:
+        return AsyncCalibrationResourceWithStreamingResponse(self._sensor.calibration)

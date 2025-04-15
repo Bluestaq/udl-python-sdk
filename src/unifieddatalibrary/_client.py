@@ -34,13 +34,10 @@ from .resources import (
     crew,
     item,
     port,
-    site,
     buses,
-    h3geo,
     stage,
     ecpsdr,
     rfband,
-    sensor,
     status,
     vessel,
     engines,
@@ -48,6 +45,7 @@ from .resources import (
     aircraft,
     antennas,
     channels,
+    dropzone,
     entities,
     location,
     manifold,
@@ -66,6 +64,7 @@ from .resources import (
     launchsite,
     navigation,
     rfbandtype,
+    routestats,
     scientific,
     sensortype,
     siteremark,
@@ -114,6 +113,7 @@ from .resources import (
     onorbitsolararray,
     solararraydetails,
     air_tasking_orders,
+    emittergeolocation,
     gnssobservationset,
     seradatanavigation,
     surfaceobstruction,
@@ -126,6 +126,7 @@ from .resources import (
     seradataradarpayload,
     sensorobservationtype,
     seradatasigintpayload,
+    aviationriskmanagement,
     seradataopticalpayload,
     aircraft_status_remarks,
     airspace_control_orders,
@@ -146,11 +147,14 @@ from .resources.scs import scs
 from .resources.sgi import sgi
 from .resources.udl import udl
 from .resources.evac import evac
+from .resources.site import site
 from .resources.swir import swir
+from .resources.h3geo import h3geo
 from .resources.track import track
 from .resources.video import video
 from .resources.elsets import elsets
 from .resources.hazard import hazard
+from .resources.sensor import sensor
 from .resources.sigact import sigact
 from .resources.taiutc import taiutc
 from .resources.onorbit import onorbit
@@ -194,6 +198,7 @@ from .resources.iono_observation import iono_observation
 from .resources.logisticssupport import logisticssupport
 from .resources.aircraft_statuses import aircraft_statuses
 from .resources.collect_responses import collect_responses
+from .resources.featureassessment import featureassessment
 from .resources.gnss_observations import gnss_observations
 from .resources.missionassignment import missionassignment
 from .resources.personnelrecovery import personnelrecovery
@@ -205,6 +210,7 @@ from .resources.spaceenvobservation import spaceenvobservation
 from .resources.diplomatic_clearance import diplomatic_clearance
 from .resources.onorbitthrusterstatus import onorbitthrusterstatus
 from .resources.air_transport_missions import air_transport_missions
+from .resources.globalatmosphericmodel import globalatmosphericmodel
 from .resources.passiveradarobservation import passiveradarobservation
 
 __all__ = [
@@ -257,6 +263,12 @@ class Unifieddatalibrary(SyncAPIClient):
     comm: comm.CommResource
     conjunctions: conjunctions.ConjunctionsResource
     cots: cots.CotsResource
+    aviationriskmanagement: aviationriskmanagement.AviationriskmanagementResource
+    dropzone: dropzone.DropzoneResource
+    emittergeolocation: emittergeolocation.EmittergeolocationResource
+    featureassessment: featureassessment.FeatureassessmentResource
+    globalatmosphericmodel: globalatmosphericmodel.GlobalatmosphericmodelResource
+    routestats: routestats.RoutestatsResource
     countries: countries.CountriesResource
     crew: crew.CrewResource
     diffofarrival: diffofarrival.DiffofarrivalResource
@@ -499,6 +511,12 @@ class Unifieddatalibrary(SyncAPIClient):
         self.comm = comm.CommResource(self)
         self.conjunctions = conjunctions.ConjunctionsResource(self)
         self.cots = cots.CotsResource(self)
+        self.aviationriskmanagement = aviationriskmanagement.AviationriskmanagementResource(self)
+        self.dropzone = dropzone.DropzoneResource(self)
+        self.emittergeolocation = emittergeolocation.EmittergeolocationResource(self)
+        self.featureassessment = featureassessment.FeatureassessmentResource(self)
+        self.globalatmosphericmodel = globalatmosphericmodel.GlobalatmosphericmodelResource(self)
+        self.routestats = routestats.RoutestatsResource(self)
         self.countries = countries.CountriesResource(self)
         self.crew = crew.CrewResource(self)
         self.diffofarrival = diffofarrival.DiffofarrivalResource(self)
@@ -777,6 +795,12 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     comm: comm.AsyncCommResource
     conjunctions: conjunctions.AsyncConjunctionsResource
     cots: cots.AsyncCotsResource
+    aviationriskmanagement: aviationriskmanagement.AsyncAviationriskmanagementResource
+    dropzone: dropzone.AsyncDropzoneResource
+    emittergeolocation: emittergeolocation.AsyncEmittergeolocationResource
+    featureassessment: featureassessment.AsyncFeatureassessmentResource
+    globalatmosphericmodel: globalatmosphericmodel.AsyncGlobalatmosphericmodelResource
+    routestats: routestats.AsyncRoutestatsResource
     countries: countries.AsyncCountriesResource
     crew: crew.AsyncCrewResource
     diffofarrival: diffofarrival.AsyncDiffofarrivalResource
@@ -1019,6 +1043,12 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.comm = comm.AsyncCommResource(self)
         self.conjunctions = conjunctions.AsyncConjunctionsResource(self)
         self.cots = cots.AsyncCotsResource(self)
+        self.aviationriskmanagement = aviationriskmanagement.AsyncAviationriskmanagementResource(self)
+        self.dropzone = dropzone.AsyncDropzoneResource(self)
+        self.emittergeolocation = emittergeolocation.AsyncEmittergeolocationResource(self)
+        self.featureassessment = featureassessment.AsyncFeatureassessmentResource(self)
+        self.globalatmosphericmodel = globalatmosphericmodel.AsyncGlobalatmosphericmodelResource(self)
+        self.routestats = routestats.AsyncRoutestatsResource(self)
         self.countries = countries.AsyncCountriesResource(self)
         self.crew = crew.AsyncCrewResource(self)
         self.diffofarrival = diffofarrival.AsyncDiffofarrivalResource(self)
@@ -1308,6 +1338,18 @@ class UnifieddatalibraryWithRawResponse:
         self.comm = comm.CommResourceWithRawResponse(client.comm)
         self.conjunctions = conjunctions.ConjunctionsResourceWithRawResponse(client.conjunctions)
         self.cots = cots.CotsResourceWithRawResponse(client.cots)
+        self.aviationriskmanagement = aviationriskmanagement.AviationriskmanagementResourceWithRawResponse(
+            client.aviationriskmanagement
+        )
+        self.dropzone = dropzone.DropzoneResourceWithRawResponse(client.dropzone)
+        self.emittergeolocation = emittergeolocation.EmittergeolocationResourceWithRawResponse(
+            client.emittergeolocation
+        )
+        self.featureassessment = featureassessment.FeatureassessmentResourceWithRawResponse(client.featureassessment)
+        self.globalatmosphericmodel = globalatmosphericmodel.GlobalatmosphericmodelResourceWithRawResponse(
+            client.globalatmosphericmodel
+        )
+        self.routestats = routestats.RoutestatsResourceWithRawResponse(client.routestats)
         self.countries = countries.CountriesResourceWithRawResponse(client.countries)
         self.crew = crew.CrewResourceWithRawResponse(client.crew)
         self.diffofarrival = diffofarrival.DiffofarrivalResourceWithRawResponse(client.diffofarrival)
@@ -1541,6 +1583,20 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.comm = comm.AsyncCommResourceWithRawResponse(client.comm)
         self.conjunctions = conjunctions.AsyncConjunctionsResourceWithRawResponse(client.conjunctions)
         self.cots = cots.AsyncCotsResourceWithRawResponse(client.cots)
+        self.aviationriskmanagement = aviationriskmanagement.AsyncAviationriskmanagementResourceWithRawResponse(
+            client.aviationriskmanagement
+        )
+        self.dropzone = dropzone.AsyncDropzoneResourceWithRawResponse(client.dropzone)
+        self.emittergeolocation = emittergeolocation.AsyncEmittergeolocationResourceWithRawResponse(
+            client.emittergeolocation
+        )
+        self.featureassessment = featureassessment.AsyncFeatureassessmentResourceWithRawResponse(
+            client.featureassessment
+        )
+        self.globalatmosphericmodel = globalatmosphericmodel.AsyncGlobalatmosphericmodelResourceWithRawResponse(
+            client.globalatmosphericmodel
+        )
+        self.routestats = routestats.AsyncRoutestatsResourceWithRawResponse(client.routestats)
         self.countries = countries.AsyncCountriesResourceWithRawResponse(client.countries)
         self.crew = crew.AsyncCrewResourceWithRawResponse(client.crew)
         self.diffofarrival = diffofarrival.AsyncDiffofarrivalResourceWithRawResponse(client.diffofarrival)
@@ -1794,6 +1850,20 @@ class UnifieddatalibraryWithStreamedResponse:
         self.comm = comm.CommResourceWithStreamingResponse(client.comm)
         self.conjunctions = conjunctions.ConjunctionsResourceWithStreamingResponse(client.conjunctions)
         self.cots = cots.CotsResourceWithStreamingResponse(client.cots)
+        self.aviationriskmanagement = aviationriskmanagement.AviationriskmanagementResourceWithStreamingResponse(
+            client.aviationriskmanagement
+        )
+        self.dropzone = dropzone.DropzoneResourceWithStreamingResponse(client.dropzone)
+        self.emittergeolocation = emittergeolocation.EmittergeolocationResourceWithStreamingResponse(
+            client.emittergeolocation
+        )
+        self.featureassessment = featureassessment.FeatureassessmentResourceWithStreamingResponse(
+            client.featureassessment
+        )
+        self.globalatmosphericmodel = globalatmosphericmodel.GlobalatmosphericmodelResourceWithStreamingResponse(
+            client.globalatmosphericmodel
+        )
+        self.routestats = routestats.RoutestatsResourceWithStreamingResponse(client.routestats)
         self.countries = countries.CountriesResourceWithStreamingResponse(client.countries)
         self.crew = crew.CrewResourceWithStreamingResponse(client.crew)
         self.diffofarrival = diffofarrival.DiffofarrivalResourceWithStreamingResponse(client.diffofarrival)
@@ -2057,6 +2127,20 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.comm = comm.AsyncCommResourceWithStreamingResponse(client.comm)
         self.conjunctions = conjunctions.AsyncConjunctionsResourceWithStreamingResponse(client.conjunctions)
         self.cots = cots.AsyncCotsResourceWithStreamingResponse(client.cots)
+        self.aviationriskmanagement = aviationriskmanagement.AsyncAviationriskmanagementResourceWithStreamingResponse(
+            client.aviationriskmanagement
+        )
+        self.dropzone = dropzone.AsyncDropzoneResourceWithStreamingResponse(client.dropzone)
+        self.emittergeolocation = emittergeolocation.AsyncEmittergeolocationResourceWithStreamingResponse(
+            client.emittergeolocation
+        )
+        self.featureassessment = featureassessment.AsyncFeatureassessmentResourceWithStreamingResponse(
+            client.featureassessment
+        )
+        self.globalatmosphericmodel = globalatmosphericmodel.AsyncGlobalatmosphericmodelResourceWithStreamingResponse(
+            client.globalatmosphericmodel
+        )
+        self.routestats = routestats.AsyncRoutestatsResourceWithStreamingResponse(client.routestats)
         self.countries = countries.AsyncCountriesResourceWithStreamingResponse(client.countries)
         self.crew = crew.AsyncCrewResourceWithStreamingResponse(client.crew)
         self.diffofarrival = diffofarrival.AsyncDiffofarrivalResourceWithStreamingResponse(client.diffofarrival)

@@ -21,15 +21,15 @@ class TestHistory:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_ador(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.ador(
+    def test_method_aodr(self, client: Unifieddatalibrary) -> None:
+        history = client.gnss_raw_if.history.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert history is None
 
     @parametrize
-    def test_method_ador_with_all_params(self, client: Unifieddatalibrary) -> None:
-        history = client.gnss_raw_if.history.ador(
+    def test_method_aodr_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.gnss_raw_if.history.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             notification="notification",
@@ -39,8 +39,8 @@ class TestHistory:
         assert history is None
 
     @parametrize
-    def test_raw_response_ador(self, client: Unifieddatalibrary) -> None:
-        response = client.gnss_raw_if.history.with_raw_response.ador(
+    def test_raw_response_aodr(self, client: Unifieddatalibrary) -> None:
+        response = client.gnss_raw_if.history.with_raw_response.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
@@ -50,8 +50,8 @@ class TestHistory:
         assert history is None
 
     @parametrize
-    def test_streaming_response_ador(self, client: Unifieddatalibrary) -> None:
-        with client.gnss_raw_if.history.with_streaming_response.ador(
+    def test_streaming_response_aodr(self, client: Unifieddatalibrary) -> None:
+        with client.gnss_raw_if.history.with_streaming_response.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
@@ -137,15 +137,15 @@ class TestAsyncHistory:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_ador(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.ador(
+    async def test_method_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.gnss_raw_if.history.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert history is None
 
     @parametrize
-    async def test_method_ador_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.gnss_raw_if.history.ador(
+    async def test_method_aodr_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.gnss_raw_if.history.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             notification="notification",
@@ -155,8 +155,8 @@ class TestAsyncHistory:
         assert history is None
 
     @parametrize
-    async def test_raw_response_ador(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.gnss_raw_if.history.with_raw_response.ador(
+    async def test_raw_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.gnss_raw_if.history.with_raw_response.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
@@ -166,8 +166,8 @@ class TestAsyncHistory:
         assert history is None
 
     @parametrize
-    async def test_streaming_response_ador(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.gnss_raw_if.history.with_streaming_response.ador(
+    async def test_streaming_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.gnss_raw_if.history.with_streaming_response.aodr(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed

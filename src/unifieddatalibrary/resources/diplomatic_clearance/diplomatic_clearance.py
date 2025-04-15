@@ -16,6 +16,14 @@ from ...types import (
     diplomatic_clearance_update_params,
     diplomatic_clearance_create_bulk_params,
 )
+from .country import (
+    CountryResource,
+    AsyncCountryResource,
+    CountryResourceWithRawResponse,
+    AsyncCountryResourceWithRawResponse,
+    CountryResourceWithStreamingResponse,
+    AsyncCountryResourceWithStreamingResponse,
+)
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -49,6 +57,10 @@ class DiplomaticClearanceResource(SyncAPIResource):
     @cached_property
     def history(self) -> HistoryResource:
         return HistoryResource(self._client)
+
+    @cached_property
+    def country(self) -> CountryResource:
+        return CountryResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> DiplomaticClearanceResourceWithRawResponse:
@@ -587,6 +599,10 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
     @cached_property
     def history(self) -> AsyncHistoryResource:
         return AsyncHistoryResource(self._client)
+
+    @cached_property
+    def country(self) -> AsyncCountryResource:
+        return AsyncCountryResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncDiplomaticClearanceResourceWithRawResponse:
@@ -1157,6 +1173,10 @@ class DiplomaticClearanceResourceWithRawResponse:
     def history(self) -> HistoryResourceWithRawResponse:
         return HistoryResourceWithRawResponse(self._diplomatic_clearance.history)
 
+    @cached_property
+    def country(self) -> CountryResourceWithRawResponse:
+        return CountryResourceWithRawResponse(self._diplomatic_clearance.country)
+
 
 class AsyncDiplomaticClearanceResourceWithRawResponse:
     def __init__(self, diplomatic_clearance: AsyncDiplomaticClearanceResource) -> None:
@@ -1193,6 +1213,10 @@ class AsyncDiplomaticClearanceResourceWithRawResponse:
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
         return AsyncHistoryResourceWithRawResponse(self._diplomatic_clearance.history)
+
+    @cached_property
+    def country(self) -> AsyncCountryResourceWithRawResponse:
+        return AsyncCountryResourceWithRawResponse(self._diplomatic_clearance.country)
 
 
 class DiplomaticClearanceResourceWithStreamingResponse:
@@ -1231,6 +1255,10 @@ class DiplomaticClearanceResourceWithStreamingResponse:
     def history(self) -> HistoryResourceWithStreamingResponse:
         return HistoryResourceWithStreamingResponse(self._diplomatic_clearance.history)
 
+    @cached_property
+    def country(self) -> CountryResourceWithStreamingResponse:
+        return CountryResourceWithStreamingResponse(self._diplomatic_clearance.country)
+
 
 class AsyncDiplomaticClearanceResourceWithStreamingResponse:
     def __init__(self, diplomatic_clearance: AsyncDiplomaticClearanceResource) -> None:
@@ -1267,3 +1295,7 @@ class AsyncDiplomaticClearanceResourceWithStreamingResponse:
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
         return AsyncHistoryResourceWithStreamingResponse(self._diplomatic_clearance.history)
+
+    @cached_property
+    def country(self) -> AsyncCountryResourceWithStreamingResponse:
+        return AsyncCountryResourceWithStreamingResponse(self._diplomatic_clearance.country)

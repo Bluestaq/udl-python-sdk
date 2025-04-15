@@ -8,29 +8,41 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import h3geo_list_params, h3geo_count_params, h3geo_tuple_params, h3geo_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from .._utils import (
+from ...types import h3geo_list_params, h3geo_count_params, h3geo_tuple_params, h3geo_create_params
+from .history import (
+    HistoryResource,
+    AsyncHistoryResource,
+    HistoryResourceWithRawResponse,
+    AsyncHistoryResourceWithRawResponse,
+    HistoryResourceWithStreamingResponse,
+    AsyncHistoryResourceWithStreamingResponse,
+)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.h3geo_get_response import H3geoGetResponse
-from ..types.h3geo_list_response import H3geoListResponse
-from ..types.h3geo_tuple_response import H3geoTupleResponse
+from ..._base_client import make_request_options
+from ...types.h3geo_get_response import H3geoGetResponse
+from ...types.h3geo_list_response import H3geoListResponse
+from ...types.h3geo_tuple_response import H3geoTupleResponse
 
 __all__ = ["H3geoResource", "AsyncH3geoResource"]
 
 
 class H3geoResource(SyncAPIResource):
+    @cached_property
+    def history(self) -> HistoryResource:
+        return HistoryResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> H3geoResourceWithRawResponse:
         """
@@ -368,6 +380,10 @@ class H3geoResource(SyncAPIResource):
 
 
 class AsyncH3geoResource(AsyncAPIResource):
+    @cached_property
+    def history(self) -> AsyncHistoryResource:
+        return AsyncHistoryResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncH3geoResourceWithRawResponse:
         """
@@ -727,6 +743,10 @@ class H3geoResourceWithRawResponse:
             h3geo.tuple,
         )
 
+    @cached_property
+    def history(self) -> HistoryResourceWithRawResponse:
+        return HistoryResourceWithRawResponse(self._h3geo.history)
+
 
 class AsyncH3geoResourceWithRawResponse:
     def __init__(self, h3geo: AsyncH3geoResource) -> None:
@@ -750,6 +770,10 @@ class AsyncH3geoResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             h3geo.tuple,
         )
+
+    @cached_property
+    def history(self) -> AsyncHistoryResourceWithRawResponse:
+        return AsyncHistoryResourceWithRawResponse(self._h3geo.history)
 
 
 class H3geoResourceWithStreamingResponse:
@@ -775,6 +799,10 @@ class H3geoResourceWithStreamingResponse:
             h3geo.tuple,
         )
 
+    @cached_property
+    def history(self) -> HistoryResourceWithStreamingResponse:
+        return HistoryResourceWithStreamingResponse(self._h3geo.history)
+
 
 class AsyncH3geoResourceWithStreamingResponse:
     def __init__(self, h3geo: AsyncH3geoResource) -> None:
@@ -798,3 +826,7 @@ class AsyncH3geoResourceWithStreamingResponse:
         self.tuple = async_to_streamed_response_wrapper(
             h3geo.tuple,
         )
+
+    @cached_property
+    def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        return AsyncHistoryResourceWithStreamingResponse(self._h3geo.history)

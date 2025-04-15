@@ -936,6 +936,187 @@ Methods:
 
 - <code title="post /udl/cot">client.cots.<a href="./src/unifieddatalibrary/resources/cots.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/cot_create_params.py">params</a>) -> None</code>
 
+# Aviationriskmanagement
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    AviationriskmanagementRetrieveResponse,
+    AviationriskmanagementCountResponse,
+    AviationriskmanagementQueryResponse,
+    AviationriskmanagementTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/aviationriskmanagement">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/aviationriskmanagement/{id}">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/aviationriskmanagement_retrieve_response.py">AviationriskmanagementRetrieveResponse</a></code>
+- <code title="put /udl/aviationriskmanagement/{id}">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_update_params.py">params</a>) -> None</code>
+- <code title="delete /udl/aviationriskmanagement/{id}">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">delete</a>(id) -> None</code>
+- <code title="get /udl/aviationriskmanagement/count">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/aviationriskmanagement/createBulk">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-aviationriskmanagement">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/aviationriskmanagement">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviationriskmanagement_query_response.py">AviationriskmanagementQueryResponse</a></code>
+- <code title="get /udl/aviationriskmanagement/queryhelp">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">query_help</a>() -> None</code>
+- <code title="get /udl/aviationriskmanagement/tuple">client.aviationriskmanagement.<a href="./src/unifieddatalibrary/resources/aviationriskmanagement.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/aviationriskmanagement_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviationriskmanagement_tuple_response.py">AviationriskmanagementTupleResponse</a></code>
+
+# Dropzone
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    DropzoneRetrieveResponse,
+    DropzoneCountResponse,
+    DropzoneQueryResponse,
+    DropzoneTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/dropzone_retrieve_response.py">DropzoneRetrieveResponse</a></code>
+- <code title="put /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/dropzone_update_params.py">params</a>) -> None</code>
+- <code title="delete /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">delete</a>(id) -> None</code>
+- <code title="get /udl/dropzone/count">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">count</a>() -> str</code>
+- <code title="post /udl/dropzone/createBulk">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">query</a>() -> <a href="./src/unifieddatalibrary/types/dropzone_query_response.py">DropzoneQueryResponse</a></code>
+- <code title="get /udl/dropzone/queryhelp">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">query_help</a>() -> None</code>
+- <code title="get /udl/dropzone/tuple">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_tuple_response.py">DropzoneTupleResponse</a></code>
+
+# Emittergeolocation
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    EmittergeolocationRetrieveResponse,
+    EmittergeolocationCountResponse,
+    EmittergeolocationQueryResponse,
+    EmittergeolocationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/emittergeolocation">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/emittergeolocation_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/emittergeolocation/{id}">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/emittergeolocation_retrieve_response.py">EmittergeolocationRetrieveResponse</a></code>
+- <code title="delete /udl/emittergeolocation/{id}">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">delete</a>(id) -> None</code>
+- <code title="get /udl/emittergeolocation/count">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/emittergeolocation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/emittergeolocation/createBulk">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/emittergeolocation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-emittergeolocation">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/emittergeolocation_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/emittergeolocation">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/emittergeolocation_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emittergeolocation_query_response.py">EmittergeolocationQueryResponse</a></code>
+- <code title="get /udl/emittergeolocation/queryhelp">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">query_help</a>() -> None</code>
+- <code title="get /udl/emittergeolocation/tuple">client.emittergeolocation.<a href="./src/unifieddatalibrary/resources/emittergeolocation.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/emittergeolocation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emittergeolocation_tuple_response.py">EmittergeolocationTupleResponse</a></code>
+
+# Featureassessment
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    FeatureassessmentRetrieveResponse,
+    FeatureassessmentCountResponse,
+    FeatureassessmentQueryResponse,
+    FeatureassessmentTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/featureassessment">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/featureassessment/{id}">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/featureassessment_retrieve_response.py">FeatureassessmentRetrieveResponse</a></code>
+- <code title="get /udl/featureassessment/count">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/featureassessment/createBulk">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-featureassessment">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/featureassessment">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/featureassessment_query_response.py">FeatureassessmentQueryResponse</a></code>
+- <code title="get /udl/featureassessment/queryhelp">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">query_help</a>() -> None</code>
+- <code title="get /udl/featureassessment/tuple">client.featureassessment.<a href="./src/unifieddatalibrary/resources/featureassessment/featureassessment.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/featureassessment_tuple_response.py">FeatureassessmentTupleResponse</a></code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.featureassessment import HistoryCountResponse, HistoryQueryResponse
+```
+
+Methods:
+
+- <code title="get /udl/featureassessment/history/count">client.featureassessment.history.<a href="./src/unifieddatalibrary/resources/featureassessment/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment/history_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/featureassessment/history">client.featureassessment.history.<a href="./src/unifieddatalibrary/resources/featureassessment/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/featureassessment/history_query_response.py">HistoryQueryResponse</a></code>
+- <code title="get /udl/featureassessment/history/aodr">client.featureassessment.history.<a href="./src/unifieddatalibrary/resources/featureassessment/history.py">write_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/featureassessment/history_write_aodr_params.py">params</a>) -> None</code>
+
+# Globalatmosphericmodel
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    GlobalatmosphericmodelRetrieveResponse,
+    GlobalatmosphericmodelCountResponse,
+    GlobalatmosphericmodelQueryResponse,
+    GlobalatmosphericmodelTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/globalatmosphericmodel/{id}">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/globalatmosphericmodel_retrieve_response.py">GlobalatmosphericmodelRetrieveResponse</a></code>
+- <code title="get /udl/globalatmosphericmodel/count">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel_count_params.py">params</a>) -> str</code>
+- <code title="post /filedrop/udl-globalatmosphericmodel">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/globalatmosphericmodel/getFile/{id}">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">get_file</a>(id) -> BinaryAPIResponse</code>
+- <code title="get /udl/globalatmosphericmodel">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/globalatmosphericmodel_query_response.py">GlobalatmosphericmodelQueryResponse</a></code>
+- <code title="get /udl/globalatmosphericmodel/queryhelp">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">query_help</a>() -> None</code>
+- <code title="get /udl/globalatmosphericmodel/tuple">client.globalatmosphericmodel.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/globalatmosphericmodel.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/globalatmosphericmodel_tuple_response.py">GlobalatmosphericmodelTupleResponse</a></code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.globalatmosphericmodel import (
+    HistoryCountResponse,
+    HistoryQueryResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/globalatmosphericmodel/history/count">client.globalatmosphericmodel.history.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel/history_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/globalatmosphericmodel/history">client.globalatmosphericmodel.history.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/globalatmosphericmodel/history_query_response.py">HistoryQueryResponse</a></code>
+- <code title="get /udl/globalatmosphericmodel/history/aodr">client.globalatmosphericmodel.history.<a href="./src/unifieddatalibrary/resources/globalatmosphericmodel/history.py">write_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/globalatmosphericmodel/history_write_aodr_params.py">params</a>) -> None</code>
+
+# Routestats
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    RoutestatRetrieveResponse,
+    RoutestatCountResponse,
+    RoutestatQueryResponse,
+    RoutestatTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/routestats">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/routestat_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/routestats/{id}">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/routestat_retrieve_response.py">RoutestatRetrieveResponse</a></code>
+- <code title="put /udl/routestats/{id}">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/routestat_update_params.py">params</a>) -> None</code>
+- <code title="delete /udl/routestats/{id}">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">delete</a>(id) -> None</code>
+- <code title="get /udl/routestats/count">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">count</a>() -> str</code>
+- <code title="post /udl/routestats/createBulk">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/routestat_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-routestats">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/routestat_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/routestats">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">query</a>() -> <a href="./src/unifieddatalibrary/types/routestat_query_response.py">RoutestatQueryResponse</a></code>
+- <code title="get /udl/routestats/queryhelp">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">query_help</a>() -> None</code>
+- <code title="get /udl/routestats/tuple">client.routestats.<a href="./src/unifieddatalibrary/resources/routestats.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/routestat_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/routestat_tuple_response.py">RoutestatTupleResponse</a></code>
+
 # Countries
 
 Types:
@@ -1050,6 +1231,32 @@ Methods:
 - <code title="get /udl/diplomaticclearance/history">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance/history_list_response.py">HistoryListResponse</a></code>
 - <code title="get /udl/diplomaticclearance/history/aodr">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/diplomaticclearance/history/count">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_count_params.py">params</a>) -> str</code>
+
+## Country
+
+Types:
+
+```python
+from unifieddatalibrary.types.diplomatic_clearance import (
+    CountryRetrieveResponse,
+    CountryListResponse,
+    CountryCountResponse,
+    CountryTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/diplomaticclearancecountry">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/diplomaticclearancecountry/{id}">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance/country_retrieve_response.py">CountryRetrieveResponse</a></code>
+- <code title="put /udl/diplomaticclearancecountry/{id}">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/diplomaticclearancecountry">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">list</a>() -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance/country_list_response.py">CountryListResponse</a></code>
+- <code title="delete /udl/diplomaticclearancecountry/{id}">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">delete</a>(id) -> None</code>
+- <code title="get /udl/diplomaticclearancecountry/count">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">count</a>() -> str</code>
+- <code title="post /udl/diplomaticclearancecountry/createBulk">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-diplomaticclearancecountry">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/diplomaticclearancecountry/queryhelp">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">query_help</a>() -> None</code>
+- <code title="get /udl/diplomaticclearancecountry/tuple">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance/country_tuple_response.py">CountryTupleResponse</a></code>
 
 # DriftHistory
 
@@ -1632,7 +1839,10 @@ from unifieddatalibrary.types import (
 Methods:
 
 - <code title="post /udl/flightplan">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/flightplan_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/flightplan/{id}">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/shared/flight_plan_full.py">FlightPlanFull</a></code>
+- <code title="put /udl/flightplan/{id}">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/flightplan_update_params.py">params</a>) -> None</code>
 - <code title="get /udl/flightplan">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">list</a>() -> <a href="./src/unifieddatalibrary/types/flightplan_list_response.py">FlightplanListResponse</a></code>
+- <code title="delete /udl/flightplan/{id}">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">delete</a>(id) -> None</code>
 - <code title="get /udl/flightplan/count">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">count</a>() -> str</code>
 - <code title="post /filedrop/udl-flightplan">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/flightplan_create_bulk_v2_params.py">params</a>) -> None</code>
 - <code title="get /udl/flightplan/queryhelp">client.flightplan.<a href="./src/unifieddatalibrary/resources/flightplan.py">queryhelp</a>() -> None</code>
@@ -1760,12 +1970,26 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="post /udl/h3geo">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/h3geo">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3geo_list_response.py">H3geoListResponse</a></code>
-- <code title="get /udl/h3geo/count">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/h3geo/{id}">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/h3geo_get_response.py">H3geoGetResponse</a></code>
-- <code title="get /udl/h3geo/queryhelp">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo.py">queryhelp</a>() -> None</code>
-- <code title="get /udl/h3geo/tuple">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3geo_tuple_response.py">H3geoTupleResponse</a></code>
+- <code title="post /udl/h3geo">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo/h3geo.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/h3geo">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo/h3geo.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3geo_list_response.py">H3geoListResponse</a></code>
+- <code title="get /udl/h3geo/count">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo/h3geo.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/h3geo/{id}">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo/h3geo.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/h3geo_get_response.py">H3geoGetResponse</a></code>
+- <code title="get /udl/h3geo/queryhelp">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo/h3geo.py">queryhelp</a>() -> None</code>
+- <code title="get /udl/h3geo/tuple">client.h3geo.<a href="./src/unifieddatalibrary/resources/h3geo/h3geo.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3geo_tuple_response.py">H3geoTupleResponse</a></code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.h3geo import HistoryCountResponse, HistoryQueryResponse
+```
+
+Methods:
+
+- <code title="get /udl/h3geo/history/aodr">client.h3geo.history.<a href="./src/unifieddatalibrary/resources/h3geo/history.py">ador</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo/history_ador_params.py">params</a>) -> None</code>
+- <code title="get /udl/h3geo/history/count">client.h3geo.history.<a href="./src/unifieddatalibrary/resources/h3geo/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo/history_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/h3geo/history">client.h3geo.history.<a href="./src/unifieddatalibrary/resources/h3geo/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/h3geo/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3geo/history_query_response.py">HistoryQueryResponse</a></code>
 
 # H3geohexcell
 
@@ -3337,14 +3561,52 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="post /udl/sensor">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/sensor/{id}">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">update</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/sensor">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">list</a>() -> <a href="./src/unifieddatalibrary/types/sensor_list_response.py">SensorListResponse</a></code>
-- <code title="delete /udl/sensor/{id}">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">delete</a>(id) -> None</code>
-- <code title="get /udl/sensor/count">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">count</a>() -> str</code>
-- <code title="get /udl/sensor/{id}">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/sensor_get_response.py">SensorGetResponse</a></code>
-- <code title="get /udl/sensor/queryhelp">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">queryhelp</a>() -> None</code>
-- <code title="get /udl/sensor/tuple">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_tuple_response.py">SensorTupleResponse</a></code>
+- <code title="post /udl/sensor">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/sensor/{id}">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">update</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/sensor">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">list</a>() -> <a href="./src/unifieddatalibrary/types/sensor_list_response.py">SensorListResponse</a></code>
+- <code title="delete /udl/sensor/{id}">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">delete</a>(id) -> None</code>
+- <code title="get /udl/sensor/count">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">count</a>() -> str</code>
+- <code title="get /udl/sensor/{id}">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/sensor_get_response.py">SensorGetResponse</a></code>
+- <code title="get /udl/sensor/queryhelp">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">queryhelp</a>() -> None</code>
+- <code title="get /udl/sensor/tuple">client.sensor.<a href="./src/unifieddatalibrary/resources/sensor/sensor.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_tuple_response.py">SensorTupleResponse</a></code>
+
+## Calibration
+
+Types:
+
+```python
+from unifieddatalibrary.types.sensor import (
+    CalibrationRetrieveResponse,
+    CalibrationCountResponse,
+    CalibrationQueryResponse,
+    CalibrationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/sensorcalibration/{id}">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_retrieve_response.py">CalibrationRetrieveResponse</a></code>
+- <code title="get /udl/sensorcalibration/count">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/sensorcalibration/createBulk">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_query_response.py">CalibrationQueryResponse</a></code>
+- <code title="get /udl/sensorcalibration/queryhelp">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">query_help</a>() -> None</code>
+- <code title="get /udl/sensorcalibration/tuple">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_tuple_response.py">CalibrationTupleResponse</a></code>
+
+### History
+
+Types:
+
+```python
+from unifieddatalibrary.types.sensor.calibration import HistoryCountResponse, HistoryQueryResponse
+```
+
+Methods:
+
+- <code title="get /udl/sensorcalibration/history/count">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/sensorcalibration/history">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration/history_query_response.py">HistoryQueryResponse</a></code>
+- <code title="get /udl/sensorcalibration/history/aodr">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">write_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_write_aodr_params.py">params</a>) -> None</code>
 
 # Sensormaintenance
 
@@ -3640,7 +3902,7 @@ Methods:
 - <code title="post /udl/sgi/createBulk">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/sgi_create_bulk_params.py">params</a>) -> None</code>
 - <code title="post /filedrop/udl-sgi">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/sgi_create_bulk_v2_params.py">params</a>) -> None</code>
 - <code title="get /udl/sgi/{id}">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/udl/sgi/sgi_full.py">SgiFull</a></code>
-- <code title="get /udl/sgi/getSGIDataByEffectiveAsOfDate">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">get_s_g_i_data_by_effective_as_of_date</a>(\*\*<a href="src/unifieddatalibrary/types/sgi_get_s_g_i_data_by_effective_as_of_date_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/udl/sgi/sgi_full.py">SgiFull</a></code>
+- <code title="get /udl/sgi/getSGIDataByEffectiveAsOfDate">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">get_data_by_effective_as_of_date</a>(\*\*<a href="src/unifieddatalibrary/types/sgi_get_data_by_effective_as_of_date_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/udl/sgi/sgi_full.py">SgiFull</a></code>
 - <code title="get /udl/sgi/queryhelp">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/sgi/tuple">client.sgi.<a href="./src/unifieddatalibrary/resources/sgi/sgi.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sgi_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sgi_tuple_response.py">SgiTupleResponse</a></code>
 
@@ -3703,13 +3965,39 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="post /udl/site">client.site.<a href="./src/unifieddatalibrary/resources/site.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/site_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/site/{id}">client.site.<a href="./src/unifieddatalibrary/resources/site.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/site_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/site">client.site.<a href="./src/unifieddatalibrary/resources/site.py">list</a>() -> <a href="./src/unifieddatalibrary/types/site_list_response.py">SiteListResponse</a></code>
-- <code title="get /udl/site/count">client.site.<a href="./src/unifieddatalibrary/resources/site.py">count</a>() -> str</code>
-- <code title="get /udl/site/{id}">client.site.<a href="./src/unifieddatalibrary/resources/site.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/site_get_response.py">SiteGetResponse</a></code>
-- <code title="get /udl/site/queryhelp">client.site.<a href="./src/unifieddatalibrary/resources/site.py">queryhelp</a>() -> None</code>
-- <code title="get /udl/site/tuple">client.site.<a href="./src/unifieddatalibrary/resources/site.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/site_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/site_tuple_response.py">SiteTupleResponse</a></code>
+- <code title="post /udl/site">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/site_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/site/{id}">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/site_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/site">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">list</a>() -> <a href="./src/unifieddatalibrary/types/site_list_response.py">SiteListResponse</a></code>
+- <code title="get /udl/site/count">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">count</a>() -> str</code>
+- <code title="get /udl/site/{id}">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/site_get_response.py">SiteGetResponse</a></code>
+- <code title="get /udl/site/queryhelp">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">queryhelp</a>() -> None</code>
+- <code title="get /udl/site/tuple">client.site.<a href="./src/unifieddatalibrary/resources/site/site.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/site_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/site_tuple_response.py">SiteTupleResponse</a></code>
+
+## Operations
+
+Types:
+
+```python
+from unifieddatalibrary.types.site import (
+    OperationRetrieveResponse,
+    OperationListResponse,
+    OperationCountResponse,
+    OperationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/siteoperations">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/site/operation_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/siteoperations/{id}">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/site/operation_retrieve_response.py">OperationRetrieveResponse</a></code>
+- <code title="put /udl/siteoperations/{id}">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/site/operation_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/siteoperations">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/site/operation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/site/operation_list_response.py">OperationListResponse</a></code>
+- <code title="delete /udl/siteoperations/{id}">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">delete</a>(id) -> None</code>
+- <code title="get /udl/siteoperations/count">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/site/operation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/siteoperations/createBulk">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/site/operation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-siteoperations">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">create_bulk_v2</a>(\*\*<a href="src/unifieddatalibrary/types/site/operation_create_bulk_v2_params.py">params</a>) -> None</code>
+- <code title="get /udl/siteoperations/queryhelp">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">query_help</a>() -> None</code>
+- <code title="get /udl/siteoperations/tuple">client.site.operations.<a href="./src/unifieddatalibrary/resources/site/operations.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/site/operation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/site/operation_tuple_response.py">OperationTupleResponse</a></code>
 
 # Siteremark
 
@@ -5003,7 +5291,7 @@ from unifieddatalibrary.types.gnss_raw_if import HistoryCountResponse, HistoryQu
 
 Methods:
 
-- <code title="get /udl/gnssrawif/history/aodr">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">ador</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_ador_params.py">params</a>) -> None</code>
+- <code title="get /udl/gnssrawif/history/aodr">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/gnssrawif/history/count">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/gnssrawif/history">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if/history_query_response.py">HistoryQueryResponse</a></code>
 
