@@ -75,8 +75,7 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
-from unifieddatalibrary.\_utils import parse_datetime
-from unifieddatalibrary.\_utils import parse_date
+from datetime import datetime, date
 
 ## Nested params
 
@@ -128,10 +127,10 @@ client.aircraft.create(
             "common_name": "Example common name",
             "constellation": "Big Dipper",
             "country_code": "US",
-            "decay_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+            "decay_date": datetime.fromisoformat("2018-01-01T16:00:00.123"),
             "id_on_orbit": "ONORBIT-ID",
             "intl_des": "2021123ABC",
-            "launch_date": parse_date("2018-01-01"),
+            "launch_date": date.fromisoformat("2018-01-01"),
             "launch_site_id": "LAUNCHSITE-ID",
             "lifetime_years": 10,
             "mission_number": "Expedition 1",
