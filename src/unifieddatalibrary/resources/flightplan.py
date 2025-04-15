@@ -8,23 +8,23 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import flightplan_tuple_params, flightplan_create_params, flightplan_create_bulk_v2_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ..._utils import (
+from ..types import flightplan_tuple_params, flightplan_create_params, flightplan_create_bulk_v2_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.flightplan_list_response import FlightplanListResponse
-from ...types.flightplan_tuple_response import FlightplanTupleResponse
+from .._base_client import make_request_options
+from ..types.flightplan_list_response import FlightplanListResponse
+from ..types.flightplan_tuple_response import FlightplanTupleResponse
 
 __all__ = ["FlightplanResource", "AsyncFlightplanResource"]
 

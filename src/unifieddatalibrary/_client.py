@@ -62,6 +62,7 @@ from .resources import (
     scs_views,
     substatus,
     air_events,
+    flightplan,
     launchsite,
     navigation,
     rfbandtype,
@@ -157,7 +158,6 @@ from .resources.ephemeris import ephemeris
 from .resources.maneuvers import maneuvers
 from .resources.sortieppr import sortieppr
 from .resources.tdoa_fdoa import tdoa_fdoa
-from .resources.flightplan import flightplan
 from .resources.orbittrack import orbittrack
 from .resources.sensorplan import sensorplan
 from .resources.sitestatus import sitestatus
