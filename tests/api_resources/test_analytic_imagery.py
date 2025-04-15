@@ -134,74 +134,14 @@ class TestAnalyticImagery:
     @parametrize
     def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         analytic_imagery = client.analytic_imagery.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
-        )
-        assert analytic_imagery is None
-
-    @parametrize
-    def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
-        analytic_imagery = client.analytic_imagery.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
-            id="ANALYTIC-IMAGERY-ID",
-            agjson='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
-            andims=2,
-            ann_lims=[[1, 1], [1, 2], [1, 3], [1, 4]],
-            ann_text=["rec1", "rec2"],
-            area="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
-            asrid=4326,
-            atext="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
-            atype="POLYGON",
-            data_start=parse_datetime("2018-01-01T16:00:00.123Z"),
-            data_stop=parse_datetime("2018-01-01T16:00:00.123Z"),
-            id_sensor="SENSOR-ID",
-            image_set_id="IMAGE-IDS",
-            image_set_length=123,
-            img_height=123,
-            img_width=123,
-            keywords=["Key1", "Key2"],
-            origin="ORIGIN",
-            orig_sensor_id="ORIG-SENSOR-ID",
-            sat_id=["12004", "12005"],
-            sat_id_conf=[0.98, 0.22],
-            sequence_id=123,
-            src_ids=["DOA_ID", "DWELL_ID"],
-            src_typs=["MTI", "POI"],
-            tags=["TAG1", "TAG2"],
-            transaction_id="a7bdef1f-5a4f-4716-bee4-7a1e0ec7d35a",
-            x_units="pixels",
-            y_units="pixels",
-            z_units="pixels",
+            file=b"raw file contents",
         )
         assert analytic_imagery is None
 
     @parametrize
     def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         response = client.analytic_imagery.with_raw_response.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
+            file=b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -212,15 +152,7 @@ class TestAnalyticImagery:
     @parametrize
     def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
         with client.analytic_imagery.with_streaming_response.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
+            file=b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -558,74 +490,14 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         analytic_imagery = await async_client.analytic_imagery.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
-        )
-        assert analytic_imagery is None
-
-    @parametrize
-    async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        analytic_imagery = await async_client.analytic_imagery.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
-            id="ANALYTIC-IMAGERY-ID",
-            agjson='{"type":"Polygon","coordinates":[ [ [ 67.3291113966927, 26.156175339112 ], [ 67.2580009640721, 26.091022064271 ], [ 67.1795862381682, 26.6637992964562 ], [ 67.2501237475598, 26.730115808233 ], [ 67.3291113966927, 26.156175339112 ] ] ] }',
-            andims=2,
-            ann_lims=[[1, 1], [1, 2], [1, 3], [1, 4]],
-            ann_text=["rec1", "rec2"],
-            area="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
-            asrid=4326,
-            atext="POLYGON((67.3291113966927 26.156175339112,67.2580009640721 26.091022064271,67.1795862381682 26.6637992964562,67.2501237475598 26.730115808233,67.3291113966927 26.156175339112))",
-            atype="POLYGON",
-            data_start=parse_datetime("2018-01-01T16:00:00.123Z"),
-            data_stop=parse_datetime("2018-01-01T16:00:00.123Z"),
-            id_sensor="SENSOR-ID",
-            image_set_id="IMAGE-IDS",
-            image_set_length=123,
-            img_height=123,
-            img_width=123,
-            keywords=["Key1", "Key2"],
-            origin="ORIGIN",
-            orig_sensor_id="ORIG-SENSOR-ID",
-            sat_id=["12004", "12005"],
-            sat_id_conf=[0.98, 0.22],
-            sequence_id=123,
-            src_ids=["DOA_ID", "DWELL_ID"],
-            src_typs=["MTI", "POI"],
-            tags=["TAG1", "TAG2"],
-            transaction_id="a7bdef1f-5a4f-4716-bee4-7a1e0ec7d35a",
-            x_units="pixels",
-            y_units="pixels",
-            z_units="pixels",
+            file=b"raw file contents",
         )
         assert analytic_imagery is None
 
     @parametrize
     async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.analytic_imagery.with_raw_response.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
+            file=b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -636,15 +508,7 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.analytic_imagery.with_streaming_response.create_bulk_v2(
-            classification_marking="U",
-            content="CONTOUR",
-            data_mode="TEST",
-            description="Image description",
-            filename="IMAGE-NAME",
-            filesize=7654321,
-            image_type="JPG",
-            msg_time=parse_datetime("2018-01-01T16:00:00.123Z"),
-            source="Bluestaq",
+            file=b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
