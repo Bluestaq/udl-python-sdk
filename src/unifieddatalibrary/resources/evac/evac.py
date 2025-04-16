@@ -21,7 +21,7 @@ from ...types import (
     evac_count_params,
     evac_create_params,
     evac_create_bulk_params,
-    evac_create_bulk_v2_params,
+    evac_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -450,10 +450,33 @@ class EvacResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
+    def query_help(
         self,
         *,
-        body: Iterable[evac_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/evac/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[evac_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -478,30 +501,7 @@ class EvacResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-evac",
-            body=maybe_transform(body, Iterable[evac_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def query_help(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/evac/queryhelp",
+            body=maybe_transform(body, Iterable[evac_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -908,10 +908,33 @@ class AsyncEvacResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
+    async def query_help(
         self,
         *,
-        body: Iterable[evac_create_bulk_v2_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/evac/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[evac_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -936,30 +959,7 @@ class AsyncEvacResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-evac",
-            body=await async_maybe_transform(body, Iterable[evac_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def query_help(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/evac/queryhelp",
+            body=await async_maybe_transform(body, Iterable[evac_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -986,11 +986,11 @@ class EvacResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             evac.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            evac.create_bulk_v2,
-        )
         self.query_help = to_raw_response_wrapper(
             evac.query_help,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            evac.unvalidated_publish,
         )
 
     @cached_property
@@ -1021,11 +1021,11 @@ class AsyncEvacResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             evac.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            evac.create_bulk_v2,
-        )
         self.query_help = async_to_raw_response_wrapper(
             evac.query_help,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            evac.unvalidated_publish,
         )
 
     @cached_property
@@ -1056,11 +1056,11 @@ class EvacResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             evac.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            evac.create_bulk_v2,
-        )
         self.query_help = to_streamed_response_wrapper(
             evac.query_help,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            evac.unvalidated_publish,
         )
 
     @cached_property
@@ -1091,11 +1091,11 @@ class AsyncEvacResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             evac.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            evac.create_bulk_v2,
-        )
         self.query_help = async_to_streamed_response_wrapper(
             evac.query_help,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            evac.unvalidated_publish,
         )
 
     @cached_property

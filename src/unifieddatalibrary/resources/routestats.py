@@ -13,7 +13,7 @@ from ..types import (
     routestat_create_params,
     routestat_update_params,
     routestat_create_bulk_params,
-    routestat_create_bulk_v2_params,
+    routestat_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -568,42 +568,6 @@ class RoutestatsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[routestat_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple routestats records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-routestats",
-            body=maybe_transform(body, Iterable[routestat_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def query(
         self,
         *,
@@ -696,6 +660,42 @@ class RoutestatsResource(SyncAPIResource):
                 query=maybe_transform({"columns": columns}, routestat_tuple_params.RoutestatTupleParams),
             ),
             cast_to=RoutestatTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[routestat_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple routestats records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-routestats",
+            body=maybe_transform(body, Iterable[routestat_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1231,42 +1231,6 @@ class AsyncRoutestatsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[routestat_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple routestats records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-routestats",
-            body=await async_maybe_transform(body, Iterable[routestat_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def query(
         self,
         *,
@@ -1361,6 +1325,42 @@ class AsyncRoutestatsResource(AsyncAPIResource):
             cast_to=RoutestatTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[routestat_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple routestats records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-routestats",
+            body=await async_maybe_transform(body, Iterable[routestat_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class RoutestatsResourceWithRawResponse:
     def __init__(self, routestats: RoutestatsResource) -> None:
@@ -1384,9 +1384,6 @@ class RoutestatsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             routestats.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            routestats.create_bulk_v2,
-        )
         self.query = to_raw_response_wrapper(
             routestats.query,
         )
@@ -1395,6 +1392,9 @@ class RoutestatsResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             routestats.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            routestats.unvalidated_publish,
         )
 
 
@@ -1420,9 +1420,6 @@ class AsyncRoutestatsResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             routestats.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            routestats.create_bulk_v2,
-        )
         self.query = async_to_raw_response_wrapper(
             routestats.query,
         )
@@ -1431,6 +1428,9 @@ class AsyncRoutestatsResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             routestats.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            routestats.unvalidated_publish,
         )
 
 
@@ -1456,9 +1456,6 @@ class RoutestatsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             routestats.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            routestats.create_bulk_v2,
-        )
         self.query = to_streamed_response_wrapper(
             routestats.query,
         )
@@ -1467,6 +1464,9 @@ class RoutestatsResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             routestats.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            routestats.unvalidated_publish,
         )
 
 
@@ -1492,9 +1492,6 @@ class AsyncRoutestatsResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             routestats.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            routestats.create_bulk_v2,
-        )
         self.query = async_to_streamed_response_wrapper(
             routestats.query,
         )
@@ -1503,4 +1500,7 @@ class AsyncRoutestatsResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             routestats.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            routestats.unvalidated_publish,
         )

@@ -470,58 +470,6 @@ class TestCrew:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        crew = client.crew.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "orig_crew_id": "JHJDHjhuu929o92",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert crew is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.crew.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "orig_crew_id": "JHJDHjhuu929o92",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        crew = response.parse()
-        assert crew is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.crew.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "orig_crew_id": "JHJDHjhuu929o92",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            crew = response.parse()
-            assert crew is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.queryhelp()
         assert crew is None
@@ -574,6 +522,58 @@ class TestCrew:
 
             crew = response.parse()
             assert_matches_type(CrewTupleResponse, crew, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        crew = client.crew.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert crew is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.crew.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        crew = response.parse()
+        assert crew is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.crew.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            crew = response.parse()
+            assert crew is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1029,58 +1029,6 @@ class TestAsyncCrew:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        crew = await async_client.crew.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "orig_crew_id": "JHJDHjhuu929o92",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert crew is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.crew.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "orig_crew_id": "JHJDHjhuu929o92",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        crew = await response.parse()
-        assert crew is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.crew.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "orig_crew_id": "JHJDHjhuu929o92",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            crew = await response.parse()
-            assert crew is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.queryhelp()
         assert crew is None
@@ -1133,5 +1081,57 @@ class TestAsyncCrew:
 
             crew = await response.parse()
             assert_matches_type(CrewTupleResponse, crew, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        crew = await async_client.crew.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert crew is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.crew.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        crew = await response.parse()
+        assert crew is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.crew.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "orig_crew_id": "JHJDHjhuu929o92",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            crew = await response.parse()
+            assert crew is None
 
         assert cast(Any, response.is_closed) is True

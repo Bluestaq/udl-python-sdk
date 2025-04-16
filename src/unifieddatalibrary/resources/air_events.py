@@ -13,7 +13,7 @@ from ..types import (
     air_event_create_params,
     air_event_update_params,
     air_event_create_bulk_params,
-    air_event_create_bulk_v2_params,
+    air_event_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -666,42 +666,6 @@ class AirEventsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[air_event_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple airevent records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-airevent",
-            body=maybe_transform(body, Iterable[air_event_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -804,6 +768,42 @@ class AirEventsResource(SyncAPIResource):
                 query=maybe_transform({"columns": columns}, air_event_tuple_params.AirEventTupleParams),
             ),
             cast_to=AirEventTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[air_event_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple airevent records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-airevent",
+            body=maybe_transform(body, Iterable[air_event_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1437,42 +1437,6 @@ class AsyncAirEventsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[air_event_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple airevent records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-airevent",
-            body=await async_maybe_transform(body, Iterable[air_event_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -1577,6 +1541,42 @@ class AsyncAirEventsResource(AsyncAPIResource):
             cast_to=AirEventTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[air_event_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple airevent records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-airevent",
+            body=await async_maybe_transform(body, Iterable[air_event_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AirEventsResourceWithRawResponse:
     def __init__(self, air_events: AirEventsResource) -> None:
@@ -1600,9 +1600,6 @@ class AirEventsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             air_events.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            air_events.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             air_events.get,
         )
@@ -1611,6 +1608,9 @@ class AirEventsResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             air_events.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            air_events.unvalidated_publish,
         )
 
 
@@ -1636,9 +1636,6 @@ class AsyncAirEventsResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             air_events.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            air_events.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             air_events.get,
         )
@@ -1647,6 +1644,9 @@ class AsyncAirEventsResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             air_events.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            air_events.unvalidated_publish,
         )
 
 
@@ -1672,9 +1672,6 @@ class AirEventsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             air_events.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            air_events.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             air_events.get,
         )
@@ -1683,6 +1680,9 @@ class AirEventsResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             air_events.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            air_events.unvalidated_publish,
         )
 
 
@@ -1708,9 +1708,6 @@ class AsyncAirEventsResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             air_events.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            air_events.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             air_events.get,
         )
@@ -1719,4 +1716,7 @@ class AsyncAirEventsResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             air_events.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            air_events.unvalidated_publish,
         )

@@ -14,7 +14,7 @@ from ..types import (
     poi_tuple_params,
     poi_create_params,
     poi_create_bulk_params,
-    poi_create_bulk_v2_params,
+    poi_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -465,42 +465,6 @@ class PoiResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[poi_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of POIs as a POST body and ingest into the
-        database. This operation is intended to be used for automated feeds into UDL. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-poi",
-            body=maybe_transform(body, Iterable[poi_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -612,6 +576,42 @@ class PoiResource(SyncAPIResource):
                 ),
             ),
             cast_to=PoiTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[poi_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of POIs as a POST body and ingest into the
+        database. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-poi",
+            body=maybe_transform(body, Iterable[poi_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1043,42 +1043,6 @@ class AsyncPoiResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[poi_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of POIs as a POST body and ingest into the
-        database. This operation is intended to be used for automated feeds into UDL. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-poi",
-            body=await async_maybe_transform(body, Iterable[poi_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -1192,6 +1156,42 @@ class AsyncPoiResource(AsyncAPIResource):
             cast_to=PoiTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[poi_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of POIs as a POST body and ingest into the
+        database. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-poi",
+            body=await async_maybe_transform(body, Iterable[poi_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class PoiResourceWithRawResponse:
     def __init__(self, poi: PoiResource) -> None:
@@ -1209,9 +1209,6 @@ class PoiResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             poi.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            poi.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             poi.get,
         )
@@ -1220,6 +1217,9 @@ class PoiResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             poi.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            poi.unvalidated_publish,
         )
 
 
@@ -1239,9 +1239,6 @@ class AsyncPoiResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             poi.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            poi.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             poi.get,
         )
@@ -1250,6 +1247,9 @@ class AsyncPoiResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             poi.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            poi.unvalidated_publish,
         )
 
 
@@ -1269,9 +1269,6 @@ class PoiResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             poi.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            poi.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             poi.get,
         )
@@ -1280,6 +1277,9 @@ class PoiResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             poi.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            poi.unvalidated_publish,
         )
 
 
@@ -1299,9 +1299,6 @@ class AsyncPoiResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             poi.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            poi.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             poi.get,
         )
@@ -1310,4 +1307,7 @@ class AsyncPoiResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             poi.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            poi.unvalidated_publish,
         )

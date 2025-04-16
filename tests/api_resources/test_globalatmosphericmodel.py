@@ -100,78 +100,6 @@ class TestGlobalatmosphericmodel:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        globalatmosphericmodel = client.globalatmosphericmodel.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-        )
-        assert globalatmosphericmodel is None
-
-    @parametrize
-    def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
-        globalatmosphericmodel = client.globalatmosphericmodel.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-            id="026dd511-8ba5-47d3-9909-836149f87686",
-            cadence=10,
-            end_alt=90.125,
-            end_lat=-88.75,
-            end_lon=-177.5,
-            filename="glotec_elecden.geojson",
-            filesize=2097152,
-            num_alt=35,
-            num_lat=72,
-            num_lon=72,
-            origin="THIRD_PARTY_DATASOURCE",
-            report_time=parse_datetime("2024-08-21T21:54:35.123Z"),
-            start_alt=8553.163773,
-            start_lat=88.75,
-            start_lon=177.5,
-            state="PREDICTED",
-            step_lat=2.5,
-            step_lon=5.5,
-        )
-        assert globalatmosphericmodel is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.globalatmosphericmodel.with_raw_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        globalatmosphericmodel = response.parse()
-        assert globalatmosphericmodel is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.globalatmosphericmodel.with_streaming_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            globalatmosphericmodel = response.parse()
-            assert globalatmosphericmodel is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_get_file(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/globalatmosphericmodel/getFile/id").mock(
@@ -317,6 +245,78 @@ class TestGlobalatmosphericmodel:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        globalatmosphericmodel = client.globalatmosphericmodel.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+        )
+        assert globalatmosphericmodel is None
+
+    @parametrize
+    def test_method_unvalidated_publish_with_all_params(self, client: Unifieddatalibrary) -> None:
+        globalatmosphericmodel = client.globalatmosphericmodel.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+            id="026dd511-8ba5-47d3-9909-836149f87686",
+            cadence=10,
+            end_alt=90.125,
+            end_lat=-88.75,
+            end_lon=-177.5,
+            filename="glotec_elecden.geojson",
+            filesize=2097152,
+            num_alt=35,
+            num_lat=72,
+            num_lon=72,
+            origin="THIRD_PARTY_DATASOURCE",
+            report_time=parse_datetime("2024-08-21T21:54:35.123Z"),
+            start_alt=8553.163773,
+            start_lat=88.75,
+            start_lon=177.5,
+            state="PREDICTED",
+            step_lat=2.5,
+            step_lon=5.5,
+        )
+        assert globalatmosphericmodel is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.globalatmosphericmodel.with_raw_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        globalatmosphericmodel = response.parse()
+        assert globalatmosphericmodel is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.globalatmosphericmodel.with_streaming_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            globalatmosphericmodel = response.parse()
+            assert globalatmosphericmodel is None
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncGlobalatmosphericmodel:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -387,78 +387,6 @@ class TestAsyncGlobalatmosphericmodel:
 
             globalatmosphericmodel = await response.parse()
             assert_matches_type(str, globalatmosphericmodel, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        globalatmosphericmodel = await async_client.globalatmosphericmodel.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-        )
-        assert globalatmosphericmodel is None
-
-    @parametrize
-    async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        globalatmosphericmodel = await async_client.globalatmosphericmodel.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-            id="026dd511-8ba5-47d3-9909-836149f87686",
-            cadence=10,
-            end_alt=90.125,
-            end_lat=-88.75,
-            end_lon=-177.5,
-            filename="glotec_elecden.geojson",
-            filesize=2097152,
-            num_alt=35,
-            num_lat=72,
-            num_lon=72,
-            origin="THIRD_PARTY_DATASOURCE",
-            report_time=parse_datetime("2024-08-21T21:54:35.123Z"),
-            start_alt=8553.163773,
-            start_lat=88.75,
-            start_lon=177.5,
-            state="PREDICTED",
-            step_lat=2.5,
-            step_lon=5.5,
-        )
-        assert globalatmosphericmodel is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.globalatmosphericmodel.with_raw_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        globalatmosphericmodel = await response.parse()
-        assert globalatmosphericmodel is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.globalatmosphericmodel.with_streaming_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            source="Bluestaq",
-            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
-            type="Global Total Electron Density",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            globalatmosphericmodel = await response.parse()
-            assert globalatmosphericmodel is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -607,5 +535,77 @@ class TestAsyncGlobalatmosphericmodel:
 
             globalatmosphericmodel = await response.parse()
             assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+        )
+        assert globalatmosphericmodel is None
+
+    @parametrize
+    async def test_method_unvalidated_publish_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+            id="026dd511-8ba5-47d3-9909-836149f87686",
+            cadence=10,
+            end_alt=90.125,
+            end_lat=-88.75,
+            end_lon=-177.5,
+            filename="glotec_elecden.geojson",
+            filesize=2097152,
+            num_alt=35,
+            num_lat=72,
+            num_lon=72,
+            origin="THIRD_PARTY_DATASOURCE",
+            report_time=parse_datetime("2024-08-21T21:54:35.123Z"),
+            start_alt=8553.163773,
+            start_lat=88.75,
+            start_lon=177.5,
+            state="PREDICTED",
+            step_lat=2.5,
+            step_lon=5.5,
+        )
+        assert globalatmosphericmodel is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.globalatmosphericmodel.with_raw_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        globalatmosphericmodel = await response.parse()
+        assert globalatmosphericmodel is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.globalatmosphericmodel.with_streaming_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            source="Bluestaq",
+            ts=parse_datetime("2024-03-01T11:45:00.123Z"),
+            type="Global Total Electron Density",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            globalatmosphericmodel = await response.parse()
+            assert globalatmosphericmodel is None
 
         assert cast(Any, response.is_closed) is True

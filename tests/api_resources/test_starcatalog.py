@@ -411,70 +411,6 @@ class TestStarcatalog:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        starcatalog = client.starcatalog.create_bulk_v2(
-            body=[
-                {
-                    "astrometry_origin": "GAIADR3",
-                    "classification_marking": "U",
-                    "cs_id": 12345,
-                    "data_mode": "TEST",
-                    "dec": 21.8,
-                    "ra": 14.43,
-                    "source": "Bluestaq",
-                    "star_epoch": 2016,
-                }
-            ],
-        )
-        assert starcatalog is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.starcatalog.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "astrometry_origin": "GAIADR3",
-                    "classification_marking": "U",
-                    "cs_id": 12345,
-                    "data_mode": "TEST",
-                    "dec": 21.8,
-                    "ra": 14.43,
-                    "source": "Bluestaq",
-                    "star_epoch": 2016,
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        starcatalog = response.parse()
-        assert starcatalog is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.starcatalog.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "astrometry_origin": "GAIADR3",
-                    "classification_marking": "U",
-                    "cs_id": 12345,
-                    "data_mode": "TEST",
-                    "dec": 21.8,
-                    "ra": 14.43,
-                    "source": "Bluestaq",
-                    "star_epoch": 2016,
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            starcatalog = response.parse()
-            assert starcatalog is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         starcatalog = client.starcatalog.get(
             "id",
@@ -574,6 +510,70 @@ class TestStarcatalog:
 
             starcatalog = response.parse()
             assert_matches_type(StarcatalogTupleResponse, starcatalog, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        starcatalog = client.starcatalog.unvalidated_publish(
+            body=[
+                {
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "TEST",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
+                }
+            ],
+        )
+        assert starcatalog is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.starcatalog.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "TEST",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        starcatalog = response.parse()
+        assert starcatalog is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.starcatalog.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "TEST",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            starcatalog = response.parse()
+            assert starcatalog is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -971,70 +971,6 @@ class TestAsyncStarcatalog:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        starcatalog = await async_client.starcatalog.create_bulk_v2(
-            body=[
-                {
-                    "astrometry_origin": "GAIADR3",
-                    "classification_marking": "U",
-                    "cs_id": 12345,
-                    "data_mode": "TEST",
-                    "dec": 21.8,
-                    "ra": 14.43,
-                    "source": "Bluestaq",
-                    "star_epoch": 2016,
-                }
-            ],
-        )
-        assert starcatalog is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.starcatalog.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "astrometry_origin": "GAIADR3",
-                    "classification_marking": "U",
-                    "cs_id": 12345,
-                    "data_mode": "TEST",
-                    "dec": 21.8,
-                    "ra": 14.43,
-                    "source": "Bluestaq",
-                    "star_epoch": 2016,
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        starcatalog = await response.parse()
-        assert starcatalog is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.starcatalog.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "astrometry_origin": "GAIADR3",
-                    "classification_marking": "U",
-                    "cs_id": 12345,
-                    "data_mode": "TEST",
-                    "dec": 21.8,
-                    "ra": 14.43,
-                    "source": "Bluestaq",
-                    "star_epoch": 2016,
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            starcatalog = await response.parse()
-            assert starcatalog is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         starcatalog = await async_client.starcatalog.get(
             "id",
@@ -1134,5 +1070,69 @@ class TestAsyncStarcatalog:
 
             starcatalog = await response.parse()
             assert_matches_type(StarcatalogTupleResponse, starcatalog, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        starcatalog = await async_client.starcatalog.unvalidated_publish(
+            body=[
+                {
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "TEST",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
+                }
+            ],
+        )
+        assert starcatalog is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.starcatalog.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "TEST",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        starcatalog = await response.parse()
+        assert starcatalog is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.starcatalog.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "astrometry_origin": "GAIADR3",
+                    "classification_marking": "U",
+                    "cs_id": 12345,
+                    "data_mode": "TEST",
+                    "dec": 21.8,
+                    "ra": 14.43,
+                    "source": "Bluestaq",
+                    "star_epoch": 2016,
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            starcatalog = await response.parse()
+            assert starcatalog is None
 
         assert cast(Any, response.is_closed) is True

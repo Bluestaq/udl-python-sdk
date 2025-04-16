@@ -17,19 +17,21 @@ from .aircraft_sortie_create_bulk_params import AircraftSortieCreateBulkParams a
 from .aircraft_sortie_history_aodr_params import AircraftSortieHistoryAodrParams as AircraftSortieHistoryAodrParams
 from .aircraft_sortie_history_count_params import AircraftSortieHistoryCountParams as AircraftSortieHistoryCountParams
 from .aircraft_sortie_history_query_params import AircraftSortieHistoryQueryParams as AircraftSortieHistoryQueryParams
-from .aircraft_sorty_create_bulk_v2_params import AircraftSortyCreateBulkV2Params as AircraftSortyCreateBulkV2Params
 from .aircraft_sortie_history_count_response import (
     AircraftSortieHistoryCountResponse as AircraftSortieHistoryCountResponse,
 )
 from .aircraft_sortie_history_query_response import (
     AircraftSortieHistoryQueryResponse as AircraftSortieHistoryQueryResponse,
 )
-from .air_tasking_order_create_bulk_v2_params import (
-    AirTaskingOrderCreateBulkV2Params as AirTaskingOrderCreateBulkV2Params,
+from .aircraft_sorty_unvalidated_publish_params import (
+    AircraftSortyUnvalidatedPublishParams as AircraftSortyUnvalidatedPublishParams,
 )
-from .diplomatic_clearance_create_bulk_v2_params import (
-    DiplomaticClearanceCreateBulkV2Params as DiplomaticClearanceCreateBulkV2Params,
+from .air_tasking_order_unvalidated_publish_params import (
+    AirTaskingOrderUnvalidatedPublishParams as AirTaskingOrderUnvalidatedPublishParams,
 )
-from .airspace_control_order_create_bulk_v2_params import (
-    AirspaceControlOrderCreateBulkV2Params as AirspaceControlOrderCreateBulkV2Params,
+from .diplomatic_clearance_unvalidated_publish_params import (
+    DiplomaticClearanceUnvalidatedPublishParams as DiplomaticClearanceUnvalidatedPublishParams,
+)
+from .airspace_control_order_unvalidated_publish_params import (
+    AirspaceControlOrderUnvalidatedPublishParams as AirspaceControlOrderUnvalidatedPublishParams,
 )

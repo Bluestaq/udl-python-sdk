@@ -25,58 +25,6 @@ class TestUdlSigact:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        udl_sigact = client.report_and_activity.udl_sigact.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert udl_sigact is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.report_and_activity.udl_sigact.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        udl_sigact = response.parse()
-        assert udl_sigact is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.report_and_activity.udl_sigact.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            udl_sigact = response.parse()
-            assert udl_sigact is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
@@ -126,13 +74,9 @@ class TestUdlSigact:
                 "",
             )
 
-
-class TestAsyncUdlSigact:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
-
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        udl_sigact = await async_client.report_and_activity.udl_sigact.create_bulk_v2(
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        udl_sigact = client.report_and_activity.udl_sigact.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -145,8 +89,8 @@ class TestAsyncUdlSigact:
         assert udl_sigact is None
 
     @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.report_and_activity.udl_sigact.with_raw_response.create_bulk_v2(
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.report_and_activity.udl_sigact.with_raw_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -159,12 +103,12 @@ class TestAsyncUdlSigact:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        udl_sigact = await response.parse()
+        udl_sigact = response.parse()
         assert udl_sigact is None
 
     @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.report_and_activity.udl_sigact.with_streaming_response.create_bulk_v2(
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.report_and_activity.udl_sigact.with_streaming_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -177,10 +121,14 @@ class TestAsyncUdlSigact:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            udl_sigact = await response.parse()
+            udl_sigact = response.parse()
             assert udl_sigact is None
 
         assert cast(Any, response.is_closed) is True
+
+
+class TestAsyncUdlSigact:
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
@@ -233,3 +181,55 @@ class TestAsyncUdlSigact:
             await async_client.report_and_activity.udl_sigact.with_raw_response.file_get(
                 "",
             )
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        udl_sigact = await async_client.report_and_activity.udl_sigact.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert udl_sigact is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.report_and_activity.udl_sigact.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        udl_sigact = await response.parse()
+        assert udl_sigact is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.report_and_activity.udl_sigact.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "report_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            udl_sigact = await response.parse()
+            assert udl_sigact is None
+
+        assert cast(Any, response.is_closed) is True

@@ -158,7 +158,7 @@ client = Unifieddatalibrary(
     username="My Username",
 )
 
-client.analytic_imagery.create_bulk_v2(
+client.analytic_imagery.unvalidated_publish(
     file=Path("/path/to/file"),
 )
 ```

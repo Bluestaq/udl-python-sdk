@@ -132,37 +132,6 @@ class TestAnalyticImagery:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        analytic_imagery = client.analytic_imagery.create_bulk_v2(
-            file=b"raw file contents",
-        )
-        assert analytic_imagery is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.analytic_imagery.with_raw_response.create_bulk_v2(
-            file=b"raw file contents",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        analytic_imagery = response.parse()
-        assert analytic_imagery is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.analytic_imagery.with_streaming_response.create_bulk_v2(
-            file=b"raw file contents",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            analytic_imagery = response.parse()
-            assert analytic_imagery is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
@@ -383,6 +352,37 @@ class TestAnalyticImagery:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        analytic_imagery = client.analytic_imagery.unvalidated_publish(
+            file=b"raw file contents",
+        )
+        assert analytic_imagery is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.analytic_imagery.with_raw_response.unvalidated_publish(
+            file=b"raw file contents",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        analytic_imagery = response.parse()
+        assert analytic_imagery is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.analytic_imagery.with_streaming_response.unvalidated_publish(
+            file=b"raw file contents",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            analytic_imagery = response.parse()
+            assert analytic_imagery is None
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncAnalyticImagery:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -484,37 +484,6 @@ class TestAsyncAnalyticImagery:
 
             analytic_imagery = await response.parse()
             assert_matches_type(str, analytic_imagery, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        analytic_imagery = await async_client.analytic_imagery.create_bulk_v2(
-            file=b"raw file contents",
-        )
-        assert analytic_imagery is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.analytic_imagery.with_raw_response.create_bulk_v2(
-            file=b"raw file contents",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        analytic_imagery = await response.parse()
-        assert analytic_imagery is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.analytic_imagery.with_streaming_response.create_bulk_v2(
-            file=b"raw file contents",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            analytic_imagery = await response.parse()
-            assert analytic_imagery is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -738,5 +707,36 @@ class TestAsyncAnalyticImagery:
 
             analytic_imagery = await response.parse()
             assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        analytic_imagery = await async_client.analytic_imagery.unvalidated_publish(
+            file=b"raw file contents",
+        )
+        assert analytic_imagery is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.analytic_imagery.with_raw_response.unvalidated_publish(
+            file=b"raw file contents",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        analytic_imagery = await response.parse()
+        assert analytic_imagery is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.analytic_imagery.with_streaming_response.unvalidated_publish(
+            file=b"raw file contents",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            analytic_imagery = await response.parse()
+            assert analytic_imagery is None
 
         assert cast(Any, response.is_closed) is True

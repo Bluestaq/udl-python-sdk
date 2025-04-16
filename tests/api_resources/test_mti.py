@@ -133,55 +133,6 @@ class TestMti:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        mti = client.mti.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert mti is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.mti.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        mti = response.parse()
-        assert mti is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.mti.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            mti = response.parse()
-            assert mti is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         mti = client.mti.queryhelp()
         assert mti is None
@@ -237,6 +188,55 @@ class TestMti:
 
             mti = response.parse()
             assert_matches_type(MtiTupleResponse, mti, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        mti = client.mti.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert mti is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.mti.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mti = response.parse()
+        assert mti is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.mti.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mti = response.parse()
+            assert mti is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -356,55 +356,6 @@ class TestAsyncMti:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        mti = await async_client.mti.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert mti is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.mti.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        mti = await response.parse()
-        assert mti is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.mti.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            mti = await response.parse()
-            assert mti is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         mti = await async_client.mti.queryhelp()
         assert mti is None
@@ -460,5 +411,54 @@ class TestAsyncMti:
 
             mti = await response.parse()
             assert_matches_type(MtiTupleResponse, mti, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        mti = await async_client.mti.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert mti is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.mti.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mti = await response.parse()
+        assert mti is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.mti.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mti = await response.parse()
+            assert mti is None
 
         assert cast(Any, response.is_closed) is True

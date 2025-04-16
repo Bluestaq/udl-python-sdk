@@ -145,67 +145,6 @@ class TestIonoobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        ionoobservation = client.ionoobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "station_id": "STATION-ID",
-                    "system": "Example hardware type",
-                    "system_info": "Example settings",
-                }
-            ],
-        )
-        assert ionoobservation is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.ionoobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "station_id": "STATION-ID",
-                    "system": "Example hardware type",
-                    "system_info": "Example settings",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ionoobservation = response.parse()
-        assert ionoobservation is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.ionoobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "station_id": "STATION-ID",
-                    "system": "Example hardware type",
-                    "system_info": "Example settings",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ionoobservation = response.parse()
-            assert ionoobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         ionoobservation = client.ionoobservation.queryhelp()
         assert ionoobservation is None
@@ -261,6 +200,67 @@ class TestIonoobservation:
 
             ionoobservation = response.parse()
             assert_matches_type(IonoobservationTupleResponse, ionoobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        ionoobservation = client.ionoobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
+                }
+            ],
+        )
+        assert ionoobservation is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.ionoobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ionoobservation = response.parse()
+        assert ionoobservation is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.ionoobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ionoobservation = response.parse()
+            assert ionoobservation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -392,67 +392,6 @@ class TestAsyncIonoobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ionoobservation = await async_client.ionoobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "station_id": "STATION-ID",
-                    "system": "Example hardware type",
-                    "system_info": "Example settings",
-                }
-            ],
-        )
-        assert ionoobservation is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.ionoobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "station_id": "STATION-ID",
-                    "system": "Example hardware type",
-                    "system_info": "Example settings",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ionoobservation = await response.parse()
-        assert ionoobservation is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.ionoobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
-                    "station_id": "STATION-ID",
-                    "system": "Example hardware type",
-                    "system_info": "Example settings",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ionoobservation = await response.parse()
-            assert ionoobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         ionoobservation = await async_client.ionoobservation.queryhelp()
         assert ionoobservation is None
@@ -508,5 +447,66 @@ class TestAsyncIonoobservation:
 
             ionoobservation = await response.parse()
             assert_matches_type(IonoobservationTupleResponse, ionoobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ionoobservation = await async_client.ionoobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
+                }
+            ],
+        )
+        assert ionoobservation is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ionoobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ionoobservation = await response.parse()
+        assert ionoobservation is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ionoobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "start_time_utc": parse_datetime("2021-01-01T01:01:01.123456Z"),
+                    "station_id": "STATION-ID",
+                    "system": "Example hardware type",
+                    "system_info": "Example settings",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ionoobservation = await response.parse()
+            assert ionoobservation is None
 
         assert cast(Any, response.is_closed) is True

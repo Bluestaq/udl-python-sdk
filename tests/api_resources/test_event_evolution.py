@@ -264,64 +264,6 @@ class TestEventEvolution:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        event_evolution = client.event_evolution.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_id": "EVENT_ID",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
-                    "summary": "Example summary of the event.",
-                }
-            ],
-        )
-        assert event_evolution is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.event_evolution.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_id": "EVENT_ID",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
-                    "summary": "Example summary of the event.",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event_evolution = response.parse()
-        assert event_evolution is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.event_evolution.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_id": "EVENT_ID",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
-                    "summary": "Example summary of the event.",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            event_evolution = response.parse()
-            assert event_evolution is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.queryhelp()
         assert event_evolution is None
@@ -383,6 +325,64 @@ class TestEventEvolution:
 
             event_evolution = response.parse()
             assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+        assert event_evolution is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.event_evolution.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = response.parse()
+        assert event_evolution is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.event_evolution.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = response.parse()
+            assert event_evolution is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -632,64 +632,6 @@ class TestAsyncEventEvolution:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        event_evolution = await async_client.event_evolution.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_id": "EVENT_ID",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
-                    "summary": "Example summary of the event.",
-                }
-            ],
-        )
-        assert event_evolution is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.event_evolution.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_id": "EVENT_ID",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
-                    "summary": "Example summary of the event.",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event_evolution = await response.parse()
-        assert event_evolution is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.event_evolution.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_id": "EVENT_ID",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
-                    "summary": "Example summary of the event.",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            event_evolution = await response.parse()
-            assert event_evolution is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.queryhelp()
         assert event_evolution is None
@@ -751,5 +693,63 @@ class TestAsyncEventEvolution:
 
             event_evolution = await response.parse()
             assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+        assert event_evolution is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.event_evolution.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event_evolution = await response.parse()
+        assert event_evolution is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.event_evolution.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_id": "EVENT_ID",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2021-12-02T16:00:00.123Z"),
+                    "summary": "Example summary of the event.",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            event_evolution = await response.parse()
+            assert event_evolution is None
 
         assert cast(Any, response.is_closed) is True

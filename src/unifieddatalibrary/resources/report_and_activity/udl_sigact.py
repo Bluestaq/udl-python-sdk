@@ -28,7 +28,7 @@ from ..._response import (
     async_to_custom_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.report_and_activity import udl_sigact_create_bulk_v2_params
+from ...types.report_and_activity import udl_sigact_unvalidated_publish_params
 
 __all__ = ["UdlSigactResource", "AsyncUdlSigactResource"]
 
@@ -52,42 +52,6 @@ class UdlSigactResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
         """
         return UdlSigactResourceWithStreamingResponse(self)
-
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[udl_sigact_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of SigAct as a POST body and ingest into the
-        database. A SigAct provides data for Report and Activity information. Requires a
-        specific role, please contact the UDL team to gain access. This operation is
-        intended to be used for automated feeds into UDL.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-sigact",
-            body=maybe_transform(body, Iterable[udl_sigact_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
 
     def file_get(
         self,
@@ -124,31 +88,10 @@ class UdlSigactResource(SyncAPIResource):
             cast_to=BinaryAPIResponse,
         )
 
-
-class AsyncUdlSigactResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncUdlSigactResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
-        """
-        return AsyncUdlSigactResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncUdlSigactResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
-        """
-        return AsyncUdlSigactResourceWithStreamingResponse(self)
-
-    async def create_bulk_v2(
+    def unvalidated_publish(
         self,
         *,
-        body: Iterable[udl_sigact_create_bulk_v2_params.Body],
+        body: Iterable[udl_sigact_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,14 +115,35 @@ class AsyncUdlSigactResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
+        return self._post(
             "/filedrop/udl-sigact",
-            body=await async_maybe_transform(body, Iterable[udl_sigact_create_bulk_v2_params.Body]),
+            body=maybe_transform(body, Iterable[udl_sigact_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
+
+
+class AsyncUdlSigactResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncUdlSigactResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncUdlSigactResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncUdlSigactResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        """
+        return AsyncUdlSigactResourceWithStreamingResponse(self)
 
     async def file_get(
         self,
@@ -216,17 +180,53 @@ class AsyncUdlSigactResource(AsyncAPIResource):
             cast_to=AsyncBinaryAPIResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[udl_sigact_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of SigAct as a POST body and ingest into the
+        database. A SigAct provides data for Report and Activity information. Requires a
+        specific role, please contact the UDL team to gain access. This operation is
+        intended to be used for automated feeds into UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-sigact",
+            body=await async_maybe_transform(body, Iterable[udl_sigact_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class UdlSigactResourceWithRawResponse:
     def __init__(self, udl_sigact: UdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            udl_sigact.create_bulk_v2,
-        )
         self.file_get = to_custom_raw_response_wrapper(
             udl_sigact.file_get,
             BinaryAPIResponse,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            udl_sigact.unvalidated_publish,
         )
 
 
@@ -234,12 +234,12 @@ class AsyncUdlSigactResourceWithRawResponse:
     def __init__(self, udl_sigact: AsyncUdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            udl_sigact.create_bulk_v2,
-        )
         self.file_get = async_to_custom_raw_response_wrapper(
             udl_sigact.file_get,
             AsyncBinaryAPIResponse,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            udl_sigact.unvalidated_publish,
         )
 
 
@@ -247,12 +247,12 @@ class UdlSigactResourceWithStreamingResponse:
     def __init__(self, udl_sigact: UdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            udl_sigact.create_bulk_v2,
-        )
         self.file_get = to_custom_streamed_response_wrapper(
             udl_sigact.file_get,
             StreamedBinaryAPIResponse,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            udl_sigact.unvalidated_publish,
         )
 
 
@@ -260,10 +260,10 @@ class AsyncUdlSigactResourceWithStreamingResponse:
     def __init__(self, udl_sigact: AsyncUdlSigactResource) -> None:
         self._udl_sigact = udl_sigact
 
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            udl_sigact.create_bulk_v2,
-        )
         self.file_get = async_to_custom_streamed_response_wrapper(
             udl_sigact.file_get,
             AsyncStreamedBinaryAPIResponse,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            udl_sigact.unvalidated_publish,
         )

@@ -22,7 +22,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.report_and_activity import udl_h3geo_create_bulk_v2_params
+from ...types.report_and_activity import udl_h3geo_unvalidated_publish_params
 
 __all__ = ["UdlH3geoResource", "AsyncUdlH3geoResource"]
 
@@ -47,10 +47,10 @@ class UdlH3geoResource(SyncAPIResource):
         """
         return UdlH3geoResourceWithStreamingResponse(self)
 
-    def create_bulk_v2(
+    def unvalidated_publish(
         self,
         *,
-        cells: Iterable[udl_h3geo_create_bulk_v2_params.Cell],
+        cells: Iterable[udl_h3geo_unvalidated_publish_params.Cell],
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         num_cells: int,
@@ -155,7 +155,7 @@ class UdlH3geoResource(SyncAPIResource):
                     "tags": tags,
                     "type": type,
                 },
-                udl_h3geo_create_bulk_v2_params.UdlH3geoCreateBulkV2Params,
+                udl_h3geo_unvalidated_publish_params.UdlH3geoUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -184,10 +184,10 @@ class AsyncUdlH3geoResource(AsyncAPIResource):
         """
         return AsyncUdlH3geoResourceWithStreamingResponse(self)
 
-    async def create_bulk_v2(
+    async def unvalidated_publish(
         self,
         *,
-        cells: Iterable[udl_h3geo_create_bulk_v2_params.Cell],
+        cells: Iterable[udl_h3geo_unvalidated_publish_params.Cell],
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         num_cells: int,
@@ -292,7 +292,7 @@ class AsyncUdlH3geoResource(AsyncAPIResource):
                     "tags": tags,
                     "type": type,
                 },
-                udl_h3geo_create_bulk_v2_params.UdlH3geoCreateBulkV2Params,
+                udl_h3geo_unvalidated_publish_params.UdlH3geoUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -305,8 +305,8 @@ class UdlH3geoResourceWithRawResponse:
     def __init__(self, udl_h3geo: UdlH3geoResource) -> None:
         self._udl_h3geo = udl_h3geo
 
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            udl_h3geo.create_bulk_v2,
+        self.unvalidated_publish = to_raw_response_wrapper(
+            udl_h3geo.unvalidated_publish,
         )
 
 
@@ -314,8 +314,8 @@ class AsyncUdlH3geoResourceWithRawResponse:
     def __init__(self, udl_h3geo: AsyncUdlH3geoResource) -> None:
         self._udl_h3geo = udl_h3geo
 
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            udl_h3geo.create_bulk_v2,
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            udl_h3geo.unvalidated_publish,
         )
 
 
@@ -323,8 +323,8 @@ class UdlH3geoResourceWithStreamingResponse:
     def __init__(self, udl_h3geo: UdlH3geoResource) -> None:
         self._udl_h3geo = udl_h3geo
 
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            udl_h3geo.create_bulk_v2,
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            udl_h3geo.unvalidated_publish,
         )
 
 
@@ -332,6 +332,6 @@ class AsyncUdlH3geoResourceWithStreamingResponse:
     def __init__(self, udl_h3geo: AsyncUdlH3geoResource) -> None:
         self._udl_h3geo = udl_h3geo
 
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            udl_h3geo.create_bulk_v2,
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            udl_h3geo.unvalidated_publish,
         )

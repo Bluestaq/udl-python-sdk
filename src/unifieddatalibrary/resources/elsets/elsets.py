@@ -593,41 +593,6 @@ class ElsetsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[ElsetIngestParam],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take elsets as a POST body and ingest into the database
-        with or without dupe detection. Default is no dupe checking. This operation is
-        intended to be used for automated feeds into UDL.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-elset",
-            body=maybe_transform(body, Iterable[ElsetIngestParam]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def query_current_elset_help(
         self,
         *,
@@ -729,6 +694,41 @@ class ElsetsResource(SyncAPIResource):
                 ),
             ),
             cast_to=ElsetTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[ElsetIngestParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take elsets as a POST body and ingest into the database
+        with or without dupe detection. Default is no dupe checking. This operation is
+        intended to be used for automated feeds into UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-elset",
+            body=maybe_transform(body, Iterable[ElsetIngestParam]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1273,41 +1273,6 @@ class AsyncElsetsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[ElsetIngestParam],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take elsets as a POST body and ingest into the database
-        with or without dupe detection. Default is no dupe checking. This operation is
-        intended to be used for automated feeds into UDL.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-elset",
-            body=await async_maybe_transform(body, Iterable[ElsetIngestParam]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def query_current_elset_help(
         self,
         *,
@@ -1411,6 +1376,41 @@ class AsyncElsetsResource(AsyncAPIResource):
             cast_to=ElsetTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[ElsetIngestParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take elsets as a POST body and ingest into the database
+        with or without dupe detection. Default is no dupe checking. This operation is
+        intended to be used for automated feeds into UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-elset",
+            body=await async_maybe_transform(body, Iterable[ElsetIngestParam]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class ElsetsResourceWithRawResponse:
     def __init__(self, elsets: ElsetsResource) -> None:
@@ -1434,9 +1434,6 @@ class ElsetsResourceWithRawResponse:
         self.create_bulk_from_tle = to_raw_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            elsets.create_bulk_v2,
-        )
         self.query_current_elset_help = to_raw_response_wrapper(
             elsets.query_current_elset_help,
         )
@@ -1445,6 +1442,9 @@ class ElsetsResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             elsets.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            elsets.unvalidated_publish,
         )
 
     @cached_property
@@ -1478,9 +1478,6 @@ class AsyncElsetsResourceWithRawResponse:
         self.create_bulk_from_tle = async_to_raw_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            elsets.create_bulk_v2,
-        )
         self.query_current_elset_help = async_to_raw_response_wrapper(
             elsets.query_current_elset_help,
         )
@@ -1489,6 +1486,9 @@ class AsyncElsetsResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             elsets.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            elsets.unvalidated_publish,
         )
 
     @cached_property
@@ -1522,9 +1522,6 @@ class ElsetsResourceWithStreamingResponse:
         self.create_bulk_from_tle = to_streamed_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            elsets.create_bulk_v2,
-        )
         self.query_current_elset_help = to_streamed_response_wrapper(
             elsets.query_current_elset_help,
         )
@@ -1533,6 +1530,9 @@ class ElsetsResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             elsets.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            elsets.unvalidated_publish,
         )
 
     @cached_property
@@ -1566,9 +1566,6 @@ class AsyncElsetsResourceWithStreamingResponse:
         self.create_bulk_from_tle = async_to_streamed_response_wrapper(
             elsets.create_bulk_from_tle,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            elsets.create_bulk_v2,
-        )
         self.query_current_elset_help = async_to_streamed_response_wrapper(
             elsets.query_current_elset_help,
         )
@@ -1577,6 +1574,9 @@ class AsyncElsetsResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             elsets.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            elsets.unvalidated_publish,
         )
 
     @cached_property

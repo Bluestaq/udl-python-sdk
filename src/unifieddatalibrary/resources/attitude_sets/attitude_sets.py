@@ -13,7 +13,7 @@ from ...types import (
     attitude_set_count_params,
     attitude_set_tuple_params,
     attitude_set_create_params,
-    attitude_set_create_bulk_v2_params,
+    attitude_set_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -371,7 +371,89 @@ class AttitudeSetsResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def create_bulk_v2(
+    def query_help(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/attitudeset/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AttitudeSetTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          start_time: The epoch or start time of the attitude parameter or attitude ephemeris, in ISO
+              8601 UTC format, with microsecond precision. If this set is constituted by a
+              single attitude parameter message then startTime is the epoch.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/attitudeset/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    attitude_set_tuple_params.AttitudeSetTupleParams,
+                ),
+            ),
+            cast_to=AttitudeSetTupleResponse,
+        )
+
+    def unvalidated_publish(
         self,
         *,
         classification_marking: str,
@@ -385,7 +467,7 @@ class AttitudeSetsResource(SyncAPIResource):
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_create_bulk_v2_params.AttitudeList] | NotGiven = NOT_GIVEN,
+        attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -576,94 +658,12 @@ class AttitudeSetsResource(SyncAPIResource):
                     "spin_angle_init": spin_angle_init,
                     "step_size": step_size,
                 },
-                attitude_set_create_bulk_v2_params.AttitudeSetCreateBulkV2Params,
+                attitude_set_unvalidated_publish_params.AttitudeSetUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query_help(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/attitudeset/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def tuple(
-        self,
-        *,
-        columns: str,
-        start_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AttitudeSetTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          start_time: The epoch or start time of the attitude parameter or attitude ephemeris, in ISO
-              8601 UTC format, with microsecond precision. If this set is constituted by a
-              single attitude parameter message then startTime is the epoch.
-              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/attitudeset/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "columns": columns,
-                        "start_time": start_time,
-                    },
-                    attitude_set_tuple_params.AttitudeSetTupleParams,
-                ),
-            ),
-            cast_to=AttitudeSetTupleResponse,
         )
 
 
@@ -999,7 +999,89 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def create_bulk_v2(
+    async def query_help(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/attitudeset/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        start_time: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AttitudeSetTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          start_time: The epoch or start time of the attitude parameter or attitude ephemeris, in ISO
+              8601 UTC format, with microsecond precision. If this set is constituted by a
+              single attitude parameter message then startTime is the epoch.
+              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/attitudeset/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "start_time": start_time,
+                    },
+                    attitude_set_tuple_params.AttitudeSetTupleParams,
+                ),
+            ),
+            cast_to=AttitudeSetTupleResponse,
+        )
+
+    async def unvalidated_publish(
         self,
         *,
         classification_marking: str,
@@ -1013,7 +1095,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         as_ref: List[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_create_bulk_v2_params.AttitudeList] | NotGiven = NOT_GIVEN,
+        attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
@@ -1204,94 +1286,12 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                     "spin_angle_init": spin_angle_init,
                     "step_size": step_size,
                 },
-                attitude_set_create_bulk_v2_params.AttitudeSetCreateBulkV2Params,
+                attitude_set_unvalidated_publish_params.AttitudeSetUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query_help(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/attitudeset/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def tuple(
-        self,
-        *,
-        columns: str,
-        start_time: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AttitudeSetTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          start_time: The epoch or start time of the attitude parameter or attitude ephemeris, in ISO
-              8601 UTC format, with microsecond precision. If this set is constituted by a
-              single attitude parameter message then startTime is the epoch.
-              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/attitudeset/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "columns": columns,
-                        "start_time": start_time,
-                    },
-                    attitude_set_tuple_params.AttitudeSetTupleParams,
-                ),
-            ),
-            cast_to=AttitudeSetTupleResponse,
         )
 
 
@@ -1308,14 +1308,14 @@ class AttitudeSetsResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             attitude_sets.count,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            attitude_sets.create_bulk_v2,
-        )
         self.query_help = to_raw_response_wrapper(
             attitude_sets.query_help,
         )
         self.tuple = to_raw_response_wrapper(
             attitude_sets.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            attitude_sets.unvalidated_publish,
         )
 
     @cached_property
@@ -1336,14 +1336,14 @@ class AsyncAttitudeSetsResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             attitude_sets.count,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            attitude_sets.create_bulk_v2,
-        )
         self.query_help = async_to_raw_response_wrapper(
             attitude_sets.query_help,
         )
         self.tuple = async_to_raw_response_wrapper(
             attitude_sets.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            attitude_sets.unvalidated_publish,
         )
 
     @cached_property
@@ -1364,14 +1364,14 @@ class AttitudeSetsResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             attitude_sets.count,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            attitude_sets.create_bulk_v2,
-        )
         self.query_help = to_streamed_response_wrapper(
             attitude_sets.query_help,
         )
         self.tuple = to_streamed_response_wrapper(
             attitude_sets.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            attitude_sets.unvalidated_publish,
         )
 
     @cached_property
@@ -1392,14 +1392,14 @@ class AsyncAttitudeSetsResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             attitude_sets.count,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            attitude_sets.create_bulk_v2,
-        )
         self.query_help = async_to_streamed_response_wrapper(
             attitude_sets.query_help,
         )
         self.tuple = async_to_streamed_response_wrapper(
             attitude_sets.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            attitude_sets.unvalidated_publish,
         )
 
     @cached_property

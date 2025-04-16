@@ -8,7 +8,12 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import crew_tuple_params, crew_create_params, crew_update_params, crew_create_bulk_v2_params
+from ..types import (
+    crew_tuple_params,
+    crew_create_params,
+    crew_update_params,
+    crew_unvalidated_publish_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -789,42 +794,6 @@ class CrewResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[crew_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple Crew objects as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-crew",
-            body=maybe_transform(body, Iterable[crew_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def queryhelp(
         self,
         *,
@@ -893,6 +862,42 @@ class CrewResource(SyncAPIResource):
                 query=maybe_transform({"columns": columns}, crew_tuple_params.CrewTupleParams),
             ),
             cast_to=CrewTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[crew_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple Crew objects as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-crew",
+            body=maybe_transform(body, Iterable[crew_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1655,42 +1660,6 @@ class AsyncCrewResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[crew_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple Crew objects as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-crew",
-            body=await async_maybe_transform(body, Iterable[crew_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def queryhelp(
         self,
         *,
@@ -1761,6 +1730,42 @@ class AsyncCrewResource(AsyncAPIResource):
             cast_to=CrewTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[crew_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple Crew objects as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-crew",
+            body=await async_maybe_transform(body, Iterable[crew_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class CrewResourceWithRawResponse:
     def __init__(self, crew: CrewResource) -> None:
@@ -1781,14 +1786,14 @@ class CrewResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             crew.count,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            crew.create_bulk_v2,
-        )
         self.queryhelp = to_raw_response_wrapper(
             crew.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
             crew.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            crew.unvalidated_publish,
         )
 
 
@@ -1811,14 +1816,14 @@ class AsyncCrewResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             crew.count,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            crew.create_bulk_v2,
-        )
         self.queryhelp = async_to_raw_response_wrapper(
             crew.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
             crew.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            crew.unvalidated_publish,
         )
 
 
@@ -1841,14 +1846,14 @@ class CrewResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             crew.count,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            crew.create_bulk_v2,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             crew.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
             crew.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            crew.unvalidated_publish,
         )
 
 
@@ -1871,12 +1876,12 @@ class AsyncCrewResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             crew.count,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            crew.create_bulk_v2,
-        )
         self.queryhelp = async_to_streamed_response_wrapper(
             crew.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
             crew.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            crew.unvalidated_publish,
         )

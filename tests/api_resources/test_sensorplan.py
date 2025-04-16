@@ -680,64 +680,6 @@ class TestSensorplan:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        sensorplan = client.sensorplan.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rec_type": "COLLECT",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "type": "PLAN",
-                }
-            ],
-        )
-        assert sensorplan is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.sensorplan.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rec_type": "COLLECT",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "type": "PLAN",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sensorplan = response.parse()
-        assert sensorplan is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.sensorplan.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rec_type": "COLLECT",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "type": "PLAN",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sensorplan = response.parse()
-            assert sensorplan is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sensorplan = client.sensorplan.get(
             "id",
@@ -831,6 +773,64 @@ class TestSensorplan:
 
             sensorplan = response.parse()
             assert_matches_type(SensorplanTupleResponse, sensorplan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        sensorplan = client.sensorplan.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "type": "PLAN",
+                }
+            ],
+        )
+        assert sensorplan is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.sensorplan.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "type": "PLAN",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sensorplan = response.parse()
+        assert sensorplan is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.sensorplan.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "type": "PLAN",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sensorplan = response.parse()
+            assert sensorplan is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1496,64 +1496,6 @@ class TestAsyncSensorplan:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sensorplan = await async_client.sensorplan.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rec_type": "COLLECT",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "type": "PLAN",
-                }
-            ],
-        )
-        assert sensorplan is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensorplan.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rec_type": "COLLECT",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "type": "PLAN",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sensorplan = await response.parse()
-        assert sensorplan is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensorplan.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rec_type": "COLLECT",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "type": "PLAN",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sensorplan = await response.parse()
-            assert sensorplan is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorplan = await async_client.sensorplan.get(
             "id",
@@ -1647,5 +1589,63 @@ class TestAsyncSensorplan:
 
             sensorplan = await response.parse()
             assert_matches_type(SensorplanTupleResponse, sensorplan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sensorplan = await async_client.sensorplan.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "type": "PLAN",
+                }
+            ],
+        )
+        assert sensorplan is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sensorplan.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "type": "PLAN",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sensorplan = await response.parse()
+        assert sensorplan is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sensorplan.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rec_type": "COLLECT",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "type": "PLAN",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sensorplan = await response.parse()
+            assert sensorplan is None
 
         assert cast(Any, response.is_closed) is True

@@ -12,7 +12,7 @@ from ..types import (
     mti_count_params,
     mti_tuple_params,
     mti_create_bulk_params,
-    mti_create_bulk_v2_params,
+    mti_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -174,42 +174,6 @@ class MtiResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[mti_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of Moving Target Indicator (MTI) formatted data
-        as a POST body and ingest into the database. This operation is intended to be
-        used for automated feeds into UDL. A specific role is required to perform this
-        service operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-mti",
-            body=maybe_transform(body, Iterable[mti_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def queryhelp(
         self,
         *,
@@ -287,6 +251,42 @@ class MtiResource(SyncAPIResource):
                 ),
             ),
             cast_to=MtiTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[mti_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of Moving Target Indicator (MTI) formatted data
+        as a POST body and ingest into the database. This operation is intended to be
+        used for automated feeds into UDL. A specific role is required to perform this
+        service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-mti",
+            body=maybe_transform(body, Iterable[mti_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -430,42 +430,6 @@ class AsyncMtiResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[mti_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of Moving Target Indicator (MTI) formatted data
-        as a POST body and ingest into the database. This operation is intended to be
-        used for automated feeds into UDL. A specific role is required to perform this
-        service operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-mti",
-            body=await async_maybe_transform(body, Iterable[mti_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def queryhelp(
         self,
         *,
@@ -545,6 +509,42 @@ class AsyncMtiResource(AsyncAPIResource):
             cast_to=MtiTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[mti_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of Moving Target Indicator (MTI) formatted data
+        as a POST body and ingest into the database. This operation is intended to be
+        used for automated feeds into UDL. A specific role is required to perform this
+        service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-mti",
+            body=await async_maybe_transform(body, Iterable[mti_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class MtiResourceWithRawResponse:
     def __init__(self, mti: MtiResource) -> None:
@@ -559,14 +559,14 @@ class MtiResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             mti.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            mti.create_bulk_v2,
-        )
         self.queryhelp = to_raw_response_wrapper(
             mti.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
             mti.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            mti.unvalidated_publish,
         )
 
 
@@ -583,14 +583,14 @@ class AsyncMtiResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             mti.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            mti.create_bulk_v2,
-        )
         self.queryhelp = async_to_raw_response_wrapper(
             mti.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
             mti.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            mti.unvalidated_publish,
         )
 
 
@@ -607,14 +607,14 @@ class MtiResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             mti.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            mti.create_bulk_v2,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             mti.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
             mti.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            mti.unvalidated_publish,
         )
 
 
@@ -631,12 +631,12 @@ class AsyncMtiResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             mti.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            mti.create_bulk_v2,
-        )
         self.queryhelp = async_to_streamed_response_wrapper(
             mti.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
             mti.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            mti.unvalidated_publish,
         )

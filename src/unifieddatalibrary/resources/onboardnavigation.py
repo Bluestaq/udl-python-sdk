@@ -12,7 +12,7 @@ from ..types import (
     onboardnavigation_count_params,
     onboardnavigation_tuple_params,
     onboardnavigation_create_bulk_params,
-    onboardnavigation_create_bulk_v2_params,
+    onboardnavigation_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -179,42 +179,6 @@ class OnboardnavigationResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[onboardnavigation_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of onboard navigation records as a POST body
-        and ingest into the database. This operation is intended to be used for
-        automated feeds into UDL. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-onboardnavigation",
-            body=maybe_transform(body, Iterable[onboardnavigation_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def queryhelp(
         self,
         *,
@@ -293,6 +257,42 @@ class OnboardnavigationResource(SyncAPIResource):
                 ),
             ),
             cast_to=OnboardnavigationTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[onboardnavigation_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of onboard navigation records as a POST body
+        and ingest into the database. This operation is intended to be used for
+        automated feeds into UDL. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-onboardnavigation",
+            body=maybe_transform(body, Iterable[onboardnavigation_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -441,42 +441,6 @@ class AsyncOnboardnavigationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[onboardnavigation_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of onboard navigation records as a POST body
-        and ingest into the database. This operation is intended to be used for
-        automated feeds into UDL. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-onboardnavigation",
-            body=await async_maybe_transform(body, Iterable[onboardnavigation_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def queryhelp(
         self,
         *,
@@ -557,6 +521,42 @@ class AsyncOnboardnavigationResource(AsyncAPIResource):
             cast_to=OnboardnavigationTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[onboardnavigation_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of onboard navigation records as a POST body
+        and ingest into the database. This operation is intended to be used for
+        automated feeds into UDL. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-onboardnavigation",
+            body=await async_maybe_transform(body, Iterable[onboardnavigation_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class OnboardnavigationResourceWithRawResponse:
     def __init__(self, onboardnavigation: OnboardnavigationResource) -> None:
@@ -571,14 +571,14 @@ class OnboardnavigationResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            onboardnavigation.create_bulk_v2,
-        )
         self.queryhelp = to_raw_response_wrapper(
             onboardnavigation.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
             onboardnavigation.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            onboardnavigation.unvalidated_publish,
         )
 
 
@@ -595,14 +595,14 @@ class AsyncOnboardnavigationResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            onboardnavigation.create_bulk_v2,
-        )
         self.queryhelp = async_to_raw_response_wrapper(
             onboardnavigation.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
             onboardnavigation.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            onboardnavigation.unvalidated_publish,
         )
 
 
@@ -619,14 +619,14 @@ class OnboardnavigationResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            onboardnavigation.create_bulk_v2,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             onboardnavigation.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
             onboardnavigation.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            onboardnavigation.unvalidated_publish,
         )
 
 
@@ -643,12 +643,12 @@ class AsyncOnboardnavigationResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             onboardnavigation.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            onboardnavigation.create_bulk_v2,
-        )
         self.queryhelp = async_to_streamed_response_wrapper(
             onboardnavigation.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
             onboardnavigation.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            onboardnavigation.unvalidated_publish,
         )

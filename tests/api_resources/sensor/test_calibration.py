@@ -250,61 +250,6 @@ class TestCalibration:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        calibration = client.sensor.calibration.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
-                }
-            ],
-        )
-        assert calibration is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.sensor.calibration.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calibration = response.parse()
-        assert calibration is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.sensor.calibration.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calibration = response.parse()
-            assert calibration is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query(self, client: Unifieddatalibrary) -> None:
         calibration = client.sensor.calibration.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -391,6 +336,61 @@ class TestCalibration:
 
             calibration = response.parse()
             assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                }
+            ],
+        )
+        assert calibration is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.sensor.calibration.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calibration = response.parse()
+        assert calibration is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.sensor.calibration.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calibration = response.parse()
+            assert calibration is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -626,61 +626,6 @@ class TestAsyncCalibration:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        calibration = await async_client.sensor.calibration.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
-                }
-            ],
-        )
-        assert calibration is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensor.calibration.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calibration = await response.parse()
-        assert calibration is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensor.calibration.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calibration = await response.parse()
-            assert calibration is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         calibration = await async_client.sensor.calibration.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -767,5 +712,60 @@ class TestAsyncCalibration:
 
             calibration = await response.parse()
             assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                }
+            ],
+        )
+        assert calibration is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sensor.calibration.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calibration = await response.parse()
+        assert calibration is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sensor.calibration.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sensor": "09f2c68c-5e24-4b72-9cc8-ba9b1efa82f0",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2018-01-01T16:00:00.123Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calibration = await response.parse()
+            assert calibration is None
 
         assert cast(Any, response.is_closed) is True

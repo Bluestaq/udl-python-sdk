@@ -84,127 +84,6 @@ class TestEphemeris:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        ephemeris = client.ephemeris.create_bulk_v2(
-            category="ANALYST",
-            classification_marking="U",
-            data_mode="TEST",
-            num_points=1,
-            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            source="Bluestaq",
-            type="LAUNCH",
-        )
-        assert ephemeris is None
-
-    @parametrize
-    def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
-        ephemeris = client.ephemeris.create_bulk_v2(
-            category="ANALYST",
-            classification_marking="U",
-            data_mode="TEST",
-            num_points=1,
-            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            source="Bluestaq",
-            type="LAUNCH",
-            id="EPHEMERISSET-ID",
-            b_dot=1.1,
-            cent_body="Earth",
-            comments="Example notes",
-            cov_reference_frame="J2000",
-            description="Example notes",
-            descriptor="Example descriptor",
-            drag_model="JAC70",
-            edr=1.1,
-            ephemeris_list=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "xpos": 1.1,
-                    "xvel": 1.1,
-                    "ypos": 1.1,
-                    "yvel": 1.1,
-                    "zpos": 1.1,
-                    "zvel": 1.1,
-                    "id": "EPHEMERIS-ID",
-                    "cov": [1.1, 2.4, 3.8, 4.2, 5.5, 6],
-                    "es_id": "ES-ID",
-                    "id_on_orbit": "ONORBIT-ID",
-                    "origin": "THIRD_PARTY_DATASOURCE",
-                    "orig_object_id": "ORIGOBJECT-ID",
-                    "xaccel": 1.1,
-                    "yaccel": 1.1,
-                    "zaccel": 1.1,
-                }
-            ],
-            filename="Example file name",
-            geopotential_model="GEM-T3",
-            has_accel=False,
-            has_cov=False,
-            has_mnvr=False,
-            id_maneuvers=["EXAMPLE_ID1", "EXAMPLE_ID2"],
-            id_on_orbit="ONORBIT-ID",
-            id_state_vector="STATEVECTOR-ID",
-            integrator="COWELL",
-            interpolation="LINEAR",
-            interpolation_degree=5,
-            lunar_solar=False,
-            origin="THIRD_PARTY_DATASOURCE",
-            orig_object_id="ORIGOBJECT-ID",
-            pedigree="PROPAGATED",
-            reference_frame="J2000",
-            sat_no=2,
-            solid_earth_tides=False,
-            step_size=1,
-            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
-            transaction_id="TRANSACTION-ID",
-            usable_end_time=parse_datetime("2018-01-01T20:50:00.123456Z"),
-            usable_start_time=parse_datetime("2018-01-01T16:10:00.123456Z"),
-        )
-        assert ephemeris is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.ephemeris.with_raw_response.create_bulk_v2(
-            category="ANALYST",
-            classification_marking="U",
-            data_mode="TEST",
-            num_points=1,
-            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            source="Bluestaq",
-            type="LAUNCH",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ephemeris = response.parse()
-        assert ephemeris is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.ephemeris.with_streaming_response.create_bulk_v2(
-            category="ANALYST",
-            classification_marking="U",
-            data_mode="TEST",
-            num_points=1,
-            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
-            source="Bluestaq",
-            type="LAUNCH",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ephemeris = response.parse()
-            assert ephemeris is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_file_upload(self, client: Unifieddatalibrary) -> None:
         ephemeris = client.ephemeris.file_upload(
             category="category",
@@ -335,75 +214,9 @@ class TestEphemeris:
 
         assert cast(Any, response.is_closed) is True
 
-
-class TestAsyncEphemeris:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
-
     @parametrize
-    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ephemeris = await async_client.ephemeris.list(
-            es_id="esId",
-        )
-        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
-
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.ephemeris.with_raw_response.list(
-            es_id="esId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ephemeris = await response.parse()
-        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.ephemeris.with_streaming_response.list(
-            es_id="esId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ephemeris = await response.parse()
-            assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ephemeris = await async_client.ephemeris.count(
-            es_id="esId",
-        )
-        assert_matches_type(str, ephemeris, path=["response"])
-
-    @parametrize
-    async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.ephemeris.with_raw_response.count(
-            es_id="esId",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ephemeris = await response.parse()
-        assert_matches_type(str, ephemeris, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.ephemeris.with_streaming_response.count(
-            es_id="esId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ephemeris = await response.parse()
-            assert_matches_type(str, ephemeris, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ephemeris = await async_client.ephemeris.create_bulk_v2(
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.unvalidated_publish(
             category="ANALYST",
             classification_marking="U",
             data_mode="TEST",
@@ -416,8 +229,8 @@ class TestAsyncEphemeris:
         assert ephemeris is None
 
     @parametrize
-    async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ephemeris = await async_client.ephemeris.create_bulk_v2(
+    def test_method_unvalidated_publish_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.unvalidated_publish(
             category="ANALYST",
             classification_marking="U",
             data_mode="TEST",
@@ -485,8 +298,8 @@ class TestAsyncEphemeris:
         assert ephemeris is None
 
     @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.ephemeris.with_raw_response.create_bulk_v2(
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.ephemeris.with_raw_response.unvalidated_publish(
             category="ANALYST",
             classification_marking="U",
             data_mode="TEST",
@@ -499,12 +312,12 @@ class TestAsyncEphemeris:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ephemeris = await response.parse()
+        ephemeris = response.parse()
         assert ephemeris is None
 
     @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.ephemeris.with_streaming_response.create_bulk_v2(
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.ephemeris.with_streaming_response.unvalidated_publish(
             category="ANALYST",
             classification_marking="U",
             data_mode="TEST",
@@ -517,8 +330,74 @@ class TestAsyncEphemeris:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            ephemeris = await response.parse()
+            ephemeris = response.parse()
             assert ephemeris is None
+
+        assert cast(Any, response.is_closed) is True
+
+
+class TestAsyncEphemeris:
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.list(
+            es_id="esId",
+        )
+        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ephemeris.with_raw_response.list(
+            es_id="esId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ephemeris = await response.parse()
+        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ephemeris.with_streaming_response.list(
+            es_id="esId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ephemeris = await response.parse()
+            assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.count(
+            es_id="esId",
+        )
+        assert_matches_type(str, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ephemeris.with_raw_response.count(
+            es_id="esId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ephemeris = await response.parse()
+        assert_matches_type(str, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ephemeris.with_streaming_response.count(
+            es_id="esId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ephemeris = await response.parse()
+            assert_matches_type(str, ephemeris, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -650,5 +529,126 @@ class TestAsyncEphemeris:
 
             ephemeris = await response.parse()
             assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.unvalidated_publish(
+            category="ANALYST",
+            classification_marking="U",
+            data_mode="TEST",
+            num_points=1,
+            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
+            type="LAUNCH",
+        )
+        assert ephemeris is None
+
+    @parametrize
+    async def test_method_unvalidated_publish_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.unvalidated_publish(
+            category="ANALYST",
+            classification_marking="U",
+            data_mode="TEST",
+            num_points=1,
+            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
+            type="LAUNCH",
+            id="EPHEMERISSET-ID",
+            b_dot=1.1,
+            cent_body="Earth",
+            comments="Example notes",
+            cov_reference_frame="J2000",
+            description="Example notes",
+            descriptor="Example descriptor",
+            drag_model="JAC70",
+            edr=1.1,
+            ephemeris_list=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "xpos": 1.1,
+                    "xvel": 1.1,
+                    "ypos": 1.1,
+                    "yvel": 1.1,
+                    "zpos": 1.1,
+                    "zvel": 1.1,
+                    "id": "EPHEMERIS-ID",
+                    "cov": [1.1, 2.4, 3.8, 4.2, 5.5, 6],
+                    "es_id": "ES-ID",
+                    "id_on_orbit": "ONORBIT-ID",
+                    "origin": "THIRD_PARTY_DATASOURCE",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "xaccel": 1.1,
+                    "yaccel": 1.1,
+                    "zaccel": 1.1,
+                }
+            ],
+            filename="Example file name",
+            geopotential_model="GEM-T3",
+            has_accel=False,
+            has_cov=False,
+            has_mnvr=False,
+            id_maneuvers=["EXAMPLE_ID1", "EXAMPLE_ID2"],
+            id_on_orbit="ONORBIT-ID",
+            id_state_vector="STATEVECTOR-ID",
+            integrator="COWELL",
+            interpolation="LINEAR",
+            interpolation_degree=5,
+            lunar_solar=False,
+            origin="THIRD_PARTY_DATASOURCE",
+            orig_object_id="ORIGOBJECT-ID",
+            pedigree="PROPAGATED",
+            reference_frame="J2000",
+            sat_no=2,
+            solid_earth_tides=False,
+            step_size=1,
+            tags=["PROVIDER_TAG1", "PROVIDER_TAG2"],
+            transaction_id="TRANSACTION-ID",
+            usable_end_time=parse_datetime("2018-01-01T20:50:00.123456Z"),
+            usable_start_time=parse_datetime("2018-01-01T16:10:00.123456Z"),
+        )
+        assert ephemeris is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ephemeris.with_raw_response.unvalidated_publish(
+            category="ANALYST",
+            classification_marking="U",
+            data_mode="TEST",
+            num_points=1,
+            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
+            type="LAUNCH",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ephemeris = await response.parse()
+        assert ephemeris is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ephemeris.with_streaming_response.unvalidated_publish(
+            category="ANALYST",
+            classification_marking="U",
+            data_mode="TEST",
+            num_points=1,
+            point_end_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            point_start_time=parse_datetime("2018-01-01T16:00:00.123456Z"),
+            source="Bluestaq",
+            type="LAUNCH",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ephemeris = await response.parse()
+            assert ephemeris is None
 
         assert cast(Any, response.is_closed) is True

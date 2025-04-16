@@ -17,8 +17,8 @@ class TestUdlH3geo:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        udl_h3geo = client.report_and_activity.udl_h3geo.create_bulk_v2(
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        udl_h3geo = client.report_and_activity.udl_h3geo.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -36,8 +36,8 @@ class TestUdlH3geo:
         assert udl_h3geo is None
 
     @parametrize
-    def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
-        udl_h3geo = client.report_and_activity.udl_h3geo.create_bulk_v2(
+    def test_method_unvalidated_publish_with_all_params(self, client: Unifieddatalibrary) -> None:
+        udl_h3geo = client.report_and_activity.udl_h3geo.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -76,8 +76,8 @@ class TestUdlH3geo:
         assert udl_h3geo is None
 
     @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.report_and_activity.udl_h3geo.with_raw_response.create_bulk_v2(
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.report_and_activity.udl_h3geo.with_raw_response.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -99,8 +99,8 @@ class TestUdlH3geo:
         assert udl_h3geo is None
 
     @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.report_and_activity.udl_h3geo.with_streaming_response.create_bulk_v2(
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.report_and_activity.udl_h3geo.with_streaming_response.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -128,8 +128,8 @@ class TestAsyncUdlH3geo:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        udl_h3geo = await async_client.report_and_activity.udl_h3geo.create_bulk_v2(
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        udl_h3geo = await async_client.report_and_activity.udl_h3geo.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -147,8 +147,8 @@ class TestAsyncUdlH3geo:
         assert udl_h3geo is None
 
     @parametrize
-    async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        udl_h3geo = await async_client.report_and_activity.udl_h3geo.create_bulk_v2(
+    async def test_method_unvalidated_publish_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        udl_h3geo = await async_client.report_and_activity.udl_h3geo.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -187,8 +187,8 @@ class TestAsyncUdlH3geo:
         assert udl_h3geo is None
 
     @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.report_and_activity.udl_h3geo.with_raw_response.create_bulk_v2(
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.report_and_activity.udl_h3geo.with_raw_response.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",
@@ -210,8 +210,8 @@ class TestAsyncUdlH3geo:
         assert udl_h3geo is None
 
     @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.report_and_activity.udl_h3geo.with_streaming_response.create_bulk_v2(
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.report_and_activity.udl_h3geo.with_streaming_response.unvalidated_publish(
             cells=[
                 {
                     "cell_id": "830b90fffffffff",

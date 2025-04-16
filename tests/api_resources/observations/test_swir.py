@@ -17,8 +17,8 @@ class TestSwir:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        swir = client.observations.swir.create_bulk_v2(
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        swir = client.observations.swir.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -31,8 +31,8 @@ class TestSwir:
         assert swir is None
 
     @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.observations.swir.with_raw_response.create_bulk_v2(
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.observations.swir.with_raw_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -49,8 +49,8 @@ class TestSwir:
         assert swir is None
 
     @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.observations.swir.with_streaming_response.create_bulk_v2(
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.observations.swir.with_streaming_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -73,8 +73,8 @@ class TestAsyncSwir:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        swir = await async_client.observations.swir.create_bulk_v2(
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        swir = await async_client.observations.swir.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -87,8 +87,8 @@ class TestAsyncSwir:
         assert swir is None
 
     @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.observations.swir.with_raw_response.create_bulk_v2(
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.observations.swir.with_raw_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -105,8 +105,8 @@ class TestAsyncSwir:
         assert swir is None
 
     @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.observations.swir.with_streaming_response.create_bulk_v2(
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.observations.swir.with_streaming_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",

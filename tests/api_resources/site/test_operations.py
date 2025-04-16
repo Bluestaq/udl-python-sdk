@@ -486,58 +486,6 @@ class TestOperations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        operation = client.site.operations.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert operation is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.site.operations.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        operation = response.parse()
-        assert operation is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.site.operations.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            operation = response.parse()
-            assert operation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         operation = client.site.operations.query_help()
         assert operation is None
@@ -593,6 +541,58 @@ class TestOperations:
 
             operation = response.parse()
             assert_matches_type(OperationTupleResponse, operation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        operation = client.site.operations.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert operation is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.site.operations.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        operation = response.parse()
+        assert operation is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.site.operations.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            operation = response.parse()
+            assert operation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1064,58 +1064,6 @@ class TestAsyncOperations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        operation = await async_client.site.operations.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert operation is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.site.operations.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        operation = await response.parse()
-        assert operation is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.site.operations.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            operation = await response.parse()
-            assert operation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         operation = await async_client.site.operations.query_help()
         assert operation is None
@@ -1171,5 +1119,57 @@ class TestAsyncOperations:
 
             operation = await response.parse()
             assert_matches_type(OperationTupleResponse, operation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operation = await async_client.site.operations.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert operation is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.site.operations.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        operation = await response.parse()
+        assert operation is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.site.operations.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_site": "a150b3ee-884b-b9ac-60a0-6408b4b16088",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            operation = await response.parse()
+            assert operation is None
 
         assert cast(Any, response.is_closed) is True

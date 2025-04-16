@@ -1,0 +1,620 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import List, Union, Iterable
+from datetime import datetime
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
+
+__all__ = ["CrewUnvalidatedPublishParams", "Body", "BodyCrewMember"]
+
+
+class CrewUnvalidatedPublishParams(TypedDict, total=False):
+    body: Required[Iterable[Body]]
+
+
+class BodyCrewMember(TypedDict, total=False):
+    alerted: bool
+    """
+    Flag indicating whether this crew member has been alerted of the associated
+    task.
+    """
+
+    all_sortie: Annotated[bool, PropertyInfo(alias="allSortie")]
+    """
+    Flag indicating this crew member is assigned to all sorties of the crew
+    itinerary.
+    """
+
+    approved: bool
+    """
+    Flag indicating whether this crew member has been approved for the associated
+    task.
+    """
+
+    attached: bool
+    """Flag indicating whether this crew member is attached to his/her squadron.
+
+    Crew members that are not attached are considered assigned.
+    """
+
+    branch: str
+    """The military branch assignment of the crew member."""
+
+    civilian: bool
+    """Flag indicating this crew member is a civilian or non-military person."""
+
+    commander: bool
+    """Flag indicating this person is the aircraft commander."""
+
+    crew_position: Annotated[str, PropertyInfo(alias="crewPosition")]
+    """The crew position of the crew member."""
+
+    dod_id: Annotated[str, PropertyInfo(alias="dodID")]
+    """The crew member's 10-digit DoD ID number."""
+
+    duty_position: Annotated[str, PropertyInfo(alias="dutyPosition")]
+    """The duty position of the crew member."""
+
+    duty_status: Annotated[str, PropertyInfo(alias="dutyStatus")]
+    """
+    The current duty status code of this crew member (e.g., AGR for Active Guard and
+    Reserve, IDT for Inactive Duty Training, etc.).
+    """
+
+    emailed: bool
+    """
+    Flag indicating whether this crew member has been notified of an event by email.
+    """
+
+    extra_time: Annotated[bool, PropertyInfo(alias="extraTime")]
+    """
+    Flag indicating whether this crew member requires an additional amount of time
+    to report for duty.
+    """
+
+    first_name: Annotated[str, PropertyInfo(alias="firstName")]
+    """The first name of the crew member."""
+
+    flt_currency_exp: Annotated[Union[str, datetime], PropertyInfo(alias="fltCurrencyExp", format="iso8601")]
+    """
+    The earliest flying currency expiration date for this crew member, in ISO 8601
+    UTC format with millisecond precision.
+    """
+
+    flt_currency_exp_id: Annotated[str, PropertyInfo(alias="fltCurrencyExpId")]
+    """
+    The training task identifier associated with the flying currency expiration date
+    for this crew member.
+    """
+
+    flt_rec_date: Annotated[Union[str, datetime], PropertyInfo(alias="fltRecDate", format="iso8601")]
+    """
+    The date this crew member's records review was completed, in ISO 8601 UTC format
+    with millisecond precision.
+    """
+
+    flt_rec_due: Annotated[Union[str, datetime], PropertyInfo(alias="fltRecDue", format="iso8601")]
+    """
+    The date this crew member's records review is due, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    fly_squadron: Annotated[str, PropertyInfo(alias="flySquadron")]
+    """The flying squadron assignment of the crew member."""
+
+    funded: bool
+    """Flag indicating whether this crew member is funded."""
+
+    gender: str
+    """Gender of the crew member."""
+
+    gnd_currency_exp: Annotated[Union[str, datetime], PropertyInfo(alias="gndCurrencyExp", format="iso8601")]
+    """
+    The earliest ground currency expiration date for this crew member, in ISO 8601
+    UTC format with millisecond precision.
+    """
+
+    gnd_currency_exp_id: Annotated[str, PropertyInfo(alias="gndCurrencyExpId")]
+    """
+    The training task identifier associated with the ground currency expiration date
+    for this crew member.
+    """
+
+    grounded: bool
+    """
+    Flag indicating whether this crew member is grounded (i.e., his/her duties do
+    not include flying).
+    """
+
+    guest_start: Annotated[Union[str, datetime], PropertyInfo(alias="guestStart", format="iso8601")]
+    """
+    Date when this crew member starts acting as guest help for the squadron, in ISO
+    8601 UTC format with millisecond precision.
+    """
+
+    guest_stop: Annotated[Union[str, datetime], PropertyInfo(alias="guestStop", format="iso8601")]
+    """
+    Date when this crew member stops acting as guest help for the squadron, in ISO
+    8601 UTC format with millisecond precision.
+    """
+
+    last4_ssn: Annotated[str, PropertyInfo(alias="last4SSN")]
+    """Last four digits of the crew member's social security number."""
+
+    last_flt_date: Annotated[Union[str, datetime], PropertyInfo(alias="lastFltDate", format="iso8601")]
+    """
+    Date of the last flight for this crew member, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """The last name of the crew member."""
+
+    loaned_to: Annotated[str, PropertyInfo(alias="loanedTo")]
+    """The squadron the crew member has been temporarily loaned to."""
+
+    lodging: str
+    """Crew member lodging location."""
+
+    member_actual_alert_time: Annotated[
+        Union[str, datetime], PropertyInfo(alias="memberActualAlertTime", format="iso8601")
+    ]
+    """
+    Time this crew member was actually alerted for the mission, in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    member_adj_return_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberAdjReturnTime", format="iso8601")]
+    """
+    Adjusted return time for the crew member, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    member_adj_return_time_approver: Annotated[str, PropertyInfo(alias="memberAdjReturnTimeApprover")]
+    """Last name of the crew member's adjusted return time approver."""
+
+    member_id: Annotated[str, PropertyInfo(alias="memberId")]
+    """Unique identifier of the crew member assigned by the originating source."""
+
+    member_init_start_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberInitStartTime", format="iso8601")]
+    """
+    Initial start time of the crew member's linked task that was delinked due to
+    mission closure, in ISO 8601 UTC format with millisecond precision.
+    """
+
+    member_last_alert_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberLastAlertTime", format="iso8601")]
+    """
+    The latest possible time the crew member can legally be alerted for a task, in
+    ISO 8601 UTC format with millisecond precision.
+    """
+
+    member_legal_alert_time: Annotated[
+        Union[str, datetime], PropertyInfo(alias="memberLegalAlertTime", format="iso8601")
+    ]
+    """
+    Time this crew member becomes eligible to be alerted for the mission, in ISO
+    8601 UTC format with millisecond precision.
+    """
+
+    member_pickup_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberPickupTime", format="iso8601")]
+    """
+    Time this crew member will be picked up from lodging, in ISO 8601 UTC format
+    with millisecond precision.
+    """
+
+    member_post_rest_offset: Annotated[str, PropertyInfo(alias="memberPostRestOffset")]
+    """
+    The scheduled delay or adjustment in the start time of a crew member's rest
+    period after a mission, expressed as +/-HH:MM.
+    """
+
+    member_post_rest_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberPostRestTime", format="iso8601")]
+    """
+    End time of this crew member's rest period after the mission, in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    member_pre_rest_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberPreRestTime", format="iso8601")]
+    """
+    Start time of this crew member's rest period before the mission, in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    member_remarks: Annotated[str, PropertyInfo(alias="memberRemarks")]
+    """Remarks concerning the crew member."""
+
+    member_return_time: Annotated[Union[str, datetime], PropertyInfo(alias="memberReturnTime", format="iso8601")]
+    """
+    Scheduled return time for this crew member, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    member_sched_alert_time: Annotated[
+        Union[str, datetime], PropertyInfo(alias="memberSchedAlertTime", format="iso8601")
+    ]
+    """
+    Time this crew member is scheduled to be alerted for the mission, in ISO 8601
+    UTC format with millisecond precision.
+    """
+
+    member_source: Annotated[str, PropertyInfo(alias="memberSource")]
+    """
+    The military component for the crew member (e.g., ACTIVE, RESERVE, GUARD,
+    UNKNOWN, etc.).
+    """
+
+    member_stage_name: Annotated[str, PropertyInfo(alias="memberStageName")]
+    """Stage name for the crew member.
+
+    A stage is a pool of crews supporting a given operation plan.
+    """
+
+    member_transport_req: Annotated[bool, PropertyInfo(alias="memberTransportReq")]
+    """
+    Flag indicating whether this crew member needs transportation to the departure
+    location.
+    """
+
+    member_type: Annotated[str, PropertyInfo(alias="memberType")]
+    """Amplifying details about the crew member type (e.g.
+
+    RAVEN, FCC, COMCAM, AIRCREW, MEP, OTHER, etc.).
+    """
+
+    middle_initial: Annotated[str, PropertyInfo(alias="middleInitial")]
+    """The middle initial of the crew member."""
+
+    notified: bool
+    """Flag indicating whether this crew member has been notified of an event."""
+
+    phone_number: Annotated[str, PropertyInfo(alias="phoneNumber")]
+    """Crew member lodging phone number."""
+
+    phys_av_code: Annotated[str, PropertyInfo(alias="physAvCode")]
+    """
+    Code indicating a crew member's current physical fitness status and whether they
+    are medically cleared to fly (e.g., D for Duties Not Including Flying, E for
+    Physical Overdue, etc.).
+    """
+
+    phys_av_status: Annotated[str, PropertyInfo(alias="physAvStatus")]
+    """
+    Code indicating a crew member's physical availabiility status (e.g.,
+    DISQUALIFIED, OVERDUE, etc.).
+    """
+
+    phys_due: Annotated[Union[str, datetime], PropertyInfo(alias="physDue", format="iso8601")]
+    """
+    Due date for the crew member's physical, in ISO 8601 UTC format with millisecond
+    precision.
+    """
+
+    rank: str
+    """The rank of the crew member."""
+
+    remark_code: Annotated[str, PropertyInfo(alias="remarkCode")]
+    """Remark code used to designate attributes of this crew member.
+
+    For more information, contact the provider source.
+    """
+
+    rms_mds: Annotated[str, PropertyInfo(alias="rmsMDS")]
+    """
+    The primary aircraft type for the crew member according to the personnel
+    resource management system indicated in the crewRMS field.
+    """
+
+    show_time: Annotated[Union[str, datetime], PropertyInfo(alias="showTime", format="iso8601")]
+    """
+    Time this crew member is required to report for duty before this flight/mission,
+    in ISO 8601 UTC format with millisecond precision.
+    """
+
+    squadron: str
+    """The squadron the crew member serves."""
+
+    training_date: Annotated[Union[str, datetime], PropertyInfo(alias="trainingDate", format="iso8601")]
+    """
+    The date this crew member accomplished physiological or altitude chamber
+    training, in ISO 8601 UTC format with millisecond precision.
+    """
+
+    username: str
+    """The Mattermost username of this crew member."""
+
+    wing: str
+    """The wing the crew member serves."""
+
+
+class Body(TypedDict, total=False):
+    classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
+    """Classification marking of the data in IC/CAPCO Portion-marked format."""
+
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
+    """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+    EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+    may include both real and simulated data.
+
+    REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+    events, and analysis.
+
+    SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+    datasets.
+
+    TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+    requirements, and for validating technical, functional, and performance
+    characteristics.
+    """
+
+    orig_crew_id: Required[Annotated[str, PropertyInfo(alias="origCrewId")]]
+    """Unique identifier of the formed crew provided by the originating source.
+
+    Provided for systems that require tracking of an internal system generated ID.
+    """
+
+    source: Required[str]
+    """Source of the data."""
+
+    id: str
+    """Unique identifier of the record, auto-generated by the system."""
+
+    adj_return_time: Annotated[Union[str, datetime], PropertyInfo(alias="adjReturnTime", format="iso8601")]
+    """Adjusted return time, in ISO 8601 UTC format with millisecond precision."""
+
+    adj_return_time_approver: Annotated[str, PropertyInfo(alias="adjReturnTimeApprover")]
+    """Last name of the adjusted return time approver."""
+
+    aircraft_mds: Annotated[str, PropertyInfo(alias="aircraftMDS")]
+    """The aircraft Model Design Series designation assigned for this crew."""
+
+    alerted_time: Annotated[Union[str, datetime], PropertyInfo(alias="alertedTime", format="iso8601")]
+    """Time the crew was alerted, in ISO 8601 UTC format with millisecond precision."""
+
+    alert_type: Annotated[str, PropertyInfo(alias="alertType")]
+    """
+    Type of alert for the crew (e.g., ALPHA for maximum readiness, BRAVO for
+    standby, etc.).
+    """
+
+    arms_crew_unit: Annotated[str, PropertyInfo(alias="armsCrewUnit")]
+    """The crew's Aviation Resource Management System (ARMS) unit.
+
+    If multiple units exist, use the Aircraft Commander's Unit.
+    """
+
+    assigned_qual_code: Annotated[List[str], PropertyInfo(alias="assignedQualCode")]
+    """
+    Array of qualification codes assigned to this crew (e.g., AL for Aircraft
+    Leader, CS for Combat Systems Operator, etc.).
+    """
+
+    commander_id: Annotated[str, PropertyInfo(alias="commanderId")]
+    """Unique identifier of the crew commander assigned by the originating source."""
+
+    commander_last4_ssn: Annotated[str, PropertyInfo(alias="commanderLast4SSN")]
+    """Last four digits of the crew commander's social security number."""
+
+    commander_name: Annotated[str, PropertyInfo(alias="commanderName")]
+    """The name of the crew commander."""
+
+    crew_home: Annotated[bool, PropertyInfo(alias="crewHome")]
+    """
+    Flag indicating whether this crew task takes the crew home and out of the stage.
+    """
+
+    crew_members: Annotated[Iterable[BodyCrewMember], PropertyInfo(alias="crewMembers")]
+    """CrewMembers Collection."""
+
+    crew_name: Annotated[str, PropertyInfo(alias="crewName")]
+    """Name of the formed crew."""
+
+    crew_rms: Annotated[str, PropertyInfo(alias="crewRMS")]
+    """The resource management system managing and reporting data on this crew."""
+
+    crew_role: Annotated[str, PropertyInfo(alias="crewRole")]
+    """The crew's role on the mission (e.g., DEADHEAD, MEDICAL, PRIMARY)."""
+
+    crew_source: Annotated[str, PropertyInfo(alias="crewSource")]
+    """
+    The military component that comprises the crew (e.g., ACTIVE, RESERVE, GUARD,
+    MIXED, UNKNOWN, etc.).
+    """
+
+    crew_squadron: Annotated[str, PropertyInfo(alias="crewSquadron")]
+    """The squadron the crew serves."""
+
+    crew_type: Annotated[str, PropertyInfo(alias="crewType")]
+    """
+    The type of crew required to meet mission objectives (e.g., AIRDROP, AIRLAND,
+    AIR REFUELING, etc.).
+    """
+
+    crew_unit: Annotated[str, PropertyInfo(alias="crewUnit")]
+    """The crew's squadron as identified in its resource management system.
+
+    If the crew is composed of members from multiple units, then the Crew
+    Commander's unit should be indicated as the crew unit.
+    """
+
+    crew_wing: Annotated[str, PropertyInfo(alias="crewWing")]
+    """The wing the crew serves."""
+
+    current_icao: Annotated[str, PropertyInfo(alias="currentICAO")]
+    """
+    The International Civil Aviation Organization (ICAO) code of the airfield at
+    which the crew is currently located.
+    """
+
+    fdp_elig_type: Annotated[str, PropertyInfo(alias="fdpEligType")]
+    """Crew Flight Duty Period (FDP) eligibility type."""
+
+    fdp_type: Annotated[str, PropertyInfo(alias="fdpType")]
+    """Flight Duty Period (FDP) type."""
+
+    female_enlisted_qty: Annotated[int, PropertyInfo(alias="femaleEnlistedQty")]
+    """The number of female enlisted crew members."""
+
+    female_officer_qty: Annotated[int, PropertyInfo(alias="femaleOfficerQty")]
+    """The number of female officer crew members."""
+
+    flt_auth_num: Annotated[str, PropertyInfo(alias="fltAuthNum")]
+    """Authorization number used on the flight order."""
+
+    id_site_current: Annotated[str, PropertyInfo(alias="idSiteCurrent")]
+    """Unique identifier of the Site at which the crew is currently located.
+
+    This ID can be used to obtain additional information on a Site using the 'get by
+    ID' operation (e.g. /udl/site/{id}). For example, the Site object with idSite =
+    abc would be queried as /udl/site/abc.
+    """
+
+    id_sortie: Annotated[str, PropertyInfo(alias="idSortie")]
+    """Unique identifier of the Aircraft Sortie associated with this crew record."""
+
+    init_start_time: Annotated[Union[str, datetime], PropertyInfo(alias="initStartTime", format="iso8601")]
+    """
+    Initial start time of the crew's linked task that was delinked due to mission
+    closure, in ISO 8601 UTC format with millisecond precision.
+    """
+
+    last_alert_time: Annotated[Union[str, datetime], PropertyInfo(alias="lastAlertTime", format="iso8601")]
+    """
+    The last time the crew can be alerted, in ISO 8601 UTC format with millisecond
+    precision.
+    """
+
+    legal_alert_time: Annotated[Union[str, datetime], PropertyInfo(alias="legalAlertTime", format="iso8601")]
+    """
+    Time the crew is legal for alert, in ISO 8601 UTC format with millisecond
+    precision.
+    """
+
+    legal_bravo_time: Annotated[Union[str, datetime], PropertyInfo(alias="legalBravoTime", format="iso8601")]
+    """
+    Time the crew is legally authorized or scheduled to remain on standby for duty,
+    in ISO 8601 UTC format with millisecond precision.
+    """
+
+    linked_task: Annotated[bool, PropertyInfo(alias="linkedTask")]
+    """Flag indicating whether this crew is part of a linked flying task."""
+
+    male_enlisted_qty: Annotated[int, PropertyInfo(alias="maleEnlistedQty")]
+    """The number of male enlisted crew members."""
+
+    male_officer_qty: Annotated[int, PropertyInfo(alias="maleOfficerQty")]
+    """The number of male officer crew members."""
+
+    mission_alias: Annotated[str, PropertyInfo(alias="missionAlias")]
+    """User-defined alias designation for the mission."""
+
+    mission_id: Annotated[str, PropertyInfo(alias="missionId")]
+    """The mission ID the crew is supporting according to the source system."""
+
+    origin: str
+    """
+    Originating system or organization which produced the data, if different from
+    the source. The origin may be different than the source if the source was a
+    mediating system which forwarded the data on behalf of the origin system. If
+    null, the source may be assumed to be the origin.
+    """
+
+    personnel_type: Annotated[str, PropertyInfo(alias="personnelType")]
+    """The type of personnel that comprises the crew (e.g., AIRCREW, MEDCREW, etc.)."""
+
+    pickup_time: Annotated[Union[str, datetime], PropertyInfo(alias="pickupTime", format="iso8601")]
+    """
+    Time the crew will be picked up from lodging, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    post_rest_applied: Annotated[bool, PropertyInfo(alias="postRestApplied")]
+    """
+    Flag indicating whether post-mission crew rest is applied to the last sortie of
+    a crew's task.
+    """
+
+    post_rest_end: Annotated[Union[str, datetime], PropertyInfo(alias="postRestEnd", format="iso8601")]
+    """
+    End time of the crew rest period after the mission, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    post_rest_offset: Annotated[str, PropertyInfo(alias="postRestOffset")]
+    """
+    The scheduled delay or adjustment in the start time of a crew's rest period
+    after a mission, expressed as +/-HH:MM.
+    """
+
+    pre_rest_applied: Annotated[bool, PropertyInfo(alias="preRestApplied")]
+    """
+    Flag indicating whether pre-mission crew rest is applied to the first sortie of
+    a crew's task.
+    """
+
+    pre_rest_start: Annotated[Union[str, datetime], PropertyInfo(alias="preRestStart", format="iso8601")]
+    """
+    Start time of the crew rest period before the mission, in ISO 8601 UTC format
+    with millisecond precision.
+    """
+
+    req_qual_code: Annotated[List[str], PropertyInfo(alias="reqQualCode")]
+    """
+    Array of qualification codes required for this crew (e.g., AL for Aircraft
+    Leader, CS for Combat Systems Operator, etc.).
+    """
+
+    return_time: Annotated[Union[str, datetime], PropertyInfo(alias="returnTime", format="iso8601")]
+    """Scheduled return time, in ISO 8601 UTC format with millisecond precision."""
+
+    stage1_qual: Annotated[str, PropertyInfo(alias="stage1Qual")]
+    """
+    The stage 1 qualifications the crew must have for a mission, such as having
+    basic knowledge of crew operations and aircraft systems.
+    """
+
+    stage2_qual: Annotated[str, PropertyInfo(alias="stage2Qual")]
+    """
+    The stage 2 qualifications the crew must have for a mission, such as completion
+    of advanced mission-specific training.
+    """
+
+    stage3_qual: Annotated[str, PropertyInfo(alias="stage3Qual")]
+    """
+    The stage 3 qualifications the crew must have for a mission, such as full
+    mission-ready certification and the capability of leading complex operations.
+    """
+
+    stage_name: Annotated[str, PropertyInfo(alias="stageName")]
+    """Stage name for the crew.
+
+    A stage is a pool of crews supporting a given operation plan.
+    """
+
+    stage_time: Annotated[Union[str, datetime], PropertyInfo(alias="stageTime", format="iso8601")]
+    """
+    Time the crew entered the stage, in ISO 8601 UTC format with millisecond
+    precision.
+    """
+
+    status: str
+    """Crew status (e.g.
+
+    NEEDCREW, ASSIGNED, APPROVED, NOTIFIED, PARTIAL, UNKNOWN, etc.).
+    """
+
+    transport_req: Annotated[bool, PropertyInfo(alias="transportReq")]
+    """
+    Flag indicating that one or more crew members requires transportation to the
+    departure location.
+    """
+
+    trip_kit: Annotated[str, PropertyInfo(alias="tripKit")]
+    """Identifies the trip kit needed by the crew.
+
+    A trip kit contains charts, regulations, maps, etc. carried by the crew during
+    missions.
+    """

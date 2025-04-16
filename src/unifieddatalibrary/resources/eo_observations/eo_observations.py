@@ -13,7 +13,7 @@ from ...types import (
     eo_observation_count_params,
     eo_observation_create_params,
     eo_observation_create_bulk_params,
-    eo_observation_create_bulk_v2_params,
+    eo_observation_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -733,10 +733,10 @@ class EoObservationsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
+    def unvalidated_publish(
         self,
         *,
-        body: Iterable[eo_observation_create_bulk_v2_params.Body],
+        body: Iterable[eo_observation_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -762,7 +762,7 @@ class EoObservationsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-eo",
-            body=maybe_transform(body, Iterable[eo_observation_create_bulk_v2_params.Body]),
+            body=maybe_transform(body, Iterable[eo_observation_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1465,10 +1465,10 @@ class AsyncEoObservationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
+    async def unvalidated_publish(
         self,
         *,
-        body: Iterable[eo_observation_create_bulk_v2_params.Body],
+        body: Iterable[eo_observation_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1494,7 +1494,7 @@ class AsyncEoObservationsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-eo",
-            body=await async_maybe_transform(body, Iterable[eo_observation_create_bulk_v2_params.Body]),
+            body=await async_maybe_transform(body, Iterable[eo_observation_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1518,8 +1518,8 @@ class EoObservationsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             eo_observations.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            eo_observations.create_bulk_v2,
+        self.unvalidated_publish = to_raw_response_wrapper(
+            eo_observations.unvalidated_publish,
         )
 
     @cached_property
@@ -1543,8 +1543,8 @@ class AsyncEoObservationsResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             eo_observations.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            eo_observations.create_bulk_v2,
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            eo_observations.unvalidated_publish,
         )
 
     @cached_property
@@ -1568,8 +1568,8 @@ class EoObservationsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             eo_observations.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            eo_observations.create_bulk_v2,
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            eo_observations.unvalidated_publish,
         )
 
     @cached_property
@@ -1593,8 +1593,8 @@ class AsyncEoObservationsResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             eo_observations.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            eo_observations.create_bulk_v2,
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            eo_observations.unvalidated_publish,
         )
 
     @cached_property

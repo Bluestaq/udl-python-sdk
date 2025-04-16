@@ -374,67 +374,6 @@ class TestOrbitdetermination:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        orbitdetermination = client.orbitdetermination.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
-                    "initial_od": False,
-                    "method": "BLS",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
-                }
-            ],
-        )
-        assert orbitdetermination is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.orbitdetermination.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
-                    "initial_od": False,
-                    "method": "BLS",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        orbitdetermination = response.parse()
-        assert orbitdetermination is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.orbitdetermination.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
-                    "initial_od": False,
-                    "method": "BLS",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            orbitdetermination = response.parse()
-            assert orbitdetermination is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.get(
             "id",
@@ -534,6 +473,67 @@ class TestOrbitdetermination:
 
             orbitdetermination = response.parse()
             assert_matches_type(OrbitdeterminationTupleResponse, orbitdetermination, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        orbitdetermination = client.orbitdetermination.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
+                }
+            ],
+        )
+        assert orbitdetermination is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.orbitdetermination.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        orbitdetermination = response.parse()
+        assert orbitdetermination is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.orbitdetermination.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            orbitdetermination = response.parse()
+            assert orbitdetermination is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -893,67 +893,6 @@ class TestAsyncOrbitdetermination:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        orbitdetermination = await async_client.orbitdetermination.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
-                    "initial_od": False,
-                    "method": "BLS",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
-                }
-            ],
-        )
-        assert orbitdetermination is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.orbitdetermination.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
-                    "initial_od": False,
-                    "method": "BLS",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        orbitdetermination = await response.parse()
-        assert orbitdetermination is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.orbitdetermination.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
-                    "initial_od": False,
-                    "method": "BLS",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            orbitdetermination = await response.parse()
-            assert orbitdetermination is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.get(
             "id",
@@ -1053,5 +992,66 @@ class TestAsyncOrbitdetermination:
 
             orbitdetermination = await response.parse()
             assert_matches_type(OrbitdeterminationTupleResponse, orbitdetermination, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        orbitdetermination = await async_client.orbitdetermination.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
+                }
+            ],
+        )
+        assert orbitdetermination is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.orbitdetermination.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        orbitdetermination = await response.parse()
+        assert orbitdetermination is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.orbitdetermination.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "end_time": parse_datetime("2023-08-28T15:20:21.247192Z"),
+                    "initial_od": False,
+                    "method": "BLS",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2023-08-28T11:20:21.247192Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            orbitdetermination = await response.parse()
+            assert orbitdetermination is None
 
         assert cast(Any, response.is_closed) is True

@@ -13,7 +13,7 @@ from ...types import (
     ephemeris_count_params,
     ephemeris_tuple_params,
     ephemeris_file_upload_params,
-    ephemeris_create_bulk_v2_params,
+    ephemeris_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -165,7 +165,181 @@ class EphemerisResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def create_bulk_v2(
+    def file_upload(
+        self,
+        *,
+        category: str,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
+        has_mnvr: bool,
+        sat_no: int,
+        source: str,
+        type: str,
+        body: str,
+        origin: str | NotGiven = NOT_GIVEN,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to post/store Ephemeris data.
+
+        This operation is intended to be
+        used for automated feeds into UDL. The payload is in Ephemeris format as
+        described by the "Flight Safety Handbook" published by 18th Space Command. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        **Example:**
+        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
+
+        Args:
+          category: Ephemeris category.
+
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
+
+          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
+
+          sat_no: Satellite/Catalog number of the target on-orbit object.
+
+          source: Source of the Ephemeris data.
+
+          type: Ephemeris type.
+
+          origin: Optional origin of the Ephemeris.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/ephem",
+            body=maybe_transform(body, ephemeris_file_upload_params.EphemerisFileUploadParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "category": category,
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "ephem_format_type": ephem_format_type,
+                        "has_mnvr": has_mnvr,
+                        "sat_no": sat_no,
+                        "source": source,
+                        "type": type,
+                        "origin": origin,
+                        "tags": tags,
+                    },
+                    ephemeris_file_upload_params.EphemerisFileUploadParams,
+                ),
+            ),
+            cast_to=NoneType,
+        )
+
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/ephemeris/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        es_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EphemerisTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          es_id: Unique identifier of the parent EphemerisSet, auto-generated by the system. The
+              esId (ephemerisSet id) is used to identify all individual ephemeris states
+              associated with a parent ephemerisSet. (uuid)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/ephemeris/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "es_id": es_id,
+                    },
+                    ephemeris_tuple_params.EphemerisTupleParams,
+                ),
+            ),
+            cast_to=EphemerisTupleResponse,
+        )
+
+    def unvalidated_publish(
         self,
         *,
         category: str,
@@ -185,7 +359,7 @@ class EphemerisResource(SyncAPIResource):
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
         edr: float | NotGiven = NOT_GIVEN,
-        ephemeris_list: Iterable[ephemeris_create_bulk_v2_params.EphemerisList] | NotGiven = NOT_GIVEN,
+        ephemeris_list: Iterable[ephemeris_unvalidated_publish_params.EphemerisList] | NotGiven = NOT_GIVEN,
         filename: str | NotGiven = NOT_GIVEN,
         geopotential_model: str | NotGiven = NOT_GIVEN,
         has_accel: bool | NotGiven = NOT_GIVEN,
@@ -408,186 +582,12 @@ class EphemerisResource(SyncAPIResource):
                     "usable_end_time": usable_end_time,
                     "usable_start_time": usable_start_time,
                 },
-                ephemeris_create_bulk_v2_params.EphemerisCreateBulkV2Params,
+                ephemeris_unvalidated_publish_params.EphemerisUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def file_upload(
-        self,
-        *,
-        category: str,
-        classification: str,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
-        has_mnvr: bool,
-        sat_no: int,
-        source: str,
-        type: str,
-        body: str,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """Service operation to post/store Ephemeris data.
-
-        This operation is intended to be
-        used for automated feeds into UDL. The payload is in Ephemeris format as
-        described by the "Flight Safety Handbook" published by 18th Space Command. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
-
-        **Example:**
-        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
-
-        Args:
-          category: Ephemeris category.
-
-          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
-
-          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
-
-          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
-
-          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
-
-          sat_no: Satellite/Catalog number of the target on-orbit object.
-
-          source: Source of the Ephemeris data.
-
-          type: Ephemeris type.
-
-          origin: Optional origin of the Ephemeris.
-
-          tags: Optional array of provider/source specific tags for this data, where each
-              element is no longer than 32 characters, used for implementing data owner
-              conditional access controls to restrict access to the data. Should be left null
-              by data providers unless conditional access controls are coordinated with the
-              UDL team.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/ephem",
-            body=maybe_transform(body, ephemeris_file_upload_params.EphemerisFileUploadParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "category": category,
-                        "classification": classification,
-                        "data_mode": data_mode,
-                        "ephem_format_type": ephem_format_type,
-                        "has_mnvr": has_mnvr,
-                        "sat_no": sat_no,
-                        "source": source,
-                        "type": type,
-                        "origin": origin,
-                        "tags": tags,
-                    },
-                    ephemeris_file_upload_params.EphemerisFileUploadParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
-    def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/ephemeris/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def tuple(
-        self,
-        *,
-        columns: str,
-        es_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          es_id: Unique identifier of the parent EphemerisSet, auto-generated by the system. The
-              esId (ephemerisSet id) is used to identify all individual ephemeris states
-              associated with a parent ephemerisSet. (uuid)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/ephemeris/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "columns": columns,
-                        "es_id": es_id,
-                    },
-                    ephemeris_tuple_params.EphemerisTupleParams,
-                ),
-            ),
-            cast_to=EphemerisTupleResponse,
         )
 
 
@@ -705,7 +705,181 @@ class AsyncEphemerisResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def create_bulk_v2(
+    async def file_upload(
+        self,
+        *,
+        category: str,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
+        has_mnvr: bool,
+        sat_no: int,
+        source: str,
+        type: str,
+        body: str,
+        origin: str | NotGiven = NOT_GIVEN,
+        tags: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to post/store Ephemeris data.
+
+        This operation is intended to be
+        used for automated feeds into UDL. The payload is in Ephemeris format as
+        described by the "Flight Safety Handbook" published by 18th Space Command. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        **Example:**
+        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
+
+        Args:
+          category: Ephemeris category.
+
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
+
+          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
+
+          sat_no: Satellite/Catalog number of the target on-orbit object.
+
+          source: Source of the Ephemeris data.
+
+          type: Ephemeris type.
+
+          origin: Optional origin of the Ephemeris.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/ephem",
+            body=await async_maybe_transform(body, ephemeris_file_upload_params.EphemerisFileUploadParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "category": category,
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "ephem_format_type": ephem_format_type,
+                        "has_mnvr": has_mnvr,
+                        "sat_no": sat_no,
+                        "source": source,
+                        "type": type,
+                        "origin": origin,
+                        "tags": tags,
+                    },
+                    ephemeris_file_upload_params.EphemerisFileUploadParams,
+                ),
+            ),
+            cast_to=NoneType,
+        )
+
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/ephemeris/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        es_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EphemerisTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          es_id: Unique identifier of the parent EphemerisSet, auto-generated by the system. The
+              esId (ephemerisSet id) is used to identify all individual ephemeris states
+              associated with a parent ephemerisSet. (uuid)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/ephemeris/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "es_id": es_id,
+                    },
+                    ephemeris_tuple_params.EphemerisTupleParams,
+                ),
+            ),
+            cast_to=EphemerisTupleResponse,
+        )
+
+    async def unvalidated_publish(
         self,
         *,
         category: str,
@@ -725,7 +899,7 @@ class AsyncEphemerisResource(AsyncAPIResource):
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
         edr: float | NotGiven = NOT_GIVEN,
-        ephemeris_list: Iterable[ephemeris_create_bulk_v2_params.EphemerisList] | NotGiven = NOT_GIVEN,
+        ephemeris_list: Iterable[ephemeris_unvalidated_publish_params.EphemerisList] | NotGiven = NOT_GIVEN,
         filename: str | NotGiven = NOT_GIVEN,
         geopotential_model: str | NotGiven = NOT_GIVEN,
         has_accel: bool | NotGiven = NOT_GIVEN,
@@ -948,186 +1122,12 @@ class AsyncEphemerisResource(AsyncAPIResource):
                     "usable_end_time": usable_end_time,
                     "usable_start_time": usable_start_time,
                 },
-                ephemeris_create_bulk_v2_params.EphemerisCreateBulkV2Params,
+                ephemeris_unvalidated_publish_params.EphemerisUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def file_upload(
-        self,
-        *,
-        category: str,
-        classification: str,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
-        ephem_format_type: Literal["ModITC", "GOO", "NASA", "OEM", "OASYS"],
-        has_mnvr: bool,
-        sat_no: int,
-        source: str,
-        type: str,
-        body: str,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """Service operation to post/store Ephemeris data.
-
-        This operation is intended to be
-        used for automated feeds into UDL. The payload is in Ephemeris format as
-        described by the "Flight Safety Handbook" published by 18th Space Command. A
-        specific role is required to perform this service operation. Please contact the
-        UDL team for assistance.
-
-        **Example:**
-        /filedrop/ephem?classification=U&dataMode=TEST&source=Bluestaq&satNo=25544&ephemFormatType=NASA&hasMnvr=false&type=ROUTINE&category=EXTERNAL&origin=NASA&tags=tag1,tag2
-
-        Args:
-          category: Ephemeris category.
-
-          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
-
-          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
-
-          ephem_format_type: Ephemeris format as documented in Flight Safety Handbook.
-
-          has_mnvr: Boolean indicating whether maneuver(s) are incorporated into the ephemeris.
-
-          sat_no: Satellite/Catalog number of the target on-orbit object.
-
-          source: Source of the Ephemeris data.
-
-          type: Ephemeris type.
-
-          origin: Optional origin of the Ephemeris.
-
-          tags: Optional array of provider/source specific tags for this data, where each
-              element is no longer than 32 characters, used for implementing data owner
-              conditional access controls to restrict access to the data. Should be left null
-              by data providers unless conditional access controls are coordinated with the
-              UDL team.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/ephem",
-            body=await async_maybe_transform(body, ephemeris_file_upload_params.EphemerisFileUploadParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "category": category,
-                        "classification": classification,
-                        "data_mode": data_mode,
-                        "ephem_format_type": ephem_format_type,
-                        "has_mnvr": has_mnvr,
-                        "sat_no": sat_no,
-                        "source": source,
-                        "type": type,
-                        "origin": origin,
-                        "tags": tags,
-                    },
-                    ephemeris_file_upload_params.EphemerisFileUploadParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
-    async def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/ephemeris/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def tuple(
-        self,
-        *,
-        columns: str,
-        es_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          es_id: Unique identifier of the parent EphemerisSet, auto-generated by the system. The
-              esId (ephemerisSet id) is used to identify all individual ephemeris states
-              associated with a parent ephemerisSet. (uuid)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/ephemeris/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "columns": columns,
-                        "es_id": es_id,
-                    },
-                    ephemeris_tuple_params.EphemerisTupleParams,
-                ),
-            ),
-            cast_to=EphemerisTupleResponse,
         )
 
 
@@ -1141,9 +1141,6 @@ class EphemerisResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             ephemeris.count,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            ephemeris.create_bulk_v2,
-        )
         self.file_upload = to_raw_response_wrapper(
             ephemeris.file_upload,
         )
@@ -1152,6 +1149,9 @@ class EphemerisResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             ephemeris.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            ephemeris.unvalidated_publish,
         )
 
     @cached_property
@@ -1173,9 +1173,6 @@ class AsyncEphemerisResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             ephemeris.count,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            ephemeris.create_bulk_v2,
-        )
         self.file_upload = async_to_raw_response_wrapper(
             ephemeris.file_upload,
         )
@@ -1184,6 +1181,9 @@ class AsyncEphemerisResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             ephemeris.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            ephemeris.unvalidated_publish,
         )
 
     @cached_property
@@ -1205,9 +1205,6 @@ class EphemerisResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             ephemeris.count,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            ephemeris.create_bulk_v2,
-        )
         self.file_upload = to_streamed_response_wrapper(
             ephemeris.file_upload,
         )
@@ -1216,6 +1213,9 @@ class EphemerisResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             ephemeris.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            ephemeris.unvalidated_publish,
         )
 
     @cached_property
@@ -1237,9 +1237,6 @@ class AsyncEphemerisResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             ephemeris.count,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            ephemeris.create_bulk_v2,
-        )
         self.file_upload = async_to_streamed_response_wrapper(
             ephemeris.file_upload,
         )
@@ -1248,6 +1245,9 @@ class AsyncEphemerisResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             ephemeris.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            ephemeris.unvalidated_publish,
         )
 
     @cached_property

@@ -20,7 +20,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.air_operations import diplomatic_clearance_create_bulk_v2_params
+from ...types.air_operations import diplomatic_clearance_unvalidated_publish_params
 
 __all__ = ["DiplomaticClearanceResource", "AsyncDiplomaticClearanceResource"]
 
@@ -45,10 +45,10 @@ class DiplomaticClearanceResource(SyncAPIResource):
         """
         return DiplomaticClearanceResourceWithStreamingResponse(self)
 
-    def create_bulk_v2(
+    def unvalidated_publish(
         self,
         *,
-        body: Iterable[diplomatic_clearance_create_bulk_v2_params.Body],
+        body: Iterable[diplomatic_clearance_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,7 +74,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-diplomaticclearance",
-            body=maybe_transform(body, Iterable[diplomatic_clearance_create_bulk_v2_params.Body]),
+            body=maybe_transform(body, Iterable[diplomatic_clearance_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -102,10 +102,10 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         """
         return AsyncDiplomaticClearanceResourceWithStreamingResponse(self)
 
-    async def create_bulk_v2(
+    async def unvalidated_publish(
         self,
         *,
-        body: Iterable[diplomatic_clearance_create_bulk_v2_params.Body],
+        body: Iterable[diplomatic_clearance_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,7 +131,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-diplomaticclearance",
-            body=await async_maybe_transform(body, Iterable[diplomatic_clearance_create_bulk_v2_params.Body]),
+            body=await async_maybe_transform(body, Iterable[diplomatic_clearance_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -143,8 +143,8 @@ class DiplomaticClearanceResourceWithRawResponse:
     def __init__(self, diplomatic_clearance: DiplomaticClearanceResource) -> None:
         self._diplomatic_clearance = diplomatic_clearance
 
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            diplomatic_clearance.create_bulk_v2,
+        self.unvalidated_publish = to_raw_response_wrapper(
+            diplomatic_clearance.unvalidated_publish,
         )
 
 
@@ -152,8 +152,8 @@ class AsyncDiplomaticClearanceResourceWithRawResponse:
     def __init__(self, diplomatic_clearance: AsyncDiplomaticClearanceResource) -> None:
         self._diplomatic_clearance = diplomatic_clearance
 
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            diplomatic_clearance.create_bulk_v2,
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            diplomatic_clearance.unvalidated_publish,
         )
 
 
@@ -161,8 +161,8 @@ class DiplomaticClearanceResourceWithStreamingResponse:
     def __init__(self, diplomatic_clearance: DiplomaticClearanceResource) -> None:
         self._diplomatic_clearance = diplomatic_clearance
 
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            diplomatic_clearance.create_bulk_v2,
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            diplomatic_clearance.unvalidated_publish,
         )
 
 
@@ -170,6 +170,6 @@ class AsyncDiplomaticClearanceResourceWithStreamingResponse:
     def __init__(self, diplomatic_clearance: AsyncDiplomaticClearanceResource) -> None:
         self._diplomatic_clearance = diplomatic_clearance
 
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            diplomatic_clearance.create_bulk_v2,
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            diplomatic_clearance.unvalidated_publish,
         )

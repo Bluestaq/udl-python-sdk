@@ -540,61 +540,6 @@ class TestCountry:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        country = client.diplomatic_clearance.country.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "country_code": "NL",
-                    "data_mode": "TEST",
-                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert country is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.diplomatic_clearance.country.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "country_code": "NL",
-                    "data_mode": "TEST",
-                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        country = response.parse()
-        assert country is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.diplomatic_clearance.country.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "country_code": "NL",
-                    "data_mode": "TEST",
-                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            country = response.parse()
-            assert country is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         country = client.diplomatic_clearance.country.query_help()
         assert country is None
@@ -647,6 +592,61 @@ class TestCountry:
 
             country = response.parse()
             assert_matches_type(CountryTupleResponse, country, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        country = client.diplomatic_clearance.country.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "NL",
+                    "data_mode": "TEST",
+                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert country is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.diplomatic_clearance.country.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "NL",
+                    "data_mode": "TEST",
+                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        country = response.parse()
+        assert country is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.diplomatic_clearance.country.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "NL",
+                    "data_mode": "TEST",
+                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            country = response.parse()
+            assert country is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1172,61 +1172,6 @@ class TestAsyncCountry:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        country = await async_client.diplomatic_clearance.country.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "country_code": "NL",
-                    "data_mode": "TEST",
-                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert country is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.diplomatic_clearance.country.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "country_code": "NL",
-                    "data_mode": "TEST",
-                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        country = await response.parse()
-        assert country is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.diplomatic_clearance.country.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "country_code": "NL",
-                    "data_mode": "TEST",
-                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            country = await response.parse()
-            assert country is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.diplomatic_clearance.country.query_help()
         assert country is None
@@ -1279,5 +1224,60 @@ class TestAsyncCountry:
 
             country = await response.parse()
             assert_matches_type(CountryTupleResponse, country, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        country = await async_client.diplomatic_clearance.country.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "NL",
+                    "data_mode": "TEST",
+                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert country is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.diplomatic_clearance.country.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "NL",
+                    "data_mode": "TEST",
+                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        country = await response.parse()
+        assert country is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.diplomatic_clearance.country.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "country_code": "NL",
+                    "data_mode": "TEST",
+                    "last_changed_date": parse_datetime("2024-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            country = await response.parse()
+            assert country is None
 
         assert cast(Any, response.is_closed) is True

@@ -12,7 +12,7 @@ from ...types import (
     orbittrack_count_params,
     orbittrack_tuple_params,
     orbittrack_create_bulk_params,
-    orbittrack_create_bulk_v2_params,
+    orbittrack_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -187,42 +187,6 @@ class OrbittrackResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[orbittrack_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple orbit track records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-orbittrack",
-            body=maybe_transform(body, Iterable[orbittrack_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def queryhelp(
         self,
         *,
@@ -301,6 +265,42 @@ class OrbittrackResource(SyncAPIResource):
                 ),
             ),
             cast_to=OrbittrackTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[orbittrack_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple orbit track records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-orbittrack",
+            body=maybe_transform(body, Iterable[orbittrack_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -449,42 +449,6 @@ class AsyncOrbittrackResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[orbittrack_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple orbit track records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-orbittrack",
-            body=await async_maybe_transform(body, Iterable[orbittrack_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def queryhelp(
         self,
         *,
@@ -565,6 +529,42 @@ class AsyncOrbittrackResource(AsyncAPIResource):
             cast_to=OrbittrackTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[orbittrack_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple orbit track records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-orbittrack",
+            body=await async_maybe_transform(body, Iterable[orbittrack_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class OrbittrackResourceWithRawResponse:
     def __init__(self, orbittrack: OrbittrackResource) -> None:
@@ -579,14 +579,14 @@ class OrbittrackResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             orbittrack.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            orbittrack.create_bulk_v2,
-        )
         self.queryhelp = to_raw_response_wrapper(
             orbittrack.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
             orbittrack.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            orbittrack.unvalidated_publish,
         )
 
     @cached_property
@@ -607,14 +607,14 @@ class AsyncOrbittrackResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             orbittrack.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            orbittrack.create_bulk_v2,
-        )
         self.queryhelp = async_to_raw_response_wrapper(
             orbittrack.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
             orbittrack.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            orbittrack.unvalidated_publish,
         )
 
     @cached_property
@@ -635,14 +635,14 @@ class OrbittrackResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             orbittrack.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            orbittrack.create_bulk_v2,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             orbittrack.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
             orbittrack.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            orbittrack.unvalidated_publish,
         )
 
     @cached_property
@@ -663,14 +663,14 @@ class AsyncOrbittrackResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             orbittrack.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            orbittrack.create_bulk_v2,
-        )
         self.queryhelp = async_to_streamed_response_wrapper(
             orbittrack.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
             orbittrack.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            orbittrack.unvalidated_publish,
         )
 
     @cached_property
