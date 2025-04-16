@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import base64
 from typing import Any, Union, Mapping
 from typing_extensions import Self, override
 
@@ -439,22 +440,22 @@ class Unifieddatalibrary(SyncAPIClient):
         """Construct a new synchronous Unifieddatalibrary client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `password` from `HTTP_BASIC_AUTH_PASSWORD`
-        - `username` from `HTTP_BASIC_AUTH_USERNAME`
+        - `password` from `UDL_AUTH_PASSWORD`
+        - `username` from `UDL_AUTH_USERNAME`
         """
         if password is None:
-            password = os.environ.get("HTTP_BASIC_AUTH_PASSWORD")
+            password = os.environ.get("UDL_AUTH_PASSWORD")
         if password is None:
             raise UnifieddatalibraryError(
-                "The password client option must be set either by passing password to the client or by setting the HTTP_BASIC_AUTH_PASSWORD environment variable"
+                "The password client option must be set either by passing password to the client or by setting the UDL_AUTH_PASSWORD environment variable"
             )
         self.password = password
 
         if username is None:
-            username = os.environ.get("HTTP_BASIC_AUTH_USERNAME")
+            username = os.environ.get("UDL_AUTH_USERNAME")
         if username is None:
             raise UnifieddatalibraryError(
-                "The username client option must be set either by passing username to the client or by setting the HTTP_BASIC_AUTH_USERNAME environment variable"
+                "The username client option must be set either by passing username to the client or by setting the UDL_AUTH_USERNAME environment variable"
             )
         self.username = username
 
@@ -660,6 +661,13 @@ class Unifieddatalibrary(SyncAPIClient):
     @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
+
+    @property
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        credentials = f"{self.username}:{self.password}".encode("ascii")
+        header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
+        return {"Authorization": header}
 
     @property
     @override
@@ -971,22 +979,22 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         """Construct a new async AsyncUnifieddatalibrary client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `password` from `HTTP_BASIC_AUTH_PASSWORD`
-        - `username` from `HTTP_BASIC_AUTH_USERNAME`
+        - `password` from `UDL_AUTH_PASSWORD`
+        - `username` from `UDL_AUTH_USERNAME`
         """
         if password is None:
-            password = os.environ.get("HTTP_BASIC_AUTH_PASSWORD")
+            password = os.environ.get("UDL_AUTH_PASSWORD")
         if password is None:
             raise UnifieddatalibraryError(
-                "The password client option must be set either by passing password to the client or by setting the HTTP_BASIC_AUTH_PASSWORD environment variable"
+                "The password client option must be set either by passing password to the client or by setting the UDL_AUTH_PASSWORD environment variable"
             )
         self.password = password
 
         if username is None:
-            username = os.environ.get("HTTP_BASIC_AUTH_USERNAME")
+            username = os.environ.get("UDL_AUTH_USERNAME")
         if username is None:
             raise UnifieddatalibraryError(
-                "The username client option must be set either by passing username to the client or by setting the HTTP_BASIC_AUTH_USERNAME environment variable"
+                "The username client option must be set either by passing username to the client or by setting the UDL_AUTH_USERNAME environment variable"
             )
         self.username = username
 
@@ -1192,6 +1200,13 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
+
+    @property
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        credentials = f"{self.username}:{self.password}".encode("ascii")
+        header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
+        return {"Authorization": header}
 
     @property
     @override
