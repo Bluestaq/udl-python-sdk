@@ -32,7 +32,7 @@ class SwirResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return SwirResourceWithRawResponse(self)
 
@@ -41,7 +41,7 @@ class SwirResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
         """
         return SwirResourceWithStreamingResponse(self)
 
@@ -89,7 +89,7 @@ class AsyncSwirResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncSwirResourceWithRawResponse(self)
 
@@ -98,7 +98,7 @@ class AsyncSwirResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/unifieddatalibrary-python#with_streaming_response
+        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncSwirResourceWithStreamingResponse(self)
 
