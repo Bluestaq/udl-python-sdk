@@ -1,5 +1,5 @@
 [project]
-name = "unifieddatalibrary"
+name = "udl-sdk"
 version = "0.0.1-alpha.0"
 description = "The official Python library for the unifieddatalibrary API"
 dynamic = ["readme"]

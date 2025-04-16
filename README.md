@@ -1,6 +1,6 @@
 # Unifieddatalibrary Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/unifieddatalibrary.svg)](https://pypi.org/project/unifieddatalibrary/)
+[![PyPI version](https://img.shields.io/pypi/v/udl-sdk.svg)](https://pypi.org/project/udl-sdk/)
 
 The Unifieddatalibrary Python library provides convenient access to the Unifieddatalibrary REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -15,12 +15,9 @@ The REST API documentation can be found on [docs.unifieddatalibrary.com](https:/
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/rsivilli-bluestaq/udl-python-sdk.git
+# install from PyPI
+pip install --pre udl-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainless.com/docs/guides/publish), this will become: `pip install --pre unifieddatalibrary`
 
 ## Usage
 
