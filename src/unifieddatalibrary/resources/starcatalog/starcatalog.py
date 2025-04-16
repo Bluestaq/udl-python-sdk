@@ -14,7 +14,7 @@ from ...types import (
     starcatalog_create_params,
     starcatalog_update_params,
     starcatalog_create_bulk_params,
-    starcatalog_create_bulk_v2_params,
+    starcatalog_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -740,42 +740,6 @@ class StarcatalogResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[starcatalog_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple StarCatalog records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-starcatalog",
-            body=maybe_transform(body, Iterable[starcatalog_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -895,6 +859,42 @@ class StarcatalogResource(SyncAPIResource):
                 ),
             ),
             cast_to=StarcatalogTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[starcatalog_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple StarCatalog records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-starcatalog",
+            body=maybe_transform(body, Iterable[starcatalog_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1593,42 +1593,6 @@ class AsyncStarcatalogResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[starcatalog_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple StarCatalog records as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-starcatalog",
-            body=await async_maybe_transform(body, Iterable[starcatalog_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -1750,6 +1714,42 @@ class AsyncStarcatalogResource(AsyncAPIResource):
             cast_to=StarcatalogTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[starcatalog_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple StarCatalog records as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-starcatalog",
+            body=await async_maybe_transform(body, Iterable[starcatalog_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class StarcatalogResourceWithRawResponse:
     def __init__(self, starcatalog: StarcatalogResource) -> None:
@@ -1773,9 +1773,6 @@ class StarcatalogResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             starcatalog.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            starcatalog.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             starcatalog.get,
         )
@@ -1784,6 +1781,9 @@ class StarcatalogResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             starcatalog.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            starcatalog.unvalidated_publish,
         )
 
     @cached_property
@@ -1813,9 +1813,6 @@ class AsyncStarcatalogResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             starcatalog.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            starcatalog.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             starcatalog.get,
         )
@@ -1824,6 +1821,9 @@ class AsyncStarcatalogResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             starcatalog.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            starcatalog.unvalidated_publish,
         )
 
     @cached_property
@@ -1853,9 +1853,6 @@ class StarcatalogResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             starcatalog.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            starcatalog.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             starcatalog.get,
         )
@@ -1864,6 +1861,9 @@ class StarcatalogResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             starcatalog.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            starcatalog.unvalidated_publish,
         )
 
     @cached_property
@@ -1893,9 +1893,6 @@ class AsyncStarcatalogResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             starcatalog.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            starcatalog.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             starcatalog.get,
         )
@@ -1904,6 +1901,9 @@ class AsyncStarcatalogResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             starcatalog.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            starcatalog.unvalidated_publish,
         )
 
     @cached_property

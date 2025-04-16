@@ -8,7 +8,12 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import item_tuple_params, item_create_params, item_update_params, item_create_bulk_v2_params
+from ..types import (
+    item_tuple_params,
+    item_create_params,
+    item_update_params,
+    item_unvalidated_publish_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -684,42 +689,6 @@ class ItemResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[item_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple item records as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-item",
-            body=maybe_transform(body, Iterable[item_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -822,6 +791,42 @@ class ItemResource(SyncAPIResource):
                 query=maybe_transform({"columns": columns}, item_tuple_params.ItemTupleParams),
             ),
             cast_to=ItemTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[item_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple item records as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-item",
+            body=maybe_transform(body, Iterable[item_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1479,42 +1484,6 @@ class AsyncItemResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[item_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple item records as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-item",
-            body=await async_maybe_transform(body, Iterable[item_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -1619,6 +1588,42 @@ class AsyncItemResource(AsyncAPIResource):
             cast_to=ItemTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[item_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple item records as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-item",
+            body=await async_maybe_transform(body, Iterable[item_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class ItemResourceWithRawResponse:
     def __init__(self, item: ItemResource) -> None:
@@ -1639,9 +1644,6 @@ class ItemResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             item.count,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            item.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             item.get,
         )
@@ -1650,6 +1652,9 @@ class ItemResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             item.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            item.unvalidated_publish,
         )
 
 
@@ -1672,9 +1677,6 @@ class AsyncItemResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             item.count,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            item.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             item.get,
         )
@@ -1683,6 +1685,9 @@ class AsyncItemResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             item.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            item.unvalidated_publish,
         )
 
 
@@ -1705,9 +1710,6 @@ class ItemResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             item.count,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            item.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             item.get,
         )
@@ -1716,6 +1718,9 @@ class ItemResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             item.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            item.unvalidated_publish,
         )
 
 
@@ -1738,9 +1743,6 @@ class AsyncItemResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             item.count,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            item.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             item.get,
         )
@@ -1749,4 +1751,7 @@ class AsyncItemResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             item.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            item.unvalidated_publish,
         )

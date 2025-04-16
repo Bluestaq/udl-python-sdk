@@ -285,61 +285,6 @@ class TestRfobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        rfobservation = client.rfobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                    "type": "RF",
-                }
-            ],
-        )
-        assert rfobservation is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.rfobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                    "type": "RF",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        rfobservation = response.parse()
-        assert rfobservation is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.rfobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                    "type": "RF",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            rfobservation = response.parse()
-            assert rfobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         rfobservation = client.rfobservation.get(
             "id",
@@ -433,6 +378,61 @@ class TestRfobservation:
 
             rfobservation = response.parse()
             assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        rfobservation = client.rfobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                    "type": "RF",
+                }
+            ],
+        )
+        assert rfobservation is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.rfobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                    "type": "RF",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        rfobservation = response.parse()
+        assert rfobservation is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.rfobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                    "type": "RF",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            rfobservation = response.parse()
+            assert rfobservation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -703,61 +703,6 @@ class TestAsyncRfobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        rfobservation = await async_client.rfobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                    "type": "RF",
-                }
-            ],
-        )
-        assert rfobservation is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.rfobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                    "type": "RF",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        rfobservation = await response.parse()
-        assert rfobservation is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.rfobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                    "type": "RF",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            rfobservation = await response.parse()
-            assert rfobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfobservation = await async_client.rfobservation.get(
             "id",
@@ -851,5 +796,60 @@ class TestAsyncRfobservation:
 
             rfobservation = await response.parse()
             assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfobservation = await async_client.rfobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                    "type": "RF",
+                }
+            ],
+        )
+        assert rfobservation is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.rfobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                    "type": "RF",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        rfobservation = await response.parse()
+        assert rfobservation is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.rfobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                    "type": "RF",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            rfobservation = await response.parse()
+            assert rfobservation is None
 
         assert cast(Any, response.is_closed) is True

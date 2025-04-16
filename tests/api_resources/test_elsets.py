@@ -354,58 +354,6 @@ class TestElsets:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        elset = client.elsets.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert elset is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.elsets.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        elset = response.parse()
-        assert elset is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.elsets.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            elset = response.parse()
-            assert elset is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
         elset = client.elsets.query_current_elset_help()
         assert elset is None
@@ -486,6 +434,58 @@ class TestElsets:
 
             elset = response.parse()
             assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        elset = client.elsets.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert elset is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.elsets.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = response.parse()
+        assert elset is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.elsets.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = response.parse()
+            assert elset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -825,58 +825,6 @@ class TestAsyncElsets:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        elset = await async_client.elsets.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert elset is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.elsets.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        elset = await response.parse()
-        assert elset is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.elsets.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            elset = await response.parse()
-            assert elset is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         elset = await async_client.elsets.query_current_elset_help()
         assert elset is None
@@ -957,5 +905,57 @@ class TestAsyncElsets:
 
             elset = await response.parse()
             assert_matches_type(ElsetTupleResponse, elset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        elset = await async_client.elsets.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert elset is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.elsets.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        elset = await response.parse()
+        assert elset is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.elsets.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "epoch": parse_datetime("2018-01-01T16:00:00.123456Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            elset = await response.parse()
+            assert elset is None
 
         assert cast(Any, response.is_closed) is True

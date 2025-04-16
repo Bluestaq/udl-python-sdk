@@ -247,58 +247,6 @@ class TestSurfaceobstruction:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        surfaceobstruction = client.surfaceobstruction.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert surfaceobstruction is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.surfaceobstruction.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        surfaceobstruction = response.parse()
-        assert surfaceobstruction is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.surfaceobstruction.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            surfaceobstruction = response.parse()
-            assert surfaceobstruction is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.get(
             "id",
@@ -389,6 +337,58 @@ class TestSurfaceobstruction:
 
             surfaceobstruction = response.parse()
             assert_matches_type(SurfaceobstructionTupleResponse, surfaceobstruction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        surfaceobstruction = client.surfaceobstruction.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert surfaceobstruction is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.surfaceobstruction.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        surfaceobstruction = response.parse()
+        assert surfaceobstruction is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.surfaceobstruction.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            surfaceobstruction = response.parse()
+            assert surfaceobstruction is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -622,58 +622,6 @@ class TestAsyncSurfaceobstruction:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        surfaceobstruction = await async_client.surfaceobstruction.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert surfaceobstruction is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.surfaceobstruction.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        surfaceobstruction = await response.parse()
-        assert surfaceobstruction is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.surfaceobstruction.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            surfaceobstruction = await response.parse()
-            assert surfaceobstruction is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.get(
             "id",
@@ -764,5 +712,57 @@ class TestAsyncSurfaceobstruction:
 
             surfaceobstruction = await response.parse()
             assert_matches_type(SurfaceobstructionTupleResponse, surfaceobstruction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        surfaceobstruction = await async_client.surfaceobstruction.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert surfaceobstruction is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.surfaceobstruction.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        surfaceobstruction = await response.parse()
+        assert surfaceobstruction is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.surfaceobstruction.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_surface": "be831d39-1822-da9f-7ace-6cc5643397dc",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            surfaceobstruction = await response.parse()
+            assert surfaceobstruction is None
 
         assert cast(Any, response.is_closed) is True

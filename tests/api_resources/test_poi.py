@@ -243,64 +243,6 @@ class TestPoi:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        poi = client.poi.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "name": "POI_NAME",
-                    "poiid": "POI-ID",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
-        assert poi is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.poi.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "name": "POI_NAME",
-                    "poiid": "POI-ID",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        poi = response.parse()
-        assert poi is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.poi.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "name": "POI_NAME",
-                    "poiid": "POI-ID",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            poi = response.parse()
-            assert poi is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         poi = client.poi.get(
             "id",
@@ -394,6 +336,64 @@ class TestPoi:
 
             poi = response.parse()
             assert_matches_type(PoiTupleResponse, poi, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        poi = client.poi.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
+                }
+            ],
+        )
+        assert poi is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.poi.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        poi = response.parse()
+        assert poi is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.poi.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            poi = response.parse()
+            assert poi is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -622,64 +622,6 @@ class TestAsyncPoi:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        poi = await async_client.poi.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "name": "POI_NAME",
-                    "poiid": "POI-ID",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
-        assert poi is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.poi.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "name": "POI_NAME",
-                    "poiid": "POI-ID",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        poi = await response.parse()
-        assert poi is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.poi.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "name": "POI_NAME",
-                    "poiid": "POI-ID",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            poi = await response.parse()
-            assert poi is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         poi = await async_client.poi.get(
             "id",
@@ -773,5 +715,63 @@ class TestAsyncPoi:
 
             poi = await response.parse()
             assert_matches_type(PoiTupleResponse, poi, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        poi = await async_client.poi.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
+                }
+            ],
+        )
+        assert poi is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.poi.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        poi = await response.parse()
+        assert poi is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.poi.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "name": "POI_NAME",
+                    "poiid": "POI-ID",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2020-01-01T16:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            poi = await response.parse()
+            assert poi is None
 
         assert cast(Any, response.is_closed) is True

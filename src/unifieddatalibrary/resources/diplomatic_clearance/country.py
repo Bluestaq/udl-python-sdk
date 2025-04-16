@@ -27,7 +27,7 @@ from ...types.diplomatic_clearance import (
     country_create_params,
     country_update_params,
     country_create_bulk_params,
-    country_create_bulk_v2_params,
+    country_unvalidated_publish_params,
 )
 from ...types.diplomatic_clearance.country_list_response import CountryListResponse
 from ...types.diplomatic_clearance.country_tuple_response import CountryTupleResponse
@@ -647,42 +647,6 @@ class CountryResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[country_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple diplomaticclearancecountry records as a POST
-        body and ingest into the database. This operation is intended to be used for
-        automated feeds into UDL. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-diplomaticclearancecountry",
-            body=maybe_transform(body, Iterable[country_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def query_help(
         self,
         *,
@@ -751,6 +715,42 @@ class CountryResource(SyncAPIResource):
                 query=maybe_transform({"columns": columns}, country_tuple_params.CountryTupleParams),
             ),
             cast_to=CountryTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[country_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple diplomaticclearancecountry records as a POST
+        body and ingest into the database. This operation is intended to be used for
+        automated feeds into UDL. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-diplomaticclearancecountry",
+            body=maybe_transform(body, Iterable[country_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1365,42 +1365,6 @@ class AsyncCountryResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[country_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple diplomaticclearancecountry records as a POST
-        body and ingest into the database. This operation is intended to be used for
-        automated feeds into UDL. A specific role is required to perform this service
-        operation. Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-diplomaticclearancecountry",
-            body=await async_maybe_transform(body, Iterable[country_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def query_help(
         self,
         *,
@@ -1471,6 +1435,42 @@ class AsyncCountryResource(AsyncAPIResource):
             cast_to=CountryTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[country_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple diplomaticclearancecountry records as a POST
+        body and ingest into the database. This operation is intended to be used for
+        automated feeds into UDL. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-diplomaticclearancecountry",
+            body=await async_maybe_transform(body, Iterable[country_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class CountryResourceWithRawResponse:
     def __init__(self, country: CountryResource) -> None:
@@ -1497,14 +1497,14 @@ class CountryResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             country.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            country.create_bulk_v2,
-        )
         self.query_help = to_raw_response_wrapper(
             country.query_help,
         )
         self.tuple = to_raw_response_wrapper(
             country.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            country.unvalidated_publish,
         )
 
 
@@ -1533,14 +1533,14 @@ class AsyncCountryResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             country.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            country.create_bulk_v2,
-        )
         self.query_help = async_to_raw_response_wrapper(
             country.query_help,
         )
         self.tuple = async_to_raw_response_wrapper(
             country.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            country.unvalidated_publish,
         )
 
 
@@ -1569,14 +1569,14 @@ class CountryResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             country.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            country.create_bulk_v2,
-        )
         self.query_help = to_streamed_response_wrapper(
             country.query_help,
         )
         self.tuple = to_streamed_response_wrapper(
             country.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            country.unvalidated_publish,
         )
 
 
@@ -1605,12 +1605,12 @@ class AsyncCountryResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             country.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            country.create_bulk_v2,
-        )
         self.query_help = async_to_streamed_response_wrapper(
             country.query_help,
         )
         self.tuple = async_to_streamed_response_wrapper(
             country.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            country.unvalidated_publish,
         )

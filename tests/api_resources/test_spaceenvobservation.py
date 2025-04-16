@@ -136,58 +136,6 @@ class TestSpaceenvobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        spaceenvobservation = client.spaceenvobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert spaceenvobservation is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.spaceenvobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        spaceenvobservation = response.parse()
-        assert spaceenvobservation is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.spaceenvobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            spaceenvobservation = response.parse()
-            assert spaceenvobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         spaceenvobservation = client.spaceenvobservation.queryhelp()
         assert spaceenvobservation is None
@@ -243,6 +191,58 @@ class TestSpaceenvobservation:
 
             spaceenvobservation = response.parse()
             assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        spaceenvobservation = client.spaceenvobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert spaceenvobservation is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.spaceenvobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        spaceenvobservation = response.parse()
+        assert spaceenvobservation is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.spaceenvobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            spaceenvobservation = response.parse()
+            assert spaceenvobservation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -365,58 +365,6 @@ class TestAsyncSpaceenvobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        spaceenvobservation = await async_client.spaceenvobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert spaceenvobservation is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.spaceenvobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        spaceenvobservation = await response.parse()
-        assert spaceenvobservation is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.spaceenvobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            spaceenvobservation = await response.parse()
-            assert spaceenvobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         spaceenvobservation = await async_client.spaceenvobservation.queryhelp()
         assert spaceenvobservation is None
@@ -472,5 +420,57 @@ class TestAsyncSpaceenvobservation:
 
             spaceenvobservation = await response.parse()
             assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        spaceenvobservation = await async_client.spaceenvobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert spaceenvobservation is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.spaceenvobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        spaceenvobservation = await response.parse()
+        assert spaceenvobservation is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.spaceenvobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "ob_time": parse_datetime("2023-06-07T14:17:39.653Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            spaceenvobservation = await response.parse()
+            assert spaceenvobservation is None
 
         assert cast(Any, response.is_closed) is True

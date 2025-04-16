@@ -14,7 +14,7 @@ from ..types import (
     analytic_imagery_history_params,
     analytic_imagery_history_aodr_params,
     analytic_imagery_history_count_params,
-    analytic_imagery_create_bulk_v2_params,
+    analytic_imagery_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
 from .._utils import (
@@ -185,64 +185,6 @@ class AnalyticImageryResource(SyncAPIResource):
                 query=maybe_transform({"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams),
             ),
             cast_to=str,
-        )
-
-    def create_bulk_v2(
-        self,
-        *,
-        file: FileTypes,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Upload a new image with its metadata.
-
-        The request body requires a zip file containing exactly two files:\\
-        1\\)) A file with the `.json` file extension whose content conforms to the `AnalyticImagery_Ingest`
-        schema.\\
-        2\\)) A binary image file of the allowed types for this service.
-
-        The JSON and image files will be associated with each other via the `id` field.
-        Query the metadata via `GET /udl/analyticimagery` and use
-        `GET /udl/analyticimagery/getFile/{id}` to retrieve the binary image file.
-
-        This operation only accepts application/zip media. The application/json request
-        body is documented to provide a convenient reference to the ingest schema.
-
-        This operation is intended to be used for automated feeds into UDL. A specific
-        role is required to perform this service operation. Please contact the UDL team
-        for assistance.
-
-        Args:
-          file: Zip file containing files described in the specification
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers["Content-Type"] = "multipart/form-data"
-        return self._post(
-            "/filedrop/udl-analyticimagery",
-            body=maybe_transform(body, analytic_imagery_create_bulk_v2_params.AnalyticImageryCreateBulkV2Params),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     def file_get(
@@ -529,6 +471,66 @@ class AnalyticImageryResource(SyncAPIResource):
             cast_to=AnalyticImageryTupleResponse,
         )
 
+    def unvalidated_publish(
+        self,
+        *,
+        file: FileTypes,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Upload a new image with its metadata.
+
+        The request body requires a zip file containing exactly two files:\\
+        1\\)) A file with the `.json` file extension whose content conforms to the `AnalyticImagery_Ingest`
+        schema.\\
+        2\\)) A binary image file of the allowed types for this service.
+
+        The JSON and image files will be associated with each other via the `id` field.
+        Query the metadata via `GET /udl/analyticimagery` and use
+        `GET /udl/analyticimagery/getFile/{id}` to retrieve the binary image file.
+
+        This operation only accepts application/zip media. The application/json request
+        body is documented to provide a convenient reference to the ingest schema.
+
+        This operation is intended to be used for automated feeds into UDL. A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
+
+        Args:
+          file: Zip file containing files described in the specification
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        body = deepcopy_minimal({"file": file})
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers["Content-Type"] = "multipart/form-data"
+        return self._post(
+            "/filedrop/udl-analyticimagery",
+            body=maybe_transform(
+                body, analytic_imagery_unvalidated_publish_params.AnalyticImageryUnvalidatedPublishParams
+            ),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AsyncAnalyticImageryResource(AsyncAPIResource):
     @cached_property
@@ -671,66 +673,6 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                 ),
             ),
             cast_to=str,
-        )
-
-    async def create_bulk_v2(
-        self,
-        *,
-        file: FileTypes,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Upload a new image with its metadata.
-
-        The request body requires a zip file containing exactly two files:\\
-        1\\)) A file with the `.json` file extension whose content conforms to the `AnalyticImagery_Ingest`
-        schema.\\
-        2\\)) A binary image file of the allowed types for this service.
-
-        The JSON and image files will be associated with each other via the `id` field.
-        Query the metadata via `GET /udl/analyticimagery` and use
-        `GET /udl/analyticimagery/getFile/{id}` to retrieve the binary image file.
-
-        This operation only accepts application/zip media. The application/json request
-        body is documented to provide a convenient reference to the ingest schema.
-
-        This operation is intended to be used for automated feeds into UDL. A specific
-        role is required to perform this service operation. Please contact the UDL team
-        for assistance.
-
-        Args:
-          file: Zip file containing files described in the specification
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers["Content-Type"] = "multipart/form-data"
-        return await self._post(
-            "/filedrop/udl-analyticimagery",
-            body=await async_maybe_transform(
-                body, analytic_imagery_create_bulk_v2_params.AnalyticImageryCreateBulkV2Params
-            ),
-            files=files,
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     async def file_get(
@@ -1017,6 +959,66 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
             cast_to=AnalyticImageryTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        file: FileTypes,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Upload a new image with its metadata.
+
+        The request body requires a zip file containing exactly two files:\\
+        1\\)) A file with the `.json` file extension whose content conforms to the `AnalyticImagery_Ingest`
+        schema.\\
+        2\\)) A binary image file of the allowed types for this service.
+
+        The JSON and image files will be associated with each other via the `id` field.
+        Query the metadata via `GET /udl/analyticimagery` and use
+        `GET /udl/analyticimagery/getFile/{id}` to retrieve the binary image file.
+
+        This operation only accepts application/zip media. The application/json request
+        body is documented to provide a convenient reference to the ingest schema.
+
+        This operation is intended to be used for automated feeds into UDL. A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
+
+        Args:
+          file: Zip file containing files described in the specification
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        body = deepcopy_minimal({"file": file})
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers["Content-Type"] = "multipart/form-data"
+        return await self._post(
+            "/filedrop/udl-analyticimagery",
+            body=await async_maybe_transform(
+                body, analytic_imagery_unvalidated_publish_params.AnalyticImageryUnvalidatedPublishParams
+            ),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AnalyticImageryResourceWithRawResponse:
     def __init__(self, analytic_imagery: AnalyticImageryResource) -> None:
@@ -1030,9 +1032,6 @@ class AnalyticImageryResourceWithRawResponse:
         )
         self.count = to_raw_response_wrapper(
             analytic_imagery.count,
-        )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            analytic_imagery.create_bulk_v2,
         )
         self.file_get = to_custom_raw_response_wrapper(
             analytic_imagery.file_get,
@@ -1053,6 +1052,9 @@ class AnalyticImageryResourceWithRawResponse:
         self.tuple = to_raw_response_wrapper(
             analytic_imagery.tuple,
         )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            analytic_imagery.unvalidated_publish,
+        )
 
 
 class AsyncAnalyticImageryResourceWithRawResponse:
@@ -1067,9 +1069,6 @@ class AsyncAnalyticImageryResourceWithRawResponse:
         )
         self.count = async_to_raw_response_wrapper(
             analytic_imagery.count,
-        )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            analytic_imagery.create_bulk_v2,
         )
         self.file_get = async_to_custom_raw_response_wrapper(
             analytic_imagery.file_get,
@@ -1090,6 +1089,9 @@ class AsyncAnalyticImageryResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             analytic_imagery.tuple,
         )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            analytic_imagery.unvalidated_publish,
+        )
 
 
 class AnalyticImageryResourceWithStreamingResponse:
@@ -1104,9 +1106,6 @@ class AnalyticImageryResourceWithStreamingResponse:
         )
         self.count = to_streamed_response_wrapper(
             analytic_imagery.count,
-        )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            analytic_imagery.create_bulk_v2,
         )
         self.file_get = to_custom_streamed_response_wrapper(
             analytic_imagery.file_get,
@@ -1127,6 +1126,9 @@ class AnalyticImageryResourceWithStreamingResponse:
         self.tuple = to_streamed_response_wrapper(
             analytic_imagery.tuple,
         )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            analytic_imagery.unvalidated_publish,
+        )
 
 
 class AsyncAnalyticImageryResourceWithStreamingResponse:
@@ -1141,9 +1143,6 @@ class AsyncAnalyticImageryResourceWithStreamingResponse:
         )
         self.count = async_to_streamed_response_wrapper(
             analytic_imagery.count,
-        )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            analytic_imagery.create_bulk_v2,
         )
         self.file_get = async_to_custom_streamed_response_wrapper(
             analytic_imagery.file_get,
@@ -1163,4 +1162,7 @@ class AsyncAnalyticImageryResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             analytic_imagery.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            analytic_imagery.unvalidated_publish,
         )

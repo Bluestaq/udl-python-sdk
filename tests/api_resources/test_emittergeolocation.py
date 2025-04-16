@@ -273,61 +273,6 @@ class TestEmittergeolocation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        emittergeolocation = client.emittergeolocation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "signal_of_interest_type": "RF",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
-                }
-            ],
-        )
-        assert emittergeolocation is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.emittergeolocation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "signal_of_interest_type": "RF",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        emittergeolocation = response.parse()
-        assert emittergeolocation is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.emittergeolocation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "signal_of_interest_type": "RF",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            emittergeolocation = response.parse()
-            assert emittergeolocation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query(self, client: Unifieddatalibrary) -> None:
         emittergeolocation = client.emittergeolocation.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -414,6 +359,61 @@ class TestEmittergeolocation:
 
             emittergeolocation = response.parse()
             assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        emittergeolocation = client.emittergeolocation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "signal_of_interest_type": "RF",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
+                }
+            ],
+        )
+        assert emittergeolocation is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.emittergeolocation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "signal_of_interest_type": "RF",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        emittergeolocation = response.parse()
+        assert emittergeolocation is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.emittergeolocation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "signal_of_interest_type": "RF",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            emittergeolocation = response.parse()
+            assert emittergeolocation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -672,61 +672,6 @@ class TestAsyncEmittergeolocation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        emittergeolocation = await async_client.emittergeolocation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "signal_of_interest_type": "RF",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
-                }
-            ],
-        )
-        assert emittergeolocation is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.emittergeolocation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "signal_of_interest_type": "RF",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        emittergeolocation = await response.parse()
-        assert emittergeolocation is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.emittergeolocation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "signal_of_interest_type": "RF",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            emittergeolocation = await response.parse()
-            assert emittergeolocation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         emittergeolocation = await async_client.emittergeolocation.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -813,5 +758,60 @@ class TestAsyncEmittergeolocation:
 
             emittergeolocation = await response.parse()
             assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        emittergeolocation = await async_client.emittergeolocation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "signal_of_interest_type": "RF",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
+                }
+            ],
+        )
+        assert emittergeolocation is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.emittergeolocation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "signal_of_interest_type": "RF",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        emittergeolocation = await response.parse()
+        assert emittergeolocation is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.emittergeolocation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "signal_of_interest_type": "RF",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-05-31T21:12:12.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            emittergeolocation = await response.parse()
+            assert emittergeolocation is None
 
         assert cast(Any, response.is_closed) is True

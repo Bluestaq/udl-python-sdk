@@ -389,58 +389,6 @@ class TestAviationriskmanagement:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        aviationriskmanagement = client.aviationriskmanagement.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert aviationriskmanagement is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.aviationriskmanagement.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        aviationriskmanagement = response.parse()
-        assert aviationriskmanagement is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.aviationriskmanagement.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            aviationriskmanagement = response.parse()
-            assert aviationriskmanagement is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query(self, client: Unifieddatalibrary) -> None:
         aviationriskmanagement = client.aviationriskmanagement.query(
             id_mission="idMission",
@@ -527,6 +475,58 @@ class TestAviationriskmanagement:
 
             aviationriskmanagement = response.parse()
             assert_matches_type(AviationriskmanagementTupleResponse, aviationriskmanagement, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        aviationriskmanagement = client.aviationriskmanagement.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert aviationriskmanagement is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.aviationriskmanagement.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        aviationriskmanagement = response.parse()
+        assert aviationriskmanagement is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.aviationriskmanagement.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            aviationriskmanagement = response.parse()
+            assert aviationriskmanagement is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -901,58 +901,6 @@ class TestAsyncAviationriskmanagement:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        aviationriskmanagement = await async_client.aviationriskmanagement.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert aviationriskmanagement is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.aviationriskmanagement.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        aviationriskmanagement = await response.parse()
-        assert aviationriskmanagement is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.aviationriskmanagement.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            aviationriskmanagement = await response.parse()
-            assert aviationriskmanagement is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         aviationriskmanagement = await async_client.aviationriskmanagement.query(
             id_mission="idMission",
@@ -1039,5 +987,57 @@ class TestAsyncAviationriskmanagement:
 
             aviationriskmanagement = await response.parse()
             assert_matches_type(AviationriskmanagementTupleResponse, aviationriskmanagement, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aviationriskmanagement = await async_client.aviationriskmanagement.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert aviationriskmanagement is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.aviationriskmanagement.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        aviationriskmanagement = await response.parse()
+        assert aviationriskmanagement is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.aviationriskmanagement.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_mission": "fa18d96e-91ea-60da-a7a8-1af6500066c8",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            aviationriskmanagement = await response.parse()
+            assert aviationriskmanagement is None
 
         assert cast(Any, response.is_closed) is True

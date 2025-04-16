@@ -17,8 +17,8 @@ class TestDiplomaticClearance:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        diplomatic_clearance = client.air_operations.diplomatic_clearance.create_bulk_v2(
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        diplomatic_clearance = client.air_operations.diplomatic_clearance.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -32,8 +32,8 @@ class TestDiplomaticClearance:
         assert diplomatic_clearance is None
 
     @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.air_operations.diplomatic_clearance.with_raw_response.create_bulk_v2(
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.air_operations.diplomatic_clearance.with_raw_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -51,8 +51,8 @@ class TestDiplomaticClearance:
         assert diplomatic_clearance is None
 
     @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.air_operations.diplomatic_clearance.with_streaming_response.create_bulk_v2(
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.air_operations.diplomatic_clearance.with_streaming_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -76,8 +76,8 @@ class TestAsyncDiplomaticClearance:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        diplomatic_clearance = await async_client.air_operations.diplomatic_clearance.create_bulk_v2(
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        diplomatic_clearance = await async_client.air_operations.diplomatic_clearance.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -91,8 +91,8 @@ class TestAsyncDiplomaticClearance:
         assert diplomatic_clearance is None
 
     @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.air_operations.diplomatic_clearance.with_raw_response.create_bulk_v2(
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.air_operations.diplomatic_clearance.with_raw_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",
@@ -110,8 +110,8 @@ class TestAsyncDiplomaticClearance:
         assert diplomatic_clearance is None
 
     @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.air_operations.diplomatic_clearance.with_streaming_response.create_bulk_v2(
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.air_operations.diplomatic_clearance.with_streaming_response.unvalidated_publish(
             body=[
                 {
                     "classification_marking": "U",

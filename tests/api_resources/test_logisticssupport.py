@@ -532,58 +532,6 @@ class TestLogisticssupport:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        logisticssupport = client.logisticssupport.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert logisticssupport is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.logisticssupport.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        logisticssupport = response.parse()
-        assert logisticssupport is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.logisticssupport.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            logisticssupport = response.parse()
-            assert logisticssupport is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.get(
             "id",
@@ -674,6 +622,58 @@ class TestLogisticssupport:
 
             logisticssupport = response.parse()
             assert_matches_type(LogisticssupportTupleResponse, logisticssupport, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        logisticssupport = client.logisticssupport.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert logisticssupport is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.logisticssupport.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        logisticssupport = response.parse()
+        assert logisticssupport is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.logisticssupport.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            logisticssupport = response.parse()
+            assert logisticssupport is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1191,58 +1191,6 @@ class TestAsyncLogisticssupport:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        logisticssupport = await async_client.logisticssupport.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert logisticssupport is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.logisticssupport.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        logisticssupport = await response.parse()
-        assert logisticssupport is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.logisticssupport.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            logisticssupport = await response.parse()
-            assert logisticssupport is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.get(
             "id",
@@ -1333,5 +1281,57 @@ class TestAsyncLogisticssupport:
 
             logisticssupport = await response.parse()
             assert_matches_type(LogisticssupportTupleResponse, logisticssupport, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        logisticssupport = await async_client.logisticssupport.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert logisticssupport is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.logisticssupport.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        logisticssupport = await response.parse()
+        assert logisticssupport is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.logisticssupport.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "rpt_created_time": parse_datetime("2023-07-13T13:47:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            logisticssupport = await response.parse()
+            assert logisticssupport is None
 
         assert cast(Any, response.is_closed) is True

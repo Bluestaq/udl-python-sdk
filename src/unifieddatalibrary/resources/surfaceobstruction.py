@@ -11,7 +11,7 @@ from ..types import (
     surfaceobstruction_tuple_params,
     surfaceobstruction_create_params,
     surfaceobstruction_update_params,
-    surfaceobstruction_create_bulk_v2_params,
+    surfaceobstruction_unvalidated_publish_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -354,42 +354,6 @@ class SurfaceobstructionResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[surfaceobstruction_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple surfaceobstruction records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-surfaceobstruction",
-            body=maybe_transform(body, Iterable[surfaceobstruction_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -494,6 +458,42 @@ class SurfaceobstructionResource(SyncAPIResource):
                 ),
             ),
             cast_to=SurfaceobstructionTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[surfaceobstruction_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple surfaceobstruction records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-surfaceobstruction",
+            body=maybe_transform(body, Iterable[surfaceobstruction_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -817,42 +817,6 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[surfaceobstruction_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple surfaceobstruction records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-surfaceobstruction",
-            body=await async_maybe_transform(body, Iterable[surfaceobstruction_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -959,6 +923,42 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
             cast_to=SurfaceobstructionTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[surfaceobstruction_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple surfaceobstruction records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-surfaceobstruction",
+            body=await async_maybe_transform(body, Iterable[surfaceobstruction_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class SurfaceobstructionResourceWithRawResponse:
     def __init__(self, surfaceobstruction: SurfaceobstructionResource) -> None:
@@ -979,9 +979,6 @@ class SurfaceobstructionResourceWithRawResponse:
         self.count = to_raw_response_wrapper(
             surfaceobstruction.count,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            surfaceobstruction.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             surfaceobstruction.get,
         )
@@ -990,6 +987,9 @@ class SurfaceobstructionResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             surfaceobstruction.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            surfaceobstruction.unvalidated_publish,
         )
 
 
@@ -1012,9 +1012,6 @@ class AsyncSurfaceobstructionResourceWithRawResponse:
         self.count = async_to_raw_response_wrapper(
             surfaceobstruction.count,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            surfaceobstruction.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             surfaceobstruction.get,
         )
@@ -1023,6 +1020,9 @@ class AsyncSurfaceobstructionResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             surfaceobstruction.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            surfaceobstruction.unvalidated_publish,
         )
 
 
@@ -1045,9 +1045,6 @@ class SurfaceobstructionResourceWithStreamingResponse:
         self.count = to_streamed_response_wrapper(
             surfaceobstruction.count,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            surfaceobstruction.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             surfaceobstruction.get,
         )
@@ -1056,6 +1053,9 @@ class SurfaceobstructionResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             surfaceobstruction.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            surfaceobstruction.unvalidated_publish,
         )
 
 
@@ -1078,9 +1078,6 @@ class AsyncSurfaceobstructionResourceWithStreamingResponse:
         self.count = async_to_streamed_response_wrapper(
             surfaceobstruction.count,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            surfaceobstruction.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             surfaceobstruction.get,
         )
@@ -1089,4 +1086,7 @@ class AsyncSurfaceobstructionResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             surfaceobstruction.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            surfaceobstruction.unvalidated_publish,
         )

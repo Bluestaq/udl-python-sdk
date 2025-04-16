@@ -310,58 +310,6 @@ class TestSortieppr:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        sortieppr = client.sortieppr.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert sortieppr is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.sortieppr.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sortieppr = response.parse()
-        assert sortieppr is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.sortieppr.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sortieppr = response.parse()
-            assert sortieppr is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.get(
             "id",
@@ -455,6 +403,58 @@ class TestSortieppr:
 
             sortieppr = response.parse()
             assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        sortieppr = client.sortieppr.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert sortieppr is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.sortieppr.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sortieppr = response.parse()
+        assert sortieppr is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.sortieppr.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sortieppr = response.parse()
+            assert sortieppr is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -750,58 +750,6 @@ class TestAsyncSortieppr:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sortieppr = await async_client.sortieppr.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert sortieppr is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sortieppr.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sortieppr = await response.parse()
-        assert sortieppr is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sortieppr.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sortieppr = await response.parse()
-            assert sortieppr is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.get(
             "id",
@@ -895,5 +843,57 @@ class TestAsyncSortieppr:
 
             sortieppr = await response.parse()
             assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sortieppr = await async_client.sortieppr.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert sortieppr is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sortieppr.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sortieppr = await response.parse()
+        assert sortieppr is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sortieppr.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "id_sortie": "4ef3d1e8-ab08-ab70-498f-edc479734e5c",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sortieppr = await response.parse()
+            assert sortieppr is None
 
         assert cast(Any, response.is_closed) is True

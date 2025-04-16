@@ -15,7 +15,7 @@ from ...types import (
     trackroute_create_params,
     trackroute_update_params,
     trackroute_create_bulk_params,
-    trackroute_create_bulk_v2_params,
+    trackroute_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -625,7 +625,121 @@ class TrackrouteResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
+    def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TrackRouteFull:
+        """
+        Service operation to get a single trackroute record by its unique ID passed as a
+        path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/trackroute/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TrackRouteFull,
+        )
+
+    def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/trackroute/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def tuple(
+        self,
+        *,
+        columns: str,
+        last_update_date: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TrackrouteTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          last_update_date: The last updated date of the track route in ISO 8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/udl/trackroute/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "last_update_date": last_update_date,
+                    },
+                    trackroute_tuple_params.TrackrouteTupleParams,
+                ),
+            ),
+            cast_to=TrackrouteTupleResponse,
+        )
+
+    def unvalidated_publish(
         self,
         *,
         classification_marking: str,
@@ -634,7 +748,7 @@ class TrackrouteResource(SyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[trackroute_create_bulk_v2_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[trackroute_unvalidated_publish_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -645,13 +759,13 @@ class TrackrouteResource(SyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[trackroute_create_bulk_v2_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[trackroute_unvalidated_publish_params.Poc] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[trackroute_create_bulk_v2_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[trackroute_unvalidated_publish_params.RoutePoint] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -813,126 +927,12 @@ class TrackrouteResource(SyncAPIResource):
                     "track_name": track_name,
                     "type_code": type_code,
                 },
-                trackroute_create_bulk_v2_params.TrackrouteCreateBulkV2Params,
+                trackroute_unvalidated_publish_params.TrackrouteUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackRouteFull:
-        """
-        Service operation to get a single trackroute record by its unique ID passed as a
-        path parameter.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/udl/trackroute/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TrackRouteFull,
-        )
-
-    def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/trackroute/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    def tuple(
-        self,
-        *,
-        columns: str,
-        last_update_date: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackrouteTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          last_update_date: The last updated date of the track route in ISO 8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/trackroute/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "columns": columns,
-                        "last_update_date": last_update_date,
-                    },
-                    trackroute_tuple_params.TrackrouteTupleParams,
-                ),
-            ),
-            cast_to=TrackrouteTupleResponse,
         )
 
 
@@ -1515,7 +1515,121 @@ class AsyncTrackrouteResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
+    async def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TrackRouteFull:
+        """
+        Service operation to get a single trackroute record by its unique ID passed as a
+        path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/trackroute/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TrackRouteFull,
+        )
+
+    async def queryhelp(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to provide detailed information on available dynamic query
+        parameters for a particular data type.
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/trackroute/queryhelp",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def tuple(
+        self,
+        *,
+        columns: str,
+        last_update_date: Union[str, datetime],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TrackrouteTupleResponse:
+        """
+        Service operation to dynamically query data and only return specified
+        columns/fields. Requested columns are specified by the 'columns' query parameter
+        and should be a comma separated list of valid fields for the specified data
+        type. classificationMarking is always returned. See the queryhelp operation
+        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
+        hours would return the satNo and period of elsets with an epoch greater than 5
+        hours ago.
+
+        Args:
+          columns: Comma-separated list of valid field names for this data type to be returned in
+              the response. Only the fields specified will be returned as well as the
+              classification marking of the data, if applicable. See the ‘queryhelp’ operation
+              for a complete list of possible fields.
+
+          last_update_date: The last updated date of the track route in ISO 8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/udl/trackroute/tuple",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "last_update_date": last_update_date,
+                    },
+                    trackroute_tuple_params.TrackrouteTupleParams,
+                ),
+            ),
+            cast_to=TrackrouteTupleResponse,
+        )
+
+    async def unvalidated_publish(
         self,
         *,
         classification_marking: str,
@@ -1524,7 +1638,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[trackroute_create_bulk_v2_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[trackroute_unvalidated_publish_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -1535,13 +1649,13 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[trackroute_create_bulk_v2_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[trackroute_unvalidated_publish_params.Poc] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[trackroute_create_bulk_v2_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[trackroute_unvalidated_publish_params.RoutePoint] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -1703,126 +1817,12 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                     "track_name": track_name,
                     "type_code": type_code,
                 },
-                trackroute_create_bulk_v2_params.TrackrouteCreateBulkV2Params,
+                trackroute_unvalidated_publish_params.TrackrouteUnvalidatedPublishParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def get(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackRouteFull:
-        """
-        Service operation to get a single trackroute record by its unique ID passed as a
-        path parameter.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/udl/trackroute/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TrackRouteFull,
-        )
-
-    async def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/trackroute/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    async def tuple(
-        self,
-        *,
-        columns: str,
-        last_update_date: Union[str, datetime],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackrouteTupleResponse:
-        """
-        Service operation to dynamically query data and only return specified
-        columns/fields. Requested columns are specified by the 'columns' query parameter
-        and should be a comma separated list of valid fields for the specified data
-        type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
-        information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
-        hours would return the satNo and period of elsets with an epoch greater than 5
-        hours ago.
-
-        Args:
-          columns: Comma-separated list of valid field names for this data type to be returned in
-              the response. Only the fields specified will be returned as well as the
-              classification marking of the data, if applicable. See the ‘queryhelp’ operation
-              for a complete list of possible fields.
-
-          last_update_date: The last updated date of the track route in ISO 8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/trackroute/tuple",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "columns": columns,
-                        "last_update_date": last_update_date,
-                    },
-                    trackroute_tuple_params.TrackrouteTupleParams,
-                ),
-            ),
-            cast_to=TrackrouteTupleResponse,
         )
 
 
@@ -1848,9 +1848,6 @@ class TrackrouteResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             trackroute.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            trackroute.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             trackroute.get,
         )
@@ -1859,6 +1856,9 @@ class TrackrouteResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             trackroute.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            trackroute.unvalidated_publish,
         )
 
     @cached_property
@@ -1888,9 +1888,6 @@ class AsyncTrackrouteResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             trackroute.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            trackroute.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             trackroute.get,
         )
@@ -1899,6 +1896,9 @@ class AsyncTrackrouteResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             trackroute.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            trackroute.unvalidated_publish,
         )
 
     @cached_property
@@ -1928,9 +1928,6 @@ class TrackrouteResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             trackroute.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            trackroute.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             trackroute.get,
         )
@@ -1939,6 +1936,9 @@ class TrackrouteResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             trackroute.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            trackroute.unvalidated_publish,
         )
 
     @cached_property
@@ -1968,9 +1968,6 @@ class AsyncTrackrouteResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             trackroute.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            trackroute.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             trackroute.get,
         )
@@ -1979,6 +1976,9 @@ class AsyncTrackrouteResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             trackroute.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            trackroute.unvalidated_publish,
         )
 
     @cached_property

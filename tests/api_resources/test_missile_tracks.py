@@ -136,58 +136,6 @@ class TestMissileTracks:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        missile_track = client.missile_tracks.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
-                }
-            ],
-        )
-        assert missile_track is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.missile_tracks.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        missile_track = response.parse()
-        assert missile_track is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.missile_tracks.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            missile_track = response.parse()
-            assert missile_track is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         missile_track = client.missile_tracks.queryhelp()
         assert missile_track is None
@@ -243,6 +191,58 @@ class TestMissileTracks:
 
             missile_track = response.parse()
             assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        missile_track = client.missile_tracks.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+        assert missile_track is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.missile_tracks.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        missile_track = response.parse()
+        assert missile_track is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.missile_tracks.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            missile_track = response.parse()
+            assert missile_track is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -365,58 +365,6 @@ class TestAsyncMissileTracks:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        missile_track = await async_client.missile_tracks.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
-                }
-            ],
-        )
-        assert missile_track is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.missile_tracks.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        missile_track = await response.parse()
-        assert missile_track is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.missile_tracks.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            missile_track = await response.parse()
-            assert missile_track is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         missile_track = await async_client.missile_tracks.queryhelp()
         assert missile_track is None
@@ -472,5 +420,57 @@ class TestAsyncMissileTracks:
 
             missile_track = await response.parse()
             assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        missile_track = await async_client.missile_tracks.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+        assert missile_track is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.missile_tracks.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        missile_track = await response.parse()
+        assert missile_track is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.missile_tracks.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2021-02-25T12:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            missile_track = await response.parse()
+            assert missile_track is None
 
         assert cast(Any, response.is_closed) is True

@@ -835,42 +835,6 @@ class StatevectorResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[StateVectorIngestParam],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple state vectors as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-sv",
-            body=maybe_transform(body, Iterable[StateVectorIngestParam]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -983,6 +947,42 @@ class StatevectorResource(SyncAPIResource):
                 ),
             ),
             cast_to=StatevectorTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[StateVectorIngestParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple state vectors as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-sv",
+            body=maybe_transform(body, Iterable[StateVectorIngestParam]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1769,42 +1769,6 @@ class AsyncStatevectorResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[StateVectorIngestParam],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple state vectors as a POST body and ingest into
-        the database. This operation is intended to be used for automated feeds into
-        UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-sv",
-            body=await async_maybe_transform(body, Iterable[StateVectorIngestParam]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -1919,6 +1883,42 @@ class AsyncStatevectorResource(AsyncAPIResource):
             cast_to=StatevectorTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[StateVectorIngestParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple state vectors as a POST body and ingest into
+        the database. This operation is intended to be used for automated feeds into
+        UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-sv",
+            body=await async_maybe_transform(body, Iterable[StateVectorIngestParam]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class StatevectorResourceWithRawResponse:
     def __init__(self, statevector: StatevectorResource) -> None:
@@ -1936,9 +1936,6 @@ class StatevectorResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             statevector.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            statevector.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             statevector.get,
         )
@@ -1947,6 +1944,9 @@ class StatevectorResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             statevector.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            statevector.unvalidated_publish,
         )
 
     @cached_property
@@ -1974,9 +1974,6 @@ class AsyncStatevectorResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             statevector.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            statevector.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             statevector.get,
         )
@@ -1985,6 +1982,9 @@ class AsyncStatevectorResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             statevector.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            statevector.unvalidated_publish,
         )
 
     @cached_property
@@ -2012,9 +2012,6 @@ class StatevectorResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             statevector.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            statevector.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             statevector.get,
         )
@@ -2023,6 +2020,9 @@ class StatevectorResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             statevector.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            statevector.unvalidated_publish,
         )
 
     @cached_property
@@ -2050,9 +2050,6 @@ class AsyncStatevectorResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             statevector.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            statevector.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             statevector.get,
         )
@@ -2061,6 +2058,9 @@ class AsyncStatevectorResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             statevector.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            statevector.unvalidated_publish,
         )
 
     @cached_property

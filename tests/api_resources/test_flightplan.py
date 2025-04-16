@@ -674,64 +674,6 @@ class TestFlightplan:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        flightplan = client.flightplan.create_bulk_v2(
-            body=[
-                {
-                    "arr_airfield": "KCHS",
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "dep_airfield": "KSLV",
-                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert flightplan is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.flightplan.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "arr_airfield": "KCHS",
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "dep_airfield": "KSLV",
-                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        flightplan = response.parse()
-        assert flightplan is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.flightplan.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "arr_airfield": "KCHS",
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "dep_airfield": "KSLV",
-                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            flightplan = response.parse()
-            assert flightplan is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         flightplan = client.flightplan.queryhelp()
         assert flightplan is None
@@ -784,6 +726,64 @@ class TestFlightplan:
 
             flightplan = response.parse()
             assert_matches_type(FlightplanTupleResponse, flightplan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        flightplan = client.flightplan.unvalidated_publish(
+            body=[
+                {
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert flightplan is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.flightplan.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        flightplan = response.parse()
+        assert flightplan is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.flightplan.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            flightplan = response.parse()
+            assert flightplan is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1443,64 +1443,6 @@ class TestAsyncFlightplan:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        flightplan = await async_client.flightplan.create_bulk_v2(
-            body=[
-                {
-                    "arr_airfield": "KCHS",
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "dep_airfield": "KSLV",
-                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert flightplan is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.flightplan.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "arr_airfield": "KCHS",
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "dep_airfield": "KSLV",
-                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        flightplan = await response.parse()
-        assert flightplan is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.flightplan.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "arr_airfield": "KCHS",
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "dep_airfield": "KSLV",
-                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            flightplan = await response.parse()
-            assert flightplan is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         flightplan = await async_client.flightplan.queryhelp()
         assert flightplan is None
@@ -1553,5 +1495,63 @@ class TestAsyncFlightplan:
 
             flightplan = await response.parse()
             assert_matches_type(FlightplanTupleResponse, flightplan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        flightplan = await async_client.flightplan.unvalidated_publish(
+            body=[
+                {
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert flightplan is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.flightplan.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        flightplan = await response.parse()
+        assert flightplan is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.flightplan.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "arr_airfield": "KCHS",
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "dep_airfield": "KSLV",
+                    "gen_ts": parse_datetime("2023-05-01T01:01:01.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            flightplan = await response.parse()
+            assert flightplan is None
 
         assert cast(Any, response.is_closed) is True

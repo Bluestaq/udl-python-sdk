@@ -262,64 +262,6 @@ class TestSarobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        sarobservation = client.sarobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
-                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "TEST",
-                    "sar_mode": "SPOTLIGHT",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert sarobservation is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.sarobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
-                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "TEST",
-                    "sar_mode": "SPOTLIGHT",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sarobservation = response.parse()
-        assert sarobservation is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.sarobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
-                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "TEST",
-                    "sar_mode": "SPOTLIGHT",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sarobservation = response.parse()
-            assert sarobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sarobservation = client.sarobservation.get(
             "id",
@@ -413,6 +355,64 @@ class TestSarobservation:
 
             sarobservation = response.parse()
             assert_matches_type(SarobservationTupleResponse, sarobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        sarobservation = client.sarobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
+                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
+                    "data_mode": "TEST",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert sarobservation is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.sarobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
+                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
+                    "data_mode": "TEST",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sarobservation = response.parse()
+        assert sarobservation is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.sarobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
+                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
+                    "data_mode": "TEST",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sarobservation = response.parse()
+            assert sarobservation is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -660,64 +660,6 @@ class TestAsyncSarobservation:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sarobservation = await async_client.sarobservation.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
-                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "TEST",
-                    "sar_mode": "SPOTLIGHT",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert sarobservation is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sarobservation.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
-                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "TEST",
-                    "sar_mode": "SPOTLIGHT",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sarobservation = await response.parse()
-        assert sarobservation is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sarobservation.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
-                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
-                    "data_mode": "TEST",
-                    "sar_mode": "SPOTLIGHT",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sarobservation = await response.parse()
-            assert sarobservation is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sarobservation = await async_client.sarobservation.get(
             "id",
@@ -811,5 +753,63 @@ class TestAsyncSarobservation:
 
             sarobservation = await response.parse()
             assert_matches_type(SarobservationTupleResponse, sarobservation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sarobservation = await async_client.sarobservation.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
+                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
+                    "data_mode": "TEST",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert sarobservation is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sarobservation.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
+                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
+                    "data_mode": "TEST",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sarobservation = await response.parse()
+        assert sarobservation is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sarobservation.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "collection_end": parse_datetime("2023-04-22T17:38:10.201770Z"),
+                    "collection_start": parse_datetime("2023-04-22T17:35:00.123456Z"),
+                    "data_mode": "TEST",
+                    "sar_mode": "SPOTLIGHT",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sarobservation = await response.parse()
+            assert sarobservation is None
 
         assert cast(Any, response.is_closed) is True

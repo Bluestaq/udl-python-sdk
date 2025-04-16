@@ -424,121 +424,6 @@ class TestTrackroute:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        trackroute = client.trackroute.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-        )
-        assert trackroute is None
-
-    @parametrize
-    def test_method_create_bulk_v2_with_all_params(self, client: Unifieddatalibrary) -> None:
-        trackroute = client.trackroute.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-            id="026dd511-8ba5-47d3-9909-836149f87686",
-            altitude_blocks=[
-                {
-                    "altitude_sequence_id": "A1",
-                    "lower_altitude": 27000.1,
-                    "upper_altitude": 27200.5,
-                }
-            ],
-            apn_setting="1-3-1",
-            apx_beacon_code="5/1",
-            artcc_message="OAKLAND CTR/GUAM CERAP",
-            creating_org="HQPAC",
-            direction="NE",
-            effective_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            external_id="GDSSMH121004232315303094",
-            last_used_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            location_track_id="POACHR",
-            origin="THIRD_PARTY_DATASOURCE",
-            poc=[
-                {
-                    "office": "A34",
-                    "phone": "8675309",
-                    "poc_name": "Fred Smith",
-                    "poc_org": "HQAF",
-                    "poc_sequence_id": 1,
-                    "poc_type_name": "Originator",
-                    "rank": "Capt",
-                    "remark": "POC remark.",
-                    "username": "fgsmith",
-                }
-            ],
-            pri_freq=357.5,
-            receiver_tanker_ch_code="31/094",
-            region_code="5",
-            region_name="North America",
-            review_date=parse_datetime("2024-09-16T16:00:00.123Z"),
-            route_points=[
-                {
-                    "alt_country_code": "IZ",
-                    "country_code": "NL",
-                    "dafif_pt": True,
-                    "mag_dec": 7.35,
-                    "navaid": "HTO",
-                    "navaid_length": 100.2,
-                    "navaid_type": "VORTAC",
-                    "pt_lat": 45.23,
-                    "pt_lon": 179.1,
-                    "pt_sequence_id": 1,
-                    "pt_type_code": "EP",
-                    "pt_type_name": "ENTRY POINT",
-                    "waypoint_name": "KCHS",
-                }
-            ],
-            scheduler_org_name="97 OSS/OSOS DSN 866-5555",
-            scheduler_org_unit="612 AOC",
-            sec_freq=319.7,
-            short_name="CH61",
-            sic="N",
-            track_id="CH61A",
-            track_name="CH61 POST",
-            type_code="V",
-        )
-        assert trackroute is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.trackroute.with_raw_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        trackroute = response.parse()
-        assert trackroute is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.trackroute.with_streaming_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            trackroute = response.parse()
-            assert trackroute is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         trackroute = client.trackroute.get(
             "id",
@@ -632,6 +517,121 @@ class TestTrackroute:
 
             trackroute = response.parse()
             assert_matches_type(TrackrouteTupleResponse, trackroute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        trackroute = client.trackroute.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+        )
+        assert trackroute is None
+
+    @parametrize
+    def test_method_unvalidated_publish_with_all_params(self, client: Unifieddatalibrary) -> None:
+        trackroute = client.trackroute.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+            id="026dd511-8ba5-47d3-9909-836149f87686",
+            altitude_blocks=[
+                {
+                    "altitude_sequence_id": "A1",
+                    "lower_altitude": 27000.1,
+                    "upper_altitude": 27200.5,
+                }
+            ],
+            apn_setting="1-3-1",
+            apx_beacon_code="5/1",
+            artcc_message="OAKLAND CTR/GUAM CERAP",
+            creating_org="HQPAC",
+            direction="NE",
+            effective_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            external_id="GDSSMH121004232315303094",
+            last_used_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            location_track_id="POACHR",
+            origin="THIRD_PARTY_DATASOURCE",
+            poc=[
+                {
+                    "office": "A34",
+                    "phone": "8675309",
+                    "poc_name": "Fred Smith",
+                    "poc_org": "HQAF",
+                    "poc_sequence_id": 1,
+                    "poc_type_name": "Originator",
+                    "rank": "Capt",
+                    "remark": "POC remark.",
+                    "username": "fgsmith",
+                }
+            ],
+            pri_freq=357.5,
+            receiver_tanker_ch_code="31/094",
+            region_code="5",
+            region_name="North America",
+            review_date=parse_datetime("2024-09-16T16:00:00.123Z"),
+            route_points=[
+                {
+                    "alt_country_code": "IZ",
+                    "country_code": "NL",
+                    "dafif_pt": True,
+                    "mag_dec": 7.35,
+                    "navaid": "HTO",
+                    "navaid_length": 100.2,
+                    "navaid_type": "VORTAC",
+                    "pt_lat": 45.23,
+                    "pt_lon": 179.1,
+                    "pt_sequence_id": 1,
+                    "pt_type_code": "EP",
+                    "pt_type_name": "ENTRY POINT",
+                    "waypoint_name": "KCHS",
+                }
+            ],
+            scheduler_org_name="97 OSS/OSOS DSN 866-5555",
+            scheduler_org_unit="612 AOC",
+            sec_freq=319.7,
+            short_name="CH61",
+            sic="N",
+            track_id="CH61A",
+            track_name="CH61 POST",
+            type_code="V",
+        )
+        assert trackroute is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.trackroute.with_raw_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        trackroute = response.parse()
+        assert trackroute is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.trackroute.with_streaming_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            trackroute = response.parse()
+            assert trackroute is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1041,121 +1041,6 @@ class TestAsyncTrackroute:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        trackroute = await async_client.trackroute.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-        )
-        assert trackroute is None
-
-    @parametrize
-    async def test_method_create_bulk_v2_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        trackroute = await async_client.trackroute.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-            id="026dd511-8ba5-47d3-9909-836149f87686",
-            altitude_blocks=[
-                {
-                    "altitude_sequence_id": "A1",
-                    "lower_altitude": 27000.1,
-                    "upper_altitude": 27200.5,
-                }
-            ],
-            apn_setting="1-3-1",
-            apx_beacon_code="5/1",
-            artcc_message="OAKLAND CTR/GUAM CERAP",
-            creating_org="HQPAC",
-            direction="NE",
-            effective_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            external_id="GDSSMH121004232315303094",
-            last_used_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            location_track_id="POACHR",
-            origin="THIRD_PARTY_DATASOURCE",
-            poc=[
-                {
-                    "office": "A34",
-                    "phone": "8675309",
-                    "poc_name": "Fred Smith",
-                    "poc_org": "HQAF",
-                    "poc_sequence_id": 1,
-                    "poc_type_name": "Originator",
-                    "rank": "Capt",
-                    "remark": "POC remark.",
-                    "username": "fgsmith",
-                }
-            ],
-            pri_freq=357.5,
-            receiver_tanker_ch_code="31/094",
-            region_code="5",
-            region_name="North America",
-            review_date=parse_datetime("2024-09-16T16:00:00.123Z"),
-            route_points=[
-                {
-                    "alt_country_code": "IZ",
-                    "country_code": "NL",
-                    "dafif_pt": True,
-                    "mag_dec": 7.35,
-                    "navaid": "HTO",
-                    "navaid_length": 100.2,
-                    "navaid_type": "VORTAC",
-                    "pt_lat": 45.23,
-                    "pt_lon": 179.1,
-                    "pt_sequence_id": 1,
-                    "pt_type_code": "EP",
-                    "pt_type_name": "ENTRY POINT",
-                    "waypoint_name": "KCHS",
-                }
-            ],
-            scheduler_org_name="97 OSS/OSOS DSN 866-5555",
-            scheduler_org_unit="612 AOC",
-            sec_freq=319.7,
-            short_name="CH61",
-            sic="N",
-            track_id="CH61A",
-            track_name="CH61 POST",
-            type_code="V",
-        )
-        assert trackroute is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.trackroute.with_raw_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        trackroute = await response.parse()
-        assert trackroute is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.trackroute.with_streaming_response.create_bulk_v2(
-            classification_marking="U",
-            data_mode="TEST",
-            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
-            source="Bluestaq",
-            type="AIR REFUELING",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            trackroute = await response.parse()
-            assert trackroute is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         trackroute = await async_client.trackroute.get(
             "id",
@@ -1249,5 +1134,120 @@ class TestAsyncTrackroute:
 
             trackroute = await response.parse()
             assert_matches_type(TrackrouteTupleResponse, trackroute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        trackroute = await async_client.trackroute.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+        )
+        assert trackroute is None
+
+    @parametrize
+    async def test_method_unvalidated_publish_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        trackroute = await async_client.trackroute.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+            id="026dd511-8ba5-47d3-9909-836149f87686",
+            altitude_blocks=[
+                {
+                    "altitude_sequence_id": "A1",
+                    "lower_altitude": 27000.1,
+                    "upper_altitude": 27200.5,
+                }
+            ],
+            apn_setting="1-3-1",
+            apx_beacon_code="5/1",
+            artcc_message="OAKLAND CTR/GUAM CERAP",
+            creating_org="HQPAC",
+            direction="NE",
+            effective_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            external_id="GDSSMH121004232315303094",
+            last_used_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            location_track_id="POACHR",
+            origin="THIRD_PARTY_DATASOURCE",
+            poc=[
+                {
+                    "office": "A34",
+                    "phone": "8675309",
+                    "poc_name": "Fred Smith",
+                    "poc_org": "HQAF",
+                    "poc_sequence_id": 1,
+                    "poc_type_name": "Originator",
+                    "rank": "Capt",
+                    "remark": "POC remark.",
+                    "username": "fgsmith",
+                }
+            ],
+            pri_freq=357.5,
+            receiver_tanker_ch_code="31/094",
+            region_code="5",
+            region_name="North America",
+            review_date=parse_datetime("2024-09-16T16:00:00.123Z"),
+            route_points=[
+                {
+                    "alt_country_code": "IZ",
+                    "country_code": "NL",
+                    "dafif_pt": True,
+                    "mag_dec": 7.35,
+                    "navaid": "HTO",
+                    "navaid_length": 100.2,
+                    "navaid_type": "VORTAC",
+                    "pt_lat": 45.23,
+                    "pt_lon": 179.1,
+                    "pt_sequence_id": 1,
+                    "pt_type_code": "EP",
+                    "pt_type_name": "ENTRY POINT",
+                    "waypoint_name": "KCHS",
+                }
+            ],
+            scheduler_org_name="97 OSS/OSOS DSN 866-5555",
+            scheduler_org_unit="612 AOC",
+            sec_freq=319.7,
+            short_name="CH61",
+            sic="N",
+            track_id="CH61A",
+            track_name="CH61 POST",
+            type_code="V",
+        )
+        assert trackroute is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.trackroute.with_raw_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        trackroute = await response.parse()
+        assert trackroute is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.trackroute.with_streaming_response.unvalidated_publish(
+            classification_marking="U",
+            data_mode="TEST",
+            last_update_date=parse_datetime("2024-09-17T16:00:00.123Z"),
+            source="Bluestaq",
+            type="AIR REFUELING",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            trackroute = await response.parse()
+            assert trackroute is None
 
         assert cast(Any, response.is_closed) is True

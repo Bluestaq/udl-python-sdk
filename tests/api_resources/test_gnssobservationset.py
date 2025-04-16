@@ -136,58 +136,6 @@ class TestGnssobservationset:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        gnssobservationset = client.gnssobservationset.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
-                }
-            ],
-        )
-        assert gnssobservationset is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.gnssobservationset.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        gnssobservationset = response.parse()
-        assert gnssobservationset is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.gnssobservationset.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            gnssobservationset = response.parse()
-            assert gnssobservationset is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         gnssobservationset = client.gnssobservationset.queryhelp()
         assert gnssobservationset is None
@@ -243,6 +191,58 @@ class TestGnssobservationset:
 
             gnssobservationset = response.parse()
             assert_matches_type(GnssobservationsetTupleResponse, gnssobservationset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        gnssobservationset = client.gnssobservationset.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
+                }
+            ],
+        )
+        assert gnssobservationset is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.gnssobservationset.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        gnssobservationset = response.parse()
+        assert gnssobservationset is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.gnssobservationset.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            gnssobservationset = response.parse()
+            assert gnssobservationset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -365,58 +365,6 @@ class TestAsyncGnssobservationset:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        gnssobservationset = await async_client.gnssobservationset.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
-                }
-            ],
-        )
-        assert gnssobservationset is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.gnssobservationset.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        gnssobservationset = await response.parse()
-        assert gnssobservationset is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.gnssobservationset.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "source": "Bluestaq",
-                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            gnssobservationset = await response.parse()
-            assert gnssobservationset is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         gnssobservationset = await async_client.gnssobservationset.queryhelp()
         assert gnssobservationset is None
@@ -472,5 +420,57 @@ class TestAsyncGnssobservationset:
 
             gnssobservationset = await response.parse()
             assert_matches_type(GnssobservationsetTupleResponse, gnssobservationset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        gnssobservationset = await async_client.gnssobservationset.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
+                }
+            ],
+        )
+        assert gnssobservationset is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.gnssobservationset.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        gnssobservationset = await response.parse()
+        assert gnssobservationset is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.gnssobservationset.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "source": "Bluestaq",
+                    "ts": parse_datetime("2022-01-01T00:00:00.123456Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            gnssobservationset = await response.parse()
+            assert gnssobservationset is None
 
         assert cast(Any, response.is_closed) is True

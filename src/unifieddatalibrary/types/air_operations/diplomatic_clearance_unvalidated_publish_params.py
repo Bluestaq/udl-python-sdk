@@ -1,0 +1,239 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Union, Iterable
+from datetime import datetime
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from ..._utils import PropertyInfo
+
+__all__ = [
+    "DiplomaticClearanceUnvalidatedPublishParams",
+    "Body",
+    "BodyDiplomaticClearanceDetail",
+    "BodyDiplomaticClearanceRemark",
+]
+
+
+class DiplomaticClearanceUnvalidatedPublishParams(TypedDict, total=False):
+    body: Required[Iterable[Body]]
+
+
+class BodyDiplomaticClearanceDetail(TypedDict, total=False):
+    action: str
+    """The type of action the aircraft can take with this diplomatic clearance (e.g.
+
+    O for Overfly, L for Land, etc.).
+    """
+
+    alt_country_code: Annotated[str, PropertyInfo(alias="altCountryCode")]
+    """
+    Specifies an alternate country code if the data provider code is not part of an
+    official Country Code standard such as ISO-3166 or FIPS. This field will be set
+    to the value provided by the source and should be used for all Queries
+    specifying a Country Code.
+    """
+
+    clearance_id: Annotated[str, PropertyInfo(alias="clearanceId")]
+    """Identifier of this diplomatic clearance issued by the host country."""
+
+    clearance_remark: Annotated[str, PropertyInfo(alias="clearanceRemark")]
+    """Remarks concerning this diplomatic clearance."""
+
+    cleared_call_sign: Annotated[str, PropertyInfo(alias="clearedCallSign")]
+    """The call sign of the sortie cleared with this diplomatic clearance."""
+
+    country_code: Annotated[str, PropertyInfo(alias="countryCode")]
+    """
+    The DoD Standard Country Code designator for the country issuing the diplomatic
+    clearance. This field will be set to "OTHR" if the source value does not match a
+    UDL Country code value (ISO-3166-ALPHA-2).
+    """
+
+    country_name: Annotated[str, PropertyInfo(alias="countryName")]
+    """Name of the country issuing this diplomatic clearance."""
+
+    entry_net: Annotated[Union[str, datetime], PropertyInfo(alias="entryNET", format="iso8601")]
+    """
+    Earliest time the aircraft may enter the country, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    entry_point: Annotated[str, PropertyInfo(alias="entryPoint")]
+    """The navigation point name where the aircraft must enter the country."""
+
+    exit_nlt: Annotated[Union[str, datetime], PropertyInfo(alias="exitNLT", format="iso8601")]
+    """
+    Latest time the aircraft may exit the country, in ISO 8601 UTC format with
+    millisecond precision.
+    """
+
+    exit_point: Annotated[str, PropertyInfo(alias="exitPoint")]
+    """The navigation point name where the aircraft must exit the country."""
+
+    external_clearance_id: Annotated[str, PropertyInfo(alias="externalClearanceId")]
+    """Optional clearance ID from external systems.
+
+    This field has no meaning within UDL and is provided as a convenience for
+    systems that require tracking of an internal system generated ID.
+    """
+
+    id_sortie: Annotated[str, PropertyInfo(alias="idSortie")]
+    """
+    Unique identifier of the Aircraft Sortie associated with this diplomatic
+    clearance record.
+    """
+
+    leg_num: Annotated[int, PropertyInfo(alias="legNum")]
+    """Identifies the Itinerary point of a sortie where an air event occurs."""
+
+    profile: str
+    """The diplomatic clearance profile name used within clearance management systems."""
+
+    req_icao: Annotated[bool, PropertyInfo(alias="reqICAO")]
+    """
+    Flag indicating whether the clearance request requires ICAO specific
+    information.
+    """
+
+    req_point: Annotated[bool, PropertyInfo(alias="reqPoint")]
+    """Flag indicating whether entry/exit points are required for clearances."""
+
+    route_string: Annotated[str, PropertyInfo(alias="routeString")]
+    """
+    The 1801 fileable route of flight string associated with this diplomatic
+    clearance. The route of flight string contains route designators, significant
+    points, change of speed/altitude, change of flight rules, and cruise climbs.
+    """
+
+    sequence_num: Annotated[int, PropertyInfo(alias="sequenceNum")]
+    """
+    The placement of this diplomatic clearance within a sequence of clearances used
+    on a sortie. For example, a sequence value of 3 means that it is the third
+    diplomatic clearance the aircraft will use.
+    """
+
+    status: str
+    """Indicates the current status of the diplomatic clearance request."""
+
+    valid_desc: Annotated[str, PropertyInfo(alias="validDesc")]
+    """Description of when this diplomatic clearance is valid."""
+
+    valid_end_time: Annotated[Union[str, datetime], PropertyInfo(alias="validEndTime", format="iso8601")]
+    """
+    The end time of the validity of this diplomatic clearance, in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    valid_start_time: Annotated[Union[str, datetime], PropertyInfo(alias="validStartTime", format="iso8601")]
+    """
+    The start time of the validity of this diplomatic clearance, in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    window_remark: Annotated[str, PropertyInfo(alias="windowRemark")]
+    """Remarks concerning the valid diplomatic clearance window."""
+
+
+class BodyDiplomaticClearanceRemark(TypedDict, total=False):
+    date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Date the remark was published, in ISO 8601 UTC format, with millisecond
+    precision.
+    """
+
+    gdss_remark_id: Annotated[str, PropertyInfo(alias="gdssRemarkId")]
+    """Global Decision Support System (GDSS) remark identifier."""
+
+    text: str
+    """Text of the remark."""
+
+    user: str
+    """User who published the remark."""
+
+
+class Body(TypedDict, total=False):
+    classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
+    """Classification marking of the data in IC/CAPCO Portion-marked format."""
+
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
+    """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+    EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+    may include both real and simulated data.
+
+    REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+    events, and analysis.
+
+    SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+    datasets.
+
+    TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+    requirements, and for validating technical, functional, and performance
+    characteristics.
+    """
+
+    first_dep_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="firstDepDate", format="iso8601")]]
+    """
+    The First Departure Date (FDD) the mission is scheduled for departure, in ISO
+    8601 UTC format with millisecond precision.
+    """
+
+    id_mission: Required[Annotated[str, PropertyInfo(alias="idMission")]]
+    """
+    Unique identifier of the Mission associated with this diplomatic clearance
+    record.
+    """
+
+    source: Required[str]
+    """Source of the data."""
+
+    id: str
+    """
+    Unique identifier of the record, auto-generated by the system if not provided on
+    create operations.
+    """
+
+    apacs_id: Annotated[str, PropertyInfo(alias="apacsId")]
+    """
+    The Aircraft and Personnel Automated Clearance System (APACS) system identifier
+    used to process and approve this clearance request.
+    """
+
+    diplomatic_clearance_details: Annotated[
+        Iterable[BodyDiplomaticClearanceDetail], PropertyInfo(alias="diplomaticClearanceDetails")
+    ]
+    """Collection of diplomatic clearance details."""
+
+    diplomatic_clearance_remarks: Annotated[
+        Iterable[BodyDiplomaticClearanceRemark], PropertyInfo(alias="diplomaticClearanceRemarks")
+    ]
+    """Collection of diplomatic clearance remarks."""
+
+    dip_worksheet_name: Annotated[str, PropertyInfo(alias="dipWorksheetName")]
+    """
+    Identifier of the Diplomatic Clearance Worksheet used to coordinate aircraft
+    clearance requests.
+    """
+
+    doc_deadline: Annotated[Union[str, datetime], PropertyInfo(alias="docDeadline", format="iso8601")]
+    """
+    Suspense date for the diplomatic clearance worksheet to be worked, in ISO 8601
+    UTC format with millisecond precision.
+    """
+
+    external_worksheet_id: Annotated[str, PropertyInfo(alias="externalWorksheetId")]
+    """Optional diplomatic clearance worksheet ID from external systems.
+
+    This field has no meaning within UDL and is provided as a convenience for
+    systems that require tracking of an internal system generated ID.
+    """
+
+    origin: str
+    """
+    Originating system or organization which produced the data, if different from
+    the source. The origin may be different than the source if the source was a
+    mediating system which forwarded the data on behalf of the origin system. If
+    null, the source may be assumed to be the origin.
+    """

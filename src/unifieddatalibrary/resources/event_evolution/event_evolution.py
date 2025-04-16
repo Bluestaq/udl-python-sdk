@@ -14,7 +14,7 @@ from ...types import (
     event_evolution_tuple_params,
     event_evolution_create_params,
     event_evolution_create_bulk_params,
-    event_evolution_create_bulk_v2_params,
+    event_evolution_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -461,42 +461,6 @@ class EventEvolutionResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[event_evolution_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of EventEvolution records as a POST body and
-        ingest into the database. Requires a specific role, please contact the UDL team
-        to gain access. This operation is intended to be used for automated feeds into
-        UDL.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-eventevolution",
-            body=maybe_transform(body, Iterable[event_evolution_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def queryhelp(
         self,
         *,
@@ -583,6 +547,42 @@ class EventEvolutionResource(SyncAPIResource):
                 ),
             ),
             cast_to=EventEvolutionTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[event_evolution_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of EventEvolution records as a POST body and
+        ingest into the database. Requires a specific role, please contact the UDL team
+        to gain access. This operation is intended to be used for automated feeds into
+        UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-eventevolution",
+            body=maybe_transform(body, Iterable[event_evolution_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1002,42 +1002,6 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[event_evolution_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take a list of EventEvolution records as a POST body and
-        ingest into the database. Requires a specific role, please contact the UDL team
-        to gain access. This operation is intended to be used for automated feeds into
-        UDL.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-eventevolution",
-            body=await async_maybe_transform(body, Iterable[event_evolution_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def queryhelp(
         self,
         *,
@@ -1126,6 +1090,42 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
             cast_to=EventEvolutionTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[event_evolution_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take a list of EventEvolution records as a POST body and
+        ingest into the database. Requires a specific role, please contact the UDL team
+        to gain access. This operation is intended to be used for automated feeds into
+        UDL.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-eventevolution",
+            body=await async_maybe_transform(body, Iterable[event_evolution_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class EventEvolutionResourceWithRawResponse:
     def __init__(self, event_evolution: EventEvolutionResource) -> None:
@@ -1146,14 +1146,14 @@ class EventEvolutionResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            event_evolution.create_bulk_v2,
-        )
         self.queryhelp = to_raw_response_wrapper(
             event_evolution.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
             event_evolution.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            event_evolution.unvalidated_publish,
         )
 
     @cached_property
@@ -1180,14 +1180,14 @@ class AsyncEventEvolutionResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            event_evolution.create_bulk_v2,
-        )
         self.queryhelp = async_to_raw_response_wrapper(
             event_evolution.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
             event_evolution.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            event_evolution.unvalidated_publish,
         )
 
     @cached_property
@@ -1214,14 +1214,14 @@ class EventEvolutionResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            event_evolution.create_bulk_v2,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             event_evolution.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
             event_evolution.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            event_evolution.unvalidated_publish,
         )
 
     @cached_property
@@ -1248,14 +1248,14 @@ class AsyncEventEvolutionResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             event_evolution.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            event_evolution.create_bulk_v2,
-        )
         self.queryhelp = async_to_streamed_response_wrapper(
             event_evolution.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
             event_evolution.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            event_evolution.unvalidated_publish,
         )
 
     @cached_property

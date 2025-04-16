@@ -14,7 +14,7 @@ from ...types import (
     effect_response_tuple_params,
     effect_response_create_params,
     effect_response_create_bulk_params,
-    effect_response_create_bulk_v2_params,
+    effect_response_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -378,42 +378,6 @@ class EffectResponsesResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[effect_response_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple EffectResponses as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-effectresponse",
-            body=maybe_transform(body, Iterable[effect_response_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def query_help(
         self,
         *,
@@ -492,6 +456,42 @@ class EffectResponsesResource(SyncAPIResource):
                 ),
             ),
             cast_to=EffectResponseTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[effect_response_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple EffectResponses as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-effectresponse",
+            body=maybe_transform(body, Iterable[effect_response_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -830,42 +830,6 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[effect_response_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple EffectResponses as a POST body and ingest
-        into the database. This operation is intended to be used for automated feeds
-        into UDL. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-effectresponse",
-            body=await async_maybe_transform(body, Iterable[effect_response_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def query_help(
         self,
         *,
@@ -946,6 +910,42 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
             cast_to=EffectResponseTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[effect_response_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple EffectResponses as a POST body and ingest
+        into the database. This operation is intended to be used for automated feeds
+        into UDL. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-effectresponse",
+            body=await async_maybe_transform(body, Iterable[effect_response_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class EffectResponsesResourceWithRawResponse:
     def __init__(self, effect_responses: EffectResponsesResource) -> None:
@@ -966,14 +966,14 @@ class EffectResponsesResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             effect_responses.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            effect_responses.create_bulk_v2,
-        )
         self.query_help = to_raw_response_wrapper(
             effect_responses.query_help,
         )
         self.tuple = to_raw_response_wrapper(
             effect_responses.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            effect_responses.unvalidated_publish,
         )
 
     @cached_property
@@ -1000,14 +1000,14 @@ class AsyncEffectResponsesResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             effect_responses.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            effect_responses.create_bulk_v2,
-        )
         self.query_help = async_to_raw_response_wrapper(
             effect_responses.query_help,
         )
         self.tuple = async_to_raw_response_wrapper(
             effect_responses.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            effect_responses.unvalidated_publish,
         )
 
     @cached_property
@@ -1034,14 +1034,14 @@ class EffectResponsesResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             effect_responses.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            effect_responses.create_bulk_v2,
-        )
         self.query_help = to_streamed_response_wrapper(
             effect_responses.query_help,
         )
         self.tuple = to_streamed_response_wrapper(
             effect_responses.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            effect_responses.unvalidated_publish,
         )
 
     @cached_property
@@ -1068,14 +1068,14 @@ class AsyncEffectResponsesResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             effect_responses.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            effect_responses.create_bulk_v2,
-        )
         self.query_help = async_to_streamed_response_wrapper(
             effect_responses.query_help,
         )
         self.tuple = async_to_streamed_response_wrapper(
             effect_responses.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            effect_responses.unvalidated_publish,
         )
 
     @cached_property

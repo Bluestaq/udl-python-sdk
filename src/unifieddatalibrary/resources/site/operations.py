@@ -28,7 +28,7 @@ from ...types.site import (
     operation_create_params,
     operation_update_params,
     operation_create_bulk_params,
-    operation_create_bulk_v2_params,
+    operation_unvalidated_publish_params,
 )
 from ..._base_client import make_request_options
 from ...types.site.operation_list_response import OperationListResponse
@@ -533,42 +533,6 @@ class OperationsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[operation_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple siteoperations records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-siteoperations",
-            body=maybe_transform(body, Iterable[operation_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def query_help(
         self,
         *,
@@ -646,6 +610,42 @@ class OperationsResource(SyncAPIResource):
                 ),
             ),
             cast_to=OperationTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[operation_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple siteoperations records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-siteoperations",
+            body=maybe_transform(body, Iterable[operation_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1144,42 +1144,6 @@ class AsyncOperationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[operation_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple siteoperations records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-siteoperations",
-            body=await async_maybe_transform(body, Iterable[operation_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def query_help(
         self,
         *,
@@ -1259,6 +1223,42 @@ class AsyncOperationsResource(AsyncAPIResource):
             cast_to=OperationTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[operation_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple siteoperations records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-siteoperations",
+            body=await async_maybe_transform(body, Iterable[operation_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class OperationsResourceWithRawResponse:
     def __init__(self, operations: OperationsResource) -> None:
@@ -1285,14 +1285,14 @@ class OperationsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             operations.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            operations.create_bulk_v2,
-        )
         self.query_help = to_raw_response_wrapper(
             operations.query_help,
         )
         self.tuple = to_raw_response_wrapper(
             operations.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            operations.unvalidated_publish,
         )
 
 
@@ -1321,14 +1321,14 @@ class AsyncOperationsResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             operations.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            operations.create_bulk_v2,
-        )
         self.query_help = async_to_raw_response_wrapper(
             operations.query_help,
         )
         self.tuple = async_to_raw_response_wrapper(
             operations.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            operations.unvalidated_publish,
         )
 
 
@@ -1357,14 +1357,14 @@ class OperationsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             operations.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            operations.create_bulk_v2,
-        )
         self.query_help = to_streamed_response_wrapper(
             operations.query_help,
         )
         self.tuple = to_streamed_response_wrapper(
             operations.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            operations.unvalidated_publish,
         )
 
 
@@ -1393,12 +1393,12 @@ class AsyncOperationsResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             operations.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            operations.create_bulk_v2,
-        )
         self.query_help = async_to_streamed_response_wrapper(
             operations.query_help,
         )
         self.tuple = async_to_streamed_response_wrapper(
             operations.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            operations.unvalidated_publish,
         )

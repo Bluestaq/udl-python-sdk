@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ..types import ecpsdr_create_bulk_v2_params
+from ..types import ecpsdr_unvalidated_publish_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -45,10 +45,10 @@ class EcpsdrResource(SyncAPIResource):
         """
         return EcpsdrResourceWithStreamingResponse(self)
 
-    def create_bulk_v2(
+    def unvalidated_publish(
         self,
         *,
-        body: Iterable[ecpsdr_create_bulk_v2_params.Body],
+        body: Iterable[ecpsdr_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,7 +74,7 @@ class EcpsdrResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-ecpsdr",
-            body=maybe_transform(body, Iterable[ecpsdr_create_bulk_v2_params.Body]),
+            body=maybe_transform(body, Iterable[ecpsdr_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -102,10 +102,10 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         """
         return AsyncEcpsdrResourceWithStreamingResponse(self)
 
-    async def create_bulk_v2(
+    async def unvalidated_publish(
         self,
         *,
-        body: Iterable[ecpsdr_create_bulk_v2_params.Body],
+        body: Iterable[ecpsdr_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,7 +131,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-ecpsdr",
-            body=await async_maybe_transform(body, Iterable[ecpsdr_create_bulk_v2_params.Body]),
+            body=await async_maybe_transform(body, Iterable[ecpsdr_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -143,8 +143,8 @@ class EcpsdrResourceWithRawResponse:
     def __init__(self, ecpsdr: EcpsdrResource) -> None:
         self._ecpsdr = ecpsdr
 
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            ecpsdr.create_bulk_v2,
+        self.unvalidated_publish = to_raw_response_wrapper(
+            ecpsdr.unvalidated_publish,
         )
 
 
@@ -152,8 +152,8 @@ class AsyncEcpsdrResourceWithRawResponse:
     def __init__(self, ecpsdr: AsyncEcpsdrResource) -> None:
         self._ecpsdr = ecpsdr
 
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            ecpsdr.create_bulk_v2,
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            ecpsdr.unvalidated_publish,
         )
 
 
@@ -161,8 +161,8 @@ class EcpsdrResourceWithStreamingResponse:
     def __init__(self, ecpsdr: EcpsdrResource) -> None:
         self._ecpsdr = ecpsdr
 
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            ecpsdr.create_bulk_v2,
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            ecpsdr.unvalidated_publish,
         )
 
 
@@ -170,6 +170,6 @@ class AsyncEcpsdrResourceWithStreamingResponse:
     def __init__(self, ecpsdr: AsyncEcpsdrResource) -> None:
         self._ecpsdr = ecpsdr
 
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            ecpsdr.create_bulk_v2,
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            ecpsdr.unvalidated_publish,
         )

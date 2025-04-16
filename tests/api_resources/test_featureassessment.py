@@ -238,64 +238,6 @@ class TestFeatureassessment:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        featureassessment = client.featureassessment.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
-                    "feature_uo_m": "MHz",
-                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert featureassessment is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.featureassessment.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
-                    "feature_uo_m": "MHz",
-                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        featureassessment = response.parse()
-        assert featureassessment is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.featureassessment.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
-                    "feature_uo_m": "MHz",
-                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            featureassessment = response.parse()
-            assert featureassessment is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_query(self, client: Unifieddatalibrary) -> None:
         featureassessment = client.featureassessment.query(
             id_analytic_imagery="idAnalyticImagery",
@@ -382,6 +324,64 @@ class TestFeatureassessment:
 
             featureassessment = response.parse()
             assert_matches_type(FeatureassessmentTupleResponse, featureassessment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        featureassessment = client.featureassessment.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
+                    "feature_uo_m": "MHz",
+                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert featureassessment is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.featureassessment.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
+                    "feature_uo_m": "MHz",
+                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        featureassessment = response.parse()
+        assert featureassessment is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.featureassessment.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
+                    "feature_uo_m": "MHz",
+                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            featureassessment = response.parse()
+            assert featureassessment is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -605,64 +605,6 @@ class TestAsyncFeatureassessment:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        featureassessment = await async_client.featureassessment.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
-                    "feature_uo_m": "MHz",
-                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert featureassessment is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.featureassessment.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
-                    "feature_uo_m": "MHz",
-                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        featureassessment = await response.parse()
-        assert featureassessment is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.featureassessment.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
-                    "feature_uo_m": "MHz",
-                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            featureassessment = await response.parse()
-            assert featureassessment is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         featureassessment = await async_client.featureassessment.query(
             id_analytic_imagery="idAnalyticImagery",
@@ -749,5 +691,63 @@ class TestAsyncFeatureassessment:
 
             featureassessment = await response.parse()
             assert_matches_type(FeatureassessmentTupleResponse, featureassessment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        featureassessment = await async_client.featureassessment.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
+                    "feature_uo_m": "MHz",
+                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert featureassessment is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.featureassessment.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
+                    "feature_uo_m": "MHz",
+                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        featureassessment = await response.parse()
+        assert featureassessment is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.featureassessment.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "feature_ts": parse_datetime("2024-06-22T17:53:06.123Z"),
+                    "feature_uo_m": "MHz",
+                    "id_analytic_imagery": "fa1509ae-c19d-432e-9542-e5d1e0f47bc3",
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            featureassessment = await response.parse()
+            assert featureassessment is None
 
         assert cast(Any, response.is_closed) is True

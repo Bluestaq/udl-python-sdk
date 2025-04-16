@@ -537,58 +537,6 @@ class TestManeuvers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        maneuver = client.maneuvers.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert maneuver is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.maneuvers.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        maneuver = response.parse()
-        assert maneuver is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.maneuvers.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            maneuver = response.parse()
-            assert maneuver is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         maneuver = client.maneuvers.get(
             "id",
@@ -682,6 +630,58 @@ class TestManeuvers:
 
             maneuver = response.parse()
             assert_matches_type(ManeuverTupleResponse, maneuver, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        maneuver = client.maneuvers.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert maneuver is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.maneuvers.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        maneuver = response.parse()
+        assert maneuver is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.maneuvers.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            maneuver = response.parse()
+            assert maneuver is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -1204,58 +1204,6 @@ class TestAsyncManeuvers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        maneuver = await async_client.maneuvers.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert maneuver is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.maneuvers.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        maneuver = await response.parse()
-        assert maneuver is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.maneuvers.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            maneuver = await response.parse()
-            assert maneuver is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         maneuver = await async_client.maneuvers.get(
             "id",
@@ -1349,5 +1297,57 @@ class TestAsyncManeuvers:
 
             maneuver = await response.parse()
             assert_matches_type(ManeuverTupleResponse, maneuver, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        maneuver = await async_client.maneuvers.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert maneuver is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.maneuvers.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        maneuver = await response.parse()
+        assert maneuver is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.maneuvers.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "event_start_time": parse_datetime("2023-11-16T01:05:16.835689Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            maneuver = await response.parse()
+            assert maneuver is None
 
         assert cast(Any, response.is_closed) is True

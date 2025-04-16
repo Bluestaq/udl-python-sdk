@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ..types import ais_object_create_bulk_v2_params
+from ..types import ais_object_unvalidated_publish_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -45,10 +45,10 @@ class AIsObjectsResource(SyncAPIResource):
         """
         return AIsObjectsResourceWithStreamingResponse(self)
 
-    def create_bulk_v2(
+    def unvalidated_publish(
         self,
         *,
-        body: Iterable[ais_object_create_bulk_v2_params.Body],
+        body: Iterable[ais_object_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,7 +74,7 @@ class AIsObjectsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/filedrop/udl-ais",
-            body=maybe_transform(body, Iterable[ais_object_create_bulk_v2_params.Body]),
+            body=maybe_transform(body, Iterable[ais_object_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -102,10 +102,10 @@ class AsyncAIsObjectsResource(AsyncAPIResource):
         """
         return AsyncAIsObjectsResourceWithStreamingResponse(self)
 
-    async def create_bulk_v2(
+    async def unvalidated_publish(
         self,
         *,
-        body: Iterable[ais_object_create_bulk_v2_params.Body],
+        body: Iterable[ais_object_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,7 +131,7 @@ class AsyncAIsObjectsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/filedrop/udl-ais",
-            body=await async_maybe_transform(body, Iterable[ais_object_create_bulk_v2_params.Body]),
+            body=await async_maybe_transform(body, Iterable[ais_object_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -143,8 +143,8 @@ class AIsObjectsResourceWithRawResponse:
     def __init__(self, ais_objects: AIsObjectsResource) -> None:
         self._ais_objects = ais_objects
 
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            ais_objects.create_bulk_v2,
+        self.unvalidated_publish = to_raw_response_wrapper(
+            ais_objects.unvalidated_publish,
         )
 
 
@@ -152,8 +152,8 @@ class AsyncAIsObjectsResourceWithRawResponse:
     def __init__(self, ais_objects: AsyncAIsObjectsResource) -> None:
         self._ais_objects = ais_objects
 
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            ais_objects.create_bulk_v2,
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            ais_objects.unvalidated_publish,
         )
 
 
@@ -161,8 +161,8 @@ class AIsObjectsResourceWithStreamingResponse:
     def __init__(self, ais_objects: AIsObjectsResource) -> None:
         self._ais_objects = ais_objects
 
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            ais_objects.create_bulk_v2,
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            ais_objects.unvalidated_publish,
         )
 
 
@@ -170,6 +170,6 @@ class AsyncAIsObjectsResourceWithStreamingResponse:
     def __init__(self, ais_objects: AsyncAIsObjectsResource) -> None:
         self._ais_objects = ais_objects
 
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            ais_objects.create_bulk_v2,
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            ais_objects.unvalidated_publish,
         )

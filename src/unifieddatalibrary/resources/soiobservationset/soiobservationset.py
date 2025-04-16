@@ -14,7 +14,7 @@ from ...types import (
     soiobservationset_tuple_params,
     soiobservationset_create_params,
     soiobservationset_create_bulk_params,
-    soiobservationset_create_bulk_v2_params,
+    soiobservationset_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -588,42 +588,6 @@ class SoiobservationsetResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[soiobservationset_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple SOIObservationSet records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/filedrop/udl-soiobservationset",
-            body=maybe_transform(body, Iterable[soiobservationset_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def get(
         self,
         id: str,
@@ -736,6 +700,42 @@ class SoiobservationsetResource(SyncAPIResource):
                 ),
             ),
             cast_to=SoiobservationsetTupleResponse,
+        )
+
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[soiobservationset_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple SOIObservationSet records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-soiobservationset",
+            body=maybe_transform(body, Iterable[soiobservationset_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
         )
 
 
@@ -1282,42 +1282,6 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def create_bulk_v2(
-        self,
-        *,
-        body: Iterable[soiobservationset_create_bulk_v2_params.Body],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to take multiple SOIObservationSet records as a POST body and
-        ingest into the database. This operation is intended to be used for automated
-        feeds into UDL. A specific role is required to perform this service operation.
-        Please contact the UDL team for assistance.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/filedrop/udl-soiobservationset",
-            body=await async_maybe_transform(body, Iterable[soiobservationset_create_bulk_v2_params.Body]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def get(
         self,
         id: str,
@@ -1432,6 +1396,42 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
             cast_to=SoiobservationsetTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[soiobservationset_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple SOIObservationSet records as a POST body and
+        ingest into the database. This operation is intended to be used for automated
+        feeds into UDL. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-soiobservationset",
+            body=await async_maybe_transform(body, Iterable[soiobservationset_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class SoiobservationsetResourceWithRawResponse:
     def __init__(self, soiobservationset: SoiobservationsetResource) -> None:
@@ -1449,9 +1449,6 @@ class SoiobservationsetResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             soiobservationset.create_bulk,
         )
-        self.create_bulk_v2 = to_raw_response_wrapper(
-            soiobservationset.create_bulk_v2,
-        )
         self.get = to_raw_response_wrapper(
             soiobservationset.get,
         )
@@ -1460,6 +1457,9 @@ class SoiobservationsetResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             soiobservationset.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            soiobservationset.unvalidated_publish,
         )
 
     @cached_property
@@ -1483,9 +1483,6 @@ class AsyncSoiobservationsetResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             soiobservationset.create_bulk,
         )
-        self.create_bulk_v2 = async_to_raw_response_wrapper(
-            soiobservationset.create_bulk_v2,
-        )
         self.get = async_to_raw_response_wrapper(
             soiobservationset.get,
         )
@@ -1494,6 +1491,9 @@ class AsyncSoiobservationsetResourceWithRawResponse:
         )
         self.tuple = async_to_raw_response_wrapper(
             soiobservationset.tuple,
+        )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            soiobservationset.unvalidated_publish,
         )
 
     @cached_property
@@ -1517,9 +1517,6 @@ class SoiobservationsetResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             soiobservationset.create_bulk,
         )
-        self.create_bulk_v2 = to_streamed_response_wrapper(
-            soiobservationset.create_bulk_v2,
-        )
         self.get = to_streamed_response_wrapper(
             soiobservationset.get,
         )
@@ -1528,6 +1525,9 @@ class SoiobservationsetResourceWithStreamingResponse:
         )
         self.tuple = to_streamed_response_wrapper(
             soiobservationset.tuple,
+        )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            soiobservationset.unvalidated_publish,
         )
 
     @cached_property
@@ -1551,9 +1551,6 @@ class AsyncSoiobservationsetResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             soiobservationset.create_bulk,
         )
-        self.create_bulk_v2 = async_to_streamed_response_wrapper(
-            soiobservationset.create_bulk_v2,
-        )
         self.get = async_to_streamed_response_wrapper(
             soiobservationset.get,
         )
@@ -1562,6 +1559,9 @@ class AsyncSoiobservationsetResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             soiobservationset.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            soiobservationset.unvalidated_publish,
         )
 
     @cached_property

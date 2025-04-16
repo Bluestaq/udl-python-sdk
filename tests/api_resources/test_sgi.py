@@ -406,61 +406,6 @@ class TestSgi:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        sgi = client.sgi.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert sgi is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.sgi.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sgi = response.parse()
-        assert sgi is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.sgi.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sgi = response.parse()
-            assert sgi is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.get(
             "id",
@@ -593,6 +538,61 @@ class TestSgi:
 
             sgi = response.parse()
             assert_matches_type(SgiTupleResponse, sgi, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        sgi = client.sgi.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert sgi is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.sgi.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sgi = response.parse()
+        assert sgi is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.sgi.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sgi = response.parse()
+            assert sgi is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -984,61 +984,6 @@ class TestAsyncSgi:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sgi = await async_client.sgi.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-        assert sgi is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sgi.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sgi = await response.parse()
-        assert sgi is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sgi.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
-                    "source": "Bluestaq",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sgi = await response.parse()
-            assert sgi is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.get(
             "id",
@@ -1175,5 +1120,60 @@ class TestAsyncSgi:
 
             sgi = await response.parse()
             assert_matches_type(SgiTupleResponse, sgi, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sgi = await async_client.sgi.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+        assert sgi is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sgi.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sgi = await response.parse()
+        assert sgi is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sgi.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "effective_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "sgi_date": parse_datetime("2018-01-01T16:00:00.123Z"),
+                    "source": "Bluestaq",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sgi = await response.parse()
+            assert sgi is None
 
         assert cast(Any, response.is_closed) is True

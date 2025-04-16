@@ -263,64 +263,6 @@ class TestDatalink:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        datalink = client.link_status.datalink.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "op_ex_name": "DESERT WIND",
-                    "originator": "USCENTCOM",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
-                }
-            ],
-        )
-        assert datalink is None
-
-    @parametrize
-    def test_raw_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        response = client.link_status.datalink.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "op_ex_name": "DESERT WIND",
-                    "originator": "USCENTCOM",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        datalink = response.parse()
-        assert datalink is None
-
-    @parametrize
-    def test_streaming_response_create_bulk_v2(self, client: Unifieddatalibrary) -> None:
-        with client.link_status.datalink.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "op_ex_name": "DESERT WIND",
-                    "originator": "USCENTCOM",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            datalink = response.parse()
-            assert datalink is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         datalink = client.link_status.datalink.queryhelp()
         assert datalink is None
@@ -376,6 +318,64 @@ class TestDatalink:
 
             datalink = response.parse()
             assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                }
+            ],
+        )
+        assert datalink is None
+
+    @parametrize
+    def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        response = client.link_status.datalink.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        datalink = response.parse()
+        assert datalink is None
+
+    @parametrize
+    def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
+        with client.link_status.datalink.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            datalink = response.parse()
+            assert datalink is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -625,64 +625,6 @@ class TestAsyncDatalink:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        datalink = await async_client.link_status.datalink.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "op_ex_name": "DESERT WIND",
-                    "originator": "USCENTCOM",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
-                }
-            ],
-        )
-        assert datalink is None
-
-    @parametrize
-    async def test_raw_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.link_status.datalink.with_raw_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "op_ex_name": "DESERT WIND",
-                    "originator": "USCENTCOM",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
-                }
-            ],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        datalink = await response.parse()
-        assert datalink is None
-
-    @parametrize
-    async def test_streaming_response_create_bulk_v2(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.link_status.datalink.with_streaming_response.create_bulk_v2(
-            body=[
-                {
-                    "classification_marking": "U",
-                    "data_mode": "TEST",
-                    "op_ex_name": "DESERT WIND",
-                    "originator": "USCENTCOM",
-                    "source": "Bluestaq",
-                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            datalink = await response.parse()
-            assert datalink is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         datalink = await async_client.link_status.datalink.queryhelp()
         assert datalink is None
@@ -738,5 +680,63 @@ class TestAsyncDatalink:
 
             datalink = await response.parse()
             assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                }
+            ],
+        )
+        assert datalink is None
+
+    @parametrize
+    async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.link_status.datalink.with_raw_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        datalink = await response.parse()
+        assert datalink is None
+
+    @parametrize
+    async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.link_status.datalink.with_streaming_response.unvalidated_publish(
+            body=[
+                {
+                    "classification_marking": "U",
+                    "data_mode": "TEST",
+                    "op_ex_name": "DESERT WIND",
+                    "originator": "USCENTCOM",
+                    "source": "Bluestaq",
+                    "start_time": parse_datetime("2024-01-07T13:55:43.123Z"),
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            datalink = await response.parse()
+            assert datalink is None
 
         assert cast(Any, response.is_closed) is True
