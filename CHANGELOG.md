@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-04-17)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** Updating docs location ([bb10d23](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/bb10d231c954cfea580620b630ba3e52109a5669))
+
 ## 0.1.0-alpha.1 (2025-04-17)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
