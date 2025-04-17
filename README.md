@@ -32,10 +32,7 @@ client = Unifieddatalibrary(
     password=os.environ.get("UDL_AUTH_PASSWORD"),  # This is the default and can be omitted
 )
 
-conjunction_full = client.conjunctions.retrieve(
-    "id",
-)
-print(conjunction_full.id)
+elset_abridgeds = client.elsets.current.list()
 ```
 
 While you can provide a `username` keyword argument,
@@ -59,10 +56,7 @@ client = AsyncUnifieddatalibrary(
 
 
 async def main() -> None:
-    conjunction_full = await client.conjunctions.retrieve(
-        "id",
-    )
-    print(conjunction_full.id)
+    elset_abridgeds = await client.elsets.current.list()
 
 
 asyncio.run(main())
@@ -179,9 +173,7 @@ from unifieddatalibrary import Unifieddatalibrary
 client = Unifieddatalibrary()
 
 try:
-    client.conjunctions.retrieve(
-        "id",
-    )
+    client.elsets.current.list()
 except unifieddatalibrary.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -224,9 +216,7 @@ client = Unifieddatalibrary(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).conjunctions.retrieve(
-    "id",
-)
+client.with_options(max_retries=5).elsets.current.list()
 ```
 
 ### Timeouts
@@ -249,9 +239,7 @@ client = Unifieddatalibrary(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).conjunctions.retrieve(
-    "id",
-)
+client.with_options(timeout=5.0).elsets.current.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -292,13 +280,11 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from unifieddatalibrary import Unifieddatalibrary
 
 client = Unifieddatalibrary()
-response = client.conjunctions.with_raw_response.retrieve(
-    "id",
-)
+response = client.elsets.current.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
-conjunction = response.parse()  # get the object that `conjunctions.retrieve()` would have returned
-print(conjunction.id)
+current = response.parse()  # get the object that `elsets.current.list()` would have returned
+print(current)
 ```
 
 These methods return an [`APIResponse`](https://github.com/rsivilli-bluestaq/udl-python-sdk/tree/main/src/unifieddatalibrary/_response.py) object.
@@ -312,9 +298,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.conjunctions.with_streaming_response.retrieve(
-    "id",
-) as response:
+with client.elsets.current.with_streaming_response.list() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
