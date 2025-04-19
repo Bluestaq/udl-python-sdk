@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-04-19)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* **internal:** update models test ([e1d7b87](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/e1d7b87179c5af4eb152eace2fec823d831dceed))
+
 ## 0.1.0-alpha.3 (2025-04-17)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
