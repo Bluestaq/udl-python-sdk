@@ -8,8 +8,8 @@ from unifieddatalibrary.types import (
     AttitudesetFull,
     CollectRequestFull,
     CollectResponseFull,
-    DriftHistory,
-    DrifthistoryAbridged,
+    DriftHistoryAbridged,
+    DriftHistoryFull,
     EopFull,
     EphemerisFull,
     EvacFull,
@@ -1272,7 +1272,7 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="get /udl/drifthistory/{id}">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/shared/drift_history.py">DriftHistory</a></code>
+- <code title="get /udl/drifthistory/{id}">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">retrieve</a>(id) -> <a href="./src/unifieddatalibrary/types/shared/drift_history_full.py">DriftHistoryFull</a></code>
 - <code title="get /udl/drifthistory">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">list</a>() -> <a href="./src/unifieddatalibrary/types/drift_history_list_response.py">DriftHistoryListResponse</a></code>
 - <code title="get /udl/drifthistory/count">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">count</a>() -> str</code>
 - <code title="get /udl/drifthistory/queryhelp">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">queryhelp</a>() -> None</code>
