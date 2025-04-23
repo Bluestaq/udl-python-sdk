@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-04-23)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([430e3f0](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/430e3f0690dbf135257443ef7740af86ed961a2f))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([be216a7](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/be216a785c378ff8c4fd2bcd272e3878b4e4de03))
+* **internal:** fix list file params ([0d37211](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/0d37211df09dc517da22cd07c2ddcfa7480e9586))
+* **internal:** import reformatting ([a5e0288](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/a5e0288d079b4132aa8b9a21ae01dad1b298934a))
+* **internal:** refactor retries to not use recursion ([874bd09](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/874bd0939513d1d7ac108340b5afaeb09e8168e4))
+
 ## 0.1.0-alpha.4 (2025-04-19)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)

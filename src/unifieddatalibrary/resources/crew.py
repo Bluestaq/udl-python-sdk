@@ -8,17 +8,9 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
-    crew_tuple_params,
-    crew_create_params,
-    crew_update_params,
-    crew_unvalidated_publish_params,
-)
+from ..types import crew_tuple_params, crew_create_params, crew_update_params, crew_unvalidated_publish_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
