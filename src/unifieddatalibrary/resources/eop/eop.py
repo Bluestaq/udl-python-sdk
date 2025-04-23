@@ -8,13 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import (
-    eop_list_params,
-    eop_count_params,
-    eop_create_params,
-    eop_update_params,
-    eop_list_tuple_params,
-)
+from ...types import eop_list_params, eop_count_params, eop_create_params, eop_update_params, eop_list_tuple_params
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -24,10 +18,7 @@ from .history import (
     AsyncHistoryResourceWithStreamingResponse,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
