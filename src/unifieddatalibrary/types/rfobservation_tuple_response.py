@@ -7,7 +7,7 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
+from .shared.onorbit_full import OnorbitFull
 
 __all__ = ["RfobservationTupleResponse", "RfobservationTupleResponseItem"]
 
@@ -182,7 +182,7 @@ class RfobservationTupleResponseItem(BaseModel):
     nominal_snr: Optional[float] = FieldInfo(alias="nominalSnr", default=None)
     """Nominal or expected signal to noise ratio, in dB."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None

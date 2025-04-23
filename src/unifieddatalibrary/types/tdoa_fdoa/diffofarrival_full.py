@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.onorbit import Onorbit
+from ..shared.onorbit_full import OnorbitFull
 
 __all__ = ["DiffofarrivalFull"]
 
@@ -102,7 +102,7 @@ class DiffofarrivalFull(BaseModel):
     id_sensor2: Optional[str] = FieldInfo(alias="idSensor2", default=None)
     """Sensor ID of the secondary/2nd sensor used for this measurement."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None

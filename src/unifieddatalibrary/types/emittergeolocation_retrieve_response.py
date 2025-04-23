@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
+from .shared.onorbit_full import OnorbitFull
 
 __all__ = ["EmittergeolocationRetrieveResponse"]
 
@@ -186,7 +186,7 @@ class EmittergeolocationRetrieveResponse(BaseModel):
     num_bursts: Optional[int] = FieldInfo(alias="numBursts", default=None)
     """The count of single-burst observations used for this geolocation observation."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     order_id: Optional[str] = FieldInfo(alias="orderId", default=None)

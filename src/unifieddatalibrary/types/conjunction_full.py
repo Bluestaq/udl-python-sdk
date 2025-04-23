@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
+from .shared.onorbit_full import OnorbitFull
 
 __all__ = ["ConjunctionFull", "StateVector1", "StateVector2"]
 
@@ -1476,10 +1476,10 @@ class ConjunctionFull(BaseModel):
     miss_distance: Optional[float] = FieldInfo(alias="missDistance", default=None)
     """Distance between objects at Time of Closest Approach (TCA) in meters."""
 
-    on_orbit1: Optional[Onorbit] = FieldInfo(alias="onOrbit1", default=None)
+    on_orbit1: Optional[OnorbitFull] = FieldInfo(alias="onOrbit1", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
-    on_orbit2: Optional[Onorbit] = FieldInfo(alias="onOrbit2", default=None)
+    on_orbit2: Optional[OnorbitFull] = FieldInfo(alias="onOrbit2", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     orig_id_on_orbit1: Optional[str] = FieldInfo(alias="origIdOnOrbit1", default=None)

@@ -16,7 +16,7 @@ from unifieddatalibrary.types import (
     EventEvolutionFull,
     FileData,
     FlightPlanFull,
-    Onorbit,
+    OnorbitFull,
 )
 ```
 
@@ -2855,7 +2855,7 @@ Methods:
 - <code title="get /udl/onorbit">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">list</a>() -> <a href="./src/unifieddatalibrary/types/onorbit_list_response.py">OnorbitListResponse</a></code>
 - <code title="delete /udl/onorbit/{id}">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">delete</a>(id) -> None</code>
 - <code title="get /udl/onorbit/count">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">count</a>() -> str</code>
-- <code title="get /udl/onorbit/{id}">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/shared/onorbit.py">Onorbit</a></code>
+- <code title="get /udl/onorbit/{id}">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">get</a>(id) -> <a href="./src/unifieddatalibrary/types/shared/onorbit_full.py">OnorbitFull</a></code>
 - <code title="get /udl/onorbit/getSignature">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">get_signature</a>(\*\*<a href="src/unifieddatalibrary/types/onorbit_get_signature_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/onorbit_get_signature_response.py">OnorbitGetSignatureResponse</a></code>
 - <code title="get /udl/onorbit/queryhelp">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">queryhelp</a>() -> None</code>
 - <code title="get /udl/onorbit/tuple">client.onorbit.<a href="./src/unifieddatalibrary/resources/onorbit/onorbit.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/onorbit_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/onorbit_tuple_response.py">OnorbitTupleResponse</a></code>

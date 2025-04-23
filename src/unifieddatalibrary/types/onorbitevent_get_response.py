@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
+from .shared.onorbit_full import OnorbitFull
 
 __all__ = ["OnorbiteventGetResponse"]
 
@@ -153,7 +153,7 @@ class OnorbiteventGetResponse(BaseModel):
     official_loss_date: Optional[datetime] = FieldInfo(alias="officialLossDate", default=None)
     """Date time of official loss of the spacecraft."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     operated_on_behalf_of_org_id: Optional[str] = FieldInfo(alias="operatedOnBehalfOfOrgId", default=None)
