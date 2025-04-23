@@ -7,13 +7,7 @@ from datetime import datetime
 
 import httpx
 
-from ...types import (
-    ai_list_params,
-    ai_count_params,
-    ai_tuple_params,
-    ai_create_bulk_params,
-    ai_history_count_params,
-)
+from ...types import ai_list_params, ai_count_params, ai_tuple_params, ai_create_bulk_params, ai_history_count_params
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -23,10 +17,7 @@ from .history import (
     AsyncHistoryResourceWithStreamingResponse,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (

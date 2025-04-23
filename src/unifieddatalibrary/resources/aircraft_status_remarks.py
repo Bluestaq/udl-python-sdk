@@ -10,10 +10,7 @@ import httpx
 
 from ..types import aircraft_status_remark_tuple_params, aircraft_status_remark_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
