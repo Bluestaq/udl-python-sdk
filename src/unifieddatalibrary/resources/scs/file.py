@@ -17,9 +17,9 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.scs import file_list_params, file_update_params, file_retrieve_params
-from ...pagination import SyncOffsetPage, AsyncOffsetPage
-from ..._base_client import AsyncPaginator, make_request_options
+from ..._base_client import make_request_options
 from ...types.shared.file_data import FileData as SharedFileData
+from ...types.scs.file_list_response import FileListResponse
 from ...types.shared_params.file_data import FileData as SharedParamsFileData
 
 __all__ = ["FileResource", "AsyncFileResource"]
@@ -130,7 +130,7 @@ class FileResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncOffsetPage[SharedFileData]:
+    ) -> FileListResponse:
         """
         Returns a non-recursive list of FileData objects representing the files and
         subdirectories in the passed-in path directory that are visible to the calling
@@ -151,9 +151,8 @@ class FileResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/scs/list",
-            page=SyncOffsetPage[SharedFileData],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -168,7 +167,7 @@ class FileResource(SyncAPIResource):
                     file_list_params.FileListParams,
                 ),
             ),
-            model=SharedFileData,
+            cast_to=FileListResponse,
         )
 
 
@@ -265,7 +264,7 @@ class AsyncFileResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    def list(
+    async def list(
         self,
         *,
         path: str,
@@ -277,7 +276,7 @@ class AsyncFileResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[SharedFileData, AsyncOffsetPage[SharedFileData]]:
+    ) -> FileListResponse:
         """
         Returns a non-recursive list of FileData objects representing the files and
         subdirectories in the passed-in path directory that are visible to the calling
@@ -298,15 +297,14 @@ class AsyncFileResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/scs/list",
-            page=AsyncOffsetPage[SharedFileData],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "path": path,
                         "count": count,
@@ -315,7 +313,7 @@ class AsyncFileResource(AsyncAPIResource):
                     file_list_params.FileListParams,
                 ),
             ),
-            model=SharedFileData,
+            cast_to=FileListResponse,
         )
 
 
