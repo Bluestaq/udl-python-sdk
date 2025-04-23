@@ -15,7 +15,7 @@ from ..organization_full import OrganizationFull
 from ..solar_array_details_full import SolarArrayDetailsFull
 
 __all__ = [
-    "Onorbit",
+    "OnorbitFull",
     "Antenna",
     "Battery",
     "EntityCollection",
@@ -1641,7 +1641,7 @@ class Thruster(BaseModel):
     """
 
 
-class Onorbit(BaseModel):
+class OnorbitFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

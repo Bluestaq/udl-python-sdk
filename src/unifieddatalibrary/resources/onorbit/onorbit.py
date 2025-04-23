@@ -28,7 +28,7 @@ from .antenna_details import (
     AntennaDetailsResourceWithStreamingResponse,
     AsyncAntennaDetailsResourceWithStreamingResponse,
 )
-from ...types.shared.onorbit import Onorbit
+from ...types.shared.onorbit_full import OnorbitFull
 from ...types.onorbit_list_response import OnorbitListResponse
 from ...types.onorbit_tuple_response import OnorbitTupleResponse
 from ...types.onorbit_get_signature_response import OnorbitGetSignatureResponse
@@ -469,7 +469,7 @@ class OnorbitResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Onorbit:
+    ) -> OnorbitFull:
         """
         Service operation to get a single OnOrbit object by its unique ID passed as a
         path parameter.
@@ -490,7 +490,7 @@ class OnorbitResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Onorbit,
+            cast_to=OnorbitFull,
         )
 
     def get_signature(
@@ -1036,7 +1036,7 @@ class AsyncOnorbitResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Onorbit:
+    ) -> OnorbitFull:
         """
         Service operation to get a single OnOrbit object by its unique ID passed as a
         path parameter.
@@ -1057,7 +1057,7 @@ class AsyncOnorbitResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Onorbit,
+            cast_to=OnorbitFull,
         )
 
     async def get_signature(

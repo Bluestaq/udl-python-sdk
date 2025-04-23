@@ -3,8 +3,8 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .shared.onorbit import Onorbit
+from .shared.onorbit_full import OnorbitFull
 
 __all__ = ["OnorbitTupleResponse"]
 
-OnorbitTupleResponse: TypeAlias = List[Onorbit]
+OnorbitTupleResponse: TypeAlias = List[OnorbitFull]

@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .onorbit import Onorbit
 from ..._models import BaseModel
+from .onorbit_full import OnorbitFull
 
 __all__ = ["CollectResponseFull"]
 
@@ -88,7 +88,7 @@ class CollectResponseFull(BaseModel):
     notes: Optional[str] = None
     """Notes or comments associated with this response."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None

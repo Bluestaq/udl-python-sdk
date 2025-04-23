@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .onorbit import Onorbit
 from ..._models import BaseModel
+from .onorbit_full import OnorbitFull
 from .collect_response_full import CollectResponseFull
 
 __all__ = ["CollectRequestFull", "Elset", "StateVector"]
@@ -1247,7 +1247,7 @@ class CollectRequestFull(BaseModel):
     general non sensor specific request.
     """
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     orbit_regime: Optional[str] = FieldInfo(alias="orbitRegime", default=None)

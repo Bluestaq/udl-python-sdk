@@ -7,9 +7,9 @@ from .engine import Engine as Engine
 from .shared import (
     AIsFull as AIsFull,
     EopFull as EopFull,
-    Onorbit as Onorbit,
     EvacFull as EvacFull,
     FileData as FileData,
+    OnorbitFull as OnorbitFull,
     EphemerisFull as EphemerisFull,
     FlightPlanFull as FlightPlanFull,
     AttitudesetFull as AttitudesetFull,
