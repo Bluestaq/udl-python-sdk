@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from ...shared.onorbit import Onorbit
+from ...shared.onorbit_full import OnorbitFull
 
 __all__ = ["SarobservationFull"]
 
@@ -189,7 +189,7 @@ class SarobservationFull(BaseModel):
     ob_direction: Optional[str] = FieldInfo(alias="obDirection", default=None)
     """The antenna pointing direction (LEFT, RIGHT)."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     operating_band: Optional[str] = FieldInfo(alias="operatingBand", default=None)

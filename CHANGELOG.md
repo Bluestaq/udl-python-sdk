@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-04-24)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** manual updates ([4dc4bd9](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/4dc4bd9c4ae05f317a04b225dae8622636f5b37f))
+* **api:** manual updates ([c6d9e3c](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/c6d9e3c854b15daec803e7a0b7b6ff6e8957d01d))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([13be1cc](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/13be1ccd8bbc7c271cc130172c152d40f83ec7f0))
+* **ci:** only use depot for staging repos ([2f8f355](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/2f8f3550ecbc10e459c2fb24d131edd141cf8e6d))
+* **internal:** codegen related update ([db716f4](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/db716f4a0a11a370225639939496b1b46947bd6c))
+* **internal:** config updates ([765b963](https://github.com/rsivilli-bluestaq/udl-python-sdk/commit/765b963a6bbf925948faa63ab212641d765a49a6))
+
 ## 0.1.0-alpha.5 (2025-04-23)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)

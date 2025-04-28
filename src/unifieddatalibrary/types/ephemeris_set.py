@@ -7,8 +7,8 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.onorbit import Onorbit
 from .state_vector_full import StateVectorFull
+from .shared.onorbit_full import OnorbitFull
 from .shared.ephemeris_full import EphemerisFull
 
 __all__ = ["EphemerisSet"]
@@ -153,7 +153,7 @@ class EphemerisSet(BaseModel):
     lunar_solar: Optional[bool] = FieldInfo(alias="lunarSolar", default=None)
     """Boolean indicating use of lunar/solar data in ephemeris generation."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None

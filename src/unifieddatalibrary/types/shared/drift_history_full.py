@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["DrifthistoryAbridged"]
+__all__ = ["DriftHistoryFull"]
 
 
-class DrifthistoryAbridged(BaseModel):
+class DriftHistoryFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

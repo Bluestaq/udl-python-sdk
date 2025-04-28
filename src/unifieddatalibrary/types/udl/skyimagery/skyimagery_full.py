@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from ...shared.onorbit import Onorbit
+from ...shared.onorbit_full import OnorbitFull
 from ...eo_observations.eo_observation_full import EoObservationFull
 
 __all__ = ["SkyimageryFull"]
@@ -121,7 +121,7 @@ class SkyimageryFull(BaseModel):
     image_source_info: Optional[str] = FieldInfo(alias="imageSourceInfo", default=None)
     """String that uniquely identifies the data source."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None

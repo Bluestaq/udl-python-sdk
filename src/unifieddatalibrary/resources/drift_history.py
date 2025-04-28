@@ -16,7 +16,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.shared.drift_history import DriftHistory
+from ..types.shared.drift_history_full import DriftHistoryFull
 from ..types.drift_history_list_response import DriftHistoryListResponse
 from ..types.drift_history_tuple_response import DriftHistoryTupleResponse
 
@@ -53,7 +53,7 @@ class DriftHistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DriftHistory:
+    ) -> DriftHistoryFull:
         """
         Service operation to get a single DriftHistory record by its unique ID passed as
         a path parameter. DriftHistory represents historical drift rates for GEO Onorbit
@@ -75,7 +75,7 @@ class DriftHistoryResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DriftHistory,
+            cast_to=DriftHistoryFull,
         )
 
     def list(
@@ -229,7 +229,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DriftHistory:
+    ) -> DriftHistoryFull:
         """
         Service operation to get a single DriftHistory record by its unique ID passed as
         a path parameter. DriftHistory represents historical drift rates for GEO Onorbit
@@ -251,7 +251,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DriftHistory,
+            cast_to=DriftHistoryFull,
         )
 
     async def list(

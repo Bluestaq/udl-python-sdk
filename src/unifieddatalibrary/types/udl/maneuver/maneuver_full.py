@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
-from ...shared.onorbit import Onorbit
+from ...shared.onorbit_full import OnorbitFull
 
 __all__ = ["ManeuverFull", "PostEventElset", "PostEventStateVector", "PreEventElset", "PreEventStateVector"]
 
@@ -2100,7 +2100,7 @@ class ManeuverFull(BaseModel):
     precision.
     """
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None

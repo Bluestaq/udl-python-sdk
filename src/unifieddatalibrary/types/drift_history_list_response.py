@@ -3,8 +3,8 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .shared.drifthistory_abridged import DrifthistoryAbridged
+from .shared.drift_history_abridged import DriftHistoryAbridged
 
 __all__ = ["DriftHistoryListResponse"]
 
-DriftHistoryListResponse: TypeAlias = List[DrifthistoryAbridged]
+DriftHistoryListResponse: TypeAlias = List[DriftHistoryAbridged]

@@ -3,8 +3,8 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .shared.onorbit_full import OnorbitFull
+from ..shared.file_data import FileData
 
-__all__ = ["OnorbitTupleResponse"]
+__all__ = ["FileListResponse"]
 
-OnorbitTupleResponse: TypeAlias = List[OnorbitFull]
+FileListResponse: TypeAlias = List[FileData]

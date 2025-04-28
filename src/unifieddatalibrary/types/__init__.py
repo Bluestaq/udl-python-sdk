@@ -7,18 +7,18 @@ from .engine import Engine as Engine
 from .shared import (
     AIsFull as AIsFull,
     EopFull as EopFull,
-    Onorbit as Onorbit,
     EvacFull as EvacFull,
     FileData as FileData,
-    DriftHistory as DriftHistory,
+    OnorbitFull as OnorbitFull,
     EphemerisFull as EphemerisFull,
     FlightPlanFull as FlightPlanFull,
     AttitudesetFull as AttitudesetFull,
+    DriftHistoryFull as DriftHistoryFull,
     AircraftstatusFull as AircraftstatusFull,
     CollectRequestFull as CollectRequestFull,
     EventEvolutionFull as EventEvolutionFull,
     CollectResponseFull as CollectResponseFull,
-    DrifthistoryAbridged as DrifthistoryAbridged,
+    DriftHistoryAbridged as DriftHistoryAbridged,
     AirTransportMissionFull as AirTransportMissionFull,
 )
 from .bus_full import BusFull as BusFull

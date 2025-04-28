@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .onorbit import Onorbit
 from ..._models import BaseModel
+from .onorbit_full import OnorbitFull
 from ..attitudedata_full import AttitudedataFull
 
 __all__ = ["AttitudesetFull"]
@@ -149,7 +149,7 @@ class AttitudesetFull(BaseModel):
     notes: Optional[str] = None
     """Optional notes/comments for this attitude set."""
 
-    on_orbit: Optional[Onorbit] = FieldInfo(alias="onOrbit", default=None)
+    on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
 
     origin: Optional[str] = None
