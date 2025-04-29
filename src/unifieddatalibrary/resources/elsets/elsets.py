@@ -43,10 +43,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ...types.elset import Elset
-from ..._base_client import make_request_options
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.elset_abridged import ElsetAbridged
 from ...types.elset_ingest_param import ElsetIngestParam
-from ...types.elset_list_response import ElsetListResponse
 from ...types.elset_tuple_response import ElsetTupleResponse
 
 __all__ = ["ElsetsResource", "AsyncElsetsResource"]
@@ -405,7 +406,7 @@ class ElsetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ElsetListResponse:
+    ) -> SyncOffsetPage[ElsetAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -424,8 +425,9 @@ class ElsetsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/elset",
+            page=SyncOffsetPage[ElsetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -440,7 +442,7 @@ class ElsetsResource(SyncAPIResource):
                     elset_list_params.ElsetListParams,
                 ),
             ),
-            cast_to=ElsetListResponse,
+            model=ElsetAbridged,
         )
 
     def count(
@@ -1105,7 +1107,7 @@ class AsyncElsetsResource(AsyncAPIResource):
             cast_to=Elset,
         )
 
-    async def list(
+    def list(
         self,
         *,
         epoch: Union[str, datetime],
@@ -1117,7 +1119,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ElsetListResponse:
+    ) -> AsyncPaginator[ElsetAbridged, AsyncOffsetPage[ElsetAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1136,14 +1138,15 @@ class AsyncElsetsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/elset",
+            page=AsyncOffsetPage[ElsetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "epoch": epoch,
                         "first_result": first_result,
@@ -1152,7 +1155,7 @@ class AsyncElsetsResource(AsyncAPIResource):
                     elset_list_params.ElsetListParams,
                 ),
             ),
-            cast_to=ElsetListResponse,
+            model=ElsetAbridged,
         )
 
     async def count(

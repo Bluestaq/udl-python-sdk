@@ -1369,7 +1369,6 @@ from unifieddatalibrary.types import (
     Elset,
     ElsetIngest,
     ElsetAbridged,
-    ElsetListResponse,
     ElsetCountResponse,
     ElsetTupleResponse,
 )
@@ -1379,7 +1378,7 @@ Methods:
 
 - <code title="post /udl/elset">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/elset_create_params.py">params</a>) -> None</code>
 - <code title="get /udl/elset/{id}">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/elset_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elset.py">Elset</a></code>
-- <code title="get /udl/elset">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/elset_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elset_list_response.py">ElsetListResponse</a></code>
+- <code title="get /udl/elset">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/elset_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elset_abridged.py">SyncOffsetPage[ElsetAbridged]</a></code>
 - <code title="get /udl/elset/count">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/elset_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/elset/createBulk">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/elset_create_bulk_params.py">params</a>) -> None</code>
 - <code title="post /udl/elset/createBulkFromTLE">client.elsets.<a href="./src/unifieddatalibrary/resources/elsets/elsets.py">create_bulk_from_tle</a>(\*\*<a href="src/unifieddatalibrary/types/elset_create_bulk_from_tle_params.py">params</a>) -> None</code>
