@@ -55,6 +55,8 @@ class IonoobservationResource(SyncAPIResource):
         self,
         *,
         start_time_utc: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -87,7 +89,12 @@ class IonoobservationResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"start_time_utc": start_time_utc}, ionoobservation_list_params.IonoobservationListParams
+                    {
+                        "start_time_utc": start_time_utc,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ionoobservation_list_params.IonoobservationListParams,
                 ),
             ),
             cast_to=IonoobservationListResponse,
@@ -97,6 +104,8 @@ class IonoobservationResource(SyncAPIResource):
         self,
         *,
         start_time_utc: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,7 +140,12 @@ class IonoobservationResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"start_time_utc": start_time_utc}, ionoobservation_count_params.IonoobservationCountParams
+                    {
+                        "start_time_utc": start_time_utc,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ionoobservation_count_params.IonoobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -202,6 +216,8 @@ class IonoobservationResource(SyncAPIResource):
         *,
         columns: str,
         start_time_utc: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -246,6 +262,8 @@ class IonoobservationResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "start_time_utc": start_time_utc,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     ionoobservation_tuple_params.IonoobservationTupleParams,
                 ),
@@ -315,6 +333,8 @@ class AsyncIonoobservationResource(AsyncAPIResource):
         self,
         *,
         start_time_utc: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -347,7 +367,12 @@ class AsyncIonoobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time_utc": start_time_utc}, ionoobservation_list_params.IonoobservationListParams
+                    {
+                        "start_time_utc": start_time_utc,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ionoobservation_list_params.IonoobservationListParams,
                 ),
             ),
             cast_to=IonoobservationListResponse,
@@ -357,6 +382,8 @@ class AsyncIonoobservationResource(AsyncAPIResource):
         self,
         *,
         start_time_utc: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -391,7 +418,12 @@ class AsyncIonoobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time_utc": start_time_utc}, ionoobservation_count_params.IonoobservationCountParams
+                    {
+                        "start_time_utc": start_time_utc,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ionoobservation_count_params.IonoobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -462,6 +494,8 @@ class AsyncIonoobservationResource(AsyncAPIResource):
         *,
         columns: str,
         start_time_utc: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -506,6 +540,8 @@ class AsyncIonoobservationResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "start_time_utc": start_time_utc,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     ionoobservation_tuple_params.IonoobservationTupleParams,
                 ),

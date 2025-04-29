@@ -112,6 +112,15 @@ class TestWeatherdata:
         assert_matches_type(WeatherdataListResponse, weatherdata, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        weatherdata = client.weatherdata.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(WeatherdataListResponse, weatherdata, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.weatherdata.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -139,6 +148,15 @@ class TestWeatherdata:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         weatherdata = client.weatherdata.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, weatherdata, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        weatherdata = client.weatherdata.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, weatherdata, path=["response"])
 
@@ -221,14 +239,23 @@ class TestWeatherdata:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         weatherdata = client.weatherdata.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(WeatherDataFull, weatherdata, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        weatherdata = client.weatherdata.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(WeatherDataFull, weatherdata, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.weatherdata.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -239,7 +266,7 @@ class TestWeatherdata:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.weatherdata.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -253,7 +280,7 @@ class TestWeatherdata:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.weatherdata.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -286,6 +313,16 @@ class TestWeatherdata:
         weatherdata = client.weatherdata.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(WeatherdataTupleResponse, weatherdata, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        weatherdata = client.weatherdata.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(WeatherdataTupleResponse, weatherdata, path=["response"])
 
@@ -461,6 +498,15 @@ class TestAsyncWeatherdata:
         assert_matches_type(WeatherdataListResponse, weatherdata, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        weatherdata = await async_client.weatherdata.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(WeatherdataListResponse, weatherdata, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.weatherdata.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -488,6 +534,15 @@ class TestAsyncWeatherdata:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         weatherdata = await async_client.weatherdata.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, weatherdata, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        weatherdata = await async_client.weatherdata.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, weatherdata, path=["response"])
 
@@ -570,14 +625,23 @@ class TestAsyncWeatherdata:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         weatherdata = await async_client.weatherdata.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(WeatherDataFull, weatherdata, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        weatherdata = await async_client.weatherdata.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(WeatherDataFull, weatherdata, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.weatherdata.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -588,7 +652,7 @@ class TestAsyncWeatherdata:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.weatherdata.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -602,7 +666,7 @@ class TestAsyncWeatherdata:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.weatherdata.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -635,6 +699,16 @@ class TestAsyncWeatherdata:
         weatherdata = await async_client.weatherdata.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(WeatherdataTupleResponse, weatherdata, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        weatherdata = await async_client.weatherdata.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(WeatherdataTupleResponse, weatherdata, path=["response"])
 

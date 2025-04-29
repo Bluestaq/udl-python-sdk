@@ -8,7 +8,14 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import eop_list_params, eop_count_params, eop_create_params, eop_update_params, eop_list_tuple_params
+from ...types import (
+    eop_list_params,
+    eop_count_params,
+    eop_create_params,
+    eop_update_params,
+    eop_retrieve_params,
+    eop_list_tuple_params,
+)
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -302,6 +309,8 @@ class EopResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -327,7 +336,17 @@ class EopResource(SyncAPIResource):
         return self._get(
             f"/udl/eop/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    eop_retrieve_params.EopRetrieveParams,
+                ),
             ),
             cast_to=EopFull,
         )
@@ -578,6 +597,8 @@ class EopResource(SyncAPIResource):
         self,
         *,
         eop_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -610,7 +631,14 @@ class EopResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"eop_date": eop_date}, eop_list_params.EopListParams),
+                query=maybe_transform(
+                    {
+                        "eop_date": eop_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    eop_list_params.EopListParams,
+                ),
             ),
             cast_to=EopListResponse,
         )
@@ -656,6 +684,8 @@ class EopResource(SyncAPIResource):
         self,
         *,
         eop_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -690,7 +720,14 @@ class EopResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"eop_date": eop_date}, eop_count_params.EopCountParams),
+                query=maybe_transform(
+                    {
+                        "eop_date": eop_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    eop_count_params.EopCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -700,6 +737,8 @@ class EopResource(SyncAPIResource):
         *,
         columns: str,
         eop_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -745,6 +784,8 @@ class EopResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "eop_date": eop_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     eop_list_tuple_params.EopListTupleParams,
                 ),
@@ -1043,6 +1084,8 @@ class AsyncEopResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1068,7 +1111,17 @@ class AsyncEopResource(AsyncAPIResource):
         return await self._get(
             f"/udl/eop/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    eop_retrieve_params.EopRetrieveParams,
+                ),
             ),
             cast_to=EopFull,
         )
@@ -1319,6 +1372,8 @@ class AsyncEopResource(AsyncAPIResource):
         self,
         *,
         eop_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1351,7 +1406,14 @@ class AsyncEopResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"eop_date": eop_date}, eop_list_params.EopListParams),
+                query=await async_maybe_transform(
+                    {
+                        "eop_date": eop_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    eop_list_params.EopListParams,
+                ),
             ),
             cast_to=EopListResponse,
         )
@@ -1397,6 +1459,8 @@ class AsyncEopResource(AsyncAPIResource):
         self,
         *,
         eop_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1431,7 +1495,14 @@ class AsyncEopResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"eop_date": eop_date}, eop_count_params.EopCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "eop_date": eop_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    eop_count_params.EopCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1441,6 +1512,8 @@ class AsyncEopResource(AsyncAPIResource):
         *,
         columns: str,
         eop_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1486,6 +1559,8 @@ class AsyncEopResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "eop_date": eop_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     eop_list_tuple_params.EopListTupleParams,
                 ),

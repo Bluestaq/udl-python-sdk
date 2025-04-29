@@ -109,6 +109,14 @@ class TestAirfieldstatus:
         assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        airfieldstatus = client.airfieldstatus.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.airfieldstatus.with_raw_response.list()
 
@@ -131,6 +139,14 @@ class TestAirfieldstatus:
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         airfieldstatus = client.airfieldstatus.count()
+        assert_matches_type(str, airfieldstatus, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        airfieldstatus = client.airfieldstatus.count(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(str, airfieldstatus, path=["response"])
 
     @parametrize
@@ -271,6 +287,14 @@ class TestAsyncAirfieldstatus:
         assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        airfieldstatus = await async_client.airfieldstatus.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.airfieldstatus.with_raw_response.list()
 
@@ -293,6 +317,14 @@ class TestAsyncAirfieldstatus:
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldstatus = await async_client.airfieldstatus.count()
+        assert_matches_type(str, airfieldstatus, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        airfieldstatus = await async_client.airfieldstatus.count(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(str, airfieldstatus, path=["response"])
 
     @parametrize

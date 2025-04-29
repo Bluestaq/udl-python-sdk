@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    radarobservation_get_params,
     radarobservation_list_params,
     radarobservation_count_params,
     radarobservation_tuple_params,
@@ -419,6 +420,8 @@ class RadarobservationResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -451,7 +454,14 @@ class RadarobservationResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, radarobservation_list_params.RadarobservationListParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    radarobservation_list_params.RadarobservationListParams,
+                ),
             ),
             cast_to=RadarobservationListResponse,
         )
@@ -460,6 +470,8 @@ class RadarobservationResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -494,7 +506,14 @@ class RadarobservationResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, radarobservation_count_params.RadarobservationCountParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    radarobservation_count_params.RadarobservationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -540,6 +559,8 @@ class RadarobservationResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -565,7 +586,17 @@ class RadarobservationResource(SyncAPIResource):
         return self._get(
             f"/udl/radarobservation/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    radarobservation_get_params.RadarobservationGetParams,
+                ),
             ),
             cast_to=RadarobservationFull,
         )
@@ -598,6 +629,8 @@ class RadarobservationResource(SyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -643,6 +676,8 @@ class RadarobservationResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     radarobservation_tuple_params.RadarobservationTupleParams,
                 ),
@@ -1072,6 +1107,8 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1105,7 +1142,12 @@ class AsyncRadarobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, radarobservation_list_params.RadarobservationListParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    radarobservation_list_params.RadarobservationListParams,
                 ),
             ),
             cast_to=RadarobservationListResponse,
@@ -1115,6 +1157,8 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1150,7 +1194,12 @@ class AsyncRadarobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, radarobservation_count_params.RadarobservationCountParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    radarobservation_count_params.RadarobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -1197,6 +1246,8 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1222,7 +1273,17 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         return await self._get(
             f"/udl/radarobservation/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    radarobservation_get_params.RadarobservationGetParams,
+                ),
             ),
             cast_to=RadarobservationFull,
         )
@@ -1255,6 +1316,8 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1300,6 +1363,8 @@ class AsyncRadarobservationResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     radarobservation_tuple_params.RadarobservationTupleParams,
                 ),

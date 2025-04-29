@@ -28,6 +28,10 @@ class EventEvolutionTupleParams(TypedDict, total=False):
     or event.
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+
     start_time: Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]
     """
     (One or more of fields 'eventId, startTime' are required.) The actual or

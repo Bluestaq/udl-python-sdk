@@ -25,7 +25,7 @@ from ..._response import (
     async_to_custom_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.report_and_activity import udl_sigact_unvalidated_publish_params
+from ...types.report_and_activity import udl_sigact_file_get_params, udl_sigact_unvalidated_publish_params
 
 __all__ = ["UdlSigactResource", "AsyncUdlSigactResource"]
 
@@ -54,6 +54,8 @@ class UdlSigactResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,7 +82,17 @@ class UdlSigactResource(SyncAPIResource):
         return self._get(
             f"/udl/sigact/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    udl_sigact_file_get_params.UdlSigactFileGetParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -146,6 +158,8 @@ class AsyncUdlSigactResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,7 +186,17 @@ class AsyncUdlSigactResource(AsyncAPIResource):
         return await self._get(
             f"/udl/sigact/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    udl_sigact_file_get_params.UdlSigactFileGetParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )

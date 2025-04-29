@@ -23,6 +23,14 @@ class TestAirtaskingorders:
         assert_matches_type(AirtaskingorderListResponse, airtaskingorder, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        airtaskingorder = client.airtaskingorders.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AirtaskingorderListResponse, airtaskingorder, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.airtaskingorders.with_raw_response.list()
 
@@ -49,6 +57,14 @@ class TestAsyncAirtaskingorders:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         airtaskingorder = await async_client.airtaskingorders.list()
+        assert_matches_type(AirtaskingorderListResponse, airtaskingorder, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        airtaskingorder = await async_client.airtaskingorders.list(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(AirtaskingorderListResponse, airtaskingorder, path=["response"])
 
     @parametrize

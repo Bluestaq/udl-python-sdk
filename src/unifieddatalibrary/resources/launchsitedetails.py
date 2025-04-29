@@ -8,6 +8,8 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    launchsitedetail_get_params,
+    launchsitedetail_list_params,
     launchsitedetail_create_params,
     launchsitedetail_update_params,
     launchsitedetail_find_by_source_params,
@@ -271,6 +273,8 @@ class LaunchsitedetailsResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -283,11 +287,30 @@ class LaunchsitedetailsResource(SyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/launchsitedetails",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchsitedetail_list_params.LaunchsitedetailListParams,
+                ),
             ),
             cast_to=LaunchsitedetailListResponse,
         )
@@ -334,6 +357,8 @@ class LaunchsitedetailsResource(SyncAPIResource):
         self,
         *,
         source: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -366,7 +391,12 @@ class LaunchsitedetailsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"source": source}, launchsitedetail_find_by_source_params.LaunchsitedetailFindBySourceParams
+                    {
+                        "source": source,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchsitedetail_find_by_source_params.LaunchsitedetailFindBySourceParams,
                 ),
             ),
             cast_to=LaunchsitedetailFindBySourceResponse,
@@ -376,6 +406,8 @@ class LaunchsitedetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -403,7 +435,17 @@ class LaunchsitedetailsResource(SyncAPIResource):
         return self._get(
             f"/udl/launchsitedetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchsitedetail_get_params.LaunchsitedetailGetParams,
+                ),
             ),
             cast_to=LaunchsitedetailGetResponse,
         )
@@ -649,6 +691,8 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -661,11 +705,30 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/launchsitedetails",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchsitedetail_list_params.LaunchsitedetailListParams,
+                ),
             ),
             cast_to=LaunchsitedetailListResponse,
         )
@@ -712,6 +775,8 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         self,
         *,
         source: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -744,7 +809,12 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"source": source}, launchsitedetail_find_by_source_params.LaunchsitedetailFindBySourceParams
+                    {
+                        "source": source,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchsitedetail_find_by_source_params.LaunchsitedetailFindBySourceParams,
                 ),
             ),
             cast_to=LaunchsitedetailFindBySourceResponse,
@@ -754,6 +824,8 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -781,7 +853,17 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/launchsitedetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchsitedetail_get_params.LaunchsitedetailGetParams,
+                ),
             ),
             cast_to=LaunchsitedetailGetResponse,
         )

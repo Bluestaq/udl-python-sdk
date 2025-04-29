@@ -15,3 +15,7 @@ class HistoryCountParams(TypedDict, total=False):
     Unique identifier of the Analytic Imagery associated with this Feature
     Assessment record.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

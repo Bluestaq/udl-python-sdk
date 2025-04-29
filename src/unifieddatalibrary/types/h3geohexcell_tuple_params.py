@@ -20,3 +20,7 @@ class H3geohexcellTupleParams(TypedDict, total=False):
 
     id_h3_geo: Required[Annotated[str, PropertyInfo(alias="idH3Geo")]]
     """Unique identifier of the parent H3 Geo record containing this hex cell. (uuid)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

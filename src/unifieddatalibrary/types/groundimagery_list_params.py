@@ -14,3 +14,7 @@ __all__ = ["GroundimageryListParams"]
 class GroundimageryListParams(TypedDict, total=False):
     image_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="imageTime", format="iso8601")]]
     """Timestamp the image was captured/produced. (YYYY-MM-DDTHH:MM:SS.ssssssZ)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

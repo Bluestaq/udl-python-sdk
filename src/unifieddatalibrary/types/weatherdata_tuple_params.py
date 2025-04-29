@@ -25,3 +25,7 @@ class WeatherdataTupleParams(TypedDict, total=False):
     Datetime of the weather observation in ISO 8601 UTC datetime format with
     microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

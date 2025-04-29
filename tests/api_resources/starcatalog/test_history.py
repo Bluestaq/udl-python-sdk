@@ -25,6 +25,8 @@ class TestHistory:
         history = client.starcatalog.history.aodr(
             columns="columns",
             dec=0,
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -66,6 +68,8 @@ class TestAsyncHistory:
         history = await async_client.starcatalog.history.aodr(
             columns="columns",
             dec=0,
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",

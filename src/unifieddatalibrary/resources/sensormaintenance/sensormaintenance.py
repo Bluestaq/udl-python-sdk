@@ -9,11 +9,13 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    sensormaintenance_get_params,
     sensormaintenance_list_params,
     sensormaintenance_count_params,
     sensormaintenance_tuple_params,
     sensormaintenance_create_params,
     sensormaintenance_update_params,
+    sensormaintenance_current_params,
     sensormaintenance_create_bulk_params,
 )
 from .history import (
@@ -409,6 +411,8 @@ class SensormaintenanceResource(SyncAPIResource):
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -448,6 +452,8 @@ class SensormaintenanceResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     sensormaintenance_list_params.SensormaintenanceListParams,
@@ -496,6 +502,8 @@ class SensormaintenanceResource(SyncAPIResource):
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -537,6 +545,8 @@ class SensormaintenanceResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     sensormaintenance_count_params.SensormaintenanceCountParams,
@@ -599,6 +609,8 @@ class SensormaintenanceResource(SyncAPIResource):
     def current(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -609,11 +621,30 @@ class SensormaintenanceResource(SyncAPIResource):
         """
         Service operation to get current Sensor Maintenance records using any number of
         additional parameters.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/sensormaintenance/current",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sensormaintenance_current_params.SensormaintenanceCurrentParams,
+                ),
             ),
             cast_to=SensormaintenanceCurrentResponse,
         )
@@ -622,6 +653,8 @@ class SensormaintenanceResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -647,7 +680,17 @@ class SensormaintenanceResource(SyncAPIResource):
         return self._get(
             f"/udl/sensormaintenance/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sensormaintenance_get_params.SensormaintenanceGetParams,
+                ),
             ),
             cast_to=SensormaintenanceFull,
         )
@@ -680,6 +723,8 @@ class SensormaintenanceResource(SyncAPIResource):
         *,
         columns: str,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -729,6 +774,8 @@ class SensormaintenanceResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     sensormaintenance_tuple_params.SensormaintenanceTupleParams,
@@ -1104,6 +1151,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1143,6 +1192,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     sensormaintenance_list_params.SensormaintenanceListParams,
@@ -1191,6 +1242,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1232,6 +1285,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     sensormaintenance_count_params.SensormaintenanceCountParams,
@@ -1294,6 +1349,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
     async def current(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1304,11 +1361,30 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         """
         Service operation to get current Sensor Maintenance records using any number of
         additional parameters.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/sensormaintenance/current",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sensormaintenance_current_params.SensormaintenanceCurrentParams,
+                ),
             ),
             cast_to=SensormaintenanceCurrentResponse,
         )
@@ -1317,6 +1393,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1342,7 +1420,17 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         return await self._get(
             f"/udl/sensormaintenance/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sensormaintenance_get_params.SensormaintenanceGetParams,
+                ),
             ),
             cast_to=SensormaintenanceFull,
         )
@@ -1375,6 +1463,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         *,
         columns: str,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1424,6 +1514,8 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     sensormaintenance_tuple_params.SensormaintenanceTupleParams,

@@ -28,6 +28,15 @@ class TestH3geohexcell:
         assert_matches_type(H3geohexcellListResponse, h3geohexcell, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        h3geohexcell = client.h3geohexcell.list(
+            id_h3_geo="idH3Geo",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(H3geohexcellListResponse, h3geohexcell, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.h3geohexcell.with_raw_response.list(
             id_h3_geo="idH3Geo",
@@ -55,6 +64,15 @@ class TestH3geohexcell:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         h3geohexcell = client.h3geohexcell.count(
             id_h3_geo="idH3Geo",
+        )
+        assert_matches_type(str, h3geohexcell, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        h3geohexcell = client.h3geohexcell.count(
+            id_h3_geo="idH3Geo",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, h3geohexcell, path=["response"])
 
@@ -116,6 +134,16 @@ class TestH3geohexcell:
         assert_matches_type(H3geohexcellTupleResponse, h3geohexcell, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        h3geohexcell = client.h3geohexcell.tuple(
+            columns="columns",
+            id_h3_geo="idH3Geo",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(H3geohexcellTupleResponse, h3geohexcell, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.h3geohexcell.with_raw_response.tuple(
             columns="columns",
@@ -153,6 +181,15 @@ class TestAsyncH3geohexcell:
         assert_matches_type(H3geohexcellListResponse, h3geohexcell, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        h3geohexcell = await async_client.h3geohexcell.list(
+            id_h3_geo="idH3Geo",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(H3geohexcellListResponse, h3geohexcell, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.h3geohexcell.with_raw_response.list(
             id_h3_geo="idH3Geo",
@@ -180,6 +217,15 @@ class TestAsyncH3geohexcell:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         h3geohexcell = await async_client.h3geohexcell.count(
             id_h3_geo="idH3Geo",
+        )
+        assert_matches_type(str, h3geohexcell, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        h3geohexcell = await async_client.h3geohexcell.count(
+            id_h3_geo="idH3Geo",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, h3geohexcell, path=["response"])
 
@@ -237,6 +283,16 @@ class TestAsyncH3geohexcell:
         h3geohexcell = await async_client.h3geohexcell.tuple(
             columns="columns",
             id_h3_geo="idH3Geo",
+        )
+        assert_matches_type(H3geohexcellTupleResponse, h3geohexcell, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        h3geohexcell = await async_client.h3geohexcell.tuple(
+            columns="columns",
+            id_h3_geo="idH3Geo",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(H3geohexcellTupleResponse, h3geohexcell, path=["response"])
 

@@ -8,9 +8,11 @@ from datetime import datetime
 import httpx
 
 from ...types import (
+    skyimagery_get_params,
     skyimagery_list_params,
     skyimagery_count_params,
     skyimagery_tuple_params,
+    skyimagery_file_get_params,
     skyimagery_upload_zip_params,
 )
 from .history import (
@@ -75,6 +77,8 @@ class SkyimageryResource(SyncAPIResource):
         self,
         *,
         exp_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -107,7 +111,14 @@ class SkyimageryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"exp_start_time": exp_start_time}, skyimagery_list_params.SkyimageryListParams),
+                query=maybe_transform(
+                    {
+                        "exp_start_time": exp_start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_list_params.SkyimageryListParams,
+                ),
             ),
             cast_to=SkyimageryListResponse,
         )
@@ -116,6 +127,8 @@ class SkyimageryResource(SyncAPIResource):
         self,
         *,
         exp_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -151,7 +164,12 @@ class SkyimageryResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"exp_start_time": exp_start_time}, skyimagery_count_params.SkyimageryCountParams
+                    {
+                        "exp_start_time": exp_start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_count_params.SkyimageryCountParams,
                 ),
             ),
             cast_to=str,
@@ -161,6 +179,8 @@ class SkyimageryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -188,7 +208,17 @@ class SkyimageryResource(SyncAPIResource):
         return self._get(
             f"/udl/skyimagery/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_file_get_params.SkyimageryFileGetParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -197,6 +227,8 @@ class SkyimageryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -223,7 +255,17 @@ class SkyimageryResource(SyncAPIResource):
         return self._get(
             f"/udl/skyimagery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_get_params.SkyimageryGetParams,
+                ),
             ),
             cast_to=SkyimageryFull,
         )
@@ -256,6 +298,8 @@ class SkyimageryResource(SyncAPIResource):
         *,
         columns: str,
         exp_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -301,6 +345,8 @@ class SkyimageryResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "exp_start_time": exp_start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     skyimagery_tuple_params.SkyimageryTupleParams,
                 ),
@@ -395,6 +441,8 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         self,
         *,
         exp_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -428,7 +476,12 @@ class AsyncSkyimageryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"exp_start_time": exp_start_time}, skyimagery_list_params.SkyimageryListParams
+                    {
+                        "exp_start_time": exp_start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_list_params.SkyimageryListParams,
                 ),
             ),
             cast_to=SkyimageryListResponse,
@@ -438,6 +491,8 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         self,
         *,
         exp_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -473,7 +528,12 @@ class AsyncSkyimageryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"exp_start_time": exp_start_time}, skyimagery_count_params.SkyimageryCountParams
+                    {
+                        "exp_start_time": exp_start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_count_params.SkyimageryCountParams,
                 ),
             ),
             cast_to=str,
@@ -483,6 +543,8 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -510,7 +572,17 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/skyimagery/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_file_get_params.SkyimageryFileGetParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
@@ -519,6 +591,8 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -545,7 +619,17 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/skyimagery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    skyimagery_get_params.SkyimageryGetParams,
+                ),
             ),
             cast_to=SkyimageryFull,
         )
@@ -578,6 +662,8 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         *,
         columns: str,
         exp_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -623,6 +709,8 @@ class AsyncSkyimageryResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "exp_start_time": exp_start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     skyimagery_tuple_params.SkyimageryTupleParams,
                 ),

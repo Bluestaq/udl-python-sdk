@@ -12,6 +12,8 @@ __all__ = ["HistoryCountParams"]
 
 
 class HistoryCountParams(TypedDict, total=False):
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
     id_onorbit_thruster: Annotated[str, PropertyInfo(alias="idOnorbitThruster")]
     """
     (One or more of fields 'idOnorbitThruster, statusTime' are required.) ID of the
@@ -20,6 +22,8 @@ class HistoryCountParams(TypedDict, total=False):
     /udl/onorbitthruster/{id}). For example, the OnorbitThruster object with
     idOnorbitThruster = abc would be queried as /udl/onorbitthruster/abc.
     """
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
 
     status_time: Annotated[Union[str, datetime], PropertyInfo(alias="statusTime", format="iso8601")]
     """

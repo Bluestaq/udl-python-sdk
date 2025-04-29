@@ -25,3 +25,7 @@ class SpaceenvobservationTupleParams(TypedDict, total=False):
 
     (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

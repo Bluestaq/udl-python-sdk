@@ -67,6 +67,8 @@ class SigactResource(SyncAPIResource):
         self,
         *,
         report_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -98,7 +100,14 @@ class SigactResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"report_date": report_date}, sigact_list_params.SigactListParams),
+                query=maybe_transform(
+                    {
+                        "report_date": report_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sigact_list_params.SigactListParams,
+                ),
             ),
             cast_to=SigactListResponse,
         )
@@ -107,6 +116,8 @@ class SigactResource(SyncAPIResource):
         self,
         *,
         report_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,7 +151,14 @@ class SigactResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"report_date": report_date}, sigact_count_params.SigactCountParams),
+                query=maybe_transform(
+                    {
+                        "report_date": report_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sigact_count_params.SigactCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -211,6 +229,8 @@ class SigactResource(SyncAPIResource):
         *,
         columns: str,
         report_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -255,6 +275,8 @@ class SigactResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "report_date": report_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     sigact_tuple_params.SigactTupleParams,
                 ),
@@ -351,6 +373,8 @@ class AsyncSigactResource(AsyncAPIResource):
         self,
         *,
         report_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,7 +406,14 @@ class AsyncSigactResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"report_date": report_date}, sigact_list_params.SigactListParams),
+                query=await async_maybe_transform(
+                    {
+                        "report_date": report_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sigact_list_params.SigactListParams,
+                ),
             ),
             cast_to=SigactListResponse,
         )
@@ -391,6 +422,8 @@ class AsyncSigactResource(AsyncAPIResource):
         self,
         *,
         report_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -424,7 +457,14 @@ class AsyncSigactResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"report_date": report_date}, sigact_count_params.SigactCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "report_date": report_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sigact_count_params.SigactCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -495,6 +535,8 @@ class AsyncSigactResource(AsyncAPIResource):
         *,
         columns: str,
         report_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -539,6 +581,8 @@ class AsyncSigactResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "report_date": report_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     sigact_tuple_params.SigactTupleParams,
                 ),

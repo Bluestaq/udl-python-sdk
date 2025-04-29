@@ -29,6 +29,15 @@ class TestSigact:
         assert_matches_type(SigactListResponse, sigact, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.list(
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SigactListResponse, sigact, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.sigact.with_raw_response.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -56,6 +65,15 @@ class TestSigact:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         sigact = client.sigact.count(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, sigact, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.count(
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, sigact, path=["response"])
 
@@ -169,6 +187,16 @@ class TestSigact:
         assert_matches_type(SigactTupleResponse, sigact, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sigact = client.sigact.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.sigact.with_raw_response.tuple(
             columns="columns",
@@ -237,6 +265,15 @@ class TestAsyncSigact:
         assert_matches_type(SigactListResponse, sigact, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.list(
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SigactListResponse, sigact, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sigact.with_raw_response.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -264,6 +301,15 @@ class TestAsyncSigact:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         sigact = await async_client.sigact.count(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, sigact, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.count(
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, sigact, path=["response"])
 
@@ -373,6 +419,16 @@ class TestAsyncSigact:
         sigact = await async_client.sigact.tuple(
             columns="columns",
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SigactTupleResponse, sigact, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sigact = await async_client.sigact.tuple(
+            columns="columns",
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SigactTupleResponse, sigact, path=["response"])
 

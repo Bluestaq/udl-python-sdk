@@ -25,3 +25,7 @@ class StatevectorTupleParams(TypedDict, total=False):
     Time of validity for state vector in ISO 8601 UTC datetime format, with
     microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

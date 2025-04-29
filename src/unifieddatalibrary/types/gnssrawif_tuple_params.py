@@ -25,3 +25,7 @@ class GnssrawifTupleParams(TypedDict, total=False):
     Start time of the data contained in the associated binary file, in ISO 8601 UTC
     format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

@@ -165,6 +165,15 @@ class TestSortieppr:
         assert_matches_type(SortiepprListResponse, sortieppr, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sortieppr = client.sortieppr.list(
+            id_sortie="idSortie",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SortiepprListResponse, sortieppr, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.sortieppr.with_raw_response.list(
             id_sortie="idSortie",
@@ -230,6 +239,15 @@ class TestSortieppr:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.count(
             id_sortie="idSortie",
+        )
+        assert_matches_type(str, sortieppr, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sortieppr = client.sortieppr.count(
+            id_sortie="idSortie",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, sortieppr, path=["response"])
 
@@ -312,14 +330,23 @@ class TestSortieppr:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sortieppr = client.sortieppr.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SortiePprFull, sortieppr, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sortieppr = client.sortieppr.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SortiePprFull, sortieppr, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.sortieppr.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -330,7 +357,7 @@ class TestSortieppr:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.sortieppr.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -344,7 +371,7 @@ class TestSortieppr:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.sortieppr.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -377,6 +404,16 @@ class TestSortieppr:
         sortieppr = client.sortieppr.tuple(
             columns="columns",
             id_sortie="idSortie",
+        )
+        assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sortieppr = client.sortieppr.tuple(
+            columns="columns",
+            id_sortie="idSortie",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
 
@@ -605,6 +642,15 @@ class TestAsyncSortieppr:
         assert_matches_type(SortiepprListResponse, sortieppr, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sortieppr = await async_client.sortieppr.list(
+            id_sortie="idSortie",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SortiepprListResponse, sortieppr, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sortieppr.with_raw_response.list(
             id_sortie="idSortie",
@@ -670,6 +716,15 @@ class TestAsyncSortieppr:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.count(
             id_sortie="idSortie",
+        )
+        assert_matches_type(str, sortieppr, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sortieppr = await async_client.sortieppr.count(
+            id_sortie="idSortie",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, sortieppr, path=["response"])
 
@@ -752,14 +807,23 @@ class TestAsyncSortieppr:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortieppr = await async_client.sortieppr.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SortiePprFull, sortieppr, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sortieppr = await async_client.sortieppr.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SortiePprFull, sortieppr, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sortieppr.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -770,7 +834,7 @@ class TestAsyncSortieppr:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sortieppr.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -784,7 +848,7 @@ class TestAsyncSortieppr:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.sortieppr.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -817,6 +881,16 @@ class TestAsyncSortieppr:
         sortieppr = await async_client.sortieppr.tuple(
             columns="columns",
             id_sortie="idSortie",
+        )
+        assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sortieppr = await async_client.sortieppr.tuple(
+            columns="columns",
+            id_sortie="idSortie",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
 

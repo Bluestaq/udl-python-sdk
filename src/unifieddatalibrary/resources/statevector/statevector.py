@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    statevector_get_params,
     statevector_list_params,
     statevector_count_params,
     statevector_tuple_params,
@@ -715,6 +716,8 @@ class StatevectorResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -747,7 +750,14 @@ class StatevectorResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"epoch": epoch}, statevector_list_params.StatevectorListParams),
+                query=maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    statevector_list_params.StatevectorListParams,
+                ),
             ),
             cast_to=StatevectorListResponse,
         )
@@ -756,6 +766,8 @@ class StatevectorResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -790,7 +802,14 @@ class StatevectorResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"epoch": epoch}, statevector_count_params.StatevectorCountParams),
+                query=maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    statevector_count_params.StatevectorCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -836,6 +855,8 @@ class StatevectorResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -861,7 +882,17 @@ class StatevectorResource(SyncAPIResource):
         return self._get(
             f"/udl/statevector/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    statevector_get_params.StatevectorGetParams,
+                ),
             ),
             cast_to=StateVectorFull,
         )
@@ -894,6 +925,8 @@ class StatevectorResource(SyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -939,6 +972,8 @@ class StatevectorResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "epoch": epoch,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     statevector_tuple_params.StatevectorTupleParams,
                 ),
@@ -1649,6 +1684,8 @@ class AsyncStatevectorResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1681,7 +1718,14 @@ class AsyncStatevectorResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"epoch": epoch}, statevector_list_params.StatevectorListParams),
+                query=await async_maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    statevector_list_params.StatevectorListParams,
+                ),
             ),
             cast_to=StatevectorListResponse,
         )
@@ -1690,6 +1734,8 @@ class AsyncStatevectorResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1724,7 +1770,14 @@ class AsyncStatevectorResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"epoch": epoch}, statevector_count_params.StatevectorCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    statevector_count_params.StatevectorCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1770,6 +1823,8 @@ class AsyncStatevectorResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1795,7 +1850,17 @@ class AsyncStatevectorResource(AsyncAPIResource):
         return await self._get(
             f"/udl/statevector/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    statevector_get_params.StatevectorGetParams,
+                ),
             ),
             cast_to=StateVectorFull,
         )
@@ -1828,6 +1893,8 @@ class AsyncStatevectorResource(AsyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1873,6 +1940,8 @@ class AsyncStatevectorResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "epoch": epoch,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     statevector_tuple_params.StatevectorTupleParams,
                 ),

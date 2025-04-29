@@ -29,6 +29,15 @@ class TestEphemeris:
         assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.list(
+            es_id="esId",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.ephemeris.with_raw_response.list(
             es_id="esId",
@@ -56,6 +65,15 @@ class TestEphemeris:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         ephemeris = client.ephemeris.count(
             es_id="esId",
+        )
+        assert_matches_type(str, ephemeris, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.count(
+            es_id="esId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, ephemeris, path=["response"])
 
@@ -185,6 +203,16 @@ class TestEphemeris:
         ephemeris = client.ephemeris.tuple(
             columns="columns",
             es_id="esId",
+        )
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.tuple(
+            columns="columns",
+            es_id="esId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 
@@ -347,6 +375,15 @@ class TestAsyncEphemeris:
         assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.list(
+            es_id="esId",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.ephemeris.with_raw_response.list(
             es_id="esId",
@@ -374,6 +411,15 @@ class TestAsyncEphemeris:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         ephemeris = await async_client.ephemeris.count(
             es_id="esId",
+        )
+        assert_matches_type(str, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.count(
+            es_id="esId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, ephemeris, path=["response"])
 
@@ -503,6 +549,16 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.tuple(
             columns="columns",
             es_id="esId",
+        )
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.tuple(
+            columns="columns",
+            es_id="esId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 

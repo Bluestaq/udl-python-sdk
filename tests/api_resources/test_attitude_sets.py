@@ -147,6 +147,15 @@ class TestAttitudeSets:
         assert_matches_type(AttitudeSetListResponse, attitude_set, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_set = client.attitude_sets.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AttitudeSetListResponse, attitude_set, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.attitude_sets.with_raw_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -174,6 +183,15 @@ class TestAttitudeSets:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         attitude_set = client.attitude_sets.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, attitude_set, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_set = client.attitude_sets.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, attitude_set, path=["response"])
 
@@ -231,6 +249,16 @@ class TestAttitudeSets:
         attitude_set = client.attitude_sets.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AttitudeSetTupleResponse, attitude_set, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_set = client.attitude_sets.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AttitudeSetTupleResponse, attitude_set, path=["response"])
 
@@ -508,6 +536,15 @@ class TestAsyncAttitudeSets:
         assert_matches_type(AttitudeSetListResponse, attitude_set, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_set = await async_client.attitude_sets.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AttitudeSetListResponse, attitude_set, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.attitude_sets.with_raw_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -535,6 +572,15 @@ class TestAsyncAttitudeSets:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_set = await async_client.attitude_sets.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, attitude_set, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_set = await async_client.attitude_sets.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, attitude_set, path=["response"])
 
@@ -592,6 +638,16 @@ class TestAsyncAttitudeSets:
         attitude_set = await async_client.attitude_sets.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AttitudeSetTupleResponse, attitude_set, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_set = await async_client.attitude_sets.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AttitudeSetTupleResponse, attitude_set, path=["response"])
 

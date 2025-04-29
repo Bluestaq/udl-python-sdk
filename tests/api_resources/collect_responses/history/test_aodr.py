@@ -28,6 +28,8 @@ class TestAodr:
         aodr = client.collect_responses.history.aodr.list(
             created_at=parse_date("2019-12-27"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -74,6 +76,8 @@ class TestAsyncAodr:
         aodr = await async_client.collect_responses.history.aodr.list(
             created_at=parse_date("2019-12-27"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",

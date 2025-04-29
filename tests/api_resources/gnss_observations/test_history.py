@@ -25,6 +25,15 @@ class TestHistory:
         assert_matches_type(str, history, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.gnss_observations.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.gnss_observations.history.with_raw_response.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -56,6 +65,15 @@ class TestAsyncHistory:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.gnss_observations.history.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.gnss_observations.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 

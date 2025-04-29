@@ -24,6 +24,7 @@ from ...types.observations import (
     ecpsdr_count_params,
     ecpsdr_tuple_params,
     ecpsdr_create_params,
+    ecpsdr_retrieve_params,
     ecpsdr_create_bulk_params,
 )
 from ...types.observations.ecpsdr import Ecpsdr
@@ -330,6 +331,8 @@ class EcpsdrResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -355,7 +358,17 @@ class EcpsdrResource(SyncAPIResource):
         return self._get(
             f"/udl/ecpsdr/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ecpsdr_retrieve_params.EcpsdrRetrieveParams,
+                ),
             ),
             cast_to=Ecpsdr,
         )
@@ -364,6 +377,8 @@ class EcpsdrResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -396,7 +411,14 @@ class EcpsdrResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"msg_time": msg_time}, ecpsdr_list_params.EcpsdrListParams),
+                query=maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ecpsdr_list_params.EcpsdrListParams,
+                ),
             ),
             cast_to=EcpsdrListResponse,
         )
@@ -405,6 +427,8 @@ class EcpsdrResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -439,7 +463,14 @@ class EcpsdrResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"msg_time": msg_time}, ecpsdr_count_params.EcpsdrCountParams),
+                query=maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ecpsdr_count_params.EcpsdrCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -509,6 +540,8 @@ class EcpsdrResource(SyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -554,6 +587,8 @@ class EcpsdrResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     ecpsdr_tuple_params.EcpsdrTupleParams,
                 ),
@@ -859,6 +894,8 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -884,7 +921,17 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         return await self._get(
             f"/udl/ecpsdr/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ecpsdr_retrieve_params.EcpsdrRetrieveParams,
+                ),
             ),
             cast_to=Ecpsdr,
         )
@@ -893,6 +940,8 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -925,7 +974,14 @@ class AsyncEcpsdrResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"msg_time": msg_time}, ecpsdr_list_params.EcpsdrListParams),
+                query=await async_maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ecpsdr_list_params.EcpsdrListParams,
+                ),
             ),
             cast_to=EcpsdrListResponse,
         )
@@ -934,6 +990,8 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -968,7 +1026,14 @@ class AsyncEcpsdrResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"msg_time": msg_time}, ecpsdr_count_params.EcpsdrCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ecpsdr_count_params.EcpsdrCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1038,6 +1103,8 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1083,6 +1150,8 @@ class AsyncEcpsdrResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     ecpsdr_tuple_params.EcpsdrTupleParams,
                 ),

@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    geostatus_get_params,
     geostatus_list_params,
     geostatus_count_params,
     geostatus_tuple_params,
@@ -212,6 +213,8 @@ class GeostatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -244,7 +247,14 @@ class GeostatusResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, geostatus_list_params.GeostatusListParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    geostatus_list_params.GeostatusListParams,
+                ),
             ),
             cast_to=GeostatusListResponse,
         )
@@ -253,6 +263,8 @@ class GeostatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -287,7 +299,14 @@ class GeostatusResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, geostatus_count_params.GeostatusCountParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    geostatus_count_params.GeostatusCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -333,6 +352,8 @@ class GeostatusResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -358,7 +379,17 @@ class GeostatusResource(SyncAPIResource):
         return self._get(
             f"/udl/geostatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    geostatus_get_params.GeostatusGetParams,
+                ),
             ),
             cast_to=GeoStatusFull,
         )
@@ -391,6 +422,8 @@ class GeostatusResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -436,6 +469,8 @@ class GeostatusResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     geostatus_tuple_params.GeostatusTupleParams,
                 ),
@@ -623,6 +658,8 @@ class AsyncGeostatusResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -656,7 +693,12 @@ class AsyncGeostatusResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, geostatus_list_params.GeostatusListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    geostatus_list_params.GeostatusListParams,
                 ),
             ),
             cast_to=GeostatusListResponse,
@@ -666,6 +708,8 @@ class AsyncGeostatusResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -701,7 +745,12 @@ class AsyncGeostatusResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, geostatus_count_params.GeostatusCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    geostatus_count_params.GeostatusCountParams,
                 ),
             ),
             cast_to=str,
@@ -748,6 +797,8 @@ class AsyncGeostatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -773,7 +824,17 @@ class AsyncGeostatusResource(AsyncAPIResource):
         return await self._get(
             f"/udl/geostatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    geostatus_get_params.GeostatusGetParams,
+                ),
             ),
             cast_to=GeoStatusFull,
         )
@@ -806,6 +867,8 @@ class AsyncGeostatusResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -851,6 +914,8 @@ class AsyncGeostatusResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     geostatus_tuple_params.GeostatusTupleParams,
                 ),

@@ -34,14 +34,23 @@ class TestAnalyticImagery:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         analytic_imagery = client.analytic_imagery.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AnalyticImageryFull, analytic_imagery, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        analytic_imagery = client.analytic_imagery.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryFull, analytic_imagery, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.analytic_imagery.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -52,7 +61,7 @@ class TestAnalyticImagery:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.analytic_imagery.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -66,13 +75,22 @@ class TestAnalyticImagery:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.analytic_imagery.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         analytic_imagery = client.analytic_imagery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AnalyticImageryListResponse, analytic_imagery, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        analytic_imagery = client.analytic_imagery.list(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryListResponse, analytic_imagery, path=["response"])
 
@@ -108,6 +126,15 @@ class TestAnalyticImagery:
         assert_matches_type(str, analytic_imagery, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        analytic_imagery = client.analytic_imagery.count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, analytic_imagery, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.analytic_imagery.with_raw_response.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -136,7 +163,21 @@ class TestAnalyticImagery:
     def test_method_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         analytic_imagery = client.analytic_imagery.file_get(
-            "id",
+            id="id",
+        )
+        assert analytic_imagery.is_closed
+        assert analytic_imagery.json() == {"foo": "bar"}
+        assert cast(Any, analytic_imagery.is_closed) is True
+        assert isinstance(analytic_imagery, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_file_get_with_all_params(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        analytic_imagery = client.analytic_imagery.file_get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert analytic_imagery.is_closed
         assert analytic_imagery.json() == {"foo": "bar"}
@@ -149,7 +190,7 @@ class TestAnalyticImagery:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         analytic_imagery = client.analytic_imagery.with_raw_response.file_get(
-            "id",
+            id="id",
         )
 
         assert analytic_imagery.is_closed is True
@@ -162,7 +203,7 @@ class TestAnalyticImagery:
     def test_streaming_response_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.analytic_imagery.with_streaming_response.file_get(
-            "id",
+            id="id",
         ) as analytic_imagery:
             assert not analytic_imagery.is_closed
             assert analytic_imagery.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -178,7 +219,7 @@ class TestAnalyticImagery:
     def test_path_params_file_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.analytic_imagery.with_raw_response.file_get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -193,6 +234,8 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.history(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryHistoryResponse, analytic_imagery, path=["response"])
 
@@ -232,6 +275,8 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.history_aodr(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -266,6 +311,15 @@ class TestAnalyticImagery:
     def test_method_history_count(self, client: Unifieddatalibrary) -> None:
         analytic_imagery = client.analytic_imagery.history_count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, analytic_imagery, path=["response"])
+
+    @parametrize
+    def test_method_history_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        analytic_imagery = client.analytic_imagery.history_count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, analytic_imagery, path=["response"])
 
@@ -323,6 +377,16 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.tuple(
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        analytic_imagery = client.analytic_imagery.tuple(
+            columns="columns",
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
 
@@ -390,14 +454,23 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         analytic_imagery = await async_client.analytic_imagery.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AnalyticImageryFull, analytic_imagery, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        analytic_imagery = await async_client.analytic_imagery.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryFull, analytic_imagery, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.analytic_imagery.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -408,7 +481,7 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.analytic_imagery.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -422,13 +495,22 @@ class TestAsyncAnalyticImagery:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.analytic_imagery.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         analytic_imagery = await async_client.analytic_imagery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AnalyticImageryListResponse, analytic_imagery, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        analytic_imagery = await async_client.analytic_imagery.list(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryListResponse, analytic_imagery, path=["response"])
 
@@ -464,6 +546,15 @@ class TestAsyncAnalyticImagery:
         assert_matches_type(str, analytic_imagery, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        analytic_imagery = await async_client.analytic_imagery.count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, analytic_imagery, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.analytic_imagery.with_raw_response.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -492,7 +583,23 @@ class TestAsyncAnalyticImagery:
     async def test_method_file_get(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         analytic_imagery = await async_client.analytic_imagery.file_get(
-            "id",
+            id="id",
+        )
+        assert analytic_imagery.is_closed
+        assert await analytic_imagery.json() == {"foo": "bar"}
+        assert cast(Any, analytic_imagery.is_closed) is True
+        assert isinstance(analytic_imagery, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_file_get_with_all_params(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        analytic_imagery = await async_client.analytic_imagery.file_get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert analytic_imagery.is_closed
         assert await analytic_imagery.json() == {"foo": "bar"}
@@ -505,7 +612,7 @@ class TestAsyncAnalyticImagery:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         analytic_imagery = await async_client.analytic_imagery.with_raw_response.file_get(
-            "id",
+            id="id",
         )
 
         assert analytic_imagery.is_closed is True
@@ -520,7 +627,7 @@ class TestAsyncAnalyticImagery:
     ) -> None:
         respx_mock.get("/udl/analyticimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.analytic_imagery.with_streaming_response.file_get(
-            "id",
+            id="id",
         ) as analytic_imagery:
             assert not analytic_imagery.is_closed
             assert analytic_imagery.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -536,7 +643,7 @@ class TestAsyncAnalyticImagery:
     async def test_path_params_file_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.analytic_imagery.with_raw_response.file_get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -551,6 +658,8 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.history(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryHistoryResponse, analytic_imagery, path=["response"])
 
@@ -590,6 +699,8 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.history_aodr(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -624,6 +735,15 @@ class TestAsyncAnalyticImagery:
     async def test_method_history_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         analytic_imagery = await async_client.analytic_imagery.history_count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, analytic_imagery, path=["response"])
+
+    @parametrize
+    async def test_method_history_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        analytic_imagery = await async_client.analytic_imagery.history_count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, analytic_imagery, path=["response"])
 
@@ -681,6 +801,16 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.tuple(
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        analytic_imagery = await async_client.analytic_imagery.tuple(
+            columns="columns",
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
 

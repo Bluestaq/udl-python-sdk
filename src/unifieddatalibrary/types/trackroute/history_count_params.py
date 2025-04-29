@@ -17,3 +17,7 @@ class HistoryCountParams(TypedDict, total=False):
     The last updated date of the track route in ISO 8601 UTC format with millisecond
     precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

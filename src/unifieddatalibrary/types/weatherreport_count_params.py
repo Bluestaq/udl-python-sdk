@@ -17,3 +17,7 @@ class WeatherreportCountParams(TypedDict, total=False):
     Datetime when a weather observation was made or forecast was issued in ISO 8601
     UTC datetime format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

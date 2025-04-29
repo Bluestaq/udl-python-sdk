@@ -13,6 +13,7 @@ from ...types import (
     featureassessment_query_params,
     featureassessment_tuple_params,
     featureassessment_create_params,
+    featureassessment_retrieve_params,
     featureassessment_create_bulk_params,
     featureassessment_unvalidated_publish_params,
 )
@@ -338,6 +339,8 @@ class FeatureassessmentResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -363,7 +366,17 @@ class FeatureassessmentResource(SyncAPIResource):
         return self._get(
             f"/udl/featureassessment/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    featureassessment_retrieve_params.FeatureassessmentRetrieveParams,
+                ),
             ),
             cast_to=FeatureassessmentRetrieveResponse,
         )
@@ -372,6 +385,8 @@ class FeatureassessmentResource(SyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -407,7 +422,11 @@ class FeatureassessmentResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"id_analytic_imagery": id_analytic_imagery},
+                    {
+                        "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
                     featureassessment_count_params.FeatureassessmentCountParams,
                 ),
             ),
@@ -455,6 +474,8 @@ class FeatureassessmentResource(SyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -488,7 +509,11 @@ class FeatureassessmentResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"id_analytic_imagery": id_analytic_imagery},
+                    {
+                        "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
                     featureassessment_query_params.FeatureassessmentQueryParams,
                 ),
             ),
@@ -523,6 +548,8 @@ class FeatureassessmentResource(SyncAPIResource):
         *,
         columns: str,
         id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -568,6 +595,8 @@ class FeatureassessmentResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     featureassessment_tuple_params.FeatureassessmentTupleParams,
                 ),
@@ -908,6 +937,8 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -933,7 +964,17 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
         return await self._get(
             f"/udl/featureassessment/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    featureassessment_retrieve_params.FeatureassessmentRetrieveParams,
+                ),
             ),
             cast_to=FeatureassessmentRetrieveResponse,
         )
@@ -942,6 +983,8 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -977,7 +1020,11 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"id_analytic_imagery": id_analytic_imagery},
+                    {
+                        "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
                     featureassessment_count_params.FeatureassessmentCountParams,
                 ),
             ),
@@ -1025,6 +1072,8 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1058,7 +1107,11 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"id_analytic_imagery": id_analytic_imagery},
+                    {
+                        "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
                     featureassessment_query_params.FeatureassessmentQueryParams,
                 ),
             ),
@@ -1093,6 +1146,8 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
         *,
         columns: str,
         id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1138,6 +1193,8 @@ class AsyncFeatureassessmentResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     featureassessment_tuple_params.FeatureassessmentTupleParams,
                 ),

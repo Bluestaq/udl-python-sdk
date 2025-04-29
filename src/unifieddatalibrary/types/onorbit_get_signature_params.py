@@ -12,3 +12,7 @@ __all__ = ["OnorbitGetSignatureParams"]
 class OnorbitGetSignatureParams(TypedDict, total=False):
     id_on_orbit: Required[Annotated[str, PropertyInfo(alias="idOnOrbit")]]
     """ID of the Onorbit object."""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

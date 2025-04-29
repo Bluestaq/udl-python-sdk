@@ -23,6 +23,14 @@ class TestDataownerTypes:
         assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dataowner_type = client.supporting_data.dataowner_types.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.supporting_data.dataowner_types.with_raw_response.list()
 
@@ -49,6 +57,14 @@ class TestAsyncDataownerTypes:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         dataowner_type = await async_client.supporting_data.dataowner_types.list()
+        assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dataowner_type = await async_client.supporting_data.dataowner_types.list(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
 
     @parametrize

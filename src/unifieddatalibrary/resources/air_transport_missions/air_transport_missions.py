@@ -14,6 +14,7 @@ from ...types import (
     air_transport_mission_tuple_params,
     air_transport_mission_create_params,
     air_transport_mission_update_params,
+    air_transport_mission_retrieve_params,
 )
 from .history import (
     HistoryResource,
@@ -303,6 +304,8 @@ class AirTransportMissionsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -328,7 +331,17 @@ class AirTransportMissionsResource(SyncAPIResource):
         return self._get(
             f"/udl/airtransportmission/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_transport_mission_retrieve_params.AirTransportMissionRetrieveParams,
+                ),
             ),
             cast_to=AirTransportMissionFull,
         )
@@ -575,6 +588,8 @@ class AirTransportMissionsResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -608,7 +623,12 @@ class AirTransportMissionsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_list_params.AirTransportMissionListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_transport_mission_list_params.AirTransportMissionListParams,
                 ),
             ),
             cast_to=AirTransportMissionListResponse,
@@ -618,6 +638,8 @@ class AirTransportMissionsResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -653,7 +675,12 @@ class AirTransportMissionsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_count_params.AirTransportMissionCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_transport_mission_count_params.AirTransportMissionCountParams,
                 ),
             ),
             cast_to=str,
@@ -687,6 +714,8 @@ class AirTransportMissionsResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -732,6 +761,8 @@ class AirTransportMissionsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     air_transport_mission_tuple_params.AirTransportMissionTupleParams,
                 ),
@@ -1002,6 +1033,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1027,7 +1060,17 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/airtransportmission/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_transport_mission_retrieve_params.AirTransportMissionRetrieveParams,
+                ),
             ),
             cast_to=AirTransportMissionFull,
         )
@@ -1274,6 +1317,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1307,7 +1352,12 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_list_params.AirTransportMissionListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_transport_mission_list_params.AirTransportMissionListParams,
                 ),
             ),
             cast_to=AirTransportMissionListResponse,
@@ -1317,6 +1367,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1352,7 +1404,12 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_count_params.AirTransportMissionCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_transport_mission_count_params.AirTransportMissionCountParams,
                 ),
             ),
             cast_to=str,
@@ -1386,6 +1443,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1431,6 +1490,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     air_transport_mission_tuple_params.AirTransportMissionTupleParams,
                 ),

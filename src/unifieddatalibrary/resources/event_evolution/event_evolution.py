@@ -13,6 +13,7 @@ from ...types import (
     event_evolution_count_params,
     event_evolution_tuple_params,
     event_evolution_create_params,
+    event_evolution_retrieve_params,
     event_evolution_create_bulk_params,
     event_evolution_unvalidated_publish_params,
 )
@@ -280,6 +281,8 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -305,7 +308,17 @@ class EventEvolutionResource(SyncAPIResource):
         return self._get(
             f"/udl/eventevolution/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    event_evolution_retrieve_params.EventEvolutionRetrieveParams,
+                ),
             ),
             cast_to=EventEvolutionFull,
         )
@@ -314,6 +327,8 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -356,6 +371,8 @@ class EventEvolutionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     event_evolution_list_params.EventEvolutionListParams,
@@ -368,6 +385,8 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -412,6 +431,8 @@ class EventEvolutionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     event_evolution_count_params.EventEvolutionCountParams,
@@ -486,6 +507,8 @@ class EventEvolutionResource(SyncAPIResource):
         *,
         columns: str,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -538,6 +561,8 @@ class EventEvolutionResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     event_evolution_tuple_params.EventEvolutionTupleParams,
@@ -821,6 +846,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -846,7 +873,17 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         return await self._get(
             f"/udl/eventevolution/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    event_evolution_retrieve_params.EventEvolutionRetrieveParams,
+                ),
             ),
             cast_to=EventEvolutionFull,
         )
@@ -855,6 +892,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -897,6 +936,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     event_evolution_list_params.EventEvolutionListParams,
@@ -909,6 +950,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -953,6 +996,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     event_evolution_count_params.EventEvolutionCountParams,
@@ -1027,6 +1072,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         *,
         columns: str,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1079,6 +1126,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     event_evolution_tuple_params.EventEvolutionTupleParams,

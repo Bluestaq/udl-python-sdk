@@ -29,6 +29,15 @@ class TestMonoradar:
         assert_matches_type(MonoradarListResponse, monoradar, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        monoradar = client.monoradar.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(MonoradarListResponse, monoradar, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.monoradar.with_raw_response.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -56,6 +65,15 @@ class TestMonoradar:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         monoradar = client.monoradar.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, monoradar, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        monoradar = client.monoradar.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, monoradar, path=["response"])
 
@@ -178,6 +196,16 @@ class TestMonoradar:
         assert_matches_type(MonoradarTupleResponse, monoradar, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        monoradar = client.monoradar.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(MonoradarTupleResponse, monoradar, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.monoradar.with_raw_response.tuple(
             columns="columns",
@@ -215,6 +243,15 @@ class TestAsyncMonoradar:
         assert_matches_type(MonoradarListResponse, monoradar, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        monoradar = await async_client.monoradar.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(MonoradarListResponse, monoradar, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.monoradar.with_raw_response.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -242,6 +279,15 @@ class TestAsyncMonoradar:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         monoradar = await async_client.monoradar.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, monoradar, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        monoradar = await async_client.monoradar.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, monoradar, path=["response"])
 
@@ -360,6 +406,16 @@ class TestAsyncMonoradar:
         monoradar = await async_client.monoradar.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(MonoradarTupleResponse, monoradar, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        monoradar = await async_client.monoradar.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(MonoradarTupleResponse, monoradar, path=["response"])
 

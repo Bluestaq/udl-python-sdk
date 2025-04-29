@@ -25,7 +25,9 @@ class TestHistory:
     @parametrize
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.onorbitthrusterstatus.history.count(
+            first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
+            max_result=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, history, path=["response"])
@@ -62,7 +64,9 @@ class TestAsyncHistory:
     @parametrize
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.onorbitthrusterstatus.history.count(
+            first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
+            max_result=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, history, path=["response"])

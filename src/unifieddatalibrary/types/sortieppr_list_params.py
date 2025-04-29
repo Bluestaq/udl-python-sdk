@@ -15,3 +15,7 @@ class SortiepprListParams(TypedDict, total=False):
     Unique identifier of the Aircraft Sortie associated with this prior permission
     required (PPR) record.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

@@ -22,3 +22,7 @@ class ConjunctionTupleParams(TypedDict, total=False):
 
     tca: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """Time of closest approach (TCA) in UTC. (YYYY-MM-DDTHH:MM:SS.ssssssZ)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

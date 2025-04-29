@@ -15,3 +15,7 @@ class AviationriskmanagementQueryParams(TypedDict, total=False):
     The unique identifier of the mission to which this risk management record is
     assigned.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

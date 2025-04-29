@@ -172,6 +172,14 @@ class TestSeradataearlywarning:
         assert_matches_type(SeradataearlywarningListResponse, seradataearlywarning, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradataearlywarning = client.seradataearlywarning.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SeradataearlywarningListResponse, seradataearlywarning, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.seradataearlywarning.with_raw_response.list()
 
@@ -235,6 +243,14 @@ class TestSeradataearlywarning:
         assert_matches_type(str, seradataearlywarning, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradataearlywarning = client.seradataearlywarning.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, seradataearlywarning, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.seradataearlywarning.with_raw_response.count()
 
@@ -257,14 +273,23 @@ class TestSeradataearlywarning:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SeradataearlywarningGetResponse, seradataearlywarning, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradataearlywarning = client.seradataearlywarning.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradataearlywarningGetResponse, seradataearlywarning, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.seradataearlywarning.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -275,7 +300,7 @@ class TestSeradataearlywarning:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.seradataearlywarning.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -289,7 +314,7 @@ class TestSeradataearlywarning:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.seradataearlywarning.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -321,6 +346,15 @@ class TestSeradataearlywarning:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.tuple(
             columns="columns",
+        )
+        assert_matches_type(SeradataearlywarningTupleResponse, seradataearlywarning, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradataearlywarning = client.seradataearlywarning.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradataearlywarningTupleResponse, seradataearlywarning, path=["response"])
 
@@ -503,6 +537,14 @@ class TestAsyncSeradataearlywarning:
         assert_matches_type(SeradataearlywarningListResponse, seradataearlywarning, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradataearlywarning = await async_client.seradataearlywarning.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SeradataearlywarningListResponse, seradataearlywarning, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataearlywarning.with_raw_response.list()
 
@@ -566,6 +608,14 @@ class TestAsyncSeradataearlywarning:
         assert_matches_type(str, seradataearlywarning, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradataearlywarning = await async_client.seradataearlywarning.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, seradataearlywarning, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataearlywarning.with_raw_response.count()
 
@@ -588,14 +638,23 @@ class TestAsyncSeradataearlywarning:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SeradataearlywarningGetResponse, seradataearlywarning, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradataearlywarning = await async_client.seradataearlywarning.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradataearlywarningGetResponse, seradataearlywarning, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradataearlywarning.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -606,7 +665,7 @@ class TestAsyncSeradataearlywarning:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradataearlywarning.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -620,7 +679,7 @@ class TestAsyncSeradataearlywarning:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.seradataearlywarning.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -652,6 +711,15 @@ class TestAsyncSeradataearlywarning:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.tuple(
             columns="columns",
+        )
+        assert_matches_type(SeradataearlywarningTupleResponse, seradataearlywarning, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradataearlywarning = await async_client.seradataearlywarning.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradataearlywarningTupleResponse, seradataearlywarning, path=["response"])
 

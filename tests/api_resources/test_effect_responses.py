@@ -128,14 +128,23 @@ class TestEffectResponses:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EffectResponseRetrieveResponse, effect_response, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        effect_response = client.effect_responses.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EffectResponseRetrieveResponse, effect_response, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.effect_responses.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -146,7 +155,7 @@ class TestEffectResponses:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.effect_responses.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -160,13 +169,22 @@ class TestEffectResponses:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.effect_responses.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.list(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(EffectResponseListResponse, effect_response, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        effect_response = client.effect_responses.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EffectResponseListResponse, effect_response, path=["response"])
 
@@ -198,6 +216,15 @@ class TestEffectResponses:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         effect_response = client.effect_responses.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, effect_response, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        effect_response = client.effect_responses.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, effect_response, path=["response"])
 
@@ -307,6 +334,16 @@ class TestEffectResponses:
         effect_response = client.effect_responses.tuple(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(EffectResponseTupleResponse, effect_response, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        effect_response = client.effect_responses.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EffectResponseTupleResponse, effect_response, path=["response"])
 
@@ -498,14 +535,23 @@ class TestAsyncEffectResponses:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EffectResponseRetrieveResponse, effect_response, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_response = await async_client.effect_responses.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EffectResponseRetrieveResponse, effect_response, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.effect_responses.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -516,7 +562,7 @@ class TestAsyncEffectResponses:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.effect_responses.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -530,13 +576,22 @@ class TestAsyncEffectResponses:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.effect_responses.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.list(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(EffectResponseListResponse, effect_response, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_response = await async_client.effect_responses.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EffectResponseListResponse, effect_response, path=["response"])
 
@@ -568,6 +623,15 @@ class TestAsyncEffectResponses:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_response = await async_client.effect_responses.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, effect_response, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_response = await async_client.effect_responses.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, effect_response, path=["response"])
 
@@ -677,6 +741,16 @@ class TestAsyncEffectResponses:
         effect_response = await async_client.effect_responses.tuple(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(EffectResponseTupleResponse, effect_response, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        effect_response = await async_client.effect_responses.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EffectResponseTupleResponse, effect_response, path=["response"])
 

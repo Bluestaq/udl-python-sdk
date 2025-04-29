@@ -27,7 +27,9 @@ class TestHistory:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.udl.onorbitthrusterstatus.history.list(
             columns="columns",
+            first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
+            max_result=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
@@ -65,7 +67,9 @@ class TestAsyncHistory:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.udl.onorbitthrusterstatus.history.list(
             columns="columns",
+            first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
+            max_result=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])

@@ -26,6 +26,10 @@ class NavigationalobstructionTupleParams(TypedDict, total=False):
     obstruction data set's currency, in ISO 8601 date-only format. (YYYY-MM-DD)
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+
     obstacle_id: Annotated[str, PropertyInfo(alias="obstacleId")]
     """
     (One or more of fields 'cycleDate, obstacleId' are required.) The ID of this

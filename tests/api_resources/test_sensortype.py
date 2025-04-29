@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types import SensortypeGetResponse, SensortypeListResponse
+from unifieddatalibrary.types import (
+    SensortypeGetResponse,
+    SensortypeListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,6 +23,14 @@ class TestSensortype:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         sensortype = client.sensortype.list()
+        assert_matches_type(SensortypeListResponse, sensortype, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sensortype = client.sensortype.list(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(SensortypeListResponse, sensortype, path=["response"])
 
     @parametrize
@@ -45,14 +56,23 @@ class TestSensortype:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sensortype = client.sensortype.get(
-            0,
+            id=0,
+        )
+        assert_matches_type(SensortypeGetResponse, sensortype, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sensortype = client.sensortype.get(
+            id=0,
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SensortypeGetResponse, sensortype, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.sensortype.with_raw_response.get(
-            0,
+            id=0,
         )
 
         assert response.is_closed is True
@@ -63,7 +83,7 @@ class TestSensortype:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.sensortype.with_streaming_response.get(
-            0,
+            id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -108,6 +128,14 @@ class TestAsyncSensortype:
         assert_matches_type(SensortypeListResponse, sensortype, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sensortype = await async_client.sensortype.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SensortypeListResponse, sensortype, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensortype.with_raw_response.list()
 
@@ -130,14 +158,23 @@ class TestAsyncSensortype:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensortype = await async_client.sensortype.get(
-            0,
+            id=0,
+        )
+        assert_matches_type(SensortypeGetResponse, sensortype, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sensortype = await async_client.sensortype.get(
+            id=0,
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SensortypeGetResponse, sensortype, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensortype.with_raw_response.get(
-            0,
+            id=0,
         )
 
         assert response.is_closed is True
@@ -148,7 +185,7 @@ class TestAsyncSensortype:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensortype.with_streaming_response.get(
-            0,
+            id=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

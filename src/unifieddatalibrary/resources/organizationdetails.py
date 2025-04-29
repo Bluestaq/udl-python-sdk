@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    organizationdetail_get_params,
     organizationdetail_list_params,
     organizationdetail_create_params,
     organizationdetail_update_params,
@@ -480,6 +481,8 @@ class OrganizationdetailsResource(SyncAPIResource):
         self,
         *,
         name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -511,7 +514,14 @@ class OrganizationdetailsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"name": name}, organizationdetail_list_params.OrganizationdetailListParams),
+                query=maybe_transform(
+                    {
+                        "name": name,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    organizationdetail_list_params.OrganizationdetailListParams,
+                ),
             ),
             cast_to=OrganizationdetailListResponse,
         )
@@ -559,6 +569,8 @@ class OrganizationdetailsResource(SyncAPIResource):
         *,
         name: str,
         source: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -596,6 +608,8 @@ class OrganizationdetailsResource(SyncAPIResource):
                     {
                         "name": name,
                         "source": source,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     organizationdetail_find_by_source_params.OrganizationdetailFindBySourceParams,
                 ),
@@ -607,6 +621,8 @@ class OrganizationdetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -634,7 +650,17 @@ class OrganizationdetailsResource(SyncAPIResource):
         return self._get(
             f"/udl/organizationdetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    organizationdetail_get_params.OrganizationdetailGetParams,
+                ),
             ),
             cast_to=OrganizationDetailsFull,
         )
@@ -1088,6 +1114,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         self,
         *,
         name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1120,7 +1148,12 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"name": name}, organizationdetail_list_params.OrganizationdetailListParams
+                    {
+                        "name": name,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    organizationdetail_list_params.OrganizationdetailListParams,
                 ),
             ),
             cast_to=OrganizationdetailListResponse,
@@ -1169,6 +1202,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         *,
         name: str,
         source: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1206,6 +1241,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
                     {
                         "name": name,
                         "source": source,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     organizationdetail_find_by_source_params.OrganizationdetailFindBySourceParams,
                 ),
@@ -1217,6 +1254,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1244,7 +1283,17 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/organizationdetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    organizationdetail_get_params.OrganizationdetailGetParams,
+                ),
             ),
             cast_to=OrganizationDetailsFull,
         )

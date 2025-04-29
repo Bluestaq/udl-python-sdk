@@ -29,6 +29,15 @@ class TestTrackdetails:
         assert_matches_type(TrackdetailListResponse, trackdetail, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        trackdetail = client.trackdetails.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(TrackdetailListResponse, trackdetail, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.trackdetails.with_raw_response.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -56,6 +65,15 @@ class TestTrackdetails:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         trackdetail = client.trackdetails.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, trackdetail, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        trackdetail = client.trackdetails.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, trackdetail, path=["response"])
 
@@ -175,6 +193,16 @@ class TestTrackdetails:
         assert_matches_type(TrackdetailTupleResponse, trackdetail, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        trackdetail = client.trackdetails.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(TrackdetailTupleResponse, trackdetail, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.trackdetails.with_raw_response.tuple(
             columns="columns",
@@ -212,6 +240,15 @@ class TestAsyncTrackdetails:
         assert_matches_type(TrackdetailListResponse, trackdetail, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        trackdetail = await async_client.trackdetails.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(TrackdetailListResponse, trackdetail, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.trackdetails.with_raw_response.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -239,6 +276,15 @@ class TestAsyncTrackdetails:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         trackdetail = await async_client.trackdetails.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, trackdetail, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        trackdetail = await async_client.trackdetails.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, trackdetail, path=["response"])
 
@@ -354,6 +400,16 @@ class TestAsyncTrackdetails:
         trackdetail = await async_client.trackdetails.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(TrackdetailTupleResponse, trackdetail, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        trackdetail = await async_client.trackdetails.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(TrackdetailTupleResponse, trackdetail, path=["response"])
 

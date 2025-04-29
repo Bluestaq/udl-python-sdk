@@ -247,6 +247,14 @@ class TestRfemitter:
         assert_matches_type(RfemitterListResponse, rfemitter, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfemitter = client.rfemitter.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(RfemitterListResponse, rfemitter, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.rfemitter.with_raw_response.list()
 
@@ -310,6 +318,14 @@ class TestRfemitter:
         assert_matches_type(str, rfemitter, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfemitter = client.rfemitter.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, rfemitter, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.rfemitter.with_raw_response.count()
 
@@ -332,14 +348,23 @@ class TestRfemitter:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         rfemitter = client.rfemitter.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(RfemitterGetResponse, rfemitter, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfemitter = client.rfemitter.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfemitterGetResponse, rfemitter, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.rfemitter.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -350,7 +375,7 @@ class TestRfemitter:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.rfemitter.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -364,7 +389,7 @@ class TestRfemitter:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.rfemitter.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -396,6 +421,15 @@ class TestRfemitter:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         rfemitter = client.rfemitter.tuple(
             columns="columns",
+        )
+        assert_matches_type(RfemitterTupleResponse, rfemitter, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfemitter = client.rfemitter.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfemitterTupleResponse, rfemitter, path=["response"])
 
@@ -652,6 +686,14 @@ class TestAsyncRfemitter:
         assert_matches_type(RfemitterListResponse, rfemitter, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfemitter = await async_client.rfemitter.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(RfemitterListResponse, rfemitter, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfemitter.with_raw_response.list()
 
@@ -715,6 +757,14 @@ class TestAsyncRfemitter:
         assert_matches_type(str, rfemitter, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfemitter = await async_client.rfemitter.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, rfemitter, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfemitter.with_raw_response.count()
 
@@ -737,14 +787,23 @@ class TestAsyncRfemitter:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitter = await async_client.rfemitter.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(RfemitterGetResponse, rfemitter, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfemitter = await async_client.rfemitter.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfemitterGetResponse, rfemitter, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfemitter.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -755,7 +814,7 @@ class TestAsyncRfemitter:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfemitter.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -769,7 +828,7 @@ class TestAsyncRfemitter:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.rfemitter.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -801,6 +860,15 @@ class TestAsyncRfemitter:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitter = await async_client.rfemitter.tuple(
             columns="columns",
+        )
+        assert_matches_type(RfemitterTupleResponse, rfemitter, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfemitter = await async_client.rfemitter.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfemitterTupleResponse, rfemitter, path=["response"])
 

@@ -26,6 +26,15 @@ class TestFile:
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        file = client.scs.file.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(FileData, file, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.scs.file.with_raw_response.retrieve(
             id="id",
@@ -133,6 +142,8 @@ class TestFile:
         file = client.scs.file.list(
             path="path",
             count=0,
+            first_result=0,
+            max_result=0,
             offset=0,
         )
         assert_matches_type(FileListResponse, file, path=["response"])
@@ -169,6 +180,15 @@ class TestAsyncFile:
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         file = await async_client.scs.file.retrieve(
             id="id",
+        )
+        assert_matches_type(FileData, file, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        file = await async_client.scs.file.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(FileData, file, path=["response"])
 
@@ -280,6 +300,8 @@ class TestAsyncFile:
         file = await async_client.scs.file.list(
             path="path",
             count=0,
+            first_result=0,
+            max_result=0,
             offset=0,
         )
         assert_matches_type(FileListResponse, file, path=["response"])

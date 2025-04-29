@@ -28,6 +28,8 @@ class TestGroundImagery:
         ground_imagery = client.ground_imagery.history_aodr(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -105,6 +107,8 @@ class TestAsyncGroundImagery:
         ground_imagery = await async_client.ground_imagery.history_aodr(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",

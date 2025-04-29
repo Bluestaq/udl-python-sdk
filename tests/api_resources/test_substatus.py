@@ -173,6 +173,14 @@ class TestSubstatus:
         assert_matches_type(SubstatusListResponse, substatus, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        substatus = client.substatus.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SubstatusListResponse, substatus, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.substatus.with_raw_response.list()
 
@@ -236,6 +244,14 @@ class TestSubstatus:
         assert_matches_type(str, substatus, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        substatus = client.substatus.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, substatus, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.substatus.with_raw_response.count()
 
@@ -258,14 +274,23 @@ class TestSubstatus:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SubstatusGetResponse, substatus, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        substatus = client.substatus.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SubstatusGetResponse, substatus, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.substatus.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -276,7 +301,7 @@ class TestSubstatus:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.substatus.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -290,7 +315,7 @@ class TestSubstatus:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.substatus.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -322,6 +347,15 @@ class TestSubstatus:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.tuple(
             columns="columns",
+        )
+        assert_matches_type(SubstatusTupleResponse, substatus, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        substatus = client.substatus.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SubstatusTupleResponse, substatus, path=["response"])
 
@@ -505,6 +539,14 @@ class TestAsyncSubstatus:
         assert_matches_type(SubstatusListResponse, substatus, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        substatus = await async_client.substatus.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SubstatusListResponse, substatus, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.substatus.with_raw_response.list()
 
@@ -568,6 +610,14 @@ class TestAsyncSubstatus:
         assert_matches_type(str, substatus, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        substatus = await async_client.substatus.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, substatus, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.substatus.with_raw_response.count()
 
@@ -590,14 +640,23 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SubstatusGetResponse, substatus, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        substatus = await async_client.substatus.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SubstatusGetResponse, substatus, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.substatus.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -608,7 +667,7 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.substatus.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -622,7 +681,7 @@ class TestAsyncSubstatus:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.substatus.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -654,6 +713,15 @@ class TestAsyncSubstatus:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.tuple(
             columns="columns",
+        )
+        assert_matches_type(SubstatusTupleResponse, substatus, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        substatus = await async_client.substatus.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SubstatusTupleResponse, substatus, path=["response"])
 

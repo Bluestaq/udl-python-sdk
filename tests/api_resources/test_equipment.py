@@ -128,14 +128,23 @@ class TestEquipment:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EquipmentFull, equipment, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        equipment = client.equipment.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EquipmentFull, equipment, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.equipment.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -146,7 +155,7 @@ class TestEquipment:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.equipment.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -160,7 +169,7 @@ class TestEquipment:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.equipment.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -289,6 +298,14 @@ class TestEquipment:
         assert_matches_type(EquipmentListResponse, equipment, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        equipment = client.equipment.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.equipment.with_raw_response.list()
 
@@ -349,6 +366,14 @@ class TestEquipment:
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.count()
+        assert_matches_type(str, equipment, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        equipment = client.equipment.count(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(str, equipment, path=["response"])
 
     @parametrize
@@ -458,6 +483,15 @@ class TestEquipment:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.tuple(
             columns="columns",
+        )
+        assert_matches_type(EquipmentTupleResponse, equipment, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        equipment = client.equipment.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EquipmentTupleResponse, equipment, path=["response"])
 
@@ -595,14 +629,23 @@ class TestAsyncEquipment:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EquipmentFull, equipment, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        equipment = await async_client.equipment.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EquipmentFull, equipment, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.equipment.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -613,7 +656,7 @@ class TestAsyncEquipment:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.equipment.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -627,7 +670,7 @@ class TestAsyncEquipment:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.equipment.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -756,6 +799,14 @@ class TestAsyncEquipment:
         assert_matches_type(EquipmentListResponse, equipment, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        equipment = await async_client.equipment.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.equipment.with_raw_response.list()
 
@@ -816,6 +867,14 @@ class TestAsyncEquipment:
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.count()
+        assert_matches_type(str, equipment, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        equipment = await async_client.equipment.count(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(str, equipment, path=["response"])
 
     @parametrize
@@ -925,6 +984,15 @@ class TestAsyncEquipment:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.tuple(
             columns="columns",
+        )
+        assert_matches_type(EquipmentTupleResponse, equipment, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        equipment = await async_client.equipment.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EquipmentTupleResponse, equipment, path=["response"])
 

@@ -12,6 +12,7 @@ from ...types import (
     conjunction_list_params,
     conjunction_count_params,
     conjunction_tuple_params,
+    conjunction_retrieve_params,
     conjunction_create_udl_params,
     conjunction_create_bulk_params,
     conjunction_get_history_params,
@@ -73,6 +74,8 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -98,7 +101,17 @@ class ConjunctionsResource(SyncAPIResource):
         return self._get(
             f"/udl/conjunction/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    conjunction_retrieve_params.ConjunctionRetrieveParams,
+                ),
             ),
             cast_to=ConjunctionFull,
         )
@@ -107,6 +120,8 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -138,7 +153,14 @@ class ConjunctionsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"tca": tca}, conjunction_list_params.ConjunctionListParams),
+                query=maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    conjunction_list_params.ConjunctionListParams,
+                ),
             ),
             cast_to=ConjunctionListResponse,
         )
@@ -147,6 +169,8 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -180,7 +204,14 @@ class ConjunctionsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"tca": tca}, conjunction_count_params.ConjunctionCountParams),
+                query=maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    conjunction_count_params.ConjunctionCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -609,6 +640,8 @@ class ConjunctionsResource(SyncAPIResource):
         *,
         tca: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -648,6 +681,8 @@ class ConjunctionsResource(SyncAPIResource):
                     {
                         "tca": tca,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     conjunction_get_history_params.ConjunctionGetHistoryParams,
                 ),
@@ -683,6 +718,8 @@ class ConjunctionsResource(SyncAPIResource):
         *,
         columns: str,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -727,6 +764,8 @@ class ConjunctionsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "tca": tca,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     conjunction_tuple_params.ConjunctionTupleParams,
                 ),
@@ -875,6 +914,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -900,7 +941,17 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/conjunction/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    conjunction_retrieve_params.ConjunctionRetrieveParams,
+                ),
             ),
             cast_to=ConjunctionFull,
         )
@@ -909,6 +960,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -940,7 +993,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"tca": tca}, conjunction_list_params.ConjunctionListParams),
+                query=await async_maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    conjunction_list_params.ConjunctionListParams,
+                ),
             ),
             cast_to=ConjunctionListResponse,
         )
@@ -949,6 +1009,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -982,7 +1044,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"tca": tca}, conjunction_count_params.ConjunctionCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    conjunction_count_params.ConjunctionCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1411,6 +1480,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         *,
         tca: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1450,6 +1521,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     {
                         "tca": tca,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     conjunction_get_history_params.ConjunctionGetHistoryParams,
                 ),
@@ -1485,6 +1558,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         *,
         columns: str,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1529,6 +1604,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "tca": tca,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     conjunction_tuple_params.ConjunctionTupleParams,
                 ),

@@ -80,6 +80,8 @@ class EphemerisResource(SyncAPIResource):
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -113,7 +115,14 @@ class EphemerisResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"es_id": es_id}, ephemeris_list_params.EphemerisListParams),
+                query=maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ephemeris_list_params.EphemerisListParams,
+                ),
             ),
             cast_to=EphemerisListResponse,
         )
@@ -122,6 +131,8 @@ class EphemerisResource(SyncAPIResource):
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -157,7 +168,14 @@ class EphemerisResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"es_id": es_id}, ephemeris_count_params.EphemerisCountParams),
+                query=maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ephemeris_count_params.EphemerisCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -283,6 +301,8 @@ class EphemerisResource(SyncAPIResource):
         *,
         columns: str,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -329,6 +349,8 @@ class EphemerisResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "es_id": es_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     ephemeris_tuple_params.EphemerisTupleParams,
                 ),
@@ -620,6 +642,8 @@ class AsyncEphemerisResource(AsyncAPIResource):
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -653,7 +677,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"es_id": es_id}, ephemeris_list_params.EphemerisListParams),
+                query=await async_maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ephemeris_list_params.EphemerisListParams,
+                ),
             ),
             cast_to=EphemerisListResponse,
         )
@@ -662,6 +693,8 @@ class AsyncEphemerisResource(AsyncAPIResource):
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -697,7 +730,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"es_id": es_id}, ephemeris_count_params.EphemerisCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    ephemeris_count_params.EphemerisCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -823,6 +863,8 @@ class AsyncEphemerisResource(AsyncAPIResource):
         *,
         columns: str,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -869,6 +911,8 @@ class AsyncEphemerisResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "es_id": es_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     ephemeris_tuple_params.EphemerisTupleParams,
                 ),

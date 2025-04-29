@@ -20,6 +20,8 @@ class HistoryListParams(TypedDict, total=False):
     can be selected.
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
     id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
     """
     (One or more of fields 'idOnOrbit, startTime' are required.) Unique identifier
@@ -28,6 +30,8 @@ class HistoryListParams(TypedDict, total=False):
     (e.g. /udl/onorbit/{id}). For example, the OnOrbit with idOnOrbit = 25544 would
     be queried as /udl/onorbit/25544.
     """
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
 
     start_time: Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]
     """

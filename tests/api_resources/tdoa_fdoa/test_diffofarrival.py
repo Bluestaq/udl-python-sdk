@@ -112,6 +112,15 @@ class TestDiffofarrival:
         assert_matches_type(DiffofarrivalListResponse, diffofarrival, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        diffofarrival = client.tdoa_fdoa.diffofarrival.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DiffofarrivalListResponse, diffofarrival, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.tdoa_fdoa.diffofarrival.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -139,6 +148,15 @@ class TestDiffofarrival:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         diffofarrival = client.tdoa_fdoa.diffofarrival.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, diffofarrival, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        diffofarrival = client.tdoa_fdoa.diffofarrival.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, diffofarrival, path=["response"])
 
@@ -314,6 +332,15 @@ class TestAsyncDiffofarrival:
         assert_matches_type(DiffofarrivalListResponse, diffofarrival, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        diffofarrival = await async_client.tdoa_fdoa.diffofarrival.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DiffofarrivalListResponse, diffofarrival, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.tdoa_fdoa.diffofarrival.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -341,6 +368,15 @@ class TestAsyncDiffofarrival:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         diffofarrival = await async_client.tdoa_fdoa.diffofarrival.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, diffofarrival, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        diffofarrival = await async_client.tdoa_fdoa.diffofarrival.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, diffofarrival, path=["response"])
 

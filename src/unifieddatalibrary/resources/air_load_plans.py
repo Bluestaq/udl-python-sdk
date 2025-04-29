@@ -13,6 +13,7 @@ from ..types import (
     air_load_plan_count_params,
     air_load_plan_tuple_params,
     air_load_plan_create_params,
+    air_load_plan_retrieve_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
@@ -408,6 +409,8 @@ class AirLoadPlansResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -433,7 +436,17 @@ class AirLoadPlansResource(SyncAPIResource):
         return self._get(
             f"/udl/airloadplan/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_load_plan_retrieve_params.AirLoadPlanRetrieveParams,
+                ),
             ),
             cast_to=AirloadplanFull,
         )
@@ -442,6 +455,8 @@ class AirLoadPlansResource(SyncAPIResource):
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -474,7 +489,14 @@ class AirLoadPlansResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"est_dep_time": est_dep_time}, air_load_plan_list_params.AirLoadPlanListParams),
+                query=maybe_transform(
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_load_plan_list_params.AirLoadPlanListParams,
+                ),
             ),
             cast_to=AirLoadPlanListResponse,
         )
@@ -483,6 +505,8 @@ class AirLoadPlansResource(SyncAPIResource):
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -518,7 +542,12 @@ class AirLoadPlansResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"est_dep_time": est_dep_time}, air_load_plan_count_params.AirLoadPlanCountParams
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_load_plan_count_params.AirLoadPlanCountParams,
                 ),
             ),
             cast_to=str,
@@ -552,6 +581,8 @@ class AirLoadPlansResource(SyncAPIResource):
         *,
         columns: str,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -597,6 +628,8 @@ class AirLoadPlansResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     air_load_plan_tuple_params.AirLoadPlanTupleParams,
                 ),
@@ -981,6 +1014,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1006,7 +1041,17 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         return await self._get(
             f"/udl/airloadplan/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_load_plan_retrieve_params.AirLoadPlanRetrieveParams,
+                ),
             ),
             cast_to=AirloadplanFull,
         )
@@ -1015,6 +1060,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1048,7 +1095,12 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"est_dep_time": est_dep_time}, air_load_plan_list_params.AirLoadPlanListParams
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_load_plan_list_params.AirLoadPlanListParams,
                 ),
             ),
             cast_to=AirLoadPlanListResponse,
@@ -1058,6 +1110,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1093,7 +1147,12 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"est_dep_time": est_dep_time}, air_load_plan_count_params.AirLoadPlanCountParams
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    air_load_plan_count_params.AirLoadPlanCountParams,
                 ),
             ),
             cast_to=str,
@@ -1127,6 +1186,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         *,
         columns: str,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1172,6 +1233,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     air_load_plan_tuple_params.AirLoadPlanTupleParams,
                 ),

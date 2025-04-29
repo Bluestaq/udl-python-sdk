@@ -25,3 +25,7 @@ class SarobservationTupleParams(TypedDict, total=False):
     classification marking of the data, if applicable. See the ‘queryhelp’ operation
     for a complete list of possible fields.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

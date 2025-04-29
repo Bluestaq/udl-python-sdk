@@ -18,3 +18,7 @@ class ManeuverCountParams(TypedDict, total=False):
     For maneuvers without start and end times, the start time is considered to be
     the maneuver event time. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

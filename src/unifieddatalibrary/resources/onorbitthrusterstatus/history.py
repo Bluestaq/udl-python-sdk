@@ -46,7 +46,9 @@ class HistoryResource(SyncAPIResource):
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -91,7 +93,9 @@ class HistoryResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_result": max_result,
                         "status_time": status_time,
                     },
                     history_count_params.HistoryCountParams,
@@ -124,7 +128,9 @@ class AsyncHistoryResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -169,7 +175,9 @@ class AsyncHistoryResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_result": max_result,
                         "status_time": status_time,
                     },
                     history_count_params.HistoryCountParams,

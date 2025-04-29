@@ -108,14 +108,23 @@ class TestDropzone:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         dropzone = client.dropzone.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(DropzoneRetrieveResponse, dropzone, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dropzone = client.dropzone.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DropzoneRetrieveResponse, dropzone, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.dropzone.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -126,7 +135,7 @@ class TestDropzone:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.dropzone.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,7 +149,7 @@ class TestDropzone:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.dropzone.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -287,6 +296,14 @@ class TestDropzone:
         assert_matches_type(str, dropzone, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dropzone = client.dropzone.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, dropzone, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.dropzone.with_raw_response.count()
 
@@ -370,6 +387,14 @@ class TestDropzone:
         assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
 
     @parametrize
+    def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dropzone = client.dropzone.query(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
+
+    @parametrize
     def test_raw_response_query(self, client: Unifieddatalibrary) -> None:
         response = client.dropzone.with_raw_response.query()
 
@@ -418,6 +443,15 @@ class TestDropzone:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         dropzone = client.dropzone.tuple(
             columns="columns",
+        )
+        assert_matches_type(DropzoneTupleResponse, dropzone, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dropzone = client.dropzone.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DropzoneTupleResponse, dropzone, path=["response"])
 
@@ -593,14 +627,23 @@ class TestAsyncDropzone:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         dropzone = await async_client.dropzone.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(DropzoneRetrieveResponse, dropzone, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dropzone = await async_client.dropzone.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DropzoneRetrieveResponse, dropzone, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.dropzone.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -611,7 +654,7 @@ class TestAsyncDropzone:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.dropzone.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -625,7 +668,7 @@ class TestAsyncDropzone:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.dropzone.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -772,6 +815,14 @@ class TestAsyncDropzone:
         assert_matches_type(str, dropzone, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dropzone = await async_client.dropzone.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, dropzone, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.dropzone.with_raw_response.count()
 
@@ -855,6 +906,14 @@ class TestAsyncDropzone:
         assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
 
     @parametrize
+    async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dropzone = await async_client.dropzone.query(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
+
+    @parametrize
     async def test_raw_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.dropzone.with_raw_response.query()
 
@@ -903,6 +962,15 @@ class TestAsyncDropzone:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         dropzone = await async_client.dropzone.tuple(
             columns="columns",
+        )
+        assert_matches_type(DropzoneTupleResponse, dropzone, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dropzone = await async_client.dropzone.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DropzoneTupleResponse, dropzone, path=["response"])
 

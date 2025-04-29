@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    launchevent_get_params,
     launchevent_list_params,
     launchevent_count_params,
     launchevent_tuple_params,
@@ -178,6 +179,8 @@ class LauncheventResource(SyncAPIResource):
         self,
         *,
         msg_create_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -211,7 +214,12 @@ class LauncheventResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"msg_create_date": msg_create_date}, launchevent_list_params.LauncheventListParams
+                    {
+                        "msg_create_date": msg_create_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchevent_list_params.LauncheventListParams,
                 ),
             ),
             cast_to=LauncheventListResponse,
@@ -221,6 +229,8 @@ class LauncheventResource(SyncAPIResource):
         self,
         *,
         msg_create_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -256,7 +266,12 @@ class LauncheventResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"msg_create_date": msg_create_date}, launchevent_count_params.LauncheventCountParams
+                    {
+                        "msg_create_date": msg_create_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchevent_count_params.LauncheventCountParams,
                 ),
             ),
             cast_to=str,
@@ -303,6 +318,8 @@ class LauncheventResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -328,7 +345,17 @@ class LauncheventResource(SyncAPIResource):
         return self._get(
             f"/udl/launchevent/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchevent_get_params.LauncheventGetParams,
+                ),
             ),
             cast_to=LauncheventGetResponse,
         )
@@ -361,6 +388,8 @@ class LauncheventResource(SyncAPIResource):
         *,
         columns: str,
         msg_create_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -406,6 +435,8 @@ class LauncheventResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "msg_create_date": msg_create_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     launchevent_tuple_params.LauncheventTupleParams,
                 ),
@@ -594,6 +625,8 @@ class AsyncLauncheventResource(AsyncAPIResource):
         self,
         *,
         msg_create_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -627,7 +660,12 @@ class AsyncLauncheventResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"msg_create_date": msg_create_date}, launchevent_list_params.LauncheventListParams
+                    {
+                        "msg_create_date": msg_create_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchevent_list_params.LauncheventListParams,
                 ),
             ),
             cast_to=LauncheventListResponse,
@@ -637,6 +675,8 @@ class AsyncLauncheventResource(AsyncAPIResource):
         self,
         *,
         msg_create_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -672,7 +712,12 @@ class AsyncLauncheventResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"msg_create_date": msg_create_date}, launchevent_count_params.LauncheventCountParams
+                    {
+                        "msg_create_date": msg_create_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchevent_count_params.LauncheventCountParams,
                 ),
             ),
             cast_to=str,
@@ -719,6 +764,8 @@ class AsyncLauncheventResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -744,7 +791,17 @@ class AsyncLauncheventResource(AsyncAPIResource):
         return await self._get(
             f"/udl/launchevent/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    launchevent_get_params.LauncheventGetParams,
+                ),
             ),
             cast_to=LauncheventGetResponse,
         )
@@ -777,6 +834,8 @@ class AsyncLauncheventResource(AsyncAPIResource):
         *,
         columns: str,
         msg_create_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -822,6 +881,8 @@ class AsyncLauncheventResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "msg_create_date": msg_create_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     launchevent_tuple_params.LauncheventTupleParams,
                 ),

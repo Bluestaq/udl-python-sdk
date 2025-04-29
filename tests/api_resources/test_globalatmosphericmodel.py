@@ -33,14 +33,23 @@ class TestGlobalatmosphericmodel:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         globalatmosphericmodel = client.globalatmosphericmodel.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(GlobalatmosphericmodelRetrieveResponse, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        globalatmosphericmodel = client.globalatmosphericmodel.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(GlobalatmosphericmodelRetrieveResponse, globalatmosphericmodel, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.globalatmosphericmodel.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -51,7 +60,7 @@ class TestGlobalatmosphericmodel:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.globalatmosphericmodel.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,13 +74,22 @@ class TestGlobalatmosphericmodel:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.globalatmosphericmodel.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         globalatmosphericmodel = client.globalatmosphericmodel.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        globalatmosphericmodel = client.globalatmosphericmodel.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, globalatmosphericmodel, path=["response"])
 
@@ -106,7 +124,23 @@ class TestGlobalatmosphericmodel:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         globalatmosphericmodel = client.globalatmosphericmodel.get_file(
-            "id",
+            id="id",
+        )
+        assert globalatmosphericmodel.is_closed
+        assert globalatmosphericmodel.json() == {"foo": "bar"}
+        assert cast(Any, globalatmosphericmodel.is_closed) is True
+        assert isinstance(globalatmosphericmodel, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_get_file_with_all_params(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/globalatmosphericmodel/getFile/id").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        globalatmosphericmodel = client.globalatmosphericmodel.get_file(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert globalatmosphericmodel.is_closed
         assert globalatmosphericmodel.json() == {"foo": "bar"}
@@ -121,7 +155,7 @@ class TestGlobalatmosphericmodel:
         )
 
         globalatmosphericmodel = client.globalatmosphericmodel.with_raw_response.get_file(
-            "id",
+            id="id",
         )
 
         assert globalatmosphericmodel.is_closed is True
@@ -136,7 +170,7 @@ class TestGlobalatmosphericmodel:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.globalatmosphericmodel.with_streaming_response.get_file(
-            "id",
+            id="id",
         ) as globalatmosphericmodel:
             assert not globalatmosphericmodel.is_closed
             assert globalatmosphericmodel.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -152,13 +186,22 @@ class TestGlobalatmosphericmodel:
     def test_path_params_get_file(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.globalatmosphericmodel.with_raw_response.get_file(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_query(self, client: Unifieddatalibrary) -> None:
         globalatmosphericmodel = client.globalatmosphericmodel.query(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(GlobalatmosphericmodelQueryResponse, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
+        globalatmosphericmodel = client.globalatmosphericmodel.query(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(GlobalatmosphericmodelQueryResponse, globalatmosphericmodel, path=["response"])
 
@@ -216,6 +259,16 @@ class TestGlobalatmosphericmodel:
         globalatmosphericmodel = client.globalatmosphericmodel.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        globalatmosphericmodel = client.globalatmosphericmodel.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
 
@@ -324,14 +377,23 @@ class TestAsyncGlobalatmosphericmodel:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(GlobalatmosphericmodelRetrieveResponse, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(GlobalatmosphericmodelRetrieveResponse, globalatmosphericmodel, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.globalatmosphericmodel.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -342,7 +404,7 @@ class TestAsyncGlobalatmosphericmodel:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.globalatmosphericmodel.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -356,13 +418,22 @@ class TestAsyncGlobalatmosphericmodel:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.globalatmosphericmodel.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, globalatmosphericmodel, path=["response"])
 
@@ -397,7 +468,25 @@ class TestAsyncGlobalatmosphericmodel:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         globalatmosphericmodel = await async_client.globalatmosphericmodel.get_file(
-            "id",
+            id="id",
+        )
+        assert globalatmosphericmodel.is_closed
+        assert await globalatmosphericmodel.json() == {"foo": "bar"}
+        assert cast(Any, globalatmosphericmodel.is_closed) is True
+        assert isinstance(globalatmosphericmodel, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_get_file_with_all_params(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/udl/globalatmosphericmodel/getFile/id").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.get_file(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert globalatmosphericmodel.is_closed
         assert await globalatmosphericmodel.json() == {"foo": "bar"}
@@ -412,7 +501,7 @@ class TestAsyncGlobalatmosphericmodel:
         )
 
         globalatmosphericmodel = await async_client.globalatmosphericmodel.with_raw_response.get_file(
-            "id",
+            id="id",
         )
 
         assert globalatmosphericmodel.is_closed is True
@@ -429,7 +518,7 @@ class TestAsyncGlobalatmosphericmodel:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.globalatmosphericmodel.with_streaming_response.get_file(
-            "id",
+            id="id",
         ) as globalatmosphericmodel:
             assert not globalatmosphericmodel.is_closed
             assert globalatmosphericmodel.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -445,13 +534,22 @@ class TestAsyncGlobalatmosphericmodel:
     async def test_path_params_get_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.globalatmosphericmodel.with_raw_response.get_file(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.query(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(GlobalatmosphericmodelQueryResponse, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.query(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(GlobalatmosphericmodelQueryResponse, globalatmosphericmodel, path=["response"])
 
@@ -509,6 +607,16 @@ class TestAsyncGlobalatmosphericmodel:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        globalatmosphericmodel = await async_client.globalatmosphericmodel.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
 
