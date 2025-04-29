@@ -171,7 +171,7 @@ class TestOnorbitantenna:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitantenna = client.onorbitantenna.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitantennaListResponse, onorbitantenna, path=["response"])
 
@@ -245,7 +245,7 @@ class TestOnorbitantenna:
         onorbitantenna = client.onorbitantenna.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitantennaGetResponse, onorbitantenna, path=["response"])
 
@@ -435,7 +435,7 @@ class TestAsyncOnorbitantenna:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitantenna = await async_client.onorbitantenna.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitantennaListResponse, onorbitantenna, path=["response"])
 
@@ -509,7 +509,7 @@ class TestAsyncOnorbitantenna:
         onorbitantenna = await async_client.onorbitantenna.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitantennaGetResponse, onorbitantenna, path=["response"])
 

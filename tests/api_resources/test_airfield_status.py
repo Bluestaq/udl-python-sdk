@@ -33,7 +33,7 @@ class TestAirfieldStatus:
         airfield_status = client.airfield_status.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldstatusFull, airfield_status, path=["response"])
 
@@ -216,7 +216,7 @@ class TestAirfieldStatus:
         airfield_status = client.airfield_status.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldStatusTupleResponse, airfield_status, path=["response"])
 
@@ -260,7 +260,7 @@ class TestAsyncAirfieldStatus:
         airfield_status = await async_client.airfield_status.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldstatusFull, airfield_status, path=["response"])
 
@@ -443,7 +443,7 @@ class TestAsyncAirfieldStatus:
         airfield_status = await async_client.airfield_status.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldStatusTupleResponse, airfield_status, path=["response"])
 

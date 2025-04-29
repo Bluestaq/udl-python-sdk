@@ -151,7 +151,7 @@ class TestLaunchvehicle:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchvehicle = client.launchvehicle.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicleListResponse, launchvehicle, path=["response"])
 
@@ -222,7 +222,7 @@ class TestLaunchvehicle:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchvehicle = client.launchvehicle.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchvehicle, path=["response"])
 
@@ -258,7 +258,7 @@ class TestLaunchvehicle:
         launchvehicle = client.launchvehicle.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicleGetResponse, launchvehicle, path=["response"])
 
@@ -330,7 +330,7 @@ class TestLaunchvehicle:
         launchvehicle = client.launchvehicle.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicleTupleResponse, launchvehicle, path=["response"])
 
@@ -492,7 +492,7 @@ class TestAsyncLaunchvehicle:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicle = await async_client.launchvehicle.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicleListResponse, launchvehicle, path=["response"])
 
@@ -563,7 +563,7 @@ class TestAsyncLaunchvehicle:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicle = await async_client.launchvehicle.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchvehicle, path=["response"])
 
@@ -599,7 +599,7 @@ class TestAsyncLaunchvehicle:
         launchvehicle = await async_client.launchvehicle.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicleGetResponse, launchvehicle, path=["response"])
 
@@ -671,7 +671,7 @@ class TestAsyncLaunchvehicle:
         launchvehicle = await async_client.launchvehicle.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicleTupleResponse, launchvehicle, path=["response"])
 

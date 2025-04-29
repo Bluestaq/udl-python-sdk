@@ -114,7 +114,7 @@ class TestEop:
         eop = client.eop.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EopFull, eop, path=["response"])
 
@@ -256,7 +256,7 @@ class TestEop:
         eop = client.eop.list(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EopListResponse, eop, path=["response"])
 
@@ -334,7 +334,7 @@ class TestEop:
         eop = client.eop.count(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, eop, path=["response"])
 
@@ -376,7 +376,7 @@ class TestEop:
             columns="columns",
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EopListTupleResponse, eop, path=["response"])
 
@@ -527,7 +527,7 @@ class TestAsyncEop:
         eop = await async_client.eop.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EopFull, eop, path=["response"])
 
@@ -669,7 +669,7 @@ class TestAsyncEop:
         eop = await async_client.eop.list(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EopListResponse, eop, path=["response"])
 
@@ -747,7 +747,7 @@ class TestAsyncEop:
         eop = await async_client.eop.count(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, eop, path=["response"])
 
@@ -789,7 +789,7 @@ class TestAsyncEop:
             columns="columns",
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EopListTupleResponse, eop, path=["response"])
 

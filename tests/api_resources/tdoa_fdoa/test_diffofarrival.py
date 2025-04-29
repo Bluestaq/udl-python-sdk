@@ -116,7 +116,7 @@ class TestDiffofarrival:
         diffofarrival = client.tdoa_fdoa.diffofarrival.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiffofarrivalListResponse, diffofarrival, path=["response"])
 
@@ -156,7 +156,7 @@ class TestDiffofarrival:
         diffofarrival = client.tdoa_fdoa.diffofarrival.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, diffofarrival, path=["response"])
 
@@ -336,7 +336,7 @@ class TestAsyncDiffofarrival:
         diffofarrival = await async_client.tdoa_fdoa.diffofarrival.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiffofarrivalListResponse, diffofarrival, path=["response"])
 
@@ -376,7 +376,7 @@ class TestAsyncDiffofarrival:
         diffofarrival = await async_client.tdoa_fdoa.diffofarrival.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, diffofarrival, path=["response"])
 

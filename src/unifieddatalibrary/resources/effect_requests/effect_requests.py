@@ -219,7 +219,7 @@ class EffectRequestsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -252,7 +252,7 @@ class EffectRequestsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_retrieve_params.EffectRequestRetrieveParams,
                 ),
@@ -265,7 +265,7 @@ class EffectRequestsResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -302,7 +302,7 @@ class EffectRequestsResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_list_params.EffectRequestListParams,
                 ),
@@ -315,7 +315,7 @@ class EffectRequestsResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -354,7 +354,7 @@ class EffectRequestsResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_count_params.EffectRequestCountParams,
                 ),
@@ -428,7 +428,7 @@ class EffectRequestsResource(SyncAPIResource):
         columns: str,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -475,7 +475,7 @@ class EffectRequestsResource(SyncAPIResource):
                         "columns": columns,
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_tuple_params.EffectRequestTupleParams,
                 ),
@@ -696,7 +696,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -729,7 +729,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_retrieve_params.EffectRequestRetrieveParams,
                 ),
@@ -742,7 +742,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -779,7 +779,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_list_params.EffectRequestListParams,
                 ),
@@ -792,7 +792,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -831,7 +831,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_count_params.EffectRequestCountParams,
                 ),
@@ -905,7 +905,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         columns: str,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -952,7 +952,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                         "columns": columns,
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     effect_request_tuple_params.EffectRequestTupleParams,
                 ),

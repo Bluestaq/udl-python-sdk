@@ -46,7 +46,7 @@ class TestScsViews:
         scs_view = client.scs_views.retrieve(
             id="/Documentation/project.pdf",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert scs_view.is_closed
         assert scs_view.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncScsViews:
         scs_view = await async_client.scs_views.retrieve(
             id="/Documentation/project.pdf",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert scs_view.is_closed
         assert await scs_view.json() == {"foo": "bar"}

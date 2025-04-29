@@ -130,7 +130,7 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.diplomatic_clearance.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiplomaticclearanceFull, diplomatic_clearance, path=["response"])
 
@@ -289,7 +289,7 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.diplomatic_clearance.list(
             first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiplomaticClearanceListResponse, diplomatic_clearance, path=["response"])
 
@@ -367,7 +367,7 @@ class TestDiplomaticClearance:
         diplomatic_clearance = client.diplomatic_clearance.count(
             first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, diplomatic_clearance, path=["response"])
 
@@ -489,7 +489,7 @@ class TestDiplomaticClearance:
             columns="columns",
             first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiplomaticClearanceTupleResponse, diplomatic_clearance, path=["response"])
 
@@ -631,7 +631,7 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.diplomatic_clearance.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiplomaticclearanceFull, diplomatic_clearance, path=["response"])
 
@@ -790,7 +790,7 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.diplomatic_clearance.list(
             first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiplomaticClearanceListResponse, diplomatic_clearance, path=["response"])
 
@@ -868,7 +868,7 @@ class TestAsyncDiplomaticClearance:
         diplomatic_clearance = await async_client.diplomatic_clearance.count(
             first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, diplomatic_clearance, path=["response"])
 
@@ -990,7 +990,7 @@ class TestAsyncDiplomaticClearance:
             columns="columns",
             first_dep_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiplomaticClearanceTupleResponse, diplomatic_clearance, path=["response"])
 

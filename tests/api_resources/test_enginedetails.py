@@ -26,7 +26,7 @@ class TestEnginedetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         enginedetail = client.enginedetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
 
@@ -63,7 +63,7 @@ class TestAsyncEnginedetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         enginedetail = await async_client.enginedetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
 

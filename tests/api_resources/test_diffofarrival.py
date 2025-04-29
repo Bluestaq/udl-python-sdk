@@ -33,7 +33,7 @@ class TestDiffofarrival:
         diffofarrival = client.diffofarrival.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiffofarrivalFull, diffofarrival, path=["response"])
 
@@ -107,7 +107,7 @@ class TestDiffofarrival:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiffofarrivalTupleResponse, diffofarrival, path=["response"])
 
@@ -205,7 +205,7 @@ class TestAsyncDiffofarrival:
         diffofarrival = await async_client.diffofarrival.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiffofarrivalFull, diffofarrival, path=["response"])
 
@@ -279,7 +279,7 @@ class TestAsyncDiffofarrival:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DiffofarrivalTupleResponse, diffofarrival, path=["response"])
 

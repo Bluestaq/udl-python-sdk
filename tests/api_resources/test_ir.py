@@ -250,7 +250,7 @@ class TestIr:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         ir = client.ir.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IrListResponse, ir, path=["response"])
 
@@ -321,7 +321,7 @@ class TestIr:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         ir = client.ir.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ir, path=["response"])
 
@@ -357,7 +357,7 @@ class TestIr:
         ir = client.ir.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IrGetResponse, ir, path=["response"])
 
@@ -429,7 +429,7 @@ class TestIr:
         ir = client.ir.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IrTupleResponse, ir, path=["response"])
 
@@ -689,7 +689,7 @@ class TestAsyncIr:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ir = await async_client.ir.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IrListResponse, ir, path=["response"])
 
@@ -760,7 +760,7 @@ class TestAsyncIr:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ir = await async_client.ir.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ir, path=["response"])
 
@@ -796,7 +796,7 @@ class TestAsyncIr:
         ir = await async_client.ir.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IrGetResponse, ir, path=["response"])
 
@@ -868,7 +868,7 @@ class TestAsyncIr:
         ir = await async_client.ir.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IrTupleResponse, ir, path=["response"])
 

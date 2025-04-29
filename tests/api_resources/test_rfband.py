@@ -184,7 +184,7 @@ class TestRfband:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfband = client.rfband.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfbandListResponse, rfband, path=["response"])
 
@@ -255,7 +255,7 @@ class TestRfband:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfband = client.rfband.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, rfband, path=["response"])
 
@@ -291,7 +291,7 @@ class TestRfband:
         rfband = client.rfband.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfbandGetResponse, rfband, path=["response"])
 
@@ -363,7 +363,7 @@ class TestRfband:
         rfband = client.rfband.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfbandTupleResponse, rfband, path=["response"])
 
@@ -558,7 +558,7 @@ class TestAsyncRfband:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfband = await async_client.rfband.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfbandListResponse, rfband, path=["response"])
 
@@ -629,7 +629,7 @@ class TestAsyncRfband:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfband = await async_client.rfband.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, rfband, path=["response"])
 
@@ -665,7 +665,7 @@ class TestAsyncRfband:
         rfband = await async_client.rfband.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfbandGetResponse, rfband, path=["response"])
 
@@ -737,7 +737,7 @@ class TestAsyncRfband:
         rfband = await async_client.rfband.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfbandTupleResponse, rfband, path=["response"])
 

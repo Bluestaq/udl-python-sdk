@@ -482,7 +482,7 @@ class OrganizationdetailsResource(SyncAPIResource):
         *,
         name: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -518,7 +518,7 @@ class OrganizationdetailsResource(SyncAPIResource):
                     {
                         "name": name,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_list_params.OrganizationdetailListParams,
                 ),
@@ -570,7 +570,7 @@ class OrganizationdetailsResource(SyncAPIResource):
         name: str,
         source: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -609,7 +609,7 @@ class OrganizationdetailsResource(SyncAPIResource):
                         "name": name,
                         "source": source,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_find_by_source_params.OrganizationdetailFindBySourceParams,
                 ),
@@ -622,7 +622,7 @@ class OrganizationdetailsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -657,7 +657,7 @@ class OrganizationdetailsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_get_params.OrganizationdetailGetParams,
                 ),
@@ -1115,7 +1115,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         *,
         name: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1151,7 +1151,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
                     {
                         "name": name,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_list_params.OrganizationdetailListParams,
                 ),
@@ -1203,7 +1203,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         name: str,
         source: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1242,7 +1242,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
                         "name": name,
                         "source": source,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_find_by_source_params.OrganizationdetailFindBySourceParams,
                 ),
@@ -1255,7 +1255,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1290,7 +1290,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_get_params.OrganizationdetailGetParams,
                 ),

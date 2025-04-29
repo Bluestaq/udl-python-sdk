@@ -74,7 +74,7 @@ class TestV2:
         v2 = client.scs.v2.list(
             path="path",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(V2ListResponse, v2, path=["response"])
 
@@ -352,7 +352,7 @@ class TestAsyncV2:
         v2 = await async_client.scs.v2.list(
             path="path",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(V2ListResponse, v2, path=["response"])
 

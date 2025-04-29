@@ -102,7 +102,7 @@ class TestOnorbitthrusterstatus:
         onorbitthrusterstatus = client.onorbitthrusterstatus.list(
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(OnorbitthrusterstatusListResponse, onorbitthrusterstatus, path=["response"])
@@ -175,7 +175,7 @@ class TestOnorbitthrusterstatus:
         onorbitthrusterstatus = client.onorbitthrusterstatus.count(
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, onorbitthrusterstatus, path=["response"])
@@ -267,7 +267,7 @@ class TestOnorbitthrusterstatus:
         onorbitthrusterstatus = client.onorbitthrusterstatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterstatusFull, onorbitthrusterstatus, path=["response"])
 
@@ -340,7 +340,7 @@ class TestOnorbitthrusterstatus:
             columns="columns",
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(OnorbitthrusterstatusTupleResponse, onorbitthrusterstatus, path=["response"])
@@ -453,7 +453,7 @@ class TestAsyncOnorbitthrusterstatus:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.list(
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(OnorbitthrusterstatusListResponse, onorbitthrusterstatus, path=["response"])
@@ -526,7 +526,7 @@ class TestAsyncOnorbitthrusterstatus:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.count(
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, onorbitthrusterstatus, path=["response"])
@@ -618,7 +618,7 @@ class TestAsyncOnorbitthrusterstatus:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterstatusFull, onorbitthrusterstatus, path=["response"])
 
@@ -691,7 +691,7 @@ class TestAsyncOnorbitthrusterstatus:
             columns="columns",
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(OnorbitthrusterstatusTupleResponse, onorbitthrusterstatus, path=["response"])

@@ -119,7 +119,7 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotconsumptionFull, airfieldslotconsumption, path=["response"])
 
@@ -268,7 +268,7 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotconsumptionListResponse, airfieldslotconsumption, path=["response"])
 
@@ -346,7 +346,7 @@ class TestAirfieldslotconsumptions:
         airfieldslotconsumption = client.airfieldslotconsumptions.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airfieldslotconsumption, path=["response"])
 
@@ -413,7 +413,7 @@ class TestAirfieldslotconsumptions:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotconsumptionTupleResponse, airfieldslotconsumption, path=["response"])
 
@@ -544,7 +544,7 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotconsumptionFull, airfieldslotconsumption, path=["response"])
 
@@ -693,7 +693,7 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotconsumptionListResponse, airfieldslotconsumption, path=["response"])
 
@@ -771,7 +771,7 @@ class TestAsyncAirfieldslotconsumptions:
         airfieldslotconsumption = await async_client.airfieldslotconsumptions.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airfieldslotconsumption, path=["response"])
 
@@ -838,7 +838,7 @@ class TestAsyncAirfieldslotconsumptions:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotconsumptionTupleResponse, airfieldslotconsumption, path=["response"])
 

@@ -90,7 +90,7 @@ class TestOperatingunitremark:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
 
@@ -123,7 +123,7 @@ class TestOperatingunitremark:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, operatingunitremark, path=["response"])
 
@@ -214,7 +214,7 @@ class TestOperatingunitremark:
         operatingunitremark = client.operatingunitremark.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkGetResponse, operatingunitremark, path=["response"])
 
@@ -286,7 +286,7 @@ class TestOperatingunitremark:
         operatingunitremark = client.operatingunitremark.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkTupleResponse, operatingunitremark, path=["response"])
 
@@ -387,7 +387,7 @@ class TestAsyncOperatingunitremark:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
 
@@ -420,7 +420,7 @@ class TestAsyncOperatingunitremark:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, operatingunitremark, path=["response"])
 
@@ -511,7 +511,7 @@ class TestAsyncOperatingunitremark:
         operatingunitremark = await async_client.operatingunitremark.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkGetResponse, operatingunitremark, path=["response"])
 
@@ -583,7 +583,7 @@ class TestAsyncOperatingunitremark:
         operatingunitremark = await async_client.operatingunitremark.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkTupleResponse, operatingunitremark, path=["response"])
 

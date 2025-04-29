@@ -216,7 +216,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -261,7 +261,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_list_params.OnorbitthrusterstatusListParams,
@@ -311,7 +311,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -358,7 +358,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_count_params.OnorbitthrusterstatusCountParams,
@@ -409,7 +409,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -443,7 +443,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     onorbitthrusterstatus_get_params.OnorbitthrusterstatusGetParams,
                 ),
@@ -480,7 +480,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -535,7 +535,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                         "columns": columns,
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_tuple_params.OnorbitthrusterstatusTupleParams,
@@ -719,7 +719,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -764,7 +764,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_list_params.OnorbitthrusterstatusListParams,
@@ -814,7 +814,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -861,7 +861,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_count_params.OnorbitthrusterstatusCountParams,
@@ -912,7 +912,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -946,7 +946,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     onorbitthrusterstatus_get_params.OnorbitthrusterstatusGetParams,
                 ),
@@ -983,7 +983,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1038,7 +1038,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                         "columns": columns,
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_tuple_params.OnorbitthrusterstatusTupleParams,

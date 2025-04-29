@@ -240,7 +240,7 @@ class TestOnorbitevent:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitevent = client.onorbitevent.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbiteventListResponse, onorbitevent, path=["response"])
 
@@ -311,7 +311,7 @@ class TestOnorbitevent:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitevent = client.onorbitevent.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onorbitevent, path=["response"])
 
@@ -347,7 +347,7 @@ class TestOnorbitevent:
         onorbitevent = client.onorbitevent.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbiteventGetResponse, onorbitevent, path=["response"])
 
@@ -419,7 +419,7 @@ class TestOnorbitevent:
         onorbitevent = client.onorbitevent.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbiteventTupleResponse, onorbitevent, path=["response"])
 
@@ -669,7 +669,7 @@ class TestAsyncOnorbitevent:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitevent = await async_client.onorbitevent.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbiteventListResponse, onorbitevent, path=["response"])
 
@@ -740,7 +740,7 @@ class TestAsyncOnorbitevent:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitevent = await async_client.onorbitevent.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onorbitevent, path=["response"])
 
@@ -776,7 +776,7 @@ class TestAsyncOnorbitevent:
         onorbitevent = await async_client.onorbitevent.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbiteventGetResponse, onorbitevent, path=["response"])
 
@@ -848,7 +848,7 @@ class TestAsyncOnorbitevent:
         onorbitevent = await async_client.onorbitevent.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbiteventTupleResponse, onorbitevent, path=["response"])
 

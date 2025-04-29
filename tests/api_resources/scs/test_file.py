@@ -30,7 +30,7 @@ class TestFile:
         file = client.scs.file.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FileData, file, path=["response"])
 
@@ -143,7 +143,7 @@ class TestFile:
             path="path",
             count=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             offset=0,
         )
         assert_matches_type(FileListResponse, file, path=["response"])
@@ -188,7 +188,7 @@ class TestAsyncFile:
         file = await async_client.scs.file.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FileData, file, path=["response"])
 
@@ -301,7 +301,7 @@ class TestAsyncFile:
             path="path",
             count=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             offset=0,
         )
         assert_matches_type(FileListResponse, file, path=["response"])

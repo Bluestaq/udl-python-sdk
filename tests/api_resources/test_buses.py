@@ -181,7 +181,7 @@ class TestBuses:
         bus = client.buses.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BusFull, bus, path=["response"])
 
@@ -387,7 +387,7 @@ class TestBuses:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BusListResponse, bus, path=["response"])
 
@@ -458,7 +458,7 @@ class TestBuses:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, bus, path=["response"])
 
@@ -519,7 +519,7 @@ class TestBuses:
         bus = client.buses.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BusTupleResponse, bus, path=["response"])
 
@@ -710,7 +710,7 @@ class TestAsyncBuses:
         bus = await async_client.buses.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BusFull, bus, path=["response"])
 
@@ -916,7 +916,7 @@ class TestAsyncBuses:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BusListResponse, bus, path=["response"])
 
@@ -987,7 +987,7 @@ class TestAsyncBuses:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, bus, path=["response"])
 
@@ -1048,7 +1048,7 @@ class TestAsyncBuses:
         bus = await async_client.buses.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BusTupleResponse, bus, path=["response"])
 

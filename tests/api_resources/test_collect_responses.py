@@ -102,7 +102,7 @@ class TestCollectResponses:
         collect_response = client.collect_responses.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectResponseFull, collect_response, path=["response"])
 
@@ -149,7 +149,7 @@ class TestCollectResponses:
         collect_response = client.collect_responses.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectResponseListResponse, collect_response, path=["response"])
 
@@ -189,7 +189,7 @@ class TestCollectResponses:
         collect_response = client.collect_responses.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, collect_response, path=["response"])
 
@@ -431,7 +431,7 @@ class TestAsyncCollectResponses:
         collect_response = await async_client.collect_responses.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectResponseFull, collect_response, path=["response"])
 
@@ -478,7 +478,7 @@ class TestAsyncCollectResponses:
         collect_response = await async_client.collect_responses.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectResponseListResponse, collect_response, path=["response"])
 
@@ -518,7 +518,7 @@ class TestAsyncCollectResponses:
         collect_response = await async_client.collect_responses.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, collect_response, path=["response"])
 

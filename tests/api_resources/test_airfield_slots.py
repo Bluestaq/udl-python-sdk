@@ -92,7 +92,7 @@ class TestAirfieldSlots:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfield_slot = client.airfield_slots.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldSlotListResponse, airfield_slot, path=["response"])
 
@@ -195,7 +195,7 @@ class TestAsyncAirfieldSlots:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield_slot = await async_client.airfield_slots.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldSlotListResponse, airfield_slot, path=["response"])
 

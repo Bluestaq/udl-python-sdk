@@ -122,7 +122,7 @@ class TestEmittergeolocation:
         emittergeolocation = client.emittergeolocation.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EmittergeolocationRetrieveResponse, emittergeolocation, path=["response"])
 
@@ -207,7 +207,7 @@ class TestEmittergeolocation:
         emittergeolocation = client.emittergeolocation.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, emittergeolocation, path=["response"])
 
@@ -302,7 +302,7 @@ class TestEmittergeolocation:
         emittergeolocation = client.emittergeolocation.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EmittergeolocationQueryResponse, emittergeolocation, path=["response"])
 
@@ -369,7 +369,7 @@ class TestEmittergeolocation:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
 
@@ -558,7 +558,7 @@ class TestAsyncEmittergeolocation:
         emittergeolocation = await async_client.emittergeolocation.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EmittergeolocationRetrieveResponse, emittergeolocation, path=["response"])
 
@@ -643,7 +643,7 @@ class TestAsyncEmittergeolocation:
         emittergeolocation = await async_client.emittergeolocation.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, emittergeolocation, path=["response"])
 
@@ -738,7 +738,7 @@ class TestAsyncEmittergeolocation:
         emittergeolocation = await async_client.emittergeolocation.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EmittergeolocationQueryResponse, emittergeolocation, path=["response"])
 
@@ -805,7 +805,7 @@ class TestAsyncEmittergeolocation:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
 

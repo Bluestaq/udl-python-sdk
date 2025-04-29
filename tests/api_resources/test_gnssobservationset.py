@@ -33,7 +33,7 @@ class TestGnssobservationset:
         gnssobservationset = client.gnssobservationset.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssobservationsetListResponse, gnssobservationset, path=["response"])
 
@@ -73,7 +73,7 @@ class TestGnssobservationset:
         gnssobservationset = client.gnssobservationset.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, gnssobservationset, path=["response"])
 
@@ -192,7 +192,7 @@ class TestGnssobservationset:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssobservationsetTupleResponse, gnssobservationset, path=["response"])
 
@@ -290,7 +290,7 @@ class TestAsyncGnssobservationset:
         gnssobservationset = await async_client.gnssobservationset.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssobservationsetListResponse, gnssobservationset, path=["response"])
 
@@ -330,7 +330,7 @@ class TestAsyncGnssobservationset:
         gnssobservationset = await async_client.gnssobservationset.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, gnssobservationset, path=["response"])
 
@@ -449,7 +449,7 @@ class TestAsyncGnssobservationset:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssobservationsetTupleResponse, gnssobservationset, path=["response"])
 

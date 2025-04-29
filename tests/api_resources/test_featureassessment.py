@@ -122,7 +122,7 @@ class TestFeatureassessment:
         featureassessment = client.featureassessment.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FeatureassessmentRetrieveResponse, featureassessment, path=["response"])
 
@@ -169,7 +169,7 @@ class TestFeatureassessment:
         featureassessment = client.featureassessment.count(
             id_analytic_imagery="idAnalyticImagery",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, featureassessment, path=["response"])
 
@@ -267,7 +267,7 @@ class TestFeatureassessment:
         featureassessment = client.featureassessment.query(
             id_analytic_imagery="idAnalyticImagery",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FeatureassessmentQueryResponse, featureassessment, path=["response"])
 
@@ -334,7 +334,7 @@ class TestFeatureassessment:
             columns="columns",
             id_analytic_imagery="idAnalyticImagery",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FeatureassessmentTupleResponse, featureassessment, path=["response"])
 
@@ -526,7 +526,7 @@ class TestAsyncFeatureassessment:
         featureassessment = await async_client.featureassessment.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FeatureassessmentRetrieveResponse, featureassessment, path=["response"])
 
@@ -573,7 +573,7 @@ class TestAsyncFeatureassessment:
         featureassessment = await async_client.featureassessment.count(
             id_analytic_imagery="idAnalyticImagery",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, featureassessment, path=["response"])
 
@@ -671,7 +671,7 @@ class TestAsyncFeatureassessment:
         featureassessment = await async_client.featureassessment.query(
             id_analytic_imagery="idAnalyticImagery",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FeatureassessmentQueryResponse, featureassessment, path=["response"])
 
@@ -738,7 +738,7 @@ class TestAsyncFeatureassessment:
             columns="columns",
             id_analytic_imagery="idAnalyticImagery",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FeatureassessmentTupleResponse, featureassessment, path=["response"])
 

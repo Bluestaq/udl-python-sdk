@@ -33,7 +33,7 @@ class TestIonoobservation:
         ionoobservation = client.ionoobservation.list(
             start_time_utc=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IonoobservationListResponse, ionoobservation, path=["response"])
 
@@ -73,7 +73,7 @@ class TestIonoobservation:
         ionoobservation = client.ionoobservation.count(
             start_time_utc=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ionoobservation, path=["response"])
 
@@ -201,7 +201,7 @@ class TestIonoobservation:
             columns="columns",
             start_time_utc=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IonoobservationTupleResponse, ionoobservation, path=["response"])
 
@@ -308,7 +308,7 @@ class TestAsyncIonoobservation:
         ionoobservation = await async_client.ionoobservation.list(
             start_time_utc=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IonoobservationListResponse, ionoobservation, path=["response"])
 
@@ -348,7 +348,7 @@ class TestAsyncIonoobservation:
         ionoobservation = await async_client.ionoobservation.count(
             start_time_utc=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ionoobservation, path=["response"])
 
@@ -476,7 +476,7 @@ class TestAsyncIonoobservation:
             columns="columns",
             start_time_utc=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IonoobservationTupleResponse, ionoobservation, path=["response"])
 

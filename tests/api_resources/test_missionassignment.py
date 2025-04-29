@@ -274,7 +274,7 @@ class TestMissionassignment:
         missionassignment = client.missionassignment.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissionassignmentListResponse, missionassignment, path=["response"])
 
@@ -352,7 +352,7 @@ class TestMissionassignment:
         missionassignment = client.missionassignment.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, missionassignment, path=["response"])
 
@@ -447,7 +447,7 @@ class TestMissionassignment:
         missionassignment = client.missionassignment.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissionAssignmentFull, missionassignment, path=["response"])
 
@@ -521,7 +521,7 @@ class TestMissionassignment:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissionassignmentTupleResponse, missionassignment, path=["response"])
 
@@ -807,7 +807,7 @@ class TestAsyncMissionassignment:
         missionassignment = await async_client.missionassignment.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissionassignmentListResponse, missionassignment, path=["response"])
 
@@ -885,7 +885,7 @@ class TestAsyncMissionassignment:
         missionassignment = await async_client.missionassignment.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, missionassignment, path=["response"])
 
@@ -980,7 +980,7 @@ class TestAsyncMissionassignment:
         missionassignment = await async_client.missionassignment.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissionAssignmentFull, missionassignment, path=["response"])
 
@@ -1054,7 +1054,7 @@ class TestAsyncMissionassignment:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissionassignmentTupleResponse, missionassignment, path=["response"])
 

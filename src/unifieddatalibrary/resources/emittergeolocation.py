@@ -312,7 +312,7 @@ class EmittergeolocationResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -345,7 +345,7 @@ class EmittergeolocationResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_retrieve_params.EmittergeolocationRetrieveParams,
                 ),
@@ -395,7 +395,7 @@ class EmittergeolocationResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -434,7 +434,7 @@ class EmittergeolocationResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_count_params.EmittergeolocationCountParams,
                 ),
@@ -484,7 +484,7 @@ class EmittergeolocationResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -521,7 +521,7 @@ class EmittergeolocationResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_query_params.EmittergeolocationQueryParams,
                 ),
@@ -558,7 +558,7 @@ class EmittergeolocationResource(SyncAPIResource):
         columns: str,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -605,7 +605,7 @@ class EmittergeolocationResource(SyncAPIResource):
                         "columns": columns,
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_tuple_params.EmittergeolocationTupleParams,
                 ),
@@ -927,7 +927,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -960,7 +960,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_retrieve_params.EmittergeolocationRetrieveParams,
                 ),
@@ -1010,7 +1010,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1049,7 +1049,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_count_params.EmittergeolocationCountParams,
                 ),
@@ -1099,7 +1099,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1136,7 +1136,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_query_params.EmittergeolocationQueryParams,
                 ),
@@ -1173,7 +1173,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
         columns: str,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1220,7 +1220,7 @@ class AsyncEmittergeolocationResource(AsyncAPIResource):
                         "columns": columns,
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     emittergeolocation_tuple_params.EmittergeolocationTupleParams,
                 ),

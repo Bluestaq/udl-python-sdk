@@ -98,7 +98,7 @@ class TestBeamContours:
         beam_contour = client.beam_contours.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamcontourFull, beam_contour, path=["response"])
 
@@ -226,7 +226,7 @@ class TestBeamContours:
         beam_contour = client.beam_contours.list(
             id_beam="idBeam",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamContourListResponse, beam_contour, path=["response"])
 
@@ -304,7 +304,7 @@ class TestBeamContours:
         beam_contour = client.beam_contours.count(
             id_beam="idBeam",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, beam_contour, path=["response"])
 
@@ -426,7 +426,7 @@ class TestBeamContours:
             columns="columns",
             id_beam="idBeam",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamContourTupleResponse, beam_contour, path=["response"])
 
@@ -537,7 +537,7 @@ class TestAsyncBeamContours:
         beam_contour = await async_client.beam_contours.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamcontourFull, beam_contour, path=["response"])
 
@@ -665,7 +665,7 @@ class TestAsyncBeamContours:
         beam_contour = await async_client.beam_contours.list(
             id_beam="idBeam",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamContourListResponse, beam_contour, path=["response"])
 
@@ -743,7 +743,7 @@ class TestAsyncBeamContours:
         beam_contour = await async_client.beam_contours.count(
             id_beam="idBeam",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, beam_contour, path=["response"])
 
@@ -865,7 +865,7 @@ class TestAsyncBeamContours:
             columns="columns",
             id_beam="idBeam",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamContourTupleResponse, beam_contour, path=["response"])
 

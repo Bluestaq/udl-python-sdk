@@ -240,7 +240,7 @@ class TestScs:
         sc = client.scs.file_download(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert sc.is_closed
         assert sc.json() == {"foo": "bar"}
@@ -695,7 +695,7 @@ class TestAsyncScs:
         sc = await async_client.scs.file_download(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert sc.is_closed
         assert await sc.json() == {"foo": "bar"}

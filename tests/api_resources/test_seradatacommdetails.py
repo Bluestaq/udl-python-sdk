@@ -198,7 +198,7 @@ class TestSeradatacommdetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatacommdetail = client.seradatacommdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatacommdetailListResponse, seradatacommdetail, path=["response"])
 
@@ -269,7 +269,7 @@ class TestSeradatacommdetails:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatacommdetail = client.seradatacommdetails.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradatacommdetail, path=["response"])
 
@@ -305,7 +305,7 @@ class TestSeradatacommdetails:
         seradatacommdetail = client.seradatacommdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatacommdetailGetResponse, seradatacommdetail, path=["response"])
 
@@ -377,7 +377,7 @@ class TestSeradatacommdetails:
         seradatacommdetail = client.seradatacommdetails.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatacommdetailTupleResponse, seradatacommdetail, path=["response"])
 
@@ -586,7 +586,7 @@ class TestAsyncSeradatacommdetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatacommdetail = await async_client.seradatacommdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatacommdetailListResponse, seradatacommdetail, path=["response"])
 
@@ -657,7 +657,7 @@ class TestAsyncSeradatacommdetails:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatacommdetail = await async_client.seradatacommdetails.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradatacommdetail, path=["response"])
 
@@ -693,7 +693,7 @@ class TestAsyncSeradatacommdetails:
         seradatacommdetail = await async_client.seradatacommdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatacommdetailGetResponse, seradatacommdetail, path=["response"])
 
@@ -765,7 +765,7 @@ class TestAsyncSeradatacommdetails:
         seradatacommdetail = await async_client.seradatacommdetails.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatacommdetailTupleResponse, seradatacommdetail, path=["response"])
 

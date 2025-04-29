@@ -212,7 +212,7 @@ class TestDatalink:
         datalink = client.link_status.datalink.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DatalinkListResponse, datalink, path=["response"])
 
@@ -252,7 +252,7 @@ class TestDatalink:
         datalink = client.link_status.datalink.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, datalink, path=["response"])
 
@@ -319,7 +319,7 @@ class TestDatalink:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
 
@@ -602,7 +602,7 @@ class TestAsyncDatalink:
         datalink = await async_client.link_status.datalink.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DatalinkListResponse, datalink, path=["response"])
 
@@ -642,7 +642,7 @@ class TestAsyncDatalink:
         datalink = await async_client.link_status.datalink.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, datalink, path=["response"])
 
@@ -709,7 +709,7 @@ class TestAsyncDatalink:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
 

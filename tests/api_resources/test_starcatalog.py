@@ -252,7 +252,7 @@ class TestStarcatalog:
         starcatalog = client.starcatalog.list(
             dec=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             ra=0,
         )
         assert_matches_type(StarcatalogListResponse, starcatalog, path=["response"])
@@ -325,7 +325,7 @@ class TestStarcatalog:
         starcatalog = client.starcatalog.count(
             dec=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             ra=0,
         )
         assert_matches_type(str, starcatalog, path=["response"])
@@ -426,7 +426,7 @@ class TestStarcatalog:
         starcatalog = client.starcatalog.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StarcatalogGetResponse, starcatalog, path=["response"])
 
@@ -499,7 +499,7 @@ class TestStarcatalog:
             columns="columns",
             dec=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             ra=0,
         )
         assert_matches_type(StarcatalogTupleResponse, starcatalog, path=["response"])
@@ -827,7 +827,7 @@ class TestAsyncStarcatalog:
         starcatalog = await async_client.starcatalog.list(
             dec=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             ra=0,
         )
         assert_matches_type(StarcatalogListResponse, starcatalog, path=["response"])
@@ -900,7 +900,7 @@ class TestAsyncStarcatalog:
         starcatalog = await async_client.starcatalog.count(
             dec=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             ra=0,
         )
         assert_matches_type(str, starcatalog, path=["response"])
@@ -1001,7 +1001,7 @@ class TestAsyncStarcatalog:
         starcatalog = await async_client.starcatalog.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StarcatalogGetResponse, starcatalog, path=["response"])
 
@@ -1074,7 +1074,7 @@ class TestAsyncStarcatalog:
             columns="columns",
             dec=0,
             first_result=0,
-            max_result=0,
+            max_results=0,
             ra=0,
         )
         assert_matches_type(StarcatalogTupleResponse, starcatalog, path=["response"])

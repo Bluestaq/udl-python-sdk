@@ -70,7 +70,7 @@ class AnalyticImageryResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -104,7 +104,7 @@ class AnalyticImageryResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_retrieve_params.AnalyticImageryRetrieveParams,
                 ),
@@ -117,7 +117,7 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -154,7 +154,7 @@ class AnalyticImageryResource(SyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_list_params.AnalyticImageryListParams,
                 ),
@@ -167,7 +167,7 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -206,7 +206,7 @@ class AnalyticImageryResource(SyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_count_params.AnalyticImageryCountParams,
                 ),
@@ -219,7 +219,7 @@ class AnalyticImageryResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -254,7 +254,7 @@ class AnalyticImageryResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_file_get_params.AnalyticImageryFileGetParams,
                 ),
@@ -268,7 +268,7 @@ class AnalyticImageryResource(SyncAPIResource):
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -310,7 +310,7 @@ class AnalyticImageryResource(SyncAPIResource):
                         "msg_time": msg_time,
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_history_params.AnalyticImageryHistoryParams,
                 ),
@@ -324,7 +324,7 @@ class AnalyticImageryResource(SyncAPIResource):
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -382,7 +382,7 @@ class AnalyticImageryResource(SyncAPIResource):
                         "msg_time": msg_time,
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -398,7 +398,7 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -437,7 +437,7 @@ class AnalyticImageryResource(SyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_history_count_params.AnalyticImageryHistoryCountParams,
                 ),
@@ -474,7 +474,7 @@ class AnalyticImageryResource(SyncAPIResource):
         columns: str,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -521,7 +521,7 @@ class AnalyticImageryResource(SyncAPIResource):
                         "columns": columns,
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_tuple_params.AnalyticImageryTupleParams,
                 ),
@@ -615,7 +615,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -649,7 +649,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_retrieve_params.AnalyticImageryRetrieveParams,
                 ),
@@ -662,7 +662,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -699,7 +699,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_list_params.AnalyticImageryListParams,
                 ),
@@ -712,7 +712,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -751,7 +751,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_count_params.AnalyticImageryCountParams,
                 ),
@@ -764,7 +764,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -799,7 +799,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_file_get_params.AnalyticImageryFileGetParams,
                 ),
@@ -813,7 +813,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -855,7 +855,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                         "msg_time": msg_time,
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_history_params.AnalyticImageryHistoryParams,
                 ),
@@ -869,7 +869,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -927,7 +927,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                         "msg_time": msg_time,
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -943,7 +943,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -982,7 +982,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_history_count_params.AnalyticImageryHistoryCountParams,
                 ),
@@ -1019,7 +1019,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         columns: str,
         msg_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1066,7 +1066,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                         "columns": columns,
                         "msg_time": msg_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_tuple_params.AnalyticImageryTupleParams,
                 ),

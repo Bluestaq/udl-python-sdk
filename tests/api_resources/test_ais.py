@@ -33,7 +33,7 @@ class TestAIs:
         ai = client.ais.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AIListResponse, ai, path=["response"])
 
@@ -73,7 +73,7 @@ class TestAIs:
         ai = client.ais.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ai, path=["response"])
 
@@ -165,7 +165,7 @@ class TestAIs:
         ai = client.ais.history_count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ai, path=["response"])
 
@@ -232,7 +232,7 @@ class TestAIs:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AITupleResponse, ai, path=["response"])
 
@@ -278,7 +278,7 @@ class TestAsyncAIs:
         ai = await async_client.ais.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AIListResponse, ai, path=["response"])
 
@@ -318,7 +318,7 @@ class TestAsyncAIs:
         ai = await async_client.ais.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ai, path=["response"])
 
@@ -410,7 +410,7 @@ class TestAsyncAIs:
         ai = await async_client.ais.history_count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ai, path=["response"])
 
@@ -477,7 +477,7 @@ class TestAsyncAIs:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AITupleResponse, ai, path=["response"])
 

@@ -81,7 +81,7 @@ class TestAntennas:
         antenna = client.antennas.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaFull, antenna, path=["response"])
 
@@ -187,7 +187,7 @@ class TestAntennas:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaListResponse, antenna, path=["response"])
 
@@ -258,7 +258,7 @@ class TestAntennas:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, antenna, path=["response"])
 
@@ -319,7 +319,7 @@ class TestAntennas:
         antenna = client.antennas.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaTupleResponse, antenna, path=["response"])
 
@@ -411,7 +411,7 @@ class TestAsyncAntennas:
         antenna = await async_client.antennas.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaFull, antenna, path=["response"])
 
@@ -517,7 +517,7 @@ class TestAsyncAntennas:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaListResponse, antenna, path=["response"])
 
@@ -588,7 +588,7 @@ class TestAsyncAntennas:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, antenna, path=["response"])
 
@@ -649,7 +649,7 @@ class TestAsyncAntennas:
         antenna = await async_client.antennas.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaTupleResponse, antenna, path=["response"])
 

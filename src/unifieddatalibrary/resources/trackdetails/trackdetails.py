@@ -67,7 +67,7 @@ class TrackdetailsResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -104,7 +104,7 @@ class TrackdetailsResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackdetail_list_params.TrackdetailListParams,
                 ),
@@ -117,7 +117,7 @@ class TrackdetailsResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -156,7 +156,7 @@ class TrackdetailsResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackdetail_count_params.TrackdetailCountParams,
                 ),
@@ -230,7 +230,7 @@ class TrackdetailsResource(SyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -277,7 +277,7 @@ class TrackdetailsResource(SyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackdetail_tuple_params.TrackdetailTupleParams,
                 ),
@@ -315,7 +315,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -352,7 +352,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackdetail_list_params.TrackdetailListParams,
                 ),
@@ -365,7 +365,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -404,7 +404,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackdetail_count_params.TrackdetailCountParams,
                 ),
@@ -478,7 +478,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -525,7 +525,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackdetail_tuple_params.TrackdetailTupleParams,
                 ),

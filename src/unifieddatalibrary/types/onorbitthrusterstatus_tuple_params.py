@@ -31,7 +31,7 @@ class OnorbitthrusterstatusTupleParams(TypedDict, total=False):
     idOnorbitThruster = abc would be queried as /udl/onorbitthruster/abc.
     """
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     status_time: Annotated[Union[str, datetime], PropertyInfo(alias="statusTime", format="iso8601")]
     """

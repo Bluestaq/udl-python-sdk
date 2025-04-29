@@ -26,7 +26,7 @@ class TestDataTypes:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         data_type = client.supporting_data.data_types.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DataTypeListResponse, data_type, path=["response"])
 
@@ -63,7 +63,7 @@ class TestAsyncDataTypes:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         data_type = await async_client.supporting_data.data_types.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DataTypeListResponse, data_type, path=["response"])
 

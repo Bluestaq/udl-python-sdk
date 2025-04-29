@@ -297,7 +297,7 @@ class TestNavigationalobstruction:
         navigationalobstruction = client.navigationalobstruction.list(
             cycle_date=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionListResponse, navigationalobstruction, path=["response"])
@@ -332,7 +332,7 @@ class TestNavigationalobstruction:
         navigationalobstruction = client.navigationalobstruction.count(
             cycle_date=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(str, navigationalobstruction, path=["response"])
@@ -427,7 +427,7 @@ class TestNavigationalobstruction:
         navigationalobstruction = client.navigationalobstruction.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationalobstructionGetResponse, navigationalobstruction, path=["response"])
 
@@ -500,7 +500,7 @@ class TestNavigationalobstruction:
             columns="columns",
             cycle_date=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionTupleResponse, navigationalobstruction, path=["response"])
@@ -808,7 +808,7 @@ class TestAsyncNavigationalobstruction:
         navigationalobstruction = await async_client.navigationalobstruction.list(
             cycle_date=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionListResponse, navigationalobstruction, path=["response"])
@@ -843,7 +843,7 @@ class TestAsyncNavigationalobstruction:
         navigationalobstruction = await async_client.navigationalobstruction.count(
             cycle_date=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(str, navigationalobstruction, path=["response"])
@@ -938,7 +938,7 @@ class TestAsyncNavigationalobstruction:
         navigationalobstruction = await async_client.navigationalobstruction.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationalobstructionGetResponse, navigationalobstruction, path=["response"])
 
@@ -1011,7 +1011,7 @@ class TestAsyncNavigationalobstruction:
             columns="columns",
             cycle_date=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionTupleResponse, navigationalobstruction, path=["response"])

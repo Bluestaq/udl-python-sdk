@@ -113,7 +113,7 @@ class TestEventEvolution:
         event_evolution = client.event_evolution.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
 
@@ -158,7 +158,7 @@ class TestEventEvolution:
         event_evolution = client.event_evolution.list(
             event_id="eventId",
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
@@ -193,7 +193,7 @@ class TestEventEvolution:
         event_evolution = client.event_evolution.count(
             event_id="eventId",
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, event_evolution, path=["response"])
@@ -314,7 +314,7 @@ class TestEventEvolution:
             columns="columns",
             event_id="eventId",
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
@@ -496,7 +496,7 @@ class TestAsyncEventEvolution:
         event_evolution = await async_client.event_evolution.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
 
@@ -541,7 +541,7 @@ class TestAsyncEventEvolution:
         event_evolution = await async_client.event_evolution.list(
             event_id="eventId",
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
@@ -576,7 +576,7 @@ class TestAsyncEventEvolution:
         event_evolution = await async_client.event_evolution.count(
             event_id="eventId",
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, event_evolution, path=["response"])
@@ -697,7 +697,7 @@ class TestAsyncEventEvolution:
             columns="columns",
             event_id="eventId",
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])

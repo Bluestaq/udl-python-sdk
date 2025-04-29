@@ -195,7 +195,7 @@ class TestSeradataradarpayload:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataradarpayload = client.seradataradarpayload.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
 
@@ -266,7 +266,7 @@ class TestSeradataradarpayload:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataradarpayload = client.seradataradarpayload.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataradarpayload, path=["response"])
 
@@ -302,7 +302,7 @@ class TestSeradataradarpayload:
         seradataradarpayload = client.seradataradarpayload.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataradarpayloadGetResponse, seradataradarpayload, path=["response"])
 
@@ -374,7 +374,7 @@ class TestSeradataradarpayload:
         seradataradarpayload = client.seradataradarpayload.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataradarpayloadTupleResponse, seradataradarpayload, path=["response"])
 
@@ -580,7 +580,7 @@ class TestAsyncSeradataradarpayload:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataradarpayload = await async_client.seradataradarpayload.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
 
@@ -651,7 +651,7 @@ class TestAsyncSeradataradarpayload:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataradarpayload = await async_client.seradataradarpayload.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataradarpayload, path=["response"])
 
@@ -687,7 +687,7 @@ class TestAsyncSeradataradarpayload:
         seradataradarpayload = await async_client.seradataradarpayload.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataradarpayloadGetResponse, seradataradarpayload, path=["response"])
 
@@ -759,7 +759,7 @@ class TestAsyncSeradataradarpayload:
         seradataradarpayload = await async_client.seradataradarpayload.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataradarpayloadTupleResponse, seradataradarpayload, path=["response"])
 

@@ -26,7 +26,7 @@ class TestProviderMetadata:
     def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
         provider_metadata = client.supporting_data.provider_metadata.retrieve(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ProviderMetadataRetrieveResponse, provider_metadata, path=["response"])
 
@@ -63,7 +63,7 @@ class TestAsyncProviderMetadata:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         provider_metadata = await async_client.supporting_data.provider_metadata.retrieve(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ProviderMetadataRetrieveResponse, provider_metadata, path=["response"])
 

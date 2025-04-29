@@ -126,7 +126,7 @@ class TestHazard:
         hazard = client.hazard.list(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardListResponse, hazard, path=["response"])
 
@@ -166,7 +166,7 @@ class TestHazard:
         hazard = client.hazard.count(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, hazard, path=["response"])
 
@@ -267,7 +267,7 @@ class TestHazard:
         hazard = client.hazard.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardFull, hazard, path=["response"])
 
@@ -341,7 +341,7 @@ class TestHazard:
             columns="columns",
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardTupleResponse, hazard, path=["response"])
 
@@ -479,7 +479,7 @@ class TestAsyncHazard:
         hazard = await async_client.hazard.list(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardListResponse, hazard, path=["response"])
 
@@ -519,7 +519,7 @@ class TestAsyncHazard:
         hazard = await async_client.hazard.count(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, hazard, path=["response"])
 
@@ -620,7 +620,7 @@ class TestAsyncHazard:
         hazard = await async_client.hazard.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardFull, hazard, path=["response"])
 
@@ -694,7 +694,7 @@ class TestAsyncHazard:
             columns="columns",
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardTupleResponse, hazard, path=["response"])
 

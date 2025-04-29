@@ -141,7 +141,7 @@ class TestRadarobservation:
         radarobservation = client.radarobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RadarobservationListResponse, radarobservation, path=["response"])
 
@@ -181,7 +181,7 @@ class TestRadarobservation:
         radarobservation = client.radarobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, radarobservation, path=["response"])
 
@@ -273,7 +273,7 @@ class TestRadarobservation:
         radarobservation = client.radarobservation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RadarobservationFull, radarobservation, path=["response"])
 
@@ -347,7 +347,7 @@ class TestRadarobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RadarobservationTupleResponse, radarobservation, path=["response"])
 
@@ -552,7 +552,7 @@ class TestAsyncRadarobservation:
         radarobservation = await async_client.radarobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RadarobservationListResponse, radarobservation, path=["response"])
 
@@ -592,7 +592,7 @@ class TestAsyncRadarobservation:
         radarobservation = await async_client.radarobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, radarobservation, path=["response"])
 
@@ -684,7 +684,7 @@ class TestAsyncRadarobservation:
         radarobservation = await async_client.radarobservation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RadarobservationFull, radarobservation, path=["response"])
 
@@ -758,7 +758,7 @@ class TestAsyncRadarobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RadarobservationTupleResponse, radarobservation, path=["response"])
 

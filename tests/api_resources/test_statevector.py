@@ -174,7 +174,7 @@ class TestStatevector:
         statevector = client.statevector.list(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatevectorListResponse, statevector, path=["response"])
 
@@ -214,7 +214,7 @@ class TestStatevector:
         statevector = client.statevector.count(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, statevector, path=["response"])
 
@@ -306,7 +306,7 @@ class TestStatevector:
         statevector = client.statevector.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StateVectorFull, statevector, path=["response"])
 
@@ -380,7 +380,7 @@ class TestStatevector:
             columns="columns",
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatevectorTupleResponse, statevector, path=["response"])
 
@@ -618,7 +618,7 @@ class TestAsyncStatevector:
         statevector = await async_client.statevector.list(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatevectorListResponse, statevector, path=["response"])
 
@@ -658,7 +658,7 @@ class TestAsyncStatevector:
         statevector = await async_client.statevector.count(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, statevector, path=["response"])
 
@@ -750,7 +750,7 @@ class TestAsyncStatevector:
         statevector = await async_client.statevector.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StateVectorFull, statevector, path=["response"])
 
@@ -824,7 +824,7 @@ class TestAsyncStatevector:
             columns="columns",
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatevectorTupleResponse, statevector, path=["response"])
 

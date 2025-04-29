@@ -83,7 +83,7 @@ class TestCountries:
         country = client.countries.retrieve(
             code="code",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryFull, country, path=["response"])
 
@@ -191,7 +191,7 @@ class TestCountries:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         country = client.countries.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryListResponse, country, path=["response"])
 
@@ -262,7 +262,7 @@ class TestCountries:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         country = client.countries.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, country, path=["response"])
 
@@ -323,7 +323,7 @@ class TestCountries:
         country = client.countries.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryTupleResponse, country, path=["response"])
 
@@ -417,7 +417,7 @@ class TestAsyncCountries:
         country = await async_client.countries.retrieve(
             code="code",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryFull, country, path=["response"])
 
@@ -525,7 +525,7 @@ class TestAsyncCountries:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryListResponse, country, path=["response"])
 
@@ -596,7 +596,7 @@ class TestAsyncCountries:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, country, path=["response"])
 
@@ -657,7 +657,7 @@ class TestAsyncCountries:
         country = await async_client.countries.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryTupleResponse, country, path=["response"])
 

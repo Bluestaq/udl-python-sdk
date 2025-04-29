@@ -164,7 +164,7 @@ class TestLaunchsite:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchsite = client.launchsite.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsiteListResponse, launchsite, path=["response"])
 
@@ -235,7 +235,7 @@ class TestLaunchsite:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchsite = client.launchsite.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchsite, path=["response"])
 
@@ -271,7 +271,7 @@ class TestLaunchsite:
         launchsite = client.launchsite.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsiteGetResponse, launchsite, path=["response"])
 
@@ -343,7 +343,7 @@ class TestLaunchsite:
         launchsite = client.launchsite.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsiteTupleResponse, launchsite, path=["response"])
 
@@ -518,7 +518,7 @@ class TestAsyncLaunchsite:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsite = await async_client.launchsite.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsiteListResponse, launchsite, path=["response"])
 
@@ -589,7 +589,7 @@ class TestAsyncLaunchsite:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsite = await async_client.launchsite.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchsite, path=["response"])
 
@@ -625,7 +625,7 @@ class TestAsyncLaunchsite:
         launchsite = await async_client.launchsite.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsiteGetResponse, launchsite, path=["response"])
 
@@ -697,7 +697,7 @@ class TestAsyncLaunchsite:
         launchsite = await async_client.launchsite.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsiteTupleResponse, launchsite, path=["response"])
 

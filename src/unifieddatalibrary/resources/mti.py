@@ -56,7 +56,7 @@ class MtiResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -92,7 +92,7 @@ class MtiResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     mti_list_params.MtiListParams,
                 ),
@@ -105,7 +105,7 @@ class MtiResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,7 +143,7 @@ class MtiResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     mti_count_params.MtiCountParams,
                 ),
@@ -218,7 +218,7 @@ class MtiResource(SyncAPIResource):
         columns: str,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -264,7 +264,7 @@ class MtiResource(SyncAPIResource):
                         "columns": columns,
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     mti_tuple_params.MtiTupleParams,
                 ),
@@ -334,7 +334,7 @@ class AsyncMtiResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -370,7 +370,7 @@ class AsyncMtiResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     mti_list_params.MtiListParams,
                 ),
@@ -383,7 +383,7 @@ class AsyncMtiResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -421,7 +421,7 @@ class AsyncMtiResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     mti_count_params.MtiCountParams,
                 ),
@@ -496,7 +496,7 @@ class AsyncMtiResource(AsyncAPIResource):
         columns: str,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -542,7 +542,7 @@ class AsyncMtiResource(AsyncAPIResource):
                         "columns": columns,
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     mti_tuple_params.MtiTupleParams,
                 ),

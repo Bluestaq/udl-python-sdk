@@ -177,7 +177,7 @@ class TestAirspaceControlOrders:
         airspace_control_order = client.airspace_control_orders.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirspacecontrolorderFull, airspace_control_order, path=["response"])
 
@@ -221,7 +221,7 @@ class TestAirspaceControlOrders:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         airspace_control_order = client.airspace_control_orders.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirspaceControlOrderListResponse, airspace_control_order, path=["response"])
 
@@ -254,7 +254,7 @@ class TestAirspaceControlOrders:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         airspace_control_order = client.airspace_control_orders.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airspace_control_order, path=["response"])
 
@@ -373,7 +373,7 @@ class TestAirspaceControlOrders:
         airspace_control_order = client.airspace_control_orders.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirspaceControlOrderTupleResponse, airspace_control_order, path=["response"])
 
@@ -560,7 +560,7 @@ class TestAsyncAirspaceControlOrders:
         airspace_control_order = await async_client.airspace_control_orders.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirspacecontrolorderFull, airspace_control_order, path=["response"])
 
@@ -604,7 +604,7 @@ class TestAsyncAirspaceControlOrders:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airspace_control_order = await async_client.airspace_control_orders.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirspaceControlOrderListResponse, airspace_control_order, path=["response"])
 
@@ -637,7 +637,7 @@ class TestAsyncAirspaceControlOrders:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airspace_control_order = await async_client.airspace_control_orders.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airspace_control_order, path=["response"])
 
@@ -756,7 +756,7 @@ class TestAsyncAirspaceControlOrders:
         airspace_control_order = await async_client.airspace_control_orders.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirspaceControlOrderTupleResponse, airspace_control_order, path=["response"])
 

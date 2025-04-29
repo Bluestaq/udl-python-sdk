@@ -33,7 +33,7 @@ class TestIsrCollections:
         isr_collection = client.isr_collections.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IsrCollectionListResponse, isr_collection, path=["response"])
 
@@ -73,7 +73,7 @@ class TestIsrCollections:
         isr_collection = client.isr_collections.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, isr_collection, path=["response"])
 
@@ -189,7 +189,7 @@ class TestIsrCollections:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IsrCollectionTupleResponse, isr_collection, path=["response"])
 
@@ -284,7 +284,7 @@ class TestAsyncIsrCollections:
         isr_collection = await async_client.isr_collections.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IsrCollectionListResponse, isr_collection, path=["response"])
 
@@ -324,7 +324,7 @@ class TestAsyncIsrCollections:
         isr_collection = await async_client.isr_collections.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, isr_collection, path=["response"])
 
@@ -440,7 +440,7 @@ class TestAsyncIsrCollections:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(IsrCollectionTupleResponse, isr_collection, path=["response"])
 

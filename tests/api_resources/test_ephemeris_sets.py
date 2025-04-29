@@ -163,7 +163,7 @@ class TestEphemerisSets:
         ephemeris_set = client.ephemeris_sets.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisSet, ephemeris_set, path=["response"])
 
@@ -207,7 +207,7 @@ class TestEphemerisSets:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         ephemeris_set = client.ephemeris_sets.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -242,7 +242,7 @@ class TestEphemerisSets:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         ephemeris_set = client.ephemeris_sets.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -287,7 +287,7 @@ class TestEphemerisSets:
         ephemeris_set = client.ephemeris_sets.file_retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert ephemeris_set.is_closed
         assert ephemeris_set.json() == {"foo": "bar"}
@@ -369,7 +369,7 @@ class TestEphemerisSets:
         ephemeris_set = client.ephemeris_sets.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -536,7 +536,7 @@ class TestAsyncEphemerisSets:
         ephemeris_set = await async_client.ephemeris_sets.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisSet, ephemeris_set, path=["response"])
 
@@ -580,7 +580,7 @@ class TestAsyncEphemerisSets:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ephemeris_set = await async_client.ephemeris_sets.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -615,7 +615,7 @@ class TestAsyncEphemerisSets:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         ephemeris_set = await async_client.ephemeris_sets.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -662,7 +662,7 @@ class TestAsyncEphemerisSets:
         ephemeris_set = await async_client.ephemeris_sets.file_retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert ephemeris_set.is_closed
         assert await ephemeris_set.json() == {"foo": "bar"}
@@ -748,7 +748,7 @@ class TestAsyncEphemerisSets:
         ephemeris_set = await async_client.ephemeris_sets.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )

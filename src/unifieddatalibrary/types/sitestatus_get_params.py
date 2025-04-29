@@ -12,4 +12,4 @@ __all__ = ["SitestatusGetParams"]
 class SitestatusGetParams(TypedDict, total=False):
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

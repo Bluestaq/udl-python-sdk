@@ -100,7 +100,7 @@ class TestAntennaDetails:
         antenna_detail = client.onorbit.antenna_details.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaDetailsFull, antenna_detail, path=["response"])
 
@@ -227,7 +227,7 @@ class TestAntennaDetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
 
@@ -373,7 +373,7 @@ class TestAsyncAntennaDetails:
         antenna_detail = await async_client.onorbit.antenna_details.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaDetailsFull, antenna_detail, path=["response"])
 
@@ -500,7 +500,7 @@ class TestAsyncAntennaDetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
 

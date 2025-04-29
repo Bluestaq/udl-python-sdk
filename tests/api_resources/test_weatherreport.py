@@ -172,7 +172,7 @@ class TestWeatherreport:
         weatherreport = client.weatherreport.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherreportListResponse, weatherreport, path=["response"])
 
@@ -212,7 +212,7 @@ class TestWeatherreport:
         weatherreport = client.weatherreport.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, weatherreport, path=["response"])
 
@@ -252,7 +252,7 @@ class TestWeatherreport:
         weatherreport = client.weatherreport.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherReportFull, weatherreport, path=["response"])
 
@@ -326,7 +326,7 @@ class TestWeatherreport:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherreportTupleResponse, weatherreport, path=["response"])
 
@@ -571,7 +571,7 @@ class TestAsyncWeatherreport:
         weatherreport = await async_client.weatherreport.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherreportListResponse, weatherreport, path=["response"])
 
@@ -611,7 +611,7 @@ class TestAsyncWeatherreport:
         weatherreport = await async_client.weatherreport.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, weatherreport, path=["response"])
 
@@ -651,7 +651,7 @@ class TestAsyncWeatherreport:
         weatherreport = await async_client.weatherreport.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherReportFull, weatherreport, path=["response"])
 
@@ -725,7 +725,7 @@ class TestAsyncWeatherreport:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherreportTupleResponse, weatherreport, path=["response"])
 

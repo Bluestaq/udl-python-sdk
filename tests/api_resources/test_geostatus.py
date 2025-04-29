@@ -97,7 +97,7 @@ class TestGeostatus:
         geostatus = client.geostatus.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
 
@@ -137,7 +137,7 @@ class TestGeostatus:
         geostatus = client.geostatus.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, geostatus, path=["response"])
 
@@ -226,7 +226,7 @@ class TestGeostatus:
         geostatus = client.geostatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GeoStatusFull, geostatus, path=["response"])
 
@@ -300,7 +300,7 @@ class TestGeostatus:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GeostatusTupleResponse, geostatus, path=["response"])
 
@@ -409,7 +409,7 @@ class TestAsyncGeostatus:
         geostatus = await async_client.geostatus.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
 
@@ -449,7 +449,7 @@ class TestAsyncGeostatus:
         geostatus = await async_client.geostatus.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, geostatus, path=["response"])
 
@@ -538,7 +538,7 @@ class TestAsyncGeostatus:
         geostatus = await async_client.geostatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GeoStatusFull, geostatus, path=["response"])
 
@@ -612,7 +612,7 @@ class TestAsyncGeostatus:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GeostatusTupleResponse, geostatus, path=["response"])
 

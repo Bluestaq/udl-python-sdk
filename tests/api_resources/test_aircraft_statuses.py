@@ -128,7 +128,7 @@ class TestAircraftStatuses:
         aircraft_status = client.aircraft_statuses.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftstatusFull, aircraft_status, path=["response"])
 
@@ -281,7 +281,7 @@ class TestAircraftStatuses:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_status = client.aircraft_statuses.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
 
@@ -352,7 +352,7 @@ class TestAircraftStatuses:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft_status = client.aircraft_statuses.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, aircraft_status, path=["response"])
 
@@ -413,7 +413,7 @@ class TestAircraftStatuses:
         aircraft_status = client.aircraft_statuses.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftStatusTupleResponse, aircraft_status, path=["response"])
 
@@ -551,7 +551,7 @@ class TestAsyncAircraftStatuses:
         aircraft_status = await async_client.aircraft_statuses.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftstatusFull, aircraft_status, path=["response"])
 
@@ -704,7 +704,7 @@ class TestAsyncAircraftStatuses:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status = await async_client.aircraft_statuses.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
 
@@ -775,7 +775,7 @@ class TestAsyncAircraftStatuses:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status = await async_client.aircraft_statuses.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, aircraft_status, path=["response"])
 
@@ -836,7 +836,7 @@ class TestAsyncAircraftStatuses:
         aircraft_status = await async_client.aircraft_statuses.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftStatusTupleResponse, aircraft_status, path=["response"])
 

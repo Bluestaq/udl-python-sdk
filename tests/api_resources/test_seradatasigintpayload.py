@@ -173,7 +173,7 @@ class TestSeradatasigintpayload:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
 
@@ -244,7 +244,7 @@ class TestSeradatasigintpayload:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradatasigintpayload, path=["response"])
 
@@ -280,7 +280,7 @@ class TestSeradatasigintpayload:
         seradatasigintpayload = client.seradatasigintpayload.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatasigintpayloadGetResponse, seradatasigintpayload, path=["response"])
 
@@ -352,7 +352,7 @@ class TestSeradatasigintpayload:
         seradatasigintpayload = client.seradatasigintpayload.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatasigintpayloadTupleResponse, seradatasigintpayload, path=["response"])
 
@@ -536,7 +536,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
 
@@ -607,7 +607,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradatasigintpayload, path=["response"])
 
@@ -643,7 +643,7 @@ class TestAsyncSeradatasigintpayload:
         seradatasigintpayload = await async_client.seradatasigintpayload.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatasigintpayloadGetResponse, seradatasigintpayload, path=["response"])
 
@@ -715,7 +715,7 @@ class TestAsyncSeradatasigintpayload:
         seradatasigintpayload = await async_client.seradatasigintpayload.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatasigintpayloadTupleResponse, seradatasigintpayload, path=["response"])
 

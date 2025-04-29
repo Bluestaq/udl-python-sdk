@@ -292,7 +292,7 @@ class TestSurface:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceListResponse, surface, path=["response"])
 
@@ -363,7 +363,7 @@ class TestSurface:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, surface, path=["response"])
 
@@ -399,7 +399,7 @@ class TestSurface:
         surface = client.surface.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceGetResponse, surface, path=["response"])
 
@@ -471,7 +471,7 @@ class TestSurface:
         surface = client.surface.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceTupleResponse, surface, path=["response"])
 
@@ -774,7 +774,7 @@ class TestAsyncSurface:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceListResponse, surface, path=["response"])
 
@@ -845,7 +845,7 @@ class TestAsyncSurface:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, surface, path=["response"])
 
@@ -881,7 +881,7 @@ class TestAsyncSurface:
         surface = await async_client.surface.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceGetResponse, surface, path=["response"])
 
@@ -953,7 +953,7 @@ class TestAsyncSurface:
         surface = await async_client.surface.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceTupleResponse, surface, path=["response"])
 

@@ -131,7 +131,7 @@ class TestEcpsdr:
         ecpsdr = client.observations.ecpsdr.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(Ecpsdr, ecpsdr, path=["response"])
 
@@ -178,7 +178,7 @@ class TestEcpsdr:
         ecpsdr = client.observations.ecpsdr.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
 
@@ -218,7 +218,7 @@ class TestEcpsdr:
         ecpsdr = client.observations.ecpsdr.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ecpsdr, path=["response"])
 
@@ -340,7 +340,7 @@ class TestEcpsdr:
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EcpsdrTupleResponse, ecpsdr, path=["response"])
 
@@ -483,7 +483,7 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.observations.ecpsdr.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(Ecpsdr, ecpsdr, path=["response"])
 
@@ -530,7 +530,7 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.observations.ecpsdr.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
 
@@ -570,7 +570,7 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.observations.ecpsdr.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ecpsdr, path=["response"])
 
@@ -692,7 +692,7 @@ class TestAsyncEcpsdr:
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EcpsdrTupleResponse, ecpsdr, path=["response"])
 

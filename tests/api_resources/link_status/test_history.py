@@ -33,7 +33,7 @@ class TestHistory:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -70,7 +70,7 @@ class TestHistory:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -109,7 +109,7 @@ class TestHistory:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -150,7 +150,7 @@ class TestAsyncHistory:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -187,7 +187,7 @@ class TestAsyncHistory:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -226,7 +226,7 @@ class TestAsyncHistory:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

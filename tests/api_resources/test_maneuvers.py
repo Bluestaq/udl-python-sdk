@@ -434,7 +434,7 @@ class TestManeuvers:
         maneuver = client.maneuvers.list(
             event_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManeuverListResponse, maneuver, path=["response"])
 
@@ -474,7 +474,7 @@ class TestManeuvers:
         maneuver = client.maneuvers.count(
             event_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, maneuver, path=["response"])
 
@@ -566,7 +566,7 @@ class TestManeuvers:
         maneuver = client.maneuvers.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManeuverFull, maneuver, path=["response"])
 
@@ -640,7 +640,7 @@ class TestManeuvers:
             columns="columns",
             event_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManeuverTupleResponse, maneuver, path=["response"])
 
@@ -1138,7 +1138,7 @@ class TestAsyncManeuvers:
         maneuver = await async_client.maneuvers.list(
             event_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManeuverListResponse, maneuver, path=["response"])
 
@@ -1178,7 +1178,7 @@ class TestAsyncManeuvers:
         maneuver = await async_client.maneuvers.count(
             event_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, maneuver, path=["response"])
 
@@ -1270,7 +1270,7 @@ class TestAsyncManeuvers:
         maneuver = await async_client.maneuvers.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManeuverFull, maneuver, path=["response"])
 
@@ -1344,7 +1344,7 @@ class TestAsyncManeuvers:
             columns="columns",
             event_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManeuverTupleResponse, maneuver, path=["response"])
 

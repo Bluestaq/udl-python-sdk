@@ -42,7 +42,7 @@ class TestSkyimagery:
         skyimagery = client.skyimagery.list(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
 
@@ -82,7 +82,7 @@ class TestSkyimagery:
         skyimagery = client.skyimagery.count(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, skyimagery, path=["response"])
 
@@ -129,7 +129,7 @@ class TestSkyimagery:
         skyimagery = client.skyimagery.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert skyimagery.is_closed
         assert skyimagery.json() == {"foo": "bar"}
@@ -186,7 +186,7 @@ class TestSkyimagery:
         skyimagery = client.skyimagery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SkyimageryFull, skyimagery, path=["response"])
 
@@ -260,7 +260,7 @@ class TestSkyimagery:
             columns="columns",
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SkyimageryTupleResponse, skyimagery, path=["response"])
 
@@ -337,7 +337,7 @@ class TestAsyncSkyimagery:
         skyimagery = await async_client.skyimagery.list(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
 
@@ -377,7 +377,7 @@ class TestAsyncSkyimagery:
         skyimagery = await async_client.skyimagery.count(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, skyimagery, path=["response"])
 
@@ -426,7 +426,7 @@ class TestAsyncSkyimagery:
         skyimagery = await async_client.skyimagery.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert skyimagery.is_closed
         assert await skyimagery.json() == {"foo": "bar"}
@@ -485,7 +485,7 @@ class TestAsyncSkyimagery:
         skyimagery = await async_client.skyimagery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SkyimageryFull, skyimagery, path=["response"])
 
@@ -559,7 +559,7 @@ class TestAsyncSkyimagery:
             columns="columns",
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SkyimageryTupleResponse, skyimagery, path=["response"])
 

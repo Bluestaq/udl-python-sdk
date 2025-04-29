@@ -92,7 +92,7 @@ class TestVideo:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         video = client.video.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoListResponse, video, path=["response"])
 
@@ -125,7 +125,7 @@ class TestVideo:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         video = client.video.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, video, path=["response"])
 
@@ -161,7 +161,7 @@ class TestVideo:
         video = client.video.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoStreamsFull, video, path=["response"])
 
@@ -210,7 +210,7 @@ class TestVideo:
             source_name="sourceName",
             stream_name="streamName",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoGetPlayerStreamingInfoResponse, video, path=["response"])
 
@@ -254,7 +254,7 @@ class TestVideo:
             source_name="sourceName",
             stream_name="streamName",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoGetPublisherStreamingInfoResponse, video, path=["response"])
 
@@ -298,7 +298,7 @@ class TestVideo:
             source_name="sourceName",
             stream_name="streamName",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoGetStreamFileResponse, video, path=["response"])
 
@@ -365,7 +365,7 @@ class TestVideo:
         video = client.video.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoTupleResponse, video, path=["response"])
 
@@ -464,7 +464,7 @@ class TestAsyncVideo:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         video = await async_client.video.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoListResponse, video, path=["response"])
 
@@ -497,7 +497,7 @@ class TestAsyncVideo:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         video = await async_client.video.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, video, path=["response"])
 
@@ -533,7 +533,7 @@ class TestAsyncVideo:
         video = await async_client.video.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoStreamsFull, video, path=["response"])
 
@@ -584,7 +584,7 @@ class TestAsyncVideo:
             source_name="sourceName",
             stream_name="streamName",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoGetPlayerStreamingInfoResponse, video, path=["response"])
 
@@ -630,7 +630,7 @@ class TestAsyncVideo:
             source_name="sourceName",
             stream_name="streamName",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoGetPublisherStreamingInfoResponse, video, path=["response"])
 
@@ -674,7 +674,7 @@ class TestAsyncVideo:
             source_name="sourceName",
             stream_name="streamName",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoGetStreamFileResponse, video, path=["response"])
 
@@ -741,7 +741,7 @@ class TestAsyncVideo:
         video = await async_client.video.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VideoTupleResponse, video, path=["response"])
 

@@ -56,7 +56,7 @@ class TestAttitudeData:
             as_id="asId",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AttitudeDataTupleResponse, attitude_data, path=["response"])
 
@@ -129,7 +129,7 @@ class TestAsyncAttitudeData:
             as_id="asId",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AttitudeDataTupleResponse, attitude_data, path=["response"])
 

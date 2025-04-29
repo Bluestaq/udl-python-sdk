@@ -22,7 +22,7 @@ class HistoryCountParams(TypedDict, total=False):
 
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     start_time: Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]
     """

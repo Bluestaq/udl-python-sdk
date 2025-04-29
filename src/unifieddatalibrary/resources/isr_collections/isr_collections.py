@@ -68,7 +68,7 @@ class IsrCollectionsResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -105,7 +105,7 @@ class IsrCollectionsResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     isr_collection_list_params.IsrCollectionListParams,
                 ),
@@ -118,7 +118,7 @@ class IsrCollectionsResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -157,7 +157,7 @@ class IsrCollectionsResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     isr_collection_count_params.IsrCollectionCountParams,
                 ),
@@ -231,7 +231,7 @@ class IsrCollectionsResource(SyncAPIResource):
         columns: str,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -278,7 +278,7 @@ class IsrCollectionsResource(SyncAPIResource):
                         "columns": columns,
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     isr_collection_tuple_params.IsrCollectionTupleParams,
                 ),
@@ -352,7 +352,7 @@ class AsyncIsrCollectionsResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -389,7 +389,7 @@ class AsyncIsrCollectionsResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     isr_collection_list_params.IsrCollectionListParams,
                 ),
@@ -402,7 +402,7 @@ class AsyncIsrCollectionsResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -441,7 +441,7 @@ class AsyncIsrCollectionsResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     isr_collection_count_params.IsrCollectionCountParams,
                 ),
@@ -515,7 +515,7 @@ class AsyncIsrCollectionsResource(AsyncAPIResource):
         columns: str,
         created_at: Union[str, date],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -562,7 +562,7 @@ class AsyncIsrCollectionsResource(AsyncAPIResource):
                         "columns": columns,
                         "created_at": created_at,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     isr_collection_tuple_params.IsrCollectionTupleParams,
                 ),

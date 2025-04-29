@@ -97,7 +97,7 @@ class TestSwir:
         swir = client.swir.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirListResponse, swir, path=["response"])
 
@@ -137,7 +137,7 @@ class TestSwir:
         swir = client.swir.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, swir, path=["response"])
 
@@ -229,7 +229,7 @@ class TestSwir:
         swir = client.swir.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirFull, swir, path=["response"])
 
@@ -303,7 +303,7 @@ class TestSwir:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirTupleResponse, swir, path=["response"])
 
@@ -412,7 +412,7 @@ class TestAsyncSwir:
         swir = await async_client.swir.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirListResponse, swir, path=["response"])
 
@@ -452,7 +452,7 @@ class TestAsyncSwir:
         swir = await async_client.swir.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, swir, path=["response"])
 
@@ -544,7 +544,7 @@ class TestAsyncSwir:
         swir = await async_client.swir.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirFull, swir, path=["response"])
 
@@ -618,7 +618,7 @@ class TestAsyncSwir:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirTupleResponse, swir, path=["response"])
 

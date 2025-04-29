@@ -216,7 +216,7 @@ class TestOrganizationdetails:
         organizationdetail = client.organizationdetails.list(
             name="name",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationdetailListResponse, organizationdetail, path=["response"])
 
@@ -296,7 +296,7 @@ class TestOrganizationdetails:
             name="name",
             source="source",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationdetailFindBySourceResponse, organizationdetail, path=["response"])
 
@@ -338,7 +338,7 @@ class TestOrganizationdetails:
         organizationdetail = client.organizationdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
@@ -571,7 +571,7 @@ class TestAsyncOrganizationdetails:
         organizationdetail = await async_client.organizationdetails.list(
             name="name",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationdetailListResponse, organizationdetail, path=["response"])
 
@@ -651,7 +651,7 @@ class TestAsyncOrganizationdetails:
             name="name",
             source="source",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationdetailFindBySourceResponse, organizationdetail, path=["response"])
 
@@ -693,7 +693,7 @@ class TestAsyncOrganizationdetails:
         organizationdetail = await async_client.organizationdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 

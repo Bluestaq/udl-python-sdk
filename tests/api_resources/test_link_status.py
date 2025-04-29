@@ -130,7 +130,7 @@ class TestLinkStatus:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
 
@@ -166,7 +166,7 @@ class TestLinkStatus:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, link_status, path=["response"])
 
@@ -202,7 +202,7 @@ class TestLinkStatus:
         link_status = client.link_status.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LinkStatusFull, link_status, path=["response"])
 
@@ -277,7 +277,7 @@ class TestLinkStatus:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LinkStatusTupleResponse, link_status, path=["response"])
 
@@ -417,7 +417,7 @@ class TestAsyncLinkStatus:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
 
@@ -453,7 +453,7 @@ class TestAsyncLinkStatus:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, link_status, path=["response"])
 
@@ -489,7 +489,7 @@ class TestAsyncLinkStatus:
         link_status = await async_client.link_status.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LinkStatusFull, link_status, path=["response"])
 
@@ -564,7 +564,7 @@ class TestAsyncLinkStatus:
             first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LinkStatusTupleResponse, link_status, path=["response"])
 

@@ -438,7 +438,7 @@ class TestLogisticssupport:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
 
@@ -471,7 +471,7 @@ class TestLogisticssupport:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, logisticssupport, path=["response"])
 
@@ -559,7 +559,7 @@ class TestLogisticssupport:
         logisticssupport = client.logisticssupport.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LogisticssupportGetResponse, logisticssupport, path=["response"])
 
@@ -631,7 +631,7 @@ class TestLogisticssupport:
         logisticssupport = client.logisticssupport.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LogisticssupportTupleResponse, logisticssupport, path=["response"])
 
@@ -1131,7 +1131,7 @@ class TestAsyncLogisticssupport:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
 
@@ -1164,7 +1164,7 @@ class TestAsyncLogisticssupport:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, logisticssupport, path=["response"])
 
@@ -1252,7 +1252,7 @@ class TestAsyncLogisticssupport:
         logisticssupport = await async_client.logisticssupport.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LogisticssupportGetResponse, logisticssupport, path=["response"])
 
@@ -1324,7 +1324,7 @@ class TestAsyncLogisticssupport:
         logisticssupport = await async_client.logisticssupport.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LogisticssupportTupleResponse, logisticssupport, path=["response"])
 

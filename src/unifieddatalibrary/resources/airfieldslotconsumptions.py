@@ -259,7 +259,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -292,7 +292,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_retrieve_params.AirfieldslotconsumptionRetrieveParams,
                 ),
@@ -509,7 +509,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -545,7 +545,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_list_params.AirfieldslotconsumptionListParams,
                 ),
@@ -594,7 +594,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -632,7 +632,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_count_params.AirfieldslotconsumptionCountParams,
                 ),
@@ -669,7 +669,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         columns: str,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -715,7 +715,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                         "columns": columns,
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_tuple_params.AirfieldslotconsumptionTupleParams,
                 ),
@@ -949,7 +949,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -982,7 +982,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_retrieve_params.AirfieldslotconsumptionRetrieveParams,
                 ),
@@ -1199,7 +1199,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1235,7 +1235,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_list_params.AirfieldslotconsumptionListParams,
                 ),
@@ -1284,7 +1284,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1322,7 +1322,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_count_params.AirfieldslotconsumptionCountParams,
                 ),
@@ -1359,7 +1359,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         columns: str,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1405,7 +1405,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                         "columns": columns,
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     airfieldslotconsumption_tuple_params.AirfieldslotconsumptionTupleParams,
                 ),

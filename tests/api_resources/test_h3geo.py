@@ -141,7 +141,7 @@ class TestH3geo:
         h3geo = client.h3geo.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geoListResponse, h3geo, path=["response"])
 
@@ -181,7 +181,7 @@ class TestH3geo:
         h3geo = client.h3geo.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, h3geo, path=["response"])
 
@@ -221,7 +221,7 @@ class TestH3geo:
         h3geo = client.h3geo.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geoGetResponse, h3geo, path=["response"])
 
@@ -295,7 +295,7 @@ class TestH3geo:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geoTupleResponse, h3geo, path=["response"])
 
@@ -448,7 +448,7 @@ class TestAsyncH3geo:
         h3geo = await async_client.h3geo.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geoListResponse, h3geo, path=["response"])
 
@@ -488,7 +488,7 @@ class TestAsyncH3geo:
         h3geo = await async_client.h3geo.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, h3geo, path=["response"])
 
@@ -528,7 +528,7 @@ class TestAsyncH3geo:
         h3geo = await async_client.h3geo.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geoGetResponse, h3geo, path=["response"])
 
@@ -602,7 +602,7 @@ class TestAsyncH3geo:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geoTupleResponse, h3geo, path=["response"])
 

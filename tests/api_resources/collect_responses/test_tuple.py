@@ -32,7 +32,7 @@ class TestTuple:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TupleListResponse, tuple_, path=["response"])
 
@@ -80,7 +80,7 @@ class TestAsyncTuple:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TupleListResponse, tuple_, path=["response"])
 

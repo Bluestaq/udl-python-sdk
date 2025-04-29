@@ -30,7 +30,7 @@ class HistoryListParams(TypedDict, total=False):
 
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     sgi_date: Annotated[Union[str, datetime], PropertyInfo(alias="sgiDate", format="iso8601")]
     """

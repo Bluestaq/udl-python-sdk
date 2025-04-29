@@ -183,7 +183,7 @@ class TestSeradataopticalpayload:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataopticalpayload = client.seradataopticalpayload.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataopticalpayloadListResponse, seradataopticalpayload, path=["response"])
 
@@ -254,7 +254,7 @@ class TestSeradataopticalpayload:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataopticalpayload = client.seradataopticalpayload.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataopticalpayload, path=["response"])
 
@@ -290,7 +290,7 @@ class TestSeradataopticalpayload:
         seradataopticalpayload = client.seradataopticalpayload.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataopticalpayloadGetResponse, seradataopticalpayload, path=["response"])
 
@@ -362,7 +362,7 @@ class TestSeradataopticalpayload:
         seradataopticalpayload = client.seradataopticalpayload.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataopticalpayloadTupleResponse, seradataopticalpayload, path=["response"])
 
@@ -556,7 +556,7 @@ class TestAsyncSeradataopticalpayload:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataopticalpayload = await async_client.seradataopticalpayload.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataopticalpayloadListResponse, seradataopticalpayload, path=["response"])
 
@@ -627,7 +627,7 @@ class TestAsyncSeradataopticalpayload:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataopticalpayload = await async_client.seradataopticalpayload.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataopticalpayload, path=["response"])
 
@@ -663,7 +663,7 @@ class TestAsyncSeradataopticalpayload:
         seradataopticalpayload = await async_client.seradataopticalpayload.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataopticalpayloadGetResponse, seradataopticalpayload, path=["response"])
 
@@ -735,7 +735,7 @@ class TestAsyncSeradataopticalpayload:
         seradataopticalpayload = await async_client.seradataopticalpayload.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataopticalpayloadTupleResponse, seradataopticalpayload, path=["response"])
 

@@ -33,7 +33,7 @@ class TestSpaceenvobservation:
         spaceenvobservation = client.spaceenvobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
 
@@ -73,7 +73,7 @@ class TestSpaceenvobservation:
         spaceenvobservation = client.spaceenvobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, spaceenvobservation, path=["response"])
 
@@ -192,7 +192,7 @@ class TestSpaceenvobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
 
@@ -290,7 +290,7 @@ class TestAsyncSpaceenvobservation:
         spaceenvobservation = await async_client.spaceenvobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
 
@@ -330,7 +330,7 @@ class TestAsyncSpaceenvobservation:
         spaceenvobservation = await async_client.spaceenvobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, spaceenvobservation, path=["response"])
 
@@ -449,7 +449,7 @@ class TestAsyncSpaceenvobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
 

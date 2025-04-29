@@ -226,7 +226,7 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirloadplanFull, air_load_plan, path=["response"])
 
@@ -273,7 +273,7 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.list(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
 
@@ -313,7 +313,7 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.count(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_load_plan, path=["response"])
 
@@ -380,7 +380,7 @@ class TestAirLoadPlans:
             columns="columns",
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirLoadPlanTupleResponse, air_load_plan, path=["response"])
 
@@ -618,7 +618,7 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirloadplanFull, air_load_plan, path=["response"])
 
@@ -665,7 +665,7 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.list(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
 
@@ -705,7 +705,7 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.count(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_load_plan, path=["response"])
 
@@ -772,7 +772,7 @@ class TestAsyncAirLoadPlans:
             columns="columns",
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirLoadPlanTupleResponse, air_load_plan, path=["response"])
 

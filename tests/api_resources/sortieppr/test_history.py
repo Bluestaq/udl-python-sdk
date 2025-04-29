@@ -32,7 +32,7 @@ class TestHistory:
             id_sortie="idSortie",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -73,7 +73,7 @@ class TestHistory:
             id_sortie="idSortie",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -116,7 +116,7 @@ class TestHistory:
         history = client.sortieppr.history.count(
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -161,7 +161,7 @@ class TestAsyncHistory:
             id_sortie="idSortie",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -202,7 +202,7 @@ class TestAsyncHistory:
             id_sortie="idSortie",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -245,7 +245,7 @@ class TestAsyncHistory:
         history = await async_client.sortieppr.history.count(
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

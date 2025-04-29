@@ -91,7 +91,7 @@ class TestNotification:
         notification = client.notification.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationListResponse, notification, path=["response"])
 
@@ -131,7 +131,7 @@ class TestNotification:
         notification = client.notification.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, notification, path=["response"])
 
@@ -231,7 +231,7 @@ class TestNotification:
         notification = client.notification.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationFull, notification, path=["response"])
 
@@ -305,7 +305,7 @@ class TestNotification:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationTupleResponse, notification, path=["response"])
 
@@ -408,7 +408,7 @@ class TestAsyncNotification:
         notification = await async_client.notification.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationListResponse, notification, path=["response"])
 
@@ -448,7 +448,7 @@ class TestAsyncNotification:
         notification = await async_client.notification.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, notification, path=["response"])
 
@@ -548,7 +548,7 @@ class TestAsyncNotification:
         notification = await async_client.notification.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationFull, notification, path=["response"])
 
@@ -622,7 +622,7 @@ class TestAsyncNotification:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationTupleResponse, notification, path=["response"])
 

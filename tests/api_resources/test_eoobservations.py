@@ -33,7 +33,7 @@ class TestEoobservations:
         eoobservation = client.eoobservations.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EoObservationFull, eoobservation, path=["response"])
 
@@ -107,7 +107,7 @@ class TestEoobservations:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EoobservationTupleResponse, eoobservation, path=["response"])
 
@@ -153,7 +153,7 @@ class TestAsyncEoobservations:
         eoobservation = await async_client.eoobservations.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EoObservationFull, eoobservation, path=["response"])
 
@@ -227,7 +227,7 @@ class TestAsyncEoobservations:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EoobservationTupleResponse, eoobservation, path=["response"])
 

@@ -120,7 +120,7 @@ class TestAirfields:
         airfield = client.airfields.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldFull, airfield, path=["response"])
 
@@ -267,7 +267,7 @@ class TestAirfields:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldListResponse, airfield, path=["response"])
 
@@ -300,7 +300,7 @@ class TestAirfields:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfield = client.airfields.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airfield, path=["response"])
 
@@ -361,7 +361,7 @@ class TestAirfields:
         airfield = client.airfields.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldTupleResponse, airfield, path=["response"])
 
@@ -492,7 +492,7 @@ class TestAsyncAirfields:
         airfield = await async_client.airfields.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldFull, airfield, path=["response"])
 
@@ -639,7 +639,7 @@ class TestAsyncAirfields:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldListResponse, airfield, path=["response"])
 
@@ -672,7 +672,7 @@ class TestAsyncAirfields:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield = await async_client.airfields.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airfield, path=["response"])
 
@@ -733,7 +733,7 @@ class TestAsyncAirfields:
         airfield = await async_client.airfields.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldTupleResponse, airfield, path=["response"])
 

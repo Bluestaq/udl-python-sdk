@@ -409,7 +409,7 @@ class PassiveradarobservationResource(SyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -446,7 +446,7 @@ class PassiveradarobservationResource(SyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_list_params.PassiveradarobservationListParams,
                 ),
@@ -459,7 +459,7 @@ class PassiveradarobservationResource(SyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -498,7 +498,7 @@ class PassiveradarobservationResource(SyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_count_params.PassiveradarobservationCountParams,
                 ),
@@ -584,7 +584,7 @@ class PassiveradarobservationResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -617,7 +617,7 @@ class PassiveradarobservationResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_get_params.PassiveradarobservationGetParams,
                 ),
@@ -654,7 +654,7 @@ class PassiveradarobservationResource(SyncAPIResource):
         columns: str,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -701,7 +701,7 @@ class PassiveradarobservationResource(SyncAPIResource):
                         "columns": columns,
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_tuple_params.PassiveradarobservationTupleParams,
                 ),
@@ -1076,7 +1076,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1113,7 +1113,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_list_params.PassiveradarobservationListParams,
                 ),
@@ -1126,7 +1126,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1165,7 +1165,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_count_params.PassiveradarobservationCountParams,
                 ),
@@ -1251,7 +1251,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1284,7 +1284,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_get_params.PassiveradarobservationGetParams,
                 ),
@@ -1321,7 +1321,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
         columns: str,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1368,7 +1368,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
                         "columns": columns,
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     passiveradarobservation_tuple_params.PassiveradarobservationTupleParams,
                 ),

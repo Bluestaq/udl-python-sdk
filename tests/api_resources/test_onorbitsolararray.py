@@ -173,7 +173,7 @@ class TestOnorbitsolararray:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitsolararray = client.onorbitsolararray.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitsolararrayListResponse, onorbitsolararray, path=["response"])
 
@@ -247,7 +247,7 @@ class TestOnorbitsolararray:
         onorbitsolararray = client.onorbitsolararray.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitsolararrayGetResponse, onorbitsolararray, path=["response"])
 
@@ -439,7 +439,7 @@ class TestAsyncOnorbitsolararray:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitsolararray = await async_client.onorbitsolararray.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitsolararrayListResponse, onorbitsolararray, path=["response"])
 
@@ -513,7 +513,7 @@ class TestAsyncOnorbitsolararray:
         onorbitsolararray = await async_client.onorbitsolararray.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitsolararrayGetResponse, onorbitsolararray, path=["response"])
 

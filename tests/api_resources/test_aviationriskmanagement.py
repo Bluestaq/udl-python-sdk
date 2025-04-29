@@ -130,7 +130,7 @@ class TestAviationriskmanagement:
         aviationriskmanagement = client.aviationriskmanagement.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AviationriskmanagementRetrieveResponse, aviationriskmanagement, path=["response"])
 
@@ -326,7 +326,7 @@ class TestAviationriskmanagement:
         aviationriskmanagement = client.aviationriskmanagement.count(
             id_mission="idMission",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, aviationriskmanagement, path=["response"])
 
@@ -418,7 +418,7 @@ class TestAviationriskmanagement:
         aviationriskmanagement = client.aviationriskmanagement.query(
             id_mission="idMission",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AviationriskmanagementQueryResponse, aviationriskmanagement, path=["response"])
 
@@ -485,7 +485,7 @@ class TestAviationriskmanagement:
             columns="columns",
             id_mission="idMission",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AviationriskmanagementTupleResponse, aviationriskmanagement, path=["response"])
 
@@ -679,7 +679,7 @@ class TestAsyncAviationriskmanagement:
         aviationriskmanagement = await async_client.aviationriskmanagement.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AviationriskmanagementRetrieveResponse, aviationriskmanagement, path=["response"])
 
@@ -875,7 +875,7 @@ class TestAsyncAviationriskmanagement:
         aviationriskmanagement = await async_client.aviationriskmanagement.count(
             id_mission="idMission",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, aviationriskmanagement, path=["response"])
 
@@ -967,7 +967,7 @@ class TestAsyncAviationriskmanagement:
         aviationriskmanagement = await async_client.aviationriskmanagement.query(
             id_mission="idMission",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AviationriskmanagementQueryResponse, aviationriskmanagement, path=["response"])
 
@@ -1034,7 +1034,7 @@ class TestAsyncAviationriskmanagement:
             columns="columns",
             id_mission="idMission",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AviationriskmanagementTupleResponse, aviationriskmanagement, path=["response"])
 

@@ -43,7 +43,7 @@ class TestUdlSigact:
         udl_sigact = client.report_and_activity.udl_sigact.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert udl_sigact.is_closed
         assert udl_sigact.json() == {"foo": "bar"}
@@ -165,7 +165,7 @@ class TestAsyncUdlSigact:
         udl_sigact = await async_client.report_and_activity.udl_sigact.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert udl_sigact.is_closed
         assert await udl_sigact.json() == {"foo": "bar"}

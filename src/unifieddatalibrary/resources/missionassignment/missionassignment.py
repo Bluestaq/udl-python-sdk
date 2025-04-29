@@ -694,7 +694,7 @@ class MissionassignmentResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -731,7 +731,7 @@ class MissionassignmentResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_list_params.MissionassignmentListParams,
                 ),
@@ -780,7 +780,7 @@ class MissionassignmentResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -819,7 +819,7 @@ class MissionassignmentResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_count_params.MissionassignmentCountParams,
                 ),
@@ -867,7 +867,7 @@ class MissionassignmentResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -900,7 +900,7 @@ class MissionassignmentResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_get_params.MissionassignmentGetParams,
                 ),
@@ -937,7 +937,7 @@ class MissionassignmentResource(SyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -984,7 +984,7 @@ class MissionassignmentResource(SyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_tuple_params.MissionassignmentTupleParams,
                 ),
@@ -1644,7 +1644,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1681,7 +1681,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_list_params.MissionassignmentListParams,
                 ),
@@ -1730,7 +1730,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1769,7 +1769,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_count_params.MissionassignmentCountParams,
                 ),
@@ -1817,7 +1817,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1850,7 +1850,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_get_params.MissionassignmentGetParams,
                 ),
@@ -1887,7 +1887,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1934,7 +1934,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     missionassignment_tuple_params.MissionassignmentTupleParams,
                 ),

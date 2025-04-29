@@ -254,7 +254,7 @@ class TestEoObservations:
         eo_observation = client.eo_observations.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
 
@@ -294,7 +294,7 @@ class TestEoObservations:
         eo_observation = client.eo_observations.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, eo_observation, path=["response"])
 
@@ -851,7 +851,7 @@ class TestAsyncEoObservations:
         eo_observation = await async_client.eo_observations.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
 
@@ -891,7 +891,7 @@ class TestAsyncEoObservations:
         eo_observation = await async_client.eo_observations.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, eo_observation, path=["response"])
 

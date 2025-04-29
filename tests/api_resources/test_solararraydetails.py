@@ -166,7 +166,7 @@ class TestSolararraydetails:
             classification_marking="classificationMarking",
             data_mode="dataMode",
             first_result=0,
-            max_result=0,
+            max_results=0,
             source="source",
         )
         assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
@@ -241,7 +241,7 @@ class TestSolararraydetails:
         solararraydetail = client.solararraydetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
@@ -426,7 +426,7 @@ class TestAsyncSolararraydetails:
             classification_marking="classificationMarking",
             data_mode="dataMode",
             first_result=0,
-            max_result=0,
+            max_results=0,
             source="source",
         )
         assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
@@ -501,7 +501,7 @@ class TestAsyncSolararraydetails:
         solararraydetail = await async_client.solararraydetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 

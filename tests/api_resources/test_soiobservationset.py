@@ -239,7 +239,7 @@ class TestSoiobservationset:
         soiobservationset = client.soiobservationset.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SoiobservationsetListResponse, soiobservationset, path=["response"])
 
@@ -279,7 +279,7 @@ class TestSoiobservationset:
         soiobservationset = client.soiobservationset.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, soiobservationset, path=["response"])
 
@@ -377,7 +377,7 @@ class TestSoiobservationset:
         soiobservationset = client.soiobservationset.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SoiObservationSetFull, soiobservationset, path=["response"])
 
@@ -451,7 +451,7 @@ class TestSoiobservationset:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SoiobservationsetTupleResponse, soiobservationset, path=["response"])
 
@@ -760,7 +760,7 @@ class TestAsyncSoiobservationset:
         soiobservationset = await async_client.soiobservationset.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SoiobservationsetListResponse, soiobservationset, path=["response"])
 
@@ -800,7 +800,7 @@ class TestAsyncSoiobservationset:
         soiobservationset = await async_client.soiobservationset.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, soiobservationset, path=["response"])
 
@@ -898,7 +898,7 @@ class TestAsyncSoiobservationset:
         soiobservationset = await async_client.soiobservationset.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SoiObservationSetFull, soiobservationset, path=["response"])
 
@@ -972,7 +972,7 @@ class TestAsyncSoiobservationset:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SoiobservationsetTupleResponse, soiobservationset, path=["response"])
 

@@ -137,7 +137,7 @@ class TestEquipment:
         equipment = client.equipment.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentFull, equipment, path=["response"])
 
@@ -301,7 +301,7 @@ class TestEquipment:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentListResponse, equipment, path=["response"])
 
@@ -372,7 +372,7 @@ class TestEquipment:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, equipment, path=["response"])
 
@@ -491,7 +491,7 @@ class TestEquipment:
         equipment = client.equipment.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentTupleResponse, equipment, path=["response"])
 
@@ -638,7 +638,7 @@ class TestAsyncEquipment:
         equipment = await async_client.equipment.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentFull, equipment, path=["response"])
 
@@ -802,7 +802,7 @@ class TestAsyncEquipment:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentListResponse, equipment, path=["response"])
 
@@ -873,7 +873,7 @@ class TestAsyncEquipment:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, equipment, path=["response"])
 
@@ -992,7 +992,7 @@ class TestAsyncEquipment:
         equipment = await async_client.equipment.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentTupleResponse, equipment, path=["response"])
 

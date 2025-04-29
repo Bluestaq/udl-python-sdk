@@ -256,7 +256,7 @@ class TestSgi:
         sgi = client.sgi.list(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiListResponse, sgi, path=["response"])
@@ -329,7 +329,7 @@ class TestSgi:
         sgi = client.sgi.count(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, sgi, path=["response"])
@@ -421,7 +421,7 @@ class TestSgi:
         sgi = client.sgi.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
 
@@ -466,7 +466,7 @@ class TestSgi:
         sgi = client.sgi.get_data_by_effective_as_of_date(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
@@ -529,7 +529,7 @@ class TestSgi:
             columns="columns",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiTupleResponse, sgi, path=["response"])
@@ -851,7 +851,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.list(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiListResponse, sgi, path=["response"])
@@ -924,7 +924,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.count(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, sgi, path=["response"])
@@ -1016,7 +1016,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
 
@@ -1063,7 +1063,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.get_data_by_effective_as_of_date(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
@@ -1128,7 +1128,7 @@ class TestAsyncSgi:
             columns="columns",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiTupleResponse, sgi, path=["response"])

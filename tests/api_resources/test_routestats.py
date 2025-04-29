@@ -112,7 +112,7 @@ class TestRoutestats:
         routestat = client.routestats.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RoutestatRetrieveResponse, routestat, path=["response"])
 
@@ -288,7 +288,7 @@ class TestRoutestats:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         routestat = client.routestats.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, routestat, path=["response"])
 
@@ -376,7 +376,7 @@ class TestRoutestats:
     def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
         routestat = client.routestats.query(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RoutestatQueryResponse, routestat, path=["response"])
 
@@ -437,7 +437,7 @@ class TestRoutestats:
         routestat = client.routestats.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RoutestatTupleResponse, routestat, path=["response"])
 
@@ -614,7 +614,7 @@ class TestAsyncRoutestats:
         routestat = await async_client.routestats.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RoutestatRetrieveResponse, routestat, path=["response"])
 
@@ -790,7 +790,7 @@ class TestAsyncRoutestats:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         routestat = await async_client.routestats.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, routestat, path=["response"])
 
@@ -878,7 +878,7 @@ class TestAsyncRoutestats:
     async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         routestat = await async_client.routestats.query(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RoutestatQueryResponse, routestat, path=["response"])
 
@@ -939,7 +939,7 @@ class TestAsyncRoutestats:
         routestat = await async_client.routestats.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RoutestatTupleResponse, routestat, path=["response"])
 

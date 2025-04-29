@@ -136,7 +136,7 @@ class TestComm:
         comm = client.comm.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CommFull, comm, path=["response"])
 
@@ -249,7 +249,7 @@ class TestComm:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CommListResponse, comm, path=["response"])
 
@@ -320,7 +320,7 @@ class TestComm:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, comm, path=["response"])
 
@@ -381,7 +381,7 @@ class TestComm:
         comm = client.comm.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CommTupleResponse, comm, path=["response"])
 
@@ -527,7 +527,7 @@ class TestAsyncComm:
         comm = await async_client.comm.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CommFull, comm, path=["response"])
 
@@ -640,7 +640,7 @@ class TestAsyncComm:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CommListResponse, comm, path=["response"])
 
@@ -711,7 +711,7 @@ class TestAsyncComm:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, comm, path=["response"])
 
@@ -772,7 +772,7 @@ class TestAsyncComm:
         comm = await async_client.comm.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CommTupleResponse, comm, path=["response"])
 

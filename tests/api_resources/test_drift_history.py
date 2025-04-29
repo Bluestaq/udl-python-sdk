@@ -33,7 +33,7 @@ class TestDriftHistory:
         drift_history = client.drift_history.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DriftHistoryFull, drift_history, path=["response"])
 
@@ -77,7 +77,7 @@ class TestDriftHistory:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         drift_history = client.drift_history.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DriftHistoryListResponse, drift_history, path=["response"])
 
@@ -110,7 +110,7 @@ class TestDriftHistory:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         drift_history = client.drift_history.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, drift_history, path=["response"])
 
@@ -171,7 +171,7 @@ class TestDriftHistory:
         drift_history = client.drift_history.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DriftHistoryTupleResponse, drift_history, path=["response"])
 
@@ -215,7 +215,7 @@ class TestAsyncDriftHistory:
         drift_history = await async_client.drift_history.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DriftHistoryFull, drift_history, path=["response"])
 
@@ -259,7 +259,7 @@ class TestAsyncDriftHistory:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         drift_history = await async_client.drift_history.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DriftHistoryListResponse, drift_history, path=["response"])
 
@@ -292,7 +292,7 @@ class TestAsyncDriftHistory:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         drift_history = await async_client.drift_history.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, drift_history, path=["response"])
 
@@ -353,7 +353,7 @@ class TestAsyncDriftHistory:
         drift_history = await async_client.drift_history.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DriftHistoryTupleResponse, drift_history, path=["response"])
 

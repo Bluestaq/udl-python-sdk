@@ -335,7 +335,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -380,7 +380,7 @@ class OrbitdeterminationResource(SyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_list_params.OrbitdeterminationListParams,
@@ -394,7 +394,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -441,7 +441,7 @@ class OrbitdeterminationResource(SyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_count_params.OrbitdeterminationCountParams,
@@ -492,7 +492,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -525,7 +525,7 @@ class OrbitdeterminationResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     orbitdetermination_get_params.OrbitdeterminationGetParams,
                 ),
@@ -562,7 +562,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -617,7 +617,7 @@ class OrbitdeterminationResource(SyncAPIResource):
                         "columns": columns,
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_tuple_params.OrbitdeterminationTupleParams,
@@ -955,7 +955,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1000,7 +1000,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_list_params.OrbitdeterminationListParams,
@@ -1014,7 +1014,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         *,
         first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1061,7 +1061,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                     {
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_count_params.OrbitdeterminationCountParams,
@@ -1112,7 +1112,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1145,7 +1145,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     orbitdetermination_get_params.OrbitdeterminationGetParams,
                 ),
@@ -1182,7 +1182,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1237,7 +1237,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                         "columns": columns,
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_tuple_params.OrbitdeterminationTupleParams,

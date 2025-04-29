@@ -288,7 +288,7 @@ class TestFlightplan:
         flightplan = client.flightplan.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FlightPlanFull, flightplan, path=["response"])
 
@@ -603,7 +603,7 @@ class TestFlightplan:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         flightplan = client.flightplan.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
 
@@ -674,7 +674,7 @@ class TestFlightplan:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         flightplan = client.flightplan.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, flightplan, path=["response"])
 
@@ -735,7 +735,7 @@ class TestFlightplan:
         flightplan = client.flightplan.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FlightplanTupleResponse, flightplan, path=["response"])
 
@@ -1091,7 +1091,7 @@ class TestAsyncFlightplan:
         flightplan = await async_client.flightplan.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FlightPlanFull, flightplan, path=["response"])
 
@@ -1406,7 +1406,7 @@ class TestAsyncFlightplan:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         flightplan = await async_client.flightplan.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
 
@@ -1477,7 +1477,7 @@ class TestAsyncFlightplan:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         flightplan = await async_client.flightplan.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, flightplan, path=["response"])
 
@@ -1538,7 +1538,7 @@ class TestAsyncFlightplan:
         flightplan = await async_client.flightplan.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FlightplanTupleResponse, flightplan, path=["response"])
 

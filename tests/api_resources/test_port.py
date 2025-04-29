@@ -168,7 +168,7 @@ class TestPort:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         port = client.port.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PortListResponse, port, path=["response"])
 
@@ -201,7 +201,7 @@ class TestPort:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         port = client.port.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, port, path=["response"])
 
@@ -286,7 +286,7 @@ class TestPort:
         port = client.port.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PortGetResponse, port, path=["response"])
 
@@ -358,7 +358,7 @@ class TestPort:
         port = client.port.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PortTupleResponse, port, path=["response"])
 
@@ -537,7 +537,7 @@ class TestAsyncPort:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PortListResponse, port, path=["response"])
 
@@ -570,7 +570,7 @@ class TestAsyncPort:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, port, path=["response"])
 
@@ -655,7 +655,7 @@ class TestAsyncPort:
         port = await async_client.port.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PortGetResponse, port, path=["response"])
 
@@ -727,7 +727,7 @@ class TestAsyncPort:
         port = await async_client.port.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PortTupleResponse, port, path=["response"])
 

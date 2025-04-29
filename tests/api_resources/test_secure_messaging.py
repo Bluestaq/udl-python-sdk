@@ -32,7 +32,7 @@ class TestSecureMessaging:
         secure_messaging = client.secure_messaging.describe_topic(
             topic="topic",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TopicDetails, secure_messaging, path=["response"])
 
@@ -79,7 +79,7 @@ class TestSecureMessaging:
         secure_messaging = client.secure_messaging.get_latest_offset(
             topic="topic",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert secure_messaging is None
 
@@ -128,7 +128,7 @@ class TestSecureMessaging:
             offset=0,
             topic="topic",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert secure_messaging is None
 
@@ -207,7 +207,7 @@ class TestAsyncSecureMessaging:
         secure_messaging = await async_client.secure_messaging.describe_topic(
             topic="topic",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TopicDetails, secure_messaging, path=["response"])
 
@@ -254,7 +254,7 @@ class TestAsyncSecureMessaging:
         secure_messaging = await async_client.secure_messaging.get_latest_offset(
             topic="topic",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert secure_messaging is None
 
@@ -303,7 +303,7 @@ class TestAsyncSecureMessaging:
             offset=0,
             topic="topic",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert secure_messaging is None
 

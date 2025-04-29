@@ -33,7 +33,7 @@ class TestTrack:
         track = client.track.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackListResponse, track, path=["response"])
 
@@ -73,7 +73,7 @@ class TestTrack:
         track = client.track.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, track, path=["response"])
 
@@ -192,7 +192,7 @@ class TestTrack:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackTupleResponse, track, path=["response"])
 
@@ -290,7 +290,7 @@ class TestAsyncTrack:
         track = await async_client.track.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackListResponse, track, path=["response"])
 
@@ -330,7 +330,7 @@ class TestAsyncTrack:
         track = await async_client.track.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, track, path=["response"])
 
@@ -449,7 +449,7 @@ class TestAsyncTrack:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackTupleResponse, track, path=["response"])
 

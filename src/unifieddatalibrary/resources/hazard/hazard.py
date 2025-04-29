@@ -333,7 +333,7 @@ class HazardResource(SyncAPIResource):
         *,
         detect_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -370,7 +370,7 @@ class HazardResource(SyncAPIResource):
                     {
                         "detect_time": detect_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_list_params.HazardListParams,
                 ),
@@ -383,7 +383,7 @@ class HazardResource(SyncAPIResource):
         *,
         detect_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -422,7 +422,7 @@ class HazardResource(SyncAPIResource):
                     {
                         "detect_time": detect_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_count_params.HazardCountParams,
                 ),
@@ -472,7 +472,7 @@ class HazardResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -505,7 +505,7 @@ class HazardResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_get_params.HazardGetParams,
                 ),
@@ -542,7 +542,7 @@ class HazardResource(SyncAPIResource):
         columns: str,
         detect_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -589,7 +589,7 @@ class HazardResource(SyncAPIResource):
                         "columns": columns,
                         "detect_time": detect_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_tuple_params.HazardTupleParams,
                 ),
@@ -889,7 +889,7 @@ class AsyncHazardResource(AsyncAPIResource):
         *,
         detect_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -926,7 +926,7 @@ class AsyncHazardResource(AsyncAPIResource):
                     {
                         "detect_time": detect_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_list_params.HazardListParams,
                 ),
@@ -939,7 +939,7 @@ class AsyncHazardResource(AsyncAPIResource):
         *,
         detect_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -978,7 +978,7 @@ class AsyncHazardResource(AsyncAPIResource):
                     {
                         "detect_time": detect_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_count_params.HazardCountParams,
                 ),
@@ -1028,7 +1028,7 @@ class AsyncHazardResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1061,7 +1061,7 @@ class AsyncHazardResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_get_params.HazardGetParams,
                 ),
@@ -1098,7 +1098,7 @@ class AsyncHazardResource(AsyncAPIResource):
         columns: str,
         detect_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1145,7 +1145,7 @@ class AsyncHazardResource(AsyncAPIResource):
                         "columns": columns,
                         "detect_time": detect_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     hazard_tuple_params.HazardTupleParams,
                 ),

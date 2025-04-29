@@ -27,7 +27,7 @@ class TestHistory:
         history = client.onorbitthrusterstatus.history.count(
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, history, path=["response"])
@@ -66,7 +66,7 @@ class TestAsyncHistory:
         history = await async_client.onorbitthrusterstatus.history.count(
             first_result=0,
             id_onorbit_thruster="idOnorbitThruster",
-            max_result=0,
+            max_results=0,
             status_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, history, path=["response"])

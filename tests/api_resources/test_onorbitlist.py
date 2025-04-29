@@ -153,7 +153,7 @@ class TestOnorbitlist:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitlistListResponse, onorbitlist, path=["response"])
 
@@ -224,7 +224,7 @@ class TestOnorbitlist:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onorbitlist, path=["response"])
 
@@ -260,7 +260,7 @@ class TestOnorbitlist:
         onorbitlist = client.onorbitlist.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitlistGetResponse, onorbitlist, path=["response"])
 
@@ -332,7 +332,7 @@ class TestOnorbitlist:
         onorbitlist = client.onorbitlist.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitlistTupleResponse, onorbitlist, path=["response"])
 
@@ -496,7 +496,7 @@ class TestAsyncOnorbitlist:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitlistListResponse, onorbitlist, path=["response"])
 
@@ -567,7 +567,7 @@ class TestAsyncOnorbitlist:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onorbitlist, path=["response"])
 
@@ -603,7 +603,7 @@ class TestAsyncOnorbitlist:
         onorbitlist = await async_client.onorbitlist.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitlistGetResponse, onorbitlist, path=["response"])
 
@@ -675,7 +675,7 @@ class TestAsyncOnorbitlist:
         onorbitlist = await async_client.onorbitlist.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitlistTupleResponse, onorbitlist, path=["response"])
 

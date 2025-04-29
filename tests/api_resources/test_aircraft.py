@@ -147,7 +147,7 @@ class TestAircraft:
         aircraft = client.aircraft.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftFull, aircraft, path=["response"])
 
@@ -319,7 +319,7 @@ class TestAircraft:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft = client.aircraft.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftListResponse, aircraft, path=["response"])
 
@@ -352,7 +352,7 @@ class TestAircraft:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         aircraft = client.aircraft.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, aircraft, path=["response"])
 
@@ -413,7 +413,7 @@ class TestAircraft:
         aircraft = client.aircraft.tuple_query(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
 
@@ -570,7 +570,7 @@ class TestAsyncAircraft:
         aircraft = await async_client.aircraft.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftFull, aircraft, path=["response"])
 
@@ -742,7 +742,7 @@ class TestAsyncAircraft:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft = await async_client.aircraft.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftListResponse, aircraft, path=["response"])
 
@@ -775,7 +775,7 @@ class TestAsyncAircraft:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft = await async_client.aircraft.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, aircraft, path=["response"])
 
@@ -836,7 +836,7 @@ class TestAsyncAircraft:
         aircraft = await async_client.aircraft.tuple_query(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
 
