@@ -43,7 +43,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryFull, analytic_imagery, path=["response"])
 
@@ -90,7 +90,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryListResponse, analytic_imagery, path=["response"])
 
@@ -130,7 +130,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, analytic_imagery, path=["response"])
 
@@ -177,7 +177,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert analytic_imagery.is_closed
         assert analytic_imagery.json() == {"foo": "bar"}
@@ -235,7 +235,7 @@ class TestAnalyticImagery:
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryHistoryResponse, analytic_imagery, path=["response"])
 
@@ -276,7 +276,7 @@ class TestAnalyticImagery:
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -319,7 +319,7 @@ class TestAnalyticImagery:
         analytic_imagery = client.analytic_imagery.history_count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, analytic_imagery, path=["response"])
 
@@ -386,7 +386,7 @@ class TestAnalyticImagery:
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
 
@@ -463,7 +463,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryFull, analytic_imagery, path=["response"])
 
@@ -510,7 +510,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryListResponse, analytic_imagery, path=["response"])
 
@@ -550,7 +550,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, analytic_imagery, path=["response"])
 
@@ -599,7 +599,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert analytic_imagery.is_closed
         assert await analytic_imagery.json() == {"foo": "bar"}
@@ -659,7 +659,7 @@ class TestAsyncAnalyticImagery:
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryHistoryResponse, analytic_imagery, path=["response"])
 
@@ -700,7 +700,7 @@ class TestAsyncAnalyticImagery:
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -743,7 +743,7 @@ class TestAsyncAnalyticImagery:
         analytic_imagery = await async_client.analytic_imagery.history_count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, analytic_imagery, path=["response"])
 
@@ -810,7 +810,7 @@ class TestAsyncAnalyticImagery:
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AnalyticImageryTupleResponse, analytic_imagery, path=["response"])
 

@@ -137,7 +137,7 @@ class TestCalibration:
         calibration = client.sensor.calibration.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationRetrieveResponse, calibration, path=["response"])
 
@@ -184,7 +184,7 @@ class TestCalibration:
         calibration = client.sensor.calibration.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, calibration, path=["response"])
 
@@ -279,7 +279,7 @@ class TestCalibration:
         calibration = client.sensor.calibration.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
 
@@ -346,7 +346,7 @@ class TestCalibration:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
 
@@ -550,7 +550,7 @@ class TestAsyncCalibration:
         calibration = await async_client.sensor.calibration.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationRetrieveResponse, calibration, path=["response"])
 
@@ -597,7 +597,7 @@ class TestAsyncCalibration:
         calibration = await async_client.sensor.calibration.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, calibration, path=["response"])
 
@@ -692,7 +692,7 @@ class TestAsyncCalibration:
         calibration = await async_client.sensor.calibration.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
 
@@ -759,7 +759,7 @@ class TestAsyncCalibration:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
 

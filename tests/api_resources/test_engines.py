@@ -85,7 +85,7 @@ class TestEngines:
         engine = client.engines.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(Engine, engine, path=["response"])
 
@@ -196,7 +196,7 @@ class TestEngines:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         engine = client.engines.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EngineListResponse, engine, path=["response"])
 
@@ -267,7 +267,7 @@ class TestEngines:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         engine = client.engines.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, engine, path=["response"])
 
@@ -328,7 +328,7 @@ class TestEngines:
         engine = client.engines.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EngineTupleResponse, engine, path=["response"])
 
@@ -424,7 +424,7 @@ class TestAsyncEngines:
         engine = await async_client.engines.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(Engine, engine, path=["response"])
 
@@ -535,7 +535,7 @@ class TestAsyncEngines:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine = await async_client.engines.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EngineListResponse, engine, path=["response"])
 
@@ -606,7 +606,7 @@ class TestAsyncEngines:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         engine = await async_client.engines.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, engine, path=["response"])
 
@@ -667,7 +667,7 @@ class TestAsyncEngines:
         engine = await async_client.engines.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EngineTupleResponse, engine, path=["response"])
 

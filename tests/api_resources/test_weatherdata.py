@@ -116,7 +116,7 @@ class TestWeatherdata:
         weatherdata = client.weatherdata.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherdataListResponse, weatherdata, path=["response"])
 
@@ -156,7 +156,7 @@ class TestWeatherdata:
         weatherdata = client.weatherdata.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, weatherdata, path=["response"])
 
@@ -248,7 +248,7 @@ class TestWeatherdata:
         weatherdata = client.weatherdata.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherDataFull, weatherdata, path=["response"])
 
@@ -322,7 +322,7 @@ class TestWeatherdata:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherdataTupleResponse, weatherdata, path=["response"])
 
@@ -502,7 +502,7 @@ class TestAsyncWeatherdata:
         weatherdata = await async_client.weatherdata.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherdataListResponse, weatherdata, path=["response"])
 
@@ -542,7 +542,7 @@ class TestAsyncWeatherdata:
         weatherdata = await async_client.weatherdata.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, weatherdata, path=["response"])
 
@@ -634,7 +634,7 @@ class TestAsyncWeatherdata:
         weatherdata = await async_client.weatherdata.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherDataFull, weatherdata, path=["response"])
 
@@ -708,7 +708,7 @@ class TestAsyncWeatherdata:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(WeatherdataTupleResponse, weatherdata, path=["response"])
 

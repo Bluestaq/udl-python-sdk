@@ -90,7 +90,7 @@ class TestSiteremark:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         siteremark = client.siteremark.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteremarkListResponse, siteremark, path=["response"])
 
@@ -123,7 +123,7 @@ class TestSiteremark:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         siteremark = client.siteremark.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, siteremark, path=["response"])
 
@@ -159,7 +159,7 @@ class TestSiteremark:
         siteremark = client.siteremark.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteremarkGetResponse, siteremark, path=["response"])
 
@@ -231,7 +231,7 @@ class TestSiteremark:
         siteremark = client.siteremark.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteremarkTupleResponse, siteremark, path=["response"])
 
@@ -332,7 +332,7 @@ class TestAsyncSiteremark:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         siteremark = await async_client.siteremark.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteremarkListResponse, siteremark, path=["response"])
 
@@ -365,7 +365,7 @@ class TestAsyncSiteremark:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         siteremark = await async_client.siteremark.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, siteremark, path=["response"])
 
@@ -401,7 +401,7 @@ class TestAsyncSiteremark:
         siteremark = await async_client.siteremark.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteremarkGetResponse, siteremark, path=["response"])
 
@@ -473,7 +473,7 @@ class TestAsyncSiteremark:
         siteremark = await async_client.siteremark.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteremarkTupleResponse, siteremark, path=["response"])
 

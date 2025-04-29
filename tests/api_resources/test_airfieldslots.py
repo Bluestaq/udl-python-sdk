@@ -32,7 +32,7 @@ class TestAirfieldslots:
         airfieldslot = client.airfieldslots.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotFull, airfieldslot, path=["response"])
 
@@ -196,7 +196,7 @@ class TestAirfieldslots:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         airfieldslot = client.airfieldslots.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airfieldslot, path=["response"])
 
@@ -257,7 +257,7 @@ class TestAirfieldslots:
         airfieldslot = client.airfieldslots.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotTupleResponse, airfieldslot, path=["response"])
 
@@ -301,7 +301,7 @@ class TestAsyncAirfieldslots:
         airfieldslot = await async_client.airfieldslots.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotFull, airfieldslot, path=["response"])
 
@@ -465,7 +465,7 @@ class TestAsyncAirfieldslots:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldslot = await async_client.airfieldslots.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, airfieldslot, path=["response"])
 
@@ -526,7 +526,7 @@ class TestAsyncAirfieldslots:
         airfieldslot = await async_client.airfieldslots.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirfieldslotTupleResponse, airfieldslot, path=["response"])
 

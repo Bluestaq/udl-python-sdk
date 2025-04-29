@@ -176,7 +176,7 @@ class TestSubstatus:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SubstatusListResponse, substatus, path=["response"])
 
@@ -247,7 +247,7 @@ class TestSubstatus:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, substatus, path=["response"])
 
@@ -283,7 +283,7 @@ class TestSubstatus:
         substatus = client.substatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SubstatusGetResponse, substatus, path=["response"])
 
@@ -355,7 +355,7 @@ class TestSubstatus:
         substatus = client.substatus.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SubstatusTupleResponse, substatus, path=["response"])
 
@@ -542,7 +542,7 @@ class TestAsyncSubstatus:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SubstatusListResponse, substatus, path=["response"])
 
@@ -613,7 +613,7 @@ class TestAsyncSubstatus:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, substatus, path=["response"])
 
@@ -649,7 +649,7 @@ class TestAsyncSubstatus:
         substatus = await async_client.substatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SubstatusGetResponse, substatus, path=["response"])
 
@@ -721,7 +721,7 @@ class TestAsyncSubstatus:
         substatus = await async_client.substatus.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SubstatusTupleResponse, substatus, path=["response"])
 

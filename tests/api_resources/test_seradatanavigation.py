@@ -173,7 +173,7 @@ class TestSeradatanavigation:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatanavigation = client.seradatanavigation.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatanavigationListResponse, seradatanavigation, path=["response"])
 
@@ -244,7 +244,7 @@ class TestSeradatanavigation:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradatanavigation = client.seradatanavigation.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradatanavigation, path=["response"])
 
@@ -280,7 +280,7 @@ class TestSeradatanavigation:
         seradatanavigation = client.seradatanavigation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatanavigationGetResponse, seradatanavigation, path=["response"])
 
@@ -352,7 +352,7 @@ class TestSeradatanavigation:
         seradatanavigation = client.seradatanavigation.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatanavigationTupleResponse, seradatanavigation, path=["response"])
 
@@ -536,7 +536,7 @@ class TestAsyncSeradatanavigation:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatanavigation = await async_client.seradatanavigation.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatanavigationListResponse, seradatanavigation, path=["response"])
 
@@ -607,7 +607,7 @@ class TestAsyncSeradatanavigation:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatanavigation = await async_client.seradatanavigation.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradatanavigation, path=["response"])
 
@@ -643,7 +643,7 @@ class TestAsyncSeradatanavigation:
         seradatanavigation = await async_client.seradatanavigation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatanavigationGetResponse, seradatanavigation, path=["response"])
 
@@ -715,7 +715,7 @@ class TestAsyncSeradatanavigation:
         seradatanavigation = await async_client.seradatanavigation.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradatanavigationTupleResponse, seradatanavigation, path=["response"])
 

@@ -42,7 +42,7 @@ class TestGlobalatmosphericmodel:
         globalatmosphericmodel = client.globalatmosphericmodel.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GlobalatmosphericmodelRetrieveResponse, globalatmosphericmodel, path=["response"])
 
@@ -89,7 +89,7 @@ class TestGlobalatmosphericmodel:
         globalatmosphericmodel = client.globalatmosphericmodel.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, globalatmosphericmodel, path=["response"])
 
@@ -140,7 +140,7 @@ class TestGlobalatmosphericmodel:
         globalatmosphericmodel = client.globalatmosphericmodel.get_file(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert globalatmosphericmodel.is_closed
         assert globalatmosphericmodel.json() == {"foo": "bar"}
@@ -201,7 +201,7 @@ class TestGlobalatmosphericmodel:
         globalatmosphericmodel = client.globalatmosphericmodel.query(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GlobalatmosphericmodelQueryResponse, globalatmosphericmodel, path=["response"])
 
@@ -268,7 +268,7 @@ class TestGlobalatmosphericmodel:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
 
@@ -386,7 +386,7 @@ class TestAsyncGlobalatmosphericmodel:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GlobalatmosphericmodelRetrieveResponse, globalatmosphericmodel, path=["response"])
 
@@ -433,7 +433,7 @@ class TestAsyncGlobalatmosphericmodel:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, globalatmosphericmodel, path=["response"])
 
@@ -486,7 +486,7 @@ class TestAsyncGlobalatmosphericmodel:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.get_file(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert globalatmosphericmodel.is_closed
         assert await globalatmosphericmodel.json() == {"foo": "bar"}
@@ -549,7 +549,7 @@ class TestAsyncGlobalatmosphericmodel:
         globalatmosphericmodel = await async_client.globalatmosphericmodel.query(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GlobalatmosphericmodelQueryResponse, globalatmosphericmodel, path=["response"])
 
@@ -616,7 +616,7 @@ class TestAsyncGlobalatmosphericmodel:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GlobalatmosphericmodelTupleResponse, globalatmosphericmodel, path=["response"])
 

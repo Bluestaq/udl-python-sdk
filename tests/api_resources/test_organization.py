@@ -172,7 +172,7 @@ class TestOrganization:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationListResponse, organization, path=["response"])
 
@@ -243,7 +243,7 @@ class TestOrganization:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, organization, path=["response"])
 
@@ -279,7 +279,7 @@ class TestOrganization:
         organization = client.organization.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationFull, organization, path=["response"])
 
@@ -323,7 +323,7 @@ class TestOrganization:
     def test_method_get_organization_categories_with_all_params(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.get_organization_categories(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationGetOrganizationCategoriesResponse, organization, path=["response"])
 
@@ -356,7 +356,7 @@ class TestOrganization:
     def test_method_get_organization_types_with_all_params(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.get_organization_types(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationGetOrganizationTypesResponse, organization, path=["response"])
 
@@ -417,7 +417,7 @@ class TestOrganization:
         organization = client.organization.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationTupleResponse, organization, path=["response"])
 
@@ -598,7 +598,7 @@ class TestAsyncOrganization:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         organization = await async_client.organization.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationListResponse, organization, path=["response"])
 
@@ -669,7 +669,7 @@ class TestAsyncOrganization:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         organization = await async_client.organization.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, organization, path=["response"])
 
@@ -705,7 +705,7 @@ class TestAsyncOrganization:
         organization = await async_client.organization.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationFull, organization, path=["response"])
 
@@ -751,7 +751,7 @@ class TestAsyncOrganization:
     ) -> None:
         organization = await async_client.organization.get_organization_categories(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationGetOrganizationCategoriesResponse, organization, path=["response"])
 
@@ -784,7 +784,7 @@ class TestAsyncOrganization:
     async def test_method_get_organization_types_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         organization = await async_client.organization.get_organization_types(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationGetOrganizationTypesResponse, organization, path=["response"])
 
@@ -845,7 +845,7 @@ class TestAsyncOrganization:
         organization = await async_client.organization.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrganizationTupleResponse, organization, path=["response"])
 

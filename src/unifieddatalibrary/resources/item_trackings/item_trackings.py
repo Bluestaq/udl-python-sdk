@@ -207,7 +207,7 @@ class ItemTrackingsResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -244,7 +244,7 @@ class ItemTrackingsResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_list_params.ItemTrackingListParams,
                 ),
@@ -293,7 +293,7 @@ class ItemTrackingsResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -332,7 +332,7 @@ class ItemTrackingsResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_count_params.ItemTrackingCountParams,
                 ),
@@ -345,7 +345,7 @@ class ItemTrackingsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -378,7 +378,7 @@ class ItemTrackingsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_get_params.ItemTrackingGetParams,
                 ),
@@ -415,7 +415,7 @@ class ItemTrackingsResource(SyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -462,7 +462,7 @@ class ItemTrackingsResource(SyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_tuple_params.ItemTrackingTupleParams,
                 ),
@@ -672,7 +672,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -709,7 +709,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_list_params.ItemTrackingListParams,
                 ),
@@ -758,7 +758,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -797,7 +797,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_count_params.ItemTrackingCountParams,
                 ),
@@ -810,7 +810,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -843,7 +843,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_get_params.ItemTrackingGetParams,
                 ),
@@ -880,7 +880,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -927,7 +927,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     item_tracking_tuple_params.ItemTrackingTupleParams,
                 ),

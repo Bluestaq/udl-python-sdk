@@ -272,7 +272,7 @@ class SurfaceobstructionResource(SyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -305,7 +305,7 @@ class SurfaceobstructionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_list_params.SurfaceobstructionListParams,
                 ),
@@ -353,7 +353,7 @@ class SurfaceobstructionResource(SyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -388,7 +388,7 @@ class SurfaceobstructionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_count_params.SurfaceobstructionCountParams,
                 ),
@@ -401,7 +401,7 @@ class SurfaceobstructionResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -434,7 +434,7 @@ class SurfaceobstructionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_get_params.SurfaceobstructionGetParams,
                 ),
@@ -470,7 +470,7 @@ class SurfaceobstructionResource(SyncAPIResource):
         *,
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -513,7 +513,7 @@ class SurfaceobstructionResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_tuple_params.SurfaceobstructionTupleParams,
                 ),
@@ -796,7 +796,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -829,7 +829,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_list_params.SurfaceobstructionListParams,
                 ),
@@ -877,7 +877,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -912,7 +912,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_count_params.SurfaceobstructionCountParams,
                 ),
@@ -925,7 +925,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -958,7 +958,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_get_params.SurfaceobstructionGetParams,
                 ),
@@ -994,7 +994,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         *,
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1037,7 +1037,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     surfaceobstruction_tuple_params.SurfaceobstructionTupleParams,
                 ),

@@ -334,7 +334,7 @@ class EphemerisSetsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -367,7 +367,7 @@ class EphemerisSetsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     ephemeris_set_retrieve_params.EphemerisSetRetrieveParams,
                 ),
@@ -379,7 +379,7 @@ class EphemerisSetsResource(SyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -422,7 +422,7 @@ class EphemerisSetsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -436,7 +436,7 @@ class EphemerisSetsResource(SyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -481,7 +481,7 @@ class EphemerisSetsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -496,7 +496,7 @@ class EphemerisSetsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -530,7 +530,7 @@ class EphemerisSetsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     ephemeris_set_file_retrieve_params.EphemerisSetFileRetrieveParams,
                 ),
@@ -566,7 +566,7 @@ class EphemerisSetsResource(SyncAPIResource):
         *,
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -619,7 +619,7 @@ class EphemerisSetsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -914,7 +914,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -947,7 +947,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     ephemeris_set_retrieve_params.EphemerisSetRetrieveParams,
                 ),
@@ -959,7 +959,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1002,7 +1002,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -1016,7 +1016,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1061,7 +1061,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -1076,7 +1076,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1110,7 +1110,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     ephemeris_set_file_retrieve_params.EphemerisSetFileRetrieveParams,
                 ),
@@ -1146,7 +1146,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         *,
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1199,7 +1199,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },

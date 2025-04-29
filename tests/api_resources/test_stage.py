@@ -218,7 +218,7 @@ class TestStage:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StageListResponse, stage, path=["response"])
 
@@ -289,7 +289,7 @@ class TestStage:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, stage, path=["response"])
 
@@ -325,7 +325,7 @@ class TestStage:
         stage = client.stage.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StageGetResponse, stage, path=["response"])
 
@@ -397,7 +397,7 @@ class TestStage:
         stage = client.stage.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StageTupleResponse, stage, path=["response"])
 
@@ -626,7 +626,7 @@ class TestAsyncStage:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StageListResponse, stage, path=["response"])
 
@@ -697,7 +697,7 @@ class TestAsyncStage:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, stage, path=["response"])
 
@@ -733,7 +733,7 @@ class TestAsyncStage:
         stage = await async_client.stage.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StageGetResponse, stage, path=["response"])
 
@@ -805,7 +805,7 @@ class TestAsyncStage:
         stage = await async_client.stage.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StageTupleResponse, stage, path=["response"])
 

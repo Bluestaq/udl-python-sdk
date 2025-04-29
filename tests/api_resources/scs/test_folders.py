@@ -75,7 +75,7 @@ class TestFolders:
         folder = client.scs.folders.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FileData, folder, path=["response"])
 
@@ -233,7 +233,7 @@ class TestAsyncFolders:
         folder = await async_client.scs.folders.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(FileData, folder, path=["response"])
 

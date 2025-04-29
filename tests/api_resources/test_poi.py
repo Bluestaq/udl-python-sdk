@@ -134,7 +134,7 @@ class TestPoi:
         poi = client.poi.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PoiListResponse, poi, path=["response"])
 
@@ -174,7 +174,7 @@ class TestPoi:
         poi = client.poi.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, poi, path=["response"])
 
@@ -272,7 +272,7 @@ class TestPoi:
         poi = client.poi.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PoiFull, poi, path=["response"])
 
@@ -346,7 +346,7 @@ class TestPoi:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PoiTupleResponse, poi, path=["response"])
 
@@ -550,7 +550,7 @@ class TestAsyncPoi:
         poi = await async_client.poi.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PoiListResponse, poi, path=["response"])
 
@@ -590,7 +590,7 @@ class TestAsyncPoi:
         poi = await async_client.poi.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, poi, path=["response"])
 
@@ -688,7 +688,7 @@ class TestAsyncPoi:
         poi = await async_client.poi.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PoiFull, poi, path=["response"])
 
@@ -762,7 +762,7 @@ class TestAsyncPoi:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PoiTupleResponse, poi, path=["response"])
 

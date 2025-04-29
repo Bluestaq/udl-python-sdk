@@ -267,7 +267,7 @@ class TestScientific:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ScientificListResponse, scientific, path=["response"])
 
@@ -338,7 +338,7 @@ class TestScientific:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, scientific, path=["response"])
 
@@ -374,7 +374,7 @@ class TestScientific:
         scientific = client.scientific.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ScientificGetResponse, scientific, path=["response"])
 
@@ -446,7 +446,7 @@ class TestScientific:
         scientific = client.scientific.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ScientificTupleResponse, scientific, path=["response"])
 
@@ -723,7 +723,7 @@ class TestAsyncScientific:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ScientificListResponse, scientific, path=["response"])
 
@@ -794,7 +794,7 @@ class TestAsyncScientific:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, scientific, path=["response"])
 
@@ -830,7 +830,7 @@ class TestAsyncScientific:
         scientific = await async_client.scientific.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ScientificGetResponse, scientific, path=["response"])
 
@@ -902,7 +902,7 @@ class TestAsyncScientific:
         scientific = await async_client.scientific.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ScientificTupleResponse, scientific, path=["response"])
 

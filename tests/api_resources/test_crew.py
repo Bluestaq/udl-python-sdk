@@ -206,7 +206,7 @@ class TestCrew:
         crew = client.crew.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CrewFull, crew, path=["response"])
 
@@ -437,7 +437,7 @@ class TestCrew:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CrewListResponse, crew, path=["response"])
 
@@ -470,7 +470,7 @@ class TestCrew:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, crew, path=["response"])
 
@@ -531,7 +531,7 @@ class TestCrew:
         crew = client.crew.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CrewTupleResponse, crew, path=["response"])
 
@@ -799,7 +799,7 @@ class TestAsyncCrew:
         crew = await async_client.crew.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CrewFull, crew, path=["response"])
 
@@ -1030,7 +1030,7 @@ class TestAsyncCrew:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CrewListResponse, crew, path=["response"])
 
@@ -1063,7 +1063,7 @@ class TestAsyncCrew:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, crew, path=["response"])
 
@@ -1124,7 +1124,7 @@ class TestAsyncCrew:
         crew = await async_client.crew.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CrewTupleResponse, crew, path=["response"])
 

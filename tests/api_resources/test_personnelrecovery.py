@@ -155,7 +155,7 @@ class TestPersonnelrecovery:
         personnelrecovery = client.personnelrecovery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
 
@@ -195,7 +195,7 @@ class TestPersonnelrecovery:
         personnelrecovery = client.personnelrecovery.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, personnelrecovery, path=["response"])
 
@@ -357,7 +357,7 @@ class TestPersonnelrecovery:
         personnelrecovery = client.personnelrecovery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelRecoveryFullL, personnelrecovery, path=["response"])
 
@@ -431,7 +431,7 @@ class TestPersonnelrecovery:
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelrecoveryTupleResponse, personnelrecovery, path=["response"])
 
@@ -598,7 +598,7 @@ class TestAsyncPersonnelrecovery:
         personnelrecovery = await async_client.personnelrecovery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
 
@@ -638,7 +638,7 @@ class TestAsyncPersonnelrecovery:
         personnelrecovery = await async_client.personnelrecovery.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, personnelrecovery, path=["response"])
 
@@ -800,7 +800,7 @@ class TestAsyncPersonnelrecovery:
         personnelrecovery = await async_client.personnelrecovery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelRecoveryFullL, personnelrecovery, path=["response"])
 
@@ -874,7 +874,7 @@ class TestAsyncPersonnelrecovery:
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelrecoveryTupleResponse, personnelrecovery, path=["response"])
 

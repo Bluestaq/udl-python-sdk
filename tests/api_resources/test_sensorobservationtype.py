@@ -29,7 +29,7 @@ class TestSensorobservationtype:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensorobservationtype = client.sensorobservationtype.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorobservationtypeListResponse, sensorobservationtype, path=["response"])
 
@@ -65,7 +65,7 @@ class TestSensorobservationtype:
         sensorobservationtype = client.sensorobservationtype.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorobservationtypeGetResponse, sensorobservationtype, path=["response"])
 
@@ -138,7 +138,7 @@ class TestAsyncSensorobservationtype:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorobservationtype = await async_client.sensorobservationtype.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorobservationtypeListResponse, sensorobservationtype, path=["response"])
 
@@ -174,7 +174,7 @@ class TestAsyncSensorobservationtype:
         sensorobservationtype = await async_client.sensorobservationtype.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorobservationtypeGetResponse, sensorobservationtype, path=["response"])
 

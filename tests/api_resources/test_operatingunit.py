@@ -254,7 +254,7 @@ class TestOperatingunit:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         operatingunit = client.operatingunit.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitListResponse, operatingunit, path=["response"])
 
@@ -325,7 +325,7 @@ class TestOperatingunit:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         operatingunit = client.operatingunit.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, operatingunit, path=["response"])
 
@@ -361,7 +361,7 @@ class TestOperatingunit:
         operatingunit = client.operatingunit.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitGetResponse, operatingunit, path=["response"])
 
@@ -433,7 +433,7 @@ class TestOperatingunit:
         operatingunit = client.operatingunit.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitTupleResponse, operatingunit, path=["response"])
 
@@ -697,7 +697,7 @@ class TestAsyncOperatingunit:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunit = await async_client.operatingunit.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitListResponse, operatingunit, path=["response"])
 
@@ -768,7 +768,7 @@ class TestAsyncOperatingunit:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunit = await async_client.operatingunit.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, operatingunit, path=["response"])
 
@@ -804,7 +804,7 @@ class TestAsyncOperatingunit:
         operatingunit = await async_client.operatingunit.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitGetResponse, operatingunit, path=["response"])
 
@@ -876,7 +876,7 @@ class TestAsyncOperatingunit:
         operatingunit = await async_client.operatingunit.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitTupleResponse, operatingunit, path=["response"])
 

@@ -29,7 +29,7 @@ class TestAttitudesets:
         attitudeset = client.attitudesets.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AttitudesetFull, attitudeset, path=["response"])
 
@@ -80,7 +80,7 @@ class TestAsyncAttitudesets:
         attitudeset = await async_client.attitudesets.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AttitudesetFull, attitudeset, path=["response"])
 

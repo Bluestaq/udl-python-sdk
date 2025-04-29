@@ -608,7 +608,7 @@ class ManeuversResource(SyncAPIResource):
         *,
         event_start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -646,7 +646,7 @@ class ManeuversResource(SyncAPIResource):
                     {
                         "event_start_time": event_start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_list_params.ManeuverListParams,
                 ),
@@ -659,7 +659,7 @@ class ManeuversResource(SyncAPIResource):
         *,
         event_start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -699,7 +699,7 @@ class ManeuversResource(SyncAPIResource):
                     {
                         "event_start_time": event_start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_count_params.ManeuverCountParams,
                 ),
@@ -749,7 +749,7 @@ class ManeuversResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -782,7 +782,7 @@ class ManeuversResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_get_params.ManeuverGetParams,
                 ),
@@ -819,7 +819,7 @@ class ManeuversResource(SyncAPIResource):
         columns: str,
         event_start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -867,7 +867,7 @@ class ManeuversResource(SyncAPIResource):
                         "columns": columns,
                         "event_start_time": event_start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_tuple_params.ManeuverTupleParams,
                 ),
@@ -1477,7 +1477,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         *,
         event_start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1515,7 +1515,7 @@ class AsyncManeuversResource(AsyncAPIResource):
                     {
                         "event_start_time": event_start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_list_params.ManeuverListParams,
                 ),
@@ -1528,7 +1528,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         *,
         event_start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1568,7 +1568,7 @@ class AsyncManeuversResource(AsyncAPIResource):
                     {
                         "event_start_time": event_start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_count_params.ManeuverCountParams,
                 ),
@@ -1618,7 +1618,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1651,7 +1651,7 @@ class AsyncManeuversResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_get_params.ManeuverGetParams,
                 ),
@@ -1688,7 +1688,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         columns: str,
         event_start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1736,7 +1736,7 @@ class AsyncManeuversResource(AsyncAPIResource):
                         "columns": columns,
                         "event_start_time": event_start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     maneuver_tuple_params.ManeuverTupleParams,
                 ),

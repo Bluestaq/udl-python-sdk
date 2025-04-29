@@ -31,7 +31,7 @@ class HistoryAodrParams(TypedDict, total=False):
     be queried as /udl/onorbit/25544.
     """
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     notification: str
     """optional, notification method for the created file link.

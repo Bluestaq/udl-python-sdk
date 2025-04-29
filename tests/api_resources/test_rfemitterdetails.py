@@ -201,7 +201,7 @@ class TestRfemitterdetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfemitterdetail = client.rfemitterdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfemitterdetailListResponse, rfemitterdetail, path=["response"])
 
@@ -272,7 +272,7 @@ class TestRfemitterdetails:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         rfemitterdetail = client.rfemitterdetails.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, rfemitterdetail, path=["response"])
 
@@ -308,7 +308,7 @@ class TestRfemitterdetails:
         rfemitterdetail = client.rfemitterdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfemitterdetailGetResponse, rfemitterdetail, path=["response"])
 
@@ -380,7 +380,7 @@ class TestRfemitterdetails:
         rfemitterdetail = client.rfemitterdetails.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfemitterdetailTupleResponse, rfemitterdetail, path=["response"])
 
@@ -592,7 +592,7 @@ class TestAsyncRfemitterdetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitterdetail = await async_client.rfemitterdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfemitterdetailListResponse, rfemitterdetail, path=["response"])
 
@@ -663,7 +663,7 @@ class TestAsyncRfemitterdetails:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfemitterdetail = await async_client.rfemitterdetails.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, rfemitterdetail, path=["response"])
 
@@ -699,7 +699,7 @@ class TestAsyncRfemitterdetails:
         rfemitterdetail = await async_client.rfemitterdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfemitterdetailGetResponse, rfemitterdetail, path=["response"])
 
@@ -771,7 +771,7 @@ class TestAsyncRfemitterdetails:
         rfemitterdetail = await async_client.rfemitterdetails.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfemitterdetailTupleResponse, rfemitterdetail, path=["response"])
 

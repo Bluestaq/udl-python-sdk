@@ -159,7 +159,7 @@ class TestTaiutc:
         taiutc = client.taiutc.list(
             adjustment_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TaiutcListResponse, taiutc, path=["response"])
 
@@ -237,7 +237,7 @@ class TestTaiutc:
         taiutc = client.taiutc.count(
             adjustment_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, taiutc, path=["response"])
 
@@ -277,7 +277,7 @@ class TestTaiutc:
         taiutc = client.taiutc.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TaiutcFull, taiutc, path=["response"])
 
@@ -351,7 +351,7 @@ class TestTaiutc:
             adjustment_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TaiutcTupleResponse, taiutc, path=["response"])
 
@@ -522,7 +522,7 @@ class TestAsyncTaiutc:
         taiutc = await async_client.taiutc.list(
             adjustment_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TaiutcListResponse, taiutc, path=["response"])
 
@@ -600,7 +600,7 @@ class TestAsyncTaiutc:
         taiutc = await async_client.taiutc.count(
             adjustment_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, taiutc, path=["response"])
 
@@ -640,7 +640,7 @@ class TestAsyncTaiutc:
         taiutc = await async_client.taiutc.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TaiutcFull, taiutc, path=["response"])
 
@@ -714,7 +714,7 @@ class TestAsyncTaiutc:
             adjustment_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TaiutcTupleResponse, taiutc, path=["response"])
 

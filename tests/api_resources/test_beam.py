@@ -86,7 +86,7 @@ class TestBeam:
         beam = client.beam.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamFull, beam, path=["response"])
 
@@ -198,7 +198,7 @@ class TestBeam:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamListResponse, beam, path=["response"])
 
@@ -269,7 +269,7 @@ class TestBeam:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, beam, path=["response"])
 
@@ -330,7 +330,7 @@ class TestBeam:
         beam = client.beam.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamTupleResponse, beam, path=["response"])
 
@@ -427,7 +427,7 @@ class TestAsyncBeam:
         beam = await async_client.beam.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamFull, beam, path=["response"])
 
@@ -539,7 +539,7 @@ class TestAsyncBeam:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamListResponse, beam, path=["response"])
 
@@ -610,7 +610,7 @@ class TestAsyncBeam:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, beam, path=["response"])
 
@@ -671,7 +671,7 @@ class TestAsyncBeam:
         beam = await async_client.beam.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BeamTupleResponse, beam, path=["response"])
 

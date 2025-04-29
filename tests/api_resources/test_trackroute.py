@@ -280,7 +280,7 @@ class TestTrackroute:
         trackroute = client.trackroute.list(
             last_update_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackrouteListResponse, trackroute, path=["response"])
 
@@ -358,7 +358,7 @@ class TestTrackroute:
         trackroute = client.trackroute.count(
             last_update_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, trackroute, path=["response"])
 
@@ -453,7 +453,7 @@ class TestTrackroute:
         trackroute = client.trackroute.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackRouteFull, trackroute, path=["response"])
 
@@ -527,7 +527,7 @@ class TestTrackroute:
             columns="columns",
             last_update_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackrouteTupleResponse, trackroute, path=["response"])
 
@@ -934,7 +934,7 @@ class TestAsyncTrackroute:
         trackroute = await async_client.trackroute.list(
             last_update_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackrouteListResponse, trackroute, path=["response"])
 
@@ -1012,7 +1012,7 @@ class TestAsyncTrackroute:
         trackroute = await async_client.trackroute.count(
             last_update_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, trackroute, path=["response"])
 
@@ -1107,7 +1107,7 @@ class TestAsyncTrackroute:
         trackroute = await async_client.trackroute.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackRouteFull, trackroute, path=["response"])
 
@@ -1181,7 +1181,7 @@ class TestAsyncTrackroute:
             columns="columns",
             last_update_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TrackrouteTupleResponse, trackroute, path=["response"])
 

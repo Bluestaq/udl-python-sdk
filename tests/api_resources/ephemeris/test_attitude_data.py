@@ -31,7 +31,7 @@ class TestAttitudeData:
         attitude_data = client.ephemeris.attitude_data.list(
             as_id="asId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
 
@@ -71,7 +71,7 @@ class TestAttitudeData:
         attitude_data = client.ephemeris.attitude_data.count(
             as_id="asId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, attitude_data, path=["response"])
 
@@ -115,7 +115,7 @@ class TestAsyncAttitudeData:
         attitude_data = await async_client.ephemeris.attitude_data.list(
             as_id="asId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
 
@@ -155,7 +155,7 @@ class TestAsyncAttitudeData:
         attitude_data = await async_client.ephemeris.attitude_data.count(
             as_id="asId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, attitude_data, path=["response"])
 

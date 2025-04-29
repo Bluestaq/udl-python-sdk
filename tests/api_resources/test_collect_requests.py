@@ -298,7 +298,7 @@ class TestCollectRequests:
         collect_request = client.collect_requests.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectRequestFull, collect_request, path=["response"])
 
@@ -345,7 +345,7 @@ class TestCollectRequests:
         collect_request = client.collect_requests.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectRequestListResponse, collect_request, path=["response"])
 
@@ -385,7 +385,7 @@ class TestCollectRequests:
         collect_request = client.collect_requests.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, collect_request, path=["response"])
 
@@ -507,7 +507,7 @@ class TestCollectRequests:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectRequestTupleResponse, collect_request, path=["response"])
 
@@ -872,7 +872,7 @@ class TestAsyncCollectRequests:
         collect_request = await async_client.collect_requests.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectRequestFull, collect_request, path=["response"])
 
@@ -919,7 +919,7 @@ class TestAsyncCollectRequests:
         collect_request = await async_client.collect_requests.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectRequestListResponse, collect_request, path=["response"])
 
@@ -959,7 +959,7 @@ class TestAsyncCollectRequests:
         collect_request = await async_client.collect_requests.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, collect_request, path=["response"])
 
@@ -1081,7 +1081,7 @@ class TestAsyncCollectRequests:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(CollectRequestTupleResponse, collect_request, path=["response"])
 

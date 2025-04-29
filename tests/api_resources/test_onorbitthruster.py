@@ -177,7 +177,7 @@ class TestOnorbitthruster:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
 
@@ -251,7 +251,7 @@ class TestOnorbitthruster:
         onorbitthruster = client.onorbitthruster.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterGetResponse, onorbitthruster, path=["response"])
 
@@ -447,7 +447,7 @@ class TestAsyncOnorbitthruster:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
 
@@ -521,7 +521,7 @@ class TestAsyncOnorbitthruster:
         onorbitthruster = await async_client.onorbitthruster.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterGetResponse, onorbitthruster, path=["response"])
 

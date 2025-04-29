@@ -169,7 +169,7 @@ class TestSortieppr:
         sortieppr = client.sortieppr.list(
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SortiepprListResponse, sortieppr, path=["response"])
 
@@ -247,7 +247,7 @@ class TestSortieppr:
         sortieppr = client.sortieppr.count(
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sortieppr, path=["response"])
 
@@ -339,7 +339,7 @@ class TestSortieppr:
         sortieppr = client.sortieppr.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SortiePprFull, sortieppr, path=["response"])
 
@@ -413,7 +413,7 @@ class TestSortieppr:
             columns="columns",
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
 
@@ -646,7 +646,7 @@ class TestAsyncSortieppr:
         sortieppr = await async_client.sortieppr.list(
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SortiepprListResponse, sortieppr, path=["response"])
 
@@ -724,7 +724,7 @@ class TestAsyncSortieppr:
         sortieppr = await async_client.sortieppr.count(
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sortieppr, path=["response"])
 
@@ -816,7 +816,7 @@ class TestAsyncSortieppr:
         sortieppr = await async_client.sortieppr.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SortiePprFull, sortieppr, path=["response"])
 
@@ -890,7 +890,7 @@ class TestAsyncSortieppr:
             columns="columns",
             id_sortie="idSortie",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SortiepprTupleResponse, sortieppr, path=["response"])
 

@@ -179,7 +179,7 @@ class TestRfobservation:
         rfobservation = client.rfobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfobservationListResponse, rfobservation, path=["response"])
 
@@ -219,7 +219,7 @@ class TestRfobservation:
         rfobservation = client.rfobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, rfobservation, path=["response"])
 
@@ -314,7 +314,7 @@ class TestRfobservation:
         rfobservation = client.rfobservation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfobservationdetailsFull, rfobservation, path=["response"])
 
@@ -388,7 +388,7 @@ class TestRfobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
 
@@ -634,7 +634,7 @@ class TestAsyncRfobservation:
         rfobservation = await async_client.rfobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfobservationListResponse, rfobservation, path=["response"])
 
@@ -674,7 +674,7 @@ class TestAsyncRfobservation:
         rfobservation = await async_client.rfobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, rfobservation, path=["response"])
 
@@ -769,7 +769,7 @@ class TestAsyncRfobservation:
         rfobservation = await async_client.rfobservation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfobservationdetailsFull, rfobservation, path=["response"])
 
@@ -843,7 +843,7 @@ class TestAsyncRfobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
 

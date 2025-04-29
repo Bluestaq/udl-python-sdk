@@ -33,7 +33,7 @@ class TestAircraftSorties:
         aircraft_sorty = client.aircraft_sorties.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftsortieFull, aircraft_sorty, path=["response"])
 
@@ -239,7 +239,7 @@ class TestAircraftSorties:
             columns="columns",
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftSortyTupleResponse, aircraft_sorty, path=["response"])
 
@@ -285,7 +285,7 @@ class TestAsyncAircraftSorties:
         aircraft_sorty = await async_client.aircraft_sorties.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftsortieFull, aircraft_sorty, path=["response"])
 
@@ -491,7 +491,7 @@ class TestAsyncAircraftSorties:
             columns="columns",
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftSortyTupleResponse, aircraft_sorty, path=["response"])
 

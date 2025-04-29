@@ -32,7 +32,7 @@ class TestHistory:
             es_id="esId",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -73,7 +73,7 @@ class TestHistory:
             es_id="esId",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -116,7 +116,7 @@ class TestHistory:
         history = client.ephemeris.history.count(
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -161,7 +161,7 @@ class TestAsyncHistory:
             es_id="esId",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -202,7 +202,7 @@ class TestAsyncHistory:
             es_id="esId",
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -245,7 +245,7 @@ class TestAsyncHistory:
         history = await async_client.ephemeris.history.count(
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

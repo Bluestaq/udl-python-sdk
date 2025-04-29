@@ -29,7 +29,7 @@ class TestHistory:
         history = client.aircraft_statuses.history.list(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -62,7 +62,7 @@ class TestHistory:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.aircraft_statuses.history.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -100,7 +100,7 @@ class TestAsyncHistory:
         history = await async_client.aircraft_statuses.history.list(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -133,7 +133,7 @@ class TestAsyncHistory:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.aircraft_statuses.history.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

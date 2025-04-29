@@ -311,7 +311,7 @@ class SortiepprResource(SyncAPIResource):
         *,
         id_sortie: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -348,7 +348,7 @@ class SortiepprResource(SyncAPIResource):
                     {
                         "id_sortie": id_sortie,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_list_params.SortiepprListParams,
                 ),
@@ -397,7 +397,7 @@ class SortiepprResource(SyncAPIResource):
         *,
         id_sortie: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -436,7 +436,7 @@ class SortiepprResource(SyncAPIResource):
                     {
                         "id_sortie": id_sortie,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_count_params.SortiepprCountParams,
                 ),
@@ -486,7 +486,7 @@ class SortiepprResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -519,7 +519,7 @@ class SortiepprResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_get_params.SortiepprGetParams,
                 ),
@@ -556,7 +556,7 @@ class SortiepprResource(SyncAPIResource):
         columns: str,
         id_sortie: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -603,7 +603,7 @@ class SortiepprResource(SyncAPIResource):
                         "columns": columns,
                         "id_sortie": id_sortie,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_tuple_params.SortiepprTupleParams,
                 ),
@@ -915,7 +915,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
         *,
         id_sortie: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -952,7 +952,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
                     {
                         "id_sortie": id_sortie,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_list_params.SortiepprListParams,
                 ),
@@ -1001,7 +1001,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
         *,
         id_sortie: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1040,7 +1040,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
                     {
                         "id_sortie": id_sortie,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_count_params.SortiepprCountParams,
                 ),
@@ -1090,7 +1090,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1123,7 +1123,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_get_params.SortiepprGetParams,
                 ),
@@ -1160,7 +1160,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
         columns: str,
         id_sortie: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1207,7 +1207,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
                         "columns": columns,
                         "id_sortie": id_sortie,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     sortieppr_tuple_params.SortiepprTupleParams,
                 ),

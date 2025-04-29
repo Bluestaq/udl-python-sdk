@@ -117,7 +117,7 @@ class TestDropzone:
         dropzone = client.dropzone.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DropzoneRetrieveResponse, dropzone, path=["response"])
 
@@ -299,7 +299,7 @@ class TestDropzone:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         dropzone = client.dropzone.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, dropzone, path=["response"])
 
@@ -390,7 +390,7 @@ class TestDropzone:
     def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
         dropzone = client.dropzone.query(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
 
@@ -451,7 +451,7 @@ class TestDropzone:
         dropzone = client.dropzone.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DropzoneTupleResponse, dropzone, path=["response"])
 
@@ -636,7 +636,7 @@ class TestAsyncDropzone:
         dropzone = await async_client.dropzone.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DropzoneRetrieveResponse, dropzone, path=["response"])
 
@@ -818,7 +818,7 @@ class TestAsyncDropzone:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         dropzone = await async_client.dropzone.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, dropzone, path=["response"])
 
@@ -909,7 +909,7 @@ class TestAsyncDropzone:
     async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         dropzone = await async_client.dropzone.query(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
 
@@ -970,7 +970,7 @@ class TestAsyncDropzone:
         dropzone = await async_client.dropzone.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DropzoneTupleResponse, dropzone, path=["response"])
 

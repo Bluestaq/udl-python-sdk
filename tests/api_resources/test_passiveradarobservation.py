@@ -141,7 +141,7 @@ class TestPassiveradarobservation:
         passiveradarobservation = client.passiveradarobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PassiveradarobservationListResponse, passiveradarobservation, path=["response"])
 
@@ -181,7 +181,7 @@ class TestPassiveradarobservation:
         passiveradarobservation = client.passiveradarobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, passiveradarobservation, path=["response"])
 
@@ -325,7 +325,7 @@ class TestPassiveradarobservation:
         passiveradarobservation = client.passiveradarobservation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PassiveradarobservationFull, passiveradarobservation, path=["response"])
 
@@ -399,7 +399,7 @@ class TestPassiveradarobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PassiveradarobservationTupleResponse, passiveradarobservation, path=["response"])
 
@@ -552,7 +552,7 @@ class TestAsyncPassiveradarobservation:
         passiveradarobservation = await async_client.passiveradarobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PassiveradarobservationListResponse, passiveradarobservation, path=["response"])
 
@@ -592,7 +592,7 @@ class TestAsyncPassiveradarobservation:
         passiveradarobservation = await async_client.passiveradarobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, passiveradarobservation, path=["response"])
 
@@ -736,7 +736,7 @@ class TestAsyncPassiveradarobservation:
         passiveradarobservation = await async_client.passiveradarobservation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PassiveradarobservationFull, passiveradarobservation, path=["response"])
 
@@ -810,7 +810,7 @@ class TestAsyncPassiveradarobservation:
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(PassiveradarobservationTupleResponse, passiveradarobservation, path=["response"])
 

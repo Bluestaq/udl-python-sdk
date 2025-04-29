@@ -157,7 +157,7 @@ class TestManifold:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldListResponse, manifold, path=["response"])
 
@@ -228,7 +228,7 @@ class TestManifold:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, manifold, path=["response"])
 
@@ -316,7 +316,7 @@ class TestManifold:
         manifold = client.manifold.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldGetResponse, manifold, path=["response"])
 
@@ -388,7 +388,7 @@ class TestManifold:
         manifold = client.manifold.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldTupleResponse, manifold, path=["response"])
 
@@ -556,7 +556,7 @@ class TestAsyncManifold:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldListResponse, manifold, path=["response"])
 
@@ -627,7 +627,7 @@ class TestAsyncManifold:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, manifold, path=["response"])
 
@@ -715,7 +715,7 @@ class TestAsyncManifold:
         manifold = await async_client.manifold.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldGetResponse, manifold, path=["response"])
 
@@ -787,7 +787,7 @@ class TestAsyncManifold:
         manifold = await async_client.manifold.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldTupleResponse, manifold, path=["response"])
 

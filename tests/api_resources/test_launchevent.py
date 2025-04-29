@@ -96,7 +96,7 @@ class TestLaunchevent:
         launchevent = client.launchevent.list(
             msg_create_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LauncheventListResponse, launchevent, path=["response"])
 
@@ -136,7 +136,7 @@ class TestLaunchevent:
         launchevent = client.launchevent.count(
             msg_create_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchevent, path=["response"])
 
@@ -228,7 +228,7 @@ class TestLaunchevent:
         launchevent = client.launchevent.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
@@ -302,7 +302,7 @@ class TestLaunchevent:
             columns="columns",
             msg_create_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LauncheventTupleResponse, launchevent, path=["response"])
 
@@ -462,7 +462,7 @@ class TestAsyncLaunchevent:
         launchevent = await async_client.launchevent.list(
             msg_create_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LauncheventListResponse, launchevent, path=["response"])
 
@@ -502,7 +502,7 @@ class TestAsyncLaunchevent:
         launchevent = await async_client.launchevent.count(
             msg_create_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchevent, path=["response"])
 
@@ -594,7 +594,7 @@ class TestAsyncLaunchevent:
         launchevent = await async_client.launchevent.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LauncheventGetResponse, launchevent, path=["response"])
 
@@ -668,7 +668,7 @@ class TestAsyncLaunchevent:
             columns="columns",
             msg_create_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LauncheventTupleResponse, launchevent, path=["response"])
 

@@ -229,7 +229,7 @@ class TestOnorbitdetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitdetail = client.onorbitdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitdetailListResponse, onorbitdetail, path=["response"])
 
@@ -303,7 +303,7 @@ class TestOnorbitdetails:
         onorbitdetail = client.onorbitdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitdetailGetResponse, onorbitdetail, path=["response"])
 
@@ -550,7 +550,7 @@ class TestAsyncOnorbitdetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitdetail = await async_client.onorbitdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitdetailListResponse, onorbitdetail, path=["response"])
 
@@ -624,7 +624,7 @@ class TestAsyncOnorbitdetails:
         onorbitdetail = await async_client.onorbitdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitdetailGetResponse, onorbitdetail, path=["response"])
 

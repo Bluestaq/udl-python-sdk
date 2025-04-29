@@ -104,7 +104,7 @@ class TestItemTrackings:
         item_tracking = client.item_trackings.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTrackingListResponse, item_tracking, path=["response"])
 
@@ -182,7 +182,7 @@ class TestItemTrackings:
         item_tracking = client.item_trackings.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, item_tracking, path=["response"])
 
@@ -222,7 +222,7 @@ class TestItemTrackings:
         item_tracking = client.item_trackings.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTrackingFull, item_tracking, path=["response"])
 
@@ -296,7 +296,7 @@ class TestItemTrackings:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTrackingTupleResponse, item_tracking, path=["response"])
 
@@ -470,7 +470,7 @@ class TestAsyncItemTrackings:
         item_tracking = await async_client.item_trackings.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTrackingListResponse, item_tracking, path=["response"])
 
@@ -548,7 +548,7 @@ class TestAsyncItemTrackings:
         item_tracking = await async_client.item_trackings.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, item_tracking, path=["response"])
 
@@ -588,7 +588,7 @@ class TestAsyncItemTrackings:
         item_tracking = await async_client.item_trackings.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTrackingFull, item_tracking, path=["response"])
 
@@ -662,7 +662,7 @@ class TestAsyncItemTrackings:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTrackingTupleResponse, item_tracking, path=["response"])
 

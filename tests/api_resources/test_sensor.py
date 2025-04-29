@@ -492,7 +492,7 @@ class TestSensor:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensor = client.sensor.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorListResponse, sensor, path=["response"])
 
@@ -563,7 +563,7 @@ class TestSensor:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensor = client.sensor.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sensor, path=["response"])
 
@@ -599,7 +599,7 @@ class TestSensor:
         sensor = client.sensor.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorGetResponse, sensor, path=["response"])
 
@@ -671,7 +671,7 @@ class TestSensor:
         sensor = client.sensor.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorTupleResponse, sensor, path=["response"])
 
@@ -1173,7 +1173,7 @@ class TestAsyncSensor:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensor = await async_client.sensor.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorListResponse, sensor, path=["response"])
 
@@ -1244,7 +1244,7 @@ class TestAsyncSensor:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensor = await async_client.sensor.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sensor, path=["response"])
 
@@ -1280,7 +1280,7 @@ class TestAsyncSensor:
         sensor = await async_client.sensor.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorGetResponse, sensor, path=["response"])
 
@@ -1352,7 +1352,7 @@ class TestAsyncSensor:
         sensor = await async_client.sensor.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensorTupleResponse, sensor, path=["response"])
 

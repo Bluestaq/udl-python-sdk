@@ -168,7 +168,7 @@ class TestAirTaskingOrders:
         air_tasking_order = client.air_tasking_orders.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTaskingOrderFull, air_tasking_order, path=["response"])
 
@@ -212,7 +212,7 @@ class TestAirTaskingOrders:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_tasking_order = client.air_tasking_orders.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_tasking_order, path=["response"])
 
@@ -273,7 +273,7 @@ class TestAirTaskingOrders:
         air_tasking_order = client.air_tasking_orders.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTaskingOrderTupleResponse, air_tasking_order, path=["response"])
 
@@ -452,7 +452,7 @@ class TestAsyncAirTaskingOrders:
         air_tasking_order = await async_client.air_tasking_orders.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTaskingOrderFull, air_tasking_order, path=["response"])
 
@@ -496,7 +496,7 @@ class TestAsyncAirTaskingOrders:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_tasking_order = await async_client.air_tasking_orders.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_tasking_order, path=["response"])
 
@@ -557,7 +557,7 @@ class TestAsyncAirTaskingOrders:
         air_tasking_order = await async_client.air_tasking_orders.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTaskingOrderTupleResponse, air_tasking_order, path=["response"])
 

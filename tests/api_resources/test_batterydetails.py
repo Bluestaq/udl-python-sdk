@@ -91,7 +91,7 @@ class TestBatterydetails:
         batterydetail = client.batterydetails.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatterydetailsFull, batterydetail, path=["response"])
 
@@ -209,7 +209,7 @@ class TestBatterydetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         batterydetail = client.batterydetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatterydetailListResponse, batterydetail, path=["response"])
 
@@ -346,7 +346,7 @@ class TestAsyncBatterydetails:
         batterydetail = await async_client.batterydetails.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatterydetailsFull, batterydetail, path=["response"])
 
@@ -464,7 +464,7 @@ class TestAsyncBatterydetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         batterydetail = await async_client.batterydetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatterydetailListResponse, batterydetail, path=["response"])
 

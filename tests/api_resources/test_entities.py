@@ -130,7 +130,7 @@ class TestEntities:
         entity = client.entities.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityFull, entity, path=["response"])
 
@@ -285,7 +285,7 @@ class TestEntities:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         entity = client.entities.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityListResponse, entity, path=["response"])
 
@@ -356,7 +356,7 @@ class TestEntities:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         entity = client.entities.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, entity, path=["response"])
 
@@ -389,7 +389,7 @@ class TestEntities:
     def test_method_get_all_types_with_all_params(self, client: Unifieddatalibrary) -> None:
         entity = client.entities.get_all_types(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityGetAllTypesResponse, entity, path=["response"])
 
@@ -450,7 +450,7 @@ class TestEntities:
         entity = client.entities.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityTupleResponse, entity, path=["response"])
 
@@ -589,7 +589,7 @@ class TestAsyncEntities:
         entity = await async_client.entities.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityFull, entity, path=["response"])
 
@@ -744,7 +744,7 @@ class TestAsyncEntities:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         entity = await async_client.entities.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityListResponse, entity, path=["response"])
 
@@ -815,7 +815,7 @@ class TestAsyncEntities:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         entity = await async_client.entities.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, entity, path=["response"])
 
@@ -848,7 +848,7 @@ class TestAsyncEntities:
     async def test_method_get_all_types_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         entity = await async_client.entities.get_all_types(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityGetAllTypesResponse, entity, path=["response"])
 
@@ -909,7 +909,7 @@ class TestAsyncEntities:
         entity = await async_client.entities.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EntityTupleResponse, entity, path=["response"])
 

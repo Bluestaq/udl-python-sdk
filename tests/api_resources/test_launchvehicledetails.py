@@ -240,7 +240,7 @@ class TestLaunchvehicledetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchvehicledetail = client.launchvehicledetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
 
@@ -314,7 +314,7 @@ class TestLaunchvehicledetails:
         launchvehicledetail = client.launchvehicledetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
 
@@ -573,7 +573,7 @@ class TestAsyncLaunchvehicledetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicledetail = await async_client.launchvehicledetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
 
@@ -647,7 +647,7 @@ class TestAsyncLaunchvehicledetails:
         launchvehicledetail = await async_client.launchvehicledetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchvehicledetailGetResponse, launchvehicledetail, path=["response"])
 

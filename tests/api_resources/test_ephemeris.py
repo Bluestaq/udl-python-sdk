@@ -33,7 +33,7 @@ class TestEphemeris:
         ephemeris = client.ephemeris.list(
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
 
@@ -73,7 +73,7 @@ class TestEphemeris:
         ephemeris = client.ephemeris.count(
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ephemeris, path=["response"])
 
@@ -212,7 +212,7 @@ class TestEphemeris:
             columns="columns",
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 
@@ -379,7 +379,7 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.list(
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
 
@@ -419,7 +419,7 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.count(
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ephemeris, path=["response"])
 
@@ -558,7 +558,7 @@ class TestAsyncEphemeris:
             columns="columns",
             es_id="esId",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 

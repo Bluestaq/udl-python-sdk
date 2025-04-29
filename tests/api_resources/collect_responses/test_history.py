@@ -33,7 +33,7 @@ class TestHistory:
             created_at=parse_date("2019-12-27"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -73,7 +73,7 @@ class TestHistory:
         history = client.collect_responses.history.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -118,7 +118,7 @@ class TestAsyncHistory:
             created_at=parse_date("2019-12-27"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -158,7 +158,7 @@ class TestAsyncHistory:
         history = await async_client.collect_responses.history.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

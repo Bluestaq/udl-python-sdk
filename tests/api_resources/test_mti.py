@@ -33,7 +33,7 @@ class TestMti:
         mti = client.mti.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MtiListResponse, mti, path=["response"])
 
@@ -73,7 +73,7 @@ class TestMti:
         mti = client.mti.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, mti, path=["response"])
 
@@ -189,7 +189,7 @@ class TestMti:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MtiTupleResponse, mti, path=["response"])
 
@@ -284,7 +284,7 @@ class TestAsyncMti:
         mti = await async_client.mti.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MtiListResponse, mti, path=["response"])
 
@@ -324,7 +324,7 @@ class TestAsyncMti:
         mti = await async_client.mti.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, mti, path=["response"])
 
@@ -440,7 +440,7 @@ class TestAsyncMti:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MtiTupleResponse, mti, path=["response"])
 

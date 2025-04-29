@@ -289,7 +289,7 @@ class TestVessel:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         vessel = client.vessel.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VesselListResponse, vessel, path=["response"])
 
@@ -322,7 +322,7 @@ class TestVessel:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         vessel = client.vessel.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, vessel, path=["response"])
 
@@ -407,7 +407,7 @@ class TestVessel:
         vessel = client.vessel.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VesselGetResponse, vessel, path=["response"])
 
@@ -479,7 +479,7 @@ class TestVessel:
         vessel = client.vessel.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VesselTupleResponse, vessel, path=["response"])
 
@@ -778,7 +778,7 @@ class TestAsyncVessel:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         vessel = await async_client.vessel.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VesselListResponse, vessel, path=["response"])
 
@@ -811,7 +811,7 @@ class TestAsyncVessel:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         vessel = await async_client.vessel.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, vessel, path=["response"])
 
@@ -896,7 +896,7 @@ class TestAsyncVessel:
         vessel = await async_client.vessel.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VesselGetResponse, vessel, path=["response"])
 
@@ -968,7 +968,7 @@ class TestAsyncVessel:
         vessel = await async_client.vessel.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(VesselTupleResponse, vessel, path=["response"])
 

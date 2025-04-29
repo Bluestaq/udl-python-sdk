@@ -164,7 +164,7 @@ class TestAirTransportMissions:
         air_transport_mission = client.air_transport_missions.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTransportMissionFull, air_transport_mission, path=["response"])
 
@@ -355,7 +355,7 @@ class TestAirTransportMissions:
         air_transport_mission = client.air_transport_missions.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
 
@@ -395,7 +395,7 @@ class TestAirTransportMissions:
         air_transport_mission = client.air_transport_missions.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_transport_mission, path=["response"])
 
@@ -462,7 +462,7 @@ class TestAirTransportMissions:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTransportMissionTupleResponse, air_transport_mission, path=["response"])
 
@@ -638,7 +638,7 @@ class TestAsyncAirTransportMissions:
         air_transport_mission = await async_client.air_transport_missions.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTransportMissionFull, air_transport_mission, path=["response"])
 
@@ -829,7 +829,7 @@ class TestAsyncAirTransportMissions:
         air_transport_mission = await async_client.air_transport_missions.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
 
@@ -869,7 +869,7 @@ class TestAsyncAirTransportMissions:
         air_transport_mission = await async_client.air_transport_missions.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_transport_mission, path=["response"])
 
@@ -936,7 +936,7 @@ class TestAsyncAirTransportMissions:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirTransportMissionTupleResponse, air_transport_mission, path=["response"])
 

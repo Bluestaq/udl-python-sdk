@@ -33,7 +33,7 @@ class TestSigact:
         sigact = client.sigact.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SigactListResponse, sigact, path=["response"])
 
@@ -73,7 +73,7 @@ class TestSigact:
         sigact = client.sigact.count(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sigact, path=["response"])
 
@@ -192,7 +192,7 @@ class TestSigact:
             columns="columns",
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SigactTupleResponse, sigact, path=["response"])
 
@@ -269,7 +269,7 @@ class TestAsyncSigact:
         sigact = await async_client.sigact.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SigactListResponse, sigact, path=["response"])
 
@@ -309,7 +309,7 @@ class TestAsyncSigact:
         sigact = await async_client.sigact.count(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sigact, path=["response"])
 
@@ -428,7 +428,7 @@ class TestAsyncSigact:
             columns="columns",
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SigactTupleResponse, sigact, path=["response"])
 

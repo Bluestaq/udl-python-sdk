@@ -42,7 +42,7 @@ class TestGnssrawif:
         gnssrawif = client.gnssrawif.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssrawifListResponse, gnssrawif, path=["response"])
 
@@ -82,7 +82,7 @@ class TestGnssrawif:
         gnssrawif = client.gnssrawif.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, gnssrawif, path=["response"])
 
@@ -129,7 +129,7 @@ class TestGnssrawif:
         gnssrawif = client.gnssrawif.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert gnssrawif.is_closed
         assert gnssrawif.json() == {"foo": "bar"}
@@ -186,7 +186,7 @@ class TestGnssrawif:
         gnssrawif = client.gnssrawif.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssRawIfFull, gnssrawif, path=["response"])
 
@@ -260,7 +260,7 @@ class TestGnssrawif:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssrawifTupleResponse, gnssrawif, path=["response"])
 
@@ -337,7 +337,7 @@ class TestAsyncGnssrawif:
         gnssrawif = await async_client.gnssrawif.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssrawifListResponse, gnssrawif, path=["response"])
 
@@ -377,7 +377,7 @@ class TestAsyncGnssrawif:
         gnssrawif = await async_client.gnssrawif.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, gnssrawif, path=["response"])
 
@@ -426,7 +426,7 @@ class TestAsyncGnssrawif:
         gnssrawif = await async_client.gnssrawif.file_get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert gnssrawif.is_closed
         assert await gnssrawif.json() == {"foo": "bar"}
@@ -485,7 +485,7 @@ class TestAsyncGnssrawif:
         gnssrawif = await async_client.gnssrawif.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssRawIfFull, gnssrawif, path=["response"])
 
@@ -559,7 +559,7 @@ class TestAsyncGnssrawif:
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GnssrawifTupleResponse, gnssrawif, path=["response"])
 

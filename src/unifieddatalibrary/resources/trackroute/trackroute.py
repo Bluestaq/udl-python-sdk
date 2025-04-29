@@ -467,7 +467,7 @@ class TrackrouteResource(SyncAPIResource):
         *,
         last_update_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -504,7 +504,7 @@ class TrackrouteResource(SyncAPIResource):
                     {
                         "last_update_date": last_update_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_list_params.TrackrouteListParams,
                 ),
@@ -553,7 +553,7 @@ class TrackrouteResource(SyncAPIResource):
         *,
         last_update_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -592,7 +592,7 @@ class TrackrouteResource(SyncAPIResource):
                     {
                         "last_update_date": last_update_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_count_params.TrackrouteCountParams,
                 ),
@@ -642,7 +642,7 @@ class TrackrouteResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -675,7 +675,7 @@ class TrackrouteResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_get_params.TrackrouteGetParams,
                 ),
@@ -712,7 +712,7 @@ class TrackrouteResource(SyncAPIResource):
         columns: str,
         last_update_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -759,7 +759,7 @@ class TrackrouteResource(SyncAPIResource):
                         "columns": columns,
                         "last_update_date": last_update_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_tuple_params.TrackrouteTupleParams,
                 ),
@@ -1387,7 +1387,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         *,
         last_update_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1424,7 +1424,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                     {
                         "last_update_date": last_update_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_list_params.TrackrouteListParams,
                 ),
@@ -1473,7 +1473,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         *,
         last_update_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1512,7 +1512,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                     {
                         "last_update_date": last_update_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_count_params.TrackrouteCountParams,
                 ),
@@ -1562,7 +1562,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1595,7 +1595,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_get_params.TrackrouteGetParams,
                 ),
@@ -1632,7 +1632,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         columns: str,
         last_update_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1679,7 +1679,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                         "columns": columns,
                         "last_update_date": last_update_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     trackroute_tuple_params.TrackrouteTupleParams,
                 ),

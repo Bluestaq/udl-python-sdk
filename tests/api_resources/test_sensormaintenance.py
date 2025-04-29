@@ -208,7 +208,7 @@ class TestSensormaintenance:
         sensormaintenance = client.sensormaintenance.list(
             end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
@@ -281,7 +281,7 @@ class TestSensormaintenance:
         sensormaintenance = client.sensormaintenance.count(
             end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, sensormaintenance, path=["response"])
@@ -412,7 +412,7 @@ class TestSensormaintenance:
     def test_method_current_with_all_params(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.current(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensormaintenanceCurrentResponse, sensormaintenance, path=["response"])
 
@@ -448,7 +448,7 @@ class TestSensormaintenance:
         sensormaintenance = client.sensormaintenance.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensormaintenanceFull, sensormaintenance, path=["response"])
 
@@ -521,7 +521,7 @@ class TestSensormaintenance:
             columns="columns",
             end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SensormaintenanceTupleResponse, sensormaintenance, path=["response"])
@@ -739,7 +739,7 @@ class TestAsyncSensormaintenance:
         sensormaintenance = await async_client.sensormaintenance.list(
             end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
@@ -812,7 +812,7 @@ class TestAsyncSensormaintenance:
         sensormaintenance = await async_client.sensormaintenance.count(
             end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, sensormaintenance, path=["response"])
@@ -943,7 +943,7 @@ class TestAsyncSensormaintenance:
     async def test_method_current_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.current(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensormaintenanceCurrentResponse, sensormaintenance, path=["response"])
 
@@ -979,7 +979,7 @@ class TestAsyncSensormaintenance:
         sensormaintenance = await async_client.sensormaintenance.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SensormaintenanceFull, sensormaintenance, path=["response"])
 
@@ -1052,7 +1052,7 @@ class TestAsyncSensormaintenance:
             columns="columns",
             end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SensormaintenanceTupleResponse, sensormaintenance, path=["response"])

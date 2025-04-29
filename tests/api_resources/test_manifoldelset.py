@@ -199,7 +199,7 @@ class TestManifoldelset:
         manifoldelset = client.manifoldelset.list(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldelsetListResponse, manifoldelset, path=["response"])
 
@@ -277,7 +277,7 @@ class TestManifoldelset:
         manifoldelset = client.manifoldelset.count(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, manifoldelset, path=["response"])
 
@@ -375,7 +375,7 @@ class TestManifoldelset:
         manifoldelset = client.manifoldelset.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldelsetGetResponse, manifoldelset, path=["response"])
 
@@ -449,7 +449,7 @@ class TestManifoldelset:
             columns="columns",
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldelsetTupleResponse, manifoldelset, path=["response"])
 
@@ -660,7 +660,7 @@ class TestAsyncManifoldelset:
         manifoldelset = await async_client.manifoldelset.list(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldelsetListResponse, manifoldelset, path=["response"])
 
@@ -738,7 +738,7 @@ class TestAsyncManifoldelset:
         manifoldelset = await async_client.manifoldelset.count(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, manifoldelset, path=["response"])
 
@@ -836,7 +836,7 @@ class TestAsyncManifoldelset:
         manifoldelset = await async_client.manifoldelset.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldelsetGetResponse, manifoldelset, path=["response"])
 
@@ -910,7 +910,7 @@ class TestAsyncManifoldelset:
             columns="columns",
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ManifoldelsetTupleResponse, manifoldelset, path=["response"])
 

@@ -28,7 +28,7 @@ class TestDataowner:
     def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
         dataowner = client.supporting_data.dataowner.retrieve(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DataownerRetrieveResponse, dataowner, path=["response"])
 
@@ -61,7 +61,7 @@ class TestDataowner:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         dataowner = client.supporting_data.dataowner.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, dataowner, path=["response"])
 
@@ -98,7 +98,7 @@ class TestAsyncDataowner:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         dataowner = await async_client.supporting_data.dataowner.retrieve(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(DataownerRetrieveResponse, dataowner, path=["response"])
 
@@ -131,7 +131,7 @@ class TestAsyncDataowner:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         dataowner = await async_client.supporting_data.dataowner.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, dataowner, path=["response"])
 

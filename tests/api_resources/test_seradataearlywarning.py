@@ -175,7 +175,7 @@ class TestSeradataearlywarning:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataearlywarningListResponse, seradataearlywarning, path=["response"])
 
@@ -246,7 +246,7 @@ class TestSeradataearlywarning:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataearlywarning = client.seradataearlywarning.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataearlywarning, path=["response"])
 
@@ -282,7 +282,7 @@ class TestSeradataearlywarning:
         seradataearlywarning = client.seradataearlywarning.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataearlywarningGetResponse, seradataearlywarning, path=["response"])
 
@@ -354,7 +354,7 @@ class TestSeradataearlywarning:
         seradataearlywarning = client.seradataearlywarning.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataearlywarningTupleResponse, seradataearlywarning, path=["response"])
 
@@ -540,7 +540,7 @@ class TestAsyncSeradataearlywarning:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataearlywarningListResponse, seradataearlywarning, path=["response"])
 
@@ -611,7 +611,7 @@ class TestAsyncSeradataearlywarning:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataearlywarning = await async_client.seradataearlywarning.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataearlywarning, path=["response"])
 
@@ -647,7 +647,7 @@ class TestAsyncSeradataearlywarning:
         seradataearlywarning = await async_client.seradataearlywarning.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataearlywarningGetResponse, seradataearlywarning, path=["response"])
 
@@ -719,7 +719,7 @@ class TestAsyncSeradataearlywarning:
         seradataearlywarning = await async_client.seradataearlywarning.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataearlywarningTupleResponse, seradataearlywarning, path=["response"])
 

@@ -322,7 +322,7 @@ class TestSeradataspacecraftdetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataspacecraftdetail = client.seradataspacecraftdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataspacecraftdetailListResponse, seradataspacecraftdetail, path=["response"])
 
@@ -393,7 +393,7 @@ class TestSeradataspacecraftdetails:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         seradataspacecraftdetail = client.seradataspacecraftdetails.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataspacecraftdetail, path=["response"])
 
@@ -429,7 +429,7 @@ class TestSeradataspacecraftdetails:
         seradataspacecraftdetail = client.seradataspacecraftdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataspacecraftdetailGetResponse, seradataspacecraftdetail, path=["response"])
 
@@ -501,7 +501,7 @@ class TestSeradataspacecraftdetails:
         seradataspacecraftdetail = client.seradataspacecraftdetails.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataspacecraftdetailTupleResponse, seradataspacecraftdetail, path=["response"])
 
@@ -833,7 +833,7 @@ class TestAsyncSeradataspacecraftdetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataspacecraftdetailListResponse, seradataspacecraftdetail, path=["response"])
 
@@ -904,7 +904,7 @@ class TestAsyncSeradataspacecraftdetails:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, seradataspacecraftdetail, path=["response"])
 
@@ -940,7 +940,7 @@ class TestAsyncSeradataspacecraftdetails:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataspacecraftdetailGetResponse, seradataspacecraftdetail, path=["response"])
 
@@ -1012,7 +1012,7 @@ class TestAsyncSeradataspacecraftdetails:
         seradataspacecraftdetail = await async_client.seradataspacecraftdetails.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SeradataspacecraftdetailTupleResponse, seradataspacecraftdetail, path=["response"])
 

@@ -33,7 +33,7 @@ class TestMonoradar:
         monoradar = client.monoradar.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MonoradarListResponse, monoradar, path=["response"])
 
@@ -73,7 +73,7 @@ class TestMonoradar:
         monoradar = client.monoradar.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, monoradar, path=["response"])
 
@@ -201,7 +201,7 @@ class TestMonoradar:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MonoradarTupleResponse, monoradar, path=["response"])
 
@@ -247,7 +247,7 @@ class TestAsyncMonoradar:
         monoradar = await async_client.monoradar.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MonoradarListResponse, monoradar, path=["response"])
 
@@ -287,7 +287,7 @@ class TestAsyncMonoradar:
         monoradar = await async_client.monoradar.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, monoradar, path=["response"])
 
@@ -415,7 +415,7 @@ class TestAsyncMonoradar:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MonoradarTupleResponse, monoradar, path=["response"])
 

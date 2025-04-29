@@ -23,7 +23,7 @@ class HistoryCountParams(TypedDict, total=False):
     be queried as /udl/onorbit/25544.
     """
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     start_time: Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]
     """

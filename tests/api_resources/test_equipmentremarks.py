@@ -93,7 +93,7 @@ class TestEquipmentremarks:
         equipmentremark = client.equipmentremarks.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentRemarkFull, equipmentremark, path=["response"])
 
@@ -137,7 +137,7 @@ class TestEquipmentremarks:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipmentremark = client.equipmentremarks.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentremarkListResponse, equipmentremark, path=["response"])
 
@@ -170,7 +170,7 @@ class TestEquipmentremarks:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         equipmentremark = client.equipmentremarks.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, equipmentremark, path=["response"])
 
@@ -286,7 +286,7 @@ class TestEquipmentremarks:
         equipmentremark = client.equipmentremarks.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentremarkTupleResponse, equipmentremark, path=["response"])
 
@@ -390,7 +390,7 @@ class TestAsyncEquipmentremarks:
         equipmentremark = await async_client.equipmentremarks.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentRemarkFull, equipmentremark, path=["response"])
 
@@ -434,7 +434,7 @@ class TestAsyncEquipmentremarks:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipmentremark = await async_client.equipmentremarks.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentremarkListResponse, equipmentremark, path=["response"])
 
@@ -467,7 +467,7 @@ class TestAsyncEquipmentremarks:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipmentremark = await async_client.equipmentremarks.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, equipmentremark, path=["response"])
 
@@ -583,7 +583,7 @@ class TestAsyncEquipmentremarks:
         equipmentremark = await async_client.equipmentremarks.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EquipmentremarkTupleResponse, equipmentremark, path=["response"])
 

@@ -81,7 +81,7 @@ class TestBatteries:
         battery = client.batteries.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatteryFull, battery, path=["response"])
 
@@ -187,7 +187,7 @@ class TestBatteries:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatteryListResponse, battery, path=["response"])
 
@@ -258,7 +258,7 @@ class TestBatteries:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, battery, path=["response"])
 
@@ -319,7 +319,7 @@ class TestBatteries:
         battery = client.batteries.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatteryTupleResponse, battery, path=["response"])
 
@@ -411,7 +411,7 @@ class TestAsyncBatteries:
         battery = await async_client.batteries.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatteryFull, battery, path=["response"])
 
@@ -517,7 +517,7 @@ class TestAsyncBatteries:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatteryListResponse, battery, path=["response"])
 
@@ -588,7 +588,7 @@ class TestAsyncBatteries:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, battery, path=["response"])
 
@@ -649,7 +649,7 @@ class TestAsyncBatteries:
         battery = await async_client.batteries.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(BatteryTupleResponse, battery, path=["response"])
 

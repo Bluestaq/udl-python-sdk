@@ -182,7 +182,7 @@ class H3geoResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -219,7 +219,7 @@ class H3geoResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_list_params.H3geoListParams,
                 ),
@@ -232,7 +232,7 @@ class H3geoResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -271,7 +271,7 @@ class H3geoResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_count_params.H3geoCountParams,
                 ),
@@ -284,7 +284,7 @@ class H3geoResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -317,7 +317,7 @@ class H3geoResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_get_params.H3geoGetParams,
                 ),
@@ -354,7 +354,7 @@ class H3geoResource(SyncAPIResource):
         columns: str,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -401,7 +401,7 @@ class H3geoResource(SyncAPIResource):
                         "columns": columns,
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_tuple_params.H3geoTupleParams,
                 ),
@@ -557,7 +557,7 @@ class AsyncH3geoResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -594,7 +594,7 @@ class AsyncH3geoResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_list_params.H3geoListParams,
                 ),
@@ -607,7 +607,7 @@ class AsyncH3geoResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -646,7 +646,7 @@ class AsyncH3geoResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_count_params.H3geoCountParams,
                 ),
@@ -659,7 +659,7 @@ class AsyncH3geoResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -692,7 +692,7 @@ class AsyncH3geoResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_get_params.H3geoGetParams,
                 ),
@@ -729,7 +729,7 @@ class AsyncH3geoResource(AsyncAPIResource):
         columns: str,
         start_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -776,7 +776,7 @@ class AsyncH3geoResource(AsyncAPIResource):
                         "columns": columns,
                         "start_time": start_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     h3geo_tuple_params.H3geoTupleParams,
                 ),

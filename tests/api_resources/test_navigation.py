@@ -250,7 +250,7 @@ class TestNavigation:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationListResponse, navigation, path=["response"])
 
@@ -321,7 +321,7 @@ class TestNavigation:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, navigation, path=["response"])
 
@@ -357,7 +357,7 @@ class TestNavigation:
         navigation = client.navigation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationGetResponse, navigation, path=["response"])
 
@@ -429,7 +429,7 @@ class TestNavigation:
         navigation = client.navigation.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationTupleResponse, navigation, path=["response"])
 
@@ -689,7 +689,7 @@ class TestAsyncNavigation:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationListResponse, navigation, path=["response"])
 
@@ -760,7 +760,7 @@ class TestAsyncNavigation:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, navigation, path=["response"])
 
@@ -796,7 +796,7 @@ class TestAsyncNavigation:
         navigation = await async_client.navigation.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationGetResponse, navigation, path=["response"])
 
@@ -868,7 +868,7 @@ class TestAsyncNavigation:
         navigation = await async_client.navigation.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(NavigationTupleResponse, navigation, path=["response"])
 

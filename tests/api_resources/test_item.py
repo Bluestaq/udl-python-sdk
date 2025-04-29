@@ -239,7 +239,7 @@ class TestItem:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         item = client.item.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemListResponse, item, path=["response"])
 
@@ -310,7 +310,7 @@ class TestItem:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         item = client.item.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, item, path=["response"])
 
@@ -346,7 +346,7 @@ class TestItem:
         item = client.item.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemGetResponse, item, path=["response"])
 
@@ -418,7 +418,7 @@ class TestItem:
         item = client.item.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTupleResponse, item, path=["response"])
 
@@ -722,7 +722,7 @@ class TestAsyncItem:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         item = await async_client.item.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemListResponse, item, path=["response"])
 
@@ -793,7 +793,7 @@ class TestAsyncItem:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         item = await async_client.item.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, item, path=["response"])
 
@@ -829,7 +829,7 @@ class TestAsyncItem:
         item = await async_client.item.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemGetResponse, item, path=["response"])
 
@@ -901,7 +901,7 @@ class TestAsyncItem:
         item = await async_client.item.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ItemTupleResponse, item, path=["response"])
 

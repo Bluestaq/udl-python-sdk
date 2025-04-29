@@ -140,7 +140,7 @@ class TestSolararray:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         solararray = client.solararray.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolararrayListResponse, solararray, path=["response"])
 
@@ -211,7 +211,7 @@ class TestSolararray:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         solararray = client.solararray.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, solararray, path=["response"])
 
@@ -247,7 +247,7 @@ class TestSolararray:
         solararray = client.solararray.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolararrayGetResponse, solararray, path=["response"])
 
@@ -319,7 +319,7 @@ class TestSolararray:
         solararray = client.solararray.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolararrayTupleResponse, solararray, path=["response"])
 
@@ -470,7 +470,7 @@ class TestAsyncSolararray:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararray = await async_client.solararray.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolararrayListResponse, solararray, path=["response"])
 
@@ -541,7 +541,7 @@ class TestAsyncSolararray:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararray = await async_client.solararray.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, solararray, path=["response"])
 
@@ -577,7 +577,7 @@ class TestAsyncSolararray:
         solararray = await async_client.solararray.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolararrayGetResponse, solararray, path=["response"])
 
@@ -649,7 +649,7 @@ class TestAsyncSolararray:
         solararray = await async_client.solararray.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SolararrayTupleResponse, solararray, path=["response"])
 

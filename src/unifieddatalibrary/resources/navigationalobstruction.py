@@ -866,7 +866,7 @@ class NavigationalobstructionResource(SyncAPIResource):
         *,
         cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -907,7 +907,7 @@ class NavigationalobstructionResource(SyncAPIResource):
                     {
                         "cycle_date": cycle_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "obstacle_id": obstacle_id,
                     },
                     navigationalobstruction_list_params.NavigationalobstructionListParams,
@@ -921,7 +921,7 @@ class NavigationalobstructionResource(SyncAPIResource):
         *,
         cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -964,7 +964,7 @@ class NavigationalobstructionResource(SyncAPIResource):
                     {
                         "cycle_date": cycle_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "obstacle_id": obstacle_id,
                     },
                     navigationalobstruction_count_params.NavigationalobstructionCountParams,
@@ -1015,7 +1015,7 @@ class NavigationalobstructionResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1048,7 +1048,7 @@ class NavigationalobstructionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     navigationalobstruction_get_params.NavigationalobstructionGetParams,
                 ),
@@ -1085,7 +1085,7 @@ class NavigationalobstructionResource(SyncAPIResource):
         columns: str,
         cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1136,7 +1136,7 @@ class NavigationalobstructionResource(SyncAPIResource):
                         "columns": columns,
                         "cycle_date": cycle_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "obstacle_id": obstacle_id,
                     },
                     navigationalobstruction_tuple_params.NavigationalobstructionTupleParams,
@@ -1977,7 +1977,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
         *,
         cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2018,7 +2018,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
                     {
                         "cycle_date": cycle_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "obstacle_id": obstacle_id,
                     },
                     navigationalobstruction_list_params.NavigationalobstructionListParams,
@@ -2032,7 +2032,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
         *,
         cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2075,7 +2075,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
                     {
                         "cycle_date": cycle_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "obstacle_id": obstacle_id,
                     },
                     navigationalobstruction_count_params.NavigationalobstructionCountParams,
@@ -2126,7 +2126,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2159,7 +2159,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     navigationalobstruction_get_params.NavigationalobstructionGetParams,
                 ),
@@ -2196,7 +2196,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
         columns: str,
         cycle_date: Union[str, date] | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         obstacle_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2247,7 +2247,7 @@ class AsyncNavigationalobstructionResource(AsyncAPIResource):
                         "columns": columns,
                         "cycle_date": cycle_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "obstacle_id": obstacle_id,
                     },
                     navigationalobstruction_tuple_params.NavigationalobstructionTupleParams,

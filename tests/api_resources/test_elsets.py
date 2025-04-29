@@ -114,7 +114,7 @@ class TestElsets:
         elset = client.elsets.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(Elset, elset, path=["response"])
 
@@ -161,7 +161,7 @@ class TestElsets:
         elset = client.elsets.list(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ElsetListResponse, elset, path=["response"])
 
@@ -201,7 +201,7 @@ class TestElsets:
         elset = client.elsets.count(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, elset, path=["response"])
 
@@ -444,7 +444,7 @@ class TestElsets:
             columns="columns",
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ElsetTupleResponse, elset, path=["response"])
 
@@ -622,7 +622,7 @@ class TestAsyncElsets:
         elset = await async_client.elsets.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(Elset, elset, path=["response"])
 
@@ -669,7 +669,7 @@ class TestAsyncElsets:
         elset = await async_client.elsets.list(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ElsetListResponse, elset, path=["response"])
 
@@ -709,7 +709,7 @@ class TestAsyncElsets:
         elset = await async_client.elsets.count(
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, elset, path=["response"])
 
@@ -952,7 +952,7 @@ class TestAsyncElsets:
             columns="columns",
             epoch=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ElsetTupleResponse, elset, path=["response"])
 

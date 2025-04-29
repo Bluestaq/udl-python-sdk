@@ -98,7 +98,7 @@ class TestEngineDetails:
         engine_detail = client.engine_details.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EngineDetailsFull, engine_detail, path=["response"])
 
@@ -336,7 +336,7 @@ class TestAsyncEngineDetails:
         engine_detail = await async_client.engine_details.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EngineDetailsFull, engine_detail, path=["response"])
 

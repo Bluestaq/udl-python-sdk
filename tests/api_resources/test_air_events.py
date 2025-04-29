@@ -320,7 +320,7 @@ class TestAirEvents:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirEventListResponse, air_event, path=["response"])
 
@@ -391,7 +391,7 @@ class TestAirEvents:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_event, path=["response"])
 
@@ -479,7 +479,7 @@ class TestAirEvents:
         air_event = client.air_events.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirEventGetResponse, air_event, path=["response"])
 
@@ -551,7 +551,7 @@ class TestAirEvents:
         air_event = client.air_events.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirEventTupleResponse, air_event, path=["response"])
 
@@ -933,7 +933,7 @@ class TestAsyncAirEvents:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirEventListResponse, air_event, path=["response"])
 
@@ -1004,7 +1004,7 @@ class TestAsyncAirEvents:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_event, path=["response"])
 
@@ -1092,7 +1092,7 @@ class TestAsyncAirEvents:
         air_event = await async_client.air_events.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirEventGetResponse, air_event, path=["response"])
 
@@ -1164,7 +1164,7 @@ class TestAsyncAirEvents:
         air_event = await async_client.air_events.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(AirEventTupleResponse, air_event, path=["response"])
 

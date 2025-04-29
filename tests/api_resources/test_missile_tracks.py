@@ -33,7 +33,7 @@ class TestMissileTracks:
         missile_track = client.missile_tracks.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
 
@@ -73,7 +73,7 @@ class TestMissileTracks:
         missile_track = client.missile_tracks.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, missile_track, path=["response"])
 
@@ -192,7 +192,7 @@ class TestMissileTracks:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
 
@@ -290,7 +290,7 @@ class TestAsyncMissileTracks:
         missile_track = await async_client.missile_tracks.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
 
@@ -330,7 +330,7 @@ class TestAsyncMissileTracks:
         missile_track = await async_client.missile_tracks.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, missile_track, path=["response"])
 
@@ -449,7 +449,7 @@ class TestAsyncMissileTracks:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
 

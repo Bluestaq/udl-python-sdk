@@ -32,7 +32,7 @@ class TestH3geohexcell:
         h3geohexcell = client.h3geohexcell.list(
             id_h3_geo="idH3Geo",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geohexcellListResponse, h3geohexcell, path=["response"])
 
@@ -72,7 +72,7 @@ class TestH3geohexcell:
         h3geohexcell = client.h3geohexcell.count(
             id_h3_geo="idH3Geo",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, h3geohexcell, path=["response"])
 
@@ -139,7 +139,7 @@ class TestH3geohexcell:
             columns="columns",
             id_h3_geo="idH3Geo",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geohexcellTupleResponse, h3geohexcell, path=["response"])
 
@@ -185,7 +185,7 @@ class TestAsyncH3geohexcell:
         h3geohexcell = await async_client.h3geohexcell.list(
             id_h3_geo="idH3Geo",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geohexcellListResponse, h3geohexcell, path=["response"])
 
@@ -225,7 +225,7 @@ class TestAsyncH3geohexcell:
         h3geohexcell = await async_client.h3geohexcell.count(
             id_h3_geo="idH3Geo",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, h3geohexcell, path=["response"])
 
@@ -292,7 +292,7 @@ class TestAsyncH3geohexcell:
             columns="columns",
             id_h3_geo="idH3Geo",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(H3geohexcellTupleResponse, h3geohexcell, path=["response"])
 

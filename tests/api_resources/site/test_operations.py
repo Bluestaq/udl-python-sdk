@@ -163,7 +163,7 @@ class TestOperations:
         operation = client.site.operations.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperationRetrieveResponse, operation, path=["response"])
 
@@ -354,7 +354,7 @@ class TestOperations:
         operation = client.site.operations.list(
             id_site="idSite",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperationListResponse, operation, path=["response"])
 
@@ -432,7 +432,7 @@ class TestOperations:
         operation = client.site.operations.count(
             id_site="idSite",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, operation, path=["response"])
 
@@ -551,7 +551,7 @@ class TestOperations:
             columns="columns",
             id_site="idSite",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperationTupleResponse, operation, path=["response"])
 
@@ -778,7 +778,7 @@ class TestAsyncOperations:
         operation = await async_client.site.operations.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperationRetrieveResponse, operation, path=["response"])
 
@@ -969,7 +969,7 @@ class TestAsyncOperations:
         operation = await async_client.site.operations.list(
             id_site="idSite",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperationListResponse, operation, path=["response"])
 
@@ -1047,7 +1047,7 @@ class TestAsyncOperations:
         operation = await async_client.site.operations.count(
             id_site="idSite",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, operation, path=["response"])
 
@@ -1166,7 +1166,7 @@ class TestAsyncOperations:
             columns="columns",
             id_site="idSite",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OperationTupleResponse, operation, path=["response"])
 

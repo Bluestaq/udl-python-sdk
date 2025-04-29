@@ -210,7 +210,7 @@ class TestLaunchdetection:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchdetection = client.launchdetection.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchdetectionListResponse, launchdetection, path=["response"])
 
@@ -281,7 +281,7 @@ class TestLaunchdetection:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchdetection = client.launchdetection.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchdetection, path=["response"])
 
@@ -317,7 +317,7 @@ class TestLaunchdetection:
         launchdetection = client.launchdetection.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchdetectionGetResponse, launchdetection, path=["response"])
 
@@ -389,7 +389,7 @@ class TestLaunchdetection:
         launchdetection = client.launchdetection.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchdetectionTupleResponse, launchdetection, path=["response"])
 
@@ -609,7 +609,7 @@ class TestAsyncLaunchdetection:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchdetection = await async_client.launchdetection.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchdetectionListResponse, launchdetection, path=["response"])
 
@@ -680,7 +680,7 @@ class TestAsyncLaunchdetection:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchdetection = await async_client.launchdetection.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, launchdetection, path=["response"])
 
@@ -716,7 +716,7 @@ class TestAsyncLaunchdetection:
         launchdetection = await async_client.launchdetection.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchdetectionGetResponse, launchdetection, path=["response"])
 
@@ -788,7 +788,7 @@ class TestAsyncLaunchdetection:
         launchdetection = await async_client.launchdetection.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchdetectionTupleResponse, launchdetection, path=["response"])
 

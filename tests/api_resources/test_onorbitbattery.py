@@ -173,7 +173,7 @@ class TestOnorbitbattery:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbitbattery = client.onorbitbattery.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitbatteryListResponse, onorbitbattery, path=["response"])
 
@@ -247,7 +247,7 @@ class TestOnorbitbattery:
         onorbitbattery = client.onorbitbattery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitbatteryGetResponse, onorbitbattery, path=["response"])
 
@@ -439,7 +439,7 @@ class TestAsyncOnorbitbattery:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitbattery = await async_client.onorbitbattery.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitbatteryListResponse, onorbitbattery, path=["response"])
 
@@ -513,7 +513,7 @@ class TestAsyncOnorbitbattery:
         onorbitbattery = await async_client.onorbitbattery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitbatteryGetResponse, onorbitbattery, path=["response"])
 

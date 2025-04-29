@@ -181,7 +181,7 @@ class TestLaunchsitedetails:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         launchsitedetail = client.launchsitedetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsitedetailListResponse, launchsitedetail, path=["response"])
 
@@ -255,7 +255,7 @@ class TestLaunchsitedetails:
         launchsitedetail = client.launchsitedetails.find_by_source(
             source="source",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsitedetailFindBySourceResponse, launchsitedetail, path=["response"])
 
@@ -295,7 +295,7 @@ class TestLaunchsitedetails:
         launchsitedetail = client.launchsitedetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsitedetailGetResponse, launchsitedetail, path=["response"])
 
@@ -494,7 +494,7 @@ class TestAsyncLaunchsitedetails:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchsitedetail = await async_client.launchsitedetails.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsitedetailListResponse, launchsitedetail, path=["response"])
 
@@ -568,7 +568,7 @@ class TestAsyncLaunchsitedetails:
         launchsitedetail = await async_client.launchsitedetails.find_by_source(
             source="source",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsitedetailFindBySourceResponse, launchsitedetail, path=["response"])
 
@@ -608,7 +608,7 @@ class TestAsyncLaunchsitedetails:
         launchsitedetail = await async_client.launchsitedetails.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LaunchsitedetailGetResponse, launchsitedetail, path=["response"])
 

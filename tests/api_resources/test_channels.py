@@ -101,7 +101,7 @@ class TestChannels:
         channel = client.channels.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ChannelFull, channel, path=["response"])
 
@@ -229,7 +229,7 @@ class TestChannels:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ChannelListResponse, channel, path=["response"])
 
@@ -300,7 +300,7 @@ class TestChannels:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, channel, path=["response"])
 
@@ -361,7 +361,7 @@ class TestChannels:
         channel = client.channels.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ChannelTupleResponse, channel, path=["response"])
 
@@ -473,7 +473,7 @@ class TestAsyncChannels:
         channel = await async_client.channels.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ChannelFull, channel, path=["response"])
 
@@ -601,7 +601,7 @@ class TestAsyncChannels:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ChannelListResponse, channel, path=["response"])
 
@@ -672,7 +672,7 @@ class TestAsyncChannels:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, channel, path=["response"])
 
@@ -733,7 +733,7 @@ class TestAsyncChannels:
         channel = await async_client.channels.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ChannelTupleResponse, channel, path=["response"])
 

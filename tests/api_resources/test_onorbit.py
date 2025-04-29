@@ -175,7 +175,7 @@ class TestOnorbit:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbit = client.onorbit.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitListResponse, onorbit, path=["response"])
 
@@ -246,7 +246,7 @@ class TestOnorbit:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         onorbit = client.onorbit.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onorbit, path=["response"])
 
@@ -282,7 +282,7 @@ class TestOnorbit:
         onorbit = client.onorbit.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitFull, onorbit, path=["response"])
 
@@ -329,7 +329,7 @@ class TestOnorbit:
         onorbit = client.onorbit.get_signature(
             id_on_orbit="idOnOrbit",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitGetSignatureResponse, onorbit, path=["response"])
 
@@ -394,7 +394,7 @@ class TestOnorbit:
         onorbit = client.onorbit.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitTupleResponse, onorbit, path=["response"])
 
@@ -578,7 +578,7 @@ class TestAsyncOnorbit:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbit = await async_client.onorbit.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitListResponse, onorbit, path=["response"])
 
@@ -649,7 +649,7 @@ class TestAsyncOnorbit:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbit = await async_client.onorbit.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onorbit, path=["response"])
 
@@ -685,7 +685,7 @@ class TestAsyncOnorbit:
         onorbit = await async_client.onorbit.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitFull, onorbit, path=["response"])
 
@@ -732,7 +732,7 @@ class TestAsyncOnorbit:
         onorbit = await async_client.onorbit.get_signature(
             id_on_orbit="idOnOrbit",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitGetSignatureResponse, onorbit, path=["response"])
 
@@ -797,7 +797,7 @@ class TestAsyncOnorbit:
         onorbit = await async_client.onorbit.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitTupleResponse, onorbit, path=["response"])
 

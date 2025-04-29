@@ -234,7 +234,7 @@ class TestObjectofinterest:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         objectofinterest = client.objectofinterest.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ObjectofinterestListResponse, objectofinterest, path=["response"])
 
@@ -305,7 +305,7 @@ class TestObjectofinterest:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         objectofinterest = client.objectofinterest.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, objectofinterest, path=["response"])
 
@@ -341,7 +341,7 @@ class TestObjectofinterest:
         objectofinterest = client.objectofinterest.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ObjectofinterestGetResponse, objectofinterest, path=["response"])
 
@@ -413,7 +413,7 @@ class TestObjectofinterest:
         objectofinterest = client.objectofinterest.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ObjectofinterestTupleResponse, objectofinterest, path=["response"])
 
@@ -657,7 +657,7 @@ class TestAsyncObjectofinterest:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         objectofinterest = await async_client.objectofinterest.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ObjectofinterestListResponse, objectofinterest, path=["response"])
 
@@ -728,7 +728,7 @@ class TestAsyncObjectofinterest:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         objectofinterest = await async_client.objectofinterest.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, objectofinterest, path=["response"])
 
@@ -764,7 +764,7 @@ class TestAsyncObjectofinterest:
         objectofinterest = await async_client.objectofinterest.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ObjectofinterestGetResponse, objectofinterest, path=["response"])
 
@@ -836,7 +836,7 @@ class TestAsyncObjectofinterest:
         objectofinterest = await async_client.objectofinterest.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ObjectofinterestTupleResponse, objectofinterest, path=["response"])
 

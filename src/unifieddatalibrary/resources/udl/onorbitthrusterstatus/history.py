@@ -50,7 +50,7 @@ class HistoryResource(SyncAPIResource):
         columns: str | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -100,7 +100,7 @@ class HistoryResource(SyncAPIResource):
                         "columns": columns,
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     history_list_params.HistoryListParams,
@@ -136,7 +136,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         columns: str | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -186,7 +186,7 @@ class AsyncHistoryResource(AsyncAPIResource):
                         "columns": columns,
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     history_list_params.HistoryListParams,

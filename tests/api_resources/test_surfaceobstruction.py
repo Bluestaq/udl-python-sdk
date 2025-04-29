@@ -167,7 +167,7 @@ class TestSurfaceobstruction:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
 
@@ -238,7 +238,7 @@ class TestSurfaceobstruction:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, surfaceobstruction, path=["response"])
 
@@ -274,7 +274,7 @@ class TestSurfaceobstruction:
         surfaceobstruction = client.surfaceobstruction.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceobstructionGetResponse, surfaceobstruction, path=["response"])
 
@@ -346,7 +346,7 @@ class TestSurfaceobstruction:
         surfaceobstruction = client.surfaceobstruction.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceobstructionTupleResponse, surfaceobstruction, path=["response"])
 
@@ -576,7 +576,7 @@ class TestAsyncSurfaceobstruction:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
 
@@ -647,7 +647,7 @@ class TestAsyncSurfaceobstruction:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, surfaceobstruction, path=["response"])
 
@@ -683,7 +683,7 @@ class TestAsyncSurfaceobstruction:
         surfaceobstruction = await async_client.surfaceobstruction.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceobstructionGetResponse, surfaceobstruction, path=["response"])
 
@@ -755,7 +755,7 @@ class TestAsyncSurfaceobstruction:
         surfaceobstruction = await async_client.surfaceobstruction.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SurfaceobstructionTupleResponse, surfaceobstruction, path=["response"])
 

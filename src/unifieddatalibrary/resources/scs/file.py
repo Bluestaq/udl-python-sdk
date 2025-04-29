@@ -50,7 +50,7 @@ class FileResource(SyncAPIResource):
         *,
         id: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -84,7 +84,7 @@ class FileResource(SyncAPIResource):
                     {
                         "id": id,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     file_retrieve_params.FileRetrieveParams,
                 ),
@@ -133,7 +133,7 @@ class FileResource(SyncAPIResource):
         path: str,
         count: int | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -174,7 +174,7 @@ class FileResource(SyncAPIResource):
                         "path": path,
                         "count": count,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "offset": offset,
                     },
                     file_list_params.FileListParams,
@@ -209,7 +209,7 @@ class AsyncFileResource(AsyncAPIResource):
         *,
         id: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -243,7 +243,7 @@ class AsyncFileResource(AsyncAPIResource):
                     {
                         "id": id,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     file_retrieve_params.FileRetrieveParams,
                 ),
@@ -292,7 +292,7 @@ class AsyncFileResource(AsyncAPIResource):
         path: str,
         count: int | NotGiven = NOT_GIVEN,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -333,7 +333,7 @@ class AsyncFileResource(AsyncAPIResource):
                         "path": path,
                         "count": count,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                         "offset": offset,
                     },
                     file_list_params.FileListParams,

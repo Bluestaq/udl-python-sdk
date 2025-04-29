@@ -98,7 +98,7 @@ class TestEffectRequests:
         effect_request = client.effect_requests.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
@@ -145,7 +145,7 @@ class TestEffectRequests:
         effect_request = client.effect_requests.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
 
@@ -185,7 +185,7 @@ class TestEffectRequests:
         effect_request = client.effect_requests.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, effect_request, path=["response"])
 
@@ -304,7 +304,7 @@ class TestEffectRequests:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EffectRequestTupleResponse, effect_request, path=["response"])
 
@@ -466,7 +466,7 @@ class TestAsyncEffectRequests:
         effect_request = await async_client.effect_requests.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EffectRequestRetrieveResponse, effect_request, path=["response"])
 
@@ -513,7 +513,7 @@ class TestAsyncEffectRequests:
         effect_request = await async_client.effect_requests.list(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
 
@@ -553,7 +553,7 @@ class TestAsyncEffectRequests:
         effect_request = await async_client.effect_requests.count(
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, effect_request, path=["response"])
 
@@ -672,7 +672,7 @@ class TestAsyncEffectRequests:
             columns="columns",
             created_at=parse_date("2019-12-27"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(EffectRequestTupleResponse, effect_request, path=["response"])
 

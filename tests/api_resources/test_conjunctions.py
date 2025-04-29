@@ -35,7 +35,7 @@ class TestConjunctions:
         conjunction = client.conjunctions.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionFull, conjunction, path=["response"])
 
@@ -82,7 +82,7 @@ class TestConjunctions:
         conjunction = client.conjunctions.list(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
 
@@ -122,7 +122,7 @@ class TestConjunctions:
         conjunction = client.conjunctions.count(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, conjunction, path=["response"])
 
@@ -516,7 +516,7 @@ class TestConjunctions:
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionGetHistoryResponse, conjunction, path=["response"])
 
@@ -583,7 +583,7 @@ class TestConjunctions:
             columns="columns",
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionTupleResponse, conjunction, path=["response"])
 
@@ -736,7 +736,7 @@ class TestAsyncConjunctions:
         conjunction = await async_client.conjunctions.retrieve(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionFull, conjunction, path=["response"])
 
@@ -783,7 +783,7 @@ class TestAsyncConjunctions:
         conjunction = await async_client.conjunctions.list(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
 
@@ -823,7 +823,7 @@ class TestAsyncConjunctions:
         conjunction = await async_client.conjunctions.count(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, conjunction, path=["response"])
 
@@ -1217,7 +1217,7 @@ class TestAsyncConjunctions:
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionGetHistoryResponse, conjunction, path=["response"])
 
@@ -1284,7 +1284,7 @@ class TestAsyncConjunctions:
             columns="columns",
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(ConjunctionTupleResponse, conjunction, path=["response"])
 

@@ -43,4 +43,4 @@ class HistoryListParams(TypedDict, total=False):
     use, in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
 
-    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

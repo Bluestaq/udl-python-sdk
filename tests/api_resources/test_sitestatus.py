@@ -206,7 +206,7 @@ class TestSitestatus:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         sitestatus = client.sitestatus.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SitestatusListResponse, sitestatus, path=["response"])
 
@@ -277,7 +277,7 @@ class TestSitestatus:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         sitestatus = client.sitestatus.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sitestatus, path=["response"])
 
@@ -313,7 +313,7 @@ class TestSitestatus:
         sitestatus = client.sitestatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SitestatusFull, sitestatus, path=["response"])
 
@@ -385,7 +385,7 @@ class TestSitestatus:
         sitestatus = client.sitestatus.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SitestatusTupleResponse, sitestatus, path=["response"])
 
@@ -601,7 +601,7 @@ class TestAsyncSitestatus:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sitestatus = await async_client.sitestatus.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SitestatusListResponse, sitestatus, path=["response"])
 
@@ -672,7 +672,7 @@ class TestAsyncSitestatus:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sitestatus = await async_client.sitestatus.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, sitestatus, path=["response"])
 
@@ -708,7 +708,7 @@ class TestAsyncSitestatus:
         sitestatus = await async_client.sitestatus.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SitestatusFull, sitestatus, path=["response"])
 
@@ -780,7 +780,7 @@ class TestAsyncSitestatus:
         sitestatus = await async_client.sitestatus.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(SitestatusTupleResponse, sitestatus, path=["response"])
 

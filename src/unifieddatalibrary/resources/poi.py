@@ -349,7 +349,7 @@ class PoiResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -385,7 +385,7 @@ class PoiResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_list_params.PoiListParams,
                 ),
@@ -398,7 +398,7 @@ class PoiResource(SyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -436,7 +436,7 @@ class PoiResource(SyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_count_params.PoiCountParams,
                 ),
@@ -486,7 +486,7 @@ class PoiResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -519,7 +519,7 @@ class PoiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_get_params.PoiGetParams,
                 ),
@@ -556,7 +556,7 @@ class PoiResource(SyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -602,7 +602,7 @@ class PoiResource(SyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_tuple_params.PoiTupleParams,
                 ),
@@ -961,7 +961,7 @@ class AsyncPoiResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -997,7 +997,7 @@ class AsyncPoiResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_list_params.PoiListParams,
                 ),
@@ -1010,7 +1010,7 @@ class AsyncPoiResource(AsyncAPIResource):
         *,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1048,7 +1048,7 @@ class AsyncPoiResource(AsyncAPIResource):
                     {
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_count_params.PoiCountParams,
                 ),
@@ -1098,7 +1098,7 @@ class AsyncPoiResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1131,7 +1131,7 @@ class AsyncPoiResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_get_params.PoiGetParams,
                 ),
@@ -1168,7 +1168,7 @@ class AsyncPoiResource(AsyncAPIResource):
         columns: str,
         ts: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1214,7 +1214,7 @@ class AsyncPoiResource(AsyncAPIResource):
                         "columns": columns,
                         "ts": ts,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     poi_tuple_params.PoiTupleParams,
                 ),

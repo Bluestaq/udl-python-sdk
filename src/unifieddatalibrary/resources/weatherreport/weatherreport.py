@@ -569,7 +569,7 @@ class WeatherreportResource(SyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -606,7 +606,7 @@ class WeatherreportResource(SyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_list_params.WeatherreportListParams,
                 ),
@@ -619,7 +619,7 @@ class WeatherreportResource(SyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -658,7 +658,7 @@ class WeatherreportResource(SyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_count_params.WeatherreportCountParams,
                 ),
@@ -671,7 +671,7 @@ class WeatherreportResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -704,7 +704,7 @@ class WeatherreportResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_get_params.WeatherreportGetParams,
                 ),
@@ -741,7 +741,7 @@ class WeatherreportResource(SyncAPIResource):
         columns: str,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -788,7 +788,7 @@ class WeatherreportResource(SyncAPIResource):
                         "columns": columns,
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_tuple_params.WeatherreportTupleParams,
                 ),
@@ -1360,7 +1360,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1397,7 +1397,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_list_params.WeatherreportListParams,
                 ),
@@ -1410,7 +1410,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
         *,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1449,7 +1449,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_count_params.WeatherreportCountParams,
                 ),
@@ -1462,7 +1462,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1495,7 +1495,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_get_params.WeatherreportGetParams,
                 ),
@@ -1532,7 +1532,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
         columns: str,
         ob_time: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1579,7 +1579,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
                         "columns": columns,
                         "ob_time": ob_time,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     weatherreport_tuple_params.WeatherreportTupleParams,
                 ),

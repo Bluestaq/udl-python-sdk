@@ -352,7 +352,7 @@ class ElsetsResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -385,7 +385,7 @@ class ElsetsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_retrieve_params.ElsetRetrieveParams,
                 ),
@@ -398,7 +398,7 @@ class ElsetsResource(SyncAPIResource):
         *,
         epoch: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -435,7 +435,7 @@ class ElsetsResource(SyncAPIResource):
                     {
                         "epoch": epoch,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_list_params.ElsetListParams,
                 ),
@@ -448,7 +448,7 @@ class ElsetsResource(SyncAPIResource):
         *,
         epoch: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -487,7 +487,7 @@ class ElsetsResource(SyncAPIResource):
                     {
                         "epoch": epoch,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_count_params.ElsetCountParams,
                 ),
@@ -673,7 +673,7 @@ class ElsetsResource(SyncAPIResource):
         columns: str,
         epoch: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -720,7 +720,7 @@ class ElsetsResource(SyncAPIResource):
                         "columns": columns,
                         "epoch": epoch,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_tuple_params.ElsetTupleParams,
                 ),
@@ -1064,7 +1064,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1097,7 +1097,7 @@ class AsyncElsetsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_retrieve_params.ElsetRetrieveParams,
                 ),
@@ -1110,7 +1110,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         *,
         epoch: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1147,7 +1147,7 @@ class AsyncElsetsResource(AsyncAPIResource):
                     {
                         "epoch": epoch,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_list_params.ElsetListParams,
                 ),
@@ -1160,7 +1160,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         *,
         epoch: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1199,7 +1199,7 @@ class AsyncElsetsResource(AsyncAPIResource):
                     {
                         "epoch": epoch,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_count_params.ElsetCountParams,
                 ),
@@ -1387,7 +1387,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         columns: str,
         epoch: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1434,7 +1434,7 @@ class AsyncElsetsResource(AsyncAPIResource):
                         "columns": columns,
                         "epoch": epoch,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     elset_tuple_params.ElsetTupleParams,
                 ),

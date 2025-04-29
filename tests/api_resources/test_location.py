@@ -157,7 +157,7 @@ class TestLocation:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         location = client.location.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LocationListResponse, location, path=["response"])
 
@@ -228,7 +228,7 @@ class TestLocation:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         location = client.location.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, location, path=["response"])
 
@@ -264,7 +264,7 @@ class TestLocation:
         location = client.location.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LocationFull, location, path=["response"])
 
@@ -336,7 +336,7 @@ class TestLocation:
         location = client.location.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LocationTupleResponse, location, path=["response"])
 
@@ -504,7 +504,7 @@ class TestAsyncLocation:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         location = await async_client.location.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LocationListResponse, location, path=["response"])
 
@@ -575,7 +575,7 @@ class TestAsyncLocation:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         location = await async_client.location.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, location, path=["response"])
 
@@ -611,7 +611,7 @@ class TestAsyncLocation:
         location = await async_client.location.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LocationFull, location, path=["response"])
 
@@ -683,7 +683,7 @@ class TestAsyncLocation:
         location = await async_client.location.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(LocationTupleResponse, location, path=["response"])
 

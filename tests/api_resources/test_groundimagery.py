@@ -115,7 +115,7 @@ class TestGroundimagery:
         groundimagery = client.groundimagery.list(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GroundimageryListResponse, groundimagery, path=["response"])
 
@@ -155,7 +155,7 @@ class TestGroundimagery:
         groundimagery = client.groundimagery.count(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, groundimagery, path=["response"])
 
@@ -195,7 +195,7 @@ class TestGroundimagery:
         groundimagery = client.groundimagery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GroundImageryFull, groundimagery, path=["response"])
 
@@ -249,7 +249,7 @@ class TestGroundimagery:
         groundimagery = client.groundimagery.get_file(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert groundimagery.is_closed
         assert groundimagery.json() == {"foo": "bar"}
@@ -333,7 +333,7 @@ class TestGroundimagery:
             columns="columns",
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GroundimageryTupleResponse, groundimagery, path=["response"])
 
@@ -452,7 +452,7 @@ class TestAsyncGroundimagery:
         groundimagery = await async_client.groundimagery.list(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GroundimageryListResponse, groundimagery, path=["response"])
 
@@ -492,7 +492,7 @@ class TestAsyncGroundimagery:
         groundimagery = await async_client.groundimagery.count(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, groundimagery, path=["response"])
 
@@ -532,7 +532,7 @@ class TestAsyncGroundimagery:
         groundimagery = await async_client.groundimagery.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GroundImageryFull, groundimagery, path=["response"])
 
@@ -588,7 +588,7 @@ class TestAsyncGroundimagery:
         groundimagery = await async_client.groundimagery.get_file(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert groundimagery.is_closed
         assert await groundimagery.json() == {"foo": "bar"}
@@ -674,7 +674,7 @@ class TestAsyncGroundimagery:
             columns="columns",
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(GroundimageryTupleResponse, groundimagery, path=["response"])
 

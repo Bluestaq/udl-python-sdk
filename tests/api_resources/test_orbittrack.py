@@ -33,7 +33,7 @@ class TestOrbittrack:
         orbittrack = client.orbittrack.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrbittrackListResponse, orbittrack, path=["response"])
 
@@ -73,7 +73,7 @@ class TestOrbittrack:
         orbittrack = client.orbittrack.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, orbittrack, path=["response"])
 
@@ -198,7 +198,7 @@ class TestOrbittrack:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrbittrackTupleResponse, orbittrack, path=["response"])
 
@@ -302,7 +302,7 @@ class TestAsyncOrbittrack:
         orbittrack = await async_client.orbittrack.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrbittrackListResponse, orbittrack, path=["response"])
 
@@ -342,7 +342,7 @@ class TestAsyncOrbittrack:
         orbittrack = await async_client.orbittrack.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, orbittrack, path=["response"])
 
@@ -467,7 +467,7 @@ class TestAsyncOrbittrack:
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(OrbittrackTupleResponse, orbittrack, path=["response"])
 

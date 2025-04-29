@@ -262,7 +262,7 @@ class TaiutcResource(SyncAPIResource):
         *,
         adjustment_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -299,7 +299,7 @@ class TaiutcResource(SyncAPIResource):
                     {
                         "adjustment_date": adjustment_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_list_params.TaiutcListParams,
                 ),
@@ -349,7 +349,7 @@ class TaiutcResource(SyncAPIResource):
         *,
         adjustment_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -388,7 +388,7 @@ class TaiutcResource(SyncAPIResource):
                     {
                         "adjustment_date": adjustment_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_count_params.TaiutcCountParams,
                 ),
@@ -401,7 +401,7 @@ class TaiutcResource(SyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -434,7 +434,7 @@ class TaiutcResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_get_params.TaiutcGetParams,
                 ),
@@ -471,7 +471,7 @@ class TaiutcResource(SyncAPIResource):
         adjustment_date: Union[str, datetime],
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -518,7 +518,7 @@ class TaiutcResource(SyncAPIResource):
                         "adjustment_date": adjustment_date,
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_tuple_params.TaiutcTupleParams,
                 ),
@@ -747,7 +747,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
         *,
         adjustment_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -784,7 +784,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
                     {
                         "adjustment_date": adjustment_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_list_params.TaiutcListParams,
                 ),
@@ -834,7 +834,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
         *,
         adjustment_date: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -873,7 +873,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
                     {
                         "adjustment_date": adjustment_date,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_count_params.TaiutcCountParams,
                 ),
@@ -886,7 +886,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
         id: str,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -919,7 +919,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_get_params.TaiutcGetParams,
                 ),
@@ -956,7 +956,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
         adjustment_date: Union[str, datetime],
         columns: str,
         first_result: int | NotGiven = NOT_GIVEN,
-        max_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1003,7 +1003,7 @@ class AsyncTaiutcResource(AsyncAPIResource):
                         "adjustment_date": adjustment_date,
                         "columns": columns,
                         "first_result": first_result,
-                        "max_result": max_result,
+                        "max_results": max_results,
                     },
                     taiutc_tuple_params.TaiutcTupleParams,
                 ),

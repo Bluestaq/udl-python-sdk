@@ -167,7 +167,7 @@ class TestTransponder:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderListResponse, transponder, path=["response"])
 
@@ -238,7 +238,7 @@ class TestTransponder:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, transponder, path=["response"])
 
@@ -274,7 +274,7 @@ class TestTransponder:
         transponder = client.transponder.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderGetResponse, transponder, path=["response"])
 
@@ -346,7 +346,7 @@ class TestTransponder:
         transponder = client.transponder.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderTupleResponse, transponder, path=["response"])
 
@@ -524,7 +524,7 @@ class TestAsyncTransponder:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderListResponse, transponder, path=["response"])
 
@@ -595,7 +595,7 @@ class TestAsyncTransponder:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, transponder, path=["response"])
 
@@ -631,7 +631,7 @@ class TestAsyncTransponder:
         transponder = await async_client.transponder.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderGetResponse, transponder, path=["response"])
 
@@ -703,7 +703,7 @@ class TestAsyncTransponder:
         transponder = await async_client.transponder.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderTupleResponse, transponder, path=["response"])
 

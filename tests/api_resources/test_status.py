@@ -192,7 +192,7 @@ class TestStatus:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         status = client.status.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusListResponse, status, path=["response"])
 
@@ -263,7 +263,7 @@ class TestStatus:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         status = client.status.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, status, path=["response"])
 
@@ -299,7 +299,7 @@ class TestStatus:
         status = client.status.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusGetResponse, status, path=["response"])
 
@@ -346,7 +346,7 @@ class TestStatus:
         status = client.status.get_by_entity_id(
             id_entity="idEntity",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
 
@@ -393,7 +393,7 @@ class TestStatus:
         status = client.status.get_by_entity_type(
             entity_type="entityType",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
 
@@ -465,7 +465,7 @@ class TestStatus:
         status = client.status.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusTupleResponse, status, path=["response"])
 
@@ -665,7 +665,7 @@ class TestAsyncStatus:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.list(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusListResponse, status, path=["response"])
 
@@ -736,7 +736,7 @@ class TestAsyncStatus:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.count(
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(str, status, path=["response"])
 
@@ -772,7 +772,7 @@ class TestAsyncStatus:
         status = await async_client.status.get(
             id="id",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusGetResponse, status, path=["response"])
 
@@ -819,7 +819,7 @@ class TestAsyncStatus:
         status = await async_client.status.get_by_entity_id(
             id_entity="idEntity",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusGetByEntityIDResponse, status, path=["response"])
 
@@ -866,7 +866,7 @@ class TestAsyncStatus:
         status = await async_client.status.get_by_entity_type(
             entity_type="entityType",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusGetByEntityTypeResponse, status, path=["response"])
 
@@ -938,7 +938,7 @@ class TestAsyncStatus:
         status = await async_client.status.tuple(
             columns="columns",
             first_result=0,
-            max_result=0,
+            max_results=0,
         )
         assert_matches_type(StatusTupleResponse, status, path=["response"])
 
