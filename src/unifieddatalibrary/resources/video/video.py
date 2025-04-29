@@ -9,6 +9,9 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    video_get_params,
+    video_list_params,
+    video_count_params,
     video_tuple_params,
     video_create_params,
     video_get_stream_file_params,
@@ -157,6 +160,8 @@ class VideoResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -169,11 +174,30 @@ class VideoResource(SyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/video",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_list_params.VideoListParams,
+                ),
             ),
             cast_to=VideoListResponse,
         )
@@ -181,6 +205,8 @@ class VideoResource(SyncAPIResource):
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -194,12 +220,31 @@ class VideoResource(SyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
             "/udl/video/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_count_params.VideoCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -208,6 +253,8 @@ class VideoResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -233,7 +280,17 @@ class VideoResource(SyncAPIResource):
         return self._get(
             f"/udl/video/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_get_params.VideoGetParams,
+                ),
             ),
             cast_to=VideoStreamsFull,
         )
@@ -243,6 +300,8 @@ class VideoResource(SyncAPIResource):
         *,
         source_name: str,
         stream_name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -278,6 +337,8 @@ class VideoResource(SyncAPIResource):
                     {
                         "source_name": source_name,
                         "stream_name": stream_name,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     video_get_player_streaming_info_params.VideoGetPlayerStreamingInfoParams,
                 ),
@@ -290,6 +351,8 @@ class VideoResource(SyncAPIResource):
         *,
         source_name: str,
         stream_name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -325,6 +388,8 @@ class VideoResource(SyncAPIResource):
                     {
                         "source_name": source_name,
                         "stream_name": stream_name,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     video_get_publisher_streaming_info_params.VideoGetPublisherStreamingInfoParams,
                 ),
@@ -337,6 +402,8 @@ class VideoResource(SyncAPIResource):
         *,
         source_name: str,
         stream_name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -372,6 +439,8 @@ class VideoResource(SyncAPIResource):
                     {
                         "source_name": source_name,
                         "stream_name": stream_name,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     video_get_stream_file_params.VideoGetStreamFileParams,
                 ),
@@ -406,6 +475,8 @@ class VideoResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -444,7 +515,14 @@ class VideoResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"columns": columns}, video_tuple_params.VideoTupleParams),
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_tuple_params.VideoTupleParams,
+                ),
             ),
             cast_to=VideoTupleResponse,
         )
@@ -563,6 +641,8 @@ class AsyncVideoResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -575,11 +655,30 @@ class AsyncVideoResource(AsyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/video",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_list_params.VideoListParams,
+                ),
             ),
             cast_to=VideoListResponse,
         )
@@ -587,6 +686,8 @@ class AsyncVideoResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -600,12 +701,31 @@ class AsyncVideoResource(AsyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
             "/udl/video/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_count_params.VideoCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -614,6 +734,8 @@ class AsyncVideoResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -639,7 +761,17 @@ class AsyncVideoResource(AsyncAPIResource):
         return await self._get(
             f"/udl/video/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_get_params.VideoGetParams,
+                ),
             ),
             cast_to=VideoStreamsFull,
         )
@@ -649,6 +781,8 @@ class AsyncVideoResource(AsyncAPIResource):
         *,
         source_name: str,
         stream_name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -684,6 +818,8 @@ class AsyncVideoResource(AsyncAPIResource):
                     {
                         "source_name": source_name,
                         "stream_name": stream_name,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     video_get_player_streaming_info_params.VideoGetPlayerStreamingInfoParams,
                 ),
@@ -696,6 +832,8 @@ class AsyncVideoResource(AsyncAPIResource):
         *,
         source_name: str,
         stream_name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -731,6 +869,8 @@ class AsyncVideoResource(AsyncAPIResource):
                     {
                         "source_name": source_name,
                         "stream_name": stream_name,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     video_get_publisher_streaming_info_params.VideoGetPublisherStreamingInfoParams,
                 ),
@@ -743,6 +883,8 @@ class AsyncVideoResource(AsyncAPIResource):
         *,
         source_name: str,
         stream_name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -778,6 +920,8 @@ class AsyncVideoResource(AsyncAPIResource):
                     {
                         "source_name": source_name,
                         "stream_name": stream_name,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     video_get_stream_file_params.VideoGetStreamFileParams,
                 ),
@@ -812,6 +956,8 @@ class AsyncVideoResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -850,7 +996,14 @@ class AsyncVideoResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"columns": columns}, video_tuple_params.VideoTupleParams),
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    video_tuple_params.VideoTupleParams,
+                ),
             ),
             cast_to=VideoTupleResponse,
         )

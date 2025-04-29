@@ -67,6 +67,8 @@ class MissileTracksResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -99,7 +101,14 @@ class MissileTracksResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ts": ts}, missile_track_list_params.MissileTrackListParams),
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    missile_track_list_params.MissileTrackListParams,
+                ),
             ),
             cast_to=MissileTrackListResponse,
         )
@@ -108,6 +117,8 @@ class MissileTracksResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -142,7 +153,14 @@ class MissileTracksResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ts": ts}, missile_track_count_params.MissileTrackCountParams),
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    missile_track_count_params.MissileTrackCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -212,6 +230,8 @@ class MissileTracksResource(SyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -257,6 +277,8 @@ class MissileTracksResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     missile_track_tuple_params.MissileTrackTupleParams,
                 ),
@@ -329,6 +351,8 @@ class AsyncMissileTracksResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -361,7 +385,14 @@ class AsyncMissileTracksResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"ts": ts}, missile_track_list_params.MissileTrackListParams),
+                query=await async_maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    missile_track_list_params.MissileTrackListParams,
+                ),
             ),
             cast_to=MissileTrackListResponse,
         )
@@ -370,6 +401,8 @@ class AsyncMissileTracksResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -404,7 +437,14 @@ class AsyncMissileTracksResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"ts": ts}, missile_track_count_params.MissileTrackCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    missile_track_count_params.MissileTrackCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -474,6 +514,8 @@ class AsyncMissileTracksResource(AsyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -519,6 +561,8 @@ class AsyncMissileTracksResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     missile_track_tuple_params.MissileTrackTupleParams,
                 ),

@@ -154,14 +154,23 @@ class TestOperations:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         operation = client.site.operations.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OperationRetrieveResponse, operation, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operation = client.site.operations.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OperationRetrieveResponse, operation, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.site.operations.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -172,7 +181,7 @@ class TestOperations:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.site.operations.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -186,7 +195,7 @@ class TestOperations:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.site.operations.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -341,6 +350,15 @@ class TestOperations:
         assert_matches_type(OperationListResponse, operation, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operation = client.site.operations.list(
+            id_site="idSite",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OperationListResponse, operation, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.site.operations.with_raw_response.list(
             id_site="idSite",
@@ -406,6 +424,15 @@ class TestOperations:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         operation = client.site.operations.count(
             id_site="idSite",
+        )
+        assert_matches_type(str, operation, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operation = client.site.operations.count(
+            id_site="idSite",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, operation, path=["response"])
 
@@ -515,6 +542,16 @@ class TestOperations:
         operation = client.site.operations.tuple(
             columns="columns",
             id_site="idSite",
+        )
+        assert_matches_type(OperationTupleResponse, operation, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operation = client.site.operations.tuple(
+            columns="columns",
+            id_site="idSite",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OperationTupleResponse, operation, path=["response"])
 
@@ -732,14 +769,23 @@ class TestAsyncOperations:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         operation = await async_client.site.operations.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OperationRetrieveResponse, operation, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operation = await async_client.site.operations.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OperationRetrieveResponse, operation, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.site.operations.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -750,7 +796,7 @@ class TestAsyncOperations:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.site.operations.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -764,7 +810,7 @@ class TestAsyncOperations:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.site.operations.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -919,6 +965,15 @@ class TestAsyncOperations:
         assert_matches_type(OperationListResponse, operation, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operation = await async_client.site.operations.list(
+            id_site="idSite",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OperationListResponse, operation, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.site.operations.with_raw_response.list(
             id_site="idSite",
@@ -984,6 +1039,15 @@ class TestAsyncOperations:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         operation = await async_client.site.operations.count(
             id_site="idSite",
+        )
+        assert_matches_type(str, operation, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operation = await async_client.site.operations.count(
+            id_site="idSite",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, operation, path=["response"])
 
@@ -1093,6 +1157,16 @@ class TestAsyncOperations:
         operation = await async_client.site.operations.tuple(
             columns="columns",
             id_site="idSite",
+        )
+        assert_matches_type(OperationTupleResponse, operation, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operation = await async_client.site.operations.tuple(
+            columns="columns",
+            id_site="idSite",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OperationTupleResponse, operation, path=["response"])
 

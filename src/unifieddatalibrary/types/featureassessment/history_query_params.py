@@ -23,3 +23,7 @@ class HistoryQueryParams(TypedDict, total=False):
     (/udl/&lt;datatype&gt;/queryhelp) for more details on valid query fields that
     can be selected.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

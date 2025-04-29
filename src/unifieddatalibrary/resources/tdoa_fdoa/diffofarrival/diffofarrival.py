@@ -306,6 +306,8 @@ class DiffofarrivalResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -338,7 +340,14 @@ class DiffofarrivalResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, diffofarrival_list_params.DiffofarrivalListParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diffofarrival_list_params.DiffofarrivalListParams,
+                ),
             ),
             cast_to=DiffofarrivalListResponse,
         )
@@ -347,6 +356,8 @@ class DiffofarrivalResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -381,7 +392,14 @@ class DiffofarrivalResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, diffofarrival_count_params.DiffofarrivalCountParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diffofarrival_count_params.DiffofarrivalCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -692,6 +710,8 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -725,7 +745,12 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, diffofarrival_list_params.DiffofarrivalListParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diffofarrival_list_params.DiffofarrivalListParams,
                 ),
             ),
             cast_to=DiffofarrivalListResponse,
@@ -735,6 +760,8 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -770,7 +797,12 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, diffofarrival_count_params.DiffofarrivalCountParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diffofarrival_count_params.DiffofarrivalCountParams,
                 ),
             ),
             cast_to=str,

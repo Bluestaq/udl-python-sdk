@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    notification_get_params,
     notification_list_params,
     notification_count_params,
     notification_tuple_params,
@@ -153,6 +154,8 @@ class NotificationResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,7 +187,14 @@ class NotificationResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, notification_list_params.NotificationListParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    notification_list_params.NotificationListParams,
+                ),
             ),
             cast_to=NotificationListResponse,
         )
@@ -193,6 +203,8 @@ class NotificationResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -226,7 +238,14 @@ class NotificationResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, notification_count_params.NotificationCountParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    notification_count_params.NotificationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -330,6 +349,8 @@ class NotificationResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -355,7 +376,17 @@ class NotificationResource(SyncAPIResource):
         return self._get(
             f"/udl/notification/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    notification_get_params.NotificationGetParams,
+                ),
             ),
             cast_to=NotificationFull,
         )
@@ -388,6 +419,8 @@ class NotificationResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -432,6 +465,8 @@ class NotificationResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     notification_tuple_params.NotificationTupleParams,
                 ),
@@ -560,6 +595,8 @@ class AsyncNotificationResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -592,7 +629,12 @@ class AsyncNotificationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, notification_list_params.NotificationListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    notification_list_params.NotificationListParams,
                 ),
             ),
             cast_to=NotificationListResponse,
@@ -602,6 +644,8 @@ class AsyncNotificationResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -636,7 +680,12 @@ class AsyncNotificationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, notification_count_params.NotificationCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    notification_count_params.NotificationCountParams,
                 ),
             ),
             cast_to=str,
@@ -741,6 +790,8 @@ class AsyncNotificationResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -766,7 +817,17 @@ class AsyncNotificationResource(AsyncAPIResource):
         return await self._get(
             f"/udl/notification/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    notification_get_params.NotificationGetParams,
+                ),
             ),
             cast_to=NotificationFull,
         )
@@ -799,6 +860,8 @@ class AsyncNotificationResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -843,6 +906,8 @@ class AsyncNotificationResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     notification_tuple_params.NotificationTupleParams,
                 ),

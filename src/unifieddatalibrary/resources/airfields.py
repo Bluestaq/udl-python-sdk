@@ -7,7 +7,14 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import airfield_tuple_params, airfield_create_params, airfield_update_params
+from ..types import (
+    airfield_list_params,
+    airfield_count_params,
+    airfield_tuple_params,
+    airfield_create_params,
+    airfield_update_params,
+    airfield_retrieve_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -284,6 +291,8 @@ class AirfieldsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -309,7 +318,17 @@ class AirfieldsResource(SyncAPIResource):
         return self._get(
             f"/udl/airfield/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_retrieve_params.AirfieldRetrieveParams,
+                ),
             ),
             cast_to=AirfieldFull,
         )
@@ -552,6 +571,8 @@ class AirfieldsResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -564,11 +585,30 @@ class AirfieldsResource(SyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/airfield",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_list_params.AirfieldListParams,
+                ),
             ),
             cast_to=AirfieldListResponse,
         )
@@ -576,6 +616,8 @@ class AirfieldsResource(SyncAPIResource):
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -589,12 +631,31 @@ class AirfieldsResource(SyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
             "/udl/airfield/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_count_params.AirfieldCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -626,6 +687,8 @@ class AirfieldsResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -664,7 +727,14 @@ class AirfieldsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"columns": columns}, airfield_tuple_params.AirfieldTupleParams),
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_tuple_params.AirfieldTupleParams,
+                ),
             ),
             cast_to=AirfieldTupleResponse,
         )
@@ -928,6 +998,8 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -953,7 +1025,17 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/airfield/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_retrieve_params.AirfieldRetrieveParams,
+                ),
             ),
             cast_to=AirfieldFull,
         )
@@ -1196,6 +1278,8 @@ class AsyncAirfieldsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1208,11 +1292,30 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/airfield",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_list_params.AirfieldListParams,
+                ),
             ),
             cast_to=AirfieldListResponse,
         )
@@ -1220,6 +1323,8 @@ class AsyncAirfieldsResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1233,12 +1338,31 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
             "/udl/airfield/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_count_params.AirfieldCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1270,6 +1394,8 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1308,7 +1434,14 @@ class AsyncAirfieldsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"columns": columns}, airfield_tuple_params.AirfieldTupleParams),
+                query=await async_maybe_transform(
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    airfield_tuple_params.AirfieldTupleParams,
+                ),
             ),
             cast_to=AirfieldTupleResponse,
         )

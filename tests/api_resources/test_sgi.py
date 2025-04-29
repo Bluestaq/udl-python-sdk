@@ -255,6 +255,8 @@ class TestSgi:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.list(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiListResponse, sgi, path=["response"])
@@ -326,6 +328,8 @@ class TestSgi:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.count(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, sgi, path=["response"])
@@ -408,14 +412,23 @@ class TestSgi:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SgiFull, sgi, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sgi = client.sgi.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.sgi.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -426,7 +439,7 @@ class TestSgi:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.sgi.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -440,7 +453,7 @@ class TestSgi:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.sgi.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -452,6 +465,8 @@ class TestSgi:
     def test_method_get_data_by_effective_as_of_date_with_all_params(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.get_data_by_effective_as_of_date(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
@@ -513,6 +528,8 @@ class TestSgi:
         sgi = client.sgi.tuple(
             columns="columns",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiTupleResponse, sgi, path=["response"])
@@ -833,6 +850,8 @@ class TestAsyncSgi:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.list(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiListResponse, sgi, path=["response"])
@@ -904,6 +923,8 @@ class TestAsyncSgi:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.count(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, sgi, path=["response"])
@@ -986,14 +1007,23 @@ class TestAsyncSgi:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SgiFull, sgi, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sgi = await async_client.sgi.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sgi.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -1004,7 +1034,7 @@ class TestAsyncSgi:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sgi.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1018,7 +1048,7 @@ class TestAsyncSgi:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.sgi.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -1032,6 +1062,8 @@ class TestAsyncSgi:
     ) -> None:
         sgi = await async_client.sgi.get_data_by_effective_as_of_date(
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiFull, sgi, path=["response"])
@@ -1095,6 +1127,8 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.tuple(
             columns="columns",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SgiTupleResponse, sgi, path=["response"])

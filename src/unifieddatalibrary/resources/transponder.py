@@ -6,7 +6,14 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import transponder_tuple_params, transponder_create_params, transponder_update_params
+from ..types import (
+    transponder_get_params,
+    transponder_list_params,
+    transponder_count_params,
+    transponder_tuple_params,
+    transponder_create_params,
+    transponder_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -294,6 +301,8 @@ class TransponderResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -306,11 +315,30 @@ class TransponderResource(SyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/transponder",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_list_params.TransponderListParams,
+                ),
             ),
             cast_to=TransponderListResponse,
         )
@@ -355,6 +383,8 @@ class TransponderResource(SyncAPIResource):
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -368,12 +398,31 @@ class TransponderResource(SyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
             "/udl/transponder/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_count_params.TransponderCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -382,6 +431,8 @@ class TransponderResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -408,7 +459,17 @@ class TransponderResource(SyncAPIResource):
         return self._get(
             f"/udl/transponder/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_get_params.TransponderGetParams,
+                ),
             ),
             cast_to=TransponderGetResponse,
         )
@@ -440,6 +501,8 @@ class TransponderResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -478,7 +541,14 @@ class TransponderResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"columns": columns}, transponder_tuple_params.TransponderTupleParams),
+                query=maybe_transform(
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_tuple_params.TransponderTupleParams,
+                ),
             ),
             cast_to=TransponderTupleResponse,
         )
@@ -753,6 +823,8 @@ class AsyncTransponderResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -765,11 +837,30 @@ class AsyncTransponderResource(AsyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/transponder",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_list_params.TransponderListParams,
+                ),
             ),
             cast_to=TransponderListResponse,
         )
@@ -814,6 +905,8 @@ class AsyncTransponderResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -827,12 +920,31 @@ class AsyncTransponderResource(AsyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
             "/udl/transponder/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_count_params.TransponderCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -841,6 +953,8 @@ class AsyncTransponderResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -867,7 +981,17 @@ class AsyncTransponderResource(AsyncAPIResource):
         return await self._get(
             f"/udl/transponder/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_get_params.TransponderGetParams,
+                ),
             ),
             cast_to=TransponderGetResponse,
         )
@@ -899,6 +1023,8 @@ class AsyncTransponderResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -938,7 +1064,12 @@ class AsyncTransponderResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"columns": columns}, transponder_tuple_params.TransponderTupleParams
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    transponder_tuple_params.TransponderTupleParams,
                 ),
             ),
             cast_to=TransponderTupleResponse,

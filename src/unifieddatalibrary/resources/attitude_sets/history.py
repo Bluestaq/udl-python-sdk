@@ -49,6 +49,8 @@ class HistoryResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -91,6 +93,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     history_list_params.HistoryListParams,
                 ),
@@ -103,6 +107,8 @@ class HistoryResource(SyncAPIResource):
         *,
         start_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -161,6 +167,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "start_time": start_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -175,6 +183,8 @@ class HistoryResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -211,7 +221,14 @@ class HistoryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, history_count_params.HistoryCountParams),
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -242,6 +259,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -284,6 +303,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     history_list_params.HistoryListParams,
                 ),
@@ -296,6 +317,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         start_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -354,6 +377,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "start_time": start_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -368,6 +393,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -404,7 +431,14 @@ class AsyncHistoryResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"start_time": start_time}, history_count_params.HistoryCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )

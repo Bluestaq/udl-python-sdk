@@ -12,6 +12,8 @@ __all__ = ["OrbitdeterminationListParams"]
 
 
 class OrbitdeterminationListParams(TypedDict, total=False):
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
     id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
     """
     (One or more of fields 'idOnOrbit, startTime' are required.) Unique identifier
@@ -20,6 +22,8 @@ class OrbitdeterminationListParams(TypedDict, total=False):
     (e.g. /udl/onorbit/{id}). For example, the OnOrbit with idOnOrbit = 25544 would
     be queried as /udl/onorbit/25544.
     """
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
 
     start_time: Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]
     """

@@ -9,6 +9,9 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    seradataspacecraftdetail_get_params,
+    seradataspacecraftdetail_list_params,
+    seradataspacecraftdetail_count_params,
     seradataspacecraftdetail_tuple_params,
     seradataspacecraftdetail_create_params,
     seradataspacecraftdetail_update_params,
@@ -910,6 +913,8 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -922,11 +927,30 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/udl/seradataspacecraftdetails",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_list_params.SeradataspacecraftdetailListParams,
+                ),
             ),
             cast_to=SeradataspacecraftdetailListResponse,
         )
@@ -970,6 +994,8 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -983,12 +1009,31 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
             "/udl/seradataspacecraftdetails/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_count_params.SeradataspacecraftdetailCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -997,6 +1042,8 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1022,7 +1069,17 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
         return self._get(
             f"/udl/seradataspacecraftdetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_get_params.SeradataspacecraftdetailGetParams,
+                ),
             ),
             cast_to=SeradataspacecraftdetailGetResponse,
         )
@@ -1054,6 +1111,8 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1093,7 +1152,12 @@ class SeradataspacecraftdetailsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"columns": columns}, seradataspacecraftdetail_tuple_params.SeradataspacecraftdetailTupleParams
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_tuple_params.SeradataspacecraftdetailTupleParams,
                 ),
             ),
             cast_to=SeradataspacecraftdetailTupleResponse,
@@ -1979,6 +2043,8 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1991,11 +2057,30 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/udl/seradataspacecraftdetails",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_list_params.SeradataspacecraftdetailListParams,
+                ),
             ),
             cast_to=SeradataspacecraftdetailListResponse,
         )
@@ -2039,6 +2124,8 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2052,12 +2139,31 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
             "/udl/seradataspacecraftdetails/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_count_params.SeradataspacecraftdetailCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -2066,6 +2172,8 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2091,7 +2199,17 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/seradataspacecraftdetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_get_params.SeradataspacecraftdetailGetParams,
+                ),
             ),
             cast_to=SeradataspacecraftdetailGetResponse,
         )
@@ -2123,6 +2241,8 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2162,7 +2282,12 @@ class AsyncSeradataspacecraftdetailsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"columns": columns}, seradataspacecraftdetail_tuple_params.SeradataspacecraftdetailTupleParams
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    seradataspacecraftdetail_tuple_params.SeradataspacecraftdetailTupleParams,
                 ),
             ),
             cast_to=SeradataspacecraftdetailTupleResponse,

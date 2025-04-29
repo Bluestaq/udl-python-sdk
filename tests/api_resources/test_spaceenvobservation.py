@@ -29,6 +29,15 @@ class TestSpaceenvobservation:
         assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        spaceenvobservation = client.spaceenvobservation.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.spaceenvobservation.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -56,6 +65,15 @@ class TestSpaceenvobservation:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         spaceenvobservation = client.spaceenvobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, spaceenvobservation, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        spaceenvobservation = client.spaceenvobservation.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, spaceenvobservation, path=["response"])
 
@@ -169,6 +187,16 @@ class TestSpaceenvobservation:
         assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        spaceenvobservation = client.spaceenvobservation.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.spaceenvobservation.with_raw_response.tuple(
             columns="columns",
@@ -258,6 +286,15 @@ class TestAsyncSpaceenvobservation:
         assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        spaceenvobservation = await async_client.spaceenvobservation.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.spaceenvobservation.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -285,6 +322,15 @@ class TestAsyncSpaceenvobservation:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         spaceenvobservation = await async_client.spaceenvobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, spaceenvobservation, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        spaceenvobservation = await async_client.spaceenvobservation.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, spaceenvobservation, path=["response"])
 
@@ -394,6 +440,16 @@ class TestAsyncSpaceenvobservation:
         spaceenvobservation = await async_client.spaceenvobservation.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        spaceenvobservation = await async_client.spaceenvobservation.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SpaceenvobservationTupleResponse, spaceenvobservation, path=["response"])
 

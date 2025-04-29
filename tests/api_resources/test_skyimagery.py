@@ -38,6 +38,15 @@ class TestSkyimagery:
         assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        skyimagery = client.skyimagery.list(
+            exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.skyimagery.with_raw_response.list(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -65,6 +74,15 @@ class TestSkyimagery:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         skyimagery = client.skyimagery.count(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, skyimagery, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        skyimagery = client.skyimagery.count(
+            exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, skyimagery, path=["response"])
 
@@ -97,7 +115,21 @@ class TestSkyimagery:
     def test_method_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         skyimagery = client.skyimagery.file_get(
-            "id",
+            id="id",
+        )
+        assert skyimagery.is_closed
+        assert skyimagery.json() == {"foo": "bar"}
+        assert cast(Any, skyimagery.is_closed) is True
+        assert isinstance(skyimagery, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_file_get_with_all_params(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        skyimagery = client.skyimagery.file_get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert skyimagery.is_closed
         assert skyimagery.json() == {"foo": "bar"}
@@ -110,7 +142,7 @@ class TestSkyimagery:
         respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         skyimagery = client.skyimagery.with_raw_response.file_get(
-            "id",
+            id="id",
         )
 
         assert skyimagery.is_closed is True
@@ -123,7 +155,7 @@ class TestSkyimagery:
     def test_streaming_response_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.skyimagery.with_streaming_response.file_get(
-            "id",
+            id="id",
         ) as skyimagery:
             assert not skyimagery.is_closed
             assert skyimagery.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -139,20 +171,29 @@ class TestSkyimagery:
     def test_path_params_file_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.skyimagery.with_raw_response.file_get(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         skyimagery = client.skyimagery.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SkyimageryFull, skyimagery, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        skyimagery = client.skyimagery.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SkyimageryFull, skyimagery, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.skyimagery.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -163,7 +204,7 @@ class TestSkyimagery:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.skyimagery.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -177,7 +218,7 @@ class TestSkyimagery:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.skyimagery.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -210,6 +251,16 @@ class TestSkyimagery:
         skyimagery = client.skyimagery.tuple(
             columns="columns",
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SkyimageryTupleResponse, skyimagery, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        skyimagery = client.skyimagery.tuple(
+            columns="columns",
+            exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SkyimageryTupleResponse, skyimagery, path=["response"])
 
@@ -282,6 +333,15 @@ class TestAsyncSkyimagery:
         assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        skyimagery = await async_client.skyimagery.list(
+            exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.skyimagery.with_raw_response.list(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -309,6 +369,15 @@ class TestAsyncSkyimagery:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         skyimagery = await async_client.skyimagery.count(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, skyimagery, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        skyimagery = await async_client.skyimagery.count(
+            exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, skyimagery, path=["response"])
 
@@ -341,7 +410,23 @@ class TestAsyncSkyimagery:
     async def test_method_file_get(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         skyimagery = await async_client.skyimagery.file_get(
-            "id",
+            id="id",
+        )
+        assert skyimagery.is_closed
+        assert await skyimagery.json() == {"foo": "bar"}
+        assert cast(Any, skyimagery.is_closed) is True
+        assert isinstance(skyimagery, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_file_get_with_all_params(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        skyimagery = await async_client.skyimagery.file_get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert skyimagery.is_closed
         assert await skyimagery.json() == {"foo": "bar"}
@@ -354,7 +439,7 @@ class TestAsyncSkyimagery:
         respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         skyimagery = await async_client.skyimagery.with_raw_response.file_get(
-            "id",
+            id="id",
         )
 
         assert skyimagery.is_closed is True
@@ -369,7 +454,7 @@ class TestAsyncSkyimagery:
     ) -> None:
         respx_mock.get("/udl/skyimagery/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.skyimagery.with_streaming_response.file_get(
-            "id",
+            id="id",
         ) as skyimagery:
             assert not skyimagery.is_closed
             assert skyimagery.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -385,20 +470,29 @@ class TestAsyncSkyimagery:
     async def test_path_params_file_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.skyimagery.with_raw_response.file_get(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         skyimagery = await async_client.skyimagery.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SkyimageryFull, skyimagery, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        skyimagery = await async_client.skyimagery.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SkyimageryFull, skyimagery, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.skyimagery.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -409,7 +503,7 @@ class TestAsyncSkyimagery:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.skyimagery.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -423,7 +517,7 @@ class TestAsyncSkyimagery:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.skyimagery.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -456,6 +550,16 @@ class TestAsyncSkyimagery:
         skyimagery = await async_client.skyimagery.tuple(
             columns="columns",
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SkyimageryTupleResponse, skyimagery, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        skyimagery = await async_client.skyimagery.tuple(
+            columns="columns",
+            exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SkyimageryTupleResponse, skyimagery, path=["response"])
 

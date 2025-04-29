@@ -18,3 +18,7 @@ class HistoryCountParams(TypedDict, total=False):
     Consumers should contact the provider for details on their obTime
     specifications. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

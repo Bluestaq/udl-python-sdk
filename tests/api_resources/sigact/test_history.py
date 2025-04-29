@@ -32,6 +32,8 @@ class TestHistory:
         history = client.sigact.history.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -63,6 +65,15 @@ class TestHistory:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         history = client.sigact.history.count(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.sigact.history.count(
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -106,6 +117,8 @@ class TestAsyncHistory:
         history = await async_client.sigact.history.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -137,6 +150,15 @@ class TestAsyncHistory:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.sigact.history.count(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.sigact.history.count(
+            report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 

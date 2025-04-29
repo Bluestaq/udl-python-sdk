@@ -440,6 +440,8 @@ class DatalinkResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -472,7 +474,14 @@ class DatalinkResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, datalink_list_params.DatalinkListParams),
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    datalink_list_params.DatalinkListParams,
+                ),
             ),
             cast_to=DatalinkListResponse,
         )
@@ -481,6 +490,8 @@ class DatalinkResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -515,7 +526,14 @@ class DatalinkResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, datalink_count_params.DatalinkCountParams),
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    datalink_count_params.DatalinkCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -548,6 +566,8 @@ class DatalinkResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -593,6 +613,8 @@ class DatalinkResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     datalink_tuple_params.DatalinkTupleParams,
                 ),
@@ -1045,6 +1067,8 @@ class AsyncDatalinkResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1077,7 +1101,14 @@ class AsyncDatalinkResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"start_time": start_time}, datalink_list_params.DatalinkListParams),
+                query=await async_maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    datalink_list_params.DatalinkListParams,
+                ),
             ),
             cast_to=DatalinkListResponse,
         )
@@ -1086,6 +1117,8 @@ class AsyncDatalinkResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1121,7 +1154,12 @@ class AsyncDatalinkResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time": start_time}, datalink_count_params.DatalinkCountParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    datalink_count_params.DatalinkCountParams,
                 ),
             ),
             cast_to=str,
@@ -1155,6 +1193,8 @@ class AsyncDatalinkResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1200,6 +1240,8 @@ class AsyncDatalinkResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     datalink_tuple_params.DatalinkTupleParams,
                 ),

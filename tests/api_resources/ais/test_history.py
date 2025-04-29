@@ -30,6 +30,8 @@ class TestHistory:
         history = client.ais.history.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -69,6 +71,8 @@ class TestHistory:
         history = client.ais.history.aodr(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -115,6 +119,8 @@ class TestAsyncHistory:
         history = await async_client.ais.history.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -154,6 +160,8 @@ class TestAsyncHistory:
         history = await async_client.ais.history.aodr(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",

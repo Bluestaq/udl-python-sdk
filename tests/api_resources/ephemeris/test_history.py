@@ -31,6 +31,8 @@ class TestHistory:
         history = client.ephemeris.history.list(
             es_id="esId",
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -70,6 +72,8 @@ class TestHistory:
         history = client.ephemeris.history.aodr(
             es_id="esId",
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -104,6 +108,15 @@ class TestHistory:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         history = client.ephemeris.history.count(
             es_id="esId",
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.ephemeris.history.count(
+            es_id="esId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -147,6 +160,8 @@ class TestAsyncHistory:
         history = await async_client.ephemeris.history.list(
             es_id="esId",
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryListResponse, history, path=["response"])
 
@@ -186,6 +201,8 @@ class TestAsyncHistory:
         history = await async_client.ephemeris.history.aodr(
             es_id="esId",
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -220,6 +237,15 @@ class TestAsyncHistory:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.ephemeris.history.count(
             es_id="esId",
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.ephemeris.history.count(
+            es_id="esId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 

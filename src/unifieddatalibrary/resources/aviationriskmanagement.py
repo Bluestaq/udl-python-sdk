@@ -13,6 +13,7 @@ from ..types import (
     aviationriskmanagement_tuple_params,
     aviationriskmanagement_create_params,
     aviationriskmanagement_update_params,
+    aviationriskmanagement_retrieve_params,
     aviationriskmanagement_create_bulk_params,
     aviationriskmanagement_unvalidated_publish_params,
 )
@@ -164,6 +165,8 @@ class AviationriskmanagementResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -189,7 +192,17 @@ class AviationriskmanagementResource(SyncAPIResource):
         return self._get(
             f"/udl/aviationriskmanagement/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    aviationriskmanagement_retrieve_params.AviationriskmanagementRetrieveParams,
+                ),
             ),
             cast_to=AviationriskmanagementRetrieveResponse,
         )
@@ -344,6 +357,8 @@ class AviationriskmanagementResource(SyncAPIResource):
         self,
         *,
         id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -379,7 +394,12 @@ class AviationriskmanagementResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"id_mission": id_mission}, aviationriskmanagement_count_params.AviationriskmanagementCountParams
+                    {
+                        "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    aviationriskmanagement_count_params.AviationriskmanagementCountParams,
                 ),
             ),
             cast_to=str,
@@ -426,6 +446,8 @@ class AviationriskmanagementResource(SyncAPIResource):
         self,
         *,
         id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -459,7 +481,12 @@ class AviationriskmanagementResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"id_mission": id_mission}, aviationriskmanagement_query_params.AviationriskmanagementQueryParams
+                    {
+                        "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    aviationriskmanagement_query_params.AviationriskmanagementQueryParams,
                 ),
             ),
             cast_to=AviationriskmanagementQueryResponse,
@@ -493,6 +520,8 @@ class AviationriskmanagementResource(SyncAPIResource):
         *,
         columns: str,
         id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -538,6 +567,8 @@ class AviationriskmanagementResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     aviationriskmanagement_tuple_params.AviationriskmanagementTupleParams,
                 ),
@@ -712,6 +743,8 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -737,7 +770,17 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
         return await self._get(
             f"/udl/aviationriskmanagement/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    aviationriskmanagement_retrieve_params.AviationriskmanagementRetrieveParams,
+                ),
             ),
             cast_to=AviationriskmanagementRetrieveResponse,
         )
@@ -892,6 +935,8 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
         self,
         *,
         id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -927,7 +972,12 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"id_mission": id_mission}, aviationriskmanagement_count_params.AviationriskmanagementCountParams
+                    {
+                        "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    aviationriskmanagement_count_params.AviationriskmanagementCountParams,
                 ),
             ),
             cast_to=str,
@@ -974,6 +1024,8 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
         self,
         *,
         id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1007,7 +1059,12 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"id_mission": id_mission}, aviationriskmanagement_query_params.AviationriskmanagementQueryParams
+                    {
+                        "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    aviationriskmanagement_query_params.AviationriskmanagementQueryParams,
                 ),
             ),
             cast_to=AviationriskmanagementQueryResponse,
@@ -1041,6 +1098,8 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
         *,
         columns: str,
         id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1086,6 +1145,8 @@ class AsyncAviationriskmanagementResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     aviationriskmanagement_tuple_params.AviationriskmanagementTupleParams,
                 ),

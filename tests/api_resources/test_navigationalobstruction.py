@@ -296,6 +296,8 @@ class TestNavigationalobstruction:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigationalobstruction = client.navigationalobstruction.list(
             cycle_date=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionListResponse, navigationalobstruction, path=["response"])
@@ -329,6 +331,8 @@ class TestNavigationalobstruction:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         navigationalobstruction = client.navigationalobstruction.count(
             cycle_date=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(str, navigationalobstruction, path=["response"])
@@ -414,14 +418,23 @@ class TestNavigationalobstruction:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         navigationalobstruction = client.navigationalobstruction.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(NavigationalobstructionGetResponse, navigationalobstruction, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        navigationalobstruction = client.navigationalobstruction.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(NavigationalobstructionGetResponse, navigationalobstruction, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.navigationalobstruction.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -432,7 +445,7 @@ class TestNavigationalobstruction:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.navigationalobstruction.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -446,7 +459,7 @@ class TestNavigationalobstruction:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.navigationalobstruction.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -486,6 +499,8 @@ class TestNavigationalobstruction:
         navigationalobstruction = client.navigationalobstruction.tuple(
             columns="columns",
             cycle_date=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionTupleResponse, navigationalobstruction, path=["response"])
@@ -792,6 +807,8 @@ class TestAsyncNavigationalobstruction:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigationalobstruction = await async_client.navigationalobstruction.list(
             cycle_date=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionListResponse, navigationalobstruction, path=["response"])
@@ -825,6 +842,8 @@ class TestAsyncNavigationalobstruction:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigationalobstruction = await async_client.navigationalobstruction.count(
             cycle_date=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(str, navigationalobstruction, path=["response"])
@@ -910,14 +929,23 @@ class TestAsyncNavigationalobstruction:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigationalobstruction = await async_client.navigationalobstruction.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(NavigationalobstructionGetResponse, navigationalobstruction, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        navigationalobstruction = await async_client.navigationalobstruction.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(NavigationalobstructionGetResponse, navigationalobstruction, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.navigationalobstruction.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -928,7 +956,7 @@ class TestAsyncNavigationalobstruction:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.navigationalobstruction.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -942,7 +970,7 @@ class TestAsyncNavigationalobstruction:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.navigationalobstruction.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -982,6 +1010,8 @@ class TestAsyncNavigationalobstruction:
         navigationalobstruction = await async_client.navigationalobstruction.tuple(
             columns="columns",
             cycle_date=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
             obstacle_id="obstacleId",
         )
         assert_matches_type(NavigationalobstructionTupleResponse, navigationalobstruction, path=["response"])

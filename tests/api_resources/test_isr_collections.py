@@ -29,6 +29,15 @@ class TestIsrCollections:
         assert_matches_type(IsrCollectionListResponse, isr_collection, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        isr_collection = client.isr_collections.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(IsrCollectionListResponse, isr_collection, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.isr_collections.with_raw_response.list(
             created_at=parse_date("2019-12-27"),
@@ -56,6 +65,15 @@ class TestIsrCollections:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         isr_collection = client.isr_collections.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, isr_collection, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        isr_collection = client.isr_collections.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, isr_collection, path=["response"])
 
@@ -166,6 +184,16 @@ class TestIsrCollections:
         assert_matches_type(IsrCollectionTupleResponse, isr_collection, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        isr_collection = client.isr_collections.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(IsrCollectionTupleResponse, isr_collection, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.isr_collections.with_raw_response.tuple(
             columns="columns",
@@ -252,6 +280,15 @@ class TestAsyncIsrCollections:
         assert_matches_type(IsrCollectionListResponse, isr_collection, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        isr_collection = await async_client.isr_collections.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(IsrCollectionListResponse, isr_collection, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.isr_collections.with_raw_response.list(
             created_at=parse_date("2019-12-27"),
@@ -279,6 +316,15 @@ class TestAsyncIsrCollections:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         isr_collection = await async_client.isr_collections.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, isr_collection, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        isr_collection = await async_client.isr_collections.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, isr_collection, path=["response"])
 
@@ -385,6 +431,16 @@ class TestAsyncIsrCollections:
         isr_collection = await async_client.isr_collections.tuple(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(IsrCollectionTupleResponse, isr_collection, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        isr_collection = await async_client.isr_collections.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(IsrCollectionTupleResponse, isr_collection, path=["response"])
 

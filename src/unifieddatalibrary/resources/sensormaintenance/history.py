@@ -49,6 +49,8 @@ class HistoryResource(SyncAPIResource):
         *,
         columns: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -93,6 +95,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     history_retrieve_params.HistoryRetrieveParams,
@@ -106,6 +110,8 @@ class HistoryResource(SyncAPIResource):
         *,
         columns: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -166,6 +172,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -181,6 +189,8 @@ class HistoryResource(SyncAPIResource):
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -222,6 +232,8 @@ class HistoryResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     history_count_params.HistoryCountParams,
@@ -256,6 +268,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         columns: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -300,6 +314,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     history_retrieve_params.HistoryRetrieveParams,
@@ -313,6 +329,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         columns: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -373,6 +391,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -388,6 +408,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -429,6 +451,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "end_time": end_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "start_time": start_time,
                     },
                     history_count_params.HistoryCountParams,

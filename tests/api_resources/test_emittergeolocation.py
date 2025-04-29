@@ -113,14 +113,23 @@ class TestEmittergeolocation:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         emittergeolocation = client.emittergeolocation.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EmittergeolocationRetrieveResponse, emittergeolocation, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        emittergeolocation = client.emittergeolocation.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EmittergeolocationRetrieveResponse, emittergeolocation, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.emittergeolocation.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -131,7 +140,7 @@ class TestEmittergeolocation:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.emittergeolocation.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -145,7 +154,7 @@ class TestEmittergeolocation:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.emittergeolocation.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -190,6 +199,15 @@ class TestEmittergeolocation:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         emittergeolocation = client.emittergeolocation.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, emittergeolocation, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        emittergeolocation = client.emittergeolocation.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, emittergeolocation, path=["response"])
 
@@ -280,6 +298,15 @@ class TestEmittergeolocation:
         assert_matches_type(EmittergeolocationQueryResponse, emittergeolocation, path=["response"])
 
     @parametrize
+    def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
+        emittergeolocation = client.emittergeolocation.query(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(EmittergeolocationQueryResponse, emittergeolocation, path=["response"])
+
+    @parametrize
     def test_raw_response_query(self, client: Unifieddatalibrary) -> None:
         response = client.emittergeolocation.with_raw_response.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -333,6 +360,16 @@ class TestEmittergeolocation:
         emittergeolocation = client.emittergeolocation.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        emittergeolocation = client.emittergeolocation.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
 
@@ -512,14 +549,23 @@ class TestAsyncEmittergeolocation:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         emittergeolocation = await async_client.emittergeolocation.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EmittergeolocationRetrieveResponse, emittergeolocation, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        emittergeolocation = await async_client.emittergeolocation.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EmittergeolocationRetrieveResponse, emittergeolocation, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.emittergeolocation.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -530,7 +576,7 @@ class TestAsyncEmittergeolocation:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.emittergeolocation.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -544,7 +590,7 @@ class TestAsyncEmittergeolocation:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.emittergeolocation.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -589,6 +635,15 @@ class TestAsyncEmittergeolocation:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         emittergeolocation = await async_client.emittergeolocation.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, emittergeolocation, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        emittergeolocation = await async_client.emittergeolocation.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, emittergeolocation, path=["response"])
 
@@ -679,6 +734,15 @@ class TestAsyncEmittergeolocation:
         assert_matches_type(EmittergeolocationQueryResponse, emittergeolocation, path=["response"])
 
     @parametrize
+    async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        emittergeolocation = await async_client.emittergeolocation.query(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(EmittergeolocationQueryResponse, emittergeolocation, path=["response"])
+
+    @parametrize
     async def test_raw_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.emittergeolocation.with_raw_response.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -732,6 +796,16 @@ class TestAsyncEmittergeolocation:
         emittergeolocation = await async_client.emittergeolocation.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        emittergeolocation = await async_client.emittergeolocation.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EmittergeolocationTupleResponse, emittergeolocation, path=["response"])
 

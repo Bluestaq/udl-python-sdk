@@ -14,6 +14,7 @@ from ...types import (
     diplomatic_clearance_tuple_params,
     diplomatic_clearance_create_params,
     diplomatic_clearance_update_params,
+    diplomatic_clearance_retrieve_params,
     diplomatic_clearance_create_bulk_params,
 )
 from .country import (
@@ -199,6 +200,8 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,7 +227,17 @@ class DiplomaticClearanceResource(SyncAPIResource):
         return self._get(
             f"/udl/diplomaticclearance/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diplomatic_clearance_retrieve_params.DiplomaticClearanceRetrieveParams,
+                ),
             ),
             cast_to=DiplomaticclearanceFull,
         )
@@ -354,6 +367,8 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -387,7 +402,12 @@ class DiplomaticClearanceResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"first_dep_date": first_dep_date}, diplomatic_clearance_list_params.DiplomaticClearanceListParams
+                    {
+                        "first_dep_date": first_dep_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diplomatic_clearance_list_params.DiplomaticClearanceListParams,
                 ),
             ),
             cast_to=DiplomaticClearanceListResponse,
@@ -433,6 +453,8 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -468,7 +490,12 @@ class DiplomaticClearanceResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"first_dep_date": first_dep_date}, diplomatic_clearance_count_params.DiplomaticClearanceCountParams
+                    {
+                        "first_dep_date": first_dep_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diplomatic_clearance_count_params.DiplomaticClearanceCountParams,
                 ),
             ),
             cast_to=str,
@@ -539,6 +566,8 @@ class DiplomaticClearanceResource(SyncAPIResource):
         *,
         columns: str,
         first_dep_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -584,6 +613,8 @@ class DiplomaticClearanceResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "first_dep_date": first_dep_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     diplomatic_clearance_tuple_params.DiplomaticClearanceTupleParams,
                 ),
@@ -741,6 +772,8 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -766,7 +799,17 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         return await self._get(
             f"/udl/diplomaticclearance/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diplomatic_clearance_retrieve_params.DiplomaticClearanceRetrieveParams,
+                ),
             ),
             cast_to=DiplomaticclearanceFull,
         )
@@ -896,6 +939,8 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -929,7 +974,12 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"first_dep_date": first_dep_date}, diplomatic_clearance_list_params.DiplomaticClearanceListParams
+                    {
+                        "first_dep_date": first_dep_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diplomatic_clearance_list_params.DiplomaticClearanceListParams,
                 ),
             ),
             cast_to=DiplomaticClearanceListResponse,
@@ -975,6 +1025,8 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1010,7 +1062,12 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"first_dep_date": first_dep_date}, diplomatic_clearance_count_params.DiplomaticClearanceCountParams
+                    {
+                        "first_dep_date": first_dep_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    diplomatic_clearance_count_params.DiplomaticClearanceCountParams,
                 ),
             ),
             cast_to=str,
@@ -1081,6 +1138,8 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         *,
         columns: str,
         first_dep_date: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1126,6 +1185,8 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "first_dep_date": first_dep_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     diplomatic_clearance_tuple_params.DiplomaticClearanceTupleParams,
                 ),

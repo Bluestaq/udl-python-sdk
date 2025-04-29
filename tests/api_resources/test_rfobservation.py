@@ -175,6 +175,15 @@ class TestRfobservation:
         assert_matches_type(RfobservationListResponse, rfobservation, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfobservation = client.rfobservation.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(RfobservationListResponse, rfobservation, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.rfobservation.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -202,6 +211,15 @@ class TestRfobservation:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         rfobservation = client.rfobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, rfobservation, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfobservation = client.rfobservation.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, rfobservation, path=["response"])
 
@@ -287,14 +305,23 @@ class TestRfobservation:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         rfobservation = client.rfobservation.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(RfobservationdetailsFull, rfobservation, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfobservation = client.rfobservation.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfobservationdetailsFull, rfobservation, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.rfobservation.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -305,7 +332,7 @@ class TestRfobservation:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.rfobservation.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -319,7 +346,7 @@ class TestRfobservation:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.rfobservation.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -352,6 +379,16 @@ class TestRfobservation:
         rfobservation = client.rfobservation.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        rfobservation = client.rfobservation.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
 
@@ -593,6 +630,15 @@ class TestAsyncRfobservation:
         assert_matches_type(RfobservationListResponse, rfobservation, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfobservation = await async_client.rfobservation.list(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(RfobservationListResponse, rfobservation, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfobservation.with_raw_response.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -620,6 +666,15 @@ class TestAsyncRfobservation:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfobservation = await async_client.rfobservation.count(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, rfobservation, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfobservation = await async_client.rfobservation.count(
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, rfobservation, path=["response"])
 
@@ -705,14 +760,23 @@ class TestAsyncRfobservation:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfobservation = await async_client.rfobservation.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(RfobservationdetailsFull, rfobservation, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfobservation = await async_client.rfobservation.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfobservationdetailsFull, rfobservation, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.rfobservation.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -723,7 +787,7 @@ class TestAsyncRfobservation:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.rfobservation.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -737,7 +801,7 @@ class TestAsyncRfobservation:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.rfobservation.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -770,6 +834,16 @@ class TestAsyncRfobservation:
         rfobservation = await async_client.rfobservation.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        rfobservation = await async_client.rfobservation.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(RfobservationTupleResponse, rfobservation, path=["response"])
 

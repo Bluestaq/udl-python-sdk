@@ -20,6 +20,7 @@ from ...types import (
     collect_response_list_params,
     collect_response_count_params,
     collect_response_create_params,
+    collect_response_retrieve_params,
     collect_response_create_bulk_params,
     collect_response_unvalidated_publish_params,
 )
@@ -284,6 +285,8 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -309,7 +312,17 @@ class CollectResponsesResource(SyncAPIResource):
         return self._get(
             f"/udl/collectresponse/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    collect_response_retrieve_params.CollectResponseRetrieveParams,
+                ),
             ),
             cast_to=CollectResponseFull,
         )
@@ -318,6 +331,8 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -351,7 +366,12 @@ class CollectResponsesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, collect_response_list_params.CollectResponseListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    collect_response_list_params.CollectResponseListParams,
                 ),
             ),
             cast_to=CollectResponseListResponse,
@@ -361,6 +381,8 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -396,7 +418,12 @@ class CollectResponsesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, collect_response_count_params.CollectResponseCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    collect_response_count_params.CollectResponseCountParams,
                 ),
             ),
             cast_to=str,
@@ -735,6 +762,8 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -760,7 +789,17 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         return await self._get(
             f"/udl/collectresponse/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    collect_response_retrieve_params.CollectResponseRetrieveParams,
+                ),
             ),
             cast_to=CollectResponseFull,
         )
@@ -769,6 +808,8 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -802,7 +843,12 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, collect_response_list_params.CollectResponseListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    collect_response_list_params.CollectResponseListParams,
                 ),
             ),
             cast_to=CollectResponseListResponse,
@@ -812,6 +858,8 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -847,7 +895,12 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, collect_response_count_params.CollectResponseCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    collect_response_count_params.CollectResponseCountParams,
                 ),
             ),
             cast_to=str,

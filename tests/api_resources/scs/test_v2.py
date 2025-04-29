@@ -70,6 +70,15 @@ class TestV2:
         assert_matches_type(V2ListResponse, v2, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        v2 = client.scs.v2.list(
+            path="path",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(V2ListResponse, v2, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.scs.v2.with_raw_response.list(
             path="path",
@@ -335,6 +344,15 @@ class TestAsyncV2:
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.list(
             path="path",
+        )
+        assert_matches_type(V2ListResponse, v2, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        v2 = await async_client.scs.v2.list(
+            path="path",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(V2ListResponse, v2, path=["response"])
 

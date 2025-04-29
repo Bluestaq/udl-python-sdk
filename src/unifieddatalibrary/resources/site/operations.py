@@ -24,6 +24,7 @@ from ...types.site import (
     operation_tuple_params,
     operation_create_params,
     operation_update_params,
+    operation_retrieve_params,
     operation_create_bulk_params,
     operation_unvalidated_publish_params,
 )
@@ -200,6 +201,8 @@ class OperationsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -225,7 +228,17 @@ class OperationsResource(SyncAPIResource):
         return self._get(
             f"/udl/siteoperations/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    operation_retrieve_params.OperationRetrieveParams,
+                ),
             ),
             cast_to=OperationRetrieveResponse,
         )
@@ -379,6 +392,8 @@ class OperationsResource(SyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -410,7 +425,14 @@ class OperationsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_site": id_site}, operation_list_params.OperationListParams),
+                query=maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    operation_list_params.OperationListParams,
+                ),
             ),
             cast_to=OperationListResponse,
         )
@@ -455,6 +477,8 @@ class OperationsResource(SyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -488,7 +512,14 @@ class OperationsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_site": id_site}, operation_count_params.OperationCountParams),
+                query=maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    operation_count_params.OperationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -558,6 +589,8 @@ class OperationsResource(SyncAPIResource):
         *,
         columns: str,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -602,6 +635,8 @@ class OperationsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "id_site": id_site,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     operation_tuple_params.OperationTupleParams,
                 ),
@@ -811,6 +846,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -836,7 +873,17 @@ class AsyncOperationsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/siteoperations/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    operation_retrieve_params.OperationRetrieveParams,
+                ),
             ),
             cast_to=OperationRetrieveResponse,
         )
@@ -990,6 +1037,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1021,7 +1070,14 @@ class AsyncOperationsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id_site": id_site}, operation_list_params.OperationListParams),
+                query=await async_maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    operation_list_params.OperationListParams,
+                ),
             ),
             cast_to=OperationListResponse,
         )
@@ -1066,6 +1122,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1099,7 +1157,14 @@ class AsyncOperationsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id_site": id_site}, operation_count_params.OperationCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    operation_count_params.OperationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1169,6 +1234,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         *,
         columns: str,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1213,6 +1280,8 @@ class AsyncOperationsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "id_site": id_site,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     operation_tuple_params.OperationTupleParams,
                 ),

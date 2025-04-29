@@ -218,14 +218,23 @@ class TestEvac:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         evac = client.evac.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EvacFull, evac, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        evac = client.evac.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EvacFull, evac, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.evac.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -236,7 +245,7 @@ class TestEvac:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.evac.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -250,13 +259,22 @@ class TestEvac:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.evac.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         evac = client.evac.list(
             req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EvacListResponse, evac, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        evac = client.evac.list(
+            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EvacListResponse, evac, path=["response"])
 
@@ -288,6 +306,15 @@ class TestEvac:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         evac = client.evac.count(
             req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, evac, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        evac = client.evac.count(
+            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, evac, path=["response"])
 
@@ -663,14 +690,23 @@ class TestAsyncEvac:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         evac = await async_client.evac.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EvacFull, evac, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        evac = await async_client.evac.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EvacFull, evac, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.evac.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -681,7 +717,7 @@ class TestAsyncEvac:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.evac.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -695,13 +731,22 @@ class TestAsyncEvac:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.evac.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         evac = await async_client.evac.list(
             req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EvacListResponse, evac, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        evac = await async_client.evac.list(
+            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(EvacListResponse, evac, path=["response"])
 
@@ -733,6 +778,15 @@ class TestAsyncEvac:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         evac = await async_client.evac.count(
             req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, evac, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        evac = await async_client.evac.count(
+            req_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, evac, path=["response"])
 

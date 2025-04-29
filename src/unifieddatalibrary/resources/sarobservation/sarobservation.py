@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    sarobservation_get_params,
     sarobservation_list_params,
     sarobservation_count_params,
     sarobservation_tuple_params,
@@ -445,6 +446,8 @@ class SarobservationResource(SyncAPIResource):
         self,
         *,
         collection_start: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -478,7 +481,12 @@ class SarobservationResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"collection_start": collection_start}, sarobservation_list_params.SarobservationListParams
+                    {
+                        "collection_start": collection_start,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sarobservation_list_params.SarobservationListParams,
                 ),
             ),
             cast_to=SarobservationListResponse,
@@ -488,6 +496,8 @@ class SarobservationResource(SyncAPIResource):
         self,
         *,
         collection_start: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -523,7 +533,12 @@ class SarobservationResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"collection_start": collection_start}, sarobservation_count_params.SarobservationCountParams
+                    {
+                        "collection_start": collection_start,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sarobservation_count_params.SarobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -570,6 +585,8 @@ class SarobservationResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -595,7 +612,17 @@ class SarobservationResource(SyncAPIResource):
         return self._get(
             f"/udl/sarobservation/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sarobservation_get_params.SarobservationGetParams,
+                ),
             ),
             cast_to=SarobservationFull,
         )
@@ -628,6 +655,8 @@ class SarobservationResource(SyncAPIResource):
         *,
         collection_start: Union[str, datetime],
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -673,6 +702,8 @@ class SarobservationResource(SyncAPIResource):
                     {
                         "collection_start": collection_start,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     sarobservation_tuple_params.SarobservationTupleParams,
                 ),
@@ -1120,6 +1151,8 @@ class AsyncSarobservationResource(AsyncAPIResource):
         self,
         *,
         collection_start: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1153,7 +1186,12 @@ class AsyncSarobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"collection_start": collection_start}, sarobservation_list_params.SarobservationListParams
+                    {
+                        "collection_start": collection_start,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sarobservation_list_params.SarobservationListParams,
                 ),
             ),
             cast_to=SarobservationListResponse,
@@ -1163,6 +1201,8 @@ class AsyncSarobservationResource(AsyncAPIResource):
         self,
         *,
         collection_start: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1198,7 +1238,12 @@ class AsyncSarobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"collection_start": collection_start}, sarobservation_count_params.SarobservationCountParams
+                    {
+                        "collection_start": collection_start,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sarobservation_count_params.SarobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -1245,6 +1290,8 @@ class AsyncSarobservationResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1270,7 +1317,17 @@ class AsyncSarobservationResource(AsyncAPIResource):
         return await self._get(
             f"/udl/sarobservation/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sarobservation_get_params.SarobservationGetParams,
+                ),
             ),
             cast_to=SarobservationFull,
         )
@@ -1303,6 +1360,8 @@ class AsyncSarobservationResource(AsyncAPIResource):
         *,
         collection_start: Union[str, datetime],
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1348,6 +1407,8 @@ class AsyncSarobservationResource(AsyncAPIResource):
                     {
                         "collection_start": collection_start,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     sarobservation_tuple_params.SarobservationTupleParams,
                 ),

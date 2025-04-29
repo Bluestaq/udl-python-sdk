@@ -165,6 +165,8 @@ class TestSolararraydetails:
         solararraydetail = client.solararraydetails.list(
             classification_marking="classificationMarking",
             data_mode="dataMode",
+            first_result=0,
+            max_result=0,
             source="source",
         )
         assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
@@ -230,14 +232,23 @@ class TestSolararraydetails:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         solararraydetail = client.solararraydetails.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        solararraydetail = client.solararraydetails.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.solararraydetails.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -248,7 +259,7 @@ class TestSolararraydetails:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.solararraydetails.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -262,7 +273,7 @@ class TestSolararraydetails:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.solararraydetails.with_raw_response.get(
-                "",
+                id="",
             )
 
 
@@ -414,6 +425,8 @@ class TestAsyncSolararraydetails:
         solararraydetail = await async_client.solararraydetails.list(
             classification_marking="classificationMarking",
             data_mode="dataMode",
+            first_result=0,
+            max_result=0,
             source="source",
         )
         assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
@@ -479,14 +492,23 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararraydetail = await async_client.solararraydetails.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        solararraydetail = await async_client.solararraydetails.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SolarArrayDetailsFull, solararraydetail, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.solararraydetails.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -497,7 +519,7 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.solararraydetails.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -511,5 +533,5 @@ class TestAsyncSolararraydetails:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.solararraydetails.with_raw_response.get(
-                "",
+                id="",
             )

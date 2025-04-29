@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    soiobservationset_get_params,
     soiobservationset_list_params,
     soiobservationset_count_params,
     soiobservationset_tuple_params,
@@ -464,6 +465,8 @@ class SoiobservationsetResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -497,7 +500,12 @@ class SoiobservationsetResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"start_time": start_time}, soiobservationset_list_params.SoiobservationsetListParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    soiobservationset_list_params.SoiobservationsetListParams,
                 ),
             ),
             cast_to=SoiobservationsetListResponse,
@@ -507,6 +515,8 @@ class SoiobservationsetResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -542,7 +552,12 @@ class SoiobservationsetResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"start_time": start_time}, soiobservationset_count_params.SoiobservationsetCountParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    soiobservationset_count_params.SoiobservationsetCountParams,
                 ),
             ),
             cast_to=str,
@@ -589,6 +604,8 @@ class SoiobservationsetResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -614,7 +631,17 @@ class SoiobservationsetResource(SyncAPIResource):
         return self._get(
             f"/udl/soiobservationset/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    soiobservationset_get_params.SoiobservationsetGetParams,
+                ),
             ),
             cast_to=SoiObservationSetFull,
         )
@@ -647,6 +674,8 @@ class SoiobservationsetResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -692,6 +721,8 @@ class SoiobservationsetResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     soiobservationset_tuple_params.SoiobservationsetTupleParams,
                 ),
@@ -1158,6 +1189,8 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1191,7 +1224,12 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time": start_time}, soiobservationset_list_params.SoiobservationsetListParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    soiobservationset_list_params.SoiobservationsetListParams,
                 ),
             ),
             cast_to=SoiobservationsetListResponse,
@@ -1201,6 +1239,8 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1236,7 +1276,12 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time": start_time}, soiobservationset_count_params.SoiobservationsetCountParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    soiobservationset_count_params.SoiobservationsetCountParams,
                 ),
             ),
             cast_to=str,
@@ -1283,6 +1328,8 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1308,7 +1355,17 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
         return await self._get(
             f"/udl/soiobservationset/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    soiobservationset_get_params.SoiobservationsetGetParams,
+                ),
             ),
             cast_to=SoiObservationSetFull,
         )
@@ -1341,6 +1398,8 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1386,6 +1445,8 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     soiobservationset_tuple_params.SoiobservationsetTupleParams,
                 ),

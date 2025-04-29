@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    link_status_get_params,
     link_status_list_params,
     link_status_count_params,
     link_status_tuple_params,
@@ -248,8 +249,10 @@ class LinkStatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -294,8 +297,10 @@ class LinkStatusResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_result": max_result,
                     },
                     link_status_list_params.LinkStatusListParams,
                 ),
@@ -307,8 +312,10 @@ class LinkStatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -355,8 +362,10 @@ class LinkStatusResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_result": max_result,
                     },
                     link_status_count_params.LinkStatusCountParams,
                 ),
@@ -368,6 +377,8 @@ class LinkStatusResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -393,7 +404,17 @@ class LinkStatusResource(SyncAPIResource):
         return self._get(
             f"/udl/linkstatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    link_status_get_params.LinkStatusGetParams,
+                ),
             ),
             cast_to=LinkStatusFull,
         )
@@ -426,8 +447,10 @@ class LinkStatusResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -482,8 +505,10 @@ class LinkStatusResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_result": max_result,
                     },
                     link_status_tuple_params.LinkStatusTupleParams,
                 ),
@@ -692,8 +717,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -738,8 +765,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_result": max_result,
                     },
                     link_status_list_params.LinkStatusListParams,
                 ),
@@ -751,8 +780,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -799,8 +830,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_result": max_result,
                     },
                     link_status_count_params.LinkStatusCountParams,
                 ),
@@ -812,6 +845,8 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -837,7 +872,17 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         return await self._get(
             f"/udl/linkstatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    link_status_get_params.LinkStatusGetParams,
+                ),
             ),
             cast_to=LinkStatusFull,
         )
@@ -870,8 +915,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -926,8 +973,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_result": max_result,
                     },
                     link_status_tuple_params.LinkStatusTupleParams,
                 ),

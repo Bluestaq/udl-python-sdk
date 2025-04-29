@@ -67,6 +67,8 @@ class SpaceenvobservationResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -100,7 +102,12 @@ class SpaceenvobservationResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"ob_time": ob_time}, spaceenvobservation_list_params.SpaceenvobservationListParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    spaceenvobservation_list_params.SpaceenvobservationListParams,
                 ),
             ),
             cast_to=SpaceenvobservationListResponse,
@@ -110,6 +117,8 @@ class SpaceenvobservationResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -145,7 +154,12 @@ class SpaceenvobservationResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"ob_time": ob_time}, spaceenvobservation_count_params.SpaceenvobservationCountParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    spaceenvobservation_count_params.SpaceenvobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -216,6 +230,8 @@ class SpaceenvobservationResource(SyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -261,6 +277,8 @@ class SpaceenvobservationResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     spaceenvobservation_tuple_params.SpaceenvobservationTupleParams,
                 ),
@@ -333,6 +351,8 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -366,7 +386,12 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, spaceenvobservation_list_params.SpaceenvobservationListParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    spaceenvobservation_list_params.SpaceenvobservationListParams,
                 ),
             ),
             cast_to=SpaceenvobservationListResponse,
@@ -376,6 +401,8 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -411,7 +438,12 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, spaceenvobservation_count_params.SpaceenvobservationCountParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    spaceenvobservation_count_params.SpaceenvobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -482,6 +514,8 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -527,6 +561,8 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     spaceenvobservation_tuple_params.SpaceenvobservationTupleParams,
                 ),

@@ -20,6 +20,7 @@ from ...types import (
     evac_list_params,
     evac_count_params,
     evac_create_params,
+    evac_retrieve_params,
     evac_create_bulk_params,
     evac_unvalidated_publish_params,
 )
@@ -298,6 +299,8 @@ class EvacResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -323,7 +326,17 @@ class EvacResource(SyncAPIResource):
         return self._get(
             f"/udl/evac/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    evac_retrieve_params.EvacRetrieveParams,
+                ),
             ),
             cast_to=EvacFull,
         )
@@ -332,6 +345,8 @@ class EvacResource(SyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -363,7 +378,14 @@ class EvacResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"req_time": req_time}, evac_list_params.EvacListParams),
+                query=maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    evac_list_params.EvacListParams,
+                ),
             ),
             cast_to=EvacListResponse,
         )
@@ -372,6 +394,8 @@ class EvacResource(SyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -405,7 +429,14 @@ class EvacResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"req_time": req_time}, evac_count_params.EvacCountParams),
+                query=maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    evac_count_params.EvacCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -756,6 +787,8 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -781,7 +814,17 @@ class AsyncEvacResource(AsyncAPIResource):
         return await self._get(
             f"/udl/evac/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    evac_retrieve_params.EvacRetrieveParams,
+                ),
             ),
             cast_to=EvacFull,
         )
@@ -790,6 +833,8 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -821,7 +866,14 @@ class AsyncEvacResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"req_time": req_time}, evac_list_params.EvacListParams),
+                query=await async_maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    evac_list_params.EvacListParams,
+                ),
             ),
             cast_to=EvacListResponse,
         )
@@ -830,6 +882,8 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -863,7 +917,14 @@ class AsyncEvacResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"req_time": req_time}, evac_count_params.EvacCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    evac_count_params.EvacCountParams,
+                ),
             ),
             cast_to=str,
         )

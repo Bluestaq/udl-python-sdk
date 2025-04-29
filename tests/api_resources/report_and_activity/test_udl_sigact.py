@@ -29,7 +29,21 @@ class TestUdlSigact:
     def test_method_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         udl_sigact = client.report_and_activity.udl_sigact.file_get(
-            "id",
+            id="id",
+        )
+        assert udl_sigact.is_closed
+        assert udl_sigact.json() == {"foo": "bar"}
+        assert cast(Any, udl_sigact.is_closed) is True
+        assert isinstance(udl_sigact, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_file_get_with_all_params(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        udl_sigact = client.report_and_activity.udl_sigact.file_get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert udl_sigact.is_closed
         assert udl_sigact.json() == {"foo": "bar"}
@@ -42,7 +56,7 @@ class TestUdlSigact:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         udl_sigact = client.report_and_activity.udl_sigact.with_raw_response.file_get(
-            "id",
+            id="id",
         )
 
         assert udl_sigact.is_closed is True
@@ -55,7 +69,7 @@ class TestUdlSigact:
     def test_streaming_response_file_get(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.report_and_activity.udl_sigact.with_streaming_response.file_get(
-            "id",
+            id="id",
         ) as udl_sigact:
             assert not udl_sigact.is_closed
             assert udl_sigact.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -71,7 +85,7 @@ class TestUdlSigact:
     def test_path_params_file_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.report_and_activity.udl_sigact.with_raw_response.file_get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -135,7 +149,23 @@ class TestAsyncUdlSigact:
     async def test_method_file_get(self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         udl_sigact = await async_client.report_and_activity.udl_sigact.file_get(
-            "id",
+            id="id",
+        )
+        assert udl_sigact.is_closed
+        assert await udl_sigact.json() == {"foo": "bar"}
+        assert cast(Any, udl_sigact.is_closed) is True
+        assert isinstance(udl_sigact, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_file_get_with_all_params(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        udl_sigact = await async_client.report_and_activity.udl_sigact.file_get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert udl_sigact.is_closed
         assert await udl_sigact.json() == {"foo": "bar"}
@@ -148,7 +178,7 @@ class TestAsyncUdlSigact:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         udl_sigact = await async_client.report_and_activity.udl_sigact.with_raw_response.file_get(
-            "id",
+            id="id",
         )
 
         assert udl_sigact.is_closed is True
@@ -163,7 +193,7 @@ class TestAsyncUdlSigact:
     ) -> None:
         respx_mock.get("/udl/sigact/getFile/id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.report_and_activity.udl_sigact.with_streaming_response.file_get(
-            "id",
+            id="id",
         ) as udl_sigact:
             assert not udl_sigact.is_closed
             assert udl_sigact.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,7 +209,7 @@ class TestAsyncUdlSigact:
     async def test_path_params_file_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.report_and_activity.udl_sigact.with_raw_response.file_get(
-                "",
+                id="",
             )
 
     @parametrize

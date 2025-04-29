@@ -29,6 +29,15 @@ class TestMti:
         assert_matches_type(MtiListResponse, mti, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        mti = client.mti.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(MtiListResponse, mti, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.mti.with_raw_response.list(
             created_at=parse_date("2019-12-27"),
@@ -56,6 +65,15 @@ class TestMti:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         mti = client.mti.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, mti, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        mti = client.mti.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, mti, path=["response"])
 
@@ -166,6 +184,16 @@ class TestMti:
         assert_matches_type(MtiTupleResponse, mti, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        mti = client.mti.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(MtiTupleResponse, mti, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.mti.with_raw_response.tuple(
             columns="columns",
@@ -252,6 +280,15 @@ class TestAsyncMti:
         assert_matches_type(MtiListResponse, mti, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        mti = await async_client.mti.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(MtiListResponse, mti, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.mti.with_raw_response.list(
             created_at=parse_date("2019-12-27"),
@@ -279,6 +316,15 @@ class TestAsyncMti:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         mti = await async_client.mti.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, mti, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        mti = await async_client.mti.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, mti, path=["response"])
 
@@ -385,6 +431,16 @@ class TestAsyncMti:
         mti = await async_client.mti.tuple(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(MtiTupleResponse, mti, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        mti = await async_client.mti.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(MtiTupleResponse, mti, path=["response"])
 

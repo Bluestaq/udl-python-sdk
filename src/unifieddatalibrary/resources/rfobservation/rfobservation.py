@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    rfobservation_get_params,
     rfobservation_list_params,
     rfobservation_count_params,
     rfobservation_tuple_params,
@@ -558,6 +559,8 @@ class RfobservationResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -590,7 +593,14 @@ class RfobservationResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, rfobservation_list_params.RfobservationListParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    rfobservation_list_params.RfobservationListParams,
+                ),
             ),
             cast_to=RfobservationListResponse,
         )
@@ -599,6 +609,8 @@ class RfobservationResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -633,7 +645,14 @@ class RfobservationResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, rfobservation_count_params.RfobservationCountParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    rfobservation_count_params.RfobservationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -679,6 +698,8 @@ class RfobservationResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -704,7 +725,17 @@ class RfobservationResource(SyncAPIResource):
         return self._get(
             f"/udl/rfobservation/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    rfobservation_get_params.RfobservationGetParams,
+                ),
             ),
             cast_to=RfobservationdetailsFull,
         )
@@ -737,6 +768,8 @@ class RfobservationResource(SyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -782,6 +815,8 @@ class RfobservationResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     rfobservation_tuple_params.RfobservationTupleParams,
                 ),
@@ -1342,6 +1377,8 @@ class AsyncRfobservationResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1375,7 +1412,12 @@ class AsyncRfobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, rfobservation_list_params.RfobservationListParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    rfobservation_list_params.RfobservationListParams,
                 ),
             ),
             cast_to=RfobservationListResponse,
@@ -1385,6 +1427,8 @@ class AsyncRfobservationResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1420,7 +1464,12 @@ class AsyncRfobservationResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, rfobservation_count_params.RfobservationCountParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    rfobservation_count_params.RfobservationCountParams,
                 ),
             ),
             cast_to=str,
@@ -1467,6 +1516,8 @@ class AsyncRfobservationResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1492,7 +1543,17 @@ class AsyncRfobservationResource(AsyncAPIResource):
         return await self._get(
             f"/udl/rfobservation/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    rfobservation_get_params.RfobservationGetParams,
+                ),
             ),
             cast_to=RfobservationdetailsFull,
         )
@@ -1525,6 +1586,8 @@ class AsyncRfobservationResource(AsyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1570,6 +1633,8 @@ class AsyncRfobservationResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     rfobservation_tuple_params.RfobservationTupleParams,
                 ),

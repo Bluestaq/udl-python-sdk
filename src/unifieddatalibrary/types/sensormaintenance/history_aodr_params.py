@@ -26,6 +26,10 @@ class HistoryAodrParams(TypedDict, total=False):
     end time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+
     notification: str
     """optional, notification method for the created file link.
 

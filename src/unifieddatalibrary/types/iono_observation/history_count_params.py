@@ -14,3 +14,7 @@ __all__ = ["HistoryCountParams"]
 class HistoryCountParams(TypedDict, total=False):
     start_time_utc: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startTimeUTC", format="iso8601")]]
     """Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

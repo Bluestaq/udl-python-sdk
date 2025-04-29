@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    sgi_get_params,
     sgi_list_params,
     sgi_count_params,
     sgi_tuple_params,
@@ -779,6 +780,8 @@ class SgiResource(SyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -822,6 +825,8 @@ class SgiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_list_params.SgiListParams,
@@ -870,6 +875,8 @@ class SgiResource(SyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -915,6 +922,8 @@ class SgiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_count_params.SgiCountParams,
@@ -964,6 +973,8 @@ class SgiResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -989,7 +1000,17 @@ class SgiResource(SyncAPIResource):
         return self._get(
             f"/udl/sgi/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sgi_get_params.SgiGetParams,
+                ),
             ),
             cast_to=SgiFull,
         )
@@ -998,6 +1019,8 @@ class SgiResource(SyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1038,6 +1061,8 @@ class SgiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
@@ -1074,6 +1099,8 @@ class SgiResource(SyncAPIResource):
         *,
         columns: str,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1127,6 +1154,8 @@ class SgiResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_tuple_params.SgiTupleParams,
@@ -1907,6 +1936,8 @@ class AsyncSgiResource(AsyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1950,6 +1981,8 @@ class AsyncSgiResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_list_params.SgiListParams,
@@ -1998,6 +2031,8 @@ class AsyncSgiResource(AsyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2043,6 +2078,8 @@ class AsyncSgiResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_count_params.SgiCountParams,
@@ -2092,6 +2129,8 @@ class AsyncSgiResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2117,7 +2156,17 @@ class AsyncSgiResource(AsyncAPIResource):
         return await self._get(
             f"/udl/sgi/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    sgi_get_params.SgiGetParams,
+                ),
             ),
             cast_to=SgiFull,
         )
@@ -2126,6 +2175,8 @@ class AsyncSgiResource(AsyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2166,6 +2217,8 @@ class AsyncSgiResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
@@ -2202,6 +2255,8 @@ class AsyncSgiResource(AsyncAPIResource):
         *,
         columns: str,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2255,6 +2310,8 @@ class AsyncSgiResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "sgi_date": sgi_date,
                     },
                     sgi_tuple_params.SgiTupleParams,

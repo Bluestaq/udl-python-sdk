@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types import SensorobservationtypeGetResponse, SensorobservationtypeListResponse
+from unifieddatalibrary.types import (
+    SensorobservationtypeGetResponse,
+    SensorobservationtypeListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,6 +23,14 @@ class TestSensorobservationtype:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         sensorobservationtype = client.sensorobservationtype.list()
+        assert_matches_type(SensorobservationtypeListResponse, sensorobservationtype, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sensorobservationtype = client.sensorobservationtype.list(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(SensorobservationtypeListResponse, sensorobservationtype, path=["response"])
 
     @parametrize
@@ -45,14 +56,23 @@ class TestSensorobservationtype:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         sensorobservationtype = client.sensorobservationtype.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SensorobservationtypeGetResponse, sensorobservationtype, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sensorobservationtype = client.sensorobservationtype.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SensorobservationtypeGetResponse, sensorobservationtype, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.sensorobservationtype.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -63,7 +83,7 @@ class TestSensorobservationtype:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.sensorobservationtype.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -77,7 +97,7 @@ class TestSensorobservationtype:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.sensorobservationtype.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -115,6 +135,14 @@ class TestAsyncSensorobservationtype:
         assert_matches_type(SensorobservationtypeListResponse, sensorobservationtype, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sensorobservationtype = await async_client.sensorobservationtype.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SensorobservationtypeListResponse, sensorobservationtype, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensorobservationtype.with_raw_response.list()
 
@@ -137,14 +165,23 @@ class TestAsyncSensorobservationtype:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensorobservationtype = await async_client.sensorobservationtype.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SensorobservationtypeGetResponse, sensorobservationtype, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sensorobservationtype = await async_client.sensorobservationtype.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SensorobservationtypeGetResponse, sensorobservationtype, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensorobservationtype.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -155,7 +192,7 @@ class TestAsyncSensorobservationtype:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensorobservationtype.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -169,7 +206,7 @@ class TestAsyncSensorobservationtype:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.sensorobservationtype.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize

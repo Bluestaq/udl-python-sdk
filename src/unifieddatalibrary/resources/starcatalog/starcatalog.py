@@ -8,6 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    starcatalog_get_params,
     starcatalog_list_params,
     starcatalog_count_params,
     starcatalog_tuple_params,
@@ -560,6 +561,8 @@ class StarcatalogResource(SyncAPIResource):
         self,
         *,
         dec: float | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -601,6 +604,8 @@ class StarcatalogResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "dec": dec,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "ra": ra,
                     },
                     starcatalog_list_params.StarcatalogListParams,
@@ -649,6 +654,8 @@ class StarcatalogResource(SyncAPIResource):
         self,
         *,
         dec: float | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -692,6 +699,8 @@ class StarcatalogResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "dec": dec,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "ra": ra,
                     },
                     starcatalog_count_params.StarcatalogCountParams,
@@ -741,6 +750,8 @@ class StarcatalogResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -766,7 +777,17 @@ class StarcatalogResource(SyncAPIResource):
         return self._get(
             f"/udl/starcatalog/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    starcatalog_get_params.StarcatalogGetParams,
+                ),
             ),
             cast_to=StarcatalogGetResponse,
         )
@@ -799,6 +820,8 @@ class StarcatalogResource(SyncAPIResource):
         *,
         columns: str,
         dec: float | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -850,6 +873,8 @@ class StarcatalogResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "dec": dec,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "ra": ra,
                     },
                     starcatalog_tuple_params.StarcatalogTupleParams,
@@ -1413,6 +1438,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
         self,
         *,
         dec: float | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1454,6 +1481,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "dec": dec,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "ra": ra,
                     },
                     starcatalog_list_params.StarcatalogListParams,
@@ -1502,6 +1531,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
         self,
         *,
         dec: float | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1545,6 +1576,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "dec": dec,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "ra": ra,
                     },
                     starcatalog_count_params.StarcatalogCountParams,
@@ -1594,6 +1627,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1619,7 +1654,17 @@ class AsyncStarcatalogResource(AsyncAPIResource):
         return await self._get(
             f"/udl/starcatalog/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    starcatalog_get_params.StarcatalogGetParams,
+                ),
             ),
             cast_to=StarcatalogGetResponse,
         )
@@ -1652,6 +1697,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
         *,
         columns: str,
         dec: float | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         ra: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1703,6 +1750,8 @@ class AsyncStarcatalogResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "dec": dec,
+                        "first_result": first_result,
+                        "max_result": max_result,
                         "ra": ra,
                     },
                     starcatalog_tuple_params.StarcatalogTupleParams,

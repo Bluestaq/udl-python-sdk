@@ -92,14 +92,23 @@ class TestChannels:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(ChannelFull, channel, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        channel = client.channels.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(ChannelFull, channel, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.channels.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -110,7 +119,7 @@ class TestChannels:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.channels.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,7 +133,7 @@ class TestChannels:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.channels.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -217,6 +226,14 @@ class TestChannels:
         assert_matches_type(ChannelListResponse, channel, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        channel = client.channels.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(ChannelListResponse, channel, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.channels.with_raw_response.list()
 
@@ -280,6 +297,14 @@ class TestChannels:
         assert_matches_type(str, channel, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        channel = client.channels.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, channel, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.channels.with_raw_response.count()
 
@@ -328,6 +353,15 @@ class TestChannels:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         channel = client.channels.tuple(
             columns="columns",
+        )
+        assert_matches_type(ChannelTupleResponse, channel, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        channel = client.channels.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(ChannelTupleResponse, channel, path=["response"])
 
@@ -430,14 +464,23 @@ class TestAsyncChannels:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(ChannelFull, channel, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        channel = await async_client.channels.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(ChannelFull, channel, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.channels.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -448,7 +491,7 @@ class TestAsyncChannels:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.channels.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -462,7 +505,7 @@ class TestAsyncChannels:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.channels.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -555,6 +598,14 @@ class TestAsyncChannels:
         assert_matches_type(ChannelListResponse, channel, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        channel = await async_client.channels.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(ChannelListResponse, channel, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.channels.with_raw_response.list()
 
@@ -618,6 +669,14 @@ class TestAsyncChannels:
         assert_matches_type(str, channel, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        channel = await async_client.channels.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, channel, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.channels.with_raw_response.count()
 
@@ -666,6 +725,15 @@ class TestAsyncChannels:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         channel = await async_client.channels.tuple(
             columns="columns",
+        )
+        assert_matches_type(ChannelTupleResponse, channel, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        channel = await async_client.channels.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(ChannelTupleResponse, channel, path=["response"])
 

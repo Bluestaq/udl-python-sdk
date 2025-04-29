@@ -146,6 +146,15 @@ class TestAircraftSortie:
         assert_matches_type(AircraftSortieListResponse, aircraft_sortie, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        aircraft_sortie = client.air_operations.aircraft_sortie.list(
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AircraftSortieListResponse, aircraft_sortie, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.air_operations.aircraft_sortie.with_raw_response.list(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -173,6 +182,15 @@ class TestAircraftSortie:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         aircraft_sortie = client.air_operations.aircraft_sortie.count(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, aircraft_sortie, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        aircraft_sortie = client.air_operations.aircraft_sortie.count(
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, aircraft_sortie, path=["response"])
 
@@ -264,6 +282,8 @@ class TestAircraftSortie:
         aircraft_sortie = client.air_operations.aircraft_sortie.history_aodr(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -298,6 +318,15 @@ class TestAircraftSortie:
     def test_method_history_count(self, client: Unifieddatalibrary) -> None:
         aircraft_sortie = client.air_operations.aircraft_sortie.history_count(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, aircraft_sortie, path=["response"])
+
+    @parametrize
+    def test_method_history_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        aircraft_sortie = client.air_operations.aircraft_sortie.history_count(
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, aircraft_sortie, path=["response"])
 
@@ -337,6 +366,8 @@ class TestAircraftSortie:
         aircraft_sortie = client.air_operations.aircraft_sortie.history_query(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AircraftSortieHistoryQueryResponse, aircraft_sortie, path=["response"])
 
@@ -493,6 +524,15 @@ class TestAsyncAircraftSortie:
         assert_matches_type(AircraftSortieListResponse, aircraft_sortie, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft_sortie = await async_client.air_operations.aircraft_sortie.list(
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AircraftSortieListResponse, aircraft_sortie, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_operations.aircraft_sortie.with_raw_response.list(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -520,6 +560,15 @@ class TestAsyncAircraftSortie:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sortie = await async_client.air_operations.aircraft_sortie.count(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, aircraft_sortie, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft_sortie = await async_client.air_operations.aircraft_sortie.count(
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, aircraft_sortie, path=["response"])
 
@@ -611,6 +660,8 @@ class TestAsyncAircraftSortie:
         aircraft_sortie = await async_client.air_operations.aircraft_sortie.history_aodr(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -645,6 +696,15 @@ class TestAsyncAircraftSortie:
     async def test_method_history_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sortie = await async_client.air_operations.aircraft_sortie.history_count(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, aircraft_sortie, path=["response"])
+
+    @parametrize
+    async def test_method_history_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft_sortie = await async_client.air_operations.aircraft_sortie.history_count(
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, aircraft_sortie, path=["response"])
 
@@ -684,6 +744,8 @@ class TestAsyncAircraftSortie:
         aircraft_sortie = await async_client.air_operations.aircraft_sortie.history_query(
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AircraftSortieHistoryQueryResponse, aircraft_sortie, path=["response"])
 

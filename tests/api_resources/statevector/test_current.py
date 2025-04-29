@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types.statevector import CurrentListResponse, CurrentTupleResponse
+from unifieddatalibrary.types.statevector import (
+    CurrentListResponse,
+    CurrentTupleResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,6 +23,14 @@ class TestCurrent:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         current = client.statevector.current.list()
+        assert_matches_type(CurrentListResponse, current, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        current = client.statevector.current.list(
+            first_result=0,
+            max_result=0,
+        )
         assert_matches_type(CurrentListResponse, current, path=["response"])
 
     @parametrize
@@ -46,6 +57,15 @@ class TestCurrent:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         current = client.statevector.current.tuple(
             columns="columns",
+        )
+        assert_matches_type(CurrentTupleResponse, current, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        current = client.statevector.current.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(CurrentTupleResponse, current, path=["response"])
 
@@ -83,6 +103,14 @@ class TestAsyncCurrent:
         assert_matches_type(CurrentListResponse, current, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        current = await async_client.statevector.current.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(CurrentListResponse, current, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.statevector.current.with_raw_response.list()
 
@@ -106,6 +134,15 @@ class TestAsyncCurrent:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         current = await async_client.statevector.current.tuple(
             columns="columns",
+        )
+        assert_matches_type(CurrentTupleResponse, current, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        current = await async_client.statevector.current.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(CurrentTupleResponse, current, path=["response"])
 

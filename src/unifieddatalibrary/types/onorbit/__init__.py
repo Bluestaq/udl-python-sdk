@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from .antenna_details_full import AntennaDetailsFull as AntennaDetailsFull
 from .antenna_details_abridged import AntennaDetailsAbridged as AntennaDetailsAbridged
+from .antenna_detail_list_params import AntennaDetailListParams as AntennaDetailListParams
 from .antenna_detail_create_params import AntennaDetailCreateParams as AntennaDetailCreateParams
 from .antenna_detail_list_response import AntennaDetailListResponse as AntennaDetailListResponse
 from .antenna_detail_update_params import AntennaDetailUpdateParams as AntennaDetailUpdateParams
+from .antenna_detail_retrieve_params import AntennaDetailRetrieveParams as AntennaDetailRetrieveParams

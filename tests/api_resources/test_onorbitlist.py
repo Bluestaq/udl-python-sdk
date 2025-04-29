@@ -150,6 +150,14 @@ class TestOnorbitlist:
         assert_matches_type(OnorbitlistListResponse, onorbitlist, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onorbitlist = client.onorbitlist.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OnorbitlistListResponse, onorbitlist, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitlist.with_raw_response.list()
 
@@ -213,6 +221,14 @@ class TestOnorbitlist:
         assert_matches_type(str, onorbitlist, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onorbitlist = client.onorbitlist.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, onorbitlist, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitlist.with_raw_response.count()
 
@@ -235,14 +251,23 @@ class TestOnorbitlist:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OnorbitlistGetResponse, onorbitlist, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onorbitlist = client.onorbitlist.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OnorbitlistGetResponse, onorbitlist, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitlist.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -253,7 +278,7 @@ class TestOnorbitlist:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.onorbitlist.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -267,7 +292,7 @@ class TestOnorbitlist:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.onorbitlist.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -299,6 +324,15 @@ class TestOnorbitlist:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         onorbitlist = client.onorbitlist.tuple(
             columns="columns",
+        )
+        assert_matches_type(OnorbitlistTupleResponse, onorbitlist, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onorbitlist = client.onorbitlist.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OnorbitlistTupleResponse, onorbitlist, path=["response"])
 
@@ -459,6 +493,14 @@ class TestAsyncOnorbitlist:
         assert_matches_type(OnorbitlistListResponse, onorbitlist, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitlist = await async_client.onorbitlist.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OnorbitlistListResponse, onorbitlist, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitlist.with_raw_response.list()
 
@@ -522,6 +564,14 @@ class TestAsyncOnorbitlist:
         assert_matches_type(str, onorbitlist, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitlist = await async_client.onorbitlist.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, onorbitlist, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitlist.with_raw_response.count()
 
@@ -544,14 +594,23 @@ class TestAsyncOnorbitlist:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OnorbitlistGetResponse, onorbitlist, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitlist = await async_client.onorbitlist.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OnorbitlistGetResponse, onorbitlist, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitlist.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -562,7 +621,7 @@ class TestAsyncOnorbitlist:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitlist.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -576,7 +635,7 @@ class TestAsyncOnorbitlist:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.onorbitlist.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -608,6 +667,15 @@ class TestAsyncOnorbitlist:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitlist = await async_client.onorbitlist.tuple(
             columns="columns",
+        )
+        assert_matches_type(OnorbitlistTupleResponse, onorbitlist, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitlist = await async_client.onorbitlist.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OnorbitlistTupleResponse, onorbitlist, path=["response"])
 

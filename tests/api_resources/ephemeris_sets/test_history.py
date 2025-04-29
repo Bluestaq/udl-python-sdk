@@ -29,6 +29,8 @@ class TestHistory:
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.ephemeris_sets.history.list(
             columns="columns",
+            first_result=0,
+            max_result=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -63,6 +65,8 @@ class TestHistory:
     def test_method_aodr_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.ephemeris_sets.history.aodr(
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -99,6 +103,8 @@ class TestHistory:
     @parametrize
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.ephemeris_sets.history.count(
+            first_result=0,
+            max_result=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -137,6 +143,8 @@ class TestAsyncHistory:
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.ephemeris_sets.history.list(
             columns="columns",
+            first_result=0,
+            max_result=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -171,6 +179,8 @@ class TestAsyncHistory:
     async def test_method_aodr_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.ephemeris_sets.history.aodr(
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -207,6 +217,8 @@ class TestAsyncHistory:
     @parametrize
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.ephemeris_sets.history.count(
+            first_result=0,
+            max_result=0,
             point_end_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             point_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )

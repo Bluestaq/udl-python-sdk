@@ -25,3 +25,7 @@ class AirLoadPlanTupleParams(TypedDict, total=False):
     The current estimated time that the aircraft is planned to depart, in ISO 8601
     UTC format with millisecond precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

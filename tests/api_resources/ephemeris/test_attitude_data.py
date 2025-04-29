@@ -27,6 +27,15 @@ class TestAttitudeData:
         assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_data = client.ephemeris.attitude_data.list(
+            as_id="asId",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.ephemeris.attitude_data.with_raw_response.list(
             as_id="asId",
@@ -54,6 +63,15 @@ class TestAttitudeData:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         attitude_data = client.ephemeris.attitude_data.count(
             as_id="asId",
+        )
+        assert_matches_type(str, attitude_data, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_data = client.ephemeris.attitude_data.count(
+            as_id="asId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, attitude_data, path=["response"])
 
@@ -93,6 +111,15 @@ class TestAsyncAttitudeData:
         assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_data = await async_client.ephemeris.attitude_data.list(
+            as_id="asId",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.ephemeris.attitude_data.with_raw_response.list(
             as_id="asId",
@@ -120,6 +147,15 @@ class TestAsyncAttitudeData:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_data = await async_client.ephemeris.attitude_data.count(
             as_id="asId",
+        )
+        assert_matches_type(str, attitude_data, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_data = await async_client.ephemeris.attitude_data.count(
+            as_id="asId",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, attitude_data, path=["response"])
 

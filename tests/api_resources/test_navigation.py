@@ -247,6 +247,14 @@ class TestNavigation:
         assert_matches_type(NavigationListResponse, navigation, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        navigation = client.navigation.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(NavigationListResponse, navigation, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.navigation.with_raw_response.list()
 
@@ -310,6 +318,14 @@ class TestNavigation:
         assert_matches_type(str, navigation, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        navigation = client.navigation.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, navigation, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.navigation.with_raw_response.count()
 
@@ -332,14 +348,23 @@ class TestNavigation:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(NavigationGetResponse, navigation, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        navigation = client.navigation.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(NavigationGetResponse, navigation, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.navigation.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -350,7 +375,7 @@ class TestNavigation:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.navigation.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -364,7 +389,7 @@ class TestNavigation:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.navigation.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -396,6 +421,15 @@ class TestNavigation:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.tuple(
             columns="columns",
+        )
+        assert_matches_type(NavigationTupleResponse, navigation, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        navigation = client.navigation.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(NavigationTupleResponse, navigation, path=["response"])
 
@@ -652,6 +686,14 @@ class TestAsyncNavigation:
         assert_matches_type(NavigationListResponse, navigation, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        navigation = await async_client.navigation.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(NavigationListResponse, navigation, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.navigation.with_raw_response.list()
 
@@ -715,6 +757,14 @@ class TestAsyncNavigation:
         assert_matches_type(str, navigation, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        navigation = await async_client.navigation.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, navigation, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.navigation.with_raw_response.count()
 
@@ -737,14 +787,23 @@ class TestAsyncNavigation:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(NavigationGetResponse, navigation, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        navigation = await async_client.navigation.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(NavigationGetResponse, navigation, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.navigation.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -755,7 +814,7 @@ class TestAsyncNavigation:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.navigation.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -769,7 +828,7 @@ class TestAsyncNavigation:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.navigation.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -801,6 +860,15 @@ class TestAsyncNavigation:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.tuple(
             columns="columns",
+        )
+        assert_matches_type(NavigationTupleResponse, navigation, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        navigation = await async_client.navigation.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(NavigationTupleResponse, navigation, path=["response"])
 

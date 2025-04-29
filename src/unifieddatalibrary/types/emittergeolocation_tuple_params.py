@@ -25,3 +25,7 @@ class EmittergeolocationTupleParams(TypedDict, total=False):
     The start time for this Emitter Geo Location data set in ISO 8601 UTC with
     microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .current_list_params import CurrentListParams as CurrentListParams
 from .history_aodr_params import HistoryAodrParams as HistoryAodrParams
 from .history_list_params import HistoryListParams as HistoryListParams
 from .current_tuple_params import CurrentTupleParams as CurrentTupleParams

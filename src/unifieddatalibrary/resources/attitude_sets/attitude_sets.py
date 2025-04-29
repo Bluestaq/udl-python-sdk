@@ -284,6 +284,8 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -318,7 +320,14 @@ class AttitudeSetsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, attitude_set_list_params.AttitudeSetListParams),
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_set_list_params.AttitudeSetListParams,
+                ),
             ),
             cast_to=AttitudeSetListResponse,
         )
@@ -327,6 +336,8 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -363,7 +374,14 @@ class AttitudeSetsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, attitude_set_count_params.AttitudeSetCountParams),
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_set_count_params.AttitudeSetCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -396,6 +414,8 @@ class AttitudeSetsResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -443,6 +463,8 @@ class AttitudeSetsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     attitude_set_tuple_params.AttitudeSetTupleParams,
                 ),
@@ -908,6 +930,8 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -943,7 +967,12 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time": start_time}, attitude_set_list_params.AttitudeSetListParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_set_list_params.AttitudeSetListParams,
                 ),
             ),
             cast_to=AttitudeSetListResponse,
@@ -953,6 +982,8 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -990,7 +1021,12 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time": start_time}, attitude_set_count_params.AttitudeSetCountParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_set_count_params.AttitudeSetCountParams,
                 ),
             ),
             cast_to=str,
@@ -1024,6 +1060,8 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1071,6 +1109,8 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     attitude_set_tuple_params.AttitudeSetTupleParams,
                 ),

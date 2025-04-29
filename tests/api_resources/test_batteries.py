@@ -72,14 +72,23 @@ class TestBatteries:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(BatteryFull, battery, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        battery = client.batteries.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(BatteryFull, battery, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.batteries.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -90,7 +99,7 @@ class TestBatteries:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.batteries.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -104,7 +113,7 @@ class TestBatteries:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.batteries.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -175,6 +184,14 @@ class TestBatteries:
         assert_matches_type(BatteryListResponse, battery, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        battery = client.batteries.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(BatteryListResponse, battery, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.batteries.with_raw_response.list()
 
@@ -238,6 +255,14 @@ class TestBatteries:
         assert_matches_type(str, battery, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        battery = client.batteries.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, battery, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.batteries.with_raw_response.count()
 
@@ -286,6 +311,15 @@ class TestBatteries:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.tuple(
             columns="columns",
+        )
+        assert_matches_type(BatteryTupleResponse, battery, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        battery = client.batteries.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(BatteryTupleResponse, battery, path=["response"])
 
@@ -368,14 +402,23 @@ class TestAsyncBatteries:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(BatteryFull, battery, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        battery = await async_client.batteries.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(BatteryFull, battery, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batteries.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -386,7 +429,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.batteries.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -400,7 +443,7 @@ class TestAsyncBatteries:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.batteries.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -471,6 +514,14 @@ class TestAsyncBatteries:
         assert_matches_type(BatteryListResponse, battery, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        battery = await async_client.batteries.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(BatteryListResponse, battery, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batteries.with_raw_response.list()
 
@@ -534,6 +585,14 @@ class TestAsyncBatteries:
         assert_matches_type(str, battery, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        battery = await async_client.batteries.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, battery, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.batteries.with_raw_response.count()
 
@@ -582,6 +641,15 @@ class TestAsyncBatteries:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.tuple(
             columns="columns",
+        )
+        assert_matches_type(BatteryTupleResponse, battery, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        battery = await async_client.batteries.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(BatteryTupleResponse, battery, path=["response"])
 

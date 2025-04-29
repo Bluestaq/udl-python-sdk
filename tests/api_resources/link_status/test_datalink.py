@@ -208,6 +208,15 @@ class TestDatalink:
         assert_matches_type(DatalinkListResponse, datalink, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.link_status.datalink.with_raw_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -235,6 +244,15 @@ class TestDatalink:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         datalink = client.link_status.datalink.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, datalink, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, datalink, path=["response"])
 
@@ -292,6 +310,16 @@ class TestDatalink:
         datalink = client.link_status.datalink.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
 
@@ -570,6 +598,15 @@ class TestAsyncDatalink:
         assert_matches_type(DatalinkListResponse, datalink, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.link_status.datalink.with_raw_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -597,6 +634,15 @@ class TestAsyncDatalink:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         datalink = await async_client.link_status.datalink.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, datalink, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, datalink, path=["response"])
 
@@ -654,6 +700,16 @@ class TestAsyncDatalink:
         datalink = await async_client.link_status.datalink.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
 

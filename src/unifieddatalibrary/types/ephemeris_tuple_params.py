@@ -24,3 +24,7 @@ class EphemerisTupleParams(TypedDict, total=False):
     The esId (ephemerisSet id) is used to identify all individual ephemeris states
     associated with a parent ephemerisSet. (uuid)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

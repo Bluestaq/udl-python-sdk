@@ -27,6 +27,15 @@ class TestHistory:
         assert_matches_type(str, history, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.featureassessment.history.count(
+            id_analytic_imagery="idAnalyticImagery",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.featureassessment.history.with_raw_response.count(
             id_analytic_imagery="idAnalyticImagery",
@@ -62,6 +71,8 @@ class TestHistory:
         history = client.featureassessment.history.query(
             id_analytic_imagery="idAnalyticImagery",
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
@@ -101,6 +112,8 @@ class TestHistory:
         history = client.featureassessment.history.write_aodr(
             id_analytic_imagery="idAnalyticImagery",
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -143,6 +156,15 @@ class TestAsyncHistory:
         assert_matches_type(str, history, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.featureassessment.history.count(
+            id_analytic_imagery="idAnalyticImagery",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.featureassessment.history.with_raw_response.count(
             id_analytic_imagery="idAnalyticImagery",
@@ -178,6 +200,8 @@ class TestAsyncHistory:
         history = await async_client.featureassessment.history.query(
             id_analytic_imagery="idAnalyticImagery",
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
@@ -217,6 +241,8 @@ class TestAsyncHistory:
         history = await async_client.featureassessment.history.write_aodr(
             id_analytic_imagery="idAnalyticImagery",
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",

@@ -9,10 +9,12 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    groundimagery_get_params,
     groundimagery_list_params,
     groundimagery_count_params,
     groundimagery_tuple_params,
     groundimagery_create_params,
+    groundimagery_get_file_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
@@ -235,6 +237,8 @@ class GroundimageryResource(SyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,7 +270,14 @@ class GroundimageryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"image_time": image_time}, groundimagery_list_params.GroundimageryListParams),
+                query=maybe_transform(
+                    {
+                        "image_time": image_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_list_params.GroundimageryListParams,
+                ),
             ),
             cast_to=GroundimageryListResponse,
         )
@@ -275,6 +286,8 @@ class GroundimageryResource(SyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -308,7 +321,14 @@ class GroundimageryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"image_time": image_time}, groundimagery_count_params.GroundimageryCountParams),
+                query=maybe_transform(
+                    {
+                        "image_time": image_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_count_params.GroundimageryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -317,6 +337,8 @@ class GroundimageryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -343,7 +365,17 @@ class GroundimageryResource(SyncAPIResource):
         return self._get(
             f"/udl/groundimagery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_get_params.GroundimageryGetParams,
+                ),
             ),
             cast_to=GroundImageryFull,
         )
@@ -352,6 +384,8 @@ class GroundimageryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -379,7 +413,17 @@ class GroundimageryResource(SyncAPIResource):
         return self._get(
             f"/udl/groundimagery/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_get_file_params.GroundimageryGetFileParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -412,6 +456,8 @@ class GroundimageryResource(SyncAPIResource):
         *,
         columns: str,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -456,6 +502,8 @@ class GroundimageryResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "image_time": image_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     groundimagery_tuple_params.GroundimageryTupleParams,
                 ),
@@ -659,6 +707,8 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -691,7 +741,12 @@ class AsyncGroundimageryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"image_time": image_time}, groundimagery_list_params.GroundimageryListParams
+                    {
+                        "image_time": image_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_list_params.GroundimageryListParams,
                 ),
             ),
             cast_to=GroundimageryListResponse,
@@ -701,6 +756,8 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -735,7 +792,12 @@ class AsyncGroundimageryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"image_time": image_time}, groundimagery_count_params.GroundimageryCountParams
+                    {
+                        "image_time": image_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_count_params.GroundimageryCountParams,
                 ),
             ),
             cast_to=str,
@@ -745,6 +807,8 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -771,7 +835,17 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/groundimagery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_get_params.GroundimageryGetParams,
+                ),
             ),
             cast_to=GroundImageryFull,
         )
@@ -780,6 +854,8 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -807,7 +883,17 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/groundimagery/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    groundimagery_get_file_params.GroundimageryGetFileParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
@@ -840,6 +926,8 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         *,
         columns: str,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -884,6 +972,8 @@ class AsyncGroundimageryResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "image_time": image_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     groundimagery_tuple_params.GroundimageryTupleParams,
                 ),

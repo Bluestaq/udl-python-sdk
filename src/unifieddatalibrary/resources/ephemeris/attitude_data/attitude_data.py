@@ -57,6 +57,8 @@ class AttitudeDataResource(SyncAPIResource):
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -88,7 +90,14 @@ class AttitudeDataResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"as_id": as_id}, attitude_data_list_params.AttitudeDataListParams),
+                query=maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_data_list_params.AttitudeDataListParams,
+                ),
             ),
             cast_to=AttitudeDataListResponse,
         )
@@ -97,6 +106,8 @@ class AttitudeDataResource(SyncAPIResource):
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,7 +141,14 @@ class AttitudeDataResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"as_id": as_id}, attitude_data_count_params.AttitudeDataCountParams),
+                query=maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_data_count_params.AttitudeDataCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -164,6 +182,8 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -195,7 +215,14 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"as_id": as_id}, attitude_data_list_params.AttitudeDataListParams),
+                query=await async_maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_data_list_params.AttitudeDataListParams,
+                ),
             ),
             cast_to=AttitudeDataListResponse,
         )
@@ -204,6 +231,8 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,7 +266,14 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"as_id": as_id}, attitude_data_count_params.AttitudeDataCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    attitude_data_count_params.AttitudeDataCountParams,
+                ),
             ),
             cast_to=str,
         )

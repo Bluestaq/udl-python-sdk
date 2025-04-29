@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from ..._utils import PropertyInfo
 
 __all__ = ["FolderRetrieveParams"]
 
@@ -10,3 +12,7 @@ __all__ = ["FolderRetrieveParams"]
 class FolderRetrieveParams(TypedDict, total=False):
     id: Required[str]
     """The folder ID"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

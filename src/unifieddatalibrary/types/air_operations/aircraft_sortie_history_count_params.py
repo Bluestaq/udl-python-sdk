@@ -17,3 +17,7 @@ class AircraftSortieHistoryCountParams(TypedDict, total=False):
     The scheduled time that the Aircraft sortie is planned to depart, in ISO 8601
     UTC format with millisecond precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

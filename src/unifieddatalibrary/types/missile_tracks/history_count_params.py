@@ -17,3 +17,7 @@ class HistoryCountParams(TypedDict, total=False):
     The receipt time of the data by the processing system, in ISO8601 UTC format
     with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

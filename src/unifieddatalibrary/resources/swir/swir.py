@@ -8,7 +8,14 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import swir_list_params, swir_count_params, swir_tuple_params, swir_create_params, swir_create_bulk_params
+from ...types import (
+    swir_get_params,
+    swir_list_params,
+    swir_count_params,
+    swir_tuple_params,
+    swir_create_params,
+    swir_create_bulk_params,
+)
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -193,6 +200,8 @@ class SwirResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,7 +233,14 @@ class SwirResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ts": ts}, swir_list_params.SwirListParams),
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    swir_list_params.SwirListParams,
+                ),
             ),
             cast_to=SwirListResponse,
         )
@@ -233,6 +249,8 @@ class SwirResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,7 +284,14 @@ class SwirResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ts": ts}, swir_count_params.SwirCountParams),
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    swir_count_params.SwirCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -312,6 +337,8 @@ class SwirResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -337,7 +364,17 @@ class SwirResource(SyncAPIResource):
         return self._get(
             f"/udl/swir/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    swir_get_params.SwirGetParams,
+                ),
             ),
             cast_to=SwirFull,
         )
@@ -370,6 +407,8 @@ class SwirResource(SyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -414,6 +453,8 @@ class SwirResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     swir_tuple_params.SwirTupleParams,
                 ),
@@ -580,6 +621,8 @@ class AsyncSwirResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -611,7 +654,14 @@ class AsyncSwirResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"ts": ts}, swir_list_params.SwirListParams),
+                query=await async_maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    swir_list_params.SwirListParams,
+                ),
             ),
             cast_to=SwirListResponse,
         )
@@ -620,6 +670,8 @@ class AsyncSwirResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -653,7 +705,14 @@ class AsyncSwirResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"ts": ts}, swir_count_params.SwirCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    swir_count_params.SwirCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -699,6 +758,8 @@ class AsyncSwirResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -724,7 +785,17 @@ class AsyncSwirResource(AsyncAPIResource):
         return await self._get(
             f"/udl/swir/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    swir_get_params.SwirGetParams,
+                ),
             ),
             cast_to=SwirFull,
         )
@@ -757,6 +828,8 @@ class AsyncSwirResource(AsyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -801,6 +874,8 @@ class AsyncSwirResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     swir_tuple_params.SwirTupleParams,
                 ),

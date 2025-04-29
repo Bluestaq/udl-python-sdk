@@ -235,6 +235,20 @@ class TestScs:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
+    def test_method_file_download_with_all_params(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        sc = client.scs.file_download(
+            id="id",
+            first_result=0,
+            max_result=0,
+        )
+        assert sc.is_closed
+        assert sc.json() == {"foo": "bar"}
+        assert cast(Any, sc.is_closed) is True
+        assert isinstance(sc, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
     def test_raw_response_file_download(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
@@ -666,6 +680,22 @@ class TestAsyncScs:
         respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         sc = await async_client.scs.file_download(
             id="id",
+        )
+        assert sc.is_closed
+        assert await sc.json() == {"foo": "bar"}
+        assert cast(Any, sc.is_closed) is True
+        assert isinstance(sc, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_file_download_with_all_params(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/scs/download").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        sc = await async_client.scs.file_download(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert sc.is_closed
         assert await sc.json() == {"foo": "bar"}

@@ -12,3 +12,7 @@ __all__ = ["AttitudeDataCountParams"]
 class AttitudeDataCountParams(TypedDict, total=False):
     as_id: Required[Annotated[str, PropertyInfo(alias="asId")]]
     """Unique identifier of the parent AttitudeSet associated with this record. (uuid)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

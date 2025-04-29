@@ -13,6 +13,7 @@ from ..types import (
     beam_contour_tuple_params,
     beam_contour_create_params,
     beam_contour_update_params,
+    beam_contour_retrieve_params,
     beam_contour_create_bulk_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
@@ -197,6 +198,8 @@ class BeamContoursResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,7 +225,17 @@ class BeamContoursResource(SyncAPIResource):
         return self._get(
             f"/udl/beamcontour/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    beam_contour_retrieve_params.BeamContourRetrieveParams,
+                ),
             ),
             cast_to=BeamcontourFull,
         )
@@ -374,6 +387,8 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -405,7 +420,14 @@ class BeamContoursResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_beam": id_beam}, beam_contour_list_params.BeamContourListParams),
+                query=maybe_transform(
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    beam_contour_list_params.BeamContourListParams,
+                ),
             ),
             cast_to=BeamContourListResponse,
         )
@@ -450,6 +472,8 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -483,7 +507,14 @@ class BeamContoursResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_beam": id_beam}, beam_contour_count_params.BeamContourCountParams),
+                query=maybe_transform(
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    beam_contour_count_params.BeamContourCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -553,6 +584,8 @@ class BeamContoursResource(SyncAPIResource):
         *,
         columns: str,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -597,6 +630,8 @@ class BeamContoursResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     beam_contour_tuple_params.BeamContourTupleParams,
                 ),
@@ -769,6 +804,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -794,7 +831,17 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         return await self._get(
             f"/udl/beamcontour/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    beam_contour_retrieve_params.BeamContourRetrieveParams,
+                ),
             ),
             cast_to=BeamcontourFull,
         )
@@ -946,6 +993,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -977,7 +1026,14 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id_beam": id_beam}, beam_contour_list_params.BeamContourListParams),
+                query=await async_maybe_transform(
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    beam_contour_list_params.BeamContourListParams,
+                ),
             ),
             cast_to=BeamContourListResponse,
         )
@@ -1022,6 +1078,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1056,7 +1114,12 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"id_beam": id_beam}, beam_contour_count_params.BeamContourCountParams
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    beam_contour_count_params.BeamContourCountParams,
                 ),
             ),
             cast_to=str,
@@ -1127,6 +1190,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         *,
         columns: str,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1171,6 +1236,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     beam_contour_tuple_params.BeamContourTupleParams,
                 ),

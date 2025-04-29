@@ -212,6 +212,15 @@ class TestOrganizationdetails:
         assert_matches_type(OrganizationdetailListResponse, organizationdetail, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        organizationdetail = client.organizationdetails.list(
+            name="name",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OrganizationdetailListResponse, organizationdetail, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.organizationdetails.with_raw_response.list(
             name="name",
@@ -282,6 +291,16 @@ class TestOrganizationdetails:
         assert_matches_type(OrganizationdetailFindBySourceResponse, organizationdetail, path=["response"])
 
     @parametrize
+    def test_method_find_by_source_with_all_params(self, client: Unifieddatalibrary) -> None:
+        organizationdetail = client.organizationdetails.find_by_source(
+            name="name",
+            source="source",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OrganizationdetailFindBySourceResponse, organizationdetail, path=["response"])
+
+    @parametrize
     def test_raw_response_find_by_source(self, client: Unifieddatalibrary) -> None:
         response = client.organizationdetails.with_raw_response.find_by_source(
             name="name",
@@ -310,14 +329,23 @@ class TestOrganizationdetails:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         organizationdetail = client.organizationdetails.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        organizationdetail = client.organizationdetails.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.organizationdetails.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -328,7 +356,7 @@ class TestOrganizationdetails:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.organizationdetails.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -342,7 +370,7 @@ class TestOrganizationdetails:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.organizationdetails.with_raw_response.get(
-                "",
+                id="",
             )
 
 
@@ -539,6 +567,15 @@ class TestAsyncOrganizationdetails:
         assert_matches_type(OrganizationdetailListResponse, organizationdetail, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        organizationdetail = await async_client.organizationdetails.list(
+            name="name",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OrganizationdetailListResponse, organizationdetail, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.organizationdetails.with_raw_response.list(
             name="name",
@@ -609,6 +646,16 @@ class TestAsyncOrganizationdetails:
         assert_matches_type(OrganizationdetailFindBySourceResponse, organizationdetail, path=["response"])
 
     @parametrize
+    async def test_method_find_by_source_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        organizationdetail = await async_client.organizationdetails.find_by_source(
+            name="name",
+            source="source",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(OrganizationdetailFindBySourceResponse, organizationdetail, path=["response"])
+
+    @parametrize
     async def test_raw_response_find_by_source(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.organizationdetails.with_raw_response.find_by_source(
             name="name",
@@ -637,14 +684,23 @@ class TestAsyncOrganizationdetails:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         organizationdetail = await async_client.organizationdetails.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        organizationdetail = await async_client.organizationdetails.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(OrganizationDetailsFull, organizationdetail, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.organizationdetails.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -655,7 +711,7 @@ class TestAsyncOrganizationdetails:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.organizationdetails.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -669,5 +725,5 @@ class TestAsyncOrganizationdetails:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.organizationdetails.with_raw_response.get(
-                "",
+                id="",
             )

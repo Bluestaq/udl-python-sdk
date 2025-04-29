@@ -24,14 +24,23 @@ class TestDiffofarrival:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         diffofarrival = client.diffofarrival.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(DiffofarrivalFull, diffofarrival, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        diffofarrival = client.diffofarrival.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DiffofarrivalFull, diffofarrival, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.diffofarrival.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -42,7 +51,7 @@ class TestDiffofarrival:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.diffofarrival.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -56,7 +65,7 @@ class TestDiffofarrival:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.diffofarrival.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -89,6 +98,16 @@ class TestDiffofarrival:
         diffofarrival = client.diffofarrival.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(DiffofarrivalTupleResponse, diffofarrival, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        diffofarrival = client.diffofarrival.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DiffofarrivalTupleResponse, diffofarrival, path=["response"])
 
@@ -177,14 +196,23 @@ class TestAsyncDiffofarrival:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         diffofarrival = await async_client.diffofarrival.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(DiffofarrivalFull, diffofarrival, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        diffofarrival = await async_client.diffofarrival.retrieve(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DiffofarrivalFull, diffofarrival, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.diffofarrival.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -195,7 +223,7 @@ class TestAsyncDiffofarrival:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.diffofarrival.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -209,7 +237,7 @@ class TestAsyncDiffofarrival:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.diffofarrival.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -242,6 +270,16 @@ class TestAsyncDiffofarrival:
         diffofarrival = await async_client.diffofarrival.tuple(
             columns="columns",
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(DiffofarrivalTupleResponse, diffofarrival, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        diffofarrival = await async_client.diffofarrival.tuple(
+            columns="columns",
+            ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(DiffofarrivalTupleResponse, diffofarrival, path=["response"])
 

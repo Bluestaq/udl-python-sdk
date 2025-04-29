@@ -23,6 +23,10 @@ class SolararraydetailListParams(TypedDict, total=False):
     TEST, SIMULATED, or EXERCISE)
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+
     source: str
     """
     (One or more of fields 'classificationMarking, dataMode, source' are required.)

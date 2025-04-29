@@ -170,6 +170,14 @@ class TestSeradatasigintpayload:
         assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradatasigintpayload = client.seradatasigintpayload.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.seradatasigintpayload.with_raw_response.list()
 
@@ -233,6 +241,14 @@ class TestSeradatasigintpayload:
         assert_matches_type(str, seradatasigintpayload, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradatasigintpayload = client.seradatasigintpayload.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, seradatasigintpayload, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.seradatasigintpayload.with_raw_response.count()
 
@@ -255,14 +271,23 @@ class TestSeradatasigintpayload:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SeradatasigintpayloadGetResponse, seradatasigintpayload, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradatasigintpayload = client.seradatasigintpayload.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradatasigintpayloadGetResponse, seradatasigintpayload, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.seradatasigintpayload.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -273,7 +298,7 @@ class TestSeradatasigintpayload:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.seradatasigintpayload.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -287,7 +312,7 @@ class TestSeradatasigintpayload:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.seradatasigintpayload.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -319,6 +344,15 @@ class TestSeradatasigintpayload:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.tuple(
             columns="columns",
+        )
+        assert_matches_type(SeradatasigintpayloadTupleResponse, seradatasigintpayload, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        seradatasigintpayload = client.seradatasigintpayload.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradatasigintpayloadTupleResponse, seradatasigintpayload, path=["response"])
 
@@ -499,6 +533,14 @@ class TestAsyncSeradatasigintpayload:
         assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradatasigintpayload = await async_client.seradatasigintpayload.list(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatasigintpayload.with_raw_response.list()
 
@@ -562,6 +604,14 @@ class TestAsyncSeradatasigintpayload:
         assert_matches_type(str, seradatasigintpayload, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradatasigintpayload = await async_client.seradatasigintpayload.count(
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(str, seradatasigintpayload, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatasigintpayload.with_raw_response.count()
 
@@ -584,14 +634,23 @@ class TestAsyncSeradatasigintpayload:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SeradatasigintpayloadGetResponse, seradatasigintpayload, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradatasigintpayload = await async_client.seradatasigintpayload.get(
+            id="id",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradatasigintpayloadGetResponse, seradatasigintpayload, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.seradatasigintpayload.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -602,7 +661,7 @@ class TestAsyncSeradatasigintpayload:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.seradatasigintpayload.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -616,7 +675,7 @@ class TestAsyncSeradatasigintpayload:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.seradatasigintpayload.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -648,6 +707,15 @@ class TestAsyncSeradatasigintpayload:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.tuple(
             columns="columns",
+        )
+        assert_matches_type(SeradatasigintpayloadTupleResponse, seradatasigintpayload, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        seradatasigintpayload = await async_client.seradatasigintpayload.tuple(
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(SeradatasigintpayloadTupleResponse, seradatasigintpayload, path=["response"])
 

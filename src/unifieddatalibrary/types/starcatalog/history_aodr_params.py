@@ -25,6 +25,10 @@ class HistoryAodrParams(TypedDict, total=False):
     epoch, in degrees.
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
+
     notification: str
     """optional, notification method for the created file link.
 

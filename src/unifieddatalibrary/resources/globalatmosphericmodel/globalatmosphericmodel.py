@@ -12,6 +12,8 @@ from ...types import (
     globalatmosphericmodel_count_params,
     globalatmosphericmodel_query_params,
     globalatmosphericmodel_tuple_params,
+    globalatmosphericmodel_get_file_params,
+    globalatmosphericmodel_retrieve_params,
     globalatmosphericmodel_unvalidated_publish_params,
 )
 from .history import (
@@ -76,6 +78,8 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,7 +105,17 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         return self._get(
             f"/udl/globalatmosphericmodel/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_retrieve_params.GlobalatmosphericmodelRetrieveParams,
+                ),
             ),
             cast_to=GlobalatmosphericmodelRetrieveResponse,
         )
@@ -110,6 +124,8 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -145,7 +161,12 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"ts": ts}, globalatmosphericmodel_count_params.GlobalatmosphericmodelCountParams
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_count_params.GlobalatmosphericmodelCountParams,
                 ),
             ),
             cast_to=str,
@@ -155,6 +176,8 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -182,7 +205,17 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         return self._get(
             f"/udl/globalatmosphericmodel/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_get_file_params.GlobalatmosphericmodelGetFileParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -191,6 +224,8 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,7 +259,12 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"ts": ts}, globalatmosphericmodel_query_params.GlobalatmosphericmodelQueryParams
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_query_params.GlobalatmosphericmodelQueryParams,
                 ),
             ),
             cast_to=GlobalatmosphericmodelQueryResponse,
@@ -258,6 +298,8 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -303,6 +345,8 @@ class GlobalatmosphericmodelResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     globalatmosphericmodel_tuple_params.GlobalatmosphericmodelTupleParams,
                 ),
@@ -509,6 +553,8 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -534,7 +580,17 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         return await self._get(
             f"/udl/globalatmosphericmodel/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_retrieve_params.GlobalatmosphericmodelRetrieveParams,
+                ),
             ),
             cast_to=GlobalatmosphericmodelRetrieveResponse,
         )
@@ -543,6 +599,8 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -578,7 +636,12 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ts": ts}, globalatmosphericmodel_count_params.GlobalatmosphericmodelCountParams
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_count_params.GlobalatmosphericmodelCountParams,
                 ),
             ),
             cast_to=str,
@@ -588,6 +651,8 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -615,7 +680,17 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         return await self._get(
             f"/udl/globalatmosphericmodel/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_get_file_params.GlobalatmosphericmodelGetFileParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
@@ -624,6 +699,8 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -657,7 +734,12 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ts": ts}, globalatmosphericmodel_query_params.GlobalatmosphericmodelQueryParams
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    globalatmosphericmodel_query_params.GlobalatmosphericmodelQueryParams,
                 ),
             ),
             cast_to=GlobalatmosphericmodelQueryResponse,
@@ -691,6 +773,8 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -736,6 +820,8 @@ class AsyncGlobalatmosphericmodelResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "ts": ts,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     globalatmosphericmodel_tuple_params.GlobalatmosphericmodelTupleParams,
                 ),

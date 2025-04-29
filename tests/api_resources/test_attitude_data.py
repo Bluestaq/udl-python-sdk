@@ -51,6 +51,16 @@ class TestAttitudeData:
         assert_matches_type(AttitudeDataTupleResponse, attitude_data, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_data = client.attitude_data.tuple(
+            as_id="asId",
+            columns="columns",
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(AttitudeDataTupleResponse, attitude_data, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.attitude_data.with_raw_response.tuple(
             as_id="asId",
@@ -110,6 +120,16 @@ class TestAsyncAttitudeData:
         attitude_data = await async_client.attitude_data.tuple(
             as_id="asId",
             columns="columns",
+        )
+        assert_matches_type(AttitudeDataTupleResponse, attitude_data, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_data = await async_client.attitude_data.tuple(
+            as_id="asId",
+            columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(AttitudeDataTupleResponse, attitude_data, path=["response"])
 

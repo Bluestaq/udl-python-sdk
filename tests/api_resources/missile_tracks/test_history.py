@@ -32,6 +32,8 @@ class TestHistory:
         history = client.missile_tracks.history.aodr(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -66,6 +68,15 @@ class TestHistory:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         history = client.missile_tracks.history.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.missile_tracks.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -105,6 +116,8 @@ class TestHistory:
         history = client.missile_tracks.history.query(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 
@@ -148,6 +161,8 @@ class TestAsyncHistory:
         history = await async_client.missile_tracks.history.aodr(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -182,6 +197,15 @@ class TestAsyncHistory:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.missile_tracks.history.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.missile_tracks.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -221,6 +245,8 @@ class TestAsyncHistory:
         history = await async_client.missile_tracks.history.query(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(HistoryQueryResponse, history, path=["response"])
 

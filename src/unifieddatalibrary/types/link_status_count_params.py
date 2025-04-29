@@ -19,6 +19,8 @@ class LinkStatusCountParams(TypedDict, total=False):
     (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
     link_start_time: Annotated[Union[str, datetime], PropertyInfo(alias="linkStartTime", format="iso8601")]
     """
     (One or more of fields 'createdAt, linkStartTime, linkStopTime' are required.)
@@ -32,3 +34,5 @@ class LinkStatusCountParams(TypedDict, total=False):
     The link termination time, or the time that the link becomes unavailable for
     use, in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

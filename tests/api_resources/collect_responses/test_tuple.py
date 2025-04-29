@@ -27,6 +27,16 @@ class TestTuple:
         assert_matches_type(TupleListResponse, tuple_, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        tuple_ = client.collect_responses.tuple.list(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
+        )
+        assert_matches_type(TupleListResponse, tuple_, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
         response = client.collect_responses.tuple.with_raw_response.list(
             columns="columns",
@@ -61,6 +71,16 @@ class TestAsyncTuple:
         tuple_ = await async_client.collect_responses.tuple.list(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(TupleListResponse, tuple_, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        tuple_ = await async_client.collect_responses.tuple.list(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_result=0,
         )
         assert_matches_type(TupleListResponse, tuple_, path=["response"])
 

@@ -15,3 +15,7 @@ class VideoGetPublisherStreamingInfoParams(TypedDict, total=False):
 
     stream_name: Required[Annotated[str, PropertyInfo(alias="streamName")]]
     """The video stream name."""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]

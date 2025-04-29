@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    personnelrecovery_get_params,
     personnelrecovery_list_params,
     personnelrecovery_count_params,
     personnelrecovery_tuple_params,
@@ -310,6 +311,8 @@ class PersonnelrecoveryResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -343,7 +346,12 @@ class PersonnelrecoveryResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"msg_time": msg_time}, personnelrecovery_list_params.PersonnelrecoveryListParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    personnelrecovery_list_params.PersonnelrecoveryListParams,
                 ),
             ),
             cast_to=PersonnelrecoveryListResponse,
@@ -353,6 +361,8 @@ class PersonnelrecoveryResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -388,7 +398,12 @@ class PersonnelrecoveryResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"msg_time": msg_time}, personnelrecovery_count_params.PersonnelrecoveryCountParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    personnelrecovery_count_params.PersonnelrecoveryCountParams,
                 ),
             ),
             cast_to=str,
@@ -472,6 +487,8 @@ class PersonnelrecoveryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -497,7 +514,17 @@ class PersonnelrecoveryResource(SyncAPIResource):
         return self._get(
             f"/udl/personnelrecovery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    personnelrecovery_get_params.PersonnelrecoveryGetParams,
+                ),
             ),
             cast_to=PersonnelRecoveryFullL,
         )
@@ -530,6 +557,8 @@ class PersonnelrecoveryResource(SyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -575,6 +604,8 @@ class PersonnelrecoveryResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     personnelrecovery_tuple_params.PersonnelrecoveryTupleParams,
                 ),
@@ -851,6 +882,8 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -884,7 +917,12 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"msg_time": msg_time}, personnelrecovery_list_params.PersonnelrecoveryListParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    personnelrecovery_list_params.PersonnelrecoveryListParams,
                 ),
             ),
             cast_to=PersonnelrecoveryListResponse,
@@ -894,6 +932,8 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -929,7 +969,12 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"msg_time": msg_time}, personnelrecovery_count_params.PersonnelrecoveryCountParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    personnelrecovery_count_params.PersonnelrecoveryCountParams,
                 ),
             ),
             cast_to=str,
@@ -1013,6 +1058,8 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1038,7 +1085,17 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/personnelrecovery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_result": max_result,
+                    },
+                    personnelrecovery_get_params.PersonnelrecoveryGetParams,
+                ),
             ),
             cast_to=PersonnelRecoveryFullL,
         )
@@ -1071,6 +1128,8 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_result: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1116,6 +1175,8 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_result": max_result,
                     },
                     personnelrecovery_tuple_params.PersonnelrecoveryTupleParams,
                 ),

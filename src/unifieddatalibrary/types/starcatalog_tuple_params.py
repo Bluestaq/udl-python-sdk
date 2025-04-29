@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["StarcatalogTupleParams"]
 
@@ -22,6 +24,10 @@ class StarcatalogTupleParams(TypedDict, total=False):
     source in International Celestial Reference System (ICRS) at the reference
     epoch, in degrees.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_result: Annotated[int, PropertyInfo(alias="maxResult")]
 
     ra: float
     """
