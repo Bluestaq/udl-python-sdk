@@ -32,7 +32,8 @@ client = Unifieddatalibrary(
     password=os.environ.get("UDL_AUTH_PASSWORD"),  # This is the default and can be omitted
 )
 
-elset_abridgeds = client.elsets.current.list()
+page = client.elsets.current.list()
+print(page.items)
 ```
 
 While you can provide a `username` keyword argument,
@@ -56,7 +57,8 @@ client = AsyncUnifieddatalibrary(
 
 
 async def main() -> None:
-    elset_abridgeds = await client.elsets.current.list()
+    page = await client.elsets.current.list()
+    print(page.items)
 
 
 asyncio.run(main())
@@ -284,7 +286,7 @@ response = client.elsets.current.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 current = response.parse()  # get the object that `elsets.current.list()` would have returned
-print(current)
+print(current.id_elset)
 ```
 
 These methods return an [`APIResponse`](https://github.com/rsivilli-bluestaq/udl-python-sdk/tree/main/src/unifieddatalibrary/_response.py) object.
