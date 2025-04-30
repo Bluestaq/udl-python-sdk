@@ -24,13 +24,7 @@ from pydantic import ValidationError
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary, APIResponseValidationError
 from unifieddatalibrary._types import Omit
 from unifieddatalibrary._models import BaseModel, FinalRequestOptions
-from unifieddatalibrary._constants import RAW_RESPONSE_HEADER
-from unifieddatalibrary._exceptions import (
-    APIStatusError,
-    APITimeoutError,
-    UnifieddatalibraryError,
-    APIResponseValidationError,
-)
+from unifieddatalibrary._exceptions import UnifieddatalibraryError, APIResponseValidationError
 from unifieddatalibrary._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -53,14 +47,6 @@ def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
 
 def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
-
-
-def _get_open_connections(client: Unifieddatalibrary | AsyncUnifieddatalibrary) -> int:
-    transport = client._client._transport
-    assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
-
-    pool = transport._pool
-    return len(pool._requests)
 
 
 class TestUnifieddatalibrary:
@@ -802,30 +788,6 @@ class TestUnifieddatalibrary:
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
-
-    @mock.patch("unifieddatalibrary._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/udl/elset/current").mock(side_effect=httpx.TimeoutException("Test timeout error"))
-
-        with pytest.raises(APITimeoutError):
-            self.client.get(
-                "/udl/elset/current", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
-            )
-
-        assert _get_open_connections(self.client) == 0
-
-    @mock.patch("unifieddatalibrary._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/udl/elset/current").mock(return_value=httpx.Response(500))
-
-        with pytest.raises(APIStatusError):
-            self.client.get(
-                "/udl/elset/current", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
-            )
-
-        assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("unifieddatalibrary._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
@@ -1650,30 +1612,6 @@ class TestAsyncUnifieddatalibrary:
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
-
-    @mock.patch("unifieddatalibrary._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/udl/elset/current").mock(side_effect=httpx.TimeoutException("Test timeout error"))
-
-        with pytest.raises(APITimeoutError):
-            await self.client.get(
-                "/udl/elset/current", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
-            )
-
-        assert _get_open_connections(self.client) == 0
-
-    @mock.patch("unifieddatalibrary._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/udl/elset/current").mock(return_value=httpx.Response(500))
-
-        with pytest.raises(APIStatusError):
-            await self.client.get(
-                "/udl/elset/current", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
-            )
-
-        assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("unifieddatalibrary._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)

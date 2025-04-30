@@ -14,9 +14,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.elsets import current_list_params, current_tuple_params
-from ...types.elsets.current_list_response import CurrentListResponse
+from ...types.elset_abridged import ElsetAbridged
 from ...types.elsets.current_tuple_response import CurrentTupleResponse
 
 __all__ = ["CurrentResource", "AsyncCurrentResource"]
@@ -53,7 +54,7 @@ class CurrentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CurrentListResponse:
+    ) -> SyncOffsetPage[ElsetAbridged]:
         """
         Service operation to dynamically query/filter current elsets within the system
         by a variety of query parameters not specified in this API documentation. A
@@ -73,8 +74,9 @@ class CurrentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/elset/current",
+            page=SyncOffsetPage[ElsetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -88,7 +90,7 @@ class CurrentResource(SyncAPIResource):
                     current_list_params.CurrentListParams,
                 ),
             ),
-            cast_to=CurrentListResponse,
+            model=ElsetAbridged,
         )
 
     def tuple(
@@ -168,7 +170,7 @@ class AsyncCurrentResource(AsyncAPIResource):
         """
         return AsyncCurrentResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -179,7 +181,7 @@ class AsyncCurrentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CurrentListResponse:
+    ) -> AsyncPaginator[ElsetAbridged, AsyncOffsetPage[ElsetAbridged]]:
         """
         Service operation to dynamically query/filter current elsets within the system
         by a variety of query parameters not specified in this API documentation. A
@@ -199,14 +201,15 @@ class AsyncCurrentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/elset/current",
+            page=AsyncOffsetPage[ElsetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -214,7 +217,7 @@ class AsyncCurrentResource(AsyncAPIResource):
                     current_list_params.CurrentListParams,
                 ),
             ),
-            cast_to=CurrentListResponse,
+            model=ElsetAbridged,
         )
 
     async def tuple(

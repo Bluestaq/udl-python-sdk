@@ -1392,12 +1392,12 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.elsets import CurrentListResponse, CurrentTupleResponse
+from unifieddatalibrary.types.elsets import CurrentTupleResponse
 ```
 
 Methods:
 
-- <code title="get /udl/elset/current">client.elsets.current.<a href="./src/unifieddatalibrary/resources/elsets/current.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/elsets/current_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elsets/current_list_response.py">CurrentListResponse</a></code>
+- <code title="get /udl/elset/current">client.elsets.current.<a href="./src/unifieddatalibrary/resources/elsets/current.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/elsets/current_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elset_abridged.py">SyncOffsetPage[ElsetAbridged]</a></code>
 - <code title="get /udl/elset/current/tuple">client.elsets.current.<a href="./src/unifieddatalibrary/resources/elsets/current.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/elsets/current_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elsets/current_tuple_response.py">CurrentTupleResponse</a></code>
 
 ## History
