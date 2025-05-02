@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["LaunchsiteListResponse", "LaunchsiteListResponseItem"]
+__all__ = ["LaunchsiteListResponse"]
 
 
-class LaunchsiteListResponseItem(BaseModel):
+class LaunchsiteListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -75,6 +75,3 @@ class LaunchsiteListResponseItem(BaseModel):
 
     short_code: Optional[str] = FieldInfo(alias="shortCode", default=None)
     """Abbreviated short name for the launch site."""
-
-
-LaunchsiteListResponse: TypeAlias = List[LaunchsiteListResponseItem]

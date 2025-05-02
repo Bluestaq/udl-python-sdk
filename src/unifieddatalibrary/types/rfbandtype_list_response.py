@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["RfbandtypeListResponse", "RfbandtypeListResponseItem"]
+__all__ = ["RfbandtypeListResponse"]
 
 
-class RfbandtypeListResponseItem(BaseModel):
+class RfbandtypeListResponse(BaseModel):
     id: str
     """Unique identifier for the RF band (e.g. X, K, Ku, etc)."""
 
@@ -63,6 +63,3 @@ class RfbandtypeListResponseItem(BaseModel):
 
     start_freq: Optional[float] = FieldInfo(alias="startFreq", default=None)
     """Approximate start of the band frequency range, in Ghz."""
-
-
-RfbandtypeListResponse: TypeAlias = List[RfbandtypeListResponseItem]

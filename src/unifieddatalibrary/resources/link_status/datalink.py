@@ -18,7 +18,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.link_status import (
     datalink_list_params,
     datalink_count_params,
@@ -448,7 +449,7 @@ class DatalinkResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatalinkListResponse:
+    ) -> SyncOffsetPage[DatalinkListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -467,8 +468,9 @@ class DatalinkResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/datalink",
+            page=SyncOffsetPage[DatalinkListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -483,7 +485,7 @@ class DatalinkResource(SyncAPIResource):
                     datalink_list_params.DatalinkListParams,
                 ),
             ),
-            cast_to=DatalinkListResponse,
+            model=DatalinkListResponse,
         )
 
     def count(
@@ -1063,7 +1065,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -1075,7 +1077,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatalinkListResponse:
+    ) -> AsyncPaginator[DatalinkListResponse, AsyncOffsetPage[DatalinkListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1094,14 +1096,15 @@ class AsyncDatalinkResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/datalink",
+            page=AsyncOffsetPage[DatalinkListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -1110,7 +1113,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
                     datalink_list_params.DatalinkListParams,
                 ),
             ),
-            cast_to=DatalinkListResponse,
+            model=DatalinkListResponse,
         )
 
     async def count(

@@ -34,7 +34,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.swir.swir_full import SwirFull
 from ...types.swir_list_response import SwirListResponse
 from ...types.swir_tuple_response import SwirTupleResponse
@@ -208,7 +209,7 @@ class SwirResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SwirListResponse:
+    ) -> SyncOffsetPage[SwirListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -226,8 +227,9 @@ class SwirResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/swir",
+            page=SyncOffsetPage[SwirListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -242,7 +244,7 @@ class SwirResource(SyncAPIResource):
                     swir_list_params.SwirListParams,
                 ),
             ),
-            cast_to=SwirListResponse,
+            model=SwirListResponse,
         )
 
     def count(
@@ -617,7 +619,7 @@ class AsyncSwirResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         ts: Union[str, datetime],
@@ -629,7 +631,7 @@ class AsyncSwirResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SwirListResponse:
+    ) -> AsyncPaginator[SwirListResponse, AsyncOffsetPage[SwirListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -647,14 +649,15 @@ class AsyncSwirResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/swir",
+            page=AsyncOffsetPage[SwirListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ts": ts,
                         "first_result": first_result,
@@ -663,7 +666,7 @@ class AsyncSwirResource(AsyncAPIResource):
                     swir_list_params.SwirListParams,
                 ),
             ),
-            cast_to=SwirListResponse,
+            model=SwirListResponse,
         )
 
     async def count(

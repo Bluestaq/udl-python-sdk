@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ScientificListResponse", "ScientificListResponseItem"]
+__all__ = ["ScientificListResponse"]
 
 
-class ScientificListResponseItem(BaseModel):
+class ScientificListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -84,6 +84,3 @@ class ScientificListResponseItem(BaseModel):
 
     payload_category: Optional[str] = FieldInfo(alias="payloadCategory", default=None)
     """Payload category, e.g. Magnetometer, Radiometer, Sensor, etc."""
-
-
-ScientificListResponse: TypeAlias = List[ScientificListResponseItem]

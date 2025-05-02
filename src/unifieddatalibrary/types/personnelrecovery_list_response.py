@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,16 +10,15 @@ from .._models import BaseModel
 
 __all__ = [
     "PersonnelrecoveryListResponse",
-    "PersonnelrecoveryListResponseItem",
-    "PersonnelrecoveryListResponseItemExecutionInfo",
-    "PersonnelrecoveryListResponseItemExecutionInfoEscortVehicle",
-    "PersonnelrecoveryListResponseItemExecutionInfoRecoveryVehicle",
-    "PersonnelrecoveryListResponseItemObjectiveAreaInfo",
-    "PersonnelrecoveryListResponseItemObjectiveAreaInfoEnemyData",
+    "ExecutionInfo",
+    "ExecutionInfoEscortVehicle",
+    "ExecutionInfoRecoveryVehicle",
+    "ObjectiveAreaInfo",
+    "ObjectiveAreaInfoEnemyData",
 ]
 
 
-class PersonnelrecoveryListResponseItemExecutionInfoEscortVehicle(BaseModel):
+class ExecutionInfoEscortVehicle(BaseModel):
     call_sign: Optional[str] = FieldInfo(alias="callSign", default=None)
     """The call sign of the recovery vehicle."""
 
@@ -40,7 +39,7 @@ class PersonnelrecoveryListResponseItemExecutionInfoEscortVehicle(BaseModel):
     """The particular type of recovery vehicle to be used."""
 
 
-class PersonnelrecoveryListResponseItemExecutionInfoRecoveryVehicle(BaseModel):
+class ExecutionInfoRecoveryVehicle(BaseModel):
     call_sign: Optional[str] = FieldInfo(alias="callSign", default=None)
     """The call sign of the recovery vehicle."""
 
@@ -61,7 +60,7 @@ class PersonnelrecoveryListResponseItemExecutionInfoRecoveryVehicle(BaseModel):
     """The particular type of recovery vehicle to be used."""
 
 
-class PersonnelrecoveryListResponseItemExecutionInfo(BaseModel):
+class ExecutionInfo(BaseModel):
     egress: Optional[float] = None
     """The heading, in degrees, of leaving the recovery zone."""
 
@@ -74,9 +73,7 @@ class PersonnelrecoveryListResponseItemExecutionInfo(BaseModel):
     optional 3rd element (altitude).
     """
 
-    escort_vehicle: Optional[PersonnelrecoveryListResponseItemExecutionInfoEscortVehicle] = FieldInfo(
-        alias="escortVehicle", default=None
-    )
+    escort_vehicle: Optional[ExecutionInfoEscortVehicle] = FieldInfo(alias="escortVehicle", default=None)
 
     ingress: Optional[float] = None
     """The heading, in degrees clockwise from North, of entering the recovery zone."""
@@ -93,12 +90,10 @@ class PersonnelrecoveryListResponseItemExecutionInfo(BaseModel):
     obj_strategy: Optional[str] = FieldInfo(alias="objStrategy", default=None)
     """Description of the objective strategy plan."""
 
-    recovery_vehicle: Optional[PersonnelrecoveryListResponseItemExecutionInfoRecoveryVehicle] = FieldInfo(
-        alias="recoveryVehicle", default=None
-    )
+    recovery_vehicle: Optional[ExecutionInfoRecoveryVehicle] = FieldInfo(alias="recoveryVehicle", default=None)
 
 
-class PersonnelrecoveryListResponseItemObjectiveAreaInfoEnemyData(BaseModel):
+class ObjectiveAreaInfoEnemyData(BaseModel):
     dir_to_enemy: Optional[str] = FieldInfo(alias="dirToEnemy", default=None)
     """
     Directions to known enemies in the operation area (NORTH, NORTHEAST, EAST,
@@ -115,10 +110,8 @@ class PersonnelrecoveryListResponseItemObjectiveAreaInfoEnemyData(BaseModel):
     """The type of hostile fire received (SMALL ARMS, MORTAR, ARTILLERY, ROCKETS)."""
 
 
-class PersonnelrecoveryListResponseItemObjectiveAreaInfo(BaseModel):
-    enemy_data: Optional[List[PersonnelrecoveryListResponseItemObjectiveAreaInfoEnemyData]] = FieldInfo(
-        alias="enemyData", default=None
-    )
+class ObjectiveAreaInfo(BaseModel):
+    enemy_data: Optional[List[ObjectiveAreaInfoEnemyData]] = FieldInfo(alias="enemyData", default=None)
     """Information detailing knowledge of enemies in the area."""
 
     osc_call_sign: Optional[str] = FieldInfo(alias="oscCallSign", default=None)
@@ -140,7 +133,7 @@ class PersonnelrecoveryListResponseItemObjectiveAreaInfo(BaseModel):
     """
 
 
-class PersonnelrecoveryListResponseItem(BaseModel):
+class PersonnelrecoveryListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -251,9 +244,7 @@ class PersonnelrecoveryListResponseItem(BaseModel):
     system.
     """
 
-    execution_info: Optional[PersonnelrecoveryListResponseItemExecutionInfo] = FieldInfo(
-        alias="executionInfo", default=None
-    )
+    execution_info: Optional[ExecutionInfo] = FieldInfo(alias="executionInfo", default=None)
 
     identity: Optional[str] = None
     """
@@ -301,9 +292,7 @@ class PersonnelrecoveryListResponseItem(BaseModel):
     num_persons: Optional[int] = FieldInfo(alias="numPersons", default=None)
     """The count of persons requiring recovery."""
 
-    objective_area_info: Optional[PersonnelrecoveryListResponseItemObjectiveAreaInfo] = FieldInfo(
-        alias="objectiveAreaInfo", default=None
-    )
+    objective_area_info: Optional[ObjectiveAreaInfo] = FieldInfo(alias="objectiveAreaInfo", default=None)
 
     origin: Optional[str] = None
     """
@@ -363,6 +352,3 @@ class PersonnelrecoveryListResponseItem(BaseModel):
 
     tx_freq: Optional[float] = FieldInfo(alias="txFreq", default=None)
     """Transmit voice frequency in 5Hz increments."""
-
-
-PersonnelrecoveryListResponse: TypeAlias = List[PersonnelrecoveryListResponseItem]

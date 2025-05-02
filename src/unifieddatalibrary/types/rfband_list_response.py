@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["RfbandListResponse", "RfbandListResponseItem"]
+__all__ = ["RfbandListResponse"]
 
 
-class RfbandListResponseItem(BaseModel):
+class RfbandListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -139,6 +139,3 @@ class RfbandListResponseItem(BaseModel):
     Purpose or use of the RF Band -- COMM = communications, TTC =
     Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
     """
-
-
-RfbandListResponse: TypeAlias = List[RfbandListResponseItem]

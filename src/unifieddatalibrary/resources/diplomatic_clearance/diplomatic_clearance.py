@@ -43,10 +43,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.diplomatic_clearance_list_response import DiplomaticClearanceListResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.diplomatic_clearance_tuple_response import DiplomaticClearanceTupleResponse
 from ...types.air_operations.diplomaticclearance_full import DiplomaticclearanceFull
+from ...types.air_operations.diplomaticclearance_abridged import DiplomaticclearanceAbridged
 
 __all__ = ["DiplomaticClearanceResource", "AsyncDiplomaticClearanceResource"]
 
@@ -375,7 +376,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DiplomaticClearanceListResponse:
+    ) -> SyncOffsetPage[DiplomaticclearanceAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -394,8 +395,9 @@ class DiplomaticClearanceResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/diplomaticclearance",
+            page=SyncOffsetPage[DiplomaticclearanceAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -410,7 +412,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
                     diplomatic_clearance_list_params.DiplomaticClearanceListParams,
                 ),
             ),
-            cast_to=DiplomaticClearanceListResponse,
+            model=DiplomaticclearanceAbridged,
         )
 
     def delete(
@@ -935,7 +937,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_dep_date: Union[str, datetime],
@@ -947,7 +949,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DiplomaticClearanceListResponse:
+    ) -> AsyncPaginator[DiplomaticclearanceAbridged, AsyncOffsetPage[DiplomaticclearanceAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -966,14 +968,15 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/diplomaticclearance",
+            page=AsyncOffsetPage[DiplomaticclearanceAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_dep_date": first_dep_date,
                         "first_result": first_result,
@@ -982,7 +985,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
                     diplomatic_clearance_list_params.DiplomaticClearanceListParams,
                 ),
             ),
-            cast_to=DiplomaticClearanceListResponse,
+            model=DiplomaticclearanceAbridged,
         )
 
     async def delete(

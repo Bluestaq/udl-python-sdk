@@ -15,7 +15,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.sensorobservationtype_get_response import SensorobservationtypeGetResponse
 from ..types.sensorobservationtype_list_response import SensorobservationtypeListResponse
 
@@ -53,7 +54,7 @@ class SensorobservationtypeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorobservationtypeListResponse:
+    ) -> SyncOffsetPage[SensorobservationtypeListResponse]:
         """
         Args:
           extra_headers: Send extra headers
@@ -64,8 +65,9 @@ class SensorobservationtypeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sensorobservationtype",
+            page=SyncOffsetPage[SensorobservationtypeListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -79,7 +81,7 @@ class SensorobservationtypeResource(SyncAPIResource):
                     sensorobservationtype_list_params.SensorobservationtypeListParams,
                 ),
             ),
-            cast_to=SensorobservationtypeListResponse,
+            model=SensorobservationtypeListResponse,
         )
 
     def get(
@@ -169,7 +171,7 @@ class AsyncSensorobservationtypeResource(AsyncAPIResource):
         """
         return AsyncSensorobservationtypeResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -180,7 +182,7 @@ class AsyncSensorobservationtypeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorobservationtypeListResponse:
+    ) -> AsyncPaginator[SensorobservationtypeListResponse, AsyncOffsetPage[SensorobservationtypeListResponse]]:
         """
         Args:
           extra_headers: Send extra headers
@@ -191,14 +193,15 @@ class AsyncSensorobservationtypeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sensorobservationtype",
+            page=AsyncOffsetPage[SensorobservationtypeListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -206,7 +209,7 @@ class AsyncSensorobservationtypeResource(AsyncAPIResource):
                     sensorobservationtype_list_params.SensorobservationtypeListParams,
                 ),
             ),
-            cast_to=SensorobservationtypeListResponse,
+            model=SensorobservationtypeListResponse,
         )
 
     async def get(

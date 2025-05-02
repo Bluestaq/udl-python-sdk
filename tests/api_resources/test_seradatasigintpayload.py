@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SeradatasigintpayloadListResponse,
     SeradatasigintpayloadTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -167,7 +168,7 @@ class TestSeradatasigintpayload:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         seradatasigintpayload = client.seradatasigintpayload.list()
-        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+        assert_matches_type(SyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestSeradatasigintpayload:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+        assert_matches_type(SyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -184,7 +185,7 @@ class TestSeradatasigintpayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradatasigintpayload = response.parse()
-        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+        assert_matches_type(SyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -193,7 +194,9 @@ class TestSeradatasigintpayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradatasigintpayload = response.parse()
-            assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+            assert_matches_type(
+                SyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -530,7 +533,9 @@ class TestAsyncSeradatasigintpayload:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradatasigintpayload = await async_client.seradatasigintpayload.list()
-        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+        assert_matches_type(
+            AsyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"]
+        )
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -538,7 +543,9 @@ class TestAsyncSeradatasigintpayload:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+        assert_matches_type(
+            AsyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"]
+        )
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -547,7 +554,9 @@ class TestAsyncSeradatasigintpayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradatasigintpayload = await response.parse()
-        assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+        assert_matches_type(
+            AsyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"]
+        )
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -556,7 +565,9 @@ class TestAsyncSeradatasigintpayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradatasigintpayload = await response.parse()
-            assert_matches_type(SeradatasigintpayloadListResponse, seradatasigintpayload, path=["response"])
+            assert_matches_type(
+                AsyncOffsetPage[SeradatasigintpayloadListResponse], seradatasigintpayload, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 

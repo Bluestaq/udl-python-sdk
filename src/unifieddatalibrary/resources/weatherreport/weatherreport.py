@@ -34,7 +34,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.weatherreport_list_response import WeatherreportListResponse
 from ...types.weatherreport_tuple_response import WeatherreportTupleResponse
 from ...types.weatherreport.weather_report_full import WeatherReportFull
@@ -576,7 +577,7 @@ class WeatherreportResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WeatherreportListResponse:
+    ) -> SyncOffsetPage[WeatherreportListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -595,8 +596,9 @@ class WeatherreportResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/weatherreport",
+            page=SyncOffsetPage[WeatherreportListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -611,7 +613,7 @@ class WeatherreportResource(SyncAPIResource):
                     weatherreport_list_params.WeatherreportListParams,
                 ),
             ),
-            cast_to=WeatherreportListResponse,
+            model=WeatherreportListResponse,
         )
 
     def count(
@@ -1355,7 +1357,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         ob_time: Union[str, datetime],
@@ -1367,7 +1369,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WeatherreportListResponse:
+    ) -> AsyncPaginator[WeatherreportListResponse, AsyncOffsetPage[WeatherreportListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1386,14 +1388,15 @@ class AsyncWeatherreportResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/weatherreport",
+            page=AsyncOffsetPage[WeatherreportListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
@@ -1402,7 +1405,7 @@ class AsyncWeatherreportResource(AsyncAPIResource):
                     weatherreport_list_params.WeatherreportListParams,
                 ),
             ),
-            cast_to=WeatherreportListResponse,
+            model=WeatherreportListResponse,
         )
 
     async def count(

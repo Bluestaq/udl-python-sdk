@@ -6,7 +6,7 @@ import httpx
 
 from ..types import enginedetail_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,8 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.enginedetail_list_response import EnginedetailListResponse
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.engine_details_abridged import EngineDetailsAbridged
 
 __all__ = ["EnginedetailsResource", "AsyncEnginedetailsResource"]
 
@@ -52,7 +53,7 @@ class EnginedetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EnginedetailListResponse:
+    ) -> SyncOffsetPage[EngineDetailsAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -68,8 +69,9 @@ class EnginedetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/enginedetails",
+            page=SyncOffsetPage[EngineDetailsAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -83,7 +85,7 @@ class EnginedetailsResource(SyncAPIResource):
                     enginedetail_list_params.EnginedetailListParams,
                 ),
             ),
-            cast_to=EnginedetailListResponse,
+            model=EngineDetailsAbridged,
         )
 
 
@@ -107,7 +109,7 @@ class AsyncEnginedetailsResource(AsyncAPIResource):
         """
         return AsyncEnginedetailsResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -118,7 +120,7 @@ class AsyncEnginedetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EnginedetailListResponse:
+    ) -> AsyncPaginator[EngineDetailsAbridged, AsyncOffsetPage[EngineDetailsAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -134,14 +136,15 @@ class AsyncEnginedetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/enginedetails",
+            page=AsyncOffsetPage[EngineDetailsAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -149,7 +152,7 @@ class AsyncEnginedetailsResource(AsyncAPIResource):
                     enginedetail_list_params.EnginedetailListParams,
                 ),
             ),
-            cast_to=EnginedetailListResponse,
+            model=EngineDetailsAbridged,
         )
 
 

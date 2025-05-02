@@ -8,7 +8,7 @@ from datetime import date
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -17,9 +17,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.collect_responses import tuple_list_params
-from ...types.collect_responses.tuple_list_response import TupleListResponse
+from ...types.shared.collect_response_full import CollectResponseFull
 
 __all__ = ["TupleResource", "AsyncTupleResource"]
 
@@ -57,7 +58,7 @@ class TupleResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TupleListResponse:
+    ) -> SyncOffsetPage[CollectResponseFull]:
         """
         Service operation to dynamically query data and only return specified
         columns/fields. Requested columns are specified by the 'columns' query parameter
@@ -85,8 +86,9 @@ class TupleResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/collectresponse/tuple",
+            page=SyncOffsetPage[CollectResponseFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -102,7 +104,7 @@ class TupleResource(SyncAPIResource):
                     tuple_list_params.TupleListParams,
                 ),
             ),
-            cast_to=TupleListResponse,
+            model=CollectResponseFull,
         )
 
 
@@ -126,7 +128,7 @@ class AsyncTupleResource(AsyncAPIResource):
         """
         return AsyncTupleResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         columns: str,
@@ -139,7 +141,7 @@ class AsyncTupleResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TupleListResponse:
+    ) -> AsyncPaginator[CollectResponseFull, AsyncOffsetPage[CollectResponseFull]]:
         """
         Service operation to dynamically query data and only return specified
         columns/fields. Requested columns are specified by the 'columns' query parameter
@@ -167,14 +169,15 @@ class AsyncTupleResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/collectresponse/tuple",
+            page=AsyncOffsetPage[CollectResponseFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "columns": columns,
                         "created_at": created_at,
@@ -184,7 +187,7 @@ class AsyncTupleResource(AsyncAPIResource):
                     tuple_list_params.TupleListParams,
                 ),
             ),
-            cast_to=TupleListResponse,
+            model=CollectResponseFull,
         )
 
 

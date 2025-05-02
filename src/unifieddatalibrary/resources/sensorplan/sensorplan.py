@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sensorplan_list_response import SensorplanListResponse
 from ...types.sensorplan_tuple_response import SensorplanTupleResponse
 from ...types.udl.sensorplan.sensorplan_full import SensorplanFull
@@ -368,7 +369,7 @@ class SensorplanResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorplanListResponse:
+    ) -> SyncOffsetPage[SensorplanListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -387,8 +388,9 @@ class SensorplanResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sensorplan",
+            page=SyncOffsetPage[SensorplanListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -403,7 +405,7 @@ class SensorplanResource(SyncAPIResource):
                     sensorplan_list_params.SensorplanListParams,
                 ),
             ),
-            cast_to=SensorplanListResponse,
+            model=SensorplanListResponse,
         )
 
     def count(
@@ -938,7 +940,7 @@ class AsyncSensorplanResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -950,7 +952,7 @@ class AsyncSensorplanResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorplanListResponse:
+    ) -> AsyncPaginator[SensorplanListResponse, AsyncOffsetPage[SensorplanListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -969,14 +971,15 @@ class AsyncSensorplanResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sensorplan",
+            page=AsyncOffsetPage[SensorplanListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -985,7 +988,7 @@ class AsyncSensorplanResource(AsyncAPIResource):
                     sensorplan_list_params.SensorplanListParams,
                 ),
             ),
-            cast_to=SensorplanListResponse,
+            model=SensorplanListResponse,
         )
 
     async def count(

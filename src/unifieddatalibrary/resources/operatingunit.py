@@ -26,7 +26,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.operatingunit_get_response import OperatingunitGetResponse
 from ..types.operatingunit_list_response import OperatingunitListResponse
 from ..types.operatingunit_tuple_response import OperatingunitTupleResponse
@@ -991,7 +992,7 @@ class OperatingunitResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperatingunitListResponse:
+    ) -> SyncOffsetPage[OperatingunitListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1007,8 +1008,9 @@ class OperatingunitResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/operatingunit",
+            page=SyncOffsetPage[OperatingunitListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1022,7 +1024,7 @@ class OperatingunitResource(SyncAPIResource):
                     operatingunit_list_params.OperatingunitListParams,
                 ),
             ),
-            cast_to=OperatingunitListResponse,
+            model=OperatingunitListResponse,
         )
 
     def delete(
@@ -2182,7 +2184,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -2193,7 +2195,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperatingunitListResponse:
+    ) -> AsyncPaginator[OperatingunitListResponse, AsyncOffsetPage[OperatingunitListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -2209,14 +2211,15 @@ class AsyncOperatingunitResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/operatingunit",
+            page=AsyncOffsetPage[OperatingunitListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -2224,7 +2227,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
                     operatingunit_list_params.OperatingunitListParams,
                 ),
             ),
-            cast_to=OperatingunitListResponse,
+            model=OperatingunitListResponse,
         )
 
     async def delete(

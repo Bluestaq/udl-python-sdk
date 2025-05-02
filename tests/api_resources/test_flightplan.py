@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    FlightplanListResponse,
+    FlightPlanAbridged,
     FlightplanTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import FlightPlanFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -597,7 +598,7 @@ class TestFlightplan:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         flightplan = client.flightplan.list()
-        assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+        assert_matches_type(SyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -605,7 +606,7 @@ class TestFlightplan:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+        assert_matches_type(SyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -614,7 +615,7 @@ class TestFlightplan:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         flightplan = response.parse()
-        assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+        assert_matches_type(SyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -623,7 +624,7 @@ class TestFlightplan:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             flightplan = response.parse()
-            assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+            assert_matches_type(SyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1400,7 +1401,7 @@ class TestAsyncFlightplan:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         flightplan = await async_client.flightplan.list()
-        assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+        assert_matches_type(AsyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1408,7 +1409,7 @@ class TestAsyncFlightplan:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+        assert_matches_type(AsyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1417,7 +1418,7 @@ class TestAsyncFlightplan:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         flightplan = await response.parse()
-        assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+        assert_matches_type(AsyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1426,7 +1427,7 @@ class TestAsyncFlightplan:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             flightplan = await response.parse()
-            assert_matches_type(FlightplanListResponse, flightplan, path=["response"])
+            assert_matches_type(AsyncOffsetPage[FlightPlanAbridged], flightplan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

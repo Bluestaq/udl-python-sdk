@@ -2,21 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "OrbitdeterminationListResponse",
-    "OrbitdeterminationListResponseItem",
-    "OrbitdeterminationListResponseItemAprioriElset",
-    "OrbitdeterminationListResponseItemAprioriStateVector",
-]
+__all__ = ["OrbitdeterminationListResponse", "AprioriElset", "AprioriStateVector"]
 
 
-class OrbitdeterminationListResponseItemAprioriElset(BaseModel):
+class AprioriElset(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -270,7 +265,7 @@ class OrbitdeterminationListResponseItemAprioriElset(BaseModel):
     """
 
 
-class OrbitdeterminationListResponseItemAprioriStateVector(BaseModel):
+class AprioriStateVector(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -872,7 +867,7 @@ class OrbitdeterminationListResponseItemAprioriStateVector(BaseModel):
     """
 
 
-class OrbitdeterminationListResponseItem(BaseModel):
+class OrbitdeterminationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -943,9 +938,7 @@ class OrbitdeterminationListResponseItem(BaseModel):
     agom_model: Optional[str] = FieldInfo(alias="agomModel", default=None)
     """Model used to estimate the AGOM."""
 
-    apriori_elset: Optional[OrbitdeterminationListResponseItemAprioriElset] = FieldInfo(
-        alias="aprioriElset", default=None
-    )
+    apriori_elset: Optional[AprioriElset] = FieldInfo(alias="aprioriElset", default=None)
     """
     An element set is a collection of Keplerian orbital elements describing an orbit
     of a particular satellite. The data is used along with an orbit propagator in
@@ -969,9 +962,7 @@ class OrbitdeterminationListResponseItem(BaseModel):
     StateVector with idStateVector = abc would be queried as /udl/statevector/abc.
     """
 
-    apriori_state_vector: Optional[OrbitdeterminationListResponseItemAprioriStateVector] = FieldInfo(
-        alias="aprioriStateVector", default=None
-    )
+    apriori_state_vector: Optional[AprioriStateVector] = FieldInfo(alias="aprioriStateVector", default=None)
     """
     This service provides operations for querying and manipulation of state vectors
     for OnOrbit objects. State vectors are cartesian vectors of position (r) and
@@ -1144,6 +1135,3 @@ class OrbitdeterminationListResponseItem(BaseModel):
     update, with a value of 1.00 being optimal. WRMS applies to batch least squares
     (BLS) processes.
     """
-
-
-OrbitdeterminationListResponse: TypeAlias = List[OrbitdeterminationListResponseItem]

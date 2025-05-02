@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.seradataradarpayload_get_response import SeradataradarpayloadGetResponse
 from ..types.seradataradarpayload_list_response import SeradataradarpayloadListResponse
 from ..types.seradataradarpayload_tuple_response import SeradataradarpayloadTupleResponse
@@ -414,7 +415,7 @@ class SeradataradarpayloadResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SeradataradarpayloadListResponse:
+    ) -> SyncOffsetPage[SeradataradarpayloadListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -430,8 +431,9 @@ class SeradataradarpayloadResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/seradataradarpayload",
+            page=SyncOffsetPage[SeradataradarpayloadListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -445,7 +447,7 @@ class SeradataradarpayloadResource(SyncAPIResource):
                     seradataradarpayload_list_params.SeradataradarpayloadListParams,
                 ),
             ),
-            cast_to=SeradataradarpayloadListResponse,
+            model=SeradataradarpayloadListResponse,
         )
 
     def delete(
@@ -1028,7 +1030,7 @@ class AsyncSeradataradarpayloadResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -1039,7 +1041,7 @@ class AsyncSeradataradarpayloadResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SeradataradarpayloadListResponse:
+    ) -> AsyncPaginator[SeradataradarpayloadListResponse, AsyncOffsetPage[SeradataradarpayloadListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1055,14 +1057,15 @@ class AsyncSeradataradarpayloadResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/seradataradarpayload",
+            page=AsyncOffsetPage[SeradataradarpayloadListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1070,7 +1073,7 @@ class AsyncSeradataradarpayloadResource(AsyncAPIResource):
                     seradataradarpayload_list_params.SeradataradarpayloadListParams,
                 ),
             ),
-            cast_to=SeradataradarpayloadListResponse,
+            model=SeradataradarpayloadListResponse,
         )
 
     async def delete(

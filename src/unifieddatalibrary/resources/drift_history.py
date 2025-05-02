@@ -20,10 +20,11 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.drift_history_full import DriftHistoryFull
-from ..types.drift_history_list_response import DriftHistoryListResponse
 from ..types.drift_history_tuple_response import DriftHistoryTupleResponse
+from ..types.shared.drift_history_abridged import DriftHistoryAbridged
 
 __all__ = ["DriftHistoryResource", "AsyncDriftHistoryResource"]
 
@@ -106,7 +107,7 @@ class DriftHistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DriftHistoryListResponse:
+    ) -> SyncOffsetPage[DriftHistoryAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -122,8 +123,9 @@ class DriftHistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/drifthistory",
+            page=SyncOffsetPage[DriftHistoryAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -137,7 +139,7 @@ class DriftHistoryResource(SyncAPIResource):
                     drift_history_list_params.DriftHistoryListParams,
                 ),
             ),
-            cast_to=DriftHistoryListResponse,
+            model=DriftHistoryAbridged,
         )
 
     def count(
@@ -334,7 +336,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
             cast_to=DriftHistoryFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -345,7 +347,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DriftHistoryListResponse:
+    ) -> AsyncPaginator[DriftHistoryAbridged, AsyncOffsetPage[DriftHistoryAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -361,14 +363,15 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/drifthistory",
+            page=AsyncOffsetPage[DriftHistoryAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -376,7 +379,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
                     drift_history_list_params.DriftHistoryListParams,
                 ),
             ),
-            cast_to=DriftHistoryListResponse,
+            model=DriftHistoryAbridged,
         )
 
     async def count(

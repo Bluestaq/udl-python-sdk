@@ -26,9 +26,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.airspacecontrolorder_full import AirspacecontrolorderFull
-from ..types.airspace_control_order_list_response import AirspaceControlOrderListResponse
+from ..types.airspacecontrolorder_abridged import AirspacecontrolorderAbridged
 from ..types.airspace_control_order_tuple_response import AirspaceControlOrderTupleResponse
 
 __all__ = ["AirspaceControlOrdersResource", "AsyncAirspaceControlOrdersResource"]
@@ -297,7 +298,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirspaceControlOrderListResponse:
+    ) -> SyncOffsetPage[AirspacecontrolorderAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -313,8 +314,9 @@ class AirspaceControlOrdersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airspacecontrolorder",
+            page=SyncOffsetPage[AirspacecontrolorderAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -328,7 +330,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
                     airspace_control_order_list_params.AirspaceControlOrderListParams,
                 ),
             ),
-            cast_to=AirspaceControlOrderListResponse,
+            model=AirspacecontrolorderAbridged,
         )
 
     def count(
@@ -747,7 +749,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
             cast_to=AirspacecontrolorderFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -758,7 +760,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirspaceControlOrderListResponse:
+    ) -> AsyncPaginator[AirspacecontrolorderAbridged, AsyncOffsetPage[AirspacecontrolorderAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -774,14 +776,15 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airspacecontrolorder",
+            page=AsyncOffsetPage[AirspacecontrolorderAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -789,7 +792,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
                     airspace_control_order_list_params.AirspaceControlOrderListParams,
                 ),
             ),
-            cast_to=AirspaceControlOrderListResponse,
+            model=AirspacecontrolorderAbridged,
         )
 
     async def count(

@@ -17,9 +17,10 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncOffsetPage, AsyncOffsetPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.udl.onboardnavigation import history_aodr_params, history_list_params, history_count_params
-from ....types.udl.onboardnavigation.history_list_response import HistoryListResponse
+from ....types.udl.onboardnavigation.onboardnavigation_full import OnboardnavigationFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -57,7 +58,7 @@ class HistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryListResponse:
+    ) -> SyncOffsetPage[OnboardnavigationFull]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -80,8 +81,9 @@ class HistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/onboardnavigation/history",
+            page=SyncOffsetPage[OnboardnavigationFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -97,7 +99,7 @@ class HistoryResource(SyncAPIResource):
                     history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryListResponse,
+            model=OnboardnavigationFull,
         )
 
     def aodr(
@@ -248,7 +250,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -261,7 +263,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryListResponse:
+    ) -> AsyncPaginator[OnboardnavigationFull, AsyncOffsetPage[OnboardnavigationFull]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -284,14 +286,15 @@ class AsyncHistoryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/onboardnavigation/history",
+            page=AsyncOffsetPage[OnboardnavigationFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "columns": columns,
@@ -301,7 +304,7 @@ class AsyncHistoryResource(AsyncAPIResource):
                     history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryListResponse,
+            model=OnboardnavigationFull,
         )
 
     async def aodr(

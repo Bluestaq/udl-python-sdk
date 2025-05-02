@@ -34,9 +34,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.air_transport_mission_abridged import AirTransportMissionAbridged
 from ...types.shared.air_transport_mission_full import AirTransportMissionFull
-from ...types.air_transport_mission_list_response import AirTransportMissionListResponse
 from ...types.air_transport_mission_tuple_response import AirTransportMissionTupleResponse
 
 __all__ = ["AirTransportMissionsResource", "AsyncAirTransportMissionsResource"]
@@ -596,7 +597,7 @@ class AirTransportMissionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirTransportMissionListResponse:
+    ) -> SyncOffsetPage[AirTransportMissionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -615,8 +616,9 @@ class AirTransportMissionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airtransportmission",
+            page=SyncOffsetPage[AirTransportMissionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -631,7 +633,7 @@ class AirTransportMissionsResource(SyncAPIResource):
                     air_transport_mission_list_params.AirTransportMissionListParams,
                 ),
             ),
-            cast_to=AirTransportMissionListResponse,
+            model=AirTransportMissionAbridged,
         )
 
     def count(
@@ -1313,7 +1315,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
@@ -1325,7 +1327,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirTransportMissionListResponse:
+    ) -> AsyncPaginator[AirTransportMissionAbridged, AsyncOffsetPage[AirTransportMissionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1344,14 +1346,15 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airtransportmission",
+            page=AsyncOffsetPage[AirTransportMissionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "first_result": first_result,
@@ -1360,7 +1363,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     air_transport_mission_list_params.AirTransportMissionListParams,
                 ),
             ),
-            cast_to=AirTransportMissionListResponse,
+            model=AirTransportMissionAbridged,
         )
 
     async def count(

@@ -27,7 +27,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.h3geo_get_response import H3geoGetResponse
 from ...types.h3geo_list_response import H3geoListResponse
 from ...types.h3geo_tuple_response import H3geoTupleResponse
@@ -189,7 +190,7 @@ class H3geoResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> H3geoListResponse:
+    ) -> SyncOffsetPage[H3geoListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -208,8 +209,9 @@ class H3geoResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/h3geo",
+            page=SyncOffsetPage[H3geoListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -224,7 +226,7 @@ class H3geoResource(SyncAPIResource):
                     h3geo_list_params.H3geoListParams,
                 ),
             ),
-            cast_to=H3geoListResponse,
+            model=H3geoListResponse,
         )
 
     def count(
@@ -552,7 +554,7 @@ class AsyncH3geoResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -564,7 +566,7 @@ class AsyncH3geoResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> H3geoListResponse:
+    ) -> AsyncPaginator[H3geoListResponse, AsyncOffsetPage[H3geoListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -583,14 +585,15 @@ class AsyncH3geoResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/h3geo",
+            page=AsyncOffsetPage[H3geoListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -599,7 +602,7 @@ class AsyncH3geoResource(AsyncAPIResource):
                     h3geo_list_params.H3geoListParams,
                 ),
             ),
-            cast_to=H3geoListResponse,
+            model=H3geoListResponse,
         )
 
     async def count(

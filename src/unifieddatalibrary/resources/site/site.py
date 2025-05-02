@@ -34,7 +34,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.site_get_response import SiteGetResponse
 from ...types.site_list_response import SiteListResponse
 from ...types.entity_ingest_param import EntityIngestParam
@@ -1169,7 +1170,7 @@ class SiteResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SiteListResponse:
+    ) -> SyncOffsetPage[SiteListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1185,8 +1186,9 @@ class SiteResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/site",
+            page=SyncOffsetPage[SiteListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1200,7 +1202,7 @@ class SiteResource(SyncAPIResource):
                     site_list_params.SiteListParams,
                 ),
             ),
-            cast_to=SiteListResponse,
+            model=SiteListResponse,
         )
 
     def count(
@@ -2491,7 +2493,7 @@ class AsyncSiteResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -2502,7 +2504,7 @@ class AsyncSiteResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SiteListResponse:
+    ) -> AsyncPaginator[SiteListResponse, AsyncOffsetPage[SiteListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -2518,14 +2520,15 @@ class AsyncSiteResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/site",
+            page=AsyncOffsetPage[SiteListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -2533,7 +2536,7 @@ class AsyncSiteResource(AsyncAPIResource):
                     site_list_params.SiteListParams,
                 ),
             ),
-            cast_to=SiteListResponse,
+            model=SiteListResponse,
         )
 
     async def count(

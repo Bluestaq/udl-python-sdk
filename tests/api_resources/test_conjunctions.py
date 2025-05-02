@@ -11,11 +11,12 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     ConjunctionFull,
-    ConjunctionListResponse,
+    ConjunctionAbridged,
     ConjunctionTupleResponse,
     ConjunctionGetHistoryResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -75,7 +76,7 @@ class TestConjunctions:
         conjunction = client.conjunctions.list(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+        assert_matches_type(SyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -84,7 +85,7 @@ class TestConjunctions:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+        assert_matches_type(SyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -95,7 +96,7 @@ class TestConjunctions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         conjunction = response.parse()
-        assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+        assert_matches_type(SyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -106,7 +107,7 @@ class TestConjunctions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             conjunction = response.parse()
-            assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+            assert_matches_type(SyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -776,7 +777,7 @@ class TestAsyncConjunctions:
         conjunction = await async_client.conjunctions.list(
             tca=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+        assert_matches_type(AsyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -785,7 +786,7 @@ class TestAsyncConjunctions:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+        assert_matches_type(AsyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -796,7 +797,7 @@ class TestAsyncConjunctions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         conjunction = await response.parse()
-        assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+        assert_matches_type(AsyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -807,7 +808,7 @@ class TestAsyncConjunctions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             conjunction = await response.parse()
-            assert_matches_type(ConjunctionListResponse, conjunction, path=["response"])
+            assert_matches_type(AsyncOffsetPage[ConjunctionAbridged], conjunction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

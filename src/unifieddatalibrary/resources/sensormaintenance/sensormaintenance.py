@@ -36,7 +36,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sensormaintenance_list_response import SensormaintenanceListResponse
 from ...types.sensormaintenance_tuple_response import SensormaintenanceTupleResponse
 from ...types.sensormaintenance_current_response import SensormaintenanceCurrentResponse
@@ -420,7 +421,7 @@ class SensormaintenanceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensormaintenanceListResponse:
+    ) -> SyncOffsetPage[SensormaintenanceListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -442,8 +443,9 @@ class SensormaintenanceResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sensormaintenance",
+            page=SyncOffsetPage[SensormaintenanceListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -459,7 +461,7 @@ class SensormaintenanceResource(SyncAPIResource):
                     sensormaintenance_list_params.SensormaintenanceListParams,
                 ),
             ),
-            cast_to=SensormaintenanceListResponse,
+            model=SensormaintenanceListResponse,
         )
 
     def delete(
@@ -1147,7 +1149,7 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -1160,7 +1162,7 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensormaintenanceListResponse:
+    ) -> AsyncPaginator[SensormaintenanceListResponse, AsyncOffsetPage[SensormaintenanceListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1182,14 +1184,15 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sensormaintenance",
+            page=AsyncOffsetPage[SensormaintenanceListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "end_time": end_time,
                         "first_result": first_result,
@@ -1199,7 +1202,7 @@ class AsyncSensormaintenanceResource(AsyncAPIResource):
                     sensormaintenance_list_params.SensormaintenanceListParams,
                 ),
             ),
-            cast_to=SensormaintenanceListResponse,
+            model=SensormaintenanceListResponse,
         )
 
     async def delete(

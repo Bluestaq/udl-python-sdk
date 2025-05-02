@@ -31,7 +31,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.trackdetail_list_response import TrackdetailListResponse
 from ...types.trackdetail_tuple_response import TrackdetailTupleResponse
 
@@ -74,7 +75,7 @@ class TrackdetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackdetailListResponse:
+    ) -> SyncOffsetPage[TrackdetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -93,8 +94,9 @@ class TrackdetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/trackdetails",
+            page=SyncOffsetPage[TrackdetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -109,7 +111,7 @@ class TrackdetailsResource(SyncAPIResource):
                     trackdetail_list_params.TrackdetailListParams,
                 ),
             ),
-            cast_to=TrackdetailListResponse,
+            model=TrackdetailListResponse,
         )
 
     def count(
@@ -310,7 +312,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
         """
         return AsyncTrackdetailsResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         ts: Union[str, datetime],
@@ -322,7 +324,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackdetailListResponse:
+    ) -> AsyncPaginator[TrackdetailListResponse, AsyncOffsetPage[TrackdetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -341,14 +343,15 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/trackdetails",
+            page=AsyncOffsetPage[TrackdetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ts": ts,
                         "first_result": first_result,
@@ -357,7 +360,7 @@ class AsyncTrackdetailsResource(AsyncAPIResource):
                     trackdetail_list_params.TrackdetailListParams,
                 ),
             ),
-            cast_to=TrackdetailListResponse,
+            model=TrackdetailListResponse,
         )
 
     async def count(

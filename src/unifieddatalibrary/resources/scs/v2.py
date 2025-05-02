@@ -25,8 +25,9 @@ from ...types.scs import (
     v2_file_upload_params,
     v2_folder_create_params,
 )
-from ..._base_client import make_request_options
-from ...types.scs.v2_list_response import V2ListResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.scs.scs_entity import ScsEntity
 
 __all__ = ["V2Resource", "AsyncV2Resource"]
 
@@ -133,7 +134,7 @@ class V2Resource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2ListResponse:
+    ) -> SyncOffsetPage[ScsEntity]:
         """
         Returns a list of ScsEntity objects, each directly nested under the provided
         path.
@@ -149,8 +150,9 @@ class V2Resource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/scs/v2/list",
+            page=SyncOffsetPage[ScsEntity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -165,7 +167,7 @@ class V2Resource(SyncAPIResource):
                     v2_list_params.V2ListParams,
                 ),
             ),
-            cast_to=V2ListResponse,
+            model=ScsEntity,
         )
 
     def delete(
@@ -539,7 +541,7 @@ class AsyncV2Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         path: str,
@@ -551,7 +553,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2ListResponse:
+    ) -> AsyncPaginator[ScsEntity, AsyncOffsetPage[ScsEntity]]:
         """
         Returns a list of ScsEntity objects, each directly nested under the provided
         path.
@@ -567,14 +569,15 @@ class AsyncV2Resource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/scs/v2/list",
+            page=AsyncOffsetPage[ScsEntity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "path": path,
                         "first_result": first_result,
@@ -583,7 +586,7 @@ class AsyncV2Resource(AsyncAPIResource):
                     v2_list_params.V2ListParams,
                 ),
             ),
-            cast_to=V2ListResponse,
+            model=ScsEntity,
         )
 
     async def delete(

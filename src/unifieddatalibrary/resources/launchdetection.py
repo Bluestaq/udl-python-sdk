@@ -26,7 +26,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.launchdetection_get_response import LaunchdetectionGetResponse
 from ..types.launchdetection_list_response import LaunchdetectionListResponse
 from ..types.launchdetection_tuple_response import LaunchdetectionTupleResponse
@@ -371,7 +372,7 @@ class LaunchdetectionResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchdetectionListResponse:
+    ) -> SyncOffsetPage[LaunchdetectionListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -387,8 +388,9 @@ class LaunchdetectionResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/launchdetection",
+            page=SyncOffsetPage[LaunchdetectionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -402,7 +404,7 @@ class LaunchdetectionResource(SyncAPIResource):
                     launchdetection_list_params.LaunchdetectionListParams,
                 ),
             ),
-            cast_to=LaunchdetectionListResponse,
+            model=LaunchdetectionListResponse,
         )
 
     def delete(
@@ -940,7 +942,7 @@ class AsyncLaunchdetectionResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -951,7 +953,7 @@ class AsyncLaunchdetectionResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchdetectionListResponse:
+    ) -> AsyncPaginator[LaunchdetectionListResponse, AsyncOffsetPage[LaunchdetectionListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -967,14 +969,15 @@ class AsyncLaunchdetectionResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/launchdetection",
+            page=AsyncOffsetPage[LaunchdetectionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -982,7 +985,7 @@ class AsyncLaunchdetectionResource(AsyncAPIResource):
                     launchdetection_list_params.LaunchdetectionListParams,
                 ),
             ),
-            cast_to=LaunchdetectionListResponse,
+            model=LaunchdetectionListResponse,
         )
 
     async def delete(

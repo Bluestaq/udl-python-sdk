@@ -24,9 +24,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.antenna_full import AntennaFull
-from ..types.antenna_list_response import AntennaListResponse
+from ..types.antenna_abridged import AntennaAbridged
 from ..types.antenna_tuple_response import AntennaTupleResponse
 
 __all__ = ["AntennasResource", "AsyncAntennasResource"]
@@ -262,7 +263,7 @@ class AntennasResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AntennaListResponse:
+    ) -> SyncOffsetPage[AntennaAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -278,8 +279,9 @@ class AntennasResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/antenna",
+            page=SyncOffsetPage[AntennaAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -293,7 +295,7 @@ class AntennasResource(SyncAPIResource):
                     antenna_list_params.AntennaListParams,
                 ),
             ),
-            cast_to=AntennaListResponse,
+            model=AntennaAbridged,
         )
 
     def delete(
@@ -678,7 +680,7 @@ class AsyncAntennasResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -689,7 +691,7 @@ class AsyncAntennasResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AntennaListResponse:
+    ) -> AsyncPaginator[AntennaAbridged, AsyncOffsetPage[AntennaAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -705,14 +707,15 @@ class AsyncAntennasResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/antenna",
+            page=AsyncOffsetPage[AntennaAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -720,7 +723,7 @@ class AsyncAntennasResource(AsyncAPIResource):
                     antenna_list_params.AntennaListParams,
                 ),
             ),
-            cast_to=AntennaListResponse,
+            model=AntennaAbridged,
         )
 
     async def delete(

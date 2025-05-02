@@ -25,9 +25,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.bus_full import BusFull
-from ..types.bus_list_response import BusListResponse
+from ..types.bus_abridged import BusAbridged
 from ..types.bus_tuple_response import BusTupleResponse
 from ..types.entity_ingest_param import EntityIngestParam
 
@@ -686,7 +687,7 @@ class BusesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BusListResponse:
+    ) -> SyncOffsetPage[BusAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -702,8 +703,9 @@ class BusesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/bus",
+            page=SyncOffsetPage[BusAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -717,7 +719,7 @@ class BusesResource(SyncAPIResource):
                     bus_list_params.BusListParams,
                 ),
             ),
-            cast_to=BusListResponse,
+            model=BusAbridged,
         )
 
     def delete(
@@ -1524,7 +1526,7 @@ class AsyncBusesResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -1535,7 +1537,7 @@ class AsyncBusesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BusListResponse:
+    ) -> AsyncPaginator[BusAbridged, AsyncOffsetPage[BusAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1551,14 +1553,15 @@ class AsyncBusesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/bus",
+            page=AsyncOffsetPage[BusAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1566,7 +1569,7 @@ class AsyncBusesResource(AsyncAPIResource):
                     bus_list_params.BusListParams,
                 ),
             ),
-            cast_to=BusListResponse,
+            model=BusAbridged,
         )
 
     async def delete(

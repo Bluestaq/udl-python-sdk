@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SgiListResponse", "SgiListResponseItem"]
+__all__ = ["SgiListResponse"]
 
 
-class SgiListResponseItem(BaseModel):
+class SgiListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -346,6 +346,3 @@ class SgiListResponseItem(BaseModel):
 
     0.1-0.8 nm and Lya 121 nm emissions in x10-22 Watts per meter squared per Hertz.
     """
-
-
-SgiListResponse: TypeAlias = List[SgiListResponseItem]

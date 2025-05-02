@@ -23,7 +23,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.launchvehicledetail_get_response import LaunchvehicledetailGetResponse
 from ..types.launchvehicledetail_list_response import LaunchvehicledetailListResponse
 
@@ -603,7 +604,7 @@ class LaunchvehicledetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchvehicledetailListResponse:
+    ) -> SyncOffsetPage[LaunchvehicledetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -619,8 +620,9 @@ class LaunchvehicledetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/launchvehicledetails",
+            page=SyncOffsetPage[LaunchvehicledetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -634,7 +636,7 @@ class LaunchvehicledetailsResource(SyncAPIResource):
                     launchvehicledetail_list_params.LaunchvehicledetailListParams,
                 ),
             ),
-            cast_to=LaunchvehicledetailListResponse,
+            model=LaunchvehicledetailListResponse,
         )
 
     def delete(
@@ -1286,7 +1288,7 @@ class AsyncLaunchvehicledetailsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -1297,7 +1299,7 @@ class AsyncLaunchvehicledetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchvehicledetailListResponse:
+    ) -> AsyncPaginator[LaunchvehicledetailListResponse, AsyncOffsetPage[LaunchvehicledetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1313,14 +1315,15 @@ class AsyncLaunchvehicledetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/launchvehicledetails",
+            page=AsyncOffsetPage[LaunchvehicledetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1328,7 +1331,7 @@ class AsyncLaunchvehicledetailsResource(AsyncAPIResource):
                     launchvehicledetail_list_params.LaunchvehicledetailListParams,
                 ),
             ),
-            cast_to=LaunchvehicledetailListResponse,
+            model=LaunchvehicledetailListResponse,
         )
 
     async def delete(

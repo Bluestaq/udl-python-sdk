@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["TrackListResponse", "TrackListResponseItem"]
+__all__ = ["TrackListResponse"]
 
 
-class TrackListResponseItem(BaseModel):
+class TrackListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -493,6 +493,3 @@ class TrackListResponseItem(BaseModel):
     """
     Status of the track (e.g., INITIATING, MAINTAINING, DROPPING, TERMINATED, etc.).
     """
-
-
-TrackListResponse: TypeAlias = List[TrackListResponseItem]

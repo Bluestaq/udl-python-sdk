@@ -37,9 +37,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.conjunction_full import ConjunctionFull
-from ...types.conjunction_list_response import ConjunctionListResponse
+from ...types.conjunction_abridged import ConjunctionAbridged
 from ...types.conjunction_tuple_response import ConjunctionTupleResponse
 from ...types.conjunction_get_history_response import ConjunctionGetHistoryResponse
 
@@ -128,7 +129,7 @@ class ConjunctionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConjunctionListResponse:
+    ) -> SyncOffsetPage[ConjunctionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -146,8 +147,9 @@ class ConjunctionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/conjunction",
+            page=SyncOffsetPage[ConjunctionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -162,7 +164,7 @@ class ConjunctionsResource(SyncAPIResource):
                     conjunction_list_params.ConjunctionListParams,
                 ),
             ),
-            cast_to=ConjunctionListResponse,
+            model=ConjunctionAbridged,
         )
 
     def count(
@@ -956,7 +958,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
             cast_to=ConjunctionFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         tca: Union[str, datetime],
@@ -968,7 +970,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConjunctionListResponse:
+    ) -> AsyncPaginator[ConjunctionAbridged, AsyncOffsetPage[ConjunctionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -986,14 +988,15 @@ class AsyncConjunctionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/conjunction",
+            page=AsyncOffsetPage[ConjunctionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "tca": tca,
                         "first_result": first_result,
@@ -1002,7 +1005,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     conjunction_list_params.ConjunctionListParams,
                 ),
             ),
-            cast_to=ConjunctionListResponse,
+            model=ConjunctionAbridged,
         )
 
     async def count(

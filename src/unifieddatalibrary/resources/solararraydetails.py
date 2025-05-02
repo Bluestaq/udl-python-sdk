@@ -23,7 +23,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.solar_array_details_full import SolarArrayDetailsFull
 from ..types.solararraydetail_list_response import SolararraydetailListResponse
 
@@ -300,7 +301,7 @@ class SolararraydetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SolararraydetailListResponse:
+    ) -> SyncOffsetPage[SolararraydetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -326,8 +327,9 @@ class SolararraydetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/solararraydetails",
+            page=SyncOffsetPage[SolararraydetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -344,7 +346,7 @@ class SolararraydetailsResource(SyncAPIResource):
                     solararraydetail_list_params.SolararraydetailListParams,
                 ),
             ),
-            cast_to=SolararraydetailListResponse,
+            model=SolararraydetailListResponse,
         )
 
     def delete(
@@ -688,7 +690,7 @@ class AsyncSolararraydetailsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         classification_marking: str | NotGiven = NOT_GIVEN,
@@ -702,7 +704,7 @@ class AsyncSolararraydetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SolararraydetailListResponse:
+    ) -> AsyncPaginator[SolararraydetailListResponse, AsyncOffsetPage[SolararraydetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -728,14 +730,15 @@ class AsyncSolararraydetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/solararraydetails",
+            page=AsyncOffsetPage[SolararraydetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "classification_marking": classification_marking,
                         "data_mode": data_mode,
@@ -746,7 +749,7 @@ class AsyncSolararraydetailsResource(AsyncAPIResource):
                     solararraydetail_list_params.SolararraydetailListParams,
                 ),
             ),
-            cast_to=SolararraydetailListResponse,
+            model=SolararraydetailListResponse,
         )
 
     async def delete(

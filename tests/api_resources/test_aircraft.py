@@ -11,10 +11,11 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     AircraftFull,
-    AircraftListResponse,
+    AircraftAbridged,
     AircraftTupleQueryResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -313,7 +314,7 @@ class TestAircraft:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         aircraft = client.aircraft.list()
-        assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+        assert_matches_type(SyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -321,7 +322,7 @@ class TestAircraft:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+        assert_matches_type(SyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -330,7 +331,7 @@ class TestAircraft:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft = response.parse()
-        assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+        assert_matches_type(SyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -339,7 +340,7 @@ class TestAircraft:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft = response.parse()
-            assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+            assert_matches_type(SyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -736,7 +737,7 @@ class TestAsyncAircraft:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft = await async_client.aircraft.list()
-        assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -744,7 +745,7 @@ class TestAsyncAircraft:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -753,7 +754,7 @@ class TestAsyncAircraft:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft = await response.parse()
-        assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -762,7 +763,7 @@ class TestAsyncAircraft:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft = await response.parse()
-            assert_matches_type(AircraftListResponse, aircraft, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AircraftAbridged], aircraft, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SeradatanavigationListResponse", "SeradatanavigationListResponseItem"]
+__all__ = ["SeradatanavigationListResponse"]
 
 
-class SeradatanavigationListResponseItem(BaseModel):
+class SeradatanavigationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -99,6 +99,3 @@ class SeradatanavigationListResponseItem(BaseModel):
 
     payload_type: Optional[str] = FieldInfo(alias="payloadType", default=None)
     """Navigation payload type, e.g. WAAS, GAGAN, etc."""
-
-
-SeradatanavigationListResponse: TypeAlias = List[SeradatanavigationListResponseItem]

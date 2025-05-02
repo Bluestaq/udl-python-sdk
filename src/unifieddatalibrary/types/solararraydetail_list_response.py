@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SolararraydetailListResponse", "SolararraydetailListResponseItem"]
+__all__ = ["SolararraydetailListResponse"]
 
 
-class SolararraydetailListResponseItem(BaseModel):
+class SolararraydetailListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -84,6 +84,3 @@ class SolararraydetailListResponseItem(BaseModel):
 
     type: Optional[str] = None
     """Type of solar array (e.g. U Shaped)."""
-
-
-SolararraydetailListResponse: TypeAlias = List[SolararraydetailListResponseItem]

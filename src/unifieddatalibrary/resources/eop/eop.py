@@ -34,9 +34,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.eop_abridged import EopAbridged
 from ...types.shared.eop_full import EopFull
-from ...types.eop_list_response import EopListResponse
 from ...types.eop_list_tuple_response import EopListTupleResponse
 
 __all__ = ["EopResource", "AsyncEopResource"]
@@ -605,7 +606,7 @@ class EopResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EopListResponse:
+    ) -> SyncOffsetPage[EopAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -624,8 +625,9 @@ class EopResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/eop",
+            page=SyncOffsetPage[EopAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -640,7 +642,7 @@ class EopResource(SyncAPIResource):
                     eop_list_params.EopListParams,
                 ),
             ),
-            cast_to=EopListResponse,
+            model=EopAbridged,
         )
 
     def delete(
@@ -1368,7 +1370,7 @@ class AsyncEopResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         eop_date: Union[str, datetime],
@@ -1380,7 +1382,7 @@ class AsyncEopResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EopListResponse:
+    ) -> AsyncPaginator[EopAbridged, AsyncOffsetPage[EopAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1399,14 +1401,15 @@ class AsyncEopResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/eop",
+            page=AsyncOffsetPage[EopAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "eop_date": eop_date,
                         "first_result": first_result,
@@ -1415,7 +1418,7 @@ class AsyncEopResource(AsyncAPIResource):
                     eop_list_params.EopListParams,
                 ),
             ),
-            cast_to=EopListResponse,
+            model=EopAbridged,
         )
 
     async def delete(

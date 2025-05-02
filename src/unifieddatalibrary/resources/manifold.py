@@ -26,7 +26,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.manifold_get_response import ManifoldGetResponse
 from ..types.manifold_list_response import ManifoldListResponse
 from ..types.manifold_tuple_response import ManifoldTupleResponse
@@ -267,7 +268,7 @@ class ManifoldResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManifoldListResponse:
+    ) -> SyncOffsetPage[ManifoldListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -283,8 +284,9 @@ class ManifoldResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/manifold",
+            page=SyncOffsetPage[ManifoldListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -298,7 +300,7 @@ class ManifoldResource(SyncAPIResource):
                     manifold_list_params.ManifoldListParams,
                 ),
             ),
-            cast_to=ManifoldListResponse,
+            model=ManifoldListResponse,
         )
 
     def delete(
@@ -769,7 +771,7 @@ class AsyncManifoldResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -780,7 +782,7 @@ class AsyncManifoldResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManifoldListResponse:
+    ) -> AsyncPaginator[ManifoldListResponse, AsyncOffsetPage[ManifoldListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -796,14 +798,15 @@ class AsyncManifoldResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/manifold",
+            page=AsyncOffsetPage[ManifoldListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -811,7 +814,7 @@ class AsyncManifoldResource(AsyncAPIResource):
                     manifold_list_params.ManifoldListParams,
                 ),
             ),
-            cast_to=ManifoldListResponse,
+            model=ManifoldListResponse,
         )
 
     async def delete(

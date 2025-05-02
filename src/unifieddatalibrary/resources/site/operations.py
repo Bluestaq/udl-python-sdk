@@ -18,6 +18,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ...types.site import (
     operation_list_params,
     operation_count_params,
@@ -28,7 +29,7 @@ from ...types.site import (
     operation_create_bulk_params,
     operation_unvalidated_publish_params,
 )
-from ..._base_client import make_request_options
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.site.operation_list_response import OperationListResponse
 from ...types.site.operation_tuple_response import OperationTupleResponse
 from ...types.site.operation_retrieve_response import OperationRetrieveResponse
@@ -400,7 +401,7 @@ class OperationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperationListResponse:
+    ) -> SyncOffsetPage[OperationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -418,8 +419,9 @@ class OperationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/siteoperations",
+            page=SyncOffsetPage[OperationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -434,7 +436,7 @@ class OperationsResource(SyncAPIResource):
                     operation_list_params.OperationListParams,
                 ),
             ),
-            cast_to=OperationListResponse,
+            model=OperationListResponse,
         )
 
     def delete(
@@ -1033,7 +1035,7 @@ class AsyncOperationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         id_site: str,
@@ -1045,7 +1047,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperationListResponse:
+    ) -> AsyncPaginator[OperationListResponse, AsyncOffsetPage[OperationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1063,14 +1065,15 @@ class AsyncOperationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/siteoperations",
+            page=AsyncOffsetPage[OperationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "id_site": id_site,
                         "first_result": first_result,
@@ -1079,7 +1082,7 @@ class AsyncOperationsResource(AsyncAPIResource):
                     operation_list_params.OperationListParams,
                 ),
             ),
-            cast_to=OperationListResponse,
+            model=OperationListResponse,
         )
 
     async def delete(

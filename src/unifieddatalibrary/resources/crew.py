@@ -27,9 +27,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.crew_full import CrewFull
-from ..types.crew_list_response import CrewListResponse
+from ..types.crew_abridged import CrewAbridged
 from ..types.crew_tuple_response import CrewTupleResponse
 
 __all__ = ["CrewResource", "AsyncCrewResource"]
@@ -767,7 +768,7 @@ class CrewResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CrewListResponse:
+    ) -> SyncOffsetPage[CrewAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -783,8 +784,9 @@ class CrewResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/crew",
+            page=SyncOffsetPage[CrewAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -798,7 +800,7 @@ class CrewResource(SyncAPIResource):
                     crew_list_params.CrewListParams,
                 ),
             ),
-            cast_to=CrewListResponse,
+            model=CrewAbridged,
         )
 
     def count(
@@ -1685,7 +1687,7 @@ class AsyncCrewResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -1696,7 +1698,7 @@ class AsyncCrewResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CrewListResponse:
+    ) -> AsyncPaginator[CrewAbridged, AsyncOffsetPage[CrewAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1712,14 +1714,15 @@ class AsyncCrewResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/crew",
+            page=AsyncOffsetPage[CrewAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1727,7 +1730,7 @@ class AsyncCrewResource(AsyncAPIResource):
                     crew_list_params.CrewListParams,
                 ),
             ),
-            cast_to=CrewListResponse,
+            model=CrewAbridged,
         )
 
     async def count(

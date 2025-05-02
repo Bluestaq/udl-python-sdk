@@ -25,9 +25,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.equipment_remark_full import EquipmentRemarkFull
-from ..types.equipmentremark_list_response import EquipmentremarkListResponse
+from ..types.equipment_remark_abridged import EquipmentRemarkAbridged
 from ..types.equipmentremark_tuple_response import EquipmentremarkTupleResponse
 
 __all__ = ["EquipmentremarksResource", "AsyncEquipmentremarksResource"]
@@ -210,7 +211,7 @@ class EquipmentremarksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EquipmentremarkListResponse:
+    ) -> SyncOffsetPage[EquipmentRemarkAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -226,8 +227,9 @@ class EquipmentremarksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/equipmentremark",
+            page=SyncOffsetPage[EquipmentRemarkAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -241,7 +243,7 @@ class EquipmentremarksResource(SyncAPIResource):
                     equipmentremark_list_params.EquipmentremarkListParams,
                 ),
             ),
-            cast_to=EquipmentremarkListResponse,
+            model=EquipmentRemarkAbridged,
         )
 
     def count(
@@ -574,7 +576,7 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
             cast_to=EquipmentRemarkFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -585,7 +587,7 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EquipmentremarkListResponse:
+    ) -> AsyncPaginator[EquipmentRemarkAbridged, AsyncOffsetPage[EquipmentRemarkAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -601,14 +603,15 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/equipmentremark",
+            page=AsyncOffsetPage[EquipmentRemarkAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -616,7 +619,7 @@ class AsyncEquipmentremarksResource(AsyncAPIResource):
                     equipmentremark_list_params.EquipmentremarkListParams,
                 ),
             ),
-            cast_to=EquipmentremarkListResponse,
+            model=EquipmentRemarkAbridged,
         )
 
     async def count(

@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import date, datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,20 +10,19 @@ from .._models import BaseModel
 
 __all__ = [
     "MtiListResponse",
-    "MtiListResponseItem",
-    "MtiListResponseItemDwell",
-    "MtiListResponseItemDwellD32",
-    "MtiListResponseItemFreeText",
-    "MtiListResponseItemHrr",
-    "MtiListResponseItemHrrH32",
-    "MtiListResponseItemJobDef",
-    "MtiListResponseItemJobRequest",
-    "MtiListResponseItemMission",
-    "MtiListResponseItemPlatformLoc",
+    "Dwell",
+    "DwellD32",
+    "FreeText",
+    "Hrr",
+    "HrrH32",
+    "JobDef",
+    "JobRequest",
+    "Mission",
+    "PlatformLoc",
 ]
 
 
-class MtiListResponseItemDwellD32(BaseModel):
+class DwellD32(BaseModel):
     d32_1: Optional[int] = None
     """Sequential count of this MTI report within the dwell."""
 
@@ -122,7 +121,7 @@ class MtiListResponseItemDwellD32(BaseModel):
     """Estimated signal-to-noise ratio (SNR) of the target return, in decibels."""
 
 
-class MtiListResponseItemDwell(BaseModel):
+class Dwell(BaseModel):
     d10: Optional[float] = None
     """
     Factor which modifies the value of the reported target latitude (Delta Latitude,
@@ -249,7 +248,7 @@ class MtiListResponseItemDwell(BaseModel):
     the sensor, in decimeters per second.
     """
 
-    d32: Optional[List[MtiListResponseItemDwellD32]] = None
+    d32: Optional[List[DwellD32]] = None
     """
     Minimum velocity component, along the line of sight, which can be detected by
     the sensor, in decimeters per second.
@@ -294,7 +293,7 @@ class MtiListResponseItemDwell(BaseModel):
     """Dwell timestamp in ISO8601 UTC format."""
 
 
-class MtiListResponseItemFreeText(BaseModel):
+class FreeText(BaseModel):
     f1: Optional[str] = None
     """The originator of the Free Text message."""
 
@@ -305,7 +304,7 @@ class MtiListResponseItemFreeText(BaseModel):
     """Free text data message."""
 
 
-class MtiListResponseItemHrrH32(BaseModel):
+class HrrH32(BaseModel):
     h32_1: Optional[int] = None
     """Scatterer’s power magnitude."""
 
@@ -325,7 +324,7 @@ class MtiListResponseItemHrrH32(BaseModel):
     """
 
 
-class MtiListResponseItemHrr(BaseModel):
+class Hrr(BaseModel):
     h10: Optional[int] = None
     """
     Detection threshold used to isolate significant target scatterer pixels,
@@ -419,7 +418,7 @@ class MtiListResponseItemHrr(BaseModel):
     h31: Optional[int] = None
     """Standard deviation of estimate of the object length, expressed in meters."""
 
-    h32: Optional[List[MtiListResponseItemHrrH32]] = None
+    h32: Optional[List[HrrH32]] = None
     """Standard deviation of estimate of the object length, expressed in meters."""
 
     h4: Optional[bool] = None
@@ -447,7 +446,7 @@ class MtiListResponseItemHrr(BaseModel):
     """
 
 
-class MtiListResponseItemJobDef(BaseModel):
+class JobDef(BaseModel):
     j10: Optional[float] = None
     """
     North-South position of the third corner (Point C) defining the area for sensor
@@ -605,7 +604,7 @@ class MtiListResponseItemJobDef(BaseModel):
     """
 
 
-class MtiListResponseItemJobRequest(BaseModel):
+class JobRequest(BaseModel):
     job_req_est: Optional[datetime] = FieldInfo(alias="jobReqEst", default=None)
     """Specifies the Earliest Start Time for which the service is requested.
 
@@ -723,7 +722,7 @@ class MtiListResponseItemJobRequest(BaseModel):
     """
 
 
-class MtiListResponseItemMission(BaseModel):
+class Mission(BaseModel):
     m1: Optional[str] = None
     """The mission plan id."""
 
@@ -740,7 +739,7 @@ class MtiListResponseItemMission(BaseModel):
     """Mission origination date."""
 
 
-class MtiListResponseItemPlatformLoc(BaseModel):
+class PlatformLoc(BaseModel):
     l1: Optional[int] = None
     """
     Elapsed time, expressed in milliseconds, from midnight at the beginning of the
@@ -788,7 +787,7 @@ class MtiListResponseItemPlatformLoc(BaseModel):
     """Platform location timestamp in ISO8601 UTC format."""
 
 
-class MtiListResponseItem(BaseModel):
+class MtiListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -824,42 +823,42 @@ class MtiListResponseItem(BaseModel):
     system.
     """
 
-    dwells: Optional[List[MtiListResponseItemDwell]] = None
+    dwells: Optional[List[Dwell]] = None
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
     unique within a mission.
     """
 
-    free_texts: Optional[List[MtiListResponseItemFreeText]] = FieldInfo(alias="freeTexts", default=None)
+    free_texts: Optional[List[FreeText]] = FieldInfo(alias="freeTexts", default=None)
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
     unique within a mission.
     """
 
-    hrrs: Optional[List[MtiListResponseItemHrr]] = None
+    hrrs: Optional[List[Hrr]] = None
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
     unique within a mission.
     """
 
-    job_defs: Optional[List[MtiListResponseItemJobDef]] = FieldInfo(alias="jobDefs", default=None)
+    job_defs: Optional[List[JobDef]] = FieldInfo(alias="jobDefs", default=None)
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
     unique within a mission.
     """
 
-    job_requests: Optional[List[MtiListResponseItemJobRequest]] = FieldInfo(alias="jobRequests", default=None)
+    job_requests: Optional[List[JobRequest]] = FieldInfo(alias="jobRequests", default=None)
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
     unique within a mission.
     """
 
-    missions: Optional[List[MtiListResponseItemMission]] = None
+    missions: Optional[List[Mission]] = None
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
@@ -908,12 +907,9 @@ class MtiListResponseItem(BaseModel):
     for the platform.
     """
 
-    platform_locs: Optional[List[MtiListResponseItemPlatformLoc]] = FieldInfo(alias="platformLocs", default=None)
+    platform_locs: Optional[List[PlatformLoc]] = FieldInfo(alias="platformLocs", default=None)
     """
     A platform-assigned number identifying the specific request or task that
     pertains to all Dwell, HRR, and Range-Doppler segments in the packet. Job ID is
     unique within a mission.
     """
-
-
-MtiListResponse: TypeAlias = List[MtiListResponseItem]

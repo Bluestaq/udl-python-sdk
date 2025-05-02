@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SeradatacommdetailListResponse", "SeradatacommdetailListResponseItem"]
+__all__ = ["SeradatacommdetailListResponse"]
 
 
-class SeradatacommdetailListResponseItem(BaseModel):
+class SeradatacommdetailListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -157,6 +157,3 @@ class SeradatacommdetailListResponseItem(BaseModel):
 
     user_uplink_to: Optional[float] = FieldInfo(alias="userUplinkTo", default=None)
     """Comm userUplinkTo in Ghz."""
-
-
-SeradatacommdetailListResponse: TypeAlias = List[SeradatacommdetailListResponseItem]

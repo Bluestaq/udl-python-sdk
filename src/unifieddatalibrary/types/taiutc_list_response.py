@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["TaiutcListResponse", "TaiutcListResponseItem"]
+__all__ = ["TaiutcListResponse"]
 
 
-class TaiutcListResponseItem(BaseModel):
+class TaiutcListResponse(BaseModel):
     adjustment_date: datetime = FieldInfo(alias="adjustmentDate")
     """Effective date/time for the leap second adjustment."""
 
@@ -79,6 +79,3 @@ class TaiutcListResponseItem(BaseModel):
     Total/cumulative offset between TAI and UTC time as of adjustmentDate, in
     seconds.
     """
-
-
-TaiutcListResponse: TypeAlias = List[TaiutcListResponseItem]

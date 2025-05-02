@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SpaceenvobservationTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +27,7 @@ class TestSpaceenvobservation:
         spaceenvobservation = client.spaceenvobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+        assert_matches_type(SyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -35,7 +36,7 @@ class TestSpaceenvobservation:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+        assert_matches_type(SyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -46,7 +47,7 @@ class TestSpaceenvobservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         spaceenvobservation = response.parse()
-        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+        assert_matches_type(SyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -57,7 +58,7 @@ class TestSpaceenvobservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             spaceenvobservation = response.parse()
-            assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+            assert_matches_type(SyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -283,7 +284,7 @@ class TestAsyncSpaceenvobservation:
         spaceenvobservation = await async_client.spaceenvobservation.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -292,7 +293,7 @@ class TestAsyncSpaceenvobservation:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -303,7 +304,7 @@ class TestAsyncSpaceenvobservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         spaceenvobservation = await response.parse()
-        assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -314,7 +315,9 @@ class TestAsyncSpaceenvobservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             spaceenvobservation = await response.parse()
-            assert_matches_type(SpaceenvobservationListResponse, spaceenvobservation, path=["response"])
+            assert_matches_type(
+                AsyncOffsetPage[SpaceenvobservationListResponse], spaceenvobservation, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 

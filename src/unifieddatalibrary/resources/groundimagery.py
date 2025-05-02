@@ -34,7 +34,8 @@ from .._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.groundimagery_list_response import GroundimageryListResponse
 from ..types.groundimagery_tuple_response import GroundimageryTupleResponse
 from ..types.udl.groundimagery.ground_imagery_full import GroundImageryFull
@@ -245,7 +246,7 @@ class GroundimageryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroundimageryListResponse:
+    ) -> SyncOffsetPage[GroundimageryListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -263,8 +264,9 @@ class GroundimageryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/groundimagery",
+            page=SyncOffsetPage[GroundimageryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -279,7 +281,7 @@ class GroundimageryResource(SyncAPIResource):
                     groundimagery_list_params.GroundimageryListParams,
                 ),
             ),
-            cast_to=GroundimageryListResponse,
+            model=GroundimageryListResponse,
         )
 
     def count(
@@ -703,7 +705,7 @@ class AsyncGroundimageryResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         image_time: Union[str, datetime],
@@ -715,7 +717,7 @@ class AsyncGroundimageryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroundimageryListResponse:
+    ) -> AsyncPaginator[GroundimageryListResponse, AsyncOffsetPage[GroundimageryListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -733,14 +735,15 @@ class AsyncGroundimageryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/groundimagery",
+            page=AsyncOffsetPage[GroundimageryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "image_time": image_time,
                         "first_result": first_result,
@@ -749,7 +752,7 @@ class AsyncGroundimageryResource(AsyncAPIResource):
                     groundimagery_list_params.GroundimageryListParams,
                 ),
             ),
-            cast_to=GroundimageryListResponse,
+            model=GroundimageryListResponse,
         )
 
     async def count(

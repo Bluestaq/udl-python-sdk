@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SurfaceListResponse", "SurfaceListResponseItem"]
+__all__ = ["SurfaceListResponse"]
 
 
-class SurfaceListResponseItem(BaseModel):
+class SurfaceListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -486,6 +486,3 @@ class SurfaceListResponseItem(BaseModel):
 
     width_m: Optional[float] = FieldInfo(alias="widthM", default=None)
     """The width of the surface type, in meters."""
-
-
-SurfaceListResponse: TypeAlias = List[SurfaceListResponseItem]

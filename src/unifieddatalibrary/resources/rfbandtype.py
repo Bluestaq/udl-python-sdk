@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.rfbandtype_get_response import RfbandtypeGetResponse
 from ..types.rfbandtype_list_response import RfbandtypeListResponse
 from ..types.rfbandtype_tuple_response import RfbandtypeTupleResponse
@@ -240,7 +241,7 @@ class RfbandtypeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RfbandtypeListResponse:
+    ) -> SyncOffsetPage[RfbandtypeListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -256,8 +257,9 @@ class RfbandtypeResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/rfbandtype",
+            page=SyncOffsetPage[RfbandtypeListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -271,7 +273,7 @@ class RfbandtypeResource(SyncAPIResource):
                     rfbandtype_list_params.RfbandtypeListParams,
                 ),
             ),
-            cast_to=RfbandtypeListResponse,
+            model=RfbandtypeListResponse,
         )
 
     def delete(
@@ -680,7 +682,7 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -691,7 +693,7 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RfbandtypeListResponse:
+    ) -> AsyncPaginator[RfbandtypeListResponse, AsyncOffsetPage[RfbandtypeListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -707,14 +709,15 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/rfbandtype",
+            page=AsyncOffsetPage[RfbandtypeListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -722,7 +725,7 @@ class AsyncRfbandtypeResource(AsyncAPIResource):
                     rfbandtype_list_params.RfbandtypeListParams,
                 ),
             ),
-            cast_to=RfbandtypeListResponse,
+            model=RfbandtypeListResponse,
         )
 
     async def delete(

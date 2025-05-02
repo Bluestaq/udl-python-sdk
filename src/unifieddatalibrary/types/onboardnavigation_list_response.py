@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OnboardnavigationListResponse", "OnboardnavigationListResponseItem"]
+__all__ = ["OnboardnavigationListResponse"]
 
 
-class OnboardnavigationListResponseItem(BaseModel):
+class OnboardnavigationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -137,6 +137,3 @@ class OnboardnavigationListResponseItem(BaseModel):
     The epochs are assumed to correspond to all sensor data in this record. If
     sensors do not share a common epoch then separate records should be generated.
     """
-
-
-OnboardnavigationListResponse: TypeAlias = List[OnboardnavigationListResponseItem]

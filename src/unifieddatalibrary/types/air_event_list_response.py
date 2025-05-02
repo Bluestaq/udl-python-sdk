@@ -2,22 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "AirEventListResponse",
-    "AirEventListResponseItem",
-    "AirEventListResponseItemReceiver",
-    "AirEventListResponseItemRemark",
-    "AirEventListResponseItemTanker",
-]
+__all__ = ["AirEventListResponse", "Receiver", "Remark", "Tanker"]
 
 
-class AirEventListResponseItemReceiver(BaseModel):
+class Receiver(BaseModel):
     alt_receiver_mission_id: Optional[str] = FieldInfo(alias="altReceiverMissionId", default=None)
     """Alternate mission identifier of this receiver provided by source."""
 
@@ -109,7 +103,7 @@ class AirEventListResponseItemReceiver(BaseModel):
     """
 
 
-class AirEventListResponseItemRemark(BaseModel):
+class Remark(BaseModel):
     date: Optional[datetime] = None
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -130,7 +124,7 @@ class AirEventListResponseItemRemark(BaseModel):
     """User who published the remark."""
 
 
-class AirEventListResponseItemTanker(BaseModel):
+class Tanker(BaseModel):
     alt_tanker_mission_id: Optional[str] = FieldInfo(alias="altTankerMissionId", default=None)
     """Alternate mission identifier of this tanker provided by source."""
 
@@ -204,7 +198,7 @@ class AirEventListResponseItemTanker(BaseModel):
     """The name and/or number of the point of contact for this tanker."""
 
 
-class AirEventListResponseItem(BaseModel):
+class AirEventListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -376,10 +370,10 @@ class AirEventListResponseItem(BaseModel):
     priority: Optional[str] = None
     """Priority of this air event."""
 
-    receivers: Optional[List[AirEventListResponseItemReceiver]] = None
+    receivers: Optional[List[Receiver]] = None
     """Collection of receiver aircraft associated with this Air Event."""
 
-    remarks: Optional[List[AirEventListResponseItemRemark]] = None
+    remarks: Optional[List[Remark]] = None
     """Collection of remarks associated with this Air Event."""
 
     rev_track: Optional[bool] = FieldInfo(alias="revTrack", default=None)
@@ -430,7 +424,7 @@ class AirEventListResponseItem(BaseModel):
     Possible values are A (Altitude Reservation), R (Reserved), or Q (Questionable).
     """
 
-    tankers: Optional[List[AirEventListResponseItemTanker]] = None
+    tankers: Optional[List[Tanker]] = None
     """Collection of tanker aircraft associated with this Air Event."""
 
     track_time: Optional[float] = FieldInfo(alias="trackTime", default=None)
@@ -444,6 +438,3 @@ class AirEventListResponseItem(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-AirEventListResponse: TypeAlias = List[AirEventListResponseItem]

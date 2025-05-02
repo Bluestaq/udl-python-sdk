@@ -33,7 +33,8 @@ from .._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.gnssrawif_list_response import GnssrawifListResponse
 from ..types.gnssrawif_tuple_response import GnssrawifTupleResponse
 from ..types.udl.gnssrawif.gnss_raw_if_full import GnssRawIfFull
@@ -73,7 +74,7 @@ class GnssrawifResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssrawifListResponse:
+    ) -> SyncOffsetPage[GnssrawifListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -92,8 +93,9 @@ class GnssrawifResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/gnssrawif",
+            page=SyncOffsetPage[GnssrawifListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -108,7 +110,7 @@ class GnssrawifResource(SyncAPIResource):
                     gnssrawif_list_params.GnssrawifListParams,
                 ),
             ),
-            cast_to=GnssrawifListResponse,
+            model=GnssrawifListResponse,
         )
 
     def count(
@@ -419,7 +421,7 @@ class AsyncGnssrawifResource(AsyncAPIResource):
         """
         return AsyncGnssrawifResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -431,7 +433,7 @@ class AsyncGnssrawifResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssrawifListResponse:
+    ) -> AsyncPaginator[GnssrawifListResponse, AsyncOffsetPage[GnssrawifListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -450,14 +452,15 @@ class AsyncGnssrawifResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/gnssrawif",
+            page=AsyncOffsetPage[GnssrawifListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -466,7 +469,7 @@ class AsyncGnssrawifResource(AsyncAPIResource):
                     gnssrawif_list_params.GnssrawifListParams,
                 ),
             ),
-            cast_to=GnssrawifListResponse,
+            model=GnssrawifListResponse,
         )
 
     async def count(

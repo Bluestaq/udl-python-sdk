@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SkyimageryListResponse", "SkyimageryListResponseItem"]
+__all__ = ["SkyimageryListResponse"]
 
 
-class SkyimageryListResponseItem(BaseModel):
+class SkyimageryListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -250,6 +250,3 @@ class SkyimageryListResponseItem(BaseModel):
     Optional identifier to track a commercial or marketplace transaction executed to
     produce this data.
     """
-
-
-SkyimageryListResponse: TypeAlias = List[SkyimageryListResponseItem]

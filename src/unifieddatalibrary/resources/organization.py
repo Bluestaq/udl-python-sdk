@@ -26,7 +26,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.organization_full import OrganizationFull
 from ..types.organization_list_response import OrganizationListResponse
 from ..types.organization_tuple_response import OrganizationTupleResponse
@@ -306,7 +307,7 @@ class OrganizationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationListResponse:
+    ) -> SyncOffsetPage[OrganizationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -322,8 +323,9 @@ class OrganizationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/organization",
+            page=SyncOffsetPage[OrganizationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -337,7 +339,7 @@ class OrganizationResource(SyncAPIResource):
                     organization_list_params.OrganizationListParams,
                 ),
             ),
-            cast_to=OrganizationListResponse,
+            model=OrganizationListResponse,
         )
 
     def delete(
@@ -892,7 +894,7 @@ class AsyncOrganizationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -903,7 +905,7 @@ class AsyncOrganizationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationListResponse:
+    ) -> AsyncPaginator[OrganizationListResponse, AsyncOffsetPage[OrganizationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -919,14 +921,15 @@ class AsyncOrganizationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/organization",
+            page=AsyncOffsetPage[OrganizationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -934,7 +937,7 @@ class AsyncOrganizationResource(AsyncAPIResource):
                     organization_list_params.OrganizationListParams,
                 ),
             ),
-            cast_to=OrganizationListResponse,
+            model=OrganizationListResponse,
         )
 
     async def delete(

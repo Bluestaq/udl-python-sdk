@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["MonoradarListResponse", "MonoradarListResponseItem"]
+__all__ = ["MonoradarListResponse"]
 
 
-class MonoradarListResponseItem(BaseModel):
+class MonoradarListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -291,6 +291,3 @@ class MonoradarListResponseItem(BaseModel):
 
     wectc: Optional[List[str]] = None
     """Warning/Error Conditions and Target Classification."""
-
-
-MonoradarListResponse: TypeAlias = List[MonoradarListResponseItem]

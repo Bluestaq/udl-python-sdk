@@ -18,7 +18,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.observations import (
     ecpsdr_list_params,
     ecpsdr_count_params,
@@ -28,7 +29,7 @@ from ...types.observations import (
     ecpsdr_create_bulk_params,
 )
 from ...types.observations.ecpsdr import Ecpsdr
-from ...types.observations.ecpsdr_list_response import EcpsdrListResponse
+from ...types.observations.ecpsdr_abridged import EcpsdrAbridged
 from ...types.observations.ecpsdr_tuple_response import EcpsdrTupleResponse
 
 __all__ = ["EcpsdrResource", "AsyncEcpsdrResource"]
@@ -385,7 +386,7 @@ class EcpsdrResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EcpsdrListResponse:
+    ) -> SyncOffsetPage[EcpsdrAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -404,8 +405,9 @@ class EcpsdrResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/ecpsdr",
+            page=SyncOffsetPage[EcpsdrAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -420,7 +422,7 @@ class EcpsdrResource(SyncAPIResource):
                     ecpsdr_list_params.EcpsdrListParams,
                 ),
             ),
-            cast_to=EcpsdrListResponse,
+            model=EcpsdrAbridged,
         )
 
     def count(
@@ -936,7 +938,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
             cast_to=Ecpsdr,
         )
 
-    async def list(
+    def list(
         self,
         *,
         msg_time: Union[str, datetime],
@@ -948,7 +950,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EcpsdrListResponse:
+    ) -> AsyncPaginator[EcpsdrAbridged, AsyncOffsetPage[EcpsdrAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -967,14 +969,15 @@ class AsyncEcpsdrResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/ecpsdr",
+            page=AsyncOffsetPage[EcpsdrAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
@@ -983,7 +986,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
                     ecpsdr_list_params.EcpsdrListParams,
                 ),
             ),
-            cast_to=EcpsdrListResponse,
+            model=EcpsdrAbridged,
         )
 
     async def count(

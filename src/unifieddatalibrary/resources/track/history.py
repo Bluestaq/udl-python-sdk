@@ -17,9 +17,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ...types.track import history_aodr_params, history_list_params, history_count_params
-from ..._base_client import make_request_options
-from ...types.track.history_list_response import HistoryListResponse
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.track.track_full import TrackFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -57,7 +58,7 @@ class HistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryListResponse:
+    ) -> SyncOffsetPage[TrackFull]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -80,8 +81,9 @@ class HistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/track/history",
+            page=SyncOffsetPage[TrackFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -97,7 +99,7 @@ class HistoryResource(SyncAPIResource):
                     history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryListResponse,
+            model=TrackFull,
         )
 
     def aodr(
@@ -248,7 +250,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         ts: Union[str, datetime],
@@ -261,7 +263,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryListResponse:
+    ) -> AsyncPaginator[TrackFull, AsyncOffsetPage[TrackFull]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -284,14 +286,15 @@ class AsyncHistoryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/track/history",
+            page=AsyncOffsetPage[TrackFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ts": ts,
                         "columns": columns,
@@ -301,7 +304,7 @@ class AsyncHistoryResource(AsyncAPIResource):
                     history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryListResponse,
+            model=TrackFull,
         )
 
     async def aodr(

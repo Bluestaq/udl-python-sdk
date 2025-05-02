@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,37 +10,36 @@ from .._models import BaseModel
 
 __all__ = [
     "IonoobservationListResponse",
-    "IonoobservationListResponseItem",
-    "IonoobservationListResponseItemAmplitude",
-    "IonoobservationListResponseItemAntennaElementPosition",
-    "IonoobservationListResponseItemAzimuth",
-    "IonoobservationListResponseItemCharAtt",
-    "IonoobservationListResponseItemDatum",
-    "IonoobservationListResponseItemDensityProfile",
-    "IonoobservationListResponseItemDensityProfileIri",
-    "IonoobservationListResponseItemDensityProfileParabolic",
-    "IonoobservationListResponseItemDensityProfileParabolicParabolicItem",
-    "IonoobservationListResponseItemDensityProfileQuasiParabolic",
-    "IonoobservationListResponseItemDensityProfileQuasiParabolicQuasiParabolicSegment",
-    "IonoobservationListResponseItemDensityProfileShiftedChebyshev",
-    "IonoobservationListResponseItemDensityProfileShiftedChebyshevShiftedChebyshev",
-    "IonoobservationListResponseItemDensityProfileTopsideExtensionChapmanConst",
-    "IonoobservationListResponseItemDensityProfileTopsideExtensionVaryChap",
-    "IonoobservationListResponseItemDoppler",
-    "IonoobservationListResponseItemElevation",
-    "IonoobservationListResponseItemFrequency",
-    "IonoobservationListResponseItemPhase",
-    "IonoobservationListResponseItemPolarization",
-    "IonoobservationListResponseItemPower",
-    "IonoobservationListResponseItemRange",
-    "IonoobservationListResponseItemScalerInfo",
-    "IonoobservationListResponseItemStokes",
-    "IonoobservationListResponseItemTime",
-    "IonoobservationListResponseItemTraceGeneric",
+    "Amplitude",
+    "AntennaElementPosition",
+    "Azimuth",
+    "CharAtt",
+    "Datum",
+    "DensityProfile",
+    "DensityProfileIri",
+    "DensityProfileParabolic",
+    "DensityProfileParabolicParabolicItem",
+    "DensityProfileQuasiParabolic",
+    "DensityProfileQuasiParabolicQuasiParabolicSegment",
+    "DensityProfileShiftedChebyshev",
+    "DensityProfileShiftedChebyshevShiftedChebyshev",
+    "DensityProfileTopsideExtensionChapmanConst",
+    "DensityProfileTopsideExtensionVaryChap",
+    "Doppler",
+    "Elevation",
+    "Frequency",
+    "Phase",
+    "Polarization",
+    "Power",
+    "Range",
+    "ScalerInfo",
+    "Stokes",
+    "Time",
+    "TraceGeneric",
 ]
 
 
-class IonoobservationListResponseItemAmplitude(BaseModel):
+class Amplitude(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of amplitude data."""
 
@@ -54,7 +53,7 @@ class IonoobservationListResponseItemAmplitude(BaseModel):
     """Notes for the amplitude data."""
 
 
-class IonoobservationListResponseItemAntennaElementPosition(BaseModel):
+class AntennaElementPosition(BaseModel):
     data: Optional[List[List[float]]] = None
     """Array of 3-element tuples (x,y,z) in km."""
 
@@ -65,7 +64,7 @@ class IonoobservationListResponseItemAntennaElementPosition(BaseModel):
     """Array of integers of the antenna_element dimensions."""
 
 
-class IonoobservationListResponseItemAzimuth(BaseModel):
+class Azimuth(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of incoming azimuth at the receiver."""
 
@@ -79,7 +78,7 @@ class IonoobservationListResponseItemAzimuth(BaseModel):
     """Notes for the azimuth data."""
 
 
-class IonoobservationListResponseItemCharAtt(BaseModel):
+class CharAtt(BaseModel):
     char_name: Optional[str] = FieldInfo(alias="charName", default=None)
     """Characteristic name.
 
@@ -137,7 +136,7 @@ class IonoobservationListResponseItemCharAtt(BaseModel):
     """
 
 
-class IonoobservationListResponseItemDatum(BaseModel):
+class Datum(BaseModel):
     data: Optional[List[float]] = None
     """Array to support sparse data collections."""
 
@@ -145,7 +144,7 @@ class IonoobservationListResponseItemDatum(BaseModel):
     """Notes for the datum with details of what the data is, units, etc."""
 
 
-class IonoobservationListResponseItemDensityProfileIri(BaseModel):
+class DensityProfileIri(BaseModel):
     b0: Optional[float] = None
     """B0 parameter of the F2 layer shape."""
 
@@ -216,7 +215,7 @@ class IonoobservationListResponseItemDensityProfileIri(BaseModel):
     """The valley depth, in grams per cubic centimeter."""
 
 
-class IonoobservationListResponseItemDensityProfileParabolicParabolicItem(BaseModel):
+class DensityProfileParabolicParabolicItem(BaseModel):
     f: Optional[float] = None
     """Plasma frequency at the layer peak, in MHz."""
 
@@ -230,17 +229,17 @@ class IonoobservationListResponseItemDensityProfileParabolicParabolicItem(BaseMo
     """Height of the layer peak, in kilometers."""
 
 
-class IonoobservationListResponseItemDensityProfileParabolic(BaseModel):
+class DensityProfileParabolic(BaseModel):
     description: Optional[str] = None
     """General description of the QP computation algorithm."""
 
-    parabolic_items: Optional[List[IonoobservationListResponseItemDensityProfileParabolicParabolicItem]] = FieldInfo(
+    parabolic_items: Optional[List[DensityProfileParabolicParabolicItem]] = FieldInfo(
         alias="parabolicItems", default=None
     )
     """Describes the E, F1, and F2 layers as parabolic-shape segments."""
 
 
-class IonoobservationListResponseItemDensityProfileQuasiParabolicQuasiParabolicSegment(BaseModel):
+class DensityProfileQuasiParabolicQuasiParabolicSegment(BaseModel):
     a: Optional[float] = None
     """Coefficient A."""
 
@@ -263,16 +262,16 @@ class IonoobservationListResponseItemDensityProfileQuasiParabolicQuasiParabolicS
     """Ending range of the segment, in kilometers from the Earth's center."""
 
 
-class IonoobservationListResponseItemDensityProfileQuasiParabolic(BaseModel):
+class DensityProfileQuasiParabolic(BaseModel):
     description: Optional[str] = None
     """General description of the quasi-parabolic computation algorithm."""
 
     earth_radius: Optional[float] = FieldInfo(alias="earthRadius", default=None)
     """Value of the Earth's radius, in kilometers, used for computations."""
 
-    quasi_parabolic_segments: Optional[
-        List[IonoobservationListResponseItemDensityProfileQuasiParabolicQuasiParabolicSegment]
-    ] = FieldInfo(alias="quasiParabolicSegments", default=None)
+    quasi_parabolic_segments: Optional[List[DensityProfileQuasiParabolicQuasiParabolicSegment]] = FieldInfo(
+        alias="quasiParabolicSegments", default=None
+    )
     """Array of quasi-parabolic segments.
 
     Each segment is the best-fit 3-parameter quasi-parabolas defined via A, B, C
@@ -281,7 +280,7 @@ class IonoobservationListResponseItemDensityProfileQuasiParabolic(BaseModel):
     """
 
 
-class IonoobservationListResponseItemDensityProfileShiftedChebyshevShiftedChebyshev(BaseModel):
+class DensityProfileShiftedChebyshevShiftedChebyshev(BaseModel):
     coeffs: Optional[List[float]] = None
     """Array of coefficients."""
 
@@ -307,13 +306,13 @@ class IonoobservationListResponseItemDensityProfileShiftedChebyshevShiftedChebys
     """Height at which density is half of the peak Nm, in kilometers."""
 
 
-class IonoobservationListResponseItemDensityProfileShiftedChebyshev(BaseModel):
+class DensityProfileShiftedChebyshev(BaseModel):
     description: Optional[str] = None
     """Description of the computation technique."""
 
-    shifted_chebyshevs: Optional[
-        List[IonoobservationListResponseItemDensityProfileShiftedChebyshevShiftedChebyshev]
-    ] = FieldInfo(alias="shiftedChebyshevs", default=None)
+    shifted_chebyshevs: Optional[List[DensityProfileShiftedChebyshevShiftedChebyshev]] = FieldInfo(
+        alias="shiftedChebyshevs", default=None
+    )
     """
     Up to 3 groups of coefficients, using “shiftedChebyshev” sub-field, to describe
     E, F1, and bottomside F2 profile shapes, or up to 6 groups of coefficients to
@@ -321,7 +320,7 @@ class IonoobservationListResponseItemDensityProfileShiftedChebyshev(BaseModel):
     """
 
 
-class IonoobservationListResponseItemDensityProfileTopsideExtensionChapmanConst(BaseModel):
+class DensityProfileTopsideExtensionChapmanConst(BaseModel):
     chi: Optional[float] = None
     """
     Peak Density Thickness (PDT) for description of the flat-nose shape, in
@@ -341,7 +340,7 @@ class IonoobservationListResponseItemDensityProfileTopsideExtensionChapmanConst(
     """Scale height if F2 layer at the peak, in kilometers."""
 
 
-class IonoobservationListResponseItemDensityProfileTopsideExtensionVaryChap(BaseModel):
+class DensityProfileTopsideExtensionVaryChap(BaseModel):
     alpha: Optional[float] = None
     """Alpha parameter of the profile shape."""
 
@@ -370,33 +369,29 @@ class IonoobservationListResponseItemDensityProfileTopsideExtensionVaryChap(Base
     """Scale height if F2 layer at the peak, in kilometers."""
 
 
-class IonoobservationListResponseItemDensityProfile(BaseModel):
-    iri: Optional[IonoobservationListResponseItemDensityProfileIri] = None
+class DensityProfile(BaseModel):
+    iri: Optional[DensityProfileIri] = None
     """Full set of the IRI formalism coefficients."""
 
-    parabolic: Optional[IonoobservationListResponseItemDensityProfileParabolic] = None
+    parabolic: Optional[DensityProfileParabolic] = None
     """Coefficients to describe the E, F1, and F2 layers as parabolic-shape segments."""
 
-    quasi_parabolic: Optional[IonoobservationListResponseItemDensityProfileQuasiParabolic] = FieldInfo(
-        alias="quasiParabolic", default=None
-    )
+    quasi_parabolic: Optional[DensityProfileQuasiParabolic] = FieldInfo(alias="quasiParabolic", default=None)
     """Coefficients to describe profile shape as quasi-parabolic segments."""
 
-    shifted_chebyshev: Optional[IonoobservationListResponseItemDensityProfileShiftedChebyshev] = FieldInfo(
-        alias="shiftedChebyshev", default=None
-    )
+    shifted_chebyshev: Optional[DensityProfileShiftedChebyshev] = FieldInfo(alias="shiftedChebyshev", default=None)
     """
     Coefficients to describe either the E, F1, and bottomside F2 profile shapes or
     the height uncertainty boundaries.
     """
 
-    topside_extension_chapman_const: Optional[
-        IonoobservationListResponseItemDensityProfileTopsideExtensionChapmanConst
-    ] = FieldInfo(alias="topsideExtensionChapmanConst", default=None)
+    topside_extension_chapman_const: Optional[DensityProfileTopsideExtensionChapmanConst] = FieldInfo(
+        alias="topsideExtensionChapmanConst", default=None
+    )
     """Parameters of the constant-scale-height Chapman layer."""
 
-    topside_extension_vary_chap: Optional[IonoobservationListResponseItemDensityProfileTopsideExtensionVaryChap] = (
-        FieldInfo(alias="topsideExtensionVaryChap", default=None)
+    topside_extension_vary_chap: Optional[DensityProfileTopsideExtensionVaryChap] = FieldInfo(
+        alias="topsideExtensionVaryChap", default=None
     )
     """Varying scale height Chapman topside layer."""
 
@@ -407,7 +402,7 @@ class IonoobservationListResponseItemDensityProfile(BaseModel):
     """Description of the valley model and parameters."""
 
 
-class IonoobservationListResponseItemDoppler(BaseModel):
+class Doppler(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of received doppler shifts in Hz."""
 
@@ -421,7 +416,7 @@ class IonoobservationListResponseItemDoppler(BaseModel):
     """Notes for the doppler data."""
 
 
-class IonoobservationListResponseItemElevation(BaseModel):
+class Elevation(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of incoming elevation at the receiver."""
 
@@ -435,7 +430,7 @@ class IonoobservationListResponseItemElevation(BaseModel):
     """Notes for the elevation data."""
 
 
-class IonoobservationListResponseItemFrequency(BaseModel):
+class Frequency(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of frequency data."""
 
@@ -449,7 +444,7 @@ class IonoobservationListResponseItemFrequency(BaseModel):
     """Notes for the frequency data."""
 
 
-class IonoobservationListResponseItemPhase(BaseModel):
+class Phase(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of phase data."""
 
@@ -467,7 +462,7 @@ class IonoobservationListResponseItemPhase(BaseModel):
     """
 
 
-class IonoobservationListResponseItemPolarization(BaseModel):
+class Polarization(BaseModel):
     data: Optional[List[List[List[List[List[List[List[Literal["X", "O"]]]]]]]]] = None
     """Array of polarization data."""
 
@@ -481,7 +476,7 @@ class IonoobservationListResponseItemPolarization(BaseModel):
     """Notes for the polarization data."""
 
 
-class IonoobservationListResponseItemPower(BaseModel):
+class Power(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of received power in db."""
 
@@ -495,7 +490,7 @@ class IonoobservationListResponseItemPower(BaseModel):
     """Notes for the power data."""
 
 
-class IonoobservationListResponseItemRange(BaseModel):
+class Range(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of range data."""
 
@@ -509,7 +504,7 @@ class IonoobservationListResponseItemRange(BaseModel):
     """Notes for the range data."""
 
 
-class IonoobservationListResponseItemScalerInfo(BaseModel):
+class ScalerInfo(BaseModel):
     confidence_level: Optional[int] = FieldInfo(alias="confidenceLevel", default=None)
     """Scaler confidence level."""
 
@@ -529,7 +524,7 @@ class IonoobservationListResponseItemScalerInfo(BaseModel):
     """Scaler version."""
 
 
-class IonoobservationListResponseItemStokes(BaseModel):
+class Stokes(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """Array of received stokes data."""
 
@@ -546,7 +541,7 @@ class IonoobservationListResponseItemStokes(BaseModel):
     """S1, S2, and S3 (the normalized Stokes parameters 1, 2, and 3)."""
 
 
-class IonoobservationListResponseItemTime(BaseModel):
+class Time(BaseModel):
     data: Optional[List[List[List[List[List[List[List[float]]]]]]]] = None
     """
     Array of times in number of seconds passed since January 1st, 1970 with the same
@@ -563,7 +558,7 @@ class IonoobservationListResponseItemTime(BaseModel):
     """The notes indicate the scheme and accuracy."""
 
 
-class IonoobservationListResponseItemTraceGeneric(BaseModel):
+class TraceGeneric(BaseModel):
     data: Optional[List[List[List[float]]]] = None
     """Multi-dimensional Array.
 
@@ -578,7 +573,7 @@ class IonoobservationListResponseItemTraceGeneric(BaseModel):
     """Notes for the trace generic data."""
 
 
-class IonoobservationListResponseItem(BaseModel):
+class IonoobservationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -620,11 +615,9 @@ class IonoobservationListResponseItem(BaseModel):
     id: Optional[str] = None
     """Unique identifier of the record, auto-generated by the system."""
 
-    amplitude: Optional[IonoobservationListResponseItemAmplitude] = None
+    amplitude: Optional[Amplitude] = None
 
-    antenna_element_position: Optional[IonoobservationListResponseItemAntennaElementPosition] = FieldInfo(
-        alias="antennaElementPosition", default=None
-    )
+    antenna_element_position: Optional[AntennaElementPosition] = FieldInfo(alias="antennaElementPosition", default=None)
 
     antenna_element_position_coordinate_system: Optional[
         Literal["J2000", "ECR/ECEF", "TEME", "GCRF", "WGS84 (GEODetic lat, long, alt)", "GEOCentric (lat, long, radii)"]
@@ -637,7 +630,7 @@ class IonoobservationListResponseItem(BaseModel):
     artist_flags: Optional[List[int]] = FieldInfo(alias="artistFlags", default=None)
     """Array of Legacy Artist Flags."""
 
-    azimuth: Optional[IonoobservationListResponseItemAzimuth] = None
+    azimuth: Optional[Azimuth] = None
 
     b0: Optional[float] = None
     """IRI thickness parameter in km. URSI ID: D0."""
@@ -645,7 +638,7 @@ class IonoobservationListResponseItem(BaseModel):
     b1: Optional[float] = None
     """IRI profile shape parameter. URSI ID: D1."""
 
-    char_atts: Optional[List[IonoobservationListResponseItemCharAtt]] = FieldInfo(alias="charAtts", default=None)
+    char_atts: Optional[List[CharAtt]] = FieldInfo(alias="charAtts", default=None)
     """List of attributes that are associated with the specified characteristics.
 
     Characteristics are defined by the CHARS: URSI IIWG format for archiving monthly
@@ -669,20 +662,18 @@ class IonoobservationListResponseItem(BaseModel):
     d1: Optional[float] = None
     """IRI profile shape parameter, F1 layer. URSI ID: D2."""
 
-    datum: Optional[IonoobservationListResponseItemDatum] = None
+    datum: Optional[Datum] = None
 
     deltafo_f2: Optional[float] = FieldInfo(alias="deltafoF2", default=None)
     """Adjustment to the scaled foF2 during profile inversion in MHz."""
 
-    density_profile: Optional[IonoobservationListResponseItemDensityProfile] = FieldInfo(
-        alias="densityProfile", default=None
-    )
+    density_profile: Optional[DensityProfile] = FieldInfo(alias="densityProfile", default=None)
     """
     Profile of electron densities in the ionosphere associated with an
     IonoObservation.
     """
 
-    doppler: Optional[IonoobservationListResponseItemDoppler] = None
+    doppler: Optional[Doppler] = None
 
     down_e: Optional[float] = FieldInfo(alias="downE", default=None)
     """Lowering of E trace to the leading edge in km."""
@@ -705,7 +696,7 @@ class IonoobservationListResponseItem(BaseModel):
     profile (must match the size of the electronDensity array).
     """
 
-    elevation: Optional[IonoobservationListResponseItemElevation] = None
+    elevation: Optional[Elevation] = None
 
     fb_es: Optional[float] = FieldInfo(alias="fbEs", default=None)
     """The blanketing frequency of layer used to derive foEs in MHz. URSI ID: 32."""
@@ -779,7 +770,7 @@ class IonoobservationListResponseItem(BaseModel):
     URSI ID: 55.
     """
 
-    frequency: Optional[IonoobservationListResponseItemFrequency] = None
+    frequency: Optional[Frequency] = None
 
     fx_e: Optional[float] = FieldInfo(alias="fxE", default=None)
     """The extraordinary wave E critical frequency, in MHz. URSI ID: 21."""
@@ -883,7 +874,7 @@ class IonoobservationListResponseItem(BaseModel):
     and not necessarily a valid sensor ID.
     """
 
-    phase: Optional[IonoobservationListResponseItemPhase] = None
+    phase: Optional[Phase] = None
 
     plasma_frequency: Optional[List[float]] = FieldInfo(alias="plasmaFrequency", default=None)
     """
@@ -900,9 +891,9 @@ class IonoobservationListResponseItem(BaseModel):
     platform_name: Optional[str] = FieldInfo(alias="platformName", default=None)
     """Equipment location."""
 
-    polarization: Optional[IonoobservationListResponseItemPolarization] = None
+    polarization: Optional[Polarization] = None
 
-    power: Optional[IonoobservationListResponseItemPower] = None
+    power: Optional[Power] = None
 
     qe: Optional[float] = None
     """Average range spread of E layer in km. URSI ID: 85."""
@@ -910,7 +901,7 @@ class IonoobservationListResponseItem(BaseModel):
     qf: Optional[float] = None
     """Average range spread of F layer in km. URSI ID: 84."""
 
-    range: Optional[IonoobservationListResponseItemRange] = None
+    range: Optional[Range] = None
 
     receive_coordinates: Optional[List[List[float]]] = FieldInfo(alias="receiveCoordinates", default=None)
     """
@@ -932,13 +923,13 @@ class IonoobservationListResponseItem(BaseModel):
     scale_height_f2_peak: Optional[float] = FieldInfo(alias="scaleHeightF2Peak", default=None)
     """Effective scale height at hmF2 Titheridge method in km. URSI ID: 69."""
 
-    scaler_info: Optional[IonoobservationListResponseItemScalerInfo] = FieldInfo(alias="scalerInfo", default=None)
+    scaler_info: Optional[ScalerInfo] = FieldInfo(alias="scalerInfo", default=None)
     """
     The ScalerInfo record describes the person or system who interpreted the
     ionogram in IonoObservation.
     """
 
-    stokes: Optional[IonoobservationListResponseItemStokes] = None
+    stokes: Optional[Stokes] = None
 
     system_notes: Optional[str] = FieldInfo(alias="systemNotes", default=None)
     """Details concerning the composition/intention/interpretation/audience/etc.
@@ -963,9 +954,9 @@ class IonoobservationListResponseItem(BaseModel):
     tid_phase_speeds: Optional[List[float]] = FieldInfo(alias="tidPhaseSpeeds", default=None)
     """Array of speed in m/s at which the disturbance travels through the ionosphere."""
 
-    time: Optional[IonoobservationListResponseItemTime] = None
+    time: Optional[Time] = None
 
-    trace_generic: Optional[IonoobservationListResponseItemTraceGeneric] = FieldInfo(alias="traceGeneric", default=None)
+    trace_generic: Optional[TraceGeneric] = FieldInfo(alias="traceGeneric", default=None)
 
     transmit_coordinates: Optional[List[List[float]]] = FieldInfo(alias="transmitCoordinates", default=None)
     """
@@ -1007,6 +998,3 @@ class IonoobservationListResponseItem(BaseModel):
 
     zm_e: Optional[float] = FieldInfo(alias="zmE", default=None)
     """Peak height of E-layer in km. URSI ID: 90."""
-
-
-IonoobservationListResponse: TypeAlias = List[IonoobservationListResponseItem]

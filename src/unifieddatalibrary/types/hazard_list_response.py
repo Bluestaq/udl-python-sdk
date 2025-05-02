@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["HazardListResponse", "HazardListResponseItem"]
+__all__ = ["HazardListResponse"]
 
 
-class HazardListResponseItem(BaseModel):
+class HazardListResponse(BaseModel):
     alarms: List[str]
     """Array of the specific alarms associated with this detection.
 
@@ -264,6 +264,3 @@ class HazardListResponseItem(BaseModel):
 
     z: Optional[int] = None
     """The Atomic Number of the material associated with this detection."""
-
-
-HazardListResponse: TypeAlias = List[HazardListResponseItem]

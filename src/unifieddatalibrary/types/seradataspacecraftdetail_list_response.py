@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SeradataspacecraftdetailListResponse", "SeradataspacecraftdetailListResponseItem"]
+__all__ = ["SeradataspacecraftdetailListResponse"]
 
 
-class SeradataspacecraftdetailListResponseItem(BaseModel):
+class SeradataspacecraftdetailListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -339,6 +339,3 @@ class SeradataspacecraftdetailListResponseItem(BaseModel):
 
     youtube_launch_link: Optional[str] = FieldInfo(alias="youtubeLaunchLink", default=None)
     """Youtube link of launch."""
-
-
-SeradataspacecraftdetailListResponse: TypeAlias = List[SeradataspacecraftdetailListResponseItem]

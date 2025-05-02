@@ -2,20 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "SpaceenvobservationListResponse",
-    "SpaceenvobservationListResponseItem",
-    "SpaceenvobservationListResponseItemSeoList",
-]
+__all__ = ["SpaceenvobservationListResponse", "SeoList"]
 
 
-class SpaceenvobservationListResponseItemSeoList(BaseModel):
+class SeoList(BaseModel):
     ob_type: str = FieldInfo(alias="obType")
     """The type of observation associated with this record."""
 
@@ -77,7 +73,7 @@ class SpaceenvobservationListResponseItemSeoList(BaseModel):
     """
 
 
-class SpaceenvobservationListResponseItem(BaseModel):
+class SpaceenvobservationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -284,7 +280,7 @@ class SpaceenvobservationListResponseItem(BaseModel):
     The array element order is [xvel, yvel, zvel].
     """
 
-    seo_list: Optional[List[SpaceenvobservationListResponseItemSeoList]] = FieldInfo(alias="seoList", default=None)
+    seo_list: Optional[List[SeoList]] = FieldInfo(alias="seoList", default=None)
     """A collection of individual space environment observations."""
 
     src_ids: Optional[List[str]] = FieldInfo(alias="srcIds", default=None)
@@ -305,6 +301,3 @@ class SpaceenvobservationListResponseItem(BaseModel):
     'srcIds' array for the record UUIDs, positionally corresponding to the record
     types in this array. The 'srcTyps' and 'srcIds' arrays must match in size.
     """
-
-
-SpaceenvobservationListResponse: TypeAlias = List[SpaceenvobservationListResponseItem]

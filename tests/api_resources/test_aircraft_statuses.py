@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    AircraftStatusListResponse,
+    AircraftstatusAbridged,
     AircraftStatusTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import AircraftstatusFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -275,7 +276,7 @@ class TestAircraftStatuses:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         aircraft_status = client.aircraft_statuses.list()
-        assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+        assert_matches_type(SyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -283,7 +284,7 @@ class TestAircraftStatuses:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+        assert_matches_type(SyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -292,7 +293,7 @@ class TestAircraftStatuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft_status = response.parse()
-        assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+        assert_matches_type(SyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -301,7 +302,7 @@ class TestAircraftStatuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft_status = response.parse()
-            assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+            assert_matches_type(SyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -698,7 +699,7 @@ class TestAsyncAircraftStatuses:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status = await async_client.aircraft_statuses.list()
-        assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -706,7 +707,7 @@ class TestAsyncAircraftStatuses:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -715,7 +716,7 @@ class TestAsyncAircraftStatuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft_status = await response.parse()
-        assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -724,7 +725,7 @@ class TestAsyncAircraftStatuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft_status = await response.parse()
-            assert_matches_type(AircraftStatusListResponse, aircraft_status, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AircraftstatusAbridged], aircraft_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

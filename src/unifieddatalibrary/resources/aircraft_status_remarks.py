@@ -25,9 +25,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.aircraftstatusremark_full import AircraftstatusremarkFull
-from ..types.aircraft_status_remark_list_response import AircraftStatusRemarkListResponse
+from ..types.aircraftstatusremark_abridged import AircraftstatusremarkAbridged
 from ..types.aircraft_status_remark_tuple_response import AircraftStatusRemarkTupleResponse
 
 __all__ = ["AircraftStatusRemarksResource", "AsyncAircraftStatusRemarksResource"]
@@ -218,7 +219,7 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftStatusRemarkListResponse:
+    ) -> SyncOffsetPage[AircraftstatusremarkAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -234,8 +235,9 @@ class AircraftStatusRemarksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/aircraftstatusremark",
+            page=SyncOffsetPage[AircraftstatusremarkAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -249,7 +251,7 @@ class AircraftStatusRemarksResource(SyncAPIResource):
                     aircraft_status_remark_list_params.AircraftStatusRemarkListParams,
                 ),
             ),
-            cast_to=AircraftStatusRemarkListResponse,
+            model=AircraftstatusremarkAbridged,
         )
 
     def count(
@@ -553,7 +555,7 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
             cast_to=AircraftstatusremarkFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -564,7 +566,7 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftStatusRemarkListResponse:
+    ) -> AsyncPaginator[AircraftstatusremarkAbridged, AsyncOffsetPage[AircraftstatusremarkAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -580,14 +582,15 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/aircraftstatusremark",
+            page=AsyncOffsetPage[AircraftstatusremarkAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -595,7 +598,7 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
                     aircraft_status_remark_list_params.AircraftStatusRemarkListParams,
                 ),
             ),
-            cast_to=AircraftStatusRemarkListResponse,
+            model=AircraftstatusremarkAbridged,
         )
 
     async def count(

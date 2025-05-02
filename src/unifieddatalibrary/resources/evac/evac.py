@@ -42,9 +42,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.evac_abridged import EvacAbridged
 from ...types.shared.evac_full import EvacFull
-from ...types.evac_list_response import EvacListResponse
 
 __all__ = ["EvacResource", "AsyncEvacResource"]
 
@@ -353,7 +354,7 @@ class EvacResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EvacListResponse:
+    ) -> SyncOffsetPage[EvacAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -371,8 +372,9 @@ class EvacResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/evac",
+            page=SyncOffsetPage[EvacAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -387,7 +389,7 @@ class EvacResource(SyncAPIResource):
                     evac_list_params.EvacListParams,
                 ),
             ),
-            cast_to=EvacListResponse,
+            model=EvacAbridged,
         )
 
     def count(
@@ -829,7 +831,7 @@ class AsyncEvacResource(AsyncAPIResource):
             cast_to=EvacFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         req_time: Union[str, datetime],
@@ -841,7 +843,7 @@ class AsyncEvacResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EvacListResponse:
+    ) -> AsyncPaginator[EvacAbridged, AsyncOffsetPage[EvacAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -859,14 +861,15 @@ class AsyncEvacResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/evac",
+            page=AsyncOffsetPage[EvacAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "req_time": req_time,
                         "first_result": first_result,
@@ -875,7 +878,7 @@ class AsyncEvacResource(AsyncAPIResource):
                     evac_list_params.EvacListParams,
                 ),
             ),
-            cast_to=EvacListResponse,
+            model=EvacAbridged,
         )
 
     async def count(

@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SurfaceobstructionListResponse", "SurfaceobstructionListResponseItem"]
+__all__ = ["SurfaceobstructionListResponse"]
 
 
-class SurfaceobstructionListResponseItem(BaseModel):
+class SurfaceobstructionListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -96,6 +96,3 @@ class SurfaceobstructionListResponseItem(BaseModel):
     This could be a remote or tactical UDL or another data library. If null, the
     record should be assumed to have originated from the primary Enterprise UDL.
     """
-
-
-SurfaceobstructionListResponse: TypeAlias = List[SurfaceobstructionListResponseItem]

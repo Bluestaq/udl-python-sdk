@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ManifoldelsetListResponse", "ManifoldelsetListResponseItem"]
+__all__ = ["ManifoldelsetListResponse"]
 
 
-class ManifoldelsetListResponseItem(BaseModel):
+class ManifoldelsetListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -167,6 +167,3 @@ class ManifoldelsetListResponseItem(BaseModel):
     For circular orbits, the semimajor axis is the distance between the centers of
     the bodies, not the distance of the bodies from the center of mass.
     """
-
-
-ManifoldelsetListResponse: TypeAlias = List[ManifoldelsetListResponseItem]

@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -14,7 +14,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.supporting_data import dataowner_type_list_params
 from ...types.supporting_data.dataowner_type_list_response import DataownerTypeListResponse
 
@@ -52,7 +53,7 @@ class DataownerTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DataownerTypeListResponse:
+    ) -> SyncOffsetPage[DataownerTypeListResponse]:
         """
         Retrieves all distinct data owner types.
 
@@ -65,8 +66,9 @@ class DataownerTypesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/dataowner/getDataOwnerTypes",
+            page=SyncOffsetPage[DataownerTypeListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -80,7 +82,7 @@ class DataownerTypesResource(SyncAPIResource):
                     dataowner_type_list_params.DataownerTypeListParams,
                 ),
             ),
-            cast_to=DataownerTypeListResponse,
+            model=str,
         )
 
 
@@ -104,7 +106,7 @@ class AsyncDataownerTypesResource(AsyncAPIResource):
         """
         return AsyncDataownerTypesResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -115,7 +117,7 @@ class AsyncDataownerTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DataownerTypeListResponse:
+    ) -> AsyncPaginator[DataownerTypeListResponse, AsyncOffsetPage[DataownerTypeListResponse]]:
         """
         Retrieves all distinct data owner types.
 
@@ -128,14 +130,15 @@ class AsyncDataownerTypesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/dataowner/getDataOwnerTypes",
+            page=AsyncOffsetPage[DataownerTypeListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -143,7 +146,7 @@ class AsyncDataownerTypesResource(AsyncAPIResource):
                     dataowner_type_list_params.DataownerTypeListParams,
                 ),
             ),
-            cast_to=DataownerTypeListResponse,
+            model=str,
         )
 
 

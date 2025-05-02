@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.surface_get_response import SurfaceGetResponse
 from ..types.surface_list_response import SurfaceListResponse
 from ..types.surface_tuple_response import SurfaceTupleResponse
@@ -964,7 +965,7 @@ class SurfaceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SurfaceListResponse:
+    ) -> SyncOffsetPage[SurfaceListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -980,8 +981,9 @@ class SurfaceResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/surface",
+            page=SyncOffsetPage[SurfaceListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -995,7 +997,7 @@ class SurfaceResource(SyncAPIResource):
                     surface_list_params.SurfaceListParams,
                 ),
             ),
-            cast_to=SurfaceListResponse,
+            model=SurfaceListResponse,
         )
 
     def delete(
@@ -2128,7 +2130,7 @@ class AsyncSurfaceResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -2139,7 +2141,7 @@ class AsyncSurfaceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SurfaceListResponse:
+    ) -> AsyncPaginator[SurfaceListResponse, AsyncOffsetPage[SurfaceListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -2155,14 +2157,15 @@ class AsyncSurfaceResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/surface",
+            page=AsyncOffsetPage[SurfaceListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -2170,7 +2173,7 @@ class AsyncSurfaceResource(AsyncAPIResource):
                     surface_list_params.SurfaceListParams,
                 ),
             ),
-            cast_to=SurfaceListResponse,
+            model=SurfaceListResponse,
         )
 
     async def delete(

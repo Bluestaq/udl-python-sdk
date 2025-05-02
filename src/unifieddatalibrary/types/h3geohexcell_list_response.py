@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["H3geohexcellListResponse", "H3geohexcellListResponseItem"]
+__all__ = ["H3geohexcellListResponse"]
 
 
-class H3geohexcellListResponseItem(BaseModel):
+class H3geohexcellListResponse(BaseModel):
     cell_id: str = FieldInfo(alias="cellId")
     """The H3 index represented as a 16 character hexadecimal string."""
 
@@ -139,6 +139,3 @@ class H3geohexcellListResponseItem(BaseModel):
     This could be a remote or tactical UDL or another data library. If null, the
     record should be assumed to have originated from the primary Enterprise UDL.
     """
-
-
-H3geohexcellListResponse: TypeAlias = List[H3geohexcellListResponseItem]

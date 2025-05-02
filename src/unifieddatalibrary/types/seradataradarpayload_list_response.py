@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SeradataradarpayloadListResponse", "SeradataradarpayloadListResponseItem"]
+__all__ = ["SeradataradarpayloadListResponse"]
 
 
-class SeradataradarpayloadListResponseItem(BaseModel):
+class SeradataradarpayloadListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -141,6 +141,3 @@ class SeradataradarpayloadListResponseItem(BaseModel):
 
     wave_length: Optional[float] = FieldInfo(alias="waveLength", default=None)
     """Wave length in meters."""
-
-
-SeradataradarpayloadListResponse: TypeAlias = List[SeradataradarpayloadListResponseItem]

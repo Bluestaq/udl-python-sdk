@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     SensormaintenanceCurrentResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.udl.sensormaintenance import SensormaintenanceFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -201,7 +202,7 @@ class TestSensormaintenance:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         sensormaintenance = client.sensormaintenance.list()
-        assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+        assert_matches_type(SyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -211,7 +212,7 @@ class TestSensormaintenance:
             max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+        assert_matches_type(SyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -220,7 +221,7 @@ class TestSensormaintenance:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sensormaintenance = response.parse()
-        assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+        assert_matches_type(SyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -229,7 +230,7 @@ class TestSensormaintenance:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sensormaintenance = response.parse()
-            assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+            assert_matches_type(SyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -732,7 +733,7 @@ class TestAsyncSensormaintenance:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensormaintenance = await async_client.sensormaintenance.list()
-        assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -742,7 +743,7 @@ class TestAsyncSensormaintenance:
             max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -751,7 +752,7 @@ class TestAsyncSensormaintenance:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sensormaintenance = await response.parse()
-        assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -760,7 +761,7 @@ class TestAsyncSensormaintenance:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sensormaintenance = await response.parse()
-            assert_matches_type(SensormaintenanceListResponse, sensormaintenance, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SensormaintenanceListResponse], sensormaintenance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

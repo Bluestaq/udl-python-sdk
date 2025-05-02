@@ -16,6 +16,7 @@ from unifieddatalibrary.types import (
     OrganizationGetOrganizationTypesResponse,
     OrganizationGetOrganizationCategoriesResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -166,7 +167,7 @@ class TestOrganization:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         organization = client.organization.list()
-        assert_matches_type(OrganizationListResponse, organization, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -174,7 +175,7 @@ class TestOrganization:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(OrganizationListResponse, organization, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -183,7 +184,7 @@ class TestOrganization:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         organization = response.parse()
-        assert_matches_type(OrganizationListResponse, organization, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -192,7 +193,7 @@ class TestOrganization:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             organization = response.parse()
-            assert_matches_type(OrganizationListResponse, organization, path=["response"])
+            assert_matches_type(SyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -592,7 +593,7 @@ class TestAsyncOrganization:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         organization = await async_client.organization.list()
-        assert_matches_type(OrganizationListResponse, organization, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -600,7 +601,7 @@ class TestAsyncOrganization:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(OrganizationListResponse, organization, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -609,7 +610,7 @@ class TestAsyncOrganization:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         organization = await response.parse()
-        assert_matches_type(OrganizationListResponse, organization, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -618,7 +619,7 @@ class TestAsyncOrganization:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             organization = await response.parse()
-            assert_matches_type(OrganizationListResponse, organization, path=["response"])
+            assert_matches_type(AsyncOffsetPage[OrganizationListResponse], organization, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

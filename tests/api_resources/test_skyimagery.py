@@ -22,6 +22,7 @@ from unifieddatalibrary._response import (
     StreamedBinaryAPIResponse,
     AsyncStreamedBinaryAPIResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.udl.skyimagery import SkyimageryFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -35,7 +36,7 @@ class TestSkyimagery:
         skyimagery = client.skyimagery.list(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+        assert_matches_type(SyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -44,7 +45,7 @@ class TestSkyimagery:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+        assert_matches_type(SyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -55,7 +56,7 @@ class TestSkyimagery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         skyimagery = response.parse()
-        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+        assert_matches_type(SyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -66,7 +67,7 @@ class TestSkyimagery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             skyimagery = response.parse()
-            assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+            assert_matches_type(SyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -330,7 +331,7 @@ class TestAsyncSkyimagery:
         skyimagery = await async_client.skyimagery.list(
             exp_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -339,7 +340,7 @@ class TestAsyncSkyimagery:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -350,7 +351,7 @@ class TestAsyncSkyimagery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         skyimagery = await response.parse()
-        assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -361,7 +362,7 @@ class TestAsyncSkyimagery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             skyimagery = await response.parse()
-            assert_matches_type(SkyimageryListResponse, skyimagery, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SkyimageryListResponse], skyimagery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

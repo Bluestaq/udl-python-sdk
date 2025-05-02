@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["TrackdetailListResponse", "TrackdetailListResponseItem"]
+__all__ = ["TrackdetailListResponse"]
 
 
-class TrackdetailListResponseItem(BaseModel):
+class TrackdetailListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1116,6 +1116,3 @@ class TrackdetailListResponseItem(BaseModel):
 
     A value of 63 indicates a vessel breadth of 63 meters or greater.
     """
-
-
-TrackdetailListResponse: TypeAlias = List[TrackdetailListResponseItem]

@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.effect_request_list_response import EffectRequestListResponse
 from ...types.effect_request_tuple_response import EffectRequestTupleResponse
 from ...types.effect_request_retrieve_response import EffectRequestRetrieveResponse
@@ -272,7 +273,7 @@ class EffectRequestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EffectRequestListResponse:
+    ) -> SyncOffsetPage[EffectRequestListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -291,8 +292,9 @@ class EffectRequestsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/effectrequest",
+            page=SyncOffsetPage[EffectRequestListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -307,7 +309,7 @@ class EffectRequestsResource(SyncAPIResource):
                     effect_request_list_params.EffectRequestListParams,
                 ),
             ),
-            cast_to=EffectRequestListResponse,
+            model=EffectRequestListResponse,
         )
 
     def count(
@@ -737,7 +739,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
             cast_to=EffectRequestRetrieveResponse,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
@@ -749,7 +751,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EffectRequestListResponse:
+    ) -> AsyncPaginator[EffectRequestListResponse, AsyncOffsetPage[EffectRequestListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -768,14 +770,15 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/effectrequest",
+            page=AsyncOffsetPage[EffectRequestListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "first_result": first_result,
@@ -784,7 +787,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                     effect_request_list_params.EffectRequestListParams,
                 ),
             ),
-            cast_to=EffectRequestListResponse,
+            model=EffectRequestListResponse,
         )
 
     async def count(

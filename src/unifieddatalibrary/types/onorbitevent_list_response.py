@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OnorbiteventListResponse", "OnorbiteventListResponseItem"]
+__all__ = ["OnorbiteventListResponse"]
 
 
-class OnorbiteventListResponseItem(BaseModel):
+class OnorbiteventListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -222,6 +222,3 @@ class OnorbiteventListResponseItem(BaseModel):
 
     until_time: Optional[datetime] = FieldInfo(alias="untilTime", default=None)
     """Maximum validity time of the event."""
-
-
-OnorbiteventListResponse: TypeAlias = List[OnorbiteventListResponseItem]

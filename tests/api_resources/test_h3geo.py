@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     H3geoTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -134,7 +135,7 @@ class TestH3geo:
         h3geo = client.h3geo.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+        assert_matches_type(SyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -143,7 +144,7 @@ class TestH3geo:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+        assert_matches_type(SyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -154,7 +155,7 @@ class TestH3geo:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         h3geo = response.parse()
-        assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+        assert_matches_type(SyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -165,7 +166,7 @@ class TestH3geo:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             h3geo = response.parse()
-            assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+            assert_matches_type(SyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -441,7 +442,7 @@ class TestAsyncH3geo:
         h3geo = await async_client.h3geo.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+        assert_matches_type(AsyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -450,7 +451,7 @@ class TestAsyncH3geo:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+        assert_matches_type(AsyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -461,7 +462,7 @@ class TestAsyncH3geo:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         h3geo = await response.parse()
-        assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+        assert_matches_type(AsyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -472,7 +473,7 @@ class TestAsyncH3geo:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             h3geo = await response.parse()
-            assert_matches_type(H3geoListResponse, h3geo, path=["response"])
+            assert_matches_type(AsyncOffsetPage[H3geoListResponse], h3geo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

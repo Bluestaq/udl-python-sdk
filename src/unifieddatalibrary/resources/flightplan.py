@@ -27,9 +27,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.flight_plan_abridged import FlightPlanAbridged
 from ..types.shared.flight_plan_full import FlightPlanFull
-from ..types.flightplan_list_response import FlightplanListResponse
 from ..types.flightplan_tuple_response import FlightplanTupleResponse
 
 __all__ = ["FlightplanResource", "AsyncFlightplanResource"]
@@ -1076,7 +1077,7 @@ class FlightplanResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FlightplanListResponse:
+    ) -> SyncOffsetPage[FlightPlanAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1092,8 +1093,9 @@ class FlightplanResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/flightplan",
+            page=SyncOffsetPage[FlightPlanAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1107,7 +1109,7 @@ class FlightplanResource(SyncAPIResource):
                     flightplan_list_params.FlightplanListParams,
                 ),
             ),
-            cast_to=FlightplanListResponse,
+            model=FlightPlanAbridged,
         )
 
     def delete(
@@ -2339,7 +2341,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -2350,7 +2352,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FlightplanListResponse:
+    ) -> AsyncPaginator[FlightPlanAbridged, AsyncOffsetPage[FlightPlanAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -2366,14 +2368,15 @@ class AsyncFlightplanResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/flightplan",
+            page=AsyncOffsetPage[FlightPlanAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -2381,7 +2384,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
                     flightplan_list_params.FlightplanListParams,
                 ),
             ),
-            cast_to=FlightplanListResponse,
+            model=FlightPlanAbridged,
         )
 
     async def delete(

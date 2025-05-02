@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["VideoListResponse", "VideoListResponseItem"]
+__all__ = ["VideoListResponse"]
 
 
-class VideoListResponseItem(BaseModel):
+class VideoListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -72,6 +72,3 @@ class VideoListResponseItem(BaseModel):
 
     video_urls: Optional[List[str]] = FieldInfo(alias="videoUrls", default=None)
     """Video Streaming Support URLs."""
-
-
-VideoListResponse: TypeAlias = List[VideoListResponseItem]

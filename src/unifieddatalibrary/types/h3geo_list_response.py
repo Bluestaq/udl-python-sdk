@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["H3geoListResponse", "H3geoListResponseItem"]
+__all__ = ["H3geoListResponse"]
 
 
-class H3geoListResponseItem(BaseModel):
+class H3geoListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -94,6 +94,3 @@ class H3geoListResponseItem(BaseModel):
     An optional field containing the type of data that is represented by this H3 Geo
     data set.
     """
-
-
-H3geoListResponse: TypeAlias = List[H3geoListResponseItem]

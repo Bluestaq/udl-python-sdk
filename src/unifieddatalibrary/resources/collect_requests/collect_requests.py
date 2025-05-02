@@ -35,9 +35,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.collect_request_abridged import CollectRequestAbridged
 from ...types.shared.collect_request_full import CollectRequestFull
-from ...types.collect_request_list_response import CollectRequestListResponse
 from ...types.collect_request_tuple_response import CollectRequestTupleResponse
 
 __all__ = ["CollectRequestsResource", "AsyncCollectRequestsResource"]
@@ -619,7 +620,7 @@ class CollectRequestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CollectRequestListResponse:
+    ) -> SyncOffsetPage[CollectRequestAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -638,8 +639,9 @@ class CollectRequestsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/collectrequest",
+            page=SyncOffsetPage[CollectRequestAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -654,7 +656,7 @@ class CollectRequestsResource(SyncAPIResource):
                     collect_request_list_params.CollectRequestListParams,
                 ),
             ),
-            cast_to=CollectRequestListResponse,
+            model=CollectRequestAbridged,
         )
 
     def count(
@@ -1431,7 +1433,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
             cast_to=CollectRequestFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -1443,7 +1445,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CollectRequestListResponse:
+    ) -> AsyncPaginator[CollectRequestAbridged, AsyncOffsetPage[CollectRequestAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1462,14 +1464,15 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/collectrequest",
+            page=AsyncOffsetPage[CollectRequestAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -1478,7 +1481,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                     collect_request_list_params.CollectRequestListParams,
                 ),
             ),
-            cast_to=CollectRequestListResponse,
+            model=CollectRequestAbridged,
         )
 
     async def count(

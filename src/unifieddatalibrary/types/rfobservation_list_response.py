@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["RfobservationListResponse", "RfobservationListResponseItem"]
+__all__ = ["RfobservationListResponse"]
 
 
-class RfobservationListResponseItem(BaseModel):
+class RfobservationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -377,6 +377,3 @@ class RfobservationListResponseItem(BaseModel):
 
     video_bandwidth: Optional[float] = FieldInfo(alias="videoBandwidth", default=None)
     """Video bandwidth in Hz."""
-
-
-RfobservationListResponse: TypeAlias = List[RfobservationListResponseItem]

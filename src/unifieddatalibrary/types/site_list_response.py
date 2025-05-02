@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import date, datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SiteListResponse", "SiteListResponseItem"]
+__all__ = ["SiteListResponse"]
 
 
-class SiteListResponseItem(BaseModel):
+class SiteListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -552,6 +552,3 @@ class SiteListResponseItem(BaseModel):
     World Aeronautical Chart identifier for the area in which a designated place is
     located.
     """
-
-
-SiteListResponse: TypeAlias = List[SiteListResponseItem]
