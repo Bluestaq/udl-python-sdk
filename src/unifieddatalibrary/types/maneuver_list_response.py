@@ -2,23 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "ManeuverListResponse",
-    "ManeuverListResponseItem",
-    "ManeuverListResponseItemPostEventElset",
-    "ManeuverListResponseItemPostEventStateVector",
-    "ManeuverListResponseItemPreEventElset",
-    "ManeuverListResponseItemPreEventStateVector",
-]
+__all__ = ["ManeuverListResponse", "PostEventElset", "PostEventStateVector", "PreEventElset", "PreEventStateVector"]
 
 
-class ManeuverListResponseItemPostEventElset(BaseModel):
+class PostEventElset(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -272,7 +265,7 @@ class ManeuverListResponseItemPostEventElset(BaseModel):
     """
 
 
-class ManeuverListResponseItemPostEventStateVector(BaseModel):
+class PostEventStateVector(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -874,7 +867,7 @@ class ManeuverListResponseItemPostEventStateVector(BaseModel):
     """
 
 
-class ManeuverListResponseItemPreEventElset(BaseModel):
+class PreEventElset(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1128,7 +1121,7 @@ class ManeuverListResponseItemPreEventElset(BaseModel):
     """
 
 
-class ManeuverListResponseItemPreEventStateVector(BaseModel):
+class PreEventStateVector(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1730,7 +1723,7 @@ class ManeuverListResponseItemPreEventStateVector(BaseModel):
     """
 
 
-class ManeuverListResponseItem(BaseModel):
+class ManeuverListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1966,7 +1959,7 @@ class ManeuverListResponseItem(BaseModel):
     post_eccentricity: Optional[float] = FieldInfo(alias="postEccentricity", default=None)
     """Post-event spacecraft eccentricity."""
 
-    post_event_elset: Optional[ManeuverListResponseItemPostEventElset] = FieldInfo(alias="postEventElset", default=None)
+    post_event_elset: Optional[PostEventElset] = FieldInfo(alias="postEventElset", default=None)
     """
     An element set is a collection of Keplerian orbital elements describing an orbit
     of a particular satellite. The data is used along with an orbit propagator in
@@ -1983,9 +1976,7 @@ class ManeuverListResponseItem(BaseModel):
     spacecraft.
     """
 
-    post_event_state_vector: Optional[ManeuverListResponseItemPostEventStateVector] = FieldInfo(
-        alias="postEventStateVector", default=None
-    )
+    post_event_state_vector: Optional[PostEventStateVector] = FieldInfo(alias="postEventStateVector", default=None)
     """
     This service provides operations for querying and manipulation of state vectors
     for OnOrbit objects. State vectors are cartesian vectors of position (r) and
@@ -2084,7 +2075,7 @@ class ManeuverListResponseItem(BaseModel):
     pre_eccentricity: Optional[float] = FieldInfo(alias="preEccentricity", default=None)
     """Pre-event spacecraft eccentricity."""
 
-    pre_event_elset: Optional[ManeuverListResponseItemPreEventElset] = FieldInfo(alias="preEventElset", default=None)
+    pre_event_elset: Optional[PreEventElset] = FieldInfo(alias="preEventElset", default=None)
     """
     An element set is a collection of Keplerian orbital elements describing an orbit
     of a particular satellite. The data is used along with an orbit propagator in
@@ -2101,9 +2092,7 @@ class ManeuverListResponseItem(BaseModel):
     spacecraft.
     """
 
-    pre_event_state_vector: Optional[ManeuverListResponseItemPreEventStateVector] = FieldInfo(
-        alias="preEventStateVector", default=None
-    )
+    pre_event_state_vector: Optional[PreEventStateVector] = FieldInfo(alias="preEventStateVector", default=None)
     """
     This service provides operations for querying and manipulation of state vectors
     for OnOrbit objects. State vectors are cartesian vectors of position (r) and
@@ -2233,6 +2222,3 @@ class ManeuverListResponseItem(BaseModel):
     'origObjectId' field may be populated with an internal data provider specific
     identifier.
     """
-
-
-ManeuverListResponse: TypeAlias = List[ManeuverListResponseItem]

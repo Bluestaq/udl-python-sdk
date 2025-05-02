@@ -10,9 +10,10 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    EoObservationListResponse,
+    EoObservationAbridged,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -247,7 +248,7 @@ class TestEoObservations:
         eo_observation = client.eo_observations.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+        assert_matches_type(SyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -256,7 +257,7 @@ class TestEoObservations:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+        assert_matches_type(SyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -267,7 +268,7 @@ class TestEoObservations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eo_observation = response.parse()
-        assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+        assert_matches_type(SyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -278,7 +279,7 @@ class TestEoObservations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eo_observation = response.parse()
-            assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+            assert_matches_type(SyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -844,7 +845,7 @@ class TestAsyncEoObservations:
         eo_observation = await async_client.eo_observations.list(
             ob_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -853,7 +854,7 @@ class TestAsyncEoObservations:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -864,7 +865,7 @@ class TestAsyncEoObservations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eo_observation = await response.parse()
-        assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -875,7 +876,7 @@ class TestAsyncEoObservations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eo_observation = await response.parse()
-            assert_matches_type(EoObservationListResponse, eo_observation, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EoObservationAbridged], eo_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

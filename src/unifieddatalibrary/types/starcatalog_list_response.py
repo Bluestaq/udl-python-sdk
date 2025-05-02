@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["StarcatalogListResponse", "StarcatalogListResponseItem"]
+__all__ = ["StarcatalogListResponse"]
 
 
-class StarcatalogListResponseItem(BaseModel):
+class StarcatalogListResponse(BaseModel):
     astrometry_origin: Literal["GAIADR3", "HIPPARCOS", "USNOBSC"] = FieldInfo(alias="astrometryOrigin")
     """Originating astrometric catalog for this object.
 
@@ -230,6 +230,3 @@ class StarcatalogListResponseItem(BaseModel):
 
     var_flag: Optional[bool] = FieldInfo(alias="varFlag", default=None)
     """Flag indicating that the source exhibits variable magnitude."""
-
-
-StarcatalogListResponse: TypeAlias = List[StarcatalogListResponseItem]

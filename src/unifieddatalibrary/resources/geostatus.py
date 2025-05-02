@@ -26,7 +26,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.geostatus_list_response import GeostatusListResponse
 from ..types.geostatus_tuple_response import GeostatusTupleResponse
 from ..types.udl.geostatus.geo_status_full import GeoStatusFull
@@ -221,7 +222,7 @@ class GeostatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GeostatusListResponse:
+    ) -> SyncOffsetPage[GeostatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -240,8 +241,9 @@ class GeostatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/geostatus",
+            page=SyncOffsetPage[GeostatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -256,7 +258,7 @@ class GeostatusResource(SyncAPIResource):
                     geostatus_list_params.GeostatusListParams,
                 ),
             ),
-            cast_to=GeostatusListResponse,
+            model=GeostatusListResponse,
         )
 
     def count(
@@ -654,7 +656,7 @@ class AsyncGeostatusResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
@@ -666,7 +668,7 @@ class AsyncGeostatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GeostatusListResponse:
+    ) -> AsyncPaginator[GeostatusListResponse, AsyncOffsetPage[GeostatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -685,14 +687,15 @@ class AsyncGeostatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/geostatus",
+            page=AsyncOffsetPage[GeostatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "first_result": first_result,
@@ -701,7 +704,7 @@ class AsyncGeostatusResource(AsyncAPIResource):
                     geostatus_list_params.GeostatusListParams,
                 ),
             ),
-            cast_to=GeostatusListResponse,
+            model=GeostatusListResponse,
         )
 
     async def count(

@@ -1,18 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 from .antenna_abridged import AntennaAbridged
 
-__all__ = ["OnorbitantennaListResponse", "OnorbitantennaListResponseItem"]
+__all__ = ["OnorbitantennaListResponse"]
 
 
-class OnorbitantennaListResponseItem(BaseModel):
+class OnorbitantennaListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -74,6 +74,3 @@ class OnorbitantennaListResponseItem(BaseModel):
     The originating source network on which this record was created, auto-populated
     by the system.
     """
-
-
-OnorbitantennaListResponse: TypeAlias = List[OnorbitantennaListResponseItem]

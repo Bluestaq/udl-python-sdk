@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["PoiListResponse", "PoiListResponseItem"]
+__all__ = ["PoiListResponse"]
 
 
-class PoiListResponseItem(BaseModel):
+class PoiListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -246,6 +246,3 @@ class PoiListResponseItem(BaseModel):
 
     urls: Optional[List[str]] = None
     """List of URLs to before/after images of this Point of Interest entity."""
-
-
-PoiListResponse: TypeAlias = List[PoiListResponseItem]

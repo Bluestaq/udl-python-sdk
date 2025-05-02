@@ -22,7 +22,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.onorbitsolararray_get_response import OnorbitsolararrayGetResponse
 from ..types.onorbitsolararray_list_response import OnorbitsolararrayListResponse
 
@@ -257,7 +258,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitsolararrayListResponse:
+    ) -> SyncOffsetPage[OnorbitsolararrayListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -273,8 +274,9 @@ class OnorbitsolararrayResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/onorbitsolararray",
+            page=SyncOffsetPage[OnorbitsolararrayListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -288,7 +290,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
                     onorbitsolararray_list_params.OnorbitsolararrayListParams,
                 ),
             ),
-            cast_to=OnorbitsolararrayListResponse,
+            model=OnorbitsolararrayListResponse,
         )
 
     def delete(
@@ -596,7 +598,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -607,7 +609,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitsolararrayListResponse:
+    ) -> AsyncPaginator[OnorbitsolararrayListResponse, AsyncOffsetPage[OnorbitsolararrayListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -623,14 +625,15 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/onorbitsolararray",
+            page=AsyncOffsetPage[OnorbitsolararrayListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -638,7 +641,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
                     onorbitsolararray_list_params.OnorbitsolararrayListParams,
                 ),
             ),
-            cast_to=OnorbitsolararrayListResponse,
+            model=OnorbitsolararrayListResponse,
         )
 
     async def delete(

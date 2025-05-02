@@ -27,7 +27,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.item_get_response import ItemGetResponse
 from ..types.item_list_response import ItemListResponse
 from ..types.item_tuple_response import ItemTupleResponse
@@ -614,7 +615,7 @@ class ItemResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ItemListResponse:
+    ) -> SyncOffsetPage[ItemListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -630,8 +631,9 @@ class ItemResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/item",
+            page=SyncOffsetPage[ItemListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -645,7 +647,7 @@ class ItemResource(SyncAPIResource):
                     item_list_params.ItemListParams,
                 ),
             ),
-            cast_to=ItemListResponse,
+            model=ItemListResponse,
         )
 
     def delete(
@@ -1461,7 +1463,7 @@ class AsyncItemResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -1472,7 +1474,7 @@ class AsyncItemResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ItemListResponse:
+    ) -> AsyncPaginator[ItemListResponse, AsyncOffsetPage[ItemListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1488,14 +1490,15 @@ class AsyncItemResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/item",
+            page=AsyncOffsetPage[ItemListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1503,7 +1506,7 @@ class AsyncItemResource(AsyncAPIResource):
                     item_list_params.ItemListParams,
                 ),
             ),
-            cast_to=ItemListResponse,
+            model=ItemListResponse,
         )
 
     async def delete(

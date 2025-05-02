@@ -36,7 +36,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sortieppr_list_response import SortiepprListResponse
 from ...types.sortieppr_tuple_response import SortiepprTupleResponse
 from ...types.sortieppr.sortie_ppr_full import SortiePprFull
@@ -318,7 +319,7 @@ class SortiepprResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SortiepprListResponse:
+    ) -> SyncOffsetPage[SortiepprListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -337,8 +338,9 @@ class SortiepprResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sortieppr",
+            page=SyncOffsetPage[SortiepprListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -353,7 +355,7 @@ class SortiepprResource(SyncAPIResource):
                     sortieppr_list_params.SortiepprListParams,
                 ),
             ),
-            cast_to=SortiepprListResponse,
+            model=SortiepprListResponse,
         )
 
     def delete(
@@ -910,7 +912,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         id_sortie: str,
@@ -922,7 +924,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SortiepprListResponse:
+    ) -> AsyncPaginator[SortiepprListResponse, AsyncOffsetPage[SortiepprListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -941,14 +943,15 @@ class AsyncSortiepprResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sortieppr",
+            page=AsyncOffsetPage[SortiepprListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "id_sortie": id_sortie,
                         "first_result": first_result,
@@ -957,7 +960,7 @@ class AsyncSortiepprResource(AsyncAPIResource):
                     sortieppr_list_params.SortiepprListParams,
                 ),
             ),
-            cast_to=SortiepprListResponse,
+            model=SortiepprListResponse,
         )
 
     async def delete(

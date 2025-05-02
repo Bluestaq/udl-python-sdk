@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    AirTransportMissionListResponse,
+    AirTransportMissionAbridged,
     AirTransportMissionTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import AirTransportMissionFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -348,7 +349,7 @@ class TestAirTransportMissions:
         air_transport_mission = client.air_transport_missions.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -357,7 +358,7 @@ class TestAirTransportMissions:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -368,7 +369,7 @@ class TestAirTransportMissions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_transport_mission = response.parse()
-        assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -379,7 +380,7 @@ class TestAirTransportMissions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_transport_mission = response.parse()
-            assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+            assert_matches_type(SyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -822,7 +823,7 @@ class TestAsyncAirTransportMissions:
         air_transport_mission = await async_client.air_transport_missions.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -831,7 +832,7 @@ class TestAsyncAirTransportMissions:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -842,7 +843,7 @@ class TestAsyncAirTransportMissions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_transport_mission = await response.parse()
-        assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -853,7 +854,7 @@ class TestAsyncAirTransportMissions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_transport_mission = await response.parse()
-            assert_matches_type(AirTransportMissionListResponse, air_transport_mission, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AirTransportMissionAbridged], air_transport_mission, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

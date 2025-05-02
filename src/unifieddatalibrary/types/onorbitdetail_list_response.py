@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OnorbitdetailListResponse", "OnorbitdetailListResponseItem"]
+__all__ = ["OnorbitdetailListResponse"]
 
 
-class OnorbitdetailListResponseItem(BaseModel):
+class OnorbitdetailListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -221,6 +221,3 @@ class OnorbitdetailListResponseItem(BaseModel):
 
     vismag_min: Optional[float] = FieldInfo(alias="vismagMin", default=None)
     """Minimum visual magnitude in M."""
-
-
-OnorbitdetailListResponse: TypeAlias = List[OnorbitdetailListResponseItem]

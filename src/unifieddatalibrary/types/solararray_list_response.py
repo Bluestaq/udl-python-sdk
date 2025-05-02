@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SolararrayListResponse", "SolararrayListResponseItem"]
+__all__ = ["SolararrayListResponse"]
 
 
-class SolararrayListResponseItem(BaseModel):
+class SolararrayListResponse(BaseModel):
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
@@ -60,6 +60,3 @@ class SolararrayListResponseItem(BaseModel):
     The originating source network on which this record was created, auto-populated
     by the system.
     """
-
-
-SolararrayListResponse: TypeAlias = List[SolararrayListResponseItem]

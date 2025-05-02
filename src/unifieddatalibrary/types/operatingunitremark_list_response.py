@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OperatingunitremarkListResponse", "OperatingunitremarkListResponseItem"]
+__all__ = ["OperatingunitremarkListResponse"]
 
 
-class OperatingunitremarkListResponseItem(BaseModel):
+class OperatingunitremarkListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -76,6 +76,3 @@ class OperatingunitremarkListResponseItem(BaseModel):
 
     type: Optional[str] = None
     """The remark type (e.g. Caution, Information, Misc, Restriction, etc.)."""
-
-
-OperatingunitremarkListResponse: TypeAlias = List[OperatingunitremarkListResponseItem]

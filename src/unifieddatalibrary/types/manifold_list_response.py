@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ManifoldListResponse", "ManifoldListResponseItem"]
+__all__ = ["ManifoldListResponse"]
 
 
-class ManifoldListResponseItem(BaseModel):
+class ManifoldListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -82,6 +82,3 @@ class ManifoldListResponseItem(BaseModel):
     Weight or probability of this manifold for prioritization purposes, between 0
     and 1.
     """
-
-
-ManifoldListResponse: TypeAlias = List[ManifoldListResponseItem]

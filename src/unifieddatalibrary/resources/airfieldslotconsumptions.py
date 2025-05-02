@@ -26,9 +26,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.airfieldslotconsumption_full import AirfieldslotconsumptionFull
-from ..types.airfieldslotconsumption_list_response import AirfieldslotconsumptionListResponse
+from ..types.airfieldslotconsumption_abridged import AirfieldslotconsumptionAbridged
 from ..types.airfieldslotconsumption_tuple_response import AirfieldslotconsumptionTupleResponse
 
 __all__ = ["AirfieldslotconsumptionsResource", "AsyncAirfieldslotconsumptionsResource"]
@@ -516,7 +517,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirfieldslotconsumptionListResponse:
+    ) -> SyncOffsetPage[AirfieldslotconsumptionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -534,8 +535,9 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airfieldslotconsumption",
+            page=SyncOffsetPage[AirfieldslotconsumptionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -550,7 +552,7 @@ class AirfieldslotconsumptionsResource(SyncAPIResource):
                     airfieldslotconsumption_list_params.AirfieldslotconsumptionListParams,
                 ),
             ),
-            cast_to=AirfieldslotconsumptionListResponse,
+            model=AirfieldslotconsumptionAbridged,
         )
 
     def delete(
@@ -1194,7 +1196,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -1206,7 +1208,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirfieldslotconsumptionListResponse:
+    ) -> AsyncPaginator[AirfieldslotconsumptionAbridged, AsyncOffsetPage[AirfieldslotconsumptionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1224,14 +1226,15 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airfieldslotconsumption",
+            page=AsyncOffsetPage[AirfieldslotconsumptionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -1240,7 +1243,7 @@ class AsyncAirfieldslotconsumptionsResource(AsyncAPIResource):
                     airfieldslotconsumption_list_params.AirfieldslotconsumptionListParams,
                 ),
             ),
-            cast_to=AirfieldslotconsumptionListResponse,
+            model=AirfieldslotconsumptionAbridged,
         )
 
     async def delete(

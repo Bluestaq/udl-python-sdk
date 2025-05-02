@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     LinkStatusTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.udl.linkstatus import LinkStatusFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -121,7 +122,7 @@ class TestLinkStatus:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         link_status = client.link_status.list()
-        assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+        assert_matches_type(SyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -132,7 +133,7 @@ class TestLinkStatus:
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             max_results=0,
         )
-        assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+        assert_matches_type(SyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -141,7 +142,7 @@ class TestLinkStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         link_status = response.parse()
-        assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+        assert_matches_type(SyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -150,7 +151,7 @@ class TestLinkStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             link_status = response.parse()
-            assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+            assert_matches_type(SyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -408,7 +409,7 @@ class TestAsyncLinkStatus:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         link_status = await async_client.link_status.list()
-        assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -419,7 +420,7 @@ class TestAsyncLinkStatus:
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             max_results=0,
         )
-        assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -428,7 +429,7 @@ class TestAsyncLinkStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         link_status = await response.parse()
-        assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -437,7 +438,7 @@ class TestAsyncLinkStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             link_status = await response.parse()
-            assert_matches_type(LinkStatusListResponse, link_status, path=["response"])
+            assert_matches_type(AsyncOffsetPage[LinkStatusListResponse], link_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

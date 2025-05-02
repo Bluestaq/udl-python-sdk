@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SurfaceobstructionListResponse,
     SurfaceobstructionTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -161,7 +162,7 @@ class TestSurfaceobstruction:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         surfaceobstruction = client.surfaceobstruction.list()
-        assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+        assert_matches_type(SyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -169,7 +170,7 @@ class TestSurfaceobstruction:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+        assert_matches_type(SyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -178,7 +179,7 @@ class TestSurfaceobstruction:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         surfaceobstruction = response.parse()
-        assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+        assert_matches_type(SyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -187,7 +188,7 @@ class TestSurfaceobstruction:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             surfaceobstruction = response.parse()
-            assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+            assert_matches_type(SyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -570,7 +571,7 @@ class TestAsyncSurfaceobstruction:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         surfaceobstruction = await async_client.surfaceobstruction.list()
-        assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -578,7 +579,7 @@ class TestAsyncSurfaceobstruction:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -587,7 +588,7 @@ class TestAsyncSurfaceobstruction:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         surfaceobstruction = await response.parse()
-        assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -596,7 +597,7 @@ class TestAsyncSurfaceobstruction:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             surfaceobstruction = await response.parse()
-            assert_matches_type(SurfaceobstructionListResponse, surfaceobstruction, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SurfaceobstructionListResponse], surfaceobstruction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

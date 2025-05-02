@@ -22,9 +22,10 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncOffsetPage, AsyncOffsetPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.ephemeris import attitude_data_list_params, attitude_data_count_params
-from ....types.ephemeris.attitude_data_list_response import AttitudeDataListResponse
+from ....types.ephemeris.attitude_data_abridged import AttitudeDataAbridged
 
 __all__ = ["AttitudeDataResource", "AsyncAttitudeDataResource"]
 
@@ -65,7 +66,7 @@ class AttitudeDataResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AttitudeDataListResponse:
+    ) -> SyncOffsetPage[AttitudeDataAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -83,8 +84,9 @@ class AttitudeDataResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/attitudedata",
+            page=SyncOffsetPage[AttitudeDataAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -99,7 +101,7 @@ class AttitudeDataResource(SyncAPIResource):
                     attitude_data_list_params.AttitudeDataListParams,
                 ),
             ),
-            cast_to=AttitudeDataListResponse,
+            model=AttitudeDataAbridged,
         )
 
     def count(
@@ -178,7 +180,7 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
         """
         return AsyncAttitudeDataResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         as_id: str,
@@ -190,7 +192,7 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AttitudeDataListResponse:
+    ) -> AsyncPaginator[AttitudeDataAbridged, AsyncOffsetPage[AttitudeDataAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -208,14 +210,15 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/attitudedata",
+            page=AsyncOffsetPage[AttitudeDataAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "as_id": as_id,
                         "first_result": first_result,
@@ -224,7 +227,7 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
                     attitude_data_list_params.AttitudeDataListParams,
                 ),
             ),
-            cast_to=AttitudeDataListResponse,
+            model=AttitudeDataAbridged,
         )
 
     async def count(

@@ -2,20 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "LaunchsitedetailListResponse",
-    "LaunchsitedetailListResponseItem",
-    "LaunchsitedetailListResponseItemLocation",
-]
+__all__ = ["LaunchsitedetailListResponse", "Location"]
 
 
-class LaunchsitedetailListResponseItemLocation(BaseModel):
+class Location(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -94,7 +90,7 @@ class LaunchsitedetailListResponseItemLocation(BaseModel):
     """
 
 
-class LaunchsitedetailListResponseItem(BaseModel):
+class LaunchsitedetailListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -156,7 +152,7 @@ class LaunchsitedetailListResponseItem(BaseModel):
     Multiple launch sites may be colocated within a launch ''group''.
     """
 
-    location: Optional[LaunchsitedetailListResponseItemLocation] = None
+    location: Optional[Location] = None
     """
     Model representation of a location, which is a specific fixed point on the earth
     and is used to denote the locations of fixed sensors, operating units, etc.
@@ -175,6 +171,3 @@ class LaunchsitedetailListResponseItem(BaseModel):
     The originating source network on which this record was created, auto-populated
     by the system.
     """
-
-
-LaunchsitedetailListResponse: TypeAlias = List[LaunchsitedetailListResponseItem]

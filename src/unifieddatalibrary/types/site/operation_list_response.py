@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,18 +10,17 @@ from ..._models import BaseModel
 
 __all__ = [
     "OperationListResponse",
-    "OperationListResponseItem",
-    "OperationListResponseItemDailyOperation",
-    "OperationListResponseItemDailyOperationOperatingHour",
-    "OperationListResponseItemMaximumOnGround",
-    "OperationListResponseItemOperationalDeviation",
-    "OperationListResponseItemOperationalPlanning",
-    "OperationListResponseItemPathway",
-    "OperationListResponseItemWaiver",
+    "DailyOperation",
+    "DailyOperationOperatingHour",
+    "MaximumOnGround",
+    "OperationalDeviation",
+    "OperationalPlanning",
+    "Pathway",
+    "Waiver",
 ]
 
 
-class OperationListResponseItemDailyOperationOperatingHour(BaseModel):
+class DailyOperationOperatingHour(BaseModel):
     op_start_time: Optional[str] = FieldInfo(alias="opStartTime", default=None)
     """The Zulu (UTC) operational start time, expressed in ISO 8601 format as HH:MM."""
 
@@ -29,15 +28,13 @@ class OperationListResponseItemDailyOperationOperatingHour(BaseModel):
     """The Zulu (UTC) operational stop time, expressed in ISO 8601 format as HH:MM."""
 
 
-class OperationListResponseItemDailyOperation(BaseModel):
+class DailyOperation(BaseModel):
     day_of_week: Optional[Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]] = (
         FieldInfo(alias="dayOfWeek", default=None)
     )
     """The day of the week to which this operational information pertains."""
 
-    operating_hours: Optional[List[OperationListResponseItemDailyOperationOperatingHour]] = FieldInfo(
-        alias="operatingHours", default=None
-    )
+    operating_hours: Optional[List[DailyOperationOperatingHour]] = FieldInfo(alias="operatingHours", default=None)
     """
     A collection containing the operational start and stop times scheduled for the
     day of the week specified.
@@ -59,7 +56,7 @@ class OperationListResponseItemDailyOperation(BaseModel):
     """
 
 
-class OperationListResponseItemMaximumOnGround(BaseModel):
+class MaximumOnGround(BaseModel):
     aircraft_mds: Optional[str] = FieldInfo(alias="aircraftMDS", default=None)
     """
     The Model Design Series (MDS) designation of the aircraft to which this maximum
@@ -97,7 +94,7 @@ class OperationListResponseItemMaximumOnGround(BaseModel):
     """
 
 
-class OperationListResponseItemOperationalDeviation(BaseModel):
+class OperationalDeviation(BaseModel):
     affected_aircraft_mds: Optional[str] = FieldInfo(alias="affectedAircraftMDS", default=None)
     """
     The Model Design Series (MDS) designation of the aircraft affected by this
@@ -132,7 +129,7 @@ class OperationListResponseItemOperationalDeviation(BaseModel):
     """Text remark regarding this operational deviation."""
 
 
-class OperationListResponseItemOperationalPlanning(BaseModel):
+class OperationalPlanning(BaseModel):
     op_end_date: Optional[datetime] = FieldInfo(alias="opEndDate", default=None)
     """
     The end date of this operational planning, in ISO8601 UTC format with
@@ -167,7 +164,7 @@ class OperationListResponseItemOperationalPlanning(BaseModel):
     """The status of this operational planning."""
 
 
-class OperationListResponseItemPathway(BaseModel):
+class Pathway(BaseModel):
     pw_definition: Optional[str] = FieldInfo(alias="pwDefinition", default=None)
     """Text defining this pathway from its constituent parts."""
 
@@ -187,7 +184,7 @@ class OperationListResponseItemPathway(BaseModel):
     """The intended use of this pathway."""
 
 
-class OperationListResponseItemWaiver(BaseModel):
+class Waiver(BaseModel):
     expiration_date: Optional[datetime] = FieldInfo(alias="expirationDate", default=None)
     """
     The expiration date of this waiver, in ISO8601 UTC format with millisecond
@@ -230,7 +227,7 @@ class OperationListResponseItemWaiver(BaseModel):
     """
 
 
-class OperationListResponseItem(BaseModel):
+class OperationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -269,9 +266,7 @@ class OperationListResponseItem(BaseModel):
     system.
     """
 
-    daily_operations: Optional[List[OperationListResponseItemDailyOperation]] = FieldInfo(
-        alias="dailyOperations", default=None
-    )
+    daily_operations: Optional[List[DailyOperation]] = FieldInfo(alias="dailyOperations", default=None)
     """
     Collection providing hours of operation and other information specific to a day
     of the week.
@@ -297,9 +292,7 @@ class OperationListResponseItem(BaseModel):
     id_launch_site: Optional[str] = FieldInfo(alias="idLaunchSite", default=None)
     """Id of the associated launchSite entity."""
 
-    maximum_on_grounds: Optional[List[OperationListResponseItemMaximumOnGround]] = FieldInfo(
-        alias="maximumOnGrounds", default=None
-    )
+    maximum_on_grounds: Optional[List[MaximumOnGround]] = FieldInfo(alias="maximumOnGrounds", default=None)
     """
     Collection providing maximum on ground (MOG) information for specific aircraft
     at the site associated with this SiteOperations record.
@@ -323,7 +316,7 @@ class OperationListResponseItem(BaseModel):
     collection.
     """
 
-    operational_deviations: Optional[List[OperationListResponseItemOperationalDeviation]] = FieldInfo(
+    operational_deviations: Optional[List[OperationalDeviation]] = FieldInfo(
         alias="operationalDeviations", default=None
     )
     """
@@ -331,9 +324,7 @@ class OperationListResponseItem(BaseModel):
     to normal operations.
     """
 
-    operational_plannings: Optional[List[OperationListResponseItemOperationalPlanning]] = FieldInfo(
-        alias="operationalPlannings", default=None
-    )
+    operational_plannings: Optional[List[OperationalPlanning]] = FieldInfo(alias="operationalPlannings", default=None)
     """Collection of planning information associated with this SiteOperations record."""
 
     origin: Optional[str] = None
@@ -350,7 +341,7 @@ class OperationListResponseItem(BaseModel):
     by the system.
     """
 
-    pathways: Optional[List[OperationListResponseItemPathway]] = None
+    pathways: Optional[List[Pathway]] = None
     """
     Collection detailing operational pathways at the Site associated with this
     SiteOperations record.
@@ -372,11 +363,8 @@ class OperationListResponseItem(BaseModel):
     system.
     """
 
-    waivers: Optional[List[OperationListResponseItemWaiver]] = None
+    waivers: Optional[List[Waiver]] = None
     """
     Collection documenting operational waivers that have been issued for the Site
     associated with this record.
     """
-
-
-OperationListResponse: TypeAlias = List[OperationListResponseItem]

@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OrbittrackListResponse", "OrbittrackListResponseItem", "OrbittrackListResponseItemTrackSensor"]
+__all__ = ["OrbittrackListResponse", "TrackSensor"]
 
 
-class OrbittrackListResponseItemTrackSensor(BaseModel):
+class TrackSensor(BaseModel):
     az: float
     """The observing sensor azimuth angle, in degrees and topocentric frame."""
 
@@ -44,7 +44,7 @@ class OrbittrackListResponseItemTrackSensor(BaseModel):
     """
 
 
-class OrbittrackListResponseItem(BaseModel):
+class OrbittrackListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -330,7 +330,7 @@ class OrbittrackListResponseItem(BaseModel):
     Based on MIL-STD-2525 symbology definitions.
     """
 
-    track_sensors: Optional[List[OrbittrackListResponseItemTrackSensor]] = FieldInfo(alias="trackSensors", default=None)
+    track_sensors: Optional[List[TrackSensor]] = FieldInfo(alias="trackSensors", default=None)
     """TrackSensor Collection."""
 
     trk_id: Optional[str] = FieldInfo(alias="trkId", default=None)
@@ -347,6 +347,3 @@ class OrbittrackListResponseItem(BaseModel):
 
     xref: Optional[str] = None
     """Source cross-reference code for the command that originated the track report."""
-
-
-OrbittrackListResponse: TypeAlias = List[OrbittrackListResponseItem]

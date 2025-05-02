@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.orbitdetermination_list_response import OrbitdeterminationListResponse
 from ...types.orbitdetermination_tuple_response import OrbitdeterminationTupleResponse
 from ...types.udl.orbitdetermination.orbitdetermination_full import OrbitdeterminationFull
@@ -343,7 +344,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationListResponse:
+    ) -> SyncOffsetPage[OrbitdeterminationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -369,8 +370,9 @@ class OrbitdeterminationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/orbitdetermination",
+            page=SyncOffsetPage[OrbitdeterminationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -386,7 +388,7 @@ class OrbitdeterminationResource(SyncAPIResource):
                     orbitdetermination_list_params.OrbitdeterminationListParams,
                 ),
             ),
-            cast_to=OrbitdeterminationListResponse,
+            model=OrbitdeterminationListResponse,
         )
 
     def count(
@@ -950,7 +952,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -963,7 +965,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationListResponse:
+    ) -> AsyncPaginator[OrbitdeterminationListResponse, AsyncOffsetPage[OrbitdeterminationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -989,14 +991,15 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/orbitdetermination",
+            page=AsyncOffsetPage[OrbitdeterminationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
@@ -1006,7 +1009,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                     orbitdetermination_list_params.OrbitdeterminationListParams,
                 ),
             ),
-            cast_to=OrbitdeterminationListResponse,
+            model=OrbitdeterminationListResponse,
         )
 
     async def count(

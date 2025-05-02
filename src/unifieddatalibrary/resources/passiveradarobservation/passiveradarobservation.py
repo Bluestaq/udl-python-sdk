@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.passiveradarobservation_list_response import PassiveradarobservationListResponse
 from ...types.passiveradarobservation_tuple_response import PassiveradarobservationTupleResponse
 from ...types.udl.passiveradarobservation.passiveradarobservation_full import PassiveradarobservationFull
@@ -416,7 +417,7 @@ class PassiveradarobservationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PassiveradarobservationListResponse:
+    ) -> SyncOffsetPage[PassiveradarobservationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -435,8 +436,9 @@ class PassiveradarobservationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/passiveradarobservation",
+            page=SyncOffsetPage[PassiveradarobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -451,7 +453,7 @@ class PassiveradarobservationResource(SyncAPIResource):
                     passiveradarobservation_list_params.PassiveradarobservationListParams,
                 ),
             ),
-            cast_to=PassiveradarobservationListResponse,
+            model=PassiveradarobservationListResponse,
         )
 
     def count(
@@ -1071,7 +1073,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         ob_time: Union[str, datetime],
@@ -1083,7 +1085,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PassiveradarobservationListResponse:
+    ) -> AsyncPaginator[PassiveradarobservationListResponse, AsyncOffsetPage[PassiveradarobservationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1102,14 +1104,15 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/passiveradarobservation",
+            page=AsyncOffsetPage[PassiveradarobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
@@ -1118,7 +1121,7 @@ class AsyncPassiveradarobservationResource(AsyncAPIResource):
                     passiveradarobservation_list_params.PassiveradarobservationListParams,
                 ),
             ),
-            cast_to=PassiveradarobservationListResponse,
+            model=PassiveradarobservationListResponse,
         )
 
     async def count(

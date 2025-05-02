@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["PassiveradarobservationListResponse", "PassiveradarobservationListResponseItem"]
+__all__ = ["PassiveradarobservationListResponse"]
 
 
-class PassiveradarobservationListResponseItem(BaseModel):
+class PassiveradarobservationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -324,6 +324,3 @@ class PassiveradarobservationListResponseItem(BaseModel):
 
     zvel: Optional[float] = None
     """Z velocity of target in kilometers/sec in J2000 coordinate frame."""
-
-
-PassiveradarobservationListResponse: TypeAlias = List[PassiveradarobservationListResponseItem]

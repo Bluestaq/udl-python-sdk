@@ -41,10 +41,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.state_vector_full import StateVectorFull
+from ...types.state_vector_abridged import StateVectorAbridged
 from ...types.state_vector_ingest_param import StateVectorIngestParam
-from ...types.statevector_list_response import StatevectorListResponse
 from ...types.statevector_tuple_response import StatevectorTupleResponse
 
 __all__ = ["StatevectorResource", "AsyncStatevectorResource"]
@@ -724,7 +725,7 @@ class StatevectorResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StatevectorListResponse:
+    ) -> SyncOffsetPage[StateVectorAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -743,8 +744,9 @@ class StatevectorResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/statevector",
+            page=SyncOffsetPage[StateVectorAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -759,7 +761,7 @@ class StatevectorResource(SyncAPIResource):
                     statevector_list_params.StatevectorListParams,
                 ),
             ),
-            cast_to=StatevectorListResponse,
+            model=StateVectorAbridged,
         )
 
     def count(
@@ -1680,7 +1682,7 @@ class AsyncStatevectorResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         epoch: Union[str, datetime],
@@ -1692,7 +1694,7 @@ class AsyncStatevectorResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StatevectorListResponse:
+    ) -> AsyncPaginator[StateVectorAbridged, AsyncOffsetPage[StateVectorAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1711,14 +1713,15 @@ class AsyncStatevectorResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/statevector",
+            page=AsyncOffsetPage[StateVectorAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "epoch": epoch,
                         "first_result": first_result,
@@ -1727,7 +1730,7 @@ class AsyncStatevectorResource(AsyncAPIResource):
                     statevector_list_params.StatevectorListParams,
                 ),
             ),
-            cast_to=StatevectorListResponse,
+            model=StateVectorAbridged,
         )
 
     async def count(

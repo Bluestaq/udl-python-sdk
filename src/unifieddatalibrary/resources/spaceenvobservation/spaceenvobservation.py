@@ -32,7 +32,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.spaceenvobservation_list_response import SpaceenvobservationListResponse
 from ...types.spaceenvobservation_tuple_response import SpaceenvobservationTupleResponse
 
@@ -75,7 +76,7 @@ class SpaceenvobservationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SpaceenvobservationListResponse:
+    ) -> SyncOffsetPage[SpaceenvobservationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -94,8 +95,9 @@ class SpaceenvobservationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/spaceenvobservation",
+            page=SyncOffsetPage[SpaceenvobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -110,7 +112,7 @@ class SpaceenvobservationResource(SyncAPIResource):
                     spaceenvobservation_list_params.SpaceenvobservationListParams,
                 ),
             ),
-            cast_to=SpaceenvobservationListResponse,
+            model=SpaceenvobservationListResponse,
         )
 
     def count(
@@ -347,7 +349,7 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
         """
         return AsyncSpaceenvobservationResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         ob_time: Union[str, datetime],
@@ -359,7 +361,7 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SpaceenvobservationListResponse:
+    ) -> AsyncPaginator[SpaceenvobservationListResponse, AsyncOffsetPage[SpaceenvobservationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -378,14 +380,15 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/spaceenvobservation",
+            page=AsyncOffsetPage[SpaceenvobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
@@ -394,7 +397,7 @@ class AsyncSpaceenvobservationResource(AsyncAPIResource):
                     spaceenvobservation_list_params.SpaceenvobservationListParams,
                 ),
             ),
-            cast_to=SpaceenvobservationListResponse,
+            model=SpaceenvobservationListResponse,
         )
 
     async def count(

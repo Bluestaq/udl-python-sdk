@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["WeatherdataListResponse", "WeatherdataListResponseItem"]
+__all__ = ["WeatherdataListResponse"]
 
 
-class WeatherdataListResponseItem(BaseModel):
+class WeatherdataListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -234,6 +234,3 @@ class WeatherdataListResponseItem(BaseModel):
 
     term_alt: Optional[float] = FieldInfo(alias="termAlt", default=None)
     """Last altitude with recorded measurements in this record, in meters."""
-
-
-WeatherdataListResponse: TypeAlias = List[WeatherdataListResponseItem]

@@ -37,7 +37,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.udl.sgi.sgi_full import SgiFull
 from ...types.sgi_list_response import SgiListResponse
 from ...types.sgi_tuple_response import SgiTupleResponse
@@ -789,7 +790,7 @@ class SgiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiListResponse:
+    ) -> SyncOffsetPage[SgiListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -815,8 +816,9 @@ class SgiResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sgi",
+            page=SyncOffsetPage[SgiListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -832,7 +834,7 @@ class SgiResource(SyncAPIResource):
                     sgi_list_params.SgiListParams,
                 ),
             ),
-            cast_to=SgiListResponse,
+            model=SgiListResponse,
         )
 
     def delete(
@@ -1932,7 +1934,7 @@ class AsyncSgiResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -1945,7 +1947,7 @@ class AsyncSgiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiListResponse:
+    ) -> AsyncPaginator[SgiListResponse, AsyncOffsetPage[SgiListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1971,14 +1973,15 @@ class AsyncSgiResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sgi",
+            page=AsyncOffsetPage[SgiListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "effective_date": effective_date,
                         "first_result": first_result,
@@ -1988,7 +1991,7 @@ class AsyncSgiResource(AsyncAPIResource):
                     sgi_list_params.SgiListParams,
                 ),
             ),
-            cast_to=SgiListResponse,
+            model=SgiListResponse,
         )
 
     async def delete(

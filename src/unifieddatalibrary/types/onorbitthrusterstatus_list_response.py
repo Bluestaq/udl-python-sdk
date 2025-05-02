@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OnorbitthrusterstatusListResponse", "OnorbitthrusterstatusListResponseItem"]
+__all__ = ["OnorbitthrusterstatusListResponse"]
 
 
-class OnorbitthrusterstatusListResponseItem(BaseModel):
+class OnorbitthrusterstatusListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -120,6 +120,3 @@ class OnorbitthrusterstatusListResponseItem(BaseModel):
 
     total_delta_v: Optional[float] = FieldInfo(alias="totalDeltaV", default=None)
     """Total delta-velocity available for this thruster's type, in meters per second."""
-
-
-OnorbitthrusterstatusListResponse: TypeAlias = List[OnorbitthrusterstatusListResponseItem]

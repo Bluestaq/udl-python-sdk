@@ -2,20 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "SoiobservationsetListResponse",
-    "SoiobservationsetListResponseItem",
-    "SoiobservationsetListResponseItemCalibration",
-]
+__all__ = ["SoiobservationsetListResponse", "Calibration"]
 
 
-class SoiobservationsetListResponseItemCalibration(BaseModel):
+class Calibration(BaseModel):
     cal_bg_intensity: Optional[float] = FieldInfo(alias="calBgIntensity", default=None)
     """
     Background intensity, at calibration, specified in kilowatts per steradian per
@@ -77,7 +73,7 @@ class SoiobservationsetListResponseItemCalibration(BaseModel):
     """
 
 
-class SoiobservationsetListResponseItem(BaseModel):
+class SoiobservationsetListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -129,7 +125,7 @@ class SoiobservationsetListResponseItem(BaseModel):
     historical collection data for the object.
     """
 
-    calibrations: Optional[List[SoiobservationsetListResponseItemCalibration]] = None
+    calibrations: Optional[List[Calibration]] = None
     """Array of SOI Calibrations associated with this SOIObservationSet."""
 
     calibration_type: Optional[str] = FieldInfo(alias="calibrationType", default=None)
@@ -474,6 +470,3 @@ class SoiobservationsetListResponseItem(BaseModel):
     then the provided calibration data will be used when generating the EOSSA file
     (e.g. PRE, POST, BOTH, NONE).
     """
-
-
-SoiobservationsetListResponse: TypeAlias = List[SoiobservationsetListResponseItem]

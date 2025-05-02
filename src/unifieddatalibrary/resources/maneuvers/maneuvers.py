@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.maneuver_list_response import ManeuverListResponse
 from ...types.maneuver_tuple_response import ManeuverTupleResponse
 from ...types.udl.maneuver.maneuver_full import ManeuverFull
@@ -615,7 +616,7 @@ class ManeuversResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverListResponse:
+    ) -> SyncOffsetPage[ManeuverListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -635,8 +636,9 @@ class ManeuversResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/maneuver",
+            page=SyncOffsetPage[ManeuverListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -651,7 +653,7 @@ class ManeuversResource(SyncAPIResource):
                     maneuver_list_params.ManeuverListParams,
                 ),
             ),
-            cast_to=ManeuverListResponse,
+            model=ManeuverListResponse,
         )
 
     def count(
@@ -1472,7 +1474,7 @@ class AsyncManeuversResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         event_start_time: Union[str, datetime],
@@ -1484,7 +1486,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverListResponse:
+    ) -> AsyncPaginator[ManeuverListResponse, AsyncOffsetPage[ManeuverListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1504,14 +1506,15 @@ class AsyncManeuversResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/maneuver",
+            page=AsyncOffsetPage[ManeuverListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "event_start_time": event_start_time,
                         "first_result": first_result,
@@ -1520,7 +1523,7 @@ class AsyncManeuversResource(AsyncAPIResource):
                     maneuver_list_params.ManeuverListParams,
                 ),
             ),
-            cast_to=ManeuverListResponse,
+            model=ManeuverListResponse,
         )
 
     async def count(

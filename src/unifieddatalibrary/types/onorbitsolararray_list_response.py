@@ -1,21 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "OnorbitsolararrayListResponse",
-    "OnorbitsolararrayListResponseItem",
-    "OnorbitsolararrayListResponseItemSolarArray",
-]
+__all__ = ["OnorbitsolararrayListResponse", "SolarArray"]
 
 
-class OnorbitsolararrayListResponseItemSolarArray(BaseModel):
+class SolarArray(BaseModel):
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
@@ -66,7 +62,7 @@ class OnorbitsolararrayListResponseItemSolarArray(BaseModel):
     """
 
 
-class OnorbitsolararrayListResponseItem(BaseModel):
+class OnorbitsolararrayListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -128,12 +124,9 @@ class OnorbitsolararrayListResponseItem(BaseModel):
     idSolarArray.
     """
 
-    solar_array: Optional[OnorbitsolararrayListResponseItemSolarArray] = FieldInfo(alias="solarArray", default=None)
+    solar_array: Optional[SolarArray] = FieldInfo(alias="solarArray", default=None)
     """Model representation of information on on-orbit/spacecraft solar arrays.
 
     A spacecraft may have multiple solar arrays and each solar array can have
     multiple 'details' records compiled by different sources.
     """
-
-
-OnorbitsolararrayListResponse: TypeAlias = List[OnorbitsolararrayListResponseItem]

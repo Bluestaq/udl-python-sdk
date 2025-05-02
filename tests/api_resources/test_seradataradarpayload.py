@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SeradataradarpayloadListResponse,
     SeradataradarpayloadTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -189,7 +190,7 @@ class TestSeradataradarpayload:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         seradataradarpayload = client.seradataradarpayload.list()
-        assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+        assert_matches_type(SyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -197,7 +198,7 @@ class TestSeradataradarpayload:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+        assert_matches_type(SyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -206,7 +207,7 @@ class TestSeradataradarpayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradataradarpayload = response.parse()
-        assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+        assert_matches_type(SyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -215,7 +216,9 @@ class TestSeradataradarpayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradataradarpayload = response.parse()
-            assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+            assert_matches_type(
+                SyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -574,7 +577,7 @@ class TestAsyncSeradataradarpayload:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradataradarpayload = await async_client.seradataradarpayload.list()
-        assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -582,7 +585,7 @@ class TestAsyncSeradataradarpayload:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -591,7 +594,7 @@ class TestAsyncSeradataradarpayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradataradarpayload = await response.parse()
-        assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -600,7 +603,9 @@ class TestAsyncSeradataradarpayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradataradarpayload = await response.parse()
-            assert_matches_type(SeradataradarpayloadListResponse, seradataradarpayload, path=["response"])
+            assert_matches_type(
+                AsyncOffsetPage[SeradataradarpayloadListResponse], seradataradarpayload, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 

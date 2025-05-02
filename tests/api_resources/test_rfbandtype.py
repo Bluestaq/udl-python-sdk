@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     RfbandtypeListResponse,
     RfbandtypeTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -154,7 +155,7 @@ class TestRfbandtype:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         rfbandtype = client.rfbandtype.list()
-        assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+        assert_matches_type(SyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -162,7 +163,7 @@ class TestRfbandtype:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+        assert_matches_type(SyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -171,7 +172,7 @@ class TestRfbandtype:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         rfbandtype = response.parse()
-        assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+        assert_matches_type(SyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -180,7 +181,7 @@ class TestRfbandtype:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             rfbandtype = response.parse()
-            assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+            assert_matches_type(SyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -504,7 +505,7 @@ class TestAsyncRfbandtype:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         rfbandtype = await async_client.rfbandtype.list()
-        assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+        assert_matches_type(AsyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -512,7 +513,7 @@ class TestAsyncRfbandtype:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+        assert_matches_type(AsyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -521,7 +522,7 @@ class TestAsyncRfbandtype:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         rfbandtype = await response.parse()
-        assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+        assert_matches_type(AsyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -530,7 +531,7 @@ class TestAsyncRfbandtype:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             rfbandtype = await response.parse()
-            assert_matches_type(RfbandtypeListResponse, rfbandtype, path=["response"])
+            assert_matches_type(AsyncOffsetPage[RfbandtypeListResponse], rfbandtype, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

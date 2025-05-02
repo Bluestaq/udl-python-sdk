@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,19 +10,18 @@ from ..._models import BaseModel
 
 __all__ = [
     "DatalinkListResponse",
-    "DatalinkListResponseItem",
-    "DatalinkListResponseItemMultiDuty",
-    "DatalinkListResponseItemMultiDutyMultiDutyVoiceCoord",
-    "DatalinkListResponseItemOp",
-    "DatalinkListResponseItemReference",
-    "DatalinkListResponseItemRefPoint",
-    "DatalinkListResponseItemRemark",
-    "DatalinkListResponseItemSpecTrack",
-    "DatalinkListResponseItemVoiceCoord",
+    "MultiDuty",
+    "MultiDutyMultiDutyVoiceCoord",
+    "Op",
+    "Reference",
+    "RefPoint",
+    "Remark",
+    "SpecTrack",
+    "VoiceCoord",
 ]
 
 
-class DatalinkListResponseItemMultiDutyMultiDutyVoiceCoord(BaseModel):
+class MultiDutyMultiDutyVoiceCoord(BaseModel):
     multi_comm_pri: Optional[str] = FieldInfo(alias="multiCommPri", default=None)
     """
     Priority of a communication circuit, channel or frequency for multilink
@@ -48,7 +47,7 @@ class DatalinkListResponseItemMultiDutyMultiDutyVoiceCoord(BaseModel):
     """
 
 
-class DatalinkListResponseItemMultiDuty(BaseModel):
+class MultiDuty(BaseModel):
     duty: Optional[str] = None
     """Specific duties assigned for multilink coordination (e.g. ICO, RICO, SICO)."""
 
@@ -58,7 +57,7 @@ class DatalinkListResponseItemMultiDuty(BaseModel):
     person to be contacted for multilink coordination.
     """
 
-    multi_duty_voice_coord: Optional[List[DatalinkListResponseItemMultiDutyMultiDutyVoiceCoord]] = FieldInfo(
+    multi_duty_voice_coord: Optional[List[MultiDutyMultiDutyVoiceCoord]] = FieldInfo(
         alias="multiDutyVoiceCoord", default=None
     )
     """
@@ -81,7 +80,7 @@ class DatalinkListResponseItemMultiDuty(BaseModel):
     """
 
 
-class DatalinkListResponseItemOp(BaseModel):
+class Op(BaseModel):
     link_details: Optional[str] = FieldInfo(alias="linkDetails", default=None)
     """Detailed characteristics of the data link."""
 
@@ -108,7 +107,7 @@ class DatalinkListResponseItemOp(BaseModel):
     """
 
 
-class DatalinkListResponseItemReference(BaseModel):
+class Reference(BaseModel):
     ref_originator: Optional[str] = FieldInfo(alias="refOriginator", default=None)
     """The originator of this reference."""
 
@@ -143,7 +142,7 @@ class DatalinkListResponseItemReference(BaseModel):
     """Specifies the type of document referenced."""
 
 
-class DatalinkListResponseItemRefPoint(BaseModel):
+class RefPoint(BaseModel):
     eff_event_time: Optional[datetime] = FieldInfo(alias="effEventTime", default=None)
     """
     Indicates when a particular event or nickname becomes effective or the old event
@@ -172,7 +171,7 @@ class DatalinkListResponseItemRefPoint(BaseModel):
     """Type of data link reference point or grid origin."""
 
 
-class DatalinkListResponseItemRemark(BaseModel):
+class Remark(BaseModel):
     text: Optional[str] = None
     """Text of the remark."""
 
@@ -180,7 +179,7 @@ class DatalinkListResponseItemRemark(BaseModel):
     """Indicates the subject matter of the remark."""
 
 
-class DatalinkListResponseItemSpecTrack(BaseModel):
+class SpecTrack(BaseModel):
     spec_track_num: Optional[str] = FieldInfo(alias="specTrackNum", default=None)
     """
     The special track number used on the data link entered as an octal reference
@@ -193,7 +192,7 @@ class DatalinkListResponseItemSpecTrack(BaseModel):
     """Description of the special track number."""
 
 
-class DatalinkListResponseItemVoiceCoord(BaseModel):
+class VoiceCoord(BaseModel):
     comm_pri: Optional[str] = FieldInfo(alias="commPri", default=None)
     """
     Priority of a communication circuit, channel or frequency for this data link
@@ -219,7 +218,7 @@ class DatalinkListResponseItemVoiceCoord(BaseModel):
     """
 
 
-class DatalinkListResponseItem(BaseModel):
+class DatalinkListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -423,7 +422,7 @@ class DatalinkListResponseItem(BaseModel):
     month: Optional[str] = None
     """The month in which this message originated."""
 
-    multi_duty: Optional[List[DatalinkListResponseItemMultiDuty]] = FieldInfo(alias="multiDuty", default=None)
+    multi_duty: Optional[List[MultiDuty]] = FieldInfo(alias="multiDuty", default=None)
     """
     Collection of contact and identification information for designated multilink
     coordinator duty assignments. There can be 0 to many DataLinkMultiDuty
@@ -445,7 +444,7 @@ class DatalinkListResponseItem(BaseModel):
     or order.
     """
 
-    ops: Optional[List[DatalinkListResponseItemOp]] = None
+    ops: Optional[List[Op]] = None
     """
     Collection of information describing the establishment and detailed operation of
     tactical data links. There can be 0 to many DataLinkOps collections within the
@@ -524,21 +523,21 @@ class DatalinkListResponseItem(BaseModel):
     https://udl-hostname/scs/download?id= to this value.
     """
 
-    references: Optional[List[DatalinkListResponseItemReference]] = None
+    references: Optional[List[Reference]] = None
     """Collection of reference information.
 
     There can be 0 to many DataLinkReferences collections within the datalink
     service.
     """
 
-    ref_points: Optional[List[DatalinkListResponseItemRefPoint]] = FieldInfo(alias="refPoints", default=None)
+    ref_points: Optional[List[RefPoint]] = FieldInfo(alias="refPoints", default=None)
     """
     Collection that identifies points of reference used in the establishment of the
     data links. There can be 1 to many DataLinkRefPoints collections within the
     datalink service.
     """
 
-    remarks: Optional[List[DatalinkListResponseItemRemark]] = None
+    remarks: Optional[List[Remark]] = None
     """Collection of remarks associated with this data link message."""
 
     res_track_qual: Optional[int] = FieldInfo(alias="resTrackQual", default=None)
@@ -558,7 +557,7 @@ class DatalinkListResponseItem(BaseModel):
     record should be assumed to have originated from the primary Enterprise UDL.
     """
 
-    spec_tracks: Optional[List[DatalinkListResponseItemSpecTrack]] = FieldInfo(alias="specTracks", default=None)
+    spec_tracks: Optional[List[SpecTrack]] = FieldInfo(alias="specTracks", default=None)
     """Collection of special track numbers used on the data links.
 
     There can be 0 to many DataLinkSpecTracks collections within the datalink
@@ -611,7 +610,7 @@ class DatalinkListResponseItem(BaseModel):
     system.
     """
 
-    voice_coord: Optional[List[DatalinkListResponseItemVoiceCoord]] = FieldInfo(alias="voiceCoord", default=None)
+    voice_coord: Optional[List[VoiceCoord]] = FieldInfo(alias="voiceCoord", default=None)
     """
     Collection of information regarding the function, frequency, and priority of
     interface control and coordination nets for this data link message. There can be
@@ -631,6 +630,3 @@ class DatalinkListResponseItem(BaseModel):
     Required if sysDefaultCode field is "MAN". Allowable entries are 0.5 to 3.0 in
     increments of 0.1.
     """
-
-
-DatalinkListResponse: TypeAlias = List[DatalinkListResponseItem]

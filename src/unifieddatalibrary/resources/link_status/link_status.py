@@ -41,7 +41,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.link_status_list_response import LinkStatusListResponse
 from ...types.link_status_tuple_response import LinkStatusTupleResponse
 from ...types.udl.linkstatus.link_status_full import LinkStatusFull
@@ -259,7 +260,7 @@ class LinkStatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusListResponse:
+    ) -> SyncOffsetPage[LinkStatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -287,8 +288,9 @@ class LinkStatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/linkstatus",
+            page=SyncOffsetPage[LinkStatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -305,7 +307,7 @@ class LinkStatusResource(SyncAPIResource):
                     link_status_list_params.LinkStatusListParams,
                 ),
             ),
-            cast_to=LinkStatusListResponse,
+            model=LinkStatusListResponse,
         )
 
     def count(
@@ -713,7 +715,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -727,7 +729,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusListResponse:
+    ) -> AsyncPaginator[LinkStatusListResponse, AsyncOffsetPage[LinkStatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -755,14 +757,15 @@ class AsyncLinkStatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/linkstatus",
+            page=AsyncOffsetPage[LinkStatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "first_result": first_result,
@@ -773,7 +776,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                     link_status_list_params.LinkStatusListParams,
                 ),
             ),
-            cast_to=LinkStatusListResponse,
+            model=LinkStatusListResponse,
         )
 
     async def count(

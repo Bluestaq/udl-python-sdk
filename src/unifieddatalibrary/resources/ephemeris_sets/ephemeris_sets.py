@@ -42,9 +42,10 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.ephemeris_set import EphemerisSet
-from ...types.ephemeris_set_list_response import EphemerisSetListResponse
+from ...types.ephemeris_set_abridged import EphemerisSetAbridged
 from ...types.ephemeris_set_tuple_response import EphemerisSetTupleResponse
 
 __all__ = ["EphemerisSetsResource", "AsyncEphemerisSetsResource"]
@@ -388,7 +389,7 @@ class EphemerisSetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisSetListResponse:
+    ) -> SyncOffsetPage[EphemerisSetAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -412,8 +413,9 @@ class EphemerisSetsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/ephemerisset",
+            page=SyncOffsetPage[EphemerisSetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -429,7 +431,7 @@ class EphemerisSetsResource(SyncAPIResource):
                     ephemeris_set_list_params.EphemerisSetListParams,
                 ),
             ),
-            cast_to=EphemerisSetListResponse,
+            model=EphemerisSetAbridged,
         )
 
     def count(
@@ -955,7 +957,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
             cast_to=EphemerisSet,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -968,7 +970,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisSetListResponse:
+    ) -> AsyncPaginator[EphemerisSetAbridged, AsyncOffsetPage[EphemerisSetAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -992,14 +994,15 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/ephemerisset",
+            page=AsyncOffsetPage[EphemerisSetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1009,7 +1012,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                     ephemeris_set_list_params.EphemerisSetListParams,
                 ),
             ),
-            cast_to=EphemerisSetListResponse,
+            model=EphemerisSetAbridged,
         )
 
     async def count(

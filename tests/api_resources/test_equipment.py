@@ -11,10 +11,11 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EquipmentFull,
-    EquipmentListResponse,
+    EquipmentAbridged,
     EquipmentTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -295,7 +296,7 @@ class TestEquipment:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         equipment = client.equipment.list()
-        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+        assert_matches_type(SyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -303,7 +304,7 @@ class TestEquipment:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+        assert_matches_type(SyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -312,7 +313,7 @@ class TestEquipment:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         equipment = response.parse()
-        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+        assert_matches_type(SyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -321,7 +322,7 @@ class TestEquipment:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             equipment = response.parse()
-            assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+            assert_matches_type(SyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -796,7 +797,7 @@ class TestAsyncEquipment:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment = await async_client.equipment.list()
-        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -804,7 +805,7 @@ class TestAsyncEquipment:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -813,7 +814,7 @@ class TestAsyncEquipment:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         equipment = await response.parse()
-        assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -822,7 +823,7 @@ class TestAsyncEquipment:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             equipment = await response.parse()
-            assert_matches_type(EquipmentListResponse, equipment, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EquipmentAbridged], equipment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

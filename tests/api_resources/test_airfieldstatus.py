@@ -10,9 +10,10 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    AirfieldstatusListResponse,
+    AirfieldstatusAbridged,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -106,7 +107,7 @@ class TestAirfieldstatus:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         airfieldstatus = client.airfieldstatus.list()
-        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -114,7 +115,7 @@ class TestAirfieldstatus:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -123,7 +124,7 @@ class TestAirfieldstatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfieldstatus = response.parse()
-        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -132,7 +133,7 @@ class TestAirfieldstatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfieldstatus = response.parse()
-            assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+            assert_matches_type(SyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -284,7 +285,7 @@ class TestAsyncAirfieldstatus:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfieldstatus = await async_client.airfieldstatus.list()
-        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -292,7 +293,7 @@ class TestAsyncAirfieldstatus:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -301,7 +302,7 @@ class TestAsyncAirfieldstatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfieldstatus = await response.parse()
-        assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -310,7 +311,7 @@ class TestAsyncAirfieldstatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfieldstatus = await response.parse()
-            assert_matches_type(AirfieldstatusListResponse, airfieldstatus, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AirfieldstatusAbridged], airfieldstatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

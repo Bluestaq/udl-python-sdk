@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SarobservationListResponse", "SarobservationListResponseItem"]
+__all__ = ["SarobservationListResponse"]
 
 
-class SarobservationListResponseItem(BaseModel):
+class SarobservationListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -356,6 +356,3 @@ class SarobservationListResponseItem(BaseModel):
     Rotating left relative to the earth's surface, R - (Right Hand Circularly
     Polarized) Rotating right relative to the earth's surface.
     """
-
-
-SarobservationListResponse: TypeAlias = List[SarobservationListResponseItem]

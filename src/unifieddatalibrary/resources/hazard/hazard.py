@@ -34,7 +34,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.hazard_list_response import HazardListResponse
 from ...types.hazard_tuple_response import HazardTupleResponse
 from ...types.udl.hazard.hazard_full import HazardFull
@@ -340,7 +341,7 @@ class HazardResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardListResponse:
+    ) -> SyncOffsetPage[HazardListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -359,8 +360,9 @@ class HazardResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/hazard",
+            page=SyncOffsetPage[HazardListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -375,7 +377,7 @@ class HazardResource(SyncAPIResource):
                     hazard_list_params.HazardListParams,
                 ),
             ),
-            cast_to=HazardListResponse,
+            model=HazardListResponse,
         )
 
     def count(
@@ -884,7 +886,7 @@ class AsyncHazardResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         detect_time: Union[str, datetime],
@@ -896,7 +898,7 @@ class AsyncHazardResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardListResponse:
+    ) -> AsyncPaginator[HazardListResponse, AsyncOffsetPage[HazardListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -915,14 +917,15 @@ class AsyncHazardResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/hazard",
+            page=AsyncOffsetPage[HazardListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "detect_time": detect_time,
                         "first_result": first_result,
@@ -931,7 +934,7 @@ class AsyncHazardResource(AsyncAPIResource):
                     hazard_list_params.HazardListParams,
                 ),
             ),
-            cast_to=HazardListResponse,
+            model=HazardListResponse,
         )
 
     async def count(

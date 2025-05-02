@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["PortListResponse", "PortListResponseItem"]
+__all__ = ["PortListResponse"]
 
 
-class PortListResponseItem(BaseModel):
+class PortListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -153,6 +153,3 @@ class PortListResponseItem(BaseModel):
 
     tide_range: Optional[float] = FieldInfo(alias="tideRange", default=None)
     """The tide range of this port in meters."""
-
-
-PortListResponse: TypeAlias = List[PortListResponseItem]

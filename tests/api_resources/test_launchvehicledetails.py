@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     LaunchvehicledetailGetResponse,
     LaunchvehicledetailListResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -234,7 +235,7 @@ class TestLaunchvehicledetails:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         launchvehicledetail = client.launchvehicledetails.list()
-        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -242,7 +243,7 @@ class TestLaunchvehicledetails:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -251,7 +252,7 @@ class TestLaunchvehicledetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         launchvehicledetail = response.parse()
-        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -260,7 +261,7 @@ class TestLaunchvehicledetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             launchvehicledetail = response.parse()
-            assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+            assert_matches_type(SyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -567,7 +568,7 @@ class TestAsyncLaunchvehicledetails:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         launchvehicledetail = await async_client.launchvehicledetails.list()
-        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -575,7 +576,7 @@ class TestAsyncLaunchvehicledetails:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -584,7 +585,7 @@ class TestAsyncLaunchvehicledetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         launchvehicledetail = await response.parse()
-        assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -593,7 +594,9 @@ class TestAsyncLaunchvehicledetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             launchvehicledetail = await response.parse()
-            assert_matches_type(LaunchvehicledetailListResponse, launchvehicledetail, path=["response"])
+            assert_matches_type(
+                AsyncOffsetPage[LaunchvehicledetailListResponse], launchvehicledetail, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 

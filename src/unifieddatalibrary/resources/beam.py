@@ -24,9 +24,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.beam_full import BeamFull
-from ..types.beam_list_response import BeamListResponse
+from ..types.beam_abridged import BeamAbridged
 from ..types.beam_tuple_response import BeamTupleResponse
 
 __all__ = ["BeamResource", "AsyncBeamResource"]
@@ -280,7 +281,7 @@ class BeamResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BeamListResponse:
+    ) -> SyncOffsetPage[BeamAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -296,8 +297,9 @@ class BeamResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/beam",
+            page=SyncOffsetPage[BeamAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -311,7 +313,7 @@ class BeamResource(SyncAPIResource):
                     beam_list_params.BeamListParams,
                 ),
             ),
-            cast_to=BeamListResponse,
+            model=BeamAbridged,
         )
 
     def delete(
@@ -714,7 +716,7 @@ class AsyncBeamResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -725,7 +727,7 @@ class AsyncBeamResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BeamListResponse:
+    ) -> AsyncPaginator[BeamAbridged, AsyncOffsetPage[BeamAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -741,14 +743,15 @@ class AsyncBeamResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/beam",
+            page=AsyncOffsetPage[BeamAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -756,7 +759,7 @@ class AsyncBeamResource(AsyncAPIResource):
                     beam_list_params.BeamListParams,
                 ),
             ),
-            cast_to=BeamListResponse,
+            model=BeamAbridged,
         )
 
     async def delete(

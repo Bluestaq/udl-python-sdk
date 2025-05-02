@@ -27,9 +27,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.equipment_full import EquipmentFull
-from ..types.equipment_list_response import EquipmentListResponse
+from ..types.equipment_abridged import EquipmentAbridged
 from ..types.equipment_tuple_response import EquipmentTupleResponse
 
 __all__ = ["EquipmentResource", "AsyncEquipmentResource"]
@@ -1010,7 +1011,7 @@ class EquipmentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EquipmentListResponse:
+    ) -> SyncOffsetPage[EquipmentAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1026,8 +1027,9 @@ class EquipmentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/equipment",
+            page=SyncOffsetPage[EquipmentAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1041,7 +1043,7 @@ class EquipmentResource(SyncAPIResource):
                     equipment_list_params.EquipmentListParams,
                 ),
             ),
-            cast_to=EquipmentListResponse,
+            model=EquipmentAbridged,
         )
 
     def delete(
@@ -2208,7 +2210,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -2219,7 +2221,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EquipmentListResponse:
+    ) -> AsyncPaginator[EquipmentAbridged, AsyncOffsetPage[EquipmentAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -2235,14 +2237,15 @@ class AsyncEquipmentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/equipment",
+            page=AsyncOffsetPage[EquipmentAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -2250,7 +2253,7 @@ class AsyncEquipmentResource(AsyncAPIResource):
                     equipment_list_params.EquipmentListParams,
                 ),
             ),
-            cast_to=EquipmentListResponse,
+            model=EquipmentAbridged,
         )
 
     async def delete(

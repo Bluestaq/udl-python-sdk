@@ -24,9 +24,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.channel_full import ChannelFull
-from ..types.channel_list_response import ChannelListResponse
+from ..types.channel_abridged import ChannelAbridged
 from ..types.channel_tuple_response import ChannelTupleResponse
 
 __all__ = ["ChannelsResource", "AsyncChannelsResource"]
@@ -380,7 +381,7 @@ class ChannelsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ChannelListResponse:
+    ) -> SyncOffsetPage[ChannelAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -396,8 +397,9 @@ class ChannelsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/channel",
+            page=SyncOffsetPage[ChannelAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -411,7 +413,7 @@ class ChannelsResource(SyncAPIResource):
                     channel_list_params.ChannelListParams,
                 ),
             ),
-            cast_to=ChannelListResponse,
+            model=ChannelAbridged,
         )
 
     def delete(
@@ -915,7 +917,7 @@ class AsyncChannelsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -926,7 +928,7 @@ class AsyncChannelsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ChannelListResponse:
+    ) -> AsyncPaginator[ChannelAbridged, AsyncOffsetPage[ChannelAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -942,14 +944,15 @@ class AsyncChannelsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/channel",
+            page=AsyncOffsetPage[ChannelAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -957,7 +960,7 @@ class AsyncChannelsResource(AsyncAPIResource):
                     channel_list_params.ChannelListParams,
                 ),
             ),
-            cast_to=ChannelListResponse,
+            model=ChannelAbridged,
         )
 
     async def delete(

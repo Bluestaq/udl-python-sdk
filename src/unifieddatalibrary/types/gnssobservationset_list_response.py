@@ -2,20 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "GnssobservationsetListResponse",
-    "GnssobservationsetListResponseItem",
-    "GnssobservationsetListResponseItemGnssObservationList",
-]
+__all__ = ["GnssobservationsetListResponse", "GnssObservationList"]
 
 
-class GnssobservationsetListResponseItemGnssObservationList(BaseModel):
+class GnssObservationList(BaseModel):
     agc_state: Optional[int] = FieldInfo(alias="agcState", default=None)
     """GNSS Automatic Gain Control State."""
 
@@ -62,7 +58,7 @@ class GnssobservationsetListResponseItemGnssObservationList(BaseModel):
     """
 
 
-class GnssobservationsetListResponseItem(BaseModel):
+class GnssobservationsetListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -136,9 +132,7 @@ class GnssobservationsetListResponseItem(BaseModel):
     g_dop: Optional[float] = FieldInfo(alias="gDop", default=None)
     """Geometric Dilution of Precision."""
 
-    gnss_observation_list: Optional[List[GnssobservationsetListResponseItemGnssObservationList]] = FieldInfo(
-        alias="gnssObservationList", default=None
-    )
+    gnss_observation_list: Optional[List[GnssObservationList]] = FieldInfo(alias="gnssObservationList", default=None)
     """GNSSObservations associated with this GNSSObservationSet."""
 
     h_dop: Optional[float] = FieldInfo(alias="hDop", default=None)
@@ -291,6 +285,3 @@ class GnssobservationsetListResponseItem(BaseModel):
 
     v_dop: Optional[float] = FieldInfo(alias="vDop", default=None)
     """Vertical Dilution of Precision."""
-
-
-GnssobservationsetListResponse: TypeAlias = List[GnssobservationsetListResponseItem]

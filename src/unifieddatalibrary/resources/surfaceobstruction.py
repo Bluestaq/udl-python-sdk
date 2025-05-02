@@ -26,7 +26,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.surfaceobstruction_get_response import SurfaceobstructionGetResponse
 from ..types.surfaceobstruction_list_response import SurfaceobstructionListResponse
 from ..types.surfaceobstruction_tuple_response import SurfaceobstructionTupleResponse
@@ -279,7 +280,7 @@ class SurfaceobstructionResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SurfaceobstructionListResponse:
+    ) -> SyncOffsetPage[SurfaceobstructionListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -295,8 +296,9 @@ class SurfaceobstructionResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/surfaceobstruction",
+            page=SyncOffsetPage[SurfaceobstructionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -310,7 +312,7 @@ class SurfaceobstructionResource(SyncAPIResource):
                     surfaceobstruction_list_params.SurfaceobstructionListParams,
                 ),
             ),
-            cast_to=SurfaceobstructionListResponse,
+            model=SurfaceobstructionListResponse,
         )
 
     def delete(
@@ -792,7 +794,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -803,7 +805,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SurfaceobstructionListResponse:
+    ) -> AsyncPaginator[SurfaceobstructionListResponse, AsyncOffsetPage[SurfaceobstructionListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -819,14 +821,15 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/surfaceobstruction",
+            page=AsyncOffsetPage[SurfaceobstructionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -834,7 +837,7 @@ class AsyncSurfaceobstructionResource(AsyncAPIResource):
                     surfaceobstruction_list_params.SurfaceobstructionListParams,
                 ),
             ),
-            cast_to=SurfaceobstructionListResponse,
+            model=SurfaceobstructionListResponse,
         )
 
     async def delete(

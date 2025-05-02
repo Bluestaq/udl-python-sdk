@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import date, datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ItemListResponse", "ItemListResponseItem"]
+__all__ = ["ItemListResponse"]
 
 
-class ItemListResponseItem(BaseModel):
+class ItemListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -269,6 +269,3 @@ class ItemListResponseItem(BaseModel):
 
     width: Optional[float] = None
     """Width of the cargo in meters. Applicable for cargo item types only."""
-
-
-ItemListResponse: TypeAlias = List[ItemListResponseItem]

@@ -27,7 +27,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.launchevent_get_response import LauncheventGetResponse
 from ..types.launchevent_list_response import LauncheventListResponse
 from ..types.launchevent_tuple_response import LauncheventTupleResponse
@@ -187,7 +188,7 @@ class LauncheventResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LauncheventListResponse:
+    ) -> SyncOffsetPage[LauncheventListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -206,8 +207,9 @@ class LauncheventResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/launchevent",
+            page=SyncOffsetPage[LauncheventListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -222,7 +224,7 @@ class LauncheventResource(SyncAPIResource):
                     launchevent_list_params.LauncheventListParams,
                 ),
             ),
-            cast_to=LauncheventListResponse,
+            model=LauncheventListResponse,
         )
 
     def count(
@@ -621,7 +623,7 @@ class AsyncLauncheventResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         msg_create_date: Union[str, datetime],
@@ -633,7 +635,7 @@ class AsyncLauncheventResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LauncheventListResponse:
+    ) -> AsyncPaginator[LauncheventListResponse, AsyncOffsetPage[LauncheventListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -652,14 +654,15 @@ class AsyncLauncheventResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/launchevent",
+            page=AsyncOffsetPage[LauncheventListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "msg_create_date": msg_create_date,
                         "first_result": first_result,
@@ -668,7 +671,7 @@ class AsyncLauncheventResource(AsyncAPIResource):
                     launchevent_list_params.LauncheventListParams,
                 ),
             ),
-            cast_to=LauncheventListResponse,
+            model=LauncheventListResponse,
         )
 
     async def count(

@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SolarArrayDetailsFull,
     SolararraydetailListResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -158,7 +159,7 @@ class TestSolararraydetails:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         solararraydetail = client.solararraydetails.list()
-        assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -169,7 +170,7 @@ class TestSolararraydetails:
             max_results=0,
             source="source",
         )
-        assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -178,7 +179,7 @@ class TestSolararraydetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         solararraydetail = response.parse()
-        assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -187,7 +188,7 @@ class TestSolararraydetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             solararraydetail = response.parse()
-            assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+            assert_matches_type(SyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -418,7 +419,7 @@ class TestAsyncSolararraydetails:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         solararraydetail = await async_client.solararraydetails.list()
-        assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -429,7 +430,7 @@ class TestAsyncSolararraydetails:
             max_results=0,
             source="source",
         )
-        assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -438,7 +439,7 @@ class TestAsyncSolararraydetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         solararraydetail = await response.parse()
-        assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -447,7 +448,7 @@ class TestAsyncSolararraydetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             solararraydetail = await response.parse()
-            assert_matches_type(SolararraydetailListResponse, solararraydetail, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SolararraydetailListResponse], solararraydetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

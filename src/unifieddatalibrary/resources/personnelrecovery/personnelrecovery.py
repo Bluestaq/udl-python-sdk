@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.personnel_recovery_full_l import PersonnelRecoveryFullL
 from ...types.personnelrecovery_list_response import PersonnelrecoveryListResponse
 from ...types.personnelrecovery_tuple_response import PersonnelrecoveryTupleResponse
@@ -319,7 +320,7 @@ class PersonnelrecoveryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonnelrecoveryListResponse:
+    ) -> SyncOffsetPage[PersonnelrecoveryListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -338,8 +339,9 @@ class PersonnelrecoveryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/personnelrecovery",
+            page=SyncOffsetPage[PersonnelrecoveryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -354,7 +356,7 @@ class PersonnelrecoveryResource(SyncAPIResource):
                     personnelrecovery_list_params.PersonnelrecoveryListParams,
                 ),
             ),
-            cast_to=PersonnelrecoveryListResponse,
+            model=PersonnelrecoveryListResponse,
         )
 
     def count(
@@ -878,7 +880,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         msg_time: Union[str, datetime],
@@ -890,7 +892,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonnelrecoveryListResponse:
+    ) -> AsyncPaginator[PersonnelrecoveryListResponse, AsyncOffsetPage[PersonnelrecoveryListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -909,14 +911,15 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/personnelrecovery",
+            page=AsyncOffsetPage[PersonnelrecoveryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
@@ -925,7 +928,7 @@ class AsyncPersonnelrecoveryResource(AsyncAPIResource):
                     personnelrecovery_list_params.PersonnelrecoveryListParams,
                 ),
             ),
-            cast_to=PersonnelrecoveryListResponse,
+            model=PersonnelrecoveryListResponse,
         )
 
     async def count(

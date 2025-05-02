@@ -25,9 +25,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.airloadplan_full import AirloadplanFull
-from ..types.air_load_plan_list_response import AirLoadPlanListResponse
+from ..types.airloadplan_abridged import AirloadplanAbridged
 from ..types.air_load_plan_tuple_response import AirLoadPlanTupleResponse
 
 __all__ = ["AirLoadPlansResource", "AsyncAirLoadPlansResource"]
@@ -463,7 +464,7 @@ class AirLoadPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirLoadPlanListResponse:
+    ) -> SyncOffsetPage[AirloadplanAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -482,8 +483,9 @@ class AirLoadPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airloadplan",
+            page=SyncOffsetPage[AirloadplanAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -498,7 +500,7 @@ class AirLoadPlansResource(SyncAPIResource):
                     air_load_plan_list_params.AirLoadPlanListParams,
                 ),
             ),
-            cast_to=AirLoadPlanListResponse,
+            model=AirloadplanAbridged,
         )
 
     def count(
@@ -1056,7 +1058,7 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
             cast_to=AirloadplanFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         est_dep_time: Union[str, datetime],
@@ -1068,7 +1070,7 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirLoadPlanListResponse:
+    ) -> AsyncPaginator[AirloadplanAbridged, AsyncOffsetPage[AirloadplanAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1087,14 +1089,15 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airloadplan",
+            page=AsyncOffsetPage[AirloadplanAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "est_dep_time": est_dep_time,
                         "first_result": first_result,
@@ -1103,7 +1106,7 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
                     air_load_plan_list_params.AirLoadPlanListParams,
                 ),
             ),
-            cast_to=AirLoadPlanListResponse,
+            model=AirloadplanAbridged,
         )
 
     async def count(

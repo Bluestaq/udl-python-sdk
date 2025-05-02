@@ -11,10 +11,11 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     BusFull,
-    BusListResponse,
+    BusAbridged,
     BusTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -381,7 +382,7 @@ class TestBuses:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.list()
-        assert_matches_type(BusListResponse, bus, path=["response"])
+        assert_matches_type(SyncOffsetPage[BusAbridged], bus, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -389,7 +390,7 @@ class TestBuses:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(BusListResponse, bus, path=["response"])
+        assert_matches_type(SyncOffsetPage[BusAbridged], bus, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -398,7 +399,7 @@ class TestBuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bus = response.parse()
-        assert_matches_type(BusListResponse, bus, path=["response"])
+        assert_matches_type(SyncOffsetPage[BusAbridged], bus, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -407,7 +408,7 @@ class TestBuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bus = response.parse()
-            assert_matches_type(BusListResponse, bus, path=["response"])
+            assert_matches_type(SyncOffsetPage[BusAbridged], bus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -910,7 +911,7 @@ class TestAsyncBuses:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.list()
-        assert_matches_type(BusListResponse, bus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[BusAbridged], bus, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -918,7 +919,7 @@ class TestAsyncBuses:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(BusListResponse, bus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[BusAbridged], bus, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -927,7 +928,7 @@ class TestAsyncBuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bus = await response.parse()
-        assert_matches_type(BusListResponse, bus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[BusAbridged], bus, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -936,7 +937,7 @@ class TestAsyncBuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bus = await response.parse()
-            assert_matches_type(BusListResponse, bus, path=["response"])
+            assert_matches_type(AsyncOffsetPage[BusAbridged], bus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

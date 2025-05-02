@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     LogisticssupportTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -432,7 +433,7 @@ class TestLogisticssupport:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         logisticssupport = client.logisticssupport.list()
-        assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+        assert_matches_type(SyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -440,7 +441,7 @@ class TestLogisticssupport:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+        assert_matches_type(SyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -449,7 +450,7 @@ class TestLogisticssupport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         logisticssupport = response.parse()
-        assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+        assert_matches_type(SyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -458,7 +459,7 @@ class TestLogisticssupport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             logisticssupport = response.parse()
-            assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+            assert_matches_type(SyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1125,7 +1126,7 @@ class TestAsyncLogisticssupport:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         logisticssupport = await async_client.logisticssupport.list()
-        assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1133,7 +1134,7 @@ class TestAsyncLogisticssupport:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1142,7 +1143,7 @@ class TestAsyncLogisticssupport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         logisticssupport = await response.parse()
-        assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+        assert_matches_type(AsyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1151,7 +1152,7 @@ class TestAsyncLogisticssupport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             logisticssupport = await response.parse()
-            assert_matches_type(LogisticssupportListResponse, logisticssupport, path=["response"])
+            assert_matches_type(AsyncOffsetPage[LogisticssupportListResponse], logisticssupport, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

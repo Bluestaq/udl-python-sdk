@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     GeostatusTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.udl.geostatus import GeoStatusFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -90,7 +91,7 @@ class TestGeostatus:
         geostatus = client.geostatus.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+        assert_matches_type(SyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -99,7 +100,7 @@ class TestGeostatus:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+        assert_matches_type(SyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -110,7 +111,7 @@ class TestGeostatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         geostatus = response.parse()
-        assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+        assert_matches_type(SyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -121,7 +122,7 @@ class TestGeostatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             geostatus = response.parse()
-            assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+            assert_matches_type(SyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -402,7 +403,7 @@ class TestAsyncGeostatus:
         geostatus = await async_client.geostatus.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -411,7 +412,7 @@ class TestAsyncGeostatus:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -422,7 +423,7 @@ class TestAsyncGeostatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         geostatus = await response.parse()
-        assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+        assert_matches_type(AsyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -433,7 +434,7 @@ class TestAsyncGeostatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             geostatus = await response.parse()
-            assert_matches_type(GeostatusListResponse, geostatus, path=["response"])
+            assert_matches_type(AsyncOffsetPage[GeostatusListResponse], geostatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

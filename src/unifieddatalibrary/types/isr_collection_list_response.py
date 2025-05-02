@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,25 +10,24 @@ from .._models import BaseModel
 
 __all__ = [
     "IsrCollectionListResponse",
-    "IsrCollectionListResponseItem",
-    "IsrCollectionListResponseItemCollectionRequirement",
-    "IsrCollectionListResponseItemCollectionRequirementCriticalTimes",
-    "IsrCollectionListResponseItemCollectionRequirementExploitationRequirement",
-    "IsrCollectionListResponseItemCollectionRequirementExploitationRequirementPoc",
-    "IsrCollectionListResponseItemTasking",
-    "IsrCollectionListResponseItemTaskingCollectionPeriods",
-    "IsrCollectionListResponseItemTaskingCollectionPeriodsActual",
-    "IsrCollectionListResponseItemTaskingCollectionPeriodsPlanned",
-    "IsrCollectionListResponseItemTaskingCollectionPeriodsPlannedAdditional",
-    "IsrCollectionListResponseItemTaskingTaskingCollectionRequirement",
-    "IsrCollectionListResponseItemTaskingTaskingCollectionRequirementCriticalTimes",
-    "IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitationRequirement",
-    "IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitationRequirementPoc",
-    "IsrCollectionListResponseItemTransit",
+    "CollectionRequirement",
+    "CollectionRequirementCriticalTimes",
+    "CollectionRequirementExploitationRequirement",
+    "CollectionRequirementExploitationRequirementPoc",
+    "Tasking",
+    "TaskingCollectionPeriods",
+    "TaskingCollectionPeriodsActual",
+    "TaskingCollectionPeriodsPlanned",
+    "TaskingCollectionPeriodsPlannedAdditional",
+    "TaskingTaskingCollectionRequirement",
+    "TaskingTaskingCollectionRequirementCriticalTimes",
+    "TaskingTaskingCollectionRequirementExploitationRequirement",
+    "TaskingTaskingCollectionRequirementExploitationRequirementPoc",
+    "Transit",
 ]
 
 
-class IsrCollectionListResponseItemCollectionRequirementCriticalTimes(BaseModel):
+class CollectionRequirementCriticalTimes(BaseModel):
     earliest_imaging_time: datetime = FieldInfo(alias="earliestImagingTime")
     """Critical start time to collect an image for this requirement."""
 
@@ -36,7 +35,7 @@ class IsrCollectionListResponseItemCollectionRequirementCriticalTimes(BaseModel)
     """Critical stop time to collect an image for this requirement."""
 
 
-class IsrCollectionListResponseItemCollectionRequirementExploitationRequirementPoc(BaseModel):
+class CollectionRequirementExploitationRequirementPoc(BaseModel):
     id: Optional[str] = None
     """Unique identifier of the collection requirement POC."""
 
@@ -68,7 +67,7 @@ class IsrCollectionListResponseItemCollectionRequirementExploitationRequirementP
     """Unit the POC belongs to."""
 
 
-class IsrCollectionListResponseItemCollectionRequirementExploitationRequirement(BaseModel):
+class CollectionRequirementExploitationRequirement(BaseModel):
     id: Optional[str] = None
     """Exploitation requirement id."""
 
@@ -81,13 +80,13 @@ class IsrCollectionListResponseItemCollectionRequirementExploitationRequirement(
     eei: Optional[str] = None
     """Essential Elements of Information."""
 
-    poc: Optional[IsrCollectionListResponseItemCollectionRequirementExploitationRequirementPoc] = None
+    poc: Optional[CollectionRequirementExploitationRequirementPoc] = None
 
     reporting_criteria: Optional[str] = FieldInfo(alias="reportingCriteria", default=None)
     """The reporting criteria of the collection requirement."""
 
 
-class IsrCollectionListResponseItemCollectionRequirement(BaseModel):
+class CollectionRequirement(BaseModel):
     id: Optional[str] = None
     """Collection Requirement Unique Identifier."""
 
@@ -101,15 +100,13 @@ class IsrCollectionListResponseItemCollectionRequirement(BaseModel):
     crid_numbers: Optional[str] = FieldInfo(alias="cridNumbers", default=None)
     """Collection Requirement Unique Identifier."""
 
-    critical_times: Optional[IsrCollectionListResponseItemCollectionRequirementCriticalTimes] = FieldInfo(
-        alias="criticalTimes", default=None
-    )
+    critical_times: Optional[CollectionRequirementCriticalTimes] = FieldInfo(alias="criticalTimes", default=None)
 
     emphasized: Optional[bool] = None
     """Is this collection requirement an emphasized/critical requirement."""
 
-    exploitation_requirement: Optional[IsrCollectionListResponseItemCollectionRequirementExploitationRequirement] = (
-        FieldInfo(alias="exploitationRequirement", default=None)
+    exploitation_requirement: Optional[CollectionRequirementExploitationRequirement] = FieldInfo(
+        alias="exploitationRequirement", default=None
     )
 
     hash: Optional[str] = None
@@ -167,7 +164,7 @@ class IsrCollectionListResponseItemCollectionRequirement(BaseModel):
     """Type collection this requirement applies to."""
 
 
-class IsrCollectionListResponseItemTaskingCollectionPeriodsActual(BaseModel):
+class TaskingCollectionPeriodsActual(BaseModel):
     id: Optional[str] = None
     """Unique Identifier of actual collection period for historical archive."""
 
@@ -178,7 +175,7 @@ class IsrCollectionListResponseItemTaskingCollectionPeriodsActual(BaseModel):
     """Stop time the collection actually occurred, in ISO 8601 UTC format."""
 
 
-class IsrCollectionListResponseItemTaskingCollectionPeriodsPlannedAdditional(BaseModel):
+class TaskingCollectionPeriodsPlannedAdditional(BaseModel):
     id: Optional[str] = None
     """Unique Identifier of additional collection period."""
 
@@ -189,8 +186,8 @@ class IsrCollectionListResponseItemTaskingCollectionPeriodsPlannedAdditional(Bas
     """Stop time of collection, in ISO 8601 UTC format."""
 
 
-class IsrCollectionListResponseItemTaskingCollectionPeriodsPlanned(BaseModel):
-    additional: Optional[List[IsrCollectionListResponseItemTaskingCollectionPeriodsPlannedAdditional]] = None
+class TaskingCollectionPeriodsPlanned(BaseModel):
+    additional: Optional[List[TaskingCollectionPeriodsPlannedAdditional]] = None
     """Additional start and stop for the collection."""
 
     start: Optional[datetime] = None
@@ -200,14 +197,14 @@ class IsrCollectionListResponseItemTaskingCollectionPeriodsPlanned(BaseModel):
     """Stop time of collection, in ISO 8601 UTC format."""
 
 
-class IsrCollectionListResponseItemTaskingCollectionPeriods(BaseModel):
-    actual: Optional[List[IsrCollectionListResponseItemTaskingCollectionPeriodsActual]] = None
+class TaskingCollectionPeriods(BaseModel):
+    actual: Optional[List[TaskingCollectionPeriodsActual]] = None
     """Actual start and stop for the collection."""
 
-    planned: Optional[IsrCollectionListResponseItemTaskingCollectionPeriodsPlanned] = None
+    planned: Optional[TaskingCollectionPeriodsPlanned] = None
 
 
-class IsrCollectionListResponseItemTaskingTaskingCollectionRequirementCriticalTimes(BaseModel):
+class TaskingTaskingCollectionRequirementCriticalTimes(BaseModel):
     earliest_imaging_time: datetime = FieldInfo(alias="earliestImagingTime")
     """Critical start time to collect an image for this requirement."""
 
@@ -215,7 +212,7 @@ class IsrCollectionListResponseItemTaskingTaskingCollectionRequirementCriticalTi
     """Critical stop time to collect an image for this requirement."""
 
 
-class IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitationRequirementPoc(BaseModel):
+class TaskingTaskingCollectionRequirementExploitationRequirementPoc(BaseModel):
     id: Optional[str] = None
     """Unique identifier of the collection requirement POC."""
 
@@ -247,7 +244,7 @@ class IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitati
     """Unit the POC belongs to."""
 
 
-class IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitationRequirement(BaseModel):
+class TaskingTaskingCollectionRequirementExploitationRequirement(BaseModel):
     id: Optional[str] = None
     """Exploitation requirement id."""
 
@@ -260,13 +257,13 @@ class IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitati
     eei: Optional[str] = None
     """Essential Elements of Information."""
 
-    poc: Optional[IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitationRequirementPoc] = None
+    poc: Optional[TaskingTaskingCollectionRequirementExploitationRequirementPoc] = None
 
     reporting_criteria: Optional[str] = FieldInfo(alias="reportingCriteria", default=None)
     """The reporting criteria of the collection requirement."""
 
 
-class IsrCollectionListResponseItemTaskingTaskingCollectionRequirement(BaseModel):
+class TaskingTaskingCollectionRequirement(BaseModel):
     id: Optional[str] = None
     """Collection Requirement Unique Identifier."""
 
@@ -280,16 +277,16 @@ class IsrCollectionListResponseItemTaskingTaskingCollectionRequirement(BaseModel
     crid_numbers: Optional[str] = FieldInfo(alias="cridNumbers", default=None)
     """Collection Requirement Unique Identifier."""
 
-    critical_times: Optional[IsrCollectionListResponseItemTaskingTaskingCollectionRequirementCriticalTimes] = FieldInfo(
+    critical_times: Optional[TaskingTaskingCollectionRequirementCriticalTimes] = FieldInfo(
         alias="criticalTimes", default=None
     )
 
     emphasized: Optional[bool] = None
     """Is this collection requirement an emphasized/critical requirement."""
 
-    exploitation_requirement: Optional[
-        IsrCollectionListResponseItemTaskingTaskingCollectionRequirementExploitationRequirement
-    ] = FieldInfo(alias="exploitationRequirement", default=None)
+    exploitation_requirement: Optional[TaskingTaskingCollectionRequirementExploitationRequirement] = FieldInfo(
+        alias="exploitationRequirement", default=None
+    )
 
     hash: Optional[str] = None
     """Encryption hashing algorithm."""
@@ -346,13 +343,11 @@ class IsrCollectionListResponseItemTaskingTaskingCollectionRequirement(BaseModel
     """Type collection this requirement applies to."""
 
 
-class IsrCollectionListResponseItemTasking(BaseModel):
+class Tasking(BaseModel):
     id: Optional[str] = None
     """Tasking Unique Identifier."""
 
-    collection_periods: Optional[IsrCollectionListResponseItemTaskingCollectionPeriods] = FieldInfo(
-        alias="collectionPeriods", default=None
-    )
+    collection_periods: Optional[TaskingCollectionPeriods] = FieldInfo(alias="collectionPeriods", default=None)
 
     collection_type: Optional[Literal["Simultaneous", "Sequential", "Operationally", "Driven", "Priority", "Order"]] = (
         FieldInfo(alias="collectionType", default=None)
@@ -377,9 +372,9 @@ class IsrCollectionListResponseItemTasking(BaseModel):
     tasking_collection_area: Optional[str] = FieldInfo(alias="taskingCollectionArea", default=None)
     """Tasking geographical collection area."""
 
-    tasking_collection_requirements: Optional[
-        List[IsrCollectionListResponseItemTaskingTaskingCollectionRequirement]
-    ] = FieldInfo(alias="taskingCollectionRequirements", default=None)
+    tasking_collection_requirements: Optional[List[TaskingTaskingCollectionRequirement]] = FieldInfo(
+        alias="taskingCollectionRequirements", default=None
+    )
     """Tasking desired collection requirements."""
 
     tasking_country: Optional[str] = FieldInfo(alias="taskingCountry", default=None)
@@ -450,7 +445,7 @@ class IsrCollectionListResponseItemTasking(BaseModel):
     """Type of tasking."""
 
 
-class IsrCollectionListResponseItemTransit(BaseModel):
+class Transit(BaseModel):
     id: Optional[str] = None
     """Transit Unique Identifier."""
 
@@ -461,7 +456,7 @@ class IsrCollectionListResponseItemTransit(BaseModel):
     """Length of mission in milliseconds."""
 
 
-class IsrCollectionListResponseItem(BaseModel):
+class IsrCollectionListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -488,7 +483,7 @@ class IsrCollectionListResponseItem(BaseModel):
     id: Optional[str] = None
     """Unique identifier of the record, auto-generated by the system."""
 
-    collection_requirements: Optional[List[IsrCollectionListResponseItemCollectionRequirement]] = FieldInfo(
+    collection_requirements: Optional[List[CollectionRequirement]] = FieldInfo(
         alias="collectionRequirements", default=None
     )
     """Mission desired collection requirements."""
@@ -592,10 +587,10 @@ class IsrCollectionListResponseItem(BaseModel):
     by the system.
     """
 
-    taskings: Optional[List[IsrCollectionListResponseItemTasking]] = None
+    taskings: Optional[List[Tasking]] = None
     """Individual taskings to complete the mission."""
 
-    transit: Optional[List[IsrCollectionListResponseItemTransit]] = None
+    transit: Optional[List[Transit]] = None
     """Object for data dissemination."""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
@@ -609,6 +604,3 @@ class IsrCollectionListResponseItem(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-IsrCollectionListResponse: TypeAlias = List[IsrCollectionListResponseItem]

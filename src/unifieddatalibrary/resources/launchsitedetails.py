@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.location_ingest_param import LocationIngestParam
 from ..types.launchsitedetail_get_response import LaunchsitedetailGetResponse
 from ..types.launchsitedetail_list_response import LaunchsitedetailListResponse
@@ -281,7 +282,7 @@ class LaunchsitedetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchsitedetailListResponse:
+    ) -> SyncOffsetPage[LaunchsitedetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -297,8 +298,9 @@ class LaunchsitedetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/launchsitedetails",
+            page=SyncOffsetPage[LaunchsitedetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -312,7 +314,7 @@ class LaunchsitedetailsResource(SyncAPIResource):
                     launchsitedetail_list_params.LaunchsitedetailListParams,
                 ),
             ),
-            cast_to=LaunchsitedetailListResponse,
+            model=LaunchsitedetailListResponse,
         )
 
     def delete(
@@ -688,7 +690,7 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -699,7 +701,7 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LaunchsitedetailListResponse:
+    ) -> AsyncPaginator[LaunchsitedetailListResponse, AsyncOffsetPage[LaunchsitedetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -715,14 +717,15 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/launchsitedetails",
+            page=AsyncOffsetPage[LaunchsitedetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -730,7 +733,7 @@ class AsyncLaunchsitedetailsResource(AsyncAPIResource):
                     launchsitedetail_list_params.LaunchsitedetailListParams,
                 ),
             ),
-            cast_to=LaunchsitedetailListResponse,
+            model=LaunchsitedetailListResponse,
         )
 
     async def delete(

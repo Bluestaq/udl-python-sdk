@@ -36,9 +36,10 @@ from .._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.analytic_imagery_full import AnalyticImageryFull
-from ..types.analytic_imagery_list_response import AnalyticImageryListResponse
+from ..types.analytic_imagery_abridged import AnalyticImageryAbridged
 from ..types.analytic_imagery_tuple_response import AnalyticImageryTupleResponse
 from ..types.analytic_imagery_history_response import AnalyticImageryHistoryResponse
 
@@ -124,7 +125,7 @@ class AnalyticImageryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryListResponse:
+    ) -> SyncOffsetPage[AnalyticImageryAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -143,8 +144,9 @@ class AnalyticImageryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/analyticimagery",
+            page=SyncOffsetPage[AnalyticImageryAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -159,7 +161,7 @@ class AnalyticImageryResource(SyncAPIResource):
                     analytic_imagery_list_params.AnalyticImageryListParams,
                 ),
             ),
-            cast_to=AnalyticImageryListResponse,
+            model=AnalyticImageryAbridged,
         )
 
     def count(
@@ -657,7 +659,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
             cast_to=AnalyticImageryFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         msg_time: Union[str, datetime],
@@ -669,7 +671,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryListResponse:
+    ) -> AsyncPaginator[AnalyticImageryAbridged, AsyncOffsetPage[AnalyticImageryAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -688,14 +690,15 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/analyticimagery",
+            page=AsyncOffsetPage[AnalyticImageryAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "msg_time": msg_time,
                         "first_result": first_result,
@@ -704,7 +707,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     analytic_imagery_list_params.AnalyticImageryListParams,
                 ),
             ),
-            cast_to=AnalyticImageryListResponse,
+            model=AnalyticImageryAbridged,
         )
 
     async def count(

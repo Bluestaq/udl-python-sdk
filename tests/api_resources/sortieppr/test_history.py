@@ -9,8 +9,9 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.sortieppr import (
-    HistoryListResponse,
+    SortiePprFull,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -24,7 +25,7 @@ class TestHistory:
         history = client.sortieppr.history.list(
             id_sortie="idSortie",
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[SortiePprFull], history, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -34,7 +35,7 @@ class TestHistory:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[SortiePprFull], history, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -45,7 +46,7 @@ class TestHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = response.parse()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[SortiePprFull], history, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -56,7 +57,7 @@ class TestHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = response.parse()
-            assert_matches_type(HistoryListResponse, history, path=["response"])
+            assert_matches_type(SyncOffsetPage[SortiePprFull], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -153,7 +154,7 @@ class TestAsyncHistory:
         history = await async_client.sortieppr.history.list(
             id_sortie="idSortie",
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SortiePprFull], history, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -163,7 +164,7 @@ class TestAsyncHistory:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SortiePprFull], history, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -174,7 +175,7 @@ class TestAsyncHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = await response.parse()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SortiePprFull], history, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -185,7 +186,7 @@ class TestAsyncHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = await response.parse()
-            assert_matches_type(HistoryListResponse, history, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SortiePprFull], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

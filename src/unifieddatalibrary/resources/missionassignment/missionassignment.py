@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.missionassignment_list_response import MissionassignmentListResponse
 from ...types.missionassignment_tuple_response import MissionassignmentTupleResponse
 from ...types.udl.missionassignment.mission_assignment_full import MissionAssignmentFull
@@ -701,7 +702,7 @@ class MissionassignmentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MissionassignmentListResponse:
+    ) -> SyncOffsetPage[MissionassignmentListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -720,8 +721,9 @@ class MissionassignmentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/missionassignment",
+            page=SyncOffsetPage[MissionassignmentListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -736,7 +738,7 @@ class MissionassignmentResource(SyncAPIResource):
                     missionassignment_list_params.MissionassignmentListParams,
                 ),
             ),
-            cast_to=MissionassignmentListResponse,
+            model=MissionassignmentListResponse,
         )
 
     def delete(
@@ -1639,7 +1641,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         ts: Union[str, datetime],
@@ -1651,7 +1653,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MissionassignmentListResponse:
+    ) -> AsyncPaginator[MissionassignmentListResponse, AsyncOffsetPage[MissionassignmentListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1670,14 +1672,15 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/missionassignment",
+            page=AsyncOffsetPage[MissionassignmentListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ts": ts,
                         "first_result": first_result,
@@ -1686,7 +1689,7 @@ class AsyncMissionassignmentResource(AsyncAPIResource):
                     missionassignment_list_params.MissionassignmentListParams,
                 ),
             ),
-            cast_to=MissionassignmentListResponse,
+            model=MissionassignmentListResponse,
         )
 
     async def delete(

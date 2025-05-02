@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["MissileTrackListResponse", "MissileTrackListResponseItem", "MissileTrackListResponseItemVector"]
+__all__ = ["MissileTrackListResponse", "Vector"]
 
 
-class MissileTrackListResponseItemVector(BaseModel):
+class Vector(BaseModel):
     epoch: datetime
     """Vector timestamp in ISO8601 UTC format, with microsecond precision."""
 
@@ -142,7 +142,7 @@ class MissileTrackListResponseItemVector(BaseModel):
     """
 
 
-class MissileTrackListResponseItem(BaseModel):
+class MissileTrackListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -584,7 +584,7 @@ class MissileTrackListResponseItem(BaseModel):
     errors in reported position.
     """
 
-    vectors: Optional[List[MissileTrackListResponseItemVector]] = None
+    vectors: Optional[List[Vector]] = None
     """Array of MissileTrackVector objects.
 
     Missile track vectors are cartesian vectors of position, velocity, and
@@ -593,6 +593,3 @@ class MissileTrackListResponseItem(BaseModel):
     cases data may be in another frame as specified by 'referenceFrame', depending
     on the provider.
     """
-
-
-MissileTrackListResponse: TypeAlias = List[MissileTrackListResponseItem]

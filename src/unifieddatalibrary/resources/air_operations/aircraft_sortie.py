@@ -18,7 +18,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.air_operations import (
     aircraft_sortie_list_params,
     aircraft_sortie_count_params,
@@ -28,7 +29,7 @@ from ...types.air_operations import (
     aircraft_sortie_history_count_params,
     aircraft_sortie_history_query_params,
 )
-from ...types.air_operations.aircraft_sortie_list_response import AircraftSortieListResponse
+from ...types.air_operations.aircraftsortie_abridged import AircraftsortieAbridged
 from ...types.air_operations.aircraft_sortie_history_query_response import AircraftSortieHistoryQueryResponse
 
 __all__ = ["AircraftSortieResource", "AsyncAircraftSortieResource"]
@@ -429,7 +430,7 @@ class AircraftSortieResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftSortieListResponse:
+    ) -> SyncOffsetPage[AircraftsortieAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -448,8 +449,9 @@ class AircraftSortieResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/aircraftsortie",
+            page=SyncOffsetPage[AircraftsortieAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -464,7 +466,7 @@ class AircraftSortieResource(SyncAPIResource):
                     aircraft_sortie_list_params.AircraftSortieListParams,
                 ),
             ),
-            cast_to=AircraftSortieListResponse,
+            model=AircraftsortieAbridged,
         )
 
     def count(
@@ -1123,7 +1125,7 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         planned_dep_time: Union[str, datetime],
@@ -1135,7 +1137,7 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftSortieListResponse:
+    ) -> AsyncPaginator[AircraftsortieAbridged, AsyncOffsetPage[AircraftsortieAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1154,14 +1156,15 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/aircraftsortie",
+            page=AsyncOffsetPage[AircraftsortieAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "planned_dep_time": planned_dep_time,
                         "first_result": first_result,
@@ -1170,7 +1173,7 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
                     aircraft_sortie_list_params.AircraftSortieListParams,
                 ),
             ),
-            cast_to=AircraftSortieListResponse,
+            model=AircraftsortieAbridged,
         )
 
     async def count(

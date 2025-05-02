@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SigactTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +27,7 @@ class TestSigact:
         sigact = client.sigact.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SigactListResponse, sigact, path=["response"])
+        assert_matches_type(SyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -35,7 +36,7 @@ class TestSigact:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SigactListResponse, sigact, path=["response"])
+        assert_matches_type(SyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -46,7 +47,7 @@ class TestSigact:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sigact = response.parse()
-        assert_matches_type(SigactListResponse, sigact, path=["response"])
+        assert_matches_type(SyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -57,7 +58,7 @@ class TestSigact:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sigact = response.parse()
-            assert_matches_type(SigactListResponse, sigact, path=["response"])
+            assert_matches_type(SyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -262,7 +263,7 @@ class TestAsyncSigact:
         sigact = await async_client.sigact.list(
             report_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SigactListResponse, sigact, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -271,7 +272,7 @@ class TestAsyncSigact:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SigactListResponse, sigact, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -282,7 +283,7 @@ class TestAsyncSigact:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sigact = await response.parse()
-        assert_matches_type(SigactListResponse, sigact, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -293,7 +294,7 @@ class TestAsyncSigact:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sigact = await response.parse()
-            assert_matches_type(SigactListResponse, sigact, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SigactListResponse], sigact, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

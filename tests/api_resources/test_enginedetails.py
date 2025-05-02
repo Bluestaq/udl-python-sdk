@@ -9,7 +9,8 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types import EnginedetailListResponse
+from unifieddatalibrary.types import EngineDetailsAbridged
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +21,7 @@ class TestEnginedetails:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         enginedetail = client.enginedetails.list()
-        assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -28,7 +29,7 @@ class TestEnginedetails:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -37,7 +38,7 @@ class TestEnginedetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         enginedetail = response.parse()
-        assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+        assert_matches_type(SyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -46,7 +47,7 @@ class TestEnginedetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             enginedetail = response.parse()
-            assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+            assert_matches_type(SyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -57,7 +58,7 @@ class TestAsyncEnginedetails:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         enginedetail = await async_client.enginedetails.list()
-        assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -65,7 +66,7 @@ class TestAsyncEnginedetails:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -74,7 +75,7 @@ class TestAsyncEnginedetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         enginedetail = await response.parse()
-        assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -83,6 +84,6 @@ class TestAsyncEnginedetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             enginedetail = await response.parse()
-            assert_matches_type(EnginedetailListResponse, enginedetail, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EngineDetailsAbridged], enginedetail, path=["response"])
 
         assert cast(Any, response.is_closed) is True

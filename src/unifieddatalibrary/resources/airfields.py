@@ -25,9 +25,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.airfield_full import AirfieldFull
-from ..types.airfield_list_response import AirfieldListResponse
+from ..types.airfield_abridged import AirfieldAbridged
 from ..types.airfield_tuple_response import AirfieldTupleResponse
 
 __all__ = ["AirfieldsResource", "AsyncAirfieldsResource"]
@@ -579,7 +580,7 @@ class AirfieldsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirfieldListResponse:
+    ) -> SyncOffsetPage[AirfieldAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -595,8 +596,9 @@ class AirfieldsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airfield",
+            page=SyncOffsetPage[AirfieldAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -610,7 +612,7 @@ class AirfieldsResource(SyncAPIResource):
                     airfield_list_params.AirfieldListParams,
                 ),
             ),
-            cast_to=AirfieldListResponse,
+            model=AirfieldAbridged,
         )
 
     def count(
@@ -1275,7 +1277,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -1286,7 +1288,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirfieldListResponse:
+    ) -> AsyncPaginator[AirfieldAbridged, AsyncOffsetPage[AirfieldAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1302,14 +1304,15 @@ class AsyncAirfieldsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airfield",
+            page=AsyncOffsetPage[AirfieldAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -1317,7 +1320,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
                     airfield_list_params.AirfieldListParams,
                 ),
             ),
-            cast_to=AirfieldListResponse,
+            model=AirfieldAbridged,
         )
 
     async def count(

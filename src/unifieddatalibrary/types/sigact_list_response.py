@@ -2,21 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "SigactListResponse",
-    "SigactListResponseItem",
-    "SigactListResponseItemRelatedDoc",
-    "SigactListResponseItemRelatedDocDataSourceRef",
-]
+__all__ = ["SigactListResponse", "RelatedDoc", "RelatedDocDataSourceRef"]
 
 
-class SigactListResponseItemRelatedDocDataSourceRef(BaseModel):
+class RelatedDocDataSourceRef(BaseModel):
     data_source_id: Optional[str] = FieldInfo(alias="dataSourceId", default=None)
     """Data source id."""
 
@@ -33,17 +28,15 @@ class SigactListResponseItemRelatedDocDataSourceRef(BaseModel):
     """start position."""
 
 
-class SigactListResponseItemRelatedDoc(BaseModel):
-    data_source_refs: Optional[List[SigactListResponseItemRelatedDocDataSourceRef]] = FieldInfo(
-        alias="dataSourceRefs", default=None
-    )
+class RelatedDoc(BaseModel):
+    data_source_refs: Optional[List[RelatedDocDataSourceRef]] = FieldInfo(alias="dataSourceRefs", default=None)
     """List of data sources related to this document."""
 
     document_id: Optional[str] = FieldInfo(alias="documentId", default=None)
     """The document id of the related document."""
 
 
-class SigactListResponseItem(BaseModel):
+class SigactListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -375,7 +368,7 @@ class SigactListResponseItem(BaseModel):
     province: Optional[str] = None
     """The province in which this event occurred."""
 
-    related_docs: Optional[List[SigactListResponseItemRelatedDoc]] = FieldInfo(alias="relatedDocs", default=None)
+    related_docs: Optional[List[RelatedDoc]] = FieldInfo(alias="relatedDocs", default=None)
     """Related document ids."""
 
     rep_unit: Optional[str] = FieldInfo(alias="repUnit", default=None)
@@ -443,6 +436,3 @@ class SigactListResponseItem(BaseModel):
 
     type_of_attack: Optional[str] = FieldInfo(alias="typeOfAttack", default=None)
     """The mode of this attack or event (e.g. Direct Fire, IED Explosion, etc.)."""
-
-
-SigactListResponse: TypeAlias = List[SigactListResponseItem]

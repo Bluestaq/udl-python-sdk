@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.rfobservation_list_response import RfobservationListResponse
 from ...types.rfobservation_tuple_response import RfobservationTupleResponse
 from ...types.udl.rfobservation.rfobservationdetails_full import RfobservationdetailsFull
@@ -567,7 +568,7 @@ class RfobservationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RfobservationListResponse:
+    ) -> SyncOffsetPage[RfobservationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -586,8 +587,9 @@ class RfobservationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/rfobservation",
+            page=SyncOffsetPage[RfobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -602,7 +604,7 @@ class RfobservationResource(SyncAPIResource):
                     rfobservation_list_params.RfobservationListParams,
                 ),
             ),
-            cast_to=RfobservationListResponse,
+            model=RfobservationListResponse,
         )
 
     def count(
@@ -1373,7 +1375,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         ob_time: Union[str, datetime],
@@ -1385,7 +1387,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RfobservationListResponse:
+    ) -> AsyncPaginator[RfobservationListResponse, AsyncOffsetPage[RfobservationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1404,14 +1406,15 @@ class AsyncRfobservationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/rfobservation",
+            page=AsyncOffsetPage[RfobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ob_time": ob_time,
                         "first_result": first_result,
@@ -1420,7 +1423,7 @@ class AsyncRfobservationResource(AsyncAPIResource):
                     rfobservation_list_params.RfobservationListParams,
                 ),
             ),
-            cast_to=RfobservationListResponse,
+            model=RfobservationListResponse,
         )
 
     async def count(

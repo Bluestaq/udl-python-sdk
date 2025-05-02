@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     PortListResponse,
     PortTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -162,7 +163,7 @@ class TestPort:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         port = client.port.list()
-        assert_matches_type(PortListResponse, port, path=["response"])
+        assert_matches_type(SyncOffsetPage[PortListResponse], port, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -170,7 +171,7 @@ class TestPort:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(PortListResponse, port, path=["response"])
+        assert_matches_type(SyncOffsetPage[PortListResponse], port, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -179,7 +180,7 @@ class TestPort:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         port = response.parse()
-        assert_matches_type(PortListResponse, port, path=["response"])
+        assert_matches_type(SyncOffsetPage[PortListResponse], port, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -188,7 +189,7 @@ class TestPort:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             port = response.parse()
-            assert_matches_type(PortListResponse, port, path=["response"])
+            assert_matches_type(SyncOffsetPage[PortListResponse], port, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -531,7 +532,7 @@ class TestAsyncPort:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.list()
-        assert_matches_type(PortListResponse, port, path=["response"])
+        assert_matches_type(AsyncOffsetPage[PortListResponse], port, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -539,7 +540,7 @@ class TestAsyncPort:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(PortListResponse, port, path=["response"])
+        assert_matches_type(AsyncOffsetPage[PortListResponse], port, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -548,7 +549,7 @@ class TestAsyncPort:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         port = await response.parse()
-        assert_matches_type(PortListResponse, port, path=["response"])
+        assert_matches_type(AsyncOffsetPage[PortListResponse], port, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -557,7 +558,7 @@ class TestAsyncPort:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             port = await response.parse()
-            assert_matches_type(PortListResponse, port, path=["response"])
+            assert_matches_type(AsyncOffsetPage[PortListResponse], port, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

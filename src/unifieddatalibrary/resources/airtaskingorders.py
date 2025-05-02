@@ -6,7 +6,7 @@ import httpx
 
 from ..types import airtaskingorder_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,8 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.airtaskingorder_list_response import AirtaskingorderListResponse
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.airtaskingorder_abridged import AirtaskingorderAbridged
 
 __all__ = ["AirtaskingordersResource", "AsyncAirtaskingordersResource"]
 
@@ -52,7 +53,7 @@ class AirtaskingordersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirtaskingorderListResponse:
+    ) -> SyncOffsetPage[AirtaskingorderAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -68,8 +69,9 @@ class AirtaskingordersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airtaskingorder",
+            page=SyncOffsetPage[AirtaskingorderAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -83,7 +85,7 @@ class AirtaskingordersResource(SyncAPIResource):
                     airtaskingorder_list_params.AirtaskingorderListParams,
                 ),
             ),
-            cast_to=AirtaskingorderListResponse,
+            model=AirtaskingorderAbridged,
         )
 
 
@@ -107,7 +109,7 @@ class AsyncAirtaskingordersResource(AsyncAPIResource):
         """
         return AsyncAirtaskingordersResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -118,7 +120,7 @@ class AsyncAirtaskingordersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirtaskingorderListResponse:
+    ) -> AsyncPaginator[AirtaskingorderAbridged, AsyncOffsetPage[AirtaskingorderAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -134,14 +136,15 @@ class AsyncAirtaskingordersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airtaskingorder",
+            page=AsyncOffsetPage[AirtaskingorderAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -149,7 +152,7 @@ class AsyncAirtaskingordersResource(AsyncAPIResource):
                     airtaskingorder_list_params.AirtaskingorderListParams,
                 ),
             ),
-            cast_to=AirtaskingorderListResponse,
+            model=AirtaskingorderAbridged,
         )
 
 

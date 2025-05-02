@@ -14,9 +14,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.statevector import current_list_params, current_tuple_params
-from ...types.statevector.current_list_response import CurrentListResponse
+from ...types.state_vector_abridged import StateVectorAbridged
 from ...types.statevector.current_tuple_response import CurrentTupleResponse
 
 __all__ = ["CurrentResource", "AsyncCurrentResource"]
@@ -53,7 +54,7 @@ class CurrentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CurrentListResponse:
+    ) -> SyncOffsetPage[StateVectorAbridged]:
         """
         Service operation to dynamically query/filter current StateVector data within
         the system by a variety of query parameters not specified in this API
@@ -75,8 +76,9 @@ class CurrentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/statevector/current",
+            page=SyncOffsetPage[StateVectorAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -90,7 +92,7 @@ class CurrentResource(SyncAPIResource):
                     current_list_params.CurrentListParams,
                 ),
             ),
-            cast_to=CurrentListResponse,
+            model=StateVectorAbridged,
         )
 
     def tuple(
@@ -172,7 +174,7 @@ class AsyncCurrentResource(AsyncAPIResource):
         """
         return AsyncCurrentResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -183,7 +185,7 @@ class AsyncCurrentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CurrentListResponse:
+    ) -> AsyncPaginator[StateVectorAbridged, AsyncOffsetPage[StateVectorAbridged]]:
         """
         Service operation to dynamically query/filter current StateVector data within
         the system by a variety of query parameters not specified in this API
@@ -205,14 +207,15 @@ class AsyncCurrentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/statevector/current",
+            page=AsyncOffsetPage[StateVectorAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -220,7 +223,7 @@ class AsyncCurrentResource(AsyncAPIResource):
                     current_list_params.CurrentListParams,
                 ),
             ),
-            cast_to=CurrentListResponse,
+            model=StateVectorAbridged,
         )
 
     async def tuple(

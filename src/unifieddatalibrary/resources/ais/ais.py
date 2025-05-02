@@ -26,8 +26,9 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.ai_list_response import AIListResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.ais_abridged import AIsAbridged
 from ...types.ai_tuple_response import AITupleResponse
 
 __all__ = ["AIsResource", "AsyncAIsResource"]
@@ -69,7 +70,7 @@ class AIsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AIListResponse:
+    ) -> SyncOffsetPage[AIsAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -88,8 +89,9 @@ class AIsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/ais",
+            page=SyncOffsetPage[AIsAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -104,7 +106,7 @@ class AIsResource(SyncAPIResource):
                     ai_list_params.AIListParams,
                 ),
             ),
-            cast_to=AIListResponse,
+            model=AIsAbridged,
         )
 
     def count(
@@ -357,7 +359,7 @@ class AsyncAIsResource(AsyncAPIResource):
         """
         return AsyncAIsResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         ts: Union[str, datetime],
@@ -369,7 +371,7 @@ class AsyncAIsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AIListResponse:
+    ) -> AsyncPaginator[AIsAbridged, AsyncOffsetPage[AIsAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -388,14 +390,15 @@ class AsyncAIsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/ais",
+            page=AsyncOffsetPage[AIsAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ts": ts,
                         "first_result": first_result,
@@ -404,7 +407,7 @@ class AsyncAIsResource(AsyncAPIResource):
                     ai_list_params.AIListParams,
                 ),
             ),
-            cast_to=AIListResponse,
+            model=AIsAbridged,
         )
 
     async def count(

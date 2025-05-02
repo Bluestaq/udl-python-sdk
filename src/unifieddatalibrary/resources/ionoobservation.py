@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.ionoobservation_list_response import IonoobservationListResponse
 from ..types.ionoobservation_tuple_response import IonoobservationTupleResponse
 
@@ -63,7 +64,7 @@ class IonoobservationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IonoobservationListResponse:
+    ) -> SyncOffsetPage[IonoobservationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -81,8 +82,9 @@ class IonoobservationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/ionoobservation",
+            page=SyncOffsetPage[IonoobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -97,7 +99,7 @@ class IonoobservationResource(SyncAPIResource):
                     ionoobservation_list_params.IonoobservationListParams,
                 ),
             ),
-            cast_to=IonoobservationListResponse,
+            model=IonoobservationListResponse,
         )
 
     def count(
@@ -329,7 +331,7 @@ class AsyncIonoobservationResource(AsyncAPIResource):
         """
         return AsyncIonoobservationResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         start_time_utc: Union[str, datetime],
@@ -341,7 +343,7 @@ class AsyncIonoobservationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IonoobservationListResponse:
+    ) -> AsyncPaginator[IonoobservationListResponse, AsyncOffsetPage[IonoobservationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -359,14 +361,15 @@ class AsyncIonoobservationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/ionoobservation",
+            page=AsyncOffsetPage[IonoobservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time_utc": start_time_utc,
                         "first_result": first_result,
@@ -375,7 +378,7 @@ class AsyncIonoobservationResource(AsyncAPIResource):
                     ionoobservation_list_params.IonoobservationListParams,
                 ),
             ),
-            cast_to=IonoobservationListResponse,
+            model=IonoobservationListResponse,
         )
 
     async def count(

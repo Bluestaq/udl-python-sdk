@@ -34,7 +34,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.onorbitthrusterstatus_list_response import OnorbitthrusterstatusListResponse
 from ...types.onorbitthrusterstatus_tuple_response import OnorbitthrusterstatusTupleResponse
 from ...types.udl.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
@@ -224,7 +225,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitthrusterstatusListResponse:
+    ) -> SyncOffsetPage[OnorbitthrusterstatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -250,8 +251,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/onorbitthrusterstatus",
+            page=SyncOffsetPage[OnorbitthrusterstatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -267,7 +269,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                     onorbitthrusterstatus_list_params.OnorbitthrusterstatusListParams,
                 ),
             ),
-            cast_to=OnorbitthrusterstatusListResponse,
+            model=OnorbitthrusterstatusListResponse,
         )
 
     def delete(
@@ -714,7 +716,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -727,7 +729,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitthrusterstatusListResponse:
+    ) -> AsyncPaginator[OnorbitthrusterstatusListResponse, AsyncOffsetPage[OnorbitthrusterstatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -753,14 +755,15 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/onorbitthrusterstatus",
+            page=AsyncOffsetPage[OnorbitthrusterstatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
@@ -770,7 +773,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                     onorbitthrusterstatus_list_params.OnorbitthrusterstatusListParams,
                 ),
             ),
-            cast_to=OnorbitthrusterstatusListResponse,
+            model=OnorbitthrusterstatusListResponse,
         )
 
     async def delete(

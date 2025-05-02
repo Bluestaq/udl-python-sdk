@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["StatusListResponse", "StatusListResponseItem", "StatusListResponseItemSubStatusCollection"]
+__all__ = ["StatusListResponse", "SubStatusCollection"]
 
 
-class StatusListResponseItemSubStatusCollection(BaseModel):
+class SubStatusCollection(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -74,7 +74,7 @@ class StatusListResponseItemSubStatusCollection(BaseModel):
     """
 
 
-class StatusListResponseItem(BaseModel):
+class StatusListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -151,12 +151,7 @@ class StatusListResponseItem(BaseModel):
     UNKNOWN, DEAD, ACTIVE, RF ACTIVE, STANDBY).
     """
 
-    sub_status_collection: Optional[List[StatusListResponseItemSubStatusCollection]] = FieldInfo(
-        alias="subStatusCollection", default=None
-    )
+    sub_status_collection: Optional[List[SubStatusCollection]] = FieldInfo(alias="subStatusCollection", default=None)
 
     sys_cap: Optional[Literal["FMC", "NMC", "PMC", "UNK"]] = FieldInfo(alias="sysCap", default=None)
     """System capability of the entity, if applicable (e.g. FMC, NMC, PMC, UNK)."""
-
-
-StatusListResponse: TypeAlias = List[StatusListResponseItem]

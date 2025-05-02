@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     EventEvolutionTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import EventEvolutionFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -151,7 +152,7 @@ class TestEventEvolution:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.list()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -161,7 +162,7 @@ class TestEventEvolution:
             max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -170,7 +171,7 @@ class TestEventEvolution:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_evolution = response.parse()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -179,7 +180,7 @@ class TestEventEvolution:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_evolution = response.parse()
-            assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+            assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -534,7 +535,7 @@ class TestAsyncEventEvolution:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.list()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -544,7 +545,7 @@ class TestAsyncEventEvolution:
             max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -553,7 +554,7 @@ class TestAsyncEventEvolution:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_evolution = await response.parse()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -562,7 +563,7 @@ class TestAsyncEventEvolution:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_evolution = await response.parse()
-            assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

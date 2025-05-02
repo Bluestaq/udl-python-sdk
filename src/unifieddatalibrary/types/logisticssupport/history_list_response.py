@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -11,18 +11,17 @@ from ..logistics_remarks_full import LogisticsRemarksFull
 
 __all__ = [
     "HistoryListResponse",
-    "HistoryListResponseItem",
-    "HistoryListResponseItemLogisticsDiscrepancyInfo",
-    "HistoryListResponseItemLogisticsSupportItem",
-    "HistoryListResponseItemLogisticsSupportItemLogisticsPart",
-    "HistoryListResponseItemLogisticsSupportItemLogisticsPartLogisticsStock",
-    "HistoryListResponseItemLogisticsSupportItemLogisticsSpecialty",
-    "HistoryListResponseItemLogisticsTransportationPlan",
-    "HistoryListResponseItemLogisticsTransportationPlanLogisticsSegment",
+    "LogisticsDiscrepancyInfo",
+    "LogisticsSupportItem",
+    "LogisticsSupportItemLogisticsPart",
+    "LogisticsSupportItemLogisticsPartLogisticsStock",
+    "LogisticsSupportItemLogisticsSpecialty",
+    "LogisticsTransportationPlan",
+    "LogisticsTransportationPlanLogisticsSegment",
 ]
 
 
-class HistoryListResponseItemLogisticsDiscrepancyInfo(BaseModel):
+class LogisticsDiscrepancyInfo(BaseModel):
     closure_time: Optional[datetime] = FieldInfo(alias="closureTime", default=None)
     """
     The discrepancy closure time, in ISO 8601 UTC format with millisecond precision.
@@ -38,7 +37,7 @@ class HistoryListResponseItemLogisticsDiscrepancyInfo(BaseModel):
     """The job start time, in ISO 8601 UTC format with millisecond precision."""
 
 
-class HistoryListResponseItemLogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
+class LogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
     quantity: Optional[int] = None
     """The quantity of available parts needed from sourceICAO."""
 
@@ -55,7 +54,7 @@ class HistoryListResponseItemLogisticsSupportItemLogisticsPartLogisticsStock(Bas
     """The point of contact at the sourced location."""
 
 
-class HistoryListResponseItemLogisticsSupportItemLogisticsPart(BaseModel):
+class LogisticsSupportItemLogisticsPart(BaseModel):
     figure_number: Optional[str] = FieldInfo(alias="figureNumber", default=None)
     """Technical order manual figure number for the requested / supplied part."""
 
@@ -68,8 +67,8 @@ class HistoryListResponseItemLogisticsSupportItemLogisticsPart(BaseModel):
     requested parts.
     """
 
-    logistics_stocks: Optional[List[HistoryListResponseItemLogisticsSupportItemLogisticsPartLogisticsStock]] = (
-        FieldInfo(alias="logisticsStocks", default=None)
+    logistics_stocks: Optional[List[LogisticsSupportItemLogisticsPartLogisticsStock]] = FieldInfo(
+        alias="logisticsStocks", default=None
     )
     """The supply stocks for this support item."""
 
@@ -98,7 +97,7 @@ class HistoryListResponseItemLogisticsSupportItemLogisticsPart(BaseModel):
     """Work Unit Code (WUC), or for some aircraft types, the Reference Designator."""
 
 
-class HistoryListResponseItemLogisticsSupportItemLogisticsSpecialty(BaseModel):
+class LogisticsSupportItemLogisticsSpecialty(BaseModel):
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
     """The first name of the specialist."""
 
@@ -128,7 +127,7 @@ class HistoryListResponseItemLogisticsSupportItemLogisticsSpecialty(BaseModel):
     """
 
 
-class HistoryListResponseItemLogisticsSupportItem(BaseModel):
+class LogisticsSupportItem(BaseModel):
     cannibalized: Optional[bool] = None
     """
     This element indicates whether or not the supplied item is contained within
@@ -162,15 +161,13 @@ class HistoryListResponseItemLogisticsSupportItem(BaseModel):
     sequence numbers, and 10-12 are a three-digit supplemental number.
     """
 
-    logistics_parts: Optional[List[HistoryListResponseItemLogisticsSupportItemLogisticsPart]] = FieldInfo(
-        alias="logisticsParts", default=None
-    )
+    logistics_parts: Optional[List[LogisticsSupportItemLogisticsPart]] = FieldInfo(alias="logisticsParts", default=None)
     """The parts associated with this support item."""
 
     logistics_remarks: Optional[List[LogisticsRemarksFull]] = FieldInfo(alias="logisticsRemarks", default=None)
     """Remarks associated with this support item."""
 
-    logistics_specialties: Optional[List[HistoryListResponseItemLogisticsSupportItemLogisticsSpecialty]] = FieldInfo(
+    logistics_specialties: Optional[List[LogisticsSupportItemLogisticsSpecialty]] = FieldInfo(
         alias="logisticsSpecialties", default=None
     )
     """The specialties required to implement this support item."""
@@ -236,7 +233,7 @@ class HistoryListResponseItemLogisticsSupportItem(BaseModel):
     """
 
 
-class HistoryListResponseItemLogisticsTransportationPlanLogisticsSegment(BaseModel):
+class LogisticsTransportationPlanLogisticsSegment(BaseModel):
     arrival_icao: Optional[str] = FieldInfo(alias="arrivalICAO", default=None)
     """Airport ICAO arrival code."""
 
@@ -311,7 +308,7 @@ class HistoryListResponseItemLogisticsTransportationPlanLogisticsSegment(BaseMod
     """The identifier that represents a specific aircraft within an aircraft type."""
 
 
-class HistoryListResponseItemLogisticsTransportationPlan(BaseModel):
+class LogisticsTransportationPlan(BaseModel):
     act_dep_time: Optional[datetime] = FieldInfo(alias="actDepTime", default=None)
     """
     Actual time of departure of first segment, in ISO 8601 UTC format with
@@ -377,7 +374,7 @@ class HistoryListResponseItemLogisticsTransportationPlan(BaseModel):
     logistic_master_record_id: Optional[str] = FieldInfo(alias="logisticMasterRecordId", default=None)
     """The identifier that represents a Logistics Master Record."""
 
-    logistics_segments: Optional[List[HistoryListResponseItemLogisticsTransportationPlanLogisticsSegment]] = FieldInfo(
+    logistics_segments: Optional[List[LogisticsTransportationPlanLogisticsSegment]] = FieldInfo(
         alias="logisticsSegments", default=None
     )
     """The transportation segments associated with this transportation plan."""
@@ -438,7 +435,7 @@ class HistoryListResponseItemLogisticsTransportationPlan(BaseModel):
     """Contains the tail number displayed by GDSS2."""
 
 
-class HistoryListResponseItem(BaseModel):
+class HistoryListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -520,7 +517,7 @@ class HistoryListResponseItem(BaseModel):
     EQ+hhh.h (EQ=equipment), MRT+hhh.h (MRT=maintenance recovery team).
     """
 
-    logistics_discrepancy_infos: Optional[List[HistoryListResponseItemLogisticsDiscrepancyInfo]] = FieldInfo(
+    logistics_discrepancy_infos: Optional[List[LogisticsDiscrepancyInfo]] = FieldInfo(
         alias="logisticsDiscrepancyInfos", default=None
     )
     """Discrepancy information associated with this LogisticsSupport record."""
@@ -531,12 +528,12 @@ class HistoryListResponseItem(BaseModel):
     logistics_remarks: Optional[List[LogisticsRemarksFull]] = FieldInfo(alias="logisticsRemarks", default=None)
     """Remarks associated with this LogisticsSupport record."""
 
-    logistics_support_items: Optional[List[HistoryListResponseItemLogisticsSupportItem]] = FieldInfo(
+    logistics_support_items: Optional[List[LogisticsSupportItem]] = FieldInfo(
         alias="logisticsSupportItems", default=None
     )
     """Support items associated with this LogisticsSupport record."""
 
-    logistics_transportation_plans: Optional[List[HistoryListResponseItemLogisticsTransportationPlan]] = FieldInfo(
+    logistics_transportation_plans: Optional[List[LogisticsTransportationPlan]] = FieldInfo(
         alias="logisticsTransportationPlans", default=None
     )
     """
@@ -609,6 +606,3 @@ class HistoryListResponseItem(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-HistoryListResponse: TypeAlias = List[HistoryListResponseItem]

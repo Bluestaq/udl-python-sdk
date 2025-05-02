@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.shared.event_evolution_full import EventEvolutionFull
 from ...types.event_evolution_list_response import EventEvolutionListResponse
 from ...types.event_evolution_tuple_response import EventEvolutionTupleResponse
@@ -336,7 +337,7 @@ class EventEvolutionResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventEvolutionListResponse:
+    ) -> SyncOffsetPage[EventEvolutionListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -361,8 +362,9 @@ class EventEvolutionResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/eventevolution",
+            page=SyncOffsetPage[EventEvolutionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -378,7 +380,7 @@ class EventEvolutionResource(SyncAPIResource):
                     event_evolution_list_params.EventEvolutionListParams,
                 ),
             ),
-            cast_to=EventEvolutionListResponse,
+            model=EventEvolutionListResponse,
         )
 
     def count(
@@ -888,7 +890,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
             cast_to=EventEvolutionFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
@@ -901,7 +903,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventEvolutionListResponse:
+    ) -> AsyncPaginator[EventEvolutionListResponse, AsyncOffsetPage[EventEvolutionListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -926,14 +928,15 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/eventevolution",
+            page=AsyncOffsetPage[EventEvolutionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "event_id": event_id,
                         "first_result": first_result,
@@ -943,7 +946,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                     event_evolution_list_params.EventEvolutionListParams,
                 ),
             ),
-            cast_to=EventEvolutionListResponse,
+            model=EventEvolutionListResponse,
         )
 
     async def count(

@@ -23,9 +23,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.batterydetails_full import BatterydetailsFull
-from ..types.batterydetail_list_response import BatterydetailListResponse
+from ..types.batterydetails_abridged import BatterydetailsAbridged
 
 __all__ = ["BatterydetailsResource", "AsyncBatterydetailsResource"]
 
@@ -335,7 +336,7 @@ class BatterydetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BatterydetailListResponse:
+    ) -> SyncOffsetPage[BatterydetailsAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -351,8 +352,9 @@ class BatterydetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/batterydetails",
+            page=SyncOffsetPage[BatterydetailsAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -366,7 +368,7 @@ class BatterydetailsResource(SyncAPIResource):
                     batterydetail_list_params.BatterydetailListParams,
                 ),
             ),
-            cast_to=BatterydetailListResponse,
+            model=BatterydetailsAbridged,
         )
 
     def delete(
@@ -701,7 +703,7 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -712,7 +714,7 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BatterydetailListResponse:
+    ) -> AsyncPaginator[BatterydetailsAbridged, AsyncOffsetPage[BatterydetailsAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -728,14 +730,15 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/batterydetails",
+            page=AsyncOffsetPage[BatterydetailsAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -743,7 +746,7 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
                     batterydetail_list_params.BatterydetailListParams,
                 ),
             ),
-            cast_to=BatterydetailListResponse,
+            model=BatterydetailsAbridged,
         )
 
     async def delete(

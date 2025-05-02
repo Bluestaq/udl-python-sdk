@@ -22,7 +22,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.onorbitantenna_get_response import OnorbitantennaGetResponse
 from ..types.onorbitantenna_list_response import OnorbitantennaListResponse
 
@@ -246,7 +247,7 @@ class OnorbitantennaResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitantennaListResponse:
+    ) -> SyncOffsetPage[OnorbitantennaListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -262,8 +263,9 @@ class OnorbitantennaResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/onorbitantenna",
+            page=SyncOffsetPage[OnorbitantennaListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -277,7 +279,7 @@ class OnorbitantennaResource(SyncAPIResource):
                     onorbitantenna_list_params.OnorbitantennaListParams,
                 ),
             ),
-            cast_to=OnorbitantennaListResponse,
+            model=OnorbitantennaListResponse,
         )
 
     def delete(
@@ -573,7 +575,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         first_result: int | NotGiven = NOT_GIVEN,
@@ -584,7 +586,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitantennaListResponse:
+    ) -> AsyncPaginator[OnorbitantennaListResponse, AsyncOffsetPage[OnorbitantennaListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -600,14 +602,15 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/onorbitantenna",
+            page=AsyncOffsetPage[OnorbitantennaListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "first_result": first_result,
                         "max_results": max_results,
@@ -615,7 +618,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
                     onorbitantenna_list_params.OnorbitantennaListParams,
                 ),
             ),
-            cast_to=OnorbitantennaListResponse,
+            model=OnorbitantennaListResponse,
         )
 
     async def delete(

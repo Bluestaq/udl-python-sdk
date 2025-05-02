@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SitestatusListResponse", "SitestatusListResponseItem"]
+__all__ = ["SitestatusListResponse"]
 
 
-class SitestatusListResponseItem(BaseModel):
+class SitestatusListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -264,6 +264,3 @@ class SitestatusListResponseItem(BaseModel):
 
     weather_message: Optional[str] = FieldInfo(alias="weatherMessage", default=None)
     """Description of the current weather conditions over a site."""
-
-
-SitestatusListResponse: TypeAlias = List[SitestatusListResponseItem]

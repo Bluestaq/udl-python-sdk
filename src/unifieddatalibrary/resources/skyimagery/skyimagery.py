@@ -41,7 +41,8 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.skyimagery_list_response import SkyimageryListResponse
 from ...types.skyimagery_tuple_response import SkyimageryTupleResponse
 from ...types.udl.skyimagery.skyimagery_full import SkyimageryFull
@@ -85,7 +86,7 @@ class SkyimageryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SkyimageryListResponse:
+    ) -> SyncOffsetPage[SkyimageryListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -104,8 +105,9 @@ class SkyimageryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/skyimagery",
+            page=SyncOffsetPage[SkyimageryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -120,7 +122,7 @@ class SkyimageryResource(SyncAPIResource):
                     skyimagery_list_params.SkyimageryListParams,
                 ),
             ),
-            cast_to=SkyimageryListResponse,
+            model=SkyimageryListResponse,
         )
 
     def count(
@@ -437,7 +439,7 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         """
         return AsyncSkyimageryResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         exp_start_time: Union[str, datetime],
@@ -449,7 +451,7 @@ class AsyncSkyimageryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SkyimageryListResponse:
+    ) -> AsyncPaginator[SkyimageryListResponse, AsyncOffsetPage[SkyimageryListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -468,14 +470,15 @@ class AsyncSkyimageryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/skyimagery",
+            page=AsyncOffsetPage[SkyimageryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "exp_start_time": exp_start_time,
                         "first_result": first_result,
@@ -484,7 +487,7 @@ class AsyncSkyimageryResource(AsyncAPIResource):
                     skyimagery_list_params.SkyimageryListParams,
                 ),
             ),
-            cast_to=SkyimageryListResponse,
+            model=SkyimageryListResponse,
         )
 
     async def count(

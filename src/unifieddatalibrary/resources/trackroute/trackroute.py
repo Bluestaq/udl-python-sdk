@@ -36,7 +36,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.trackroute_list_response import TrackrouteListResponse
 from ...types.trackroute_tuple_response import TrackrouteTupleResponse
 from ...types.trackroute.track_route_full import TrackRouteFull
@@ -474,7 +475,7 @@ class TrackrouteResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackrouteListResponse:
+    ) -> SyncOffsetPage[TrackrouteListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -493,8 +494,9 @@ class TrackrouteResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/trackroute",
+            page=SyncOffsetPage[TrackrouteListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -509,7 +511,7 @@ class TrackrouteResource(SyncAPIResource):
                     trackroute_list_params.TrackrouteListParams,
                 ),
             ),
-            cast_to=TrackrouteListResponse,
+            model=TrackrouteListResponse,
         )
 
     def delete(
@@ -1382,7 +1384,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         last_update_date: Union[str, datetime],
@@ -1394,7 +1396,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TrackrouteListResponse:
+    ) -> AsyncPaginator[TrackrouteListResponse, AsyncOffsetPage[TrackrouteListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1413,14 +1415,15 @@ class AsyncTrackrouteResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/trackroute",
+            page=AsyncOffsetPage[TrackrouteListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "last_update_date": last_update_date,
                         "first_result": first_result,
@@ -1429,7 +1432,7 @@ class AsyncTrackrouteResource(AsyncAPIResource):
                     trackroute_list_params.TrackrouteListParams,
                 ),
             ),
-            cast_to=TrackrouteListResponse,
+            model=TrackrouteListResponse,
         )
 
     async def delete(

@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     OrbitdeterminationTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.udl.orbitdetermination import OrbitdeterminationFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -249,7 +250,7 @@ class TestOrbitdetermination:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.list()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -259,7 +260,7 @@ class TestOrbitdetermination:
             max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -268,7 +269,7 @@ class TestOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = response.parse()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -277,7 +278,7 @@ class TestOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = response.parse()
-            assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+            assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -783,7 +784,7 @@ class TestAsyncOrbitdetermination:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.list()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -793,7 +794,7 @@ class TestAsyncOrbitdetermination:
             max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -802,7 +803,7 @@ class TestAsyncOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = await response.parse()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -811,7 +812,7 @@ class TestAsyncOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = await response.parse()
-            assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+            assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

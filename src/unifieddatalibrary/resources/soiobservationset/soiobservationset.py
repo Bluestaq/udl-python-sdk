@@ -35,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.soiobservationset_list_response import SoiobservationsetListResponse
 from ...types.soiobservationset_tuple_response import SoiobservationsetTupleResponse
 from ...types.soiobservationset.soi_observation_set_full import SoiObservationSetFull
@@ -473,7 +474,7 @@ class SoiobservationsetResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SoiobservationsetListResponse:
+    ) -> SyncOffsetPage[SoiobservationsetListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters.
         The query will return the SOI Observation Sets and not the associated SOI
@@ -492,8 +493,9 @@ class SoiobservationsetResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/soiobservationset",
+            page=SyncOffsetPage[SoiobservationsetListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -508,7 +510,7 @@ class SoiobservationsetResource(SyncAPIResource):
                     soiobservationset_list_params.SoiobservationsetListParams,
                 ),
             ),
-            cast_to=SoiobservationsetListResponse,
+            model=SoiobservationsetListResponse,
         )
 
     def count(
@@ -1185,7 +1187,7 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -1197,7 +1199,7 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SoiobservationsetListResponse:
+    ) -> AsyncPaginator[SoiobservationsetListResponse, AsyncOffsetPage[SoiobservationsetListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters.
         The query will return the SOI Observation Sets and not the associated SOI
@@ -1216,14 +1218,15 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/soiobservationset",
+            page=AsyncOffsetPage[SoiobservationsetListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "first_result": first_result,
@@ -1232,7 +1235,7 @@ class AsyncSoiobservationsetResource(AsyncAPIResource):
                     soiobservationset_list_params.SoiobservationsetListParams,
                 ),
             ),
-            cast_to=SoiobservationsetListResponse,
+            model=SoiobservationsetListResponse,
         )
 
     async def count(

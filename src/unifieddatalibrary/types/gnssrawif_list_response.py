@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["GnssrawifListResponse", "GnssrawifListResponseItem"]
+__all__ = ["GnssrawifListResponse"]
 
 
-class GnssrawifListResponseItem(BaseModel):
+class GnssrawifListResponse(BaseModel):
     center_freq: List[float] = FieldInfo(alias="centerFreq")
     """The center frequency, in MHz, of the observation bands.
 
@@ -276,6 +276,3 @@ class GnssrawifListResponseItem(BaseModel):
     by data providers unless conditional access controls are coordinated with the
     UDL team.
     """
-
-
-GnssrawifListResponse: TypeAlias = List[GnssrawifListResponseItem]

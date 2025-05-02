@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     EffectRequestRetrieveResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -138,7 +139,7 @@ class TestEffectRequests:
         effect_request = client.effect_requests.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+        assert_matches_type(SyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -147,7 +148,7 @@ class TestEffectRequests:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+        assert_matches_type(SyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -158,7 +159,7 @@ class TestEffectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = response.parse()
-        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+        assert_matches_type(SyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -169,7 +170,7 @@ class TestEffectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = response.parse()
-            assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+            assert_matches_type(SyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -506,7 +507,7 @@ class TestAsyncEffectRequests:
         effect_request = await async_client.effect_requests.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -515,7 +516,7 @@ class TestAsyncEffectRequests:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -526,7 +527,7 @@ class TestAsyncEffectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = await response.parse()
-        assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -537,7 +538,7 @@ class TestAsyncEffectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = await response.parse()
-            assert_matches_type(EffectRequestListResponse, effect_request, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EffectRequestListResponse], effect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
