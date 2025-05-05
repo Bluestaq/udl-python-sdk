@@ -10,12 +10,12 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    LinkStatusGetResponse,
     LinkStatusListResponse,
     LinkStatusTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
-from unifieddatalibrary.types.udl.linkstatus import LinkStatusFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -196,7 +196,7 @@ class TestLinkStatus:
         link_status = client.link_status.get(
             id="id",
         )
-        assert_matches_type(LinkStatusFull, link_status, path=["response"])
+        assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
     @parametrize
     def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -205,7 +205,7 @@ class TestLinkStatus:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(LinkStatusFull, link_status, path=["response"])
+        assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -216,7 +216,7 @@ class TestLinkStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         link_status = response.parse()
-        assert_matches_type(LinkStatusFull, link_status, path=["response"])
+        assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -227,7 +227,7 @@ class TestLinkStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             link_status = response.parse()
-            assert_matches_type(LinkStatusFull, link_status, path=["response"])
+            assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -483,7 +483,7 @@ class TestAsyncLinkStatus:
         link_status = await async_client.link_status.get(
             id="id",
         )
-        assert_matches_type(LinkStatusFull, link_status, path=["response"])
+        assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -492,7 +492,7 @@ class TestAsyncLinkStatus:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(LinkStatusFull, link_status, path=["response"])
+        assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -503,7 +503,7 @@ class TestAsyncLinkStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         link_status = await response.parse()
-        assert_matches_type(LinkStatusFull, link_status, path=["response"])
+        assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -514,7 +514,7 @@ class TestAsyncLinkStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             link_status = await response.parse()
-            assert_matches_type(LinkStatusFull, link_status, path=["response"])
+            assert_matches_type(LinkStatusGetResponse, link_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

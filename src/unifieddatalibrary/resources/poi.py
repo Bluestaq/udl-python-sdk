@@ -29,7 +29,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.udl.poi.poi_full import PoiFull
+from ..types.poi_get_response import PoiGetResponse
 from ..types.poi_list_response import PoiListResponse
 from ..types.poi_tuple_response import PoiTupleResponse
 
@@ -495,7 +495,7 @@ class PoiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PoiFull:
+    ) -> PoiGetResponse:
         """
         Service operation to get a single POI by its unique ID passed as a path
         parameter.
@@ -526,7 +526,7 @@ class PoiResource(SyncAPIResource):
                     poi_get_params.PoiGetParams,
                 ),
             ),
-            cast_to=PoiFull,
+            cast_to=PoiGetResponse,
         )
 
     def queryhelp(
@@ -1108,7 +1108,7 @@ class AsyncPoiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PoiFull:
+    ) -> PoiGetResponse:
         """
         Service operation to get a single POI by its unique ID passed as a path
         parameter.
@@ -1139,7 +1139,7 @@ class AsyncPoiResource(AsyncAPIResource):
                     poi_get_params.PoiGetParams,
                 ),
             ),
-            cast_to=PoiFull,
+            cast_to=PoiGetResponse,
         )
 
     async def queryhelp(

@@ -43,9 +43,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.link_status_get_response import LinkStatusGetResponse
 from ...types.link_status_list_response import LinkStatusListResponse
 from ...types.link_status_tuple_response import LinkStatusTupleResponse
-from ...types.udl.linkstatus.link_status_full import LinkStatusFull
 
 __all__ = ["LinkStatusResource", "AsyncLinkStatusResource"]
 
@@ -387,7 +387,7 @@ class LinkStatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusFull:
+    ) -> LinkStatusGetResponse:
         """
         Service operation to get a single LinkStatus record by its unique ID passed as a
         path parameter.
@@ -418,7 +418,7 @@ class LinkStatusResource(SyncAPIResource):
                     link_status_get_params.LinkStatusGetParams,
                 ),
             ),
-            cast_to=LinkStatusFull,
+            cast_to=LinkStatusGetResponse,
         )
 
     def queryhelp(
@@ -856,7 +856,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusFull:
+    ) -> LinkStatusGetResponse:
         """
         Service operation to get a single LinkStatus record by its unique ID passed as a
         path parameter.
@@ -887,7 +887,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                     link_status_get_params.LinkStatusGetParams,
                 ),
             ),
-            cast_to=LinkStatusFull,
+            cast_to=LinkStatusGetResponse,
         )
 
     async def queryhelp(

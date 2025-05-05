@@ -19,8 +19,8 @@ from ...._response import (
 )
 from ....pagination import SyncOffsetPage, AsyncOffsetPage
 from ...._base_client import AsyncPaginator, make_request_options
-from ....types.udl.poi.poi_full import PoiFull
 from ....types.report_and_activity.poi import history_aodr_params, history_list_params, history_count_params
+from ....types.report_and_activity.poi.history_list_response import HistoryListResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -58,7 +58,7 @@ class HistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncOffsetPage[PoiFull]:
+    ) -> SyncOffsetPage[HistoryListResponse]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -82,7 +82,7 @@ class HistoryResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/udl/poi/history",
-            page=SyncOffsetPage[PoiFull],
+            page=SyncOffsetPage[HistoryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -98,7 +98,7 @@ class HistoryResource(SyncAPIResource):
                     history_list_params.HistoryListParams,
                 ),
             ),
-            model=PoiFull,
+            model=HistoryListResponse,
         )
 
     def aodr(
@@ -260,7 +260,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PoiFull, AsyncOffsetPage[PoiFull]]:
+    ) -> AsyncPaginator[HistoryListResponse, AsyncOffsetPage[HistoryListResponse]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -284,7 +284,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/udl/poi/history",
-            page=AsyncOffsetPage[PoiFull],
+            page=AsyncOffsetPage[HistoryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -300,7 +300,7 @@ class AsyncHistoryResource(AsyncAPIResource):
                     history_list_params.HistoryListParams,
                 ),
             ),
-            model=PoiFull,
+            model=HistoryListResponse,
         )
 
     async def aodr(

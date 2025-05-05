@@ -39,9 +39,10 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.udl.sgi.sgi_full import SgiFull
+from ...types.sgi_get_response import SgiGetResponse
 from ...types.sgi_list_response import SgiListResponse
 from ...types.sgi_tuple_response import SgiTupleResponse
+from ...types.sgi_get_data_by_effective_as_of_date_response import SgiGetDataByEffectiveAsOfDateResponse
 
 __all__ = ["SgiResource", "AsyncSgiResource"]
 
@@ -983,7 +984,7 @@ class SgiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetResponse:
         """
         Service operation to get a single SGI record by its unique ID passed as a path
         parameter.
@@ -1014,7 +1015,7 @@ class SgiResource(SyncAPIResource):
                     sgi_get_params.SgiGetParams,
                 ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetResponse,
         )
 
     def get_data_by_effective_as_of_date(
@@ -1030,7 +1031,7 @@ class SgiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetDataByEffectiveAsOfDateResponse:
         """
         Service to return matching SGI records as of the effective date.
 
@@ -1070,7 +1071,7 @@ class SgiResource(SyncAPIResource):
                     sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
                 ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetDataByEffectiveAsOfDateResponse,
         )
 
     def queryhelp(
@@ -2140,7 +2141,7 @@ class AsyncSgiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetResponse:
         """
         Service operation to get a single SGI record by its unique ID passed as a path
         parameter.
@@ -2171,7 +2172,7 @@ class AsyncSgiResource(AsyncAPIResource):
                     sgi_get_params.SgiGetParams,
                 ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetResponse,
         )
 
     async def get_data_by_effective_as_of_date(
@@ -2187,7 +2188,7 @@ class AsyncSgiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetDataByEffectiveAsOfDateResponse:
         """
         Service to return matching SGI records as of the effective date.
 
@@ -2227,7 +2228,7 @@ class AsyncSgiResource(AsyncAPIResource):
                     sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
                 ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetDataByEffectiveAsOfDateResponse,
         )
 
     async def queryhelp(

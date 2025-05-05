@@ -10,12 +10,13 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    SgiGetResponse,
     SgiListResponse,
     SgiTupleResponse,
+    SgiGetDataByEffectiveAsOfDateResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
-from unifieddatalibrary.types.udl.sgi import SgiFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -415,7 +416,7 @@ class TestSgi:
         sgi = client.sgi.get(
             id="id",
         )
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
     @parametrize
     def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -424,7 +425,7 @@ class TestSgi:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -435,7 +436,7 @@ class TestSgi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sgi = response.parse()
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -446,7 +447,7 @@ class TestSgi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sgi = response.parse()
-            assert_matches_type(SgiFull, sgi, path=["response"])
+            assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -460,7 +461,7 @@ class TestSgi:
     @parametrize
     def test_method_get_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.get_data_by_effective_as_of_date()
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
     @parametrize
     def test_method_get_data_by_effective_as_of_date_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -470,7 +471,7 @@ class TestSgi:
             max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
     @parametrize
     def test_raw_response_get_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
@@ -479,7 +480,7 @@ class TestSgi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sgi = response.parse()
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
     @parametrize
     def test_streaming_response_get_data_by_effective_as_of_date(self, client: Unifieddatalibrary) -> None:
@@ -488,7 +489,7 @@ class TestSgi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sgi = response.parse()
-            assert_matches_type(SgiFull, sgi, path=["response"])
+            assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1010,7 +1011,7 @@ class TestAsyncSgi:
         sgi = await async_client.sgi.get(
             id="id",
         )
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1019,7 +1020,7 @@ class TestAsyncSgi:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1030,7 +1031,7 @@ class TestAsyncSgi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sgi = await response.parse()
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1041,7 +1042,7 @@ class TestAsyncSgi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sgi = await response.parse()
-            assert_matches_type(SgiFull, sgi, path=["response"])
+            assert_matches_type(SgiGetResponse, sgi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1055,7 +1056,7 @@ class TestAsyncSgi:
     @parametrize
     async def test_method_get_data_by_effective_as_of_date(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.get_data_by_effective_as_of_date()
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
     @parametrize
     async def test_method_get_data_by_effective_as_of_date_with_all_params(
@@ -1067,7 +1068,7 @@ class TestAsyncSgi:
             max_results=0,
             sgi_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
     @parametrize
     async def test_raw_response_get_data_by_effective_as_of_date(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1076,7 +1077,7 @@ class TestAsyncSgi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sgi = await response.parse()
-        assert_matches_type(SgiFull, sgi, path=["response"])
+        assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
     @parametrize
     async def test_streaming_response_get_data_by_effective_as_of_date(
@@ -1087,7 +1088,7 @@ class TestAsyncSgi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sgi = await response.parse()
-            assert_matches_type(SgiFull, sgi, path=["response"])
+            assert_matches_type(SgiGetDataByEffectiveAsOfDateResponse, sgi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

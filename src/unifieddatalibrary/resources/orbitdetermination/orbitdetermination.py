@@ -37,9 +37,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.orbitdetermination_get_response import OrbitdeterminationGetResponse
 from ...types.orbitdetermination_list_response import OrbitdeterminationListResponse
 from ...types.orbitdetermination_tuple_response import OrbitdeterminationTupleResponse
-from ...types.udl.orbitdetermination.orbitdetermination_full import OrbitdeterminationFull
 
 __all__ = ["OrbitdeterminationResource", "AsyncOrbitdeterminationResource"]
 
@@ -501,7 +501,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationFull:
+    ) -> OrbitdeterminationGetResponse:
         """
         Service operation to get a single OrbitDetermination record by its unique ID
         passed as a path parameter.
@@ -532,7 +532,7 @@ class OrbitdeterminationResource(SyncAPIResource):
                     orbitdetermination_get_params.OrbitdeterminationGetParams,
                 ),
             ),
-            cast_to=OrbitdeterminationFull,
+            cast_to=OrbitdeterminationGetResponse,
         )
 
     def queryhelp(
@@ -1122,7 +1122,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationFull:
+    ) -> OrbitdeterminationGetResponse:
         """
         Service operation to get a single OrbitDetermination record by its unique ID
         passed as a path parameter.
@@ -1153,7 +1153,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                     orbitdetermination_get_params.OrbitdeterminationGetParams,
                 ),
             ),
-            cast_to=OrbitdeterminationFull,
+            cast_to=OrbitdeterminationGetResponse,
         )
 
     async def queryhelp(

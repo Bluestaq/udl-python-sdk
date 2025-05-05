@@ -36,9 +36,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.item_tracking_get_response import ItemTrackingGetResponse
 from ...types.item_tracking_list_response import ItemTrackingListResponse
 from ...types.item_tracking_tuple_response import ItemTrackingTupleResponse
-from ...types.udl.itemtracking.item_tracking_full import ItemTrackingFull
 
 __all__ = ["ItemTrackingsResource", "AsyncItemTrackingsResource"]
 
@@ -354,7 +354,7 @@ class ItemTrackingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ItemTrackingFull:
+    ) -> ItemTrackingGetResponse:
         """
         Service operation to get a single item tracking record by its unique ID passed
         as a path parameter.
@@ -385,7 +385,7 @@ class ItemTrackingsResource(SyncAPIResource):
                     item_tracking_get_params.ItemTrackingGetParams,
                 ),
             ),
-            cast_to=ItemTrackingFull,
+            cast_to=ItemTrackingGetResponse,
         )
 
     def queryhelp(
@@ -820,7 +820,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ItemTrackingFull:
+    ) -> ItemTrackingGetResponse:
         """
         Service operation to get a single item tracking record by its unique ID passed
         as a path parameter.
@@ -851,7 +851,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
                     item_tracking_get_params.ItemTrackingGetParams,
                 ),
             ),
-            cast_to=ItemTrackingFull,
+            cast_to=ItemTrackingGetResponse,
         )
 
     async def queryhelp(
