@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .eo_observation_abridged import EoObservationAbridged
+from .observations.eo_observation_abridged import EoObservationAbridged
 
 __all__ = ["OnorbitGetSignatureResponse", "RadarObservation", "RfObservation"]
 

@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from ..crew_full import CrewFull
-from ..sortieppr.sortie_ppr_full import SortiePprFull
+from ..sortie_ppr.sortie_ppr_full import SortiePprFull
 
 __all__ = ["AircraftsortieFull"]
 

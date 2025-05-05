@@ -15,7 +15,7 @@ from unifieddatalibrary.types import (
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
-from unifieddatalibrary.types.udl.onorbitthrusterstatus import OnorbitthrusterstatusFull
+from unifieddatalibrary.types.onorbitthrusterstatus import OnorbitthrusterstatusFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

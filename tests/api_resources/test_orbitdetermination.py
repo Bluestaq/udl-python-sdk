@@ -10,12 +10,12 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    OrbitdeterminationGetResponse,
     OrbitdeterminationListResponse,
     OrbitdeterminationTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
-from unifieddatalibrary.types.udl.orbitdetermination import OrbitdeterminationFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -383,7 +383,7 @@ class TestOrbitdetermination:
         orbitdetermination = client.orbitdetermination.get(
             id="id",
         )
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -392,7 +392,7 @@ class TestOrbitdetermination:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
@@ -403,7 +403,7 @@ class TestOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = response.parse()
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
@@ -414,7 +414,7 @@ class TestOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = response.parse()
-            assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+            assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -917,7 +917,7 @@ class TestAsyncOrbitdetermination:
         orbitdetermination = await async_client.orbitdetermination.get(
             id="id",
         )
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -926,7 +926,7 @@ class TestAsyncOrbitdetermination:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -937,7 +937,7 @@ class TestAsyncOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = await response.parse()
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -948,7 +948,7 @@ class TestAsyncOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = await response.parse()
-            assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+            assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

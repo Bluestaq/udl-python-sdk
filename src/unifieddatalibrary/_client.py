@@ -24,7 +24,6 @@ from ._utils import is_given, get_async_library
 from ._version import __version__
 from .resources import (
     ir,
-    mti,
     poi,
     beam,
     comm,
@@ -34,11 +33,11 @@ from .resources import (
     port,
     buses,
     stage,
-    ecpsdr,
-    rfband,
     status,
     vessel,
+    ecp_sdr,
     engines,
+    rf_band,
     surface,
     aircraft,
     antennas,
@@ -51,86 +50,71 @@ from .resources import (
     batteries,
     countries,
     equipment,
-    geostatus,
-    gnssrawif,
-    monoradar,
-    rfemitter,
     scs_views,
     substatus,
     air_events,
     flightplan,
-    launchsite,
+    gnss_rawif,
     navigation,
-    rfbandtype,
-    routestats,
+    rf_emitter,
     scientific,
-    sensortype,
-    siteremark,
-    solararray,
     ais_objects,
-    launchevent,
+    launch_site,
     onorbitlist,
+    route_stats,
+    sensor_type,
+    site_remark,
+    solar_array,
     transponder,
-    airloadplans,
     attitudesets,
-    h3geohexcell,
-    notification,
     onorbitevent,
     organization,
-    airfieldslots,
+    rf_band_type,
+    airload_plans,
     attitude_data,
     beam_contours,
     drift_history,
-    enginedetails,
-    groundimagery,
-    launchvehicle,
     manifoldelset,
     operatingunit,
     air_load_plans,
     airfield_slots,
     batterydetails,
     engine_details,
-    eoobservations,
+    launch_vehicle,
     onorbitantenna,
     onorbitbattery,
     onorbitdetails,
-    airfield_status,
-    ionoobservation,
-    launchdetection,
+    h3_geo_hex_cell,
     onorbitthruster,
     aircraft_sorties,
-    airtaskingorders,
     analytic_imagery,
-    equipmentremarks,
-    objectofinterest,
-    radarobservation,
-    rfemitterdetails,
+    ion_oobservation,
+    launch_detection,
     secure_messaging,
-    launchsitedetails,
-    onboardnavigation,
+    equipment_remarks,
     onorbitsolararray,
-    solararraydetails,
-    air_tasking_orders,
-    emittergeolocation,
-    gnssobservationset,
-    seradatanavigation,
-    surfaceobstruction,
+    object_of_interest,
+    rf_emitter_details,
+    emitter_geolocation,
+    launch_site_details,
     operatingunitremark,
     organizationdetails,
-    seradatacommdetails,
-    aircraftstatusremark,
-    launchvehicledetails,
-    seradataearlywarning,
-    seradataradarpayload,
-    sensorobservationtype,
-    seradatasigintpayload,
-    aviationriskmanagement,
-    seradataopticalpayload,
+    solar_array_details,
+    surface_obstruction,
+    sera_data_navigation,
+    launch_vehicle_details,
+    sera_data_comm_details,
+    seradata_radar_payload,
     aircraft_status_remarks,
     airspace_control_orders,
-    navigationalobstruction,
-    airfieldslotconsumptions,
-    seradataspacecraftdetails,
+    sensor_observation_type,
+    sera_data_early_warning,
+    seradata_sigint_payload,
+    aviation_risk_management,
+    navigational_obstruction,
+    seradata_optical_payload,
+    airfield_slot_consumptions,
+    seradata_spacecraft_details,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, UnifieddatalibraryError
@@ -141,75 +125,76 @@ from ._base_client import (
 )
 from .resources.ais import ais
 from .resources.eop import eop
+from .resources.mti import mti
 from .resources.scs import scs
 from .resources.sgi import sgi
-from .resources.udl import udl
 from .resources.evac import evac
 from .resources.site import site
 from .resources.swir import swir
-from .resources.h3geo import h3geo
 from .resources.track import track
 from .resources.video import video
 from .resources.elsets import elsets
+from .resources.h3_geo import h3_geo
 from .resources.hazard import hazard
 from .resources.sensor import sensor
 from .resources.sigact import sigact
-from .resources.taiutc import taiutc
 from .resources.onorbit import onorbit
+from .resources.tai_utc import tai_utc
 from .resources.ephemeris import ephemeris
 from .resources.maneuvers import maneuvers
-from .resources.sortieppr import sortieppr
 from .resources.tdoa_fdoa import tdoa_fdoa
+from .resources.geo_status import geo_status
 from .resources.orbittrack import orbittrack
-from .resources.sensorplan import sensorplan
-from .resources.sitestatus import sitestatus
-from .resources.skyimagery import skyimagery
-from .resources.trackroute import trackroute
+from .resources.sortie_ppr import sortie_ppr
 from .resources.gnss_raw_if import gnss_raw_if
 from .resources.link_status import link_status
-from .resources.starcatalog import starcatalog
-from .resources.statevector import statevector
-from .resources.weatherdata import weatherdata
+from .resources.sensor_plan import sensor_plan
+from .resources.site_status import site_status
+from .resources.sky_imagery import sky_imagery
+from .resources.track_route import track_route
 from .resources.conjunctions import conjunctions
 from .resources.launch_event import launch_event
+from .resources.notification import notification
 from .resources.observations import observations
-from .resources.trackdetails import trackdetails
+from .resources.star_catalog import star_catalog
+from .resources.state_vector import state_vector
+from .resources.weather_data import weather_data
 from .resources.attitude_sets import attitude_sets
-from .resources.diffofarrival import diffofarrival
-from .resources.rfobservation import rfobservation
-from .resources.weatherreport import weatherreport
+from .resources.track_details import track_details
 from .resources.air_operations import air_operations
-from .resources.airfieldstatus import airfieldstatus
 from .resources.ephemeris_sets import ephemeris_sets
 from .resources.ground_imagery import ground_imagery
 from .resources.item_trackings import item_trackings
 from .resources.missile_tracks import missile_tracks
-from .resources.sarobservation import sarobservation
+from .resources.weather_report import weather_report
+from .resources.airfield_status import airfield_status
+from .resources.diff_of_arrival import diff_of_arrival
 from .resources.effect_requests import effect_requests
-from .resources.eo_observations import eo_observations
 from .resources.event_evolution import event_evolution
 from .resources.isr_collections import isr_collections
+from .resources.sar_observation import sar_observation
 from .resources.supporting_data import supporting_data
 from .resources.collect_requests import collect_requests
 from .resources.effect_responses import effect_responses
 from .resources.iono_observation import iono_observation
-from .resources.logisticssupport import logisticssupport
 from .resources.aircraft_statuses import aircraft_statuses
 from .resources.collect_responses import collect_responses
-from .resources.featureassessment import featureassessment
 from .resources.gnss_observations import gnss_observations
-from .resources.missionassignment import missionassignment
+from .resources.logistics_support import logistics_support
+from .resources.onboardnavigation import onboardnavigation
 from .resources.personnelrecovery import personnelrecovery
-from .resources.sensormaintenance import sensormaintenance
-from .resources.soiobservationset import soiobservationset
+from .resources.feature_assessment import feature_assessment
+from .resources.mission_assignment import mission_assignment
 from .resources.orbitdetermination import orbitdetermination
+from .resources.sensor_maintenance import sensor_maintenance
+from .resources.gnss_observationset import gnss_observationset
 from .resources.report_and_activity import report_and_activity
-from .resources.spaceenvobservation import spaceenvobservation
+from .resources.soi_observation_set import soi_observation_set
 from .resources.diplomatic_clearance import diplomatic_clearance
 from .resources.onorbitthrusterstatus import onorbitthrusterstatus
+from .resources.space_env_observation import space_env_observation
 from .resources.air_transport_missions import air_transport_missions
-from .resources.globalatmosphericmodel import globalatmosphericmodel
-from .resources.passiveradarobservation import passiveradarobservation
+from .resources.global_atmospheric_model import global_atmospheric_model
 
 __all__ = [
     "Timeout",
@@ -227,22 +212,17 @@ class Unifieddatalibrary(SyncAPIClient):
     air_events: air_events.AirEventsResource
     air_load_plans: air_load_plans.AirLoadPlansResource
     air_operations: air_operations.AirOperationsResource
-    air_tasking_orders: air_tasking_orders.AirTaskingOrdersResource
     air_transport_missions: air_transport_missions.AirTransportMissionsResource
     aircraft: aircraft.AircraftResource
     aircraft_sorties: aircraft_sorties.AircraftSortiesResource
     aircraft_status_remarks: aircraft_status_remarks.AircraftStatusRemarksResource
     aircraft_statuses: aircraft_statuses.AircraftStatusesResource
-    aircraftstatusremark: aircraftstatusremark.AircraftstatusremarkResource
     airfield_slots: airfield_slots.AirfieldSlotsResource
     airfield_status: airfield_status.AirfieldStatusResource
     airfields: airfields.AirfieldsResource
-    airfieldslotconsumptions: airfieldslotconsumptions.AirfieldslotconsumptionsResource
-    airfieldslots: airfieldslots.AirfieldslotsResource
-    airfieldstatus: airfieldstatus.AirfieldstatusResource
-    airloadplans: airloadplans.AirloadplansResource
+    airfield_slot_consumptions: airfield_slot_consumptions.AirfieldSlotConsumptionsResource
+    airload_plans: airload_plans.AirloadPlansResource
     airspace_control_orders: airspace_control_orders.AirspaceControlOrdersResource
-    airtaskingorders: airtaskingorders.AirtaskingordersResource
     ais: ais.AIsResource
     ais_objects: ais_objects.AIsObjectsResource
     analytic_imagery: analytic_imagery.AnalyticImageryResource
@@ -261,68 +241,63 @@ class Unifieddatalibrary(SyncAPIClient):
     comm: comm.CommResource
     conjunctions: conjunctions.ConjunctionsResource
     cots: cots.CotsResource
-    aviationriskmanagement: aviationriskmanagement.AviationriskmanagementResource
+    aviation_risk_management: aviation_risk_management.AviationRiskManagementResource
     dropzone: dropzone.DropzoneResource
-    emittergeolocation: emittergeolocation.EmittergeolocationResource
-    featureassessment: featureassessment.FeatureassessmentResource
-    globalatmosphericmodel: globalatmosphericmodel.GlobalatmosphericmodelResource
-    routestats: routestats.RoutestatsResource
+    emitter_geolocation: emitter_geolocation.EmitterGeolocationResource
+    feature_assessment: feature_assessment.FeatureAssessmentResource
+    global_atmospheric_model: global_atmospheric_model.GlobalAtmosphericModelResource
+    route_stats: route_stats.RouteStatsResource
     countries: countries.CountriesResource
     crew: crew.CrewResource
-    diffofarrival: diffofarrival.DiffofarrivalResource
+    diff_of_arrival: diff_of_arrival.DiffOfArrivalResource
     diplomatic_clearance: diplomatic_clearance.DiplomaticClearanceResource
     drift_history: drift_history.DriftHistoryResource
-    ecpsdr: ecpsdr.EcpsdrResource
+    ecp_sdr: ecp_sdr.EcpSdrResource
     effect_requests: effect_requests.EffectRequestsResource
     effect_responses: effect_responses.EffectResponsesResource
     elsets: elsets.ElsetsResource
     engine_details: engine_details.EngineDetailsResource
-    enginedetails: enginedetails.EnginedetailsResource
     engines: engines.EnginesResource
     entities: entities.EntitiesResource
-    eo_observations: eo_observations.EoObservationsResource
-    eoobservations: eoobservations.EoobservationsResource
     eop: eop.EopResource
     ephemeris: ephemeris.EphemerisResource
     ephemeris_sets: ephemeris_sets.EphemerisSetsResource
     equipment: equipment.EquipmentResource
-    equipmentremarks: equipmentremarks.EquipmentremarksResource
+    equipment_remarks: equipment_remarks.EquipmentRemarksResource
     evac: evac.EvacResource
     event_evolution: event_evolution.EventEvolutionResource
     flightplan: flightplan.FlightplanResource
-    geostatus: geostatus.GeostatusResource
-    gnssobservationset: gnssobservationset.GnssobservationsetResource
-    gnssrawif: gnssrawif.GnssrawifResource
+    geo_status: geo_status.GeoStatusResource
+    gnss_observationset: gnss_observationset.GnssObservationsetResource
+    gnss_rawif: gnss_rawif.GnssRawifResource
     ground_imagery: ground_imagery.GroundImageryResource
-    groundimagery: groundimagery.GroundimageryResource
-    h3geo: h3geo.H3geoResource
-    h3geohexcell: h3geohexcell.H3geohexcellResource
+    h3_geo: h3_geo.H3GeoResource
+    h3_geo_hex_cell: h3_geo_hex_cell.H3GeoHexCellResource
     hazard: hazard.HazardResource
-    ionoobservation: ionoobservation.IonoobservationResource
+    ion_oobservation: ion_oobservation.IonOobservationResource
     ir: ir.IrResource
     isr_collections: isr_collections.IsrCollectionsResource
     item: item.ItemResource
     item_trackings: item_trackings.ItemTrackingsResource
-    launchdetection: launchdetection.LaunchdetectionResource
-    launchevent: launchevent.LauncheventResource
-    launchsite: launchsite.LaunchsiteResource
-    launchsitedetails: launchsitedetails.LaunchsitedetailsResource
-    launchvehicle: launchvehicle.LaunchvehicleResource
-    launchvehicledetails: launchvehicledetails.LaunchvehicledetailsResource
+    launch_detection: launch_detection.LaunchDetectionResource
+    launch_event: launch_event.LaunchEventResource
+    launch_site: launch_site.LaunchSiteResource
+    launch_site_details: launch_site_details.LaunchSiteDetailsResource
+    launch_vehicle: launch_vehicle.LaunchVehicleResource
+    launch_vehicle_details: launch_vehicle_details.LaunchVehicleDetailsResource
     link_status: link_status.LinkStatusResource
     location: location.LocationResource
-    logisticssupport: logisticssupport.LogisticssupportResource
+    logistics_support: logistics_support.LogisticsSupportResource
     maneuvers: maneuvers.ManeuversResource
     manifold: manifold.ManifoldResource
     manifoldelset: manifoldelset.ManifoldelsetResource
     missile_tracks: missile_tracks.MissileTracksResource
-    missionassignment: missionassignment.MissionassignmentResource
-    monoradar: monoradar.MonoradarResource
+    mission_assignment: mission_assignment.MissionAssignmentResource
     mti: mti.MtiResource
     navigation: navigation.NavigationResource
-    navigationalobstruction: navigationalobstruction.NavigationalobstructionResource
+    navigational_obstruction: navigational_obstruction.NavigationalObstructionResource
     notification: notification.NotificationResource
-    objectofinterest: objectofinterest.ObjectofinterestResource
+    object_of_interest: object_of_interest.ObjectOfInterestResource
     observations: observations.ObservationsResource
     onboardnavigation: onboardnavigation.OnboardnavigationResource
     onorbit: onorbit.OnorbitResource
@@ -340,65 +315,60 @@ class Unifieddatalibrary(SyncAPIClient):
     orbittrack: orbittrack.OrbittrackResource
     organization: organization.OrganizationResource
     organizationdetails: organizationdetails.OrganizationdetailsResource
-    passiveradarobservation: passiveradarobservation.PassiveradarobservationResource
     personnelrecovery: personnelrecovery.PersonnelrecoveryResource
     poi: poi.PoiResource
     port: port.PortResource
-    radarobservation: radarobservation.RadarobservationResource
-    rfband: rfband.RfbandResource
-    rfbandtype: rfbandtype.RfbandtypeResource
-    rfemitter: rfemitter.RfemitterResource
-    rfemitterdetails: rfemitterdetails.RfemitterdetailsResource
-    rfobservation: rfobservation.RfobservationResource
-    sarobservation: sarobservation.SarobservationResource
+    rf_band: rf_band.RfBandResource
+    rf_band_type: rf_band_type.RfBandTypeResource
+    rf_emitter: rf_emitter.RfEmitterResource
+    rf_emitter_details: rf_emitter_details.RfEmitterDetailsResource
+    sar_observation: sar_observation.SarObservationResource
     scientific: scientific.ScientificResource
     sensor: sensor.SensorResource
-    sensormaintenance: sensormaintenance.SensormaintenanceResource
-    sensorobservationtype: sensorobservationtype.SensorobservationtypeResource
-    sensorplan: sensorplan.SensorplanResource
-    sensortype: sensortype.SensortypeResource
-    seradatacommdetails: seradatacommdetails.SeradatacommdetailsResource
-    seradataearlywarning: seradataearlywarning.SeradataearlywarningResource
-    seradatanavigation: seradatanavigation.SeradatanavigationResource
-    seradataopticalpayload: seradataopticalpayload.SeradataopticalpayloadResource
-    seradataradarpayload: seradataradarpayload.SeradataradarpayloadResource
-    seradatasigintpayload: seradatasigintpayload.SeradatasigintpayloadResource
-    seradataspacecraftdetails: seradataspacecraftdetails.SeradataspacecraftdetailsResource
+    sensor_maintenance: sensor_maintenance.SensorMaintenanceResource
+    sensor_observation_type: sensor_observation_type.SensorObservationTypeResource
+    sensor_plan: sensor_plan.SensorPlanResource
+    sensor_type: sensor_type.SensorTypeResource
+    sera_data_comm_details: sera_data_comm_details.SeraDataCommDetailsResource
+    sera_data_early_warning: sera_data_early_warning.SeraDataEarlyWarningResource
+    sera_data_navigation: sera_data_navigation.SeraDataNavigationResource
+    seradata_optical_payload: seradata_optical_payload.SeradataOpticalPayloadResource
+    seradata_radar_payload: seradata_radar_payload.SeradataRadarPayloadResource
+    seradata_sigint_payload: seradata_sigint_payload.SeradataSigintPayloadResource
+    seradata_spacecraft_details: seradata_spacecraft_details.SeradataSpacecraftDetailsResource
     sgi: sgi.SgiResource
     sigact: sigact.SigactResource
     site: site.SiteResource
-    siteremark: siteremark.SiteremarkResource
-    sitestatus: sitestatus.SitestatusResource
-    skyimagery: skyimagery.SkyimageryResource
-    soiobservationset: soiobservationset.SoiobservationsetResource
-    solararray: solararray.SolararrayResource
-    solararraydetails: solararraydetails.SolararraydetailsResource
-    sortieppr: sortieppr.SortiepprResource
-    spaceenvobservation: spaceenvobservation.SpaceenvobservationResource
+    site_remark: site_remark.SiteRemarkResource
+    site_status: site_status.SiteStatusResource
+    sky_imagery: sky_imagery.SkyImageryResource
+    soi_observation_set: soi_observation_set.SoiObservationSetResource
+    solar_array: solar_array.SolarArrayResource
+    solar_array_details: solar_array_details.SolarArrayDetailsResource
+    sortie_ppr: sortie_ppr.SortiePprResource
+    space_env_observation: space_env_observation.SpaceEnvObservationResource
     stage: stage.StageResource
-    starcatalog: starcatalog.StarcatalogResource
-    statevector: statevector.StatevectorResource
+    star_catalog: star_catalog.StarCatalogResource
+    state_vector: state_vector.StateVectorResource
     status: status.StatusResource
     substatus: substatus.SubstatusResource
     supporting_data: supporting_data.SupportingDataResource
     surface: surface.SurfaceResource
-    surfaceobstruction: surfaceobstruction.SurfaceobstructionResource
+    surface_obstruction: surface_obstruction.SurfaceObstructionResource
     swir: swir.SwirResource
-    taiutc: taiutc.TaiutcResource
+    tai_utc: tai_utc.TaiUtcResource
     tdoa_fdoa: tdoa_fdoa.TdoaFdoaResource
     track: track.TrackResource
-    trackdetails: trackdetails.TrackdetailsResource
-    trackroute: trackroute.TrackrouteResource
+    track_details: track_details.TrackDetailsResource
+    track_route: track_route.TrackRouteResource
     transponder: transponder.TransponderResource
     vessel: vessel.VesselResource
     video: video.VideoResource
-    weatherdata: weatherdata.WeatherdataResource
-    weatherreport: weatherreport.WeatherreportResource
-    udl: udl.UdlResource
+    weather_data: weather_data.WeatherDataResource
+    weather_report: weather_report.WeatherReportResource
     gnss_observations: gnss_observations.GnssObservationsResource
     gnss_raw_if: gnss_raw_if.GnssRawIfResource
     iono_observation: iono_observation.IonoObservationResource
-    launch_event: launch_event.LaunchEventResource
     report_and_activity: report_and_activity.ReportAndActivityResource
     secure_messaging: secure_messaging.SecureMessagingResource
     scs: scs.ScsResource
@@ -475,22 +445,17 @@ class Unifieddatalibrary(SyncAPIClient):
         self.air_events = air_events.AirEventsResource(self)
         self.air_load_plans = air_load_plans.AirLoadPlansResource(self)
         self.air_operations = air_operations.AirOperationsResource(self)
-        self.air_tasking_orders = air_tasking_orders.AirTaskingOrdersResource(self)
         self.air_transport_missions = air_transport_missions.AirTransportMissionsResource(self)
         self.aircraft = aircraft.AircraftResource(self)
         self.aircraft_sorties = aircraft_sorties.AircraftSortiesResource(self)
         self.aircraft_status_remarks = aircraft_status_remarks.AircraftStatusRemarksResource(self)
         self.aircraft_statuses = aircraft_statuses.AircraftStatusesResource(self)
-        self.aircraftstatusremark = aircraftstatusremark.AircraftstatusremarkResource(self)
         self.airfield_slots = airfield_slots.AirfieldSlotsResource(self)
         self.airfield_status = airfield_status.AirfieldStatusResource(self)
         self.airfields = airfields.AirfieldsResource(self)
-        self.airfieldslotconsumptions = airfieldslotconsumptions.AirfieldslotconsumptionsResource(self)
-        self.airfieldslots = airfieldslots.AirfieldslotsResource(self)
-        self.airfieldstatus = airfieldstatus.AirfieldstatusResource(self)
-        self.airloadplans = airloadplans.AirloadplansResource(self)
+        self.airfield_slot_consumptions = airfield_slot_consumptions.AirfieldSlotConsumptionsResource(self)
+        self.airload_plans = airload_plans.AirloadPlansResource(self)
         self.airspace_control_orders = airspace_control_orders.AirspaceControlOrdersResource(self)
-        self.airtaskingorders = airtaskingorders.AirtaskingordersResource(self)
         self.ais = ais.AIsResource(self)
         self.ais_objects = ais_objects.AIsObjectsResource(self)
         self.analytic_imagery = analytic_imagery.AnalyticImageryResource(self)
@@ -509,68 +474,63 @@ class Unifieddatalibrary(SyncAPIClient):
         self.comm = comm.CommResource(self)
         self.conjunctions = conjunctions.ConjunctionsResource(self)
         self.cots = cots.CotsResource(self)
-        self.aviationriskmanagement = aviationriskmanagement.AviationriskmanagementResource(self)
+        self.aviation_risk_management = aviation_risk_management.AviationRiskManagementResource(self)
         self.dropzone = dropzone.DropzoneResource(self)
-        self.emittergeolocation = emittergeolocation.EmittergeolocationResource(self)
-        self.featureassessment = featureassessment.FeatureassessmentResource(self)
-        self.globalatmosphericmodel = globalatmosphericmodel.GlobalatmosphericmodelResource(self)
-        self.routestats = routestats.RoutestatsResource(self)
+        self.emitter_geolocation = emitter_geolocation.EmitterGeolocationResource(self)
+        self.feature_assessment = feature_assessment.FeatureAssessmentResource(self)
+        self.global_atmospheric_model = global_atmospheric_model.GlobalAtmosphericModelResource(self)
+        self.route_stats = route_stats.RouteStatsResource(self)
         self.countries = countries.CountriesResource(self)
         self.crew = crew.CrewResource(self)
-        self.diffofarrival = diffofarrival.DiffofarrivalResource(self)
+        self.diff_of_arrival = diff_of_arrival.DiffOfArrivalResource(self)
         self.diplomatic_clearance = diplomatic_clearance.DiplomaticClearanceResource(self)
         self.drift_history = drift_history.DriftHistoryResource(self)
-        self.ecpsdr = ecpsdr.EcpsdrResource(self)
+        self.ecp_sdr = ecp_sdr.EcpSdrResource(self)
         self.effect_requests = effect_requests.EffectRequestsResource(self)
         self.effect_responses = effect_responses.EffectResponsesResource(self)
         self.elsets = elsets.ElsetsResource(self)
         self.engine_details = engine_details.EngineDetailsResource(self)
-        self.enginedetails = enginedetails.EnginedetailsResource(self)
         self.engines = engines.EnginesResource(self)
         self.entities = entities.EntitiesResource(self)
-        self.eo_observations = eo_observations.EoObservationsResource(self)
-        self.eoobservations = eoobservations.EoobservationsResource(self)
         self.eop = eop.EopResource(self)
         self.ephemeris = ephemeris.EphemerisResource(self)
         self.ephemeris_sets = ephemeris_sets.EphemerisSetsResource(self)
         self.equipment = equipment.EquipmentResource(self)
-        self.equipmentremarks = equipmentremarks.EquipmentremarksResource(self)
+        self.equipment_remarks = equipment_remarks.EquipmentRemarksResource(self)
         self.evac = evac.EvacResource(self)
         self.event_evolution = event_evolution.EventEvolutionResource(self)
         self.flightplan = flightplan.FlightplanResource(self)
-        self.geostatus = geostatus.GeostatusResource(self)
-        self.gnssobservationset = gnssobservationset.GnssobservationsetResource(self)
-        self.gnssrawif = gnssrawif.GnssrawifResource(self)
+        self.geo_status = geo_status.GeoStatusResource(self)
+        self.gnss_observationset = gnss_observationset.GnssObservationsetResource(self)
+        self.gnss_rawif = gnss_rawif.GnssRawifResource(self)
         self.ground_imagery = ground_imagery.GroundImageryResource(self)
-        self.groundimagery = groundimagery.GroundimageryResource(self)
-        self.h3geo = h3geo.H3geoResource(self)
-        self.h3geohexcell = h3geohexcell.H3geohexcellResource(self)
+        self.h3_geo = h3_geo.H3GeoResource(self)
+        self.h3_geo_hex_cell = h3_geo_hex_cell.H3GeoHexCellResource(self)
         self.hazard = hazard.HazardResource(self)
-        self.ionoobservation = ionoobservation.IonoobservationResource(self)
+        self.ion_oobservation = ion_oobservation.IonOobservationResource(self)
         self.ir = ir.IrResource(self)
         self.isr_collections = isr_collections.IsrCollectionsResource(self)
         self.item = item.ItemResource(self)
         self.item_trackings = item_trackings.ItemTrackingsResource(self)
-        self.launchdetection = launchdetection.LaunchdetectionResource(self)
-        self.launchevent = launchevent.LauncheventResource(self)
-        self.launchsite = launchsite.LaunchsiteResource(self)
-        self.launchsitedetails = launchsitedetails.LaunchsitedetailsResource(self)
-        self.launchvehicle = launchvehicle.LaunchvehicleResource(self)
-        self.launchvehicledetails = launchvehicledetails.LaunchvehicledetailsResource(self)
+        self.launch_detection = launch_detection.LaunchDetectionResource(self)
+        self.launch_event = launch_event.LaunchEventResource(self)
+        self.launch_site = launch_site.LaunchSiteResource(self)
+        self.launch_site_details = launch_site_details.LaunchSiteDetailsResource(self)
+        self.launch_vehicle = launch_vehicle.LaunchVehicleResource(self)
+        self.launch_vehicle_details = launch_vehicle_details.LaunchVehicleDetailsResource(self)
         self.link_status = link_status.LinkStatusResource(self)
         self.location = location.LocationResource(self)
-        self.logisticssupport = logisticssupport.LogisticssupportResource(self)
+        self.logistics_support = logistics_support.LogisticsSupportResource(self)
         self.maneuvers = maneuvers.ManeuversResource(self)
         self.manifold = manifold.ManifoldResource(self)
         self.manifoldelset = manifoldelset.ManifoldelsetResource(self)
         self.missile_tracks = missile_tracks.MissileTracksResource(self)
-        self.missionassignment = missionassignment.MissionassignmentResource(self)
-        self.monoradar = monoradar.MonoradarResource(self)
+        self.mission_assignment = mission_assignment.MissionAssignmentResource(self)
         self.mti = mti.MtiResource(self)
         self.navigation = navigation.NavigationResource(self)
-        self.navigationalobstruction = navigationalobstruction.NavigationalobstructionResource(self)
+        self.navigational_obstruction = navigational_obstruction.NavigationalObstructionResource(self)
         self.notification = notification.NotificationResource(self)
-        self.objectofinterest = objectofinterest.ObjectofinterestResource(self)
+        self.object_of_interest = object_of_interest.ObjectOfInterestResource(self)
         self.observations = observations.ObservationsResource(self)
         self.onboardnavigation = onboardnavigation.OnboardnavigationResource(self)
         self.onorbit = onorbit.OnorbitResource(self)
@@ -588,65 +548,60 @@ class Unifieddatalibrary(SyncAPIClient):
         self.orbittrack = orbittrack.OrbittrackResource(self)
         self.organization = organization.OrganizationResource(self)
         self.organizationdetails = organizationdetails.OrganizationdetailsResource(self)
-        self.passiveradarobservation = passiveradarobservation.PassiveradarobservationResource(self)
         self.personnelrecovery = personnelrecovery.PersonnelrecoveryResource(self)
         self.poi = poi.PoiResource(self)
         self.port = port.PortResource(self)
-        self.radarobservation = radarobservation.RadarobservationResource(self)
-        self.rfband = rfband.RfbandResource(self)
-        self.rfbandtype = rfbandtype.RfbandtypeResource(self)
-        self.rfemitter = rfemitter.RfemitterResource(self)
-        self.rfemitterdetails = rfemitterdetails.RfemitterdetailsResource(self)
-        self.rfobservation = rfobservation.RfobservationResource(self)
-        self.sarobservation = sarobservation.SarobservationResource(self)
+        self.rf_band = rf_band.RfBandResource(self)
+        self.rf_band_type = rf_band_type.RfBandTypeResource(self)
+        self.rf_emitter = rf_emitter.RfEmitterResource(self)
+        self.rf_emitter_details = rf_emitter_details.RfEmitterDetailsResource(self)
+        self.sar_observation = sar_observation.SarObservationResource(self)
         self.scientific = scientific.ScientificResource(self)
         self.sensor = sensor.SensorResource(self)
-        self.sensormaintenance = sensormaintenance.SensormaintenanceResource(self)
-        self.sensorobservationtype = sensorobservationtype.SensorobservationtypeResource(self)
-        self.sensorplan = sensorplan.SensorplanResource(self)
-        self.sensortype = sensortype.SensortypeResource(self)
-        self.seradatacommdetails = seradatacommdetails.SeradatacommdetailsResource(self)
-        self.seradataearlywarning = seradataearlywarning.SeradataearlywarningResource(self)
-        self.seradatanavigation = seradatanavigation.SeradatanavigationResource(self)
-        self.seradataopticalpayload = seradataopticalpayload.SeradataopticalpayloadResource(self)
-        self.seradataradarpayload = seradataradarpayload.SeradataradarpayloadResource(self)
-        self.seradatasigintpayload = seradatasigintpayload.SeradatasigintpayloadResource(self)
-        self.seradataspacecraftdetails = seradataspacecraftdetails.SeradataspacecraftdetailsResource(self)
+        self.sensor_maintenance = sensor_maintenance.SensorMaintenanceResource(self)
+        self.sensor_observation_type = sensor_observation_type.SensorObservationTypeResource(self)
+        self.sensor_plan = sensor_plan.SensorPlanResource(self)
+        self.sensor_type = sensor_type.SensorTypeResource(self)
+        self.sera_data_comm_details = sera_data_comm_details.SeraDataCommDetailsResource(self)
+        self.sera_data_early_warning = sera_data_early_warning.SeraDataEarlyWarningResource(self)
+        self.sera_data_navigation = sera_data_navigation.SeraDataNavigationResource(self)
+        self.seradata_optical_payload = seradata_optical_payload.SeradataOpticalPayloadResource(self)
+        self.seradata_radar_payload = seradata_radar_payload.SeradataRadarPayloadResource(self)
+        self.seradata_sigint_payload = seradata_sigint_payload.SeradataSigintPayloadResource(self)
+        self.seradata_spacecraft_details = seradata_spacecraft_details.SeradataSpacecraftDetailsResource(self)
         self.sgi = sgi.SgiResource(self)
         self.sigact = sigact.SigactResource(self)
         self.site = site.SiteResource(self)
-        self.siteremark = siteremark.SiteremarkResource(self)
-        self.sitestatus = sitestatus.SitestatusResource(self)
-        self.skyimagery = skyimagery.SkyimageryResource(self)
-        self.soiobservationset = soiobservationset.SoiobservationsetResource(self)
-        self.solararray = solararray.SolararrayResource(self)
-        self.solararraydetails = solararraydetails.SolararraydetailsResource(self)
-        self.sortieppr = sortieppr.SortiepprResource(self)
-        self.spaceenvobservation = spaceenvobservation.SpaceenvobservationResource(self)
+        self.site_remark = site_remark.SiteRemarkResource(self)
+        self.site_status = site_status.SiteStatusResource(self)
+        self.sky_imagery = sky_imagery.SkyImageryResource(self)
+        self.soi_observation_set = soi_observation_set.SoiObservationSetResource(self)
+        self.solar_array = solar_array.SolarArrayResource(self)
+        self.solar_array_details = solar_array_details.SolarArrayDetailsResource(self)
+        self.sortie_ppr = sortie_ppr.SortiePprResource(self)
+        self.space_env_observation = space_env_observation.SpaceEnvObservationResource(self)
         self.stage = stage.StageResource(self)
-        self.starcatalog = starcatalog.StarcatalogResource(self)
-        self.statevector = statevector.StatevectorResource(self)
+        self.star_catalog = star_catalog.StarCatalogResource(self)
+        self.state_vector = state_vector.StateVectorResource(self)
         self.status = status.StatusResource(self)
         self.substatus = substatus.SubstatusResource(self)
         self.supporting_data = supporting_data.SupportingDataResource(self)
         self.surface = surface.SurfaceResource(self)
-        self.surfaceobstruction = surfaceobstruction.SurfaceobstructionResource(self)
+        self.surface_obstruction = surface_obstruction.SurfaceObstructionResource(self)
         self.swir = swir.SwirResource(self)
-        self.taiutc = taiutc.TaiutcResource(self)
+        self.tai_utc = tai_utc.TaiUtcResource(self)
         self.tdoa_fdoa = tdoa_fdoa.TdoaFdoaResource(self)
         self.track = track.TrackResource(self)
-        self.trackdetails = trackdetails.TrackdetailsResource(self)
-        self.trackroute = trackroute.TrackrouteResource(self)
+        self.track_details = track_details.TrackDetailsResource(self)
+        self.track_route = track_route.TrackRouteResource(self)
         self.transponder = transponder.TransponderResource(self)
         self.vessel = vessel.VesselResource(self)
         self.video = video.VideoResource(self)
-        self.weatherdata = weatherdata.WeatherdataResource(self)
-        self.weatherreport = weatherreport.WeatherreportResource(self)
-        self.udl = udl.UdlResource(self)
+        self.weather_data = weather_data.WeatherDataResource(self)
+        self.weather_report = weather_report.WeatherReportResource(self)
         self.gnss_observations = gnss_observations.GnssObservationsResource(self)
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResource(self)
         self.iono_observation = iono_observation.IonoObservationResource(self)
-        self.launch_event = launch_event.LaunchEventResource(self)
         self.report_and_activity = report_and_activity.ReportAndActivityResource(self)
         self.secure_messaging = secure_messaging.SecureMessagingResource(self)
         self.scs = scs.ScsResource(self)
@@ -766,22 +721,17 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     air_events: air_events.AsyncAirEventsResource
     air_load_plans: air_load_plans.AsyncAirLoadPlansResource
     air_operations: air_operations.AsyncAirOperationsResource
-    air_tasking_orders: air_tasking_orders.AsyncAirTaskingOrdersResource
     air_transport_missions: air_transport_missions.AsyncAirTransportMissionsResource
     aircraft: aircraft.AsyncAircraftResource
     aircraft_sorties: aircraft_sorties.AsyncAircraftSortiesResource
     aircraft_status_remarks: aircraft_status_remarks.AsyncAircraftStatusRemarksResource
     aircraft_statuses: aircraft_statuses.AsyncAircraftStatusesResource
-    aircraftstatusremark: aircraftstatusremark.AsyncAircraftstatusremarkResource
     airfield_slots: airfield_slots.AsyncAirfieldSlotsResource
     airfield_status: airfield_status.AsyncAirfieldStatusResource
     airfields: airfields.AsyncAirfieldsResource
-    airfieldslotconsumptions: airfieldslotconsumptions.AsyncAirfieldslotconsumptionsResource
-    airfieldslots: airfieldslots.AsyncAirfieldslotsResource
-    airfieldstatus: airfieldstatus.AsyncAirfieldstatusResource
-    airloadplans: airloadplans.AsyncAirloadplansResource
+    airfield_slot_consumptions: airfield_slot_consumptions.AsyncAirfieldSlotConsumptionsResource
+    airload_plans: airload_plans.AsyncAirloadPlansResource
     airspace_control_orders: airspace_control_orders.AsyncAirspaceControlOrdersResource
-    airtaskingorders: airtaskingorders.AsyncAirtaskingordersResource
     ais: ais.AsyncAIsResource
     ais_objects: ais_objects.AsyncAIsObjectsResource
     analytic_imagery: analytic_imagery.AsyncAnalyticImageryResource
@@ -800,68 +750,63 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     comm: comm.AsyncCommResource
     conjunctions: conjunctions.AsyncConjunctionsResource
     cots: cots.AsyncCotsResource
-    aviationriskmanagement: aviationriskmanagement.AsyncAviationriskmanagementResource
+    aviation_risk_management: aviation_risk_management.AsyncAviationRiskManagementResource
     dropzone: dropzone.AsyncDropzoneResource
-    emittergeolocation: emittergeolocation.AsyncEmittergeolocationResource
-    featureassessment: featureassessment.AsyncFeatureassessmentResource
-    globalatmosphericmodel: globalatmosphericmodel.AsyncGlobalatmosphericmodelResource
-    routestats: routestats.AsyncRoutestatsResource
+    emitter_geolocation: emitter_geolocation.AsyncEmitterGeolocationResource
+    feature_assessment: feature_assessment.AsyncFeatureAssessmentResource
+    global_atmospheric_model: global_atmospheric_model.AsyncGlobalAtmosphericModelResource
+    route_stats: route_stats.AsyncRouteStatsResource
     countries: countries.AsyncCountriesResource
     crew: crew.AsyncCrewResource
-    diffofarrival: diffofarrival.AsyncDiffofarrivalResource
+    diff_of_arrival: diff_of_arrival.AsyncDiffOfArrivalResource
     diplomatic_clearance: diplomatic_clearance.AsyncDiplomaticClearanceResource
     drift_history: drift_history.AsyncDriftHistoryResource
-    ecpsdr: ecpsdr.AsyncEcpsdrResource
+    ecp_sdr: ecp_sdr.AsyncEcpSdrResource
     effect_requests: effect_requests.AsyncEffectRequestsResource
     effect_responses: effect_responses.AsyncEffectResponsesResource
     elsets: elsets.AsyncElsetsResource
     engine_details: engine_details.AsyncEngineDetailsResource
-    enginedetails: enginedetails.AsyncEnginedetailsResource
     engines: engines.AsyncEnginesResource
     entities: entities.AsyncEntitiesResource
-    eo_observations: eo_observations.AsyncEoObservationsResource
-    eoobservations: eoobservations.AsyncEoobservationsResource
     eop: eop.AsyncEopResource
     ephemeris: ephemeris.AsyncEphemerisResource
     ephemeris_sets: ephemeris_sets.AsyncEphemerisSetsResource
     equipment: equipment.AsyncEquipmentResource
-    equipmentremarks: equipmentremarks.AsyncEquipmentremarksResource
+    equipment_remarks: equipment_remarks.AsyncEquipmentRemarksResource
     evac: evac.AsyncEvacResource
     event_evolution: event_evolution.AsyncEventEvolutionResource
     flightplan: flightplan.AsyncFlightplanResource
-    geostatus: geostatus.AsyncGeostatusResource
-    gnssobservationset: gnssobservationset.AsyncGnssobservationsetResource
-    gnssrawif: gnssrawif.AsyncGnssrawifResource
+    geo_status: geo_status.AsyncGeoStatusResource
+    gnss_observationset: gnss_observationset.AsyncGnssObservationsetResource
+    gnss_rawif: gnss_rawif.AsyncGnssRawifResource
     ground_imagery: ground_imagery.AsyncGroundImageryResource
-    groundimagery: groundimagery.AsyncGroundimageryResource
-    h3geo: h3geo.AsyncH3geoResource
-    h3geohexcell: h3geohexcell.AsyncH3geohexcellResource
+    h3_geo: h3_geo.AsyncH3GeoResource
+    h3_geo_hex_cell: h3_geo_hex_cell.AsyncH3GeoHexCellResource
     hazard: hazard.AsyncHazardResource
-    ionoobservation: ionoobservation.AsyncIonoobservationResource
+    ion_oobservation: ion_oobservation.AsyncIonOobservationResource
     ir: ir.AsyncIrResource
     isr_collections: isr_collections.AsyncIsrCollectionsResource
     item: item.AsyncItemResource
     item_trackings: item_trackings.AsyncItemTrackingsResource
-    launchdetection: launchdetection.AsyncLaunchdetectionResource
-    launchevent: launchevent.AsyncLauncheventResource
-    launchsite: launchsite.AsyncLaunchsiteResource
-    launchsitedetails: launchsitedetails.AsyncLaunchsitedetailsResource
-    launchvehicle: launchvehicle.AsyncLaunchvehicleResource
-    launchvehicledetails: launchvehicledetails.AsyncLaunchvehicledetailsResource
+    launch_detection: launch_detection.AsyncLaunchDetectionResource
+    launch_event: launch_event.AsyncLaunchEventResource
+    launch_site: launch_site.AsyncLaunchSiteResource
+    launch_site_details: launch_site_details.AsyncLaunchSiteDetailsResource
+    launch_vehicle: launch_vehicle.AsyncLaunchVehicleResource
+    launch_vehicle_details: launch_vehicle_details.AsyncLaunchVehicleDetailsResource
     link_status: link_status.AsyncLinkStatusResource
     location: location.AsyncLocationResource
-    logisticssupport: logisticssupport.AsyncLogisticssupportResource
+    logistics_support: logistics_support.AsyncLogisticsSupportResource
     maneuvers: maneuvers.AsyncManeuversResource
     manifold: manifold.AsyncManifoldResource
     manifoldelset: manifoldelset.AsyncManifoldelsetResource
     missile_tracks: missile_tracks.AsyncMissileTracksResource
-    missionassignment: missionassignment.AsyncMissionassignmentResource
-    monoradar: monoradar.AsyncMonoradarResource
+    mission_assignment: mission_assignment.AsyncMissionAssignmentResource
     mti: mti.AsyncMtiResource
     navigation: navigation.AsyncNavigationResource
-    navigationalobstruction: navigationalobstruction.AsyncNavigationalobstructionResource
+    navigational_obstruction: navigational_obstruction.AsyncNavigationalObstructionResource
     notification: notification.AsyncNotificationResource
-    objectofinterest: objectofinterest.AsyncObjectofinterestResource
+    object_of_interest: object_of_interest.AsyncObjectOfInterestResource
     observations: observations.AsyncObservationsResource
     onboardnavigation: onboardnavigation.AsyncOnboardnavigationResource
     onorbit: onorbit.AsyncOnorbitResource
@@ -879,65 +824,60 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     orbittrack: orbittrack.AsyncOrbittrackResource
     organization: organization.AsyncOrganizationResource
     organizationdetails: organizationdetails.AsyncOrganizationdetailsResource
-    passiveradarobservation: passiveradarobservation.AsyncPassiveradarobservationResource
     personnelrecovery: personnelrecovery.AsyncPersonnelrecoveryResource
     poi: poi.AsyncPoiResource
     port: port.AsyncPortResource
-    radarobservation: radarobservation.AsyncRadarobservationResource
-    rfband: rfband.AsyncRfbandResource
-    rfbandtype: rfbandtype.AsyncRfbandtypeResource
-    rfemitter: rfemitter.AsyncRfemitterResource
-    rfemitterdetails: rfemitterdetails.AsyncRfemitterdetailsResource
-    rfobservation: rfobservation.AsyncRfobservationResource
-    sarobservation: sarobservation.AsyncSarobservationResource
+    rf_band: rf_band.AsyncRfBandResource
+    rf_band_type: rf_band_type.AsyncRfBandTypeResource
+    rf_emitter: rf_emitter.AsyncRfEmitterResource
+    rf_emitter_details: rf_emitter_details.AsyncRfEmitterDetailsResource
+    sar_observation: sar_observation.AsyncSarObservationResource
     scientific: scientific.AsyncScientificResource
     sensor: sensor.AsyncSensorResource
-    sensormaintenance: sensormaintenance.AsyncSensormaintenanceResource
-    sensorobservationtype: sensorobservationtype.AsyncSensorobservationtypeResource
-    sensorplan: sensorplan.AsyncSensorplanResource
-    sensortype: sensortype.AsyncSensortypeResource
-    seradatacommdetails: seradatacommdetails.AsyncSeradatacommdetailsResource
-    seradataearlywarning: seradataearlywarning.AsyncSeradataearlywarningResource
-    seradatanavigation: seradatanavigation.AsyncSeradatanavigationResource
-    seradataopticalpayload: seradataopticalpayload.AsyncSeradataopticalpayloadResource
-    seradataradarpayload: seradataradarpayload.AsyncSeradataradarpayloadResource
-    seradatasigintpayload: seradatasigintpayload.AsyncSeradatasigintpayloadResource
-    seradataspacecraftdetails: seradataspacecraftdetails.AsyncSeradataspacecraftdetailsResource
+    sensor_maintenance: sensor_maintenance.AsyncSensorMaintenanceResource
+    sensor_observation_type: sensor_observation_type.AsyncSensorObservationTypeResource
+    sensor_plan: sensor_plan.AsyncSensorPlanResource
+    sensor_type: sensor_type.AsyncSensorTypeResource
+    sera_data_comm_details: sera_data_comm_details.AsyncSeraDataCommDetailsResource
+    sera_data_early_warning: sera_data_early_warning.AsyncSeraDataEarlyWarningResource
+    sera_data_navigation: sera_data_navigation.AsyncSeraDataNavigationResource
+    seradata_optical_payload: seradata_optical_payload.AsyncSeradataOpticalPayloadResource
+    seradata_radar_payload: seradata_radar_payload.AsyncSeradataRadarPayloadResource
+    seradata_sigint_payload: seradata_sigint_payload.AsyncSeradataSigintPayloadResource
+    seradata_spacecraft_details: seradata_spacecraft_details.AsyncSeradataSpacecraftDetailsResource
     sgi: sgi.AsyncSgiResource
     sigact: sigact.AsyncSigactResource
     site: site.AsyncSiteResource
-    siteremark: siteremark.AsyncSiteremarkResource
-    sitestatus: sitestatus.AsyncSitestatusResource
-    skyimagery: skyimagery.AsyncSkyimageryResource
-    soiobservationset: soiobservationset.AsyncSoiobservationsetResource
-    solararray: solararray.AsyncSolararrayResource
-    solararraydetails: solararraydetails.AsyncSolararraydetailsResource
-    sortieppr: sortieppr.AsyncSortiepprResource
-    spaceenvobservation: spaceenvobservation.AsyncSpaceenvobservationResource
+    site_remark: site_remark.AsyncSiteRemarkResource
+    site_status: site_status.AsyncSiteStatusResource
+    sky_imagery: sky_imagery.AsyncSkyImageryResource
+    soi_observation_set: soi_observation_set.AsyncSoiObservationSetResource
+    solar_array: solar_array.AsyncSolarArrayResource
+    solar_array_details: solar_array_details.AsyncSolarArrayDetailsResource
+    sortie_ppr: sortie_ppr.AsyncSortiePprResource
+    space_env_observation: space_env_observation.AsyncSpaceEnvObservationResource
     stage: stage.AsyncStageResource
-    starcatalog: starcatalog.AsyncStarcatalogResource
-    statevector: statevector.AsyncStatevectorResource
+    star_catalog: star_catalog.AsyncStarCatalogResource
+    state_vector: state_vector.AsyncStateVectorResource
     status: status.AsyncStatusResource
     substatus: substatus.AsyncSubstatusResource
     supporting_data: supporting_data.AsyncSupportingDataResource
     surface: surface.AsyncSurfaceResource
-    surfaceobstruction: surfaceobstruction.AsyncSurfaceobstructionResource
+    surface_obstruction: surface_obstruction.AsyncSurfaceObstructionResource
     swir: swir.AsyncSwirResource
-    taiutc: taiutc.AsyncTaiutcResource
+    tai_utc: tai_utc.AsyncTaiUtcResource
     tdoa_fdoa: tdoa_fdoa.AsyncTdoaFdoaResource
     track: track.AsyncTrackResource
-    trackdetails: trackdetails.AsyncTrackdetailsResource
-    trackroute: trackroute.AsyncTrackrouteResource
+    track_details: track_details.AsyncTrackDetailsResource
+    track_route: track_route.AsyncTrackRouteResource
     transponder: transponder.AsyncTransponderResource
     vessel: vessel.AsyncVesselResource
     video: video.AsyncVideoResource
-    weatherdata: weatherdata.AsyncWeatherdataResource
-    weatherreport: weatherreport.AsyncWeatherreportResource
-    udl: udl.AsyncUdlResource
+    weather_data: weather_data.AsyncWeatherDataResource
+    weather_report: weather_report.AsyncWeatherReportResource
     gnss_observations: gnss_observations.AsyncGnssObservationsResource
     gnss_raw_if: gnss_raw_if.AsyncGnssRawIfResource
     iono_observation: iono_observation.AsyncIonoObservationResource
-    launch_event: launch_event.AsyncLaunchEventResource
     report_and_activity: report_and_activity.AsyncReportAndActivityResource
     secure_messaging: secure_messaging.AsyncSecureMessagingResource
     scs: scs.AsyncScsResource
@@ -1014,22 +954,17 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.air_events = air_events.AsyncAirEventsResource(self)
         self.air_load_plans = air_load_plans.AsyncAirLoadPlansResource(self)
         self.air_operations = air_operations.AsyncAirOperationsResource(self)
-        self.air_tasking_orders = air_tasking_orders.AsyncAirTaskingOrdersResource(self)
         self.air_transport_missions = air_transport_missions.AsyncAirTransportMissionsResource(self)
         self.aircraft = aircraft.AsyncAircraftResource(self)
         self.aircraft_sorties = aircraft_sorties.AsyncAircraftSortiesResource(self)
         self.aircraft_status_remarks = aircraft_status_remarks.AsyncAircraftStatusRemarksResource(self)
         self.aircraft_statuses = aircraft_statuses.AsyncAircraftStatusesResource(self)
-        self.aircraftstatusremark = aircraftstatusremark.AsyncAircraftstatusremarkResource(self)
         self.airfield_slots = airfield_slots.AsyncAirfieldSlotsResource(self)
         self.airfield_status = airfield_status.AsyncAirfieldStatusResource(self)
         self.airfields = airfields.AsyncAirfieldsResource(self)
-        self.airfieldslotconsumptions = airfieldslotconsumptions.AsyncAirfieldslotconsumptionsResource(self)
-        self.airfieldslots = airfieldslots.AsyncAirfieldslotsResource(self)
-        self.airfieldstatus = airfieldstatus.AsyncAirfieldstatusResource(self)
-        self.airloadplans = airloadplans.AsyncAirloadplansResource(self)
+        self.airfield_slot_consumptions = airfield_slot_consumptions.AsyncAirfieldSlotConsumptionsResource(self)
+        self.airload_plans = airload_plans.AsyncAirloadPlansResource(self)
         self.airspace_control_orders = airspace_control_orders.AsyncAirspaceControlOrdersResource(self)
-        self.airtaskingorders = airtaskingorders.AsyncAirtaskingordersResource(self)
         self.ais = ais.AsyncAIsResource(self)
         self.ais_objects = ais_objects.AsyncAIsObjectsResource(self)
         self.analytic_imagery = analytic_imagery.AsyncAnalyticImageryResource(self)
@@ -1048,68 +983,63 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.comm = comm.AsyncCommResource(self)
         self.conjunctions = conjunctions.AsyncConjunctionsResource(self)
         self.cots = cots.AsyncCotsResource(self)
-        self.aviationriskmanagement = aviationriskmanagement.AsyncAviationriskmanagementResource(self)
+        self.aviation_risk_management = aviation_risk_management.AsyncAviationRiskManagementResource(self)
         self.dropzone = dropzone.AsyncDropzoneResource(self)
-        self.emittergeolocation = emittergeolocation.AsyncEmittergeolocationResource(self)
-        self.featureassessment = featureassessment.AsyncFeatureassessmentResource(self)
-        self.globalatmosphericmodel = globalatmosphericmodel.AsyncGlobalatmosphericmodelResource(self)
-        self.routestats = routestats.AsyncRoutestatsResource(self)
+        self.emitter_geolocation = emitter_geolocation.AsyncEmitterGeolocationResource(self)
+        self.feature_assessment = feature_assessment.AsyncFeatureAssessmentResource(self)
+        self.global_atmospheric_model = global_atmospheric_model.AsyncGlobalAtmosphericModelResource(self)
+        self.route_stats = route_stats.AsyncRouteStatsResource(self)
         self.countries = countries.AsyncCountriesResource(self)
         self.crew = crew.AsyncCrewResource(self)
-        self.diffofarrival = diffofarrival.AsyncDiffofarrivalResource(self)
+        self.diff_of_arrival = diff_of_arrival.AsyncDiffOfArrivalResource(self)
         self.diplomatic_clearance = diplomatic_clearance.AsyncDiplomaticClearanceResource(self)
         self.drift_history = drift_history.AsyncDriftHistoryResource(self)
-        self.ecpsdr = ecpsdr.AsyncEcpsdrResource(self)
+        self.ecp_sdr = ecp_sdr.AsyncEcpSdrResource(self)
         self.effect_requests = effect_requests.AsyncEffectRequestsResource(self)
         self.effect_responses = effect_responses.AsyncEffectResponsesResource(self)
         self.elsets = elsets.AsyncElsetsResource(self)
         self.engine_details = engine_details.AsyncEngineDetailsResource(self)
-        self.enginedetails = enginedetails.AsyncEnginedetailsResource(self)
         self.engines = engines.AsyncEnginesResource(self)
         self.entities = entities.AsyncEntitiesResource(self)
-        self.eo_observations = eo_observations.AsyncEoObservationsResource(self)
-        self.eoobservations = eoobservations.AsyncEoobservationsResource(self)
         self.eop = eop.AsyncEopResource(self)
         self.ephemeris = ephemeris.AsyncEphemerisResource(self)
         self.ephemeris_sets = ephemeris_sets.AsyncEphemerisSetsResource(self)
         self.equipment = equipment.AsyncEquipmentResource(self)
-        self.equipmentremarks = equipmentremarks.AsyncEquipmentremarksResource(self)
+        self.equipment_remarks = equipment_remarks.AsyncEquipmentRemarksResource(self)
         self.evac = evac.AsyncEvacResource(self)
         self.event_evolution = event_evolution.AsyncEventEvolutionResource(self)
         self.flightplan = flightplan.AsyncFlightplanResource(self)
-        self.geostatus = geostatus.AsyncGeostatusResource(self)
-        self.gnssobservationset = gnssobservationset.AsyncGnssobservationsetResource(self)
-        self.gnssrawif = gnssrawif.AsyncGnssrawifResource(self)
+        self.geo_status = geo_status.AsyncGeoStatusResource(self)
+        self.gnss_observationset = gnss_observationset.AsyncGnssObservationsetResource(self)
+        self.gnss_rawif = gnss_rawif.AsyncGnssRawifResource(self)
         self.ground_imagery = ground_imagery.AsyncGroundImageryResource(self)
-        self.groundimagery = groundimagery.AsyncGroundimageryResource(self)
-        self.h3geo = h3geo.AsyncH3geoResource(self)
-        self.h3geohexcell = h3geohexcell.AsyncH3geohexcellResource(self)
+        self.h3_geo = h3_geo.AsyncH3GeoResource(self)
+        self.h3_geo_hex_cell = h3_geo_hex_cell.AsyncH3GeoHexCellResource(self)
         self.hazard = hazard.AsyncHazardResource(self)
-        self.ionoobservation = ionoobservation.AsyncIonoobservationResource(self)
+        self.ion_oobservation = ion_oobservation.AsyncIonOobservationResource(self)
         self.ir = ir.AsyncIrResource(self)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResource(self)
         self.item = item.AsyncItemResource(self)
         self.item_trackings = item_trackings.AsyncItemTrackingsResource(self)
-        self.launchdetection = launchdetection.AsyncLaunchdetectionResource(self)
-        self.launchevent = launchevent.AsyncLauncheventResource(self)
-        self.launchsite = launchsite.AsyncLaunchsiteResource(self)
-        self.launchsitedetails = launchsitedetails.AsyncLaunchsitedetailsResource(self)
-        self.launchvehicle = launchvehicle.AsyncLaunchvehicleResource(self)
-        self.launchvehicledetails = launchvehicledetails.AsyncLaunchvehicledetailsResource(self)
+        self.launch_detection = launch_detection.AsyncLaunchDetectionResource(self)
+        self.launch_event = launch_event.AsyncLaunchEventResource(self)
+        self.launch_site = launch_site.AsyncLaunchSiteResource(self)
+        self.launch_site_details = launch_site_details.AsyncLaunchSiteDetailsResource(self)
+        self.launch_vehicle = launch_vehicle.AsyncLaunchVehicleResource(self)
+        self.launch_vehicle_details = launch_vehicle_details.AsyncLaunchVehicleDetailsResource(self)
         self.link_status = link_status.AsyncLinkStatusResource(self)
         self.location = location.AsyncLocationResource(self)
-        self.logisticssupport = logisticssupport.AsyncLogisticssupportResource(self)
+        self.logistics_support = logistics_support.AsyncLogisticsSupportResource(self)
         self.maneuvers = maneuvers.AsyncManeuversResource(self)
         self.manifold = manifold.AsyncManifoldResource(self)
         self.manifoldelset = manifoldelset.AsyncManifoldelsetResource(self)
         self.missile_tracks = missile_tracks.AsyncMissileTracksResource(self)
-        self.missionassignment = missionassignment.AsyncMissionassignmentResource(self)
-        self.monoradar = monoradar.AsyncMonoradarResource(self)
+        self.mission_assignment = mission_assignment.AsyncMissionAssignmentResource(self)
         self.mti = mti.AsyncMtiResource(self)
         self.navigation = navigation.AsyncNavigationResource(self)
-        self.navigationalobstruction = navigationalobstruction.AsyncNavigationalobstructionResource(self)
+        self.navigational_obstruction = navigational_obstruction.AsyncNavigationalObstructionResource(self)
         self.notification = notification.AsyncNotificationResource(self)
-        self.objectofinterest = objectofinterest.AsyncObjectofinterestResource(self)
+        self.object_of_interest = object_of_interest.AsyncObjectOfInterestResource(self)
         self.observations = observations.AsyncObservationsResource(self)
         self.onboardnavigation = onboardnavigation.AsyncOnboardnavigationResource(self)
         self.onorbit = onorbit.AsyncOnorbitResource(self)
@@ -1127,65 +1057,60 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.orbittrack = orbittrack.AsyncOrbittrackResource(self)
         self.organization = organization.AsyncOrganizationResource(self)
         self.organizationdetails = organizationdetails.AsyncOrganizationdetailsResource(self)
-        self.passiveradarobservation = passiveradarobservation.AsyncPassiveradarobservationResource(self)
         self.personnelrecovery = personnelrecovery.AsyncPersonnelrecoveryResource(self)
         self.poi = poi.AsyncPoiResource(self)
         self.port = port.AsyncPortResource(self)
-        self.radarobservation = radarobservation.AsyncRadarobservationResource(self)
-        self.rfband = rfband.AsyncRfbandResource(self)
-        self.rfbandtype = rfbandtype.AsyncRfbandtypeResource(self)
-        self.rfemitter = rfemitter.AsyncRfemitterResource(self)
-        self.rfemitterdetails = rfemitterdetails.AsyncRfemitterdetailsResource(self)
-        self.rfobservation = rfobservation.AsyncRfobservationResource(self)
-        self.sarobservation = sarobservation.AsyncSarobservationResource(self)
+        self.rf_band = rf_band.AsyncRfBandResource(self)
+        self.rf_band_type = rf_band_type.AsyncRfBandTypeResource(self)
+        self.rf_emitter = rf_emitter.AsyncRfEmitterResource(self)
+        self.rf_emitter_details = rf_emitter_details.AsyncRfEmitterDetailsResource(self)
+        self.sar_observation = sar_observation.AsyncSarObservationResource(self)
         self.scientific = scientific.AsyncScientificResource(self)
         self.sensor = sensor.AsyncSensorResource(self)
-        self.sensormaintenance = sensormaintenance.AsyncSensormaintenanceResource(self)
-        self.sensorobservationtype = sensorobservationtype.AsyncSensorobservationtypeResource(self)
-        self.sensorplan = sensorplan.AsyncSensorplanResource(self)
-        self.sensortype = sensortype.AsyncSensortypeResource(self)
-        self.seradatacommdetails = seradatacommdetails.AsyncSeradatacommdetailsResource(self)
-        self.seradataearlywarning = seradataearlywarning.AsyncSeradataearlywarningResource(self)
-        self.seradatanavigation = seradatanavigation.AsyncSeradatanavigationResource(self)
-        self.seradataopticalpayload = seradataopticalpayload.AsyncSeradataopticalpayloadResource(self)
-        self.seradataradarpayload = seradataradarpayload.AsyncSeradataradarpayloadResource(self)
-        self.seradatasigintpayload = seradatasigintpayload.AsyncSeradatasigintpayloadResource(self)
-        self.seradataspacecraftdetails = seradataspacecraftdetails.AsyncSeradataspacecraftdetailsResource(self)
+        self.sensor_maintenance = sensor_maintenance.AsyncSensorMaintenanceResource(self)
+        self.sensor_observation_type = sensor_observation_type.AsyncSensorObservationTypeResource(self)
+        self.sensor_plan = sensor_plan.AsyncSensorPlanResource(self)
+        self.sensor_type = sensor_type.AsyncSensorTypeResource(self)
+        self.sera_data_comm_details = sera_data_comm_details.AsyncSeraDataCommDetailsResource(self)
+        self.sera_data_early_warning = sera_data_early_warning.AsyncSeraDataEarlyWarningResource(self)
+        self.sera_data_navigation = sera_data_navigation.AsyncSeraDataNavigationResource(self)
+        self.seradata_optical_payload = seradata_optical_payload.AsyncSeradataOpticalPayloadResource(self)
+        self.seradata_radar_payload = seradata_radar_payload.AsyncSeradataRadarPayloadResource(self)
+        self.seradata_sigint_payload = seradata_sigint_payload.AsyncSeradataSigintPayloadResource(self)
+        self.seradata_spacecraft_details = seradata_spacecraft_details.AsyncSeradataSpacecraftDetailsResource(self)
         self.sgi = sgi.AsyncSgiResource(self)
         self.sigact = sigact.AsyncSigactResource(self)
         self.site = site.AsyncSiteResource(self)
-        self.siteremark = siteremark.AsyncSiteremarkResource(self)
-        self.sitestatus = sitestatus.AsyncSitestatusResource(self)
-        self.skyimagery = skyimagery.AsyncSkyimageryResource(self)
-        self.soiobservationset = soiobservationset.AsyncSoiobservationsetResource(self)
-        self.solararray = solararray.AsyncSolararrayResource(self)
-        self.solararraydetails = solararraydetails.AsyncSolararraydetailsResource(self)
-        self.sortieppr = sortieppr.AsyncSortiepprResource(self)
-        self.spaceenvobservation = spaceenvobservation.AsyncSpaceenvobservationResource(self)
+        self.site_remark = site_remark.AsyncSiteRemarkResource(self)
+        self.site_status = site_status.AsyncSiteStatusResource(self)
+        self.sky_imagery = sky_imagery.AsyncSkyImageryResource(self)
+        self.soi_observation_set = soi_observation_set.AsyncSoiObservationSetResource(self)
+        self.solar_array = solar_array.AsyncSolarArrayResource(self)
+        self.solar_array_details = solar_array_details.AsyncSolarArrayDetailsResource(self)
+        self.sortie_ppr = sortie_ppr.AsyncSortiePprResource(self)
+        self.space_env_observation = space_env_observation.AsyncSpaceEnvObservationResource(self)
         self.stage = stage.AsyncStageResource(self)
-        self.starcatalog = starcatalog.AsyncStarcatalogResource(self)
-        self.statevector = statevector.AsyncStatevectorResource(self)
+        self.star_catalog = star_catalog.AsyncStarCatalogResource(self)
+        self.state_vector = state_vector.AsyncStateVectorResource(self)
         self.status = status.AsyncStatusResource(self)
         self.substatus = substatus.AsyncSubstatusResource(self)
         self.supporting_data = supporting_data.AsyncSupportingDataResource(self)
         self.surface = surface.AsyncSurfaceResource(self)
-        self.surfaceobstruction = surfaceobstruction.AsyncSurfaceobstructionResource(self)
+        self.surface_obstruction = surface_obstruction.AsyncSurfaceObstructionResource(self)
         self.swir = swir.AsyncSwirResource(self)
-        self.taiutc = taiutc.AsyncTaiutcResource(self)
+        self.tai_utc = tai_utc.AsyncTaiUtcResource(self)
         self.tdoa_fdoa = tdoa_fdoa.AsyncTdoaFdoaResource(self)
         self.track = track.AsyncTrackResource(self)
-        self.trackdetails = trackdetails.AsyncTrackdetailsResource(self)
-        self.trackroute = trackroute.AsyncTrackrouteResource(self)
+        self.track_details = track_details.AsyncTrackDetailsResource(self)
+        self.track_route = track_route.AsyncTrackRouteResource(self)
         self.transponder = transponder.AsyncTransponderResource(self)
         self.vessel = vessel.AsyncVesselResource(self)
         self.video = video.AsyncVideoResource(self)
-        self.weatherdata = weatherdata.AsyncWeatherdataResource(self)
-        self.weatherreport = weatherreport.AsyncWeatherreportResource(self)
-        self.udl = udl.AsyncUdlResource(self)
+        self.weather_data = weather_data.AsyncWeatherDataResource(self)
+        self.weather_report = weather_report.AsyncWeatherReportResource(self)
         self.gnss_observations = gnss_observations.AsyncGnssObservationsResource(self)
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResource(self)
         self.iono_observation = iono_observation.AsyncIonoObservationResource(self)
-        self.launch_event = launch_event.AsyncLaunchEventResource(self)
         self.report_and_activity = report_and_activity.AsyncReportAndActivityResource(self)
         self.secure_messaging = secure_messaging.AsyncSecureMessagingResource(self)
         self.scs = scs.AsyncScsResource(self)
@@ -1306,7 +1231,6 @@ class UnifieddatalibraryWithRawResponse:
         self.air_events = air_events.AirEventsResourceWithRawResponse(client.air_events)
         self.air_load_plans = air_load_plans.AirLoadPlansResourceWithRawResponse(client.air_load_plans)
         self.air_operations = air_operations.AirOperationsResourceWithRawResponse(client.air_operations)
-        self.air_tasking_orders = air_tasking_orders.AirTaskingOrdersResourceWithRawResponse(client.air_tasking_orders)
         self.air_transport_missions = air_transport_missions.AirTransportMissionsResourceWithRawResponse(
             client.air_transport_missions
         )
@@ -1316,22 +1240,16 @@ class UnifieddatalibraryWithRawResponse:
             client.aircraft_status_remarks
         )
         self.aircraft_statuses = aircraft_statuses.AircraftStatusesResourceWithRawResponse(client.aircraft_statuses)
-        self.aircraftstatusremark = aircraftstatusremark.AircraftstatusremarkResourceWithRawResponse(
-            client.aircraftstatusremark
-        )
         self.airfield_slots = airfield_slots.AirfieldSlotsResourceWithRawResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AirfieldStatusResourceWithRawResponse(client.airfield_status)
         self.airfields = airfields.AirfieldsResourceWithRawResponse(client.airfields)
-        self.airfieldslotconsumptions = airfieldslotconsumptions.AirfieldslotconsumptionsResourceWithRawResponse(
-            client.airfieldslotconsumptions
+        self.airfield_slot_consumptions = airfield_slot_consumptions.AirfieldSlotConsumptionsResourceWithRawResponse(
+            client.airfield_slot_consumptions
         )
-        self.airfieldslots = airfieldslots.AirfieldslotsResourceWithRawResponse(client.airfieldslots)
-        self.airfieldstatus = airfieldstatus.AirfieldstatusResourceWithRawResponse(client.airfieldstatus)
-        self.airloadplans = airloadplans.AirloadplansResourceWithRawResponse(client.airloadplans)
+        self.airload_plans = airload_plans.AirloadPlansResourceWithRawResponse(client.airload_plans)
         self.airspace_control_orders = airspace_control_orders.AirspaceControlOrdersResourceWithRawResponse(
             client.airspace_control_orders
         )
-        self.airtaskingorders = airtaskingorders.AirtaskingordersResourceWithRawResponse(client.airtaskingorders)
         self.ais = ais.AIsResourceWithRawResponse(client.ais)
         self.ais_objects = ais_objects.AIsObjectsResourceWithRawResponse(client.ais_objects)
         self.analytic_imagery = analytic_imagery.AnalyticImageryResourceWithRawResponse(client.analytic_imagery)
@@ -1350,82 +1268,79 @@ class UnifieddatalibraryWithRawResponse:
         self.comm = comm.CommResourceWithRawResponse(client.comm)
         self.conjunctions = conjunctions.ConjunctionsResourceWithRawResponse(client.conjunctions)
         self.cots = cots.CotsResourceWithRawResponse(client.cots)
-        self.aviationriskmanagement = aviationriskmanagement.AviationriskmanagementResourceWithRawResponse(
-            client.aviationriskmanagement
+        self.aviation_risk_management = aviation_risk_management.AviationRiskManagementResourceWithRawResponse(
+            client.aviation_risk_management
         )
         self.dropzone = dropzone.DropzoneResourceWithRawResponse(client.dropzone)
-        self.emittergeolocation = emittergeolocation.EmittergeolocationResourceWithRawResponse(
-            client.emittergeolocation
+        self.emitter_geolocation = emitter_geolocation.EmitterGeolocationResourceWithRawResponse(
+            client.emitter_geolocation
         )
-        self.featureassessment = featureassessment.FeatureassessmentResourceWithRawResponse(client.featureassessment)
-        self.globalatmosphericmodel = globalatmosphericmodel.GlobalatmosphericmodelResourceWithRawResponse(
-            client.globalatmosphericmodel
+        self.feature_assessment = feature_assessment.FeatureAssessmentResourceWithRawResponse(client.feature_assessment)
+        self.global_atmospheric_model = global_atmospheric_model.GlobalAtmosphericModelResourceWithRawResponse(
+            client.global_atmospheric_model
         )
-        self.routestats = routestats.RoutestatsResourceWithRawResponse(client.routestats)
+        self.route_stats = route_stats.RouteStatsResourceWithRawResponse(client.route_stats)
         self.countries = countries.CountriesResourceWithRawResponse(client.countries)
         self.crew = crew.CrewResourceWithRawResponse(client.crew)
-        self.diffofarrival = diffofarrival.DiffofarrivalResourceWithRawResponse(client.diffofarrival)
+        self.diff_of_arrival = diff_of_arrival.DiffOfArrivalResourceWithRawResponse(client.diff_of_arrival)
         self.diplomatic_clearance = diplomatic_clearance.DiplomaticClearanceResourceWithRawResponse(
             client.diplomatic_clearance
         )
         self.drift_history = drift_history.DriftHistoryResourceWithRawResponse(client.drift_history)
-        self.ecpsdr = ecpsdr.EcpsdrResourceWithRawResponse(client.ecpsdr)
+        self.ecp_sdr = ecp_sdr.EcpSdrResourceWithRawResponse(client.ecp_sdr)
         self.effect_requests = effect_requests.EffectRequestsResourceWithRawResponse(client.effect_requests)
         self.effect_responses = effect_responses.EffectResponsesResourceWithRawResponse(client.effect_responses)
         self.elsets = elsets.ElsetsResourceWithRawResponse(client.elsets)
         self.engine_details = engine_details.EngineDetailsResourceWithRawResponse(client.engine_details)
-        self.enginedetails = enginedetails.EnginedetailsResourceWithRawResponse(client.enginedetails)
         self.engines = engines.EnginesResourceWithRawResponse(client.engines)
         self.entities = entities.EntitiesResourceWithRawResponse(client.entities)
-        self.eo_observations = eo_observations.EoObservationsResourceWithRawResponse(client.eo_observations)
-        self.eoobservations = eoobservations.EoobservationsResourceWithRawResponse(client.eoobservations)
         self.eop = eop.EopResourceWithRawResponse(client.eop)
         self.ephemeris = ephemeris.EphemerisResourceWithRawResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.EphemerisSetsResourceWithRawResponse(client.ephemeris_sets)
         self.equipment = equipment.EquipmentResourceWithRawResponse(client.equipment)
-        self.equipmentremarks = equipmentremarks.EquipmentremarksResourceWithRawResponse(client.equipmentremarks)
+        self.equipment_remarks = equipment_remarks.EquipmentRemarksResourceWithRawResponse(client.equipment_remarks)
         self.evac = evac.EvacResourceWithRawResponse(client.evac)
         self.event_evolution = event_evolution.EventEvolutionResourceWithRawResponse(client.event_evolution)
         self.flightplan = flightplan.FlightplanResourceWithRawResponse(client.flightplan)
-        self.geostatus = geostatus.GeostatusResourceWithRawResponse(client.geostatus)
-        self.gnssobservationset = gnssobservationset.GnssobservationsetResourceWithRawResponse(
-            client.gnssobservationset
+        self.geo_status = geo_status.GeoStatusResourceWithRawResponse(client.geo_status)
+        self.gnss_observationset = gnss_observationset.GnssObservationsetResourceWithRawResponse(
+            client.gnss_observationset
         )
-        self.gnssrawif = gnssrawif.GnssrawifResourceWithRawResponse(client.gnssrawif)
+        self.gnss_rawif = gnss_rawif.GnssRawifResourceWithRawResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.GroundImageryResourceWithRawResponse(client.ground_imagery)
-        self.groundimagery = groundimagery.GroundimageryResourceWithRawResponse(client.groundimagery)
-        self.h3geo = h3geo.H3geoResourceWithRawResponse(client.h3geo)
-        self.h3geohexcell = h3geohexcell.H3geohexcellResourceWithRawResponse(client.h3geohexcell)
+        self.h3_geo = h3_geo.H3GeoResourceWithRawResponse(client.h3_geo)
+        self.h3_geo_hex_cell = h3_geo_hex_cell.H3GeoHexCellResourceWithRawResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.HazardResourceWithRawResponse(client.hazard)
-        self.ionoobservation = ionoobservation.IonoobservationResourceWithRawResponse(client.ionoobservation)
+        self.ion_oobservation = ion_oobservation.IonOobservationResourceWithRawResponse(client.ion_oobservation)
         self.ir = ir.IrResourceWithRawResponse(client.ir)
         self.isr_collections = isr_collections.IsrCollectionsResourceWithRawResponse(client.isr_collections)
         self.item = item.ItemResourceWithRawResponse(client.item)
         self.item_trackings = item_trackings.ItemTrackingsResourceWithRawResponse(client.item_trackings)
-        self.launchdetection = launchdetection.LaunchdetectionResourceWithRawResponse(client.launchdetection)
-        self.launchevent = launchevent.LauncheventResourceWithRawResponse(client.launchevent)
-        self.launchsite = launchsite.LaunchsiteResourceWithRawResponse(client.launchsite)
-        self.launchsitedetails = launchsitedetails.LaunchsitedetailsResourceWithRawResponse(client.launchsitedetails)
-        self.launchvehicle = launchvehicle.LaunchvehicleResourceWithRawResponse(client.launchvehicle)
-        self.launchvehicledetails = launchvehicledetails.LaunchvehicledetailsResourceWithRawResponse(
-            client.launchvehicledetails
+        self.launch_detection = launch_detection.LaunchDetectionResourceWithRawResponse(client.launch_detection)
+        self.launch_event = launch_event.LaunchEventResourceWithRawResponse(client.launch_event)
+        self.launch_site = launch_site.LaunchSiteResourceWithRawResponse(client.launch_site)
+        self.launch_site_details = launch_site_details.LaunchSiteDetailsResourceWithRawResponse(
+            client.launch_site_details
+        )
+        self.launch_vehicle = launch_vehicle.LaunchVehicleResourceWithRawResponse(client.launch_vehicle)
+        self.launch_vehicle_details = launch_vehicle_details.LaunchVehicleDetailsResourceWithRawResponse(
+            client.launch_vehicle_details
         )
         self.link_status = link_status.LinkStatusResourceWithRawResponse(client.link_status)
         self.location = location.LocationResourceWithRawResponse(client.location)
-        self.logisticssupport = logisticssupport.LogisticssupportResourceWithRawResponse(client.logisticssupport)
+        self.logistics_support = logistics_support.LogisticsSupportResourceWithRawResponse(client.logistics_support)
         self.maneuvers = maneuvers.ManeuversResourceWithRawResponse(client.maneuvers)
         self.manifold = manifold.ManifoldResourceWithRawResponse(client.manifold)
         self.manifoldelset = manifoldelset.ManifoldelsetResourceWithRawResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.MissileTracksResourceWithRawResponse(client.missile_tracks)
-        self.missionassignment = missionassignment.MissionassignmentResourceWithRawResponse(client.missionassignment)
-        self.monoradar = monoradar.MonoradarResourceWithRawResponse(client.monoradar)
+        self.mission_assignment = mission_assignment.MissionAssignmentResourceWithRawResponse(client.mission_assignment)
         self.mti = mti.MtiResourceWithRawResponse(client.mti)
         self.navigation = navigation.NavigationResourceWithRawResponse(client.navigation)
-        self.navigationalobstruction = navigationalobstruction.NavigationalobstructionResourceWithRawResponse(
-            client.navigationalobstruction
+        self.navigational_obstruction = navigational_obstruction.NavigationalObstructionResourceWithRawResponse(
+            client.navigational_obstruction
         )
         self.notification = notification.NotificationResourceWithRawResponse(client.notification)
-        self.objectofinterest = objectofinterest.ObjectofinterestResourceWithRawResponse(client.objectofinterest)
+        self.object_of_interest = object_of_interest.ObjectOfInterestResourceWithRawResponse(client.object_of_interest)
         self.observations = observations.ObservationsResourceWithRawResponse(client.observations)
         self.onboardnavigation = onboardnavigation.OnboardnavigationResourceWithRawResponse(client.onboardnavigation)
         self.onorbit = onorbit.OnorbitResourceWithRawResponse(client.onorbit)
@@ -1451,87 +1366,84 @@ class UnifieddatalibraryWithRawResponse:
         self.organizationdetails = organizationdetails.OrganizationdetailsResourceWithRawResponse(
             client.organizationdetails
         )
-        self.passiveradarobservation = passiveradarobservation.PassiveradarobservationResourceWithRawResponse(
-            client.passiveradarobservation
-        )
         self.personnelrecovery = personnelrecovery.PersonnelrecoveryResourceWithRawResponse(client.personnelrecovery)
         self.poi = poi.PoiResourceWithRawResponse(client.poi)
         self.port = port.PortResourceWithRawResponse(client.port)
-        self.radarobservation = radarobservation.RadarobservationResourceWithRawResponse(client.radarobservation)
-        self.rfband = rfband.RfbandResourceWithRawResponse(client.rfband)
-        self.rfbandtype = rfbandtype.RfbandtypeResourceWithRawResponse(client.rfbandtype)
-        self.rfemitter = rfemitter.RfemitterResourceWithRawResponse(client.rfemitter)
-        self.rfemitterdetails = rfemitterdetails.RfemitterdetailsResourceWithRawResponse(client.rfemitterdetails)
-        self.rfobservation = rfobservation.RfobservationResourceWithRawResponse(client.rfobservation)
-        self.sarobservation = sarobservation.SarobservationResourceWithRawResponse(client.sarobservation)
+        self.rf_band = rf_band.RfBandResourceWithRawResponse(client.rf_band)
+        self.rf_band_type = rf_band_type.RfBandTypeResourceWithRawResponse(client.rf_band_type)
+        self.rf_emitter = rf_emitter.RfEmitterResourceWithRawResponse(client.rf_emitter)
+        self.rf_emitter_details = rf_emitter_details.RfEmitterDetailsResourceWithRawResponse(client.rf_emitter_details)
+        self.sar_observation = sar_observation.SarObservationResourceWithRawResponse(client.sar_observation)
         self.scientific = scientific.ScientificResourceWithRawResponse(client.scientific)
         self.sensor = sensor.SensorResourceWithRawResponse(client.sensor)
-        self.sensormaintenance = sensormaintenance.SensormaintenanceResourceWithRawResponse(client.sensormaintenance)
-        self.sensorobservationtype = sensorobservationtype.SensorobservationtypeResourceWithRawResponse(
-            client.sensorobservationtype
+        self.sensor_maintenance = sensor_maintenance.SensorMaintenanceResourceWithRawResponse(client.sensor_maintenance)
+        self.sensor_observation_type = sensor_observation_type.SensorObservationTypeResourceWithRawResponse(
+            client.sensor_observation_type
         )
-        self.sensorplan = sensorplan.SensorplanResourceWithRawResponse(client.sensorplan)
-        self.sensortype = sensortype.SensortypeResourceWithRawResponse(client.sensortype)
-        self.seradatacommdetails = seradatacommdetails.SeradatacommdetailsResourceWithRawResponse(
-            client.seradatacommdetails
+        self.sensor_plan = sensor_plan.SensorPlanResourceWithRawResponse(client.sensor_plan)
+        self.sensor_type = sensor_type.SensorTypeResourceWithRawResponse(client.sensor_type)
+        self.sera_data_comm_details = sera_data_comm_details.SeraDataCommDetailsResourceWithRawResponse(
+            client.sera_data_comm_details
         )
-        self.seradataearlywarning = seradataearlywarning.SeradataearlywarningResourceWithRawResponse(
-            client.seradataearlywarning
+        self.sera_data_early_warning = sera_data_early_warning.SeraDataEarlyWarningResourceWithRawResponse(
+            client.sera_data_early_warning
         )
-        self.seradatanavigation = seradatanavigation.SeradatanavigationResourceWithRawResponse(
-            client.seradatanavigation
+        self.sera_data_navigation = sera_data_navigation.SeraDataNavigationResourceWithRawResponse(
+            client.sera_data_navigation
         )
-        self.seradataopticalpayload = seradataopticalpayload.SeradataopticalpayloadResourceWithRawResponse(
-            client.seradataopticalpayload
+        self.seradata_optical_payload = seradata_optical_payload.SeradataOpticalPayloadResourceWithRawResponse(
+            client.seradata_optical_payload
         )
-        self.seradataradarpayload = seradataradarpayload.SeradataradarpayloadResourceWithRawResponse(
-            client.seradataradarpayload
+        self.seradata_radar_payload = seradata_radar_payload.SeradataRadarPayloadResourceWithRawResponse(
+            client.seradata_radar_payload
         )
-        self.seradatasigintpayload = seradatasigintpayload.SeradatasigintpayloadResourceWithRawResponse(
-            client.seradatasigintpayload
+        self.seradata_sigint_payload = seradata_sigint_payload.SeradataSigintPayloadResourceWithRawResponse(
+            client.seradata_sigint_payload
         )
-        self.seradataspacecraftdetails = seradataspacecraftdetails.SeradataspacecraftdetailsResourceWithRawResponse(
-            client.seradataspacecraftdetails
+        self.seradata_spacecraft_details = seradata_spacecraft_details.SeradataSpacecraftDetailsResourceWithRawResponse(
+            client.seradata_spacecraft_details
         )
         self.sgi = sgi.SgiResourceWithRawResponse(client.sgi)
         self.sigact = sigact.SigactResourceWithRawResponse(client.sigact)
         self.site = site.SiteResourceWithRawResponse(client.site)
-        self.siteremark = siteremark.SiteremarkResourceWithRawResponse(client.siteremark)
-        self.sitestatus = sitestatus.SitestatusResourceWithRawResponse(client.sitestatus)
-        self.skyimagery = skyimagery.SkyimageryResourceWithRawResponse(client.skyimagery)
-        self.soiobservationset = soiobservationset.SoiobservationsetResourceWithRawResponse(client.soiobservationset)
-        self.solararray = solararray.SolararrayResourceWithRawResponse(client.solararray)
-        self.solararraydetails = solararraydetails.SolararraydetailsResourceWithRawResponse(client.solararraydetails)
-        self.sortieppr = sortieppr.SortiepprResourceWithRawResponse(client.sortieppr)
-        self.spaceenvobservation = spaceenvobservation.SpaceenvobservationResourceWithRawResponse(
-            client.spaceenvobservation
+        self.site_remark = site_remark.SiteRemarkResourceWithRawResponse(client.site_remark)
+        self.site_status = site_status.SiteStatusResourceWithRawResponse(client.site_status)
+        self.sky_imagery = sky_imagery.SkyImageryResourceWithRawResponse(client.sky_imagery)
+        self.soi_observation_set = soi_observation_set.SoiObservationSetResourceWithRawResponse(
+            client.soi_observation_set
+        )
+        self.solar_array = solar_array.SolarArrayResourceWithRawResponse(client.solar_array)
+        self.solar_array_details = solar_array_details.SolarArrayDetailsResourceWithRawResponse(
+            client.solar_array_details
+        )
+        self.sortie_ppr = sortie_ppr.SortiePprResourceWithRawResponse(client.sortie_ppr)
+        self.space_env_observation = space_env_observation.SpaceEnvObservationResourceWithRawResponse(
+            client.space_env_observation
         )
         self.stage = stage.StageResourceWithRawResponse(client.stage)
-        self.starcatalog = starcatalog.StarcatalogResourceWithRawResponse(client.starcatalog)
-        self.statevector = statevector.StatevectorResourceWithRawResponse(client.statevector)
+        self.star_catalog = star_catalog.StarCatalogResourceWithRawResponse(client.star_catalog)
+        self.state_vector = state_vector.StateVectorResourceWithRawResponse(client.state_vector)
         self.status = status.StatusResourceWithRawResponse(client.status)
         self.substatus = substatus.SubstatusResourceWithRawResponse(client.substatus)
         self.supporting_data = supporting_data.SupportingDataResourceWithRawResponse(client.supporting_data)
         self.surface = surface.SurfaceResourceWithRawResponse(client.surface)
-        self.surfaceobstruction = surfaceobstruction.SurfaceobstructionResourceWithRawResponse(
-            client.surfaceobstruction
+        self.surface_obstruction = surface_obstruction.SurfaceObstructionResourceWithRawResponse(
+            client.surface_obstruction
         )
         self.swir = swir.SwirResourceWithRawResponse(client.swir)
-        self.taiutc = taiutc.TaiutcResourceWithRawResponse(client.taiutc)
+        self.tai_utc = tai_utc.TaiUtcResourceWithRawResponse(client.tai_utc)
         self.tdoa_fdoa = tdoa_fdoa.TdoaFdoaResourceWithRawResponse(client.tdoa_fdoa)
         self.track = track.TrackResourceWithRawResponse(client.track)
-        self.trackdetails = trackdetails.TrackdetailsResourceWithRawResponse(client.trackdetails)
-        self.trackroute = trackroute.TrackrouteResourceWithRawResponse(client.trackroute)
+        self.track_details = track_details.TrackDetailsResourceWithRawResponse(client.track_details)
+        self.track_route = track_route.TrackRouteResourceWithRawResponse(client.track_route)
         self.transponder = transponder.TransponderResourceWithRawResponse(client.transponder)
         self.vessel = vessel.VesselResourceWithRawResponse(client.vessel)
         self.video = video.VideoResourceWithRawResponse(client.video)
-        self.weatherdata = weatherdata.WeatherdataResourceWithRawResponse(client.weatherdata)
-        self.weatherreport = weatherreport.WeatherreportResourceWithRawResponse(client.weatherreport)
-        self.udl = udl.UdlResourceWithRawResponse(client.udl)
+        self.weather_data = weather_data.WeatherDataResourceWithRawResponse(client.weather_data)
+        self.weather_report = weather_report.WeatherReportResourceWithRawResponse(client.weather_report)
         self.gnss_observations = gnss_observations.GnssObservationsResourceWithRawResponse(client.gnss_observations)
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResourceWithRawResponse(client.gnss_raw_if)
         self.iono_observation = iono_observation.IonoObservationResourceWithRawResponse(client.iono_observation)
-        self.launch_event = launch_event.LaunchEventResourceWithRawResponse(client.launch_event)
         self.report_and_activity = report_and_activity.ReportAndActivityResourceWithRawResponse(
             client.report_and_activity
         )
@@ -1545,9 +1457,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.air_events = air_events.AsyncAirEventsResourceWithRawResponse(client.air_events)
         self.air_load_plans = air_load_plans.AsyncAirLoadPlansResourceWithRawResponse(client.air_load_plans)
         self.air_operations = air_operations.AsyncAirOperationsResourceWithRawResponse(client.air_operations)
-        self.air_tasking_orders = air_tasking_orders.AsyncAirTaskingOrdersResourceWithRawResponse(
-            client.air_tasking_orders
-        )
         self.air_transport_missions = air_transport_missions.AsyncAirTransportMissionsResourceWithRawResponse(
             client.air_transport_missions
         )
@@ -1559,22 +1468,18 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.aircraft_statuses = aircraft_statuses.AsyncAircraftStatusesResourceWithRawResponse(
             client.aircraft_statuses
         )
-        self.aircraftstatusremark = aircraftstatusremark.AsyncAircraftstatusremarkResourceWithRawResponse(
-            client.aircraftstatusremark
-        )
         self.airfield_slots = airfield_slots.AsyncAirfieldSlotsResourceWithRawResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AsyncAirfieldStatusResourceWithRawResponse(client.airfield_status)
         self.airfields = airfields.AsyncAirfieldsResourceWithRawResponse(client.airfields)
-        self.airfieldslotconsumptions = airfieldslotconsumptions.AsyncAirfieldslotconsumptionsResourceWithRawResponse(
-            client.airfieldslotconsumptions
+        self.airfield_slot_consumptions = (
+            airfield_slot_consumptions.AsyncAirfieldSlotConsumptionsResourceWithRawResponse(
+                client.airfield_slot_consumptions
+            )
         )
-        self.airfieldslots = airfieldslots.AsyncAirfieldslotsResourceWithRawResponse(client.airfieldslots)
-        self.airfieldstatus = airfieldstatus.AsyncAirfieldstatusResourceWithRawResponse(client.airfieldstatus)
-        self.airloadplans = airloadplans.AsyncAirloadplansResourceWithRawResponse(client.airloadplans)
+        self.airload_plans = airload_plans.AsyncAirloadPlansResourceWithRawResponse(client.airload_plans)
         self.airspace_control_orders = airspace_control_orders.AsyncAirspaceControlOrdersResourceWithRawResponse(
             client.airspace_control_orders
         )
-        self.airtaskingorders = airtaskingorders.AsyncAirtaskingordersResourceWithRawResponse(client.airtaskingorders)
         self.ais = ais.AsyncAIsResourceWithRawResponse(client.ais)
         self.ais_objects = ais_objects.AsyncAIsObjectsResourceWithRawResponse(client.ais_objects)
         self.analytic_imagery = analytic_imagery.AsyncAnalyticImageryResourceWithRawResponse(client.analytic_imagery)
@@ -1595,88 +1500,89 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.comm = comm.AsyncCommResourceWithRawResponse(client.comm)
         self.conjunctions = conjunctions.AsyncConjunctionsResourceWithRawResponse(client.conjunctions)
         self.cots = cots.AsyncCotsResourceWithRawResponse(client.cots)
-        self.aviationriskmanagement = aviationriskmanagement.AsyncAviationriskmanagementResourceWithRawResponse(
-            client.aviationriskmanagement
+        self.aviation_risk_management = aviation_risk_management.AsyncAviationRiskManagementResourceWithRawResponse(
+            client.aviation_risk_management
         )
         self.dropzone = dropzone.AsyncDropzoneResourceWithRawResponse(client.dropzone)
-        self.emittergeolocation = emittergeolocation.AsyncEmittergeolocationResourceWithRawResponse(
-            client.emittergeolocation
+        self.emitter_geolocation = emitter_geolocation.AsyncEmitterGeolocationResourceWithRawResponse(
+            client.emitter_geolocation
         )
-        self.featureassessment = featureassessment.AsyncFeatureassessmentResourceWithRawResponse(
-            client.featureassessment
+        self.feature_assessment = feature_assessment.AsyncFeatureAssessmentResourceWithRawResponse(
+            client.feature_assessment
         )
-        self.globalatmosphericmodel = globalatmosphericmodel.AsyncGlobalatmosphericmodelResourceWithRawResponse(
-            client.globalatmosphericmodel
+        self.global_atmospheric_model = global_atmospheric_model.AsyncGlobalAtmosphericModelResourceWithRawResponse(
+            client.global_atmospheric_model
         )
-        self.routestats = routestats.AsyncRoutestatsResourceWithRawResponse(client.routestats)
+        self.route_stats = route_stats.AsyncRouteStatsResourceWithRawResponse(client.route_stats)
         self.countries = countries.AsyncCountriesResourceWithRawResponse(client.countries)
         self.crew = crew.AsyncCrewResourceWithRawResponse(client.crew)
-        self.diffofarrival = diffofarrival.AsyncDiffofarrivalResourceWithRawResponse(client.diffofarrival)
+        self.diff_of_arrival = diff_of_arrival.AsyncDiffOfArrivalResourceWithRawResponse(client.diff_of_arrival)
         self.diplomatic_clearance = diplomatic_clearance.AsyncDiplomaticClearanceResourceWithRawResponse(
             client.diplomatic_clearance
         )
         self.drift_history = drift_history.AsyncDriftHistoryResourceWithRawResponse(client.drift_history)
-        self.ecpsdr = ecpsdr.AsyncEcpsdrResourceWithRawResponse(client.ecpsdr)
+        self.ecp_sdr = ecp_sdr.AsyncEcpSdrResourceWithRawResponse(client.ecp_sdr)
         self.effect_requests = effect_requests.AsyncEffectRequestsResourceWithRawResponse(client.effect_requests)
         self.effect_responses = effect_responses.AsyncEffectResponsesResourceWithRawResponse(client.effect_responses)
         self.elsets = elsets.AsyncElsetsResourceWithRawResponse(client.elsets)
         self.engine_details = engine_details.AsyncEngineDetailsResourceWithRawResponse(client.engine_details)
-        self.enginedetails = enginedetails.AsyncEnginedetailsResourceWithRawResponse(client.enginedetails)
         self.engines = engines.AsyncEnginesResourceWithRawResponse(client.engines)
         self.entities = entities.AsyncEntitiesResourceWithRawResponse(client.entities)
-        self.eo_observations = eo_observations.AsyncEoObservationsResourceWithRawResponse(client.eo_observations)
-        self.eoobservations = eoobservations.AsyncEoobservationsResourceWithRawResponse(client.eoobservations)
         self.eop = eop.AsyncEopResourceWithRawResponse(client.eop)
         self.ephemeris = ephemeris.AsyncEphemerisResourceWithRawResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.AsyncEphemerisSetsResourceWithRawResponse(client.ephemeris_sets)
         self.equipment = equipment.AsyncEquipmentResourceWithRawResponse(client.equipment)
-        self.equipmentremarks = equipmentremarks.AsyncEquipmentremarksResourceWithRawResponse(client.equipmentremarks)
+        self.equipment_remarks = equipment_remarks.AsyncEquipmentRemarksResourceWithRawResponse(
+            client.equipment_remarks
+        )
         self.evac = evac.AsyncEvacResourceWithRawResponse(client.evac)
         self.event_evolution = event_evolution.AsyncEventEvolutionResourceWithRawResponse(client.event_evolution)
         self.flightplan = flightplan.AsyncFlightplanResourceWithRawResponse(client.flightplan)
-        self.geostatus = geostatus.AsyncGeostatusResourceWithRawResponse(client.geostatus)
-        self.gnssobservationset = gnssobservationset.AsyncGnssobservationsetResourceWithRawResponse(
-            client.gnssobservationset
+        self.geo_status = geo_status.AsyncGeoStatusResourceWithRawResponse(client.geo_status)
+        self.gnss_observationset = gnss_observationset.AsyncGnssObservationsetResourceWithRawResponse(
+            client.gnss_observationset
         )
-        self.gnssrawif = gnssrawif.AsyncGnssrawifResourceWithRawResponse(client.gnssrawif)
+        self.gnss_rawif = gnss_rawif.AsyncGnssRawifResourceWithRawResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.AsyncGroundImageryResourceWithRawResponse(client.ground_imagery)
-        self.groundimagery = groundimagery.AsyncGroundimageryResourceWithRawResponse(client.groundimagery)
-        self.h3geo = h3geo.AsyncH3geoResourceWithRawResponse(client.h3geo)
-        self.h3geohexcell = h3geohexcell.AsyncH3geohexcellResourceWithRawResponse(client.h3geohexcell)
+        self.h3_geo = h3_geo.AsyncH3GeoResourceWithRawResponse(client.h3_geo)
+        self.h3_geo_hex_cell = h3_geo_hex_cell.AsyncH3GeoHexCellResourceWithRawResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.AsyncHazardResourceWithRawResponse(client.hazard)
-        self.ionoobservation = ionoobservation.AsyncIonoobservationResourceWithRawResponse(client.ionoobservation)
+        self.ion_oobservation = ion_oobservation.AsyncIonOobservationResourceWithRawResponse(client.ion_oobservation)
         self.ir = ir.AsyncIrResourceWithRawResponse(client.ir)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithRawResponse(client.isr_collections)
         self.item = item.AsyncItemResourceWithRawResponse(client.item)
         self.item_trackings = item_trackings.AsyncItemTrackingsResourceWithRawResponse(client.item_trackings)
-        self.launchdetection = launchdetection.AsyncLaunchdetectionResourceWithRawResponse(client.launchdetection)
-        self.launchevent = launchevent.AsyncLauncheventResourceWithRawResponse(client.launchevent)
-        self.launchsite = launchsite.AsyncLaunchsiteResourceWithRawResponse(client.launchsite)
-        self.launchsitedetails = launchsitedetails.AsyncLaunchsitedetailsResourceWithRawResponse(
-            client.launchsitedetails
+        self.launch_detection = launch_detection.AsyncLaunchDetectionResourceWithRawResponse(client.launch_detection)
+        self.launch_event = launch_event.AsyncLaunchEventResourceWithRawResponse(client.launch_event)
+        self.launch_site = launch_site.AsyncLaunchSiteResourceWithRawResponse(client.launch_site)
+        self.launch_site_details = launch_site_details.AsyncLaunchSiteDetailsResourceWithRawResponse(
+            client.launch_site_details
         )
-        self.launchvehicle = launchvehicle.AsyncLaunchvehicleResourceWithRawResponse(client.launchvehicle)
-        self.launchvehicledetails = launchvehicledetails.AsyncLaunchvehicledetailsResourceWithRawResponse(
-            client.launchvehicledetails
+        self.launch_vehicle = launch_vehicle.AsyncLaunchVehicleResourceWithRawResponse(client.launch_vehicle)
+        self.launch_vehicle_details = launch_vehicle_details.AsyncLaunchVehicleDetailsResourceWithRawResponse(
+            client.launch_vehicle_details
         )
         self.link_status = link_status.AsyncLinkStatusResourceWithRawResponse(client.link_status)
         self.location = location.AsyncLocationResourceWithRawResponse(client.location)
-        self.logisticssupport = logisticssupport.AsyncLogisticssupportResourceWithRawResponse(client.logisticssupport)
+        self.logistics_support = logistics_support.AsyncLogisticsSupportResourceWithRawResponse(
+            client.logistics_support
+        )
         self.maneuvers = maneuvers.AsyncManeuversResourceWithRawResponse(client.maneuvers)
         self.manifold = manifold.AsyncManifoldResourceWithRawResponse(client.manifold)
         self.manifoldelset = manifoldelset.AsyncManifoldelsetResourceWithRawResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.AsyncMissileTracksResourceWithRawResponse(client.missile_tracks)
-        self.missionassignment = missionassignment.AsyncMissionassignmentResourceWithRawResponse(
-            client.missionassignment
+        self.mission_assignment = mission_assignment.AsyncMissionAssignmentResourceWithRawResponse(
+            client.mission_assignment
         )
-        self.monoradar = monoradar.AsyncMonoradarResourceWithRawResponse(client.monoradar)
         self.mti = mti.AsyncMtiResourceWithRawResponse(client.mti)
         self.navigation = navigation.AsyncNavigationResourceWithRawResponse(client.navigation)
-        self.navigationalobstruction = navigationalobstruction.AsyncNavigationalobstructionResourceWithRawResponse(
-            client.navigationalobstruction
+        self.navigational_obstruction = navigational_obstruction.AsyncNavigationalObstructionResourceWithRawResponse(
+            client.navigational_obstruction
         )
         self.notification = notification.AsyncNotificationResourceWithRawResponse(client.notification)
-        self.objectofinterest = objectofinterest.AsyncObjectofinterestResourceWithRawResponse(client.objectofinterest)
+        self.object_of_interest = object_of_interest.AsyncObjectOfInterestResourceWithRawResponse(
+            client.object_of_interest
+        )
         self.observations = observations.AsyncObservationsResourceWithRawResponse(client.observations)
         self.onboardnavigation = onboardnavigation.AsyncOnboardnavigationResourceWithRawResponse(
             client.onboardnavigation
@@ -1706,99 +1612,94 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.organizationdetails = organizationdetails.AsyncOrganizationdetailsResourceWithRawResponse(
             client.organizationdetails
         )
-        self.passiveradarobservation = passiveradarobservation.AsyncPassiveradarobservationResourceWithRawResponse(
-            client.passiveradarobservation
-        )
         self.personnelrecovery = personnelrecovery.AsyncPersonnelrecoveryResourceWithRawResponse(
             client.personnelrecovery
         )
         self.poi = poi.AsyncPoiResourceWithRawResponse(client.poi)
         self.port = port.AsyncPortResourceWithRawResponse(client.port)
-        self.radarobservation = radarobservation.AsyncRadarobservationResourceWithRawResponse(client.radarobservation)
-        self.rfband = rfband.AsyncRfbandResourceWithRawResponse(client.rfband)
-        self.rfbandtype = rfbandtype.AsyncRfbandtypeResourceWithRawResponse(client.rfbandtype)
-        self.rfemitter = rfemitter.AsyncRfemitterResourceWithRawResponse(client.rfemitter)
-        self.rfemitterdetails = rfemitterdetails.AsyncRfemitterdetailsResourceWithRawResponse(client.rfemitterdetails)
-        self.rfobservation = rfobservation.AsyncRfobservationResourceWithRawResponse(client.rfobservation)
-        self.sarobservation = sarobservation.AsyncSarobservationResourceWithRawResponse(client.sarobservation)
+        self.rf_band = rf_band.AsyncRfBandResourceWithRawResponse(client.rf_band)
+        self.rf_band_type = rf_band_type.AsyncRfBandTypeResourceWithRawResponse(client.rf_band_type)
+        self.rf_emitter = rf_emitter.AsyncRfEmitterResourceWithRawResponse(client.rf_emitter)
+        self.rf_emitter_details = rf_emitter_details.AsyncRfEmitterDetailsResourceWithRawResponse(
+            client.rf_emitter_details
+        )
+        self.sar_observation = sar_observation.AsyncSarObservationResourceWithRawResponse(client.sar_observation)
         self.scientific = scientific.AsyncScientificResourceWithRawResponse(client.scientific)
         self.sensor = sensor.AsyncSensorResourceWithRawResponse(client.sensor)
-        self.sensormaintenance = sensormaintenance.AsyncSensormaintenanceResourceWithRawResponse(
-            client.sensormaintenance
+        self.sensor_maintenance = sensor_maintenance.AsyncSensorMaintenanceResourceWithRawResponse(
+            client.sensor_maintenance
         )
-        self.sensorobservationtype = sensorobservationtype.AsyncSensorobservationtypeResourceWithRawResponse(
-            client.sensorobservationtype
+        self.sensor_observation_type = sensor_observation_type.AsyncSensorObservationTypeResourceWithRawResponse(
+            client.sensor_observation_type
         )
-        self.sensorplan = sensorplan.AsyncSensorplanResourceWithRawResponse(client.sensorplan)
-        self.sensortype = sensortype.AsyncSensortypeResourceWithRawResponse(client.sensortype)
-        self.seradatacommdetails = seradatacommdetails.AsyncSeradatacommdetailsResourceWithRawResponse(
-            client.seradatacommdetails
+        self.sensor_plan = sensor_plan.AsyncSensorPlanResourceWithRawResponse(client.sensor_plan)
+        self.sensor_type = sensor_type.AsyncSensorTypeResourceWithRawResponse(client.sensor_type)
+        self.sera_data_comm_details = sera_data_comm_details.AsyncSeraDataCommDetailsResourceWithRawResponse(
+            client.sera_data_comm_details
         )
-        self.seradataearlywarning = seradataearlywarning.AsyncSeradataearlywarningResourceWithRawResponse(
-            client.seradataearlywarning
+        self.sera_data_early_warning = sera_data_early_warning.AsyncSeraDataEarlyWarningResourceWithRawResponse(
+            client.sera_data_early_warning
         )
-        self.seradatanavigation = seradatanavigation.AsyncSeradatanavigationResourceWithRawResponse(
-            client.seradatanavigation
+        self.sera_data_navigation = sera_data_navigation.AsyncSeraDataNavigationResourceWithRawResponse(
+            client.sera_data_navigation
         )
-        self.seradataopticalpayload = seradataopticalpayload.AsyncSeradataopticalpayloadResourceWithRawResponse(
-            client.seradataopticalpayload
+        self.seradata_optical_payload = seradata_optical_payload.AsyncSeradataOpticalPayloadResourceWithRawResponse(
+            client.seradata_optical_payload
         )
-        self.seradataradarpayload = seradataradarpayload.AsyncSeradataradarpayloadResourceWithRawResponse(
-            client.seradataradarpayload
+        self.seradata_radar_payload = seradata_radar_payload.AsyncSeradataRadarPayloadResourceWithRawResponse(
+            client.seradata_radar_payload
         )
-        self.seradatasigintpayload = seradatasigintpayload.AsyncSeradatasigintpayloadResourceWithRawResponse(
-            client.seradatasigintpayload
+        self.seradata_sigint_payload = seradata_sigint_payload.AsyncSeradataSigintPayloadResourceWithRawResponse(
+            client.seradata_sigint_payload
         )
-        self.seradataspacecraftdetails = (
-            seradataspacecraftdetails.AsyncSeradataspacecraftdetailsResourceWithRawResponse(
-                client.seradataspacecraftdetails
+        self.seradata_spacecraft_details = (
+            seradata_spacecraft_details.AsyncSeradataSpacecraftDetailsResourceWithRawResponse(
+                client.seradata_spacecraft_details
             )
         )
         self.sgi = sgi.AsyncSgiResourceWithRawResponse(client.sgi)
         self.sigact = sigact.AsyncSigactResourceWithRawResponse(client.sigact)
         self.site = site.AsyncSiteResourceWithRawResponse(client.site)
-        self.siteremark = siteremark.AsyncSiteremarkResourceWithRawResponse(client.siteremark)
-        self.sitestatus = sitestatus.AsyncSitestatusResourceWithRawResponse(client.sitestatus)
-        self.skyimagery = skyimagery.AsyncSkyimageryResourceWithRawResponse(client.skyimagery)
-        self.soiobservationset = soiobservationset.AsyncSoiobservationsetResourceWithRawResponse(
-            client.soiobservationset
+        self.site_remark = site_remark.AsyncSiteRemarkResourceWithRawResponse(client.site_remark)
+        self.site_status = site_status.AsyncSiteStatusResourceWithRawResponse(client.site_status)
+        self.sky_imagery = sky_imagery.AsyncSkyImageryResourceWithRawResponse(client.sky_imagery)
+        self.soi_observation_set = soi_observation_set.AsyncSoiObservationSetResourceWithRawResponse(
+            client.soi_observation_set
         )
-        self.solararray = solararray.AsyncSolararrayResourceWithRawResponse(client.solararray)
-        self.solararraydetails = solararraydetails.AsyncSolararraydetailsResourceWithRawResponse(
-            client.solararraydetails
+        self.solar_array = solar_array.AsyncSolarArrayResourceWithRawResponse(client.solar_array)
+        self.solar_array_details = solar_array_details.AsyncSolarArrayDetailsResourceWithRawResponse(
+            client.solar_array_details
         )
-        self.sortieppr = sortieppr.AsyncSortiepprResourceWithRawResponse(client.sortieppr)
-        self.spaceenvobservation = spaceenvobservation.AsyncSpaceenvobservationResourceWithRawResponse(
-            client.spaceenvobservation
+        self.sortie_ppr = sortie_ppr.AsyncSortiePprResourceWithRawResponse(client.sortie_ppr)
+        self.space_env_observation = space_env_observation.AsyncSpaceEnvObservationResourceWithRawResponse(
+            client.space_env_observation
         )
         self.stage = stage.AsyncStageResourceWithRawResponse(client.stage)
-        self.starcatalog = starcatalog.AsyncStarcatalogResourceWithRawResponse(client.starcatalog)
-        self.statevector = statevector.AsyncStatevectorResourceWithRawResponse(client.statevector)
+        self.star_catalog = star_catalog.AsyncStarCatalogResourceWithRawResponse(client.star_catalog)
+        self.state_vector = state_vector.AsyncStateVectorResourceWithRawResponse(client.state_vector)
         self.status = status.AsyncStatusResourceWithRawResponse(client.status)
         self.substatus = substatus.AsyncSubstatusResourceWithRawResponse(client.substatus)
         self.supporting_data = supporting_data.AsyncSupportingDataResourceWithRawResponse(client.supporting_data)
         self.surface = surface.AsyncSurfaceResourceWithRawResponse(client.surface)
-        self.surfaceobstruction = surfaceobstruction.AsyncSurfaceobstructionResourceWithRawResponse(
-            client.surfaceobstruction
+        self.surface_obstruction = surface_obstruction.AsyncSurfaceObstructionResourceWithRawResponse(
+            client.surface_obstruction
         )
         self.swir = swir.AsyncSwirResourceWithRawResponse(client.swir)
-        self.taiutc = taiutc.AsyncTaiutcResourceWithRawResponse(client.taiutc)
+        self.tai_utc = tai_utc.AsyncTaiUtcResourceWithRawResponse(client.tai_utc)
         self.tdoa_fdoa = tdoa_fdoa.AsyncTdoaFdoaResourceWithRawResponse(client.tdoa_fdoa)
         self.track = track.AsyncTrackResourceWithRawResponse(client.track)
-        self.trackdetails = trackdetails.AsyncTrackdetailsResourceWithRawResponse(client.trackdetails)
-        self.trackroute = trackroute.AsyncTrackrouteResourceWithRawResponse(client.trackroute)
+        self.track_details = track_details.AsyncTrackDetailsResourceWithRawResponse(client.track_details)
+        self.track_route = track_route.AsyncTrackRouteResourceWithRawResponse(client.track_route)
         self.transponder = transponder.AsyncTransponderResourceWithRawResponse(client.transponder)
         self.vessel = vessel.AsyncVesselResourceWithRawResponse(client.vessel)
         self.video = video.AsyncVideoResourceWithRawResponse(client.video)
-        self.weatherdata = weatherdata.AsyncWeatherdataResourceWithRawResponse(client.weatherdata)
-        self.weatherreport = weatherreport.AsyncWeatherreportResourceWithRawResponse(client.weatherreport)
-        self.udl = udl.AsyncUdlResourceWithRawResponse(client.udl)
+        self.weather_data = weather_data.AsyncWeatherDataResourceWithRawResponse(client.weather_data)
+        self.weather_report = weather_report.AsyncWeatherReportResourceWithRawResponse(client.weather_report)
         self.gnss_observations = gnss_observations.AsyncGnssObservationsResourceWithRawResponse(
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResourceWithRawResponse(client.gnss_raw_if)
         self.iono_observation = iono_observation.AsyncIonoObservationResourceWithRawResponse(client.iono_observation)
-        self.launch_event = launch_event.AsyncLaunchEventResourceWithRawResponse(client.launch_event)
         self.report_and_activity = report_and_activity.AsyncReportAndActivityResourceWithRawResponse(
             client.report_and_activity
         )
@@ -1812,9 +1713,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.air_events = air_events.AirEventsResourceWithStreamingResponse(client.air_events)
         self.air_load_plans = air_load_plans.AirLoadPlansResourceWithStreamingResponse(client.air_load_plans)
         self.air_operations = air_operations.AirOperationsResourceWithStreamingResponse(client.air_operations)
-        self.air_tasking_orders = air_tasking_orders.AirTaskingOrdersResourceWithStreamingResponse(
-            client.air_tasking_orders
-        )
         self.air_transport_missions = air_transport_missions.AirTransportMissionsResourceWithStreamingResponse(
             client.air_transport_missions
         )
@@ -1826,22 +1724,18 @@ class UnifieddatalibraryWithStreamedResponse:
         self.aircraft_statuses = aircraft_statuses.AircraftStatusesResourceWithStreamingResponse(
             client.aircraft_statuses
         )
-        self.aircraftstatusremark = aircraftstatusremark.AircraftstatusremarkResourceWithStreamingResponse(
-            client.aircraftstatusremark
-        )
         self.airfield_slots = airfield_slots.AirfieldSlotsResourceWithStreamingResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AirfieldStatusResourceWithStreamingResponse(client.airfield_status)
         self.airfields = airfields.AirfieldsResourceWithStreamingResponse(client.airfields)
-        self.airfieldslotconsumptions = airfieldslotconsumptions.AirfieldslotconsumptionsResourceWithStreamingResponse(
-            client.airfieldslotconsumptions
+        self.airfield_slot_consumptions = (
+            airfield_slot_consumptions.AirfieldSlotConsumptionsResourceWithStreamingResponse(
+                client.airfield_slot_consumptions
+            )
         )
-        self.airfieldslots = airfieldslots.AirfieldslotsResourceWithStreamingResponse(client.airfieldslots)
-        self.airfieldstatus = airfieldstatus.AirfieldstatusResourceWithStreamingResponse(client.airfieldstatus)
-        self.airloadplans = airloadplans.AirloadplansResourceWithStreamingResponse(client.airloadplans)
+        self.airload_plans = airload_plans.AirloadPlansResourceWithStreamingResponse(client.airload_plans)
         self.airspace_control_orders = airspace_control_orders.AirspaceControlOrdersResourceWithStreamingResponse(
             client.airspace_control_orders
         )
-        self.airtaskingorders = airtaskingorders.AirtaskingordersResourceWithStreamingResponse(client.airtaskingorders)
         self.ais = ais.AIsResourceWithStreamingResponse(client.ais)
         self.ais_objects = ais_objects.AIsObjectsResourceWithStreamingResponse(client.ais_objects)
         self.analytic_imagery = analytic_imagery.AnalyticImageryResourceWithStreamingResponse(client.analytic_imagery)
@@ -1862,88 +1756,89 @@ class UnifieddatalibraryWithStreamedResponse:
         self.comm = comm.CommResourceWithStreamingResponse(client.comm)
         self.conjunctions = conjunctions.ConjunctionsResourceWithStreamingResponse(client.conjunctions)
         self.cots = cots.CotsResourceWithStreamingResponse(client.cots)
-        self.aviationriskmanagement = aviationriskmanagement.AviationriskmanagementResourceWithStreamingResponse(
-            client.aviationriskmanagement
+        self.aviation_risk_management = aviation_risk_management.AviationRiskManagementResourceWithStreamingResponse(
+            client.aviation_risk_management
         )
         self.dropzone = dropzone.DropzoneResourceWithStreamingResponse(client.dropzone)
-        self.emittergeolocation = emittergeolocation.EmittergeolocationResourceWithStreamingResponse(
-            client.emittergeolocation
+        self.emitter_geolocation = emitter_geolocation.EmitterGeolocationResourceWithStreamingResponse(
+            client.emitter_geolocation
         )
-        self.featureassessment = featureassessment.FeatureassessmentResourceWithStreamingResponse(
-            client.featureassessment
+        self.feature_assessment = feature_assessment.FeatureAssessmentResourceWithStreamingResponse(
+            client.feature_assessment
         )
-        self.globalatmosphericmodel = globalatmosphericmodel.GlobalatmosphericmodelResourceWithStreamingResponse(
-            client.globalatmosphericmodel
+        self.global_atmospheric_model = global_atmospheric_model.GlobalAtmosphericModelResourceWithStreamingResponse(
+            client.global_atmospheric_model
         )
-        self.routestats = routestats.RoutestatsResourceWithStreamingResponse(client.routestats)
+        self.route_stats = route_stats.RouteStatsResourceWithStreamingResponse(client.route_stats)
         self.countries = countries.CountriesResourceWithStreamingResponse(client.countries)
         self.crew = crew.CrewResourceWithStreamingResponse(client.crew)
-        self.diffofarrival = diffofarrival.DiffofarrivalResourceWithStreamingResponse(client.diffofarrival)
+        self.diff_of_arrival = diff_of_arrival.DiffOfArrivalResourceWithStreamingResponse(client.diff_of_arrival)
         self.diplomatic_clearance = diplomatic_clearance.DiplomaticClearanceResourceWithStreamingResponse(
             client.diplomatic_clearance
         )
         self.drift_history = drift_history.DriftHistoryResourceWithStreamingResponse(client.drift_history)
-        self.ecpsdr = ecpsdr.EcpsdrResourceWithStreamingResponse(client.ecpsdr)
+        self.ecp_sdr = ecp_sdr.EcpSdrResourceWithStreamingResponse(client.ecp_sdr)
         self.effect_requests = effect_requests.EffectRequestsResourceWithStreamingResponse(client.effect_requests)
         self.effect_responses = effect_responses.EffectResponsesResourceWithStreamingResponse(client.effect_responses)
         self.elsets = elsets.ElsetsResourceWithStreamingResponse(client.elsets)
         self.engine_details = engine_details.EngineDetailsResourceWithStreamingResponse(client.engine_details)
-        self.enginedetails = enginedetails.EnginedetailsResourceWithStreamingResponse(client.enginedetails)
         self.engines = engines.EnginesResourceWithStreamingResponse(client.engines)
         self.entities = entities.EntitiesResourceWithStreamingResponse(client.entities)
-        self.eo_observations = eo_observations.EoObservationsResourceWithStreamingResponse(client.eo_observations)
-        self.eoobservations = eoobservations.EoobservationsResourceWithStreamingResponse(client.eoobservations)
         self.eop = eop.EopResourceWithStreamingResponse(client.eop)
         self.ephemeris = ephemeris.EphemerisResourceWithStreamingResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.EphemerisSetsResourceWithStreamingResponse(client.ephemeris_sets)
         self.equipment = equipment.EquipmentResourceWithStreamingResponse(client.equipment)
-        self.equipmentremarks = equipmentremarks.EquipmentremarksResourceWithStreamingResponse(client.equipmentremarks)
+        self.equipment_remarks = equipment_remarks.EquipmentRemarksResourceWithStreamingResponse(
+            client.equipment_remarks
+        )
         self.evac = evac.EvacResourceWithStreamingResponse(client.evac)
         self.event_evolution = event_evolution.EventEvolutionResourceWithStreamingResponse(client.event_evolution)
         self.flightplan = flightplan.FlightplanResourceWithStreamingResponse(client.flightplan)
-        self.geostatus = geostatus.GeostatusResourceWithStreamingResponse(client.geostatus)
-        self.gnssobservationset = gnssobservationset.GnssobservationsetResourceWithStreamingResponse(
-            client.gnssobservationset
+        self.geo_status = geo_status.GeoStatusResourceWithStreamingResponse(client.geo_status)
+        self.gnss_observationset = gnss_observationset.GnssObservationsetResourceWithStreamingResponse(
+            client.gnss_observationset
         )
-        self.gnssrawif = gnssrawif.GnssrawifResourceWithStreamingResponse(client.gnssrawif)
+        self.gnss_rawif = gnss_rawif.GnssRawifResourceWithStreamingResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.GroundImageryResourceWithStreamingResponse(client.ground_imagery)
-        self.groundimagery = groundimagery.GroundimageryResourceWithStreamingResponse(client.groundimagery)
-        self.h3geo = h3geo.H3geoResourceWithStreamingResponse(client.h3geo)
-        self.h3geohexcell = h3geohexcell.H3geohexcellResourceWithStreamingResponse(client.h3geohexcell)
+        self.h3_geo = h3_geo.H3GeoResourceWithStreamingResponse(client.h3_geo)
+        self.h3_geo_hex_cell = h3_geo_hex_cell.H3GeoHexCellResourceWithStreamingResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.HazardResourceWithStreamingResponse(client.hazard)
-        self.ionoobservation = ionoobservation.IonoobservationResourceWithStreamingResponse(client.ionoobservation)
+        self.ion_oobservation = ion_oobservation.IonOobservationResourceWithStreamingResponse(client.ion_oobservation)
         self.ir = ir.IrResourceWithStreamingResponse(client.ir)
         self.isr_collections = isr_collections.IsrCollectionsResourceWithStreamingResponse(client.isr_collections)
         self.item = item.ItemResourceWithStreamingResponse(client.item)
         self.item_trackings = item_trackings.ItemTrackingsResourceWithStreamingResponse(client.item_trackings)
-        self.launchdetection = launchdetection.LaunchdetectionResourceWithStreamingResponse(client.launchdetection)
-        self.launchevent = launchevent.LauncheventResourceWithStreamingResponse(client.launchevent)
-        self.launchsite = launchsite.LaunchsiteResourceWithStreamingResponse(client.launchsite)
-        self.launchsitedetails = launchsitedetails.LaunchsitedetailsResourceWithStreamingResponse(
-            client.launchsitedetails
+        self.launch_detection = launch_detection.LaunchDetectionResourceWithStreamingResponse(client.launch_detection)
+        self.launch_event = launch_event.LaunchEventResourceWithStreamingResponse(client.launch_event)
+        self.launch_site = launch_site.LaunchSiteResourceWithStreamingResponse(client.launch_site)
+        self.launch_site_details = launch_site_details.LaunchSiteDetailsResourceWithStreamingResponse(
+            client.launch_site_details
         )
-        self.launchvehicle = launchvehicle.LaunchvehicleResourceWithStreamingResponse(client.launchvehicle)
-        self.launchvehicledetails = launchvehicledetails.LaunchvehicledetailsResourceWithStreamingResponse(
-            client.launchvehicledetails
+        self.launch_vehicle = launch_vehicle.LaunchVehicleResourceWithStreamingResponse(client.launch_vehicle)
+        self.launch_vehicle_details = launch_vehicle_details.LaunchVehicleDetailsResourceWithStreamingResponse(
+            client.launch_vehicle_details
         )
         self.link_status = link_status.LinkStatusResourceWithStreamingResponse(client.link_status)
         self.location = location.LocationResourceWithStreamingResponse(client.location)
-        self.logisticssupport = logisticssupport.LogisticssupportResourceWithStreamingResponse(client.logisticssupport)
+        self.logistics_support = logistics_support.LogisticsSupportResourceWithStreamingResponse(
+            client.logistics_support
+        )
         self.maneuvers = maneuvers.ManeuversResourceWithStreamingResponse(client.maneuvers)
         self.manifold = manifold.ManifoldResourceWithStreamingResponse(client.manifold)
         self.manifoldelset = manifoldelset.ManifoldelsetResourceWithStreamingResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.MissileTracksResourceWithStreamingResponse(client.missile_tracks)
-        self.missionassignment = missionassignment.MissionassignmentResourceWithStreamingResponse(
-            client.missionassignment
+        self.mission_assignment = mission_assignment.MissionAssignmentResourceWithStreamingResponse(
+            client.mission_assignment
         )
-        self.monoradar = monoradar.MonoradarResourceWithStreamingResponse(client.monoradar)
         self.mti = mti.MtiResourceWithStreamingResponse(client.mti)
         self.navigation = navigation.NavigationResourceWithStreamingResponse(client.navigation)
-        self.navigationalobstruction = navigationalobstruction.NavigationalobstructionResourceWithStreamingResponse(
-            client.navigationalobstruction
+        self.navigational_obstruction = navigational_obstruction.NavigationalObstructionResourceWithStreamingResponse(
+            client.navigational_obstruction
         )
         self.notification = notification.NotificationResourceWithStreamingResponse(client.notification)
-        self.objectofinterest = objectofinterest.ObjectofinterestResourceWithStreamingResponse(client.objectofinterest)
+        self.object_of_interest = object_of_interest.ObjectOfInterestResourceWithStreamingResponse(
+            client.object_of_interest
+        )
         self.observations = observations.ObservationsResourceWithStreamingResponse(client.observations)
         self.onboardnavigation = onboardnavigation.OnboardnavigationResourceWithStreamingResponse(
             client.onboardnavigation
@@ -1973,99 +1868,94 @@ class UnifieddatalibraryWithStreamedResponse:
         self.organizationdetails = organizationdetails.OrganizationdetailsResourceWithStreamingResponse(
             client.organizationdetails
         )
-        self.passiveradarobservation = passiveradarobservation.PassiveradarobservationResourceWithStreamingResponse(
-            client.passiveradarobservation
-        )
         self.personnelrecovery = personnelrecovery.PersonnelrecoveryResourceWithStreamingResponse(
             client.personnelrecovery
         )
         self.poi = poi.PoiResourceWithStreamingResponse(client.poi)
         self.port = port.PortResourceWithStreamingResponse(client.port)
-        self.radarobservation = radarobservation.RadarobservationResourceWithStreamingResponse(client.radarobservation)
-        self.rfband = rfband.RfbandResourceWithStreamingResponse(client.rfband)
-        self.rfbandtype = rfbandtype.RfbandtypeResourceWithStreamingResponse(client.rfbandtype)
-        self.rfemitter = rfemitter.RfemitterResourceWithStreamingResponse(client.rfemitter)
-        self.rfemitterdetails = rfemitterdetails.RfemitterdetailsResourceWithStreamingResponse(client.rfemitterdetails)
-        self.rfobservation = rfobservation.RfobservationResourceWithStreamingResponse(client.rfobservation)
-        self.sarobservation = sarobservation.SarobservationResourceWithStreamingResponse(client.sarobservation)
+        self.rf_band = rf_band.RfBandResourceWithStreamingResponse(client.rf_band)
+        self.rf_band_type = rf_band_type.RfBandTypeResourceWithStreamingResponse(client.rf_band_type)
+        self.rf_emitter = rf_emitter.RfEmitterResourceWithStreamingResponse(client.rf_emitter)
+        self.rf_emitter_details = rf_emitter_details.RfEmitterDetailsResourceWithStreamingResponse(
+            client.rf_emitter_details
+        )
+        self.sar_observation = sar_observation.SarObservationResourceWithStreamingResponse(client.sar_observation)
         self.scientific = scientific.ScientificResourceWithStreamingResponse(client.scientific)
         self.sensor = sensor.SensorResourceWithStreamingResponse(client.sensor)
-        self.sensormaintenance = sensormaintenance.SensormaintenanceResourceWithStreamingResponse(
-            client.sensormaintenance
+        self.sensor_maintenance = sensor_maintenance.SensorMaintenanceResourceWithStreamingResponse(
+            client.sensor_maintenance
         )
-        self.sensorobservationtype = sensorobservationtype.SensorobservationtypeResourceWithStreamingResponse(
-            client.sensorobservationtype
+        self.sensor_observation_type = sensor_observation_type.SensorObservationTypeResourceWithStreamingResponse(
+            client.sensor_observation_type
         )
-        self.sensorplan = sensorplan.SensorplanResourceWithStreamingResponse(client.sensorplan)
-        self.sensortype = sensortype.SensortypeResourceWithStreamingResponse(client.sensortype)
-        self.seradatacommdetails = seradatacommdetails.SeradatacommdetailsResourceWithStreamingResponse(
-            client.seradatacommdetails
+        self.sensor_plan = sensor_plan.SensorPlanResourceWithStreamingResponse(client.sensor_plan)
+        self.sensor_type = sensor_type.SensorTypeResourceWithStreamingResponse(client.sensor_type)
+        self.sera_data_comm_details = sera_data_comm_details.SeraDataCommDetailsResourceWithStreamingResponse(
+            client.sera_data_comm_details
         )
-        self.seradataearlywarning = seradataearlywarning.SeradataearlywarningResourceWithStreamingResponse(
-            client.seradataearlywarning
+        self.sera_data_early_warning = sera_data_early_warning.SeraDataEarlyWarningResourceWithStreamingResponse(
+            client.sera_data_early_warning
         )
-        self.seradatanavigation = seradatanavigation.SeradatanavigationResourceWithStreamingResponse(
-            client.seradatanavigation
+        self.sera_data_navigation = sera_data_navigation.SeraDataNavigationResourceWithStreamingResponse(
+            client.sera_data_navigation
         )
-        self.seradataopticalpayload = seradataopticalpayload.SeradataopticalpayloadResourceWithStreamingResponse(
-            client.seradataopticalpayload
+        self.seradata_optical_payload = seradata_optical_payload.SeradataOpticalPayloadResourceWithStreamingResponse(
+            client.seradata_optical_payload
         )
-        self.seradataradarpayload = seradataradarpayload.SeradataradarpayloadResourceWithStreamingResponse(
-            client.seradataradarpayload
+        self.seradata_radar_payload = seradata_radar_payload.SeradataRadarPayloadResourceWithStreamingResponse(
+            client.seradata_radar_payload
         )
-        self.seradatasigintpayload = seradatasigintpayload.SeradatasigintpayloadResourceWithStreamingResponse(
-            client.seradatasigintpayload
+        self.seradata_sigint_payload = seradata_sigint_payload.SeradataSigintPayloadResourceWithStreamingResponse(
+            client.seradata_sigint_payload
         )
-        self.seradataspacecraftdetails = (
-            seradataspacecraftdetails.SeradataspacecraftdetailsResourceWithStreamingResponse(
-                client.seradataspacecraftdetails
+        self.seradata_spacecraft_details = (
+            seradata_spacecraft_details.SeradataSpacecraftDetailsResourceWithStreamingResponse(
+                client.seradata_spacecraft_details
             )
         )
         self.sgi = sgi.SgiResourceWithStreamingResponse(client.sgi)
         self.sigact = sigact.SigactResourceWithStreamingResponse(client.sigact)
         self.site = site.SiteResourceWithStreamingResponse(client.site)
-        self.siteremark = siteremark.SiteremarkResourceWithStreamingResponse(client.siteremark)
-        self.sitestatus = sitestatus.SitestatusResourceWithStreamingResponse(client.sitestatus)
-        self.skyimagery = skyimagery.SkyimageryResourceWithStreamingResponse(client.skyimagery)
-        self.soiobservationset = soiobservationset.SoiobservationsetResourceWithStreamingResponse(
-            client.soiobservationset
+        self.site_remark = site_remark.SiteRemarkResourceWithStreamingResponse(client.site_remark)
+        self.site_status = site_status.SiteStatusResourceWithStreamingResponse(client.site_status)
+        self.sky_imagery = sky_imagery.SkyImageryResourceWithStreamingResponse(client.sky_imagery)
+        self.soi_observation_set = soi_observation_set.SoiObservationSetResourceWithStreamingResponse(
+            client.soi_observation_set
         )
-        self.solararray = solararray.SolararrayResourceWithStreamingResponse(client.solararray)
-        self.solararraydetails = solararraydetails.SolararraydetailsResourceWithStreamingResponse(
-            client.solararraydetails
+        self.solar_array = solar_array.SolarArrayResourceWithStreamingResponse(client.solar_array)
+        self.solar_array_details = solar_array_details.SolarArrayDetailsResourceWithStreamingResponse(
+            client.solar_array_details
         )
-        self.sortieppr = sortieppr.SortiepprResourceWithStreamingResponse(client.sortieppr)
-        self.spaceenvobservation = spaceenvobservation.SpaceenvobservationResourceWithStreamingResponse(
-            client.spaceenvobservation
+        self.sortie_ppr = sortie_ppr.SortiePprResourceWithStreamingResponse(client.sortie_ppr)
+        self.space_env_observation = space_env_observation.SpaceEnvObservationResourceWithStreamingResponse(
+            client.space_env_observation
         )
         self.stage = stage.StageResourceWithStreamingResponse(client.stage)
-        self.starcatalog = starcatalog.StarcatalogResourceWithStreamingResponse(client.starcatalog)
-        self.statevector = statevector.StatevectorResourceWithStreamingResponse(client.statevector)
+        self.star_catalog = star_catalog.StarCatalogResourceWithStreamingResponse(client.star_catalog)
+        self.state_vector = state_vector.StateVectorResourceWithStreamingResponse(client.state_vector)
         self.status = status.StatusResourceWithStreamingResponse(client.status)
         self.substatus = substatus.SubstatusResourceWithStreamingResponse(client.substatus)
         self.supporting_data = supporting_data.SupportingDataResourceWithStreamingResponse(client.supporting_data)
         self.surface = surface.SurfaceResourceWithStreamingResponse(client.surface)
-        self.surfaceobstruction = surfaceobstruction.SurfaceobstructionResourceWithStreamingResponse(
-            client.surfaceobstruction
+        self.surface_obstruction = surface_obstruction.SurfaceObstructionResourceWithStreamingResponse(
+            client.surface_obstruction
         )
         self.swir = swir.SwirResourceWithStreamingResponse(client.swir)
-        self.taiutc = taiutc.TaiutcResourceWithStreamingResponse(client.taiutc)
+        self.tai_utc = tai_utc.TaiUtcResourceWithStreamingResponse(client.tai_utc)
         self.tdoa_fdoa = tdoa_fdoa.TdoaFdoaResourceWithStreamingResponse(client.tdoa_fdoa)
         self.track = track.TrackResourceWithStreamingResponse(client.track)
-        self.trackdetails = trackdetails.TrackdetailsResourceWithStreamingResponse(client.trackdetails)
-        self.trackroute = trackroute.TrackrouteResourceWithStreamingResponse(client.trackroute)
+        self.track_details = track_details.TrackDetailsResourceWithStreamingResponse(client.track_details)
+        self.track_route = track_route.TrackRouteResourceWithStreamingResponse(client.track_route)
         self.transponder = transponder.TransponderResourceWithStreamingResponse(client.transponder)
         self.vessel = vessel.VesselResourceWithStreamingResponse(client.vessel)
         self.video = video.VideoResourceWithStreamingResponse(client.video)
-        self.weatherdata = weatherdata.WeatherdataResourceWithStreamingResponse(client.weatherdata)
-        self.weatherreport = weatherreport.WeatherreportResourceWithStreamingResponse(client.weatherreport)
-        self.udl = udl.UdlResourceWithStreamingResponse(client.udl)
+        self.weather_data = weather_data.WeatherDataResourceWithStreamingResponse(client.weather_data)
+        self.weather_report = weather_report.WeatherReportResourceWithStreamingResponse(client.weather_report)
         self.gnss_observations = gnss_observations.GnssObservationsResourceWithStreamingResponse(
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResourceWithStreamingResponse(client.gnss_raw_if)
         self.iono_observation = iono_observation.IonoObservationResourceWithStreamingResponse(client.iono_observation)
-        self.launch_event = launch_event.LaunchEventResourceWithStreamingResponse(client.launch_event)
         self.report_and_activity = report_and_activity.ReportAndActivityResourceWithStreamingResponse(
             client.report_and_activity
         )
@@ -2079,9 +1969,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.air_events = air_events.AsyncAirEventsResourceWithStreamingResponse(client.air_events)
         self.air_load_plans = air_load_plans.AsyncAirLoadPlansResourceWithStreamingResponse(client.air_load_plans)
         self.air_operations = air_operations.AsyncAirOperationsResourceWithStreamingResponse(client.air_operations)
-        self.air_tasking_orders = air_tasking_orders.AsyncAirTaskingOrdersResourceWithStreamingResponse(
-            client.air_tasking_orders
-        )
         self.air_transport_missions = air_transport_missions.AsyncAirTransportMissionsResourceWithStreamingResponse(
             client.air_transport_missions
         )
@@ -2095,25 +1982,17 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.aircraft_statuses = aircraft_statuses.AsyncAircraftStatusesResourceWithStreamingResponse(
             client.aircraft_statuses
         )
-        self.aircraftstatusremark = aircraftstatusremark.AsyncAircraftstatusremarkResourceWithStreamingResponse(
-            client.aircraftstatusremark
-        )
         self.airfield_slots = airfield_slots.AsyncAirfieldSlotsResourceWithStreamingResponse(client.airfield_slots)
         self.airfield_status = airfield_status.AsyncAirfieldStatusResourceWithStreamingResponse(client.airfield_status)
         self.airfields = airfields.AsyncAirfieldsResourceWithStreamingResponse(client.airfields)
-        self.airfieldslotconsumptions = (
-            airfieldslotconsumptions.AsyncAirfieldslotconsumptionsResourceWithStreamingResponse(
-                client.airfieldslotconsumptions
+        self.airfield_slot_consumptions = (
+            airfield_slot_consumptions.AsyncAirfieldSlotConsumptionsResourceWithStreamingResponse(
+                client.airfield_slot_consumptions
             )
         )
-        self.airfieldslots = airfieldslots.AsyncAirfieldslotsResourceWithStreamingResponse(client.airfieldslots)
-        self.airfieldstatus = airfieldstatus.AsyncAirfieldstatusResourceWithStreamingResponse(client.airfieldstatus)
-        self.airloadplans = airloadplans.AsyncAirloadplansResourceWithStreamingResponse(client.airloadplans)
+        self.airload_plans = airload_plans.AsyncAirloadPlansResourceWithStreamingResponse(client.airload_plans)
         self.airspace_control_orders = airspace_control_orders.AsyncAirspaceControlOrdersResourceWithStreamingResponse(
             client.airspace_control_orders
-        )
-        self.airtaskingorders = airtaskingorders.AsyncAirtaskingordersResourceWithStreamingResponse(
-            client.airtaskingorders
         )
         self.ais = ais.AsyncAIsResourceWithStreamingResponse(client.ais)
         self.ais_objects = ais_objects.AsyncAIsObjectsResourceWithStreamingResponse(client.ais_objects)
@@ -2139,97 +2018,100 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.comm = comm.AsyncCommResourceWithStreamingResponse(client.comm)
         self.conjunctions = conjunctions.AsyncConjunctionsResourceWithStreamingResponse(client.conjunctions)
         self.cots = cots.AsyncCotsResourceWithStreamingResponse(client.cots)
-        self.aviationriskmanagement = aviationriskmanagement.AsyncAviationriskmanagementResourceWithStreamingResponse(
-            client.aviationriskmanagement
+        self.aviation_risk_management = (
+            aviation_risk_management.AsyncAviationRiskManagementResourceWithStreamingResponse(
+                client.aviation_risk_management
+            )
         )
         self.dropzone = dropzone.AsyncDropzoneResourceWithStreamingResponse(client.dropzone)
-        self.emittergeolocation = emittergeolocation.AsyncEmittergeolocationResourceWithStreamingResponse(
-            client.emittergeolocation
+        self.emitter_geolocation = emitter_geolocation.AsyncEmitterGeolocationResourceWithStreamingResponse(
+            client.emitter_geolocation
         )
-        self.featureassessment = featureassessment.AsyncFeatureassessmentResourceWithStreamingResponse(
-            client.featureassessment
+        self.feature_assessment = feature_assessment.AsyncFeatureAssessmentResourceWithStreamingResponse(
+            client.feature_assessment
         )
-        self.globalatmosphericmodel = globalatmosphericmodel.AsyncGlobalatmosphericmodelResourceWithStreamingResponse(
-            client.globalatmosphericmodel
+        self.global_atmospheric_model = (
+            global_atmospheric_model.AsyncGlobalAtmosphericModelResourceWithStreamingResponse(
+                client.global_atmospheric_model
+            )
         )
-        self.routestats = routestats.AsyncRoutestatsResourceWithStreamingResponse(client.routestats)
+        self.route_stats = route_stats.AsyncRouteStatsResourceWithStreamingResponse(client.route_stats)
         self.countries = countries.AsyncCountriesResourceWithStreamingResponse(client.countries)
         self.crew = crew.AsyncCrewResourceWithStreamingResponse(client.crew)
-        self.diffofarrival = diffofarrival.AsyncDiffofarrivalResourceWithStreamingResponse(client.diffofarrival)
+        self.diff_of_arrival = diff_of_arrival.AsyncDiffOfArrivalResourceWithStreamingResponse(client.diff_of_arrival)
         self.diplomatic_clearance = diplomatic_clearance.AsyncDiplomaticClearanceResourceWithStreamingResponse(
             client.diplomatic_clearance
         )
         self.drift_history = drift_history.AsyncDriftHistoryResourceWithStreamingResponse(client.drift_history)
-        self.ecpsdr = ecpsdr.AsyncEcpsdrResourceWithStreamingResponse(client.ecpsdr)
+        self.ecp_sdr = ecp_sdr.AsyncEcpSdrResourceWithStreamingResponse(client.ecp_sdr)
         self.effect_requests = effect_requests.AsyncEffectRequestsResourceWithStreamingResponse(client.effect_requests)
         self.effect_responses = effect_responses.AsyncEffectResponsesResourceWithStreamingResponse(
             client.effect_responses
         )
         self.elsets = elsets.AsyncElsetsResourceWithStreamingResponse(client.elsets)
         self.engine_details = engine_details.AsyncEngineDetailsResourceWithStreamingResponse(client.engine_details)
-        self.enginedetails = enginedetails.AsyncEnginedetailsResourceWithStreamingResponse(client.enginedetails)
         self.engines = engines.AsyncEnginesResourceWithStreamingResponse(client.engines)
         self.entities = entities.AsyncEntitiesResourceWithStreamingResponse(client.entities)
-        self.eo_observations = eo_observations.AsyncEoObservationsResourceWithStreamingResponse(client.eo_observations)
-        self.eoobservations = eoobservations.AsyncEoobservationsResourceWithStreamingResponse(client.eoobservations)
         self.eop = eop.AsyncEopResourceWithStreamingResponse(client.eop)
         self.ephemeris = ephemeris.AsyncEphemerisResourceWithStreamingResponse(client.ephemeris)
         self.ephemeris_sets = ephemeris_sets.AsyncEphemerisSetsResourceWithStreamingResponse(client.ephemeris_sets)
         self.equipment = equipment.AsyncEquipmentResourceWithStreamingResponse(client.equipment)
-        self.equipmentremarks = equipmentremarks.AsyncEquipmentremarksResourceWithStreamingResponse(
-            client.equipmentremarks
+        self.equipment_remarks = equipment_remarks.AsyncEquipmentRemarksResourceWithStreamingResponse(
+            client.equipment_remarks
         )
         self.evac = evac.AsyncEvacResourceWithStreamingResponse(client.evac)
         self.event_evolution = event_evolution.AsyncEventEvolutionResourceWithStreamingResponse(client.event_evolution)
         self.flightplan = flightplan.AsyncFlightplanResourceWithStreamingResponse(client.flightplan)
-        self.geostatus = geostatus.AsyncGeostatusResourceWithStreamingResponse(client.geostatus)
-        self.gnssobservationset = gnssobservationset.AsyncGnssobservationsetResourceWithStreamingResponse(
-            client.gnssobservationset
+        self.geo_status = geo_status.AsyncGeoStatusResourceWithStreamingResponse(client.geo_status)
+        self.gnss_observationset = gnss_observationset.AsyncGnssObservationsetResourceWithStreamingResponse(
+            client.gnss_observationset
         )
-        self.gnssrawif = gnssrawif.AsyncGnssrawifResourceWithStreamingResponse(client.gnssrawif)
+        self.gnss_rawif = gnss_rawif.AsyncGnssRawifResourceWithStreamingResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.AsyncGroundImageryResourceWithStreamingResponse(client.ground_imagery)
-        self.groundimagery = groundimagery.AsyncGroundimageryResourceWithStreamingResponse(client.groundimagery)
-        self.h3geo = h3geo.AsyncH3geoResourceWithStreamingResponse(client.h3geo)
-        self.h3geohexcell = h3geohexcell.AsyncH3geohexcellResourceWithStreamingResponse(client.h3geohexcell)
+        self.h3_geo = h3_geo.AsyncH3GeoResourceWithStreamingResponse(client.h3_geo)
+        self.h3_geo_hex_cell = h3_geo_hex_cell.AsyncH3GeoHexCellResourceWithStreamingResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.AsyncHazardResourceWithStreamingResponse(client.hazard)
-        self.ionoobservation = ionoobservation.AsyncIonoobservationResourceWithStreamingResponse(client.ionoobservation)
+        self.ion_oobservation = ion_oobservation.AsyncIonOobservationResourceWithStreamingResponse(
+            client.ion_oobservation
+        )
         self.ir = ir.AsyncIrResourceWithStreamingResponse(client.ir)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithStreamingResponse(client.isr_collections)
         self.item = item.AsyncItemResourceWithStreamingResponse(client.item)
         self.item_trackings = item_trackings.AsyncItemTrackingsResourceWithStreamingResponse(client.item_trackings)
-        self.launchdetection = launchdetection.AsyncLaunchdetectionResourceWithStreamingResponse(client.launchdetection)
-        self.launchevent = launchevent.AsyncLauncheventResourceWithStreamingResponse(client.launchevent)
-        self.launchsite = launchsite.AsyncLaunchsiteResourceWithStreamingResponse(client.launchsite)
-        self.launchsitedetails = launchsitedetails.AsyncLaunchsitedetailsResourceWithStreamingResponse(
-            client.launchsitedetails
+        self.launch_detection = launch_detection.AsyncLaunchDetectionResourceWithStreamingResponse(
+            client.launch_detection
         )
-        self.launchvehicle = launchvehicle.AsyncLaunchvehicleResourceWithStreamingResponse(client.launchvehicle)
-        self.launchvehicledetails = launchvehicledetails.AsyncLaunchvehicledetailsResourceWithStreamingResponse(
-            client.launchvehicledetails
+        self.launch_event = launch_event.AsyncLaunchEventResourceWithStreamingResponse(client.launch_event)
+        self.launch_site = launch_site.AsyncLaunchSiteResourceWithStreamingResponse(client.launch_site)
+        self.launch_site_details = launch_site_details.AsyncLaunchSiteDetailsResourceWithStreamingResponse(
+            client.launch_site_details
+        )
+        self.launch_vehicle = launch_vehicle.AsyncLaunchVehicleResourceWithStreamingResponse(client.launch_vehicle)
+        self.launch_vehicle_details = launch_vehicle_details.AsyncLaunchVehicleDetailsResourceWithStreamingResponse(
+            client.launch_vehicle_details
         )
         self.link_status = link_status.AsyncLinkStatusResourceWithStreamingResponse(client.link_status)
         self.location = location.AsyncLocationResourceWithStreamingResponse(client.location)
-        self.logisticssupport = logisticssupport.AsyncLogisticssupportResourceWithStreamingResponse(
-            client.logisticssupport
+        self.logistics_support = logistics_support.AsyncLogisticsSupportResourceWithStreamingResponse(
+            client.logistics_support
         )
         self.maneuvers = maneuvers.AsyncManeuversResourceWithStreamingResponse(client.maneuvers)
         self.manifold = manifold.AsyncManifoldResourceWithStreamingResponse(client.manifold)
         self.manifoldelset = manifoldelset.AsyncManifoldelsetResourceWithStreamingResponse(client.manifoldelset)
         self.missile_tracks = missile_tracks.AsyncMissileTracksResourceWithStreamingResponse(client.missile_tracks)
-        self.missionassignment = missionassignment.AsyncMissionassignmentResourceWithStreamingResponse(
-            client.missionassignment
+        self.mission_assignment = mission_assignment.AsyncMissionAssignmentResourceWithStreamingResponse(
+            client.mission_assignment
         )
-        self.monoradar = monoradar.AsyncMonoradarResourceWithStreamingResponse(client.monoradar)
         self.mti = mti.AsyncMtiResourceWithStreamingResponse(client.mti)
         self.navigation = navigation.AsyncNavigationResourceWithStreamingResponse(client.navigation)
-        self.navigationalobstruction = (
-            navigationalobstruction.AsyncNavigationalobstructionResourceWithStreamingResponse(
-                client.navigationalobstruction
+        self.navigational_obstruction = (
+            navigational_obstruction.AsyncNavigationalObstructionResourceWithStreamingResponse(
+                client.navigational_obstruction
             )
         )
         self.notification = notification.AsyncNotificationResourceWithStreamingResponse(client.notification)
-        self.objectofinterest = objectofinterest.AsyncObjectofinterestResourceWithStreamingResponse(
-            client.objectofinterest
+        self.object_of_interest = object_of_interest.AsyncObjectOfInterestResourceWithStreamingResponse(
+            client.object_of_interest
         )
         self.observations = observations.AsyncObservationsResourceWithStreamingResponse(client.observations)
         self.onboardnavigation = onboardnavigation.AsyncOnboardnavigationResourceWithStreamingResponse(
@@ -2260,99 +2142,91 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.organizationdetails = organizationdetails.AsyncOrganizationdetailsResourceWithStreamingResponse(
             client.organizationdetails
         )
-        self.passiveradarobservation = (
-            passiveradarobservation.AsyncPassiveradarobservationResourceWithStreamingResponse(
-                client.passiveradarobservation
-            )
-        )
         self.personnelrecovery = personnelrecovery.AsyncPersonnelrecoveryResourceWithStreamingResponse(
             client.personnelrecovery
         )
         self.poi = poi.AsyncPoiResourceWithStreamingResponse(client.poi)
         self.port = port.AsyncPortResourceWithStreamingResponse(client.port)
-        self.radarobservation = radarobservation.AsyncRadarobservationResourceWithStreamingResponse(
-            client.radarobservation
+        self.rf_band = rf_band.AsyncRfBandResourceWithStreamingResponse(client.rf_band)
+        self.rf_band_type = rf_band_type.AsyncRfBandTypeResourceWithStreamingResponse(client.rf_band_type)
+        self.rf_emitter = rf_emitter.AsyncRfEmitterResourceWithStreamingResponse(client.rf_emitter)
+        self.rf_emitter_details = rf_emitter_details.AsyncRfEmitterDetailsResourceWithStreamingResponse(
+            client.rf_emitter_details
         )
-        self.rfband = rfband.AsyncRfbandResourceWithStreamingResponse(client.rfband)
-        self.rfbandtype = rfbandtype.AsyncRfbandtypeResourceWithStreamingResponse(client.rfbandtype)
-        self.rfemitter = rfemitter.AsyncRfemitterResourceWithStreamingResponse(client.rfemitter)
-        self.rfemitterdetails = rfemitterdetails.AsyncRfemitterdetailsResourceWithStreamingResponse(
-            client.rfemitterdetails
-        )
-        self.rfobservation = rfobservation.AsyncRfobservationResourceWithStreamingResponse(client.rfobservation)
-        self.sarobservation = sarobservation.AsyncSarobservationResourceWithStreamingResponse(client.sarobservation)
+        self.sar_observation = sar_observation.AsyncSarObservationResourceWithStreamingResponse(client.sar_observation)
         self.scientific = scientific.AsyncScientificResourceWithStreamingResponse(client.scientific)
         self.sensor = sensor.AsyncSensorResourceWithStreamingResponse(client.sensor)
-        self.sensormaintenance = sensormaintenance.AsyncSensormaintenanceResourceWithStreamingResponse(
-            client.sensormaintenance
+        self.sensor_maintenance = sensor_maintenance.AsyncSensorMaintenanceResourceWithStreamingResponse(
+            client.sensor_maintenance
         )
-        self.sensorobservationtype = sensorobservationtype.AsyncSensorobservationtypeResourceWithStreamingResponse(
-            client.sensorobservationtype
+        self.sensor_observation_type = sensor_observation_type.AsyncSensorObservationTypeResourceWithStreamingResponse(
+            client.sensor_observation_type
         )
-        self.sensorplan = sensorplan.AsyncSensorplanResourceWithStreamingResponse(client.sensorplan)
-        self.sensortype = sensortype.AsyncSensortypeResourceWithStreamingResponse(client.sensortype)
-        self.seradatacommdetails = seradatacommdetails.AsyncSeradatacommdetailsResourceWithStreamingResponse(
-            client.seradatacommdetails
+        self.sensor_plan = sensor_plan.AsyncSensorPlanResourceWithStreamingResponse(client.sensor_plan)
+        self.sensor_type = sensor_type.AsyncSensorTypeResourceWithStreamingResponse(client.sensor_type)
+        self.sera_data_comm_details = sera_data_comm_details.AsyncSeraDataCommDetailsResourceWithStreamingResponse(
+            client.sera_data_comm_details
         )
-        self.seradataearlywarning = seradataearlywarning.AsyncSeradataearlywarningResourceWithStreamingResponse(
-            client.seradataearlywarning
+        self.sera_data_early_warning = sera_data_early_warning.AsyncSeraDataEarlyWarningResourceWithStreamingResponse(
+            client.sera_data_early_warning
         )
-        self.seradatanavigation = seradatanavigation.AsyncSeradatanavigationResourceWithStreamingResponse(
-            client.seradatanavigation
+        self.sera_data_navigation = sera_data_navigation.AsyncSeraDataNavigationResourceWithStreamingResponse(
+            client.sera_data_navigation
         )
-        self.seradataopticalpayload = seradataopticalpayload.AsyncSeradataopticalpayloadResourceWithStreamingResponse(
-            client.seradataopticalpayload
+        self.seradata_optical_payload = (
+            seradata_optical_payload.AsyncSeradataOpticalPayloadResourceWithStreamingResponse(
+                client.seradata_optical_payload
+            )
         )
-        self.seradataradarpayload = seradataradarpayload.AsyncSeradataradarpayloadResourceWithStreamingResponse(
-            client.seradataradarpayload
+        self.seradata_radar_payload = seradata_radar_payload.AsyncSeradataRadarPayloadResourceWithStreamingResponse(
+            client.seradata_radar_payload
         )
-        self.seradatasigintpayload = seradatasigintpayload.AsyncSeradatasigintpayloadResourceWithStreamingResponse(
-            client.seradatasigintpayload
+        self.seradata_sigint_payload = seradata_sigint_payload.AsyncSeradataSigintPayloadResourceWithStreamingResponse(
+            client.seradata_sigint_payload
         )
-        self.seradataspacecraftdetails = (
-            seradataspacecraftdetails.AsyncSeradataspacecraftdetailsResourceWithStreamingResponse(
-                client.seradataspacecraftdetails
+        self.seradata_spacecraft_details = (
+            seradata_spacecraft_details.AsyncSeradataSpacecraftDetailsResourceWithStreamingResponse(
+                client.seradata_spacecraft_details
             )
         )
         self.sgi = sgi.AsyncSgiResourceWithStreamingResponse(client.sgi)
         self.sigact = sigact.AsyncSigactResourceWithStreamingResponse(client.sigact)
         self.site = site.AsyncSiteResourceWithStreamingResponse(client.site)
-        self.siteremark = siteremark.AsyncSiteremarkResourceWithStreamingResponse(client.siteremark)
-        self.sitestatus = sitestatus.AsyncSitestatusResourceWithStreamingResponse(client.sitestatus)
-        self.skyimagery = skyimagery.AsyncSkyimageryResourceWithStreamingResponse(client.skyimagery)
-        self.soiobservationset = soiobservationset.AsyncSoiobservationsetResourceWithStreamingResponse(
-            client.soiobservationset
+        self.site_remark = site_remark.AsyncSiteRemarkResourceWithStreamingResponse(client.site_remark)
+        self.site_status = site_status.AsyncSiteStatusResourceWithStreamingResponse(client.site_status)
+        self.sky_imagery = sky_imagery.AsyncSkyImageryResourceWithStreamingResponse(client.sky_imagery)
+        self.soi_observation_set = soi_observation_set.AsyncSoiObservationSetResourceWithStreamingResponse(
+            client.soi_observation_set
         )
-        self.solararray = solararray.AsyncSolararrayResourceWithStreamingResponse(client.solararray)
-        self.solararraydetails = solararraydetails.AsyncSolararraydetailsResourceWithStreamingResponse(
-            client.solararraydetails
+        self.solar_array = solar_array.AsyncSolarArrayResourceWithStreamingResponse(client.solar_array)
+        self.solar_array_details = solar_array_details.AsyncSolarArrayDetailsResourceWithStreamingResponse(
+            client.solar_array_details
         )
-        self.sortieppr = sortieppr.AsyncSortiepprResourceWithStreamingResponse(client.sortieppr)
-        self.spaceenvobservation = spaceenvobservation.AsyncSpaceenvobservationResourceWithStreamingResponse(
-            client.spaceenvobservation
+        self.sortie_ppr = sortie_ppr.AsyncSortiePprResourceWithStreamingResponse(client.sortie_ppr)
+        self.space_env_observation = space_env_observation.AsyncSpaceEnvObservationResourceWithStreamingResponse(
+            client.space_env_observation
         )
         self.stage = stage.AsyncStageResourceWithStreamingResponse(client.stage)
-        self.starcatalog = starcatalog.AsyncStarcatalogResourceWithStreamingResponse(client.starcatalog)
-        self.statevector = statevector.AsyncStatevectorResourceWithStreamingResponse(client.statevector)
+        self.star_catalog = star_catalog.AsyncStarCatalogResourceWithStreamingResponse(client.star_catalog)
+        self.state_vector = state_vector.AsyncStateVectorResourceWithStreamingResponse(client.state_vector)
         self.status = status.AsyncStatusResourceWithStreamingResponse(client.status)
         self.substatus = substatus.AsyncSubstatusResourceWithStreamingResponse(client.substatus)
         self.supporting_data = supporting_data.AsyncSupportingDataResourceWithStreamingResponse(client.supporting_data)
         self.surface = surface.AsyncSurfaceResourceWithStreamingResponse(client.surface)
-        self.surfaceobstruction = surfaceobstruction.AsyncSurfaceobstructionResourceWithStreamingResponse(
-            client.surfaceobstruction
+        self.surface_obstruction = surface_obstruction.AsyncSurfaceObstructionResourceWithStreamingResponse(
+            client.surface_obstruction
         )
         self.swir = swir.AsyncSwirResourceWithStreamingResponse(client.swir)
-        self.taiutc = taiutc.AsyncTaiutcResourceWithStreamingResponse(client.taiutc)
+        self.tai_utc = tai_utc.AsyncTaiUtcResourceWithStreamingResponse(client.tai_utc)
         self.tdoa_fdoa = tdoa_fdoa.AsyncTdoaFdoaResourceWithStreamingResponse(client.tdoa_fdoa)
         self.track = track.AsyncTrackResourceWithStreamingResponse(client.track)
-        self.trackdetails = trackdetails.AsyncTrackdetailsResourceWithStreamingResponse(client.trackdetails)
-        self.trackroute = trackroute.AsyncTrackrouteResourceWithStreamingResponse(client.trackroute)
+        self.track_details = track_details.AsyncTrackDetailsResourceWithStreamingResponse(client.track_details)
+        self.track_route = track_route.AsyncTrackRouteResourceWithStreamingResponse(client.track_route)
         self.transponder = transponder.AsyncTransponderResourceWithStreamingResponse(client.transponder)
         self.vessel = vessel.AsyncVesselResourceWithStreamingResponse(client.vessel)
         self.video = video.AsyncVideoResourceWithStreamingResponse(client.video)
-        self.weatherdata = weatherdata.AsyncWeatherdataResourceWithStreamingResponse(client.weatherdata)
-        self.weatherreport = weatherreport.AsyncWeatherreportResourceWithStreamingResponse(client.weatherreport)
-        self.udl = udl.AsyncUdlResourceWithStreamingResponse(client.udl)
+        self.weather_data = weather_data.AsyncWeatherDataResourceWithStreamingResponse(client.weather_data)
+        self.weather_report = weather_report.AsyncWeatherReportResourceWithStreamingResponse(client.weather_report)
         self.gnss_observations = gnss_observations.AsyncGnssObservationsResourceWithStreamingResponse(
             client.gnss_observations
         )
@@ -2360,7 +2234,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.iono_observation = iono_observation.AsyncIonoObservationResourceWithStreamingResponse(
             client.iono_observation
         )
-        self.launch_event = launch_event.AsyncLaunchEventResourceWithStreamingResponse(client.launch_event)
         self.report_and_activity = report_and_activity.AsyncReportAndActivityResourceWithStreamingResponse(
             client.report_and_activity
         )

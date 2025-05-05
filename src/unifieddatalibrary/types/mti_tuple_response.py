@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .udl.mti.mti_full import MtiFull
+from .mti.mti_full import MtiFull
 
 __all__ = ["MtiTupleResponse"]
 

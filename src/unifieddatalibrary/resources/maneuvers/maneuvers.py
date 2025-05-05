@@ -37,9 +37,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.maneuver_get_response import ManeuverGetResponse
 from ...types.maneuver_list_response import ManeuverListResponse
 from ...types.maneuver_tuple_response import ManeuverTupleResponse
-from ...types.udl.maneuver.maneuver_full import ManeuverFull
 
 __all__ = ["ManeuversResource", "AsyncManeuversResource"]
 
@@ -758,7 +758,7 @@ class ManeuversResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverFull:
+    ) -> ManeuverGetResponse:
         """
         Service operation to get a single maneuver by its unique ID passed as a path
         parameter.
@@ -789,7 +789,7 @@ class ManeuversResource(SyncAPIResource):
                     maneuver_get_params.ManeuverGetParams,
                 ),
             ),
-            cast_to=ManeuverFull,
+            cast_to=ManeuverGetResponse,
         )
 
     def queryhelp(
@@ -1628,7 +1628,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverFull:
+    ) -> ManeuverGetResponse:
         """
         Service operation to get a single maneuver by its unique ID passed as a path
         parameter.
@@ -1659,7 +1659,7 @@ class AsyncManeuversResource(AsyncAPIResource):
                     maneuver_get_params.ManeuverGetParams,
                 ),
             ),
-            cast_to=ManeuverFull,
+            cast_to=ManeuverGetResponse,
         )
 
     async def queryhelp(

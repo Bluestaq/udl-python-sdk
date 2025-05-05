@@ -36,9 +36,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.hazard_get_response import HazardGetResponse
 from ...types.hazard_list_response import HazardListResponse
 from ...types.hazard_tuple_response import HazardTupleResponse
-from ...types.udl.hazard.hazard_full import HazardFull
 
 __all__ = ["HazardResource", "AsyncHazardResource"]
 
@@ -481,7 +481,7 @@ class HazardResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardFull:
+    ) -> HazardGetResponse:
         """
         Service operation to get a single Hazard by its unique ID passed as a path
         parameter.
@@ -512,7 +512,7 @@ class HazardResource(SyncAPIResource):
                     hazard_get_params.HazardGetParams,
                 ),
             ),
-            cast_to=HazardFull,
+            cast_to=HazardGetResponse,
         )
 
     def queryhelp(
@@ -1038,7 +1038,7 @@ class AsyncHazardResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardFull:
+    ) -> HazardGetResponse:
         """
         Service operation to get a single Hazard by its unique ID passed as a path
         parameter.
@@ -1069,7 +1069,7 @@ class AsyncHazardResource(AsyncAPIResource):
                     hazard_get_params.HazardGetParams,
                 ),
             ),
-            cast_to=HazardFull,
+            cast_to=HazardGetResponse,
         )
 
     async def queryhelp(

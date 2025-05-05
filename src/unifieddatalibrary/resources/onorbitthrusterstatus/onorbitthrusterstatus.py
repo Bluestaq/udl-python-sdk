@@ -38,7 +38,7 @@ from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.onorbitthrusterstatus_list_response import OnorbitthrusterstatusListResponse
 from ...types.onorbitthrusterstatus_tuple_response import OnorbitthrusterstatusTupleResponse
-from ...types.udl.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
+from ...types.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
 
 __all__ = ["OnorbitthrusterstatusResource", "AsyncOnorbitthrusterstatusResource"]
 
