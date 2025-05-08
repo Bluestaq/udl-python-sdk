@@ -9,7 +9,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "AirTaskingOrderListResponse",
+    "AirtaskingorderAbridged",
     "AcMsnTasking",
     "AcMsnTaskingAcMsnLocSeg",
     "AcMsnTaskingIndAcTasking",
@@ -283,7 +283,7 @@ class NavalFltOp(BaseModel):
     """
 
 
-class AirTaskingOrderListResponse(BaseModel):
+class AirtaskingorderAbridged(BaseModel):
     begin_ts: datetime = FieldInfo(alias="beginTs")
     """
     The effective begin time for this ATO in ISO 8601 UTC format with millisecond
