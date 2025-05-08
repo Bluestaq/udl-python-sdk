@@ -53,7 +53,7 @@ class H3GeoResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return H3GeoResourceWithRawResponse(self)
 
@@ -62,7 +62,7 @@ class H3GeoResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return H3GeoResourceWithStreamingResponse(self)
 
@@ -429,7 +429,7 @@ class AsyncH3GeoResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncH3GeoResourceWithRawResponse(self)
 
@@ -438,7 +438,7 @@ class AsyncH3GeoResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncH3GeoResourceWithStreamingResponse(self)
 
