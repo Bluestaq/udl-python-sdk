@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-05-08)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** manual updates ([ab5cc81](https://github.com/Bluestaq/udl-python-sdk/commit/ab5cc81bf794ecc076d8c8d8cded6cdf7eb9c7f7))
+* **api:** manual updates ([0d9643c](https://github.com/Bluestaq/udl-python-sdk/commit/0d9643c9f0f13f939580bf78daff3ca79abdf77a))
+* **api:** manual updates ([1e00135](https://github.com/Bluestaq/udl-python-sdk/commit/1e0013576f42f5a5d6b46c2b8cdfa518482f2b42))
+* updating to org controlled repo ([e2d7db1](https://github.com/Bluestaq/udl-python-sdk/commit/e2d7db10387838acf6c21682c6dd882214a8b60b))
+
+
+### Bug Fixes
+
+* add missing pagination params ([f4e0093](https://github.com/Bluestaq/udl-python-sdk/commit/f4e009308143812cce38272adb0cf85bb8d4797c))
+* correct pagination for elsets ([27e5f40](https://github.com/Bluestaq/udl-python-sdk/commit/27e5f40d603740b189eafcb5c33c817fee8e8253))
+* correct pagination params ([7936b90](https://github.com/Bluestaq/udl-python-sdk/commit/7936b90a2187b3a53b50ccffd79b6470b3e2c0a4))
+
+
+### Chores
+
+* configure new SDK language ([55a96e0](https://github.com/Bluestaq/udl-python-sdk/commit/55a96e0896a9f788a021fafefe041540edcc3d2d))
+* configure new SDK language ([b951a1d](https://github.com/Bluestaq/udl-python-sdk/commit/b951a1d223748bd1543d7a3eeef0041a157c799d))
+
+
+### Documentation
+
+* **readme:** updated README to include pagination ([ffd9bc3](https://github.com/Bluestaq/udl-python-sdk/commit/ffd9bc3dbb43cd0b66e6dc58e38337bf93881635))
+
 ## 0.1.0-alpha.6 (2025-04-24)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/rsivilli-bluestaq/udl-python-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
