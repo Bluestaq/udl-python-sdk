@@ -34,8 +34,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rsivilli-bluestaq/udl-python-sdk"
-Repository = "https://github.com/rsivilli-bluestaq/udl-python-sdk"
+Homepage = "https://github.com/Bluestaq/udl-python-sdk"
+Repository = "https://github.com/Bluestaq/udl-python-sdk"
 
 
 [tool.rye]
@@ -126,7 +126,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/rsivilli-bluestaq/udl-python-sdk/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/Bluestaq/udl-python-sdk/tree/main/\g<2>)'
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
