@@ -6,7 +6,12 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import onorbitantenna_create_params, onorbitantenna_update_params
+from ..types import (
+    onorbitantenna_get_params,
+    onorbitantenna_list_params,
+    onorbitantenna_create_params,
+    onorbitantenna_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -17,7 +22,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.onorbitantenna_get_response import OnorbitantennaGetResponse
 from ..types.onorbitantenna_list_response import OnorbitantennaListResponse
 
@@ -31,7 +37,7 @@ class OnorbitantennaResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return OnorbitantennaResourceWithRawResponse(self)
 
@@ -40,7 +46,7 @@ class OnorbitantennaResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return OnorbitantennaResourceWithStreamingResponse(self)
 
@@ -233,25 +239,47 @@ class OnorbitantennaResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitantennaListResponse:
+    ) -> SyncOffsetPage[OnorbitantennaListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/onorbitantenna",
+            page=SyncOffsetPage[OnorbitantennaListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    onorbitantenna_list_params.OnorbitantennaListParams,
+                ),
             ),
-            cast_to=OnorbitantennaListResponse,
+            model=OnorbitantennaListResponse,
         )
 
     def delete(
@@ -296,6 +324,8 @@ class OnorbitantennaResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -323,7 +353,17 @@ class OnorbitantennaResource(SyncAPIResource):
         return self._get(
             f"/udl/onorbitantenna/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    onorbitantenna_get_params.OnorbitantennaGetParams,
+                ),
             ),
             cast_to=OnorbitantennaGetResponse,
         )
@@ -336,7 +376,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncOnorbitantennaResourceWithRawResponse(self)
 
@@ -345,7 +385,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncOnorbitantennaResourceWithStreamingResponse(self)
 
@@ -535,28 +575,50 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitantennaListResponse:
+    ) -> AsyncPaginator[OnorbitantennaListResponse, AsyncOffsetPage[OnorbitantennaListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
         (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
         parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/onorbitantenna",
+            page=AsyncOffsetPage[OnorbitantennaListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    onorbitantenna_list_params.OnorbitantennaListParams,
+                ),
             ),
-            cast_to=OnorbitantennaListResponse,
+            model=OnorbitantennaListResponse,
         )
 
     async def delete(
@@ -601,6 +663,8 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -628,7 +692,17 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         return await self._get(
             f"/udl/onorbitantenna/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    onorbitantenna_get_params.OnorbitantennaGetParams,
+                ),
             ),
             cast_to=OnorbitantennaGetResponse,
         )

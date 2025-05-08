@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["StageListResponse", "StageListResponseItem"]
+__all__ = ["StageListResponse"]
 
 
-class StageListResponseItem(BaseModel):
+class StageListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -156,6 +156,3 @@ class StageListResponseItem(BaseModel):
 
     vernier_thrust_vacuum: Optional[float] = FieldInfo(alias="vernierThrustVacuum", default=None)
     """Total thrust of one of the vernier or additional engines in a vacuum in kN."""
-
-
-StageListResponse: TypeAlias = List[StageListResponseItem]

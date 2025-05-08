@@ -28,6 +28,10 @@ class HistoryListParams(TypedDict, total=False):
     or event.
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
+
     start_time: Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]
     """
     (One or more of fields 'eventId, startTime' are required.) The actual or

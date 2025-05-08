@@ -4,7 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ..types import (
+    secure_messaging_get_messages_params,
+    secure_messaging_describe_topic_params,
+    secure_messaging_get_latest_offset_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -27,7 +33,7 @@ class SecureMessagingResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return SecureMessagingResourceWithRawResponse(self)
 
@@ -36,7 +42,7 @@ class SecureMessagingResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return SecureMessagingResourceWithStreamingResponse(self)
 
@@ -44,6 +50,8 @@ class SecureMessagingResource(SyncAPIResource):
         self,
         topic: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -68,7 +76,17 @@ class SecureMessagingResource(SyncAPIResource):
         return self._get(
             f"/sm/describeTopic/{topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    secure_messaging_describe_topic_params.SecureMessagingDescribeTopicParams,
+                ),
             ),
             cast_to=TopicDetails,
         )
@@ -77,6 +95,8 @@ class SecureMessagingResource(SyncAPIResource):
         self,
         topic: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -102,7 +122,17 @@ class SecureMessagingResource(SyncAPIResource):
         return self._get(
             f"/sm/getLatestOffset/{topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    secure_messaging_get_latest_offset_params.SecureMessagingGetLatestOffsetParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -112,6 +142,8 @@ class SecureMessagingResource(SyncAPIResource):
         offset: int,
         *,
         topic: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +171,17 @@ class SecureMessagingResource(SyncAPIResource):
         return self._get(
             f"/sm/getMessages/{topic}/{offset}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    secure_messaging_get_messages_params.SecureMessagingGetMessagesParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -171,7 +213,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncSecureMessagingResourceWithRawResponse(self)
 
@@ -180,7 +222,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncSecureMessagingResourceWithStreamingResponse(self)
 
@@ -188,6 +230,8 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         self,
         topic: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -212,7 +256,17 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         return await self._get(
             f"/sm/describeTopic/{topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    secure_messaging_describe_topic_params.SecureMessagingDescribeTopicParams,
+                ),
             ),
             cast_to=TopicDetails,
         )
@@ -221,6 +275,8 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         self,
         topic: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -246,7 +302,17 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         return await self._get(
             f"/sm/getLatestOffset/{topic}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    secure_messaging_get_latest_offset_params.SecureMessagingGetLatestOffsetParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -256,6 +322,8 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         offset: int,
         *,
         topic: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -283,7 +351,17 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         return await self._get(
             f"/sm/getMessages/{topic}/{offset}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    secure_messaging_get_messages_params.SecureMessagingGetMessagesParams,
+                ),
             ),
             cast_to=NoneType,
         )

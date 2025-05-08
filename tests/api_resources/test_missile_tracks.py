@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     MissileTrackTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +27,16 @@ class TestMissileTracks:
         missile_track = client.missile_tracks.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
+        assert_matches_type(SyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        missile_track = client.missile_tracks.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -37,7 +47,7 @@ class TestMissileTracks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         missile_track = response.parse()
-        assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
+        assert_matches_type(SyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -48,7 +58,7 @@ class TestMissileTracks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             missile_track = response.parse()
-            assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
+            assert_matches_type(SyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -56,6 +66,15 @@ class TestMissileTracks:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         missile_track = client.missile_tracks.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, missile_track, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        missile_track = client.missile_tracks.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, missile_track, path=["response"])
 
@@ -169,6 +188,16 @@ class TestMissileTracks:
         assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        missile_track = client.missile_tracks.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.missile_tracks.with_raw_response.tuple(
             columns="columns",
@@ -255,7 +284,16 @@ class TestAsyncMissileTracks:
         missile_track = await async_client.missile_tracks.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
+        assert_matches_type(AsyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        missile_track = await async_client.missile_tracks.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -266,7 +304,7 @@ class TestAsyncMissileTracks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         missile_track = await response.parse()
-        assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
+        assert_matches_type(AsyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -277,7 +315,7 @@ class TestAsyncMissileTracks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             missile_track = await response.parse()
-            assert_matches_type(MissileTrackListResponse, missile_track, path=["response"])
+            assert_matches_type(AsyncOffsetPage[MissileTrackListResponse], missile_track, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -285,6 +323,15 @@ class TestAsyncMissileTracks:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         missile_track = await async_client.missile_tracks.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, missile_track, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        missile_track = await async_client.missile_tracks.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, missile_track, path=["response"])
 
@@ -394,6 +441,16 @@ class TestAsyncMissileTracks:
         missile_track = await async_client.missile_tracks.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        missile_track = await async_client.missile_tracks.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(MissileTrackTupleResponse, missile_track, path=["response"])
 

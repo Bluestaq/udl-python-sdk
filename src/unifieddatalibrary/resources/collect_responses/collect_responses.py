@@ -20,6 +20,7 @@ from ...types import (
     collect_response_list_params,
     collect_response_count_params,
     collect_response_create_params,
+    collect_response_retrieve_params,
     collect_response_create_bulk_params,
     collect_response_unvalidated_publish_params,
 )
@@ -33,7 +34,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from .history.history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -42,8 +44,8 @@ from .history.history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
+from ...types.collect_response_abridged import CollectResponseAbridged
 from ...types.shared.collect_response_full import CollectResponseFull
-from ...types.collect_response_list_response import CollectResponseListResponse
 
 __all__ = ["CollectResponsesResource", "AsyncCollectResponsesResource"]
 
@@ -63,7 +65,7 @@ class CollectResponsesResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return CollectResponsesResourceWithRawResponse(self)
 
@@ -72,7 +74,7 @@ class CollectResponsesResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return CollectResponsesResourceWithStreamingResponse(self)
 
@@ -284,6 +286,8 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -309,7 +313,17 @@ class CollectResponsesResource(SyncAPIResource):
         return self._get(
             f"/udl/collectresponse/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_response_retrieve_params.CollectResponseRetrieveParams,
+                ),
             ),
             cast_to=CollectResponseFull,
         )
@@ -318,13 +332,15 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CollectResponseListResponse:
+    ) -> SyncOffsetPage[CollectResponseAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -343,24 +359,32 @@ class CollectResponsesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/collectresponse",
+            page=SyncOffsetPage[CollectResponseAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, collect_response_list_params.CollectResponseListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_response_list_params.CollectResponseListParams,
                 ),
             ),
-            cast_to=CollectResponseListResponse,
+            model=CollectResponseAbridged,
         )
 
     def count(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -396,7 +420,12 @@ class CollectResponsesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, collect_response_count_params.CollectResponseCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_response_count_params.CollectResponseCountParams,
                 ),
             ),
             cast_to=str,
@@ -514,7 +543,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncCollectResponsesResourceWithRawResponse(self)
 
@@ -523,7 +552,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncCollectResponsesResourceWithStreamingResponse(self)
 
@@ -735,6 +764,8 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -760,22 +791,34 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         return await self._get(
             f"/udl/collectresponse/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_response_retrieve_params.CollectResponseRetrieveParams,
+                ),
             ),
             cast_to=CollectResponseFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CollectResponseListResponse:
+    ) -> AsyncPaginator[CollectResponseAbridged, AsyncOffsetPage[CollectResponseAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -794,24 +837,32 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/collectresponse",
+            page=AsyncOffsetPage[CollectResponseAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"created_at": created_at}, collect_response_list_params.CollectResponseListParams
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_response_list_params.CollectResponseListParams,
                 ),
             ),
-            cast_to=CollectResponseListResponse,
+            model=CollectResponseAbridged,
         )
 
     async def count(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -847,7 +898,12 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, collect_response_count_params.CollectResponseCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_response_count_params.CollectResponseCountParams,
                 ),
             ),
             cast_to=str,

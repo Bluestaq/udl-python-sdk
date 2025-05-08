@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     OperatingunitremarkListResponse,
     OperatingunitremarkTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -84,7 +85,15 @@ class TestOperatingunitremark:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.list()
-        assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
+        assert_matches_type(SyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operatingunitremark = client.operatingunitremark.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -93,7 +102,7 @@ class TestOperatingunitremark:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         operatingunitremark = response.parse()
-        assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
+        assert_matches_type(SyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -102,13 +111,21 @@ class TestOperatingunitremark:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             operatingunitremark = response.parse()
-            assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
+            assert_matches_type(SyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.count()
+        assert_matches_type(str, operatingunitremark, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operatingunitremark = client.operatingunitremark.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, operatingunitremark, path=["response"])
 
     @parametrize
@@ -189,14 +206,23 @@ class TestOperatingunitremark:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OperatingunitremarkGetResponse, operatingunitremark, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operatingunitremark = client.operatingunitremark.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkGetResponse, operatingunitremark, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.operatingunitremark.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -207,7 +233,7 @@ class TestOperatingunitremark:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.operatingunitremark.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -221,7 +247,7 @@ class TestOperatingunitremark:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.operatingunitremark.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -253,6 +279,15 @@ class TestOperatingunitremark:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         operatingunitremark = client.operatingunitremark.tuple(
             columns="columns",
+        )
+        assert_matches_type(OperatingunitremarkTupleResponse, operatingunitremark, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        operatingunitremark = client.operatingunitremark.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkTupleResponse, operatingunitremark, path=["response"])
 
@@ -347,7 +382,15 @@ class TestAsyncOperatingunitremark:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.list()
-        assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operatingunitremark = await async_client.operatingunitremark.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -356,7 +399,7 @@ class TestAsyncOperatingunitremark:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         operatingunitremark = await response.parse()
-        assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -365,13 +408,23 @@ class TestAsyncOperatingunitremark:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             operatingunitremark = await response.parse()
-            assert_matches_type(OperatingunitremarkListResponse, operatingunitremark, path=["response"])
+            assert_matches_type(
+                AsyncOffsetPage[OperatingunitremarkListResponse], operatingunitremark, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.count()
+        assert_matches_type(str, operatingunitremark, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operatingunitremark = await async_client.operatingunitremark.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, operatingunitremark, path=["response"])
 
     @parametrize
@@ -452,14 +505,23 @@ class TestAsyncOperatingunitremark:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OperatingunitremarkGetResponse, operatingunitremark, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operatingunitremark = await async_client.operatingunitremark.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkGetResponse, operatingunitremark, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.operatingunitremark.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -470,7 +532,7 @@ class TestAsyncOperatingunitremark:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.operatingunitremark.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -484,7 +546,7 @@ class TestAsyncOperatingunitremark:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.operatingunitremark.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -516,6 +578,15 @@ class TestAsyncOperatingunitremark:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunitremark = await async_client.operatingunitremark.tuple(
             columns="columns",
+        )
+        assert_matches_type(OperatingunitremarkTupleResponse, operatingunitremark, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        operatingunitremark = await async_client.operatingunitremark.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OperatingunitremarkTupleResponse, operatingunitremark, path=["response"])
 

@@ -10,6 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.link_status import (
     DatalinkListResponse,
     DatalinkTupleResponse,
@@ -205,7 +206,16 @@ class TestDatalink:
         datalink = client.link_status.datalink.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+        assert_matches_type(SyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -216,7 +226,7 @@ class TestDatalink:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         datalink = response.parse()
-        assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+        assert_matches_type(SyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -227,7 +237,7 @@ class TestDatalink:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             datalink = response.parse()
-            assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+            assert_matches_type(SyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -235,6 +245,15 @@ class TestDatalink:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         datalink = client.link_status.datalink.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, datalink, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, datalink, path=["response"])
 
@@ -292,6 +311,16 @@ class TestDatalink:
         datalink = client.link_status.datalink.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        datalink = client.link_status.datalink.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
 
@@ -567,7 +596,16 @@ class TestAsyncDatalink:
         datalink = await async_client.link_status.datalink.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+        assert_matches_type(AsyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -578,7 +616,7 @@ class TestAsyncDatalink:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         datalink = await response.parse()
-        assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+        assert_matches_type(AsyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -589,7 +627,7 @@ class TestAsyncDatalink:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             datalink = await response.parse()
-            assert_matches_type(DatalinkListResponse, datalink, path=["response"])
+            assert_matches_type(AsyncOffsetPage[DatalinkListResponse], datalink, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -597,6 +635,15 @@ class TestAsyncDatalink:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         datalink = await async_client.link_status.datalink.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, datalink, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, datalink, path=["response"])
 
@@ -654,6 +701,16 @@ class TestAsyncDatalink:
         datalink = await async_client.link_status.datalink.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        datalink = await async_client.link_status.datalink.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(DatalinkTupleResponse, datalink, path=["response"])
 

@@ -28,6 +28,10 @@ class HistoryListParams(TypedDict, total=False):
     future predicted values. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
+
     sgi_date: Annotated[Union[str, datetime], PropertyInfo(alias="sgiDate", format="iso8601")]
     """
     (One or more of fields 'effectiveDate, sgiDate' are required.) ISO8601 UTC Time

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from ..._utils import PropertyInfo
 
 __all__ = ["FileListParams"]
 
@@ -13,6 +15,10 @@ class FileListParams(TypedDict, total=False):
 
     count: int
     """Number of items per page"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     offset: int
     """First result to return"""

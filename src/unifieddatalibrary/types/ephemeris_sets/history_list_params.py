@@ -20,6 +20,10 @@ class HistoryListParams(TypedDict, total=False):
     can be selected.
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
+
     point_end_time: Annotated[Union[str, datetime], PropertyInfo(alias="pointEndTime", format="iso8601")]
     """
     (One or more of fields 'pointEndTime, pointStartTime' are required.) End

@@ -18,7 +18,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.air_operations import (
     aircraft_sortie_list_params,
     aircraft_sortie_count_params,
@@ -28,7 +29,7 @@ from ...types.air_operations import (
     aircraft_sortie_history_count_params,
     aircraft_sortie_history_query_params,
 )
-from ...types.air_operations.aircraft_sortie_list_response import AircraftSortieListResponse
+from ...types.air_operations.aircraftsortie_abridged import AircraftsortieAbridged
 from ...types.air_operations.aircraft_sortie_history_query_response import AircraftSortieHistoryQueryResponse
 
 __all__ = ["AircraftSortieResource", "AsyncAircraftSortieResource"]
@@ -41,7 +42,7 @@ class AircraftSortieResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AircraftSortieResourceWithRawResponse(self)
 
@@ -50,7 +51,7 @@ class AircraftSortieResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AircraftSortieResourceWithStreamingResponse(self)
 
@@ -421,13 +422,15 @@ class AircraftSortieResource(SyncAPIResource):
         self,
         *,
         planned_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftSortieListResponse:
+    ) -> SyncOffsetPage[AircraftsortieAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -446,24 +449,32 @@ class AircraftSortieResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/aircraftsortie",
+            page=SyncOffsetPage[AircraftsortieAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"planned_dep_time": planned_dep_time}, aircraft_sortie_list_params.AircraftSortieListParams
+                    {
+                        "planned_dep_time": planned_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_sortie_list_params.AircraftSortieListParams,
                 ),
             ),
-            cast_to=AircraftSortieListResponse,
+            model=AircraftsortieAbridged,
         )
 
     def count(
         self,
         *,
         planned_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -499,7 +510,12 @@ class AircraftSortieResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"planned_dep_time": planned_dep_time}, aircraft_sortie_count_params.AircraftSortieCountParams
+                    {
+                        "planned_dep_time": planned_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_sortie_count_params.AircraftSortieCountParams,
                 ),
             ),
             cast_to=str,
@@ -547,6 +563,8 @@ class AircraftSortieResource(SyncAPIResource):
         *,
         planned_dep_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -603,6 +621,8 @@ class AircraftSortieResource(SyncAPIResource):
                     {
                         "planned_dep_time": planned_dep_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -617,6 +637,8 @@ class AircraftSortieResource(SyncAPIResource):
         self,
         *,
         planned_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -652,7 +674,11 @@ class AircraftSortieResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"planned_dep_time": planned_dep_time},
+                    {
+                        "planned_dep_time": planned_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
                     aircraft_sortie_history_count_params.AircraftSortieHistoryCountParams,
                 ),
             ),
@@ -664,6 +690,8 @@ class AircraftSortieResource(SyncAPIResource):
         *,
         planned_dep_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -704,6 +732,8 @@ class AircraftSortieResource(SyncAPIResource):
                     {
                         "planned_dep_time": planned_dep_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     aircraft_sortie_history_query_params.AircraftSortieHistoryQueryParams,
                 ),
@@ -719,7 +749,7 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncAircraftSortieResourceWithRawResponse(self)
 
@@ -728,7 +758,7 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncAircraftSortieResourceWithStreamingResponse(self)
 
@@ -1095,17 +1125,19 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         planned_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftSortieListResponse:
+    ) -> AsyncPaginator[AircraftsortieAbridged, AsyncOffsetPage[AircraftsortieAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1124,24 +1156,32 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/aircraftsortie",
+            page=AsyncOffsetPage[AircraftsortieAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"planned_dep_time": planned_dep_time}, aircraft_sortie_list_params.AircraftSortieListParams
+                query=maybe_transform(
+                    {
+                        "planned_dep_time": planned_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_sortie_list_params.AircraftSortieListParams,
                 ),
             ),
-            cast_to=AircraftSortieListResponse,
+            model=AircraftsortieAbridged,
         )
 
     async def count(
         self,
         *,
         planned_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1177,7 +1217,12 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"planned_dep_time": planned_dep_time}, aircraft_sortie_count_params.AircraftSortieCountParams
+                    {
+                        "planned_dep_time": planned_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_sortie_count_params.AircraftSortieCountParams,
                 ),
             ),
             cast_to=str,
@@ -1225,6 +1270,8 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
         *,
         planned_dep_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -1281,6 +1328,8 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
                     {
                         "planned_dep_time": planned_dep_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -1295,6 +1344,8 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
         self,
         *,
         planned_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1330,7 +1381,11 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"planned_dep_time": planned_dep_time},
+                    {
+                        "planned_dep_time": planned_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
                     aircraft_sortie_history_count_params.AircraftSortieHistoryCountParams,
                 ),
             ),
@@ -1342,6 +1397,8 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
         *,
         planned_dep_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1382,6 +1439,8 @@ class AsyncAircraftSortieResource(AsyncAPIResource):
                     {
                         "planned_dep_time": planned_dep_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     aircraft_sortie_history_query_params.AircraftSortieHistoryQueryParams,
                 ),

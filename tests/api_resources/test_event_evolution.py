@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     EventEvolutionTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import EventEvolutionFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -104,14 +105,23 @@ class TestEventEvolution:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        event_evolution = client.event_evolution.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.event_evolution.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -122,7 +132,7 @@ class TestEventEvolution:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.event_evolution.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -136,21 +146,23 @@ class TestEventEvolution:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.event_evolution.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.list()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.list(
             event_id="eventId",
+            first_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -159,7 +171,7 @@ class TestEventEvolution:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_evolution = response.parse()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -168,7 +180,7 @@ class TestEventEvolution:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_evolution = response.parse()
-            assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+            assert_matches_type(SyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -181,6 +193,8 @@ class TestEventEvolution:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.count(
             event_id="eventId",
+            first_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, event_evolution, path=["response"])
@@ -300,6 +314,8 @@ class TestEventEvolution:
         event_evolution = client.event_evolution.tuple(
             columns="columns",
             event_id="eventId",
+            first_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])
@@ -472,14 +488,23 @@ class TestAsyncEventEvolution:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        event_evolution = await async_client.event_evolution.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EventEvolutionFull, event_evolution, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.event_evolution.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -490,7 +515,7 @@ class TestAsyncEventEvolution:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.event_evolution.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -504,21 +529,23 @@ class TestAsyncEventEvolution:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.event_evolution.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.list()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.list(
             event_id="eventId",
+            first_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -527,7 +554,7 @@ class TestAsyncEventEvolution:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_evolution = await response.parse()
-        assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -536,7 +563,7 @@ class TestAsyncEventEvolution:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_evolution = await response.parse()
-            assert_matches_type(EventEvolutionListResponse, event_evolution, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EventEvolutionListResponse], event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -549,6 +576,8 @@ class TestAsyncEventEvolution:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.count(
             event_id="eventId",
+            first_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, event_evolution, path=["response"])
@@ -668,6 +697,8 @@ class TestAsyncEventEvolution:
         event_evolution = await async_client.event_evolution.tuple(
             columns="columns",
             event_id="eventId",
+            first_result=0,
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventEvolutionTupleResponse, event_evolution, path=["response"])

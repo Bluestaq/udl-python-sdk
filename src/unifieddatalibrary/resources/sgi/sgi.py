@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    sgi_get_params,
     sgi_list_params,
     sgi_count_params,
     sgi_tuple_params,
@@ -36,10 +37,12 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.udl.sgi.sgi_full import SgiFull
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.sgi_get_response import SgiGetResponse
 from ...types.sgi_list_response import SgiListResponse
 from ...types.sgi_tuple_response import SgiTupleResponse
+from ...types.sgi_get_data_by_effective_as_of_date_response import SgiGetDataByEffectiveAsOfDateResponse
 
 __all__ = ["SgiResource", "AsyncSgiResource"]
 
@@ -55,7 +58,7 @@ class SgiResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return SgiResourceWithRawResponse(self)
 
@@ -64,7 +67,7 @@ class SgiResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return SgiResourceWithStreamingResponse(self)
 
@@ -779,6 +782,8 @@ class SgiResource(SyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -786,7 +791,7 @@ class SgiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiListResponse:
+    ) -> SyncOffsetPage[SgiListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -812,8 +817,9 @@ class SgiResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sgi",
+            page=SyncOffsetPage[SgiListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -822,12 +828,14 @@ class SgiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_list_params.SgiListParams,
                 ),
             ),
-            cast_to=SgiListResponse,
+            model=SgiListResponse,
         )
 
     def delete(
@@ -870,6 +878,8 @@ class SgiResource(SyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -915,6 +925,8 @@ class SgiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_count_params.SgiCountParams,
@@ -964,13 +976,15 @@ class SgiResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetResponse:
         """
         Service operation to get a single SGI record by its unique ID passed as a path
         parameter.
@@ -989,15 +1003,27 @@ class SgiResource(SyncAPIResource):
         return self._get(
             f"/udl/sgi/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sgi_get_params.SgiGetParams,
+                ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetResponse,
         )
 
     def get_data_by_effective_as_of_date(
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1005,7 +1031,7 @@ class SgiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetDataByEffectiveAsOfDateResponse:
         """
         Service to return matching SGI records as of the effective date.
 
@@ -1038,12 +1064,14 @@ class SgiResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
                 ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetDataByEffectiveAsOfDateResponse,
         )
 
     def queryhelp(
@@ -1074,6 +1102,8 @@ class SgiResource(SyncAPIResource):
         *,
         columns: str,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1127,6 +1157,8 @@ class SgiResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_tuple_params.SgiTupleParams,
@@ -1183,7 +1215,7 @@ class AsyncSgiResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncSgiResourceWithRawResponse(self)
 
@@ -1192,7 +1224,7 @@ class AsyncSgiResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncSgiResourceWithStreamingResponse(self)
 
@@ -1903,10 +1935,12 @@ class AsyncSgiResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1914,7 +1948,7 @@ class AsyncSgiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiListResponse:
+    ) -> AsyncPaginator[SgiListResponse, AsyncOffsetPage[SgiListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1940,22 +1974,25 @@ class AsyncSgiResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sgi",
+            page=AsyncOffsetPage[SgiListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_list_params.SgiListParams,
                 ),
             ),
-            cast_to=SgiListResponse,
+            model=SgiListResponse,
         )
 
     async def delete(
@@ -1998,6 +2035,8 @@ class AsyncSgiResource(AsyncAPIResource):
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2043,6 +2082,8 @@ class AsyncSgiResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_count_params.SgiCountParams,
@@ -2092,13 +2133,15 @@ class AsyncSgiResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetResponse:
         """
         Service operation to get a single SGI record by its unique ID passed as a path
         parameter.
@@ -2117,15 +2160,27 @@ class AsyncSgiResource(AsyncAPIResource):
         return await self._get(
             f"/udl/sgi/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sgi_get_params.SgiGetParams,
+                ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetResponse,
         )
 
     async def get_data_by_effective_as_of_date(
         self,
         *,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2133,7 +2188,7 @@ class AsyncSgiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SgiFull:
+    ) -> SgiGetDataByEffectiveAsOfDateResponse:
         """
         Service to return matching SGI records as of the effective date.
 
@@ -2166,12 +2221,14 @@ class AsyncSgiResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_get_data_by_effective_as_of_date_params.SgiGetDataByEffectiveAsOfDateParams,
                 ),
             ),
-            cast_to=SgiFull,
+            cast_to=SgiGetDataByEffectiveAsOfDateResponse,
         )
 
     async def queryhelp(
@@ -2202,6 +2259,8 @@ class AsyncSgiResource(AsyncAPIResource):
         *,
         columns: str,
         effective_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         sgi_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2255,6 +2314,8 @@ class AsyncSgiResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "effective_date": effective_date,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "sgi_date": sgi_date,
                     },
                     sgi_tuple_params.SgiTupleParams,

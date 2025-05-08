@@ -25,3 +25,7 @@ class TupleListParams(TypedDict, total=False):
 
     (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -13,6 +13,7 @@ from ..types import (
     beam_contour_tuple_params,
     beam_contour_create_params,
     beam_contour_update_params,
+    beam_contour_retrieve_params,
     beam_contour_create_bulk_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
@@ -25,9 +26,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.beamcontour_full import BeamcontourFull
-from ..types.beam_contour_list_response import BeamContourListResponse
+from ..types.beamcontour_abridged import BeamcontourAbridged
 from ..types.beam_contour_tuple_response import BeamContourTupleResponse
 
 __all__ = ["BeamContoursResource", "AsyncBeamContoursResource"]
@@ -40,7 +42,7 @@ class BeamContoursResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return BeamContoursResourceWithRawResponse(self)
 
@@ -49,7 +51,7 @@ class BeamContoursResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return BeamContoursResourceWithStreamingResponse(self)
 
@@ -197,6 +199,8 @@ class BeamContoursResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,7 +226,17 @@ class BeamContoursResource(SyncAPIResource):
         return self._get(
             f"/udl/beamcontour/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    beam_contour_retrieve_params.BeamContourRetrieveParams,
+                ),
             ),
             cast_to=BeamcontourFull,
         )
@@ -374,13 +388,15 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BeamContourListResponse:
+    ) -> SyncOffsetPage[BeamcontourAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -398,16 +414,24 @@ class BeamContoursResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/beamcontour",
+            page=SyncOffsetPage[BeamcontourAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_beam": id_beam}, beam_contour_list_params.BeamContourListParams),
+                query=maybe_transform(
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    beam_contour_list_params.BeamContourListParams,
+                ),
             ),
-            cast_to=BeamContourListResponse,
+            model=BeamcontourAbridged,
         )
 
     def delete(
@@ -450,6 +474,8 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -483,7 +509,14 @@ class BeamContoursResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_beam": id_beam}, beam_contour_count_params.BeamContourCountParams),
+                query=maybe_transform(
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    beam_contour_count_params.BeamContourCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -553,6 +586,8 @@ class BeamContoursResource(SyncAPIResource):
         *,
         columns: str,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -597,6 +632,8 @@ class BeamContoursResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     beam_contour_tuple_params.BeamContourTupleParams,
                 ),
@@ -612,7 +649,7 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncBeamContoursResourceWithRawResponse(self)
 
@@ -621,7 +658,7 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncBeamContoursResourceWithStreamingResponse(self)
 
@@ -769,6 +806,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -794,7 +833,17 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         return await self._get(
             f"/udl/beamcontour/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    beam_contour_retrieve_params.BeamContourRetrieveParams,
+                ),
             ),
             cast_to=BeamcontourFull,
         )
@@ -942,17 +991,19 @@ class AsyncBeamContoursResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BeamContourListResponse:
+    ) -> AsyncPaginator[BeamcontourAbridged, AsyncOffsetPage[BeamcontourAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -970,16 +1021,24 @@ class AsyncBeamContoursResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/beamcontour",
+            page=AsyncOffsetPage[BeamcontourAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id_beam": id_beam}, beam_contour_list_params.BeamContourListParams),
+                query=maybe_transform(
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    beam_contour_list_params.BeamContourListParams,
+                ),
             ),
-            cast_to=BeamContourListResponse,
+            model=BeamcontourAbridged,
         )
 
     async def delete(
@@ -1022,6 +1081,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         *,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1056,7 +1117,12 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"id_beam": id_beam}, beam_contour_count_params.BeamContourCountParams
+                    {
+                        "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    beam_contour_count_params.BeamContourCountParams,
                 ),
             ),
             cast_to=str,
@@ -1127,6 +1193,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         *,
         columns: str,
         id_beam: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1171,6 +1239,8 @@ class AsyncBeamContoursResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "id_beam": id_beam,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     beam_contour_tuple_params.BeamContourTupleParams,
                 ),

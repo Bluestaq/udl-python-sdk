@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    EphemerisListResponse,
+    EphemerisAbridged,
     EphemerisTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +27,16 @@ class TestEphemeris:
         ephemeris = client.ephemeris.list(
             es_id="esId",
         )
-        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+        assert_matches_type(SyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.list(
+            es_id="esId",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -37,7 +47,7 @@ class TestEphemeris:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ephemeris = response.parse()
-        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+        assert_matches_type(SyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -48,7 +58,7 @@ class TestEphemeris:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ephemeris = response.parse()
-            assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+            assert_matches_type(SyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -56,6 +66,15 @@ class TestEphemeris:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         ephemeris = client.ephemeris.count(
             es_id="esId",
+        )
+        assert_matches_type(str, ephemeris, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.count(
+            es_id="esId",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ephemeris, path=["response"])
 
@@ -185,6 +204,16 @@ class TestEphemeris:
         ephemeris = client.ephemeris.tuple(
             columns="columns",
             es_id="esId",
+        )
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ephemeris = client.ephemeris.tuple(
+            columns="columns",
+            es_id="esId",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 
@@ -344,7 +373,16 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.list(
             es_id="esId",
         )
-        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.list(
+            es_id="esId",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -355,7 +393,7 @@ class TestAsyncEphemeris:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ephemeris = await response.parse()
-        assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -366,7 +404,7 @@ class TestAsyncEphemeris:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ephemeris = await response.parse()
-            assert_matches_type(EphemerisListResponse, ephemeris, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EphemerisAbridged], ephemeris, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -374,6 +412,15 @@ class TestAsyncEphemeris:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         ephemeris = await async_client.ephemeris.count(
             es_id="esId",
+        )
+        assert_matches_type(str, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.count(
+            es_id="esId",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ephemeris, path=["response"])
 
@@ -503,6 +550,16 @@ class TestAsyncEphemeris:
         ephemeris = await async_client.ephemeris.tuple(
             columns="columns",
             es_id="esId",
+        )
+        assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ephemeris = await async_client.ephemeris.tuple(
+            columns="columns",
+            es_id="esId",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EphemerisTupleResponse, ephemeris, path=["response"])
 

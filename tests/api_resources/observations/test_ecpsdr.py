@@ -10,9 +10,10 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.observations import (
     Ecpsdr,
-    EcpsdrListResponse,
+    EcpsdrAbridged,
     EcpsdrTupleResponse,
 )
 
@@ -122,14 +123,23 @@ class TestEcpsdr:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(Ecpsdr, ecpsdr, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ecpsdr = client.observations.ecpsdr.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(Ecpsdr, ecpsdr, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.observations.ecpsdr.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -140,7 +150,7 @@ class TestEcpsdr:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.observations.ecpsdr.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -154,7 +164,7 @@ class TestEcpsdr:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.observations.ecpsdr.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -162,7 +172,16 @@ class TestEcpsdr:
         ecpsdr = client.observations.ecpsdr.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
+        assert_matches_type(SyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ecpsdr = client.observations.ecpsdr.list(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -173,7 +192,7 @@ class TestEcpsdr:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ecpsdr = response.parse()
-        assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
+        assert_matches_type(SyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -184,7 +203,7 @@ class TestEcpsdr:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ecpsdr = response.parse()
-            assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
+            assert_matches_type(SyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -192,6 +211,15 @@ class TestEcpsdr:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, ecpsdr, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ecpsdr = client.observations.ecpsdr.count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ecpsdr, path=["response"])
 
@@ -304,6 +332,16 @@ class TestEcpsdr:
         ecpsdr = client.observations.ecpsdr.tuple(
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EcpsdrTupleResponse, ecpsdr, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ecpsdr = client.observations.ecpsdr.tuple(
+            columns="columns",
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EcpsdrTupleResponse, ecpsdr, path=["response"])
 
@@ -437,14 +475,23 @@ class TestAsyncEcpsdr:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(Ecpsdr, ecpsdr, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ecpsdr = await async_client.observations.ecpsdr.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(Ecpsdr, ecpsdr, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.observations.ecpsdr.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -455,7 +502,7 @@ class TestAsyncEcpsdr:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.observations.ecpsdr.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -469,7 +516,7 @@ class TestAsyncEcpsdr:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.observations.ecpsdr.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -477,7 +524,16 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.observations.ecpsdr.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ecpsdr = await async_client.observations.ecpsdr.list(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -488,7 +544,7 @@ class TestAsyncEcpsdr:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ecpsdr = await response.parse()
-        assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -499,7 +555,7 @@ class TestAsyncEcpsdr:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ecpsdr = await response.parse()
-            assert_matches_type(EcpsdrListResponse, ecpsdr, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EcpsdrAbridged], ecpsdr, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -507,6 +563,15 @@ class TestAsyncEcpsdr:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, ecpsdr, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ecpsdr = await async_client.observations.ecpsdr.count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, ecpsdr, path=["response"])
 
@@ -619,6 +684,16 @@ class TestAsyncEcpsdr:
         ecpsdr = await async_client.observations.ecpsdr.tuple(
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EcpsdrTupleResponse, ecpsdr, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ecpsdr = await async_client.observations.ecpsdr.tuple(
+            columns="columns",
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EcpsdrTupleResponse, ecpsdr, path=["response"])
 

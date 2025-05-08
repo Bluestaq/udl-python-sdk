@@ -22,3 +22,7 @@ class MtiTupleParams(TypedDict, total=False):
 
     created_at: Required[Annotated[Union[str, date], PropertyInfo(alias="createdAt", format="iso8601")]]
     """Time the row was created in the database. (YYYY-MM-DDTHH:MM:SS.sssZ)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -9,7 +9,9 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types.supporting_data import DataownerRetrieveResponse
+from unifieddatalibrary.types.supporting_data import (
+    DataownerRetrieveResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,6 +22,14 @@ class TestDataowner:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         dataowner = client.supporting_data.dataowner.retrieve()
+        assert_matches_type(DataownerRetrieveResponse, dataowner, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dataowner = client.supporting_data.dataowner.retrieve(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(DataownerRetrieveResponse, dataowner, path=["response"])
 
     @parametrize
@@ -45,6 +55,14 @@ class TestDataowner:
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         dataowner = client.supporting_data.dataowner.count()
+        assert_matches_type(str, dataowner, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dataowner = client.supporting_data.dataowner.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, dataowner, path=["response"])
 
     @parametrize
@@ -77,6 +95,14 @@ class TestAsyncDataowner:
         assert_matches_type(DataownerRetrieveResponse, dataowner, path=["response"])
 
     @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dataowner = await async_client.supporting_data.dataowner.retrieve(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(DataownerRetrieveResponse, dataowner, path=["response"])
+
+    @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.supporting_data.dataowner.with_raw_response.retrieve()
 
@@ -99,6 +125,14 @@ class TestAsyncDataowner:
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         dataowner = await async_client.supporting_data.dataowner.count()
+        assert_matches_type(str, dataowner, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dataowner = await async_client.supporting_data.dataowner.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, dataowner, path=["response"])
 
     @parametrize

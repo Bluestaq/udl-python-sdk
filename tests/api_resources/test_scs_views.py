@@ -30,7 +30,23 @@ class TestScsViews:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         scs_view = client.scs_views.retrieve(
-            "id",
+            id="/Documentation/project.pdf",
+        )
+        assert scs_view.is_closed
+        assert scs_view.json() == {"foo": "bar"}
+        assert cast(Any, scs_view.is_closed) is True
+        assert isinstance(scs_view, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary, respx_mock: MockRouter) -> None:
+        respx_mock.get("/scs/view//Documentation/project.pdf").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        scs_view = client.scs_views.retrieve(
+            id="/Documentation/project.pdf",
+            first_result=0,
+            max_results=0,
         )
         assert scs_view.is_closed
         assert scs_view.json() == {"foo": "bar"}
@@ -45,7 +61,7 @@ class TestScsViews:
         )
 
         scs_view = client.scs_views.with_raw_response.retrieve(
-            "id",
+            id="/Documentation/project.pdf",
         )
 
         assert scs_view.is_closed is True
@@ -60,7 +76,7 @@ class TestScsViews:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.scs_views.with_streaming_response.retrieve(
-            "id",
+            id="/Documentation/project.pdf",
         ) as scs_view:
             assert not scs_view.is_closed
             assert scs_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -76,7 +92,7 @@ class TestScsViews:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.scs_views.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
 
@@ -90,7 +106,25 @@ class TestAsyncScsViews:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         scs_view = await async_client.scs_views.retrieve(
-            "id",
+            id="/Documentation/project.pdf",
+        )
+        assert scs_view.is_closed
+        assert await scs_view.json() == {"foo": "bar"}
+        assert cast(Any, scs_view.is_closed) is True
+        assert isinstance(scs_view, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_retrieve_with_all_params(
+        self, async_client: AsyncUnifieddatalibrary, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.get("/scs/view//Documentation/project.pdf").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        scs_view = await async_client.scs_views.retrieve(
+            id="/Documentation/project.pdf",
+            first_result=0,
+            max_results=0,
         )
         assert scs_view.is_closed
         assert await scs_view.json() == {"foo": "bar"}
@@ -105,7 +139,7 @@ class TestAsyncScsViews:
         )
 
         scs_view = await async_client.scs_views.with_raw_response.retrieve(
-            "id",
+            id="/Documentation/project.pdf",
         )
 
         assert scs_view.is_closed is True
@@ -122,7 +156,7 @@ class TestAsyncScsViews:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.scs_views.with_streaming_response.retrieve(
-            "id",
+            id="/Documentation/project.pdf",
         ) as scs_view:
             assert not scs_view.is_closed
             assert scs_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -138,5 +172,5 @@ class TestAsyncScsViews:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.scs_views.with_raw_response.retrieve(
-                "",
+                id="",
             )

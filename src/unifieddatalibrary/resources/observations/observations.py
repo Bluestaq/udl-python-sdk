@@ -28,13 +28,21 @@ from .monoradar.monoradar import (
     MonoradarResourceWithStreamingResponse,
     AsyncMonoradarResourceWithStreamingResponse,
 )
-from .rfobservation.rfobservation import (
-    RfobservationResource,
-    AsyncRfobservationResource,
-    RfobservationResourceWithRawResponse,
-    AsyncRfobservationResourceWithRawResponse,
-    RfobservationResourceWithStreamingResponse,
-    AsyncRfobservationResourceWithStreamingResponse,
+from .rf_observation.rf_observation import (
+    RfObservationResource,
+    AsyncRfObservationResource,
+    RfObservationResourceWithRawResponse,
+    AsyncRfObservationResourceWithRawResponse,
+    RfObservationResourceWithStreamingResponse,
+    AsyncRfObservationResourceWithStreamingResponse,
+)
+from .eo_observations.eo_observations import (
+    EoObservationsResource,
+    AsyncEoObservationsResource,
+    EoObservationsResourceWithRawResponse,
+    AsyncEoObservationsResourceWithRawResponse,
+    EoObservationsResourceWithStreamingResponse,
+    AsyncEoObservationsResourceWithStreamingResponse,
 )
 from .radarobservation.radarobservation import (
     RadarobservationResource,
@@ -43,6 +51,14 @@ from .radarobservation.radarobservation import (
     AsyncRadarobservationResourceWithRawResponse,
     RadarobservationResourceWithStreamingResponse,
     AsyncRadarobservationResourceWithStreamingResponse,
+)
+from .passive_radar_observation.passive_radar_observation import (
+    PassiveRadarObservationResource,
+    AsyncPassiveRadarObservationResource,
+    PassiveRadarObservationResourceWithRawResponse,
+    AsyncPassiveRadarObservationResourceWithRawResponse,
+    PassiveRadarObservationResourceWithStreamingResponse,
+    AsyncPassiveRadarObservationResourceWithStreamingResponse,
 )
 
 __all__ = ["ObservationsResource", "AsyncObservationsResource"]
@@ -66,8 +82,16 @@ class ObservationsResource(SyncAPIResource):
         return RadarobservationResource(self._client)
 
     @cached_property
-    def rfobservation(self) -> RfobservationResource:
-        return RfobservationResource(self._client)
+    def rf_observation(self) -> RfObservationResource:
+        return RfObservationResource(self._client)
+
+    @cached_property
+    def passive_radar_observation(self) -> PassiveRadarObservationResource:
+        return PassiveRadarObservationResource(self._client)
+
+    @cached_property
+    def eo_observations(self) -> EoObservationsResource:
+        return EoObservationsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ObservationsResourceWithRawResponse:
@@ -75,7 +99,7 @@ class ObservationsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return ObservationsResourceWithRawResponse(self)
 
@@ -84,7 +108,7 @@ class ObservationsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return ObservationsResourceWithStreamingResponse(self)
 
@@ -107,8 +131,16 @@ class AsyncObservationsResource(AsyncAPIResource):
         return AsyncRadarobservationResource(self._client)
 
     @cached_property
-    def rfobservation(self) -> AsyncRfobservationResource:
-        return AsyncRfobservationResource(self._client)
+    def rf_observation(self) -> AsyncRfObservationResource:
+        return AsyncRfObservationResource(self._client)
+
+    @cached_property
+    def passive_radar_observation(self) -> AsyncPassiveRadarObservationResource:
+        return AsyncPassiveRadarObservationResource(self._client)
+
+    @cached_property
+    def eo_observations(self) -> AsyncEoObservationsResource:
+        return AsyncEoObservationsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncObservationsResourceWithRawResponse:
@@ -116,7 +148,7 @@ class AsyncObservationsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncObservationsResourceWithRawResponse(self)
 
@@ -125,7 +157,7 @@ class AsyncObservationsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncObservationsResourceWithStreamingResponse(self)
 
@@ -151,8 +183,16 @@ class ObservationsResourceWithRawResponse:
         return RadarobservationResourceWithRawResponse(self._observations.radarobservation)
 
     @cached_property
-    def rfobservation(self) -> RfobservationResourceWithRawResponse:
-        return RfobservationResourceWithRawResponse(self._observations.rfobservation)
+    def rf_observation(self) -> RfObservationResourceWithRawResponse:
+        return RfObservationResourceWithRawResponse(self._observations.rf_observation)
+
+    @cached_property
+    def passive_radar_observation(self) -> PassiveRadarObservationResourceWithRawResponse:
+        return PassiveRadarObservationResourceWithRawResponse(self._observations.passive_radar_observation)
+
+    @cached_property
+    def eo_observations(self) -> EoObservationsResourceWithRawResponse:
+        return EoObservationsResourceWithRawResponse(self._observations.eo_observations)
 
 
 class AsyncObservationsResourceWithRawResponse:
@@ -176,8 +216,16 @@ class AsyncObservationsResourceWithRawResponse:
         return AsyncRadarobservationResourceWithRawResponse(self._observations.radarobservation)
 
     @cached_property
-    def rfobservation(self) -> AsyncRfobservationResourceWithRawResponse:
-        return AsyncRfobservationResourceWithRawResponse(self._observations.rfobservation)
+    def rf_observation(self) -> AsyncRfObservationResourceWithRawResponse:
+        return AsyncRfObservationResourceWithRawResponse(self._observations.rf_observation)
+
+    @cached_property
+    def passive_radar_observation(self) -> AsyncPassiveRadarObservationResourceWithRawResponse:
+        return AsyncPassiveRadarObservationResourceWithRawResponse(self._observations.passive_radar_observation)
+
+    @cached_property
+    def eo_observations(self) -> AsyncEoObservationsResourceWithRawResponse:
+        return AsyncEoObservationsResourceWithRawResponse(self._observations.eo_observations)
 
 
 class ObservationsResourceWithStreamingResponse:
@@ -201,8 +249,16 @@ class ObservationsResourceWithStreamingResponse:
         return RadarobservationResourceWithStreamingResponse(self._observations.radarobservation)
 
     @cached_property
-    def rfobservation(self) -> RfobservationResourceWithStreamingResponse:
-        return RfobservationResourceWithStreamingResponse(self._observations.rfobservation)
+    def rf_observation(self) -> RfObservationResourceWithStreamingResponse:
+        return RfObservationResourceWithStreamingResponse(self._observations.rf_observation)
+
+    @cached_property
+    def passive_radar_observation(self) -> PassiveRadarObservationResourceWithStreamingResponse:
+        return PassiveRadarObservationResourceWithStreamingResponse(self._observations.passive_radar_observation)
+
+    @cached_property
+    def eo_observations(self) -> EoObservationsResourceWithStreamingResponse:
+        return EoObservationsResourceWithStreamingResponse(self._observations.eo_observations)
 
 
 class AsyncObservationsResourceWithStreamingResponse:
@@ -226,5 +282,13 @@ class AsyncObservationsResourceWithStreamingResponse:
         return AsyncRadarobservationResourceWithStreamingResponse(self._observations.radarobservation)
 
     @cached_property
-    def rfobservation(self) -> AsyncRfobservationResourceWithStreamingResponse:
-        return AsyncRfobservationResourceWithStreamingResponse(self._observations.rfobservation)
+    def rf_observation(self) -> AsyncRfObservationResourceWithStreamingResponse:
+        return AsyncRfObservationResourceWithStreamingResponse(self._observations.rf_observation)
+
+    @cached_property
+    def passive_radar_observation(self) -> AsyncPassiveRadarObservationResourceWithStreamingResponse:
+        return AsyncPassiveRadarObservationResourceWithStreamingResponse(self._observations.passive_radar_observation)
+
+    @cached_property
+    def eo_observations(self) -> AsyncEoObservationsResourceWithStreamingResponse:
+        return AsyncEoObservationsResourceWithStreamingResponse(self._observations.eo_observations)

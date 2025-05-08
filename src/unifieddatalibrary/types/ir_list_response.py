@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["IrListResponse", "IrListResponseItem"]
+__all__ = ["IrListResponse"]
 
 
-class IrListResponseItem(BaseModel):
+class IrListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -69,6 +69,3 @@ class IrListResponseItem(BaseModel):
     The originating source network on which this record was created, auto-populated
     by the system.
     """
-
-
-IrListResponse: TypeAlias = List[IrListResponseItem]

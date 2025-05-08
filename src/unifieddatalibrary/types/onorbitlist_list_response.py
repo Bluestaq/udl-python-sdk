@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OnorbitlistListResponse", "OnorbitlistListResponseItem"]
+__all__ = ["OnorbitlistListResponse"]
 
 
-class OnorbitlistListResponseItem(BaseModel):
+class OnorbitlistListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -63,6 +63,3 @@ class OnorbitlistListResponseItem(BaseModel):
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
     """
-
-
-OnorbitlistListResponse: TypeAlias = List[OnorbitlistListResponseItem]

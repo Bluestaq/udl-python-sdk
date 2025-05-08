@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    manifoldelset_get_params,
     manifoldelset_list_params,
     manifoldelset_count_params,
     manifoldelset_tuple_params,
@@ -26,7 +27,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.manifoldelset_get_response import ManifoldelsetGetResponse
 from ..types.manifoldelset_list_response import ManifoldelsetListResponse
 from ..types.manifoldelset_tuple_response import ManifoldelsetTupleResponse
@@ -41,7 +43,7 @@ class ManifoldelsetResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return ManifoldelsetResourceWithRawResponse(self)
 
@@ -50,7 +52,7 @@ class ManifoldelsetResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return ManifoldelsetResourceWithStreamingResponse(self)
 
@@ -395,13 +397,15 @@ class ManifoldelsetResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManifoldelsetListResponse:
+    ) -> SyncOffsetPage[ManifoldelsetListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -420,16 +424,24 @@ class ManifoldelsetResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/manifoldelset",
+            page=SyncOffsetPage[ManifoldelsetListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"epoch": epoch}, manifoldelset_list_params.ManifoldelsetListParams),
+                query=maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    manifoldelset_list_params.ManifoldelsetListParams,
+                ),
             ),
-            cast_to=ManifoldelsetListResponse,
+            model=ManifoldelsetListResponse,
         )
 
     def delete(
@@ -475,6 +487,8 @@ class ManifoldelsetResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -509,7 +523,14 @@ class ManifoldelsetResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"epoch": epoch}, manifoldelset_count_params.ManifoldelsetCountParams),
+                query=maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    manifoldelset_count_params.ManifoldelsetCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -553,6 +574,8 @@ class ManifoldelsetResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -580,7 +603,17 @@ class ManifoldelsetResource(SyncAPIResource):
         return self._get(
             f"/udl/manifoldelset/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    manifoldelset_get_params.ManifoldelsetGetParams,
+                ),
             ),
             cast_to=ManifoldelsetGetResponse,
         )
@@ -613,6 +646,8 @@ class ManifoldelsetResource(SyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -658,6 +693,8 @@ class ManifoldelsetResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "epoch": epoch,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     manifoldelset_tuple_params.ManifoldelsetTupleParams,
                 ),
@@ -673,7 +710,7 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncManifoldelsetResourceWithRawResponse(self)
 
@@ -682,7 +719,7 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncManifoldelsetResourceWithStreamingResponse(self)
 
@@ -1023,17 +1060,19 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManifoldelsetListResponse:
+    ) -> AsyncPaginator[ManifoldelsetListResponse, AsyncOffsetPage[ManifoldelsetListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1052,16 +1091,24 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/manifoldelset",
+            page=AsyncOffsetPage[ManifoldelsetListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"epoch": epoch}, manifoldelset_list_params.ManifoldelsetListParams),
+                query=maybe_transform(
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    manifoldelset_list_params.ManifoldelsetListParams,
+                ),
             ),
-            cast_to=ManifoldelsetListResponse,
+            model=ManifoldelsetListResponse,
         )
 
     async def delete(
@@ -1107,6 +1154,8 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1142,7 +1191,12 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"epoch": epoch}, manifoldelset_count_params.ManifoldelsetCountParams
+                    {
+                        "epoch": epoch,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    manifoldelset_count_params.ManifoldelsetCountParams,
                 ),
             ),
             cast_to=str,
@@ -1187,6 +1241,8 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1214,7 +1270,17 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         return await self._get(
             f"/udl/manifoldelset/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    manifoldelset_get_params.ManifoldelsetGetParams,
+                ),
             ),
             cast_to=ManifoldelsetGetResponse,
         )
@@ -1247,6 +1313,8 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1292,6 +1360,8 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "epoch": epoch,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     manifoldelset_tuple_params.ManifoldelsetTupleParams,
                 ),

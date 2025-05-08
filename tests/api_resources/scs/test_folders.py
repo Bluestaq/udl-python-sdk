@@ -71,6 +71,15 @@ class TestFolders:
         assert_matches_type(FileData, folder, path=["response"])
 
     @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        folder = client.scs.folders.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(FileData, folder, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.scs.folders.with_raw_response.retrieve(
             id="id",
@@ -216,6 +225,15 @@ class TestAsyncFolders:
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         folder = await async_client.scs.folders.retrieve(
             id="id",
+        )
+        assert_matches_type(FileData, folder, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        folder = await async_client.scs.folders.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(FileData, folder, path=["response"])
 

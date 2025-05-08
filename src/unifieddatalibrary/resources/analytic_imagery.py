@@ -12,6 +12,8 @@ from ..types import (
     analytic_imagery_count_params,
     analytic_imagery_tuple_params,
     analytic_imagery_history_params,
+    analytic_imagery_file_get_params,
+    analytic_imagery_retrieve_params,
     analytic_imagery_history_aodr_params,
     analytic_imagery_history_count_params,
     analytic_imagery_unvalidated_publish_params,
@@ -34,9 +36,10 @@ from .._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.analytic_imagery_full import AnalyticImageryFull
-from ..types.analytic_imagery_list_response import AnalyticImageryListResponse
+from ..types.analytic_imagery_abridged import AnalyticImageryAbridged
 from ..types.analytic_imagery_tuple_response import AnalyticImageryTupleResponse
 from ..types.analytic_imagery_history_response import AnalyticImageryHistoryResponse
 
@@ -50,7 +53,7 @@ class AnalyticImageryResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AnalyticImageryResourceWithRawResponse(self)
 
@@ -59,7 +62,7 @@ class AnalyticImageryResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AnalyticImageryResourceWithStreamingResponse(self)
 
@@ -67,6 +70,8 @@ class AnalyticImageryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -93,7 +98,17 @@ class AnalyticImageryResource(SyncAPIResource):
         return self._get(
             f"/udl/analyticimagery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_retrieve_params.AnalyticImageryRetrieveParams,
+                ),
             ),
             cast_to=AnalyticImageryFull,
         )
@@ -102,13 +117,15 @@ class AnalyticImageryResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryListResponse:
+    ) -> SyncOffsetPage[AnalyticImageryAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -127,22 +144,32 @@ class AnalyticImageryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/analyticimagery",
+            page=SyncOffsetPage[AnalyticImageryAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"msg_time": msg_time}, analytic_imagery_list_params.AnalyticImageryListParams),
+                query=maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_list_params.AnalyticImageryListParams,
+                ),
             ),
-            cast_to=AnalyticImageryListResponse,
+            model=AnalyticImageryAbridged,
         )
 
     def count(
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -177,7 +204,14 @@ class AnalyticImageryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams),
+                query=maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_count_params.AnalyticImageryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -186,6 +220,8 @@ class AnalyticImageryResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -213,7 +249,17 @@ class AnalyticImageryResource(SyncAPIResource):
         return self._get(
             f"/udl/analyticimagery/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_file_get_params.AnalyticImageryFileGetParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -223,6 +269,8 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -263,6 +311,8 @@ class AnalyticImageryResource(SyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_history_params.AnalyticImageryHistoryParams,
                 ),
@@ -275,6 +325,8 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -331,6 +383,8 @@ class AnalyticImageryResource(SyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -345,6 +399,8 @@ class AnalyticImageryResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -380,7 +436,12 @@ class AnalyticImageryResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"msg_time": msg_time}, analytic_imagery_history_count_params.AnalyticImageryHistoryCountParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_history_count_params.AnalyticImageryHistoryCountParams,
                 ),
             ),
             cast_to=str,
@@ -414,6 +475,8 @@ class AnalyticImageryResource(SyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -459,6 +522,8 @@ class AnalyticImageryResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_tuple_params.AnalyticImageryTupleParams,
                 ),
@@ -534,7 +599,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncAnalyticImageryResourceWithRawResponse(self)
 
@@ -543,7 +608,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncAnalyticImageryResourceWithStreamingResponse(self)
 
@@ -551,6 +616,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -577,22 +644,34 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/analyticimagery/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_retrieve_params.AnalyticImageryRetrieveParams,
+                ),
             ),
             cast_to=AnalyticImageryFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AnalyticImageryListResponse:
+    ) -> AsyncPaginator[AnalyticImageryAbridged, AsyncOffsetPage[AnalyticImageryAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -611,24 +690,32 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/analyticimagery",
+            page=AsyncOffsetPage[AnalyticImageryAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"msg_time": msg_time}, analytic_imagery_list_params.AnalyticImageryListParams
+                query=maybe_transform(
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_list_params.AnalyticImageryListParams,
                 ),
             ),
-            cast_to=AnalyticImageryListResponse,
+            model=AnalyticImageryAbridged,
         )
 
     async def count(
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -664,7 +751,12 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"msg_time": msg_time}, analytic_imagery_count_params.AnalyticImageryCountParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_count_params.AnalyticImageryCountParams,
                 ),
             ),
             cast_to=str,
@@ -674,6 +766,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -701,7 +795,17 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         return await self._get(
             f"/udl/analyticimagery/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_file_get_params.AnalyticImageryFileGetParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
@@ -711,6 +815,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -751,6 +857,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_history_params.AnalyticImageryHistoryParams,
                 ),
@@ -763,6 +871,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         msg_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -819,6 +929,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     {
                         "msg_time": msg_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -833,6 +945,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -868,7 +982,12 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"msg_time": msg_time}, analytic_imagery_history_count_params.AnalyticImageryHistoryCountParams
+                    {
+                        "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    analytic_imagery_history_count_params.AnalyticImageryHistoryCountParams,
                 ),
             ),
             cast_to=str,
@@ -902,6 +1021,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -947,6 +1068,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "msg_time": msg_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     analytic_imagery_tuple_params.AnalyticImageryTupleParams,
                 ),

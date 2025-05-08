@@ -11,9 +11,10 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     CountryFull,
-    CountryListResponse,
+    CountryAbridged,
     CountryTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -74,14 +75,23 @@ class TestCountries:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         country = client.countries.retrieve(
-            "code",
+            code="code",
+        )
+        assert_matches_type(CountryFull, country, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        country = client.countries.retrieve(
+            code="code",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryFull, country, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.countries.with_raw_response.retrieve(
-            "code",
+            code="code",
         )
 
         assert response.is_closed is True
@@ -92,7 +102,7 @@ class TestCountries:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.countries.with_streaming_response.retrieve(
-            "code",
+            code="code",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -106,7 +116,7 @@ class TestCountries:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `code` but received ''"):
             client.countries.with_raw_response.retrieve(
-                "",
+                code="",
             )
 
     @parametrize
@@ -176,7 +186,15 @@ class TestCountries:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         country = client.countries.list()
-        assert_matches_type(CountryListResponse, country, path=["response"])
+        assert_matches_type(SyncOffsetPage[CountryAbridged], country, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        country = client.countries.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[CountryAbridged], country, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -185,7 +203,7 @@ class TestCountries:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         country = response.parse()
-        assert_matches_type(CountryListResponse, country, path=["response"])
+        assert_matches_type(SyncOffsetPage[CountryAbridged], country, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -194,7 +212,7 @@ class TestCountries:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             country = response.parse()
-            assert_matches_type(CountryListResponse, country, path=["response"])
+            assert_matches_type(SyncOffsetPage[CountryAbridged], country, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -239,6 +257,14 @@ class TestCountries:
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         country = client.countries.count()
+        assert_matches_type(str, country, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        country = client.countries.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, country, path=["response"])
 
     @parametrize
@@ -290,6 +316,15 @@ class TestCountries:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         country = client.countries.tuple(
             columns="columns",
+        )
+        assert_matches_type(CountryTupleResponse, country, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        country = client.countries.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryTupleResponse, country, path=["response"])
 
@@ -374,14 +409,23 @@ class TestAsyncCountries:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.retrieve(
-            "code",
+            code="code",
+        )
+        assert_matches_type(CountryFull, country, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        country = await async_client.countries.retrieve(
+            code="code",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryFull, country, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.countries.with_raw_response.retrieve(
-            "code",
+            code="code",
         )
 
         assert response.is_closed is True
@@ -392,7 +436,7 @@ class TestAsyncCountries:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.countries.with_streaming_response.retrieve(
-            "code",
+            code="code",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -406,7 +450,7 @@ class TestAsyncCountries:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `code` but received ''"):
             await async_client.countries.with_raw_response.retrieve(
-                "",
+                code="",
             )
 
     @parametrize
@@ -476,7 +520,15 @@ class TestAsyncCountries:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.list()
-        assert_matches_type(CountryListResponse, country, path=["response"])
+        assert_matches_type(AsyncOffsetPage[CountryAbridged], country, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        country = await async_client.countries.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[CountryAbridged], country, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -485,7 +537,7 @@ class TestAsyncCountries:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         country = await response.parse()
-        assert_matches_type(CountryListResponse, country, path=["response"])
+        assert_matches_type(AsyncOffsetPage[CountryAbridged], country, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -494,7 +546,7 @@ class TestAsyncCountries:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             country = await response.parse()
-            assert_matches_type(CountryListResponse, country, path=["response"])
+            assert_matches_type(AsyncOffsetPage[CountryAbridged], country, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -539,6 +591,14 @@ class TestAsyncCountries:
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.count()
+        assert_matches_type(str, country, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        country = await async_client.countries.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, country, path=["response"])
 
     @parametrize
@@ -590,6 +650,15 @@ class TestAsyncCountries:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.countries.tuple(
             columns="columns",
+        )
+        assert_matches_type(CountryTupleResponse, country, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        country = await async_client.countries.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CountryTupleResponse, country, path=["response"])
 

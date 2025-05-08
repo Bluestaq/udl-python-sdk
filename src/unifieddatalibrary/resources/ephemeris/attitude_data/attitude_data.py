@@ -22,9 +22,10 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncOffsetPage, AsyncOffsetPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.ephemeris import attitude_data_list_params, attitude_data_count_params
-from ....types.ephemeris.attitude_data_list_response import AttitudeDataListResponse
+from ....types.ephemeris.attitude_data_abridged import AttitudeDataAbridged
 
 __all__ = ["AttitudeDataResource", "AsyncAttitudeDataResource"]
 
@@ -40,7 +41,7 @@ class AttitudeDataResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AttitudeDataResourceWithRawResponse(self)
 
@@ -49,7 +50,7 @@ class AttitudeDataResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AttitudeDataResourceWithStreamingResponse(self)
 
@@ -57,13 +58,15 @@ class AttitudeDataResource(SyncAPIResource):
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AttitudeDataListResponse:
+    ) -> SyncOffsetPage[AttitudeDataAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -81,22 +84,32 @@ class AttitudeDataResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/attitudedata",
+            page=SyncOffsetPage[AttitudeDataAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"as_id": as_id}, attitude_data_list_params.AttitudeDataListParams),
+                query=maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    attitude_data_list_params.AttitudeDataListParams,
+                ),
             ),
-            cast_to=AttitudeDataListResponse,
+            model=AttitudeDataAbridged,
         )
 
     def count(
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,7 +143,14 @@ class AttitudeDataResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"as_id": as_id}, attitude_data_count_params.AttitudeDataCountParams),
+                query=maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    attitude_data_count_params.AttitudeDataCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -147,7 +167,7 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncAttitudeDataResourceWithRawResponse(self)
 
@@ -156,21 +176,23 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncAttitudeDataResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AttitudeDataListResponse:
+    ) -> AsyncPaginator[AttitudeDataAbridged, AsyncOffsetPage[AttitudeDataAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -188,22 +210,32 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/attitudedata",
+            page=AsyncOffsetPage[AttitudeDataAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"as_id": as_id}, attitude_data_list_params.AttitudeDataListParams),
+                query=maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    attitude_data_list_params.AttitudeDataListParams,
+                ),
             ),
-            cast_to=AttitudeDataListResponse,
+            model=AttitudeDataAbridged,
         )
 
     async def count(
         self,
         *,
         as_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,7 +269,14 @@ class AsyncAttitudeDataResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"as_id": as_id}, attitude_data_count_params.AttitudeDataCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "as_id": as_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    attitude_data_count_params.AttitudeDataCountParams,
+                ),
             ),
             cast_to=str,
         )

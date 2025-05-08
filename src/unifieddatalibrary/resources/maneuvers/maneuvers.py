@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    maneuver_get_params,
     maneuver_list_params,
     maneuver_count_params,
     maneuver_tuple_params,
@@ -34,10 +35,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.maneuver_get_response import ManeuverGetResponse
 from ...types.maneuver_list_response import ManeuverListResponse
 from ...types.maneuver_tuple_response import ManeuverTupleResponse
-from ...types.udl.maneuver.maneuver_full import ManeuverFull
 
 __all__ = ["ManeuversResource", "AsyncManeuversResource"]
 
@@ -53,7 +55,7 @@ class ManeuversResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return ManeuversResourceWithRawResponse(self)
 
@@ -62,7 +64,7 @@ class ManeuversResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return ManeuversResourceWithStreamingResponse(self)
 
@@ -606,13 +608,15 @@ class ManeuversResource(SyncAPIResource):
         self,
         *,
         event_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverListResponse:
+    ) -> SyncOffsetPage[ManeuverListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -632,22 +636,32 @@ class ManeuversResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/maneuver",
+            page=SyncOffsetPage[ManeuverListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"event_start_time": event_start_time}, maneuver_list_params.ManeuverListParams),
+                query=maybe_transform(
+                    {
+                        "event_start_time": event_start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    maneuver_list_params.ManeuverListParams,
+                ),
             ),
-            cast_to=ManeuverListResponse,
+            model=ManeuverListResponse,
         )
 
     def count(
         self,
         *,
         event_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -684,7 +698,12 @@ class ManeuversResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"event_start_time": event_start_time}, maneuver_count_params.ManeuverCountParams
+                    {
+                        "event_start_time": event_start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    maneuver_count_params.ManeuverCountParams,
                 ),
             ),
             cast_to=str,
@@ -731,13 +750,15 @@ class ManeuversResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverFull:
+    ) -> ManeuverGetResponse:
         """
         Service operation to get a single maneuver by its unique ID passed as a path
         parameter.
@@ -756,9 +777,19 @@ class ManeuversResource(SyncAPIResource):
         return self._get(
             f"/udl/maneuver/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    maneuver_get_params.ManeuverGetParams,
+                ),
             ),
-            cast_to=ManeuverFull,
+            cast_to=ManeuverGetResponse,
         )
 
     def queryhelp(
@@ -789,6 +820,8 @@ class ManeuversResource(SyncAPIResource):
         *,
         columns: str,
         event_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -835,6 +868,8 @@ class ManeuversResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "event_start_time": event_start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     maneuver_tuple_params.ManeuverTupleParams,
                 ),
@@ -890,7 +925,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncManeuversResourceWithRawResponse(self)
 
@@ -899,7 +934,7 @@ class AsyncManeuversResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncManeuversResourceWithStreamingResponse(self)
 
@@ -1439,17 +1474,19 @@ class AsyncManeuversResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         event_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverListResponse:
+    ) -> AsyncPaginator[ManeuverListResponse, AsyncOffsetPage[ManeuverListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1469,24 +1506,32 @@ class AsyncManeuversResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/maneuver",
+            page=AsyncOffsetPage[ManeuverListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"event_start_time": event_start_time}, maneuver_list_params.ManeuverListParams
+                query=maybe_transform(
+                    {
+                        "event_start_time": event_start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    maneuver_list_params.ManeuverListParams,
                 ),
             ),
-            cast_to=ManeuverListResponse,
+            model=ManeuverListResponse,
         )
 
     async def count(
         self,
         *,
         event_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1523,7 +1568,12 @@ class AsyncManeuversResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"event_start_time": event_start_time}, maneuver_count_params.ManeuverCountParams
+                    {
+                        "event_start_time": event_start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    maneuver_count_params.ManeuverCountParams,
                 ),
             ),
             cast_to=str,
@@ -1570,13 +1620,15 @@ class AsyncManeuversResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ManeuverFull:
+    ) -> ManeuverGetResponse:
         """
         Service operation to get a single maneuver by its unique ID passed as a path
         parameter.
@@ -1595,9 +1647,19 @@ class AsyncManeuversResource(AsyncAPIResource):
         return await self._get(
             f"/udl/maneuver/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    maneuver_get_params.ManeuverGetParams,
+                ),
             ),
-            cast_to=ManeuverFull,
+            cast_to=ManeuverGetResponse,
         )
 
     async def queryhelp(
@@ -1628,6 +1690,8 @@ class AsyncManeuversResource(AsyncAPIResource):
         *,
         columns: str,
         event_start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1674,6 +1738,8 @@ class AsyncManeuversResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "event_start_time": event_start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     maneuver_tuple_params.ManeuverTupleParams,
                 ),

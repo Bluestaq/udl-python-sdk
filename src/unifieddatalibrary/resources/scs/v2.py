@@ -25,8 +25,9 @@ from ...types.scs import (
     v2_file_upload_params,
     v2_folder_create_params,
 )
-from ..._base_client import make_request_options
-from ...types.scs.v2_list_response import V2ListResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.scs.scs_entity import ScsEntity
 
 __all__ = ["V2Resource", "AsyncV2Resource"]
 
@@ -38,7 +39,7 @@ class V2Resource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return V2ResourceWithRawResponse(self)
 
@@ -47,7 +48,7 @@ class V2Resource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return V2ResourceWithStreamingResponse(self)
 
@@ -125,13 +126,15 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2ListResponse:
+    ) -> SyncOffsetPage[ScsEntity]:
         """
         Returns a list of ScsEntity objects, each directly nested under the provided
         path.
@@ -147,16 +150,24 @@ class V2Resource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/scs/v2/list",
+            page=SyncOffsetPage[ScsEntity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"path": path}, v2_list_params.V2ListParams),
+                query=maybe_transform(
+                    {
+                        "path": path,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    v2_list_params.V2ListParams,
+                ),
             ),
-            cast_to=V2ListResponse,
+            model=ScsEntity,
         )
 
     def delete(
@@ -447,7 +458,7 @@ class AsyncV2Resource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncV2ResourceWithRawResponse(self)
 
@@ -456,7 +467,7 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncV2ResourceWithStreamingResponse(self)
 
@@ -530,17 +541,19 @@ class AsyncV2Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         path: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2ListResponse:
+    ) -> AsyncPaginator[ScsEntity, AsyncOffsetPage[ScsEntity]]:
         """
         Returns a list of ScsEntity objects, each directly nested under the provided
         path.
@@ -556,16 +569,24 @@ class AsyncV2Resource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/scs/v2/list",
+            page=AsyncOffsetPage[ScsEntity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"path": path}, v2_list_params.V2ListParams),
+                query=maybe_transform(
+                    {
+                        "path": path,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    v2_list_params.V2ListParams,
+                ),
             ),
-            cast_to=V2ListResponse,
+            model=ScsEntity,
         )
 
     async def delete(

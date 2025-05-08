@@ -22,3 +22,7 @@ class PoiTupleParams(TypedDict, total=False):
 
     ts: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """Activity/POI timestamp in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SwirTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.swir import SwirFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -90,7 +91,16 @@ class TestSwir:
         swir = client.swir.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SwirListResponse, swir, path=["response"])
+        assert_matches_type(SyncOffsetPage[SwirListResponse], swir, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        swir = client.swir.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[SwirListResponse], swir, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -101,7 +111,7 @@ class TestSwir:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swir = response.parse()
-        assert_matches_type(SwirListResponse, swir, path=["response"])
+        assert_matches_type(SyncOffsetPage[SwirListResponse], swir, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -112,7 +122,7 @@ class TestSwir:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swir = response.parse()
-            assert_matches_type(SwirListResponse, swir, path=["response"])
+            assert_matches_type(SyncOffsetPage[SwirListResponse], swir, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -120,6 +130,15 @@ class TestSwir:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         swir = client.swir.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, swir, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        swir = client.swir.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, swir, path=["response"])
 
@@ -202,14 +221,23 @@ class TestSwir:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         swir = client.swir.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SwirFull, swir, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        swir = client.swir.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirFull, swir, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.swir.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -220,7 +248,7 @@ class TestSwir:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.swir.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -234,7 +262,7 @@ class TestSwir:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.swir.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -267,6 +295,16 @@ class TestSwir:
         swir = client.swir.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SwirTupleResponse, swir, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        swir = client.swir.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirTupleResponse, swir, path=["response"])
 
@@ -368,7 +406,16 @@ class TestAsyncSwir:
         swir = await async_client.swir.list(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SwirListResponse, swir, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SwirListResponse], swir, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        swir = await async_client.swir.list(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[SwirListResponse], swir, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -379,7 +426,7 @@ class TestAsyncSwir:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swir = await response.parse()
-        assert_matches_type(SwirListResponse, swir, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SwirListResponse], swir, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -390,7 +437,7 @@ class TestAsyncSwir:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swir = await response.parse()
-            assert_matches_type(SwirListResponse, swir, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SwirListResponse], swir, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -398,6 +445,15 @@ class TestAsyncSwir:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         swir = await async_client.swir.count(
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, swir, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        swir = await async_client.swir.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, swir, path=["response"])
 
@@ -480,14 +536,23 @@ class TestAsyncSwir:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         swir = await async_client.swir.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SwirFull, swir, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        swir = await async_client.swir.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirFull, swir, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.swir.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -498,7 +563,7 @@ class TestAsyncSwir:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.swir.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -512,7 +577,7 @@ class TestAsyncSwir:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.swir.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -545,6 +610,16 @@ class TestAsyncSwir:
         swir = await async_client.swir.tuple(
             columns="columns",
             ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SwirTupleResponse, swir, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        swir = await async_client.swir.tuple(
+            columns="columns",
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SwirTupleResponse, swir, path=["response"])
 

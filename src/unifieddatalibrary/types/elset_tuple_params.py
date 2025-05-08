@@ -25,3 +25,7 @@ class ElsetTupleParams(TypedDict, total=False):
 
     (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

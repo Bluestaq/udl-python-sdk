@@ -20,3 +20,7 @@ class OperationTupleParams(TypedDict, total=False):
 
     id_site: Required[Annotated[str, PropertyInfo(alias="idSite")]]
     """The ID of the parent site."""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    link_status_get_params,
     link_status_list_params,
     link_status_count_params,
     link_status_tuple_params,
@@ -40,10 +41,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.link_status_get_response import LinkStatusGetResponse
 from ...types.link_status_list_response import LinkStatusListResponse
 from ...types.link_status_tuple_response import LinkStatusTupleResponse
-from ...types.udl.linkstatus.link_status_full import LinkStatusFull
 
 __all__ = ["LinkStatusResource", "AsyncLinkStatusResource"]
 
@@ -63,7 +65,7 @@ class LinkStatusResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return LinkStatusResourceWithRawResponse(self)
 
@@ -72,7 +74,7 @@ class LinkStatusResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return LinkStatusResourceWithStreamingResponse(self)
 
@@ -248,15 +250,17 @@ class LinkStatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusListResponse:
+    ) -> SyncOffsetPage[LinkStatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -284,8 +288,9 @@ class LinkStatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/linkstatus",
+            page=SyncOffsetPage[LinkStatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -294,21 +299,25 @@ class LinkStatusResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_results": max_results,
                     },
                     link_status_list_params.LinkStatusListParams,
                 ),
             ),
-            cast_to=LinkStatusListResponse,
+            model=LinkStatusListResponse,
         )
 
     def count(
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -355,8 +364,10 @@ class LinkStatusResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_results": max_results,
                     },
                     link_status_count_params.LinkStatusCountParams,
                 ),
@@ -368,13 +379,15 @@ class LinkStatusResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusFull:
+    ) -> LinkStatusGetResponse:
         """
         Service operation to get a single LinkStatus record by its unique ID passed as a
         path parameter.
@@ -393,9 +406,19 @@ class LinkStatusResource(SyncAPIResource):
         return self._get(
             f"/udl/linkstatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    link_status_get_params.LinkStatusGetParams,
+                ),
             ),
-            cast_to=LinkStatusFull,
+            cast_to=LinkStatusGetResponse,
         )
 
     def queryhelp(
@@ -426,8 +449,10 @@ class LinkStatusResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -482,8 +507,10 @@ class LinkStatusResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_results": max_results,
                     },
                     link_status_tuple_params.LinkStatusTupleParams,
                 ),
@@ -507,7 +534,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncLinkStatusResourceWithRawResponse(self)
 
@@ -516,7 +543,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncLinkStatusResourceWithStreamingResponse(self)
 
@@ -688,19 +715,21 @@ class AsyncLinkStatusResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusListResponse:
+    ) -> AsyncPaginator[LinkStatusListResponse, AsyncOffsetPage[LinkStatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -728,31 +757,36 @@ class AsyncLinkStatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/linkstatus",
+            page=AsyncOffsetPage[LinkStatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_results": max_results,
                     },
                     link_status_list_params.LinkStatusListParams,
                 ),
             ),
-            cast_to=LinkStatusListResponse,
+            model=LinkStatusListResponse,
         )
 
     async def count(
         self,
         *,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -799,8 +833,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_results": max_results,
                     },
                     link_status_count_params.LinkStatusCountParams,
                 ),
@@ -812,13 +848,15 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkStatusFull:
+    ) -> LinkStatusGetResponse:
         """
         Service operation to get a single LinkStatus record by its unique ID passed as a
         path parameter.
@@ -837,9 +875,19 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         return await self._get(
             f"/udl/linkstatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    link_status_get_params.LinkStatusGetParams,
+                ),
             ),
-            cast_to=LinkStatusFull,
+            cast_to=LinkStatusGetResponse,
         )
 
     async def queryhelp(
@@ -870,8 +918,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date] | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
         link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -926,8 +976,10 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
                         "link_start_time": link_start_time,
                         "link_stop_time": link_stop_time,
+                        "max_results": max_results,
                     },
                     link_status_tuple_params.LinkStatusTupleParams,
                 ),

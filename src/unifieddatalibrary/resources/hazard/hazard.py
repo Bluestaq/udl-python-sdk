@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    hazard_get_params,
     hazard_list_params,
     hazard_count_params,
     hazard_tuple_params,
@@ -33,10 +34,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.hazard_get_response import HazardGetResponse
 from ...types.hazard_list_response import HazardListResponse
 from ...types.hazard_tuple_response import HazardTupleResponse
-from ...types.udl.hazard.hazard_full import HazardFull
 
 __all__ = ["HazardResource", "AsyncHazardResource"]
 
@@ -52,7 +54,7 @@ class HazardResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return HazardResourceWithRawResponse(self)
 
@@ -61,7 +63,7 @@ class HazardResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return HazardResourceWithStreamingResponse(self)
 
@@ -331,13 +333,15 @@ class HazardResource(SyncAPIResource):
         self,
         *,
         detect_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardListResponse:
+    ) -> SyncOffsetPage[HazardListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -356,22 +360,32 @@ class HazardResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/hazard",
+            page=SyncOffsetPage[HazardListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"detect_time": detect_time}, hazard_list_params.HazardListParams),
+                query=maybe_transform(
+                    {
+                        "detect_time": detect_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    hazard_list_params.HazardListParams,
+                ),
             ),
-            cast_to=HazardListResponse,
+            model=HazardListResponse,
         )
 
     def count(
         self,
         *,
         detect_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -406,7 +420,14 @@ class HazardResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"detect_time": detect_time}, hazard_count_params.HazardCountParams),
+                query=maybe_transform(
+                    {
+                        "detect_time": detect_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    hazard_count_params.HazardCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -452,13 +473,15 @@ class HazardResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardFull:
+    ) -> HazardGetResponse:
         """
         Service operation to get a single Hazard by its unique ID passed as a path
         parameter.
@@ -477,9 +500,19 @@ class HazardResource(SyncAPIResource):
         return self._get(
             f"/udl/hazard/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    hazard_get_params.HazardGetParams,
+                ),
             ),
-            cast_to=HazardFull,
+            cast_to=HazardGetResponse,
         )
 
     def queryhelp(
@@ -510,6 +543,8 @@ class HazardResource(SyncAPIResource):
         *,
         columns: str,
         detect_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -555,6 +590,8 @@ class HazardResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "detect_time": detect_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     hazard_tuple_params.HazardTupleParams,
                 ),
@@ -574,7 +611,7 @@ class AsyncHazardResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncHazardResourceWithRawResponse(self)
 
@@ -583,7 +620,7 @@ class AsyncHazardResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncHazardResourceWithStreamingResponse(self)
 
@@ -849,17 +886,19 @@ class AsyncHazardResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         detect_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardListResponse:
+    ) -> AsyncPaginator[HazardListResponse, AsyncOffsetPage[HazardListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -878,22 +917,32 @@ class AsyncHazardResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/hazard",
+            page=AsyncOffsetPage[HazardListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"detect_time": detect_time}, hazard_list_params.HazardListParams),
+                query=maybe_transform(
+                    {
+                        "detect_time": detect_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    hazard_list_params.HazardListParams,
+                ),
             ),
-            cast_to=HazardListResponse,
+            model=HazardListResponse,
         )
 
     async def count(
         self,
         *,
         detect_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -928,7 +977,14 @@ class AsyncHazardResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"detect_time": detect_time}, hazard_count_params.HazardCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "detect_time": detect_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    hazard_count_params.HazardCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -974,13 +1030,15 @@ class AsyncHazardResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HazardFull:
+    ) -> HazardGetResponse:
         """
         Service operation to get a single Hazard by its unique ID passed as a path
         parameter.
@@ -999,9 +1057,19 @@ class AsyncHazardResource(AsyncAPIResource):
         return await self._get(
             f"/udl/hazard/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    hazard_get_params.HazardGetParams,
+                ),
             ),
-            cast_to=HazardFull,
+            cast_to=HazardGetResponse,
         )
 
     async def queryhelp(
@@ -1032,6 +1100,8 @@ class AsyncHazardResource(AsyncAPIResource):
         *,
         columns: str,
         detect_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1077,6 +1147,8 @@ class AsyncHazardResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "detect_time": detect_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     hazard_tuple_params.HazardTupleParams,
                 ),

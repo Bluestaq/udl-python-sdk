@@ -11,10 +11,11 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     AirloadplanFull,
-    AirLoadPlanListResponse,
+    AirloadplanAbridged,
     AirLoadPlanTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -217,14 +218,23 @@ class TestAirLoadPlans:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         air_load_plan = client.air_load_plans.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AirloadplanFull, air_load_plan, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        air_load_plan = client.air_load_plans.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AirloadplanFull, air_load_plan, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.air_load_plans.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -235,7 +245,7 @@ class TestAirLoadPlans:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.air_load_plans.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -249,7 +259,7 @@ class TestAirLoadPlans:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.air_load_plans.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -257,7 +267,16 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.list(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        air_load_plan = client.air_load_plans.list(
+            est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -268,7 +287,7 @@ class TestAirLoadPlans:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_load_plan = response.parse()
-        assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -279,7 +298,7 @@ class TestAirLoadPlans:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_load_plan = response.parse()
-            assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
+            assert_matches_type(SyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -287,6 +306,15 @@ class TestAirLoadPlans:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         air_load_plan = client.air_load_plans.count(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, air_load_plan, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        air_load_plan = client.air_load_plans.count(
+            est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_load_plan, path=["response"])
 
@@ -344,6 +372,16 @@ class TestAirLoadPlans:
         air_load_plan = client.air_load_plans.tuple(
             columns="columns",
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AirLoadPlanTupleResponse, air_load_plan, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        air_load_plan = client.air_load_plans.tuple(
+            columns="columns",
+            est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AirLoadPlanTupleResponse, air_load_plan, path=["response"])
 
@@ -572,14 +610,23 @@ class TestAsyncAirLoadPlans:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_load_plan = await async_client.air_load_plans.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AirloadplanFull, air_load_plan, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        air_load_plan = await async_client.air_load_plans.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AirloadplanFull, air_load_plan, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_load_plans.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -590,7 +637,7 @@ class TestAsyncAirLoadPlans:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_load_plans.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -604,7 +651,7 @@ class TestAsyncAirLoadPlans:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.air_load_plans.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -612,7 +659,16 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.list(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        air_load_plan = await async_client.air_load_plans.list(
+            est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -623,7 +679,7 @@ class TestAsyncAirLoadPlans:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_load_plan = await response.parse()
-        assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -634,7 +690,7 @@ class TestAsyncAirLoadPlans:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_load_plan = await response.parse()
-            assert_matches_type(AirLoadPlanListResponse, air_load_plan, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AirloadplanAbridged], air_load_plan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -642,6 +698,15 @@ class TestAsyncAirLoadPlans:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_load_plan = await async_client.air_load_plans.count(
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, air_load_plan, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        air_load_plan = await async_client.air_load_plans.count(
+            est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, air_load_plan, path=["response"])
 
@@ -699,6 +764,16 @@ class TestAsyncAirLoadPlans:
         air_load_plan = await async_client.air_load_plans.tuple(
             columns="columns",
             est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AirLoadPlanTupleResponse, air_load_plan, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        air_load_plan = await async_client.air_load_plans.tuple(
+            columns="columns",
+            est_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AirLoadPlanTupleResponse, air_load_plan, path=["response"])
 

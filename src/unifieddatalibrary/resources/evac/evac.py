@@ -20,6 +20,7 @@ from ...types import (
     evac_list_params,
     evac_count_params,
     evac_create_params,
+    evac_retrieve_params,
     evac_create_bulk_params,
     evac_unvalidated_publish_params,
 )
@@ -41,9 +42,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.evac_abridged import EvacAbridged
 from ...types.shared.evac_full import EvacFull
-from ...types.evac_list_response import EvacListResponse
 
 __all__ = ["EvacResource", "AsyncEvacResource"]
 
@@ -63,7 +65,7 @@ class EvacResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return EvacResourceWithRawResponse(self)
 
@@ -72,7 +74,7 @@ class EvacResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return EvacResourceWithStreamingResponse(self)
 
@@ -298,6 +300,8 @@ class EvacResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -323,7 +327,17 @@ class EvacResource(SyncAPIResource):
         return self._get(
             f"/udl/evac/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    evac_retrieve_params.EvacRetrieveParams,
+                ),
             ),
             cast_to=EvacFull,
         )
@@ -332,13 +346,15 @@ class EvacResource(SyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EvacListResponse:
+    ) -> SyncOffsetPage[EvacAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -356,22 +372,32 @@ class EvacResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/evac",
+            page=SyncOffsetPage[EvacAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"req_time": req_time}, evac_list_params.EvacListParams),
+                query=maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    evac_list_params.EvacListParams,
+                ),
             ),
-            cast_to=EvacListResponse,
+            model=EvacAbridged,
         )
 
     def count(
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -405,7 +431,14 @@ class EvacResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"req_time": req_time}, evac_count_params.EvacCountParams),
+                query=maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    evac_count_params.EvacCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -521,7 +554,7 @@ class AsyncEvacResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncEvacResourceWithRawResponse(self)
 
@@ -530,7 +563,7 @@ class AsyncEvacResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncEvacResourceWithStreamingResponse(self)
 
@@ -756,6 +789,8 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -781,22 +816,34 @@ class AsyncEvacResource(AsyncAPIResource):
         return await self._get(
             f"/udl/evac/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    evac_retrieve_params.EvacRetrieveParams,
+                ),
             ),
             cast_to=EvacFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EvacListResponse:
+    ) -> AsyncPaginator[EvacAbridged, AsyncOffsetPage[EvacAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -814,22 +861,32 @@ class AsyncEvacResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/evac",
+            page=AsyncOffsetPage[EvacAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"req_time": req_time}, evac_list_params.EvacListParams),
+                query=maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    evac_list_params.EvacListParams,
+                ),
             ),
-            cast_to=EvacListResponse,
+            model=EvacAbridged,
         )
 
     async def count(
         self,
         *,
         req_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -863,7 +920,14 @@ class AsyncEvacResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"req_time": req_time}, evac_count_params.EvacCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "req_time": req_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    evac_count_params.EvacCountParams,
+                ),
             ),
             cast_to=str,
         )

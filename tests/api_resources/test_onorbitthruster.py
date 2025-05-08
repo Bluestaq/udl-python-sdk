@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     OnorbitthrusterGetResponse,
     OnorbitthrusterListResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -171,7 +172,15 @@ class TestOnorbitthruster:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.list()
-        assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
+        assert_matches_type(SyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onorbitthruster = client.onorbitthruster.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -180,7 +189,7 @@ class TestOnorbitthruster:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onorbitthruster = response.parse()
-        assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
+        assert_matches_type(SyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -189,7 +198,7 @@ class TestOnorbitthruster:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onorbitthruster = response.parse()
-            assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
+            assert_matches_type(SyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -234,14 +243,23 @@ class TestOnorbitthruster:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         onorbitthruster = client.onorbitthruster.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OnorbitthrusterGetResponse, onorbitthruster, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onorbitthruster = client.onorbitthruster.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterGetResponse, onorbitthruster, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.onorbitthruster.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -252,7 +270,7 @@ class TestOnorbitthruster:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.onorbitthruster.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -266,7 +284,7 @@ class TestOnorbitthruster:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.onorbitthruster.with_raw_response.get(
-                "",
+                id="",
             )
 
 
@@ -424,7 +442,15 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.list()
-        assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitthruster = await async_client.onorbitthruster.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -433,7 +459,7 @@ class TestAsyncOnorbitthruster:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onorbitthruster = await response.parse()
-        assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -442,7 +468,7 @@ class TestAsyncOnorbitthruster:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onorbitthruster = await response.parse()
-            assert_matches_type(OnorbitthrusterListResponse, onorbitthruster, path=["response"])
+            assert_matches_type(AsyncOffsetPage[OnorbitthrusterListResponse], onorbitthruster, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -487,14 +513,23 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthruster = await async_client.onorbitthruster.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(OnorbitthrusterGetResponse, onorbitthruster, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onorbitthruster = await async_client.onorbitthruster.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OnorbitthrusterGetResponse, onorbitthruster, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbitthruster.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -505,7 +540,7 @@ class TestAsyncOnorbitthruster:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbitthruster.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -519,5 +554,5 @@ class TestAsyncOnorbitthruster:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.onorbitthruster.with_raw_response.get(
-                "",
+                id="",
             )

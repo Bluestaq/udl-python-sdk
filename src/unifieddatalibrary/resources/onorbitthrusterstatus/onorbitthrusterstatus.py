@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    onorbitthrusterstatus_get_params,
     onorbitthrusterstatus_list_params,
     onorbitthrusterstatus_count_params,
     onorbitthrusterstatus_tuple_params,
@@ -33,10 +34,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.onorbitthrusterstatus_list_response import OnorbitthrusterstatusListResponse
 from ...types.onorbitthrusterstatus_tuple_response import OnorbitthrusterstatusTupleResponse
-from ...types.udl.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
+from ...types.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
 
 __all__ = ["OnorbitthrusterstatusResource", "AsyncOnorbitthrusterstatusResource"]
 
@@ -52,7 +54,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return OnorbitthrusterstatusResourceWithRawResponse(self)
 
@@ -61,7 +63,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return OnorbitthrusterstatusResourceWithStreamingResponse(self)
 
@@ -213,7 +215,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -221,7 +225,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitthrusterstatusListResponse:
+    ) -> SyncOffsetPage[OnorbitthrusterstatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -247,8 +251,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/onorbitthrusterstatus",
+            page=SyncOffsetPage[OnorbitthrusterstatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -256,13 +261,15 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_list_params.OnorbitthrusterstatusListParams,
                 ),
             ),
-            cast_to=OnorbitthrusterstatusListResponse,
+            model=OnorbitthrusterstatusListResponse,
         )
 
     def delete(
@@ -304,7 +311,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -349,7 +358,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_count_params.OnorbitthrusterstatusCountParams,
@@ -399,6 +410,8 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -425,7 +438,17 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         return self._get(
             f"/udl/onorbitthrusterstatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    onorbitthrusterstatus_get_params.OnorbitthrusterstatusGetParams,
+                ),
             ),
             cast_to=OnorbitthrusterstatusFull,
         )
@@ -457,7 +480,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -510,7 +535,9 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "columns": columns,
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_tuple_params.OnorbitthrusterstatusTupleParams,
@@ -531,7 +558,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncOnorbitthrusterstatusResourceWithRawResponse(self)
 
@@ -540,7 +567,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncOnorbitthrusterstatusResourceWithStreamingResponse(self)
 
@@ -689,10 +716,12 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -700,7 +729,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitthrusterstatusListResponse:
+    ) -> AsyncPaginator[OnorbitthrusterstatusListResponse, AsyncOffsetPage[OnorbitthrusterstatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -726,22 +755,25 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/onorbitthrusterstatus",
+            page=AsyncOffsetPage[OnorbitthrusterstatusListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_list_params.OnorbitthrusterstatusListParams,
                 ),
             ),
-            cast_to=OnorbitthrusterstatusListResponse,
+            model=OnorbitthrusterstatusListResponse,
         )
 
     async def delete(
@@ -783,7 +815,9 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -828,7 +862,9 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_count_params.OnorbitthrusterstatusCountParams,
@@ -878,6 +914,8 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -904,7 +942,17 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         return await self._get(
             f"/udl/onorbitthrusterstatus/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    onorbitthrusterstatus_get_params.OnorbitthrusterstatusGetParams,
+                ),
             ),
             cast_to=OnorbitthrusterstatusFull,
         )
@@ -936,7 +984,9 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -989,7 +1039,9 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "columns": columns,
+                        "first_result": first_result,
                         "id_onorbit_thruster": id_onorbit_thruster,
+                        "max_results": max_results,
                         "status_time": status_time,
                     },
                     onorbitthrusterstatus_tuple_params.OnorbitthrusterstatusTupleParams,

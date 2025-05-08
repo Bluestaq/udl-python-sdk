@@ -10,11 +10,12 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    OrbitdeterminationGetResponse,
     OrbitdeterminationListResponse,
     OrbitdeterminationTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
-from unifieddatalibrary.types.udl.orbitdetermination import OrbitdeterminationFull
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -249,15 +250,17 @@ class TestOrbitdetermination:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.list()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.list(
+            first_result=0,
             id_on_orbit="idOnOrbit",
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -266,7 +269,7 @@ class TestOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = response.parse()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -275,7 +278,7 @@ class TestOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = response.parse()
-            assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+            assert_matches_type(SyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -287,7 +290,9 @@ class TestOrbitdetermination:
     @parametrize
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.count(
+            first_result=0,
             id_on_orbit="idOnOrbit",
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, orbitdetermination, path=["response"])
@@ -376,31 +381,40 @@ class TestOrbitdetermination:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.get(
-            "id",
+            id="id",
         )
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        orbitdetermination = client.orbitdetermination.get(
+            id="id",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.orbitdetermination.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = response.parse()
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.orbitdetermination.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = response.parse()
-            assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+            assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -408,7 +422,7 @@ class TestOrbitdetermination:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.orbitdetermination.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -447,7 +461,9 @@ class TestOrbitdetermination:
     def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.tuple(
             columns="columns",
+            first_result=0,
             id_on_orbit="idOnOrbit",
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(OrbitdeterminationTupleResponse, orbitdetermination, path=["response"])
@@ -768,15 +784,17 @@ class TestAsyncOrbitdetermination:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.list()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.list(
+            first_result=0,
             id_on_orbit="idOnOrbit",
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -785,7 +803,7 @@ class TestAsyncOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = await response.parse()
-        assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -794,7 +812,7 @@ class TestAsyncOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = await response.parse()
-            assert_matches_type(OrbitdeterminationListResponse, orbitdetermination, path=["response"])
+            assert_matches_type(AsyncOffsetPage[OrbitdeterminationListResponse], orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -806,7 +824,9 @@ class TestAsyncOrbitdetermination:
     @parametrize
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.count(
+            first_result=0,
             id_on_orbit="idOnOrbit",
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(str, orbitdetermination, path=["response"])
@@ -895,31 +915,40 @@ class TestAsyncOrbitdetermination:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.get(
-            "id",
+            id="id",
         )
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        orbitdetermination = await async_client.orbitdetermination.get(
+            id="id",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.orbitdetermination.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = await response.parse()
-        assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+        assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.orbitdetermination.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = await response.parse()
-            assert_matches_type(OrbitdeterminationFull, orbitdetermination, path=["response"])
+            assert_matches_type(OrbitdeterminationGetResponse, orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -927,7 +956,7 @@ class TestAsyncOrbitdetermination:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.orbitdetermination.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -966,7 +995,9 @@ class TestAsyncOrbitdetermination:
     async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.tuple(
             columns="columns",
+            first_result=0,
             id_on_orbit="idOnOrbit",
+            max_results=0,
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(OrbitdeterminationTupleResponse, orbitdetermination, path=["response"])

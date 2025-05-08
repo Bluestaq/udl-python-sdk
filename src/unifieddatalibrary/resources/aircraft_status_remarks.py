@@ -8,7 +8,14 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import aircraft_status_remark_tuple_params, aircraft_status_remark_create_params
+from ..types import (
+    aircraft_status_remark_list_params,
+    aircraft_status_remark_count_params,
+    aircraft_status_remark_tuple_params,
+    aircraft_status_remark_create_params,
+    aircraft_status_remark_update_params,
+    aircraft_status_remark_retrieve_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -19,9 +26,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.aircraftstatusremark_full import AircraftstatusremarkFull
-from ..types.aircraft_status_remark_list_response import AircraftStatusRemarkListResponse
+from ..types.aircraftstatusremark_abridged import AircraftstatusremarkAbridged
 from ..types.aircraft_status_remark_tuple_response import AircraftStatusRemarkTupleResponse
 
 __all__ = ["AircraftStatusRemarksResource", "AsyncAircraftStatusRemarksResource"]
@@ -34,7 +42,7 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AircraftStatusRemarksResourceWithRawResponse(self)
 
@@ -43,7 +51,7 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AircraftStatusRemarksResourceWithStreamingResponse(self)
 
@@ -159,6 +167,8 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,13 +194,182 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         return self._get(
             f"/udl/aircraftstatusremark/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_retrieve_params.AircraftStatusRemarkRetrieveParams,
+                ),
             ),
             cast_to=AircraftstatusremarkFull,
         )
 
+    def update(
+        self,
+        path_id: str,
+        *,
+        classification_marking: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        id_aircraft_status: str,
+        source: str,
+        text: str,
+        body_id: str | NotGiven = NOT_GIVEN,
+        alt_rmk_id: str | NotGiven = NOT_GIVEN,
+        last_updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        last_updated_by: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        timestamp: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to update a single Aircraft Status Remark record.
+
+        A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          id_aircraft_status: The ID of the Aircraft Status to which this remark applies.
+
+          source: Source of the data.
+
+          text: The text of the remark.
+
+          body_id: Unique identifier of the record, auto-generated by the system if not provided on
+              create operations.
+
+          alt_rmk_id: Unique identifier of the Aircraft Status Remark record from the originating
+              system.
+
+          last_updated_at: Time the remark was last updated in the originating system in ISO 8601 UTC
+              format with millisecond precision.
+
+          last_updated_by: The name or ID of the external user that updated this remark in the originating
+              system.
+
+          name: The name of the remark.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          timestamp: Time the remark was created in the originating system in ISO 8601 UTC format
+              with millisecond precision.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not path_id:
+            raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._put(
+            f"/udl/aircraftstatusremark/{path_id}",
+            body=maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "id_aircraft_status": id_aircraft_status,
+                    "source": source,
+                    "text": text,
+                    "body_id": body_id,
+                    "alt_rmk_id": alt_rmk_id,
+                    "last_updated_at": last_updated_at,
+                    "last_updated_by": last_updated_by,
+                    "name": name,
+                    "origin": origin,
+                    "timestamp": timestamp,
+                },
+                aircraft_status_remark_update_params.AircraftStatusRemarkUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def list(
         self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[AircraftstatusremarkAbridged]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/aircraftstatusremark",
+            page=SyncOffsetPage[AircraftstatusremarkAbridged],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_list_params.AircraftStatusRemarkListParams,
+                ),
+            ),
+            model=AircraftstatusremarkAbridged,
+        )
+
+    def delete(
+        self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -198,24 +377,37 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftStatusRemarkListResponse:
+    ) -> None:
         """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        Service operation to delete a single Aircraft Status Remark record specified by
+        the passed ID path parameter. A specific role is required to perform this
+        service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
-            "/udl/aircraftstatusremark",
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            f"/udl/aircraftstatusremark/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AircraftStatusRemarkListResponse,
+            cast_to=NoneType,
         )
 
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -229,12 +421,31 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
             "/udl/aircraftstatusremark/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_count_params.AircraftStatusRemarkCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -266,6 +477,8 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -305,7 +518,12 @@ class AircraftStatusRemarksResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"columns": columns}, aircraft_status_remark_tuple_params.AircraftStatusRemarkTupleParams
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_tuple_params.AircraftStatusRemarkTupleParams,
                 ),
             ),
             cast_to=AircraftStatusRemarkTupleResponse,
@@ -319,7 +537,7 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncAircraftStatusRemarksResourceWithRawResponse(self)
 
@@ -328,7 +546,7 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncAircraftStatusRemarksResourceWithStreamingResponse(self)
 
@@ -444,6 +662,8 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -469,13 +689,182 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         return await self._get(
             f"/udl/aircraftstatusremark/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_retrieve_params.AircraftStatusRemarkRetrieveParams,
+                ),
             ),
             cast_to=AircraftstatusremarkFull,
         )
 
-    async def list(
+    async def update(
         self,
+        path_id: str,
+        *,
+        classification_marking: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        id_aircraft_status: str,
+        source: str,
+        text: str,
+        body_id: str | NotGiven = NOT_GIVEN,
+        alt_rmk_id: str | NotGiven = NOT_GIVEN,
+        last_updated_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        last_updated_by: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        origin: str | NotGiven = NOT_GIVEN,
+        timestamp: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """Service operation to update a single Aircraft Status Remark record.
+
+        A specific
+        role is required to perform this service operation. Please contact the UDL team
+        for assistance.
+
+        Args:
+          classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode:
+              Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+              EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+              may include both real and simulated data.
+
+              REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+              events, and analysis.
+
+              SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+              datasets.
+
+              TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+              requirements, and for validating technical, functional, and performance
+              characteristics.
+
+          id_aircraft_status: The ID of the Aircraft Status to which this remark applies.
+
+          source: Source of the data.
+
+          text: The text of the remark.
+
+          body_id: Unique identifier of the record, auto-generated by the system if not provided on
+              create operations.
+
+          alt_rmk_id: Unique identifier of the Aircraft Status Remark record from the originating
+              system.
+
+          last_updated_at: Time the remark was last updated in the originating system in ISO 8601 UTC
+              format with millisecond precision.
+
+          last_updated_by: The name or ID of the external user that updated this remark in the originating
+              system.
+
+          name: The name of the remark.
+
+          origin: Originating system or organization which produced the data, if different from
+              the source. The origin may be different than the source if the source was a
+              mediating system which forwarded the data on behalf of the origin system. If
+              null, the source may be assumed to be the origin.
+
+          timestamp: Time the remark was created in the originating system in ISO 8601 UTC format
+              with millisecond precision.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not path_id:
+            raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._put(
+            f"/udl/aircraftstatusremark/{path_id}",
+            body=await async_maybe_transform(
+                {
+                    "classification_marking": classification_marking,
+                    "data_mode": data_mode,
+                    "id_aircraft_status": id_aircraft_status,
+                    "source": source,
+                    "text": text,
+                    "body_id": body_id,
+                    "alt_rmk_id": alt_rmk_id,
+                    "last_updated_at": last_updated_at,
+                    "last_updated_by": last_updated_by,
+                    "name": name,
+                    "origin": origin,
+                    "timestamp": timestamp,
+                },
+                aircraft_status_remark_update_params.AircraftStatusRemarkUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def list(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[AircraftstatusremarkAbridged, AsyncOffsetPage[AircraftstatusremarkAbridged]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/aircraftstatusremark",
+            page=AsyncOffsetPage[AircraftstatusremarkAbridged],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_list_params.AircraftStatusRemarkListParams,
+                ),
+            ),
+            model=AircraftstatusremarkAbridged,
+        )
+
+    async def delete(
+        self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -483,24 +872,37 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftStatusRemarkListResponse:
+    ) -> None:
         """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        Service operation to delete a single Aircraft Status Remark record specified by
+        the passed ID path parameter. A specific role is required to perform this
+        service operation. Please contact the UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
-            "/udl/aircraftstatusremark",
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            f"/udl/aircraftstatusremark/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AircraftStatusRemarkListResponse,
+            cast_to=NoneType,
         )
 
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -514,12 +916,31 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         particular query criteria without retrieving large amounts of data. See the
         queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
         valid/required query parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
             "/udl/aircraftstatusremark/count",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_count_params.AircraftStatusRemarkCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -551,6 +972,8 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -590,7 +1013,12 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"columns": columns}, aircraft_status_remark_tuple_params.AircraftStatusRemarkTupleParams
+                    {
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aircraft_status_remark_tuple_params.AircraftStatusRemarkTupleParams,
                 ),
             ),
             cast_to=AircraftStatusRemarkTupleResponse,
@@ -607,8 +1035,14 @@ class AircraftStatusRemarksResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             aircraft_status_remarks.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            aircraft_status_remarks.update,
+        )
         self.list = to_raw_response_wrapper(
             aircraft_status_remarks.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            aircraft_status_remarks.delete,
         )
         self.count = to_raw_response_wrapper(
             aircraft_status_remarks.count,
@@ -631,8 +1065,14 @@ class AsyncAircraftStatusRemarksResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             aircraft_status_remarks.retrieve,
         )
+        self.update = async_to_raw_response_wrapper(
+            aircraft_status_remarks.update,
+        )
         self.list = async_to_raw_response_wrapper(
             aircraft_status_remarks.list,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            aircraft_status_remarks.delete,
         )
         self.count = async_to_raw_response_wrapper(
             aircraft_status_remarks.count,
@@ -655,8 +1095,14 @@ class AircraftStatusRemarksResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             aircraft_status_remarks.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            aircraft_status_remarks.update,
+        )
         self.list = to_streamed_response_wrapper(
             aircraft_status_remarks.list,
+        )
+        self.delete = to_streamed_response_wrapper(
+            aircraft_status_remarks.delete,
         )
         self.count = to_streamed_response_wrapper(
             aircraft_status_remarks.count,
@@ -679,8 +1125,14 @@ class AsyncAircraftStatusRemarksResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             aircraft_status_remarks.retrieve,
         )
+        self.update = async_to_streamed_response_wrapper(
+            aircraft_status_remarks.update,
+        )
         self.list = async_to_streamed_response_wrapper(
             aircraft_status_remarks.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            aircraft_status_remarks.delete,
         )
         self.count = async_to_streamed_response_wrapper(
             aircraft_status_remarks.count,

@@ -27,3 +27,7 @@ class AttitudeSetTupleParams(TypedDict, total=False):
     single attitude parameter message then startTime is the epoch.
     (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

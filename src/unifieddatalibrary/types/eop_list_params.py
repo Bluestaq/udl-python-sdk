@@ -17,3 +17,7 @@ class EopListParams(TypedDict, total=False):
 
     The values could be current or predicted. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

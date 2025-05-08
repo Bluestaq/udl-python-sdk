@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    orbitdetermination_get_params,
     orbitdetermination_list_params,
     orbitdetermination_count_params,
     orbitdetermination_tuple_params,
@@ -34,10 +35,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.orbitdetermination_get_response import OrbitdeterminationGetResponse
 from ...types.orbitdetermination_list_response import OrbitdeterminationListResponse
 from ...types.orbitdetermination_tuple_response import OrbitdeterminationTupleResponse
-from ...types.udl.orbitdetermination.orbitdetermination_full import OrbitdeterminationFull
 
 __all__ = ["OrbitdeterminationResource", "AsyncOrbitdeterminationResource"]
 
@@ -53,7 +55,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return OrbitdeterminationResourceWithRawResponse(self)
 
@@ -62,7 +64,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return OrbitdeterminationResourceWithStreamingResponse(self)
 
@@ -332,7 +334,9 @@ class OrbitdeterminationResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -340,7 +344,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationListResponse:
+    ) -> SyncOffsetPage[OrbitdeterminationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -366,8 +370,9 @@ class OrbitdeterminationResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/orbitdetermination",
+            page=SyncOffsetPage[OrbitdeterminationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -375,19 +380,23 @@ class OrbitdeterminationResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_list_params.OrbitdeterminationListParams,
                 ),
             ),
-            cast_to=OrbitdeterminationListResponse,
+            model=OrbitdeterminationListResponse,
         )
 
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -432,7 +441,9 @@ class OrbitdeterminationResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_count_params.OrbitdeterminationCountParams,
@@ -482,13 +493,15 @@ class OrbitdeterminationResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationFull:
+    ) -> OrbitdeterminationGetResponse:
         """
         Service operation to get a single OrbitDetermination record by its unique ID
         passed as a path parameter.
@@ -507,9 +520,19 @@ class OrbitdeterminationResource(SyncAPIResource):
         return self._get(
             f"/udl/orbitdetermination/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    orbitdetermination_get_params.OrbitdeterminationGetParams,
+                ),
             ),
-            cast_to=OrbitdeterminationFull,
+            cast_to=OrbitdeterminationGetResponse,
         )
 
     def queryhelp(
@@ -539,7 +562,9 @@ class OrbitdeterminationResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -592,7 +617,9 @@ class OrbitdeterminationResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "columns": columns,
+                        "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_tuple_params.OrbitdeterminationTupleParams,
@@ -649,7 +676,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncOrbitdeterminationResourceWithRawResponse(self)
 
@@ -658,7 +685,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncOrbitdeterminationResourceWithStreamingResponse(self)
 
@@ -925,10 +952,12 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -936,7 +965,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationListResponse:
+    ) -> AsyncPaginator[OrbitdeterminationListResponse, AsyncOffsetPage[OrbitdeterminationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -962,28 +991,33 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/orbitdetermination",
+            page=AsyncOffsetPage[OrbitdeterminationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_list_params.OrbitdeterminationListParams,
                 ),
             ),
-            cast_to=OrbitdeterminationListResponse,
+            model=OrbitdeterminationListResponse,
         )
 
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1028,7 +1062,9 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_count_params.OrbitdeterminationCountParams,
@@ -1078,13 +1114,15 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrbitdeterminationFull:
+    ) -> OrbitdeterminationGetResponse:
         """
         Service operation to get a single OrbitDetermination record by its unique ID
         passed as a path parameter.
@@ -1103,9 +1141,19 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         return await self._get(
             f"/udl/orbitdetermination/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    orbitdetermination_get_params.OrbitdeterminationGetParams,
+                ),
             ),
-            cast_to=OrbitdeterminationFull,
+            cast_to=OrbitdeterminationGetResponse,
         )
 
     async def queryhelp(
@@ -1135,7 +1183,9 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1188,7 +1238,9 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "columns": columns,
+                        "first_result": first_result,
                         "id_on_orbit": id_on_orbit,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     orbitdetermination_tuple_params.OrbitdeterminationTupleParams,

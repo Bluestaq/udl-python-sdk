@@ -23,6 +23,14 @@ class TestProviderMetadata:
         assert_matches_type(ProviderMetadataRetrieveResponse, provider_metadata, path=["response"])
 
     @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        provider_metadata = client.supporting_data.provider_metadata.retrieve(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(ProviderMetadataRetrieveResponse, provider_metadata, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.supporting_data.provider_metadata.with_raw_response.retrieve()
 
@@ -49,6 +57,14 @@ class TestAsyncProviderMetadata:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         provider_metadata = await async_client.supporting_data.provider_metadata.retrieve()
+        assert_matches_type(ProviderMetadataRetrieveResponse, provider_metadata, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        provider_metadata = await async_client.supporting_data.provider_metadata.retrieve(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(ProviderMetadataRetrieveResponse, provider_metadata, path=["response"])
 
     @parametrize

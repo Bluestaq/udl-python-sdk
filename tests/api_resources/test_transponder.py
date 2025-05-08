@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     TransponderListResponse,
     TransponderTupleResponse,
 )
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -161,7 +162,15 @@ class TestTransponder:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.list()
-        assert_matches_type(TransponderListResponse, transponder, path=["response"])
+        assert_matches_type(SyncOffsetPage[TransponderListResponse], transponder, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        transponder = client.transponder.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[TransponderListResponse], transponder, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -170,7 +179,7 @@ class TestTransponder:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transponder = response.parse()
-        assert_matches_type(TransponderListResponse, transponder, path=["response"])
+        assert_matches_type(SyncOffsetPage[TransponderListResponse], transponder, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -179,7 +188,7 @@ class TestTransponder:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transponder = response.parse()
-            assert_matches_type(TransponderListResponse, transponder, path=["response"])
+            assert_matches_type(SyncOffsetPage[TransponderListResponse], transponder, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -227,6 +236,14 @@ class TestTransponder:
         assert_matches_type(str, transponder, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        transponder = client.transponder.count(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, transponder, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.transponder.with_raw_response.count()
 
@@ -249,14 +266,23 @@ class TestTransponder:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(TransponderGetResponse, transponder, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        transponder = client.transponder.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderGetResponse, transponder, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.transponder.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -267,7 +293,7 @@ class TestTransponder:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.transponder.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -281,7 +307,7 @@ class TestTransponder:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.transponder.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -313,6 +339,15 @@ class TestTransponder:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         transponder = client.transponder.tuple(
             columns="columns",
+        )
+        assert_matches_type(TransponderTupleResponse, transponder, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        transponder = client.transponder.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderTupleResponse, transponder, path=["response"])
 
@@ -484,7 +519,15 @@ class TestAsyncTransponder:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.list()
-        assert_matches_type(TransponderListResponse, transponder, path=["response"])
+        assert_matches_type(AsyncOffsetPage[TransponderListResponse], transponder, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        transponder = await async_client.transponder.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[TransponderListResponse], transponder, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -493,7 +536,7 @@ class TestAsyncTransponder:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transponder = await response.parse()
-        assert_matches_type(TransponderListResponse, transponder, path=["response"])
+        assert_matches_type(AsyncOffsetPage[TransponderListResponse], transponder, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -502,7 +545,7 @@ class TestAsyncTransponder:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transponder = await response.parse()
-            assert_matches_type(TransponderListResponse, transponder, path=["response"])
+            assert_matches_type(AsyncOffsetPage[TransponderListResponse], transponder, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -550,6 +593,14 @@ class TestAsyncTransponder:
         assert_matches_type(str, transponder, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        transponder = await async_client.transponder.count(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, transponder, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.transponder.with_raw_response.count()
 
@@ -572,14 +623,23 @@ class TestAsyncTransponder:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(TransponderGetResponse, transponder, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        transponder = await async_client.transponder.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderGetResponse, transponder, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.transponder.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -590,7 +650,7 @@ class TestAsyncTransponder:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.transponder.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -604,7 +664,7 @@ class TestAsyncTransponder:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.transponder.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -636,6 +696,15 @@ class TestAsyncTransponder:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         transponder = await async_client.transponder.tuple(
             columns="columns",
+        )
+        assert_matches_type(TransponderTupleResponse, transponder, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        transponder = await async_client.transponder.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(TransponderTupleResponse, transponder, path=["response"])
 

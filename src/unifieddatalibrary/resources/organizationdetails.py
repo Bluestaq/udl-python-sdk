@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    organizationdetail_get_params,
     organizationdetail_list_params,
     organizationdetail_create_params,
     organizationdetail_update_params,
@@ -24,7 +25,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.organization_details_full import OrganizationDetailsFull
 from ..types.organizationdetail_list_response import OrganizationdetailListResponse
 from ..types.organizationdetail_find_by_source_response import OrganizationdetailFindBySourceResponse
@@ -39,7 +41,7 @@ class OrganizationdetailsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return OrganizationdetailsResourceWithRawResponse(self)
 
@@ -48,7 +50,7 @@ class OrganizationdetailsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return OrganizationdetailsResourceWithStreamingResponse(self)
 
@@ -480,13 +482,15 @@ class OrganizationdetailsResource(SyncAPIResource):
         self,
         *,
         name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationdetailListResponse:
+    ) -> SyncOffsetPage[OrganizationdetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -504,16 +508,24 @@ class OrganizationdetailsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/organizationdetails",
+            page=SyncOffsetPage[OrganizationdetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"name": name}, organizationdetail_list_params.OrganizationdetailListParams),
+                query=maybe_transform(
+                    {
+                        "name": name,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    organizationdetail_list_params.OrganizationdetailListParams,
+                ),
             ),
-            cast_to=OrganizationdetailListResponse,
+            model=OrganizationdetailListResponse,
         )
 
     def delete(
@@ -559,6 +571,8 @@ class OrganizationdetailsResource(SyncAPIResource):
         *,
         name: str,
         source: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -596,6 +610,8 @@ class OrganizationdetailsResource(SyncAPIResource):
                     {
                         "name": name,
                         "source": source,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_find_by_source_params.OrganizationdetailFindBySourceParams,
                 ),
@@ -607,6 +623,8 @@ class OrganizationdetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -634,7 +652,17 @@ class OrganizationdetailsResource(SyncAPIResource):
         return self._get(
             f"/udl/organizationdetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    organizationdetail_get_params.OrganizationdetailGetParams,
+                ),
             ),
             cast_to=OrganizationDetailsFull,
         )
@@ -647,7 +675,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncOrganizationdetailsResourceWithRawResponse(self)
 
@@ -656,7 +684,7 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncOrganizationdetailsResourceWithStreamingResponse(self)
 
@@ -1084,17 +1112,19 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         name: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OrganizationdetailListResponse:
+    ) -> AsyncPaginator[OrganizationdetailListResponse, AsyncOffsetPage[OrganizationdetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1112,18 +1142,24 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/organizationdetails",
+            page=AsyncOffsetPage[OrganizationdetailListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"name": name}, organizationdetail_list_params.OrganizationdetailListParams
+                query=maybe_transform(
+                    {
+                        "name": name,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    organizationdetail_list_params.OrganizationdetailListParams,
                 ),
             ),
-            cast_to=OrganizationdetailListResponse,
+            model=OrganizationdetailListResponse,
         )
 
     async def delete(
@@ -1169,6 +1205,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         *,
         name: str,
         source: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1206,6 +1244,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
                     {
                         "name": name,
                         "source": source,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     organizationdetail_find_by_source_params.OrganizationdetailFindBySourceParams,
                 ),
@@ -1217,6 +1257,8 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1244,7 +1286,17 @@ class AsyncOrganizationdetailsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/organizationdetails/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    organizationdetail_get_params.OrganizationdetailGetParams,
+                ),
             ),
             cast_to=OrganizationDetailsFull,
         )

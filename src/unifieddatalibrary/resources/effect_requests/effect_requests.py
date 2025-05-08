@@ -13,6 +13,7 @@ from ...types import (
     effect_request_count_params,
     effect_request_tuple_params,
     effect_request_create_params,
+    effect_request_retrieve_params,
     effect_request_create_bulk_params,
     effect_request_unvalidated_publish_params,
 )
@@ -34,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.effect_request_list_response import EffectRequestListResponse
 from ...types.effect_request_tuple_response import EffectRequestTupleResponse
 from ...types.effect_request_retrieve_response import EffectRequestRetrieveResponse
@@ -53,7 +55,7 @@ class EffectRequestsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return EffectRequestsResourceWithRawResponse(self)
 
@@ -62,7 +64,7 @@ class EffectRequestsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return EffectRequestsResourceWithStreamingResponse(self)
 
@@ -217,6 +219,8 @@ class EffectRequestsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -242,7 +246,17 @@ class EffectRequestsResource(SyncAPIResource):
         return self._get(
             f"/udl/effectrequest/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    effect_request_retrieve_params.EffectRequestRetrieveParams,
+                ),
             ),
             cast_to=EffectRequestRetrieveResponse,
         )
@@ -251,13 +265,15 @@ class EffectRequestsResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EffectRequestListResponse:
+    ) -> SyncOffsetPage[EffectRequestListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -276,22 +292,32 @@ class EffectRequestsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/effectrequest",
+            page=SyncOffsetPage[EffectRequestListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, effect_request_list_params.EffectRequestListParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    effect_request_list_params.EffectRequestListParams,
+                ),
             ),
-            cast_to=EffectRequestListResponse,
+            model=EffectRequestListResponse,
         )
 
     def count(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -326,7 +352,14 @@ class EffectRequestsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, effect_request_count_params.EffectRequestCountParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    effect_request_count_params.EffectRequestCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -396,6 +429,8 @@ class EffectRequestsResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -441,6 +476,8 @@ class EffectRequestsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     effect_request_tuple_params.EffectRequestTupleParams,
                 ),
@@ -496,7 +533,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncEffectRequestsResourceWithRawResponse(self)
 
@@ -505,7 +542,7 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncEffectRequestsResourceWithStreamingResponse(self)
 
@@ -660,6 +697,8 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -685,22 +724,34 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/effectrequest/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    effect_request_retrieve_params.EffectRequestRetrieveParams,
+                ),
             ),
             cast_to=EffectRequestRetrieveResponse,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EffectRequestListResponse:
+    ) -> AsyncPaginator[EffectRequestListResponse, AsyncOffsetPage[EffectRequestListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -719,24 +770,32 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/effectrequest",
+            page=AsyncOffsetPage[EffectRequestListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"created_at": created_at}, effect_request_list_params.EffectRequestListParams
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    effect_request_list_params.EffectRequestListParams,
                 ),
             ),
-            cast_to=EffectRequestListResponse,
+            model=EffectRequestListResponse,
         )
 
     async def count(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -772,7 +831,12 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, effect_request_count_params.EffectRequestCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    effect_request_count_params.EffectRequestCountParams,
                 ),
             ),
             cast_to=str,
@@ -843,6 +907,8 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -888,6 +954,8 @@ class AsyncEffectRequestsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     effect_request_tuple_params.EffectRequestTupleParams,
                 ),

@@ -9,9 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.onorbit import (
     AntennaDetailsFull,
-    AntennaDetailListResponse,
+    AntennaDetailsAbridged,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -91,14 +92,23 @@ class TestAntennaDetails:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AntennaDetailsFull, antenna_detail, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        antenna_detail = client.onorbit.antenna_details.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaDetailsFull, antenna_detail, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.onorbit.antenna_details.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -109,7 +119,7 @@ class TestAntennaDetails:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.onorbit.antenna_details.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -123,7 +133,7 @@ class TestAntennaDetails:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.onorbit.antenna_details.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -212,7 +222,15 @@ class TestAntennaDetails:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         antenna_detail = client.onorbit.antenna_details.list()
-        assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
+        assert_matches_type(SyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        antenna_detail = client.onorbit.antenna_details.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -221,7 +239,7 @@ class TestAntennaDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         antenna_detail = response.parse()
-        assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
+        assert_matches_type(SyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -230,7 +248,7 @@ class TestAntennaDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             antenna_detail = response.parse()
-            assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
+            assert_matches_type(SyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -347,14 +365,23 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AntennaDetailsFull, antenna_detail, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        antenna_detail = await async_client.onorbit.antenna_details.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AntennaDetailsFull, antenna_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.onorbit.antenna_details.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -365,7 +392,7 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.onorbit.antenna_details.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -379,7 +406,7 @@ class TestAsyncAntennaDetails:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.onorbit.antenna_details.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -468,7 +495,15 @@ class TestAsyncAntennaDetails:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna_detail = await async_client.onorbit.antenna_details.list()
-        assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        antenna_detail = await async_client.onorbit.antenna_details.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -477,7 +512,7 @@ class TestAsyncAntennaDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         antenna_detail = await response.parse()
-        assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -486,7 +521,7 @@ class TestAsyncAntennaDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             antenna_detail = await response.parse()
-            assert_matches_type(AntennaDetailListResponse, antenna_detail, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AntennaDetailsAbridged], antenna_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

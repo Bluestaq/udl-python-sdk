@@ -13,6 +13,7 @@ from ...types import (
     collect_request_count_params,
     collect_request_tuple_params,
     collect_request_create_params,
+    collect_request_retrieve_params,
     collect_request_create_bulk_params,
     collect_request_unvalidated_publish_params,
 )
@@ -34,9 +35,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.collect_request_abridged import CollectRequestAbridged
 from ...types.shared.collect_request_full import CollectRequestFull
-from ...types.collect_request_list_response import CollectRequestListResponse
 from ...types.collect_request_tuple_response import CollectRequestTupleResponse
 
 __all__ = ["CollectRequestsResource", "AsyncCollectRequestsResource"]
@@ -53,7 +55,7 @@ class CollectRequestsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return CollectRequestsResourceWithRawResponse(self)
 
@@ -62,7 +64,7 @@ class CollectRequestsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return CollectRequestsResourceWithStreamingResponse(self)
 
@@ -564,6 +566,8 @@ class CollectRequestsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -589,7 +593,17 @@ class CollectRequestsResource(SyncAPIResource):
         return self._get(
             f"/udl/collectrequest/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_request_retrieve_params.CollectRequestRetrieveParams,
+                ),
             ),
             cast_to=CollectRequestFull,
         )
@@ -598,13 +612,15 @@ class CollectRequestsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CollectRequestListResponse:
+    ) -> SyncOffsetPage[CollectRequestAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -623,22 +639,32 @@ class CollectRequestsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/collectrequest",
+            page=SyncOffsetPage[CollectRequestAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"start_time": start_time}, collect_request_list_params.CollectRequestListParams),
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_request_list_params.CollectRequestListParams,
+                ),
             ),
-            cast_to=CollectRequestListResponse,
+            model=CollectRequestAbridged,
         )
 
     def count(
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -674,7 +700,12 @@ class CollectRequestsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"start_time": start_time}, collect_request_count_params.CollectRequestCountParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_request_count_params.CollectRequestCountParams,
                 ),
             ),
             cast_to=str,
@@ -745,6 +776,8 @@ class CollectRequestsResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -790,6 +823,8 @@ class CollectRequestsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     collect_request_tuple_params.CollectRequestTupleParams,
                 ),
@@ -845,7 +880,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncCollectRequestsResourceWithRawResponse(self)
 
@@ -854,7 +889,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncCollectRequestsResourceWithStreamingResponse(self)
 
@@ -1356,6 +1391,8 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1381,22 +1418,34 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/collectrequest/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_request_retrieve_params.CollectRequestRetrieveParams,
+                ),
             ),
             cast_to=CollectRequestFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CollectRequestListResponse:
+    ) -> AsyncPaginator[CollectRequestAbridged, AsyncOffsetPage[CollectRequestAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1415,24 +1464,32 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/collectrequest",
+            page=AsyncOffsetPage[CollectRequestAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"start_time": start_time}, collect_request_list_params.CollectRequestListParams
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_request_list_params.CollectRequestListParams,
                 ),
             ),
-            cast_to=CollectRequestListResponse,
+            model=CollectRequestAbridged,
         )
 
     async def count(
         self,
         *,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1468,7 +1525,12 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"start_time": start_time}, collect_request_count_params.CollectRequestCountParams
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    collect_request_count_params.CollectRequestCountParams,
                 ),
             ),
             cast_to=str,
@@ -1539,6 +1601,8 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1584,6 +1648,8 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     collect_request_tuple_params.CollectRequestTupleParams,
                 ),

@@ -146,7 +146,7 @@ class ScsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return ScsResourceWithRawResponse(self)
 
@@ -155,7 +155,7 @@ class ScsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return ScsResourceWithStreamingResponse(self)
 
@@ -341,6 +341,8 @@ class ScsResource(SyncAPIResource):
         self,
         *,
         id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -370,7 +372,14 @@ class ScsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id": id}, sc_file_download_params.ScFileDownloadParams),
+                query=maybe_transform(
+                    {
+                        "id": id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sc_file_download_params.ScFileDownloadParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -690,7 +699,7 @@ class AsyncScsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncScsResourceWithRawResponse(self)
 
@@ -699,7 +708,7 @@ class AsyncScsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncScsResourceWithStreamingResponse(self)
 
@@ -885,6 +894,8 @@ class AsyncScsResource(AsyncAPIResource):
         self,
         *,
         id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -914,7 +925,14 @@ class AsyncScsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id": id}, sc_file_download_params.ScFileDownloadParams),
+                query=await async_maybe_transform(
+                    {
+                        "id": id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sc_file_download_params.ScFileDownloadParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )

@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    EopListResponse,
+    EopAbridged,
     EopListTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import EopFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -105,14 +106,23 @@ class TestEop:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EopFull, eop, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        eop = client.eop.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EopFull, eop, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.eop.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -123,7 +133,7 @@ class TestEop:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.eop.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -137,7 +147,7 @@ class TestEop:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.eop.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -240,7 +250,16 @@ class TestEop:
         eop = client.eop.list(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EopListResponse, eop, path=["response"])
+        assert_matches_type(SyncOffsetPage[EopAbridged], eop, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        eop = client.eop.list(
+            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[EopAbridged], eop, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -251,7 +270,7 @@ class TestEop:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eop = response.parse()
-        assert_matches_type(EopListResponse, eop, path=["response"])
+        assert_matches_type(SyncOffsetPage[EopAbridged], eop, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -262,7 +281,7 @@ class TestEop:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eop = response.parse()
-            assert_matches_type(EopListResponse, eop, path=["response"])
+            assert_matches_type(SyncOffsetPage[EopAbridged], eop, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -312,6 +331,15 @@ class TestEop:
         assert_matches_type(str, eop, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        eop = client.eop.count(
+            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, eop, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.eop.with_raw_response.count(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -340,6 +368,16 @@ class TestEop:
         eop = client.eop.list_tuple(
             columns="columns",
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EopListTupleResponse, eop, path=["response"])
+
+    @parametrize
+    def test_method_list_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        eop = client.eop.list_tuple(
+            columns="columns",
+            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EopListTupleResponse, eop, path=["response"])
 
@@ -481,14 +519,23 @@ class TestAsyncEop:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(EopFull, eop, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        eop = await async_client.eop.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EopFull, eop, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.eop.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -499,7 +546,7 @@ class TestAsyncEop:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.eop.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -513,7 +560,7 @@ class TestAsyncEop:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.eop.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -616,7 +663,16 @@ class TestAsyncEop:
         eop = await async_client.eop.list(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(EopListResponse, eop, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EopAbridged], eop, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        eop = await async_client.eop.list(
+            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[EopAbridged], eop, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -627,7 +683,7 @@ class TestAsyncEop:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eop = await response.parse()
-        assert_matches_type(EopListResponse, eop, path=["response"])
+        assert_matches_type(AsyncOffsetPage[EopAbridged], eop, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -638,7 +694,7 @@ class TestAsyncEop:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eop = await response.parse()
-            assert_matches_type(EopListResponse, eop, path=["response"])
+            assert_matches_type(AsyncOffsetPage[EopAbridged], eop, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -688,6 +744,15 @@ class TestAsyncEop:
         assert_matches_type(str, eop, path=["response"])
 
     @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        eop = await async_client.eop.count(
+            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, eop, path=["response"])
+
+    @parametrize
     async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.eop.with_raw_response.count(
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -716,6 +781,16 @@ class TestAsyncEop:
         eop = await async_client.eop.list_tuple(
             columns="columns",
             eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(EopListTupleResponse, eop, path=["response"])
+
+    @parametrize
+    async def test_method_list_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        eop = await async_client.eop.list_tuple(
+            columns="columns",
+            eop_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(EopListTupleResponse, eop, path=["response"])
 

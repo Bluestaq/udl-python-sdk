@@ -9,6 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.supporting_data import DataownerTypeListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,7 +21,15 @@ class TestDataownerTypes:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         dataowner_type = client.supporting_data.dataowner_types.list()
-        assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+        assert_matches_type(SyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dataowner_type = client.supporting_data.dataowner_types.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -29,7 +38,7 @@ class TestDataownerTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dataowner_type = response.parse()
-        assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+        assert_matches_type(SyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -38,7 +47,7 @@ class TestDataownerTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dataowner_type = response.parse()
-            assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+            assert_matches_type(SyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -49,7 +58,15 @@ class TestAsyncDataownerTypes:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         dataowner_type = await async_client.supporting_data.dataowner_types.list()
-        assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+        assert_matches_type(AsyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dataowner_type = await async_client.supporting_data.dataowner_types.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -58,7 +75,7 @@ class TestAsyncDataownerTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dataowner_type = await response.parse()
-        assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+        assert_matches_type(AsyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -67,6 +84,6 @@ class TestAsyncDataownerTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dataowner_type = await response.parse()
-            assert_matches_type(DataownerTypeListResponse, dataowner_type, path=["response"])
+            assert_matches_type(AsyncOffsetPage[DataownerTypeListResponse], dataowner_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True

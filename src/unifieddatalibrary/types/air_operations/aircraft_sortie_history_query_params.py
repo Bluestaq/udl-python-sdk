@@ -25,3 +25,7 @@ class AircraftSortieHistoryQueryParams(TypedDict, total=False):
     (/udl/&lt;datatype&gt;/queryhelp) for more details on valid query fields that
     can be selected.
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

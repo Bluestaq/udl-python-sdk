@@ -17,9 +17,9 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.scs import file_list_params, file_update_params, file_retrieve_params
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.shared.file_data import FileData as SharedFileData
-from ...types.scs.file_list_response import FileListResponse
 from ...types.shared_params.file_data import FileData as SharedParamsFileData
 
 __all__ = ["FileResource", "AsyncFileResource"]
@@ -32,7 +32,7 @@ class FileResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return FileResourceWithRawResponse(self)
 
@@ -41,7 +41,7 @@ class FileResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return FileResourceWithStreamingResponse(self)
 
@@ -49,6 +49,8 @@ class FileResource(SyncAPIResource):
         self,
         *,
         id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -78,7 +80,14 @@ class FileResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id": id}, file_retrieve_params.FileRetrieveParams),
+                query=maybe_transform(
+                    {
+                        "id": id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    file_retrieve_params.FileRetrieveParams,
+                ),
             ),
             cast_to=SharedFileData,
         )
@@ -123,6 +132,8 @@ class FileResource(SyncAPIResource):
         *,
         path: str,
         count: int | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -130,7 +141,7 @@ class FileResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FileListResponse:
+    ) -> SyncOffsetPage[SharedFileData]:
         """
         Returns a non-recursive list of FileData objects representing the files and
         subdirectories in the passed-in path directory that are visible to the calling
@@ -151,8 +162,9 @@ class FileResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/scs/list",
+            page=SyncOffsetPage[SharedFileData],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -162,12 +174,14 @@ class FileResource(SyncAPIResource):
                     {
                         "path": path,
                         "count": count,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "offset": offset,
                     },
                     file_list_params.FileListParams,
                 ),
             ),
-            cast_to=FileListResponse,
+            model=SharedFileData,
         )
 
 
@@ -178,7 +192,7 @@ class AsyncFileResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncFileResourceWithRawResponse(self)
 
@@ -187,7 +201,7 @@ class AsyncFileResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncFileResourceWithStreamingResponse(self)
 
@@ -195,6 +209,8 @@ class AsyncFileResource(AsyncAPIResource):
         self,
         *,
         id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,7 +240,14 @@ class AsyncFileResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id": id}, file_retrieve_params.FileRetrieveParams),
+                query=await async_maybe_transform(
+                    {
+                        "id": id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    file_retrieve_params.FileRetrieveParams,
+                ),
             ),
             cast_to=SharedFileData,
         )
@@ -264,11 +287,13 @@ class AsyncFileResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         path: str,
         count: int | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -276,7 +301,7 @@ class AsyncFileResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FileListResponse:
+    ) -> AsyncPaginator[SharedFileData, AsyncOffsetPage[SharedFileData]]:
         """
         Returns a non-recursive list of FileData objects representing the files and
         subdirectories in the passed-in path directory that are visible to the calling
@@ -297,23 +322,26 @@ class AsyncFileResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/scs/list",
+            page=AsyncOffsetPage[SharedFileData],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "path": path,
                         "count": count,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "offset": offset,
                     },
                     file_list_params.FileListParams,
                 ),
             ),
-            cast_to=FileListResponse,
+            model=SharedFileData,
         )
 
 

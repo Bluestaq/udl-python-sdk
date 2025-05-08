@@ -10,11 +10,12 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
+    HazardGetResponse,
     HazardListResponse,
     HazardTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
-from unifieddatalibrary.types.udl.hazard import HazardFull
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -119,7 +120,16 @@ class TestHazard:
         hazard = client.hazard.list(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(HazardListResponse, hazard, path=["response"])
+        assert_matches_type(SyncOffsetPage[HazardListResponse], hazard, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        hazard = client.hazard.list(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[HazardListResponse], hazard, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -130,7 +140,7 @@ class TestHazard:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         hazard = response.parse()
-        assert_matches_type(HazardListResponse, hazard, path=["response"])
+        assert_matches_type(SyncOffsetPage[HazardListResponse], hazard, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -141,7 +151,7 @@ class TestHazard:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             hazard = response.parse()
-            assert_matches_type(HazardListResponse, hazard, path=["response"])
+            assert_matches_type(SyncOffsetPage[HazardListResponse], hazard, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -149,6 +159,15 @@ class TestHazard:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         hazard = client.hazard.count(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, hazard, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        hazard = client.hazard.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, hazard, path=["response"])
 
@@ -240,31 +259,40 @@ class TestHazard:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         hazard = client.hazard.get(
-            "id",
+            id="id",
         )
-        assert_matches_type(HazardFull, hazard, path=["response"])
+        assert_matches_type(HazardGetResponse, hazard, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        hazard = client.hazard.get(
+            id="id",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(HazardGetResponse, hazard, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.hazard.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         hazard = response.parse()
-        assert_matches_type(HazardFull, hazard, path=["response"])
+        assert_matches_type(HazardGetResponse, hazard, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.hazard.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             hazard = response.parse()
-            assert_matches_type(HazardFull, hazard, path=["response"])
+            assert_matches_type(HazardGetResponse, hazard, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -272,7 +300,7 @@ class TestHazard:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.hazard.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -305,6 +333,16 @@ class TestHazard:
         hazard = client.hazard.tuple(
             columns="columns",
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(HazardTupleResponse, hazard, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        hazard = client.hazard.tuple(
+            columns="columns",
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardTupleResponse, hazard, path=["response"])
 
@@ -435,7 +473,16 @@ class TestAsyncHazard:
         hazard = await async_client.hazard.list(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(HazardListResponse, hazard, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HazardListResponse], hazard, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        hazard = await async_client.hazard.list(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[HazardListResponse], hazard, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -446,7 +493,7 @@ class TestAsyncHazard:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         hazard = await response.parse()
-        assert_matches_type(HazardListResponse, hazard, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HazardListResponse], hazard, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -457,7 +504,7 @@ class TestAsyncHazard:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             hazard = await response.parse()
-            assert_matches_type(HazardListResponse, hazard, path=["response"])
+            assert_matches_type(AsyncOffsetPage[HazardListResponse], hazard, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -465,6 +512,15 @@ class TestAsyncHazard:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         hazard = await async_client.hazard.count(
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, hazard, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        hazard = await async_client.hazard.count(
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, hazard, path=["response"])
 
@@ -556,31 +612,40 @@ class TestAsyncHazard:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         hazard = await async_client.hazard.get(
-            "id",
+            id="id",
         )
-        assert_matches_type(HazardFull, hazard, path=["response"])
+        assert_matches_type(HazardGetResponse, hazard, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        hazard = await async_client.hazard.get(
+            id="id",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(HazardGetResponse, hazard, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.hazard.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         hazard = await response.parse()
-        assert_matches_type(HazardFull, hazard, path=["response"])
+        assert_matches_type(HazardGetResponse, hazard, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.hazard.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             hazard = await response.parse()
-            assert_matches_type(HazardFull, hazard, path=["response"])
+            assert_matches_type(HazardGetResponse, hazard, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -588,7 +653,7 @@ class TestAsyncHazard:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.hazard.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -621,6 +686,16 @@ class TestAsyncHazard:
         hazard = await async_client.hazard.tuple(
             columns="columns",
             detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(HazardTupleResponse, hazard, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        hazard = await async_client.hazard.tuple(
+            columns="columns",
+            detect_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(HazardTupleResponse, hazard, path=["response"])
 

@@ -10,9 +10,8 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_date
-from unifieddatalibrary.types.air_transport_missions import (
-    HistoryListResponse,
-)
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
+from unifieddatalibrary.types.shared import AirTransportMissionFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,15 +24,17 @@ class TestHistory:
         history = client.air_transport_missions.history.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.air_transport_missions.history.list(
             created_at=parse_date("2019-12-27"),
             columns="columns",
+            first_result=0,
+            max_results=0,
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -44,7 +45,7 @@ class TestHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = response.parse()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -55,7 +56,7 @@ class TestHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = response.parse()
-            assert_matches_type(HistoryListResponse, history, path=["response"])
+            assert_matches_type(SyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -71,6 +72,8 @@ class TestHistory:
         history = client.air_transport_missions.history.aodr(
             created_at=parse_date("2019-12-27"),
             columns="columns",
+            first_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -109,6 +112,15 @@ class TestHistory:
         assert_matches_type(str, history, path=["response"])
 
     @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.air_transport_missions.history.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
     def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
         response = client.air_transport_missions.history.with_raw_response.count(
             created_at=parse_date("2019-12-27"),
@@ -141,15 +153,17 @@ class TestAsyncHistory:
         history = await async_client.air_transport_missions.history.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.air_transport_missions.history.list(
             created_at=parse_date("2019-12-27"),
             columns="columns",
+            first_result=0,
+            max_results=0,
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -160,7 +174,7 @@ class TestAsyncHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = await response.parse()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -171,7 +185,7 @@ class TestAsyncHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = await response.parse()
-            assert_matches_type(HistoryListResponse, history, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AirTransportMissionFull], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -187,6 +201,8 @@ class TestAsyncHistory:
         history = await async_client.air_transport_missions.history.aodr(
             created_at=parse_date("2019-12-27"),
             columns="columns",
+            first_result=0,
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -221,6 +237,15 @@ class TestAsyncHistory:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.air_transport_missions.history.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.air_transport_missions.history.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

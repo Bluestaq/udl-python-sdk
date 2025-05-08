@@ -32,7 +32,8 @@ client = Unifieddatalibrary(
     password=os.environ.get("UDL_AUTH_PASSWORD"),  # This is the default and can be omitted
 )
 
-elset_abridgeds = client.elsets.current.list()
+page = client.elsets.current.list()
+print(page.items)
 ```
 
 While you can provide a `username` keyword argument,
@@ -56,7 +57,8 @@ client = AsyncUnifieddatalibrary(
 
 
 async def main() -> None:
-    elset_abridgeds = await client.elsets.current.list()
+    page = await client.elsets.current.list()
+    print(page.items)
 
 
 asyncio.run(main())
@@ -72,6 +74,67 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Pagination
+
+List methods in the Unifieddatalibrary API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```python
+from unifieddatalibrary import Unifieddatalibrary
+
+client = Unifieddatalibrary()
+
+all_currents = []
+# Automatically fetches more pages as needed.
+for current in client.elsets.current.list():
+    # Do something with current here
+    all_currents.append(current)
+print(all_currents)
+```
+
+Or, asynchronously:
+
+```python
+import asyncio
+from unifieddatalibrary import AsyncUnifieddatalibrary
+
+client = AsyncUnifieddatalibrary()
+
+
+async def main() -> None:
+    all_currents = []
+    # Iterate through items across all pages, issuing requests as needed.
+    async for current in client.elsets.current.list():
+        all_currents.append(current)
+    print(all_currents)
+
+
+asyncio.run(main())
+```
+
+Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
+
+```python
+first_page = await client.elsets.current.list()
+if first_page.has_next_page():
+    print(f"will fetch next page using these details: {first_page.next_page_info()}")
+    next_page = await first_page.get_next_page()
+    print(f"number of items we just fetched: {len(next_page.items)}")
+
+# Remove `await` for non-async usage.
+```
+
+Or just work directly with the returned data:
+
+```python
+first_page = await client.elsets.current.list()
+for current in first_page.items:
+    print(current.id_elset)
+
+# Remove `await` for non-async usage.
+```
 
 from datetime import datetime, date
 
@@ -284,12 +347,12 @@ response = client.elsets.current.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 current = response.parse()  # get the object that `elsets.current.list()` would have returned
-print(current)
+print(current.id_elset)
 ```
 
-These methods return an [`APIResponse`](https://github.com/rsivilli-bluestaq/udl-python-sdk/tree/main/src/unifieddatalibrary/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/Bluestaq/udl-python-sdk/tree/main/src/unifieddatalibrary/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/rsivilli-bluestaq/udl-python-sdk/tree/main/src/unifieddatalibrary/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/Bluestaq/udl-python-sdk/tree/main/src/unifieddatalibrary/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -393,7 +456,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/rsivilli-bluestaq/udl-python-sdk/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/Bluestaq/udl-python-sdk/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

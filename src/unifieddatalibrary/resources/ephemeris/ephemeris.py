@@ -33,7 +33,9 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.ephemeris_abridged import EphemerisAbridged
 from .attitude_data.attitude_data import (
     AttitudeDataResource,
     AsyncAttitudeDataResource,
@@ -42,7 +44,6 @@ from .attitude_data.attitude_data import (
     AttitudeDataResourceWithStreamingResponse,
     AsyncAttitudeDataResourceWithStreamingResponse,
 )
-from ...types.ephemeris_list_response import EphemerisListResponse
 from ...types.ephemeris_tuple_response import EphemerisTupleResponse
 
 __all__ = ["EphemerisResource", "AsyncEphemerisResource"]
@@ -63,7 +64,7 @@ class EphemerisResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return EphemerisResourceWithRawResponse(self)
 
@@ -72,7 +73,7 @@ class EphemerisResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return EphemerisResourceWithStreamingResponse(self)
 
@@ -80,13 +81,15 @@ class EphemerisResource(SyncAPIResource):
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisListResponse:
+    ) -> SyncOffsetPage[EphemerisAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -106,22 +109,32 @@ class EphemerisResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/ephemeris",
+            page=SyncOffsetPage[EphemerisAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"es_id": es_id}, ephemeris_list_params.EphemerisListParams),
+                query=maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_list_params.EphemerisListParams,
+                ),
             ),
-            cast_to=EphemerisListResponse,
+            model=EphemerisAbridged,
         )
 
     def count(
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -157,7 +170,14 @@ class EphemerisResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"es_id": es_id}, ephemeris_count_params.EphemerisCountParams),
+                query=maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_count_params.EphemerisCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -283,6 +303,8 @@ class EphemerisResource(SyncAPIResource):
         *,
         columns: str,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -329,6 +351,8 @@ class EphemerisResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "es_id": es_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     ephemeris_tuple_params.EphemerisTupleParams,
                 ),
@@ -603,7 +627,7 @@ class AsyncEphemerisResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncEphemerisResourceWithRawResponse(self)
 
@@ -612,21 +636,23 @@ class AsyncEphemerisResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncEphemerisResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisListResponse:
+    ) -> AsyncPaginator[EphemerisAbridged, AsyncOffsetPage[EphemerisAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -646,22 +672,32 @@ class AsyncEphemerisResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/ephemeris",
+            page=AsyncOffsetPage[EphemerisAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"es_id": es_id}, ephemeris_list_params.EphemerisListParams),
+                query=maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_list_params.EphemerisListParams,
+                ),
             ),
-            cast_to=EphemerisListResponse,
+            model=EphemerisAbridged,
         )
 
     async def count(
         self,
         *,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -697,7 +733,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"es_id": es_id}, ephemeris_count_params.EphemerisCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "es_id": es_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_count_params.EphemerisCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -823,6 +866,8 @@ class AsyncEphemerisResource(AsyncAPIResource):
         *,
         columns: str,
         es_id: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -869,6 +914,8 @@ class AsyncEphemerisResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "es_id": es_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     ephemeris_tuple_params.EphemerisTupleParams,
                 ),

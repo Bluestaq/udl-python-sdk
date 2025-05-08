@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     PersonnelrecoveryTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -148,7 +149,16 @@ class TestPersonnelrecovery:
         personnelrecovery = client.personnelrecovery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
+        assert_matches_type(SyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        personnelrecovery = client.personnelrecovery.list(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -159,7 +169,7 @@ class TestPersonnelrecovery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         personnelrecovery = response.parse()
-        assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
+        assert_matches_type(SyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -170,7 +180,7 @@ class TestPersonnelrecovery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             personnelrecovery = response.parse()
-            assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
+            assert_matches_type(SyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -178,6 +188,15 @@ class TestPersonnelrecovery:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         personnelrecovery = client.personnelrecovery.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, personnelrecovery, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        personnelrecovery = client.personnelrecovery.count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, personnelrecovery, path=["response"])
 
@@ -330,14 +349,23 @@ class TestPersonnelrecovery:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         personnelrecovery = client.personnelrecovery.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(PersonnelRecoveryFullL, personnelrecovery, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        personnelrecovery = client.personnelrecovery.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelRecoveryFullL, personnelrecovery, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.personnelrecovery.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -348,7 +376,7 @@ class TestPersonnelrecovery:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.personnelrecovery.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -362,7 +390,7 @@ class TestPersonnelrecovery:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.personnelrecovery.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -395,6 +423,16 @@ class TestPersonnelrecovery:
         personnelrecovery = client.personnelrecovery.tuple(
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(PersonnelrecoveryTupleResponse, personnelrecovery, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        personnelrecovery = client.personnelrecovery.tuple(
+            columns="columns",
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelrecoveryTupleResponse, personnelrecovery, path=["response"])
 
@@ -554,7 +592,16 @@ class TestAsyncPersonnelrecovery:
         personnelrecovery = await async_client.personnelrecovery.list(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
+        assert_matches_type(AsyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        personnelrecovery = await async_client.personnelrecovery.list(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -565,7 +612,7 @@ class TestAsyncPersonnelrecovery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         personnelrecovery = await response.parse()
-        assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
+        assert_matches_type(AsyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -576,7 +623,7 @@ class TestAsyncPersonnelrecovery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             personnelrecovery = await response.parse()
-            assert_matches_type(PersonnelrecoveryListResponse, personnelrecovery, path=["response"])
+            assert_matches_type(AsyncOffsetPage[PersonnelrecoveryListResponse], personnelrecovery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -584,6 +631,15 @@ class TestAsyncPersonnelrecovery:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         personnelrecovery = await async_client.personnelrecovery.count(
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, personnelrecovery, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        personnelrecovery = await async_client.personnelrecovery.count(
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, personnelrecovery, path=["response"])
 
@@ -736,14 +792,23 @@ class TestAsyncPersonnelrecovery:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         personnelrecovery = await async_client.personnelrecovery.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(PersonnelRecoveryFullL, personnelrecovery, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        personnelrecovery = await async_client.personnelrecovery.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelRecoveryFullL, personnelrecovery, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.personnelrecovery.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -754,7 +819,7 @@ class TestAsyncPersonnelrecovery:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.personnelrecovery.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -768,7 +833,7 @@ class TestAsyncPersonnelrecovery:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.personnelrecovery.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -801,6 +866,16 @@ class TestAsyncPersonnelrecovery:
         personnelrecovery = await async_client.personnelrecovery.tuple(
             columns="columns",
             msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(PersonnelrecoveryTupleResponse, personnelrecovery, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        personnelrecovery = await async_client.personnelrecovery.tuple(
+            columns="columns",
+            msg_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(PersonnelrecoveryTupleResponse, personnelrecovery, path=["response"])
 

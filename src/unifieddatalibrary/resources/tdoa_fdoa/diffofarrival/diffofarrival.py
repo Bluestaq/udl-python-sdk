@@ -26,14 +26,15 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncOffsetPage, AsyncOffsetPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.tdoa_fdoa import (
     diffofarrival_list_params,
     diffofarrival_count_params,
     diffofarrival_create_params,
     diffofarrival_create_bulk_params,
 )
-from ....types.tdoa_fdoa.diffofarrival_list_response import DiffofarrivalListResponse
+from ....types.tdoa_fdoa.diffofarrival_abridged import DiffofarrivalAbridged
 
 __all__ = ["DiffofarrivalResource", "AsyncDiffofarrivalResource"]
 
@@ -49,7 +50,7 @@ class DiffofarrivalResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return DiffofarrivalResourceWithRawResponse(self)
 
@@ -58,7 +59,7 @@ class DiffofarrivalResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return DiffofarrivalResourceWithStreamingResponse(self)
 
@@ -306,13 +307,15 @@ class DiffofarrivalResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DiffofarrivalListResponse:
+    ) -> SyncOffsetPage[DiffofarrivalAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -331,22 +334,32 @@ class DiffofarrivalResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/diffofarrival",
+            page=SyncOffsetPage[DiffofarrivalAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, diffofarrival_list_params.DiffofarrivalListParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    diffofarrival_list_params.DiffofarrivalListParams,
+                ),
             ),
-            cast_to=DiffofarrivalListResponse,
+            model=DiffofarrivalAbridged,
         )
 
     def count(
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -381,7 +394,14 @@ class DiffofarrivalResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"ob_time": ob_time}, diffofarrival_count_params.DiffofarrivalCountParams),
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    diffofarrival_count_params.DiffofarrivalCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -435,7 +455,7 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncDiffofarrivalResourceWithRawResponse(self)
 
@@ -444,7 +464,7 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncDiffofarrivalResourceWithStreamingResponse(self)
 
@@ -688,17 +708,19 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DiffofarrivalListResponse:
+    ) -> AsyncPaginator[DiffofarrivalAbridged, AsyncOffsetPage[DiffofarrivalAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -717,24 +739,32 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/diffofarrival",
+            page=AsyncOffsetPage[DiffofarrivalAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"ob_time": ob_time}, diffofarrival_list_params.DiffofarrivalListParams
+                query=maybe_transform(
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    diffofarrival_list_params.DiffofarrivalListParams,
                 ),
             ),
-            cast_to=DiffofarrivalListResponse,
+            model=DiffofarrivalAbridged,
         )
 
     async def count(
         self,
         *,
         ob_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -770,7 +800,12 @@ class AsyncDiffofarrivalResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"ob_time": ob_time}, diffofarrival_count_params.DiffofarrivalCountParams
+                    {
+                        "ob_time": ob_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    diffofarrival_count_params.DiffofarrivalCountParams,
                 ),
             ),
             cast_to=str,

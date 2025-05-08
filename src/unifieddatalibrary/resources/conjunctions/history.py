@@ -30,7 +30,7 @@ class HistoryResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return HistoryResourceWithRawResponse(self)
 
@@ -39,7 +39,7 @@ class HistoryResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return HistoryResourceWithStreamingResponse(self)
 
@@ -48,6 +48,8 @@ class HistoryResource(SyncAPIResource):
         *,
         tca: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -103,6 +105,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "tca": tca,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -117,6 +121,8 @@ class HistoryResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -150,7 +156,14 @@ class HistoryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"tca": tca}, history_count_params.HistoryCountParams),
+                query=maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -163,7 +176,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncHistoryResourceWithRawResponse(self)
 
@@ -172,7 +185,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
@@ -181,6 +194,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         tca: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -236,6 +251,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "tca": tca,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -250,6 +267,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -283,7 +302,14 @@ class AsyncHistoryResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"tca": tca}, history_count_params.HistoryCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )

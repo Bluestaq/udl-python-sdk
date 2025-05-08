@@ -1,0 +1,276 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Union, Iterable
+from datetime import datetime
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
+
+__all__ = ["TrackRouteCreateBulkParams", "Body", "BodyAltitudeBlock", "BodyPoc", "BodyRoutePoint"]
+
+
+class TrackRouteCreateBulkParams(TypedDict, total=False):
+    body: Required[Iterable[Body]]
+
+
+class BodyAltitudeBlock(TypedDict, total=False):
+    altitude_sequence_id: Annotated[str, PropertyInfo(alias="altitudeSequenceId")]
+    """Sequencing field for the altitude block."""
+
+    lower_altitude: Annotated[float, PropertyInfo(alias="lowerAltitude")]
+    """Lowest altitude of the track route altitude block above mean sea level in feet."""
+
+    upper_altitude: Annotated[float, PropertyInfo(alias="upperAltitude")]
+    """
+    Highest altitude of the track route altitude block above mean sea level in feet.
+    """
+
+
+class BodyPoc(TypedDict, total=False):
+    office: str
+    """Office name for which the contact belongs."""
+
+    phone: str
+    """Phone number of the contact."""
+
+    poc_name: Annotated[str, PropertyInfo(alias="pocName")]
+    """The name of the contact."""
+
+    poc_org: Annotated[str, PropertyInfo(alias="pocOrg")]
+    """Organization name for which the contact belongs."""
+
+    poc_sequence_id: Annotated[int, PropertyInfo(alias="pocSequenceId")]
+    """Sequencing field for point of contact."""
+
+    poc_type_name: Annotated[str, PropertyInfo(alias="pocTypeName")]
+    """
+    A code or name that represents the contact's role in association to the track
+    route (ex. Originator, Scheduler, Maintainer, etc.).
+    """
+
+    rank: str
+    """The rank of contact."""
+
+    remark: str
+    """Text of the remark."""
+
+    username: str
+    """The username of the contact."""
+
+
+class BodyRoutePoint(TypedDict, total=False):
+    alt_country_code: Annotated[str, PropertyInfo(alias="altCountryCode")]
+    """
+    Specifies an alternate country code if the data provider code is not part of an
+    official NAVAID Country Code standard such as ISO-3166 or FIPS. This field will
+    be set to the value provided by the source and should be used for all Queries
+    specifying a Country Code.
+    """
+
+    country_code: Annotated[str, PropertyInfo(alias="countryCode")]
+    """
+    The DoD Standard Country Code designator for the country where the route point
+    resides. This field should be set to "OTHR" if the source value does not match a
+    UDL country code value (ISO-3166-ALPHA-2).
+    """
+
+    dafif_pt: Annotated[bool, PropertyInfo(alias="dafifPt")]
+    """
+    Flag indicating this is a Digital Aeronautical Flight Information File (DAFIF)
+    point.
+    """
+
+    mag_dec: Annotated[float, PropertyInfo(alias="magDec")]
+    """
+    The magnetic declination/variation of the route point location from true north,
+    in degrees. Positive values east of true north and negative values west of true
+    north.
+    """
+
+    navaid: str
+    """Navigational Aid (NAVAID) identification code."""
+
+    navaid_length: Annotated[float, PropertyInfo(alias="navaidLength")]
+    """The length of the course from the Navigational Aid (NAVAID) in nautical miles."""
+
+    navaid_type: Annotated[str, PropertyInfo(alias="navaidType")]
+    """The NAVAID type of this route point (ex. VOR, VORTAC, TACAN, etc.)."""
+
+    pt_lat: Annotated[float, PropertyInfo(alias="ptLat")]
+    """WGS84 latitude of the point location, in degrees.
+
+    -90 to 90 degrees (negative values south of equator).
+    """
+
+    pt_lon: Annotated[float, PropertyInfo(alias="ptLon")]
+    """WGS84 longitude of the point location, in degrees.
+
+    -180 to 180 degrees (negative values west of Prime Meridian).
+    """
+
+    pt_sequence_id: Annotated[int, PropertyInfo(alias="ptSequenceId")]
+    """Sequencing field for the track route.
+
+    This is the identifier representing the sequence of waypoints associated to the
+    track route.
+    """
+
+    pt_type_code: Annotated[str, PropertyInfo(alias="ptTypeCode")]
+    """Code representation of the point within the track route (ex.
+
+    EP, EX, CP, IP, etc.).
+    """
+
+    pt_type_name: Annotated[str, PropertyInfo(alias="ptTypeName")]
+    """The name that represents the point within the track route (ex.
+
+    ENTRY POINT, EXIT POINT, CONTROL POINT, INITIAL POINT, etc.).
+    """
+
+    waypoint_name: Annotated[str, PropertyInfo(alias="waypointName")]
+    """Name of a waypoint which identifies the location of the point."""
+
+
+class Body(TypedDict, total=False):
+    classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
+    """Classification marking of the data in IC/CAPCO Portion-marked format."""
+
+    data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
+    """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
+
+    EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+    may include both real and simulated data.
+
+    REAL:&nbsp;Data collected or produced that pertains to real-world objects,
+    events, and analysis.
+
+    SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+    datasets.
+
+    TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
+    requirements, and for validating technical, functional, and performance
+    characteristics.
+    """
+
+    last_update_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="lastUpdateDate", format="iso8601")]]
+    """
+    The last updated date of the track route in ISO 8601 UTC format with millisecond
+    precision.
+    """
+
+    source: Required[str]
+    """Source of the data."""
+
+    type: Required[str]
+    """The track route type represented by this record (ex. AIR REFUELING)."""
+
+    id: str
+    """Unique identifier of the record, auto-generated by the system."""
+
+    altitude_blocks: Annotated[Iterable[BodyAltitudeBlock], PropertyInfo(alias="altitudeBlocks")]
+    """Minimum and maximum altitude bounds for the track."""
+
+    apn_setting: Annotated[str, PropertyInfo(alias="apnSetting")]
+    """The APN radar code sent and received by the aircraft for identification."""
+
+    apx_beacon_code: Annotated[str, PropertyInfo(alias="apxBeaconCode")]
+    """The APX radar code sent and received by the aircraft for identification."""
+
+    artcc_message: Annotated[str, PropertyInfo(alias="artccMessage")]
+    """Air Refueling Track Control Center message."""
+
+    creating_org: Annotated[str, PropertyInfo(alias="creatingOrg")]
+    """The name of the creating organization of the track route."""
+
+    direction: str
+    """The principal compass direction (cardinal or ordinal) of the track route."""
+
+    effective_date: Annotated[Union[str, datetime], PropertyInfo(alias="effectiveDate", format="iso8601")]
+    """
+    The date which the DAFIF track was last updated/validated in ISO 8601 UTC format
+    with millisecond precision.
+    """
+
+    external_id: Annotated[str, PropertyInfo(alias="externalId")]
+    """Optional air refueling track ID from external systems.
+
+    This field has no meaning within UDL and is provided as a convenience for
+    systems that require tracking of an internal system generated ID.
+    """
+
+    last_used_date: Annotated[Union[str, datetime], PropertyInfo(alias="lastUsedDate", format="iso8601")]
+    """
+    Used to show last time the track route was added to an itinerary in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    location_track_id: Annotated[str, PropertyInfo(alias="locationTrackId")]
+    """Track location ID."""
+
+    origin: str
+    """
+    Originating system or organization which produced the data, if different from
+    the source. The origin may be different than the source if the source was a
+    mediating system which forwarded the data on behalf of the origin system. If
+    null, the source may be assumed to be the origin.
+    """
+
+    poc: Iterable[BodyPoc]
+    """Point of contacts for scheduling or modifying the route."""
+
+    pri_freq: Annotated[float, PropertyInfo(alias="priFreq")]
+    """The primary UHF radio frequency used for the track route in megahertz."""
+
+    receiver_tanker_ch_code: Annotated[str, PropertyInfo(alias="receiverTankerCHCode")]
+    """The receiver tanker channel identifer for air refueling tracks."""
+
+    region_code: Annotated[str, PropertyInfo(alias="regionCode")]
+    """
+    Region code indicating where the track resides as determined by the data source.
+    """
+
+    region_name: Annotated[str, PropertyInfo(alias="regionName")]
+    """Region where the track resides."""
+
+    review_date: Annotated[Union[str, datetime], PropertyInfo(alias="reviewDate", format="iso8601")]
+    """
+    Date the track needs to be reviewed for accuracy or deletion in ISO 8601 UTC
+    format with millisecond precision.
+    """
+
+    route_points: Annotated[Iterable[BodyRoutePoint], PropertyInfo(alias="routePoints")]
+    """Points identified within the route."""
+
+    scheduler_org_name: Annotated[str, PropertyInfo(alias="schedulerOrgName")]
+    """Point of contact for the air refueling track route scheduler."""
+
+    scheduler_org_unit: Annotated[str, PropertyInfo(alias="schedulerOrgUnit")]
+    """The unit responsible for scheduling the track route."""
+
+    sec_freq: Annotated[float, PropertyInfo(alias="secFreq")]
+    """The secondary UHF radio frequency used for the track route in megahertz."""
+
+    short_name: Annotated[str, PropertyInfo(alias="shortName")]
+    """Abbreviated name of the track."""
+
+    sic: str
+    """Standard Indicator Code of the air refueling track."""
+
+    track_id: Annotated[str, PropertyInfo(alias="trackId")]
+    """Identifier of the track."""
+
+    track_name: Annotated[str, PropertyInfo(alias="trackName")]
+    """Name of the track."""
+
+    type_code: Annotated[str, PropertyInfo(alias="typeCode")]
+    """Type of process used by AMC to schedule an air refueling event.
+
+    Possible values are A (Matched Long Range), F (Matched AMC Short Notice), N
+    (Unmatched Theater Operation Short Notice (Theater Assets)), R, Unmatched Long
+    Range, S (Soft Air Refueling), T (Matched Theater Operation Short Notice
+    (Theater Assets)), V (Unmatched AMC Short Notice), X (Unmatched Theater
+    Operation Short Notice (AMC Assets)), Y (Matched Theater Operation Short Notice
+    (AMC Assets)), Z (Other Air Refueling).
+    """

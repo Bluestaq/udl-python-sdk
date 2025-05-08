@@ -13,6 +13,7 @@ from ...types import (
     event_evolution_count_params,
     event_evolution_tuple_params,
     event_evolution_create_params,
+    event_evolution_retrieve_params,
     event_evolution_create_bulk_params,
     event_evolution_unvalidated_publish_params,
 )
@@ -34,7 +35,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.shared.event_evolution_full import EventEvolutionFull
 from ...types.event_evolution_list_response import EventEvolutionListResponse
 from ...types.event_evolution_tuple_response import EventEvolutionTupleResponse
@@ -53,7 +55,7 @@ class EventEvolutionResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return EventEvolutionResourceWithRawResponse(self)
 
@@ -62,7 +64,7 @@ class EventEvolutionResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return EventEvolutionResourceWithStreamingResponse(self)
 
@@ -280,6 +282,8 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -305,7 +309,17 @@ class EventEvolutionResource(SyncAPIResource):
         return self._get(
             f"/udl/eventevolution/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    event_evolution_retrieve_params.EventEvolutionRetrieveParams,
+                ),
             ),
             cast_to=EventEvolutionFull,
         )
@@ -314,6 +328,8 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -321,7 +337,7 @@ class EventEvolutionResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventEvolutionListResponse:
+    ) -> SyncOffsetPage[EventEvolutionListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -346,8 +362,9 @@ class EventEvolutionResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/eventevolution",
+            page=SyncOffsetPage[EventEvolutionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -356,18 +373,22 @@ class EventEvolutionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     event_evolution_list_params.EventEvolutionListParams,
                 ),
             ),
-            cast_to=EventEvolutionListResponse,
+            model=EventEvolutionListResponse,
         )
 
     def count(
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -412,6 +433,8 @@ class EventEvolutionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     event_evolution_count_params.EventEvolutionCountParams,
@@ -486,6 +509,8 @@ class EventEvolutionResource(SyncAPIResource):
         *,
         columns: str,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -538,6 +563,8 @@ class EventEvolutionResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     event_evolution_tuple_params.EventEvolutionTupleParams,
@@ -594,7 +621,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncEventEvolutionResourceWithRawResponse(self)
 
@@ -603,7 +630,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncEventEvolutionResourceWithStreamingResponse(self)
 
@@ -821,6 +848,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -846,15 +875,27 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         return await self._get(
             f"/udl/eventevolution/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    event_evolution_retrieve_params.EventEvolutionRetrieveParams,
+                ),
             ),
             cast_to=EventEvolutionFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -862,7 +903,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventEvolutionListResponse:
+    ) -> AsyncPaginator[EventEvolutionListResponse, AsyncOffsetPage[EventEvolutionListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -887,28 +928,33 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/eventevolution",
+            page=AsyncOffsetPage[EventEvolutionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     event_evolution_list_params.EventEvolutionListParams,
                 ),
             ),
-            cast_to=EventEvolutionListResponse,
+            model=EventEvolutionListResponse,
         )
 
     async def count(
         self,
         *,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -953,6 +999,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     event_evolution_count_params.EventEvolutionCountParams,
@@ -1027,6 +1075,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         *,
         columns: str,
         event_id: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1079,6 +1129,8 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "event_id": event_id,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "start_time": start_time,
                     },
                     event_evolution_tuple_params.EventEvolutionTupleParams,

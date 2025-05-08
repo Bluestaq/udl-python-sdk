@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["EventEvolutionListResponse", "EventEvolutionListResponseItem"]
+__all__ = ["EventEvolutionListResponse"]
 
 
-class EventEvolutionListResponseItem(BaseModel):
+class EventEvolutionListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -199,6 +199,3 @@ class EventEvolutionListResponseItem(BaseModel):
 
     url: Optional[List[str]] = None
     """List of URLs to before/after images of this point of interest entity."""
-
-
-EventEvolutionListResponse: TypeAlias = List[EventEvolutionListResponseItem]

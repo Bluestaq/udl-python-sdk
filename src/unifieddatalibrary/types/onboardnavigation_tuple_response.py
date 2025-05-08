@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .udl.onboardnavigation.onboardnavigation_full import OnboardnavigationFull
+from .onboardnavigation.onboardnavigation_full import OnboardnavigationFull
 
 __all__ = ["OnboardnavigationTupleResponse"]
 

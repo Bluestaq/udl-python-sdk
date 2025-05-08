@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .udl.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
+from .onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
 
 __all__ = ["OnorbitthrusterstatusTupleResponse"]
 

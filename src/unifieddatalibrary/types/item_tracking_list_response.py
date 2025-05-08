@@ -2,16 +2,16 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ItemTrackingListResponse", "ItemTrackingListResponseItem"]
+__all__ = ["ItemTrackingListResponse"]
 
 
-class ItemTrackingListResponseItem(BaseModel):
+class ItemTrackingListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -128,6 +128,3 @@ class ItemTrackingListResponseItem(BaseModel):
     The entries in this array must correspond to the position index in the keys
     array. This array must be the same length as keys.
     """
-
-
-ItemTrackingListResponse: TypeAlias = List[ItemTrackingListResponseItem]

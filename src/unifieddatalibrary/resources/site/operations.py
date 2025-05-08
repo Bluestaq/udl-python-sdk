@@ -18,16 +18,18 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ...types.site import (
     operation_list_params,
     operation_count_params,
     operation_tuple_params,
     operation_create_params,
     operation_update_params,
+    operation_retrieve_params,
     operation_create_bulk_params,
     operation_unvalidated_publish_params,
 )
-from ..._base_client import make_request_options
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.site.operation_list_response import OperationListResponse
 from ...types.site.operation_tuple_response import OperationTupleResponse
 from ...types.site.operation_retrieve_response import OperationRetrieveResponse
@@ -42,7 +44,7 @@ class OperationsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return OperationsResourceWithRawResponse(self)
 
@@ -51,7 +53,7 @@ class OperationsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return OperationsResourceWithStreamingResponse(self)
 
@@ -200,6 +202,8 @@ class OperationsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -225,7 +229,17 @@ class OperationsResource(SyncAPIResource):
         return self._get(
             f"/udl/siteoperations/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    operation_retrieve_params.OperationRetrieveParams,
+                ),
             ),
             cast_to=OperationRetrieveResponse,
         )
@@ -379,13 +393,15 @@ class OperationsResource(SyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperationListResponse:
+    ) -> SyncOffsetPage[OperationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -403,16 +419,24 @@ class OperationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/siteoperations",
+            page=SyncOffsetPage[OperationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_site": id_site}, operation_list_params.OperationListParams),
+                query=maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    operation_list_params.OperationListParams,
+                ),
             ),
-            cast_to=OperationListResponse,
+            model=OperationListResponse,
         )
 
     def delete(
@@ -455,6 +479,8 @@ class OperationsResource(SyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -488,7 +514,14 @@ class OperationsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"id_site": id_site}, operation_count_params.OperationCountParams),
+                query=maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    operation_count_params.OperationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -558,6 +591,8 @@ class OperationsResource(SyncAPIResource):
         *,
         columns: str,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -602,6 +637,8 @@ class OperationsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "id_site": id_site,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     operation_tuple_params.OperationTupleParams,
                 ),
@@ -653,7 +690,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncOperationsResourceWithRawResponse(self)
 
@@ -662,7 +699,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncOperationsResourceWithStreamingResponse(self)
 
@@ -811,6 +848,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -836,7 +875,17 @@ class AsyncOperationsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/siteoperations/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    operation_retrieve_params.OperationRetrieveParams,
+                ),
             ),
             cast_to=OperationRetrieveResponse,
         )
@@ -986,17 +1035,19 @@ class AsyncOperationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperationListResponse:
+    ) -> AsyncPaginator[OperationListResponse, AsyncOffsetPage[OperationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1014,16 +1065,24 @@ class AsyncOperationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/siteoperations",
+            page=AsyncOffsetPage[OperationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id_site": id_site}, operation_list_params.OperationListParams),
+                query=maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    operation_list_params.OperationListParams,
+                ),
             ),
-            cast_to=OperationListResponse,
+            model=OperationListResponse,
         )
 
     async def delete(
@@ -1066,6 +1125,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         *,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1099,7 +1160,14 @@ class AsyncOperationsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"id_site": id_site}, operation_count_params.OperationCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "id_site": id_site,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    operation_count_params.OperationCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1169,6 +1237,8 @@ class AsyncOperationsResource(AsyncAPIResource):
         *,
         columns: str,
         id_site: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1213,6 +1283,8 @@ class AsyncOperationsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "id_site": id_site,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     operation_tuple_params.OperationTupleParams,
                 ),

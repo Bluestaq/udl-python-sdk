@@ -17,9 +17,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.air_transport_missions import history_aodr_params, history_list_params, history_count_params
-from ...types.air_transport_missions.history_list_response import HistoryListResponse
+from ...types.shared.air_transport_mission_full import AirTransportMissionFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -31,7 +32,7 @@ class HistoryResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return HistoryResourceWithRawResponse(self)
 
@@ -40,7 +41,7 @@ class HistoryResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return HistoryResourceWithStreamingResponse(self)
 
@@ -49,13 +50,15 @@ class HistoryResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryListResponse:
+    ) -> SyncOffsetPage[AirTransportMissionFull]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -78,8 +81,9 @@ class HistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airtransportmission/history",
+            page=SyncOffsetPage[AirTransportMissionFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -89,11 +93,13 @@ class HistoryResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryListResponse,
+            model=AirTransportMissionFull,
         )
 
     def aodr(
@@ -101,6 +107,8 @@ class HistoryResource(SyncAPIResource):
         *,
         created_at: Union[str, date],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -157,6 +165,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "created_at": created_at,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -171,6 +181,8 @@ class HistoryResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -205,7 +217,14 @@ class HistoryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"created_at": created_at}, history_count_params.HistoryCountParams),
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -218,7 +237,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncHistoryResourceWithRawResponse(self)
 
@@ -227,22 +246,24 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryListResponse:
+    ) -> AsyncPaginator[AirTransportMissionFull, AsyncOffsetPage[AirTransportMissionFull]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -265,22 +286,25 @@ class AsyncHistoryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airtransportmission/history",
+            page=AsyncOffsetPage[AirTransportMissionFull],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryListResponse,
+            model=AirTransportMissionFull,
         )
 
     async def aodr(
@@ -288,6 +312,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         created_at: Union[str, date],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         notification: str | NotGiven = NOT_GIVEN,
         output_delimiter: str | NotGiven = NOT_GIVEN,
         output_format: str | NotGiven = NOT_GIVEN,
@@ -344,6 +370,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "created_at": created_at,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "notification": notification,
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
@@ -358,6 +386,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -392,7 +422,14 @@ class AsyncHistoryResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"created_at": created_at}, history_count_params.HistoryCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )

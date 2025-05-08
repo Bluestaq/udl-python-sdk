@@ -13,6 +13,7 @@ from ..types import (
     air_load_plan_count_params,
     air_load_plan_tuple_params,
     air_load_plan_create_params,
+    air_load_plan_retrieve_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
@@ -24,9 +25,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.airloadplan_full import AirloadplanFull
-from ..types.air_load_plan_list_response import AirLoadPlanListResponse
+from ..types.airloadplan_abridged import AirloadplanAbridged
 from ..types.air_load_plan_tuple_response import AirLoadPlanTupleResponse
 
 __all__ = ["AirLoadPlansResource", "AsyncAirLoadPlansResource"]
@@ -39,7 +41,7 @@ class AirLoadPlansResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AirLoadPlansResourceWithRawResponse(self)
 
@@ -48,7 +50,7 @@ class AirLoadPlansResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AirLoadPlansResourceWithStreamingResponse(self)
 
@@ -408,6 +410,8 @@ class AirLoadPlansResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -433,7 +437,17 @@ class AirLoadPlansResource(SyncAPIResource):
         return self._get(
             f"/udl/airloadplan/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_load_plan_retrieve_params.AirLoadPlanRetrieveParams,
+                ),
             ),
             cast_to=AirloadplanFull,
         )
@@ -442,13 +456,15 @@ class AirLoadPlansResource(SyncAPIResource):
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirLoadPlanListResponse:
+    ) -> SyncOffsetPage[AirloadplanAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -467,22 +483,32 @@ class AirLoadPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airloadplan",
+            page=SyncOffsetPage[AirloadplanAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"est_dep_time": est_dep_time}, air_load_plan_list_params.AirLoadPlanListParams),
+                query=maybe_transform(
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_load_plan_list_params.AirLoadPlanListParams,
+                ),
             ),
-            cast_to=AirLoadPlanListResponse,
+            model=AirloadplanAbridged,
         )
 
     def count(
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -518,7 +544,12 @@ class AirLoadPlansResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"est_dep_time": est_dep_time}, air_load_plan_count_params.AirLoadPlanCountParams
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_load_plan_count_params.AirLoadPlanCountParams,
                 ),
             ),
             cast_to=str,
@@ -552,6 +583,8 @@ class AirLoadPlansResource(SyncAPIResource):
         *,
         columns: str,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -597,6 +630,8 @@ class AirLoadPlansResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     air_load_plan_tuple_params.AirLoadPlanTupleParams,
                 ),
@@ -612,7 +647,7 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncAirLoadPlansResourceWithRawResponse(self)
 
@@ -621,7 +656,7 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncAirLoadPlansResourceWithStreamingResponse(self)
 
@@ -981,6 +1016,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1006,22 +1043,34 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         return await self._get(
             f"/udl/airloadplan/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_load_plan_retrieve_params.AirLoadPlanRetrieveParams,
+                ),
             ),
             cast_to=AirloadplanFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirLoadPlanListResponse:
+    ) -> AsyncPaginator[AirloadplanAbridged, AsyncOffsetPage[AirloadplanAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1040,24 +1089,32 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airloadplan",
+            page=AsyncOffsetPage[AirloadplanAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"est_dep_time": est_dep_time}, air_load_plan_list_params.AirLoadPlanListParams
+                query=maybe_transform(
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_load_plan_list_params.AirLoadPlanListParams,
                 ),
             ),
-            cast_to=AirLoadPlanListResponse,
+            model=AirloadplanAbridged,
         )
 
     async def count(
         self,
         *,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1093,7 +1150,12 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"est_dep_time": est_dep_time}, air_load_plan_count_params.AirLoadPlanCountParams
+                    {
+                        "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_load_plan_count_params.AirLoadPlanCountParams,
                 ),
             ),
             cast_to=str,
@@ -1127,6 +1189,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
         *,
         columns: str,
         est_dep_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1172,6 +1236,8 @@ class AsyncAirLoadPlansResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "est_dep_time": est_dep_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     air_load_plan_tuple_params.AirLoadPlanTupleParams,
                 ),

@@ -1,0 +1,26 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
+
+__all__ = ["H3GeoHexCellTupleParams"]
+
+
+class H3GeoHexCellTupleParams(TypedDict, total=False):
+    columns: Required[str]
+    """
+    Comma-separated list of valid field names for this data type to be returned in
+    the response. Only the fields specified will be returned as well as the
+    classification marking of the data, if applicable. See the ‘queryhelp’ operation
+    for a complete list of possible fields.
+    """
+
+    id_h3_geo: Required[Annotated[str, PropertyInfo(alias="idH3Geo")]]
+    """Unique identifier of the parent H3 Geo record containing this hex cell. (uuid)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     OnboardnavigationTupleResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +27,16 @@ class TestOnboardnavigation:
         onboardnavigation = client.onboardnavigation.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(OnboardnavigationListResponse, onboardnavigation, path=["response"])
+        assert_matches_type(SyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onboardnavigation = client.onboardnavigation.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -37,7 +47,7 @@ class TestOnboardnavigation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onboardnavigation = response.parse()
-        assert_matches_type(OnboardnavigationListResponse, onboardnavigation, path=["response"])
+        assert_matches_type(SyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -48,7 +58,7 @@ class TestOnboardnavigation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onboardnavigation = response.parse()
-            assert_matches_type(OnboardnavigationListResponse, onboardnavigation, path=["response"])
+            assert_matches_type(SyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -56,6 +66,15 @@ class TestOnboardnavigation:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         onboardnavigation = client.onboardnavigation.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, onboardnavigation, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onboardnavigation = client.onboardnavigation.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onboardnavigation, path=["response"])
 
@@ -169,6 +188,16 @@ class TestOnboardnavigation:
         assert_matches_type(OnboardnavigationTupleResponse, onboardnavigation, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        onboardnavigation = client.onboardnavigation.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(OnboardnavigationTupleResponse, onboardnavigation, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.onboardnavigation.with_raw_response.tuple(
             columns="columns",
@@ -255,7 +284,16 @@ class TestAsyncOnboardnavigation:
         onboardnavigation = await async_client.onboardnavigation.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(OnboardnavigationListResponse, onboardnavigation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onboardnavigation = await async_client.onboardnavigation.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -266,7 +304,7 @@ class TestAsyncOnboardnavigation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onboardnavigation = await response.parse()
-        assert_matches_type(OnboardnavigationListResponse, onboardnavigation, path=["response"])
+        assert_matches_type(AsyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -277,7 +315,7 @@ class TestAsyncOnboardnavigation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onboardnavigation = await response.parse()
-            assert_matches_type(OnboardnavigationListResponse, onboardnavigation, path=["response"])
+            assert_matches_type(AsyncOffsetPage[OnboardnavigationListResponse], onboardnavigation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -285,6 +323,15 @@ class TestAsyncOnboardnavigation:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         onboardnavigation = await async_client.onboardnavigation.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, onboardnavigation, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onboardnavigation = await async_client.onboardnavigation.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, onboardnavigation, path=["response"])
 
@@ -394,6 +441,16 @@ class TestAsyncOnboardnavigation:
         onboardnavigation = await async_client.onboardnavigation.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(OnboardnavigationTupleResponse, onboardnavigation, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        onboardnavigation = await async_client.onboardnavigation.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(OnboardnavigationTupleResponse, onboardnavigation, path=["response"])
 

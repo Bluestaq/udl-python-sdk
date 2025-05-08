@@ -24,14 +24,23 @@ class TestAircraftSorties:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         aircraft_sorty = client.aircraft_sorties.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AircraftsortieFull, aircraft_sorty, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        aircraft_sorty = client.aircraft_sorties.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftsortieFull, aircraft_sorty, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft_sorties.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -42,7 +51,7 @@ class TestAircraftSorties:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.aircraft_sorties.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -56,7 +65,7 @@ class TestAircraftSorties:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.aircraft_sorties.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -225,6 +234,16 @@ class TestAircraftSorties:
         assert_matches_type(AircraftSortyTupleResponse, aircraft_sorty, path=["response"])
 
     @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        aircraft_sorty = client.aircraft_sorties.tuple(
+            columns="columns",
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AircraftSortyTupleResponse, aircraft_sorty, path=["response"])
+
+    @parametrize
     def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
         response = client.aircraft_sorties.with_raw_response.tuple(
             columns="columns",
@@ -257,14 +276,23 @@ class TestAsyncAircraftSorties:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_sorty = await async_client.aircraft_sorties.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(AircraftsortieFull, aircraft_sorty, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft_sorty = await async_client.aircraft_sorties.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftsortieFull, aircraft_sorty, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.aircraft_sorties.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -275,7 +303,7 @@ class TestAsyncAircraftSorties:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.aircraft_sorties.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -289,7 +317,7 @@ class TestAsyncAircraftSorties:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.aircraft_sorties.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
@@ -454,6 +482,16 @@ class TestAsyncAircraftSorties:
         aircraft_sorty = await async_client.aircraft_sorties.tuple(
             columns="columns",
             planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AircraftSortyTupleResponse, aircraft_sorty, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft_sorty = await async_client.aircraft_sorties.tuple(
+            columns="columns",
+            planned_dep_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(AircraftSortyTupleResponse, aircraft_sorty, path=["response"])
 

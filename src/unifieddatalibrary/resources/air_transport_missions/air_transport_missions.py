@@ -14,6 +14,7 @@ from ...types import (
     air_transport_mission_tuple_params,
     air_transport_mission_create_params,
     air_transport_mission_update_params,
+    air_transport_mission_retrieve_params,
 )
 from .history import (
     HistoryResource,
@@ -33,9 +34,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.air_transport_mission_abridged import AirTransportMissionAbridged
 from ...types.shared.air_transport_mission_full import AirTransportMissionFull
-from ...types.air_transport_mission_list_response import AirTransportMissionListResponse
 from ...types.air_transport_mission_tuple_response import AirTransportMissionTupleResponse
 
 __all__ = ["AirTransportMissionsResource", "AsyncAirTransportMissionsResource"]
@@ -52,7 +54,7 @@ class AirTransportMissionsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AirTransportMissionsResourceWithRawResponse(self)
 
@@ -61,7 +63,7 @@ class AirTransportMissionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AirTransportMissionsResourceWithStreamingResponse(self)
 
@@ -303,6 +305,8 @@ class AirTransportMissionsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -328,7 +332,17 @@ class AirTransportMissionsResource(SyncAPIResource):
         return self._get(
             f"/udl/airtransportmission/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_transport_mission_retrieve_params.AirTransportMissionRetrieveParams,
+                ),
             ),
             cast_to=AirTransportMissionFull,
         )
@@ -575,13 +589,15 @@ class AirTransportMissionsResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirTransportMissionListResponse:
+    ) -> SyncOffsetPage[AirTransportMissionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -600,24 +616,32 @@ class AirTransportMissionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/airtransportmission",
+            page=SyncOffsetPage[AirTransportMissionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_list_params.AirTransportMissionListParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_transport_mission_list_params.AirTransportMissionListParams,
                 ),
             ),
-            cast_to=AirTransportMissionListResponse,
+            model=AirTransportMissionAbridged,
         )
 
     def count(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -653,7 +677,12 @@ class AirTransportMissionsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_count_params.AirTransportMissionCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_transport_mission_count_params.AirTransportMissionCountParams,
                 ),
             ),
             cast_to=str,
@@ -687,6 +716,8 @@ class AirTransportMissionsResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -732,6 +763,8 @@ class AirTransportMissionsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     air_transport_mission_tuple_params.AirTransportMissionTupleParams,
                 ),
@@ -751,7 +784,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncAirTransportMissionsResourceWithRawResponse(self)
 
@@ -760,7 +793,7 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncAirTransportMissionsResourceWithStreamingResponse(self)
 
@@ -1002,6 +1035,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1027,7 +1062,17 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/airtransportmission/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_transport_mission_retrieve_params.AirTransportMissionRetrieveParams,
+                ),
             ),
             cast_to=AirTransportMissionFull,
         )
@@ -1270,17 +1315,19 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AirTransportMissionListResponse:
+    ) -> AsyncPaginator[AirTransportMissionAbridged, AsyncOffsetPage[AirTransportMissionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -1299,24 +1346,32 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/airtransportmission",
+            page=AsyncOffsetPage[AirTransportMissionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_list_params.AirTransportMissionListParams
+                query=maybe_transform(
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_transport_mission_list_params.AirTransportMissionListParams,
                 ),
             ),
-            cast_to=AirTransportMissionListResponse,
+            model=AirTransportMissionAbridged,
         )
 
     async def count(
         self,
         *,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1352,7 +1407,12 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"created_at": created_at}, air_transport_mission_count_params.AirTransportMissionCountParams
+                    {
+                        "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    air_transport_mission_count_params.AirTransportMissionCountParams,
                 ),
             ),
             cast_to=str,
@@ -1386,6 +1446,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1431,6 +1493,8 @@ class AsyncAirTransportMissionsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "created_at": created_at,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     air_transport_mission_tuple_params.AirTransportMissionTupleParams,
                 ),

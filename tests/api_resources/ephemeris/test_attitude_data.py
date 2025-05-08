@@ -9,8 +9,9 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.ephemeris import (
-    AttitudeDataListResponse,
+    AttitudeDataAbridged,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -24,7 +25,16 @@ class TestAttitudeData:
         attitude_data = client.ephemeris.attitude_data.list(
             as_id="asId",
         )
-        assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+        assert_matches_type(SyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_data = client.ephemeris.attitude_data.list(
+            as_id="asId",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -35,7 +45,7 @@ class TestAttitudeData:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         attitude_data = response.parse()
-        assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+        assert_matches_type(SyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -46,7 +56,7 @@ class TestAttitudeData:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             attitude_data = response.parse()
-            assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+            assert_matches_type(SyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -54,6 +64,15 @@ class TestAttitudeData:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         attitude_data = client.ephemeris.attitude_data.count(
             as_id="asId",
+        )
+        assert_matches_type(str, attitude_data, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        attitude_data = client.ephemeris.attitude_data.count(
+            as_id="asId",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, attitude_data, path=["response"])
 
@@ -90,7 +109,16 @@ class TestAsyncAttitudeData:
         attitude_data = await async_client.ephemeris.attitude_data.list(
             as_id="asId",
         )
-        assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_data = await async_client.ephemeris.attitude_data.list(
+            as_id="asId",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -101,7 +129,7 @@ class TestAsyncAttitudeData:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         attitude_data = await response.parse()
-        assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -112,7 +140,7 @@ class TestAsyncAttitudeData:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             attitude_data = await response.parse()
-            assert_matches_type(AttitudeDataListResponse, attitude_data, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AttitudeDataAbridged], attitude_data, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -120,6 +148,15 @@ class TestAsyncAttitudeData:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_data = await async_client.ephemeris.attitude_data.count(
             as_id="asId",
+        )
+        assert_matches_type(str, attitude_data, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        attitude_data = await async_client.ephemeris.attitude_data.count(
+            as_id="asId",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, attitude_data, path=["response"])
 

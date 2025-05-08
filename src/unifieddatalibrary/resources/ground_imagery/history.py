@@ -31,7 +31,7 @@ class HistoryResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return HistoryResourceWithRawResponse(self)
 
@@ -40,7 +40,7 @@ class HistoryResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return HistoryResourceWithStreamingResponse(self)
 
@@ -48,6 +48,8 @@ class HistoryResource(SyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,7 +83,14 @@ class HistoryResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"image_time": image_time}, history_count_params.HistoryCountParams),
+                query=maybe_transform(
+                    {
+                        "image_time": image_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -91,6 +100,8 @@ class HistoryResource(SyncAPIResource):
         *,
         image_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,6 +141,8 @@ class HistoryResource(SyncAPIResource):
                     {
                         "image_time": image_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     history_query_params.HistoryQueryParams,
                 ),
@@ -145,7 +158,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncHistoryResourceWithRawResponse(self)
 
@@ -154,7 +167,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
@@ -162,6 +175,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -195,7 +210,14 @@ class AsyncHistoryResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"image_time": image_time}, history_count_params.HistoryCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "image_time": image_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_count_params.HistoryCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -205,6 +227,8 @@ class AsyncHistoryResource(AsyncAPIResource):
         *,
         image_time: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -244,6 +268,8 @@ class AsyncHistoryResource(AsyncAPIResource):
                     {
                         "image_time": image_time,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     history_query_params.HistoryQueryParams,
                 ),

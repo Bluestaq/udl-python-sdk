@@ -13,6 +13,8 @@ from ...types import (
     ephemeris_set_count_params,
     ephemeris_set_tuple_params,
     ephemeris_set_create_params,
+    ephemeris_set_retrieve_params,
+    ephemeris_set_file_retrieve_params,
 )
 from .history import (
     HistoryResource,
@@ -40,9 +42,10 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.ephemeris_set import EphemerisSet
-from ...types.ephemeris_set_list_response import EphemerisSetListResponse
+from ...types.ephemeris_set_abridged import EphemerisSetAbridged
 from ...types.ephemeris_set_tuple_response import EphemerisSetTupleResponse
 
 __all__ = ["EphemerisSetsResource", "AsyncEphemerisSetsResource"]
@@ -59,7 +62,7 @@ class EphemerisSetsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return EphemerisSetsResourceWithRawResponse(self)
 
@@ -68,7 +71,7 @@ class EphemerisSetsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return EphemerisSetsResourceWithStreamingResponse(self)
 
@@ -331,6 +334,8 @@ class EphemerisSetsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -356,7 +361,17 @@ class EphemerisSetsResource(SyncAPIResource):
         return self._get(
             f"/udl/ephemerisset/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_set_retrieve_params.EphemerisSetRetrieveParams,
+                ),
             ),
             cast_to=EphemerisSet,
         )
@@ -364,6 +379,8 @@ class EphemerisSetsResource(SyncAPIResource):
     def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -372,7 +389,7 @@ class EphemerisSetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisSetListResponse:
+    ) -> SyncOffsetPage[EphemerisSetAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -396,8 +413,9 @@ class EphemerisSetsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/ephemerisset",
+            page=SyncOffsetPage[EphemerisSetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -405,18 +423,22 @@ class EphemerisSetsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
                     ephemeris_set_list_params.EphemerisSetListParams,
                 ),
             ),
-            cast_to=EphemerisSetListResponse,
+            model=EphemerisSetAbridged,
         )
 
     def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -460,6 +482,8 @@ class EphemerisSetsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -473,6 +497,8 @@ class EphemerisSetsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -499,7 +525,17 @@ class EphemerisSetsResource(SyncAPIResource):
         return self._get(
             f"/udl/ephemerisset/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_set_file_retrieve_params.EphemerisSetFileRetrieveParams,
+                ),
             ),
             cast_to=BinaryAPIResponse,
         )
@@ -531,6 +567,8 @@ class EphemerisSetsResource(SyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -582,6 +620,8 @@ class EphemerisSetsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -603,7 +643,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncEphemerisSetsResourceWithRawResponse(self)
 
@@ -612,7 +652,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncEphemerisSetsResourceWithStreamingResponse(self)
 
@@ -875,6 +915,8 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -900,14 +942,26 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/ephemerisset/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_set_retrieve_params.EphemerisSetRetrieveParams,
+                ),
             ),
             cast_to=EphemerisSet,
         )
 
-    async def list(
+    def list(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -916,7 +970,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EphemerisSetListResponse:
+    ) -> AsyncPaginator[EphemerisSetAbridged, AsyncOffsetPage[EphemerisSetAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -940,27 +994,32 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/ephemerisset",
+            page=AsyncOffsetPage[EphemerisSetAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
                     ephemeris_set_list_params.EphemerisSetListParams,
                 ),
             ),
-            cast_to=EphemerisSetListResponse,
+            model=EphemerisSetAbridged,
         )
 
     async def count(
         self,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1004,6 +1063,8 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },
@@ -1017,6 +1078,8 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1043,7 +1106,17 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/ephemerisset/getFile/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    ephemeris_set_file_retrieve_params.EphemerisSetFileRetrieveParams,
+                ),
             ),
             cast_to=AsyncBinaryAPIResponse,
         )
@@ -1075,6 +1148,8 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         point_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         point_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1126,6 +1201,8 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                         "point_end_time": point_end_time,
                         "point_start_time": point_start_time,
                     },

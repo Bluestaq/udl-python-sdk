@@ -128,14 +128,23 @@ class TestCalibration:
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
         calibration = client.sensor.calibration.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(CalibrationRetrieveResponse, calibration, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationRetrieveResponse, calibration, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
         response = client.sensor.calibration.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -146,7 +155,7 @@ class TestCalibration:
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
         with client.sensor.calibration.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -160,13 +169,22 @@ class TestCalibration:
     def test_path_params_retrieve(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.sensor.calibration.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         calibration = client.sensor.calibration.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, calibration, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, calibration, path=["response"])
 
@@ -257,6 +275,15 @@ class TestCalibration:
         assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
 
     @parametrize
+    def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.query(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
+
+    @parametrize
     def test_raw_response_query(self, client: Unifieddatalibrary) -> None:
         response = client.sensor.calibration.with_raw_response.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -310,6 +337,16 @@ class TestCalibration:
         calibration = client.sensor.calibration.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
 
@@ -504,14 +541,23 @@ class TestAsyncCalibration:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         calibration = await async_client.sensor.calibration.retrieve(
-            "id",
+            id="id",
+        )
+        assert_matches_type(CalibrationRetrieveResponse, calibration, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.retrieve(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationRetrieveResponse, calibration, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensor.calibration.with_raw_response.retrieve(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -522,7 +568,7 @@ class TestAsyncCalibration:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sensor.calibration.with_streaming_response.retrieve(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -536,13 +582,22 @@ class TestAsyncCalibration:
     async def test_path_params_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.sensor.calibration.with_raw_response.retrieve(
-                "",
+                id="",
             )
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         calibration = await async_client.sensor.calibration.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, calibration, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.count(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, calibration, path=["response"])
 
@@ -633,6 +688,15 @@ class TestAsyncCalibration:
         assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
 
     @parametrize
+    async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.query(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
+
+    @parametrize
     async def test_raw_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sensor.calibration.with_raw_response.query(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -686,6 +750,16 @@ class TestAsyncCalibration:
         calibration = await async_client.sensor.calibration.tuple(
             columns="columns",
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.tuple(
+            columns="columns",
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(CalibrationTupleResponse, calibration, path=["response"])
 

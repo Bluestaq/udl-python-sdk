@@ -17,3 +17,7 @@ class AnalyticImageryCountParams(TypedDict, total=False):
     The message time of this image record, in ISO8601 UTC format with millisecond
     precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -10,6 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.link_status import (
     HistoryListResponse,
 )
@@ -23,17 +24,19 @@ class TestHistory:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         history = client.link_status.history.list()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.link_status.history.list(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+            first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            max_results=0,
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -42,7 +45,7 @@ class TestHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = response.parse()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -51,7 +54,7 @@ class TestHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = response.parse()
-            assert_matches_type(HistoryListResponse, history, path=["response"])
+            assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -65,8 +68,10 @@ class TestHistory:
         history = client.link_status.history.aodr(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+            first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -102,8 +107,10 @@ class TestHistory:
     def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
         history = client.link_status.history.count(
             created_at=parse_date("2019-12-27"),
+            first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 
@@ -134,17 +141,19 @@ class TestAsyncHistory:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.link_status.history.list()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.link_status.history.list(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+            first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            max_results=0,
         )
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -153,7 +162,7 @@ class TestAsyncHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = await response.parse()
-        assert_matches_type(HistoryListResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -162,7 +171,7 @@ class TestAsyncHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = await response.parse()
-            assert_matches_type(HistoryListResponse, history, path=["response"])
+            assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -176,8 +185,10 @@ class TestAsyncHistory:
         history = await async_client.link_status.history.aodr(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+            first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            max_results=0,
             notification="notification",
             output_delimiter="outputDelimiter",
             output_format="outputFormat",
@@ -213,8 +224,10 @@ class TestAsyncHistory:
     async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         history = await async_client.link_status.history.count(
             created_at=parse_date("2019-12-27"),
+            first_result=0,
             link_start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             link_stop_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            max_results=0,
         )
         assert_matches_type(str, history, path=["response"])
 

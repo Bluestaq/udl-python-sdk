@@ -25,3 +25,7 @@ class DiplomaticClearanceTupleParams(TypedDict, total=False):
     The First Departure Date (FDD) the mission is scheduled for departure, in ISO
     8601 UTC format with millisecond precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

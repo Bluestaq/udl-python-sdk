@@ -23,6 +23,10 @@ class GroundImageryHistoryAodrParams(TypedDict, total=False):
     can be selected.
     """
 
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]
+
     notification: str
     """optional, notification method for the created file link.
 

@@ -20,3 +20,7 @@ class BeamContourTupleParams(TypedDict, total=False):
 
     id_beam: Required[Annotated[str, PropertyInfo(alias="idBeam")]]
     """ID of the beam."""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -12,6 +12,7 @@ from ...types import (
     conjunction_list_params,
     conjunction_count_params,
     conjunction_tuple_params,
+    conjunction_retrieve_params,
     conjunction_create_udl_params,
     conjunction_create_bulk_params,
     conjunction_get_history_params,
@@ -36,9 +37,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.conjunction_full import ConjunctionFull
-from ...types.conjunction_list_response import ConjunctionListResponse
+from ...types.conjunction_abridged import ConjunctionAbridged
 from ...types.conjunction_tuple_response import ConjunctionTupleResponse
 from ...types.conjunction_get_history_response import ConjunctionGetHistoryResponse
 
@@ -56,7 +58,7 @@ class ConjunctionsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return ConjunctionsResourceWithRawResponse(self)
 
@@ -65,7 +67,7 @@ class ConjunctionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return ConjunctionsResourceWithStreamingResponse(self)
 
@@ -73,6 +75,8 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -98,7 +102,17 @@ class ConjunctionsResource(SyncAPIResource):
         return self._get(
             f"/udl/conjunction/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    conjunction_retrieve_params.ConjunctionRetrieveParams,
+                ),
             ),
             cast_to=ConjunctionFull,
         )
@@ -107,13 +121,15 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConjunctionListResponse:
+    ) -> SyncOffsetPage[ConjunctionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -131,22 +147,32 @@ class ConjunctionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/conjunction",
+            page=SyncOffsetPage[ConjunctionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"tca": tca}, conjunction_list_params.ConjunctionListParams),
+                query=maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    conjunction_list_params.ConjunctionListParams,
+                ),
             ),
-            cast_to=ConjunctionListResponse,
+            model=ConjunctionAbridged,
         )
 
     def count(
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -180,7 +206,14 @@ class ConjunctionsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"tca": tca}, conjunction_count_params.ConjunctionCountParams),
+                query=maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    conjunction_count_params.ConjunctionCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -609,6 +642,8 @@ class ConjunctionsResource(SyncAPIResource):
         *,
         tca: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -648,6 +683,8 @@ class ConjunctionsResource(SyncAPIResource):
                     {
                         "tca": tca,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     conjunction_get_history_params.ConjunctionGetHistoryParams,
                 ),
@@ -683,6 +720,8 @@ class ConjunctionsResource(SyncAPIResource):
         *,
         columns: str,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -727,6 +766,8 @@ class ConjunctionsResource(SyncAPIResource):
                     {
                         "columns": columns,
                         "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     conjunction_tuple_params.ConjunctionTupleParams,
                 ),
@@ -858,7 +899,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncConjunctionsResourceWithRawResponse(self)
 
@@ -867,7 +908,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/rsivilli-bluestaq/udl-python-sdk#with_streaming_response
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return AsyncConjunctionsResourceWithStreamingResponse(self)
 
@@ -875,6 +916,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         id: str,
         *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -900,22 +943,34 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         return await self._get(
             f"/udl/conjunction/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    conjunction_retrieve_params.ConjunctionRetrieveParams,
+                ),
             ),
             cast_to=ConjunctionFull,
         )
 
-    async def list(
+    def list(
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConjunctionListResponse:
+    ) -> AsyncPaginator[ConjunctionAbridged, AsyncOffsetPage[ConjunctionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -933,22 +988,32 @@ class AsyncConjunctionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/conjunction",
+            page=AsyncOffsetPage[ConjunctionAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"tca": tca}, conjunction_list_params.ConjunctionListParams),
+                query=maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    conjunction_list_params.ConjunctionListParams,
+                ),
             ),
-            cast_to=ConjunctionListResponse,
+            model=ConjunctionAbridged,
         )
 
     async def count(
         self,
         *,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -982,7 +1047,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"tca": tca}, conjunction_count_params.ConjunctionCountParams),
+                query=await async_maybe_transform(
+                    {
+                        "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    conjunction_count_params.ConjunctionCountParams,
+                ),
             ),
             cast_to=str,
         )
@@ -1411,6 +1483,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         *,
         tca: Union[str, datetime],
         columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1450,6 +1524,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     {
                         "tca": tca,
                         "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     conjunction_get_history_params.ConjunctionGetHistoryParams,
                 ),
@@ -1485,6 +1561,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         *,
         columns: str,
         tca: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1529,6 +1607,8 @@ class AsyncConjunctionsResource(AsyncAPIResource):
                     {
                         "columns": columns,
                         "tca": tca,
+                        "first_result": first_result,
+                        "max_results": max_results,
                     },
                     conjunction_tuple_params.ConjunctionTupleParams,
                 ),

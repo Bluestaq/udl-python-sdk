@@ -14,7 +14,8 @@ from unifieddatalibrary.types import (
     NotificationTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date
-from unifieddatalibrary.types.udl.notification import NotificationFull
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
+from unifieddatalibrary.types.notification import NotificationFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -84,7 +85,16 @@ class TestNotification:
         notification = client.notification.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(NotificationListResponse, notification, path=["response"])
+        assert_matches_type(SyncOffsetPage[NotificationListResponse], notification, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        notification = client.notification.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[NotificationListResponse], notification, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -95,7 +105,7 @@ class TestNotification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification = response.parse()
-        assert_matches_type(NotificationListResponse, notification, path=["response"])
+        assert_matches_type(SyncOffsetPage[NotificationListResponse], notification, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -106,7 +116,7 @@ class TestNotification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification = response.parse()
-            assert_matches_type(NotificationListResponse, notification, path=["response"])
+            assert_matches_type(SyncOffsetPage[NotificationListResponse], notification, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -114,6 +124,15 @@ class TestNotification:
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         notification = client.notification.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, notification, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        notification = client.notification.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, notification, path=["response"])
 
@@ -204,14 +223,23 @@ class TestNotification:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         notification = client.notification.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(NotificationFull, notification, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        notification = client.notification.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationFull, notification, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.notification.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -222,7 +250,7 @@ class TestNotification:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.notification.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -236,7 +264,7 @@ class TestNotification:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.notification.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -269,6 +297,16 @@ class TestNotification:
         notification = client.notification.tuple(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(NotificationTupleResponse, notification, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        notification = client.notification.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationTupleResponse, notification, path=["response"])
 
@@ -364,7 +402,16 @@ class TestAsyncNotification:
         notification = await async_client.notification.list(
             created_at=parse_date("2019-12-27"),
         )
-        assert_matches_type(NotificationListResponse, notification, path=["response"])
+        assert_matches_type(AsyncOffsetPage[NotificationListResponse], notification, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        notification = await async_client.notification.list(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[NotificationListResponse], notification, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -375,7 +422,7 @@ class TestAsyncNotification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification = await response.parse()
-        assert_matches_type(NotificationListResponse, notification, path=["response"])
+        assert_matches_type(AsyncOffsetPage[NotificationListResponse], notification, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -386,7 +433,7 @@ class TestAsyncNotification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification = await response.parse()
-            assert_matches_type(NotificationListResponse, notification, path=["response"])
+            assert_matches_type(AsyncOffsetPage[NotificationListResponse], notification, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -394,6 +441,15 @@ class TestAsyncNotification:
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         notification = await async_client.notification.count(
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(str, notification, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        notification = await async_client.notification.count(
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(str, notification, path=["response"])
 
@@ -484,14 +540,23 @@ class TestAsyncNotification:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         notification = await async_client.notification.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(NotificationFull, notification, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        notification = await async_client.notification.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationFull, notification, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.notification.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -502,7 +567,7 @@ class TestAsyncNotification:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.notification.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -516,7 +581,7 @@ class TestAsyncNotification:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.notification.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -549,6 +614,16 @@ class TestAsyncNotification:
         notification = await async_client.notification.tuple(
             columns="columns",
             created_at=parse_date("2019-12-27"),
+        )
+        assert_matches_type(NotificationTupleResponse, notification, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        notification = await async_client.notification.tuple(
+            columns="columns",
+            created_at=parse_date("2019-12-27"),
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(NotificationTupleResponse, notification, path=["response"])
 

@@ -32,13 +32,21 @@ from .observations import (
     ObservationsResourceWithStreamingResponse,
     AsyncObservationsResourceWithStreamingResponse,
 )
-from .rfobservation import (
-    RfobservationResource,
-    AsyncRfobservationResource,
-    RfobservationResourceWithRawResponse,
-    AsyncRfobservationResourceWithRawResponse,
-    RfobservationResourceWithStreamingResponse,
-    AsyncRfobservationResourceWithStreamingResponse,
+from .rf_observation import (
+    RfObservationResource,
+    AsyncRfObservationResource,
+    RfObservationResourceWithRawResponse,
+    AsyncRfObservationResourceWithRawResponse,
+    RfObservationResourceWithStreamingResponse,
+    AsyncRfObservationResourceWithStreamingResponse,
+)
+from .eo_observations import (
+    EoObservationsResource,
+    AsyncEoObservationsResource,
+    EoObservationsResourceWithRawResponse,
+    AsyncEoObservationsResourceWithRawResponse,
+    EoObservationsResourceWithStreamingResponse,
+    AsyncEoObservationsResourceWithStreamingResponse,
 )
 from .radarobservation import (
     RadarobservationResource,
@@ -47,6 +55,14 @@ from .radarobservation import (
     AsyncRadarobservationResourceWithRawResponse,
     RadarobservationResourceWithStreamingResponse,
     AsyncRadarobservationResourceWithStreamingResponse,
+)
+from .passive_radar_observation import (
+    PassiveRadarObservationResource,
+    AsyncPassiveRadarObservationResource,
+    PassiveRadarObservationResourceWithRawResponse,
+    AsyncPassiveRadarObservationResourceWithRawResponse,
+    PassiveRadarObservationResourceWithStreamingResponse,
+    AsyncPassiveRadarObservationResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -74,12 +90,24 @@ __all__ = [
     "AsyncRadarobservationResourceWithRawResponse",
     "RadarobservationResourceWithStreamingResponse",
     "AsyncRadarobservationResourceWithStreamingResponse",
-    "RfobservationResource",
-    "AsyncRfobservationResource",
-    "RfobservationResourceWithRawResponse",
-    "AsyncRfobservationResourceWithRawResponse",
-    "RfobservationResourceWithStreamingResponse",
-    "AsyncRfobservationResourceWithStreamingResponse",
+    "RfObservationResource",
+    "AsyncRfObservationResource",
+    "RfObservationResourceWithRawResponse",
+    "AsyncRfObservationResourceWithRawResponse",
+    "RfObservationResourceWithStreamingResponse",
+    "AsyncRfObservationResourceWithStreamingResponse",
+    "PassiveRadarObservationResource",
+    "AsyncPassiveRadarObservationResource",
+    "PassiveRadarObservationResourceWithRawResponse",
+    "AsyncPassiveRadarObservationResourceWithRawResponse",
+    "PassiveRadarObservationResourceWithStreamingResponse",
+    "AsyncPassiveRadarObservationResourceWithStreamingResponse",
+    "EoObservationsResource",
+    "AsyncEoObservationsResource",
+    "EoObservationsResourceWithRawResponse",
+    "AsyncEoObservationsResourceWithRawResponse",
+    "EoObservationsResourceWithStreamingResponse",
+    "AsyncEoObservationsResourceWithStreamingResponse",
     "ObservationsResource",
     "AsyncObservationsResource",
     "ObservationsResourceWithRawResponse",

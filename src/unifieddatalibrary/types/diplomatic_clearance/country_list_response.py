@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -10,14 +10,13 @@ from ..._models import BaseModel
 
 __all__ = [
     "CountryListResponse",
-    "CountryListResponseItem",
-    "CountryListResponseItemDiplomaticClearanceCountryContact",
-    "CountryListResponseItemDiplomaticClearanceCountryEntryExitPoint",
-    "CountryListResponseItemDiplomaticClearanceCountryProfile",
+    "DiplomaticClearanceCountryContact",
+    "DiplomaticClearanceCountryEntryExitPoint",
+    "DiplomaticClearanceCountryProfile",
 ]
 
 
-class CountryListResponseItemDiplomaticClearanceCountryContact(BaseModel):
+class DiplomaticClearanceCountryContact(BaseModel):
     ah_num: Optional[str] = FieldInfo(alias="ahNum", default=None)
     """Phone number for this contact after regular business hours."""
 
@@ -61,7 +60,7 @@ class CountryListResponseItemDiplomaticClearanceCountryContact(BaseModel):
     """
 
 
-class CountryListResponseItemDiplomaticClearanceCountryEntryExitPoint(BaseModel):
+class DiplomaticClearanceCountryEntryExitPoint(BaseModel):
     is_entry: Optional[bool] = FieldInfo(alias="isEntry", default=None)
     """Flag indicating whether this is a point of entry for this country."""
 
@@ -72,7 +71,7 @@ class CountryListResponseItemDiplomaticClearanceCountryEntryExitPoint(BaseModel)
     """Name of this entry/exit point."""
 
 
-class CountryListResponseItemDiplomaticClearanceCountryProfile(BaseModel):
+class DiplomaticClearanceCountryProfile(BaseModel):
     cargo_pax_remark: Optional[str] = FieldInfo(alias="cargoPaxRemark", default=None)
     """
     Remarks concerning aircraft cargo and passenger information for this country
@@ -349,7 +348,7 @@ class CountryListResponseItemDiplomaticClearanceCountryProfile(BaseModel):
     """
 
 
-class CountryListResponseItem(BaseModel):
+class CountryListResponse(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -451,18 +450,18 @@ class CountryListResponseItem(BaseModel):
     system.
     """
 
-    diplomatic_clearance_country_contacts: Optional[List[CountryListResponseItemDiplomaticClearanceCountryContact]] = (
-        FieldInfo(alias="diplomaticClearanceCountryContacts", default=None)
+    diplomatic_clearance_country_contacts: Optional[List[DiplomaticClearanceCountryContact]] = FieldInfo(
+        alias="diplomaticClearanceCountryContacts", default=None
     )
     """Collection of diplomatic clearance profile information for this country."""
 
-    diplomatic_clearance_country_entry_exit_points: Optional[
-        List[CountryListResponseItemDiplomaticClearanceCountryEntryExitPoint]
-    ] = FieldInfo(alias="diplomaticClearanceCountryEntryExitPoints", default=None)
+    diplomatic_clearance_country_entry_exit_points: Optional[List[DiplomaticClearanceCountryEntryExitPoint]] = (
+        FieldInfo(alias="diplomaticClearanceCountryEntryExitPoints", default=None)
+    )
     """Collection of diplomatic clearance profile information for this country."""
 
-    diplomatic_clearance_country_profiles: Optional[List[CountryListResponseItemDiplomaticClearanceCountryProfile]] = (
-        FieldInfo(alias="diplomaticClearanceCountryProfiles", default=None)
+    diplomatic_clearance_country_profiles: Optional[List[DiplomaticClearanceCountryProfile]] = FieldInfo(
+        alias="diplomaticClearanceCountryProfiles", default=None
     )
     """Collection of diplomatic clearance profile information for this country."""
 
@@ -563,6 +562,3 @@ class CountryListResponseItem(BaseModel):
     Application user who updated the row in the database, auto-populated by the
     system.
     """
-
-
-CountryListResponse: TypeAlias = List[CountryListResponseItem]

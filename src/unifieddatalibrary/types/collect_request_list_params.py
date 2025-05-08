@@ -17,3 +17,7 @@ class CollectRequestListParams(TypedDict, total=False):
     The start time or earliest time of the collect or contact request window, in ISO
     8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
     """
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

@@ -14,3 +14,7 @@ __all__ = ["EvacListParams"]
 class EvacListParams(TypedDict, total=False):
     req_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="reqTime", format="iso8601")]]
     """The request time, in ISO 8601 UTC format. (YYYY-MM-DDTHH:MM:SS.sssZ)"""
+
+    first_result: Annotated[int, PropertyInfo(alias="firstResult")]
+
+    max_results: Annotated[int, PropertyInfo(alias="maxResults")]

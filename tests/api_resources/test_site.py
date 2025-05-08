@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     SiteTupleResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -352,7 +353,15 @@ class TestSite:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         site = client.site.list()
-        assert_matches_type(SiteListResponse, site, path=["response"])
+        assert_matches_type(SyncOffsetPage[SiteListResponse], site, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        site = client.site.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[SiteListResponse], site, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -361,7 +370,7 @@ class TestSite:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         site = response.parse()
-        assert_matches_type(SiteListResponse, site, path=["response"])
+        assert_matches_type(SyncOffsetPage[SiteListResponse], site, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -370,13 +379,21 @@ class TestSite:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             site = response.parse()
-            assert_matches_type(SiteListResponse, site, path=["response"])
+            assert_matches_type(SyncOffsetPage[SiteListResponse], site, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         site = client.site.count()
+        assert_matches_type(str, site, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        site = client.site.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, site, path=["response"])
 
     @parametrize
@@ -402,14 +419,23 @@ class TestSite:
     @parametrize
     def test_method_get(self, client: Unifieddatalibrary) -> None:
         site = client.site.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SiteGetResponse, site, path=["response"])
+
+    @parametrize
+    def test_method_get_with_all_params(self, client: Unifieddatalibrary) -> None:
+        site = client.site.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteGetResponse, site, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unifieddatalibrary) -> None:
         response = client.site.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -420,7 +446,7 @@ class TestSite:
     @parametrize
     def test_streaming_response_get(self, client: Unifieddatalibrary) -> None:
         with client.site.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -434,7 +460,7 @@ class TestSite:
     def test_path_params_get(self, client: Unifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.site.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -466,6 +492,15 @@ class TestSite:
     def test_method_tuple(self, client: Unifieddatalibrary) -> None:
         site = client.site.tuple(
             columns="columns",
+        )
+        assert_matches_type(SiteTupleResponse, site, path=["response"])
+
+    @parametrize
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        site = client.site.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteTupleResponse, site, path=["response"])
 
@@ -827,7 +862,15 @@ class TestAsyncSite:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.list()
-        assert_matches_type(SiteListResponse, site, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SiteListResponse], site, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        site = await async_client.site.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[SiteListResponse], site, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -836,7 +879,7 @@ class TestAsyncSite:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         site = await response.parse()
-        assert_matches_type(SiteListResponse, site, path=["response"])
+        assert_matches_type(AsyncOffsetPage[SiteListResponse], site, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -845,13 +888,21 @@ class TestAsyncSite:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             site = await response.parse()
-            assert_matches_type(SiteListResponse, site, path=["response"])
+            assert_matches_type(AsyncOffsetPage[SiteListResponse], site, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.count()
+        assert_matches_type(str, site, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        site = await async_client.site.count(
+            first_result=0,
+            max_results=0,
+        )
         assert_matches_type(str, site, path=["response"])
 
     @parametrize
@@ -877,14 +928,23 @@ class TestAsyncSite:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.get(
-            "id",
+            id="id",
+        )
+        assert_matches_type(SiteGetResponse, site, path=["response"])
+
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        site = await async_client.site.get(
+            id="id",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteGetResponse, site, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.site.with_raw_response.get(
-            "id",
+            id="id",
         )
 
         assert response.is_closed is True
@@ -895,7 +955,7 @@ class TestAsyncSite:
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.site.with_streaming_response.get(
-            "id",
+            id="id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -909,7 +969,7 @@ class TestAsyncSite:
     async def test_path_params_get(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.site.with_raw_response.get(
-                "",
+                id="",
             )
 
     @parametrize
@@ -941,6 +1001,15 @@ class TestAsyncSite:
     async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.tuple(
             columns="columns",
+        )
+        assert_matches_type(SiteTupleResponse, site, path=["response"])
+
+    @parametrize
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        site = await async_client.site.tuple(
+            columns="columns",
+            first_result=0,
+            max_results=0,
         )
         assert_matches_type(SiteTupleResponse, site, path=["response"])
 
