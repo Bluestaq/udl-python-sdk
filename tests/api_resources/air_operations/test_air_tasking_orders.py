@@ -13,7 +13,7 @@ from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.air_operations import (
     AirTaskingOrderFull,
-    AirTaskingOrderListResponse,
+    AirtaskingorderAbridged,
     AirTaskingOrderTupleResponse,
 )
 
@@ -208,7 +208,7 @@ class TestAirTaskingOrders:
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
         air_tasking_order = client.air_operations.air_tasking_orders.list()
-        assert_matches_type(SyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
@@ -216,7 +216,7 @@ class TestAirTaskingOrders:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(SyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
@@ -225,7 +225,7 @@ class TestAirTaskingOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_tasking_order = response.parse()
-        assert_matches_type(SyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+        assert_matches_type(SyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
@@ -234,7 +234,7 @@ class TestAirTaskingOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_tasking_order = response.parse()
-            assert_matches_type(SyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+            assert_matches_type(SyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -580,7 +580,7 @@ class TestAsyncAirTaskingOrders:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_tasking_order = await async_client.air_operations.air_tasking_orders.list()
-        assert_matches_type(AsyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -588,7 +588,7 @@ class TestAsyncAirTaskingOrders:
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AsyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -597,7 +597,7 @@ class TestAsyncAirTaskingOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_tasking_order = await response.parse()
-        assert_matches_type(AsyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+        assert_matches_type(AsyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -606,7 +606,7 @@ class TestAsyncAirTaskingOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_tasking_order = await response.parse()
-            assert_matches_type(AsyncOffsetPage[AirTaskingOrderListResponse], air_tasking_order, path=["response"])
+            assert_matches_type(AsyncOffsetPage[AirtaskingorderAbridged], air_tasking_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

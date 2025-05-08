@@ -77,7 +77,7 @@ Types:
 ```python
 from unifieddatalibrary.types.air_operations import (
     AirTaskingOrderFull,
-    AirTaskingOrderListResponse,
+    AirtaskingorderAbridged,
     AirTaskingOrderCountResponse,
     AirTaskingOrderTupleResponse,
 )
@@ -87,7 +87,7 @@ Methods:
 
 - <code title="post /udl/airtaskingorder">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/air_tasking_order_create_params.py">params</a>) -> None</code>
 - <code title="get /udl/airtaskingorder/{id}">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/air_operations/air_tasking_order_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/air_tasking_order_full.py">AirTaskingOrderFull</a></code>
-- <code title="get /udl/airtaskingorder">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/air_tasking_order_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/air_tasking_order_list_response.py">SyncOffsetPage[AirTaskingOrderListResponse]</a></code>
+- <code title="get /udl/airtaskingorder">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/air_tasking_order_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/airtaskingorder_abridged.py">SyncOffsetPage[AirtaskingorderAbridged]</a></code>
 - <code title="get /udl/airtaskingorder/count">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/air_tasking_order_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/airtaskingorder/queryhelp">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">query_help</a>() -> None</code>
 - <code title="get /udl/airtaskingorder/tuple">client.air_operations.air_tasking_orders.<a href="./src/unifieddatalibrary/resources/air_operations/air_tasking_orders.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/air_tasking_order_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/air_tasking_order_tuple_response.py">AirTaskingOrderTupleResponse</a></code>

@@ -29,7 +29,7 @@ from ...types.air_operations import (
     air_tasking_order_unvalidated_publish_params,
 )
 from ...types.air_operations.air_tasking_order_full import AirTaskingOrderFull
-from ...types.air_operations.air_tasking_order_list_response import AirTaskingOrderListResponse
+from ...types.air_operations.airtaskingorder_abridged import AirtaskingorderAbridged
 from ...types.air_operations.air_tasking_order_tuple_response import AirTaskingOrderTupleResponse
 
 __all__ = ["AirTaskingOrdersResource", "AsyncAirTaskingOrdersResource"]
@@ -242,7 +242,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncOffsetPage[AirTaskingOrderListResponse]:
+    ) -> SyncOffsetPage[AirtaskingorderAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -260,7 +260,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/udl/airtaskingorder",
-            page=SyncOffsetPage[AirTaskingOrderListResponse],
+            page=SyncOffsetPage[AirtaskingorderAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -274,7 +274,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
                     air_tasking_order_list_params.AirTaskingOrderListParams,
                 ),
             ),
-            model=AirTaskingOrderListResponse,
+            model=AirtaskingorderAbridged,
         )
 
     def count(
@@ -647,7 +647,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[AirTaskingOrderListResponse, AsyncOffsetPage[AirTaskingOrderListResponse]]:
+    ) -> AsyncPaginator[AirtaskingorderAbridged, AsyncOffsetPage[AirtaskingorderAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -665,7 +665,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/udl/airtaskingorder",
-            page=AsyncOffsetPage[AirTaskingOrderListResponse],
+            page=AsyncOffsetPage[AirtaskingorderAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -679,7 +679,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
                     air_tasking_order_list_params.AirTaskingOrderListParams,
                 ),
             ),
-            model=AirTaskingOrderListResponse,
+            model=AirtaskingorderAbridged,
         )
 
     async def count(
