@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-05-15)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([0a7fc75](https://github.com/Bluestaq/udl-python-sdk/commit/0a7fc75666d1464a81a62cd7d3cfa2797cba39cd))
+
+
+### Chores
+
+* **ci:** upload sdks to package manager ([70d5b26](https://github.com/Bluestaq/udl-python-sdk/commit/70d5b262ee00e68c59441a7e4ef460d5826228c1))
+* **internal:** avoid errors for isinstance checks on proxies ([7ca50c6](https://github.com/Bluestaq/udl-python-sdk/commit/7ca50c68f9d6852cb588927c52455f5b244f8cde))
+* **internal:** version bump ([4ab3976](https://github.com/Bluestaq/udl-python-sdk/commit/4ab397686c91eea3de86e1e927a2e8b93e36288c))
+
 ## 0.1.0-alpha.7 (2025-05-08)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
