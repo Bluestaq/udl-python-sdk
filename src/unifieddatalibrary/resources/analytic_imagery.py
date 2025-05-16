@@ -580,7 +580,9 @@ class AnalyticImageryResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers["Content-Type"] = "multipart/form-data"
         return self._post(
-            "/filedrop/udl-analyticimagery",
+            "/filedrop/udl-analyticimagery"
+            if self._client._base_url_overridden
+            else "https://imagery.unifieddatalibrary.com/filedrop/udl-analyticimagery",
             body=maybe_transform(
                 body, analytic_imagery_unvalidated_publish_params.AnalyticImageryUnvalidatedPublishParams
             ),
@@ -1126,7 +1128,9 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers["Content-Type"] = "multipart/form-data"
         return await self._post(
-            "/filedrop/udl-analyticimagery",
+            "/filedrop/udl-analyticimagery"
+            if self._client._base_url_overridden
+            else "https://imagery.unifieddatalibrary.com/filedrop/udl-analyticimagery",
             body=await async_maybe_transform(
                 body, analytic_imagery_unvalidated_publish_params.AnalyticImageryUnvalidatedPublishParams
             ),
