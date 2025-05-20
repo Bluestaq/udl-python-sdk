@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-05-17)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([a1c95dd](https://github.com/Bluestaq/udl-python-sdk/commit/a1c95ddd9b59b8e72ca1beb6487c28015e07c527))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([a826596](https://github.com/Bluestaq/udl-python-sdk/commit/a826596bf1f8521ec15d8b60fd6fb0eabd8e3454))
+* **internal:** codegen related update ([4b8ed45](https://github.com/Bluestaq/udl-python-sdk/commit/4b8ed45873b791d3379e263f5f2d90df881ac2b0))
+
 ## 0.1.0-alpha.8 (2025-05-15)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)

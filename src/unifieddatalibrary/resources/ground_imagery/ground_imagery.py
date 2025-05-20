@@ -649,7 +649,9 @@ class GroundImageryResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers["Content-Type"] = "multipart/form-data"
         return self._post(
-            "/filedrop/udl-groundimagery",
+            "/filedrop/udl-groundimagery"
+            if self._client._base_url_overridden
+            else "https://imagery.unifieddatalibrary.com/filedrop/udl-groundimagery",
             body=maybe_transform(body, ground_imagery_upload_zip_params.GroundImageryUploadZipParams),
             files=files,
             options=make_request_options(
@@ -1255,7 +1257,9 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers["Content-Type"] = "multipart/form-data"
         return await self._post(
-            "/filedrop/udl-groundimagery",
+            "/filedrop/udl-groundimagery"
+            if self._client._base_url_overridden
+            else "https://imagery.unifieddatalibrary.com/filedrop/udl-groundimagery",
             body=await async_maybe_transform(body, ground_imagery_upload_zip_params.GroundImageryUploadZipParams),
             files=files,
             options=make_request_options(

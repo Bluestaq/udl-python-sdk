@@ -428,6 +428,7 @@ class Unifieddatalibrary(SyncAPIClient):
 
         if base_url is None:
             base_url = os.environ.get("UNIFIEDDATALIBRARY_BASE_URL")
+        self._base_url_overridden = base_url is not None
         if base_url is None:
             base_url = f"https://unifieddatalibrary.com"
 
@@ -937,6 +938,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
 
         if base_url is None:
             base_url = os.environ.get("UNIFIEDDATALIBRARY_BASE_URL")
+        self._base_url_overridden = base_url is not None
         if base_url is None:
             base_url = f"https://unifieddatalibrary.com"
 
