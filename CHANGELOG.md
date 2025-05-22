@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-05-22)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Chores
+
+* **docs:** grammar improvements ([7524799](https://github.com/Bluestaq/udl-python-sdk/commit/75247993cec633fc0b614a5f8f68b6df6c42b516))
+
 ## 0.1.0-alpha.9 (2025-05-17)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
