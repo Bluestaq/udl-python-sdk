@@ -21,6 +21,8 @@ class Attributes(BaseModel):
 
     created_date: Optional[str] = FieldInfo(alias="createdDate", default=None)
 
+    delete_on: Optional[int] = FieldInfo(alias="deleteOn", default=None)
+
     description: Optional[str] = None
 
     doc_title: Optional[str] = FieldInfo(alias="docTitle", default=None)

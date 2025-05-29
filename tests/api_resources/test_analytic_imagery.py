@@ -16,6 +16,7 @@ from unifieddatalibrary.types import (
     AnalyticImageryAbridged,
     AnalyticImageryTupleResponse,
     AnalyticImageryHistoryResponse,
+    AnalyticImageryQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary._response import (
@@ -351,7 +352,7 @@ class TestAnalyticImagery:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         analytic_imagery = client.analytic_imagery.queryhelp()
-        assert analytic_imagery is None
+        assert_matches_type(AnalyticImageryQueryhelpResponse, analytic_imagery, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -360,7 +361,7 @@ class TestAnalyticImagery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         analytic_imagery = response.parse()
-        assert analytic_imagery is None
+        assert_matches_type(AnalyticImageryQueryhelpResponse, analytic_imagery, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -369,7 +370,7 @@ class TestAnalyticImagery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             analytic_imagery = response.parse()
-            assert analytic_imagery is None
+            assert_matches_type(AnalyticImageryQueryhelpResponse, analytic_imagery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -775,7 +776,7 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         analytic_imagery = await async_client.analytic_imagery.queryhelp()
-        assert analytic_imagery is None
+        assert_matches_type(AnalyticImageryQueryhelpResponse, analytic_imagery, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -784,7 +785,7 @@ class TestAsyncAnalyticImagery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         analytic_imagery = await response.parse()
-        assert analytic_imagery is None
+        assert_matches_type(AnalyticImageryQueryhelpResponse, analytic_imagery, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -793,7 +794,7 @@ class TestAsyncAnalyticImagery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             analytic_imagery = await response.parse()
-            assert analytic_imagery is None
+            assert_matches_type(AnalyticImageryQueryhelpResponse, analytic_imagery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

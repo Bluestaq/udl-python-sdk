@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     WeatherReportListResponse,
     WeatherReportTupleResponse,
+    WeatherReportQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -291,7 +292,7 @@ class TestWeatherReport:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         weather_report = client.weather_report.queryhelp()
-        assert weather_report is None
+        assert_matches_type(WeatherReportQueryhelpResponse, weather_report, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -300,7 +301,7 @@ class TestWeatherReport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         weather_report = response.parse()
-        assert weather_report is None
+        assert_matches_type(WeatherReportQueryhelpResponse, weather_report, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -309,7 +310,7 @@ class TestWeatherReport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             weather_report = response.parse()
-            assert weather_report is None
+            assert_matches_type(WeatherReportQueryhelpResponse, weather_report, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -690,7 +691,7 @@ class TestAsyncWeatherReport:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         weather_report = await async_client.weather_report.queryhelp()
-        assert weather_report is None
+        assert_matches_type(WeatherReportQueryhelpResponse, weather_report, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -699,7 +700,7 @@ class TestAsyncWeatherReport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         weather_report = await response.parse()
-        assert weather_report is None
+        assert_matches_type(WeatherReportQueryhelpResponse, weather_report, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -708,7 +709,7 @@ class TestAsyncWeatherReport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             weather_report = await response.parse()
-            assert weather_report is None
+            assert_matches_type(WeatherReportQueryhelpResponse, weather_report, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

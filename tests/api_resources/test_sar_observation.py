@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SarObservationGetResponse,
     SarObservationListResponse,
     SarObservationTupleResponse,
+    SarObservationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -330,7 +331,7 @@ class TestSarObservation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         sar_observation = client.sar_observation.queryhelp()
-        assert sar_observation is None
+        assert_matches_type(SarObservationQueryhelpResponse, sar_observation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -339,7 +340,7 @@ class TestSarObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sar_observation = response.parse()
-        assert sar_observation is None
+        assert_matches_type(SarObservationQueryhelpResponse, sar_observation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -348,7 +349,7 @@ class TestSarObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sar_observation = response.parse()
-            assert sar_observation is None
+            assert_matches_type(SarObservationQueryhelpResponse, sar_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -765,7 +766,7 @@ class TestAsyncSarObservation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         sar_observation = await async_client.sar_observation.queryhelp()
-        assert sar_observation is None
+        assert_matches_type(SarObservationQueryhelpResponse, sar_observation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -774,7 +775,7 @@ class TestAsyncSarObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sar_observation = await response.parse()
-        assert sar_observation is None
+        assert_matches_type(SarObservationQueryhelpResponse, sar_observation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -783,7 +784,7 @@ class TestAsyncSarObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sar_observation = await response.parse()
-            assert sar_observation is None
+            assert_matches_type(SarObservationQueryhelpResponse, sar_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

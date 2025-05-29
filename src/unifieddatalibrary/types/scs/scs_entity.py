@@ -24,6 +24,8 @@ class ScsEntity(BaseModel):
 
     data: Optional[str] = None
 
+    delete_on: Optional[int] = FieldInfo(alias="deleteOn", default=None)
+
     description: Optional[str] = None
     """Optional description for the file or folder."""
 

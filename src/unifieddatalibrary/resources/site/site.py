@@ -40,6 +40,7 @@ from ...types.site_get_response import SiteGetResponse
 from ...types.site_list_response import SiteListResponse
 from ...types.entity_ingest_param import EntityIngestParam
 from ...types.site_tuple_response import SiteTupleResponse
+from ...types.site_queryhelp_response import SiteQueryhelpResponse
 
 __all__ = ["SiteResource", "AsyncSiteResource"]
 
@@ -1307,18 +1308,17 @@ class SiteResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SiteQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/site/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SiteQueryhelpResponse,
         )
 
     def tuple(
@@ -2641,18 +2641,17 @@ class AsyncSiteResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SiteQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/site/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SiteQueryhelpResponse,
         )
 
     async def tuple(

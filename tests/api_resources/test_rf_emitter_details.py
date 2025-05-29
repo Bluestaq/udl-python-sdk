@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     RfEmitterDetailGetResponse,
     RfEmitterDetailListResponse,
     RfEmitterDetailTupleResponse,
+    RfEmitterDetailQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -347,7 +348,7 @@ class TestRfEmitterDetails:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         rf_emitter_detail = client.rf_emitter_details.queryhelp()
-        assert rf_emitter_detail is None
+        assert_matches_type(RfEmitterDetailQueryhelpResponse, rf_emitter_detail, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -356,7 +357,7 @@ class TestRfEmitterDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         rf_emitter_detail = response.parse()
-        assert rf_emitter_detail is None
+        assert_matches_type(RfEmitterDetailQueryhelpResponse, rf_emitter_detail, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -365,7 +366,7 @@ class TestRfEmitterDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             rf_emitter_detail = response.parse()
-            assert rf_emitter_detail is None
+            assert_matches_type(RfEmitterDetailQueryhelpResponse, rf_emitter_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -738,7 +739,7 @@ class TestAsyncRfEmitterDetails:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         rf_emitter_detail = await async_client.rf_emitter_details.queryhelp()
-        assert rf_emitter_detail is None
+        assert_matches_type(RfEmitterDetailQueryhelpResponse, rf_emitter_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -747,7 +748,7 @@ class TestAsyncRfEmitterDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         rf_emitter_detail = await response.parse()
-        assert rf_emitter_detail is None
+        assert_matches_type(RfEmitterDetailQueryhelpResponse, rf_emitter_detail, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -756,7 +757,7 @@ class TestAsyncRfEmitterDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             rf_emitter_detail = await response.parse()
-            assert rf_emitter_detail is None
+            assert_matches_type(RfEmitterDetailQueryhelpResponse, rf_emitter_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

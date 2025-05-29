@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     MtiListResponse,
     MtiTupleResponse,
+    MtiQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -154,7 +155,7 @@ class TestMti:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         mti = client.mti.queryhelp()
-        assert mti is None
+        assert_matches_type(MtiQueryhelpResponse, mti, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -163,7 +164,7 @@ class TestMti:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         mti = response.parse()
-        assert mti is None
+        assert_matches_type(MtiQueryhelpResponse, mti, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -172,7 +173,7 @@ class TestMti:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             mti = response.parse()
-            assert mti is None
+            assert_matches_type(MtiQueryhelpResponse, mti, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -405,7 +406,7 @@ class TestAsyncMti:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         mti = await async_client.mti.queryhelp()
-        assert mti is None
+        assert_matches_type(MtiQueryhelpResponse, mti, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -414,7 +415,7 @@ class TestAsyncMti:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         mti = await response.parse()
-        assert mti is None
+        assert_matches_type(MtiQueryhelpResponse, mti, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -423,7 +424,7 @@ class TestAsyncMti:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             mti = await response.parse()
-            assert mti is None
+            assert_matches_type(MtiQueryhelpResponse, mti, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

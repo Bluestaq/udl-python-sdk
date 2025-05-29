@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     MissionAssignmentGetResponse,
     MissionAssignmentListResponse,
     MissionAssignmentTupleResponse,
+    MissionAssignmentQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -486,7 +487,7 @@ class TestMissionAssignment:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         mission_assignment = client.mission_assignment.queryhelp()
-        assert mission_assignment is None
+        assert_matches_type(MissionAssignmentQueryhelpResponse, mission_assignment, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -495,7 +496,7 @@ class TestMissionAssignment:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         mission_assignment = response.parse()
-        assert mission_assignment is None
+        assert_matches_type(MissionAssignmentQueryhelpResponse, mission_assignment, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -504,7 +505,7 @@ class TestMissionAssignment:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             mission_assignment = response.parse()
-            assert mission_assignment is None
+            assert_matches_type(MissionAssignmentQueryhelpResponse, mission_assignment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1019,7 +1020,7 @@ class TestAsyncMissionAssignment:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         mission_assignment = await async_client.mission_assignment.queryhelp()
-        assert mission_assignment is None
+        assert_matches_type(MissionAssignmentQueryhelpResponse, mission_assignment, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1028,7 +1029,7 @@ class TestAsyncMissionAssignment:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         mission_assignment = await response.parse()
-        assert mission_assignment is None
+        assert_matches_type(MissionAssignmentQueryhelpResponse, mission_assignment, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1037,7 +1038,7 @@ class TestAsyncMissionAssignment:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             mission_assignment = await response.parse()
-            assert mission_assignment is None
+            assert_matches_type(MissionAssignmentQueryhelpResponse, mission_assignment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

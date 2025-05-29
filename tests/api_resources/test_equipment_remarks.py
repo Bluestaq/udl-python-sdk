@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     EquipmentRemarkFull,
     EquipmentRemarkAbridged,
     EquipmentRemarkTupleResponse,
+    EquipmentRemarkQueryHelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -253,7 +254,7 @@ class TestEquipmentRemarks:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         equipment_remark = client.equipment_remarks.query_help()
-        assert equipment_remark is None
+        assert_matches_type(EquipmentRemarkQueryHelpResponse, equipment_remark, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -262,7 +263,7 @@ class TestEquipmentRemarks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         equipment_remark = response.parse()
-        assert equipment_remark is None
+        assert_matches_type(EquipmentRemarkQueryHelpResponse, equipment_remark, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -271,7 +272,7 @@ class TestEquipmentRemarks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             equipment_remark = response.parse()
-            assert equipment_remark is None
+            assert_matches_type(EquipmentRemarkQueryHelpResponse, equipment_remark, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -550,7 +551,7 @@ class TestAsyncEquipmentRemarks:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         equipment_remark = await async_client.equipment_remarks.query_help()
-        assert equipment_remark is None
+        assert_matches_type(EquipmentRemarkQueryHelpResponse, equipment_remark, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -559,7 +560,7 @@ class TestAsyncEquipmentRemarks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         equipment_remark = await response.parse()
-        assert equipment_remark is None
+        assert_matches_type(EquipmentRemarkQueryHelpResponse, equipment_remark, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -568,7 +569,7 @@ class TestAsyncEquipmentRemarks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             equipment_remark = await response.parse()
-            assert equipment_remark is None
+            assert_matches_type(EquipmentRemarkQueryHelpResponse, equipment_remark, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

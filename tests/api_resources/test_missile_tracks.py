@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     MissileTrackListResponse,
     MissileTrackTupleResponse,
+    MissileTrackQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -157,7 +158,7 @@ class TestMissileTracks:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         missile_track = client.missile_tracks.queryhelp()
-        assert missile_track is None
+        assert_matches_type(MissileTrackQueryhelpResponse, missile_track, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -166,7 +167,7 @@ class TestMissileTracks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         missile_track = response.parse()
-        assert missile_track is None
+        assert_matches_type(MissileTrackQueryhelpResponse, missile_track, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestMissileTracks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             missile_track = response.parse()
-            assert missile_track is None
+            assert_matches_type(MissileTrackQueryhelpResponse, missile_track, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -414,7 +415,7 @@ class TestAsyncMissileTracks:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         missile_track = await async_client.missile_tracks.queryhelp()
-        assert missile_track is None
+        assert_matches_type(MissileTrackQueryhelpResponse, missile_track, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -423,7 +424,7 @@ class TestAsyncMissileTracks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         missile_track = await response.parse()
-        assert missile_track is None
+        assert_matches_type(MissileTrackQueryhelpResponse, missile_track, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -432,7 +433,7 @@ class TestAsyncMissileTracks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             missile_track = await response.parse()
-            assert missile_track is None
+            assert_matches_type(MissileTrackQueryhelpResponse, missile_track, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

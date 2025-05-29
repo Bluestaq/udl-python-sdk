@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     VideoListResponse,
     VideoTupleResponse,
+    VideoQueryhelpResponse,
     VideoGetStreamFileResponse,
     VideoGetPlayerStreamingInfoResponse,
     VideoGetPublisherStreamingInfoResponse,
@@ -332,7 +333,7 @@ class TestVideo:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         video = client.video.queryhelp()
-        assert video is None
+        assert_matches_type(VideoQueryhelpResponse, video, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -341,7 +342,7 @@ class TestVideo:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         video = response.parse()
-        assert video is None
+        assert_matches_type(VideoQueryhelpResponse, video, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -350,7 +351,7 @@ class TestVideo:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             video = response.parse()
-            assert video is None
+            assert_matches_type(VideoQueryhelpResponse, video, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -708,7 +709,7 @@ class TestAsyncVideo:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         video = await async_client.video.queryhelp()
-        assert video is None
+        assert_matches_type(VideoQueryhelpResponse, video, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -717,7 +718,7 @@ class TestAsyncVideo:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         video = await response.parse()
-        assert video is None
+        assert_matches_type(VideoQueryhelpResponse, video, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -726,7 +727,7 @@ class TestAsyncVideo:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             video = await response.parse()
-            assert video is None
+            assert_matches_type(VideoQueryhelpResponse, video, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

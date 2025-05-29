@@ -47,6 +47,7 @@ from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.diplomatic_clearance_tuple_response import DiplomaticClearanceTupleResponse
 from ...types.air_operations.diplomaticclearance_full import DiplomaticclearanceFull
+from ...types.diplomatic_clearance_queryhelp_response import DiplomaticClearanceQueryhelpResponse
 from ...types.air_operations.diplomaticclearance_abridged import DiplomaticclearanceAbridged
 
 __all__ = ["DiplomaticClearanceResource", "AsyncDiplomaticClearanceResource"]
@@ -549,18 +550,17 @@ class DiplomaticClearanceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> DiplomaticClearanceQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/diplomaticclearance/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=DiplomaticClearanceQueryhelpResponse,
         )
 
     def tuple(
@@ -1122,18 +1122,17 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> DiplomaticClearanceQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/diplomaticclearance/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=DiplomaticClearanceQueryhelpResponse,
         )
 
     async def tuple(

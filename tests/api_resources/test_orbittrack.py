@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     OrbittrackListResponse,
     OrbittrackTupleResponse,
+    OrbittrackQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -163,7 +164,7 @@ class TestOrbittrack:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         orbittrack = client.orbittrack.queryhelp()
-        assert orbittrack is None
+        assert_matches_type(OrbittrackQueryhelpResponse, orbittrack, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -172,7 +173,7 @@ class TestOrbittrack:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbittrack = response.parse()
-        assert orbittrack is None
+        assert_matches_type(OrbittrackQueryhelpResponse, orbittrack, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -181,7 +182,7 @@ class TestOrbittrack:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbittrack = response.parse()
-            assert orbittrack is None
+            assert_matches_type(OrbittrackQueryhelpResponse, orbittrack, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -432,7 +433,7 @@ class TestAsyncOrbittrack:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbittrack = await async_client.orbittrack.queryhelp()
-        assert orbittrack is None
+        assert_matches_type(OrbittrackQueryhelpResponse, orbittrack, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -441,7 +442,7 @@ class TestAsyncOrbittrack:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbittrack = await response.parse()
-        assert orbittrack is None
+        assert_matches_type(OrbittrackQueryhelpResponse, orbittrack, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -450,7 +451,7 @@ class TestAsyncOrbittrack:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbittrack = await response.parse()
-            assert orbittrack is None
+            assert_matches_type(OrbittrackQueryhelpResponse, orbittrack, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

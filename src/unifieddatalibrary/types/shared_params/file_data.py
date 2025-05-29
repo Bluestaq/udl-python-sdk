@@ -21,6 +21,8 @@ class Attributes(TypedDict, total=False):
 
     created_date: Annotated[str, PropertyInfo(alias="createdDate")]
 
+    delete_on: Annotated[int, PropertyInfo(alias="deleteOn")]
+
     description: str
 
     doc_title: Annotated[str, PropertyInfo(alias="docTitle")]

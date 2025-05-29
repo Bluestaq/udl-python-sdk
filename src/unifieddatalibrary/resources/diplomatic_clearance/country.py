@@ -33,6 +33,7 @@ from ...types.diplomatic_clearance import (
 from ...types.diplomatic_clearance.country_list_response import CountryListResponse
 from ...types.diplomatic_clearance.country_tuple_response import CountryTupleResponse
 from ...types.diplomatic_clearance.country_retrieve_response import CountryRetrieveResponse
+from ...types.diplomatic_clearance.country_query_help_response import CountryQueryHelpResponse
 
 __all__ = ["CountryResource", "AsyncCountryResource"]
 
@@ -154,10 +155,10 @@ class CountryResource(SyncAPIResource):
 
           agency: The source agency of the diplomatic clearance country data.
 
-          alt_country_code: Specifies an alternate country code if the data provider code is not part of an
-              official Country Code standard such as ISO-3166 or FIPS. This field will be set
-              to the value provided by the source and should be used for all Queries
-              specifying a Country Code.
+          alt_country_code: Specifies an alternate country code if the data provider code does not match a
+              UDL Country code value (ISO-3166-ALPHA-2). This field will be set to the value
+              provided by the source and should be used for all Queries specifying a Country
+              Code.
 
           close_time: Zulu closing time of this country's diplomatic clearance office expressed in
               HH:MM format.
@@ -417,10 +418,10 @@ class CountryResource(SyncAPIResource):
 
           agency: The source agency of the diplomatic clearance country data.
 
-          alt_country_code: Specifies an alternate country code if the data provider code is not part of an
-              official Country Code standard such as ISO-3166 or FIPS. This field will be set
-              to the value provided by the source and should be used for all Queries
-              specifying a Country Code.
+          alt_country_code: Specifies an alternate country code if the data provider code does not match a
+              UDL Country code value (ISO-3166-ALPHA-2). This field will be set to the value
+              provided by the source and should be used for all Queries specifying a Country
+              Code.
 
           close_time: Zulu closing time of this country's diplomatic clearance office expressed in
               HH:MM format.
@@ -712,18 +713,17 @@ class CountryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> CountryQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/diplomaticclearancecountry/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=CountryQueryHelpResponse,
         )
 
     def tuple(
@@ -936,10 +936,10 @@ class AsyncCountryResource(AsyncAPIResource):
 
           agency: The source agency of the diplomatic clearance country data.
 
-          alt_country_code: Specifies an alternate country code if the data provider code is not part of an
-              official Country Code standard such as ISO-3166 or FIPS. This field will be set
-              to the value provided by the source and should be used for all Queries
-              specifying a Country Code.
+          alt_country_code: Specifies an alternate country code if the data provider code does not match a
+              UDL Country code value (ISO-3166-ALPHA-2). This field will be set to the value
+              provided by the source and should be used for all Queries specifying a Country
+              Code.
 
           close_time: Zulu closing time of this country's diplomatic clearance office expressed in
               HH:MM format.
@@ -1199,10 +1199,10 @@ class AsyncCountryResource(AsyncAPIResource):
 
           agency: The source agency of the diplomatic clearance country data.
 
-          alt_country_code: Specifies an alternate country code if the data provider code is not part of an
-              official Country Code standard such as ISO-3166 or FIPS. This field will be set
-              to the value provided by the source and should be used for all Queries
-              specifying a Country Code.
+          alt_country_code: Specifies an alternate country code if the data provider code does not match a
+              UDL Country code value (ISO-3166-ALPHA-2). This field will be set to the value
+              provided by the source and should be used for all Queries specifying a Country
+              Code.
 
           close_time: Zulu closing time of this country's diplomatic clearance office expressed in
               HH:MM format.
@@ -1494,18 +1494,17 @@ class AsyncCountryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> CountryQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/diplomaticclearancecountry/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=CountryQueryHelpResponse,
         )
 
     async def tuple(

@@ -15,6 +15,7 @@ from unifieddatalibrary.types.observations import (
     PassiveRadarObservationGetResponse,
     PassiveRadarObservationListResponse,
     PassiveRadarObservationTupleResponse,
+    PassiveRadarObservationQueryhelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -372,7 +373,7 @@ class TestPassiveRadarObservation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         passive_radar_observation = client.observations.passive_radar_observation.queryhelp()
-        assert passive_radar_observation is None
+        assert_matches_type(PassiveRadarObservationQueryhelpResponse, passive_radar_observation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -381,7 +382,7 @@ class TestPassiveRadarObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         passive_radar_observation = response.parse()
-        assert passive_radar_observation is None
+        assert_matches_type(PassiveRadarObservationQueryhelpResponse, passive_radar_observation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -390,7 +391,7 @@ class TestPassiveRadarObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             passive_radar_observation = response.parse()
-            assert passive_radar_observation is None
+            assert_matches_type(PassiveRadarObservationQueryhelpResponse, passive_radar_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -791,7 +792,7 @@ class TestAsyncPassiveRadarObservation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         passive_radar_observation = await async_client.observations.passive_radar_observation.queryhelp()
-        assert passive_radar_observation is None
+        assert_matches_type(PassiveRadarObservationQueryhelpResponse, passive_radar_observation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -800,7 +801,7 @@ class TestAsyncPassiveRadarObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         passive_radar_observation = await response.parse()
-        assert passive_radar_observation is None
+        assert_matches_type(PassiveRadarObservationQueryhelpResponse, passive_radar_observation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -809,7 +810,7 @@ class TestAsyncPassiveRadarObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             passive_radar_observation = await response.parse()
-            assert passive_radar_observation is None
+            assert_matches_type(PassiveRadarObservationQueryhelpResponse, passive_radar_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

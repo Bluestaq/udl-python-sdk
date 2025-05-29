@@ -49,6 +49,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.ground_imagery_get_response import GroundImageryGetResponse
 from ...types.ground_imagery_list_response import GroundImageryListResponse
 from ...types.ground_imagery_tuple_response import GroundImageryTupleResponse
+from ...types.ground_imagery_queryhelp_response import GroundImageryQueryhelpResponse
 
 __all__ = ["GroundImageryResource", "AsyncGroundImageryResource"]
 
@@ -527,18 +528,17 @@ class GroundImageryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> GroundImageryQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/groundimagery/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=GroundImageryQueryhelpResponse,
         )
 
     def tuple(
@@ -1135,18 +1135,17 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> GroundImageryQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/groundimagery/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=GroundImageryQueryhelpResponse,
         )
 
     async def tuple(

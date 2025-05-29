@@ -39,6 +39,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.item_tracking_get_response import ItemTrackingGetResponse
 from ...types.item_tracking_list_response import ItemTrackingListResponse
 from ...types.item_tracking_tuple_response import ItemTrackingTupleResponse
+from ...types.item_tracking_queryhelp_response import ItemTrackingQueryhelpResponse
 
 __all__ = ["ItemTrackingsResource", "AsyncItemTrackingsResource"]
 
@@ -397,18 +398,17 @@ class ItemTrackingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ItemTrackingQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/itemtracking/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ItemTrackingQueryhelpResponse,
         )
 
     def tuple(
@@ -863,18 +863,17 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ItemTrackingQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/itemtracking/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ItemTrackingQueryhelpResponse,
         )
 
     async def tuple(

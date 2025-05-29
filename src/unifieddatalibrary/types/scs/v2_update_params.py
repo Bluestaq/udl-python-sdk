@@ -14,8 +14,13 @@ class V2UpdateParams(TypedDict, total=False):
     path: Required[str]
     """The complete path for the object to be updated."""
 
+    send_notification: Annotated[bool, PropertyInfo(alias="sendNotification")]
+    """Whether or not to send a notification that the target file/folder was updated."""
+
     classification_marking: Annotated[str, PropertyInfo(alias="classificationMarking")]
     """Classification marking of the folder or file in IC/CAPCO portion-marked format."""
+
+    delete_on: Annotated[int, PropertyInfo(alias="deleteOn")]
 
     description: str
     """Optional description for the file or folder."""

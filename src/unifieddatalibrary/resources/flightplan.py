@@ -32,6 +32,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.flight_plan_abridged import FlightPlanAbridged
 from ..types.shared.flight_plan_full import FlightPlanFull
 from ..types.flightplan_tuple_response import FlightplanTupleResponse
+from ..types.flightplan_queryhelp_response import FlightplanQueryhelpResponse
 
 __all__ = ["FlightplanResource", "AsyncFlightplanResource"]
 
@@ -1204,18 +1205,17 @@ class FlightplanResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> FlightplanQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/flightplan/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=FlightplanQueryhelpResponse,
         )
 
     def tuple(
@@ -2479,18 +2479,17 @@ class AsyncFlightplanResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> FlightplanQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/flightplan/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=FlightplanQueryhelpResponse,
         )
 
     async def tuple(

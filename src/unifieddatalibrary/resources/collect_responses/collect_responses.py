@@ -46,6 +46,7 @@ from .history.history import (
 )
 from ...types.collect_response_abridged import CollectResponseAbridged
 from ...types.shared.collect_response_full import CollectResponseFull
+from ...types.collect_response_query_help_response import CollectResponseQueryHelpResponse
 
 __all__ = ["CollectResponsesResource", "AsyncCollectResponsesResource"]
 
@@ -477,18 +478,17 @@ class CollectResponsesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> CollectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/collectresponse/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=CollectResponseQueryHelpResponse,
         )
 
     def unvalidated_publish(
@@ -955,18 +955,17 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> CollectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/collectresponse/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=CollectResponseQueryHelpResponse,
         )
 
     async def unvalidated_publish(

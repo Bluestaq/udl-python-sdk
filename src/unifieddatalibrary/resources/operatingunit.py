@@ -31,6 +31,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.operatingunit_get_response import OperatingunitGetResponse
 from ..types.operatingunit_list_response import OperatingunitListResponse
 from ..types.operatingunit_tuple_response import OperatingunitTupleResponse
+from ..types.operatingunit_queryhelp_response import OperatingunitQueryhelpResponse
 
 __all__ = ["OperatingunitResource", "AsyncOperatingunitResource"]
 
@@ -1167,18 +1168,17 @@ class OperatingunitResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OperatingunitQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/operatingunit/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OperatingunitQueryhelpResponse,
         )
 
     def tuple(
@@ -2370,18 +2370,17 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OperatingunitQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/operatingunit/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OperatingunitQueryhelpResponse,
         )
 
     async def tuple(

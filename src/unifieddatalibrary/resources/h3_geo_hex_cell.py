@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import h3_geo_hex_cell_list_params, h3_geo_hex_cell_count_params, h3_geo_hex_cell_tuple_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -19,6 +19,7 @@ from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.h3_geo_hex_cell_list_response import H3GeoHexCellListResponse
 from ..types.h3_geo_hex_cell_tuple_response import H3GeoHexCellTupleResponse
+from ..types.h3_geo_hex_cell_queryhelp_response import H3GeoHexCellQueryhelpResponse
 
 __all__ = ["H3GeoHexCellResource", "AsyncH3GeoHexCellResource"]
 
@@ -153,18 +154,17 @@ class H3GeoHexCellResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> H3GeoHexCellQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/h3geohexcell/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=H3GeoHexCellQueryhelpResponse,
         )
 
     def tuple(
@@ -358,18 +358,17 @@ class AsyncH3GeoHexCellResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> H3GeoHexCellQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/h3geohexcell/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=H3GeoHexCellQueryhelpResponse,
         )
 
     async def tuple(

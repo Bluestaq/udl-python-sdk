@@ -32,6 +32,7 @@ class TestFolders:
             classification_marking="classificationMarking",
             description="description",
             read="read",
+            send_notification=True,
             tags="tags",
             write="write",
         )
@@ -118,6 +119,7 @@ class TestFolders:
                 "classification_marking": "classificationMarking",
                 "created_by": "createdBy",
                 "created_date": "createdDate",
+                "delete_on": 0,
                 "description": "A new Example Description",
                 "doc_title": "docTitle",
                 "doc_type": "docType",
@@ -190,6 +192,7 @@ class TestAsyncFolders:
             classification_marking="classificationMarking",
             description="description",
             read="read",
+            send_notification=True,
             tags="tags",
             write="write",
         )
@@ -276,6 +279,7 @@ class TestAsyncFolders:
                 "classification_marking": "classificationMarking",
                 "created_by": "createdBy",
                 "created_date": "createdDate",
+                "delete_on": 0,
                 "description": "A new Example Description",
                 "doc_title": "docTitle",
                 "doc_type": "docType",

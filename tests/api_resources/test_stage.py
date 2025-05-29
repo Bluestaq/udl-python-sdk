@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     StageGetResponse,
     StageListResponse,
     StageTupleResponse,
+    StageQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -364,7 +365,7 @@ class TestStage:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         stage = client.stage.queryhelp()
-        assert stage is None
+        assert_matches_type(StageQueryhelpResponse, stage, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -373,7 +374,7 @@ class TestStage:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         stage = response.parse()
-        assert stage is None
+        assert_matches_type(StageQueryhelpResponse, stage, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -382,7 +383,7 @@ class TestStage:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             stage = response.parse()
-            assert stage is None
+            assert_matches_type(StageQueryhelpResponse, stage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -772,7 +773,7 @@ class TestAsyncStage:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         stage = await async_client.stage.queryhelp()
-        assert stage is None
+        assert_matches_type(StageQueryhelpResponse, stage, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -781,7 +782,7 @@ class TestAsyncStage:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         stage = await response.parse()
-        assert stage is None
+        assert_matches_type(StageQueryhelpResponse, stage, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -790,7 +791,7 @@ class TestAsyncStage:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             stage = await response.parse()
-            assert stage is None
+            assert_matches_type(StageQueryhelpResponse, stage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

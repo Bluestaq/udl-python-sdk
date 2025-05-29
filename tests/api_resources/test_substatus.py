@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SubstatusGetResponse,
     SubstatusListResponse,
     SubstatusTupleResponse,
+    SubstatusQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -322,7 +323,7 @@ class TestSubstatus:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         substatus = client.substatus.queryhelp()
-        assert substatus is None
+        assert_matches_type(SubstatusQueryhelpResponse, substatus, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -331,7 +332,7 @@ class TestSubstatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         substatus = response.parse()
-        assert substatus is None
+        assert_matches_type(SubstatusQueryhelpResponse, substatus, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -340,7 +341,7 @@ class TestSubstatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             substatus = response.parse()
-            assert substatus is None
+            assert_matches_type(SubstatusQueryhelpResponse, substatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -688,7 +689,7 @@ class TestAsyncSubstatus:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         substatus = await async_client.substatus.queryhelp()
-        assert substatus is None
+        assert_matches_type(SubstatusQueryhelpResponse, substatus, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -697,7 +698,7 @@ class TestAsyncSubstatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         substatus = await response.parse()
-        assert substatus is None
+        assert_matches_type(SubstatusQueryhelpResponse, substatus, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -706,7 +707,7 @@ class TestAsyncSubstatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             substatus = await response.parse()
-            assert substatus is None
+            assert_matches_type(SubstatusQueryhelpResponse, substatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

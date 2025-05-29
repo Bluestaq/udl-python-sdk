@@ -31,6 +31,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.object_of_interest_get_response import ObjectOfInterestGetResponse
 from ..types.object_of_interest_list_response import ObjectOfInterestListResponse
 from ..types.object_of_interest_tuple_response import ObjectOfInterestTupleResponse
+from ..types.object_of_interest_queryhelp_response import ObjectOfInterestQueryhelpResponse
 
 __all__ = ["ObjectOfInterestResource", "AsyncObjectOfInterestResource"]
 
@@ -745,18 +746,17 @@ class ObjectOfInterestResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ObjectOfInterestQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/objectofinterest/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ObjectOfInterestQueryhelpResponse,
         )
 
     def tuple(
@@ -1526,18 +1526,17 @@ class AsyncObjectOfInterestResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ObjectOfInterestQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/objectofinterest/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ObjectOfInterestQueryhelpResponse,
         )
 
     async def tuple(

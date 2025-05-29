@@ -49,6 +49,8 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.elset_abridged import ElsetAbridged
 from ...types.elset_ingest_param import ElsetIngestParam
 from ...types.elset_tuple_response import ElsetTupleResponse
+from ...types.elset_queryhelp_response import ElsetQueryhelpResponse
+from ...types.elset_query_current_elset_help_response import ElsetQueryCurrentElsetHelpResponse
 
 __all__ = ["ElsetsResource", "AsyncElsetsResource"]
 
@@ -632,18 +634,17 @@ class ElsetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ElsetQueryCurrentElsetHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/currentelset/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ElsetQueryCurrentElsetHelpResponse,
         )
 
     def queryhelp(
@@ -655,18 +656,17 @@ class ElsetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ElsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/elset/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ElsetQueryhelpResponse,
         )
 
     def tuple(
@@ -1347,18 +1347,17 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ElsetQueryCurrentElsetHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/currentelset/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ElsetQueryCurrentElsetHelpResponse,
         )
 
     async def queryhelp(
@@ -1370,18 +1369,17 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> ElsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/elset/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=ElsetQueryhelpResponse,
         )
 
     async def tuple(

@@ -32,6 +32,7 @@ from ..types.entity_full import EntityFull
 from ..types.entity_abridged import EntityAbridged
 from ..types.entity_tuple_response import EntityTupleResponse
 from ..types.location_ingest_param import LocationIngestParam
+from ..types.entity_query_help_response import EntityQueryHelpResponse
 from ..types.entity_get_all_types_response import EntityGetAllTypesResponse
 
 __all__ = ["EntitiesResource", "AsyncEntitiesResource"]
@@ -69,6 +70,7 @@ class EntitiesResource(SyncAPIResource):
             "BUS",
             "COMM",
             "IR",
+            "LASEREMITTER",
             "NAVIGATION",
             "ONORBIT",
             "RFEMITTER",
@@ -124,7 +126,7 @@ class EntitiesResource(SyncAPIResource):
           source: Source of the data.
 
           type: The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-              NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+              LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
@@ -257,6 +259,7 @@ class EntitiesResource(SyncAPIResource):
             "BUS",
             "COMM",
             "IR",
+            "LASEREMITTER",
             "NAVIGATION",
             "ONORBIT",
             "RFEMITTER",
@@ -312,7 +315,7 @@ class EntitiesResource(SyncAPIResource):
           source: Source of the data.
 
           type: The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-              NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+              LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
@@ -568,18 +571,17 @@ class EntitiesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EntityQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/entity/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EntityQueryHelpResponse,
         )
 
     def tuple(
@@ -671,6 +673,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
             "BUS",
             "COMM",
             "IR",
+            "LASEREMITTER",
             "NAVIGATION",
             "ONORBIT",
             "RFEMITTER",
@@ -726,7 +729,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
           source: Source of the data.
 
           type: The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-              NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+              LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
@@ -859,6 +862,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
             "BUS",
             "COMM",
             "IR",
+            "LASEREMITTER",
             "NAVIGATION",
             "ONORBIT",
             "RFEMITTER",
@@ -914,7 +918,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
           source: Source of the data.
 
           type: The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-              NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+              LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
 
           country_code: The country code. This value is typically the ISO 3166 Alpha-2 two-character
               country code, however it can also represent various consortiums that do not
@@ -1170,18 +1174,17 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EntityQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/entity/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EntityQueryHelpResponse,
         )
 
     async def tuple(

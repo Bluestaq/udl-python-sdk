@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     StateVectorFull,
     StateVectorAbridged,
     StateVectorTupleResponse,
+    StateVectorQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -345,7 +346,7 @@ class TestStateVector:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         state_vector = client.state_vector.queryhelp()
-        assert state_vector is None
+        assert_matches_type(StateVectorQueryhelpResponse, state_vector, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -354,7 +355,7 @@ class TestStateVector:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         state_vector = response.parse()
-        assert state_vector is None
+        assert_matches_type(StateVectorQueryhelpResponse, state_vector, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -363,7 +364,7 @@ class TestStateVector:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             state_vector = response.parse()
-            assert state_vector is None
+            assert_matches_type(StateVectorQueryhelpResponse, state_vector, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -789,7 +790,7 @@ class TestAsyncStateVector:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         state_vector = await async_client.state_vector.queryhelp()
-        assert state_vector is None
+        assert_matches_type(StateVectorQueryhelpResponse, state_vector, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -798,7 +799,7 @@ class TestAsyncStateVector:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         state_vector = await response.parse()
-        assert state_vector is None
+        assert_matches_type(StateVectorQueryhelpResponse, state_vector, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -807,7 +808,7 @@ class TestAsyncStateVector:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             state_vector = await response.parse()
-            assert state_vector is None
+            assert_matches_type(StateVectorQueryhelpResponse, state_vector, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

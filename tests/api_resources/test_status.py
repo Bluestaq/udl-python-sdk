@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     StatusGetResponse,
     StatusListResponse,
     StatusTupleResponse,
+    StatusQueryhelpResponse,
     StatusGetByEntityIDResponse,
     StatusGetByEntityTypeResponse,
 )
@@ -432,7 +433,7 @@ class TestStatus:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         status = client.status.queryhelp()
-        assert status is None
+        assert_matches_type(StatusQueryhelpResponse, status, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -441,7 +442,7 @@ class TestStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         status = response.parse()
-        assert status is None
+        assert_matches_type(StatusQueryhelpResponse, status, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -450,7 +451,7 @@ class TestStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             status = response.parse()
-            assert status is None
+            assert_matches_type(StatusQueryhelpResponse, status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -905,7 +906,7 @@ class TestAsyncStatus:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         status = await async_client.status.queryhelp()
-        assert status is None
+        assert_matches_type(StatusQueryhelpResponse, status, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -914,7 +915,7 @@ class TestAsyncStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         status = await response.parse()
-        assert status is None
+        assert_matches_type(StatusQueryhelpResponse, status, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -923,7 +924,7 @@ class TestAsyncStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             status = await response.parse()
-            assert status is None
+            assert_matches_type(StatusQueryhelpResponse, status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

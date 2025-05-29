@@ -32,6 +32,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.crew_full import CrewFull
 from ..types.crew_abridged import CrewAbridged
 from ..types.crew_tuple_response import CrewTupleResponse
+from ..types.crew_queryhelp_response import CrewQueryhelpResponse
 
 __all__ = ["CrewResource", "AsyncCrewResource"]
 
@@ -859,18 +860,17 @@ class CrewResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> CrewQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/crew/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=CrewQueryhelpResponse,
         )
 
     def tuple(
@@ -1789,18 +1789,17 @@ class AsyncCrewResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> CrewQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/crew/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=CrewQueryhelpResponse,
         )
 
     async def tuple(

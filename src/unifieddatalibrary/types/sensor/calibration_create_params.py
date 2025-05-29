@@ -57,36 +57,38 @@ class CalibrationCreateParams(TypedDict, total=False):
 
     az_ra_accel_bias: Annotated[float, PropertyInfo(alias="azRaAccelBias")]
     """
-    Sensor azimuth/right-ascension acceleration bias rate, in degrees per second
-    squared, during sensor operation.
+    Sensor azimuth/right-ascension acceleration bias, in degrees per second squared.
     """
 
     az_ra_accel_sigma: Annotated[float, PropertyInfo(alias="azRaAccelSigma")]
     """
-    Standard deviation azimuth/right-ascension acceleration bias rate, in degrees
-    per second squared.
+    The standard deviation of the azimuth/right ascension acceleration residuals, in
+    degrees, used to determine the sensor azimuth/right-ascension acceleration bias.
     """
 
     az_ra_bias: Annotated[float, PropertyInfo(alias="azRaBias")]
-    """Sensor azimuth/right-ascension bias, in degrees, during sensor operation."""
+    """Sensor azimuth/right-ascension bias, in degrees."""
 
-    az_ra_bias_rate: Annotated[float, PropertyInfo(alias="azRaBiasRate")]
-    """
-    Sensor azimuth/right-ascension bias rate, in degrees per second, during sensor
-    operation.
-    """
+    az_ra_rate_bias: Annotated[float, PropertyInfo(alias="azRaRateBias")]
+    """Sensor azimuth/right-ascension rate bias, in degrees per second."""
 
-    az_ra_mean: Annotated[float, PropertyInfo(alias="azRaMean")]
-    """The mean azimuth/right-ascension average, in degrees, for the duration span."""
+    az_ra_rate_sigma: Annotated[float, PropertyInfo(alias="azRaRateSigma")]
+    """
+    The standard deviation of the azimuth/right ascension rate residuals, in
+    degrees, used to determine the sensor azimuth/right-ascension rate bias.
+    """
 
     az_ra_rms: Annotated[float, PropertyInfo(alias="azRaRms")]
     """
-    The root mean square of the azimuth/right-ascension, in degrees, for the
-    duration span.
+    The root mean square of the azimuth/right-ascension residuals, in degrees, used
+    to determine the sensor azimuth/right-ascension bias.
     """
 
-    az_ra_sigma_rate: Annotated[float, PropertyInfo(alias="azRaSigmaRate")]
-    """Standard deviation azimuth/right-ascension bias rate, in degrees per second."""
+    az_ra_sigma: Annotated[float, PropertyInfo(alias="azRaSigma")]
+    """
+    The standard deviation of the azimuth/right ascension residuals, in degrees,
+    used to determine the sensor azimuth/right-ascension bias.
+    """
 
     cal_angle_ref: Annotated[str, PropertyInfo(alias="calAngleRef")]
     """Specifies the calibration reference angle set for this calibration data set.
@@ -122,37 +124,37 @@ class CalibrationCreateParams(TypedDict, total=False):
     """
 
     el_dec_accel_bias: Annotated[float, PropertyInfo(alias="elDecAccelBias")]
-    """
-    Sensor elevation/declination acceleration bias rate, in degrees per second
-    squared, during sensor operation.
-    """
+    """Sensor elevation/declination acceleration bias, in degrees per second squared."""
 
     el_dec_accel_sigma: Annotated[float, PropertyInfo(alias="elDecAccelSigma")]
     """
-    Standard deviation elevation/declination acceleration bias rate, in degrees per
-    second squared.
+    The standard deviation of the elevation/declination acceleration residuals, in
+    degrees, used to determine the sensor elevation/declination acceleration bias.
     """
 
     el_dec_bias: Annotated[float, PropertyInfo(alias="elDecBias")]
-    """Sensor elevation/declination bias, in degrees, during sensor operation."""
+    """Sensor elevation/declination bias, in degrees."""
 
-    el_dec_bias_rate: Annotated[float, PropertyInfo(alias="elDecBiasRate")]
-    """
-    Sensor elevation/declination bias rate, in degrees per second, during sensor
-    operation.
-    """
+    el_dec_rate_bias: Annotated[float, PropertyInfo(alias="elDecRateBias")]
+    """Sensor elevation/declination rate bias, in degrees per second."""
 
-    el_dec_mean: Annotated[float, PropertyInfo(alias="elDecMean")]
-    """The mean elevation/declination residuals, in degrees, for the duration span."""
+    el_dec_rate_sigma: Annotated[float, PropertyInfo(alias="elDecRateSigma")]
+    """
+    The standard deviation of the elevation/declination rate residuals, in degrees,
+    used to determine the sensor elevation/declination rate bias.
+    """
 
     el_dec_rms: Annotated[float, PropertyInfo(alias="elDecRms")]
     """
-    The root mean square of the elevation/declination, in degrees, for the duration
-    span.
+    The root mean square of the elevation/declination residuals, in degrees, used to
+    determine the sensor elevation/declination bias.
     """
 
-    el_dec_sigma_rate: Annotated[float, PropertyInfo(alias="elDecSigmaRate")]
-    """Standard deviation elevation/declination bias rate, in degrees per second."""
+    el_dec_sigma: Annotated[float, PropertyInfo(alias="elDecSigma")]
+    """
+    The standard deviation of the elevation/declination residuals, in degrees, used
+    to determine the sensor elevation/declination bias.
+    """
 
     end_time: Annotated[Union[str, datetime], PropertyInfo(alias="endTime", format="iso8601")]
     """Calibration data span end time in ISO 8601 UTC format with millisecond
@@ -212,54 +214,60 @@ class CalibrationCreateParams(TypedDict, total=False):
     """
 
     photo_bias: Annotated[float, PropertyInfo(alias="photoBias")]
-    """The photometric observation noise bias in visual magnitude."""
+    """The sensor photometric observation magnitude bias, in visual magnitude."""
 
     photo_sigma: Annotated[float, PropertyInfo(alias="photoSigma")]
-    """The photometric observation noise standard deviation in visual magnitude."""
+    """
+    The standard deviation of the magnitude residuals, in visual magnitude, used to
+    determine the photometric bias.
+    """
 
     range_accel_bias: Annotated[float, PropertyInfo(alias="rangeAccelBias")]
-    """
-    Sensor range rate bias acceleration, in kilometers per second squared, during
-    sensor operation.
-    """
+    """Sensor range rate acceleration bias, in kilometers per second squared."""
 
     range_accel_sigma: Annotated[float, PropertyInfo(alias="rangeAccelSigma")]
     """
-    Standard deviation range rate bias acceleration, in kilometers per second
-    squared.
+    The standard deviation of the range acceleration residuals, in kilometers per
+    second squared, used to determine the sensor range acceleration bias.
     """
 
     range_bias: Annotated[float, PropertyInfo(alias="rangeBias")]
-    """Sensor range bias, in kilometers, for the duration span."""
+    """Sensor range bias, in kilometers."""
 
     range_rate_bias: Annotated[float, PropertyInfo(alias="rangeRateBias")]
-    """Sensor range rate bias, in kilometers per second for the duration span."""
+    """Sensor range rate bias, in kilometers per second."""
 
     range_rate_rms: Annotated[float, PropertyInfo(alias="rangeRateRms")]
     """
-    The root mean square of the calibration sensor range rate, in kilometers per
-    second, for the duration span.
+    The root mean square of the range rate residuals, in kilometers per second, used
+    to determine the sensor range rate bias.
     """
 
     range_rate_sigma: Annotated[float, PropertyInfo(alias="rangeRateSigma")]
-    """Standard deviation range rate, in kilometers per second, for the duration span."""
+    """
+    The standard deviation of the range rate residuals, in kilometers per second,
+    used to determine the sensor range rate bias.
+    """
 
     range_rms: Annotated[float, PropertyInfo(alias="rangeRms")]
     """
-    The root mean square of the calibration sensor range, in kilometers, for the
-    duration span.
+    The root mean square of the range residuals, in kilometers, used to determine
+    the sensor range bias.
     """
 
     range_sigma: Annotated[float, PropertyInfo(alias="rangeSigma")]
-    """Calibration standard deviation range, in kilometers, for the duration span."""
+    """
+    The standard deviation of the range residuals, in kilometers, used to determine
+    the sensor range bias.
+    """
 
     rcs_bias: Annotated[float, PropertyInfo(alias="rcsBias")]
-    """The radar cross section (RCS) observation noise bias in square meters."""
+    """The sensor radar cross section (RCS) observation bias, in square meters."""
 
     rcs_sigma: Annotated[float, PropertyInfo(alias="rcsSigma")]
     """
-    The radar cross section (RCS) observation noise standard deviation in square
-    meters.
+    The standard deviation of the radar cross section residuals, in square meters,
+    used to determine the radar cross section bias.
     """
 
     ref_targets: Annotated[List[str], PropertyInfo(alias="refTargets")]
@@ -272,7 +280,10 @@ class CalibrationCreateParams(TypedDict, total=False):
     """The sensor type (MECHANICAL, OPTICAL, PHASED ARRAY, RF)."""
 
     time_bias: Annotated[float, PropertyInfo(alias="timeBias")]
-    """Sensor time bias, in seconds, for the duration span."""
+    """Sensor time bias, in seconds."""
 
     time_bias_sigma: Annotated[float, PropertyInfo(alias="timeBiasSigma")]
-    """Standard deviation time, in seconds, for the duration span."""
+    """
+    The standard deviation of the time residuals, in seconds, used to determine the
+    sensor time bias.
+    """

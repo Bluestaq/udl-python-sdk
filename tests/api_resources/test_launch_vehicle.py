@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     LaunchVehicleGetResponse,
     LaunchVehicleListResponse,
     LaunchVehicleTupleResponse,
+    LaunchVehicleQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -297,7 +298,7 @@ class TestLaunchVehicle:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         launch_vehicle = client.launch_vehicle.queryhelp()
-        assert launch_vehicle is None
+        assert_matches_type(LaunchVehicleQueryhelpResponse, launch_vehicle, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -306,7 +307,7 @@ class TestLaunchVehicle:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         launch_vehicle = response.parse()
-        assert launch_vehicle is None
+        assert_matches_type(LaunchVehicleQueryhelpResponse, launch_vehicle, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -315,7 +316,7 @@ class TestLaunchVehicle:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             launch_vehicle = response.parse()
-            assert launch_vehicle is None
+            assert_matches_type(LaunchVehicleQueryhelpResponse, launch_vehicle, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -638,7 +639,7 @@ class TestAsyncLaunchVehicle:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         launch_vehicle = await async_client.launch_vehicle.queryhelp()
-        assert launch_vehicle is None
+        assert_matches_type(LaunchVehicleQueryhelpResponse, launch_vehicle, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -647,7 +648,7 @@ class TestAsyncLaunchVehicle:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         launch_vehicle = await response.parse()
-        assert launch_vehicle is None
+        assert_matches_type(LaunchVehicleQueryhelpResponse, launch_vehicle, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -656,7 +657,7 @@ class TestAsyncLaunchVehicle:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             launch_vehicle = await response.parse()
-            assert launch_vehicle is None
+            assert_matches_type(LaunchVehicleQueryhelpResponse, launch_vehicle, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

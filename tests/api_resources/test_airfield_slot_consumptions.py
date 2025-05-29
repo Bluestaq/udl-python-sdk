@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AirfieldslotconsumptionFull,
     AirfieldslotconsumptionAbridged,
     AirfieldSlotConsumptionTupleResponse,
+    AirfieldSlotConsumptionQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -386,7 +387,7 @@ class TestAirfieldSlotConsumptions:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         airfield_slot_consumption = client.airfield_slot_consumptions.queryhelp()
-        assert airfield_slot_consumption is None
+        assert_matches_type(AirfieldSlotConsumptionQueryhelpResponse, airfield_slot_consumption, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -395,7 +396,7 @@ class TestAirfieldSlotConsumptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfield_slot_consumption = response.parse()
-        assert airfield_slot_consumption is None
+        assert_matches_type(AirfieldSlotConsumptionQueryhelpResponse, airfield_slot_consumption, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -404,7 +405,7 @@ class TestAirfieldSlotConsumptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfield_slot_consumption = response.parse()
-            assert airfield_slot_consumption is None
+            assert_matches_type(AirfieldSlotConsumptionQueryhelpResponse, airfield_slot_consumption, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -819,7 +820,7 @@ class TestAsyncAirfieldSlotConsumptions:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield_slot_consumption = await async_client.airfield_slot_consumptions.queryhelp()
-        assert airfield_slot_consumption is None
+        assert_matches_type(AirfieldSlotConsumptionQueryhelpResponse, airfield_slot_consumption, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -828,7 +829,7 @@ class TestAsyncAirfieldSlotConsumptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfield_slot_consumption = await response.parse()
-        assert airfield_slot_consumption is None
+        assert_matches_type(AirfieldSlotConsumptionQueryhelpResponse, airfield_slot_consumption, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -837,7 +838,7 @@ class TestAsyncAirfieldSlotConsumptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfield_slot_consumption = await response.parse()
-            assert airfield_slot_consumption is None
+            assert_matches_type(AirfieldSlotConsumptionQueryhelpResponse, airfield_slot_consumption, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

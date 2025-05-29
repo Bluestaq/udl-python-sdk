@@ -30,6 +30,7 @@ from ..types.ir_get_response import IrGetResponse
 from ..types.ir_list_response import IrListResponse
 from ..types.ir_tuple_response import IrTupleResponse
 from ..types.entity_ingest_param import EntityIngestParam
+from ..types.ir_queryhelp_response import IrQueryhelpResponse
 
 __all__ = ["IrResource", "AsyncIrResource"]
 
@@ -428,18 +429,17 @@ class IrResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> IrQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/ir/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=IrQueryhelpResponse,
         )
 
     def tuple(
@@ -893,18 +893,17 @@ class AsyncIrResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> IrQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/ir/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=IrQueryhelpResponse,
         )
 
     async def tuple(

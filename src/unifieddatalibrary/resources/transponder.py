@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.transponder_get_response import TransponderGetResponse
 from ..types.transponder_list_response import TransponderListResponse
 from ..types.transponder_tuple_response import TransponderTupleResponse
+from ..types.transponder_queryhelp_response import TransponderQueryhelpResponse
 
 __all__ = ["TransponderResource", "AsyncTransponderResource"]
 
@@ -485,18 +486,17 @@ class TransponderResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> TransponderQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/transponder/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=TransponderQueryhelpResponse,
         )
 
     def tuple(
@@ -1008,18 +1008,17 @@ class AsyncTransponderResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> TransponderQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/transponder/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=TransponderQueryhelpResponse,
         )
 
     async def tuple(

@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.rf_band_type_get_response import RfBandTypeGetResponse
 from ..types.rf_band_type_list_response import RfBandTypeListResponse
 from ..types.rf_band_type_tuple_response import RfBandTypeTupleResponse
+from ..types.rf_band_type_queryhelp_response import RfBandTypeQueryhelpResponse
 
 __all__ = ["RfBandTypeResource", "AsyncRfBandTypeResource"]
 
@@ -414,18 +415,17 @@ class RfBandTypeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> RfBandTypeQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/rfbandtype/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=RfBandTypeQueryhelpResponse,
         )
 
     def tuple(
@@ -866,18 +866,17 @@ class AsyncRfBandTypeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> RfBandTypeQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/rfbandtype/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=RfBandTypeQueryhelpResponse,
         )
 
     async def tuple(

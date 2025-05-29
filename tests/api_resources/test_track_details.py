@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     TrackDetailListResponse,
     TrackDetailTupleResponse,
+    TrackDetailQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -163,7 +164,7 @@ class TestTrackDetails:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         track_detail = client.track_details.queryhelp()
-        assert track_detail is None
+        assert_matches_type(TrackDetailQueryhelpResponse, track_detail, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -172,7 +173,7 @@ class TestTrackDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         track_detail = response.parse()
-        assert track_detail is None
+        assert_matches_type(TrackDetailQueryhelpResponse, track_detail, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -181,7 +182,7 @@ class TestTrackDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             track_detail = response.parse()
-            assert track_detail is None
+            assert_matches_type(TrackDetailQueryhelpResponse, track_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -374,7 +375,7 @@ class TestAsyncTrackDetails:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         track_detail = await async_client.track_details.queryhelp()
-        assert track_detail is None
+        assert_matches_type(TrackDetailQueryhelpResponse, track_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -383,7 +384,7 @@ class TestAsyncTrackDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         track_detail = await response.parse()
-        assert track_detail is None
+        assert_matches_type(TrackDetailQueryhelpResponse, track_detail, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -392,7 +393,7 @@ class TestAsyncTrackDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             track_detail = await response.parse()
-            assert track_detail is None
+            assert_matches_type(TrackDetailQueryhelpResponse, track_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

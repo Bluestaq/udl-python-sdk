@@ -41,6 +41,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sortie_ppr_list_response import SortiePprListResponse
 from ...types.sortie_ppr_tuple_response import SortiePprTupleResponse
 from ...types.sortie_ppr.sortie_ppr_full import SortiePprFull
+from ...types.sortie_ppr_queryhelp_response import SortiePprQueryhelpResponse
 
 __all__ = ["SortiePprResource", "AsyncSortiePprResource"]
 
@@ -538,18 +539,17 @@ class SortiePprResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SortiePprQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/sortieppr/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SortiePprQueryhelpResponse,
         )
 
     def tuple(
@@ -1143,18 +1143,17 @@ class AsyncSortiePprResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SortiePprQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/sortieppr/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SortiePprQueryhelpResponse,
         )
 
     async def tuple(

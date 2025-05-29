@@ -61,6 +61,26 @@ class TrackListResponse(BaseModel):
     FR, NATO, US, etc.).
     """
 
+    attitude: Optional[List[float]] = None
+    """The attitude (Yaw, Pitch, and Roll), in degrees, of the track object.
+
+    When provided, the array must always contain 3 values. These values represent
+    the vehicle's rotation about the vertical, lateral, and longitudinal axes,
+    respectively, in a locally level, East, North, Up "right handed" coordinate
+    system centered on the vehicle. Yaw is measured in degrees and ranges from -180
+    to 180. Pitch is measured in degrees and ranges from -90 to 90. Roll is measured
+    in degrees and ranges from -180 to 180.
+    """
+
+    attitude_rate: Optional[List[float]] = FieldInfo(alias="attitudeRate", default=None)
+    """
+    The attitude rate (Yaw Rate, Pitch Rate, and Roll Rate), in degrees per second,
+    of the track object. When provided, the array must always contain 3 values.
+    These values represent the rate of change of the vehicle's rotation about the
+    vertical, lateral, and longitudinal axes, respectively, in a locally level,
+    East, North, Up "right handed" coordinate system centered on the vehicle.
+    """
+
     call_sign: Optional[str] = FieldInfo(alias="callSign", default=None)
     """The call sign currently assigned to this track object."""
 
@@ -136,6 +156,12 @@ class TrackListResponse(BaseModel):
 
     ecef_vel: Optional[List[float]] = FieldInfo(alias="ecefVel", default=None)
     """Track object velocity in ECEF [x', y', z'], meters/sec.
+
+    When provided, array must always contain 3 values.
+    """
+
+    e_nu_acc: Optional[List[float]] = FieldInfo(alias="eNUAcc", default=None)
+    """East, North, Up acceleration components, in meters per second squared.
 
     When provided, array must always contain 3 values.
     """

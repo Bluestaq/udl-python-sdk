@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     H3GeoGetResponse,
     H3GeoListResponse,
     H3GeoTupleResponse,
+    H3GeoQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -260,7 +261,7 @@ class TestH3Geo:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         h3_geo = client.h3_geo.queryhelp()
-        assert h3_geo is None
+        assert_matches_type(H3GeoQueryhelpResponse, h3_geo, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -269,7 +270,7 @@ class TestH3Geo:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         h3_geo = response.parse()
-        assert h3_geo is None
+        assert_matches_type(H3GeoQueryhelpResponse, h3_geo, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -278,7 +279,7 @@ class TestH3Geo:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             h3_geo = response.parse()
-            assert h3_geo is None
+            assert_matches_type(H3GeoQueryhelpResponse, h3_geo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -567,7 +568,7 @@ class TestAsyncH3Geo:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         h3_geo = await async_client.h3_geo.queryhelp()
-        assert h3_geo is None
+        assert_matches_type(H3GeoQueryhelpResponse, h3_geo, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -576,7 +577,7 @@ class TestAsyncH3Geo:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         h3_geo = await response.parse()
-        assert h3_geo is None
+        assert_matches_type(H3GeoQueryhelpResponse, h3_geo, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -585,7 +586,7 @@ class TestAsyncH3Geo:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             h3_geo = await response.parse()
-            assert h3_geo is None
+            assert_matches_type(H3GeoQueryhelpResponse, h3_geo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

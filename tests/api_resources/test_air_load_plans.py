@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AirloadplanFull,
     AirloadplanAbridged,
     AirLoadPlanTupleResponse,
+    AirLoadPlanQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -345,7 +346,7 @@ class TestAirLoadPlans:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         air_load_plan = client.air_load_plans.queryhelp()
-        assert air_load_plan is None
+        assert_matches_type(AirLoadPlanQueryhelpResponse, air_load_plan, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -354,7 +355,7 @@ class TestAirLoadPlans:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_load_plan = response.parse()
-        assert air_load_plan is None
+        assert_matches_type(AirLoadPlanQueryhelpResponse, air_load_plan, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -363,7 +364,7 @@ class TestAirLoadPlans:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_load_plan = response.parse()
-            assert air_load_plan is None
+            assert_matches_type(AirLoadPlanQueryhelpResponse, air_load_plan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -737,7 +738,7 @@ class TestAsyncAirLoadPlans:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_load_plan = await async_client.air_load_plans.queryhelp()
-        assert air_load_plan is None
+        assert_matches_type(AirLoadPlanQueryhelpResponse, air_load_plan, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -746,7 +747,7 @@ class TestAsyncAirLoadPlans:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_load_plan = await response.parse()
-        assert air_load_plan is None
+        assert_matches_type(AirLoadPlanQueryhelpResponse, air_load_plan, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -755,7 +756,7 @@ class TestAsyncAirLoadPlans:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_load_plan = await response.parse()
-            assert air_load_plan is None
+            assert_matches_type(AirLoadPlanQueryhelpResponse, air_load_plan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

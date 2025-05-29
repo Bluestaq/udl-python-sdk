@@ -47,6 +47,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.ephemeris_set import EphemerisSet
 from ...types.ephemeris_set_abridged import EphemerisSetAbridged
 from ...types.ephemeris_set_tuple_response import EphemerisSetTupleResponse
+from ...types.ephemeris_set_queryhelp_response import EphemerisSetQueryhelpResponse
 
 __all__ = ["EphemerisSetsResource", "AsyncEphemerisSetsResource"]
 
@@ -90,7 +91,7 @@ class EphemerisSetsResource(SyncAPIResource):
         b_dot: float | NotGiven = NOT_GIVEN,
         cent_body: str | NotGiven = NOT_GIVEN,
         comments: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: Literal["J2000", "UVW"] | NotGiven = NOT_GIVEN,
+        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
@@ -549,18 +550,17 @@ class EphemerisSetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EphemerisSetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/ephemerisset/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EphemerisSetQueryhelpResponse,
         )
 
     def tuple(
@@ -671,7 +671,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         b_dot: float | NotGiven = NOT_GIVEN,
         cent_body: str | NotGiven = NOT_GIVEN,
         comments: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: Literal["J2000", "UVW"] | NotGiven = NOT_GIVEN,
+        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_model: str | NotGiven = NOT_GIVEN,
@@ -1130,18 +1130,17 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EphemerisSetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/ephemerisset/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EphemerisSetQueryhelpResponse,
         )
 
     async def tuple(

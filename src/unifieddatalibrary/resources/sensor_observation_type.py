@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import sensor_observation_type_get_params, sensor_observation_type_list_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -19,6 +19,7 @@ from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.sensor_observation_type_get_response import SensorObservationTypeGetResponse
 from ..types.sensor_observation_type_list_response import SensorObservationTypeListResponse
+from ..types.sensor_observation_type_queryhelp_response import SensorObservationTypeQueryhelpResponse
 
 __all__ = ["SensorObservationTypeResource", "AsyncSensorObservationTypeResource"]
 
@@ -136,18 +137,17 @@ class SensorObservationTypeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SensorObservationTypeQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/sensorobservationtype/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SensorObservationTypeQueryhelpResponse,
         )
 
 
@@ -264,18 +264,17 @@ class AsyncSensorObservationTypeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SensorObservationTypeQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/sensorobservationtype/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SensorObservationTypeQueryhelpResponse,
         )
 
 

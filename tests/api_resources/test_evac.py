@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EvacAbridged,
+    EvacQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -407,7 +408,7 @@ class TestEvac:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         evac = client.evac.query_help()
-        assert evac is None
+        assert_matches_type(EvacQueryHelpResponse, evac, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -416,7 +417,7 @@ class TestEvac:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         evac = response.parse()
-        assert evac is None
+        assert_matches_type(EvacQueryHelpResponse, evac, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -425,7 +426,7 @@ class TestEvac:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             evac = response.parse()
-            assert evac is None
+            assert_matches_type(EvacQueryHelpResponse, evac, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -879,7 +880,7 @@ class TestAsyncEvac:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         evac = await async_client.evac.query_help()
-        assert evac is None
+        assert_matches_type(EvacQueryHelpResponse, evac, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -888,7 +889,7 @@ class TestAsyncEvac:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         evac = await response.parse()
-        assert evac is None
+        assert_matches_type(EvacQueryHelpResponse, evac, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -897,7 +898,7 @@ class TestAsyncEvac:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             evac = await response.parse()
-            assert evac is None
+            assert_matches_type(EvacQueryHelpResponse, evac, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -294,8 +294,10 @@ class TestScs:
             file_name="fileName",
             path="path",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -753,8 +755,10 @@ class TestAsyncScs:
             file_name="fileName",
             path="path",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])

@@ -15,6 +15,7 @@ from unifieddatalibrary.types.observations import (
     RadarobservationGetResponse,
     RadarobservationListResponse,
     RadarobservationTupleResponse,
+    RadarobservationQueryhelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -312,7 +313,7 @@ class TestRadarobservation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         radarobservation = client.observations.radarobservation.queryhelp()
-        assert radarobservation is None
+        assert_matches_type(RadarobservationQueryhelpResponse, radarobservation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -321,7 +322,7 @@ class TestRadarobservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         radarobservation = response.parse()
-        assert radarobservation is None
+        assert_matches_type(RadarobservationQueryhelpResponse, radarobservation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -330,7 +331,7 @@ class TestRadarobservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             radarobservation = response.parse()
-            assert radarobservation is None
+            assert_matches_type(RadarobservationQueryhelpResponse, radarobservation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -723,7 +724,7 @@ class TestAsyncRadarobservation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         radarobservation = await async_client.observations.radarobservation.queryhelp()
-        assert radarobservation is None
+        assert_matches_type(RadarobservationQueryhelpResponse, radarobservation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -732,7 +733,7 @@ class TestAsyncRadarobservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         radarobservation = await response.parse()
-        assert radarobservation is None
+        assert_matches_type(RadarobservationQueryhelpResponse, radarobservation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -741,7 +742,7 @@ class TestAsyncRadarobservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             radarobservation = await response.parse()
-            assert radarobservation is None
+            assert_matches_type(RadarobservationQueryhelpResponse, radarobservation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

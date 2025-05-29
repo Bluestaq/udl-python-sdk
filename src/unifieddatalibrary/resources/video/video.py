@@ -41,6 +41,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.video_list_response import VideoListResponse
 from ...types.video_tuple_response import VideoTupleResponse
 from ...types.video.video_streams_full import VideoStreamsFull
+from ...types.video_queryhelp_response import VideoQueryhelpResponse
 from ...types.video_get_stream_file_response import VideoGetStreamFileResponse
 from ...types.video_get_player_streaming_info_response import VideoGetPlayerStreamingInfoResponse
 from ...types.video_get_publisher_streaming_info_response import VideoGetPublisherStreamingInfoResponse
@@ -459,18 +460,17 @@ class VideoResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> VideoQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/video/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=VideoQueryhelpResponse,
         )
 
     def tuple(
@@ -941,18 +941,17 @@ class AsyncVideoResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> VideoQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/video/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=VideoQueryhelpResponse,
         )
 
     async def tuple(

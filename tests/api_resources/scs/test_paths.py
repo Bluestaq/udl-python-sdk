@@ -31,8 +31,10 @@ class TestPaths:
             id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert_matches_type(str, path, path=["response"])
@@ -84,8 +86,10 @@ class TestAsyncPaths:
             id="id",
             classification_marking="classificationMarking",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert_matches_type(str, path, path=["response"])

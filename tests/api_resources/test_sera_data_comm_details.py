@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SeraDataCommDetailGetResponse,
     SeraDataCommDetailListResponse,
     SeraDataCommDetailTupleResponse,
+    SeraDataCommDetailQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -346,7 +347,7 @@ class TestSeraDataCommDetails:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         sera_data_comm_detail = client.sera_data_comm_details.queryhelp()
-        assert sera_data_comm_detail is None
+        assert_matches_type(SeraDataCommDetailQueryhelpResponse, sera_data_comm_detail, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -355,7 +356,7 @@ class TestSeraDataCommDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sera_data_comm_detail = response.parse()
-        assert sera_data_comm_detail is None
+        assert_matches_type(SeraDataCommDetailQueryhelpResponse, sera_data_comm_detail, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -364,7 +365,7 @@ class TestSeraDataCommDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sera_data_comm_detail = response.parse()
-            assert sera_data_comm_detail is None
+            assert_matches_type(SeraDataCommDetailQueryhelpResponse, sera_data_comm_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -736,7 +737,7 @@ class TestAsyncSeraDataCommDetails:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         sera_data_comm_detail = await async_client.sera_data_comm_details.queryhelp()
-        assert sera_data_comm_detail is None
+        assert_matches_type(SeraDataCommDetailQueryhelpResponse, sera_data_comm_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -745,7 +746,7 @@ class TestAsyncSeraDataCommDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sera_data_comm_detail = await response.parse()
-        assert sera_data_comm_detail is None
+        assert_matches_type(SeraDataCommDetailQueryhelpResponse, sera_data_comm_detail, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -754,7 +755,7 @@ class TestAsyncSeraDataCommDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sera_data_comm_detail = await response.parse()
-            assert sera_data_comm_detail is None
+            assert_matches_type(SeraDataCommDetailQueryhelpResponse, sera_data_comm_detail, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

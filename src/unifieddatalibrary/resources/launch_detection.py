@@ -31,6 +31,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.launch_detection_get_response import LaunchDetectionGetResponse
 from ..types.launch_detection_list_response import LaunchDetectionListResponse
 from ..types.launch_detection_tuple_response import LaunchDetectionTupleResponse
+from ..types.launch_detection_queryhelp_response import LaunchDetectionQueryhelpResponse
 
 __all__ = ["LaunchDetectionResource", "AsyncLaunchDetectionResource"]
 
@@ -545,18 +546,17 @@ class LaunchDetectionResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> LaunchDetectionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/launchdetection/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=LaunchDetectionQueryhelpResponse,
         )
 
     def tuple(
@@ -1126,18 +1126,17 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> LaunchDetectionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/launchdetection/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=LaunchDetectionQueryhelpResponse,
         )
 
     async def tuple(

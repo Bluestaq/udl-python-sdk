@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EventEvolutionListResponse,
     EventEvolutionTupleResponse,
+    EventEvolutionQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -280,7 +281,7 @@ class TestEventEvolution:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         event_evolution = client.event_evolution.queryhelp()
-        assert event_evolution is None
+        assert_matches_type(EventEvolutionQueryhelpResponse, event_evolution, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -289,7 +290,7 @@ class TestEventEvolution:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_evolution = response.parse()
-        assert event_evolution is None
+        assert_matches_type(EventEvolutionQueryhelpResponse, event_evolution, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -298,7 +299,7 @@ class TestEventEvolution:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_evolution = response.parse()
-            assert event_evolution is None
+            assert_matches_type(EventEvolutionQueryhelpResponse, event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -663,7 +664,7 @@ class TestAsyncEventEvolution:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         event_evolution = await async_client.event_evolution.queryhelp()
-        assert event_evolution is None
+        assert_matches_type(EventEvolutionQueryhelpResponse, event_evolution, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -672,7 +673,7 @@ class TestAsyncEventEvolution:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_evolution = await response.parse()
-        assert event_evolution is None
+        assert_matches_type(EventEvolutionQueryhelpResponse, event_evolution, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -681,7 +682,7 @@ class TestAsyncEventEvolution:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_evolution = await response.parse()
-            assert event_evolution is None
+            assert_matches_type(EventEvolutionQueryhelpResponse, event_evolution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

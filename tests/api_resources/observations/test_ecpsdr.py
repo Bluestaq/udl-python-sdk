@@ -15,6 +15,7 @@ from unifieddatalibrary.types.observations import (
     Ecpsdr,
     EcpsdrAbridged,
     EcpsdrTupleResponse,
+    EcpsdrQueryHelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -305,7 +306,7 @@ class TestEcpsdr:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         ecpsdr = client.observations.ecpsdr.query_help()
-        assert ecpsdr is None
+        assert_matches_type(EcpsdrQueryHelpResponse, ecpsdr, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -314,7 +315,7 @@ class TestEcpsdr:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ecpsdr = response.parse()
-        assert ecpsdr is None
+        assert_matches_type(EcpsdrQueryHelpResponse, ecpsdr, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -323,7 +324,7 @@ class TestEcpsdr:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ecpsdr = response.parse()
-            assert ecpsdr is None
+            assert_matches_type(EcpsdrQueryHelpResponse, ecpsdr, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -657,7 +658,7 @@ class TestAsyncEcpsdr:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         ecpsdr = await async_client.observations.ecpsdr.query_help()
-        assert ecpsdr is None
+        assert_matches_type(EcpsdrQueryHelpResponse, ecpsdr, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -666,7 +667,7 @@ class TestAsyncEcpsdr:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ecpsdr = await response.parse()
-        assert ecpsdr is None
+        assert_matches_type(EcpsdrQueryHelpResponse, ecpsdr, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -675,7 +676,7 @@ class TestAsyncEcpsdr:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ecpsdr = await response.parse()
-            assert ecpsdr is None
+            assert_matches_type(EcpsdrQueryHelpResponse, ecpsdr, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

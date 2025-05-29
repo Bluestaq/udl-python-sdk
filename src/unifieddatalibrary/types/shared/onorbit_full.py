@@ -1083,11 +1083,22 @@ class EntityCollection(BaseModel):
     """Source of the data."""
 
     type: Literal[
-        "AIRCRAFT", "BUS", "COMM", "IR", "NAVIGATION", "ONORBIT", "RFEMITTER", "SCIENTIFIC", "SENSOR", "SITE", "VESSEL"
+        "AIRCRAFT",
+        "BUS",
+        "COMM",
+        "IR",
+        "LASEREMITTER",
+        "NAVIGATION",
+        "ONORBIT",
+        "RFEMITTER",
+        "SCIENTIFIC",
+        "SENSOR",
+        "SITE",
+        "VESSEL",
     ]
     """
     The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-    NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+    LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
     """
 
     country_code: Optional[str] = FieldInfo(alias="countryCode", default=None)

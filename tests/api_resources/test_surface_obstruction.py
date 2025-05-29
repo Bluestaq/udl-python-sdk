@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SurfaceObstructionGetResponse,
     SurfaceObstructionListResponse,
     SurfaceObstructionTupleResponse,
+    SurfaceObstructionQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -313,7 +314,7 @@ class TestSurfaceObstruction:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         surface_obstruction = client.surface_obstruction.queryhelp()
-        assert surface_obstruction is None
+        assert_matches_type(SurfaceObstructionQueryhelpResponse, surface_obstruction, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -322,7 +323,7 @@ class TestSurfaceObstruction:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         surface_obstruction = response.parse()
-        assert surface_obstruction is None
+        assert_matches_type(SurfaceObstructionQueryhelpResponse, surface_obstruction, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -331,7 +332,7 @@ class TestSurfaceObstruction:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             surface_obstruction = response.parse()
-            assert surface_obstruction is None
+            assert_matches_type(SurfaceObstructionQueryhelpResponse, surface_obstruction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -722,7 +723,7 @@ class TestAsyncSurfaceObstruction:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface_obstruction = await async_client.surface_obstruction.queryhelp()
-        assert surface_obstruction is None
+        assert_matches_type(SurfaceObstructionQueryhelpResponse, surface_obstruction, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -731,7 +732,7 @@ class TestAsyncSurfaceObstruction:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         surface_obstruction = await response.parse()
-        assert surface_obstruction is None
+        assert_matches_type(SurfaceObstructionQueryhelpResponse, surface_obstruction, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -740,7 +741,7 @@ class TestAsyncSurfaceObstruction:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             surface_obstruction = await response.parse()
-            assert surface_obstruction is None
+            assert_matches_type(SurfaceObstructionQueryhelpResponse, surface_obstruction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -40,6 +40,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.effect_response_list_response import EffectResponseListResponse
 from ...types.effect_response_tuple_response import EffectResponseTupleResponse
 from ...types.effect_response_retrieve_response import EffectResponseRetrieveResponse
+from ...types.effect_response_query_help_response import EffectResponseQueryHelpResponse
 
 __all__ = ["EffectResponsesResource", "AsyncEffectResponsesResource"]
 
@@ -415,18 +416,17 @@ class EffectResponsesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EffectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/effectresponse/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EffectResponseQueryHelpResponse,
         )
 
     def tuple(
@@ -898,18 +898,17 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EffectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/effectresponse/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EffectResponseQueryHelpResponse,
         )
 
     async def tuple(

@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
-from unifieddatalibrary.types import AttitudeDataTupleResponse
+from unifieddatalibrary.types import (
+    AttitudeDataTupleResponse,
+    AttitudeDataQueryHelpResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +23,7 @@ class TestAttitudeData:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         attitude_data = client.attitude_data.query_help()
-        assert attitude_data is None
+        assert_matches_type(AttitudeDataQueryHelpResponse, attitude_data, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -29,7 +32,7 @@ class TestAttitudeData:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         attitude_data = response.parse()
-        assert attitude_data is None
+        assert_matches_type(AttitudeDataQueryHelpResponse, attitude_data, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -38,7 +41,7 @@ class TestAttitudeData:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             attitude_data = response.parse()
-            assert attitude_data is None
+            assert_matches_type(AttitudeDataQueryHelpResponse, attitude_data, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -93,7 +96,7 @@ class TestAsyncAttitudeData:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         attitude_data = await async_client.attitude_data.query_help()
-        assert attitude_data is None
+        assert_matches_type(AttitudeDataQueryHelpResponse, attitude_data, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -102,7 +105,7 @@ class TestAsyncAttitudeData:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         attitude_data = await response.parse()
-        assert attitude_data is None
+        assert_matches_type(AttitudeDataQueryHelpResponse, attitude_data, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -111,7 +114,7 @@ class TestAsyncAttitudeData:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             attitude_data = await response.parse()
-            assert attitude_data is None
+            assert_matches_type(AttitudeDataQueryHelpResponse, attitude_data, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

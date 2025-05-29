@@ -30,6 +30,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.airfield_full import AirfieldFull
 from ..types.airfield_abridged import AirfieldAbridged
 from ..types.airfield_tuple_response import AirfieldTupleResponse
+from ..types.airfield_queryhelp_response import AirfieldQueryhelpResponse
 
 __all__ = ["AirfieldsResource", "AsyncAirfieldsResource"]
 
@@ -671,18 +672,17 @@ class AirfieldsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AirfieldQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/airfield/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AirfieldQueryhelpResponse,
         )
 
     def tuple(
@@ -1379,18 +1379,17 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AirfieldQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/airfield/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AirfieldQueryhelpResponse,
         )
 
     async def tuple(

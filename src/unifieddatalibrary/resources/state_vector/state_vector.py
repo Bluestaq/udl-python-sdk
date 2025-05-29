@@ -47,6 +47,7 @@ from ...types.state_vector_full import StateVectorFull
 from ...types.state_vector_abridged import StateVectorAbridged
 from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.state_vector_tuple_response import StateVectorTupleResponse
+from ...types.state_vector_queryhelp_response import StateVectorQueryhelpResponse
 
 __all__ = ["StateVectorResource", "AsyncStateVectorResource"]
 
@@ -95,7 +96,7 @@ class StateVectorResource(SyncAPIResource):
         cm_offset: float | NotGiven = NOT_GIVEN,
         cov: Iterable[float] | NotGiven = NOT_GIVEN,
         cov_method: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: Literal["J2000", "UVW"] | NotGiven = NOT_GIVEN,
+        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_area: float | NotGiven = NOT_GIVEN,
         drag_coeff: float | NotGiven = NOT_GIVEN,
@@ -908,18 +909,17 @@ class StateVectorResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> StateVectorQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/statevector/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=StateVectorQueryhelpResponse,
         )
 
     def tuple(
@@ -1064,7 +1064,7 @@ class AsyncStateVectorResource(AsyncAPIResource):
         cm_offset: float | NotGiven = NOT_GIVEN,
         cov: Iterable[float] | NotGiven = NOT_GIVEN,
         cov_method: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: Literal["J2000", "UVW"] | NotGiven = NOT_GIVEN,
+        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         drag_area: float | NotGiven = NOT_GIVEN,
         drag_coeff: float | NotGiven = NOT_GIVEN,
@@ -1877,18 +1877,17 @@ class AsyncStateVectorResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> StateVectorQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/statevector/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=StateVectorQueryhelpResponse,
         )
 
     async def tuple(

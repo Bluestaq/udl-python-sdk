@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     LocationFull,
     LocationListResponse,
     LocationTupleResponse,
+    LocationQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -303,7 +304,7 @@ class TestLocation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         location = client.location.queryhelp()
-        assert location is None
+        assert_matches_type(LocationQueryhelpResponse, location, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -312,7 +313,7 @@ class TestLocation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         location = response.parse()
-        assert location is None
+        assert_matches_type(LocationQueryhelpResponse, location, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -321,7 +322,7 @@ class TestLocation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             location = response.parse()
-            assert location is None
+            assert_matches_type(LocationQueryhelpResponse, location, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -650,7 +651,7 @@ class TestAsyncLocation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         location = await async_client.location.queryhelp()
-        assert location is None
+        assert_matches_type(LocationQueryhelpResponse, location, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -659,7 +660,7 @@ class TestAsyncLocation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         location = await response.parse()
-        assert location is None
+        assert_matches_type(LocationQueryhelpResponse, location, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -668,7 +669,7 @@ class TestAsyncLocation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             location = await response.parse()
-            assert location is None
+            assert_matches_type(LocationQueryhelpResponse, location, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

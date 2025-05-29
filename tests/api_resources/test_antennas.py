@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AntennaFull,
     AntennaAbridged,
     AntennaTupleResponse,
+    AntennaQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -286,7 +287,7 @@ class TestAntennas:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         antenna = client.antennas.queryhelp()
-        assert antenna is None
+        assert_matches_type(AntennaQueryhelpResponse, antenna, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -295,7 +296,7 @@ class TestAntennas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         antenna = response.parse()
-        assert antenna is None
+        assert_matches_type(AntennaQueryhelpResponse, antenna, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -304,7 +305,7 @@ class TestAntennas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             antenna = response.parse()
-            assert antenna is None
+            assert_matches_type(AntennaQueryhelpResponse, antenna, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -616,7 +617,7 @@ class TestAsyncAntennas:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         antenna = await async_client.antennas.queryhelp()
-        assert antenna is None
+        assert_matches_type(AntennaQueryhelpResponse, antenna, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -625,7 +626,7 @@ class TestAsyncAntennas:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         antenna = await response.parse()
-        assert antenna is None
+        assert_matches_type(AntennaQueryhelpResponse, antenna, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -634,7 +635,7 @@ class TestAsyncAntennas:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             antenna = await response.parse()
-            assert antenna is None
+            assert_matches_type(AntennaQueryhelpResponse, antenna, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

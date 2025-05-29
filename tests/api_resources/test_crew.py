@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     CrewFull,
     CrewAbridged,
     CrewTupleResponse,
+    CrewQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -498,7 +499,7 @@ class TestCrew:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         crew = client.crew.queryhelp()
-        assert crew is None
+        assert_matches_type(CrewQueryhelpResponse, crew, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -507,7 +508,7 @@ class TestCrew:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         crew = response.parse()
-        assert crew is None
+        assert_matches_type(CrewQueryhelpResponse, crew, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -516,7 +517,7 @@ class TestCrew:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             crew = response.parse()
-            assert crew is None
+            assert_matches_type(CrewQueryhelpResponse, crew, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1091,7 +1092,7 @@ class TestAsyncCrew:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         crew = await async_client.crew.queryhelp()
-        assert crew is None
+        assert_matches_type(CrewQueryhelpResponse, crew, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1100,7 +1101,7 @@ class TestAsyncCrew:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         crew = await response.parse()
-        assert crew is None
+        assert_matches_type(CrewQueryhelpResponse, crew, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1109,7 +1110,7 @@ class TestAsyncCrew:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             crew = await response.parse()
-            assert crew is None
+            assert_matches_type(CrewQueryhelpResponse, crew, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

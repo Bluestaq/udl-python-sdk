@@ -40,6 +40,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.star_catalog_get_response import StarCatalogGetResponse
 from ...types.star_catalog_list_response import StarCatalogListResponse
 from ...types.star_catalog_tuple_response import StarCatalogTupleResponse
+from ...types.star_catalog_queryhelp_response import StarCatalogQueryhelpResponse
 
 __all__ = ["StarCatalogResource", "AsyncStarCatalogResource"]
 
@@ -803,18 +804,17 @@ class StarCatalogResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> StarCatalogQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/starcatalog/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=StarCatalogQueryhelpResponse,
         )
 
     def tuple(
@@ -1681,18 +1681,17 @@ class AsyncStarCatalogResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> StarCatalogQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/starcatalog/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=StarCatalogQueryhelpResponse,
         )
 
     async def tuple(

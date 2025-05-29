@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     SigactListResponse,
     SigactTupleResponse,
+    SigactQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -157,7 +158,7 @@ class TestSigact:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         sigact = client.sigact.queryhelp()
-        assert sigact is None
+        assert_matches_type(SigactQueryhelpResponse, sigact, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -166,7 +167,7 @@ class TestSigact:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sigact = response.parse()
-        assert sigact is None
+        assert_matches_type(SigactQueryhelpResponse, sigact, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestSigact:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sigact = response.parse()
-            assert sigact is None
+            assert_matches_type(SigactQueryhelpResponse, sigact, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -393,7 +394,7 @@ class TestAsyncSigact:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         sigact = await async_client.sigact.queryhelp()
-        assert sigact is None
+        assert_matches_type(SigactQueryhelpResponse, sigact, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -402,7 +403,7 @@ class TestAsyncSigact:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sigact = await response.parse()
-        assert sigact is None
+        assert_matches_type(SigactQueryhelpResponse, sigact, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -411,7 +412,7 @@ class TestAsyncSigact:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sigact = await response.parse()
-            assert sigact is None
+            assert_matches_type(SigactQueryhelpResponse, sigact, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

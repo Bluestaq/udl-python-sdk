@@ -56,7 +56,9 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
+        delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -77,6 +79,8 @@ class V2Resource(SyncAPIResource):
 
         Args:
           path: The complete path for the object to be updated.
+
+          send_notification: Whether or not to send a notification that the target file/folder was updated.
 
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
@@ -105,6 +109,7 @@ class V2Resource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "classification_marking": classification_marking,
+                    "delete_on": delete_on,
                     "description": description,
                     "read_acl": read_acl,
                     "tags": tags,
@@ -117,7 +122,13 @@ class V2Resource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"path": path}, v2_update_params.V2UpdateParams),
+                query=maybe_transform(
+                    {
+                        "path": path,
+                        "send_notification": send_notification,
+                    },
+                    v2_update_params.V2UpdateParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -265,8 +276,10 @@ class V2Resource(SyncAPIResource):
         classification_marking: str,
         path: str,
         body: FileTypes,
+        delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -287,9 +300,13 @@ class V2Resource(SyncAPIResource):
           path: The complete path for the upload including filename. Will attempt to create
               folders in path if necessary. Must start with '/'.
 
+          delete_after: Length of time after which to automatically delete the file.
+
           description: Optional description of uploaded document.
 
           overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
+
+          send_notification: Whether or not to send a notification that this file was uploaded.
 
           tags: Optional array of provider/source specific tags for this data, used for
               implementing data owner conditional access controls to restrict access to the
@@ -316,8 +333,10 @@ class V2Resource(SyncAPIResource):
                     {
                         "classification_marking": classification_marking,
                         "path": path,
+                        "delete_after": delete_after,
                         "description": description,
                         "overwrite": overwrite,
+                        "send_notification": send_notification,
                         "tags": tags,
                     },
                     v2_file_upload_params.V2FileUploadParams,
@@ -330,7 +349,9 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
+        delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -355,6 +376,8 @@ class V2Resource(SyncAPIResource):
         Args:
           path: Path to create. Will attempt to create all folders in the path that do not
               exist. Must start and end with '/'.
+
+          send_notification: Whether or not to send a notification that this folder was created.
 
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
@@ -383,6 +406,7 @@ class V2Resource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "classification_marking": classification_marking,
+                    "delete_on": delete_on,
                     "description": description,
                     "read_acl": read_acl,
                     "tags": tags,
@@ -395,7 +419,13 @@ class V2Resource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"path": path}, v2_folder_create_params.V2FolderCreateParams),
+                query=maybe_transform(
+                    {
+                        "path": path,
+                        "send_notification": send_notification,
+                    },
+                    v2_folder_create_params.V2FolderCreateParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -475,7 +505,9 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
+        delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -496,6 +528,8 @@ class AsyncV2Resource(AsyncAPIResource):
 
         Args:
           path: The complete path for the object to be updated.
+
+          send_notification: Whether or not to send a notification that the target file/folder was updated.
 
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
@@ -524,6 +558,7 @@ class AsyncV2Resource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "classification_marking": classification_marking,
+                    "delete_on": delete_on,
                     "description": description,
                     "read_acl": read_acl,
                     "tags": tags,
@@ -536,7 +571,13 @@ class AsyncV2Resource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"path": path}, v2_update_params.V2UpdateParams),
+                query=await async_maybe_transform(
+                    {
+                        "path": path,
+                        "send_notification": send_notification,
+                    },
+                    v2_update_params.V2UpdateParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -684,8 +725,10 @@ class AsyncV2Resource(AsyncAPIResource):
         classification_marking: str,
         path: str,
         body: FileTypes,
+        delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -706,9 +749,13 @@ class AsyncV2Resource(AsyncAPIResource):
           path: The complete path for the upload including filename. Will attempt to create
               folders in path if necessary. Must start with '/'.
 
+          delete_after: Length of time after which to automatically delete the file.
+
           description: Optional description of uploaded document.
 
           overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
+
+          send_notification: Whether or not to send a notification that this file was uploaded.
 
           tags: Optional array of provider/source specific tags for this data, used for
               implementing data owner conditional access controls to restrict access to the
@@ -735,8 +782,10 @@ class AsyncV2Resource(AsyncAPIResource):
                     {
                         "classification_marking": classification_marking,
                         "path": path,
+                        "delete_after": delete_after,
                         "description": description,
                         "overwrite": overwrite,
+                        "send_notification": send_notification,
                         "tags": tags,
                     },
                     v2_file_upload_params.V2FileUploadParams,
@@ -749,7 +798,9 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
+        delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -774,6 +825,8 @@ class AsyncV2Resource(AsyncAPIResource):
         Args:
           path: Path to create. Will attempt to create all folders in the path that do not
               exist. Must start and end with '/'.
+
+          send_notification: Whether or not to send a notification that this folder was created.
 
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
@@ -802,6 +855,7 @@ class AsyncV2Resource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "classification_marking": classification_marking,
+                    "delete_on": delete_on,
                     "description": description,
                     "read_acl": read_acl,
                     "tags": tags,
@@ -814,7 +868,13 @@ class AsyncV2Resource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"path": path}, v2_folder_create_params.V2FolderCreateParams),
+                query=await async_maybe_transform(
+                    {
+                        "path": path,
+                        "send_notification": send_notification,
+                    },
+                    v2_folder_create_params.V2FolderCreateParams,
+                ),
             ),
             cast_to=NoneType,
         )
