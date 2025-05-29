@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     DiffOfArrivalTupleResponse,
+    DiffOfArrivalQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.types.tdoa_fdoa import DiffofarrivalFull
@@ -71,7 +72,7 @@ class TestDiffOfArrival:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         diff_of_arrival = client.diff_of_arrival.queryhelp()
-        assert diff_of_arrival is None
+        assert_matches_type(DiffOfArrivalQueryhelpResponse, diff_of_arrival, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -80,7 +81,7 @@ class TestDiffOfArrival:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         diff_of_arrival = response.parse()
-        assert diff_of_arrival is None
+        assert_matches_type(DiffOfArrivalQueryhelpResponse, diff_of_arrival, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -89,7 +90,7 @@ class TestDiffOfArrival:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             diff_of_arrival = response.parse()
-            assert diff_of_arrival is None
+            assert_matches_type(DiffOfArrivalQueryhelpResponse, diff_of_arrival, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -243,7 +244,7 @@ class TestAsyncDiffOfArrival:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         diff_of_arrival = await async_client.diff_of_arrival.queryhelp()
-        assert diff_of_arrival is None
+        assert_matches_type(DiffOfArrivalQueryhelpResponse, diff_of_arrival, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -252,7 +253,7 @@ class TestAsyncDiffOfArrival:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         diff_of_arrival = await response.parse()
-        assert diff_of_arrival is None
+        assert_matches_type(DiffOfArrivalQueryhelpResponse, diff_of_arrival, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -261,7 +262,7 @@ class TestAsyncDiffOfArrival:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             diff_of_arrival = await response.parse()
-            assert diff_of_arrival is None
+            assert_matches_type(DiffOfArrivalQueryhelpResponse, diff_of_arrival, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

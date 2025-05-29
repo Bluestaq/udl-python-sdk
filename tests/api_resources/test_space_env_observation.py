@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     SpaceEnvObservationListResponse,
     SpaceEnvObservationTupleResponse,
+    SpaceEnvObservationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -159,7 +160,7 @@ class TestSpaceEnvObservation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         space_env_observation = client.space_env_observation.queryhelp()
-        assert space_env_observation is None
+        assert_matches_type(SpaceEnvObservationQueryhelpResponse, space_env_observation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -168,7 +169,7 @@ class TestSpaceEnvObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         space_env_observation = response.parse()
-        assert space_env_observation is None
+        assert_matches_type(SpaceEnvObservationQueryhelpResponse, space_env_observation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -177,7 +178,7 @@ class TestSpaceEnvObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             space_env_observation = response.parse()
-            assert space_env_observation is None
+            assert_matches_type(SpaceEnvObservationQueryhelpResponse, space_env_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -418,7 +419,7 @@ class TestAsyncSpaceEnvObservation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         space_env_observation = await async_client.space_env_observation.queryhelp()
-        assert space_env_observation is None
+        assert_matches_type(SpaceEnvObservationQueryhelpResponse, space_env_observation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -427,7 +428,7 @@ class TestAsyncSpaceEnvObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         space_env_observation = await response.parse()
-        assert space_env_observation is None
+        assert_matches_type(SpaceEnvObservationQueryhelpResponse, space_env_observation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -436,7 +437,7 @@ class TestAsyncSpaceEnvObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             space_env_observation = await response.parse()
-            assert space_env_observation is None
+            assert_matches_type(SpaceEnvObservationQueryhelpResponse, space_env_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

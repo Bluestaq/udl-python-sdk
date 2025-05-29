@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     HazardGetResponse,
     HazardListResponse,
     HazardTupleResponse,
+    HazardQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -306,7 +307,7 @@ class TestHazard:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         hazard = client.hazard.queryhelp()
-        assert hazard is None
+        assert_matches_type(HazardQueryhelpResponse, hazard, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -315,7 +316,7 @@ class TestHazard:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         hazard = response.parse()
-        assert hazard is None
+        assert_matches_type(HazardQueryhelpResponse, hazard, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -324,7 +325,7 @@ class TestHazard:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             hazard = response.parse()
-            assert hazard is None
+            assert_matches_type(HazardQueryhelpResponse, hazard, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -659,7 +660,7 @@ class TestAsyncHazard:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         hazard = await async_client.hazard.queryhelp()
-        assert hazard is None
+        assert_matches_type(HazardQueryhelpResponse, hazard, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -668,7 +669,7 @@ class TestAsyncHazard:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         hazard = await response.parse()
-        assert hazard is None
+        assert_matches_type(HazardQueryhelpResponse, hazard, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -677,7 +678,7 @@ class TestAsyncHazard:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             hazard = await response.parse()
-            assert hazard is None
+            assert_matches_type(HazardQueryhelpResponse, hazard, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

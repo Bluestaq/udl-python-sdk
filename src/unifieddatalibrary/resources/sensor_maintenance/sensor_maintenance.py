@@ -42,6 +42,7 @@ from ...types.sensor_maintenance_get_response import SensorMaintenanceGetRespons
 from ...types.sensor_maintenance_list_response import SensorMaintenanceListResponse
 from ...types.sensor_maintenance_tuple_response import SensorMaintenanceTupleResponse
 from ...types.sensor_maintenance_current_response import SensorMaintenanceCurrentResponse
+from ...types.sensor_maintenance_queryhelp_response import SensorMaintenanceQueryhelpResponse
 
 __all__ = ["SensorMaintenanceResource", "AsyncSensorMaintenanceResource"]
 
@@ -706,18 +707,17 @@ class SensorMaintenanceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SensorMaintenanceQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/sensormaintenance/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SensorMaintenanceQueryhelpResponse,
         )
 
     def tuple(
@@ -1447,18 +1447,17 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SensorMaintenanceQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/sensormaintenance/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SensorMaintenanceQueryhelpResponse,
         )
 
     async def tuple(

@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     GnssObservationsetListResponse,
     GnssObservationsetTupleResponse,
+    GnssObservationsetQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -157,7 +158,7 @@ class TestGnssObservationset:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         gnss_observationset = client.gnss_observationset.queryhelp()
-        assert gnss_observationset is None
+        assert_matches_type(GnssObservationsetQueryhelpResponse, gnss_observationset, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -166,7 +167,7 @@ class TestGnssObservationset:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         gnss_observationset = response.parse()
-        assert gnss_observationset is None
+        assert_matches_type(GnssObservationsetQueryhelpResponse, gnss_observationset, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestGnssObservationset:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             gnss_observationset = response.parse()
-            assert gnss_observationset is None
+            assert_matches_type(GnssObservationsetQueryhelpResponse, gnss_observationset, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -414,7 +415,7 @@ class TestAsyncGnssObservationset:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         gnss_observationset = await async_client.gnss_observationset.queryhelp()
-        assert gnss_observationset is None
+        assert_matches_type(GnssObservationsetQueryhelpResponse, gnss_observationset, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -423,7 +424,7 @@ class TestAsyncGnssObservationset:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         gnss_observationset = await response.parse()
-        assert gnss_observationset is None
+        assert_matches_type(GnssObservationsetQueryhelpResponse, gnss_observationset, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -432,7 +433,7 @@ class TestAsyncGnssObservationset:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             gnss_observationset = await response.parse()
-            assert gnss_observationset is None
+            assert_matches_type(GnssObservationsetQueryhelpResponse, gnss_observationset, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

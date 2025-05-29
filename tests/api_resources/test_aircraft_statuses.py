@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     AircraftstatusAbridged,
     AircraftStatusTupleResponse,
+    AircraftStatusQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -380,7 +381,7 @@ class TestAircraftStatuses:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         aircraft_status = client.aircraft_statuses.queryhelp()
-        assert aircraft_status is None
+        assert_matches_type(AircraftStatusQueryhelpResponse, aircraft_status, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -389,7 +390,7 @@ class TestAircraftStatuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft_status = response.parse()
-        assert aircraft_status is None
+        assert_matches_type(AircraftStatusQueryhelpResponse, aircraft_status, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -398,7 +399,7 @@ class TestAircraftStatuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft_status = response.parse()
-            assert aircraft_status is None
+            assert_matches_type(AircraftStatusQueryhelpResponse, aircraft_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -803,7 +804,7 @@ class TestAsyncAircraftStatuses:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft_status = await async_client.aircraft_statuses.queryhelp()
-        assert aircraft_status is None
+        assert_matches_type(AircraftStatusQueryhelpResponse, aircraft_status, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -812,7 +813,7 @@ class TestAsyncAircraftStatuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft_status = await response.parse()
-        assert aircraft_status is None
+        assert_matches_type(AircraftStatusQueryhelpResponse, aircraft_status, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -821,7 +822,7 @@ class TestAsyncAircraftStatuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft_status = await response.parse()
-            assert aircraft_status is None
+            assert_matches_type(AircraftStatusQueryhelpResponse, aircraft_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

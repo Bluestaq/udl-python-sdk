@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     TaiUtcListResponse,
     TaiUtcTupleResponse,
+    TaiUtcQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -316,7 +317,7 @@ class TestTaiUtc:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         tai_utc = client.tai_utc.queryhelp()
-        assert tai_utc is None
+        assert_matches_type(TaiUtcQueryhelpResponse, tai_utc, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -325,7 +326,7 @@ class TestTaiUtc:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tai_utc = response.parse()
-        assert tai_utc is None
+        assert_matches_type(TaiUtcQueryhelpResponse, tai_utc, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -334,7 +335,7 @@ class TestTaiUtc:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tai_utc = response.parse()
-            assert tai_utc is None
+            assert_matches_type(TaiUtcQueryhelpResponse, tai_utc, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -679,7 +680,7 @@ class TestAsyncTaiUtc:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         tai_utc = await async_client.tai_utc.queryhelp()
-        assert tai_utc is None
+        assert_matches_type(TaiUtcQueryhelpResponse, tai_utc, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -688,7 +689,7 @@ class TestAsyncTaiUtc:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tai_utc = await response.parse()
-        assert tai_utc is None
+        assert_matches_type(TaiUtcQueryhelpResponse, tai_utc, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -697,7 +698,7 @@ class TestAsyncTaiUtc:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tai_utc = await response.parse()
-            assert tai_utc is None
+            assert_matches_type(TaiUtcQueryhelpResponse, tai_utc, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

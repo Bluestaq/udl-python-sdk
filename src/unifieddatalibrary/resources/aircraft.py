@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.aircraft_full import AircraftFull
 from ..types.aircraft_abridged import AircraftAbridged
 from ..types.entity_ingest_param import EntityIngestParam
+from ..types.aircraft_queryhelp_response import AircraftQueryhelpResponse
 from ..types.aircraft_tuple_query_response import AircraftTupleQueryResponse
 
 __all__ = ["AircraftResource", "AsyncAircraftResource"]
@@ -497,18 +498,17 @@ class AircraftResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AircraftQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/aircraft/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AircraftQueryhelpResponse,
         )
 
     def tuple_query(
@@ -1031,18 +1031,17 @@ class AsyncAircraftResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AircraftQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/aircraft/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AircraftQueryhelpResponse,
         )
 
     async def tuple_query(

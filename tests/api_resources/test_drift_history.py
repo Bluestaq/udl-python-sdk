@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     DriftHistoryTupleResponse,
+    DriftHistoryQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import DriftHistoryFull, DriftHistoryAbridged
@@ -137,7 +138,7 @@ class TestDriftHistory:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         drift_history = client.drift_history.queryhelp()
-        assert drift_history is None
+        assert_matches_type(DriftHistoryQueryhelpResponse, drift_history, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -146,7 +147,7 @@ class TestDriftHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         drift_history = response.parse()
-        assert drift_history is None
+        assert_matches_type(DriftHistoryQueryhelpResponse, drift_history, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -155,7 +156,7 @@ class TestDriftHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             drift_history = response.parse()
-            assert drift_history is None
+            assert_matches_type(DriftHistoryQueryhelpResponse, drift_history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -319,7 +320,7 @@ class TestAsyncDriftHistory:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         drift_history = await async_client.drift_history.queryhelp()
-        assert drift_history is None
+        assert_matches_type(DriftHistoryQueryhelpResponse, drift_history, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -328,7 +329,7 @@ class TestAsyncDriftHistory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         drift_history = await response.parse()
-        assert drift_history is None
+        assert_matches_type(DriftHistoryQueryhelpResponse, drift_history, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -337,7 +338,7 @@ class TestAsyncDriftHistory:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             drift_history = await response.parse()
-            assert drift_history is None
+            assert_matches_type(DriftHistoryQueryhelpResponse, drift_history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     NavigationGetResponse,
     NavigationListResponse,
     NavigationTupleResponse,
+    NavigationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -396,7 +397,7 @@ class TestNavigation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         navigation = client.navigation.queryhelp()
-        assert navigation is None
+        assert_matches_type(NavigationQueryhelpResponse, navigation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -405,7 +406,7 @@ class TestNavigation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         navigation = response.parse()
-        assert navigation is None
+        assert_matches_type(NavigationQueryhelpResponse, navigation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -414,7 +415,7 @@ class TestNavigation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             navigation = response.parse()
-            assert navigation is None
+            assert_matches_type(NavigationQueryhelpResponse, navigation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -835,7 +836,7 @@ class TestAsyncNavigation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         navigation = await async_client.navigation.queryhelp()
-        assert navigation is None
+        assert_matches_type(NavigationQueryhelpResponse, navigation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -844,7 +845,7 @@ class TestAsyncNavigation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         navigation = await response.parse()
-        assert navigation is None
+        assert_matches_type(NavigationQueryhelpResponse, navigation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -853,7 +854,7 @@ class TestAsyncNavigation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             navigation = await response.parse()
-            assert navigation is None
+            assert_matches_type(NavigationQueryhelpResponse, navigation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

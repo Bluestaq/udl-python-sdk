@@ -46,8 +46,10 @@ class PathsResource(SyncAPIResource):
         id: str,
         classification_marking: str,
         body: FileTypes,
+        delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -67,9 +69,13 @@ class PathsResource(SyncAPIResource):
 
           classification_marking: Classification (ex. U//FOUO)
 
+          delete_after: Length of time after which to automatically delete the file.
+
           description: Description
 
           overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
+
+          send_notification: Whether or not to send a notification that this file was uploaded.
 
           tags: Tags
 
@@ -93,8 +99,10 @@ class PathsResource(SyncAPIResource):
                     {
                         "id": id,
                         "classification_marking": classification_marking,
+                        "delete_after": delete_after,
                         "description": description,
                         "overwrite": overwrite,
+                        "send_notification": send_notification,
                         "tags": tags,
                     },
                     path_create_params.PathCreateParams,
@@ -130,8 +138,10 @@ class AsyncPathsResource(AsyncAPIResource):
         id: str,
         classification_marking: str,
         body: FileTypes,
+        delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -151,9 +161,13 @@ class AsyncPathsResource(AsyncAPIResource):
 
           classification_marking: Classification (ex. U//FOUO)
 
+          delete_after: Length of time after which to automatically delete the file.
+
           description: Description
 
           overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
+
+          send_notification: Whether or not to send a notification that this file was uploaded.
 
           tags: Tags
 
@@ -177,8 +191,10 @@ class AsyncPathsResource(AsyncAPIResource):
                     {
                         "id": id,
                         "classification_marking": classification_marking,
+                        "delete_after": delete_after,
                         "description": description,
                         "overwrite": overwrite,
+                        "send_notification": send_notification,
                         "tags": tags,
                     },
                     path_create_params.PathCreateParams,

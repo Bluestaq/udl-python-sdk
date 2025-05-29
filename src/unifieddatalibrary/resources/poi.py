@@ -32,6 +32,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.poi_get_response import PoiGetResponse
 from ..types.poi_list_response import PoiListResponse
 from ..types.poi_tuple_response import PoiTupleResponse
+from ..types.poi_queryhelp_response import PoiQueryhelpResponse
 
 __all__ = ["PoiResource", "AsyncPoiResource"]
 
@@ -538,18 +539,17 @@ class PoiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> PoiQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/poi/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=PoiQueryhelpResponse,
         )
 
     def tuple(
@@ -1151,18 +1151,17 @@ class AsyncPoiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> PoiQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/poi/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=PoiQueryhelpResponse,
         )
 
     async def tuple(

@@ -15,6 +15,7 @@ from unifieddatalibrary.types.diplomatic_clearance import (
     CountryListResponse,
     CountryTupleResponse,
     CountryRetrieveResponse,
+    CountryQueryHelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -568,7 +569,7 @@ class TestCountry:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         country = client.diplomatic_clearance.country.query_help()
-        assert country is None
+        assert_matches_type(CountryQueryHelpResponse, country, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -577,7 +578,7 @@ class TestCountry:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         country = response.parse()
-        assert country is None
+        assert_matches_type(CountryQueryHelpResponse, country, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -586,7 +587,7 @@ class TestCountry:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             country = response.parse()
-            assert country is None
+            assert_matches_type(CountryQueryHelpResponse, country, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1234,7 +1235,7 @@ class TestAsyncCountry:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         country = await async_client.diplomatic_clearance.country.query_help()
-        assert country is None
+        assert_matches_type(CountryQueryHelpResponse, country, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1243,7 +1244,7 @@ class TestAsyncCountry:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         country = await response.parse()
-        assert country is None
+        assert_matches_type(CountryQueryHelpResponse, country, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1252,7 +1253,7 @@ class TestAsyncCountry:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             country = await response.parse()
-            assert country is None
+            assert_matches_type(CountryQueryHelpResponse, country, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

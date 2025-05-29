@@ -32,6 +32,7 @@ from .._base_client import make_request_options
 from ..types.dropzone_query_response import DropzoneQueryResponse
 from ..types.dropzone_tuple_response import DropzoneTupleResponse
 from ..types.dropzone_retrieve_response import DropzoneRetrieveResponse
+from ..types.dropzone_query_help_response import DropzoneQueryHelpResponse
 
 __all__ = ["DropzoneResource", "AsyncDropzoneResource"]
 
@@ -672,18 +673,17 @@ class DropzoneResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> DropzoneQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/dropzone/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=DropzoneQueryHelpResponse,
         )
 
     def tuple(
@@ -1415,18 +1415,17 @@ class AsyncDropzoneResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> DropzoneQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/dropzone/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=DropzoneQueryHelpResponse,
         )
 
     async def tuple(

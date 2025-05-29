@@ -65,6 +65,26 @@ class Body(TypedDict, total=False):
     FR, NATO, US, etc.).
     """
 
+    attitude: Iterable[float]
+    """The attitude (Yaw, Pitch, and Roll), in degrees, of the track object.
+
+    When provided, the array must always contain 3 values. These values represent
+    the vehicle's rotation about the vertical, lateral, and longitudinal axes,
+    respectively, in a locally level, East, North, Up "right handed" coordinate
+    system centered on the vehicle. Yaw is measured in degrees and ranges from -180
+    to 180. Pitch is measured in degrees and ranges from -90 to 90. Roll is measured
+    in degrees and ranges from -180 to 180.
+    """
+
+    attitude_rate: Annotated[Iterable[float], PropertyInfo(alias="attitudeRate")]
+    """
+    The attitude rate (Yaw Rate, Pitch Rate, and Roll Rate), in degrees per second,
+    of the track object. When provided, the array must always contain 3 values.
+    These values represent the rate of change of the vehicle's rotation about the
+    vertical, lateral, and longitudinal axes, respectively, in a locally level,
+    East, North, Up "right handed" coordinate system centered on the vehicle.
+    """
+
     call_sign: Annotated[str, PropertyInfo(alias="callSign")]
     """The call sign currently assigned to this track object."""
 
@@ -131,6 +151,12 @@ class Body(TypedDict, total=False):
 
     ecef_vel: Annotated[Iterable[float], PropertyInfo(alias="ecefVel")]
     """Track object velocity in ECEF [x', y', z'], meters/sec.
+
+    When provided, array must always contain 3 values.
+    """
+
+    e_nu_acc: Annotated[Iterable[float], PropertyInfo(alias="eNUAcc")]
+    """East, North, Up acceleration components, in meters per second squared.
 
     When provided, array must always contain 3 values.
     """

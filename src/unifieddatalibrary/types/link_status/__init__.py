@@ -15,4 +15,5 @@ from .datalink_list_response import DatalinkListResponse as DatalinkListResponse
 from .history_count_response import HistoryCountResponse as HistoryCountResponse
 from .datalink_count_response import DatalinkCountResponse as DatalinkCountResponse
 from .datalink_tuple_response import DatalinkTupleResponse as DatalinkTupleResponse
+from .datalink_queryhelp_response import DatalinkQueryhelpResponse as DatalinkQueryhelpResponse
 from .datalink_unvalidated_publish_params import DatalinkUnvalidatedPublishParams as DatalinkUnvalidatedPublishParams

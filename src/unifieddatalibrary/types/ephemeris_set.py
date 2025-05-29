@@ -71,7 +71,9 @@ class EphemerisSet(BaseModel):
     comments: Optional[str] = None
     """Additional source provided comments associated with the ephemeris."""
 
-    cov_reference_frame: Optional[Literal["J2000", "UVW"]] = FieldInfo(alias="covReferenceFrame", default=None)
+    cov_reference_frame: Optional[Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"]] = FieldInfo(
+        alias="covReferenceFrame", default=None
+    )
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.

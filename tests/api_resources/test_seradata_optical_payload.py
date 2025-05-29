@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SeradataOpticalPayloadGetResponse,
     SeradataOpticalPayloadListResponse,
     SeradataOpticalPayloadTupleResponse,
+    SeradataOpticalPayloadQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -337,7 +338,7 @@ class TestSeradataOpticalPayload:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         seradata_optical_payload = client.seradata_optical_payload.queryhelp()
-        assert seradata_optical_payload is None
+        assert_matches_type(SeradataOpticalPayloadQueryhelpResponse, seradata_optical_payload, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -346,7 +347,7 @@ class TestSeradataOpticalPayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_optical_payload = response.parse()
-        assert seradata_optical_payload is None
+        assert_matches_type(SeradataOpticalPayloadQueryhelpResponse, seradata_optical_payload, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -355,7 +356,7 @@ class TestSeradataOpticalPayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_optical_payload = response.parse()
-            assert seradata_optical_payload is None
+            assert_matches_type(SeradataOpticalPayloadQueryhelpResponse, seradata_optical_payload, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -718,7 +719,7 @@ class TestAsyncSeradataOpticalPayload:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradata_optical_payload = await async_client.seradata_optical_payload.queryhelp()
-        assert seradata_optical_payload is None
+        assert_matches_type(SeradataOpticalPayloadQueryhelpResponse, seradata_optical_payload, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -727,7 +728,7 @@ class TestAsyncSeradataOpticalPayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_optical_payload = await response.parse()
-        assert seradata_optical_payload is None
+        assert_matches_type(SeradataOpticalPayloadQueryhelpResponse, seradata_optical_payload, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -736,7 +737,7 @@ class TestAsyncSeradataOpticalPayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_optical_payload = await response.parse()
-            assert seradata_optical_payload is None
+            assert_matches_type(SeradataOpticalPayloadQueryhelpResponse, seradata_optical_payload, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

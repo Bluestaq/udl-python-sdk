@@ -39,6 +39,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.notification_list_response import NotificationListResponse
 from ...types.notification_tuple_response import NotificationTupleResponse
 from ...types.notification.notification_full import NotificationFull
+from ...types.notification_queryhelp_response import NotificationQueryhelpResponse
 
 __all__ = ["NotificationResource", "AsyncNotificationResource"]
 
@@ -414,18 +415,17 @@ class NotificationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> NotificationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/notification/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=NotificationQueryhelpResponse,
         )
 
     def tuple(
@@ -860,18 +860,17 @@ class AsyncNotificationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> NotificationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/notification/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=NotificationQueryhelpResponse,
         )
 
     async def tuple(

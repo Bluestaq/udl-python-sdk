@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     ConjunctionFull,
     ConjunctionAbridged,
     ConjunctionTupleResponse,
+    ConjunctionQueryhelpResponse,
     ConjunctionGetHistoryResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
@@ -548,7 +549,7 @@ class TestConjunctions:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.queryhelp()
-        assert conjunction is None
+        assert_matches_type(ConjunctionQueryhelpResponse, conjunction, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -557,7 +558,7 @@ class TestConjunctions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         conjunction = response.parse()
-        assert conjunction is None
+        assert_matches_type(ConjunctionQueryhelpResponse, conjunction, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -566,7 +567,7 @@ class TestConjunctions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             conjunction = response.parse()
-            assert conjunction is None
+            assert_matches_type(ConjunctionQueryhelpResponse, conjunction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1249,7 +1250,7 @@ class TestAsyncConjunctions:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         conjunction = await async_client.conjunctions.queryhelp()
-        assert conjunction is None
+        assert_matches_type(ConjunctionQueryhelpResponse, conjunction, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1258,7 +1259,7 @@ class TestAsyncConjunctions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         conjunction = await response.parse()
-        assert conjunction is None
+        assert_matches_type(ConjunctionQueryhelpResponse, conjunction, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1267,7 +1268,7 @@ class TestAsyncConjunctions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             conjunction = await response.parse()
-            assert conjunction is None
+            assert_matches_type(ConjunctionQueryhelpResponse, conjunction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

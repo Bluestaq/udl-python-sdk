@@ -1702,11 +1702,22 @@ class SensorTupleResponseItemEntity(BaseModel):
     """Source of the data."""
 
     type: Literal[
-        "AIRCRAFT", "BUS", "COMM", "IR", "NAVIGATION", "ONORBIT", "RFEMITTER", "SCIENTIFIC", "SENSOR", "SITE", "VESSEL"
+        "AIRCRAFT",
+        "BUS",
+        "COMM",
+        "IR",
+        "LASEREMITTER",
+        "NAVIGATION",
+        "ONORBIT",
+        "RFEMITTER",
+        "SCIENTIFIC",
+        "SENSOR",
+        "SITE",
+        "VESSEL",
     ]
     """
     The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-    NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+    LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
     """
 
     country_code: Optional[str] = FieldInfo(alias="countryCode", default=None)
@@ -1851,6 +1862,13 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     beamOrder field.
     """
 
+    analog_to_digital_bit_size: Optional[int] = FieldInfo(alias="analogToDigitalBitSize", default=None)
+    """
+    Number of bits used in the conversion from analog electrons in a pixel well to a
+    digital number. The digital number has a maximum value of 2^N, where N is the
+    number of bits.
+    """
+
     aperture: Optional[float] = None
     """Optical sensor camera aperture."""
 
@@ -1858,6 +1876,22 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     """
     For ASR (Air Surveillance Radar) sensors, the scan (360 deg sweep) rate of the
     radar, in scans/minute.
+    """
+
+    atmos_receiver_loss: Optional[float] = FieldInfo(alias="atmosReceiverLoss", default=None)
+    """One-way radar receiver loss factor due to atmospheric effects.
+
+    This value will often be the same as the corresponding transmission factor but
+    may be different for bistatic systems.
+    """
+
+    atmos_transmission_loss: Optional[float] = FieldInfo(alias="atmosTransmissionLoss", default=None)
+    """One-way radar transmission loss factor due to atmospheric effects."""
+
+    avg_atmos_seeing_conditions: Optional[float] = FieldInfo(alias="avgAtmosSeeingConditions", default=None)
+    """
+    Average atmospheric angular width with no distortion from turbulence at an
+    optical sensor site in arcseconds.
     """
 
     az_angs: Optional[List[float]] = FieldInfo(alias="azAngs", default=None)
@@ -1870,8 +1904,25 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     azimuth_rate: Optional[float] = FieldInfo(alias="azimuthRate", default=None)
     """Azimuth rate acquisition limit (radians/minute)."""
 
+    background_sky_radiance: Optional[float] = FieldInfo(alias="backgroundSkyRadiance", default=None)
+    """
+    Average background sky brightness at an optical sensor site during new moon
+    conditions. This field uses units of watts per square meter per steradian
+    (W/(m^2 str)) consistent with sensor detection bands.
+    """
+
+    background_sky_vis_mag: Optional[float] = FieldInfo(alias="backgroundSkyVisMag", default=None)
+    """
+    Average background sky brightness at an optical sensor site during new moon
+    conditions. This field uses units of visual magnitude consistent with sensor
+    detection bands.
+    """
+
     band: Optional[str] = None
     """Sensor band."""
+
+    bandwidth: Optional[float] = None
+    """The total bandwidth, in megahertz, about the radar center frequency."""
 
     beam_order: Optional[List[str]] = FieldInfo(alias="beamOrder", default=None)
     """Array designating the beam order of provided values (e.g.
@@ -1892,6 +1943,22 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     boresight_off_angle: Optional[float] = FieldInfo(alias="boresightOffAngle", default=None)
     """The number of degrees off of the boresight for the sensor."""
 
+    center_wavelength: Optional[float] = FieldInfo(alias="centerWavelength", default=None)
+    """Weighted center wavelength for an optical sensor bandpass in micrometers.
+
+    It is the center wavelength in a weighted integral sense, accounting for the
+    sensitivity vs. wavelength curve for the sensor focal plane array.
+    """
+
+    collapsing_loss: Optional[float] = FieldInfo(alias="collapsingLoss", default=None)
+    """Collapsing loss in decibels.
+
+    Collapsing losses occur when two or more sources of noise are added to the
+    target signal. Examples include receiver bandwidth mismatch with filtering
+    bandwidth and elevation or azimuth beam collapse onto position/height indicator
+    displays.
+    """
+
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Time the row was created in the database, auto-populated by the system."""
 
@@ -1907,6 +1974,12 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     rejected, measured in units of inverse second.
     """
 
+    dark_current: Optional[float] = FieldInfo(alias="darkCurrent", default=None)
+    """
+    Current flowing through optical sensor focal plane electronics with a closed
+    shutter in electrons per second.
+    """
+
     delay_gates: Optional[List[float]] = FieldInfo(alias="delayGates", default=None)
     """
     Array of time delay(s) for pulses from a radar beam to get to the first range
@@ -1916,6 +1989,28 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
 
     description: Optional[str] = None
     """Description of the equipment and data source."""
+
+    detect_snr: Optional[float] = FieldInfo(alias="detectSNR", default=None)
+    """Detection signal-to-noise ratio (SNR) threshold in decibels.
+
+    This value is typically lower than trackSNR.
+    """
+
+    duty_cycle: Optional[float] = FieldInfo(alias="dutyCycle", default=None)
+    """Sensor duty cycle as a fraction of 1.
+
+    Duty cycle is the fraction of time a sensor is actively transmitting.
+    """
+
+    earth_limb_excl_hgt: Optional[float] = FieldInfo(alias="earthLimbExclHgt", default=None)
+    """
+    Sensor Earth limb exclusion height in kilometers and is generally only applied
+    to space-based sensors. Some models used an earth exclusion angle instead, but
+    this assumes the sensor is in a circular orbit with constant altitude relative
+    to the earth. The limb exclusion height can be used for space-based sensors in
+    any orbit (assuming it is constant with sensor altitude). The limb height is
+    defined to be 0 at the surface of the earth.
+    """
 
     el_angs: Optional[List[float]] = FieldInfo(alias="elAngs", default=None)
     """Array of elevation angles of a radar beam, in degrees.
@@ -1948,6 +2043,20 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     failing the first guess check.
     """
 
+    filter_mismatch_factor: Optional[float] = FieldInfo(alias="filterMismatchFactor", default=None)
+    """
+    Noise term, in decibels, that arises when a radar receiver filter has a
+    non-optimal bandwidth for an incoming signal (i.e., when it does not match the
+    pulse width).
+    """
+
+    f_num: Optional[float] = FieldInfo(alias="fNum", default=None)
+    """F-number for an optical telescope.
+
+    It is dimensionless and is defined as the ratio of the focal length to the
+    aperture width.
+    """
+
     focal_point: Optional[float] = FieldInfo(alias="focalPoint", default=None)
     """
     For radar based sensors, the focal point elevation of the radar at the site, in
@@ -1955,7 +2064,7 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     """
 
     h_fov: Optional[float] = FieldInfo(alias="hFOV", default=None)
-    """Horizontal field of view."""
+    """Horizontal field of view, in degrees."""
 
     h_res_pixels: Optional[int] = FieldInfo(alias="hResPixels", default=None)
     """Horizontal pixel resolution."""
@@ -1975,6 +2084,20 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     location: Optional[str] = None
     """Site where measurement is taken."""
 
+    loop_gain: Optional[float] = FieldInfo(alias="loopGain", default=None)
+    """Aggregated radar range equation gain in decibels for maximum sensitivity.
+
+    It is a roll-up value for low fidelity modeling and is often the only
+    sensitivity value available for a radar system without access to detailed
+    performance parameters.
+    """
+
+    lunar_excl_angle: Optional[float] = FieldInfo(alias="lunarExclAngle", default=None)
+    """
+    Lowest aspect angle of the full moon in degrees at which the sensor can achieve
+    full performance.
+    """
+
     mag_dec: Optional[float] = FieldInfo(alias="magDec", default=None)
     """Angle between magnetic north and true north at the sensor site, in degrees."""
 
@@ -1983,6 +2106,9 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
 
     max_deviation_angle: Optional[float] = FieldInfo(alias="maxDeviationAngle", default=None)
     """Max deviation angle of the sensor in degrees."""
+
+    max_integration_time: Optional[float] = FieldInfo(alias="maxIntegrationTime", default=None)
+    """Maximum integration time per image frame in seconds for an optical sensor."""
 
     max_observable_range: Optional[float] = FieldInfo(alias="maxObservableRange", default=None)
     """Maximum observable sensor range, in kilometers."""
@@ -1993,6 +2119,12 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     this range.
     """
 
+    max_wavelength: Optional[float] = FieldInfo(alias="maxWavelength", default=None)
+    """Maximum wavelength detectable by an optical sensor in micrometers."""
+
+    min_integration_time: Optional[float] = FieldInfo(alias="minIntegrationTime", default=None)
+    """Minimum integration time per image frame in seconds for an optical sensor."""
+
     min_range_limit: Optional[float] = FieldInfo(alias="minRangeLimit", default=None)
     """Minimum range measurement capability of the sensor, in kilometers."""
 
@@ -2002,16 +2134,125 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     The values for this range from 0.0 - + 99.99 dB.
     """
 
+    min_wavelength: Optional[float] = FieldInfo(alias="minWavelength", default=None)
+    """Minimum wavelength detectable by an optical sensor in micrometers."""
+
     negative_range_rate_limit: Optional[float] = FieldInfo(alias="negativeRangeRateLimit", default=None)
     """Negative Range-rate/relative velocity limit (kilometers/second)."""
 
+    noise_figure: Optional[float] = FieldInfo(alias="noiseFigure", default=None)
+    """Noise figure for a radar system in decibels.
+
+    This value may be used to compute system noise when the system temperature is
+    unavailable.
+    """
+
+    non_coherent_integrated_pulses: Optional[int] = FieldInfo(alias="nonCoherentIntegratedPulses", default=None)
+    """
+    Number of pulses that are non-coherently integrated during detection processing.
+    """
+
     num_integrated_pulses: Optional[int] = FieldInfo(alias="numIntegratedPulses", default=None)
     """For radar based sensors, number of integrated pulses in a transmit cycle."""
+
+    num_integration_frames: Optional[int] = FieldInfo(alias="numIntegrationFrames", default=None)
+    """Number of integration frames for an optical sensor."""
+
+    num_optical_integration_modes: Optional[int] = FieldInfo(alias="numOpticalIntegrationModes", default=None)
+    """The number of optical integration mode characteristics provided in this record.
+
+    If provided, the numOpticalIntegrationModes value indicates the number of
+    elements in each of the opticalIntegrationTimes, opticalIntegrationAngularRates,
+    opticalIntegrationFrames, opticalIntegrationPixelBinnings, and
+    opticalIntegrationSNRs arrays.
+    """
+
+    num_waveforms: Optional[int] = FieldInfo(alias="numWaveforms", default=None)
+    """The number of waveforms characteristics provided in this record.
+
+    If provided, the numWaveforms value indicates the number of elements in each of
+    the waveformPulseWidths, waveformBandWidths, waveformMinRanges,
+    waveformMaxRanges, and waveformLoopGains arrays.
+    """
+
+    optical_integration_angular_rates: Optional[List[float]] = FieldInfo(
+        alias="opticalIntegrationAngularRates", default=None
+    )
+    """
+    Array containing the angular rate, in arcsec/sec, for each provided optical
+    integration mode. The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_frames: Optional[List[float]] = FieldInfo(alias="opticalIntegrationFrames", default=None)
+    """Array containing the number of frames, for each optical integration mode.
+
+    The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_pixel_binnings: Optional[List[float]] = FieldInfo(
+        alias="opticalIntegrationPixelBinnings", default=None
+    )
+    """Array containing the pixel binning, for each optical integration mode.
+
+    The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_sn_rs: Optional[List[float]] = FieldInfo(alias="opticalIntegrationSNRs", default=None)
+    """Array of optical integration modes signal to noise ratios.
+
+    The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_times: Optional[List[float]] = FieldInfo(alias="opticalIntegrationTimes", default=None)
+    """
+    Array containing the time, in seconds, for each provided optical integration
+    mode. The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_transmission: Optional[float] = FieldInfo(alias="opticalTransmission", default=None)
+    """Fraction of incident light transmitted to an optical sensor focal plane array.
+
+    The value is given as a fraction of 1, not as a percent.
+    """
 
     orig_network: Optional[str] = FieldInfo(alias="origNetwork", default=None)
     """
     The originating source network on which this record was created, auto-populated
     by the system.
+    """
+
+    pattern_absorption_loss: Optional[float] = FieldInfo(alias="patternAbsorptionLoss", default=None)
+    """Two-way pattern absorption/propagation loss due to medium in decibels."""
+
+    pattern_scan_loss: Optional[float] = FieldInfo(alias="patternScanLoss", default=None)
+    """Losses from the beam shape, scanning, and pattern factor in decibels.
+
+    These losses occur when targets are not directly in line with a beam center. For
+    space surveillance, this will occur most often during sensor scanning.
+    """
+
+    peak_power: Optional[float] = FieldInfo(alias="peakPower", default=None)
+    """
+    Maximum instantaneous radar transmit power in watts for use in the radar range
+    equation.
+    """
+
+    pixel_instantaneous_fov: Optional[float] = FieldInfo(alias="pixelInstantaneousFOV", default=None)
+    """
+    Angular field-of-view covered by one pixel in a focal plane array in
+    microradians. The pixel is assumed to be a perfect square so that only a single
+    value is required.
+    """
+
+    pixel_well_depth: Optional[int] = FieldInfo(alias="pixelWellDepth", default=None)
+    """
+    Maximum number of electrons that can be collected in a single pixel on an
+    optical sensor focal plane array.
     """
 
     positive_range_rate_limit: Optional[float] = FieldInfo(alias="positiveRangeRateLimit", default=None)
@@ -2022,6 +2263,9 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
 
     Number of new pulses transmitted per second.
     """
+
+    prob_detect_snr: Optional[float] = FieldInfo(alias="probDetectSNR", default=None)
+    """Designated probability of detection at the signal-to-noise detection threshold."""
 
     prob_false_alarm: Optional[float] = FieldInfo(alias="probFalseAlarm", default=None)
     """
@@ -2036,8 +2280,14 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     associated beam(s) must be provided in the beamOrder field.
     """
 
+    quantum_eff: Optional[float] = FieldInfo(alias="quantumEff", default=None)
+    """Fraction of incident photons converted to electrons at the focal plane array.
+
+    This value is a decimal number between 0 and 1, inclusive.
+    """
+
     radar_frequency: Optional[float] = FieldInfo(alias="radarFrequency", default=None)
-    """Radar frequency of the sensor (if a radar sensor)."""
+    """Radar frequency in hertz, of the sensor (if a radar sensor)."""
 
     radar_message_format: Optional[str] = FieldInfo(alias="radarMessageFormat", default=None)
     """Message data format transmitted by the sensor digitizer."""
@@ -2055,6 +2305,12 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     radio_frequency: Optional[float] = FieldInfo(alias="radioFrequency", default=None)
     """Radio frequency (if sensor is RF)."""
 
+    radome_loss: Optional[float] = FieldInfo(alias="radomeLoss", default=None)
+    """
+    Losses due to the presence of a protective radome surrounding a radar sensor, in
+    decibels.
+    """
+
     range_gates: Optional[List[int]] = FieldInfo(alias="rangeGates", default=None)
     """
     Array of the number(s) of discrete altitudes where return signals are sampled by
@@ -2067,6 +2323,32 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
 
     If this field is populated, the associated beam(s) must be provided in the
     beamOrder field.
+    """
+
+    read_noise: Optional[int] = FieldInfo(alias="readNoise", default=None)
+    """
+    Number of false-signal electrons generated by optical sensor focal plane
+    read-out electronics from photon-to-electron conversion during frame
+    integration. The units are in electrons RMS.
+    """
+
+    receive_gain: Optional[float] = FieldInfo(alias="receiveGain", default=None)
+    """Radar receive gain in decibels."""
+
+    receive_horiz_beam_width: Optional[float] = FieldInfo(alias="receiveHorizBeamWidth", default=None)
+    """Horizontal/azimuthal receive beamwidth for a radar in degrees."""
+
+    receive_loss: Optional[float] = FieldInfo(alias="receiveLoss", default=None)
+    """Aggregate radar receive loss, in decibels."""
+
+    receive_vert_beam_width: Optional[float] = FieldInfo(alias="receiveVertBeamWidth", default=None)
+    """Vertical/elevation receive beamwidth for a radar in degrees."""
+
+    ref_temp: Optional[float] = FieldInfo(alias="refTemp", default=None)
+    """Reference temperature for radar noise in Kelvin.
+
+    A reference temperature is used when the radar system temperature is unknown and
+    is combined with the system noise figure to estimate signal loss.
     """
 
     req_records: Optional[List[int]] = FieldInfo(alias="reqRecords", default=None)
@@ -2091,8 +2373,20 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     beamOrder field.
     """
 
+    signal_processing_loss: Optional[float] = FieldInfo(alias="signalProcessingLoss", default=None)
+    """Radar signal processing losses, in decibels."""
+
     site_code: Optional[str] = FieldInfo(alias="siteCode", default=None)
     """Site code of the sensor."""
+
+    solar_excl_angle: Optional[float] = FieldInfo(alias="solarExclAngle", default=None)
+    """Sensor and target position vector origins are at the center of the earth.
+
+    The sun vector origin is at the target position and points toward the sun. Any
+    value between 0 and 180 degrees is acceptable and is assumed to apply in both
+    directions (i.e., a solar exclusion angle of 30 degrees is understood to mean no
+    viewing for any angle between -30 deg and +30 deg).
+    """
 
     spec_avg_spectra_nums: Optional[List[int]] = FieldInfo(alias="specAvgSpectraNums", default=None)
     """
@@ -2140,14 +2434,42 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     range from 0 - PI/2.
     """
 
+    track_snr: Optional[float] = FieldInfo(alias="trackSNR", default=None)
+    """Track signal-to-noise ratio (SNR) threshold in decibels.
+
+    This value is typically higher than detectSNR.
+    """
+
+    transmit_gain: Optional[float] = FieldInfo(alias="transmitGain", default=None)
+    """Radar transmit gain in decibels."""
+
+    transmit_horiz_beam_width: Optional[float] = FieldInfo(alias="transmitHorizBeamWidth", default=None)
+    """Horizontal/azimuthal transmit beamwidth for a radar in degrees."""
+
+    transmit_loss: Optional[float] = FieldInfo(alias="transmitLoss", default=None)
+    """Aggregate radar transmit loss, in decibels."""
+
     transmit_power: Optional[float] = FieldInfo(alias="transmitPower", default=None)
     """Radar transmit power in Watts."""
+
+    transmit_vert_beam_width: Optional[float] = FieldInfo(alias="transmitVertBeamWidth", default=None)
+    """Vertical/elevation transmit beamwidth for a radar in degrees."""
 
     true_north_corrector: Optional[int] = FieldInfo(alias="trueNorthCorrector", default=None)
     """True North correction for the sensor, in ACP (Azimunth Change Pulse) count."""
 
     true_tilt: Optional[float] = FieldInfo(alias="trueTilt", default=None)
     """Antenna true tilt, in degrees."""
+
+    twilight_angle: Optional[float] = FieldInfo(alias="twilightAngle", default=None)
+    """Twilight angle for ground-based optical sensors in degrees.
+
+    A sensor cannot view targets until the sun is below the twilight angle relative
+    to the local horizon. The sign of the angle is positive despite the sun
+    elevation being negative after local sunset. Typical values for the twilight
+    angle are civil twilight (6 degrees), nautical twilight (12 degrees), and
+    astronomical twilight (18 degrees).
+    """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Time the row was last updated in the database, auto-populated by the system."""
@@ -2177,10 +2499,45 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
     """
 
     v_fov: Optional[float] = FieldInfo(alias="vFOV", default=None)
-    """Vertical field of view."""
+    """Vertical field of view, in degrees."""
 
     v_res_pixels: Optional[int] = FieldInfo(alias="vResPixels", default=None)
     """Vertical pixel resolution."""
+
+    waveform_bandwidths: Optional[List[float]] = FieldInfo(alias="waveformBandwidths", default=None)
+    """Array containing the bandwidth, in megahertz, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
+
+    waveform_loop_gains: Optional[List[float]] = FieldInfo(alias="waveformLoopGains", default=None)
+    """Array containing the loop gain, in decibels, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field (10 SNR vs. 1 dBsm at 1000 km).
+    """
+
+    waveform_max_ranges: Optional[List[float]] = FieldInfo(alias="waveformMaxRanges", default=None)
+    """Array containing the maximum range, in kilometers, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
+
+    waveform_min_ranges: Optional[List[float]] = FieldInfo(alias="waveformMinRanges", default=None)
+    """Array containing the minimum range, in kilometers, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
+
+    waveform_pulse_widths: Optional[List[float]] = FieldInfo(alias="waveformPulseWidths", default=None)
+    """Array containing the pulse width, in microseconds, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
 
     z1_max_range: Optional[float] = FieldInfo(alias="z1MaxRange", default=None)
     """Peformance zone-1 maximum range, in kilometers.

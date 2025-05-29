@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     IonOobservationListResponse,
     IonOobservationTupleResponse,
+    IonOobservationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -166,7 +167,7 @@ class TestIonOobservation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         ion_oobservation = client.ion_oobservation.queryhelp()
-        assert ion_oobservation is None
+        assert_matches_type(IonOobservationQueryhelpResponse, ion_oobservation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestIonOobservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ion_oobservation = response.parse()
-        assert ion_oobservation is None
+        assert_matches_type(IonOobservationQueryhelpResponse, ion_oobservation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -184,7 +185,7 @@ class TestIonOobservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ion_oobservation = response.parse()
-            assert ion_oobservation is None
+            assert_matches_type(IonOobservationQueryhelpResponse, ion_oobservation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -441,7 +442,7 @@ class TestAsyncIonOobservation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         ion_oobservation = await async_client.ion_oobservation.queryhelp()
-        assert ion_oobservation is None
+        assert_matches_type(IonOobservationQueryhelpResponse, ion_oobservation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -450,7 +451,7 @@ class TestAsyncIonOobservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ion_oobservation = await response.parse()
-        assert ion_oobservation is None
+        assert_matches_type(IonOobservationQueryhelpResponse, ion_oobservation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -459,7 +460,7 @@ class TestAsyncIonOobservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ion_oobservation = await response.parse()
-            assert ion_oobservation is None
+            assert_matches_type(IonOobservationQueryhelpResponse, ion_oobservation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

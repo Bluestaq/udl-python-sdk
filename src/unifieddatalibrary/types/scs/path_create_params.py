@@ -19,11 +19,17 @@ class PathCreateParams(TypedDict, total=False):
 
     body: Required[FileTypes]
 
+    delete_after: Annotated[str, PropertyInfo(alias="deleteAfter")]
+    """Length of time after which to automatically delete the file."""
+
     description: str
     """Description"""
 
     overwrite: bool
     """Whether or not to overwrite a file with the same name and path, if one exists."""
+
+    send_notification: Annotated[bool, PropertyInfo(alias="sendNotification")]
+    """Whether or not to send a notification that this file was uploaded."""
 
     tags: str
     """Tags"""

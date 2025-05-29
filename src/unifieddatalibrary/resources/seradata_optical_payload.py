@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.seradata_optical_payload_get_response import SeradataOpticalPayloadGetResponse
 from ..types.seradata_optical_payload_list_response import SeradataOpticalPayloadListResponse
 from ..types.seradata_optical_payload_tuple_response import SeradataOpticalPayloadTupleResponse
+from ..types.seradata_optical_payload_queryhelp_response import SeradataOpticalPayloadQueryhelpResponse
 
 __all__ = ["SeradataOpticalPayloadResource", "AsyncSeradataOpticalPayloadResource"]
 
@@ -539,18 +540,17 @@ class SeradataOpticalPayloadResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SeradataOpticalPayloadQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/seradataopticalpayload/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SeradataOpticalPayloadQueryhelpResponse,
         )
 
     def tuple(
@@ -1116,18 +1116,17 @@ class AsyncSeradataOpticalPayloadResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SeradataOpticalPayloadQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/seradataopticalpayload/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SeradataOpticalPayloadQueryhelpResponse,
         )
 
     async def tuple(

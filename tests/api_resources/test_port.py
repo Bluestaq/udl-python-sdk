@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     PortGetResponse,
     PortListResponse,
     PortTupleResponse,
+    PortQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -325,7 +326,7 @@ class TestPort:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         port = client.port.queryhelp()
-        assert port is None
+        assert_matches_type(PortQueryhelpResponse, port, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -334,7 +335,7 @@ class TestPort:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         port = response.parse()
-        assert port is None
+        assert_matches_type(PortQueryhelpResponse, port, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -343,7 +344,7 @@ class TestPort:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             port = response.parse()
-            assert port is None
+            assert_matches_type(PortQueryhelpResponse, port, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -694,7 +695,7 @@ class TestAsyncPort:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         port = await async_client.port.queryhelp()
-        assert port is None
+        assert_matches_type(PortQueryhelpResponse, port, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -703,7 +704,7 @@ class TestAsyncPort:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         port = await response.parse()
-        assert port is None
+        assert_matches_type(PortQueryhelpResponse, port, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -712,7 +713,7 @@ class TestAsyncPort:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             port = await response.parse()
-            assert port is None
+            assert_matches_type(PortQueryhelpResponse, port, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

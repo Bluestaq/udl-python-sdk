@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     OnorbitthrusterstatusListResponse,
     OnorbitthrusterstatusTupleResponse,
+    OnorbitthrusterstatusQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -308,7 +309,7 @@ class TestOnorbitthrusterstatus:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         onorbitthrusterstatus = client.onorbitthrusterstatus.queryhelp()
-        assert onorbitthrusterstatus is None
+        assert_matches_type(OnorbitthrusterstatusQueryhelpResponse, onorbitthrusterstatus, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -317,7 +318,7 @@ class TestOnorbitthrusterstatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onorbitthrusterstatus = response.parse()
-        assert onorbitthrusterstatus is None
+        assert_matches_type(OnorbitthrusterstatusQueryhelpResponse, onorbitthrusterstatus, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -326,7 +327,7 @@ class TestOnorbitthrusterstatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onorbitthrusterstatus = response.parse()
-            assert onorbitthrusterstatus is None
+            assert_matches_type(OnorbitthrusterstatusQueryhelpResponse, onorbitthrusterstatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -667,7 +668,7 @@ class TestAsyncOnorbitthrusterstatus:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbitthrusterstatus = await async_client.onorbitthrusterstatus.queryhelp()
-        assert onorbitthrusterstatus is None
+        assert_matches_type(OnorbitthrusterstatusQueryhelpResponse, onorbitthrusterstatus, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -676,7 +677,7 @@ class TestAsyncOnorbitthrusterstatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onorbitthrusterstatus = await response.parse()
-        assert onorbitthrusterstatus is None
+        assert_matches_type(OnorbitthrusterstatusQueryhelpResponse, onorbitthrusterstatus, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -685,7 +686,7 @@ class TestAsyncOnorbitthrusterstatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onorbitthrusterstatus = await response.parse()
-            assert onorbitthrusterstatus is None
+            assert_matches_type(OnorbitthrusterstatusQueryhelpResponse, onorbitthrusterstatus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

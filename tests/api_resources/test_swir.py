@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     SwirListResponse,
     SwirTupleResponse,
+    SwirQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -268,7 +269,7 @@ class TestSwir:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         swir = client.swir.queryhelp()
-        assert swir is None
+        assert_matches_type(SwirQueryhelpResponse, swir, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -277,7 +278,7 @@ class TestSwir:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swir = response.parse()
-        assert swir is None
+        assert_matches_type(SwirQueryhelpResponse, swir, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -286,7 +287,7 @@ class TestSwir:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swir = response.parse()
-            assert swir is None
+            assert_matches_type(SwirQueryhelpResponse, swir, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -583,7 +584,7 @@ class TestAsyncSwir:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         swir = await async_client.swir.queryhelp()
-        assert swir is None
+        assert_matches_type(SwirQueryhelpResponse, swir, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -592,7 +593,7 @@ class TestAsyncSwir:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swir = await response.parse()
-        assert swir is None
+        assert_matches_type(SwirQueryhelpResponse, swir, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -601,7 +602,7 @@ class TestAsyncSwir:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swir = await response.parse()
-            assert swir is None
+            assert_matches_type(SwirQueryhelpResponse, swir, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

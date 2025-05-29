@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     EmitterGeolocationQueryResponse,
     EmitterGeolocationTupleResponse,
     EmitterGeolocationRetrieveResponse,
+    EmitterGeolocationQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 
@@ -333,7 +334,7 @@ class TestEmitterGeolocation:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         emitter_geolocation = client.emitter_geolocation.query_help()
-        assert emitter_geolocation is None
+        assert_matches_type(EmitterGeolocationQueryHelpResponse, emitter_geolocation, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -342,7 +343,7 @@ class TestEmitterGeolocation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         emitter_geolocation = response.parse()
-        assert emitter_geolocation is None
+        assert_matches_type(EmitterGeolocationQueryHelpResponse, emitter_geolocation, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -351,7 +352,7 @@ class TestEmitterGeolocation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             emitter_geolocation = response.parse()
-            assert emitter_geolocation is None
+            assert_matches_type(EmitterGeolocationQueryHelpResponse, emitter_geolocation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -769,7 +770,7 @@ class TestAsyncEmitterGeolocation:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         emitter_geolocation = await async_client.emitter_geolocation.query_help()
-        assert emitter_geolocation is None
+        assert_matches_type(EmitterGeolocationQueryHelpResponse, emitter_geolocation, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -778,7 +779,7 @@ class TestAsyncEmitterGeolocation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         emitter_geolocation = await response.parse()
-        assert emitter_geolocation is None
+        assert_matches_type(EmitterGeolocationQueryHelpResponse, emitter_geolocation, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -787,7 +788,7 @@ class TestAsyncEmitterGeolocation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             emitter_geolocation = await response.parse()
-            assert emitter_geolocation is None
+            assert_matches_type(EmitterGeolocationQueryHelpResponse, emitter_geolocation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

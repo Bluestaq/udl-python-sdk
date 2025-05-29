@@ -14,6 +14,7 @@ from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.observations import (
     MonoradarListResponse,
     MonoradarTupleResponse,
+    MonoradarQueryhelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -166,7 +167,7 @@ class TestMonoradar:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         monoradar = client.observations.monoradar.queryhelp()
-        assert monoradar is None
+        assert_matches_type(MonoradarQueryhelpResponse, monoradar, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestMonoradar:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         monoradar = response.parse()
-        assert monoradar is None
+        assert_matches_type(MonoradarQueryhelpResponse, monoradar, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -184,7 +185,7 @@ class TestMonoradar:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             monoradar = response.parse()
-            assert monoradar is None
+            assert_matches_type(MonoradarQueryhelpResponse, monoradar, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -441,7 +442,7 @@ class TestAsyncMonoradar:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         monoradar = await async_client.observations.monoradar.queryhelp()
-        assert monoradar is None
+        assert_matches_type(MonoradarQueryhelpResponse, monoradar, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -450,7 +451,7 @@ class TestAsyncMonoradar:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         monoradar = await response.parse()
-        assert monoradar is None
+        assert_matches_type(MonoradarQueryhelpResponse, monoradar, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -459,7 +460,7 @@ class TestAsyncMonoradar:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             monoradar = await response.parse()
-            assert monoradar is None
+            assert_matches_type(MonoradarQueryhelpResponse, monoradar, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

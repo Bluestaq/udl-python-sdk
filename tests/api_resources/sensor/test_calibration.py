@@ -14,6 +14,7 @@ from unifieddatalibrary.types.sensor import (
     CalibrationQueryResponse,
     CalibrationTupleResponse,
     CalibrationRetrieveResponse,
+    CalibrationQueryHelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -45,10 +46,10 @@ class TestCalibration:
             az_ra_accel_bias=0.0123,
             az_ra_accel_sigma=0.0123,
             az_ra_bias=0.327883,
-            az_ra_bias_rate=0.123,
-            az_ra_mean=0.083222,
+            az_ra_rate_bias=0.123,
+            az_ra_rate_sigma=0.123,
             az_ra_rms=0.605333,
-            az_ra_sigma_rate=0.123,
+            az_ra_sigma=0.000381,
             cal_angle_ref="AZEL",
             cal_track_mode="INTRA_TRACK",
             cal_type="OPERATIONAL",
@@ -58,10 +59,10 @@ class TestCalibration:
             el_dec_accel_bias=0.0123,
             el_dec_accel_sigma=0.0123,
             el_dec_bias=0.012555,
-            el_dec_bias_rate=0.123,
-            el_dec_mean=0.004025,
+            el_dec_rate_bias=0.123,
+            el_dec_rate_sigma=0.123,
             el_dec_rms=0.080505,
-            el_dec_sigma_rate=0.123,
+            el_dec_sigma=0.00265,
             end_time=parse_datetime("2018-01-14T16:00:00.123Z"),
             num_az_ra_obs=339,
             num_el_dec_obs=339,
@@ -310,7 +311,7 @@ class TestCalibration:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         calibration = client.sensor.calibration.query_help()
-        assert calibration is None
+        assert_matches_type(CalibrationQueryHelpResponse, calibration, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -319,7 +320,7 @@ class TestCalibration:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         calibration = response.parse()
-        assert calibration is None
+        assert_matches_type(CalibrationQueryHelpResponse, calibration, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -328,7 +329,7 @@ class TestCalibration:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             calibration = response.parse()
-            assert calibration is None
+            assert_matches_type(CalibrationQueryHelpResponse, calibration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -458,10 +459,10 @@ class TestAsyncCalibration:
             az_ra_accel_bias=0.0123,
             az_ra_accel_sigma=0.0123,
             az_ra_bias=0.327883,
-            az_ra_bias_rate=0.123,
-            az_ra_mean=0.083222,
+            az_ra_rate_bias=0.123,
+            az_ra_rate_sigma=0.123,
             az_ra_rms=0.605333,
-            az_ra_sigma_rate=0.123,
+            az_ra_sigma=0.000381,
             cal_angle_ref="AZEL",
             cal_track_mode="INTRA_TRACK",
             cal_type="OPERATIONAL",
@@ -471,10 +472,10 @@ class TestAsyncCalibration:
             el_dec_accel_bias=0.0123,
             el_dec_accel_sigma=0.0123,
             el_dec_bias=0.012555,
-            el_dec_bias_rate=0.123,
-            el_dec_mean=0.004025,
+            el_dec_rate_bias=0.123,
+            el_dec_rate_sigma=0.123,
             el_dec_rms=0.080505,
-            el_dec_sigma_rate=0.123,
+            el_dec_sigma=0.00265,
             end_time=parse_datetime("2018-01-14T16:00:00.123Z"),
             num_az_ra_obs=339,
             num_el_dec_obs=339,
@@ -723,7 +724,7 @@ class TestAsyncCalibration:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         calibration = await async_client.sensor.calibration.query_help()
-        assert calibration is None
+        assert_matches_type(CalibrationQueryHelpResponse, calibration, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -732,7 +733,7 @@ class TestAsyncCalibration:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         calibration = await response.parse()
-        assert calibration is None
+        assert_matches_type(CalibrationQueryHelpResponse, calibration, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -741,7 +742,7 @@ class TestAsyncCalibration:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             calibration = await response.parse()
-            assert calibration is None
+            assert_matches_type(CalibrationQueryHelpResponse, calibration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

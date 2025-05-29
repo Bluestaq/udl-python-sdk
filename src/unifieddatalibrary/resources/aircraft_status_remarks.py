@@ -31,6 +31,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.aircraftstatusremark_full import AircraftstatusremarkFull
 from ..types.aircraftstatusremark_abridged import AircraftstatusremarkAbridged
 from ..types.aircraft_status_remark_tuple_response import AircraftStatusRemarkTupleResponse
+from ..types.aircraft_status_remark_queryhelp_response import AircraftStatusRemarkQueryhelpResponse
 
 __all__ = ["AircraftStatusRemarksResource", "AsyncAircraftStatusRemarksResource"]
 
@@ -459,18 +460,17 @@ class AircraftStatusRemarksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AircraftStatusRemarkQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/aircraftstatusremark/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AircraftStatusRemarkQueryhelpResponse,
         )
 
     def tuple(
@@ -954,18 +954,17 @@ class AsyncAircraftStatusRemarksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AircraftStatusRemarkQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/aircraftstatusremark/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AircraftStatusRemarkQueryhelpResponse,
         )
 
     async def tuple(

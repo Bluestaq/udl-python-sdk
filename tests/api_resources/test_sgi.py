@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SgiGetResponse,
     SgiListResponse,
     SgiTupleResponse,
+    SgiQueryhelpResponse,
     SgiGetDataByEffectiveAsOfDateResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
@@ -496,7 +497,7 @@ class TestSgi:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         sgi = client.sgi.queryhelp()
-        assert sgi is None
+        assert_matches_type(SgiQueryhelpResponse, sgi, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -505,7 +506,7 @@ class TestSgi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sgi = response.parse()
-        assert sgi is None
+        assert_matches_type(SgiQueryhelpResponse, sgi, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -514,7 +515,7 @@ class TestSgi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sgi = response.parse()
-            assert sgi is None
+            assert_matches_type(SgiQueryhelpResponse, sgi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1095,7 +1096,7 @@ class TestAsyncSgi:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         sgi = await async_client.sgi.queryhelp()
-        assert sgi is None
+        assert_matches_type(SgiQueryhelpResponse, sgi, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1104,7 +1105,7 @@ class TestAsyncSgi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sgi = await response.parse()
-        assert sgi is None
+        assert_matches_type(SgiQueryhelpResponse, sgi, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1113,7 +1114,7 @@ class TestAsyncSgi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sgi = await response.parse()
-            assert sgi is None
+            assert_matches_type(SgiQueryhelpResponse, sgi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

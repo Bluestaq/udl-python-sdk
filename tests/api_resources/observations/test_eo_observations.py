@@ -14,6 +14,7 @@ from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.observations import (
     EoObservationAbridged,
     EoObservationTupleResponse,
+    EoObservationQueryhelpResponse,
 )
 from unifieddatalibrary.types.observations.eo_observations import EoObservationFull
 
@@ -614,7 +615,7 @@ class TestEoObservations:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         eo_observation = client.observations.eo_observations.queryhelp()
-        assert eo_observation is None
+        assert_matches_type(EoObservationQueryhelpResponse, eo_observation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -623,7 +624,7 @@ class TestEoObservations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eo_observation = response.parse()
-        assert eo_observation is None
+        assert_matches_type(EoObservationQueryhelpResponse, eo_observation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -632,7 +633,7 @@ class TestEoObservations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eo_observation = response.parse()
-            assert eo_observation is None
+            assert_matches_type(EoObservationQueryhelpResponse, eo_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1327,7 +1328,7 @@ class TestAsyncEoObservations:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         eo_observation = await async_client.observations.eo_observations.queryhelp()
-        assert eo_observation is None
+        assert_matches_type(EoObservationQueryhelpResponse, eo_observation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1336,7 +1337,7 @@ class TestAsyncEoObservations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eo_observation = await response.parse()
-        assert eo_observation is None
+        assert_matches_type(EoObservationQueryhelpResponse, eo_observation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1345,7 +1346,7 @@ class TestAsyncEoObservations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eo_observation = await response.parse()
-            assert eo_observation is None
+            assert_matches_type(EoObservationQueryhelpResponse, eo_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

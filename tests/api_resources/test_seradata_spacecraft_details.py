@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SeradataSpacecraftDetailGetResponse,
     SeradataSpacecraftDetailListResponse,
     SeradataSpacecraftDetailTupleResponse,
+    SeradataSpacecraftDetailQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -476,7 +477,7 @@ class TestSeradataSpacecraftDetails:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         seradata_spacecraft_detail = client.seradata_spacecraft_details.queryhelp()
-        assert seradata_spacecraft_detail is None
+        assert_matches_type(SeradataSpacecraftDetailQueryhelpResponse, seradata_spacecraft_detail, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -485,7 +486,7 @@ class TestSeradataSpacecraftDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_spacecraft_detail = response.parse()
-        assert seradata_spacecraft_detail is None
+        assert_matches_type(SeradataSpacecraftDetailQueryhelpResponse, seradata_spacecraft_detail, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -494,7 +495,9 @@ class TestSeradataSpacecraftDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_spacecraft_detail = response.parse()
-            assert seradata_spacecraft_detail is None
+            assert_matches_type(
+                SeradataSpacecraftDetailQueryhelpResponse, seradata_spacecraft_detail, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -995,7 +998,7 @@ class TestAsyncSeradataSpacecraftDetails:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradata_spacecraft_detail = await async_client.seradata_spacecraft_details.queryhelp()
-        assert seradata_spacecraft_detail is None
+        assert_matches_type(SeradataSpacecraftDetailQueryhelpResponse, seradata_spacecraft_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1004,7 +1007,7 @@ class TestAsyncSeradataSpacecraftDetails:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_spacecraft_detail = await response.parse()
-        assert seradata_spacecraft_detail is None
+        assert_matches_type(SeradataSpacecraftDetailQueryhelpResponse, seradata_spacecraft_detail, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1013,7 +1016,9 @@ class TestAsyncSeradataSpacecraftDetails:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_spacecraft_detail = await response.parse()
-            assert seradata_spacecraft_detail is None
+            assert_matches_type(
+                SeradataSpacecraftDetailQueryhelpResponse, seradata_spacecraft_detail, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 

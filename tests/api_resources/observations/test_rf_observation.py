@@ -15,6 +15,7 @@ from unifieddatalibrary.types.observations import (
     RfObservationGetResponse,
     RfObservationListResponse,
     RfObservationTupleResponse,
+    RfObservationQueryhelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -353,7 +354,7 @@ class TestRfObservation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         rf_observation = client.observations.rf_observation.queryhelp()
-        assert rf_observation is None
+        assert_matches_type(RfObservationQueryhelpResponse, rf_observation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -362,7 +363,7 @@ class TestRfObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         rf_observation = response.parse()
-        assert rf_observation is None
+        assert_matches_type(RfObservationQueryhelpResponse, rf_observation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -371,7 +372,7 @@ class TestRfObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             rf_observation = response.parse()
-            assert rf_observation is None
+            assert_matches_type(RfObservationQueryhelpResponse, rf_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -808,7 +809,7 @@ class TestAsyncRfObservation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         rf_observation = await async_client.observations.rf_observation.queryhelp()
-        assert rf_observation is None
+        assert_matches_type(RfObservationQueryhelpResponse, rf_observation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -817,7 +818,7 @@ class TestAsyncRfObservation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         rf_observation = await response.parse()
-        assert rf_observation is None
+        assert_matches_type(RfObservationQueryhelpResponse, rf_observation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -826,7 +827,7 @@ class TestAsyncRfObservation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             rf_observation = await response.parse()
-            assert rf_observation is None
+            assert_matches_type(RfObservationQueryhelpResponse, rf_observation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

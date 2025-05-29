@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     CommFull,
     CommAbridged,
     CommTupleResponse,
+    CommQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -348,7 +349,7 @@ class TestComm:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         comm = client.comm.queryhelp()
-        assert comm is None
+        assert_matches_type(CommQueryhelpResponse, comm, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -357,7 +358,7 @@ class TestComm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         comm = response.parse()
-        assert comm is None
+        assert_matches_type(CommQueryhelpResponse, comm, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -366,7 +367,7 @@ class TestComm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             comm = response.parse()
-            assert comm is None
+            assert_matches_type(CommQueryhelpResponse, comm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -739,7 +740,7 @@ class TestAsyncComm:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         comm = await async_client.comm.queryhelp()
-        assert comm is None
+        assert_matches_type(CommQueryhelpResponse, comm, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -748,7 +749,7 @@ class TestAsyncComm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         comm = await response.parse()
-        assert comm is None
+        assert_matches_type(CommQueryhelpResponse, comm, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -757,7 +758,7 @@ class TestAsyncComm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             comm = await response.parse()
-            assert comm is None
+            assert_matches_type(CommQueryhelpResponse, comm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -31,6 +31,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.organization_full import OrganizationFull
 from ..types.organization_list_response import OrganizationListResponse
 from ..types.organization_tuple_response import OrganizationTupleResponse
+from ..types.organization_queryhelp_response import OrganizationQueryhelpResponse
 from ..types.organization_get_organization_types_response import OrganizationGetOrganizationTypesResponse
 from ..types.organization_get_organization_categories_response import OrganizationGetOrganizationCategoriesResponse
 
@@ -564,18 +565,17 @@ class OrganizationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OrganizationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/organization/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OrganizationQueryhelpResponse,
         )
 
     def tuple(
@@ -1162,18 +1162,17 @@ class AsyncOrganizationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OrganizationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/organization/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OrganizationQueryhelpResponse,
         )
 
     async def tuple(

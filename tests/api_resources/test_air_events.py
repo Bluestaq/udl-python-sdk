@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AirEventGetResponse,
     AirEventListResponse,
     AirEventTupleResponse,
+    AirEventQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -518,7 +519,7 @@ class TestAirEvents:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         air_event = client.air_events.queryhelp()
-        assert air_event is None
+        assert_matches_type(AirEventQueryhelpResponse, air_event, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -527,7 +528,7 @@ class TestAirEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_event = response.parse()
-        assert air_event is None
+        assert_matches_type(AirEventQueryhelpResponse, air_event, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -536,7 +537,7 @@ class TestAirEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_event = response.parse()
-            assert air_event is None
+            assert_matches_type(AirEventQueryhelpResponse, air_event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1131,7 +1132,7 @@ class TestAsyncAirEvents:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_event = await async_client.air_events.queryhelp()
-        assert air_event is None
+        assert_matches_type(AirEventQueryhelpResponse, air_event, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1140,7 +1141,7 @@ class TestAsyncAirEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_event = await response.parse()
-        assert air_event is None
+        assert_matches_type(AirEventQueryhelpResponse, air_event, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1149,7 +1150,7 @@ class TestAsyncAirEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_event = await response.parse()
-            assert air_event is None
+            assert_matches_type(AirEventQueryhelpResponse, air_event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -14,6 +14,7 @@ from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.link_status import (
     DatalinkListResponse,
     DatalinkTupleResponse,
+    DatalinkQueryhelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -284,7 +285,7 @@ class TestDatalink:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         datalink = client.link_status.datalink.queryhelp()
-        assert datalink is None
+        assert_matches_type(DatalinkQueryhelpResponse, datalink, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -293,7 +294,7 @@ class TestDatalink:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         datalink = response.parse()
-        assert datalink is None
+        assert_matches_type(DatalinkQueryhelpResponse, datalink, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -302,7 +303,7 @@ class TestDatalink:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             datalink = response.parse()
-            assert datalink is None
+            assert_matches_type(DatalinkQueryhelpResponse, datalink, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -674,7 +675,7 @@ class TestAsyncDatalink:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         datalink = await async_client.link_status.datalink.queryhelp()
-        assert datalink is None
+        assert_matches_type(DatalinkQueryhelpResponse, datalink, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -683,7 +684,7 @@ class TestAsyncDatalink:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         datalink = await response.parse()
-        assert datalink is None
+        assert_matches_type(DatalinkQueryhelpResponse, datalink, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -692,7 +693,7 @@ class TestAsyncDatalink:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             datalink = await response.parse()
-            assert datalink is None
+            assert_matches_type(DatalinkQueryhelpResponse, datalink, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

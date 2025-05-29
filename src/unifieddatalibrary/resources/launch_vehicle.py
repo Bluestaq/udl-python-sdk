@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.launch_vehicle_get_response import LaunchVehicleGetResponse
 from ..types.launch_vehicle_list_response import LaunchVehicleListResponse
 from ..types.launch_vehicle_tuple_response import LaunchVehicleTupleResponse
+from ..types.launch_vehicle_queryhelp_response import LaunchVehicleQueryhelpResponse
 
 __all__ = ["LaunchVehicleResource", "AsyncLaunchVehicleResource"]
 
@@ -406,18 +407,17 @@ class LaunchVehicleResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> LaunchVehicleQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/launchvehicle/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=LaunchVehicleQueryhelpResponse,
         )
 
     def tuple(
@@ -850,18 +850,17 @@ class AsyncLaunchVehicleResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> LaunchVehicleQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/launchvehicle/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=LaunchVehicleQueryhelpResponse,
         )
 
     async def tuple(

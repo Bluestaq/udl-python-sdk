@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     VesselGetResponse,
     VesselListResponse,
     VesselTupleResponse,
+    VesselQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -446,7 +447,7 @@ class TestVessel:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         vessel = client.vessel.queryhelp()
-        assert vessel is None
+        assert_matches_type(VesselQueryhelpResponse, vessel, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -455,7 +456,7 @@ class TestVessel:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vessel = response.parse()
-        assert vessel is None
+        assert_matches_type(VesselQueryhelpResponse, vessel, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -464,7 +465,7 @@ class TestVessel:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vessel = response.parse()
-            assert vessel is None
+            assert_matches_type(VesselQueryhelpResponse, vessel, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -935,7 +936,7 @@ class TestAsyncVessel:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         vessel = await async_client.vessel.queryhelp()
-        assert vessel is None
+        assert_matches_type(VesselQueryhelpResponse, vessel, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -944,7 +945,7 @@ class TestAsyncVessel:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vessel = await response.parse()
-        assert vessel is None
+        assert_matches_type(VesselQueryhelpResponse, vessel, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -953,7 +954,7 @@ class TestAsyncVessel:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vessel = await response.parse()
-            assert vessel is None
+            assert_matches_type(VesselQueryhelpResponse, vessel, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

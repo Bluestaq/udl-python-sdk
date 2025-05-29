@@ -45,6 +45,7 @@ class EntityUpdateParams(TypedDict, total=False):
             "BUS",
             "COMM",
             "IR",
+            "LASEREMITTER",
             "NAVIGATION",
             "ONORBIT",
             "RFEMITTER",
@@ -56,7 +57,7 @@ class EntityUpdateParams(TypedDict, total=False):
     ]
     """
     The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-    NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+    LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
     """
 
     country_code: Annotated[str, PropertyInfo(alias="countryCode")]

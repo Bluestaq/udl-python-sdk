@@ -30,6 +30,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.operatingunitremark_get_response import OperatingunitremarkGetResponse
 from ..types.operatingunitremark_list_response import OperatingunitremarkListResponse
 from ..types.operatingunitremark_tuple_response import OperatingunitremarkTupleResponse
+from ..types.operatingunitremark_queryhelp_response import OperatingunitremarkQueryhelpResponse
 
 __all__ = ["OperatingunitremarkResource", "AsyncOperatingunitremarkResource"]
 
@@ -339,18 +340,17 @@ class OperatingunitremarkResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OperatingunitremarkQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/operatingunitremark/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OperatingunitremarkQueryhelpResponse,
         )
 
     def tuple(
@@ -715,18 +715,17 @@ class AsyncOperatingunitremarkResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OperatingunitremarkQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/operatingunitremark/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OperatingunitremarkQueryhelpResponse,
         )
 
     async def tuple(

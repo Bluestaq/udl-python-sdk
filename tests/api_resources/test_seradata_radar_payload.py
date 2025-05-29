@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SeradataRadarPayloadGetResponse,
     SeradataRadarPayloadListResponse,
     SeradataRadarPayloadTupleResponse,
+    SeradataRadarPayloadQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -343,7 +344,7 @@ class TestSeradataRadarPayload:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         seradata_radar_payload = client.seradata_radar_payload.queryhelp()
-        assert seradata_radar_payload is None
+        assert_matches_type(SeradataRadarPayloadQueryhelpResponse, seradata_radar_payload, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -352,7 +353,7 @@ class TestSeradataRadarPayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_radar_payload = response.parse()
-        assert seradata_radar_payload is None
+        assert_matches_type(SeradataRadarPayloadQueryhelpResponse, seradata_radar_payload, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -361,7 +362,7 @@ class TestSeradataRadarPayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_radar_payload = response.parse()
-            assert seradata_radar_payload is None
+            assert_matches_type(SeradataRadarPayloadQueryhelpResponse, seradata_radar_payload, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -736,7 +737,7 @@ class TestAsyncSeradataRadarPayload:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradata_radar_payload = await async_client.seradata_radar_payload.queryhelp()
-        assert seradata_radar_payload is None
+        assert_matches_type(SeradataRadarPayloadQueryhelpResponse, seradata_radar_payload, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -745,7 +746,7 @@ class TestAsyncSeradataRadarPayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_radar_payload = await response.parse()
-        assert seradata_radar_payload is None
+        assert_matches_type(SeradataRadarPayloadQueryhelpResponse, seradata_radar_payload, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -754,7 +755,7 @@ class TestAsyncSeradataRadarPayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_radar_payload = await response.parse()
-            assert seradata_radar_payload is None
+            assert_matches_type(SeradataRadarPayloadQueryhelpResponse, seradata_radar_payload, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

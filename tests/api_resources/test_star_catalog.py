@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     StarCatalogGetResponse,
     StarCatalogListResponse,
     StarCatalogTupleResponse,
+    StarCatalogQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -465,7 +466,7 @@ class TestStarCatalog:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         star_catalog = client.star_catalog.queryhelp()
-        assert star_catalog is None
+        assert_matches_type(StarCatalogQueryhelpResponse, star_catalog, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -474,7 +475,7 @@ class TestStarCatalog:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         star_catalog = response.parse()
-        assert star_catalog is None
+        assert_matches_type(StarCatalogQueryhelpResponse, star_catalog, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -483,7 +484,7 @@ class TestStarCatalog:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             star_catalog = response.parse()
-            assert star_catalog is None
+            assert_matches_type(StarCatalogQueryhelpResponse, star_catalog, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1040,7 +1041,7 @@ class TestAsyncStarCatalog:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         star_catalog = await async_client.star_catalog.queryhelp()
-        assert star_catalog is None
+        assert_matches_type(StarCatalogQueryhelpResponse, star_catalog, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1049,7 +1050,7 @@ class TestAsyncStarCatalog:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         star_catalog = await response.parse()
-        assert star_catalog is None
+        assert_matches_type(StarCatalogQueryhelpResponse, star_catalog, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1058,7 +1059,7 @@ class TestAsyncStarCatalog:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             star_catalog = await response.parse()
-            assert star_catalog is None
+            assert_matches_type(StarCatalogQueryhelpResponse, star_catalog, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

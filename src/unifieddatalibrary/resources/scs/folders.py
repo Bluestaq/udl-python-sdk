@@ -50,6 +50,7 @@ class FoldersResource(SyncAPIResource):
         classification_marking: str,
         description: str | NotGiven = NOT_GIVEN,
         read: str | NotGiven = NOT_GIVEN,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         write: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -73,6 +74,8 @@ class FoldersResource(SyncAPIResource):
           description: Optional description to include on folder.
 
           read: Comma separated list of user ids who can read contents of the folder.
+
+          send_notification: Whether or not to send a notification that this folder was created.
 
           tags: Comma separated list of tags to add to the folder.
 
@@ -99,6 +102,7 @@ class FoldersResource(SyncAPIResource):
                         "classification_marking": classification_marking,
                         "description": description,
                         "read": read,
+                        "send_notification": send_notification,
                         "tags": tags,
                         "write": write,
                     },
@@ -233,6 +237,7 @@ class AsyncFoldersResource(AsyncAPIResource):
         classification_marking: str,
         description: str | NotGiven = NOT_GIVEN,
         read: str | NotGiven = NOT_GIVEN,
+        send_notification: bool | NotGiven = NOT_GIVEN,
         tags: str | NotGiven = NOT_GIVEN,
         write: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -256,6 +261,8 @@ class AsyncFoldersResource(AsyncAPIResource):
           description: Optional description to include on folder.
 
           read: Comma separated list of user ids who can read contents of the folder.
+
+          send_notification: Whether or not to send a notification that this folder was created.
 
           tags: Comma separated list of tags to add to the folder.
 
@@ -282,6 +289,7 @@ class AsyncFoldersResource(AsyncAPIResource):
                         "classification_marking": classification_marking,
                         "description": description,
                         "read": read,
+                        "send_notification": send_notification,
                         "tags": tags,
                         "write": write,
                     },

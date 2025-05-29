@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     IsrCollectionListResponse,
     IsrCollectionTupleResponse,
+    IsrCollectionQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -154,7 +155,7 @@ class TestIsrCollections:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         isr_collection = client.isr_collections.queryhelp()
-        assert isr_collection is None
+        assert_matches_type(IsrCollectionQueryhelpResponse, isr_collection, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -163,7 +164,7 @@ class TestIsrCollections:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         isr_collection = response.parse()
-        assert isr_collection is None
+        assert_matches_type(IsrCollectionQueryhelpResponse, isr_collection, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -172,7 +173,7 @@ class TestIsrCollections:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             isr_collection = response.parse()
-            assert isr_collection is None
+            assert_matches_type(IsrCollectionQueryhelpResponse, isr_collection, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -405,7 +406,7 @@ class TestAsyncIsrCollections:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         isr_collection = await async_client.isr_collections.queryhelp()
-        assert isr_collection is None
+        assert_matches_type(IsrCollectionQueryhelpResponse, isr_collection, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -414,7 +415,7 @@ class TestAsyncIsrCollections:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         isr_collection = await response.parse()
-        assert isr_collection is None
+        assert_matches_type(IsrCollectionQueryhelpResponse, isr_collection, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -423,7 +424,7 @@ class TestAsyncIsrCollections:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             isr_collection = await response.parse()
-            assert isr_collection is None
+            assert_matches_type(IsrCollectionQueryhelpResponse, isr_collection, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
