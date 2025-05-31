@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-05-31)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** api update ([67fbac3](https://github.com/Bluestaq/udl-python-sdk/commit/67fbac38b54911cdbd65ab7c9fb3ac245afdd681))
+
 ## 0.1.0-alpha.10 (2025-05-22)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
