@@ -136,8 +136,6 @@ for current in first_page.items:
 # Remove `await` for non-async usage.
 ```
 
-from datetime import datetime, date
-
 ## Nested params
 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
@@ -158,47 +156,6 @@ client.aircraft.create(
         "name": "Example name",
         "source": "Bluestaq",
         "type": "ONORBIT",
-        "country_code": "US",
-        "id_entity": "ENTITY-ID",
-        "id_location": "LOCATION-ID",
-        "id_on_orbit": "ONORBIT-ID",
-        "id_operating_unit": "OPERATINGUNIT-ID",
-        "location": {
-            "classification_marking": "U",
-            "data_mode": "TEST",
-            "name": "Example location",
-            "source": "Bluestaq",
-            "altitude": 10.23,
-            "country_code": "US",
-            "id_location": "LOCATION-ID",
-            "lat": 45.23,
-            "lon": 179.1,
-            "origin": "THIRD_PARTY_DATASOURCE",
-        },
-        "on_orbit": {
-            "classification_marking": "U",
-            "data_mode": "TEST",
-            "sat_no": 1,
-            "source": "Bluestaq",
-            "alt_name": "Alternate Name",
-            "category": "Lunar",
-            "common_name": "Example common name",
-            "constellation": "Big Dipper",
-            "country_code": "US",
-            "decay_date": datetime.fromisoformat("2018-01-01T16:00:00.123"),
-            "id_on_orbit": "ONORBIT-ID",
-            "intl_des": "2021123ABC",
-            "launch_date": date.fromisoformat("2018-01-01"),
-            "launch_site_id": "LAUNCHSITE-ID",
-            "lifetime_years": 10,
-            "mission_number": "Expedition 1",
-            "object_type": "PAYLOAD",
-            "origin": "THIRD_PARTY_DATASOURCE",
-        },
-        "origin": "THIRD_PARTY_DATASOURCE",
-        "owner_type": "Commercial",
-        "taskable": False,
-        "urls": ["URL1", "URL2"],
     },
 )
 ```
