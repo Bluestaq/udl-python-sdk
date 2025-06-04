@@ -89,6 +89,7 @@ log: logging.Logger = logging.getLogger(__name__)
 # TODO: make base page type vars covariant
 SyncPageT = TypeVar("SyncPageT", bound="BaseSyncPage[Any]")
 AsyncPageT = TypeVar("AsyncPageT", bound="BaseAsyncPage[Any]")
+_BasePageT = TypeVar("_BasePageT", bound="BasePage[Any]")
 
 
 _T = TypeVar("_T")
@@ -174,6 +175,7 @@ class BasePage(GenericModel, Generic[_T]):
         next_page_info(): Get the necessary information to make a request for the next page
     """
 
+    _response: httpx.Response = PrivateAttr()
     _options: FinalRequestOptions = PrivateAttr()
     _model: Type[_T] = PrivateAttr()
 
@@ -221,6 +223,23 @@ class BasePage(GenericModel, Generic[_T]):
             return options
 
         raise ValueError("Unexpected PageInfo state")
+
+    @classmethod
+    def build(cls: Type[_BasePageT], *, response: httpx.Response, data: object) -> _BasePageT:  # noqa: ARG003
+        return cls._with_response(
+            cls.construct(
+                None,
+                **{
+                    **(cast(Mapping[str, Any], data) if is_mapping(data) else {}),
+                },
+            ),
+            response,
+        )
+
+    @classmethod
+    def _with_response(cls, inst: _BasePageT, response: httpx.Response) -> _BasePageT:
+        inst._response = response
+        return inst
 
 
 class BaseSyncPage(BasePage[_T], Generic[_T]):

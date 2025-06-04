@@ -3,7 +3,7 @@
 from typing import Any, List, Type, Generic, Mapping, TypeVar, Optional, cast
 from typing_extensions import override
 
-from httpx import Headers, Response
+from httpx import Response
 
 from ._utils import is_mapping
 from ._models import BaseModel
@@ -12,6 +12,7 @@ from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 __all__ = ["SyncOffsetPage", "AsyncOffsetPage", "SyncKafkaOffsetPage", "AsyncKafkaOffsetPage"]
 
 _BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
+_BasePageT = TypeVar("_BasePageT", bound=BasePage[Any])
 
 _T = TypeVar("_T")
 
@@ -38,12 +39,16 @@ class SyncOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"firstResult": current_count})
 
     @classmethod
-    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:  # noqa: ARG003
-        return cls.construct(
-            None,
-            **{
-                **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
-            },
+    @override
+    def build(cls: Type[_BasePageT], *, response: Response, data: object) -> _BasePageT:  # noqa: ARG003
+        return cls._with_response(
+            cls.construct(
+                None,
+                **{
+                    **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
+                },
+            ),
+            response,
         )
 
 
@@ -69,12 +74,16 @@ class AsyncOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"firstResult": current_count})
 
     @classmethod
-    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:  # noqa: ARG003
-        return cls.construct(
-            None,
-            **{
-                **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
-            },
+    @override
+    def build(cls: Type[_BasePageT], *, response: Response, data: object) -> _BasePageT:  # noqa: ARG003
+        return cls._with_response(
+            cls.construct(
+                None,
+                **{
+                    **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
+                },
+            ),
+            response,
         )
 
 
@@ -82,7 +91,6 @@ class SyncKafkaOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     """Pagination for Kafka-style endpoints that return the next offset in a response header."""
 
     items: List[_T]
-    _headers: Headers
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -93,7 +101,7 @@ class SyncKafkaOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        next_offset_str = self._headers.get("KAFKA_NEXT_OFFSET")
+        next_offset_str = self._response.headers.get("KAFKA_NEXT_OFFSET")
         if not next_offset_str:
             return None
 
@@ -105,24 +113,23 @@ class SyncKafkaOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"offset": next_offset})
 
     @classmethod
-    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:  # noqa: ARG003
-        instance = cls.construct(
-            None,
-            **{
-                **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
-            },
+    @override
+    def build(cls: Type[_BasePageT], *, response: Response, data: object) -> _BasePageT:  # noqa: ARG003
+        return cls._with_response(
+            cls.construct(
+                None,
+                **{
+                    **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
+                },
+            ),
+            response,
         )
-        if issubclass(cls, SyncKafkaOffsetPage):
-            instance._headers = response.headers.copy()  # type: ignore[attr-defined]
-
-        return instance
 
 
 class AsyncKafkaOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     """Async pagination for Kafka-style endpoints that return the next offset in a response header."""
 
     items: List[_T]
-    _headers: Headers
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -133,7 +140,7 @@ class AsyncKafkaOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        next_offset_str = self._headers.get("KAFKA_NEXT_OFFSET")
+        next_offset_str = self._response.headers.get("KAFKA_NEXT_OFFSET")
         if not next_offset_str:
             return None
 
@@ -145,14 +152,14 @@ class AsyncKafkaOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"offset": next_offset})
 
     @classmethod
-    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:  # noqa: ARG003
-        instance = cls.construct(
-            None,
-            **{
-                **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
-            },
+    @override
+    def build(cls: Type[_BasePageT], *, response: Response, data: object) -> _BasePageT:  # noqa: ARG003
+        return cls._with_response(
+            cls.construct(
+                None,
+                **{
+                    **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
+                },
+            ),
+            response,
         )
-        if isinstance(cls, AsyncKafkaOffsetPage):
-            instance._headers = response.headers.copy()  # type: ignore[attr-defined]
-
-        return instance
