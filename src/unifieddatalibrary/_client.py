@@ -668,7 +668,7 @@ class Unifieddatalibrary(SyncAPIClient):
             params = set_default_query
 
         http_client = http_client or self._client
-        return self.__class__(
+        client = self.__class__(
             password=password or self.password,
             username=username or self.username,
             base_url=base_url or self.base_url,
@@ -679,6 +679,8 @@ class Unifieddatalibrary(SyncAPIClient):
             default_query=params,
             **_extra_kwargs,
         )
+        client._base_url_overridden = self._base_url_overridden or base_url is not None
+        return client
 
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
@@ -1178,7 +1180,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
             params = set_default_query
 
         http_client = http_client or self._client
-        return self.__class__(
+        client = self.__class__(
             password=password or self.password,
             username=username or self.username,
             base_url=base_url or self.base_url,
@@ -1189,6 +1191,8 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
             default_query=params,
             **_extra_kwargs,
         )
+        client._base_url_overridden = self._base_url_overridden or base_url is not None
+        return client
 
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
