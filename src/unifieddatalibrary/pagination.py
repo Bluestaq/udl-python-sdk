@@ -3,7 +3,7 @@
 from typing import Any, List, Type, Generic, Mapping, TypeVar, Optional, cast
 from typing_extensions import override
 
-from httpx import Response
+from httpx import Response, URL
 
 from ._utils import is_mapping
 from ._models import BaseModel
@@ -109,8 +109,13 @@ class SyncKafkaOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
             next_offset = int(next_offset_str)
         except ValueError:
             return None
+        
+        url = str(self._response.url).replace(
+            f"/sm/getMessages/eop/{self._options.params.get('offset', 0)}",
+            f"/sm/getMessages/eop/{next_offset}",
+        )
 
-        return PageInfo(params={"offset": next_offset})
+        return PageInfo(url=URL(url))
 
     @classmethod
     @override
@@ -149,7 +154,12 @@ class AsyncKafkaOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         except ValueError:
             return None
 
-        return PageInfo(params={"offset": next_offset})
+        url = str(self._response.url).replace(
+            f"/sm/getMessages/eop/{self._options.params.get('offset', 0)}",
+            f"/sm/getMessages/eop/{next_offset}",
+        )
+
+        return PageInfo(url=URL(url))
 
     @classmethod
     @override
