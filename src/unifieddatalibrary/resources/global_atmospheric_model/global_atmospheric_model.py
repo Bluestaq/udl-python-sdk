@@ -410,7 +410,7 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          data_mode: 
+          data_mode:
               Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
               EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -884,7 +884,7 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          data_mode: 
+          data_mode:
               Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
               EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
