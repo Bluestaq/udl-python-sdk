@@ -57,36 +57,38 @@ class HistoryQueryResponseItem(BaseModel):
 
     az_ra_accel_bias: Optional[float] = FieldInfo(alias="azRaAccelBias", default=None)
     """
-    Sensor azimuth/right-ascension acceleration bias rate, in degrees per second
-    squared, during sensor operation.
+    Sensor azimuth/right-ascension acceleration bias, in degrees per second squared.
     """
 
     az_ra_accel_sigma: Optional[float] = FieldInfo(alias="azRaAccelSigma", default=None)
     """
-    Standard deviation azimuth/right-ascension acceleration bias rate, in degrees
-    per second squared.
+    The standard deviation of the azimuth/right ascension acceleration residuals, in
+    degrees, used to determine the sensor azimuth/right-ascension acceleration bias.
     """
 
     az_ra_bias: Optional[float] = FieldInfo(alias="azRaBias", default=None)
-    """Sensor azimuth/right-ascension bias, in degrees, during sensor operation."""
+    """Sensor azimuth/right-ascension bias, in degrees."""
 
-    az_ra_bias_rate: Optional[float] = FieldInfo(alias="azRaBiasRate", default=None)
-    """
-    Sensor azimuth/right-ascension bias rate, in degrees per second, during sensor
-    operation.
-    """
+    az_ra_rate_bias: Optional[float] = FieldInfo(alias="azRaRateBias", default=None)
+    """Sensor azimuth/right-ascension rate bias, in degrees per second."""
 
-    az_ra_mean: Optional[float] = FieldInfo(alias="azRaMean", default=None)
-    """The mean azimuth/right-ascension average, in degrees, for the duration span."""
+    az_ra_rate_sigma: Optional[float] = FieldInfo(alias="azRaRateSigma", default=None)
+    """
+    The standard deviation of the azimuth/right ascension rate residuals, in
+    degrees, used to determine the sensor azimuth/right-ascension rate bias.
+    """
 
     az_ra_rms: Optional[float] = FieldInfo(alias="azRaRms", default=None)
     """
-    The root mean square of the azimuth/right-ascension, in degrees, for the
-    duration span.
+    The root mean square of the azimuth/right-ascension residuals, in degrees, used
+    to determine the sensor azimuth/right-ascension bias.
     """
 
-    az_ra_sigma_rate: Optional[float] = FieldInfo(alias="azRaSigmaRate", default=None)
-    """Standard deviation azimuth/right-ascension bias rate, in degrees per second."""
+    az_ra_sigma: Optional[float] = FieldInfo(alias="azRaSigma", default=None)
+    """
+    The standard deviation of the azimuth/right ascension residuals, in degrees,
+    used to determine the sensor azimuth/right-ascension bias.
+    """
 
     cal_angle_ref: Optional[str] = FieldInfo(alias="calAngleRef", default=None)
     """Specifies the calibration reference angle set for this calibration data set.
@@ -131,37 +133,37 @@ class HistoryQueryResponseItem(BaseModel):
     """
 
     el_dec_accel_bias: Optional[float] = FieldInfo(alias="elDecAccelBias", default=None)
-    """
-    Sensor elevation/declination acceleration bias rate, in degrees per second
-    squared, during sensor operation.
-    """
+    """Sensor elevation/declination acceleration bias, in degrees per second squared."""
 
     el_dec_accel_sigma: Optional[float] = FieldInfo(alias="elDecAccelSigma", default=None)
     """
-    Standard deviation elevation/declination acceleration bias rate, in degrees per
-    second squared.
+    The standard deviation of the elevation/declination acceleration residuals, in
+    degrees, used to determine the sensor elevation/declination acceleration bias.
     """
 
     el_dec_bias: Optional[float] = FieldInfo(alias="elDecBias", default=None)
-    """Sensor elevation/declination bias, in degrees, during sensor operation."""
+    """Sensor elevation/declination bias, in degrees."""
 
-    el_dec_bias_rate: Optional[float] = FieldInfo(alias="elDecBiasRate", default=None)
-    """
-    Sensor elevation/declination bias rate, in degrees per second, during sensor
-    operation.
-    """
+    el_dec_rate_bias: Optional[float] = FieldInfo(alias="elDecRateBias", default=None)
+    """Sensor elevation/declination rate bias, in degrees per second."""
 
-    el_dec_mean: Optional[float] = FieldInfo(alias="elDecMean", default=None)
-    """The mean elevation/declination residuals, in degrees, for the duration span."""
+    el_dec_rate_sigma: Optional[float] = FieldInfo(alias="elDecRateSigma", default=None)
+    """
+    The standard deviation of the elevation/declination rate residuals, in degrees,
+    used to determine the sensor elevation/declination rate bias.
+    """
 
     el_dec_rms: Optional[float] = FieldInfo(alias="elDecRms", default=None)
     """
-    The root mean square of the elevation/declination, in degrees, for the duration
-    span.
+    The root mean square of the elevation/declination residuals, in degrees, used to
+    determine the sensor elevation/declination bias.
     """
 
-    el_dec_sigma_rate: Optional[float] = FieldInfo(alias="elDecSigmaRate", default=None)
-    """Standard deviation elevation/declination bias rate, in degrees per second."""
+    el_dec_sigma: Optional[float] = FieldInfo(alias="elDecSigma", default=None)
+    """
+    The standard deviation of the elevation/declination residuals, in degrees, used
+    to determine the sensor elevation/declination bias.
+    """
 
     end_time: Optional[datetime] = FieldInfo(alias="endTime", default=None)
     """Calibration data span end time in ISO 8601 UTC format with millisecond
@@ -227,54 +229,60 @@ class HistoryQueryResponseItem(BaseModel):
     """
 
     photo_bias: Optional[float] = FieldInfo(alias="photoBias", default=None)
-    """The photometric observation noise bias in visual magnitude."""
+    """The sensor photometric observation magnitude bias, in visual magnitude."""
 
     photo_sigma: Optional[float] = FieldInfo(alias="photoSigma", default=None)
-    """The photometric observation noise standard deviation in visual magnitude."""
+    """
+    The standard deviation of the magnitude residuals, in visual magnitude, used to
+    determine the photometric bias.
+    """
 
     range_accel_bias: Optional[float] = FieldInfo(alias="rangeAccelBias", default=None)
-    """
-    Sensor range rate bias acceleration, in kilometers per second squared, during
-    sensor operation.
-    """
+    """Sensor range rate acceleration bias, in kilometers per second squared."""
 
     range_accel_sigma: Optional[float] = FieldInfo(alias="rangeAccelSigma", default=None)
     """
-    Standard deviation range rate bias acceleration, in kilometers per second
-    squared.
+    The standard deviation of the range acceleration residuals, in kilometers per
+    second squared, used to determine the sensor range acceleration bias.
     """
 
     range_bias: Optional[float] = FieldInfo(alias="rangeBias", default=None)
-    """Sensor range bias, in kilometers, for the duration span."""
+    """Sensor range bias, in kilometers."""
 
     range_rate_bias: Optional[float] = FieldInfo(alias="rangeRateBias", default=None)
-    """Sensor range rate bias, in kilometers per second for the duration span."""
+    """Sensor range rate bias, in kilometers per second."""
 
     range_rate_rms: Optional[float] = FieldInfo(alias="rangeRateRms", default=None)
     """
-    The root mean square of the calibration sensor range rate, in kilometers per
-    second, for the duration span.
+    The root mean square of the range rate residuals, in kilometers per second, used
+    to determine the sensor range rate bias.
     """
 
     range_rate_sigma: Optional[float] = FieldInfo(alias="rangeRateSigma", default=None)
-    """Standard deviation range rate, in kilometers per second, for the duration span."""
+    """
+    The standard deviation of the range rate residuals, in kilometers per second,
+    used to determine the sensor range rate bias.
+    """
 
     range_rms: Optional[float] = FieldInfo(alias="rangeRms", default=None)
     """
-    The root mean square of the calibration sensor range, in kilometers, for the
-    duration span.
+    The root mean square of the range residuals, in kilometers, used to determine
+    the sensor range bias.
     """
 
     range_sigma: Optional[float] = FieldInfo(alias="rangeSigma", default=None)
-    """Calibration standard deviation range, in kilometers, for the duration span."""
+    """
+    The standard deviation of the range residuals, in kilometers, used to determine
+    the sensor range bias.
+    """
 
     rcs_bias: Optional[float] = FieldInfo(alias="rcsBias", default=None)
-    """The radar cross section (RCS) observation noise bias in square meters."""
+    """The sensor radar cross section (RCS) observation bias, in square meters."""
 
     rcs_sigma: Optional[float] = FieldInfo(alias="rcsSigma", default=None)
     """
-    The radar cross section (RCS) observation noise standard deviation in square
-    meters.
+    The standard deviation of the radar cross section residuals, in square meters,
+    used to determine the radar cross section bias.
     """
 
     ref_targets: Optional[List[str]] = FieldInfo(alias="refTargets", default=None)
@@ -294,10 +302,13 @@ class HistoryQueryResponseItem(BaseModel):
     """
 
     time_bias: Optional[float] = FieldInfo(alias="timeBias", default=None)
-    """Sensor time bias, in seconds, for the duration span."""
+    """Sensor time bias, in seconds."""
 
     time_bias_sigma: Optional[float] = FieldInfo(alias="timeBiasSigma", default=None)
-    """Standard deviation time, in seconds, for the duration span."""
+    """
+    The standard deviation of the time residuals, in seconds, used to determine the
+    sensor time bias.
+    """
 
 
 HistoryQueryResponse: TypeAlias = List[HistoryQueryResponseItem]

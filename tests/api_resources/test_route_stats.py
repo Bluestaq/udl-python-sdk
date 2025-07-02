@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     RouteStatQueryResponse,
     RouteStatTupleResponse,
     RouteStatRetrieveResponse,
+    RouteStatQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 
@@ -403,7 +404,7 @@ class TestRouteStats:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         route_stat = client.route_stats.query_help()
-        assert route_stat is None
+        assert_matches_type(RouteStatQueryHelpResponse, route_stat, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -412,7 +413,7 @@ class TestRouteStats:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         route_stat = response.parse()
-        assert route_stat is None
+        assert_matches_type(RouteStatQueryHelpResponse, route_stat, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -421,7 +422,7 @@ class TestRouteStats:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             route_stat = response.parse()
-            assert route_stat is None
+            assert_matches_type(RouteStatQueryHelpResponse, route_stat, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -522,7 +523,9 @@ class TestRouteStats:
 
 
 class TestAsyncRouteStats:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -905,7 +908,7 @@ class TestAsyncRouteStats:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         route_stat = await async_client.route_stats.query_help()
-        assert route_stat is None
+        assert_matches_type(RouteStatQueryHelpResponse, route_stat, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -914,7 +917,7 @@ class TestAsyncRouteStats:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         route_stat = await response.parse()
-        assert route_stat is None
+        assert_matches_type(RouteStatQueryHelpResponse, route_stat, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -923,7 +926,7 @@ class TestAsyncRouteStats:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             route_stat = await response.parse()
-            assert route_stat is None
+            assert_matches_type(RouteStatQueryHelpResponse, route_stat, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

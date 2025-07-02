@@ -22,6 +22,9 @@ class FolderCreateParams(TypedDict, total=False):
     read: str
     """Comma separated list of user ids who can read contents of the folder."""
 
+    send_notification: Annotated[bool, PropertyInfo(alias="sendNotification")]
+    """Whether or not to send a notification that this folder was created."""
+
     tags: str
     """Comma separated list of tags to add to the folder."""
 

@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     BeamFull,
     BeamAbridged,
     BeamTupleResponse,
+    BeamQueryHelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -297,7 +298,7 @@ class TestBeam:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         beam = client.beam.query_help()
-        assert beam is None
+        assert_matches_type(BeamQueryHelpResponse, beam, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -306,7 +307,7 @@ class TestBeam:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beam = response.parse()
-        assert beam is None
+        assert_matches_type(BeamQueryHelpResponse, beam, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -315,7 +316,7 @@ class TestBeam:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beam = response.parse()
-            assert beam is None
+            assert_matches_type(BeamQueryHelpResponse, beam, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -361,7 +362,9 @@ class TestBeam:
 
 
 class TestAsyncBeam:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -638,7 +641,7 @@ class TestAsyncBeam:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam = await async_client.beam.query_help()
-        assert beam is None
+        assert_matches_type(BeamQueryHelpResponse, beam, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -647,7 +650,7 @@ class TestAsyncBeam:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beam = await response.parse()
-        assert beam is None
+        assert_matches_type(BeamQueryHelpResponse, beam, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -656,7 +659,7 @@ class TestAsyncBeam:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beam = await response.parse()
-            assert beam is None
+            assert_matches_type(BeamQueryHelpResponse, beam, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

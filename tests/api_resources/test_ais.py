@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     AIsAbridged,
     AITupleResponse,
+    AIQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -197,7 +198,7 @@ class TestAIs:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         ai = client.ais.queryhelp()
-        assert ai is None
+        assert_matches_type(AIQueryhelpResponse, ai, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -206,7 +207,7 @@ class TestAIs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ai = response.parse()
-        assert ai is None
+        assert_matches_type(AIQueryhelpResponse, ai, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -215,7 +216,7 @@ class TestAIs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ai = response.parse()
-            assert ai is None
+            assert_matches_type(AIQueryhelpResponse, ai, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -265,7 +266,9 @@ class TestAIs:
 
 
 class TestAsyncAIs:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -442,7 +445,7 @@ class TestAsyncAIs:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         ai = await async_client.ais.queryhelp()
-        assert ai is None
+        assert_matches_type(AIQueryhelpResponse, ai, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -451,7 +454,7 @@ class TestAsyncAIs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ai = await response.parse()
-        assert ai is None
+        assert_matches_type(AIQueryhelpResponse, ai, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -460,7 +463,7 @@ class TestAsyncAIs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ai = await response.parse()
-            assert ai is None
+            assert_matches_type(AIQueryhelpResponse, ai, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

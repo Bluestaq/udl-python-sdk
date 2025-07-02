@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SurfaceGetResponse,
     SurfaceListResponse,
     SurfaceTupleResponse,
+    SurfaceQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -438,7 +439,7 @@ class TestSurface:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         surface = client.surface.queryhelp()
-        assert surface is None
+        assert_matches_type(SurfaceQueryhelpResponse, surface, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -447,7 +448,7 @@ class TestSurface:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         surface = response.parse()
-        assert surface is None
+        assert_matches_type(SurfaceQueryhelpResponse, surface, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -456,7 +457,7 @@ class TestSurface:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             surface = response.parse()
-            assert surface is None
+            assert_matches_type(SurfaceQueryhelpResponse, surface, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -502,7 +503,9 @@ class TestSurface:
 
 
 class TestAsyncSurface:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -920,7 +923,7 @@ class TestAsyncSurface:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         surface = await async_client.surface.queryhelp()
-        assert surface is None
+        assert_matches_type(SurfaceQueryhelpResponse, surface, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -929,7 +932,7 @@ class TestAsyncSurface:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         surface = await response.parse()
-        assert surface is None
+        assert_matches_type(SurfaceQueryhelpResponse, surface, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -938,7 +941,7 @@ class TestAsyncSurface:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             surface = await response.parse()
-            assert surface is None
+            assert_matches_type(SurfaceQueryhelpResponse, surface, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

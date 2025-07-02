@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     OperatingunitGetResponse,
     OperatingunitListResponse,
     OperatingunitTupleResponse,
+    OperatingunitQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -400,7 +401,7 @@ class TestOperatingunit:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         operatingunit = client.operatingunit.queryhelp()
-        assert operatingunit is None
+        assert_matches_type(OperatingunitQueryhelpResponse, operatingunit, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -409,7 +410,7 @@ class TestOperatingunit:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         operatingunit = response.parse()
-        assert operatingunit is None
+        assert_matches_type(OperatingunitQueryhelpResponse, operatingunit, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -418,7 +419,7 @@ class TestOperatingunit:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             operatingunit = response.parse()
-            assert operatingunit is None
+            assert_matches_type(OperatingunitQueryhelpResponse, operatingunit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -464,7 +465,9 @@ class TestOperatingunit:
 
 
 class TestAsyncOperatingunit:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -843,7 +846,7 @@ class TestAsyncOperatingunit:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         operatingunit = await async_client.operatingunit.queryhelp()
-        assert operatingunit is None
+        assert_matches_type(OperatingunitQueryhelpResponse, operatingunit, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -852,7 +855,7 @@ class TestAsyncOperatingunit:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         operatingunit = await response.parse()
-        assert operatingunit is None
+        assert_matches_type(OperatingunitQueryhelpResponse, operatingunit, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -861,7 +864,7 @@ class TestAsyncOperatingunit:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             operatingunit = await response.parse()
-            assert operatingunit is None
+            assert_matches_type(OperatingunitQueryhelpResponse, operatingunit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

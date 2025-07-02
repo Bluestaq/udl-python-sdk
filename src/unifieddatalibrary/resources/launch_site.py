@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.launch_site_get_response import LaunchSiteGetResponse
 from ..types.launch_site_list_response import LaunchSiteListResponse
 from ..types.launch_site_tuple_response import LaunchSiteTupleResponse
+from ..types.launch_site_queryhelp_response import LaunchSiteQueryhelpResponse
 
 __all__ = ["LaunchSiteResource", "AsyncLaunchSiteResource"]
 
@@ -430,18 +431,17 @@ class LaunchSiteResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> LaunchSiteQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/launchsite/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=LaunchSiteQueryhelpResponse,
         )
 
     def tuple(
@@ -898,18 +898,17 @@ class AsyncLaunchSiteResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> LaunchSiteQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/launchsite/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=LaunchSiteQueryhelpResponse,
         )
 
     async def tuple(

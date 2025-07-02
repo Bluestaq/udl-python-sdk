@@ -17,4 +17,5 @@ from .history_count_response import HistoryCountResponse as HistoryCountResponse
 from .country_retrieve_params import CountryRetrieveParams as CountryRetrieveParams
 from .country_retrieve_response import CountryRetrieveResponse as CountryRetrieveResponse
 from .country_create_bulk_params import CountryCreateBulkParams as CountryCreateBulkParams
+from .country_query_help_response import CountryQueryHelpResponse as CountryQueryHelpResponse
 from .country_unvalidated_publish_params import CountryUnvalidatedPublishParams as CountryUnvalidatedPublishParams

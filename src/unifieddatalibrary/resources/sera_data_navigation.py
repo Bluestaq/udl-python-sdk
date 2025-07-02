@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.sera_data_navigation_get_response import SeraDataNavigationGetResponse
 from ..types.sera_data_navigation_list_response import SeraDataNavigationListResponse
 from ..types.sera_data_navigation_tuple_response import SeraDataNavigationTupleResponse
+from ..types.sera_data_navigation_queryhelp_response import SeraDataNavigationQueryhelpResponse
 
 __all__ = ["SeraDataNavigationResource", "AsyncSeraDataNavigationResource"]
 
@@ -494,18 +495,17 @@ class SeraDataNavigationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SeraDataNavigationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/seradatanavigation/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SeraDataNavigationQueryhelpResponse,
         )
 
     def tuple(
@@ -1026,18 +1026,17 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SeraDataNavigationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/seradatanavigation/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SeraDataNavigationQueryhelpResponse,
         )
 
     async def tuple(

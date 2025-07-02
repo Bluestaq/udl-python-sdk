@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     ManifoldGetResponse,
     ManifoldListResponse,
     ManifoldTupleResponse,
+    ManifoldQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -355,7 +356,7 @@ class TestManifold:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         manifold = client.manifold.queryhelp()
-        assert manifold is None
+        assert_matches_type(ManifoldQueryhelpResponse, manifold, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -364,7 +365,7 @@ class TestManifold:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         manifold = response.parse()
-        assert manifold is None
+        assert_matches_type(ManifoldQueryhelpResponse, manifold, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -373,7 +374,7 @@ class TestManifold:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             manifold = response.parse()
-            assert manifold is None
+            assert_matches_type(ManifoldQueryhelpResponse, manifold, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -419,7 +420,9 @@ class TestManifold:
 
 
 class TestAsyncManifold:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -754,7 +757,7 @@ class TestAsyncManifold:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         manifold = await async_client.manifold.queryhelp()
-        assert manifold is None
+        assert_matches_type(ManifoldQueryhelpResponse, manifold, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -763,7 +766,7 @@ class TestAsyncManifold:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         manifold = await response.parse()
-        assert manifold is None
+        assert_matches_type(ManifoldQueryhelpResponse, manifold, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -772,7 +775,7 @@ class TestAsyncManifold:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             manifold = await response.parse()
-            assert manifold is None
+            assert_matches_type(ManifoldQueryhelpResponse, manifold, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

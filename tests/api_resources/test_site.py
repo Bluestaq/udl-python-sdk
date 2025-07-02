@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SiteGetResponse,
     SiteListResponse,
     SiteTupleResponse,
+    SiteQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -466,7 +467,7 @@ class TestSite:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         site = client.site.queryhelp()
-        assert site is None
+        assert_matches_type(SiteQueryhelpResponse, site, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -475,7 +476,7 @@ class TestSite:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         site = response.parse()
-        assert site is None
+        assert_matches_type(SiteQueryhelpResponse, site, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -484,7 +485,7 @@ class TestSite:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             site = response.parse()
-            assert site is None
+            assert_matches_type(SiteQueryhelpResponse, site, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -530,7 +531,9 @@ class TestSite:
 
 
 class TestAsyncSite:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -975,7 +978,7 @@ class TestAsyncSite:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         site = await async_client.site.queryhelp()
-        assert site is None
+        assert_matches_type(SiteQueryhelpResponse, site, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -984,7 +987,7 @@ class TestAsyncSite:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         site = await response.parse()
-        assert site is None
+        assert_matches_type(SiteQueryhelpResponse, site, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -993,7 +996,7 @@ class TestAsyncSite:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             site = await response.parse()
-            assert site is None
+            assert_matches_type(SiteQueryhelpResponse, site, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

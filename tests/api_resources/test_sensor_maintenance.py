@@ -14,6 +14,7 @@ from unifieddatalibrary.types import (
     SensorMaintenanceListResponse,
     SensorMaintenanceTupleResponse,
     SensorMaintenanceCurrentResponse,
+    SensorMaintenanceQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -487,7 +488,7 @@ class TestSensorMaintenance:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         sensor_maintenance = client.sensor_maintenance.queryhelp()
-        assert sensor_maintenance is None
+        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -496,7 +497,7 @@ class TestSensorMaintenance:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sensor_maintenance = response.parse()
-        assert sensor_maintenance is None
+        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -505,7 +506,7 @@ class TestSensorMaintenance:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sensor_maintenance = response.parse()
-            assert sensor_maintenance is None
+            assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -553,7 +554,9 @@ class TestSensorMaintenance:
 
 
 class TestAsyncSensorMaintenance:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1018,7 +1021,7 @@ class TestAsyncSensorMaintenance:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         sensor_maintenance = await async_client.sensor_maintenance.queryhelp()
-        assert sensor_maintenance is None
+        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1027,7 +1030,7 @@ class TestAsyncSensorMaintenance:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sensor_maintenance = await response.parse()
-        assert sensor_maintenance is None
+        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1036,7 +1039,7 @@ class TestAsyncSensorMaintenance:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sensor_maintenance = await response.parse()
-            assert sensor_maintenance is None
+            assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

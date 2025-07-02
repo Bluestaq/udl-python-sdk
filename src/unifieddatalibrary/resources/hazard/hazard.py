@@ -39,6 +39,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.hazard_get_response import HazardGetResponse
 from ...types.hazard_list_response import HazardListResponse
 from ...types.hazard_tuple_response import HazardTupleResponse
+from ...types.hazard_queryhelp_response import HazardQueryhelpResponse
 
 __all__ = ["HazardResource", "AsyncHazardResource"]
 
@@ -524,18 +525,17 @@ class HazardResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> HazardQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/hazard/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=HazardQueryhelpResponse,
         )
 
     def tuple(
@@ -1081,18 +1081,17 @@ class AsyncHazardResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> HazardQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/hazard/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=HazardQueryhelpResponse,
         )
 
     async def tuple(

@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     EphemerisSet,
     EphemerisSetAbridged,
     EphemerisSetTupleResponse,
+    EphemerisSetQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary._response import (
@@ -336,7 +337,7 @@ class TestEphemerisSets:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         ephemeris_set = client.ephemeris_sets.queryhelp()
-        assert ephemeris_set is None
+        assert_matches_type(EphemerisSetQueryhelpResponse, ephemeris_set, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -345,7 +346,7 @@ class TestEphemerisSets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ephemeris_set = response.parse()
-        assert ephemeris_set is None
+        assert_matches_type(EphemerisSetQueryhelpResponse, ephemeris_set, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -354,7 +355,7 @@ class TestEphemerisSets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ephemeris_set = response.parse()
-            assert ephemeris_set is None
+            assert_matches_type(EphemerisSetQueryhelpResponse, ephemeris_set, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -402,7 +403,9 @@ class TestEphemerisSets:
 
 
 class TestAsyncEphemerisSets:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -715,7 +718,7 @@ class TestAsyncEphemerisSets:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         ephemeris_set = await async_client.ephemeris_sets.queryhelp()
-        assert ephemeris_set is None
+        assert_matches_type(EphemerisSetQueryhelpResponse, ephemeris_set, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -724,7 +727,7 @@ class TestAsyncEphemerisSets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ephemeris_set = await response.parse()
-        assert ephemeris_set is None
+        assert_matches_type(EphemerisSetQueryhelpResponse, ephemeris_set, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -733,7 +736,7 @@ class TestAsyncEphemerisSets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ephemeris_set = await response.parse()
-            assert ephemeris_set is None
+            assert_matches_type(EphemerisSetQueryhelpResponse, ephemeris_set, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

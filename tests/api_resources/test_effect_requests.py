@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     EffectRequestListResponse,
     EffectRequestTupleResponse,
     EffectRequestRetrieveResponse,
+    EffectRequestQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -269,7 +270,7 @@ class TestEffectRequests:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         effect_request = client.effect_requests.query_help()
-        assert effect_request is None
+        assert_matches_type(EffectRequestQueryHelpResponse, effect_request, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -278,7 +279,7 @@ class TestEffectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = response.parse()
-        assert effect_request is None
+        assert_matches_type(EffectRequestQueryHelpResponse, effect_request, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -287,7 +288,7 @@ class TestEffectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = response.parse()
-            assert effect_request is None
+            assert_matches_type(EffectRequestQueryHelpResponse, effect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -389,7 +390,9 @@ class TestEffectRequests:
 
 
 class TestAsyncEffectRequests:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -637,7 +640,7 @@ class TestAsyncEffectRequests:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         effect_request = await async_client.effect_requests.query_help()
-        assert effect_request is None
+        assert_matches_type(EffectRequestQueryHelpResponse, effect_request, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -646,7 +649,7 @@ class TestAsyncEffectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         effect_request = await response.parse()
-        assert effect_request is None
+        assert_matches_type(EffectRequestQueryHelpResponse, effect_request, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -655,7 +658,7 @@ class TestAsyncEffectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             effect_request = await response.parse()
-            assert effect_request is None
+            assert_matches_type(EffectRequestQueryHelpResponse, effect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

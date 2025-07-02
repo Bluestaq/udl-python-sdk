@@ -75,6 +75,7 @@ class TestFile:
                         "classification_marking": "classificationMarking",
                         "created_by": "createdBy",
                         "created_date": "createdDate",
+                        "delete_on": 0,
                         "description": "A new Example description",
                         "doc_title": "docTitle",
                         "doc_type": "docType",
@@ -174,7 +175,9 @@ class TestFile:
 
 
 class TestAsyncFile:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -233,6 +236,7 @@ class TestAsyncFile:
                         "classification_marking": "classificationMarking",
                         "created_by": "createdBy",
                         "created_date": "createdDate",
+                        "delete_on": 0,
                         "description": "A new Example description",
                         "doc_title": "docTitle",
                         "doc_type": "docType",

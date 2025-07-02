@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     CollectRequestAbridged,
     CollectRequestTupleResponse,
+    CollectRequestQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -472,7 +473,7 @@ class TestCollectRequests:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         collect_request = client.collect_requests.query_help()
-        assert collect_request is None
+        assert_matches_type(CollectRequestQueryHelpResponse, collect_request, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -481,7 +482,7 @@ class TestCollectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         collect_request = response.parse()
-        assert collect_request is None
+        assert_matches_type(CollectRequestQueryHelpResponse, collect_request, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -490,7 +491,7 @@ class TestCollectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             collect_request = response.parse()
-            assert collect_request is None
+            assert_matches_type(CollectRequestQueryHelpResponse, collect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -595,7 +596,9 @@ class TestCollectRequests:
 
 
 class TestAsyncCollectRequests:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1046,7 +1049,7 @@ class TestAsyncCollectRequests:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         collect_request = await async_client.collect_requests.query_help()
-        assert collect_request is None
+        assert_matches_type(CollectRequestQueryHelpResponse, collect_request, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1055,7 +1058,7 @@ class TestAsyncCollectRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         collect_request = await response.parse()
-        assert collect_request is None
+        assert_matches_type(CollectRequestQueryHelpResponse, collect_request, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1064,7 +1067,7 @@ class TestAsyncCollectRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             collect_request = await response.parse()
-            assert collect_request is None
+            assert_matches_type(CollectRequestQueryHelpResponse, collect_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

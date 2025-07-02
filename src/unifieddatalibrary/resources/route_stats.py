@@ -32,6 +32,7 @@ from .._base_client import make_request_options
 from ..types.route_stat_query_response import RouteStatQueryResponse
 from ..types.route_stat_tuple_response import RouteStatTupleResponse
 from ..types.route_stat_retrieve_response import RouteStatRetrieveResponse
+from ..types.route_stat_query_help_response import RouteStatQueryHelpResponse
 
 __all__ = ["RouteStatsResource", "AsyncRouteStatsResource"]
 
@@ -655,18 +656,17 @@ class RouteStatsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> RouteStatQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/routestats/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=RouteStatQueryHelpResponse,
         )
 
     def tuple(
@@ -1381,18 +1381,17 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> RouteStatQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/routestats/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=RouteStatQueryHelpResponse,
         )
 
     async def tuple(

@@ -31,6 +31,7 @@ from ...types.air_operations import (
 from ...types.air_operations.air_tasking_order_full import AirTaskingOrderFull
 from ...types.air_operations.airtaskingorder_abridged import AirtaskingorderAbridged
 from ...types.air_operations.air_tasking_order_tuple_response import AirTaskingOrderTupleResponse
+from ...types.air_operations.air_tasking_order_query_help_response import AirTaskingOrderQueryHelpResponse
 
 __all__ = ["AirTaskingOrdersResource", "AsyncAirTaskingOrdersResource"]
 
@@ -333,18 +334,17 @@ class AirTaskingOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AirTaskingOrderQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/airtaskingorder/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AirTaskingOrderQueryHelpResponse,
         )
 
     def tuple(
@@ -738,18 +738,17 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AirTaskingOrderQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/airtaskingorder/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AirTaskingOrderQueryHelpResponse,
         )
 
     async def tuple(

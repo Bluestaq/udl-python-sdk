@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     BusFull,
     BusAbridged,
     BusTupleResponse,
+    BusQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -486,7 +487,7 @@ class TestBuses:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         bus = client.buses.query_help()
-        assert bus is None
+        assert_matches_type(BusQueryHelpResponse, bus, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -495,7 +496,7 @@ class TestBuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bus = response.parse()
-        assert bus is None
+        assert_matches_type(BusQueryHelpResponse, bus, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -504,7 +505,7 @@ class TestBuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bus = response.parse()
-            assert bus is None
+            assert_matches_type(BusQueryHelpResponse, bus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -550,7 +551,9 @@ class TestBuses:
 
 
 class TestAsyncBuses:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1015,7 +1018,7 @@ class TestAsyncBuses:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         bus = await async_client.buses.query_help()
-        assert bus is None
+        assert_matches_type(BusQueryHelpResponse, bus, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1024,7 +1027,7 @@ class TestAsyncBuses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bus = await response.parse()
-        assert bus is None
+        assert_matches_type(BusQueryHelpResponse, bus, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1033,7 +1036,7 @@ class TestAsyncBuses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bus = await response.parse()
-            assert bus is None
+            assert_matches_type(BusQueryHelpResponse, bus, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -3,8 +3,8 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .analytic_imagery_full import AnalyticImageryFull
+from .analytic_imagery_abridged import AnalyticImageryAbridged
 
 __all__ = ["AnalyticImageryTupleResponse"]
 
-AnalyticImageryTupleResponse: TypeAlias = List[AnalyticImageryFull]
+AnalyticImageryTupleResponse: TypeAlias = List[AnalyticImageryAbridged]

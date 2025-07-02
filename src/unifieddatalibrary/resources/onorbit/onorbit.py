@@ -40,6 +40,7 @@ from .antenna_details import (
 from ...types.shared.onorbit_full import OnorbitFull
 from ...types.onorbit_list_response import OnorbitListResponse
 from ...types.onorbit_tuple_response import OnorbitTupleResponse
+from ...types.onorbit_queryhelp_response import OnorbitQueryhelpResponse
 from ...types.onorbit_get_signature_response import OnorbitGetSignatureResponse
 
 __all__ = ["OnorbitResource", "AsyncOnorbitResource"]
@@ -612,18 +613,17 @@ class OnorbitResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OnorbitQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/onorbit/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OnorbitQueryhelpResponse,
         )
 
     def tuple(
@@ -1250,18 +1250,17 @@ class AsyncOnorbitResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OnorbitQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/onorbit/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OnorbitQueryhelpResponse,
         )
 
     async def tuple(

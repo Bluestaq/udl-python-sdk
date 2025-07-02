@@ -294,8 +294,10 @@ class TestScs:
             file_name="fileName",
             path="path",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])
@@ -479,7 +481,9 @@ class TestScs:
 
 
 class TestAsyncScs:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -753,8 +757,10 @@ class TestAsyncScs:
             file_name="fileName",
             path="path",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])

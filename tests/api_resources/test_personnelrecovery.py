@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     PersonnelRecoveryFullL,
     PersonnelrecoveryListResponse,
     PersonnelrecoveryTupleResponse,
+    PersonnelrecoveryQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -396,7 +397,7 @@ class TestPersonnelrecovery:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         personnelrecovery = client.personnelrecovery.queryhelp()
-        assert personnelrecovery is None
+        assert_matches_type(PersonnelrecoveryQueryhelpResponse, personnelrecovery, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -405,7 +406,7 @@ class TestPersonnelrecovery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         personnelrecovery = response.parse()
-        assert personnelrecovery is None
+        assert_matches_type(PersonnelrecoveryQueryhelpResponse, personnelrecovery, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -414,7 +415,7 @@ class TestPersonnelrecovery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             personnelrecovery = response.parse()
-            assert personnelrecovery is None
+            assert_matches_type(PersonnelrecoveryQueryhelpResponse, personnelrecovery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -464,7 +465,9 @@ class TestPersonnelrecovery:
 
 
 class TestAsyncPersonnelrecovery:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -839,7 +842,7 @@ class TestAsyncPersonnelrecovery:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         personnelrecovery = await async_client.personnelrecovery.queryhelp()
-        assert personnelrecovery is None
+        assert_matches_type(PersonnelrecoveryQueryhelpResponse, personnelrecovery, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -848,7 +851,7 @@ class TestAsyncPersonnelrecovery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         personnelrecovery = await response.parse()
-        assert personnelrecovery is None
+        assert_matches_type(PersonnelrecoveryQueryhelpResponse, personnelrecovery, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -857,7 +860,7 @@ class TestAsyncPersonnelrecovery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             personnelrecovery = await response.parse()
-            assert personnelrecovery is None
+            assert_matches_type(PersonnelrecoveryQueryhelpResponse, personnelrecovery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

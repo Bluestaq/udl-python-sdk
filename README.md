@@ -1,6 +1,6 @@
 # Unifieddatalibrary Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/udl-sdk.svg)](https://pypi.org/project/udl-sdk/)
+[![PyPI version](<https://img.shields.io/pypi/v/udl-sdk.svg?label=pypi%20(stable)>)](https://pypi.org/project/udl-sdk/)
 
 The Unifieddatalibrary Python library provides convenient access to the Unifieddatalibrary REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -65,6 +65,39 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install --pre udl-sdk[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import os
+import asyncio
+from unifieddatalibrary import DefaultAioHttpClient
+from unifieddatalibrary import AsyncUnifieddatalibrary
+
+
+async def main() -> None:
+    async with AsyncUnifieddatalibrary(
+        username=os.environ.get("UDL_AUTH_USERNAME"),  # This is the default and can be omitted
+        password=os.environ.get("UDL_AUTH_PASSWORD"),  # This is the default and can be omitted
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        page = await client.elsets.current.list()
+        print(page.items)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
@@ -136,8 +169,6 @@ for current in first_page.items:
 # Remove `await` for non-async usage.
 ```
 
-from datetime import datetime, date
-
 ## Nested params
 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
@@ -158,47 +189,6 @@ client.aircraft.create(
         "name": "Example name",
         "source": "Bluestaq",
         "type": "ONORBIT",
-        "country_code": "US",
-        "id_entity": "ENTITY-ID",
-        "id_location": "LOCATION-ID",
-        "id_on_orbit": "ONORBIT-ID",
-        "id_operating_unit": "OPERATINGUNIT-ID",
-        "location": {
-            "classification_marking": "U",
-            "data_mode": "TEST",
-            "name": "Example location",
-            "source": "Bluestaq",
-            "altitude": 10.23,
-            "country_code": "US",
-            "id_location": "LOCATION-ID",
-            "lat": 45.23,
-            "lon": 179.1,
-            "origin": "THIRD_PARTY_DATASOURCE",
-        },
-        "on_orbit": {
-            "classification_marking": "U",
-            "data_mode": "TEST",
-            "sat_no": 1,
-            "source": "Bluestaq",
-            "alt_name": "Alternate Name",
-            "category": "Lunar",
-            "common_name": "Example common name",
-            "constellation": "Big Dipper",
-            "country_code": "US",
-            "decay_date": datetime.fromisoformat("2018-01-01T16:00:00.123"),
-            "id_on_orbit": "ONORBIT-ID",
-            "intl_des": "2021123ABC",
-            "launch_date": date.fromisoformat("2018-01-01"),
-            "launch_site_id": "LAUNCHSITE-ID",
-            "lifetime_years": 10,
-            "mission_number": "Expedition 1",
-            "object_type": "PAYLOAD",
-            "origin": "THIRD_PARTY_DATASOURCE",
-        },
-        "origin": "THIRD_PARTY_DATASOURCE",
-        "owner_type": "Commercial",
-        "taskable": False,
-        "urls": ["URL1", "URL2"],
     },
 )
 ```
@@ -285,7 +275,7 @@ client.with_options(max_retries=5).elsets.current.list()
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from unifieddatalibrary import Unifieddatalibrary

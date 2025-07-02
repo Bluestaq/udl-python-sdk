@@ -46,6 +46,7 @@ from ..._base_client import make_request_options
 from ...types.global_atmospheric_model_query_response import GlobalAtmosphericModelQueryResponse
 from ...types.global_atmospheric_model_tuple_response import GlobalAtmosphericModelTupleResponse
 from ...types.global_atmospheric_model_retrieve_response import GlobalAtmosphericModelRetrieveResponse
+from ...types.global_atmospheric_model_query_help_response import GlobalAtmosphericModelQueryHelpResponse
 
 __all__ = ["GlobalAtmosphericModelResource", "AsyncGlobalAtmosphericModelResource"]
 
@@ -279,18 +280,17 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> GlobalAtmosphericModelQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/globalatmosphericmodel/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=GlobalAtmosphericModelQueryHelpResponse,
         )
 
     def tuple(
@@ -410,7 +410,7 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          data_mode: 
+          data_mode:
               Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
               EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
@@ -754,18 +754,17 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> GlobalAtmosphericModelQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/globalatmosphericmodel/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=GlobalAtmosphericModelQueryHelpResponse,
         )
 
     async def tuple(
@@ -885,7 +884,7 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          data_mode: 
+          data_mode:
               Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
               EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data

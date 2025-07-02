@@ -32,6 +32,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.equipment_full import EquipmentFull
 from ..types.equipment_abridged import EquipmentAbridged
 from ..types.equipment_tuple_response import EquipmentTupleResponse
+from ..types.equipment_query_help_response import EquipmentQueryHelpResponse
 
 __all__ = ["EquipmentResource", "AsyncEquipmentResource"]
 
@@ -1175,18 +1176,17 @@ class EquipmentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EquipmentQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/equipment/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EquipmentQueryHelpResponse,
         )
 
     def tuple(
@@ -2385,18 +2385,17 @@ class AsyncEquipmentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EquipmentQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/equipment/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EquipmentQueryHelpResponse,
         )
 
     async def tuple(

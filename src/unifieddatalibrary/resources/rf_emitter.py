@@ -30,6 +30,7 @@ from ..types.entity_ingest_param import EntityIngestParam
 from ..types.rf_emitter_get_response import RfEmitterGetResponse
 from ..types.rf_emitter_list_response import RfEmitterListResponse
 from ..types.rf_emitter_tuple_response import RfEmitterTupleResponse
+from ..types.rf_emitter_queryhelp_response import RfEmitterQueryhelpResponse
 
 __all__ = ["RfEmitterResource", "AsyncRfEmitterResource"]
 
@@ -427,18 +428,17 @@ class RfEmitterResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> RfEmitterQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/rfemitter/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=RfEmitterQueryhelpResponse,
         )
 
     def tuple(
@@ -891,18 +891,17 @@ class AsyncRfEmitterResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> RfEmitterQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/rfemitter/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=RfEmitterQueryhelpResponse,
         )
 
     async def tuple(

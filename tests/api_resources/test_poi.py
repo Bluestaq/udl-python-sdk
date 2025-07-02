@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     PoiGetResponse,
     PoiListResponse,
     PoiTupleResponse,
+    PoiQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -311,7 +312,7 @@ class TestPoi:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         poi = client.poi.queryhelp()
-        assert poi is None
+        assert_matches_type(PoiQueryhelpResponse, poi, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -320,7 +321,7 @@ class TestPoi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         poi = response.parse()
-        assert poi is None
+        assert_matches_type(PoiQueryhelpResponse, poi, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -329,7 +330,7 @@ class TestPoi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             poi = response.parse()
-            assert poi is None
+            assert_matches_type(PoiQueryhelpResponse, poi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -437,7 +438,9 @@ class TestPoi:
 
 
 class TestAsyncPoi:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -727,7 +730,7 @@ class TestAsyncPoi:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         poi = await async_client.poi.queryhelp()
-        assert poi is None
+        assert_matches_type(PoiQueryhelpResponse, poi, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -736,7 +739,7 @@ class TestAsyncPoi:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         poi = await response.parse()
-        assert poi is None
+        assert_matches_type(PoiQueryhelpResponse, poi, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -745,7 +748,7 @@ class TestAsyncPoi:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             poi = await response.parse()
-            assert poi is None
+            assert_matches_type(PoiQueryhelpResponse, poi, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     LinkStatusGetResponse,
     LinkStatusListResponse,
     LinkStatusTupleResponse,
+    LinkStatusQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -241,7 +242,7 @@ class TestLinkStatus:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         link_status = client.link_status.queryhelp()
-        assert link_status is None
+        assert_matches_type(LinkStatusQueryhelpResponse, link_status, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -250,7 +251,7 @@ class TestLinkStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         link_status = response.parse()
-        assert link_status is None
+        assert_matches_type(LinkStatusQueryhelpResponse, link_status, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -259,7 +260,7 @@ class TestLinkStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             link_status = response.parse()
-            assert link_status is None
+            assert_matches_type(LinkStatusQueryhelpResponse, link_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -308,7 +309,9 @@ class TestLinkStatus:
 
 
 class TestAsyncLinkStatus:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -528,7 +531,7 @@ class TestAsyncLinkStatus:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         link_status = await async_client.link_status.queryhelp()
-        assert link_status is None
+        assert_matches_type(LinkStatusQueryhelpResponse, link_status, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -537,7 +540,7 @@ class TestAsyncLinkStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         link_status = await response.parse()
-        assert link_status is None
+        assert_matches_type(LinkStatusQueryhelpResponse, link_status, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -546,7 +549,7 @@ class TestAsyncLinkStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             link_status = await response.parse()
-            assert link_status is None
+            assert_matches_type(LinkStatusQueryhelpResponse, link_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

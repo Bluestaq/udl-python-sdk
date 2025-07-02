@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     NotificationListResponse,
     NotificationTupleResponse,
+    NotificationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -270,7 +271,7 @@ class TestNotification:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         notification = client.notification.queryhelp()
-        assert notification is None
+        assert_matches_type(NotificationQueryhelpResponse, notification, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -279,7 +280,7 @@ class TestNotification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification = response.parse()
-        assert notification is None
+        assert_matches_type(NotificationQueryhelpResponse, notification, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -288,7 +289,7 @@ class TestNotification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification = response.parse()
-            assert notification is None
+            assert_matches_type(NotificationQueryhelpResponse, notification, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -338,7 +339,9 @@ class TestNotification:
 
 
 class TestAsyncNotification:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -587,7 +590,7 @@ class TestAsyncNotification:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         notification = await async_client.notification.queryhelp()
-        assert notification is None
+        assert_matches_type(NotificationQueryhelpResponse, notification, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -596,7 +599,7 @@ class TestAsyncNotification:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification = await response.parse()
-        assert notification is None
+        assert_matches_type(NotificationQueryhelpResponse, notification, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -605,7 +608,7 @@ class TestAsyncNotification:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification = await response.parse()
-            assert notification is None
+            assert_matches_type(NotificationQueryhelpResponse, notification, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

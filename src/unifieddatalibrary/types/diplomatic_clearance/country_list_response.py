@@ -417,10 +417,10 @@ class CountryListResponse(BaseModel):
 
     alt_country_code: Optional[str] = FieldInfo(alias="altCountryCode", default=None)
     """
-    Specifies an alternate country code if the data provider code is not part of an
-    official Country Code standard such as ISO-3166 or FIPS. This field will be set
-    to the value provided by the source and should be used for all Queries
-    specifying a Country Code.
+    Specifies an alternate country code if the data provider code does not match a
+    UDL Country code value (ISO-3166-ALPHA-2). This field will be set to the value
+    provided by the source and should be used for all Queries specifying a Country
+    Code.
     """
 
     close_time: Optional[str] = FieldInfo(alias="closeTime", default=None)

@@ -29,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.seradata_radar_payload_get_response import SeradataRadarPayloadGetResponse
 from ..types.seradata_radar_payload_list_response import SeradataRadarPayloadListResponse
 from ..types.seradata_radar_payload_tuple_response import SeradataRadarPayloadTupleResponse
+from ..types.seradata_radar_payload_queryhelp_response import SeradataRadarPayloadQueryhelpResponse
 
 __all__ = ["SeradataRadarPayloadResource", "AsyncSeradataRadarPayloadResource"]
 
@@ -588,18 +589,17 @@ class SeradataRadarPayloadResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SeradataRadarPayloadQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/seradataradarpayload/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SeradataRadarPayloadQueryhelpResponse,
         )
 
     def tuple(
@@ -1214,18 +1214,17 @@ class AsyncSeradataRadarPayloadResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SeradataRadarPayloadQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/seradataradarpayload/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SeradataRadarPayloadQueryhelpResponse,
         )
 
     async def tuple(

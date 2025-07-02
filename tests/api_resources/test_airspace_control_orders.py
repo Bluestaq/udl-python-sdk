@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AirspacecontrolorderFull,
     AirspacecontrolorderAbridged,
     AirspaceControlOrderTupleResponse,
+    AirspaceControlOrderQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -340,7 +341,7 @@ class TestAirspaceControlOrders:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         airspace_control_order = client.airspace_control_orders.query_help()
-        assert airspace_control_order is None
+        assert_matches_type(AirspaceControlOrderQueryHelpResponse, airspace_control_order, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -349,7 +350,7 @@ class TestAirspaceControlOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airspace_control_order = response.parse()
-        assert airspace_control_order is None
+        assert_matches_type(AirspaceControlOrderQueryHelpResponse, airspace_control_order, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -358,7 +359,7 @@ class TestAirspaceControlOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airspace_control_order = response.parse()
-            assert airspace_control_order is None
+            assert_matches_type(AirspaceControlOrderQueryHelpResponse, airspace_control_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -404,7 +405,9 @@ class TestAirspaceControlOrders:
 
 
 class TestAsyncAirspaceControlOrders:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -725,7 +728,7 @@ class TestAsyncAirspaceControlOrders:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         airspace_control_order = await async_client.airspace_control_orders.query_help()
-        assert airspace_control_order is None
+        assert_matches_type(AirspaceControlOrderQueryHelpResponse, airspace_control_order, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -734,7 +737,7 @@ class TestAsyncAirspaceControlOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airspace_control_order = await response.parse()
-        assert airspace_control_order is None
+        assert_matches_type(AirspaceControlOrderQueryHelpResponse, airspace_control_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -743,7 +746,7 @@ class TestAsyncAirspaceControlOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airspace_control_order = await response.parse()
-            assert airspace_control_order is None
+            assert_matches_type(AirspaceControlOrderQueryHelpResponse, airspace_control_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

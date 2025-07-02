@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     EopAbridged,
     EopListTupleResponse,
+    EopQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -410,7 +411,7 @@ class TestEop:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         eop = client.eop.queryhelp()
-        assert eop is None
+        assert_matches_type(EopQueryhelpResponse, eop, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -419,7 +420,7 @@ class TestEop:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eop = response.parse()
-        assert eop is None
+        assert_matches_type(EopQueryhelpResponse, eop, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -428,13 +429,15 @@ class TestEop:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eop = response.parse()
-            assert eop is None
+            assert_matches_type(EopQueryhelpResponse, eop, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncEop:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -823,7 +826,7 @@ class TestAsyncEop:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         eop = await async_client.eop.queryhelp()
-        assert eop is None
+        assert_matches_type(EopQueryhelpResponse, eop, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -832,7 +835,7 @@ class TestAsyncEop:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         eop = await response.parse()
-        assert eop is None
+        assert_matches_type(EopQueryhelpResponse, eop, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -841,6 +844,6 @@ class TestAsyncEop:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             eop = await response.parse()
-            assert eop is None
+            assert_matches_type(EopQueryhelpResponse, eop, path=["response"])
 
         assert cast(Any, response.is_closed) is True

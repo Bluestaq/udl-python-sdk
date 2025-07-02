@@ -36,6 +36,7 @@ from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.missile_track_list_response import MissileTrackListResponse
 from ...types.missile_track_tuple_response import MissileTrackTupleResponse
+from ...types.missile_track_queryhelp_response import MissileTrackQueryhelpResponse
 
 __all__ = ["MissileTracksResource", "AsyncMissileTracksResource"]
 
@@ -213,18 +214,17 @@ class MissileTracksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> MissileTrackQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/missiletrack/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=MissileTrackQueryhelpResponse,
         )
 
     def tuple(
@@ -498,18 +498,17 @@ class AsyncMissileTracksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> MissileTrackQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/missiletrack/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=MissileTrackQueryhelpResponse,
         )
 
     async def tuple(

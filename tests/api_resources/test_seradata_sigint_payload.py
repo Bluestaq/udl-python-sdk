@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SeradataSigintPayloadGetResponse,
     SeradataSigintPayloadListResponse,
     SeradataSigintPayloadTupleResponse,
+    SeradataSigintPayloadQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -327,7 +328,7 @@ class TestSeradataSigintPayload:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         seradata_sigint_payload = client.seradata_sigint_payload.queryhelp()
-        assert seradata_sigint_payload is None
+        assert_matches_type(SeradataSigintPayloadQueryhelpResponse, seradata_sigint_payload, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -336,7 +337,7 @@ class TestSeradataSigintPayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_sigint_payload = response.parse()
-        assert seradata_sigint_payload is None
+        assert_matches_type(SeradataSigintPayloadQueryhelpResponse, seradata_sigint_payload, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -345,7 +346,7 @@ class TestSeradataSigintPayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_sigint_payload = response.parse()
-            assert seradata_sigint_payload is None
+            assert_matches_type(SeradataSigintPayloadQueryhelpResponse, seradata_sigint_payload, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -391,7 +392,9 @@ class TestSeradataSigintPayload:
 
 
 class TestAsyncSeradataSigintPayload:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -698,7 +701,7 @@ class TestAsyncSeradataSigintPayload:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         seradata_sigint_payload = await async_client.seradata_sigint_payload.queryhelp()
-        assert seradata_sigint_payload is None
+        assert_matches_type(SeradataSigintPayloadQueryhelpResponse, seradata_sigint_payload, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -707,7 +710,7 @@ class TestAsyncSeradataSigintPayload:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         seradata_sigint_payload = await response.parse()
-        assert seradata_sigint_payload is None
+        assert_matches_type(SeradataSigintPayloadQueryhelpResponse, seradata_sigint_payload, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -716,7 +719,7 @@ class TestAsyncSeradataSigintPayload:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             seradata_sigint_payload = await response.parse()
-            assert seradata_sigint_payload is None
+            assert_matches_type(SeradataSigintPayloadQueryhelpResponse, seradata_sigint_payload, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

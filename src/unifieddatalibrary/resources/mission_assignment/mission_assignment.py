@@ -40,6 +40,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.mission_assignment_get_response import MissionAssignmentGetResponse
 from ...types.mission_assignment_list_response import MissionAssignmentListResponse
 from ...types.mission_assignment_tuple_response import MissionAssignmentTupleResponse
+from ...types.mission_assignment_queryhelp_response import MissionAssignmentQueryhelpResponse
 
 __all__ = ["MissionAssignmentResource", "AsyncMissionAssignmentResource"]
 
@@ -919,18 +920,17 @@ class MissionAssignmentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> MissionAssignmentQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/missionassignment/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=MissionAssignmentQueryhelpResponse,
         )
 
     def tuple(
@@ -1870,18 +1870,17 @@ class AsyncMissionAssignmentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> MissionAssignmentQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/missionassignment/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=MissionAssignmentQueryhelpResponse,
         )
 
     async def tuple(

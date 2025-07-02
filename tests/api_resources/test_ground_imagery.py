@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     GroundImageryGetResponse,
     GroundImageryListResponse,
     GroundImageryTupleResponse,
+    GroundImageryQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary._response import (
@@ -342,7 +343,7 @@ class TestGroundImagery:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         ground_imagery = client.ground_imagery.queryhelp()
-        assert ground_imagery is None
+        assert_matches_type(GroundImageryQueryhelpResponse, ground_imagery, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -351,7 +352,7 @@ class TestGroundImagery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ground_imagery = response.parse()
-        assert ground_imagery is None
+        assert_matches_type(GroundImageryQueryhelpResponse, ground_imagery, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -360,7 +361,7 @@ class TestGroundImagery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ground_imagery = response.parse()
-            assert ground_imagery is None
+            assert_matches_type(GroundImageryQueryhelpResponse, ground_imagery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -441,7 +442,9 @@ class TestGroundImagery:
 
 
 class TestAsyncGroundImagery:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -758,7 +761,7 @@ class TestAsyncGroundImagery:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         ground_imagery = await async_client.ground_imagery.queryhelp()
-        assert ground_imagery is None
+        assert_matches_type(GroundImageryQueryhelpResponse, ground_imagery, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -767,7 +770,7 @@ class TestAsyncGroundImagery:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ground_imagery = await response.parse()
-        assert ground_imagery is None
+        assert_matches_type(GroundImageryQueryhelpResponse, ground_imagery, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -776,7 +779,7 @@ class TestAsyncGroundImagery:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ground_imagery = await response.parse()
-            assert ground_imagery is None
+            assert_matches_type(GroundImageryQueryhelpResponse, ground_imagery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

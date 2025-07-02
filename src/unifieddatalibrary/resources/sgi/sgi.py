@@ -42,6 +42,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sgi_get_response import SgiGetResponse
 from ...types.sgi_list_response import SgiListResponse
 from ...types.sgi_tuple_response import SgiTupleResponse
+from ...types.sgi_queryhelp_response import SgiQueryhelpResponse
 from ...types.sgi_get_data_by_effective_as_of_date_response import SgiGetDataByEffectiveAsOfDateResponse
 
 __all__ = ["SgiResource", "AsyncSgiResource"]
@@ -1083,18 +1084,17 @@ class SgiResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SgiQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/sgi/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SgiQueryhelpResponse,
         )
 
     def tuple(
@@ -2240,18 +2240,17 @@ class AsyncSgiResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> SgiQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/sgi/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=SgiQueryhelpResponse,
         )
 
     async def tuple(

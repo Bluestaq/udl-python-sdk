@@ -13,6 +13,8 @@ from unifieddatalibrary.types import (
     Elset,
     ElsetAbridged,
     ElsetTupleResponse,
+    ElsetQueryhelpResponse,
+    ElsetQueryCurrentElsetHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -384,7 +386,7 @@ class TestElsets:
     @parametrize
     def test_method_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
         elset = client.elsets.query_current_elset_help()
-        assert elset is None
+        assert_matches_type(ElsetQueryCurrentElsetHelpResponse, elset, path=["response"])
 
     @parametrize
     def test_raw_response_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
@@ -393,7 +395,7 @@ class TestElsets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         elset = response.parse()
-        assert elset is None
+        assert_matches_type(ElsetQueryCurrentElsetHelpResponse, elset, path=["response"])
 
     @parametrize
     def test_streaming_response_query_current_elset_help(self, client: Unifieddatalibrary) -> None:
@@ -402,14 +404,14 @@ class TestElsets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             elset = response.parse()
-            assert elset is None
+            assert_matches_type(ElsetQueryCurrentElsetHelpResponse, elset, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         elset = client.elsets.queryhelp()
-        assert elset is None
+        assert_matches_type(ElsetQueryhelpResponse, elset, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -418,7 +420,7 @@ class TestElsets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         elset = response.parse()
-        assert elset is None
+        assert_matches_type(ElsetQueryhelpResponse, elset, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -427,7 +429,7 @@ class TestElsets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             elset = response.parse()
-            assert elset is None
+            assert_matches_type(ElsetQueryhelpResponse, elset, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -529,7 +531,9 @@ class TestElsets:
 
 
 class TestAsyncElsets:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -892,7 +896,7 @@ class TestAsyncElsets:
     @parametrize
     async def test_method_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         elset = await async_client.elsets.query_current_elset_help()
-        assert elset is None
+        assert_matches_type(ElsetQueryCurrentElsetHelpResponse, elset, path=["response"])
 
     @parametrize
     async def test_raw_response_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -901,7 +905,7 @@ class TestAsyncElsets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         elset = await response.parse()
-        assert elset is None
+        assert_matches_type(ElsetQueryCurrentElsetHelpResponse, elset, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_current_elset_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -910,14 +914,14 @@ class TestAsyncElsets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             elset = await response.parse()
-            assert elset is None
+            assert_matches_type(ElsetQueryCurrentElsetHelpResponse, elset, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         elset = await async_client.elsets.queryhelp()
-        assert elset is None
+        assert_matches_type(ElsetQueryhelpResponse, elset, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -926,7 +930,7 @@ class TestAsyncElsets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         elset = await response.parse()
-        assert elset is None
+        assert_matches_type(ElsetQueryhelpResponse, elset, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -935,7 +939,7 @@ class TestAsyncElsets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             elset = await response.parse()
-            assert elset is None
+            assert_matches_type(ElsetQueryhelpResponse, elset, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

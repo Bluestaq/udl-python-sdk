@@ -10,7 +10,7 @@ from ..types import (
     drift_history_tuple_params,
     drift_history_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -25,6 +25,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.drift_history_full import DriftHistoryFull
 from ..types.drift_history_tuple_response import DriftHistoryTupleResponse
 from ..types.shared.drift_history_abridged import DriftHistoryAbridged
+from ..types.drift_history_queryhelp_response import DriftHistoryQueryhelpResponse
 
 __all__ = ["DriftHistoryResource", "AsyncDriftHistoryResource"]
 
@@ -198,18 +199,17 @@ class DriftHistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> DriftHistoryQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/drifthistory/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=DriftHistoryQueryhelpResponse,
         )
 
     def tuple(
@@ -438,18 +438,17 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> DriftHistoryQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/drifthistory/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=DriftHistoryQueryhelpResponse,
         )
 
     async def tuple(

@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     AircraftFull,
     AircraftAbridged,
+    AircraftQueryhelpResponse,
     AircraftTupleQueryResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
@@ -380,7 +381,7 @@ class TestAircraft:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         aircraft = client.aircraft.queryhelp()
-        assert aircraft is None
+        assert_matches_type(AircraftQueryhelpResponse, aircraft, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -389,7 +390,7 @@ class TestAircraft:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft = response.parse()
-        assert aircraft is None
+        assert_matches_type(AircraftQueryhelpResponse, aircraft, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -398,7 +399,7 @@ class TestAircraft:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft = response.parse()
-            assert aircraft is None
+            assert_matches_type(AircraftQueryhelpResponse, aircraft, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -444,7 +445,9 @@ class TestAircraft:
 
 
 class TestAsyncAircraft:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -803,7 +806,7 @@ class TestAsyncAircraft:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         aircraft = await async_client.aircraft.queryhelp()
-        assert aircraft is None
+        assert_matches_type(AircraftQueryhelpResponse, aircraft, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -812,7 +815,7 @@ class TestAsyncAircraft:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft = await response.parse()
-        assert aircraft is None
+        assert_matches_type(AircraftQueryhelpResponse, aircraft, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -821,7 +824,7 @@ class TestAsyncAircraft:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft = await response.parse()
-            assert aircraft is None
+            assert_matches_type(AircraftQueryhelpResponse, aircraft, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     LogisticsSupportGetResponse,
     LogisticsSupportListResponse,
     LogisticsSupportTupleResponse,
+    LogisticsSupportQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -598,7 +599,7 @@ class TestLogisticsSupport:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         logistics_support = client.logistics_support.queryhelp()
-        assert logistics_support is None
+        assert_matches_type(LogisticsSupportQueryhelpResponse, logistics_support, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -607,7 +608,7 @@ class TestLogisticsSupport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         logistics_support = response.parse()
-        assert logistics_support is None
+        assert_matches_type(LogisticsSupportQueryhelpResponse, logistics_support, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -616,7 +617,7 @@ class TestLogisticsSupport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             logistics_support = response.parse()
-            assert logistics_support is None
+            assert_matches_type(LogisticsSupportQueryhelpResponse, logistics_support, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -714,7 +715,9 @@ class TestLogisticsSupport:
 
 
 class TestAsyncLogisticsSupport:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1291,7 +1294,7 @@ class TestAsyncLogisticsSupport:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         logistics_support = await async_client.logistics_support.queryhelp()
-        assert logistics_support is None
+        assert_matches_type(LogisticsSupportQueryhelpResponse, logistics_support, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1300,7 +1303,7 @@ class TestAsyncLogisticsSupport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         logistics_support = await response.parse()
-        assert logistics_support is None
+        assert_matches_type(LogisticsSupportQueryhelpResponse, logistics_support, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1309,7 +1312,7 @@ class TestAsyncLogisticsSupport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             logistics_support = await response.parse()
-            assert logistics_support is None
+            assert_matches_type(LogisticsSupportQueryhelpResponse, logistics_support, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -38,6 +38,7 @@ from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.eop_abridged import EopAbridged
 from ...types.shared.eop_full import EopFull
+from ...types.eop_queryhelp_response import EopQueryhelpResponse
 from ...types.eop_list_tuple_response import EopListTupleResponse
 
 __all__ = ["EopResource", "AsyncEopResource"]
@@ -804,18 +805,17 @@ class EopResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EopQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/eop/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EopQueryhelpResponse,
         )
 
 
@@ -1580,18 +1580,17 @@ class AsyncEopResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EopQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/eop/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EopQueryhelpResponse,
         )
 
 

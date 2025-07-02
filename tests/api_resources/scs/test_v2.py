@@ -31,7 +31,9 @@ class TestV2:
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
         v2 = client.scs.v2.update(
             path="path",
+            send_notification=True,
             classification_marking="U",
+            delete_on=0,
             description="A description of the updated folder.",
             read_acl="user.id1,group.id1",
             tags=["TAG1", "TAG2"],
@@ -183,8 +185,10 @@ class TestV2:
             classification_marking="classificationMarking",
             path="path",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert v2 is None
@@ -228,7 +232,9 @@ class TestV2:
     def test_method_folder_create_with_all_params(self, client: Unifieddatalibrary) -> None:
         v2 = client.scs.v2.folder_create(
             path="path",
+            send_notification=True,
             classification_marking="U",
+            delete_on=0,
             description="My first folder",
             read_acl="user.id1,group.id1",
             tags=["TAG1", "TAG2"],
@@ -296,7 +302,9 @@ class TestV2:
 
 
 class TestAsyncV2:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -309,7 +317,9 @@ class TestAsyncV2:
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.update(
             path="path",
+            send_notification=True,
             classification_marking="U",
+            delete_on=0,
             description="A description of the updated folder.",
             read_acl="user.id1,group.id1",
             tags=["TAG1", "TAG2"],
@@ -461,8 +471,10 @@ class TestAsyncV2:
             classification_marking="classificationMarking",
             path="path",
             body=b"raw file contents",
+            delete_after="deleteAfter",
             description="description",
             overwrite=True,
+            send_notification=True,
             tags="tags",
         )
         assert v2 is None
@@ -506,7 +518,9 @@ class TestAsyncV2:
     async def test_method_folder_create_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.folder_create(
             path="path",
+            send_notification=True,
             classification_marking="U",
+            delete_on=0,
             description="My first folder",
             read_acl="user.id1,group.id1",
             tags=["TAG1", "TAG2"],

@@ -266,6 +266,7 @@ class Entity(TypedDict, total=False):
             "BUS",
             "COMM",
             "IR",
+            "LASEREMITTER",
             "NAVIGATION",
             "ONORBIT",
             "RFEMITTER",
@@ -277,7 +278,7 @@ class Entity(TypedDict, total=False):
     ]
     """
     The type of entity represented by this record (AIRCRAFT, BUS, COMM, IR,
-    NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
+    LASEREMITTER, NAVIGATION, ONORBIT, RFEMITTER, SCIENTIFIC, SENSOR, SITE, VESSEL).
     """
 
     country_code: Annotated[str, PropertyInfo(alias="countryCode")]
@@ -378,6 +379,13 @@ class Sensorcharacteristic(TypedDict, total=False):
     beamOrder field.
     """
 
+    analog_to_digital_bit_size: Annotated[int, PropertyInfo(alias="analogToDigitalBitSize")]
+    """
+    Number of bits used in the conversion from analog electrons in a pixel well to a
+    digital number. The digital number has a maximum value of 2^N, where N is the
+    number of bits.
+    """
+
     aperture: float
     """Optical sensor camera aperture."""
 
@@ -385,6 +393,22 @@ class Sensorcharacteristic(TypedDict, total=False):
     """
     For ASR (Air Surveillance Radar) sensors, the scan (360 deg sweep) rate of the
     radar, in scans/minute.
+    """
+
+    atmos_receiver_loss: Annotated[float, PropertyInfo(alias="atmosReceiverLoss")]
+    """One-way radar receiver loss factor due to atmospheric effects.
+
+    This value will often be the same as the corresponding transmission factor but
+    may be different for bistatic systems.
+    """
+
+    atmos_transmission_loss: Annotated[float, PropertyInfo(alias="atmosTransmissionLoss")]
+    """One-way radar transmission loss factor due to atmospheric effects."""
+
+    avg_atmos_seeing_conditions: Annotated[float, PropertyInfo(alias="avgAtmosSeeingConditions")]
+    """
+    Average atmospheric angular width with no distortion from turbulence at an
+    optical sensor site in arcseconds.
     """
 
     az_angs: Annotated[Iterable[float], PropertyInfo(alias="azAngs")]
@@ -397,8 +421,25 @@ class Sensorcharacteristic(TypedDict, total=False):
     azimuth_rate: Annotated[float, PropertyInfo(alias="azimuthRate")]
     """Azimuth rate acquisition limit (radians/minute)."""
 
+    background_sky_radiance: Annotated[float, PropertyInfo(alias="backgroundSkyRadiance")]
+    """
+    Average background sky brightness at an optical sensor site during new moon
+    conditions. This field uses units of watts per square meter per steradian
+    (W/(m^2 str)) consistent with sensor detection bands.
+    """
+
+    background_sky_vis_mag: Annotated[float, PropertyInfo(alias="backgroundSkyVisMag")]
+    """
+    Average background sky brightness at an optical sensor site during new moon
+    conditions. This field uses units of visual magnitude consistent with sensor
+    detection bands.
+    """
+
     band: str
     """Sensor band."""
+
+    bandwidth: float
+    """The total bandwidth, in megahertz, about the radar center frequency."""
 
     beam_order: Annotated[List[str], PropertyInfo(alias="beamOrder")]
     """Array designating the beam order of provided values (e.g.
@@ -419,10 +460,32 @@ class Sensorcharacteristic(TypedDict, total=False):
     boresight_off_angle: Annotated[float, PropertyInfo(alias="boresightOffAngle")]
     """The number of degrees off of the boresight for the sensor."""
 
+    center_wavelength: Annotated[float, PropertyInfo(alias="centerWavelength")]
+    """Weighted center wavelength for an optical sensor bandpass in micrometers.
+
+    It is the center wavelength in a weighted integral sense, accounting for the
+    sensitivity vs. wavelength curve for the sensor focal plane array.
+    """
+
+    collapsing_loss: Annotated[float, PropertyInfo(alias="collapsingLoss")]
+    """Collapsing loss in decibels.
+
+    Collapsing losses occur when two or more sources of noise are added to the
+    target signal. Examples include receiver bandwidth mismatch with filtering
+    bandwidth and elevation or azimuth beam collapse onto position/height indicator
+    displays.
+    """
+
     crit_shear: Annotated[float, PropertyInfo(alias="critShear")]
     """
     Threshold shear value beyond which one of the radial velocity values will be
     rejected, measured in units of inverse second.
+    """
+
+    dark_current: Annotated[float, PropertyInfo(alias="darkCurrent")]
+    """
+    Current flowing through optical sensor focal plane electronics with a closed
+    shutter in electrons per second.
     """
 
     delay_gates: Annotated[Iterable[float], PropertyInfo(alias="delayGates")]
@@ -434,6 +497,28 @@ class Sensorcharacteristic(TypedDict, total=False):
 
     description: str
     """Description of the equipment and data source."""
+
+    detect_snr: Annotated[float, PropertyInfo(alias="detectSNR")]
+    """Detection signal-to-noise ratio (SNR) threshold in decibels.
+
+    This value is typically lower than trackSNR.
+    """
+
+    duty_cycle: Annotated[float, PropertyInfo(alias="dutyCycle")]
+    """Sensor duty cycle as a fraction of 1.
+
+    Duty cycle is the fraction of time a sensor is actively transmitting.
+    """
+
+    earth_limb_excl_hgt: Annotated[float, PropertyInfo(alias="earthLimbExclHgt")]
+    """
+    Sensor Earth limb exclusion height in kilometers and is generally only applied
+    to space-based sensors. Some models used an earth exclusion angle instead, but
+    this assumes the sensor is in a circular orbit with constant altitude relative
+    to the earth. The limb exclusion height can be used for space-based sensors in
+    any orbit (assuming it is constant with sensor altitude). The limb height is
+    defined to be 0 at the surface of the earth.
+    """
 
     el_angs: Annotated[Iterable[float], PropertyInfo(alias="elAngs")]
     """Array of elevation angles of a radar beam, in degrees.
@@ -466,6 +551,20 @@ class Sensorcharacteristic(TypedDict, total=False):
     failing the first guess check.
     """
 
+    filter_mismatch_factor: Annotated[float, PropertyInfo(alias="filterMismatchFactor")]
+    """
+    Noise term, in decibels, that arises when a radar receiver filter has a
+    non-optimal bandwidth for an incoming signal (i.e., when it does not match the
+    pulse width).
+    """
+
+    f_num: Annotated[float, PropertyInfo(alias="fNum")]
+    """F-number for an optical telescope.
+
+    It is dimensionless and is defined as the ratio of the focal length to the
+    aperture width.
+    """
+
     focal_point: Annotated[float, PropertyInfo(alias="focalPoint")]
     """
     For radar based sensors, the focal point elevation of the radar at the site, in
@@ -473,7 +572,7 @@ class Sensorcharacteristic(TypedDict, total=False):
     """
 
     h_fov: Annotated[float, PropertyInfo(alias="hFOV")]
-    """Horizontal field of view."""
+    """Horizontal field of view, in degrees."""
 
     h_res_pixels: Annotated[int, PropertyInfo(alias="hResPixels")]
     """Horizontal pixel resolution."""
@@ -493,6 +592,20 @@ class Sensorcharacteristic(TypedDict, total=False):
     location: str
     """Site where measurement is taken."""
 
+    loop_gain: Annotated[float, PropertyInfo(alias="loopGain")]
+    """Aggregated radar range equation gain in decibels for maximum sensitivity.
+
+    It is a roll-up value for low fidelity modeling and is often the only
+    sensitivity value available for a radar system without access to detailed
+    performance parameters.
+    """
+
+    lunar_excl_angle: Annotated[float, PropertyInfo(alias="lunarExclAngle")]
+    """
+    Lowest aspect angle of the full moon in degrees at which the sensor can achieve
+    full performance.
+    """
+
     mag_dec: Annotated[float, PropertyInfo(alias="magDec")]
     """Angle between magnetic north and true north at the sensor site, in degrees."""
 
@@ -501,6 +614,9 @@ class Sensorcharacteristic(TypedDict, total=False):
 
     max_deviation_angle: Annotated[float, PropertyInfo(alias="maxDeviationAngle")]
     """Max deviation angle of the sensor in degrees."""
+
+    max_integration_time: Annotated[float, PropertyInfo(alias="maxIntegrationTime")]
+    """Maximum integration time per image frame in seconds for an optical sensor."""
 
     max_observable_range: Annotated[float, PropertyInfo(alias="maxObservableRange")]
     """Maximum observable sensor range, in kilometers."""
@@ -511,6 +627,12 @@ class Sensorcharacteristic(TypedDict, total=False):
     this range.
     """
 
+    max_wavelength: Annotated[float, PropertyInfo(alias="maxWavelength")]
+    """Maximum wavelength detectable by an optical sensor in micrometers."""
+
+    min_integration_time: Annotated[float, PropertyInfo(alias="minIntegrationTime")]
+    """Minimum integration time per image frame in seconds for an optical sensor."""
+
     min_range_limit: Annotated[float, PropertyInfo(alias="minRangeLimit")]
     """Minimum range measurement capability of the sensor, in kilometers."""
 
@@ -520,11 +642,118 @@ class Sensorcharacteristic(TypedDict, total=False):
     The values for this range from 0.0 - + 99.99 dB.
     """
 
+    min_wavelength: Annotated[float, PropertyInfo(alias="minWavelength")]
+    """Minimum wavelength detectable by an optical sensor in micrometers."""
+
     negative_range_rate_limit: Annotated[float, PropertyInfo(alias="negativeRangeRateLimit")]
     """Negative Range-rate/relative velocity limit (kilometers/second)."""
 
+    noise_figure: Annotated[float, PropertyInfo(alias="noiseFigure")]
+    """Noise figure for a radar system in decibels.
+
+    This value may be used to compute system noise when the system temperature is
+    unavailable.
+    """
+
+    non_coherent_integrated_pulses: Annotated[int, PropertyInfo(alias="nonCoherentIntegratedPulses")]
+    """
+    Number of pulses that are non-coherently integrated during detection processing.
+    """
+
     num_integrated_pulses: Annotated[int, PropertyInfo(alias="numIntegratedPulses")]
     """For radar based sensors, number of integrated pulses in a transmit cycle."""
+
+    num_integration_frames: Annotated[int, PropertyInfo(alias="numIntegrationFrames")]
+    """Number of integration frames for an optical sensor."""
+
+    num_optical_integration_modes: Annotated[int, PropertyInfo(alias="numOpticalIntegrationModes")]
+    """The number of optical integration mode characteristics provided in this record.
+
+    If provided, the numOpticalIntegrationModes value indicates the number of
+    elements in each of the opticalIntegrationTimes, opticalIntegrationAngularRates,
+    opticalIntegrationFrames, opticalIntegrationPixelBinnings, and
+    opticalIntegrationSNRs arrays.
+    """
+
+    num_waveforms: Annotated[int, PropertyInfo(alias="numWaveforms")]
+    """The number of waveforms characteristics provided in this record.
+
+    If provided, the numWaveforms value indicates the number of elements in each of
+    the waveformPulseWidths, waveformBandWidths, waveformMinRanges,
+    waveformMaxRanges, and waveformLoopGains arrays.
+    """
+
+    optical_integration_angular_rates: Annotated[Iterable[float], PropertyInfo(alias="opticalIntegrationAngularRates")]
+    """
+    Array containing the angular rate, in arcsec/sec, for each provided optical
+    integration mode. The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_frames: Annotated[Iterable[float], PropertyInfo(alias="opticalIntegrationFrames")]
+    """Array containing the number of frames, for each optical integration mode.
+
+    The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_pixel_binnings: Annotated[
+        Iterable[float], PropertyInfo(alias="opticalIntegrationPixelBinnings")
+    ]
+    """Array containing the pixel binning, for each optical integration mode.
+
+    The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_sn_rs: Annotated[Iterable[float], PropertyInfo(alias="opticalIntegrationSNRs")]
+    """Array of optical integration modes signal to noise ratios.
+
+    The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_integration_times: Annotated[Iterable[float], PropertyInfo(alias="opticalIntegrationTimes")]
+    """
+    Array containing the time, in seconds, for each provided optical integration
+    mode. The number of elements must be equal to the value indicated in
+    numOpticalIntegrationModes.
+    """
+
+    optical_transmission: Annotated[float, PropertyInfo(alias="opticalTransmission")]
+    """Fraction of incident light transmitted to an optical sensor focal plane array.
+
+    The value is given as a fraction of 1, not as a percent.
+    """
+
+    pattern_absorption_loss: Annotated[float, PropertyInfo(alias="patternAbsorptionLoss")]
+    """Two-way pattern absorption/propagation loss due to medium in decibels."""
+
+    pattern_scan_loss: Annotated[float, PropertyInfo(alias="patternScanLoss")]
+    """Losses from the beam shape, scanning, and pattern factor in decibels.
+
+    These losses occur when targets are not directly in line with a beam center. For
+    space surveillance, this will occur most often during sensor scanning.
+    """
+
+    peak_power: Annotated[float, PropertyInfo(alias="peakPower")]
+    """
+    Maximum instantaneous radar transmit power in watts for use in the radar range
+    equation.
+    """
+
+    pixel_instantaneous_fov: Annotated[float, PropertyInfo(alias="pixelInstantaneousFOV")]
+    """
+    Angular field-of-view covered by one pixel in a focal plane array in
+    microradians. The pixel is assumed to be a perfect square so that only a single
+    value is required.
+    """
+
+    pixel_well_depth: Annotated[int, PropertyInfo(alias="pixelWellDepth")]
+    """
+    Maximum number of electrons that can be collected in a single pixel on an
+    optical sensor focal plane array.
+    """
 
     positive_range_rate_limit: Annotated[float, PropertyInfo(alias="positiveRangeRateLimit")]
     """Positive Range-rate/relative velocity limit (kilometers/second)."""
@@ -534,6 +763,9 @@ class Sensorcharacteristic(TypedDict, total=False):
 
     Number of new pulses transmitted per second.
     """
+
+    prob_detect_snr: Annotated[float, PropertyInfo(alias="probDetectSNR")]
+    """Designated probability of detection at the signal-to-noise detection threshold."""
 
     prob_false_alarm: Annotated[float, PropertyInfo(alias="probFalseAlarm")]
     """
@@ -548,8 +780,14 @@ class Sensorcharacteristic(TypedDict, total=False):
     associated beam(s) must be provided in the beamOrder field.
     """
 
+    quantum_eff: Annotated[float, PropertyInfo(alias="quantumEff")]
+    """Fraction of incident photons converted to electrons at the focal plane array.
+
+    This value is a decimal number between 0 and 1, inclusive.
+    """
+
     radar_frequency: Annotated[float, PropertyInfo(alias="radarFrequency")]
-    """Radar frequency of the sensor (if a radar sensor)."""
+    """Radar frequency in hertz, of the sensor (if a radar sensor)."""
 
     radar_message_format: Annotated[str, PropertyInfo(alias="radarMessageFormat")]
     """Message data format transmitted by the sensor digitizer."""
@@ -567,6 +805,12 @@ class Sensorcharacteristic(TypedDict, total=False):
     radio_frequency: Annotated[float, PropertyInfo(alias="radioFrequency")]
     """Radio frequency (if sensor is RF)."""
 
+    radome_loss: Annotated[float, PropertyInfo(alias="radomeLoss")]
+    """
+    Losses due to the presence of a protective radome surrounding a radar sensor, in
+    decibels.
+    """
+
     range_gates: Annotated[Iterable[int], PropertyInfo(alias="rangeGates")]
     """
     Array of the number(s) of discrete altitudes where return signals are sampled by
@@ -579,6 +823,32 @@ class Sensorcharacteristic(TypedDict, total=False):
 
     If this field is populated, the associated beam(s) must be provided in the
     beamOrder field.
+    """
+
+    read_noise: Annotated[int, PropertyInfo(alias="readNoise")]
+    """
+    Number of false-signal electrons generated by optical sensor focal plane
+    read-out electronics from photon-to-electron conversion during frame
+    integration. The units are in electrons RMS.
+    """
+
+    receive_gain: Annotated[float, PropertyInfo(alias="receiveGain")]
+    """Radar receive gain in decibels."""
+
+    receive_horiz_beam_width: Annotated[float, PropertyInfo(alias="receiveHorizBeamWidth")]
+    """Horizontal/azimuthal receive beamwidth for a radar in degrees."""
+
+    receive_loss: Annotated[float, PropertyInfo(alias="receiveLoss")]
+    """Aggregate radar receive loss, in decibels."""
+
+    receive_vert_beam_width: Annotated[float, PropertyInfo(alias="receiveVertBeamWidth")]
+    """Vertical/elevation receive beamwidth for a radar in degrees."""
+
+    ref_temp: Annotated[float, PropertyInfo(alias="refTemp")]
+    """Reference temperature for radar noise in Kelvin.
+
+    A reference temperature is used when the radar system temperature is unknown and
+    is combined with the system noise figure to estimate signal loss.
     """
 
     req_records: Annotated[Iterable[int], PropertyInfo(alias="reqRecords")]
@@ -603,8 +873,20 @@ class Sensorcharacteristic(TypedDict, total=False):
     beamOrder field.
     """
 
+    signal_processing_loss: Annotated[float, PropertyInfo(alias="signalProcessingLoss")]
+    """Radar signal processing losses, in decibels."""
+
     site_code: Annotated[str, PropertyInfo(alias="siteCode")]
     """Site code of the sensor."""
+
+    solar_excl_angle: Annotated[float, PropertyInfo(alias="solarExclAngle")]
+    """Sensor and target position vector origins are at the center of the earth.
+
+    The sun vector origin is at the target position and points toward the sun. Any
+    value between 0 and 180 degrees is acceptable and is assumed to apply in both
+    directions (i.e., a solar exclusion angle of 30 degrees is understood to mean no
+    viewing for any angle between -30 deg and +30 deg).
+    """
 
     spec_avg_spectra_nums: Annotated[Iterable[int], PropertyInfo(alias="specAvgSpectraNums")]
     """
@@ -652,14 +934,42 @@ class Sensorcharacteristic(TypedDict, total=False):
     range from 0 - PI/2.
     """
 
+    track_snr: Annotated[float, PropertyInfo(alias="trackSNR")]
+    """Track signal-to-noise ratio (SNR) threshold in decibels.
+
+    This value is typically higher than detectSNR.
+    """
+
+    transmit_gain: Annotated[float, PropertyInfo(alias="transmitGain")]
+    """Radar transmit gain in decibels."""
+
+    transmit_horiz_beam_width: Annotated[float, PropertyInfo(alias="transmitHorizBeamWidth")]
+    """Horizontal/azimuthal transmit beamwidth for a radar in degrees."""
+
+    transmit_loss: Annotated[float, PropertyInfo(alias="transmitLoss")]
+    """Aggregate radar transmit loss, in decibels."""
+
     transmit_power: Annotated[float, PropertyInfo(alias="transmitPower")]
     """Radar transmit power in Watts."""
+
+    transmit_vert_beam_width: Annotated[float, PropertyInfo(alias="transmitVertBeamWidth")]
+    """Vertical/elevation transmit beamwidth for a radar in degrees."""
 
     true_north_corrector: Annotated[int, PropertyInfo(alias="trueNorthCorrector")]
     """True North correction for the sensor, in ACP (Azimunth Change Pulse) count."""
 
     true_tilt: Annotated[float, PropertyInfo(alias="trueTilt")]
     """Antenna true tilt, in degrees."""
+
+    twilight_angle: Annotated[float, PropertyInfo(alias="twilightAngle")]
+    """Twilight angle for ground-based optical sensors in degrees.
+
+    A sensor cannot view targets until the sun is below the twilight angle relative
+    to the local horizon. The sign of the angle is positive despite the sun
+    elevation being negative after local sunset. Typical values for the twilight
+    angle are civil twilight (6 degrees), nautical twilight (12 degrees), and
+    astronomical twilight (18 degrees).
+    """
 
     vert_beam_flag: Annotated[bool, PropertyInfo(alias="vertBeamFlag")]
     """Flag indicating if a vertical radar beam was used in the wind calculation."""
@@ -680,10 +990,45 @@ class Sensorcharacteristic(TypedDict, total=False):
     """
 
     v_fov: Annotated[float, PropertyInfo(alias="vFOV")]
-    """Vertical field of view."""
+    """Vertical field of view, in degrees."""
 
     v_res_pixels: Annotated[int, PropertyInfo(alias="vResPixels")]
     """Vertical pixel resolution."""
+
+    waveform_bandwidths: Annotated[Iterable[float], PropertyInfo(alias="waveformBandwidths")]
+    """Array containing the bandwidth, in megahertz, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
+
+    waveform_loop_gains: Annotated[Iterable[float], PropertyInfo(alias="waveformLoopGains")]
+    """Array containing the loop gain, in decibels, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field (10 SNR vs. 1 dBsm at 1000 km).
+    """
+
+    waveform_max_ranges: Annotated[Iterable[float], PropertyInfo(alias="waveformMaxRanges")]
+    """Array containing the maximum range, in kilometers, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
+
+    waveform_min_ranges: Annotated[Iterable[float], PropertyInfo(alias="waveformMinRanges")]
+    """Array containing the minimum range, in kilometers, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
+
+    waveform_pulse_widths: Annotated[Iterable[float], PropertyInfo(alias="waveformPulseWidths")]
+    """Array containing the pulse width, in microseconds, for each provided waveform.
+
+    The number of elements in this array must be equal to the value indicated in the
+    numWaveforms field.
+    """
 
     z1_max_range: Annotated[float, PropertyInfo(alias="z1MaxRange")]
     """Peformance zone-1 maximum range, in kilometers.

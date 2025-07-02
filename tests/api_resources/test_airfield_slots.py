@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AirfieldslotFull,
     AirfieldslotAbridged,
     AirfieldSlotTupleResponse,
+    AirfieldSlotQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -324,7 +325,7 @@ class TestAirfieldSlots:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         airfield_slot = client.airfield_slots.queryhelp()
-        assert airfield_slot is None
+        assert_matches_type(AirfieldSlotQueryhelpResponse, airfield_slot, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -333,7 +334,7 @@ class TestAirfieldSlots:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfield_slot = response.parse()
-        assert airfield_slot is None
+        assert_matches_type(AirfieldSlotQueryhelpResponse, airfield_slot, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -342,7 +343,7 @@ class TestAirfieldSlots:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfield_slot = response.parse()
-            assert airfield_slot is None
+            assert_matches_type(AirfieldSlotQueryhelpResponse, airfield_slot, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -388,7 +389,9 @@ class TestAirfieldSlots:
 
 
 class TestAsyncAirfieldSlots:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -692,7 +695,7 @@ class TestAsyncAirfieldSlots:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield_slot = await async_client.airfield_slots.queryhelp()
-        assert airfield_slot is None
+        assert_matches_type(AirfieldSlotQueryhelpResponse, airfield_slot, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -701,7 +704,7 @@ class TestAsyncAirfieldSlots:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfield_slot = await response.parse()
-        assert airfield_slot is None
+        assert_matches_type(AirfieldSlotQueryhelpResponse, airfield_slot, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -710,7 +713,7 @@ class TestAsyncAirfieldSlots:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfield_slot = await response.parse()
-            assert airfield_slot is None
+            assert_matches_type(AirfieldSlotQueryhelpResponse, airfield_slot, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

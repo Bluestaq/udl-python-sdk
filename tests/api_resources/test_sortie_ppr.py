@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     SortiePprListResponse,
     SortiePprTupleResponse,
+    SortiePprQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -378,7 +379,7 @@ class TestSortiePpr:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         sortie_ppr = client.sortie_ppr.queryhelp()
-        assert sortie_ppr is None
+        assert_matches_type(SortiePprQueryhelpResponse, sortie_ppr, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -387,7 +388,7 @@ class TestSortiePpr:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sortie_ppr = response.parse()
-        assert sortie_ppr is None
+        assert_matches_type(SortiePprQueryhelpResponse, sortie_ppr, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -396,7 +397,7 @@ class TestSortiePpr:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sortie_ppr = response.parse()
-            assert sortie_ppr is None
+            assert_matches_type(SortiePprQueryhelpResponse, sortie_ppr, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -498,7 +499,9 @@ class TestSortiePpr:
 
 
 class TestAsyncSortiePpr:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -855,7 +858,7 @@ class TestAsyncSortiePpr:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         sortie_ppr = await async_client.sortie_ppr.queryhelp()
-        assert sortie_ppr is None
+        assert_matches_type(SortiePprQueryhelpResponse, sortie_ppr, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -864,7 +867,7 @@ class TestAsyncSortiePpr:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sortie_ppr = await response.parse()
-        assert sortie_ppr is None
+        assert_matches_type(SortiePprQueryhelpResponse, sortie_ppr, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -873,7 +876,7 @@ class TestAsyncSortiePpr:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sortie_ppr = await response.parse()
-            assert sortie_ppr is None
+            assert_matches_type(SortiePprQueryhelpResponse, sortie_ppr, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

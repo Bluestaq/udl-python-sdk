@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     BeamcontourFull,
     BeamcontourAbridged,
     BeamContourTupleResponse,
+    BeamContourQueryHelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -391,7 +392,7 @@ class TestBeamContours:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         beam_contour = client.beam_contours.query_help()
-        assert beam_contour is None
+        assert_matches_type(BeamContourQueryHelpResponse, beam_contour, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -400,7 +401,7 @@ class TestBeamContours:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beam_contour = response.parse()
-        assert beam_contour is None
+        assert_matches_type(BeamContourQueryHelpResponse, beam_contour, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -409,7 +410,7 @@ class TestBeamContours:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beam_contour = response.parse()
-            assert beam_contour is None
+            assert_matches_type(BeamContourQueryHelpResponse, beam_contour, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -459,7 +460,9 @@ class TestBeamContours:
 
 
 class TestAsyncBeamContours:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -830,7 +833,7 @@ class TestAsyncBeamContours:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         beam_contour = await async_client.beam_contours.query_help()
-        assert beam_contour is None
+        assert_matches_type(BeamContourQueryHelpResponse, beam_contour, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -839,7 +842,7 @@ class TestAsyncBeamContours:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beam_contour = await response.parse()
-        assert beam_contour is None
+        assert_matches_type(BeamContourQueryHelpResponse, beam_contour, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -848,7 +851,7 @@ class TestAsyncBeamContours:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beam_contour = await response.parse()
-            assert beam_contour is None
+            assert_matches_type(BeamContourQueryHelpResponse, beam_contour, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

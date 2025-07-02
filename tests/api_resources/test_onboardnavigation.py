@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     OnboardnavigationListResponse,
     OnboardnavigationTupleResponse,
+    OnboardnavigationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -157,7 +158,7 @@ class TestOnboardnavigation:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         onboardnavigation = client.onboardnavigation.queryhelp()
-        assert onboardnavigation is None
+        assert_matches_type(OnboardnavigationQueryhelpResponse, onboardnavigation, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -166,7 +167,7 @@ class TestOnboardnavigation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onboardnavigation = response.parse()
-        assert onboardnavigation is None
+        assert_matches_type(OnboardnavigationQueryhelpResponse, onboardnavigation, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -175,7 +176,7 @@ class TestOnboardnavigation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onboardnavigation = response.parse()
-            assert onboardnavigation is None
+            assert_matches_type(OnboardnavigationQueryhelpResponse, onboardnavigation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -277,7 +278,9 @@ class TestOnboardnavigation:
 
 
 class TestAsyncOnboardnavigation:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -414,7 +417,7 @@ class TestAsyncOnboardnavigation:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         onboardnavigation = await async_client.onboardnavigation.queryhelp()
-        assert onboardnavigation is None
+        assert_matches_type(OnboardnavigationQueryhelpResponse, onboardnavigation, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -423,7 +426,7 @@ class TestAsyncOnboardnavigation:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onboardnavigation = await response.parse()
-        assert onboardnavigation is None
+        assert_matches_type(OnboardnavigationQueryhelpResponse, onboardnavigation, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -432,7 +435,7 @@ class TestAsyncOnboardnavigation:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onboardnavigation = await response.parse()
-            assert onboardnavigation is None
+            assert_matches_type(OnboardnavigationQueryhelpResponse, onboardnavigation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

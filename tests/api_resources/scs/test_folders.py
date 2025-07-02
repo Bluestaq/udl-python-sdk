@@ -32,6 +32,7 @@ class TestFolders:
             classification_marking="classificationMarking",
             description="description",
             read="read",
+            send_notification=True,
             tags="tags",
             write="write",
         )
@@ -118,6 +119,7 @@ class TestFolders:
                 "classification_marking": "classificationMarking",
                 "created_by": "createdBy",
                 "created_date": "createdDate",
+                "delete_on": 0,
                 "description": "A new Example Description",
                 "doc_title": "docTitle",
                 "doc_type": "docType",
@@ -173,7 +175,9 @@ class TestFolders:
 
 
 class TestAsyncFolders:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -190,6 +194,7 @@ class TestAsyncFolders:
             classification_marking="classificationMarking",
             description="description",
             read="read",
+            send_notification=True,
             tags="tags",
             write="write",
         )
@@ -276,6 +281,7 @@ class TestAsyncFolders:
                 "classification_marking": "classificationMarking",
                 "created_by": "createdBy",
                 "created_date": "createdDate",
+                "delete_on": 0,
                 "description": "A new Example Description",
                 "doc_title": "docTitle",
                 "doc_type": "docType",

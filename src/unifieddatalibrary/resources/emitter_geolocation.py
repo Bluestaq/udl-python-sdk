@@ -31,6 +31,7 @@ from .._base_client import make_request_options
 from ..types.emitter_geolocation_query_response import EmitterGeolocationQueryResponse
 from ..types.emitter_geolocation_tuple_response import EmitterGeolocationTupleResponse
 from ..types.emitter_geolocation_retrieve_response import EmitterGeolocationRetrieveResponse
+from ..types.emitter_geolocation_query_help_response import EmitterGeolocationQueryHelpResponse
 
 __all__ = ["EmitterGeolocationResource", "AsyncEmitterGeolocationResource"]
 
@@ -538,18 +539,17 @@ class EmitterGeolocationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EmitterGeolocationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/emittergeolocation/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EmitterGeolocationQueryHelpResponse,
         )
 
     def tuple(
@@ -1153,18 +1153,17 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> EmitterGeolocationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/emittergeolocation/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=EmitterGeolocationQueryHelpResponse,
         )
 
     async def tuple(

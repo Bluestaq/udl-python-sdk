@@ -40,6 +40,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.orbitdetermination_get_response import OrbitdeterminationGetResponse
 from ...types.orbitdetermination_list_response import OrbitdeterminationListResponse
 from ...types.orbitdetermination_tuple_response import OrbitdeterminationTupleResponse
+from ...types.orbitdetermination_queryhelp_response import OrbitdeterminationQueryhelpResponse
 
 __all__ = ["OrbitdeterminationResource", "AsyncOrbitdeterminationResource"]
 
@@ -544,18 +545,17 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OrbitdeterminationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/orbitdetermination/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OrbitdeterminationQueryhelpResponse,
         )
 
     def tuple(
@@ -1165,18 +1165,17 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OrbitdeterminationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/orbitdetermination/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OrbitdeterminationQueryhelpResponse,
         )
 
     async def tuple(

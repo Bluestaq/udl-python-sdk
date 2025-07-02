@@ -31,6 +31,7 @@ from .._base_client import make_request_options
 from ..types.aviation_risk_management_query_response import AviationRiskManagementQueryResponse
 from ..types.aviation_risk_management_tuple_response import AviationRiskManagementTupleResponse
 from ..types.aviation_risk_management_retrieve_response import AviationRiskManagementRetrieveResponse
+from ..types.aviation_risk_management_query_help_response import AviationRiskManagementQueryHelpResponse
 
 __all__ = ["AviationRiskManagementResource", "AsyncAviationRiskManagementResource"]
 
@@ -501,18 +502,17 @@ class AviationRiskManagementResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AviationRiskManagementQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/aviationriskmanagement/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AviationRiskManagementQueryHelpResponse,
         )
 
     def tuple(
@@ -1079,18 +1079,17 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AviationRiskManagementQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/aviationriskmanagement/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AviationRiskManagementQueryHelpResponse,
         )
 
     async def tuple(

@@ -865,7 +865,9 @@ class PostEventStateVector(TypedDict, total=False):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Annotated[Literal["J2000", "UVW"], PropertyInfo(alias="covReferenceFrame")]
+    cov_reference_frame: Annotated[
+        Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
+    ]
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.
@@ -1720,7 +1722,9 @@ class PreEventStateVector(TypedDict, total=False):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Annotated[Literal["J2000", "UVW"], PropertyInfo(alias="covReferenceFrame")]
+    cov_reference_frame: Annotated[
+        Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
+    ]
     """The reference frame of the covariance matrix elements.
 
     If the covReferenceFrame is null it is assumed to be J2000.

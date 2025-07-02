@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     DiplomaticClearanceTupleResponse,
+    DiplomaticClearanceQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -453,7 +454,7 @@ class TestDiplomaticClearance:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         diplomatic_clearance = client.diplomatic_clearance.queryhelp()
-        assert diplomatic_clearance is None
+        assert_matches_type(DiplomaticClearanceQueryhelpResponse, diplomatic_clearance, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -462,7 +463,7 @@ class TestDiplomaticClearance:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         diplomatic_clearance = response.parse()
-        assert diplomatic_clearance is None
+        assert_matches_type(DiplomaticClearanceQueryhelpResponse, diplomatic_clearance, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -471,7 +472,7 @@ class TestDiplomaticClearance:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             diplomatic_clearance = response.parse()
-            assert diplomatic_clearance is None
+            assert_matches_type(DiplomaticClearanceQueryhelpResponse, diplomatic_clearance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -521,7 +522,9 @@ class TestDiplomaticClearance:
 
 
 class TestAsyncDiplomaticClearance:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -954,7 +957,7 @@ class TestAsyncDiplomaticClearance:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         diplomatic_clearance = await async_client.diplomatic_clearance.queryhelp()
-        assert diplomatic_clearance is None
+        assert_matches_type(DiplomaticClearanceQueryhelpResponse, diplomatic_clearance, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -963,7 +966,7 @@ class TestAsyncDiplomaticClearance:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         diplomatic_clearance = await response.parse()
-        assert diplomatic_clearance is None
+        assert_matches_type(DiplomaticClearanceQueryhelpResponse, diplomatic_clearance, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -972,7 +975,7 @@ class TestAsyncDiplomaticClearance:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             diplomatic_clearance = await response.parse()
-            assert diplomatic_clearance is None
+            assert_matches_type(DiplomaticClearanceQueryhelpResponse, diplomatic_clearance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     OrbitdeterminationGetResponse,
     OrbitdeterminationListResponse,
     OrbitdeterminationTupleResponse,
+    OrbitdeterminationQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -428,7 +429,7 @@ class TestOrbitdetermination:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         orbitdetermination = client.orbitdetermination.queryhelp()
-        assert orbitdetermination is None
+        assert_matches_type(OrbitdeterminationQueryhelpResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -437,7 +438,7 @@ class TestOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = response.parse()
-        assert orbitdetermination is None
+        assert_matches_type(OrbitdeterminationQueryhelpResponse, orbitdetermination, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -446,7 +447,7 @@ class TestOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = response.parse()
-            assert orbitdetermination is None
+            assert_matches_type(OrbitdeterminationQueryhelpResponse, orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -555,7 +556,9 @@ class TestOrbitdetermination:
 
 
 class TestAsyncOrbitdetermination:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -962,7 +965,7 @@ class TestAsyncOrbitdetermination:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         orbitdetermination = await async_client.orbitdetermination.queryhelp()
-        assert orbitdetermination is None
+        assert_matches_type(OrbitdeterminationQueryhelpResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -971,7 +974,7 @@ class TestAsyncOrbitdetermination:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         orbitdetermination = await response.parse()
-        assert orbitdetermination is None
+        assert_matches_type(OrbitdeterminationQueryhelpResponse, orbitdetermination, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -980,7 +983,7 @@ class TestAsyncOrbitdetermination:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             orbitdetermination = await response.parse()
-            assert orbitdetermination is None
+            assert_matches_type(OrbitdeterminationQueryhelpResponse, orbitdetermination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

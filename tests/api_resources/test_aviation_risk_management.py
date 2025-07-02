@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AviationRiskManagementQueryResponse,
     AviationRiskManagementTupleResponse,
     AviationRiskManagementRetrieveResponse,
+    AviationRiskManagementQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 
@@ -449,7 +450,7 @@ class TestAviationRiskManagement:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         aviation_risk_management = client.aviation_risk_management.query_help()
-        assert aviation_risk_management is None
+        assert_matches_type(AviationRiskManagementQueryHelpResponse, aviation_risk_management, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -458,7 +459,7 @@ class TestAviationRiskManagement:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aviation_risk_management = response.parse()
-        assert aviation_risk_management is None
+        assert_matches_type(AviationRiskManagementQueryHelpResponse, aviation_risk_management, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -467,7 +468,7 @@ class TestAviationRiskManagement:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aviation_risk_management = response.parse()
-            assert aviation_risk_management is None
+            assert_matches_type(AviationRiskManagementQueryHelpResponse, aviation_risk_management, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -569,7 +570,9 @@ class TestAviationRiskManagement:
 
 
 class TestAsyncAviationRiskManagement:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -998,7 +1001,7 @@ class TestAsyncAviationRiskManagement:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         aviation_risk_management = await async_client.aviation_risk_management.query_help()
-        assert aviation_risk_management is None
+        assert_matches_type(AviationRiskManagementQueryHelpResponse, aviation_risk_management, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1007,7 +1010,7 @@ class TestAsyncAviationRiskManagement:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aviation_risk_management = await response.parse()
-        assert aviation_risk_management is None
+        assert_matches_type(AviationRiskManagementQueryHelpResponse, aviation_risk_management, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1016,7 +1019,7 @@ class TestAsyncAviationRiskManagement:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aviation_risk_management = await response.parse()
-            assert aviation_risk_management is None
+            assert_matches_type(AviationRiskManagementQueryHelpResponse, aviation_risk_management, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

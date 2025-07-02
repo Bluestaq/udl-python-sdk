@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     SolarArrayGetResponse,
     SolarArrayListResponse,
     SolarArrayTupleResponse,
+    SolarArrayQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -286,7 +287,7 @@ class TestSolarArray:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         solar_array = client.solar_array.queryhelp()
-        assert solar_array is None
+        assert_matches_type(SolarArrayQueryhelpResponse, solar_array, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -295,7 +296,7 @@ class TestSolarArray:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         solar_array = response.parse()
-        assert solar_array is None
+        assert_matches_type(SolarArrayQueryhelpResponse, solar_array, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -304,7 +305,7 @@ class TestSolarArray:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             solar_array = response.parse()
-            assert solar_array is None
+            assert_matches_type(SolarArrayQueryhelpResponse, solar_array, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -350,7 +351,9 @@ class TestSolarArray:
 
 
 class TestAsyncSolarArray:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -616,7 +619,7 @@ class TestAsyncSolarArray:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         solar_array = await async_client.solar_array.queryhelp()
-        assert solar_array is None
+        assert_matches_type(SolarArrayQueryhelpResponse, solar_array, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -625,7 +628,7 @@ class TestAsyncSolarArray:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         solar_array = await response.parse()
-        assert solar_array is None
+        assert_matches_type(SolarArrayQueryhelpResponse, solar_array, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -634,7 +637,7 @@ class TestAsyncSolarArray:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             solar_array = await response.parse()
-            assert solar_array is None
+            assert_matches_type(SolarArrayQueryhelpResponse, solar_array, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

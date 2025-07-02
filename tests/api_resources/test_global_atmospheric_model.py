@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     GlobalAtmosphericModelQueryResponse,
     GlobalAtmosphericModelTupleResponse,
     GlobalAtmosphericModelRetrieveResponse,
+    GlobalAtmosphericModelQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary._response import (
@@ -232,7 +233,7 @@ class TestGlobalAtmosphericModel:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         global_atmospheric_model = client.global_atmospheric_model.query_help()
-        assert global_atmospheric_model is None
+        assert_matches_type(GlobalAtmosphericModelQueryHelpResponse, global_atmospheric_model, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -241,7 +242,7 @@ class TestGlobalAtmosphericModel:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         global_atmospheric_model = response.parse()
-        assert global_atmospheric_model is None
+        assert_matches_type(GlobalAtmosphericModelQueryHelpResponse, global_atmospheric_model, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -250,7 +251,7 @@ class TestGlobalAtmosphericModel:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             global_atmospheric_model = response.parse()
-            assert global_atmospheric_model is None
+            assert_matches_type(GlobalAtmosphericModelQueryHelpResponse, global_atmospheric_model, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -372,7 +373,9 @@ class TestGlobalAtmosphericModel:
 
 
 class TestAsyncGlobalAtmosphericModel:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -580,7 +583,7 @@ class TestAsyncGlobalAtmosphericModel:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         global_atmospheric_model = await async_client.global_atmospheric_model.query_help()
-        assert global_atmospheric_model is None
+        assert_matches_type(GlobalAtmosphericModelQueryHelpResponse, global_atmospheric_model, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -589,7 +592,7 @@ class TestAsyncGlobalAtmosphericModel:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         global_atmospheric_model = await response.parse()
-        assert global_atmospheric_model is None
+        assert_matches_type(GlobalAtmosphericModelQueryHelpResponse, global_atmospheric_model, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -598,7 +601,7 @@ class TestAsyncGlobalAtmosphericModel:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             global_atmospheric_model = await response.parse()
-            assert global_atmospheric_model is None
+            assert_matches_type(GlobalAtmosphericModelQueryHelpResponse, global_atmospheric_model, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

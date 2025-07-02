@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     FeatureAssessmentQueryResponse,
     FeatureAssessmentTupleResponse,
     FeatureAssessmentRetrieveResponse,
+    FeatureAssessmentQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 
@@ -298,7 +299,7 @@ class TestFeatureAssessment:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         feature_assessment = client.feature_assessment.query_help()
-        assert feature_assessment is None
+        assert_matches_type(FeatureAssessmentQueryHelpResponse, feature_assessment, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -307,7 +308,7 @@ class TestFeatureAssessment:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         feature_assessment = response.parse()
-        assert feature_assessment is None
+        assert_matches_type(FeatureAssessmentQueryHelpResponse, feature_assessment, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -316,7 +317,7 @@ class TestFeatureAssessment:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             feature_assessment = response.parse()
-            assert feature_assessment is None
+            assert_matches_type(FeatureAssessmentQueryHelpResponse, feature_assessment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -424,7 +425,9 @@ class TestFeatureAssessment:
 
 
 class TestAsyncFeatureAssessment:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -702,7 +705,7 @@ class TestAsyncFeatureAssessment:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         feature_assessment = await async_client.feature_assessment.query_help()
-        assert feature_assessment is None
+        assert_matches_type(FeatureAssessmentQueryHelpResponse, feature_assessment, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -711,7 +714,7 @@ class TestAsyncFeatureAssessment:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         feature_assessment = await response.parse()
-        assert feature_assessment is None
+        assert_matches_type(FeatureAssessmentQueryHelpResponse, feature_assessment, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -720,7 +723,7 @@ class TestAsyncFeatureAssessment:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             feature_assessment = await response.parse()
-            assert feature_assessment is None
+            assert_matches_type(FeatureAssessmentQueryHelpResponse, feature_assessment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -38,6 +38,7 @@ from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.onorbitthrusterstatus_list_response import OnorbitthrusterstatusListResponse
 from ...types.onorbitthrusterstatus_tuple_response import OnorbitthrusterstatusTupleResponse
+from ...types.onorbitthrusterstatus_queryhelp_response import OnorbitthrusterstatusQueryhelpResponse
 from ...types.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
 
 __all__ = ["OnorbitthrusterstatusResource", "AsyncOnorbitthrusterstatusResource"]
@@ -462,18 +463,17 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OnorbitthrusterstatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             "/udl/onorbitthrusterstatus/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OnorbitthrusterstatusQueryhelpResponse,
         )
 
     def tuple(
@@ -966,18 +966,17 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> OnorbitthrusterstatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             "/udl/onorbitthrusterstatus/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=OnorbitthrusterstatusQueryhelpResponse,
         )
 
     async def tuple(

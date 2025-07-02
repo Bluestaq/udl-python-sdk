@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     ScientificGetResponse,
     ScientificListResponse,
     ScientificTupleResponse,
+    ScientificQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -413,7 +414,7 @@ class TestScientific:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         scientific = client.scientific.queryhelp()
-        assert scientific is None
+        assert_matches_type(ScientificQueryhelpResponse, scientific, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -422,7 +423,7 @@ class TestScientific:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scientific = response.parse()
-        assert scientific is None
+        assert_matches_type(ScientificQueryhelpResponse, scientific, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -431,7 +432,7 @@ class TestScientific:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scientific = response.parse()
-            assert scientific is None
+            assert_matches_type(ScientificQueryhelpResponse, scientific, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -477,7 +478,9 @@ class TestScientific:
 
 
 class TestAsyncScientific:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -869,7 +872,7 @@ class TestAsyncScientific:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         scientific = await async_client.scientific.queryhelp()
-        assert scientific is None
+        assert_matches_type(ScientificQueryhelpResponse, scientific, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -878,7 +881,7 @@ class TestAsyncScientific:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scientific = await response.parse()
-        assert scientific is None
+        assert_matches_type(ScientificQueryhelpResponse, scientific, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -887,7 +890,7 @@ class TestAsyncScientific:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scientific = await response.parse()
-            assert scientific is None
+            assert_matches_type(ScientificQueryhelpResponse, scientific, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     GnssRawifGetResponse,
     GnssRawifListResponse,
     GnssRawifTupleResponse,
+    GnssRawifQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary._response import (
@@ -225,7 +226,7 @@ class TestGnssRawif:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         gnss_rawif = client.gnss_rawif.queryhelp()
-        assert gnss_rawif is None
+        assert_matches_type(GnssRawifQueryhelpResponse, gnss_rawif, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -234,7 +235,7 @@ class TestGnssRawif:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         gnss_rawif = response.parse()
-        assert gnss_rawif is None
+        assert_matches_type(GnssRawifQueryhelpResponse, gnss_rawif, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -243,7 +244,7 @@ class TestGnssRawif:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             gnss_rawif = response.parse()
-            assert gnss_rawif is None
+            assert_matches_type(GnssRawifQueryhelpResponse, gnss_rawif, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -324,7 +325,9 @@ class TestGnssRawif:
 
 
 class TestAsyncGnssRawif:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -524,7 +527,7 @@ class TestAsyncGnssRawif:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         gnss_rawif = await async_client.gnss_rawif.queryhelp()
-        assert gnss_rawif is None
+        assert_matches_type(GnssRawifQueryhelpResponse, gnss_rawif, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -533,7 +536,7 @@ class TestAsyncGnssRawif:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         gnss_rawif = await response.parse()
-        assert gnss_rawif is None
+        assert_matches_type(GnssRawifQueryhelpResponse, gnss_rawif, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -542,7 +545,7 @@ class TestAsyncGnssRawif:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             gnss_rawif = await response.parse()
-            assert gnss_rawif is None
+            assert_matches_type(GnssRawifQueryhelpResponse, gnss_rawif, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

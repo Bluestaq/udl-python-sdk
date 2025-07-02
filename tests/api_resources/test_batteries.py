@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     BatteryFull,
     BatteryAbridged,
     BatteryTupleResponse,
+    BatteryQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -286,7 +287,7 @@ class TestBatteries:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         battery = client.batteries.queryhelp()
-        assert battery is None
+        assert_matches_type(BatteryQueryhelpResponse, battery, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -295,7 +296,7 @@ class TestBatteries:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         battery = response.parse()
-        assert battery is None
+        assert_matches_type(BatteryQueryhelpResponse, battery, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -304,7 +305,7 @@ class TestBatteries:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             battery = response.parse()
-            assert battery is None
+            assert_matches_type(BatteryQueryhelpResponse, battery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -350,7 +351,9 @@ class TestBatteries:
 
 
 class TestAsyncBatteries:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -616,7 +619,7 @@ class TestAsyncBatteries:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         battery = await async_client.batteries.queryhelp()
-        assert battery is None
+        assert_matches_type(BatteryQueryhelpResponse, battery, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -625,7 +628,7 @@ class TestAsyncBatteries:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         battery = await response.parse()
-        assert battery is None
+        assert_matches_type(BatteryQueryhelpResponse, battery, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -634,7 +637,7 @@ class TestAsyncBatteries:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             battery = await response.parse()
-            assert battery is None
+            assert_matches_type(BatteryQueryhelpResponse, battery, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

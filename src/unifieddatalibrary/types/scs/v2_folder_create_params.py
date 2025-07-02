@@ -18,8 +18,13 @@ class V2FolderCreateParams(TypedDict, total=False):
     end with '/'.
     """
 
+    send_notification: Annotated[bool, PropertyInfo(alias="sendNotification")]
+    """Whether or not to send a notification that this folder was created."""
+
     classification_marking: Annotated[str, PropertyInfo(alias="classificationMarking")]
     """Classification marking of the folder or file in IC/CAPCO portion-marked format."""
+
+    delete_on: Annotated[int, PropertyInfo(alias="deleteOn")]
 
     description: str
     """Optional description for the file or folder."""

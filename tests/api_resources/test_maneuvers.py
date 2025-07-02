@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     ManeuverGetResponse,
     ManeuverListResponse,
     ManeuverTupleResponse,
+    ManeuverQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -605,7 +606,7 @@ class TestManeuvers:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         maneuver = client.maneuvers.queryhelp()
-        assert maneuver is None
+        assert_matches_type(ManeuverQueryhelpResponse, maneuver, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -614,7 +615,7 @@ class TestManeuvers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         maneuver = response.parse()
-        assert maneuver is None
+        assert_matches_type(ManeuverQueryhelpResponse, maneuver, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -623,7 +624,7 @@ class TestManeuvers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             maneuver = response.parse()
-            assert maneuver is None
+            assert_matches_type(ManeuverQueryhelpResponse, maneuver, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -725,7 +726,9 @@ class TestManeuvers:
 
 
 class TestAsyncManeuvers:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1309,7 +1312,7 @@ class TestAsyncManeuvers:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         maneuver = await async_client.maneuvers.queryhelp()
-        assert maneuver is None
+        assert_matches_type(ManeuverQueryhelpResponse, maneuver, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1318,7 +1321,7 @@ class TestAsyncManeuvers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         maneuver = await response.parse()
-        assert maneuver is None
+        assert_matches_type(ManeuverQueryhelpResponse, maneuver, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -1327,7 +1330,7 @@ class TestAsyncManeuvers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             maneuver = await response.parse()
-            assert maneuver is None
+            assert_matches_type(ManeuverQueryhelpResponse, maneuver, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

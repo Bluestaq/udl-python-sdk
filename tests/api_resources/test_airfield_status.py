@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     AirfieldstatusFull,
     AirfieldstatusAbridged,
     AirfieldStatusTupleResponse,
+    AirfieldStatusQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -358,7 +359,7 @@ class TestAirfieldStatus:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         airfield_status = client.airfield_status.queryhelp()
-        assert airfield_status is None
+        assert_matches_type(AirfieldStatusQueryhelpResponse, airfield_status, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -367,7 +368,7 @@ class TestAirfieldStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfield_status = response.parse()
-        assert airfield_status is None
+        assert_matches_type(AirfieldStatusQueryhelpResponse, airfield_status, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -376,7 +377,7 @@ class TestAirfieldStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfield_status = response.parse()
-            assert airfield_status is None
+            assert_matches_type(AirfieldStatusQueryhelpResponse, airfield_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -422,7 +423,9 @@ class TestAirfieldStatus:
 
 
 class TestAsyncAirfieldStatus:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -759,7 +762,7 @@ class TestAsyncAirfieldStatus:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         airfield_status = await async_client.airfield_status.queryhelp()
-        assert airfield_status is None
+        assert_matches_type(AirfieldStatusQueryhelpResponse, airfield_status, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -768,7 +771,7 @@ class TestAsyncAirfieldStatus:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         airfield_status = await response.parse()
-        assert airfield_status is None
+        assert_matches_type(AirfieldStatusQueryhelpResponse, airfield_status, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -777,7 +780,7 @@ class TestAsyncAirfieldStatus:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             airfield_status = await response.parse()
-            assert airfield_status is None
+            assert_matches_type(AirfieldStatusQueryhelpResponse, airfield_status, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     OnorbitListResponse,
     OnorbitTupleResponse,
+    OnorbitQueryhelpResponse,
     OnorbitGetSignatureResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
@@ -361,7 +362,7 @@ class TestOnorbit:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         onorbit = client.onorbit.queryhelp()
-        assert onorbit is None
+        assert_matches_type(OnorbitQueryhelpResponse, onorbit, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -370,7 +371,7 @@ class TestOnorbit:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onorbit = response.parse()
-        assert onorbit is None
+        assert_matches_type(OnorbitQueryhelpResponse, onorbit, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -379,7 +380,7 @@ class TestOnorbit:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onorbit = response.parse()
-            assert onorbit is None
+            assert_matches_type(OnorbitQueryhelpResponse, onorbit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -425,7 +426,9 @@ class TestOnorbit:
 
 
 class TestAsyncOnorbit:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -764,7 +767,7 @@ class TestAsyncOnorbit:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         onorbit = await async_client.onorbit.queryhelp()
-        assert onorbit is None
+        assert_matches_type(OnorbitQueryhelpResponse, onorbit, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -773,7 +776,7 @@ class TestAsyncOnorbit:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         onorbit = await response.parse()
-        assert onorbit is None
+        assert_matches_type(OnorbitQueryhelpResponse, onorbit, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -782,7 +785,7 @@ class TestAsyncOnorbit:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             onorbit = await response.parse()
-            assert onorbit is None
+            assert_matches_type(OnorbitQueryhelpResponse, onorbit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

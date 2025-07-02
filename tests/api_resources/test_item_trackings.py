@@ -13,6 +13,7 @@ from unifieddatalibrary.types import (
     ItemTrackingGetResponse,
     ItemTrackingListResponse,
     ItemTrackingTupleResponse,
+    ItemTrackingQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -261,7 +262,7 @@ class TestItemTrackings:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         item_tracking = client.item_trackings.queryhelp()
-        assert item_tracking is None
+        assert_matches_type(ItemTrackingQueryhelpResponse, item_tracking, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -270,7 +271,7 @@ class TestItemTrackings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item_tracking = response.parse()
-        assert item_tracking is None
+        assert_matches_type(ItemTrackingQueryhelpResponse, item_tracking, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -279,7 +280,7 @@ class TestItemTrackings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item_tracking = response.parse()
-            assert item_tracking is None
+            assert_matches_type(ItemTrackingQueryhelpResponse, item_tracking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -387,7 +388,9 @@ class TestItemTrackings:
 
 
 class TestAsyncItemTrackings:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -627,7 +630,7 @@ class TestAsyncItemTrackings:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         item_tracking = await async_client.item_trackings.queryhelp()
-        assert item_tracking is None
+        assert_matches_type(ItemTrackingQueryhelpResponse, item_tracking, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -636,7 +639,7 @@ class TestAsyncItemTrackings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item_tracking = await response.parse()
-        assert item_tracking is None
+        assert_matches_type(ItemTrackingQueryhelpResponse, item_tracking, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -645,7 +648,7 @@ class TestAsyncItemTrackings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item_tracking = await response.parse()
-            assert item_tracking is None
+            assert_matches_type(ItemTrackingQueryhelpResponse, item_tracking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

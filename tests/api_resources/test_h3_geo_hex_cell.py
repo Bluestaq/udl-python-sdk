@@ -12,6 +12,7 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     H3GeoHexCellListResponse,
     H3GeoHexCellTupleResponse,
+    H3GeoHexCellQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -104,7 +105,7 @@ class TestH3GeoHexCell:
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
         h3_geo_hex_cell = client.h3_geo_hex_cell.queryhelp()
-        assert h3_geo_hex_cell is None
+        assert_matches_type(H3GeoHexCellQueryhelpResponse, h3_geo_hex_cell, path=["response"])
 
     @parametrize
     def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -113,7 +114,7 @@ class TestH3GeoHexCell:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         h3_geo_hex_cell = response.parse()
-        assert h3_geo_hex_cell is None
+        assert_matches_type(H3GeoHexCellQueryhelpResponse, h3_geo_hex_cell, path=["response"])
 
     @parametrize
     def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -122,7 +123,7 @@ class TestH3GeoHexCell:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             h3_geo_hex_cell = response.parse()
-            assert h3_geo_hex_cell is None
+            assert_matches_type(H3GeoHexCellQueryhelpResponse, h3_geo_hex_cell, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -172,7 +173,9 @@ class TestH3GeoHexCell:
 
 
 class TestAsyncH3GeoHexCell:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -257,7 +260,7 @@ class TestAsyncH3GeoHexCell:
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
         h3_geo_hex_cell = await async_client.h3_geo_hex_cell.queryhelp()
-        assert h3_geo_hex_cell is None
+        assert_matches_type(H3GeoHexCellQueryhelpResponse, h3_geo_hex_cell, path=["response"])
 
     @parametrize
     async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -266,7 +269,7 @@ class TestAsyncH3GeoHexCell:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         h3_geo_hex_cell = await response.parse()
-        assert h3_geo_hex_cell is None
+        assert_matches_type(H3GeoHexCellQueryhelpResponse, h3_geo_hex_cell, path=["response"])
 
     @parametrize
     async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -275,7 +278,7 @@ class TestAsyncH3GeoHexCell:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             h3_geo_hex_cell = await response.parse()
-            assert h3_geo_hex_cell is None
+            assert_matches_type(H3GeoHexCellQueryhelpResponse, h3_geo_hex_cell, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

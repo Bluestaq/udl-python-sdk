@@ -15,6 +15,7 @@ from unifieddatalibrary.types.air_operations import (
     AirTaskingOrderFull,
     AirtaskingorderAbridged,
     AirTaskingOrderTupleResponse,
+    AirTaskingOrderQueryHelpResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -274,7 +275,7 @@ class TestAirTaskingOrders:
     @parametrize
     def test_method_query_help(self, client: Unifieddatalibrary) -> None:
         air_tasking_order = client.air_operations.air_tasking_orders.query_help()
-        assert air_tasking_order is None
+        assert_matches_type(AirTaskingOrderQueryHelpResponse, air_tasking_order, path=["response"])
 
     @parametrize
     def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -283,7 +284,7 @@ class TestAirTaskingOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_tasking_order = response.parse()
-        assert air_tasking_order is None
+        assert_matches_type(AirTaskingOrderQueryHelpResponse, air_tasking_order, path=["response"])
 
     @parametrize
     def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
@@ -292,7 +293,7 @@ class TestAirTaskingOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_tasking_order = response.parse()
-            assert air_tasking_order is None
+            assert_matches_type(AirTaskingOrderQueryHelpResponse, air_tasking_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -393,7 +394,9 @@ class TestAirTaskingOrders:
 
 
 class TestAsyncAirTaskingOrders:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -646,7 +649,7 @@ class TestAsyncAirTaskingOrders:
     @parametrize
     async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
         air_tasking_order = await async_client.air_operations.air_tasking_orders.query_help()
-        assert air_tasking_order is None
+        assert_matches_type(AirTaskingOrderQueryHelpResponse, air_tasking_order, path=["response"])
 
     @parametrize
     async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -655,7 +658,7 @@ class TestAsyncAirTaskingOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         air_tasking_order = await response.parse()
-        assert air_tasking_order is None
+        assert_matches_type(AirTaskingOrderQueryHelpResponse, air_tasking_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
@@ -664,7 +667,7 @@ class TestAsyncAirTaskingOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             air_tasking_order = await response.parse()
-            assert air_tasking_order is None
+            assert_matches_type(AirTaskingOrderQueryHelpResponse, air_tasking_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
