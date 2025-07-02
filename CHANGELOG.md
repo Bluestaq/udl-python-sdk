@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-07-02)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** api update ([67fbac3](https://github.com/Bluestaq/udl-python-sdk/commit/67fbac38b54911cdbd65ab7c9fb3ac245afdd681))
+* **client:** add follow_redirects request option ([4312851](https://github.com/Bluestaq/udl-python-sdk/commit/43128510a8f7ccb289efa8e2c6cd0d0a01c17efe))
+* **client:** add support for aiohttp ([20890d9](https://github.com/Bluestaq/udl-python-sdk/commit/20890d92ae5c3381c25dbcbaf2d1aa24a8ed8857))
+
+
+### Bug Fixes
+
+* **ci:** correct conditional ([928a91c](https://github.com/Bluestaq/udl-python-sdk/commit/928a91c413f60780ffefb56330eee77a7083ee3a))
+* **ci:** release-doctor — report correct token name ([4d3d6b1](https://github.com/Bluestaq/udl-python-sdk/commit/4d3d6b1c3b151e45a667c0aa5c813153ba8528a7))
+* **client:** correctly parse binary response | stream ([92736b4](https://github.com/Bluestaq/udl-python-sdk/commit/92736b4db4cc93c8d36afabcbf3d08f61f3401d8))
+* **client:** handle .copy() with endpoint specific URLs ([edbea07](https://github.com/Bluestaq/udl-python-sdk/commit/edbea07a4f947ed50a0acd9e0bdac14dcba34c41))
+
+
+### Chores
+
+* **ci:** change upload type ([0cdc3e6](https://github.com/Bluestaq/udl-python-sdk/commit/0cdc3e6ee31833c74760c8a8d3a08eb1c7597268))
+* **ci:** enable for pull requests ([846401e](https://github.com/Bluestaq/udl-python-sdk/commit/846401e6bbc15c7db2153b13ca74669e30a1b131))
+* **ci:** only run for pushes and fork pull requests ([8d8bd00](https://github.com/Bluestaq/udl-python-sdk/commit/8d8bd008ba90dea6945f5497cb2562322199fdfb))
+* **docs:** remove reference to rye shell ([5ee9bea](https://github.com/Bluestaq/udl-python-sdk/commit/5ee9beafc6e9a61deb44829338f03f168b33e5c2))
+* **docs:** remove unnecessary param examples ([f69cdeb](https://github.com/Bluestaq/udl-python-sdk/commit/f69cdeb9a3ea9386ff53e3bed3638585921c76bc))
+* **internal:** minor formatting ([ebcc36a](https://github.com/Bluestaq/udl-python-sdk/commit/ebcc36ae7f909265806eb55ea3d14ba94284fcdf))
+* **internal:** update conftest.py ([d628093](https://github.com/Bluestaq/udl-python-sdk/commit/d628093a58d68dde318863376c4979ac375c0fd1))
+* **readme:** update badges ([ce451f3](https://github.com/Bluestaq/udl-python-sdk/commit/ce451f395ada95e84c0e3bad7fd40a8861ce2831))
+* **tests:** add tests for httpx client instantiation & proxies ([25e0720](https://github.com/Bluestaq/udl-python-sdk/commit/25e07209a3194942d9f4010d00bc56619edde248))
+* **tests:** run tests in parallel ([dbbc4cc](https://github.com/Bluestaq/udl-python-sdk/commit/dbbc4cc15a9fb04e0d6a8214f60fa64387476af2))
+* **tests:** skip some failing tests on the latest python versions ([deefd1d](https://github.com/Bluestaq/udl-python-sdk/commit/deefd1d33e1d274078f021d3ac6fd9f2fc6bb4df))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([c434c9e](https://github.com/Bluestaq/udl-python-sdk/commit/c434c9ed5bae56658cba2e8648c20781ea878d34))
+
 ## 0.1.0-alpha.10 (2025-05-22)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
