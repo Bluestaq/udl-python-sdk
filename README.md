@@ -81,7 +81,6 @@ pip install --pre udl-sdk[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from unifieddatalibrary import DefaultAioHttpClient
 from unifieddatalibrary import AsyncUnifieddatalibrary
@@ -89,8 +88,8 @@ from unifieddatalibrary import AsyncUnifieddatalibrary
 
 async def main() -> None:
     async with AsyncUnifieddatalibrary(
-        username=os.environ.get("UDL_AUTH_USERNAME"),  # This is the default and can be omitted
-        password=os.environ.get("UDL_AUTH_PASSWORD"),  # This is the default and can be omitted
+        username="My Username",
+        password="My Password",
         http_client=DefaultAioHttpClient(),
     ) as client:
         page = await client.elsets.current.list()
