@@ -1,6 +1,7 @@
-
 from datetime import datetime, timezone
+
 from .common import UDL_DATETIME_FORMAT
+
 
 def sanitize_datetime(val: datetime) -> str:
     """Takes a datetime argument val and returns the same datetime converted to UTC.
