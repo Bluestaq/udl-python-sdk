@@ -172,7 +172,7 @@ class SecureMessagingResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get_api_list(
             f"/sm/getMessages/{topic}/{offset}",
-            page=SyncKafkaOffsetPage[object],
+            page=SyncKafkaOffsetPage.with_url_builder(lambda next_offset: f"/sm/getMessages/{topic}/{next_offset}"),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -286,7 +286,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncKafkaOffsetPage[object]:
+    ) -> None:
         """
         Returns the current/latest offset for the passed topic name.
 
@@ -302,9 +302,8 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         if not topic:
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get_api_list(
+        return await self._get(
             f"/sm/getLatestOffset/{topic}",
-            page=AsyncKafkaOffsetPage[object],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -318,7 +317,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
                     secure_messaging_get_latest_offset_params.SecureMessagingGetLatestOffsetParams,
                 ),
             ),
-            model=object,
+            cast_to=NoneType,
         )
 
     async def get_messages(
@@ -334,7 +333,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AsyncKafkaOffsetPage[object]:
         """Retrieve a set of messages from the given topic at the given offset.
 
         See Help >
@@ -352,8 +351,9 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         if not topic:
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
+        return await self._get_api_list(
             f"/sm/getMessages/{topic}/{offset}",
+            page=AsyncKafkaOffsetPage.with_url_builder(lambda next_offset: f"/sm/getMessages/{topic}/{next_offset}"),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -367,7 +367,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
                     secure_messaging_get_messages_params.SecureMessagingGetMessagesParams,
                 ),
             ),
-            cast_to=NoneType,
+            model=object,
         )
 
     async def list_topics(

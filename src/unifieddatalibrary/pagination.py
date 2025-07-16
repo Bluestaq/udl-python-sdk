@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Any, List, Type, Generic, Mapping, TypeVar, Optional, cast
+from typing import Any, List, Type, Generic, Mapping, TypeVar, Callable, Optional, cast
 from typing_extensions import override
 
 from httpx import URL, Response
@@ -9,7 +9,12 @@ from ._utils import is_mapping
 from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
-__all__ = ["SyncOffsetPage", "AsyncOffsetPage", "SyncKafkaOffsetPage", "AsyncKafkaOffsetPage"]
+__all__ = [
+    "SyncOffsetPage",
+    "AsyncOffsetPage",
+    "SyncKafkaOffsetPage",
+    "AsyncKafkaOffsetPage",
+]
 
 _BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
 _BasePageT = TypeVar("_BasePageT", bound=BasePage[Any])
@@ -91,6 +96,16 @@ class SyncKafkaOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     """Pagination for Kafka-style endpoints that return the next offset in a response header."""
 
     items: List[_T]
+    url_builder: Callable[[int], str]
+
+    @staticmethod
+    def with_url_builder(fn: Callable[[int], str]) -> Type["SyncKafkaOffsetPage[object]"]:
+        """Create a page class with a URL builder for constructing next page URLs."""
+
+        class PageWithBuilder(SyncKafkaOffsetPage[object]):
+            url_builder = fn
+
+        return PageWithBuilder
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -110,12 +125,8 @@ class SyncKafkaOffsetPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         except ValueError:
             return None
 
-        url = str(self._response.url).replace(
-            f"/sm/getMessages/eop/{self._options.params.get('offset', 0)}",
-            f"/sm/getMessages/eop/{next_offset}",
-        )
-
-        return PageInfo(url=URL(url))
+        new_url = self.url_builder(next_offset)
+        return PageInfo(url=URL(new_url))
 
     @classmethod
     @override
@@ -135,6 +146,16 @@ class AsyncKafkaOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     """Async pagination for Kafka-style endpoints that return the next offset in a response header."""
 
     items: List[_T]
+    url_builder: Callable[[int], str]
+
+    @staticmethod
+    def with_url_builder(fn: Callable[[int], str]) -> Type["AsyncKafkaOffsetPage[object]"]:
+        """Create a page class with a URL builder for constructing next page URLs."""
+
+        class PageWithBuilder(AsyncKafkaOffsetPage[object]):
+            url_builder = fn
+
+        return PageWithBuilder
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -154,12 +175,8 @@ class AsyncKafkaOffsetPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         except ValueError:
             return None
 
-        url = str(self._response.url).replace(
-            f"/sm/getMessages/eop/{self._options.params.get('offset', 0)}",
-            f"/sm/getMessages/eop/{next_offset}",
-        )
-
-        return PageInfo(url=URL(url))
+        new_url = self.url_builder(next_offset)
+        return PageInfo(url=URL(new_url))
 
     @classmethod
     @override
