@@ -219,9 +219,7 @@ async def test_optional_iso8601_format(use_async: bool) -> None:
 @pytest.mark.asyncio
 async def test_required_iso8601_format(use_async: bool) -> None:
     dt = datetime.fromisoformat("2023-02-23T14:16:36.337692+00:00")
-    assert await transform({"required": dt}, DatetimeDict, use_async) == {
-        "required": "2023-02-23T14:16:36.337692Z"
-    }  # type: ignore[comparison-overlap]
+    assert await transform({"required": dt}, DatetimeDict, use_async) == {"required": "2023-02-23T14:16:36.337692Z"}  # type: ignore[comparison-overlap]
 
     assert await transform({"required": None}, DatetimeDict, use_async) == {"required": None}
 
@@ -243,7 +241,7 @@ async def test_nested_list_iso6801_format(use_async: bool) -> None:
     dt1 = datetime.fromisoformat("2023-02-23T14:16:36.337692+00:00")
     dt2 = parse_datetime("2022-01-15T06:34:23Z")
     assert await transform({"list_": [dt1, dt2]}, DatetimeDict, use_async) == {  # type: ignore[comparison-overlap]
-        "list_":  ['2023-02-23T14:16:36.337692Z', '2022-01-15T06:34:23.000000Z']
+        "list_": ["2023-02-23T14:16:36.337692Z", "2022-01-15T06:34:23.000000Z"]
     }
 
 

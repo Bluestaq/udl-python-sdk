@@ -89,6 +89,7 @@ log: logging.Logger = logging.getLogger(__name__)
 # TODO: make base page type vars covariant
 SyncPageT = TypeVar("SyncPageT", bound="BaseSyncPage[Any]")
 AsyncPageT = TypeVar("AsyncPageT", bound="BaseAsyncPage[Any]")
+_BasePageT = TypeVar("_BasePageT", bound="BasePage[Any]")
 
 
 _T = TypeVar("_T")
@@ -174,6 +175,7 @@ class BasePage(GenericModel, Generic[_T]):
         next_page_info(): Get the necessary information to make a request for the next page
     """
 
+    _response: httpx.Response = PrivateAttr()
     _options: FinalRequestOptions = PrivateAttr()
     _model: Type[_T] = PrivateAttr()
 
@@ -221,6 +223,23 @@ class BasePage(GenericModel, Generic[_T]):
             return options
 
         raise ValueError("Unexpected PageInfo state")
+
+    @classmethod
+    def build(cls: Type[_BasePageT], *, response: httpx.Response, data: object) -> _BasePageT:  # noqa: ARG003
+        return cls._with_response(
+            cls.construct(
+                None,
+                **{
+                    **(cast(Mapping[str, Any], data) if is_mapping(data) else {}),
+                },
+            ),
+            response,
+        )
+
+    @classmethod
+    def _with_response(cls, inst: _BasePageT, response: httpx.Response) -> _BasePageT:
+        inst._response = response
+        return inst
 
 
 class BaseSyncPage(BasePage[_T], Generic[_T]):
@@ -529,6 +548,15 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             # work around https://github.com/encode/httpx/discussions/2880
             kwargs["extensions"] = {"sni_hostname": prepared_url.host.replace("_", "-")}
 
+        is_body_allowed = options.method.lower() != "get"
+
+        if is_body_allowed:
+            kwargs["json"] = json_data if is_given(json_data) else None
+            kwargs["files"] = files
+        else:
+            headers.pop("Content-Type", None)
+            kwargs.pop("data", None)
+
         # TODO: report this error to httpx
         return self._client.build_request(  # pyright: ignore[reportUnknownMemberType]
             headers=headers,
@@ -540,8 +568,6 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             # so that passing a `TypedDict` doesn't cause an error.
             # https://github.com/microsoft/pyright/issues/3526#event-6715453066
             params=self.qs.stringify(cast(Mapping[str, Any], params)) if params else None,
-            json=json_data if is_given(json_data) else None,
-            files=files,
             **kwargs,
         )
 

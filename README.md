@@ -1,6 +1,7 @@
 # Unifieddatalibrary Python API library
 
-[![PyPI version](<https://img.shields.io/pypi/v/udl-sdk.svg?label=pypi%20(stable)>)](https://pypi.org/project/udl-sdk/)
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/udl-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/udl-sdk/)
 
 The Unifieddatalibrary Python library provides convenient access to the Unifieddatalibrary REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -80,7 +81,6 @@ pip install --pre udl-sdk[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from unifieddatalibrary import DefaultAioHttpClient
 from unifieddatalibrary import AsyncUnifieddatalibrary
@@ -88,8 +88,8 @@ from unifieddatalibrary import AsyncUnifieddatalibrary
 
 async def main() -> None:
     async with AsyncUnifieddatalibrary(
-        username=os.environ.get("UDL_AUTH_USERNAME"),  # This is the default and can be omitted
-        password=os.environ.get("UDL_AUTH_PASSWORD"),  # This is the default and can be omitted
+        username="My Username",
+        password="My Password",
         http_client=DefaultAioHttpClient(),
     ) as client:
         page = await client.elsets.current.list()

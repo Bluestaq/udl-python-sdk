@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-07-16)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* add Kafka offset pagination ([5898089](https://github.com/Bluestaq/udl-python-sdk/commit/58980891e88adb3f6803319701498b8bafa9bffe))
+* add kafka pagination demo ([07ff11b](https://github.com/Bluestaq/udl-python-sdk/commit/07ff11bc604cf96f984c115c9bce26d80b1bb68e))
+* clean up environment call outs ([928edfb](https://github.com/Bluestaq/udl-python-sdk/commit/928edfb0decc87ecb73191f315e2462d5c918616))
+
+
+### Bug Fixes
+
+* clean up Kafka pagination URL handling ([13d4d97](https://github.com/Bluestaq/udl-python-sdk/commit/13d4d97dea83635e747c9510821f46eabc28b183))
+* **client:** don't send Content-Type header on GET requests ([2687013](https://github.com/Bluestaq/udl-python-sdk/commit/2687013512f49c63937ea514eca9d933b57a30f0))
+* correct pagination typing ([af69c68](https://github.com/Bluestaq/udl-python-sdk/commit/af69c68382fe3a422de28fd27a3ead7ff2c89014))
+* **parsing:** correctly handle nested discriminated unions ([4e6945c](https://github.com/Bluestaq/udl-python-sdk/commit/4e6945c24407620e4789b30c088c2b750decafb1))
+
+
+### Chores
+
+* fix formatting ([72dd7b3](https://github.com/Bluestaq/udl-python-sdk/commit/72dd7b34cd261ea361e81498734e304fe4bf6189))
+* **internal:** bump pinned h11 dep ([be0bc4c](https://github.com/Bluestaq/udl-python-sdk/commit/be0bc4ce766a382a3743ca0cc49c82ecc7a21529))
+* **internal:** codegen related update ([0242cf6](https://github.com/Bluestaq/udl-python-sdk/commit/0242cf646260a95afccdd8341733e213f64e0d63))
+* **package:** mark python 3.13 as supported ([5ff6597](https://github.com/Bluestaq/udl-python-sdk/commit/5ff6597cee0f154be2a33b36c8c9f23b1ba839f3))
+* **readme:** fix version rendering on pypi ([54a5e6f](https://github.com/Bluestaq/udl-python-sdk/commit/54a5e6f5cda5d6ddbdff25235237872ed8e953a7))
+
 ## 0.1.0-alpha.11 (2025-07-02)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
