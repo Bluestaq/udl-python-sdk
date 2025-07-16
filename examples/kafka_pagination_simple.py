@@ -1,4 +1,5 @@
 import rich
+
 from unifieddatalibrary import Unifieddatalibrary
 
 client = Unifieddatalibrary(base_url="https://dev.unifieddatalibrary.com")

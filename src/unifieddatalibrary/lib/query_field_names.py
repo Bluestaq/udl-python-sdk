@@ -1,10 +1,11 @@
 # Proposed approach 1 for supporting query parameters in a typed and composable way
 
-from typing import Type, Dict, Any, Generic, TypeVar, Protocol, Union, Tuple, cast
-from pydantic import BaseModel
+from typing import Any, Dict, Type, Tuple, Union, Generic, TypeVar, Protocol, cast
 from datetime import datetime
-from .util import sanitize_datetime
 
+from pydantic import BaseModel
+
+from .util import sanitize_datetime
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -16,6 +17,7 @@ class QueryField(Protocol):
     Each method represents a filter operation that returns a modified Query object
     with the new filter applied.
     """
+
     def eq(self, value: Any) -> "Query[Any]": ...
     def gte(self, value: Any) -> "Query[Any]": ...
     def lte(self, value: Any) -> "Query[Any]": ...
@@ -91,7 +93,7 @@ class Query(Generic[T]):
                 if model_info is None:
                     raise KeyError(f"{self.field_name} does not exist in {self.query.model}")
 
-                key = getattr(model_info, 'alias', None) or self.field_name
+                key = getattr(model_info, "alias", None) or self.field_name
 
                 if operator == "between":
                     if not isinstance(value, tuple) or len(value) != 2:

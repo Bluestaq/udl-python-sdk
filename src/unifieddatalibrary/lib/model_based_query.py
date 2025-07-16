@@ -1,9 +1,11 @@
 # Proposed approach 2 for supporting query parameters with dynamic method generation
 
-from typing import Type, Dict, Any, Generic, TypeVar, Callable
+from typing import Any, Dict, Type, Generic, TypeVar, Callable
+
 from pydantic import BaseModel
 
 T = TypeVar("T", bound=BaseModel)
+
 
 class Query(Generic[T]):
     """
@@ -48,7 +50,7 @@ class Query(Generic[T]):
         }
 
         # Dynamically create query methods for each field/operator combination
-        for field_name, field_info in model.model_fields.items():
+        for field_name, _field_info in model.model_fields.items():
             for suffix, operator in operators.items():
                 method_name = f"{field_name}{suffix}"
                 method = self._make_method(field_name, operator)
@@ -65,8 +67,10 @@ class Query(Generic[T]):
         Returns:
             A callable method that accepts a value and returns the updated Query object.
         """
+
         def method(self: "Query[T]", value: Any) -> "Query[T]":
             return self._add_filter(field_name, operator, value)
+
         return method
 
     def _add_filter(self, field_name: str, operator: str, value: Any) -> "Query[T]":
