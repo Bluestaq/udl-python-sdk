@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-07-17)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
 ## 0.1.0-alpha.12 (2025-07-16)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
