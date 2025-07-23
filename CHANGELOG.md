@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-07-23)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([33edafe](https://github.com/Bluestaq/udl-python-sdk/commit/33edafe7875683aa74b72218a7989d4ae9aca165))
+* **parsing:** parse extra field types ([041a065](https://github.com/Bluestaq/udl-python-sdk/commit/041a06556883ee686eacaf982ba0388c07f8189b))
+
 ## 0.1.0-alpha.13 (2025-07-17)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
