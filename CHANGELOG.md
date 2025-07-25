@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2025-07-25)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Chores
+
+* **project:** add settings file for vscode ([5099d13](https://github.com/Bluestaq/udl-python-sdk/commit/5099d13820013dae90ddd7c0dafc2004475b2736))
+
 ## 0.1.0-alpha.14 (2025-07-23)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
