@@ -30,7 +30,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.status_get_response import StatusGetResponse
+from ..types.shared.status_full import StatusFull
 from ..types.status_list_response import StatusListResponse
 from ..types.status_tuple_response import StatusTupleResponse
 from ..types.status_queryhelp_response import StatusQueryhelpResponse
@@ -426,7 +426,7 @@ class StatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StatusGetResponse:
+    ) -> StatusFull:
         """
         Service operation to get a single Status record by its unique ID passed as a
         path parameter.
@@ -457,7 +457,7 @@ class StatusResource(SyncAPIResource):
                     status_get_params.StatusGetParams,
                 ),
             ),
-            cast_to=StatusGetResponse,
+            cast_to=StatusFull,
         )
 
     def get_by_entity_id(
@@ -1015,7 +1015,7 @@ class AsyncStatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StatusGetResponse:
+    ) -> StatusFull:
         """
         Service operation to get a single Status record by its unique ID passed as a
         path parameter.
@@ -1046,7 +1046,7 @@ class AsyncStatusResource(AsyncAPIResource):
                     status_get_params.StatusGetParams,
                 ),
             ),
-            cast_to=StatusGetResponse,
+            cast_to=StatusFull,
         )
 
     async def get_by_entity_id(

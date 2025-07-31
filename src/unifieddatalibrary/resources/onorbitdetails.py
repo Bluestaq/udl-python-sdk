@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.onorbitdetail_get_response import OnorbitdetailGetResponse
 from ..types.onorbitdetail_list_response import OnorbitdetailListResponse
+from ..types.shared.onorbit_details_full import OnorbitDetailsFull
 
 __all__ = ["OnorbitdetailsResource", "AsyncOnorbitdetailsResource"]
 
@@ -659,7 +659,7 @@ class OnorbitdetailsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitdetailGetResponse:
+    ) -> OnorbitDetailsFull:
         """
         Service operation to get a single OnorbitDetails record by its unique ID passed
         as a path parameter. An OnorbitDetails is a collection of additional
@@ -691,7 +691,7 @@ class OnorbitdetailsResource(SyncAPIResource):
                     onorbitdetail_get_params.OnorbitdetailGetParams,
                 ),
             ),
-            cast_to=OnorbitdetailGetResponse,
+            cast_to=OnorbitDetailsFull,
         )
 
 
@@ -1322,7 +1322,7 @@ class AsyncOnorbitdetailsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitdetailGetResponse:
+    ) -> OnorbitDetailsFull:
         """
         Service operation to get a single OnorbitDetails record by its unique ID passed
         as a path parameter. An OnorbitDetails is a collection of additional
@@ -1354,7 +1354,7 @@ class AsyncOnorbitdetailsResource(AsyncAPIResource):
                     onorbitdetail_get_params.OnorbitdetailGetParams,
                 ),
             ),
-            cast_to=OnorbitdetailGetResponse,
+            cast_to=OnorbitDetailsFull,
         )
 
 

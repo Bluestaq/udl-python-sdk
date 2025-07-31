@@ -27,8 +27,8 @@ from .._response import (
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.location_full import LocationFull
-from ..types.location_list_response import LocationListResponse
 from ..types.location_tuple_response import LocationTupleResponse
+from ..types.shared.location_abridged import LocationAbridged
 from ..types.location_queryhelp_response import LocationQueryhelpResponse
 
 __all__ = ["LocationResource", "AsyncLocationResource"]
@@ -276,7 +276,7 @@ class LocationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncOffsetPage[LocationListResponse]:
+    ) -> SyncOffsetPage[LocationAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -294,7 +294,7 @@ class LocationResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/udl/location",
-            page=SyncOffsetPage[LocationListResponse],
+            page=SyncOffsetPage[LocationAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -308,7 +308,7 @@ class LocationResource(SyncAPIResource):
                     location_list_params.LocationListParams,
                 ),
             ),
-            model=LocationListResponse,
+            model=LocationAbridged,
         )
 
     def delete(
@@ -764,7 +764,7 @@ class AsyncLocationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[LocationListResponse, AsyncOffsetPage[LocationListResponse]]:
+    ) -> AsyncPaginator[LocationAbridged, AsyncOffsetPage[LocationAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -782,7 +782,7 @@ class AsyncLocationResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/udl/location",
-            page=AsyncOffsetPage[LocationListResponse],
+            page=AsyncOffsetPage[LocationAbridged],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -796,7 +796,7 @@ class AsyncLocationResource(AsyncAPIResource):
                     location_list_params.LocationListParams,
                 ),
             ),
-            model=LocationListResponse,
+            model=LocationAbridged,
         )
 
     async def delete(

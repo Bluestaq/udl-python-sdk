@@ -28,7 +28,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.operatingunit_get_response import OperatingunitGetResponse
+from ..types.shared.operatingunit_full import OperatingunitFull
 from ..types.operatingunit_list_response import OperatingunitListResponse
 from ..types.operatingunit_tuple_response import OperatingunitTupleResponse
 from ..types.operatingunit_queryhelp_response import OperatingunitQueryhelpResponse
@@ -1124,7 +1124,7 @@ class OperatingunitResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperatingunitGetResponse:
+    ) -> OperatingunitFull:
         """
         Service operation to get a single Operatingunit record by its unique ID passed
         as a path parameter. Operatingunit defines a unit or organization which operates
@@ -1156,7 +1156,7 @@ class OperatingunitResource(SyncAPIResource):
                     operatingunit_get_params.OperatingunitGetParams,
                 ),
             ),
-            cast_to=OperatingunitGetResponse,
+            cast_to=OperatingunitFull,
         )
 
     def queryhelp(
@@ -2326,7 +2326,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperatingunitGetResponse:
+    ) -> OperatingunitFull:
         """
         Service operation to get a single Operatingunit record by its unique ID passed
         as a path parameter. Operatingunit defines a unit or organization which operates
@@ -2358,7 +2358,7 @@ class AsyncOperatingunitResource(AsyncAPIResource):
                     operatingunit_get_params.OperatingunitGetParams,
                 ),
             ),
-            cast_to=OperatingunitGetResponse,
+            cast_to=OperatingunitFull,
         )
 
     async def queryhelp(

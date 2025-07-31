@@ -14,47 +14,69 @@ from .shared import (
     EvacFull as EvacFull,
     FileData as FileData,
     EntityFull as EntityFull,
+    RfBandFull as RfBandFull,
+    StatusFull as StatusFull,
+    WaiverFull as WaiverFull,
     AntennaFull as AntennaFull,
     BatteryFull as BatteryFull,
     ChannelFull as ChannelFull,
     CountryFull as CountryFull,
     OnorbitFull as OnorbitFull,
+    PathwayFull as PathwayFull,
     AircraftFull as AircraftFull,
     AirfieldFull as AirfieldFull,
     LocationFull as LocationFull,
     EphemerisFull as EphemerisFull,
     SortiePprFull as SortiePprFull,
+    SubStatusFull as SubStatusFull,
     FlightPlanFull as FlightPlanFull,
+    SolarArrayFull as SolarArrayFull,
     AirloadplanFull as AirloadplanFull,
     AttitudesetFull as AttitudesetFull,
     BeamcontourFull as BeamcontourFull,
     ConjunctionFull as ConjunctionFull,
+    ParamDescriptor as ParamDescriptor,
     StateVectorFull as StateVectorFull,
     AirfieldslotFull as AirfieldslotFull,
     AttitudedataFull as AttitudedataFull,
     DriftHistoryFull as DriftHistoryFull,
+    LocationAbridged as LocationAbridged,
     NotificationFull as NotificationFull,
     OrganizationFull as OrganizationFull,
     EngineDetailsFull as EngineDetailsFull,
     EoObservationFull as EoObservationFull,
+    OperatingunitFull as OperatingunitFull,
     AircraftsortieFull as AircraftsortieFull,
     AircraftstatusFull as AircraftstatusFull,
     AirfieldstatusFull as AirfieldstatusFull,
     AntennaDetailsFull as AntennaDetailsFull,
     BatterydetailsFull as BatterydetailsFull,
     CollectRequestFull as CollectRequestFull,
+    DailyOperationFull as DailyOperationFull,
     EventEvolutionFull as EventEvolutionFull,
+    OnorbitAntennaFull as OnorbitAntennaFull,
+    OnorbitBatteryFull as OnorbitBatteryFull,
+    OnorbitDetailsFull as OnorbitDetailsFull,
+    OperatingHoursFull as OperatingHoursFull,
     AirTaskingOrderFull as AirTaskingOrderFull,
     AnalyticImageryFull as AnalyticImageryFull,
     CollectResponseFull as CollectResponseFull,
+    MaximumOnGroundFull as MaximumOnGroundFull,
+    OnorbitThrusterFull as OnorbitThrusterFull,
+    RelatedDocumentFull as RelatedDocumentFull,
     DriftHistoryAbridged as DriftHistoryAbridged,
+    SofDataSourceRefFull as SofDataSourceRefFull,
     OnboardnavigationFull as OnboardnavigationFull,
+    OnorbitSolarArrayFull as OnorbitSolarArrayFull,
     SolarArrayDetailsFull as SolarArrayDetailsFull,
     AirTransportMissionFull as AirTransportMissionFull,
     DiplomaticclearanceFull as DiplomaticclearanceFull,
+    OperatingUnitRemarkFull as OperatingUnitRemarkFull,
+    OperationalPlanningFull as OperationalPlanningFull,
     OrganizationDetailsFull as OrganizationDetailsFull,
     AircraftstatusremarkFull as AircraftstatusremarkFull,
     AirspacecontrolorderFull as AirspacecontrolorderFull,
+    OperationalDeviationFull as OperationalDeviationFull,
     OnorbitthrusterstatusFull as OnorbitthrusterstatusFull,
     AirfieldslotconsumptionFull as AirfieldslotconsumptionFull,
 )
@@ -267,7 +289,6 @@ from .stage_create_params import StageCreateParams as StageCreateParams
 from .stage_list_response import StageListResponse as StageListResponse
 from .stage_update_params import StageUpdateParams as StageUpdateParams
 from .status_count_params import StatusCountParams as StatusCountParams
-from .status_get_response import StatusGetResponse as StatusGetResponse
 from .status_tuple_params import StatusTupleParams as StatusTupleParams
 from .surface_list_params import SurfaceListParams as SurfaceListParams
 from .swir_count_response import SwirCountResponse as SwirCountResponse
@@ -310,12 +331,12 @@ from .h3_geo_list_response import H3GeoListResponse as H3GeoListResponse
 from .hazard_create_params import HazardCreateParams as HazardCreateParams
 from .hazard_list_response import HazardListResponse as HazardListResponse
 from .location_list_params import LocationListParams as LocationListParams
+from .logistics_parts_full import LogisticsPartsFull as LogisticsPartsFull
 from .maneuver_list_params import ManeuverListParams as ManeuverListParams
 from .manifold_list_params import ManifoldListParams as ManifoldListParams
 from .onorbit_count_params import OnorbitCountParams as OnorbitCountParams
 from .onorbit_tuple_params import OnorbitTupleParams as OnorbitTupleParams
 from .rf_band_count_params import RfBandCountParams as RfBandCountParams
-from .rf_band_get_response import RfBandGetResponse as RfBandGetResponse
 from .rf_band_tuple_params import RfBandTupleParams as RfBandTupleParams
 from .sensor_create_params import SensorCreateParams as SensorCreateParams
 from .sensor_list_response import SensorListResponse as SensorListResponse
@@ -376,6 +397,7 @@ from .ir_queryhelp_response import IrQueryhelpResponse as IrQueryhelpResponse
 from .location_count_params import LocationCountParams as LocationCountParams
 from .location_ingest_param import LocationIngestParam as LocationIngestParam
 from .location_tuple_params import LocationTupleParams as LocationTupleParams
+from .logistics_stocks_full import LogisticsStocksFull as LogisticsStocksFull
 from .maneuver_count_params import ManeuverCountParams as ManeuverCountParams
 from .maneuver_get_response import ManeuverGetResponse as ManeuverGetResponse
 from .maneuver_tuple_params import ManeuverTupleParams as ManeuverTupleParams
@@ -441,7 +463,6 @@ from .gnss_rawif_list_params import GnssRawifListParams as GnssRawifListParams
 from .launch_site_get_params import LaunchSiteGetParams as LaunchSiteGetParams
 from .link_status_get_params import LinkStatusGetParams as LinkStatusGetParams
 from .location_create_params import LocationCreateParams as LocationCreateParams
-from .location_list_response import LocationListResponse as LocationListResponse
 from .location_update_params import LocationUpdateParams as LocationUpdateParams
 from .logistics_remarks_full import LogisticsRemarksFull as LogisticsRemarksFull
 from .maneuver_create_params import ManeuverCreateParams as ManeuverCreateParams
@@ -472,7 +493,6 @@ from .sky_imagery_get_params import SkyImageryGetParams as SkyImageryGetParams
 from .solar_array_get_params import SolarArrayGetParams as SolarArrayGetParams
 from .sortie_ppr_list_params import SortiePprListParams as SortiePprListParams
 from .substatus_count_params import SubstatusCountParams as SubstatusCountParams
-from .substatus_get_response import SubstatusGetResponse as SubstatusGetResponse
 from .substatus_tuple_params import SubstatusTupleParams as SubstatusTupleParams
 from .surface_count_response import SurfaceCountResponse as SurfaceCountResponse
 from .surface_tuple_response import SurfaceTupleResponse as SurfaceTupleResponse
@@ -513,12 +533,14 @@ from .geo_status_tuple_params import GeoStatusTupleParams as GeoStatusTupleParam
 from .gnss_rawif_count_params import GnssRawifCountParams as GnssRawifCountParams
 from .gnss_rawif_get_response import GnssRawifGetResponse as GnssRawifGetResponse
 from .gnss_rawif_tuple_params import GnssRawifTupleParams as GnssRawifTupleParams
+from .isr_collection_poc_full import IsrCollectionPocFull as IsrCollectionPocFull
 from .item_queryhelp_response import ItemQueryhelpResponse as ItemQueryhelpResponse
 from .launch_event_get_params import LaunchEventGetParams as LaunchEventGetParams
 from .launch_site_list_params import LaunchSiteListParams as LaunchSiteListParams
 from .link_status_list_params import LinkStatusListParams as LinkStatusListParams
 from .location_count_response import LocationCountResponse as LocationCountResponse
 from .location_tuple_response import LocationTupleResponse as LocationTupleResponse
+from .logistics_segments_full import LogisticsSegmentsFull as LogisticsSegmentsFull
 from .maneuver_count_response import ManeuverCountResponse as ManeuverCountResponse
 from .maneuver_tuple_response import ManeuverTupleResponse as ManeuverTupleResponse
 from .manifold_count_response import ManifoldCountResponse as ManifoldCountResponse
@@ -634,7 +656,6 @@ from .sky_imagery_count_params import SkyImageryCountParams as SkyImageryCountPa
 from .sky_imagery_get_response import SkyImageryGetResponse as SkyImageryGetResponse
 from .sky_imagery_tuple_params import SkyImageryTupleParams as SkyImageryTupleParams
 from .solar_array_count_params import SolarArrayCountParams as SolarArrayCountParams
-from .solar_array_get_response import SolarArrayGetResponse as SolarArrayGetResponse
 from .solar_array_tuple_params import SolarArrayTupleParams as SolarArrayTupleParams
 from .sortie_ppr_create_params import SortiePprCreateParams as SortiePprCreateParams
 from .sortie_ppr_list_response import SortiePprListResponse as SortiePprListResponse
@@ -795,6 +816,8 @@ from .launch_site_tuple_response import LaunchSiteTupleResponse as LaunchSiteTup
 from .launch_vehicle_list_params import LaunchVehicleListParams as LaunchVehicleListParams
 from .link_status_count_response import LinkStatusCountResponse as LinkStatusCountResponse
 from .link_status_tuple_response import LinkStatusTupleResponse as LinkStatusTupleResponse
+from .logistics_remarks_abridged import LogisticsRemarksAbridged as LogisticsRemarksAbridged
+from .logistics_specialties_full import LogisticsSpecialtiesFull as LogisticsSpecialtiesFull
 from .manifoldelset_count_params import ManifoldelsetCountParams as ManifoldelsetCountParams
 from .manifoldelset_get_response import ManifoldelsetGetResponse as ManifoldelsetGetResponse
 from .manifoldelset_tuple_params import ManifoldelsetTupleParams as ManifoldelsetTupleParams
@@ -805,7 +828,6 @@ from .notification_list_response import NotificationListResponse as Notification
 from .onorbit_queryhelp_response import OnorbitQueryhelpResponse as OnorbitQueryhelpResponse
 from .onorbitantenna_list_params import OnorbitantennaListParams as OnorbitantennaListParams
 from .onorbitbattery_list_params import OnorbitbatteryListParams as OnorbitbatteryListParams
-from .onorbitdetail_get_response import OnorbitdetailGetResponse as OnorbitdetailGetResponse
 from .onorbitevent_create_params import OnorbiteventCreateParams as OnorbiteventCreateParams
 from .onorbitevent_list_response import OnorbiteventListResponse as OnorbiteventListResponse
 from .onorbitevent_update_params import OnorbiteventUpdateParams as OnorbiteventUpdateParams
@@ -813,7 +835,6 @@ from .onorbitlist_count_response import OnorbitlistCountResponse as OnorbitlistC
 from .onorbitlist_tuple_response import OnorbitlistTupleResponse as OnorbitlistTupleResponse
 from .onorbitthruster_get_params import OnorbitthrusterGetParams as OnorbitthrusterGetParams
 from .operatingunit_count_params import OperatingunitCountParams as OperatingunitCountParams
-from .operatingunit_get_response import OperatingunitGetResponse as OperatingunitGetResponse
 from .operatingunit_tuple_params import OperatingunitTupleParams as OperatingunitTupleParams
 from .organization_create_params import OrganizationCreateParams as OrganizationCreateParams
 from .organization_list_response import OrganizationListResponse as OrganizationListResponse
@@ -900,8 +921,6 @@ from .manifoldelset_update_params import ManifoldelsetUpdateParams as Manifoldel
 from .missile_track_list_response import MissileTrackListResponse as MissileTrackListResponse
 from .notification_count_response import NotificationCountResponse as NotificationCountResponse
 from .notification_tuple_response import NotificationTupleResponse as NotificationTupleResponse
-from .onorbitantenna_get_response import OnorbitantennaGetResponse as OnorbitantennaGetResponse
-from .onorbitbattery_get_response import OnorbitbatteryGetResponse as OnorbitbatteryGetResponse
 from .onorbitdetail_create_params import OnorbitdetailCreateParams as OnorbitdetailCreateParams
 from .onorbitdetail_list_response import OnorbitdetailListResponse as OnorbitdetailListResponse
 from .onorbitdetail_update_params import OnorbitdetailUpdateParams as OnorbitdetailUpdateParams
@@ -951,6 +970,7 @@ from .dropzone_query_help_response import DropzoneQueryHelpResponse as DropzoneQ
 from .effect_request_create_params import EffectRequestCreateParams as EffectRequestCreateParams
 from .effect_request_list_response import EffectRequestListResponse as EffectRequestListResponse
 from .effect_response_count_params import EffectResponseCountParams as EffectResponseCountParams
+from .effect_response_metrics_full import EffectResponseMetricsFull as EffectResponseMetricsFull
 from .effect_response_tuple_params import EffectResponseTupleParams as EffectResponseTupleParams
 from .ephemeris_file_upload_params import EphemerisFileUploadParams as EphemerisFileUploadParams
 from .ephemeris_queryhelp_response import EphemerisQueryhelpResponse as EphemerisQueryhelpResponse
@@ -974,6 +994,7 @@ from .launch_vehicle_create_params import LaunchVehicleCreateParams as LaunchVeh
 from .launch_vehicle_list_response import LaunchVehicleListResponse as LaunchVehicleListResponse
 from .launch_vehicle_update_params import LaunchVehicleUpdateParams as LaunchVehicleUpdateParams
 from .logistics_support_get_params import LogisticsSupportGetParams as LogisticsSupportGetParams
+from .logistics_support_items_full import LogisticsSupportItemsFull as LogisticsSupportItemsFull
 from .manifoldelset_count_response import ManifoldelsetCountResponse as ManifoldelsetCountResponse
 from .manifoldelset_tuple_response import ManifoldelsetTupleResponse as ManifoldelsetTupleResponse
 from .missile_track_count_response import MissileTrackCountResponse as MissileTrackCountResponse
@@ -986,7 +1007,6 @@ from .onorbitbattery_create_params import OnorbitbatteryCreateParams as Onorbitb
 from .onorbitbattery_list_response import OnorbitbatteryListResponse as OnorbitbatteryListResponse
 from .onorbitbattery_update_params import OnorbitbatteryUpdateParams as OnorbitbatteryUpdateParams
 from .onorbitsolararray_get_params import OnorbitsolararrayGetParams as OnorbitsolararrayGetParams
-from .onorbitthruster_get_response import OnorbitthrusterGetResponse as OnorbitthrusterGetResponse
 from .operatingunit_count_response import OperatingunitCountResponse as OperatingunitCountResponse
 from .operatingunit_tuple_response import OperatingunitTupleResponse as OperatingunitTupleResponse
 from .personnelrecovery_get_params import PersonnelrecoveryGetParams as PersonnelrecoveryGetParams
@@ -1112,7 +1132,6 @@ from .onboardnavigation_count_params import OnboardnavigationCountParams as Onbo
 from .onboardnavigation_tuple_params import OnboardnavigationTupleParams as OnboardnavigationTupleParams
 from .onorbit_get_signature_response import OnorbitGetSignatureResponse as OnorbitGetSignatureResponse
 from .onorbitlist_queryhelp_response import OnorbitlistQueryhelpResponse as OnorbitlistQueryhelpResponse
-from .onorbitsolararray_get_response import OnorbitsolararrayGetResponse as OnorbitsolararrayGetResponse
 from .operatingunitremark_get_params import OperatingunitremarkGetParams as OperatingunitremarkGetParams
 from .orbitdetermination_list_params import OrbitdeterminationListParams as OrbitdeterminationListParams
 from .organizationdetail_list_params import OrganizationdetailListParams as OrganizationdetailListParams
@@ -1231,11 +1250,13 @@ from .feature_assessment_create_params import FeatureAssessmentCreateParams as F
 from .gnss_observationset_count_params import GnssObservationsetCountParams as GnssObservationsetCountParams
 from .gnss_observationset_tuple_params import GnssObservationsetTupleParams as GnssObservationsetTupleParams
 from .ground_imagery_upload_zip_params import GroundImageryUploadZipParams as GroundImageryUploadZipParams
+from .isr_collection_requirements_full import IsrCollectionRequirementsFull as IsrCollectionRequirementsFull
 from .item_tracking_queryhelp_response import ItemTrackingQueryhelpResponse as ItemTrackingQueryhelpResponse
 from .launch_site_detail_create_params import LaunchSiteDetailCreateParams as LaunchSiteDetailCreateParams
 from .launch_site_detail_list_response import LaunchSiteDetailListResponse as LaunchSiteDetailListResponse
 from .launch_site_detail_update_params import LaunchSiteDetailUpdateParams as LaunchSiteDetailUpdateParams
 from .launch_vehicle_detail_get_params import LaunchVehicleDetailGetParams as LaunchVehicleDetailGetParams
+from .logistics_discrepancy_infos_full import LogisticsDiscrepancyInfosFull as LogisticsDiscrepancyInfosFull
 from .logistics_support_count_response import LogisticsSupportCountResponse as LogisticsSupportCountResponse
 from .logistics_support_tuple_response import LogisticsSupportTupleResponse as LogisticsSupportTupleResponse
 from .manifoldelset_create_bulk_params import ManifoldelsetCreateBulkParams as ManifoldelsetCreateBulkParams
@@ -1253,7 +1274,6 @@ from .onboardnavigation_tuple_response import OnboardnavigationTupleResponse as 
 from .onorbitthrusterstatus_get_params import OnorbitthrusterstatusGetParams as OnorbitthrusterstatusGetParams
 from .operatingunit_queryhelp_response import OperatingunitQueryhelpResponse as OperatingunitQueryhelpResponse
 from .operatingunitremark_count_params import OperatingunitremarkCountParams as OperatingunitremarkCountParams
-from .operatingunitremark_get_response import OperatingunitremarkGetResponse as OperatingunitremarkGetResponse
 from .operatingunitremark_tuple_params import OperatingunitremarkTupleParams as OperatingunitremarkTupleParams
 from .orbitdetermination_create_params import OrbitdeterminationCreateParams as OrbitdeterminationCreateParams
 from .orbitdetermination_list_response import OrbitdeterminationListResponse as OrbitdeterminationListResponse
@@ -1288,6 +1308,7 @@ from .attitude_data_query_help_response import AttitudeDataQueryHelpResponse as 
 from .diplomatic_clearance_count_params import DiplomaticClearanceCountParams as DiplomaticClearanceCountParams
 from .diplomatic_clearance_tuple_params import DiplomaticClearanceTupleParams as DiplomaticClearanceTupleParams
 from .effect_request_create_bulk_params import EffectRequestCreateBulkParams as EffectRequestCreateBulkParams
+from .effect_response_actions_list_full import EffectResponseActionsListFull as EffectResponseActionsListFull
 from .effect_response_retrieve_response import EffectResponseRetrieveResponse as EffectResponseRetrieveResponse
 from .elset_create_bulk_from_tle_params import ElsetCreateBulkFromTleParams as ElsetCreateBulkFromTleParams
 from .emitter_geolocation_create_params import EmitterGeolocationCreateParams as EmitterGeolocationCreateParams
@@ -1348,6 +1369,7 @@ from .gnss_observationset_count_response import GnssObservationsetCountResponse 
 from .gnss_observationset_tuple_response import GnssObservationsetTupleResponse as GnssObservationsetTupleResponse
 from .ground_imagery_history_aodr_params import GroundImageryHistoryAodrParams as GroundImageryHistoryAodrParams
 from .h3_geo_hex_cell_queryhelp_response import H3GeoHexCellQueryhelpResponse as H3GeoHexCellQueryhelpResponse
+from .isr_collection_critical_times_full import IsrCollectionCriticalTimesFull as IsrCollectionCriticalTimesFull
 from .launch_vehicle_detail_get_response import LaunchVehicleDetailGetResponse as LaunchVehicleDetailGetResponse
 from .onorbitthrusterstatus_count_params import OnorbitthrusterstatusCountParams as OnorbitthrusterstatusCountParams
 from .onorbitthrusterstatus_tuple_params import OnorbitthrusterstatusTupleParams as OnorbitthrusterstatusTupleParams
@@ -1393,6 +1415,7 @@ from .launch_detection_queryhelp_response import LaunchDetectionQueryhelpRespons
 from .launch_vehicle_detail_create_params import LaunchVehicleDetailCreateParams as LaunchVehicleDetailCreateParams
 from .launch_vehicle_detail_list_response import LaunchVehicleDetailListResponse as LaunchVehicleDetailListResponse
 from .launch_vehicle_detail_update_params import LaunchVehicleDetailUpdateParams as LaunchVehicleDetailUpdateParams
+from .logistics_transportation_plans_full import LogisticsTransportationPlansFull as LogisticsTransportationPlansFull
 from .maneuver_unvalidated_publish_params import ManeuverUnvalidatedPublishParams as ManeuverUnvalidatedPublishParams
 from .navigational_obstruction_get_params import NavigationalObstructionGetParams as NavigationalObstructionGetParams
 from .onorbitthrusterstatus_create_params import OnorbitthrusterstatusCreateParams as OnorbitthrusterstatusCreateParams
@@ -1925,6 +1948,9 @@ from .aviation_risk_management_query_help_response import (
 )
 from .global_atmospheric_model_query_help_response import (
     GlobalAtmosphericModelQueryHelpResponse as GlobalAtmosphericModelQueryHelpResponse,
+)
+from .isr_collection_exploitation_requirement_full import (
+    IsrCollectionExploitationRequirementFull as IsrCollectionExploitationRequirementFull,
 )
 from .logistics_support_unvalidated_publish_params import (
     LogisticsSupportUnvalidatedPublishParams as LogisticsSupportUnvalidatedPublishParams,

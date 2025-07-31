@@ -7,164 +7,18 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .isr_collection_requirements_full import IsrCollectionRequirementsFull
 
 __all__ = [
     "IsrCollectionTupleResponse",
     "IsrCollectionTupleResponseItem",
-    "IsrCollectionTupleResponseItemCollectionRequirement",
-    "IsrCollectionTupleResponseItemCollectionRequirementCriticalTimes",
-    "IsrCollectionTupleResponseItemCollectionRequirementExploitationRequirement",
-    "IsrCollectionTupleResponseItemCollectionRequirementExploitationRequirementPoc",
     "IsrCollectionTupleResponseItemTasking",
     "IsrCollectionTupleResponseItemTaskingCollectionPeriods",
     "IsrCollectionTupleResponseItemTaskingCollectionPeriodsActual",
     "IsrCollectionTupleResponseItemTaskingCollectionPeriodsPlanned",
     "IsrCollectionTupleResponseItemTaskingCollectionPeriodsPlannedAdditional",
-    "IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirement",
-    "IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementCriticalTimes",
-    "IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementExploitationRequirement",
-    "IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementExploitationRequirementPoc",
     "IsrCollectionTupleResponseItemTransit",
 ]
-
-
-class IsrCollectionTupleResponseItemCollectionRequirementCriticalTimes(BaseModel):
-    earliest_imaging_time: datetime = FieldInfo(alias="earliestImagingTime")
-    """Critical start time to collect an image for this requirement."""
-
-    latest_imaging_time: datetime = FieldInfo(alias="latestImagingTime")
-    """Critical stop time to collect an image for this requirement."""
-
-
-class IsrCollectionTupleResponseItemCollectionRequirementExploitationRequirementPoc(BaseModel):
-    id: Optional[str] = None
-    """Unique identifier of the collection requirement POC."""
-
-    callsign: Optional[str] = None
-    """Callsign of the POC."""
-
-    chat_name: Optional[str] = FieldInfo(alias="chatName", default=None)
-    """Chat name of the POC."""
-
-    chat_system: Optional[str] = FieldInfo(alias="chatSystem", default=None)
-    """Chat system the POC is accessing."""
-
-    email: Optional[str] = None
-    """Email address of the POC."""
-
-    name: Optional[str] = None
-    """Name of the POC."""
-
-    notes: Optional[str] = None
-    """Amplifying notes about the POC."""
-
-    phone: Optional[str] = None
-    """Phone number of the POC."""
-
-    radio_frequency: Optional[float] = FieldInfo(alias="radioFrequency", default=None)
-    """Radio Frequency the POC is on."""
-
-    unit: Optional[str] = None
-    """Unit the POC belongs to."""
-
-
-class IsrCollectionTupleResponseItemCollectionRequirementExploitationRequirement(BaseModel):
-    id: Optional[str] = None
-    """Exploitation requirement id."""
-
-    amplification: Optional[str] = None
-    """Amplifying data for the exploitation requirement."""
-
-    dissemination: Optional[str] = None
-    """List of e-mails to disseminate collection verification information."""
-
-    eei: Optional[str] = None
-    """Essential Elements of Information."""
-
-    poc: Optional[IsrCollectionTupleResponseItemCollectionRequirementExploitationRequirementPoc] = None
-
-    reporting_criteria: Optional[str] = FieldInfo(alias="reportingCriteria", default=None)
-    """The reporting criteria of the collection requirement."""
-
-
-class IsrCollectionTupleResponseItemCollectionRequirement(BaseModel):
-    id: Optional[str] = None
-    """Collection Requirement Unique Identifier."""
-
-    country: Optional[str] = None
-    """Country code of the collection requirement.
-
-    A Country may represent countries, multi-national consortiums, and international
-    organizations.
-    """
-
-    crid_numbers: Optional[str] = FieldInfo(alias="cridNumbers", default=None)
-    """Collection Requirement Unique Identifier."""
-
-    critical_times: Optional[IsrCollectionTupleResponseItemCollectionRequirementCriticalTimes] = FieldInfo(
-        alias="criticalTimes", default=None
-    )
-
-    emphasized: Optional[bool] = None
-    """Is this collection requirement an emphasized/critical requirement."""
-
-    exploitation_requirement: Optional[IsrCollectionTupleResponseItemCollectionRequirementExploitationRequirement] = (
-        FieldInfo(alias="exploitationRequirement", default=None)
-    )
-
-    hash: Optional[str] = None
-    """Encryption hashing algorithm."""
-
-    intel_discipline: Optional[str] = FieldInfo(alias="intelDiscipline", default=None)
-    """Primary type of intelligence to be collected for this requirement."""
-
-    is_prism_cr: Optional[bool] = FieldInfo(alias="isPrismCr", default=None)
-    """Is this collection request for the Prism system?."""
-
-    operation: Optional[str] = None
-    """Human readable name for this operation."""
-
-    priority: Optional[float] = None
-    """1-n priority for this collection requirement."""
-
-    recon_survey: Optional[str] = FieldInfo(alias="reconSurvey", default=None)
-    """Reconnaissance Survey information the operator needs."""
-
-    record_id: Optional[str] = FieldInfo(alias="recordId", default=None)
-    """Record id."""
-
-    region: Optional[str] = None
-    """Region of the collection requirement."""
-
-    secondary: Optional[bool] = None
-    """Sub category of primary intelligence to be collected for this requirement."""
-
-    special_com_guidance: Optional[str] = FieldInfo(alias="specialComGuidance", default=None)
-    """
-    Free text field for the user to specify special instructions needed for this
-    collection.
-    """
-
-    start: Optional[datetime] = None
-    """Start time for this requirement, should be within the mission time window."""
-
-    stop: Optional[datetime] = None
-    """Stop time for this requirement, should be within the mission time window."""
-
-    subregion: Optional[str] = None
-    """Subregion of the collection requirement."""
-
-    supported_unit: Optional[str] = FieldInfo(alias="supportedUnit", default=None)
-    """
-    The name of the military unit that this assigned collection requirement will
-    support.
-    """
-
-    target_list: Optional[List[str]] = FieldInfo(alias="targetList", default=None)
-    """Array of POI Id's for the targets being tasked."""
-
-    type: Optional[str] = None
-    """Type collection this requirement applies to."""
 
 
 class IsrCollectionTupleResponseItemTaskingCollectionPeriodsActual(BaseModel):
@@ -207,145 +61,6 @@ class IsrCollectionTupleResponseItemTaskingCollectionPeriods(BaseModel):
     planned: Optional[IsrCollectionTupleResponseItemTaskingCollectionPeriodsPlanned] = None
 
 
-class IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementCriticalTimes(BaseModel):
-    earliest_imaging_time: datetime = FieldInfo(alias="earliestImagingTime")
-    """Critical start time to collect an image for this requirement."""
-
-    latest_imaging_time: datetime = FieldInfo(alias="latestImagingTime")
-    """Critical stop time to collect an image for this requirement."""
-
-
-class IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementExploitationRequirementPoc(BaseModel):
-    id: Optional[str] = None
-    """Unique identifier of the collection requirement POC."""
-
-    callsign: Optional[str] = None
-    """Callsign of the POC."""
-
-    chat_name: Optional[str] = FieldInfo(alias="chatName", default=None)
-    """Chat name of the POC."""
-
-    chat_system: Optional[str] = FieldInfo(alias="chatSystem", default=None)
-    """Chat system the POC is accessing."""
-
-    email: Optional[str] = None
-    """Email address of the POC."""
-
-    name: Optional[str] = None
-    """Name of the POC."""
-
-    notes: Optional[str] = None
-    """Amplifying notes about the POC."""
-
-    phone: Optional[str] = None
-    """Phone number of the POC."""
-
-    radio_frequency: Optional[float] = FieldInfo(alias="radioFrequency", default=None)
-    """Radio Frequency the POC is on."""
-
-    unit: Optional[str] = None
-    """Unit the POC belongs to."""
-
-
-class IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementExploitationRequirement(BaseModel):
-    id: Optional[str] = None
-    """Exploitation requirement id."""
-
-    amplification: Optional[str] = None
-    """Amplifying data for the exploitation requirement."""
-
-    dissemination: Optional[str] = None
-    """List of e-mails to disseminate collection verification information."""
-
-    eei: Optional[str] = None
-    """Essential Elements of Information."""
-
-    poc: Optional[IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementExploitationRequirementPoc] = None
-
-    reporting_criteria: Optional[str] = FieldInfo(alias="reportingCriteria", default=None)
-    """The reporting criteria of the collection requirement."""
-
-
-class IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirement(BaseModel):
-    id: Optional[str] = None
-    """Collection Requirement Unique Identifier."""
-
-    country: Optional[str] = None
-    """Country code of the collection requirement.
-
-    A Country may represent countries, multi-national consortiums, and international
-    organizations.
-    """
-
-    crid_numbers: Optional[str] = FieldInfo(alias="cridNumbers", default=None)
-    """Collection Requirement Unique Identifier."""
-
-    critical_times: Optional[IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementCriticalTimes] = (
-        FieldInfo(alias="criticalTimes", default=None)
-    )
-
-    emphasized: Optional[bool] = None
-    """Is this collection requirement an emphasized/critical requirement."""
-
-    exploitation_requirement: Optional[
-        IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirementExploitationRequirement
-    ] = FieldInfo(alias="exploitationRequirement", default=None)
-
-    hash: Optional[str] = None
-    """Encryption hashing algorithm."""
-
-    intel_discipline: Optional[str] = FieldInfo(alias="intelDiscipline", default=None)
-    """Primary type of intelligence to be collected for this requirement."""
-
-    is_prism_cr: Optional[bool] = FieldInfo(alias="isPrismCr", default=None)
-    """Is this collection request for the Prism system?."""
-
-    operation: Optional[str] = None
-    """Human readable name for this operation."""
-
-    priority: Optional[float] = None
-    """1-n priority for this collection requirement."""
-
-    recon_survey: Optional[str] = FieldInfo(alias="reconSurvey", default=None)
-    """Reconnaissance Survey information the operator needs."""
-
-    record_id: Optional[str] = FieldInfo(alias="recordId", default=None)
-    """Record id."""
-
-    region: Optional[str] = None
-    """Region of the collection requirement."""
-
-    secondary: Optional[bool] = None
-    """Sub category of primary intelligence to be collected for this requirement."""
-
-    special_com_guidance: Optional[str] = FieldInfo(alias="specialComGuidance", default=None)
-    """
-    Free text field for the user to specify special instructions needed for this
-    collection.
-    """
-
-    start: Optional[datetime] = None
-    """Start time for this requirement, should be within the mission time window."""
-
-    stop: Optional[datetime] = None
-    """Stop time for this requirement, should be within the mission time window."""
-
-    subregion: Optional[str] = None
-    """Subregion of the collection requirement."""
-
-    supported_unit: Optional[str] = FieldInfo(alias="supportedUnit", default=None)
-    """
-    The name of the military unit that this assigned collection requirement will
-    support.
-    """
-
-    target_list: Optional[List[str]] = FieldInfo(alias="targetList", default=None)
-    """Array of POI Id's for the targets being tasked."""
-
-    type: Optional[str] = None
-    """Type collection this requirement applies to."""
-
-
 class IsrCollectionTupleResponseItemTasking(BaseModel):
     id: Optional[str] = None
     """Tasking Unique Identifier."""
@@ -377,9 +92,9 @@ class IsrCollectionTupleResponseItemTasking(BaseModel):
     tasking_collection_area: Optional[str] = FieldInfo(alias="taskingCollectionArea", default=None)
     """Tasking geographical collection area."""
 
-    tasking_collection_requirements: Optional[
-        List[IsrCollectionTupleResponseItemTaskingTaskingCollectionRequirement]
-    ] = FieldInfo(alias="taskingCollectionRequirements", default=None)
+    tasking_collection_requirements: Optional[List[IsrCollectionRequirementsFull]] = FieldInfo(
+        alias="taskingCollectionRequirements", default=None
+    )
     """Tasking desired collection requirements."""
 
     tasking_country: Optional[str] = FieldInfo(alias="taskingCountry", default=None)
@@ -488,7 +203,7 @@ class IsrCollectionTupleResponseItem(BaseModel):
     id: Optional[str] = None
     """Unique identifier of the record, auto-generated by the system."""
 
-    collection_requirements: Optional[List[IsrCollectionTupleResponseItemCollectionRequirement]] = FieldInfo(
+    collection_requirements: Optional[List[IsrCollectionRequirementsFull]] = FieldInfo(
         alias="collectionRequirements", default=None
     )
     """Mission desired collection requirements."""

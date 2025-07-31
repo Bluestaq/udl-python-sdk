@@ -27,8 +27,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.operatingunitremark_get_response import OperatingunitremarkGetResponse
 from ..types.operatingunitremark_list_response import OperatingunitremarkListResponse
+from ..types.shared.operating_unit_remark_full import OperatingUnitRemarkFull
 from ..types.operatingunitremark_tuple_response import OperatingunitremarkTupleResponse
 from ..types.operatingunitremark_queryhelp_response import OperatingunitremarkQueryhelpResponse
 
@@ -297,7 +297,7 @@ class OperatingunitremarkResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperatingunitremarkGetResponse:
+    ) -> OperatingUnitRemarkFull:
         """
         Service operation to get a single operatingunitremark record by its unique ID
         passed as a path parameter.
@@ -328,7 +328,7 @@ class OperatingunitremarkResource(SyncAPIResource):
                     operatingunitremark_get_params.OperatingunitremarkGetParams,
                 ),
             ),
-            cast_to=OperatingunitremarkGetResponse,
+            cast_to=OperatingUnitRemarkFull,
         )
 
     def queryhelp(
@@ -672,7 +672,7 @@ class AsyncOperatingunitremarkResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OperatingunitremarkGetResponse:
+    ) -> OperatingUnitRemarkFull:
         """
         Service operation to get a single operatingunitremark record by its unique ID
         passed as a path parameter.
@@ -703,7 +703,7 @@ class AsyncOperatingunitremarkResource(AsyncAPIResource):
                     operatingunitremark_get_params.OperatingunitremarkGetParams,
                 ),
             ),
-            cast_to=OperatingunitremarkGetResponse,
+            cast_to=OperatingUnitRemarkFull,
         )
 
     async def queryhelp(

@@ -1,18 +1,21 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._models import BaseModel
-from .shared.solar_array_details_full import SolarArrayDetailsFull
+from .engine import Engine
+from ..._models import BaseModel
 
-__all__ = ["SolarArrayGetResponse"]
+__all__ = ["OnorbitThrusterFull"]
 
 
-class SolarArrayGetResponse(BaseModel):
+class OnorbitThrusterFull(BaseModel):
+    classification_marking: str = FieldInfo(alias="classificationMarking")
+    """Classification marking of the data in IC/CAPCO Portion-marked format."""
+
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
 
@@ -30,8 +33,11 @@ class SolarArrayGetResponse(BaseModel):
     characteristics.
     """
 
-    name: str
-    """Solar Array name."""
+    id_engine: str = FieldInfo(alias="idEngine")
+    """ID of the Engine."""
+
+    id_on_orbit: str = FieldInfo(alias="idOnOrbit")
+    """ID of the on-orbit object."""
 
     source: str
     """Source of the data."""
@@ -48,6 +54,12 @@ class SolarArrayGetResponse(BaseModel):
     system.
     """
 
+    engine: Optional[Engine] = None
+    """Known launch vehicle engines and their performance characteristics and limits.
+
+    A launch vehicle has 1 to many engines per stage.
+    """
+
     origin: Optional[str] = None
     """
     Originating system or organization which produced the data, if different from
@@ -62,11 +74,16 @@ class SolarArrayGetResponse(BaseModel):
     by the system.
     """
 
-    solar_array_details: Optional[List[SolarArrayDetailsFull]] = FieldInfo(alias="solarArrayDetails", default=None)
+    quantity: Optional[int] = None
     """
-    Read-only collection of additional SolarArrayDetails by various sources for this
-    organization, ignored on create/update. These details must be created separately
-    via the /udl/solararraydetails operations.
+    The number of engines/thrusters on the spacecraft of the type identified by
+    idEngine.
+    """
+
+    type: Optional[str] = None
+    """The type of thruster associated with this record (e.g.
+
+    LAE, Hydrazine REA, etc.).
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)

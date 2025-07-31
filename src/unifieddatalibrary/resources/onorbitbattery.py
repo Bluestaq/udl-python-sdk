@@ -24,7 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.onorbitbattery_get_response import OnorbitbatteryGetResponse
+from ..types.shared.onorbit_battery_full import OnorbitBatteryFull
 from ..types.onorbitbattery_list_response import OnorbitbatteryListResponse
 
 __all__ = ["OnorbitbatteryResource", "AsyncOnorbitbatteryResource"]
@@ -336,7 +336,7 @@ class OnorbitbatteryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitbatteryGetResponse:
+    ) -> OnorbitBatteryFull:
         """
         Service operation to get a single OnorbitBattery record by its unique ID passed
         as a path parameter. OnorbitBattery is the association between on-orbit
@@ -369,7 +369,7 @@ class OnorbitbatteryResource(SyncAPIResource):
                     onorbitbattery_get_params.OnorbitbatteryGetParams,
                 ),
             ),
-            cast_to=OnorbitbatteryGetResponse,
+            cast_to=OnorbitBatteryFull,
         )
 
 
@@ -679,7 +679,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitbatteryGetResponse:
+    ) -> OnorbitBatteryFull:
         """
         Service operation to get a single OnorbitBattery record by its unique ID passed
         as a path parameter. OnorbitBattery is the association between on-orbit
@@ -712,7 +712,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
                     onorbitbattery_get_params.OnorbitbatteryGetParams,
                 ),
             ),
-            cast_to=OnorbitbatteryGetResponse,
+            cast_to=OnorbitBatteryFull,
         )
 
 

@@ -6,12 +6,12 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
-__all__ = ["RfBandGetResponse"]
+__all__ = ["RfBandFull"]
 
 
-class RfBandGetResponse(BaseModel):
+class RfBandFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

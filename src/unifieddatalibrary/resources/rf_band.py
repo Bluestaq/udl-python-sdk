@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.rf_band_get_response import RfBandGetResponse
+from ..types.shared.rf_band_full import RfBandFull
 from ..types.rf_band_list_response import RfBandListResponse
 from ..types.rf_band_tuple_response import RfBandTupleResponse
 from ..types.rf_band_queryhelp_response import RfBandQueryhelpResponse
@@ -512,7 +512,7 @@ class RfBandResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RfBandGetResponse:
+    ) -> RfBandFull:
         """
         Service operation to get a single RFBand by its unique ID passed as a path
         parameter.
@@ -543,7 +543,7 @@ class RfBandResource(SyncAPIResource):
                     rf_band_get_params.RfBandGetParams,
                 ),
             ),
-            cast_to=RfBandGetResponse,
+            cast_to=RfBandFull,
         )
 
     def queryhelp(
@@ -1103,7 +1103,7 @@ class AsyncRfBandResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RfBandGetResponse:
+    ) -> RfBandFull:
         """
         Service operation to get a single RFBand by its unique ID passed as a path
         parameter.
@@ -1134,7 +1134,7 @@ class AsyncRfBandResource(AsyncAPIResource):
                     rf_band_get_params.RfBandGetParams,
                 ),
             ),
-            cast_to=RfBandGetResponse,
+            cast_to=RfBandFull,
         )
 
     async def queryhelp(
