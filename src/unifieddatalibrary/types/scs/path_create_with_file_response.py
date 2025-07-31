@@ -2,6 +2,6 @@
 
 from typing_extensions import TypeAlias
 
-__all__ = ["PathCreateResponse"]
+__all__ = ["PathCreateWithFileResponse"]
 
-PathCreateResponse: TypeAlias = str
+PathCreateWithFileResponse: TypeAlias = str

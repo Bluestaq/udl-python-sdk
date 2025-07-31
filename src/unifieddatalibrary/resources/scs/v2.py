@@ -273,7 +273,7 @@ class V2Resource(SyncAPIResource):
 
     def file_upload(
         self,
-        body: FileContent,
+        params: FileContent,
         *,
         classification_marking: str,
         path: str,
@@ -325,7 +325,7 @@ class V2Resource(SyncAPIResource):
         extra_headers["Content-Type"] = "application/octet-stream"
         return self._post(
             "/scs/v2/file",
-            body=read_file_content(body),
+            body=read_file_content(params),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -723,7 +723,7 @@ class AsyncV2Resource(AsyncAPIResource):
 
     async def file_upload(
         self,
-        body: FileContent,
+        params: FileContent,
         *,
         classification_marking: str,
         path: str,
@@ -775,7 +775,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_headers["Content-Type"] = "application/octet-stream"
         return await self._post(
             "/scs/v2/file",
-            body=await async_read_file_content(body),
+            body=await async_read_file_content(params),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
