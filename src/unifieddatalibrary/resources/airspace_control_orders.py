@@ -28,8 +28,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.airspacecontrolorder_full import AirspacecontrolorderFull
 from ..types.airspacecontrolorder_abridged import AirspacecontrolorderAbridged
+from ..types.shared.airspacecontrolorder_full import AirspacecontrolorderFull
 from ..types.airspace_control_order_tuple_response import AirspaceControlOrderTupleResponse
 from ..types.airspace_control_order_query_help_response import AirspaceControlOrderQueryHelpResponse
 

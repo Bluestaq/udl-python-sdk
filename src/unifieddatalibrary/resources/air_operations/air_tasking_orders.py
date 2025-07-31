@@ -28,7 +28,7 @@ from ...types.air_operations import (
     air_tasking_order_retrieve_params,
     air_tasking_order_unvalidated_publish_params,
 )
-from ...types.air_operations.air_tasking_order_full import AirTaskingOrderFull
+from ...types.shared.air_tasking_order_full import AirTaskingOrderFull
 from ...types.air_operations.airtaskingorder_abridged import AirtaskingorderAbridged
 from ...types.air_operations.air_tasking_order_tuple_response import AirTaskingOrderTupleResponse
 from ...types.air_operations.air_tasking_order_query_help_response import AirTaskingOrderQueryHelpResponse

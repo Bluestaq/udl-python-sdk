@@ -28,8 +28,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.beamcontour_full import BeamcontourFull
 from ..types.beamcontour_abridged import BeamcontourAbridged
+from ..types.shared.beamcontour_full import BeamcontourFull
 from ..types.beam_contour_tuple_response import BeamContourTupleResponse
 from ..types.beam_contour_query_help_response import BeamContourQueryHelpResponse
 

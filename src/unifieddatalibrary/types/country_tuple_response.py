@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .country_full import CountryFull
+from .shared.country_full import CountryFull
 
 __all__ = ["CountryTupleResponse"]
 

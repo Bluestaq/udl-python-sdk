@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .sortie_ppr.sortie_ppr_full import SortiePprFull
+from .shared.sortie_ppr_full import SortiePprFull
 
 __all__ = ["SortiePprTupleResponse"]
 

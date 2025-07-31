@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .beam_full import BeamFull
+from .shared.beam_full import BeamFull
 
 __all__ = ["BeamTupleResponse"]
 

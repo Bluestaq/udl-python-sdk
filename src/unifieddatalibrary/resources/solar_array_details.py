@@ -25,7 +25,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.solar_array_details_full import SolarArrayDetailsFull
+from ..types.shared.solar_array_details_full import SolarArrayDetailsFull
 from ..types.solar_array_detail_list_response import SolarArrayDetailListResponse
 
 __all__ = ["SolarArrayDetailsResource", "AsyncSolarArrayDetailsResource"]

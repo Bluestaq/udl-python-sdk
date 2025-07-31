@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .engine import Engine
 from .._models import BaseModel
+from .shared.engine import Engine
 
 __all__ = ["OnorbitthrusterGetResponse"]
 

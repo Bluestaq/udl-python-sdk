@@ -26,9 +26,9 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.aircraft_full import AircraftFull
 from ..types.aircraft_abridged import AircraftAbridged
 from ..types.entity_ingest_param import EntityIngestParam
+from ..types.shared.aircraft_full import AircraftFull
 from ..types.aircraft_queryhelp_response import AircraftQueryhelpResponse
 from ..types.aircraft_tuple_query_response import AircraftTupleQueryResponse
 

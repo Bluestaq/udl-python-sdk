@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .notification.notification_full import NotificationFull
+from .shared.notification_full import NotificationFull
 
 __all__ = ["NotificationTupleResponse"]
 

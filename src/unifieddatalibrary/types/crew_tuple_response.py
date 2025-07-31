@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .crew_full import CrewFull
+from .shared.crew_full import CrewFull
 
 __all__ = ["CrewTupleResponse"]
 

@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .channel_full import ChannelFull
+from .shared.channel_full import ChannelFull
 
 __all__ = ["ChannelTupleResponse"]
 

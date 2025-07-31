@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 from .shared.onorbit_full import OnorbitFull
-from .observations.eo_observations.eo_observation_full import EoObservationFull
+from .shared.eo_observation_full import EoObservationFull
 
 __all__ = ["SkyImageryTupleResponse", "SkyImageryTupleResponseItem"]
 

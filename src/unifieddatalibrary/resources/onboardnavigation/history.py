@@ -20,7 +20,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.onboardnavigation import history_aodr_params, history_list_params, history_count_params
-from ...types.onboardnavigation.onboardnavigation_full import OnboardnavigationFull
+from ...types.shared.onboardnavigation_full import OnboardnavigationFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

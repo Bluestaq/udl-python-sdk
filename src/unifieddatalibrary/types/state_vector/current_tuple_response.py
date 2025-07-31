@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from ..state_vector_full import StateVectorFull
+from ..shared.state_vector_full import StateVectorFull
 
 __all__ = ["CurrentTupleResponse"]
 

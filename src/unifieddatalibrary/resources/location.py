@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.location_full import LocationFull
+from ..types.shared.location_full import LocationFull
 from ..types.location_list_response import LocationListResponse
 from ..types.location_tuple_response import LocationTupleResponse
 from ..types.location_queryhelp_response import LocationQueryhelpResponse

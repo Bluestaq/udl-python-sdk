@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.channel_full import ChannelFull
 from ..types.channel_abridged import ChannelAbridged
+from ..types.shared.channel_full import ChannelFull
 from ..types.channel_tuple_response import ChannelTupleResponse
 from ..types.channel_queryhelp_response import ChannelQueryhelpResponse
 

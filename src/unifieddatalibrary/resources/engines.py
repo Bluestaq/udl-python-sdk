@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.engine import Engine
+from ..types.shared.engine import Engine
 from ..types.engine_abridged import EngineAbridged
 from ..types.engine_tuple_response import EngineTupleResponse
 from ..types.engine_queryhelp_response import EngineQueryhelpResponse

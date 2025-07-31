@@ -7,7 +7,7 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .location_full import LocationFull
+from .shared.location_full import LocationFull
 
 __all__ = ["LaunchSiteTupleResponse", "LaunchSiteTupleResponseItem", "LaunchSiteTupleResponseItemLaunchSiteDetail"]
 

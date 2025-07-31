@@ -43,8 +43,8 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.state_vector_full import StateVectorFull
 from ...types.state_vector_abridged import StateVectorAbridged
+from ...types.shared.state_vector_full import StateVectorFull
 from ...types.state_vector_ingest_param import StateVectorIngestParam
 from ...types.state_vector_tuple_response import StateVectorTupleResponse
 from ...types.state_vector_queryhelp_response import StateVectorQueryhelpResponse

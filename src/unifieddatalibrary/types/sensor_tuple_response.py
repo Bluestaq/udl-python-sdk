@@ -6,13 +6,13 @@ from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
-from .engine import Engine
 from .._models import BaseModel
-from .antenna_full import AntennaFull
-from .battery_full import BatteryFull
-from .location_full import LocationFull
-from .organization_full import OrganizationFull
-from .solar_array_details_full import SolarArrayDetailsFull
+from .shared.engine import Engine
+from .shared.antenna_full import AntennaFull
+from .shared.battery_full import BatteryFull
+from .shared.location_full import LocationFull
+from .shared.organization_full import OrganizationFull
+from .shared.solar_array_details_full import SolarArrayDetailsFull
 
 __all__ = [
     "SensorTupleResponse",

@@ -27,8 +27,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.organization_details_full import OrganizationDetailsFull
 from ..types.organizationdetail_list_response import OrganizationdetailListResponse
+from ..types.shared.organization_details_full import OrganizationDetailsFull
 from ..types.organizationdetail_find_by_source_response import OrganizationdetailFindBySourceResponse
 
 __all__ = ["OrganizationdetailsResource", "AsyncOrganizationdetailsResource"]

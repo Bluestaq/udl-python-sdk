@@ -29,8 +29,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.crew_full import CrewFull
 from ..types.crew_abridged import CrewAbridged
+from ..types.shared.crew_full import CrewFull
 from ..types.crew_tuple_response import CrewTupleResponse
 from ..types.crew_queryhelp_response import CrewQueryhelpResponse
 

@@ -28,8 +28,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.airfieldslotconsumption_full import AirfieldslotconsumptionFull
 from ..types.airfieldslotconsumption_abridged import AirfieldslotconsumptionAbridged
+from ..types.shared.airfieldslotconsumption_full import AirfieldslotconsumptionFull
 from ..types.airfield_slot_consumption_tuple_response import AirfieldSlotConsumptionTupleResponse
 from ..types.airfield_slot_consumption_queryhelp_response import AirfieldSlotConsumptionQueryhelpResponse
 

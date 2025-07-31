@@ -27,8 +27,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.airloadplan_full import AirloadplanFull
 from ..types.airloadplan_abridged import AirloadplanAbridged
+from ..types.shared.airloadplan_full import AirloadplanFull
 from ..types.air_load_plan_tuple_response import AirLoadPlanTupleResponse
 from ..types.air_load_plan_queryhelp_response import AirLoadPlanQueryhelpResponse
 

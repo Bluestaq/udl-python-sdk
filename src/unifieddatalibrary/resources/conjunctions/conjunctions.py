@@ -40,8 +40,8 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.conjunction_full import ConjunctionFull
 from ...types.conjunction_abridged import ConjunctionAbridged
+from ...types.shared.conjunction_full import ConjunctionFull
 from ...types.conjunction_tuple_response import ConjunctionTupleResponse
 from ...types.conjunction_queryhelp_response import ConjunctionQueryhelpResponse
 from ...types.conjunction_get_history_response import ConjunctionGetHistoryResponse

@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .antenna_full import AntennaFull
+from .shared.antenna_full import AntennaFull
 
 __all__ = ["AntennaTupleResponse"]
 

@@ -20,7 +20,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.notification import history_aodr_params, history_list_params, history_count_params
-from ...types.notification.notification_full import NotificationFull
+from ...types.shared.notification_full import NotificationFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

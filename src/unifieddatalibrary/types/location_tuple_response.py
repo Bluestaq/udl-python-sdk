@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .location_full import LocationFull
+from .shared.location_full import LocationFull
 
 __all__ = ["LocationTupleResponse"]
 

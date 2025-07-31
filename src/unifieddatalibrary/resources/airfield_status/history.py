@@ -17,7 +17,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.airfield_status import history_list_params, history_count_params
-from ...types.airfieldstatus_full import AirfieldstatusFull
+from ...types.shared.airfieldstatus_full import AirfieldstatusFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

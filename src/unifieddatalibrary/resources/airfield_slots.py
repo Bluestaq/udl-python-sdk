@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.airfieldslot_full import AirfieldslotFull
 from ..types.airfieldslot_abridged import AirfieldslotAbridged
+from ..types.shared.airfieldslot_full import AirfieldslotFull
 from ..types.airfield_slot_tuple_response import AirfieldSlotTupleResponse
 from ..types.airfield_slot_queryhelp_response import AirfieldSlotQueryhelpResponse
 
