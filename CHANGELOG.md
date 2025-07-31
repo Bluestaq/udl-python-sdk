@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2025-07-31)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** move multiple models to shared resources
+
+### Features
+
+* **api:** define additional models to reduce duplication ([50cb44e](https://github.com/Bluestaq/udl-python-sdk/commit/50cb44eedd777d58628d9c41cfe7a0b556c5fa1a))
+* **api:** manual changes ([d9fe898](https://github.com/Bluestaq/udl-python-sdk/commit/d9fe89850635aa31c667781767a5f2bc6aadbb2b))
+* **client:** support file upload requests ([4efac3d](https://github.com/Bluestaq/udl-python-sdk/commit/4efac3dd128e63413e5a07c8d650e96f4009699f))
+
+
+### Chores
+
+* **api:** move multiple models to shared resources ([d58fc44](https://github.com/Bluestaq/udl-python-sdk/commit/d58fc44c6aafe9c26d309d2da2af1bf9ccf22a4e))
+
 ## 0.1.0-alpha.15 (2025-07-25)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
