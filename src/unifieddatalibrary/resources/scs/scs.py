@@ -56,7 +56,8 @@ from .folders import (
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from ..._files import read_file_content, async_read_file_content
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -386,11 +387,11 @@ class ScsResource(SyncAPIResource):
 
     def file_upload(
         self,
+        body: FileContent,
         *,
         classification_marking: str,
         file_name: str,
         path: str,
-        body: FileTypes,
         delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
@@ -433,9 +434,10 @@ class ScsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/file",
-            body=maybe_transform(body, sc_file_upload_params.ScFileUploadParams),
+            body=read_file_content(body),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -947,11 +949,11 @@ class AsyncScsResource(AsyncAPIResource):
 
     async def file_upload(
         self,
+        body: FileContent,
         *,
         classification_marking: str,
         file_name: str,
         path: str,
-        body: FileTypes,
         delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
@@ -994,9 +996,10 @@ class AsyncScsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/file",
-            body=await async_maybe_transform(body, sc_file_upload_params.ScFileUploadParams),
+            body=await async_read_file_content(body),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

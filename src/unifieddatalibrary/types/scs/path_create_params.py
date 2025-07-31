@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing_extensions import Required, Annotated, TypedDict
 
-from ..._types import FileTypes
 from ..._utils import PropertyInfo
 
 __all__ = ["PathCreateParams"]
@@ -16,8 +15,6 @@ class PathCreateParams(TypedDict, total=False):
 
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification (ex. U//FOUO)"""
-
-    body: Required[FileTypes]
 
     delete_after: Annotated[str, PropertyInfo(alias="deleteAfter")]
     """Length of time after which to automatically delete the file."""
