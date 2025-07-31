@@ -7,7 +7,7 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .channel_full import ChannelFull
+from .shared.channel_full import ChannelFull
 
 __all__ = ["TransponderTupleResponse", "TransponderTupleResponseItem"]
 

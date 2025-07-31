@@ -25,8 +25,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.engine_details_full import EngineDetailsFull
 from ..types.engine_details_abridged import EngineDetailsAbridged
+from ..types.shared.engine_details_full import EngineDetailsFull
 
 __all__ = ["EngineDetailsResource", "AsyncEngineDetailsResource"]
 

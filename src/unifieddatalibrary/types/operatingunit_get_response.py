@@ -7,8 +7,8 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .location_full import LocationFull
-from .organization_full import OrganizationFull
+from .shared.location_full import LocationFull
+from .shared.organization_full import OrganizationFull
 
 __all__ = ["OperatingunitGetResponse", "OperatingUnitRemark"]
 

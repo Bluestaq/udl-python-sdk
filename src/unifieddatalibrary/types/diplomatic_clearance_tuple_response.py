@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .air_operations.diplomaticclearance_full import DiplomaticclearanceFull
+from .shared.diplomaticclearance_full import DiplomaticclearanceFull
 
 __all__ = ["DiplomaticClearanceTupleResponse"]
 

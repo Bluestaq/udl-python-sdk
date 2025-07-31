@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.antenna_full import AntennaFull
 from ..types.antenna_abridged import AntennaAbridged
+from ..types.shared.antenna_full import AntennaFull
 from ..types.antenna_tuple_response import AntennaTupleResponse
 from ..types.antenna_queryhelp_response import AntennaQueryhelpResponse
 

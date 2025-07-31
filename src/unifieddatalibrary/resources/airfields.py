@@ -27,8 +27,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.airfield_full import AirfieldFull
 from ..types.airfield_abridged import AirfieldAbridged
+from ..types.shared.airfield_full import AirfieldFull
 from ..types.airfield_tuple_response import AirfieldTupleResponse
 from ..types.airfield_queryhelp_response import AirfieldQueryhelpResponse
 

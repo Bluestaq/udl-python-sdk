@@ -45,8 +45,8 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.shared.diplomaticclearance_full import DiplomaticclearanceFull
 from ...types.diplomatic_clearance_tuple_response import DiplomaticClearanceTupleResponse
-from ...types.air_operations.diplomaticclearance_full import DiplomaticclearanceFull
 from ...types.diplomatic_clearance_queryhelp_response import DiplomaticClearanceQueryhelpResponse
 from ...types.air_operations.diplomaticclearance_abridged import DiplomaticclearanceAbridged
 

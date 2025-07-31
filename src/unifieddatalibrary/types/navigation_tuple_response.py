@@ -7,7 +7,7 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .entity_full import EntityFull
+from .shared.entity_full import EntityFull
 
 __all__ = ["NavigationTupleResponse", "NavigationTupleResponseItem"]
 

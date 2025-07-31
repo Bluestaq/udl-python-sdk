@@ -10,8 +10,8 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
+from unifieddatalibrary.types.shared import AntennaDetailsFull
 from unifieddatalibrary.types.onorbit import (
-    AntennaDetailsFull,
     AntennaDetailsAbridged,
 )
 

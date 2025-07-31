@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.beam_full import BeamFull
 from ..types.beam_abridged import BeamAbridged
+from ..types.shared.beam_full import BeamFull
 from ..types.beam_tuple_response import BeamTupleResponse
 from ..types.beam_query_help_response import BeamQueryHelpResponse
 

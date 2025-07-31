@@ -25,8 +25,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.batterydetails_full import BatterydetailsFull
 from ..types.batterydetails_abridged import BatterydetailsAbridged
+from ..types.shared.batterydetails_full import BatterydetailsFull
 
 __all__ = ["BatterydetailsResource", "AsyncBatterydetailsResource"]
 

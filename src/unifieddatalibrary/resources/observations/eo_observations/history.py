@@ -19,8 +19,8 @@ from ...._response import (
 )
 from ....pagination import SyncOffsetPage, AsyncOffsetPage
 from ...._base_client import AsyncPaginator, make_request_options
+from ....types.shared.eo_observation_full import EoObservationFull
 from ....types.observations.eo_observations import history_aodr_params, history_list_params, history_count_params
-from ....types.observations.eo_observations.eo_observation_full import EoObservationFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

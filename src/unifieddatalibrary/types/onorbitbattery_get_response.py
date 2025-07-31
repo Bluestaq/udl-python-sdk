@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .battery_full import BatteryFull
+from .shared.battery_full import BatteryFull
 
 __all__ = ["OnorbitbatteryGetResponse"]
 

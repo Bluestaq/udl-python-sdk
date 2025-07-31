@@ -11,8 +11,8 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
+from unifieddatalibrary.types.shared import AirTaskingOrderFull
 from unifieddatalibrary.types.air_operations import (
-    AirTaskingOrderFull,
     AirtaskingorderAbridged,
     AirTaskingOrderTupleResponse,
     AirTaskingOrderQueryHelpResponse,

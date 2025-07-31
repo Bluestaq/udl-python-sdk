@@ -7,9 +7,9 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .state_vector_full import StateVectorFull
 from .shared.onorbit_full import OnorbitFull
 from .shared.ephemeris_full import EphemerisFull
+from .shared.state_vector_full import StateVectorFull
 
 __all__ = ["EphemerisSet"]
 

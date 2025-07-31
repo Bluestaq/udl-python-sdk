@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .airspacecontrolorder_full import AirspacecontrolorderFull
+from .shared.airspacecontrolorder_full import AirspacecontrolorderFull
 
 __all__ = ["AirspaceControlOrderTupleResponse"]
 

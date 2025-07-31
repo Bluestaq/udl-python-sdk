@@ -20,7 +20,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.onorbitthrusterstatus import history_list_params, history_count_params
-from ...types.onorbitthrusterstatus.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
+from ...types.shared.onorbitthrusterstatus_full import OnorbitthrusterstatusFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .comm_full import CommFull
+from .shared.comm_full import CommFull
 
 __all__ = ["CommTupleResponse"]
 

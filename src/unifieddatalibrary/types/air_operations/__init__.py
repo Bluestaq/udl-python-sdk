@@ -2,11 +2,8 @@
 
 from __future__ import annotations
 
-from .aircraftsortie_full import AircraftsortieFull as AircraftsortieFull
-from .air_tasking_order_full import AirTaskingOrderFull as AirTaskingOrderFull
 from .aircraftsortie_abridged import AircraftsortieAbridged as AircraftsortieAbridged
 from .airtaskingorder_abridged import AirtaskingorderAbridged as AirtaskingorderAbridged
-from .diplomaticclearance_full import DiplomaticclearanceFull as DiplomaticclearanceFull
 from .crewpaper_unpublish_params import CrewpaperUnpublishParams as CrewpaperUnpublishParams
 from .aircraft_sortie_list_params import AircraftSortieListParams as AircraftSortieListParams
 from .crewpaper_upload_pdf_params import CrewpaperUploadPdfParams as CrewpaperUploadPdfParams

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .antenna_full import AntennaFull
+from .shared.antenna_full import AntennaFull
 
 __all__ = ["OnorbitantennaGetResponse"]
 

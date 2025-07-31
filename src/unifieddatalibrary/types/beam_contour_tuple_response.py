@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .beamcontour_full import BeamcontourFull
+from .shared.beamcontour_full import BeamcontourFull
 
 __all__ = ["BeamContourTupleResponse"]
 

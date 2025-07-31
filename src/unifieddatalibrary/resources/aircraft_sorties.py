@@ -20,9 +20,9 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.shared.aircraftsortie_full import AircraftsortieFull
 from ..types.aircraft_sorty_tuple_response import AircraftSortyTupleResponse
 from ..types.aircraft_sorty_queryhelp_response import AircraftSortyQueryhelpResponse
-from ..types.air_operations.aircraftsortie_full import AircraftsortieFull
 
 __all__ = ["AircraftSortiesResource", "AsyncAircraftSortiesResource"]
 

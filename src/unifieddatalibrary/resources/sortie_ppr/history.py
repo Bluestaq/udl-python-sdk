@@ -17,7 +17,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sortie_ppr import history_aodr_params, history_list_params, history_count_params
-from ...types.sortie_ppr.sortie_ppr_full import SortiePprFull
+from ...types.shared.sortie_ppr_full import SortiePprFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

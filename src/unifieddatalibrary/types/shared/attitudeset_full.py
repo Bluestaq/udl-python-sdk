@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 from .onorbit_full import OnorbitFull
-from ..attitudedata_full import AttitudedataFull
+from .attitudedata_full import AttitudedataFull
 
 __all__ = ["AttitudesetFull"]
 

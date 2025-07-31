@@ -7,9 +7,9 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .entity_full import EntityFull
-from .location_full import LocationFull
-from .organization_full import OrganizationFull
+from .shared.entity_full import EntityFull
+from .shared.location_full import LocationFull
+from .shared.organization_full import OrganizationFull
 
 __all__ = ["RfEmitterTupleResponse", "RfEmitterTupleResponseItem", "RfEmitterTupleResponseItemRfEmitterDetail"]
 

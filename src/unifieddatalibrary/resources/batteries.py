@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.battery_full import BatteryFull
 from ..types.battery_abridged import BatteryAbridged
+from ..types.shared.battery_full import BatteryFull
 from ..types.battery_tuple_response import BatteryTupleResponse
 from ..types.battery_queryhelp_response import BatteryQueryhelpResponse
 

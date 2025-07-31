@@ -28,7 +28,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.organization_full import OrganizationFull
+from ..types.shared.organization_full import OrganizationFull
 from ..types.organization_list_response import OrganizationListResponse
 from ..types.organization_tuple_response import OrganizationTupleResponse
 from ..types.organization_queryhelp_response import OrganizationQueryhelpResponse

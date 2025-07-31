@@ -38,9 +38,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.shared.sortie_ppr_full import SortiePprFull
 from ...types.sortie_ppr_list_response import SortiePprListResponse
 from ...types.sortie_ppr_tuple_response import SortiePprTupleResponse
-from ...types.sortie_ppr.sortie_ppr_full import SortiePprFull
 from ...types.sortie_ppr_queryhelp_response import SortiePprQueryhelpResponse
 
 __all__ = ["SortiePprResource", "AsyncSortiePprResource"]

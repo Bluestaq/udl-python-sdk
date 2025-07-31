@@ -36,9 +36,9 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.shared.notification_full import NotificationFull
 from ...types.notification_list_response import NotificationListResponse
 from ...types.notification_tuple_response import NotificationTupleResponse
-from ...types.notification.notification_full import NotificationFull
 from ...types.notification_queryhelp_response import NotificationQueryhelpResponse
 
 __all__ = ["NotificationResource", "AsyncNotificationResource"]

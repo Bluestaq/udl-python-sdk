@@ -28,8 +28,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.aircraftstatusremark_full import AircraftstatusremarkFull
 from ..types.aircraftstatusremark_abridged import AircraftstatusremarkAbridged
+from ..types.shared.aircraftstatusremark_full import AircraftstatusremarkFull
 from ..types.aircraft_status_remark_tuple_response import AircraftStatusRemarkTupleResponse
 from ..types.aircraft_status_remark_queryhelp_response import AircraftStatusRemarkQueryhelpResponse
 

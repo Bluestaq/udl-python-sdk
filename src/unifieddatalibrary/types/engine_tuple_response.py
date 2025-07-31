@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .engine import Engine
+from .shared.engine import Engine
 
 __all__ = ["EngineTupleResponse"]
 

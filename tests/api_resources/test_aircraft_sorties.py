@@ -14,7 +14,7 @@ from unifieddatalibrary.types import (
     AircraftSortyQueryhelpResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
-from unifieddatalibrary.types.air_operations import AircraftsortieFull
+from unifieddatalibrary.types.shared import AircraftsortieFull
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

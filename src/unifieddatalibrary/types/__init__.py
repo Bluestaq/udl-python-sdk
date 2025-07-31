@@ -3,45 +3,70 @@
 from __future__ import annotations
 
 from .elset import Elset as Elset
-from .engine import Engine as Engine
 from .shared import (
+    Engine as Engine,
     AIsFull as AIsFull,
+    BusFull as BusFull,
     EopFull as EopFull,
+    BeamFull as BeamFull,
+    CommFull as CommFull,
+    CrewFull as CrewFull,
     EvacFull as EvacFull,
     FileData as FileData,
+    EntityFull as EntityFull,
+    AntennaFull as AntennaFull,
+    BatteryFull as BatteryFull,
+    ChannelFull as ChannelFull,
+    CountryFull as CountryFull,
     OnorbitFull as OnorbitFull,
+    AircraftFull as AircraftFull,
+    AirfieldFull as AirfieldFull,
+    LocationFull as LocationFull,
     EphemerisFull as EphemerisFull,
+    SortiePprFull as SortiePprFull,
     FlightPlanFull as FlightPlanFull,
+    AirloadplanFull as AirloadplanFull,
     AttitudesetFull as AttitudesetFull,
+    BeamcontourFull as BeamcontourFull,
+    ConjunctionFull as ConjunctionFull,
+    StateVectorFull as StateVectorFull,
+    AirfieldslotFull as AirfieldslotFull,
+    AttitudedataFull as AttitudedataFull,
     DriftHistoryFull as DriftHistoryFull,
+    NotificationFull as NotificationFull,
+    OrganizationFull as OrganizationFull,
+    EngineDetailsFull as EngineDetailsFull,
+    EoObservationFull as EoObservationFull,
+    AircraftsortieFull as AircraftsortieFull,
     AircraftstatusFull as AircraftstatusFull,
+    AirfieldstatusFull as AirfieldstatusFull,
+    AntennaDetailsFull as AntennaDetailsFull,
+    BatterydetailsFull as BatterydetailsFull,
     CollectRequestFull as CollectRequestFull,
     EventEvolutionFull as EventEvolutionFull,
+    AirTaskingOrderFull as AirTaskingOrderFull,
+    AnalyticImageryFull as AnalyticImageryFull,
     CollectResponseFull as CollectResponseFull,
     DriftHistoryAbridged as DriftHistoryAbridged,
+    OnboardnavigationFull as OnboardnavigationFull,
+    SolarArrayDetailsFull as SolarArrayDetailsFull,
     AirTransportMissionFull as AirTransportMissionFull,
+    DiplomaticclearanceFull as DiplomaticclearanceFull,
+    OrganizationDetailsFull as OrganizationDetailsFull,
+    AircraftstatusremarkFull as AircraftstatusremarkFull,
+    AirspacecontrolorderFull as AirspacecontrolorderFull,
+    OnorbitthrusterstatusFull as OnorbitthrusterstatusFull,
+    AirfieldslotconsumptionFull as AirfieldslotconsumptionFull,
 )
-from .bus_full import BusFull as BusFull
-from .beam_full import BeamFull as BeamFull
-from .comm_full import CommFull as CommFull
-from .crew_full import CrewFull as CrewFull
-from .entity_full import EntityFull as EntityFull
 from .ais_abridged import AIsAbridged as AIsAbridged
-from .antenna_full import AntennaFull as AntennaFull
-from .battery_full import BatteryFull as BatteryFull
 from .bus_abridged import BusAbridged as BusAbridged
-from .channel_full import ChannelFull as ChannelFull
-from .country_full import CountryFull as CountryFull
 from .eop_abridged import EopAbridged as EopAbridged
-from .aircraft_full import AircraftFull as AircraftFull
-from .airfield_full import AirfieldFull as AirfieldFull
 from .beam_abridged import BeamAbridged as BeamAbridged
 from .comm_abridged import CommAbridged as CommAbridged
 from .crew_abridged import CrewAbridged as CrewAbridged
 from .ephemeris_set import EphemerisSet as EphemerisSet
 from .evac_abridged import EvacAbridged as EvacAbridged
 from .ir_get_params import IrGetParams as IrGetParams
-from .location_full import LocationFull as LocationFull
 from .topic_details import TopicDetails as TopicDetails
 from .ai_list_params import AIListParams as AIListParams
 from .elset_abridged import ElsetAbridged as ElsetAbridged
@@ -67,16 +92,13 @@ from .port_get_params import PortGetParams as PortGetParams
 from .sgi_list_params import SgiListParams as SgiListParams
 from .site_get_params import SiteGetParams as SiteGetParams
 from .swir_get_params import SwirGetParams as SwirGetParams
-from .airloadplan_full import AirloadplanFull as AirloadplanFull
 from .antenna_abridged import AntennaAbridged as AntennaAbridged
 from .battery_abridged import BatteryAbridged as BatteryAbridged
 from .beam_list_params import BeamListParams as BeamListParams
-from .beamcontour_full import BeamcontourFull as BeamcontourFull
 from .bus_count_params import BusCountParams as BusCountParams
 from .bus_tuple_params import BusTupleParams as BusTupleParams
 from .channel_abridged import ChannelAbridged as ChannelAbridged
 from .comm_list_params import CommListParams as CommListParams
-from .conjunction_full import ConjunctionFull as ConjunctionFull
 from .country_abridged import CountryAbridged as CountryAbridged
 from .crew_list_params import CrewListParams as CrewListParams
 from .eop_count_params import EopCountParams as EopCountParams
@@ -107,8 +129,6 @@ from .ai_count_response import AICountResponse as AICountResponse
 from .ai_tuple_response import AITupleResponse as AITupleResponse
 from .aircraft_abridged import AircraftAbridged as AircraftAbridged
 from .airfield_abridged import AirfieldAbridged as AirfieldAbridged
-from .airfieldslot_full import AirfieldslotFull as AirfieldslotFull
-from .attitudedata_full import AttitudedataFull as AttitudedataFull
 from .beam_count_params import BeamCountParams as BeamCountParams
 from .beam_tuple_params import BeamTupleParams as BeamTupleParams
 from .bus_create_params import BusCreateParams as BusCreateParams
@@ -130,7 +150,6 @@ from .item_count_params import ItemCountParams as ItemCountParams
 from .item_get_response import ItemGetResponse as ItemGetResponse
 from .item_tuple_params import ItemTupleParams as ItemTupleParams
 from .mti_list_response import MtiListResponse as MtiListResponse
-from .organization_full import OrganizationFull as OrganizationFull
 from .poi_create_params import PoiCreateParams as PoiCreateParams
 from .poi_list_response import PoiListResponse as PoiListResponse
 from .port_count_params import PortCountParams as PortCountParams
@@ -144,7 +163,6 @@ from .site_count_params import SiteCountParams as SiteCountParams
 from .site_get_response import SiteGetResponse as SiteGetResponse
 from .site_tuple_params import SiteTupleParams as SiteTupleParams
 from .stage_list_params import StageListParams as StageListParams
-from .state_vector_full import StateVectorFull as StateVectorFull
 from .status_get_params import StatusGetParams as StatusGetParams
 from .swir_count_params import SwirCountParams as SwirCountParams
 from .swir_tuple_params import SwirTupleParams as SwirTupleParams
@@ -204,10 +222,8 @@ from .track_tuple_params import TrackTupleParams as TrackTupleParams
 from .vessel_list_params import VesselListParams as VesselListParams
 from .video_count_params import VideoCountParams as VideoCountParams
 from .video_tuple_params import VideoTupleParams as VideoTupleParams
-from .airfieldstatus_full import AirfieldstatusFull as AirfieldstatusFull
 from .antenna_list_params import AntennaListParams as AntennaListParams
 from .battery_list_params import BatteryListParams as BatteryListParams
-from .batterydetails_full import BatterydetailsFull as BatterydetailsFull
 from .beam_count_response import BeamCountResponse as BeamCountResponse
 from .beam_tuple_response import BeamTupleResponse as BeamTupleResponse
 from .bus_retrieve_params import BusRetrieveParams as BusRetrieveParams
@@ -219,7 +235,6 @@ from .crew_count_response import CrewCountResponse as CrewCountResponse
 from .crew_tuple_response import CrewTupleResponse as CrewTupleResponse
 from .elset_create_params import ElsetCreateParams as ElsetCreateParams
 from .engine_count_params import EngineCountParams as EngineCountParams
-from .engine_details_full import EngineDetailsFull as EngineDetailsFull
 from .engine_tuple_params import EngineTupleParams as EngineTupleParams
 from .entity_count_params import EntityCountParams as EntityCountParams
 from .entity_ingest_param import EntityIngestParam as EntityIngestParam
@@ -331,7 +346,6 @@ from .aircraft_count_params import AircraftCountParams as AircraftCountParams
 from .airfield_count_params import AirfieldCountParams as AirfieldCountParams
 from .airfield_tuple_params import AirfieldTupleParams as AirfieldTupleParams
 from .airfieldslot_abridged import AirfieldslotAbridged as AirfieldslotAbridged
-from .analytic_imagery_full import AnalyticImageryFull as AnalyticImageryFull
 from .antenna_create_params import AntennaCreateParams as AntennaCreateParams
 from .antenna_update_params import AntennaUpdateParams as AntennaUpdateParams
 from .battery_create_params import BatteryCreateParams as BatteryCreateParams
@@ -620,7 +634,6 @@ from .sky_imagery_count_params import SkyImageryCountParams as SkyImageryCountPa
 from .sky_imagery_get_response import SkyImageryGetResponse as SkyImageryGetResponse
 from .sky_imagery_tuple_params import SkyImageryTupleParams as SkyImageryTupleParams
 from .solar_array_count_params import SolarArrayCountParams as SolarArrayCountParams
-from .solar_array_details_full import SolarArrayDetailsFull as SolarArrayDetailsFull
 from .solar_array_get_response import SolarArrayGetResponse as SolarArrayGetResponse
 from .solar_array_tuple_params import SolarArrayTupleParams as SolarArrayTupleParams
 from .sortie_ppr_create_params import SortiePprCreateParams as SortiePprCreateParams
@@ -643,9 +656,7 @@ from .video_queryhelp_response import VideoQueryhelpResponse as VideoQueryhelpRe
 from .weather_data_list_params import WeatherDataListParams as WeatherDataListParams
 from .ai_history_count_response import AIHistoryCountResponse as AIHistoryCountResponse
 from .air_load_plan_list_params import AirLoadPlanListParams as AirLoadPlanListParams
-from .aircraftstatusremark_full import AircraftstatusremarkFull as AircraftstatusremarkFull
 from .airfield_slot_list_params import AirfieldSlotListParams as AirfieldSlotListParams
-from .airspacecontrolorder_full import AirspacecontrolorderFull as AirspacecontrolorderFull
 from .analytic_imagery_abridged import AnalyticImageryAbridged as AnalyticImageryAbridged
 from .attitude_set_count_params import AttitudeSetCountParams as AttitudeSetCountParams
 from .attitude_set_tuple_params import AttitudeSetTupleParams as AttitudeSetTupleParams
@@ -698,7 +709,6 @@ from .operatingunit_list_params import OperatingunitListParams as OperatingunitL
 from .orbittrack_count_response import OrbittrackCountResponse as OrbittrackCountResponse
 from .orbittrack_tuple_response import OrbittrackTupleResponse as OrbittrackTupleResponse
 from .organization_count_params import OrganizationCountParams as OrganizationCountParams
-from .organization_details_full import OrganizationDetailsFull as OrganizationDetailsFull
 from .organization_tuple_params import OrganizationTupleParams as OrganizationTupleParams
 from .personnel_recovery_full_l import PersonnelRecoveryFullL as PersonnelRecoveryFullL
 from .rf_band_type_count_params import RfBandTypeCountParams as RfBandTypeCountParams
@@ -928,7 +938,6 @@ from .airfield_slot_count_response import AirfieldSlotCountResponse as AirfieldS
 from .airfield_slot_tuple_response import AirfieldSlotTupleResponse as AirfieldSlotTupleResponse
 from .airfield_status_count_params import AirfieldStatusCountParams as AirfieldStatusCountParams
 from .airfield_status_tuple_params import AirfieldStatusTupleParams as AirfieldStatusTupleParams
-from .airfieldslotconsumption_full import AirfieldslotconsumptionFull as AirfieldslotconsumptionFull
 from .analytic_imagery_list_params import AnalyticImageryListParams as AnalyticImageryListParams
 from .attitude_data_tuple_response import AttitudeDataTupleResponse as AttitudeDataTupleResponse
 from .beam_contour_retrieve_params import BeamContourRetrieveParams as BeamContourRetrieveParams

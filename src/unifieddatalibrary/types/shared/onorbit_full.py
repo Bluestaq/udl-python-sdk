@@ -6,13 +6,13 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..engine import Engine
+from .engine import Engine
 from ..._models import BaseModel
-from ..antenna_full import AntennaFull
-from ..battery_full import BatteryFull
-from ..location_full import LocationFull
-from ..organization_full import OrganizationFull
-from ..solar_array_details_full import SolarArrayDetailsFull
+from .antenna_full import AntennaFull
+from .battery_full import BatteryFull
+from .location_full import LocationFull
+from .organization_full import OrganizationFull
+from .solar_array_details_full import SolarArrayDetailsFull
 
 __all__ = [
     "OnorbitFull",
