@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
+from ..._files import read_file_content, async_read_file_content
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileContent
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -42,10 +43,10 @@ class PathsResource(SyncAPIResource):
 
     def create(
         self,
+        body: FileContent,
         *,
         id: str,
         classification_marking: str,
-        body: FileTypes,
         delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
@@ -87,9 +88,10 @@ class PathsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/path",
-            body=maybe_transform(body, path_create_params.PathCreateParams),
+            body=read_file_content(body),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -134,10 +136,10 @@ class AsyncPathsResource(AsyncAPIResource):
 
     async def create(
         self,
+        body: FileContent,
         *,
         id: str,
         classification_marking: str,
-        body: FileTypes,
         delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
@@ -179,9 +181,10 @@ class AsyncPathsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/path",
-            body=await async_maybe_transform(body, path_create_params.PathCreateParams),
+            body=await async_read_file_content(body),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

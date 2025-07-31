@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing_extensions import Required, Annotated, TypedDict
 
-from .._types import FileTypes
 from .._utils import PropertyInfo
 
 __all__ = ["ScFileUploadParams"]
@@ -19,8 +18,6 @@ class ScFileUploadParams(TypedDict, total=False):
 
     path: Required[str]
     """The base path to upload file (ex. images)"""
-
-    body: Required[FileTypes]
 
     delete_after: Annotated[str, PropertyInfo(alias="deleteAfter")]
     """Length of time after which to automatically delete the file."""

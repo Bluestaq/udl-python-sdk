@@ -6,7 +6,8 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from ..._files import read_file_content, async_read_file_content
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -85,12 +86,12 @@ class CrewpapersResource(SyncAPIResource):
 
     def upload_pdf(
         self,
+        body: FileContent,
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
         paper_status: Literal["PUBLISHED", "DELETED", "UPDATED", "READ"],
         papers_version: str,
-        body: FileTypes,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -122,9 +123,10 @@ class CrewpapersResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/pdf"
         return self._post(
             "/filedrop/crewpapers",
-            body=maybe_transform(body, crewpaper_upload_pdf_params.CrewpaperUploadPdfParams),
+            body=read_file_content(body),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -207,12 +209,12 @@ class AsyncCrewpapersResource(AsyncAPIResource):
 
     async def upload_pdf(
         self,
+        body: FileContent,
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
         paper_status: Literal["PUBLISHED", "DELETED", "UPDATED", "READ"],
         papers_version: str,
-        body: FileTypes,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -244,9 +246,10 @@ class AsyncCrewpapersResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/pdf"
         return await self._post(
             "/filedrop/crewpapers",
-            body=await async_maybe_transform(body, crewpaper_upload_pdf_params.CrewpaperUploadPdfParams),
+            body=await async_read_file_content(body),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

@@ -137,7 +137,7 @@ Methods:
 Methods:
 
 - <code title="post /udl/crewpapers/unpublish">client.air_operations.crewpapers.<a href="./src/unifieddatalibrary/resources/air_operations/crewpapers.py">unpublish</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/crewpaper_unpublish_params.py">params</a>) -> None</code>
-- <code title="post /filedrop/crewpapers">client.air_operations.crewpapers.<a href="./src/unifieddatalibrary/resources/air_operations/crewpapers.py">upload_pdf</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/crewpaper_upload_pdf_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/crewpapers">client.air_operations.crewpapers.<a href="./src/unifieddatalibrary/resources/air_operations/crewpapers.py">upload_pdf</a>(body, \*\*<a href="src/unifieddatalibrary/types/air_operations/crewpaper_upload_pdf_params.py">params</a>) -> None</code>
 
 ## DiplomaticClearance
 
@@ -862,7 +862,7 @@ Methods:
 - <code title="get /udl/conjunction/queryhelp">client.conjunctions.<a href="./src/unifieddatalibrary/resources/conjunctions/conjunctions.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/conjunction_queryhelp_response.py">ConjunctionQueryhelpResponse</a></code>
 - <code title="get /udl/conjunction/tuple">client.conjunctions.<a href="./src/unifieddatalibrary/resources/conjunctions/conjunctions.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/conjunction_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/conjunction_tuple_response.py">ConjunctionTupleResponse</a></code>
 - <code title="post /filedrop/udl-conjunction">client.conjunctions.<a href="./src/unifieddatalibrary/resources/conjunctions/conjunctions.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/conjunction_unvalidated_publish_params.py">params</a>) -> None</code>
-- <code title="post /filedrop/cdms">client.conjunctions.<a href="./src/unifieddatalibrary/resources/conjunctions/conjunctions.py">upload_conjunction_data_message</a>(\*\*<a href="src/unifieddatalibrary/types/conjunction_upload_conjunction_data_message_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/cdms">client.conjunctions.<a href="./src/unifieddatalibrary/resources/conjunctions/conjunctions.py">upload_conjunction_data_message</a>(body, \*\*<a href="src/unifieddatalibrary/types/conjunction_upload_conjunction_data_message_params.py">params</a>) -> None</code>
 
 ## History
 
@@ -5144,7 +5144,7 @@ Methods:
 - <code title="post /scs/copy">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/sc_copy_params.py">params</a>) -> str</code>
 - <code title="post /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_download_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_download_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
+- <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(body, \*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
 - <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
 - <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
 - <code title="post /scs/search">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/sc_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_search_response.py">ScSearchResponse</a></code>
@@ -5222,7 +5222,7 @@ from unifieddatalibrary.types.scs import PathCreateResponse
 
 Methods:
 
-- <code title="post /scs/path">client.scs.paths.<a href="./src/unifieddatalibrary/resources/scs/paths.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/path_create_params.py">params</a>) -> str</code>
+- <code title="post /scs/path">client.scs.paths.<a href="./src/unifieddatalibrary/resources/scs/paths.py">create</a>(body, \*\*<a href="src/unifieddatalibrary/types/scs/path_create_params.py">params</a>) -> str</code>
 
 ## V2
 
@@ -5238,7 +5238,7 @@ Methods:
 - <code title="get /scs/v2/list">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/scs_entity.py">SyncOffsetPage[ScsEntity]</a></code>
 - <code title="delete /scs/v2/delete">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_delete_params.py">params</a>) -> None</code>
 - <code title="post /scs/v2/copy">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_copy_params.py">params</a>) -> None</code>
-- <code title="post /scs/v2/file">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">file_upload</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_file_upload_params.py">params</a>) -> None</code>
+- <code title="post /scs/v2/file">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">file_upload</a>(body, \*\*<a href="src/unifieddatalibrary/types/scs/v2_file_upload_params.py">params</a>) -> None</code>
 - <code title="post /scs/v2/folder">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">folder_create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_folder_create_params.py">params</a>) -> None</code>
 - <code title="put /scs/v2/move">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_move_params.py">params</a>) -> None</code>
 
