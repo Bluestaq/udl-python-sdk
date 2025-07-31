@@ -24,7 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.onorbitantenna_get_response import OnorbitantennaGetResponse
+from ..types.shared.onorbit_antenna_full import OnorbitAntennaFull
 from ..types.onorbitantenna_list_response import OnorbitantennaListResponse
 
 __all__ = ["OnorbitantennaResource", "AsyncOnorbitantennaResource"]
@@ -332,7 +332,7 @@ class OnorbitantennaResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitantennaGetResponse:
+    ) -> OnorbitAntennaFull:
         """
         Service operation to get a single OnorbitAntenna record by its unique ID passed
         as a path parameter. An OnorbitAntenna is the association between on-orbit
@@ -365,7 +365,7 @@ class OnorbitantennaResource(SyncAPIResource):
                     onorbitantenna_get_params.OnorbitantennaGetParams,
                 ),
             ),
-            cast_to=OnorbitantennaGetResponse,
+            cast_to=OnorbitAntennaFull,
         )
 
 
@@ -671,7 +671,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitantennaGetResponse:
+    ) -> OnorbitAntennaFull:
         """
         Service operation to get a single OnorbitAntenna record by its unique ID passed
         as a path parameter. An OnorbitAntenna is the association between on-orbit
@@ -704,7 +704,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
                     onorbitantenna_get_params.OnorbitantennaGetParams,
                 ),
             ),
-            cast_to=OnorbitantennaGetResponse,
+            cast_to=OnorbitAntennaFull,
         )
 
 

@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.substatus_get_response import SubstatusGetResponse
+from ..types.shared.sub_status_full import SubStatusFull
 from ..types.substatus_list_response import SubstatusListResponse
 from ..types.substatus_tuple_response import SubstatusTupleResponse
 from ..types.substatus_queryhelp_response import SubstatusQueryhelpResponse
@@ -381,7 +381,7 @@ class SubstatusResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SubstatusGetResponse:
+    ) -> SubStatusFull:
         """
         Service operation to get a single Sub Status record by its unique ID passed as a
         path parameter.
@@ -412,7 +412,7 @@ class SubstatusResource(SyncAPIResource):
                     substatus_get_params.SubstatusGetParams,
                 ),
             ),
-            cast_to=SubstatusGetResponse,
+            cast_to=SubStatusFull,
         )
 
     def queryhelp(
@@ -841,7 +841,7 @@ class AsyncSubstatusResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SubstatusGetResponse:
+    ) -> SubStatusFull:
         """
         Service operation to get a single Sub Status record by its unique ID passed as a
         path parameter.
@@ -872,7 +872,7 @@ class AsyncSubstatusResource(AsyncAPIResource):
                     substatus_get_params.SubstatusGetParams,
                 ),
             ),
-            cast_to=SubstatusGetResponse,
+            cast_to=SubStatusFull,
         )
 
     async def queryhelp(

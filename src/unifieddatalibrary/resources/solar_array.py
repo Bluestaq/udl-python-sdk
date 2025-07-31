@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.solar_array_get_response import SolarArrayGetResponse
+from ..types.shared.solar_array_full import SolarArrayFull
 from ..types.solar_array_list_response import SolarArrayListResponse
 from ..types.solar_array_tuple_response import SolarArrayTupleResponse
 from ..types.solar_array_queryhelp_response import SolarArrayQueryhelpResponse
@@ -348,7 +348,7 @@ class SolarArrayResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SolarArrayGetResponse:
+    ) -> SolarArrayFull:
         """
         Service operation to get a single SolarArray record by its unique ID passed as a
         path parameter.
@@ -379,7 +379,7 @@ class SolarArrayResource(SyncAPIResource):
                     solar_array_get_params.SolarArrayGetParams,
                 ),
             ),
-            cast_to=SolarArrayGetResponse,
+            cast_to=SolarArrayFull,
         )
 
     def queryhelp(
@@ -775,7 +775,7 @@ class AsyncSolarArrayResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SolarArrayGetResponse:
+    ) -> SolarArrayFull:
         """
         Service operation to get a single SolarArray record by its unique ID passed as a
         path parameter.
@@ -806,7 +806,7 @@ class AsyncSolarArrayResource(AsyncAPIResource):
                     solar_array_get_params.SolarArrayGetParams,
                 ),
             ),
-            cast_to=SolarArrayGetResponse,
+            cast_to=SolarArrayFull,
         )
 
     async def queryhelp(

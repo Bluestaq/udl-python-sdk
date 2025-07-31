@@ -24,7 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.onorbitthruster_get_response import OnorbitthrusterGetResponse
+from ..types.shared.onorbit_thruster_full import OnorbitThrusterFull
 from ..types.onorbitthruster_list_response import OnorbitthrusterListResponse
 
 __all__ = ["OnorbitthrusterResource", "AsyncOnorbitthrusterResource"]
@@ -350,7 +350,7 @@ class OnorbitthrusterResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitthrusterGetResponse:
+    ) -> OnorbitThrusterFull:
         """
         Service operation to get a single OnorbitThruster record by its unique ID passed
         as a path parameter. An OnorbitThruster is the association between an on-orbit
@@ -383,7 +383,7 @@ class OnorbitthrusterResource(SyncAPIResource):
                     onorbitthruster_get_params.OnorbitthrusterGetParams,
                 ),
             ),
-            cast_to=OnorbitthrusterGetResponse,
+            cast_to=OnorbitThrusterFull,
         )
 
 
@@ -707,7 +707,7 @@ class AsyncOnorbitthrusterResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitthrusterGetResponse:
+    ) -> OnorbitThrusterFull:
         """
         Service operation to get a single OnorbitThruster record by its unique ID passed
         as a path parameter. An OnorbitThruster is the association between an on-orbit
@@ -740,7 +740,7 @@ class AsyncOnorbitthrusterResource(AsyncAPIResource):
                     onorbitthruster_get_params.OnorbitthrusterGetParams,
                 ),
             ),
-            cast_to=OnorbitthrusterGetResponse,
+            cast_to=OnorbitThrusterFull,
         )
 
 

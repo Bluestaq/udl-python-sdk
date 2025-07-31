@@ -7,19 +7,17 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .logistics_remarks_abridged import LogisticsRemarksAbridged
 
 __all__ = [
     "LogisticsSupportListResponse",
     "LogisticsDiscrepancyInfo",
-    "LogisticsRemark",
     "LogisticsSupportItem",
     "LogisticsSupportItemLogisticsPart",
     "LogisticsSupportItemLogisticsPartLogisticsStock",
-    "LogisticsSupportItemLogisticsRemark",
     "LogisticsSupportItemLogisticsSpecialty",
     "LogisticsTransportationPlan",
     "LogisticsTransportationPlanLogisticsSegment",
-    "LogisticsTransportationPlanLogisticsTransportationPlansRemark",
 ]
 
 
@@ -37,20 +35,6 @@ class LogisticsDiscrepancyInfo(BaseModel):
 
     job_st_time: Optional[datetime] = FieldInfo(alias="jobStTime", default=None)
     """The job start time, in ISO 8601 UTC format with millisecond precision."""
-
-
-class LogisticsRemark(BaseModel):
-    last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
-    """
-    Date the remark was published or updated, in ISO 8601 UTC format, with
-    millisecond precision.
-    """
-
-    remark: Optional[str] = None
-    """Text of the remark."""
-
-    username: Optional[str] = None
-    """User who published the remark."""
 
 
 class LogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
@@ -111,20 +95,6 @@ class LogisticsSupportItemLogisticsPart(BaseModel):
 
     work_unit_code: Optional[str] = FieldInfo(alias="workUnitCode", default=None)
     """Work Unit Code (WUC), or for some aircraft types, the Reference Designator."""
-
-
-class LogisticsSupportItemLogisticsRemark(BaseModel):
-    last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
-    """
-    Date the remark was published or updated, in ISO 8601 UTC format, with
-    millisecond precision.
-    """
-
-    remark: Optional[str] = None
-    """Text of the remark."""
-
-    username: Optional[str] = None
-    """User who published the remark."""
 
 
 class LogisticsSupportItemLogisticsSpecialty(BaseModel):
@@ -194,9 +164,7 @@ class LogisticsSupportItem(BaseModel):
     logistics_parts: Optional[List[LogisticsSupportItemLogisticsPart]] = FieldInfo(alias="logisticsParts", default=None)
     """The parts associated with this support item."""
 
-    logistics_remarks: Optional[List[LogisticsSupportItemLogisticsRemark]] = FieldInfo(
-        alias="logisticsRemarks", default=None
-    )
+    logistics_remarks: Optional[List[LogisticsRemarksAbridged]] = FieldInfo(alias="logisticsRemarks", default=None)
     """Remarks associated with this support item."""
 
     logistics_specialties: Optional[List[LogisticsSupportItemLogisticsSpecialty]] = FieldInfo(
@@ -340,20 +308,6 @@ class LogisticsTransportationPlanLogisticsSegment(BaseModel):
     """The identifier that represents a specific aircraft within an aircraft type."""
 
 
-class LogisticsTransportationPlanLogisticsTransportationPlansRemark(BaseModel):
-    last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
-    """
-    Date the remark was published or updated, in ISO 8601 UTC format, with
-    millisecond precision.
-    """
-
-    remark: Optional[str] = None
-    """Text of the remark."""
-
-    username: Optional[str] = None
-    """User who published the remark."""
-
-
 class LogisticsTransportationPlan(BaseModel):
     act_dep_time: Optional[datetime] = FieldInfo(alias="actDepTime", default=None)
     """
@@ -425,9 +379,9 @@ class LogisticsTransportationPlan(BaseModel):
     )
     """The transportation segments associated with this transportation plan."""
 
-    logistics_transportation_plans_remarks: Optional[
-        List[LogisticsTransportationPlanLogisticsTransportationPlansRemark]
-    ] = FieldInfo(alias="logisticsTransportationPlansRemarks", default=None)
+    logistics_transportation_plans_remarks: Optional[List[LogisticsRemarksAbridged]] = FieldInfo(
+        alias="logisticsTransportationPlansRemarks", default=None
+    )
     """Remarks associated with this transportation plan."""
 
     majcom: Optional[str] = None
@@ -571,7 +525,7 @@ class LogisticsSupportListResponse(BaseModel):
     logistics_record_id: Optional[str] = FieldInfo(alias="logisticsRecordId", default=None)
     """The identifier that represents a Logistics Master Record."""
 
-    logistics_remarks: Optional[List[LogisticsRemark]] = FieldInfo(alias="logisticsRemarks", default=None)
+    logistics_remarks: Optional[List[LogisticsRemarksAbridged]] = FieldInfo(alias="logisticsRemarks", default=None)
     """Remarks associated with this LogisticsSupport record."""
 
     logistics_support_items: Optional[List[LogisticsSupportItem]] = FieldInfo(

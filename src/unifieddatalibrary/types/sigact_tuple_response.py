@@ -7,40 +7,9 @@ from typing_extensions import Literal, TypeAlias
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .shared.related_document_full import RelatedDocumentFull
 
-__all__ = [
-    "SigactTupleResponse",
-    "SigactTupleResponseItem",
-    "SigactTupleResponseItemRelatedDoc",
-    "SigactTupleResponseItemRelatedDocDataSourceRef",
-]
-
-
-class SigactTupleResponseItemRelatedDocDataSourceRef(BaseModel):
-    data_source_id: Optional[str] = FieldInfo(alias="dataSourceId", default=None)
-    """Data source id."""
-
-    end_position: Optional[str] = FieldInfo(alias="endPosition", default=None)
-    """end position."""
-
-    paragraph_number: Optional[str] = FieldInfo(alias="paragraphNumber", default=None)
-    """paragraph number."""
-
-    sentence_number: Optional[str] = FieldInfo(alias="sentenceNumber", default=None)
-    """sentence number."""
-
-    start_position: Optional[str] = FieldInfo(alias="startPosition", default=None)
-    """start position."""
-
-
-class SigactTupleResponseItemRelatedDoc(BaseModel):
-    data_source_refs: Optional[List[SigactTupleResponseItemRelatedDocDataSourceRef]] = FieldInfo(
-        alias="dataSourceRefs", default=None
-    )
-    """List of data sources related to this document."""
-
-    document_id: Optional[str] = FieldInfo(alias="documentId", default=None)
-    """The document id of the related document."""
+__all__ = ["SigactTupleResponse", "SigactTupleResponseItem"]
 
 
 class SigactTupleResponseItem(BaseModel):
@@ -381,7 +350,7 @@ class SigactTupleResponseItem(BaseModel):
     province: Optional[str] = None
     """The province in which this event occurred."""
 
-    related_docs: Optional[List[SigactTupleResponseItemRelatedDoc]] = FieldInfo(alias="relatedDocs", default=None)
+    related_docs: Optional[List[RelatedDocumentFull]] = FieldInfo(alias="relatedDocs", default=None)
     """Related document ids."""
 
     rep_unit: Optional[str] = FieldInfo(alias="repUnit", default=None)
