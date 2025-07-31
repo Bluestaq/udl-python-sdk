@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["PathCreateParams"]
+__all__ = ["PathCreateWithFileParams"]
 
 
-class PathCreateParams(TypedDict, total=False):
+class PathCreateWithFileParams(TypedDict, total=False):
     id: Required[str]
     """The full path to create, including path and file name"""
 

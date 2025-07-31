@@ -15,7 +15,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.scs import path_create_params
+from ...types.scs import path_create_with_file_params
 from ..._base_client import make_request_options
 
 __all__ = ["PathsResource", "AsyncPathsResource"]
@@ -41,9 +41,9 @@ class PathsResource(SyncAPIResource):
         """
         return PathsResourceWithStreamingResponse(self)
 
-    def create(
+    def create_with_file(
         self,
-        body: FileContent,
+        params: FileContent,
         *,
         id: str,
         classification_marking: str,
@@ -91,7 +91,7 @@ class PathsResource(SyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/path",
-            body=read_file_content(body),
+            body=read_file_content(params),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -107,7 +107,7 @@ class PathsResource(SyncAPIResource):
                         "send_notification": send_notification,
                         "tags": tags,
                     },
-                    path_create_params.PathCreateParams,
+                    path_create_with_file_params.PathCreateWithFileParams,
                 ),
             ),
             cast_to=str,
@@ -134,9 +134,9 @@ class AsyncPathsResource(AsyncAPIResource):
         """
         return AsyncPathsResourceWithStreamingResponse(self)
 
-    async def create(
+    async def create_with_file(
         self,
-        body: FileContent,
+        params: FileContent,
         *,
         id: str,
         classification_marking: str,
@@ -184,7 +184,7 @@ class AsyncPathsResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/path",
-            body=await async_read_file_content(body),
+            body=await async_read_file_content(params),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -200,7 +200,7 @@ class AsyncPathsResource(AsyncAPIResource):
                         "send_notification": send_notification,
                         "tags": tags,
                     },
-                    path_create_params.PathCreateParams,
+                    path_create_with_file_params.PathCreateWithFileParams,
                 ),
             ),
             cast_to=str,
@@ -211,8 +211,8 @@ class PathsResourceWithRawResponse:
     def __init__(self, paths: PathsResource) -> None:
         self._paths = paths
 
-        self.create = to_raw_response_wrapper(
-            paths.create,
+        self.create_with_file = to_raw_response_wrapper(
+            paths.create_with_file,
         )
 
 
@@ -220,8 +220,8 @@ class AsyncPathsResourceWithRawResponse:
     def __init__(self, paths: AsyncPathsResource) -> None:
         self._paths = paths
 
-        self.create = async_to_raw_response_wrapper(
-            paths.create,
+        self.create_with_file = async_to_raw_response_wrapper(
+            paths.create_with_file,
         )
 
 
@@ -229,8 +229,8 @@ class PathsResourceWithStreamingResponse:
     def __init__(self, paths: PathsResource) -> None:
         self._paths = paths
 
-        self.create = to_streamed_response_wrapper(
-            paths.create,
+        self.create_with_file = to_streamed_response_wrapper(
+            paths.create_with_file,
         )
 
 
@@ -238,6 +238,6 @@ class AsyncPathsResourceWithStreamingResponse:
     def __init__(self, paths: AsyncPathsResource) -> None:
         self._paths = paths
 
-        self.create = async_to_streamed_response_wrapper(
-            paths.create,
+        self.create_with_file = async_to_streamed_response_wrapper(
+            paths.create_with_file,
         )
