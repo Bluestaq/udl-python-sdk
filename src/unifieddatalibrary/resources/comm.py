@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.comm_full import CommFull
 from ..types.comm_abridged import CommAbridged
+from ..types.shared.comm_full import CommFull
 from ..types.comm_tuple_response import CommTupleResponse
 from ..types.entity_ingest_param import EntityIngestParam
 from ..types.comm_queryhelp_response import CommQueryhelpResponse

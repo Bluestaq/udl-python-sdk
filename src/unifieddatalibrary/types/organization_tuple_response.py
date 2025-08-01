@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .organization_full import OrganizationFull
+from .shared.organization_full import OrganizationFull
 
 __all__ = ["OrganizationTupleResponse"]
 

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing_extensions import Required, Annotated, TypedDict
 
-from ..._types import FileTypes
 from ..._utils import PropertyInfo
 
 __all__ = ["V2FileUploadParams"]
@@ -22,8 +21,6 @@ class V2FileUploadParams(TypedDict, total=False):
 
     Will attempt to create folders in path if necessary. Must start with '/'.
     """
-
-    body: Required[FileTypes]
 
     delete_after: Annotated[str, PropertyInfo(alias="deleteAfter")]
     """Length of time after which to automatically delete the file."""

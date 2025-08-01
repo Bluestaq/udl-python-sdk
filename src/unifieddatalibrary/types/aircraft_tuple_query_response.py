@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .aircraft_full import AircraftFull
+from .shared.aircraft_full import AircraftFull
 
 __all__ = ["AircraftTupleQueryResponse"]
 

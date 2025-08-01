@@ -24,8 +24,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.onorbitsolararray_get_response import OnorbitsolararrayGetResponse
 from ..types.onorbitsolararray_list_response import OnorbitsolararrayListResponse
+from ..types.shared.onorbit_solar_array_full import OnorbitSolarArrayFull
 
 __all__ = ["OnorbitsolararrayResource", "AsyncOnorbitsolararrayResource"]
 
@@ -344,7 +344,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitsolararrayGetResponse:
+    ) -> OnorbitSolarArrayFull:
         """
         Service operation to get a single OnorbitSolarArray record by its unique ID
         passed as a path parameter. An OnorbitSolarArray is the association between
@@ -377,7 +377,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
                     onorbitsolararray_get_params.OnorbitsolararrayGetParams,
                 ),
             ),
-            cast_to=OnorbitsolararrayGetResponse,
+            cast_to=OnorbitSolarArrayFull,
         )
 
 
@@ -695,7 +695,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OnorbitsolararrayGetResponse:
+    ) -> OnorbitSolarArrayFull:
         """
         Service operation to get a single OnorbitSolarArray record by its unique ID
         passed as a path parameter. An OnorbitSolarArray is the association between
@@ -728,7 +728,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
                     onorbitsolararray_get_params.OnorbitsolararrayGetParams,
                 ),
             ),
-            cast_to=OnorbitsolararrayGetResponse,
+            cast_to=OnorbitSolarArrayFull,
         )
 
 

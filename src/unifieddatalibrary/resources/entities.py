@@ -28,8 +28,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.entity_full import EntityFull
 from ..types.entity_abridged import EntityAbridged
+from ..types.shared.entity_full import EntityFull
 from ..types.entity_tuple_response import EntityTupleResponse
 from ..types.location_ingest_param import LocationIngestParam
 from ..types.entity_query_help_response import EntityQueryHelpResponse

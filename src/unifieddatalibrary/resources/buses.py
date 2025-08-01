@@ -27,8 +27,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.bus_full import BusFull
 from ..types.bus_abridged import BusAbridged
+from ..types.shared.bus_full import BusFull
 from ..types.bus_tuple_response import BusTupleResponse
 from ..types.entity_ingest_param import EntityIngestParam
 from ..types.bus_query_help_response import BusQueryHelpResponse

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from .antenna_details_full import AntennaDetailsFull as AntennaDetailsFull
 from .antenna_details_abridged import AntennaDetailsAbridged as AntennaDetailsAbridged
 from .antenna_detail_list_params import AntennaDetailListParams as AntennaDetailListParams
 from .antenna_detail_create_params import AntennaDetailCreateParams as AntennaDetailCreateParams

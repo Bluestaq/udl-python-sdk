@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .battery_full import BatteryFull
+from .shared.battery_full import BatteryFull
 
 __all__ = ["BatteryTupleResponse"]
 

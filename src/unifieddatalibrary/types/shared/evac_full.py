@@ -7,6 +7,7 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from .related_document_full import RelatedDocumentFull
 
 __all__ = [
     "EvacFull",
@@ -20,8 +21,6 @@ __all__ = [
     "CasualtyInfoTreatment",
     "CasualtyInfoVitalSignData",
     "EnemyData",
-    "RelatedDoc",
-    "RelatedDocDataSourceRef",
 ]
 
 
@@ -407,31 +406,6 @@ class EnemyData(BaseModel):
     """The type of hostile fire received (SMALL ARMS, MORTAR, ARTILLERY, ROCKETS)."""
 
 
-class RelatedDocDataSourceRef(BaseModel):
-    data_source_id: Optional[str] = FieldInfo(alias="dataSourceId", default=None)
-    """Data source id."""
-
-    end_position: Optional[str] = FieldInfo(alias="endPosition", default=None)
-    """end position."""
-
-    paragraph_number: Optional[str] = FieldInfo(alias="paragraphNumber", default=None)
-    """paragraph number."""
-
-    sentence_number: Optional[str] = FieldInfo(alias="sentenceNumber", default=None)
-    """sentence number."""
-
-    start_position: Optional[str] = FieldInfo(alias="startPosition", default=None)
-    """start position."""
-
-
-class RelatedDoc(BaseModel):
-    data_source_refs: Optional[List[RelatedDocDataSourceRef]] = FieldInfo(alias="dataSourceRefs", default=None)
-    """List of data sources related to this document."""
-
-    document_id: Optional[str] = FieldInfo(alias="documentId", default=None)
-    """The document id of the related document."""
-
-
 class EvacFull(BaseModel):
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
@@ -567,7 +541,7 @@ class EvacFull(BaseModel):
     pickup_time: Optional[datetime] = FieldInfo(alias="pickupTime", default=None)
     """The expected pickup time, in ISO 8601 UTC format."""
 
-    related_docs: Optional[List[RelatedDoc]] = FieldInfo(alias="relatedDocs", default=None)
+    related_docs: Optional[List[RelatedDocumentFull]] = FieldInfo(alias="relatedDocs", default=None)
     """Related document ids."""
 
     req_call_sign: Optional[str] = FieldInfo(alias="reqCallSign", default=None)

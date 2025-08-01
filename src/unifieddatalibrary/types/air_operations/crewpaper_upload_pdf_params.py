@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
-from ..._types import FileTypes
 from ..._utils import PropertyInfo
 
 __all__ = ["CrewpaperUploadPdfParams"]
@@ -24,5 +23,3 @@ class CrewpaperUploadPdfParams(TypedDict, total=False):
 
     papers_version: Required[Annotated[str, PropertyInfo(alias="papersVersion")]]
     """The version number of the crew paper."""
-
-    body: Required[FileTypes]

@@ -20,7 +20,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.diplomatic_clearance import history_aodr_params, history_list_params, history_count_params
-from ...types.air_operations.diplomaticclearance_full import DiplomaticclearanceFull
+from ...types.shared.diplomaticclearance_full import DiplomaticclearanceFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

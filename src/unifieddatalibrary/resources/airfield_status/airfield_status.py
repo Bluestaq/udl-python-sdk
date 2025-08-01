@@ -36,8 +36,8 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.airfieldstatus_full import AirfieldstatusFull
 from ...types.airfieldstatus_abridged import AirfieldstatusAbridged
+from ...types.shared.airfieldstatus_full import AirfieldstatusFull
 from ...types.airfield_status_tuple_response import AirfieldStatusTupleResponse
 from ...types.airfield_status_queryhelp_response import AirfieldStatusQueryhelpResponse
 

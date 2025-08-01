@@ -6,7 +6,8 @@ from typing import List
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from ..._files import read_file_content, async_read_file_content
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -272,10 +273,10 @@ class V2Resource(SyncAPIResource):
 
     def file_upload(
         self,
+        params: FileContent,
         *,
         classification_marking: str,
         path: str,
-        body: FileTypes,
         delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
@@ -321,9 +322,10 @@ class V2Resource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/octet-stream"
         return self._post(
             "/scs/v2/file",
-            body=maybe_transform(body, v2_file_upload_params.V2FileUploadParams),
+            body=read_file_content(params),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -721,10 +723,10 @@ class AsyncV2Resource(AsyncAPIResource):
 
     async def file_upload(
         self,
+        params: FileContent,
         *,
         classification_marking: str,
         path: str,
-        body: FileTypes,
         delete_after: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         overwrite: bool | NotGiven = NOT_GIVEN,
@@ -770,9 +772,10 @@ class AsyncV2Resource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/octet-stream"
         return await self._post(
             "/scs/v2/file",
-            body=await async_maybe_transform(body, v2_file_upload_params.V2FileUploadParams),
+            body=await async_read_file_content(params),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

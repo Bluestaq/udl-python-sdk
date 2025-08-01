@@ -27,7 +27,8 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from ..._files import read_file_content, async_read_file_content
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -39,8 +40,8 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.conjunction_full import ConjunctionFull
 from ...types.conjunction_abridged import ConjunctionAbridged
+from ...types.shared.conjunction_full import ConjunctionFull
 from ...types.conjunction_tuple_response import ConjunctionTupleResponse
 from ...types.conjunction_queryhelp_response import ConjunctionQueryhelpResponse
 from ...types.conjunction_get_history_response import ConjunctionGetHistoryResponse
@@ -814,12 +815,12 @@ class ConjunctionsResource(SyncAPIResource):
 
     def upload_conjunction_data_message(
         self,
+        aprams: FileContent,
         *,
         classification: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         filename: str,
         source: str,
-        body: FileTypes,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -863,11 +864,10 @@ class ConjunctionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/zip"
         return self._post(
             "/filedrop/cdms",
-            body=maybe_transform(
-                body, conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams
-            ),
+            body=read_file_content(aprams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1654,12 +1654,12 @@ class AsyncConjunctionsResource(AsyncAPIResource):
 
     async def upload_conjunction_data_message(
         self,
+        aprams: FileContent,
         *,
         classification: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         filename: str,
         source: str,
-        body: FileTypes,
         tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1703,11 +1703,10 @@ class AsyncConjunctionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/zip"
         return await self._post(
             "/filedrop/cdms",
-            body=await async_maybe_transform(
-                body, conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams
-            ),
+            body=await async_read_file_content(aprams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

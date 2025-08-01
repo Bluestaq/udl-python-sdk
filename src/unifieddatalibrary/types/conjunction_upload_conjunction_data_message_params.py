@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
-from .._types import FileTypes
 from .._utils import PropertyInfo
 
 __all__ = ["ConjunctionUploadConjunctionDataMessageParams"]
@@ -22,8 +21,6 @@ class ConjunctionUploadConjunctionDataMessageParams(TypedDict, total=False):
 
     source: Required[str]
     """Source of the data."""
-
-    body: Required[FileTypes]
 
     tags: str
     """

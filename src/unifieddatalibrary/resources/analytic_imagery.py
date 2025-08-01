@@ -38,8 +38,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.analytic_imagery_full import AnalyticImageryFull
 from ..types.analytic_imagery_abridged import AnalyticImageryAbridged
+from ..types.shared.analytic_imagery_full import AnalyticImageryFull
 from ..types.analytic_imagery_tuple_response import AnalyticImageryTupleResponse
 from ..types.analytic_imagery_history_response import AnalyticImageryHistoryResponse
 from ..types.analytic_imagery_queryhelp_response import AnalyticImageryQueryhelpResponse

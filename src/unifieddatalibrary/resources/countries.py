@@ -26,8 +26,8 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.country_full import CountryFull
 from ..types.country_abridged import CountryAbridged
+from ..types.shared.country_full import CountryFull
 from ..types.country_tuple_response import CountryTupleResponse
 from ..types.country_queryhelp_response import CountryQueryhelpResponse
 

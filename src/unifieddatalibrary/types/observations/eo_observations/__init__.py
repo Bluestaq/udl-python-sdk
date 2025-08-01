@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from .eo_observation_full import EoObservationFull as EoObservationFull
 from .history_aodr_params import HistoryAodrParams as HistoryAodrParams
 from .history_list_params import HistoryListParams as HistoryListParams
 from .history_count_params import HistoryCountParams as HistoryCountParams

@@ -25,7 +25,7 @@ from ...types.onorbit import (
     antenna_detail_update_params,
     antenna_detail_retrieve_params,
 )
-from ...types.onorbit.antenna_details_full import AntennaDetailsFull
+from ...types.shared.antenna_details_full import AntennaDetailsFull
 from ...types.onorbit.antenna_details_abridged import AntennaDetailsAbridged
 
 __all__ = ["AntennaDetailsResource", "AsyncAntennaDetailsResource"]

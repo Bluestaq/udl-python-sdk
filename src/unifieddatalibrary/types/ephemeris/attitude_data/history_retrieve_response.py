@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from ...attitudedata_full import AttitudedataFull
+from ...shared.attitudedata_full import AttitudedataFull
 
 __all__ = ["HistoryRetrieveResponse"]
 

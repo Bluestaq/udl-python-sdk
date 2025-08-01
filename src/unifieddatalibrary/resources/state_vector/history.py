@@ -20,7 +20,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.state_vector import history_aodr_params, history_list_params, history_count_params
-from ...types.state_vector_full import StateVectorFull
+from ...types.shared.state_vector_full import StateVectorFull
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 

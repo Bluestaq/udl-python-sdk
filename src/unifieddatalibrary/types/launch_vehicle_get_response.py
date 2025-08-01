@@ -6,9 +6,9 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .engine import Engine
 from .._models import BaseModel
-from .organization_full import OrganizationFull
+from .shared.engine import Engine
+from .shared.organization_full import OrganizationFull
 
 __all__ = ["LaunchVehicleGetResponse", "LaunchVehicleDetail", "Stage"]
 

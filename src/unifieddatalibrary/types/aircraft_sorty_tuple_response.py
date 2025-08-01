@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .air_operations.aircraftsortie_full import AircraftsortieFull
+from .shared.aircraftsortie_full import AircraftsortieFull
 
 __all__ = ["AircraftSortyTupleResponse"]
 

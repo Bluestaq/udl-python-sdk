@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .eo_observations.eo_observation_full import EoObservationFull
+from ..shared.eo_observation_full import EoObservationFull
 
 __all__ = ["EoObservationTupleResponse"]
 

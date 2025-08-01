@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .conjunction_full import ConjunctionFull
+from .shared.conjunction_full import ConjunctionFull
 
 __all__ = ["ConjunctionGetHistoryResponse"]
 

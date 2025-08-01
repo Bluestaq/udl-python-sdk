@@ -37,10 +37,10 @@ from ....types.observations import (
     eo_observation_create_bulk_params,
     eo_observation_unvalidated_publish_params,
 )
+from ....types.shared.eo_observation_full import EoObservationFull
 from ....types.observations.eo_observation_abridged import EoObservationAbridged
 from ....types.observations.eo_observation_tuple_response import EoObservationTupleResponse
 from ....types.observations.eo_observation_queryhelp_response import EoObservationQueryhelpResponse
-from ....types.observations.eo_observations.eo_observation_full import EoObservationFull
 
 __all__ = ["EoObservationsResource", "AsyncEoObservationsResource"]
 

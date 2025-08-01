@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .bus_full import BusFull
+from .shared.bus_full import BusFull
 
 __all__ = ["BusTupleResponse"]
 

@@ -3,7 +3,7 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from .entity_full import EntityFull
+from .shared.entity_full import EntityFull
 
 __all__ = ["EntityTupleResponse"]
 
