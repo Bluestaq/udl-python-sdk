@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-08-01)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** support for Bearer Auth ([57928c5](https://github.com/Bluestaq/udl-python-sdk/commit/57928c5b6f0b09a0d32cd80112e216b6f5be6d61))
+
 ## 0.1.0-alpha.16 (2025-07-31)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
