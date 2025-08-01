@@ -24,7 +24,7 @@ from pydantic import ValidationError
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary, APIResponseValidationError
 from unifieddatalibrary._types import Omit
 from unifieddatalibrary._models import BaseModel, FinalRequestOptions
-from unifieddatalibrary._exceptions import APIStatusError, UnifieddatalibraryError, APIResponseValidationError
+from unifieddatalibrary._exceptions import APIStatusError, APIResponseValidationError
 from unifieddatalibrary._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -372,17 +372,26 @@ class TestUnifieddatalibrary:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert "Basic" in request.headers.get("Authorization")
 
-        with pytest.raises(UnifieddatalibraryError):
-            with update_env(
-                **{
-                    "UDL_AUTH_USERNAME": Omit(),
-                    "UDL_AUTH_PASSWORD": Omit(),
-                }
-            ):
-                client2 = Unifieddatalibrary(
-                    base_url=base_url, password=None, username=None, _strict_response_validation=True
-                )
-            _ = client2
+        with update_env(
+            **{
+                "UDL_AUTH_USERNAME": Omit(),
+                "UDL_AUTH_PASSWORD": Omit(),
+            }
+        ):
+            client2 = Unifieddatalibrary(
+                base_url=base_url, password=None, username=None, _strict_response_validation=True
+            )
+
+        with pytest.raises(
+            TypeError,
+            match="Could not resolve authentication method. Expected either username, password or access_token to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted",
+        ):
+            client2._build_request(FinalRequestOptions(method="get", url="/foo"))
+
+        request2 = client2._build_request(
+            FinalRequestOptions(method="get", url="/foo", headers={"Authorization": Omit()})
+        )
+        assert request2.headers.get("Authorization") is None
 
     def test_default_query_option(self) -> None:
         client = Unifieddatalibrary(
@@ -1242,17 +1251,26 @@ class TestAsyncUnifieddatalibrary:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert "Basic" in request.headers.get("Authorization")
 
-        with pytest.raises(UnifieddatalibraryError):
-            with update_env(
-                **{
-                    "UDL_AUTH_USERNAME": Omit(),
-                    "UDL_AUTH_PASSWORD": Omit(),
-                }
-            ):
-                client2 = AsyncUnifieddatalibrary(
-                    base_url=base_url, password=None, username=None, _strict_response_validation=True
-                )
-            _ = client2
+        with update_env(
+            **{
+                "UDL_AUTH_USERNAME": Omit(),
+                "UDL_AUTH_PASSWORD": Omit(),
+            }
+        ):
+            client2 = AsyncUnifieddatalibrary(
+                base_url=base_url, password=None, username=None, _strict_response_validation=True
+            )
+
+        with pytest.raises(
+            TypeError,
+            match="Could not resolve authentication method. Expected either username, password or access_token to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted",
+        ):
+            client2._build_request(FinalRequestOptions(method="get", url="/foo"))
+
+        request2 = client2._build_request(
+            FinalRequestOptions(method="get", url="/foo", headers={"Authorization": Omit()})
+        )
+        assert request2.headers.get("Authorization") is None
 
     def test_default_query_option(self) -> None:
         client = AsyncUnifieddatalibrary(

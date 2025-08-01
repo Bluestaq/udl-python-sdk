@@ -14,6 +14,7 @@ from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
     Omit,
+    Headers,
     Timeout,
     NotGiven,
     Transport,
@@ -117,7 +118,7 @@ from .resources import (
     seradata_spacecraft_details,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, UnifieddatalibraryError
+from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -377,14 +378,16 @@ class Unifieddatalibrary(SyncAPIClient):
     with_streaming_response: UnifieddatalibraryWithStreamedResponse
 
     # client options
-    password: str
-    username: str
+    password: str | None
+    username: str | None
+    access_token: str | None
 
     def __init__(
         self,
         *,
         password: str | None = None,
         username: str | None = None,
+        access_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -409,22 +412,19 @@ class Unifieddatalibrary(SyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `password` from `UDL_AUTH_PASSWORD`
         - `username` from `UDL_AUTH_USERNAME`
+        - `access_token` from `UDL_ACCESS_TOKEN`
         """
         if password is None:
             password = os.environ.get("UDL_AUTH_PASSWORD")
-        if password is None:
-            raise UnifieddatalibraryError(
-                "The password client option must be set either by passing password to the client or by setting the UDL_AUTH_PASSWORD environment variable"
-            )
         self.password = password
 
         if username is None:
             username = os.environ.get("UDL_AUTH_USERNAME")
-        if username is None:
-            raise UnifieddatalibraryError(
-                "The username client option must be set either by passing username to the client or by setting the UDL_AUTH_USERNAME environment variable"
-            )
         self.username = username
+
+        if access_token is None:
+            access_token = os.environ.get("UDL_ACCESS_TOKEN")
+        self.access_token = access_token
 
         if base_url is None:
             base_url = os.environ.get("UNIFIEDDATALIBRARY_BASE_URL")
@@ -618,9 +618,24 @@ class Unifieddatalibrary(SyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
+        return {**self._basic_auth, **self._bearer_auth}
+
+    @property
+    def _basic_auth(self) -> dict[str, str]:
+        if self.username is None:
+            return {}
+        if self.password is None:
+            return {}
         credentials = f"{self.username}:{self.password}".encode("ascii")
         header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
         return {"Authorization": header}
+
+    @property
+    def _bearer_auth(self) -> dict[str, str]:
+        access_token = self.access_token
+        if access_token is None:
+            return {}
+        return {"Authorization": f"Bearer {access_token}"}
 
     @property
     @override
@@ -631,11 +646,28 @@ class Unifieddatalibrary(SyncAPIClient):
             **self._custom_headers,
         }
 
+    @override
+    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+        if self.username and self.password and headers.get("Authorization"):
+            return
+        if isinstance(custom_headers.get("Authorization"), Omit):
+            return
+
+        if self.access_token and headers.get("Authorization"):
+            return
+        if isinstance(custom_headers.get("Authorization"), Omit):
+            return
+
+        raise TypeError(
+            '"Could not resolve authentication method. Expected either username, password or access_token to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
+        )
+
     def copy(
         self,
         *,
         password: str | None = None,
         username: str | None = None,
+        access_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -671,6 +703,7 @@ class Unifieddatalibrary(SyncAPIClient):
         client = self.__class__(
             password=password or self.password,
             username=username or self.username,
+            access_token=access_token or self.access_token,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -889,14 +922,16 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     with_streaming_response: AsyncUnifieddatalibraryWithStreamedResponse
 
     # client options
-    password: str
-    username: str
+    password: str | None
+    username: str | None
+    access_token: str | None
 
     def __init__(
         self,
         *,
         password: str | None = None,
         username: str | None = None,
+        access_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -921,22 +956,19 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `password` from `UDL_AUTH_PASSWORD`
         - `username` from `UDL_AUTH_USERNAME`
+        - `access_token` from `UDL_ACCESS_TOKEN`
         """
         if password is None:
             password = os.environ.get("UDL_AUTH_PASSWORD")
-        if password is None:
-            raise UnifieddatalibraryError(
-                "The password client option must be set either by passing password to the client or by setting the UDL_AUTH_PASSWORD environment variable"
-            )
         self.password = password
 
         if username is None:
             username = os.environ.get("UDL_AUTH_USERNAME")
-        if username is None:
-            raise UnifieddatalibraryError(
-                "The username client option must be set either by passing username to the client or by setting the UDL_AUTH_USERNAME environment variable"
-            )
         self.username = username
+
+        if access_token is None:
+            access_token = os.environ.get("UDL_ACCESS_TOKEN")
+        self.access_token = access_token
 
         if base_url is None:
             base_url = os.environ.get("UNIFIEDDATALIBRARY_BASE_URL")
@@ -1130,9 +1162,24 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
+        return {**self._basic_auth, **self._bearer_auth}
+
+    @property
+    def _basic_auth(self) -> dict[str, str]:
+        if self.username is None:
+            return {}
+        if self.password is None:
+            return {}
         credentials = f"{self.username}:{self.password}".encode("ascii")
         header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
         return {"Authorization": header}
+
+    @property
+    def _bearer_auth(self) -> dict[str, str]:
+        access_token = self.access_token
+        if access_token is None:
+            return {}
+        return {"Authorization": f"Bearer {access_token}"}
 
     @property
     @override
@@ -1143,11 +1190,28 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
             **self._custom_headers,
         }
 
+    @override
+    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+        if self.username and self.password and headers.get("Authorization"):
+            return
+        if isinstance(custom_headers.get("Authorization"), Omit):
+            return
+
+        if self.access_token and headers.get("Authorization"):
+            return
+        if isinstance(custom_headers.get("Authorization"), Omit):
+            return
+
+        raise TypeError(
+            '"Could not resolve authentication method. Expected either username, password or access_token to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
+        )
+
     def copy(
         self,
         *,
         password: str | None = None,
         username: str | None = None,
+        access_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -1183,6 +1247,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         client = self.__class__(
             password=password or self.password,
             username=username or self.username,
+            access_token=access_token or self.access_token,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
