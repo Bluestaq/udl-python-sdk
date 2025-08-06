@@ -86,7 +86,7 @@ class CrewpapersResource(SyncAPIResource):
 
     def upload_pdf(
         self,
-        body_param: FileContent,
+        file_content: FileContent,
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
@@ -126,7 +126,7 @@ class CrewpapersResource(SyncAPIResource):
         extra_headers["Content-Type"] = "application/pdf"
         return self._post(
             "/filedrop/crewpapers",
-            body=read_file_content(body_param),
+            body=read_file_content(file_content),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -209,7 +209,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
 
     async def upload_pdf(
         self,
-        body_param: FileContent,
+        file_content: FileContent,
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
@@ -249,7 +249,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         extra_headers["Content-Type"] = "application/pdf"
         return await self._post(
             "/filedrop/crewpapers",
-            body=await async_read_file_content(body_param),
+            body=await async_read_file_content(file_content),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

@@ -173,7 +173,7 @@ class TestV2:
     @parametrize
     def test_method_file_upload(self, client: Unifieddatalibrary) -> None:
         v2 = client.scs.v2.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
         )
@@ -182,7 +182,7 @@ class TestV2:
     @parametrize
     def test_method_file_upload_with_all_params(self, client: Unifieddatalibrary) -> None:
         v2 = client.scs.v2.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
             delete_after="deleteAfter",
@@ -196,7 +196,7 @@ class TestV2:
     @parametrize
     def test_raw_response_file_upload(self, client: Unifieddatalibrary) -> None:
         response = client.scs.v2.with_raw_response.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
         )
@@ -209,7 +209,7 @@ class TestV2:
     @parametrize
     def test_streaming_response_file_upload(self, client: Unifieddatalibrary) -> None:
         with client.scs.v2.with_streaming_response.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
         ) as response:
@@ -459,7 +459,7 @@ class TestAsyncV2:
     @parametrize
     async def test_method_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
         )
@@ -468,7 +468,7 @@ class TestAsyncV2:
     @parametrize
     async def test_method_file_upload_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         v2 = await async_client.scs.v2.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
             delete_after="deleteAfter",
@@ -482,7 +482,7 @@ class TestAsyncV2:
     @parametrize
     async def test_raw_response_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.v2.with_raw_response.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
         )
@@ -495,7 +495,7 @@ class TestAsyncV2:
     @parametrize
     async def test_streaming_response_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.v2.with_streaming_response.file_upload(
-            params=b"raw file contents",
+            file_content=b"raw file contents",
             classification_marking="classificationMarking",
             path="path",
         ) as response:
