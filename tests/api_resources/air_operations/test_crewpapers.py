@@ -49,7 +49,7 @@ class TestCrewpapers:
     @parametrize
     def test_method_upload_pdf(self, client: Unifieddatalibrary) -> None:
         crewpaper = client.air_operations.crewpapers.upload_pdf(
-            params=b"raw file contents",
+            body_param=b"raw file contents",
             aircraft_sortie_ids="aircraftSortieIds",
             classification_marking="x",
             paper_status="PUBLISHED",
@@ -60,7 +60,7 @@ class TestCrewpapers:
     @parametrize
     def test_raw_response_upload_pdf(self, client: Unifieddatalibrary) -> None:
         response = client.air_operations.crewpapers.with_raw_response.upload_pdf(
-            params=b"raw file contents",
+            body_param=b"raw file contents",
             aircraft_sortie_ids="aircraftSortieIds",
             classification_marking="x",
             paper_status="PUBLISHED",
@@ -75,7 +75,7 @@ class TestCrewpapers:
     @parametrize
     def test_streaming_response_upload_pdf(self, client: Unifieddatalibrary) -> None:
         with client.air_operations.crewpapers.with_streaming_response.upload_pdf(
-            params=b"raw file contents",
+            body_param=b"raw file contents",
             aircraft_sortie_ids="aircraftSortieIds",
             classification_marking="x",
             paper_status="PUBLISHED",
@@ -129,7 +129,7 @@ class TestAsyncCrewpapers:
     @parametrize
     async def test_method_upload_pdf(self, async_client: AsyncUnifieddatalibrary) -> None:
         crewpaper = await async_client.air_operations.crewpapers.upload_pdf(
-            params=b"raw file contents",
+            body_param=b"raw file contents",
             aircraft_sortie_ids="aircraftSortieIds",
             classification_marking="x",
             paper_status="PUBLISHED",
@@ -140,7 +140,7 @@ class TestAsyncCrewpapers:
     @parametrize
     async def test_raw_response_upload_pdf(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_operations.crewpapers.with_raw_response.upload_pdf(
-            params=b"raw file contents",
+            body_param=b"raw file contents",
             aircraft_sortie_ids="aircraftSortieIds",
             classification_marking="x",
             paper_status="PUBLISHED",
@@ -155,7 +155,7 @@ class TestAsyncCrewpapers:
     @parametrize
     async def test_streaming_response_upload_pdf(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_operations.crewpapers.with_streaming_response.upload_pdf(
-            params=b"raw file contents",
+            body_param=b"raw file contents",
             aircraft_sortie_ids="aircraftSortieIds",
             classification_marking="x",
             paper_status="PUBLISHED",
