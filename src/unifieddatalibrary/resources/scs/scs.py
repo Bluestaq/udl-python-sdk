@@ -387,7 +387,7 @@ class ScsResource(SyncAPIResource):
 
     def file_upload(
         self,
-        params: FileContent,
+        file_content: FileContent,
         *,
         classification_marking: str,
         file_name: str,
@@ -437,7 +437,7 @@ class ScsResource(SyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/file",
-            body=read_file_content(params),
+            body=read_file_content(file_content),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -949,7 +949,7 @@ class AsyncScsResource(AsyncAPIResource):
 
     async def file_upload(
         self,
-        params: FileContent,
+        file_content: FileContent,
         *,
         classification_marking: str,
         file_name: str,
@@ -999,7 +999,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/file",
-            body=await async_read_file_content(params),
+            body=await async_read_file_content(file_content),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

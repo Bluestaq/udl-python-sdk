@@ -43,7 +43,7 @@ class PathsResource(SyncAPIResource):
 
     def create_with_file(
         self,
-        params: FileContent,
+        file_content: FileContent,
         *,
         id: str,
         classification_marking: str,
@@ -91,7 +91,7 @@ class PathsResource(SyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/path",
-            body=read_file_content(params),
+            body=read_file_content(file_content),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -136,7 +136,7 @@ class AsyncPathsResource(AsyncAPIResource):
 
     async def create_with_file(
         self,
-        params: FileContent,
+        file_content: FileContent,
         *,
         id: str,
         classification_marking: str,
@@ -184,7 +184,7 @@ class AsyncPathsResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/path",
-            body=await async_read_file_content(params),
+            body=await async_read_file_content(file_content),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
