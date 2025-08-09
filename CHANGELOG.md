@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.18 (2025-08-09)
+
+Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
+
+### Features
+
+* **api:** manual updates ([f47a3d0](https://github.com/Bluestaq/udl-python-sdk/commit/f47a3d0c0cc33aa74b2c23839f61bf23a7b7b08c))
+* **api:** manual updates ([5b793e2](https://github.com/Bluestaq/udl-python-sdk/commit/5b793e2ef537671b139686236e20dcd4ec9fa455))
+
+
+### Chores
+
+* **internal:** fix ruff target version ([4ab335f](https://github.com/Bluestaq/udl-python-sdk/commit/4ab335f514d2d259a1f3466bedc3196c8630a208))
+* **internal:** update comment in script ([0cd20bf](https://github.com/Bluestaq/udl-python-sdk/commit/0cd20bf98d6b174d3be9f9ad4f818d4fdc96002b))
+* update @stainless-api/prism-cli to v5.15.0 ([24d47f4](https://github.com/Bluestaq/udl-python-sdk/commit/24d47f48bca197e5d34c19c49159bfc13157c54e))
+
 ## 0.1.0-alpha.17 (2025-08-01)
 
 Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
