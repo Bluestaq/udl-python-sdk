@@ -49,22 +49,14 @@ class TestCrewpapers:
     @parametrize
     def test_method_upload_pdf(self, client: Unifieddatalibrary) -> None:
         crewpaper = client.air_operations.crewpapers.upload_pdf(
-            file_content=b"raw file contents",
-            aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="x",
-            paper_status="PUBLISHED",
-            papers_version="x",
+            b"raw file contents",
         )
         assert crewpaper is None
 
     @parametrize
     def test_raw_response_upload_pdf(self, client: Unifieddatalibrary) -> None:
         response = client.air_operations.crewpapers.with_raw_response.upload_pdf(
-            file_content=b"raw file contents",
-            aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="x",
-            paper_status="PUBLISHED",
-            papers_version="x",
+            b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -75,11 +67,7 @@ class TestCrewpapers:
     @parametrize
     def test_streaming_response_upload_pdf(self, client: Unifieddatalibrary) -> None:
         with client.air_operations.crewpapers.with_streaming_response.upload_pdf(
-            file_content=b"raw file contents",
-            aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="x",
-            paper_status="PUBLISHED",
-            papers_version="x",
+            b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -129,22 +117,14 @@ class TestAsyncCrewpapers:
     @parametrize
     async def test_method_upload_pdf(self, async_client: AsyncUnifieddatalibrary) -> None:
         crewpaper = await async_client.air_operations.crewpapers.upload_pdf(
-            file_content=b"raw file contents",
-            aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="x",
-            paper_status="PUBLISHED",
-            papers_version="x",
+            b"raw file contents",
         )
         assert crewpaper is None
 
     @parametrize
     async def test_raw_response_upload_pdf(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.air_operations.crewpapers.with_raw_response.upload_pdf(
-            file_content=b"raw file contents",
-            aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="x",
-            paper_status="PUBLISHED",
-            papers_version="x",
+            b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -155,11 +135,7 @@ class TestAsyncCrewpapers:
     @parametrize
     async def test_streaming_response_upload_pdf(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.air_operations.crewpapers.with_streaming_response.upload_pdf(
-            file_content=b"raw file contents",
-            aircraft_sortie_ids="aircraftSortieIds",
-            classification_marking="x",
-            paper_status="PUBLISHED",
-            papers_version="x",
+            b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -44,7 +44,6 @@ from ...types import (
     sc_delete_params,
     sc_rename_params,
     sc_search_params,
-    sc_file_upload_params,
     sc_update_tags_params,
     sc_file_download_params,
 )
@@ -389,14 +388,6 @@ class ScsResource(SyncAPIResource):
         self,
         file_content: FileContent,
         *,
-        classification_marking: str,
-        file_name: str,
-        path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -410,22 +401,6 @@ class ScsResource(SyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          classification_marking: Classification (ex. U//FOUO)
-
-          file_name: FileName (ex. dog.jpg)
-
-          path: The base path to upload file (ex. images)
-
-          delete_after: Length of time after which to automatically delete the file.
-
-          description: Description
-
-          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
-
-          send_notification: Whether or not to send a notification that this file was uploaded.
-
-          tags: Tags
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -439,23 +414,7 @@ class ScsResource(SyncAPIResource):
             "/scs/file",
             body=read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "classification_marking": classification_marking,
-                        "file_name": file_name,
-                        "path": path,
-                        "delete_after": delete_after,
-                        "description": description,
-                        "overwrite": overwrite,
-                        "send_notification": send_notification,
-                        "tags": tags,
-                    },
-                    sc_file_upload_params.ScFileUploadParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=str,
         )
@@ -951,14 +910,6 @@ class AsyncScsResource(AsyncAPIResource):
         self,
         file_content: FileContent,
         *,
-        classification_marking: str,
-        file_name: str,
-        path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -972,22 +923,6 @@ class AsyncScsResource(AsyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          classification_marking: Classification (ex. U//FOUO)
-
-          file_name: FileName (ex. dog.jpg)
-
-          path: The base path to upload file (ex. images)
-
-          delete_after: Length of time after which to automatically delete the file.
-
-          description: Description
-
-          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
-
-          send_notification: Whether or not to send a notification that this file was uploaded.
-
-          tags: Tags
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1001,23 +936,7 @@ class AsyncScsResource(AsyncAPIResource):
             "/scs/file",
             body=await async_read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "classification_marking": classification_marking,
-                        "file_name": file_name,
-                        "path": path,
-                        "delete_after": delete_after,
-                        "description": description,
-                        "overwrite": overwrite,
-                        "send_notification": send_notification,
-                        "tags": tags,
-                    },
-                    sc_file_upload_params.ScFileUploadParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=str,
         )

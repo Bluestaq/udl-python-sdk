@@ -23,7 +23,6 @@ from ...types.scs import (
     v2_move_params,
     v2_delete_params,
     v2_update_params,
-    v2_file_upload_params,
     v2_folder_create_params,
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
@@ -275,13 +274,6 @@ class V2Resource(SyncAPIResource):
         self,
         file_content: FileContent,
         *,
-        classification_marking: str,
-        path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -295,24 +287,6 @@ class V2Resource(SyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          classification_marking: Classification marking of uploaded document. If folders are created, they will
-              also have this classification marking.
-
-          path: The complete path for the upload including filename. Will attempt to create
-              folders in path if necessary. Must start with '/'.
-
-          delete_after: Length of time after which to automatically delete the file.
-
-          description: Optional description of uploaded document.
-
-          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
-
-          send_notification: Whether or not to send a notification that this file was uploaded.
-
-          tags: Optional array of provider/source specific tags for this data, used for
-              implementing data owner conditional access controls to restrict access to the
-              data.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -327,22 +301,7 @@ class V2Resource(SyncAPIResource):
             "/scs/v2/file",
             body=read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "classification_marking": classification_marking,
-                        "path": path,
-                        "delete_after": delete_after,
-                        "description": description,
-                        "overwrite": overwrite,
-                        "send_notification": send_notification,
-                        "tags": tags,
-                    },
-                    v2_file_upload_params.V2FileUploadParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
@@ -725,13 +684,6 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         file_content: FileContent,
         *,
-        classification_marking: str,
-        path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -745,24 +697,6 @@ class AsyncV2Resource(AsyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          classification_marking: Classification marking of uploaded document. If folders are created, they will
-              also have this classification marking.
-
-          path: The complete path for the upload including filename. Will attempt to create
-              folders in path if necessary. Must start with '/'.
-
-          delete_after: Length of time after which to automatically delete the file.
-
-          description: Optional description of uploaded document.
-
-          overwrite: Whether or not to overwrite a file with the same name and path, if one exists.
-
-          send_notification: Whether or not to send a notification that this file was uploaded.
-
-          tags: Optional array of provider/source specific tags for this data, used for
-              implementing data owner conditional access controls to restrict access to the
-              data.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -777,22 +711,7 @@ class AsyncV2Resource(AsyncAPIResource):
             "/scs/v2/file",
             body=await async_read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "classification_marking": classification_marking,
-                        "path": path,
-                        "delete_after": delete_after,
-                        "description": description,
-                        "overwrite": overwrite,
-                        "send_notification": send_notification,
-                        "tags": tags,
-                    },
-                    v2_file_upload_params.V2FileUploadParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
