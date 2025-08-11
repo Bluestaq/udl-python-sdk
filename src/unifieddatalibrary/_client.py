@@ -55,7 +55,6 @@ from .resources import (
     substatus,
     air_events,
     flightplan,
-    gnss_rawif,
     navigation,
     rf_emitter,
     scientific,
@@ -67,7 +66,6 @@ from .resources import (
     site_remark,
     solar_array,
     transponder,
-    attitudesets,
     onorbitevent,
     organization,
     rf_band_type,
@@ -77,7 +75,6 @@ from .resources import (
     drift_history,
     manifoldelset,
     operatingunit,
-    air_load_plans,
     airfield_slots,
     batterydetails,
     engine_details,
@@ -89,7 +86,6 @@ from .resources import (
     onorbitthruster,
     aircraft_sorties,
     analytic_imagery,
-    ion_oobservation,
     launch_detection,
     secure_messaging,
     equipment_remarks,
@@ -177,10 +173,10 @@ from .resources.sar_observation import sar_observation
 from .resources.supporting_data import supporting_data
 from .resources.collect_requests import collect_requests
 from .resources.effect_responses import effect_responses
-from .resources.iono_observation import iono_observation
 from .resources.aircraft_statuses import aircraft_statuses
 from .resources.collect_responses import collect_responses
 from .resources.gnss_observations import gnss_observations
+from .resources.iono_observations import iono_observations
 from .resources.logistics_support import logistics_support
 from .resources.onboardnavigation import onboardnavigation
 from .resources.personnelrecovery import personnelrecovery
@@ -189,10 +185,10 @@ from .resources.mission_assignment import mission_assignment
 from .resources.orbitdetermination import orbitdetermination
 from .resources.sensor_maintenance import sensor_maintenance
 from .resources.gnss_observationset import gnss_observationset
-from .resources.report_and_activity import report_and_activity
 from .resources.soi_observation_set import soi_observation_set
 from .resources.diplomatic_clearance import diplomatic_clearance
 from .resources.onorbitthrusterstatus import onorbitthrusterstatus
+from .resources.report_and_activities import report_and_activities
 from .resources.space_env_observation import space_env_observation
 from .resources.air_transport_missions import air_transport_missions
 from .resources.global_atmospheric_model import global_atmospheric_model
@@ -211,7 +207,6 @@ __all__ = [
 
 class Unifieddatalibrary(SyncAPIClient):
     air_events: air_events.AirEventsResource
-    air_load_plans: air_load_plans.AirLoadPlansResource
     air_operations: air_operations.AirOperationsResource
     air_transport_missions: air_transport_missions.AirTransportMissionsResource
     aircraft: aircraft.AircraftResource
@@ -230,7 +225,6 @@ class Unifieddatalibrary(SyncAPIClient):
     antennas: antennas.AntennasResource
     attitude_data: attitude_data.AttitudeDataResource
     attitude_sets: attitude_sets.AttitudeSetsResource
-    attitudesets: attitudesets.AttitudesetsResource
     batteries: batteries.BatteriesResource
     batterydetails: batterydetails.BatterydetailsResource
     beam: beam.BeamResource
@@ -270,12 +264,10 @@ class Unifieddatalibrary(SyncAPIClient):
     flightplan: flightplan.FlightplanResource
     geo_status: geo_status.GeoStatusResource
     gnss_observationset: gnss_observationset.GnssObservationsetResource
-    gnss_rawif: gnss_rawif.GnssRawifResource
     ground_imagery: ground_imagery.GroundImageryResource
     h3_geo: h3_geo.H3GeoResource
     h3_geo_hex_cell: h3_geo_hex_cell.H3GeoHexCellResource
     hazard: hazard.HazardResource
-    ion_oobservation: ion_oobservation.IonOobservationResource
     ir: ir.IrResource
     isr_collections: isr_collections.IsrCollectionsResource
     item: item.ItemResource
@@ -369,8 +361,8 @@ class Unifieddatalibrary(SyncAPIClient):
     weather_report: weather_report.WeatherReportResource
     gnss_observations: gnss_observations.GnssObservationsResource
     gnss_raw_if: gnss_raw_if.GnssRawIfResource
-    iono_observation: iono_observation.IonoObservationResource
-    report_and_activity: report_and_activity.ReportAndActivityResource
+    iono_observations: iono_observations.IonoObservationsResource
+    report_and_activities: report_and_activities.ReportAndActivitiesResource
     secure_messaging: secure_messaging.SecureMessagingResource
     scs: scs.ScsResource
     scs_views: scs_views.ScsViewsResource
@@ -444,7 +436,6 @@ class Unifieddatalibrary(SyncAPIClient):
         )
 
         self.air_events = air_events.AirEventsResource(self)
-        self.air_load_plans = air_load_plans.AirLoadPlansResource(self)
         self.air_operations = air_operations.AirOperationsResource(self)
         self.air_transport_missions = air_transport_missions.AirTransportMissionsResource(self)
         self.aircraft = aircraft.AircraftResource(self)
@@ -463,7 +454,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.antennas = antennas.AntennasResource(self)
         self.attitude_data = attitude_data.AttitudeDataResource(self)
         self.attitude_sets = attitude_sets.AttitudeSetsResource(self)
-        self.attitudesets = attitudesets.AttitudesetsResource(self)
         self.batteries = batteries.BatteriesResource(self)
         self.batterydetails = batterydetails.BatterydetailsResource(self)
         self.beam = beam.BeamResource(self)
@@ -503,12 +493,10 @@ class Unifieddatalibrary(SyncAPIClient):
         self.flightplan = flightplan.FlightplanResource(self)
         self.geo_status = geo_status.GeoStatusResource(self)
         self.gnss_observationset = gnss_observationset.GnssObservationsetResource(self)
-        self.gnss_rawif = gnss_rawif.GnssRawifResource(self)
         self.ground_imagery = ground_imagery.GroundImageryResource(self)
         self.h3_geo = h3_geo.H3GeoResource(self)
         self.h3_geo_hex_cell = h3_geo_hex_cell.H3GeoHexCellResource(self)
         self.hazard = hazard.HazardResource(self)
-        self.ion_oobservation = ion_oobservation.IonOobservationResource(self)
         self.ir = ir.IrResource(self)
         self.isr_collections = isr_collections.IsrCollectionsResource(self)
         self.item = item.ItemResource(self)
@@ -602,8 +590,8 @@ class Unifieddatalibrary(SyncAPIClient):
         self.weather_report = weather_report.WeatherReportResource(self)
         self.gnss_observations = gnss_observations.GnssObservationsResource(self)
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResource(self)
-        self.iono_observation = iono_observation.IonoObservationResource(self)
-        self.report_and_activity = report_and_activity.ReportAndActivityResource(self)
+        self.iono_observations = iono_observations.IonoObservationsResource(self)
+        self.report_and_activities = report_and_activities.ReportAndActivitiesResource(self)
         self.secure_messaging = secure_messaging.SecureMessagingResource(self)
         self.scs = scs.ScsResource(self)
         self.scs_views = scs_views.ScsViewsResource(self)
@@ -755,7 +743,6 @@ class Unifieddatalibrary(SyncAPIClient):
 
 class AsyncUnifieddatalibrary(AsyncAPIClient):
     air_events: air_events.AsyncAirEventsResource
-    air_load_plans: air_load_plans.AsyncAirLoadPlansResource
     air_operations: air_operations.AsyncAirOperationsResource
     air_transport_missions: air_transport_missions.AsyncAirTransportMissionsResource
     aircraft: aircraft.AsyncAircraftResource
@@ -774,7 +761,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     antennas: antennas.AsyncAntennasResource
     attitude_data: attitude_data.AsyncAttitudeDataResource
     attitude_sets: attitude_sets.AsyncAttitudeSetsResource
-    attitudesets: attitudesets.AsyncAttitudesetsResource
     batteries: batteries.AsyncBatteriesResource
     batterydetails: batterydetails.AsyncBatterydetailsResource
     beam: beam.AsyncBeamResource
@@ -814,12 +800,10 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     flightplan: flightplan.AsyncFlightplanResource
     geo_status: geo_status.AsyncGeoStatusResource
     gnss_observationset: gnss_observationset.AsyncGnssObservationsetResource
-    gnss_rawif: gnss_rawif.AsyncGnssRawifResource
     ground_imagery: ground_imagery.AsyncGroundImageryResource
     h3_geo: h3_geo.AsyncH3GeoResource
     h3_geo_hex_cell: h3_geo_hex_cell.AsyncH3GeoHexCellResource
     hazard: hazard.AsyncHazardResource
-    ion_oobservation: ion_oobservation.AsyncIonOobservationResource
     ir: ir.AsyncIrResource
     isr_collections: isr_collections.AsyncIsrCollectionsResource
     item: item.AsyncItemResource
@@ -913,8 +897,8 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     weather_report: weather_report.AsyncWeatherReportResource
     gnss_observations: gnss_observations.AsyncGnssObservationsResource
     gnss_raw_if: gnss_raw_if.AsyncGnssRawIfResource
-    iono_observation: iono_observation.AsyncIonoObservationResource
-    report_and_activity: report_and_activity.AsyncReportAndActivityResource
+    iono_observations: iono_observations.AsyncIonoObservationsResource
+    report_and_activities: report_and_activities.AsyncReportAndActivitiesResource
     secure_messaging: secure_messaging.AsyncSecureMessagingResource
     scs: scs.AsyncScsResource
     scs_views: scs_views.AsyncScsViewsResource
@@ -988,7 +972,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         )
 
         self.air_events = air_events.AsyncAirEventsResource(self)
-        self.air_load_plans = air_load_plans.AsyncAirLoadPlansResource(self)
         self.air_operations = air_operations.AsyncAirOperationsResource(self)
         self.air_transport_missions = air_transport_missions.AsyncAirTransportMissionsResource(self)
         self.aircraft = aircraft.AsyncAircraftResource(self)
@@ -1007,7 +990,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.antennas = antennas.AsyncAntennasResource(self)
         self.attitude_data = attitude_data.AsyncAttitudeDataResource(self)
         self.attitude_sets = attitude_sets.AsyncAttitudeSetsResource(self)
-        self.attitudesets = attitudesets.AsyncAttitudesetsResource(self)
         self.batteries = batteries.AsyncBatteriesResource(self)
         self.batterydetails = batterydetails.AsyncBatterydetailsResource(self)
         self.beam = beam.AsyncBeamResource(self)
@@ -1047,12 +1029,10 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.flightplan = flightplan.AsyncFlightplanResource(self)
         self.geo_status = geo_status.AsyncGeoStatusResource(self)
         self.gnss_observationset = gnss_observationset.AsyncGnssObservationsetResource(self)
-        self.gnss_rawif = gnss_rawif.AsyncGnssRawifResource(self)
         self.ground_imagery = ground_imagery.AsyncGroundImageryResource(self)
         self.h3_geo = h3_geo.AsyncH3GeoResource(self)
         self.h3_geo_hex_cell = h3_geo_hex_cell.AsyncH3GeoHexCellResource(self)
         self.hazard = hazard.AsyncHazardResource(self)
-        self.ion_oobservation = ion_oobservation.AsyncIonOobservationResource(self)
         self.ir = ir.AsyncIrResource(self)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResource(self)
         self.item = item.AsyncItemResource(self)
@@ -1146,8 +1126,8 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.weather_report = weather_report.AsyncWeatherReportResource(self)
         self.gnss_observations = gnss_observations.AsyncGnssObservationsResource(self)
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResource(self)
-        self.iono_observation = iono_observation.AsyncIonoObservationResource(self)
-        self.report_and_activity = report_and_activity.AsyncReportAndActivityResource(self)
+        self.iono_observations = iono_observations.AsyncIonoObservationsResource(self)
+        self.report_and_activities = report_and_activities.AsyncReportAndActivitiesResource(self)
         self.secure_messaging = secure_messaging.AsyncSecureMessagingResource(self)
         self.scs = scs.AsyncScsResource(self)
         self.scs_views = scs_views.AsyncScsViewsResource(self)
@@ -1300,7 +1280,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
 class UnifieddatalibraryWithRawResponse:
     def __init__(self, client: Unifieddatalibrary) -> None:
         self.air_events = air_events.AirEventsResourceWithRawResponse(client.air_events)
-        self.air_load_plans = air_load_plans.AirLoadPlansResourceWithRawResponse(client.air_load_plans)
         self.air_operations = air_operations.AirOperationsResourceWithRawResponse(client.air_operations)
         self.air_transport_missions = air_transport_missions.AirTransportMissionsResourceWithRawResponse(
             client.air_transport_missions
@@ -1327,7 +1306,6 @@ class UnifieddatalibraryWithRawResponse:
         self.antennas = antennas.AntennasResourceWithRawResponse(client.antennas)
         self.attitude_data = attitude_data.AttitudeDataResourceWithRawResponse(client.attitude_data)
         self.attitude_sets = attitude_sets.AttitudeSetsResourceWithRawResponse(client.attitude_sets)
-        self.attitudesets = attitudesets.AttitudesetsResourceWithRawResponse(client.attitudesets)
         self.batteries = batteries.BatteriesResourceWithRawResponse(client.batteries)
         self.batterydetails = batterydetails.BatterydetailsResourceWithRawResponse(client.batterydetails)
         self.beam = beam.BeamResourceWithRawResponse(client.beam)
@@ -1377,12 +1355,10 @@ class UnifieddatalibraryWithRawResponse:
         self.gnss_observationset = gnss_observationset.GnssObservationsetResourceWithRawResponse(
             client.gnss_observationset
         )
-        self.gnss_rawif = gnss_rawif.GnssRawifResourceWithRawResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.GroundImageryResourceWithRawResponse(client.ground_imagery)
         self.h3_geo = h3_geo.H3GeoResourceWithRawResponse(client.h3_geo)
         self.h3_geo_hex_cell = h3_geo_hex_cell.H3GeoHexCellResourceWithRawResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.HazardResourceWithRawResponse(client.hazard)
-        self.ion_oobservation = ion_oobservation.IonOobservationResourceWithRawResponse(client.ion_oobservation)
         self.ir = ir.IrResourceWithRawResponse(client.ir)
         self.isr_collections = isr_collections.IsrCollectionsResourceWithRawResponse(client.isr_collections)
         self.item = item.ItemResourceWithRawResponse(client.item)
@@ -1514,9 +1490,9 @@ class UnifieddatalibraryWithRawResponse:
         self.weather_report = weather_report.WeatherReportResourceWithRawResponse(client.weather_report)
         self.gnss_observations = gnss_observations.GnssObservationsResourceWithRawResponse(client.gnss_observations)
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResourceWithRawResponse(client.gnss_raw_if)
-        self.iono_observation = iono_observation.IonoObservationResourceWithRawResponse(client.iono_observation)
-        self.report_and_activity = report_and_activity.ReportAndActivityResourceWithRawResponse(
-            client.report_and_activity
+        self.iono_observations = iono_observations.IonoObservationsResourceWithRawResponse(client.iono_observations)
+        self.report_and_activities = report_and_activities.ReportAndActivitiesResourceWithRawResponse(
+            client.report_and_activities
         )
         self.secure_messaging = secure_messaging.SecureMessagingResourceWithRawResponse(client.secure_messaging)
         self.scs = scs.ScsResourceWithRawResponse(client.scs)
@@ -1526,7 +1502,6 @@ class UnifieddatalibraryWithRawResponse:
 class AsyncUnifieddatalibraryWithRawResponse:
     def __init__(self, client: AsyncUnifieddatalibrary) -> None:
         self.air_events = air_events.AsyncAirEventsResourceWithRawResponse(client.air_events)
-        self.air_load_plans = air_load_plans.AsyncAirLoadPlansResourceWithRawResponse(client.air_load_plans)
         self.air_operations = air_operations.AsyncAirOperationsResourceWithRawResponse(client.air_operations)
         self.air_transport_missions = air_transport_missions.AsyncAirTransportMissionsResourceWithRawResponse(
             client.air_transport_missions
@@ -1557,7 +1532,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.antennas = antennas.AsyncAntennasResourceWithRawResponse(client.antennas)
         self.attitude_data = attitude_data.AsyncAttitudeDataResourceWithRawResponse(client.attitude_data)
         self.attitude_sets = attitude_sets.AsyncAttitudeSetsResourceWithRawResponse(client.attitude_sets)
-        self.attitudesets = attitudesets.AsyncAttitudesetsResourceWithRawResponse(client.attitudesets)
         self.batteries = batteries.AsyncBatteriesResourceWithRawResponse(client.batteries)
         self.batterydetails = batterydetails.AsyncBatterydetailsResourceWithRawResponse(client.batterydetails)
         self.beam = beam.AsyncBeamResourceWithRawResponse(client.beam)
@@ -1613,12 +1587,10 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.gnss_observationset = gnss_observationset.AsyncGnssObservationsetResourceWithRawResponse(
             client.gnss_observationset
         )
-        self.gnss_rawif = gnss_rawif.AsyncGnssRawifResourceWithRawResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.AsyncGroundImageryResourceWithRawResponse(client.ground_imagery)
         self.h3_geo = h3_geo.AsyncH3GeoResourceWithRawResponse(client.h3_geo)
         self.h3_geo_hex_cell = h3_geo_hex_cell.AsyncH3GeoHexCellResourceWithRawResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.AsyncHazardResourceWithRawResponse(client.hazard)
-        self.ion_oobservation = ion_oobservation.AsyncIonOobservationResourceWithRawResponse(client.ion_oobservation)
         self.ir = ir.AsyncIrResourceWithRawResponse(client.ir)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithRawResponse(client.isr_collections)
         self.item = item.AsyncItemResourceWithRawResponse(client.item)
@@ -1770,9 +1742,11 @@ class AsyncUnifieddatalibraryWithRawResponse:
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResourceWithRawResponse(client.gnss_raw_if)
-        self.iono_observation = iono_observation.AsyncIonoObservationResourceWithRawResponse(client.iono_observation)
-        self.report_and_activity = report_and_activity.AsyncReportAndActivityResourceWithRawResponse(
-            client.report_and_activity
+        self.iono_observations = iono_observations.AsyncIonoObservationsResourceWithRawResponse(
+            client.iono_observations
+        )
+        self.report_and_activities = report_and_activities.AsyncReportAndActivitiesResourceWithRawResponse(
+            client.report_and_activities
         )
         self.secure_messaging = secure_messaging.AsyncSecureMessagingResourceWithRawResponse(client.secure_messaging)
         self.scs = scs.AsyncScsResourceWithRawResponse(client.scs)
@@ -1782,7 +1756,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
 class UnifieddatalibraryWithStreamedResponse:
     def __init__(self, client: Unifieddatalibrary) -> None:
         self.air_events = air_events.AirEventsResourceWithStreamingResponse(client.air_events)
-        self.air_load_plans = air_load_plans.AirLoadPlansResourceWithStreamingResponse(client.air_load_plans)
         self.air_operations = air_operations.AirOperationsResourceWithStreamingResponse(client.air_operations)
         self.air_transport_missions = air_transport_missions.AirTransportMissionsResourceWithStreamingResponse(
             client.air_transport_missions
@@ -1813,7 +1786,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.antennas = antennas.AntennasResourceWithStreamingResponse(client.antennas)
         self.attitude_data = attitude_data.AttitudeDataResourceWithStreamingResponse(client.attitude_data)
         self.attitude_sets = attitude_sets.AttitudeSetsResourceWithStreamingResponse(client.attitude_sets)
-        self.attitudesets = attitudesets.AttitudesetsResourceWithStreamingResponse(client.attitudesets)
         self.batteries = batteries.BatteriesResourceWithStreamingResponse(client.batteries)
         self.batterydetails = batterydetails.BatterydetailsResourceWithStreamingResponse(client.batterydetails)
         self.beam = beam.BeamResourceWithStreamingResponse(client.beam)
@@ -1869,12 +1841,10 @@ class UnifieddatalibraryWithStreamedResponse:
         self.gnss_observationset = gnss_observationset.GnssObservationsetResourceWithStreamingResponse(
             client.gnss_observationset
         )
-        self.gnss_rawif = gnss_rawif.GnssRawifResourceWithStreamingResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.GroundImageryResourceWithStreamingResponse(client.ground_imagery)
         self.h3_geo = h3_geo.H3GeoResourceWithStreamingResponse(client.h3_geo)
         self.h3_geo_hex_cell = h3_geo_hex_cell.H3GeoHexCellResourceWithStreamingResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.HazardResourceWithStreamingResponse(client.hazard)
-        self.ion_oobservation = ion_oobservation.IonOobservationResourceWithStreamingResponse(client.ion_oobservation)
         self.ir = ir.IrResourceWithStreamingResponse(client.ir)
         self.isr_collections = isr_collections.IsrCollectionsResourceWithStreamingResponse(client.isr_collections)
         self.item = item.ItemResourceWithStreamingResponse(client.item)
@@ -2026,9 +1996,11 @@ class UnifieddatalibraryWithStreamedResponse:
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.GnssRawIfResourceWithStreamingResponse(client.gnss_raw_if)
-        self.iono_observation = iono_observation.IonoObservationResourceWithStreamingResponse(client.iono_observation)
-        self.report_and_activity = report_and_activity.ReportAndActivityResourceWithStreamingResponse(
-            client.report_and_activity
+        self.iono_observations = iono_observations.IonoObservationsResourceWithStreamingResponse(
+            client.iono_observations
+        )
+        self.report_and_activities = report_and_activities.ReportAndActivitiesResourceWithStreamingResponse(
+            client.report_and_activities
         )
         self.secure_messaging = secure_messaging.SecureMessagingResourceWithStreamingResponse(client.secure_messaging)
         self.scs = scs.ScsResourceWithStreamingResponse(client.scs)
@@ -2038,7 +2010,6 @@ class UnifieddatalibraryWithStreamedResponse:
 class AsyncUnifieddatalibraryWithStreamedResponse:
     def __init__(self, client: AsyncUnifieddatalibrary) -> None:
         self.air_events = air_events.AsyncAirEventsResourceWithStreamingResponse(client.air_events)
-        self.air_load_plans = air_load_plans.AsyncAirLoadPlansResourceWithStreamingResponse(client.air_load_plans)
         self.air_operations = air_operations.AsyncAirOperationsResourceWithStreamingResponse(client.air_operations)
         self.air_transport_missions = air_transport_missions.AsyncAirTransportMissionsResourceWithStreamingResponse(
             client.air_transport_missions
@@ -2073,7 +2044,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.antennas = antennas.AsyncAntennasResourceWithStreamingResponse(client.antennas)
         self.attitude_data = attitude_data.AsyncAttitudeDataResourceWithStreamingResponse(client.attitude_data)
         self.attitude_sets = attitude_sets.AsyncAttitudeSetsResourceWithStreamingResponse(client.attitude_sets)
-        self.attitudesets = attitudesets.AsyncAttitudesetsResourceWithStreamingResponse(client.attitudesets)
         self.batteries = batteries.AsyncBatteriesResourceWithStreamingResponse(client.batteries)
         self.batterydetails = batterydetails.AsyncBatterydetailsResourceWithStreamingResponse(client.batterydetails)
         self.beam = beam.AsyncBeamResourceWithStreamingResponse(client.beam)
@@ -2137,14 +2107,10 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.gnss_observationset = gnss_observationset.AsyncGnssObservationsetResourceWithStreamingResponse(
             client.gnss_observationset
         )
-        self.gnss_rawif = gnss_rawif.AsyncGnssRawifResourceWithStreamingResponse(client.gnss_rawif)
         self.ground_imagery = ground_imagery.AsyncGroundImageryResourceWithStreamingResponse(client.ground_imagery)
         self.h3_geo = h3_geo.AsyncH3GeoResourceWithStreamingResponse(client.h3_geo)
         self.h3_geo_hex_cell = h3_geo_hex_cell.AsyncH3GeoHexCellResourceWithStreamingResponse(client.h3_geo_hex_cell)
         self.hazard = hazard.AsyncHazardResourceWithStreamingResponse(client.hazard)
-        self.ion_oobservation = ion_oobservation.AsyncIonOobservationResourceWithStreamingResponse(
-            client.ion_oobservation
-        )
         self.ir = ir.AsyncIrResourceWithStreamingResponse(client.ir)
         self.isr_collections = isr_collections.AsyncIsrCollectionsResourceWithStreamingResponse(client.isr_collections)
         self.item = item.AsyncItemResourceWithStreamingResponse(client.item)
@@ -2302,11 +2268,11 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
             client.gnss_observations
         )
         self.gnss_raw_if = gnss_raw_if.AsyncGnssRawIfResourceWithStreamingResponse(client.gnss_raw_if)
-        self.iono_observation = iono_observation.AsyncIonoObservationResourceWithStreamingResponse(
-            client.iono_observation
+        self.iono_observations = iono_observations.AsyncIonoObservationsResourceWithStreamingResponse(
+            client.iono_observations
         )
-        self.report_and_activity = report_and_activity.AsyncReportAndActivityResourceWithStreamingResponse(
-            client.report_and_activity
+        self.report_and_activities = report_and_activities.AsyncReportAndActivitiesResourceWithStreamingResponse(
+            client.report_and_activities
         )
         self.secure_messaging = secure_messaging.AsyncSecureMessagingResourceWithStreamingResponse(
             client.secure_messaging

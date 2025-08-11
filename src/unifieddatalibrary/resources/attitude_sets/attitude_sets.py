@@ -13,6 +13,7 @@ from ...types import (
     attitude_set_count_params,
     attitude_set_tuple_params,
     attitude_set_create_params,
+    attitude_set_retrieve_params,
     attitude_set_unvalidated_publish_params,
 )
 from .history import (
@@ -36,6 +37,7 @@ from ..._response import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.attitudeset_abridged import AttitudesetAbridged
+from ...types.shared.attitudeset_full import AttitudesetFull
 from ...types.attitude_set_tuple_response import AttitudeSetTupleResponse
 from ...types.attitude_set_query_help_response import AttitudeSetQueryHelpResponse
 
@@ -280,6 +282,52 @@ class AttitudeSetsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def retrieve(
+        self,
+        id: str,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AttitudesetFull:
+        """
+        Service operation to get a single AttitudeSet record by its unique ID passed as
+        a path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/udl/attitudeset/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    attitude_set_retrieve_params.AttitudeSetRetrieveParams,
+                ),
+            ),
+            cast_to=AttitudesetFull,
         )
 
     def list(
@@ -928,6 +976,52 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AttitudesetFull:
+        """
+        Service operation to get a single AttitudeSet record by its unique ID passed as
+        a path parameter.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/udl/attitudeset/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    attitude_set_retrieve_params.AttitudeSetRetrieveParams,
+                ),
+            ),
+            cast_to=AttitudesetFull,
+        )
+
     def list(
         self,
         *,
@@ -1341,6 +1435,9 @@ class AttitudeSetsResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             attitude_sets.create,
         )
+        self.retrieve = to_raw_response_wrapper(
+            attitude_sets.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             attitude_sets.list,
         )
@@ -1368,6 +1465,9 @@ class AsyncAttitudeSetsResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             attitude_sets.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            attitude_sets.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
             attitude_sets.list,
@@ -1397,6 +1497,9 @@ class AttitudeSetsResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             attitude_sets.create,
         )
+        self.retrieve = to_streamed_response_wrapper(
+            attitude_sets.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             attitude_sets.list,
         )
@@ -1424,6 +1527,9 @@ class AsyncAttitudeSetsResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             attitude_sets.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            attitude_sets.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
             attitude_sets.list,

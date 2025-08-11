@@ -2,18 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Union, Mapping, cast
+from typing import Union, Iterable
 from datetime import datetime
 
 import httpx
 
 from ...types import (
-    gnss_raw_if_get_params,
-    gnss_raw_if_list_params,
-    gnss_raw_if_count_params,
-    gnss_raw_if_tuple_params,
-    gnss_raw_if_file_get_params,
-    gnss_raw_if_upload_zip_params,
+    iono_observation_list_params,
+    iono_observation_count_params,
+    iono_observation_tuple_params,
+    iono_observation_create_bulk_params,
+    iono_observation_unvalidated_publish_params,
 )
 from .history import (
     HistoryResource,
@@ -23,62 +22,53 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
-from ..._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
-    BinaryAPIResponse,
-    AsyncBinaryAPIResponse,
-    StreamedBinaryAPIResponse,
-    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
-    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
-    to_custom_streamed_response_wrapper,
-    async_to_custom_raw_response_wrapper,
-    async_to_custom_streamed_response_wrapper,
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.gnss_raw_if_get_response import GnssRawIfGetResponse
-from ...types.gnss_raw_if_list_response import GnssRawIfListResponse
-from ...types.gnss_raw_if_tuple_response import GnssRawIfTupleResponse
-from ...types.gnss_raw_if_queryhelp_response import GnssRawIfQueryhelpResponse
+from ...types.iono_observation_list_response import IonoObservationListResponse
+from ...types.iono_observation_tuple_response import IonoObservationTupleResponse
+from ...types.iono_observation_queryhelp_response import IonoObservationQueryhelpResponse
 
-__all__ = ["GnssRawIfResource", "AsyncGnssRawIfResource"]
+__all__ = ["IonoObservationsResource", "AsyncIonoObservationsResource"]
 
 
-class GnssRawIfResource(SyncAPIResource):
+class IonoObservationsResource(SyncAPIResource):
     @cached_property
     def history(self) -> HistoryResource:
         return HistoryResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> GnssRawIfResourceWithRawResponse:
+    def with_raw_response(self) -> IonoObservationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
-        return GnssRawIfResourceWithRawResponse(self)
+        return IonoObservationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> GnssRawIfResourceWithStreamingResponse:
+    def with_streaming_response(self) -> IonoObservationsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
-        return GnssRawIfResourceWithStreamingResponse(self)
+        return IonoObservationsResourceWithStreamingResponse(self)
 
     def list(
         self,
         *,
-        start_time: Union[str, datetime],
+        start_time_utc: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -87,7 +77,7 @@ class GnssRawIfResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncOffsetPage[GnssRawIfListResponse]:
+    ) -> SyncOffsetPage[IonoObservationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -95,8 +85,7 @@ class GnssRawIfResource(SyncAPIResource):
         parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          start_time_utc: Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -107,8 +96,8 @@ class GnssRawIfResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/udl/gnssrawif",
-            page=SyncOffsetPage[GnssRawIfListResponse],
+            "/udl/ionoobservation",
+            page=SyncOffsetPage[IonoObservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -116,20 +105,20 @@ class GnssRawIfResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_time": start_time,
+                        "start_time_utc": start_time_utc,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    gnss_raw_if_list_params.GnssRawIfListParams,
+                    iono_observation_list_params.IonoObservationListParams,
                 ),
             ),
-            model=GnssRawIfListResponse,
+            model=IonoObservationListResponse,
         )
 
     def count(
         self,
         *,
-        start_time: Union[str, datetime],
+        start_time_utc: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -147,8 +136,7 @@ class GnssRawIfResource(SyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          start_time_utc: Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -160,7 +148,7 @@ class GnssRawIfResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return self._get(
-            "/udl/gnssrawif/count",
+            "/udl/ionoobservation/count",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -168,32 +156,33 @@ class GnssRawIfResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_time": start_time,
+                        "start_time_utc": start_time_utc,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    gnss_raw_if_count_params.GnssRawIfCountParams,
+                    iono_observation_count_params.IonoObservationCountParams,
                 ),
             ),
             cast_to=str,
         )
 
-    def file_get(
+    def create_bulk(
         self,
-        id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        body: Iterable[iono_observation_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BinaryAPIResponse:
+    ) -> None:
         """
-        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
-        a path parameter. The file is returned as an attachment Content-Disposition.
+        Service operation intended for initial integration only, to take a list of
+        IonoObservation records as a POST body and ingest into the database. This
+        operation is not intended to be used for automated feeds into UDL. Data
+        providers should contact the UDL team for specific role assignments and for
+        instructions on setting up a permanent feed through an alternate mechanism.
 
         Args:
           extra_headers: Send extra headers
@@ -204,71 +193,14 @@ class GnssRawIfResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return self._get(
-            f"/udl/gnssrawif/getFile/{id}",
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/udl/ionoobservation/createBulk",
+            body=maybe_transform(body, Iterable[iono_observation_create_bulk_params.Body]),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    gnss_raw_if_file_get_params.GnssRawIfFileGetParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BinaryAPIResponse,
-        )
-
-    def get(
-        self,
-        id: str,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfGetResponse:
-        """
-        Service operation to get a single GNSSRawIF by its unique ID passed as a path
-        parameter.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/udl/gnssrawif/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    gnss_raw_if_get_params.GnssRawIfGetParams,
-                ),
-            ),
-            cast_to=GnssRawIfGetResponse,
+            cast_to=NoneType,
         )
 
     def queryhelp(
@@ -280,24 +212,24 @@ class GnssRawIfResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfQueryhelpResponse:
+    ) -> IonoObservationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
         return self._get(
-            "/udl/gnssrawif/queryhelp",
+            "/udl/ionoobservation/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GnssRawIfQueryhelpResponse,
+            cast_to=IonoObservationQueryhelpResponse,
         )
 
     def tuple(
         self,
         *,
         columns: str,
-        start_time: Union[str, datetime],
+        start_time_utc: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -306,7 +238,7 @@ class GnssRawIfResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfTupleResponse:
+    ) -> IonoObservationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
         columns/fields. Requested columns are specified by the 'columns' query parameter
@@ -323,8 +255,7 @@ class GnssRawIfResource(SyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          start_time_utc: Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -335,7 +266,7 @@ class GnssRawIfResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/udl/gnssrawif/tuple",
+            "/udl/ionoobservation/tuple",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -344,20 +275,20 @@ class GnssRawIfResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "columns": columns,
-                        "start_time": start_time,
+                        "start_time_utc": start_time_utc,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    gnss_raw_if_tuple_params.GnssRawIfTupleParams,
+                    iono_observation_tuple_params.IonoObservationTupleParams,
                 ),
             ),
-            cast_to=GnssRawIfTupleResponse,
+            cast_to=IonoObservationTupleResponse,
         )
 
-    def upload_zip(
+    def unvalidated_publish(
         self,
         *,
-        file: FileTypes,
+        body: Iterable[iono_observation_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -366,27 +297,13 @@ class GnssRawIfResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Upload an HDF5 file with its metadata.
-
-        The request body requires a zip file containing exactly two files:\\
-        1\\)) A file with the `.json` file extension whose content conforms to the `GNSSRawIF_Ingest`
-        schema.\\
-        2\\)) A file with the `.hdf5` file extension.
-
-        The JSON and HDF5 files will be associated with each other via the `id` field.
-        Query the metadata via `GET /udl/gnssrawif` and use
-        `GET /udl/gnssrawif/getFile/{id}` to retrieve the HDF5 file.
-
-        This operation only accepts application/zip media. The application/json request
-        body is documented to provide a convenient reference to the ingest schema.
-
-        This operation is intended to be used for automated feeds into UDL. A specific
-        role is required to perform this service operation. Please contact the UDL team
-        for assistance.
+        Service operation to take Ionospheric Observation entries as a POST body and
+        ingest into the database with or without dupe detection. Default is no dupe
+        checking. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
 
         Args:
-          file: Zip file containing files described in the specification
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -396,16 +313,9 @@ class GnssRawIfResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers["Content-Type"] = "multipart/form-data"
         return self._post(
-            "/filedrop/udl-gnssrawif",
-            body=maybe_transform(body, gnss_raw_if_upload_zip_params.GnssRawIfUploadZipParams),
-            files=files,
+            "/filedrop/udl-ionoobs",
+            body=maybe_transform(body, Iterable[iono_observation_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -413,34 +323,34 @@ class GnssRawIfResource(SyncAPIResource):
         )
 
 
-class AsyncGnssRawIfResource(AsyncAPIResource):
+class AsyncIonoObservationsResource(AsyncAPIResource):
     @cached_property
     def history(self) -> AsyncHistoryResource:
         return AsyncHistoryResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncGnssRawIfResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncIonoObservationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
         """
-        return AsyncGnssRawIfResourceWithRawResponse(self)
+        return AsyncIonoObservationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncGnssRawIfResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncIonoObservationsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
-        return AsyncGnssRawIfResourceWithStreamingResponse(self)
+        return AsyncIonoObservationsResourceWithStreamingResponse(self)
 
     def list(
         self,
         *,
-        start_time: Union[str, datetime],
+        start_time_utc: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -449,7 +359,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[GnssRawIfListResponse, AsyncOffsetPage[GnssRawIfListResponse]]:
+    ) -> AsyncPaginator[IonoObservationListResponse, AsyncOffsetPage[IonoObservationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
@@ -457,8 +367,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          start_time_utc: Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -469,8 +378,8 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/udl/gnssrawif",
-            page=AsyncOffsetPage[GnssRawIfListResponse],
+            "/udl/ionoobservation",
+            page=AsyncOffsetPage[IonoObservationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -478,20 +387,20 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_time": start_time,
+                        "start_time_utc": start_time_utc,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    gnss_raw_if_list_params.GnssRawIfListParams,
+                    iono_observation_list_params.IonoObservationListParams,
                 ),
             ),
-            model=GnssRawIfListResponse,
+            model=IonoObservationListResponse,
         )
 
     async def count(
         self,
         *,
-        start_time: Union[str, datetime],
+        start_time_utc: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -509,8 +418,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         valid/required query parameter information.
 
         Args:
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          start_time_utc: Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -522,7 +430,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
         return await self._get(
-            "/udl/gnssrawif/count",
+            "/udl/ionoobservation/count",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -530,32 +438,33 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "start_time": start_time,
+                        "start_time_utc": start_time_utc,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    gnss_raw_if_count_params.GnssRawIfCountParams,
+                    iono_observation_count_params.IonoObservationCountParams,
                 ),
             ),
             cast_to=str,
         )
 
-    async def file_get(
+    async def create_bulk(
         self,
-        id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        body: Iterable[iono_observation_create_bulk_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncBinaryAPIResponse:
+    ) -> None:
         """
-        Service operation to get a single GNSSRAWIF hdf5 file by its unique ID passed as
-        a path parameter. The file is returned as an attachment Content-Disposition.
+        Service operation intended for initial integration only, to take a list of
+        IonoObservation records as a POST body and ingest into the database. This
+        operation is not intended to be used for automated feeds into UDL. Data
+        providers should contact the UDL team for specific role assignments and for
+        instructions on setting up a permanent feed through an alternate mechanism.
 
         Args:
           extra_headers: Send extra headers
@@ -566,71 +475,14 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return await self._get(
-            f"/udl/gnssrawif/getFile/{id}",
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/udl/ionoobservation/createBulk",
+            body=await async_maybe_transform(body, Iterable[iono_observation_create_bulk_params.Body]),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    gnss_raw_if_file_get_params.GnssRawIfFileGetParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AsyncBinaryAPIResponse,
-        )
-
-    async def get(
-        self,
-        id: str,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfGetResponse:
-        """
-        Service operation to get a single GNSSRawIF by its unique ID passed as a path
-        parameter.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/udl/gnssrawif/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    gnss_raw_if_get_params.GnssRawIfGetParams,
-                ),
-            ),
-            cast_to=GnssRawIfGetResponse,
+            cast_to=NoneType,
         )
 
     async def queryhelp(
@@ -642,24 +494,24 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfQueryhelpResponse:
+    ) -> IonoObservationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
         """
         return await self._get(
-            "/udl/gnssrawif/queryhelp",
+            "/udl/ionoobservation/queryhelp",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GnssRawIfQueryhelpResponse,
+            cast_to=IonoObservationQueryhelpResponse,
         )
 
     async def tuple(
         self,
         *,
         columns: str,
-        start_time: Union[str, datetime],
+        start_time_utc: Union[str, datetime],
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -668,7 +520,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GnssRawIfTupleResponse:
+    ) -> IonoObservationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
         columns/fields. Requested columns are specified by the 'columns' query parameter
@@ -685,8 +537,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
               classification marking of the data, if applicable. See the ‘queryhelp’ operation
               for a complete list of possible fields.
 
-          start_time: Start time of the data contained in the associated binary file, in ISO 8601 UTC
-              format with microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+          start_time_utc: Sounding Start time in ISO8601 UTC format. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
 
           extra_headers: Send extra headers
 
@@ -697,7 +548,7 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/udl/gnssrawif/tuple",
+            "/udl/ionoobservation/tuple",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -706,20 +557,20 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "columns": columns,
-                        "start_time": start_time,
+                        "start_time_utc": start_time_utc,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    gnss_raw_if_tuple_params.GnssRawIfTupleParams,
+                    iono_observation_tuple_params.IonoObservationTupleParams,
                 ),
             ),
-            cast_to=GnssRawIfTupleResponse,
+            cast_to=IonoObservationTupleResponse,
         )
 
-    async def upload_zip(
+    async def unvalidated_publish(
         self,
         *,
-        file: FileTypes,
+        body: Iterable[iono_observation_unvalidated_publish_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -728,27 +579,13 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Upload an HDF5 file with its metadata.
-
-        The request body requires a zip file containing exactly two files:\\
-        1\\)) A file with the `.json` file extension whose content conforms to the `GNSSRawIF_Ingest`
-        schema.\\
-        2\\)) A file with the `.hdf5` file extension.
-
-        The JSON and HDF5 files will be associated with each other via the `id` field.
-        Query the metadata via `GET /udl/gnssrawif` and use
-        `GET /udl/gnssrawif/getFile/{id}` to retrieve the HDF5 file.
-
-        This operation only accepts application/zip media. The application/json request
-        body is documented to provide a convenient reference to the ingest schema.
-
-        This operation is intended to be used for automated feeds into UDL. A specific
-        role is required to perform this service operation. Please contact the UDL team
-        for assistance.
+        Service operation to take Ionospheric Observation entries as a POST body and
+        ingest into the database with or without dupe detection. Default is no dupe
+        checking. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
 
         Args:
-          file: Zip file containing files described in the specification
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -758,16 +595,9 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        body = deepcopy_minimal({"file": file})
-        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        extra_headers["Content-Type"] = "multipart/form-data"
         return await self._post(
-            "/filedrop/udl-gnssrawif",
-            body=await async_maybe_transform(body, gnss_raw_if_upload_zip_params.GnssRawIfUploadZipParams),
-            files=files,
+            "/filedrop/udl-ionoobs",
+            body=await async_maybe_transform(body, Iterable[iono_observation_unvalidated_publish_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -775,129 +605,113 @@ class AsyncGnssRawIfResource(AsyncAPIResource):
         )
 
 
-class GnssRawIfResourceWithRawResponse:
-    def __init__(self, gnss_raw_if: GnssRawIfResource) -> None:
-        self._gnss_raw_if = gnss_raw_if
+class IonoObservationsResourceWithRawResponse:
+    def __init__(self, iono_observations: IonoObservationsResource) -> None:
+        self._iono_observations = iono_observations
 
         self.list = to_raw_response_wrapper(
-            gnss_raw_if.list,
+            iono_observations.list,
         )
         self.count = to_raw_response_wrapper(
-            gnss_raw_if.count,
+            iono_observations.count,
         )
-        self.file_get = to_custom_raw_response_wrapper(
-            gnss_raw_if.file_get,
-            BinaryAPIResponse,
-        )
-        self.get = to_raw_response_wrapper(
-            gnss_raw_if.get,
+        self.create_bulk = to_raw_response_wrapper(
+            iono_observations.create_bulk,
         )
         self.queryhelp = to_raw_response_wrapper(
-            gnss_raw_if.queryhelp,
+            iono_observations.queryhelp,
         )
         self.tuple = to_raw_response_wrapper(
-            gnss_raw_if.tuple,
+            iono_observations.tuple,
         )
-        self.upload_zip = to_raw_response_wrapper(
-            gnss_raw_if.upload_zip,
+        self.unvalidated_publish = to_raw_response_wrapper(
+            iono_observations.unvalidated_publish,
         )
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
-        return HistoryResourceWithRawResponse(self._gnss_raw_if.history)
+        return HistoryResourceWithRawResponse(self._iono_observations.history)
 
 
-class AsyncGnssRawIfResourceWithRawResponse:
-    def __init__(self, gnss_raw_if: AsyncGnssRawIfResource) -> None:
-        self._gnss_raw_if = gnss_raw_if
+class AsyncIonoObservationsResourceWithRawResponse:
+    def __init__(self, iono_observations: AsyncIonoObservationsResource) -> None:
+        self._iono_observations = iono_observations
 
         self.list = async_to_raw_response_wrapper(
-            gnss_raw_if.list,
+            iono_observations.list,
         )
         self.count = async_to_raw_response_wrapper(
-            gnss_raw_if.count,
+            iono_observations.count,
         )
-        self.file_get = async_to_custom_raw_response_wrapper(
-            gnss_raw_if.file_get,
-            AsyncBinaryAPIResponse,
-        )
-        self.get = async_to_raw_response_wrapper(
-            gnss_raw_if.get,
+        self.create_bulk = async_to_raw_response_wrapper(
+            iono_observations.create_bulk,
         )
         self.queryhelp = async_to_raw_response_wrapper(
-            gnss_raw_if.queryhelp,
+            iono_observations.queryhelp,
         )
         self.tuple = async_to_raw_response_wrapper(
-            gnss_raw_if.tuple,
+            iono_observations.tuple,
         )
-        self.upload_zip = async_to_raw_response_wrapper(
-            gnss_raw_if.upload_zip,
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            iono_observations.unvalidated_publish,
         )
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
-        return AsyncHistoryResourceWithRawResponse(self._gnss_raw_if.history)
+        return AsyncHistoryResourceWithRawResponse(self._iono_observations.history)
 
 
-class GnssRawIfResourceWithStreamingResponse:
-    def __init__(self, gnss_raw_if: GnssRawIfResource) -> None:
-        self._gnss_raw_if = gnss_raw_if
+class IonoObservationsResourceWithStreamingResponse:
+    def __init__(self, iono_observations: IonoObservationsResource) -> None:
+        self._iono_observations = iono_observations
 
         self.list = to_streamed_response_wrapper(
-            gnss_raw_if.list,
+            iono_observations.list,
         )
         self.count = to_streamed_response_wrapper(
-            gnss_raw_if.count,
+            iono_observations.count,
         )
-        self.file_get = to_custom_streamed_response_wrapper(
-            gnss_raw_if.file_get,
-            StreamedBinaryAPIResponse,
-        )
-        self.get = to_streamed_response_wrapper(
-            gnss_raw_if.get,
+        self.create_bulk = to_streamed_response_wrapper(
+            iono_observations.create_bulk,
         )
         self.queryhelp = to_streamed_response_wrapper(
-            gnss_raw_if.queryhelp,
+            iono_observations.queryhelp,
         )
         self.tuple = to_streamed_response_wrapper(
-            gnss_raw_if.tuple,
+            iono_observations.tuple,
         )
-        self.upload_zip = to_streamed_response_wrapper(
-            gnss_raw_if.upload_zip,
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            iono_observations.unvalidated_publish,
         )
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
-        return HistoryResourceWithStreamingResponse(self._gnss_raw_if.history)
+        return HistoryResourceWithStreamingResponse(self._iono_observations.history)
 
 
-class AsyncGnssRawIfResourceWithStreamingResponse:
-    def __init__(self, gnss_raw_if: AsyncGnssRawIfResource) -> None:
-        self._gnss_raw_if = gnss_raw_if
+class AsyncIonoObservationsResourceWithStreamingResponse:
+    def __init__(self, iono_observations: AsyncIonoObservationsResource) -> None:
+        self._iono_observations = iono_observations
 
         self.list = async_to_streamed_response_wrapper(
-            gnss_raw_if.list,
+            iono_observations.list,
         )
         self.count = async_to_streamed_response_wrapper(
-            gnss_raw_if.count,
+            iono_observations.count,
         )
-        self.file_get = async_to_custom_streamed_response_wrapper(
-            gnss_raw_if.file_get,
-            AsyncStreamedBinaryAPIResponse,
-        )
-        self.get = async_to_streamed_response_wrapper(
-            gnss_raw_if.get,
+        self.create_bulk = async_to_streamed_response_wrapper(
+            iono_observations.create_bulk,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
-            gnss_raw_if.queryhelp,
+            iono_observations.queryhelp,
         )
         self.tuple = async_to_streamed_response_wrapper(
-            gnss_raw_if.tuple,
+            iono_observations.tuple,
         )
-        self.upload_zip = async_to_streamed_response_wrapper(
-            gnss_raw_if.upload_zip,
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            iono_observations.unvalidated_publish,
         )
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
-        return AsyncHistoryResourceWithStreamingResponse(self._gnss_raw_if.history)
+        return AsyncHistoryResourceWithStreamingResponse(self._iono_observations.history)

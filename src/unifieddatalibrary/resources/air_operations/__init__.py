@@ -16,14 +16,6 @@ from .air_operations import (
     AirOperationsResourceWithStreamingResponse,
     AsyncAirOperationsResourceWithStreamingResponse,
 )
-from .aircraft_sortie import (
-    AircraftSortieResource,
-    AsyncAircraftSortieResource,
-    AircraftSortieResourceWithRawResponse,
-    AsyncAircraftSortieResourceWithRawResponse,
-    AircraftSortieResourceWithStreamingResponse,
-    AsyncAircraftSortieResourceWithStreamingResponse,
-)
 from .aircraft_sorties import (
     AircraftSortiesResource,
     AsyncAircraftSortiesResource,
@@ -64,12 +56,6 @@ __all__ = [
     "AsyncAirTaskingOrdersResourceWithRawResponse",
     "AirTaskingOrdersResourceWithStreamingResponse",
     "AsyncAirTaskingOrdersResourceWithStreamingResponse",
-    "AircraftSortieResource",
-    "AsyncAircraftSortieResource",
-    "AircraftSortieResourceWithRawResponse",
-    "AsyncAircraftSortieResourceWithRawResponse",
-    "AircraftSortieResourceWithStreamingResponse",
-    "AsyncAircraftSortieResourceWithStreamingResponse",
     "AircraftSortiesResource",
     "AsyncAircraftSortiesResource",
     "AircraftSortiesResourceWithRawResponse",
