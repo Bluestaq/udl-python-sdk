@@ -5,6 +5,6 @@ from typing_extensions import TypeAlias
 
 from .dataowner_abridged import DataownerAbridged
 
-__all__ = ["ProviderMetadataRetrieveResponse"]
+__all__ = ["DataownerRetrieveProviderMetadataResponse"]
 
-ProviderMetadataRetrieveResponse: TypeAlias = List[DataownerAbridged]
+DataownerRetrieveProviderMetadataResponse: TypeAlias = List[DataownerAbridged]
