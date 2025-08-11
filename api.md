@@ -4515,6 +4515,9 @@ from unifieddatalibrary.types.supporting_data import (
     DataownerAbridged,
     DataownerRetrieveResponse,
     DataownerCountResponse,
+    DataownerQueryHelpResponse,
+    DataownerRetrieveDataOwnerTypesResponse,
+    DataownerRetrieveProviderMetadataResponse,
 )
 ```
 
@@ -4522,42 +4525,9 @@ Methods:
 
 - <code title="get /udl/dataowner">client.supporting_data.dataowner.<a href="./src/unifieddatalibrary/resources/supporting_data/dataowner.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/supporting_data/dataowner_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/supporting_data/dataowner_retrieve_response.py">DataownerRetrieveResponse</a></code>
 - <code title="get /udl/dataowner/count">client.supporting_data.dataowner.<a href="./src/unifieddatalibrary/resources/supporting_data/dataowner.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/supporting_data/dataowner_count_params.py">params</a>) -> str</code>
-
-## DataownerTypes
-
-Types:
-
-```python
-from unifieddatalibrary.types.supporting_data import DataownerTypeListResponse
-```
-
-Methods:
-
-- <code title="get /udl/dataowner/getDataOwnerTypes">client.supporting_data.dataowner_types.<a href="./src/unifieddatalibrary/resources/supporting_data/dataowner_types.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/supporting_data/dataowner_type_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/supporting_data/dataowner_type_list_response.py">SyncOffsetPage[DataownerTypeListResponse]</a></code>
-
-## ProviderMetadata
-
-Types:
-
-```python
-from unifieddatalibrary.types.supporting_data import ProviderMetadataRetrieveResponse
-```
-
-Methods:
-
-- <code title="get /udl/dataowner/providerMetadata">client.supporting_data.provider_metadata.<a href="./src/unifieddatalibrary/resources/supporting_data/provider_metadata.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/supporting_data/provider_metadata_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/supporting_data/provider_metadata_retrieve_response.py">ProviderMetadataRetrieveResponse</a></code>
-
-## QueryHelp
-
-Types:
-
-```python
-from unifieddatalibrary.types.supporting_data import QueryHelpRetrieveResponse
-```
-
-Methods:
-
-- <code title="get /udl/dataowner/queryhelp">client.supporting_data.query_help.<a href="./src/unifieddatalibrary/resources/supporting_data/query_help.py">retrieve</a>() -> <a href="./src/unifieddatalibrary/types/supporting_data/query_help_retrieve_response.py">QueryHelpRetrieveResponse</a></code>
+- <code title="get /udl/dataowner/queryhelp">client.supporting_data.dataowner.<a href="./src/unifieddatalibrary/resources/supporting_data/dataowner.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/supporting_data/dataowner_query_help_response.py">DataownerQueryHelpResponse</a></code>
+- <code title="get /udl/dataowner/getDataOwnerTypes">client.supporting_data.dataowner.<a href="./src/unifieddatalibrary/resources/supporting_data/dataowner.py">retrieve_data_owner_types</a>(\*\*<a href="src/unifieddatalibrary/types/supporting_data/dataowner_retrieve_data_owner_types_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/supporting_data/dataowner_retrieve_data_owner_types_response.py">DataownerRetrieveDataOwnerTypesResponse</a></code>
+- <code title="get /udl/dataowner/providerMetadata">client.supporting_data.dataowner.<a href="./src/unifieddatalibrary/resources/supporting_data/dataowner.py">retrieve_provider_metadata</a>(\*\*<a href="src/unifieddatalibrary/types/supporting_data/dataowner_retrieve_provider_metadata_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/supporting_data/dataowner_retrieve_provider_metadata_response.py">DataownerRetrieveProviderMetadataResponse</a></code>
 
 # Surface
 

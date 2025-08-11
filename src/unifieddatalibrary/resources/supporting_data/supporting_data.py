@@ -19,31 +19,7 @@ from .data_types import (
     DataTypesResourceWithStreamingResponse,
     AsyncDataTypesResourceWithStreamingResponse,
 )
-from .query_help import (
-    QueryHelpResource,
-    AsyncQueryHelpResource,
-    QueryHelpResourceWithRawResponse,
-    AsyncQueryHelpResourceWithRawResponse,
-    QueryHelpResourceWithStreamingResponse,
-    AsyncQueryHelpResourceWithStreamingResponse,
-)
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .dataowner_types import (
-    DataownerTypesResource,
-    AsyncDataownerTypesResource,
-    DataownerTypesResourceWithRawResponse,
-    AsyncDataownerTypesResourceWithRawResponse,
-    DataownerTypesResourceWithStreamingResponse,
-    AsyncDataownerTypesResourceWithStreamingResponse,
-)
-from .provider_metadata import (
-    ProviderMetadataResource,
-    AsyncProviderMetadataResource,
-    ProviderMetadataResourceWithRawResponse,
-    AsyncProviderMetadataResourceWithRawResponse,
-    ProviderMetadataResourceWithStreamingResponse,
-    AsyncProviderMetadataResourceWithStreamingResponse,
-)
 
 __all__ = ["SupportingDataResource", "AsyncSupportingDataResource"]
 
@@ -56,18 +32,6 @@ class SupportingDataResource(SyncAPIResource):
     @cached_property
     def dataowner(self) -> DataownerResource:
         return DataownerResource(self._client)
-
-    @cached_property
-    def dataowner_types(self) -> DataownerTypesResource:
-        return DataownerTypesResource(self._client)
-
-    @cached_property
-    def provider_metadata(self) -> ProviderMetadataResource:
-        return ProviderMetadataResource(self._client)
-
-    @cached_property
-    def query_help(self) -> QueryHelpResource:
-        return QueryHelpResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> SupportingDataResourceWithRawResponse:
@@ -97,18 +61,6 @@ class AsyncSupportingDataResource(AsyncAPIResource):
     @cached_property
     def dataowner(self) -> AsyncDataownerResource:
         return AsyncDataownerResource(self._client)
-
-    @cached_property
-    def dataowner_types(self) -> AsyncDataownerTypesResource:
-        return AsyncDataownerTypesResource(self._client)
-
-    @cached_property
-    def provider_metadata(self) -> AsyncProviderMetadataResource:
-        return AsyncProviderMetadataResource(self._client)
-
-    @cached_property
-    def query_help(self) -> AsyncQueryHelpResource:
-        return AsyncQueryHelpResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncSupportingDataResourceWithRawResponse:
@@ -142,18 +94,6 @@ class SupportingDataResourceWithRawResponse:
     def dataowner(self) -> DataownerResourceWithRawResponse:
         return DataownerResourceWithRawResponse(self._supporting_data.dataowner)
 
-    @cached_property
-    def dataowner_types(self) -> DataownerTypesResourceWithRawResponse:
-        return DataownerTypesResourceWithRawResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def provider_metadata(self) -> ProviderMetadataResourceWithRawResponse:
-        return ProviderMetadataResourceWithRawResponse(self._supporting_data.provider_metadata)
-
-    @cached_property
-    def query_help(self) -> QueryHelpResourceWithRawResponse:
-        return QueryHelpResourceWithRawResponse(self._supporting_data.query_help)
-
 
 class AsyncSupportingDataResourceWithRawResponse:
     def __init__(self, supporting_data: AsyncSupportingDataResource) -> None:
@@ -166,18 +106,6 @@ class AsyncSupportingDataResourceWithRawResponse:
     @cached_property
     def dataowner(self) -> AsyncDataownerResourceWithRawResponse:
         return AsyncDataownerResourceWithRawResponse(self._supporting_data.dataowner)
-
-    @cached_property
-    def dataowner_types(self) -> AsyncDataownerTypesResourceWithRawResponse:
-        return AsyncDataownerTypesResourceWithRawResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def provider_metadata(self) -> AsyncProviderMetadataResourceWithRawResponse:
-        return AsyncProviderMetadataResourceWithRawResponse(self._supporting_data.provider_metadata)
-
-    @cached_property
-    def query_help(self) -> AsyncQueryHelpResourceWithRawResponse:
-        return AsyncQueryHelpResourceWithRawResponse(self._supporting_data.query_help)
 
 
 class SupportingDataResourceWithStreamingResponse:
@@ -192,18 +120,6 @@ class SupportingDataResourceWithStreamingResponse:
     def dataowner(self) -> DataownerResourceWithStreamingResponse:
         return DataownerResourceWithStreamingResponse(self._supporting_data.dataowner)
 
-    @cached_property
-    def dataowner_types(self) -> DataownerTypesResourceWithStreamingResponse:
-        return DataownerTypesResourceWithStreamingResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def provider_metadata(self) -> ProviderMetadataResourceWithStreamingResponse:
-        return ProviderMetadataResourceWithStreamingResponse(self._supporting_data.provider_metadata)
-
-    @cached_property
-    def query_help(self) -> QueryHelpResourceWithStreamingResponse:
-        return QueryHelpResourceWithStreamingResponse(self._supporting_data.query_help)
-
 
 class AsyncSupportingDataResourceWithStreamingResponse:
     def __init__(self, supporting_data: AsyncSupportingDataResource) -> None:
@@ -216,15 +132,3 @@ class AsyncSupportingDataResourceWithStreamingResponse:
     @cached_property
     def dataowner(self) -> AsyncDataownerResourceWithStreamingResponse:
         return AsyncDataownerResourceWithStreamingResponse(self._supporting_data.dataowner)
-
-    @cached_property
-    def dataowner_types(self) -> AsyncDataownerTypesResourceWithStreamingResponse:
-        return AsyncDataownerTypesResourceWithStreamingResponse(self._supporting_data.dataowner_types)
-
-    @cached_property
-    def provider_metadata(self) -> AsyncProviderMetadataResourceWithStreamingResponse:
-        return AsyncProviderMetadataResourceWithStreamingResponse(self._supporting_data.provider_metadata)
-
-    @cached_property
-    def query_help(self) -> AsyncQueryHelpResourceWithStreamingResponse:
-        return AsyncQueryHelpResourceWithStreamingResponse(self._supporting_data.query_help)

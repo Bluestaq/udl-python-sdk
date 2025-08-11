@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from ..shared.param_descriptor import ParamDescriptor
 
-__all__ = ["QueryHelpRetrieveResponse"]
+__all__ = ["DataownerQueryHelpResponse"]
 
 
-class QueryHelpRetrieveResponse(BaseModel):
+class DataownerQueryHelpResponse(BaseModel):
     aodr_supported: Optional[bool] = FieldInfo(alias="aodrSupported", default=None)
 
     classification_marking: Optional[str] = FieldInfo(alias="classificationMarking", default=None)
