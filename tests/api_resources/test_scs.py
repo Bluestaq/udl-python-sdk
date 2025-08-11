@@ -280,14 +280,35 @@ class TestScs:
     @parametrize
     def test_method_file_upload(self, client: Unifieddatalibrary) -> None:
         sc = client.scs.file_upload(
-            b"raw file contents",
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
+        )
+        assert_matches_type(str, sc, path=["response"])
+
+    @parametrize
+    def test_method_file_upload_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sc = client.scs.file_upload(
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
+            delete_after="deleteAfter",
+            description="description",
+            overwrite=True,
+            send_notification=True,
+            tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])
 
     @parametrize
     def test_raw_response_file_upload(self, client: Unifieddatalibrary) -> None:
         response = client.scs.with_raw_response.file_upload(
-            b"raw file contents",
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
         )
 
         assert response.is_closed is True
@@ -298,7 +319,10 @@ class TestScs:
     @parametrize
     def test_streaming_response_file_upload(self, client: Unifieddatalibrary) -> None:
         with client.scs.with_streaming_response.file_upload(
-            b"raw file contents",
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -719,14 +743,35 @@ class TestAsyncScs:
     @parametrize
     async def test_method_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         sc = await async_client.scs.file_upload(
-            b"raw file contents",
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
+        )
+        assert_matches_type(str, sc, path=["response"])
+
+    @parametrize
+    async def test_method_file_upload_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sc = await async_client.scs.file_upload(
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
+            delete_after="deleteAfter",
+            description="description",
+            overwrite=True,
+            send_notification=True,
+            tags="tags",
         )
         assert_matches_type(str, sc, path=["response"])
 
     @parametrize
     async def test_raw_response_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.with_raw_response.file_upload(
-            b"raw file contents",
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
         )
 
         assert response.is_closed is True
@@ -737,7 +782,10 @@ class TestAsyncScs:
     @parametrize
     async def test_streaming_response_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.with_streaming_response.file_upload(
-            b"raw file contents",
+            file_content=b"raw file contents",
+            classification_marking="classificationMarking",
+            file_name="fileName",
+            path="path",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -17,6 +17,7 @@ from ...types import (
     conjunction_create_bulk_params,
     conjunction_get_history_params,
     conjunction_unvalidated_publish_params,
+    conjunction_upload_conjunction_data_message_params,
 )
 from .history import (
     HistoryResource,
@@ -816,6 +817,11 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         file_content: FileContent,
         *,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        filename: str,
+        source: str,
+        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -835,6 +841,20 @@ class ConjunctionsResource(SyncAPIResource):
         /filedrop/cdms?filename=conj.zip&classification=U&dataMode=TEST&source=Bluestaq&tags=tag1,tag2
 
         Args:
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          filename: Filename of the payload.
+
+          source: Source of the data.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -849,7 +869,20 @@ class ConjunctionsResource(SyncAPIResource):
             "/filedrop/cdms",
             body=read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "filename": filename,
+                        "source": source,
+                        "tags": tags,
+                    },
+                    conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams,
+                ),
             ),
             cast_to=NoneType,
         )
@@ -1623,6 +1656,11 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         file_content: FileContent,
         *,
+        classification: str,
+        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        filename: str,
+        source: str,
+        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1642,6 +1680,20 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         /filedrop/cdms?filename=conj.zip&classification=U&dataMode=TEST&source=Bluestaq&tags=tag1,tag2
 
         Args:
+          classification: Classification marking of the data in IC/CAPCO Portion-marked format.
+
+          data_mode: Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data.
+
+          filename: Filename of the payload.
+
+          source: Source of the data.
+
+          tags: Optional array of provider/source specific tags for this data, where each
+              element is no longer than 32 characters, used for implementing data owner
+              conditional access controls to restrict access to the data. Should be left null
+              by data providers unless conditional access controls are coordinated with the
+              UDL team.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1656,7 +1708,20 @@ class AsyncConjunctionsResource(AsyncAPIResource):
             "/filedrop/cdms",
             body=await async_read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "classification": classification,
+                        "data_mode": data_mode,
+                        "filename": filename,
+                        "source": source,
+                        "tags": tags,
+                    },
+                    conjunction_upload_conjunction_data_message_params.ConjunctionUploadConjunctionDataMessageParams,
+                ),
             ),
             cast_to=NoneType,
         )
