@@ -19,32 +19,14 @@ class TestPaths:
     @parametrize
     def test_method_create_with_file(self, client: Unifieddatalibrary) -> None:
         path = client.scs.paths.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
-        )
-        assert_matches_type(str, path, path=["response"])
-
-    @parametrize
-    def test_method_create_with_file_with_all_params(self, client: Unifieddatalibrary) -> None:
-        path = client.scs.paths.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
-            delete_after="deleteAfter",
-            description="description",
-            overwrite=True,
-            send_notification=True,
-            tags="tags",
+            b"raw file contents",
         )
         assert_matches_type(str, path, path=["response"])
 
     @parametrize
     def test_raw_response_create_with_file(self, client: Unifieddatalibrary) -> None:
         response = client.scs.paths.with_raw_response.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
+            b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -55,9 +37,7 @@ class TestPaths:
     @parametrize
     def test_streaming_response_create_with_file(self, client: Unifieddatalibrary) -> None:
         with client.scs.paths.with_streaming_response.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
+            b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -76,32 +56,14 @@ class TestAsyncPaths:
     @parametrize
     async def test_method_create_with_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         path = await async_client.scs.paths.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
-        )
-        assert_matches_type(str, path, path=["response"])
-
-    @parametrize
-    async def test_method_create_with_file_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        path = await async_client.scs.paths.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
-            delete_after="deleteAfter",
-            description="description",
-            overwrite=True,
-            send_notification=True,
-            tags="tags",
+            b"raw file contents",
         )
         assert_matches_type(str, path, path=["response"])
 
     @parametrize
     async def test_raw_response_create_with_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.scs.paths.with_raw_response.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
+            b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -112,9 +74,7 @@ class TestAsyncPaths:
     @parametrize
     async def test_streaming_response_create_with_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.scs.paths.with_streaming_response.create_with_file(
-            file_content=b"raw file contents",
-            id="id",
-            classification_marking="classificationMarking",
+            b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

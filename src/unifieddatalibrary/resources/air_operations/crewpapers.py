@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
@@ -18,7 +16,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.air_operations import crewpaper_unpublish_params, crewpaper_upload_pdf_params
+from ...types.air_operations import crewpaper_unpublish_params
 
 __all__ = ["CrewpapersResource", "AsyncCrewpapersResource"]
 
@@ -88,10 +86,6 @@ class CrewpapersResource(SyncAPIResource):
         self,
         file_content: FileContent,
         *,
-        aircraft_sortie_ids: str,
-        classification_marking: str,
-        paper_status: Literal["PUBLISHED", "DELETED", "UPDATED", "READ"],
-        papers_version: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,14 +100,6 @@ class CrewpapersResource(SyncAPIResource):
         for assistance.
 
         Args:
-          aircraft_sortie_ids: Comma-separated list of AircraftSortie IDs the Crew Papers are being added to.
-
-          classification_marking: classificationMarking of the Crew Papers.
-
-          paper_status: The status of the supporting document.
-
-          papers_version: The version number of the crew paper.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -128,19 +114,7 @@ class CrewpapersResource(SyncAPIResource):
             "/filedrop/crewpapers",
             body=read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "aircraft_sortie_ids": aircraft_sortie_ids,
-                        "classification_marking": classification_marking,
-                        "paper_status": paper_status,
-                        "papers_version": papers_version,
-                    },
-                    crewpaper_upload_pdf_params.CrewpaperUploadPdfParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
@@ -211,10 +185,6 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         self,
         file_content: FileContent,
         *,
-        aircraft_sortie_ids: str,
-        classification_marking: str,
-        paper_status: Literal["PUBLISHED", "DELETED", "UPDATED", "READ"],
-        papers_version: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -229,14 +199,6 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         for assistance.
 
         Args:
-          aircraft_sortie_ids: Comma-separated list of AircraftSortie IDs the Crew Papers are being added to.
-
-          classification_marking: classificationMarking of the Crew Papers.
-
-          paper_status: The status of the supporting document.
-
-          papers_version: The version number of the crew paper.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -251,19 +213,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
             "/filedrop/crewpapers",
             body=await async_read_file_content(file_content),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "aircraft_sortie_ids": aircraft_sortie_ids,
-                        "classification_marking": classification_marking,
-                        "paper_status": paper_status,
-                        "papers_version": papers_version,
-                    },
-                    crewpaper_upload_pdf_params.CrewpaperUploadPdfParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
         )
