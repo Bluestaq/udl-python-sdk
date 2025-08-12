@@ -18,9 +18,11 @@ from unifieddatalibrary.types import (
     AnalyticImageryFull,
     AntennaDetailsFull,
     AntennaFull,
+    AntennaIngest,
     AttitudedataFull,
     AttitudesetFull,
     BatteryFull,
+    BatteryIngest,
     BatterydetailsFull,
     BeamFull,
     BeamcontourFull,
@@ -38,6 +40,7 @@ from unifieddatalibrary.types import (
     DriftHistoryFull,
     Engine,
     EngineDetailsFull,
+    EngineIngest,
     EntityFull,
     EoObservationFull,
     EopFull,
@@ -72,10 +75,12 @@ from unifieddatalibrary.types import (
     SofDataSourceRefFull,
     SolarArrayDetailsFull,
     SolarArrayFull,
+    SolarArrayIngest,
     SortiePprFull,
     StateVectorFull,
     StatusFull,
     SubStatusFull,
+    SubStatusIngest,
     WaiverFull,
 )
 ```
@@ -2330,6 +2335,7 @@ from unifieddatalibrary.types import (
     LogisticsPartsFull,
     LogisticsRemarksAbridged,
     LogisticsRemarksFull,
+    LogisticsRemarksIngest,
     LogisticsSegmentsFull,
     LogisticsSpecialtiesFull,
     LogisticsStocksFull,
@@ -4760,6 +4766,10 @@ Types:
 
 ```python
 from unifieddatalibrary.types import (
+    AltitudeBlocksIngest,
+    PointOfContactIngest,
+    RoutePointsIngest,
+    TrackRouteIngest,
     TrackRouteListResponse,
     TrackRouteCountResponse,
     TrackRouteQueryhelpResponse,

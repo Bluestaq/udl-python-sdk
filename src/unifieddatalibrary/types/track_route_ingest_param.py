@@ -11,10 +11,10 @@ from .route_points_ingest_param import RoutePointsIngestParam
 from .altitude_blocks_ingest_param import AltitudeBlocksIngestParam
 from .point_of_contact_ingest_param import PointOfContactIngestParam
 
-__all__ = ["TrackRouteUnvalidatedPublishParams"]
+__all__ = ["TrackRouteIngestParam"]
 
 
-class TrackRouteUnvalidatedPublishParams(TypedDict, total=False):
+class TrackRouteIngestParam(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

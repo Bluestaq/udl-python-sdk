@@ -24,6 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.shared_params.engine_ingest import EngineIngest
 from ..types.shared.onorbit_thruster_full import OnorbitThrusterFull
 from ..types.onorbitthruster_list_response import OnorbitthrusterListResponse
 
@@ -59,7 +60,7 @@ class OnorbitthrusterResource(SyncAPIResource):
         id_on_orbit: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        engine: onorbitthruster_create_params.Engine | NotGiven = NOT_GIVEN,
+        engine: EngineIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -160,7 +161,7 @@ class OnorbitthrusterResource(SyncAPIResource):
         id_on_orbit: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        engine: onorbitthruster_update_params.Engine | NotGiven = NOT_GIVEN,
+        engine: EngineIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -416,7 +417,7 @@ class AsyncOnorbitthrusterResource(AsyncAPIResource):
         id_on_orbit: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        engine: onorbitthruster_create_params.Engine | NotGiven = NOT_GIVEN,
+        engine: EngineIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -517,7 +518,7 @@ class AsyncOnorbitthrusterResource(AsyncAPIResource):
         id_on_orbit: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        engine: onorbitthruster_update_params.Engine | NotGiven = NOT_GIVEN,
+        engine: EngineIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
