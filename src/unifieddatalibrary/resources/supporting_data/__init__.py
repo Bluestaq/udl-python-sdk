@@ -16,22 +16,6 @@ from .data_types import (
     DataTypesResourceWithStreamingResponse,
     AsyncDataTypesResourceWithStreamingResponse,
 )
-from .query_help import (
-    QueryHelpResource,
-    AsyncQueryHelpResource,
-    QueryHelpResourceWithRawResponse,
-    AsyncQueryHelpResourceWithRawResponse,
-    QueryHelpResourceWithStreamingResponse,
-    AsyncQueryHelpResourceWithStreamingResponse,
-)
-from .dataowner_types import (
-    DataownerTypesResource,
-    AsyncDataownerTypesResource,
-    DataownerTypesResourceWithRawResponse,
-    AsyncDataownerTypesResourceWithRawResponse,
-    DataownerTypesResourceWithStreamingResponse,
-    AsyncDataownerTypesResourceWithStreamingResponse,
-)
 from .supporting_data import (
     SupportingDataResource,
     AsyncSupportingDataResource,
@@ -39,14 +23,6 @@ from .supporting_data import (
     AsyncSupportingDataResourceWithRawResponse,
     SupportingDataResourceWithStreamingResponse,
     AsyncSupportingDataResourceWithStreamingResponse,
-)
-from .provider_metadata import (
-    ProviderMetadataResource,
-    AsyncProviderMetadataResource,
-    ProviderMetadataResourceWithRawResponse,
-    AsyncProviderMetadataResourceWithRawResponse,
-    ProviderMetadataResourceWithStreamingResponse,
-    AsyncProviderMetadataResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -62,24 +38,6 @@ __all__ = [
     "AsyncDataownerResourceWithRawResponse",
     "DataownerResourceWithStreamingResponse",
     "AsyncDataownerResourceWithStreamingResponse",
-    "DataownerTypesResource",
-    "AsyncDataownerTypesResource",
-    "DataownerTypesResourceWithRawResponse",
-    "AsyncDataownerTypesResourceWithRawResponse",
-    "DataownerTypesResourceWithStreamingResponse",
-    "AsyncDataownerTypesResourceWithStreamingResponse",
-    "ProviderMetadataResource",
-    "AsyncProviderMetadataResource",
-    "ProviderMetadataResourceWithRawResponse",
-    "AsyncProviderMetadataResourceWithRawResponse",
-    "ProviderMetadataResourceWithStreamingResponse",
-    "AsyncProviderMetadataResourceWithStreamingResponse",
-    "QueryHelpResource",
-    "AsyncQueryHelpResource",
-    "QueryHelpResourceWithRawResponse",
-    "AsyncQueryHelpResourceWithRawResponse",
-    "QueryHelpResourceWithStreamingResponse",
-    "AsyncQueryHelpResourceWithStreamingResponse",
     "SupportingDataResource",
     "AsyncSupportingDataResource",
     "SupportingDataResourceWithRawResponse",

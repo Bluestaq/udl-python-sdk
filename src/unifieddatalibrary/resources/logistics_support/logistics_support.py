@@ -38,6 +38,7 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.logistics_remarks_ingest_param import LogisticsRemarksIngestParam
 from ...types.logistics_support_get_response import LogisticsSupportGetResponse
 from ...types.logistics_support_list_response import LogisticsSupportListResponse
 from ...types.logistics_support_tuple_response import LogisticsSupportTupleResponse
@@ -87,7 +88,7 @@ class LogisticsSupportResource(SyncAPIResource):
         logistics_discrepancy_infos: Iterable[logistics_support_create_params.LogisticsDiscrepancyInfo]
         | NotGiven = NOT_GIVEN,
         logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[logistics_support_create_params.LogisticsRemark] | NotGiven = NOT_GIVEN,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
         logistics_support_items: Iterable[logistics_support_create_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
         logistics_transportation_plans: Iterable[logistics_support_create_params.LogisticsTransportationPlan]
         | NotGiven = NOT_GIVEN,
@@ -266,7 +267,7 @@ class LogisticsSupportResource(SyncAPIResource):
         logistics_discrepancy_infos: Iterable[logistics_support_update_params.LogisticsDiscrepancyInfo]
         | NotGiven = NOT_GIVEN,
         logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[logistics_support_update_params.LogisticsRemark] | NotGiven = NOT_GIVEN,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
         logistics_support_items: Iterable[logistics_support_update_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
         logistics_transportation_plans: Iterable[logistics_support_update_params.LogisticsTransportationPlan]
         | NotGiven = NOT_GIVEN,
@@ -762,7 +763,7 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         logistics_discrepancy_infos: Iterable[logistics_support_create_params.LogisticsDiscrepancyInfo]
         | NotGiven = NOT_GIVEN,
         logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[logistics_support_create_params.LogisticsRemark] | NotGiven = NOT_GIVEN,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
         logistics_support_items: Iterable[logistics_support_create_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
         logistics_transportation_plans: Iterable[logistics_support_create_params.LogisticsTransportationPlan]
         | NotGiven = NOT_GIVEN,
@@ -941,7 +942,7 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         logistics_discrepancy_infos: Iterable[logistics_support_update_params.LogisticsDiscrepancyInfo]
         | NotGiven = NOT_GIVEN,
         logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[logistics_support_update_params.LogisticsRemark] | NotGiven = NOT_GIVEN,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
         logistics_support_items: Iterable[logistics_support_update_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
         logistics_transportation_plans: Iterable[logistics_support_update_params.LogisticsTransportationPlan]
         | NotGiven = NOT_GIVEN,

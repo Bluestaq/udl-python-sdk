@@ -26,6 +26,7 @@ from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.onorbitsolararray_list_response import OnorbitsolararrayListResponse
 from ..types.shared.onorbit_solar_array_full import OnorbitSolarArrayFull
+from ..types.shared_params.solar_array_ingest import SolarArrayIngest
 
 __all__ = ["OnorbitsolararrayResource", "AsyncOnorbitsolararrayResource"]
 
@@ -61,7 +62,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: onorbitsolararray_create_params.SolarArray | NotGiven = NOT_GIVEN,
+        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -159,7 +160,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: onorbitsolararray_update_params.SolarArray | NotGiven = NOT_GIVEN,
+        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -412,7 +413,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: onorbitsolararray_create_params.SolarArray | NotGiven = NOT_GIVEN,
+        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -510,7 +511,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: onorbitsolararray_update_params.SolarArray | NotGiven = NOT_GIVEN,
+        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

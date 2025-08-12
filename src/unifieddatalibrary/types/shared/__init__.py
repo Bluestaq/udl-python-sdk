@@ -21,7 +21,10 @@ from .pathway_full import PathwayFull as PathwayFull
 from .rf_band_full import RfBandFull as RfBandFull
 from .aircraft_full import AircraftFull as AircraftFull
 from .airfield_full import AirfieldFull as AirfieldFull
+from .engine_ingest import EngineIngest as EngineIngest
 from .location_full import LocationFull as LocationFull
+from .antenna_ingest import AntennaIngest as AntennaIngest
+from .battery_ingest import BatteryIngest as BatteryIngest
 from .ephemeris_full import EphemerisFull as EphemerisFull
 from .sortie_ppr_full import SortiePprFull as SortiePprFull
 from .sub_status_full import SubStatusFull as SubStatusFull
@@ -38,8 +41,10 @@ from .location_abridged import LocationAbridged as LocationAbridged
 from .notification_full import NotificationFull as NotificationFull
 from .organization_full import OrganizationFull as OrganizationFull
 from .state_vector_full import StateVectorFull as StateVectorFull
+from .sub_status_ingest import SubStatusIngest as SubStatusIngest
 from .drift_history_full import DriftHistoryFull as DriftHistoryFull
 from .operatingunit_full import OperatingunitFull as OperatingunitFull
+from .solar_array_ingest import SolarArrayIngest as SolarArrayIngest
 from .aircraftsortie_full import AircraftsortieFull as AircraftsortieFull
 from .aircraftstatus_full import AircraftstatusFull as AircraftstatusFull
 from .airfieldstatus_full import AirfieldstatusFull as AirfieldstatusFull

@@ -26,6 +26,7 @@ from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.onorbit_antenna_full import OnorbitAntennaFull
 from ..types.onorbitantenna_list_response import OnorbitantennaListResponse
+from ..types.shared_params.antenna_ingest import AntennaIngest
 
 __all__ = ["OnorbitantennaResource", "AsyncOnorbitantennaResource"]
 
@@ -59,7 +60,7 @@ class OnorbitantennaResource(SyncAPIResource):
         id_on_orbit: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        antenna: onorbitantenna_create_params.Antenna | NotGiven = NOT_GIVEN,
+        antenna: AntennaIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -151,7 +152,7 @@ class OnorbitantennaResource(SyncAPIResource):
         id_on_orbit: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        antenna: onorbitantenna_update_params.Antenna | NotGiven = NOT_GIVEN,
+        antenna: AntennaIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -398,7 +399,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         id_on_orbit: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        antenna: onorbitantenna_create_params.Antenna | NotGiven = NOT_GIVEN,
+        antenna: AntennaIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -490,7 +491,7 @@ class AsyncOnorbitantennaResource(AsyncAPIResource):
         id_on_orbit: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        antenna: onorbitantenna_update_params.Antenna | NotGiven = NOT_GIVEN,
+        antenna: AntennaIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

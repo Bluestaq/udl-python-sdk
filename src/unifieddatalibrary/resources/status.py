@@ -34,6 +34,7 @@ from ..types.shared.status_full import StatusFull
 from ..types.status_list_response import StatusListResponse
 from ..types.status_tuple_response import StatusTupleResponse
 from ..types.status_queryhelp_response import StatusQueryhelpResponse
+from ..types.shared_params.sub_status_ingest import SubStatusIngest
 from ..types.status_get_by_entity_id_response import StatusGetByEntityIDResponse
 from ..types.status_get_by_entity_type_response import StatusGetByEntityTypeResponse
 
@@ -75,7 +76,7 @@ class StatusResource(SyncAPIResource):
         ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[status_create_params.SubStatusCollection] | NotGiven = NOT_GIVEN,
+        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
         sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -187,7 +188,7 @@ class StatusResource(SyncAPIResource):
         ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[status_update_params.SubStatusCollection] | NotGiven = NOT_GIVEN,
+        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
         sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -664,7 +665,7 @@ class AsyncStatusResource(AsyncAPIResource):
         ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[status_create_params.SubStatusCollection] | NotGiven = NOT_GIVEN,
+        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
         sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -776,7 +777,7 @@ class AsyncStatusResource(AsyncAPIResource):
         ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[status_update_params.SubStatusCollection] | NotGiven = NOT_GIVEN,
+        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
         sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

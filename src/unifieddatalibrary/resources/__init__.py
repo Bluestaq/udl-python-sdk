@@ -416,14 +416,6 @@ from .geo_status import (
     GeoStatusResourceWithStreamingResponse,
     AsyncGeoStatusResourceWithStreamingResponse,
 )
-from .gnss_rawif import (
-    GnssRawifResource,
-    AsyncGnssRawifResource,
-    GnssRawifResourceWithRawResponse,
-    AsyncGnssRawifResourceWithRawResponse,
-    GnssRawifResourceWithStreamingResponse,
-    AsyncGnssRawifResourceWithStreamingResponse,
-)
 from .navigation import (
     NavigationResource,
     AsyncNavigationResource,
@@ -576,14 +568,6 @@ from .transponder import (
     TransponderResourceWithStreamingResponse,
     AsyncTransponderResourceWithStreamingResponse,
 )
-from .attitudesets import (
-    AttitudesetsResource,
-    AsyncAttitudesetsResource,
-    AttitudesetsResourceWithRawResponse,
-    AsyncAttitudesetsResourceWithRawResponse,
-    AttitudesetsResourceWithStreamingResponse,
-    AsyncAttitudesetsResourceWithStreamingResponse,
-)
 from .conjunctions import (
     ConjunctionsResource,
     AsyncConjunctionsResource,
@@ -727,14 +711,6 @@ from .track_details import (
     AsyncTrackDetailsResourceWithRawResponse,
     TrackDetailsResourceWithStreamingResponse,
     AsyncTrackDetailsResourceWithStreamingResponse,
-)
-from .air_load_plans import (
-    AirLoadPlansResource,
-    AsyncAirLoadPlansResource,
-    AirLoadPlansResourceWithRawResponse,
-    AsyncAirLoadPlansResourceWithRawResponse,
-    AirLoadPlansResourceWithStreamingResponse,
-    AsyncAirLoadPlansResourceWithStreamingResponse,
 )
 from .air_operations import (
     AirOperationsResource,
@@ -944,22 +920,6 @@ from .effect_responses import (
     EffectResponsesResourceWithStreamingResponse,
     AsyncEffectResponsesResourceWithStreamingResponse,
 )
-from .ion_oobservation import (
-    IonOobservationResource,
-    AsyncIonOobservationResource,
-    IonOobservationResourceWithRawResponse,
-    AsyncIonOobservationResourceWithRawResponse,
-    IonOobservationResourceWithStreamingResponse,
-    AsyncIonOobservationResourceWithStreamingResponse,
-)
-from .iono_observation import (
-    IonoObservationResource,
-    AsyncIonoObservationResource,
-    IonoObservationResourceWithRawResponse,
-    AsyncIonoObservationResourceWithRawResponse,
-    IonoObservationResourceWithStreamingResponse,
-    AsyncIonoObservationResourceWithStreamingResponse,
-)
 from .launch_detection import (
     LaunchDetectionResource,
     AsyncLaunchDetectionResource,
@@ -1007,6 +967,14 @@ from .gnss_observations import (
     AsyncGnssObservationsResourceWithRawResponse,
     GnssObservationsResourceWithStreamingResponse,
     AsyncGnssObservationsResourceWithStreamingResponse,
+)
+from .iono_observations import (
+    IonoObservationsResource,
+    AsyncIonoObservationsResource,
+    IonoObservationsResourceWithRawResponse,
+    AsyncIonoObservationsResourceWithRawResponse,
+    IonoObservationsResourceWithStreamingResponse,
+    AsyncIonoObservationsResourceWithStreamingResponse,
 )
 from .logistics_support import (
     LogisticsSupportResource,
@@ -1128,14 +1096,6 @@ from .organizationdetails import (
     OrganizationdetailsResourceWithStreamingResponse,
     AsyncOrganizationdetailsResourceWithStreamingResponse,
 )
-from .report_and_activity import (
-    ReportAndActivityResource,
-    AsyncReportAndActivityResource,
-    ReportAndActivityResourceWithRawResponse,
-    AsyncReportAndActivityResourceWithRawResponse,
-    ReportAndActivityResourceWithStreamingResponse,
-    AsyncReportAndActivityResourceWithStreamingResponse,
-)
 from .soi_observation_set import (
     SoiObservationSetResource,
     AsyncSoiObservationSetResource,
@@ -1183,6 +1143,14 @@ from .onorbitthrusterstatus import (
     AsyncOnorbitthrusterstatusResourceWithRawResponse,
     OnorbitthrusterstatusResourceWithStreamingResponse,
     AsyncOnorbitthrusterstatusResourceWithStreamingResponse,
+)
+from .report_and_activities import (
+    ReportAndActivitiesResource,
+    AsyncReportAndActivitiesResource,
+    ReportAndActivitiesResourceWithRawResponse,
+    AsyncReportAndActivitiesResourceWithRawResponse,
+    ReportAndActivitiesResourceWithStreamingResponse,
+    AsyncReportAndActivitiesResourceWithStreamingResponse,
 )
 from .space_env_observation import (
     SpaceEnvObservationResource,
@@ -1320,12 +1288,6 @@ __all__ = [
     "AsyncAirEventsResourceWithRawResponse",
     "AirEventsResourceWithStreamingResponse",
     "AsyncAirEventsResourceWithStreamingResponse",
-    "AirLoadPlansResource",
-    "AsyncAirLoadPlansResource",
-    "AirLoadPlansResourceWithRawResponse",
-    "AsyncAirLoadPlansResourceWithRawResponse",
-    "AirLoadPlansResourceWithStreamingResponse",
-    "AsyncAirLoadPlansResourceWithStreamingResponse",
     "AirOperationsResource",
     "AsyncAirOperationsResource",
     "AirOperationsResourceWithRawResponse",
@@ -1434,12 +1396,6 @@ __all__ = [
     "AsyncAttitudeSetsResourceWithRawResponse",
     "AttitudeSetsResourceWithStreamingResponse",
     "AsyncAttitudeSetsResourceWithStreamingResponse",
-    "AttitudesetsResource",
-    "AsyncAttitudesetsResource",
-    "AttitudesetsResourceWithRawResponse",
-    "AsyncAttitudesetsResourceWithRawResponse",
-    "AttitudesetsResourceWithStreamingResponse",
-    "AsyncAttitudesetsResourceWithStreamingResponse",
     "BatteriesResource",
     "AsyncBatteriesResource",
     "BatteriesResourceWithRawResponse",
@@ -1674,12 +1630,6 @@ __all__ = [
     "AsyncGnssObservationsetResourceWithRawResponse",
     "GnssObservationsetResourceWithStreamingResponse",
     "AsyncGnssObservationsetResourceWithStreamingResponse",
-    "GnssRawifResource",
-    "AsyncGnssRawifResource",
-    "GnssRawifResourceWithRawResponse",
-    "AsyncGnssRawifResourceWithRawResponse",
-    "GnssRawifResourceWithStreamingResponse",
-    "AsyncGnssRawifResourceWithStreamingResponse",
     "GroundImageryResource",
     "AsyncGroundImageryResource",
     "GroundImageryResourceWithRawResponse",
@@ -1704,12 +1654,6 @@ __all__ = [
     "AsyncHazardResourceWithRawResponse",
     "HazardResourceWithStreamingResponse",
     "AsyncHazardResourceWithStreamingResponse",
-    "IonOobservationResource",
-    "AsyncIonOobservationResource",
-    "IonOobservationResourceWithRawResponse",
-    "AsyncIonOobservationResourceWithRawResponse",
-    "IonOobservationResourceWithStreamingResponse",
-    "AsyncIonOobservationResourceWithStreamingResponse",
     "IrResource",
     "AsyncIrResource",
     "IrResourceWithRawResponse",
@@ -2268,18 +2212,18 @@ __all__ = [
     "AsyncGnssRawIfResourceWithRawResponse",
     "GnssRawIfResourceWithStreamingResponse",
     "AsyncGnssRawIfResourceWithStreamingResponse",
-    "IonoObservationResource",
-    "AsyncIonoObservationResource",
-    "IonoObservationResourceWithRawResponse",
-    "AsyncIonoObservationResourceWithRawResponse",
-    "IonoObservationResourceWithStreamingResponse",
-    "AsyncIonoObservationResourceWithStreamingResponse",
-    "ReportAndActivityResource",
-    "AsyncReportAndActivityResource",
-    "ReportAndActivityResourceWithRawResponse",
-    "AsyncReportAndActivityResourceWithRawResponse",
-    "ReportAndActivityResourceWithStreamingResponse",
-    "AsyncReportAndActivityResourceWithStreamingResponse",
+    "IonoObservationsResource",
+    "AsyncIonoObservationsResource",
+    "IonoObservationsResourceWithRawResponse",
+    "AsyncIonoObservationsResourceWithRawResponse",
+    "IonoObservationsResourceWithStreamingResponse",
+    "AsyncIonoObservationsResourceWithStreamingResponse",
+    "ReportAndActivitiesResource",
+    "AsyncReportAndActivitiesResource",
+    "ReportAndActivitiesResourceWithRawResponse",
+    "AsyncReportAndActivitiesResourceWithRawResponse",
+    "ReportAndActivitiesResourceWithStreamingResponse",
+    "AsyncReportAndActivitiesResourceWithStreamingResponse",
     "SecureMessagingResource",
     "AsyncSecureMessagingResource",
     "SecureMessagingResourceWithRawResponse",
