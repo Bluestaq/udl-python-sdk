@@ -25,7 +25,10 @@ from .shared import (
     PathwayFull as PathwayFull,
     AircraftFull as AircraftFull,
     AirfieldFull as AirfieldFull,
+    EngineIngest as EngineIngest,
     LocationFull as LocationFull,
+    AntennaIngest as AntennaIngest,
+    BatteryIngest as BatteryIngest,
     EphemerisFull as EphemerisFull,
     SortiePprFull as SortiePprFull,
     SubStatusFull as SubStatusFull,
@@ -37,12 +40,14 @@ from .shared import (
     ConjunctionFull as ConjunctionFull,
     ParamDescriptor as ParamDescriptor,
     StateVectorFull as StateVectorFull,
+    SubStatusIngest as SubStatusIngest,
     AirfieldslotFull as AirfieldslotFull,
     AttitudedataFull as AttitudedataFull,
     DriftHistoryFull as DriftHistoryFull,
     LocationAbridged as LocationAbridged,
     NotificationFull as NotificationFull,
     OrganizationFull as OrganizationFull,
+    SolarArrayIngest as SolarArrayIngest,
     EngineDetailsFull as EngineDetailsFull,
     EoObservationFull as EoObservationFull,
     OperatingunitFull as OperatingunitFull,
@@ -669,6 +674,7 @@ from .track_create_bulk_params import TrackCreateBulkParams as TrackCreateBulkPa
 from .track_detail_list_params import TrackDetailListParams as TrackDetailListParams
 from .track_queryhelp_response import TrackQueryhelpResponse as TrackQueryhelpResponse
 from .track_route_count_params import TrackRouteCountParams as TrackRouteCountParams
+from .track_route_ingest_param import TrackRouteIngestParam as TrackRouteIngestParam
 from .track_route_tuple_params import TrackRouteTupleParams as TrackRouteTupleParams
 from .transponder_count_params import TransponderCountParams as TransponderCountParams
 from .transponder_get_response import TransponderGetResponse as TransponderGetResponse
@@ -737,6 +743,7 @@ from .rf_band_type_get_response import RfBandTypeGetResponse as RfBandTypeGetRes
 from .rf_band_type_tuple_params import RfBandTypeTupleParams as RfBandTypeTupleParams
 from .rf_emitter_count_response import RfEmitterCountResponse as RfEmitterCountResponse
 from .rf_emitter_tuple_response import RfEmitterTupleResponse as RfEmitterTupleResponse
+from .route_points_ingest_param import RoutePointsIngestParam as RoutePointsIngestParam
 from .route_stat_count_response import RouteStatCountResponse as RouteStatCountResponse
 from .route_stat_query_response import RouteStatQueryResponse as RouteStatQueryResponse
 from .route_stat_tuple_response import RouteStatTupleResponse as RouteStatTupleResponse
@@ -957,6 +964,7 @@ from .airfield_slot_tuple_response import AirfieldSlotTupleResponse as AirfieldS
 from .airfield_status_count_params import AirfieldStatusCountParams as AirfieldStatusCountParams
 from .airfield_status_tuple_params import AirfieldStatusTupleParams as AirfieldStatusTupleParams
 from .airload_plan_retrieve_params import AirloadPlanRetrieveParams as AirloadPlanRetrieveParams
+from .altitude_blocks_ingest_param import AltitudeBlocksIngestParam as AltitudeBlocksIngestParam
 from .analytic_imagery_list_params import AnalyticImageryListParams as AnalyticImageryListParams
 from .attitude_data_tuple_response import AttitudeDataTupleResponse as AttitudeDataTupleResponse
 from .attitude_set_retrieve_params import AttitudeSetRetrieveParams as AttitudeSetRetrieveParams
@@ -1078,6 +1086,7 @@ from .orbittrack_create_bulk_params import OrbittrackCreateBulkParams as Orbittr
 from .orbittrack_queryhelp_response import OrbittrackQueryhelpResponse as OrbittrackQueryhelpResponse
 from .organizationdetail_get_params import OrganizationdetailGetParams as OrganizationdetailGetParams
 from .personnelrecovery_list_params import PersonnelrecoveryListParams as PersonnelrecoveryListParams
+from .point_of_contact_ingest_param import PointOfContactIngestParam as PointOfContactIngestParam
 from .rf_emitter_detail_list_params import RfEmitterDetailListParams as RfEmitterDetailListParams
 from .rf_emitter_queryhelp_response import RfEmitterQueryhelpResponse as RfEmitterQueryhelpResponse
 from .route_stat_create_bulk_params import RouteStatCreateBulkParams as RouteStatCreateBulkParams
@@ -1121,6 +1130,7 @@ from .launch_detection_update_params import LaunchDetectionUpdateParams as Launc
 from .launch_site_detail_list_params import LaunchSiteDetailListParams as LaunchSiteDetailListParams
 from .launch_site_queryhelp_response import LaunchSiteQueryhelpResponse as LaunchSiteQueryhelpResponse
 from .link_status_queryhelp_response import LinkStatusQueryhelpResponse as LinkStatusQueryhelpResponse
+from .logistics_remarks_ingest_param import LogisticsRemarksIngestParam as LogisticsRemarksIngestParam
 from .logistics_support_count_params import LogisticsSupportCountParams as LogisticsSupportCountParams
 from .logistics_support_get_response import LogisticsSupportGetResponse as LogisticsSupportGetResponse
 from .logistics_support_tuple_params import LogisticsSupportTupleParams as LogisticsSupportTupleParams

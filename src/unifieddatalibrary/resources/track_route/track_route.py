@@ -15,7 +15,6 @@ from ...types import (
     track_route_tuple_params,
     track_route_create_params,
     track_route_update_params,
-    track_route_create_bulk_params,
     track_route_unvalidated_publish_params,
 )
 from .history import (
@@ -38,9 +37,13 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.track_route_ingest_param import TrackRouteIngestParam
+from ...types.route_points_ingest_param import RoutePointsIngestParam
 from ...types.track_route_list_response import TrackRouteListResponse
 from ...types.track_route_tuple_response import TrackRouteTupleResponse
+from ...types.altitude_blocks_ingest_param import AltitudeBlocksIngestParam
 from ...types.track_route.track_route_full import TrackRouteFull
+from ...types.point_of_contact_ingest_param import PointOfContactIngestParam
 from ...types.track_route_queryhelp_response import TrackRouteQueryhelpResponse
 
 __all__ = ["TrackRouteResource", "AsyncTrackRouteResource"]
@@ -79,7 +82,7 @@ class TrackRouteResource(SyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[track_route_create_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[AltitudeBlocksIngestParam] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -90,13 +93,13 @@ class TrackRouteResource(SyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[track_route_create_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[PointOfContactIngestParam] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[track_route_create_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[RoutePointsIngestParam] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -275,7 +278,7 @@ class TrackRouteResource(SyncAPIResource):
         source: str,
         type: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[track_route_update_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[AltitudeBlocksIngestParam] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -286,13 +289,13 @@ class TrackRouteResource(SyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[track_route_update_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[PointOfContactIngestParam] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[track_route_update_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[RoutePointsIngestParam] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -606,7 +609,7 @@ class TrackRouteResource(SyncAPIResource):
     def create_bulk(
         self,
         *,
-        body: Iterable[track_route_create_bulk_params.Body],
+        body: Iterable[TrackRouteIngestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -633,7 +636,7 @@ class TrackRouteResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/udl/trackroute/createBulk",
-            body=maybe_transform(body, Iterable[track_route_create_bulk_params.Body]),
+            body=maybe_transform(body, Iterable[TrackRouteIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -778,7 +781,7 @@ class TrackRouteResource(SyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[track_route_unvalidated_publish_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[AltitudeBlocksIngestParam] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -789,13 +792,13 @@ class TrackRouteResource(SyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[track_route_unvalidated_publish_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[PointOfContactIngestParam] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[track_route_unvalidated_publish_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[RoutePointsIngestParam] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -999,7 +1002,7 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[track_route_create_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[AltitudeBlocksIngestParam] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -1010,13 +1013,13 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[track_route_create_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[PointOfContactIngestParam] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[track_route_create_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[RoutePointsIngestParam] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -1195,7 +1198,7 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         source: str,
         type: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[track_route_update_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[AltitudeBlocksIngestParam] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -1206,13 +1209,13 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[track_route_update_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[PointOfContactIngestParam] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[track_route_update_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[RoutePointsIngestParam] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,
@@ -1526,7 +1529,7 @@ class AsyncTrackRouteResource(AsyncAPIResource):
     async def create_bulk(
         self,
         *,
-        body: Iterable[track_route_create_bulk_params.Body],
+        body: Iterable[TrackRouteIngestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1553,7 +1556,7 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/udl/trackroute/createBulk",
-            body=await async_maybe_transform(body, Iterable[track_route_create_bulk_params.Body]),
+            body=await async_maybe_transform(body, Iterable[TrackRouteIngestParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1698,7 +1701,7 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         source: str,
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        altitude_blocks: Iterable[track_route_unvalidated_publish_params.AltitudeBlock] | NotGiven = NOT_GIVEN,
+        altitude_blocks: Iterable[AltitudeBlocksIngestParam] | NotGiven = NOT_GIVEN,
         apn_setting: str | NotGiven = NOT_GIVEN,
         apx_beacon_code: str | NotGiven = NOT_GIVEN,
         artcc_message: str | NotGiven = NOT_GIVEN,
@@ -1709,13 +1712,13 @@ class AsyncTrackRouteResource(AsyncAPIResource):
         last_used_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         location_track_id: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        poc: Iterable[track_route_unvalidated_publish_params.Poc] | NotGiven = NOT_GIVEN,
+        poc: Iterable[PointOfContactIngestParam] | NotGiven = NOT_GIVEN,
         pri_freq: float | NotGiven = NOT_GIVEN,
         receiver_tanker_ch_code: str | NotGiven = NOT_GIVEN,
         region_code: str | NotGiven = NOT_GIVEN,
         region_name: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        route_points: Iterable[track_route_unvalidated_publish_params.RoutePoint] | NotGiven = NOT_GIVEN,
+        route_points: Iterable[RoutePointsIngestParam] | NotGiven = NOT_GIVEN,
         scheduler_org_name: str | NotGiven = NOT_GIVEN,
         scheduler_org_unit: str | NotGiven = NOT_GIVEN,
         sec_freq: float | NotGiven = NOT_GIVEN,

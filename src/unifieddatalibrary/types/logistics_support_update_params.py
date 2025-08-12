@@ -7,19 +7,17 @@ from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .logistics_remarks_ingest_param import LogisticsRemarksIngestParam
 
 __all__ = [
     "LogisticsSupportUpdateParams",
     "LogisticsDiscrepancyInfo",
-    "LogisticsRemark",
     "LogisticsSupportItem",
     "LogisticsSupportItemLogisticsPart",
     "LogisticsSupportItemLogisticsPartLogisticsStock",
-    "LogisticsSupportItemLogisticsRemark",
     "LogisticsSupportItemLogisticsSpecialty",
     "LogisticsTransportationPlan",
     "LogisticsTransportationPlanLogisticsSegment",
-    "LogisticsTransportationPlanLogisticsTransportationPlansRemark",
 ]
 
 
@@ -107,7 +105,7 @@ class LogisticsSupportUpdateParams(TypedDict, total=False):
     logistics_record_id: Annotated[str, PropertyInfo(alias="logisticsRecordId")]
     """The identifier that represents a Logistics Master Record."""
 
-    logistics_remarks: Annotated[Iterable[LogisticsRemark], PropertyInfo(alias="logisticsRemarks")]
+    logistics_remarks: Annotated[Iterable[LogisticsRemarksIngestParam], PropertyInfo(alias="logisticsRemarks")]
     """Remarks associated with this LogisticsSupport record."""
 
     logistics_support_items: Annotated[Iterable[LogisticsSupportItem], PropertyInfo(alias="logisticsSupportItems")]
@@ -189,20 +187,6 @@ class LogisticsDiscrepancyInfo(TypedDict, total=False):
     """The job start time, in ISO 8601 UTC format with millisecond precision."""
 
 
-class LogisticsRemark(TypedDict, total=False):
-    last_changed: Annotated[Union[str, datetime], PropertyInfo(alias="lastChanged", format="iso8601")]
-    """
-    Date the remark was published or updated, in ISO 8601 UTC format, with
-    millisecond precision.
-    """
-
-    remark: str
-    """Text of the remark."""
-
-    username: str
-    """User who published the remark."""
-
-
 class LogisticsSupportItemLogisticsPartLogisticsStock(TypedDict, total=False):
     quantity: int
     """The quantity of available parts needed from sourceICAO."""
@@ -261,20 +245,6 @@ class LogisticsSupportItemLogisticsPart(TypedDict, total=False):
 
     work_unit_code: Annotated[str, PropertyInfo(alias="workUnitCode")]
     """Work Unit Code (WUC), or for some aircraft types, the Reference Designator."""
-
-
-class LogisticsSupportItemLogisticsRemark(TypedDict, total=False):
-    last_changed: Annotated[Union[str, datetime], PropertyInfo(alias="lastChanged", format="iso8601")]
-    """
-    Date the remark was published or updated, in ISO 8601 UTC format, with
-    millisecond precision.
-    """
-
-    remark: str
-    """Text of the remark."""
-
-    username: str
-    """User who published the remark."""
 
 
 class LogisticsSupportItemLogisticsSpecialty(TypedDict, total=False):
@@ -344,7 +314,7 @@ class LogisticsSupportItem(TypedDict, total=False):
     logistics_parts: Annotated[Iterable[LogisticsSupportItemLogisticsPart], PropertyInfo(alias="logisticsParts")]
     """The parts associated with this support item."""
 
-    logistics_remarks: Annotated[Iterable[LogisticsSupportItemLogisticsRemark], PropertyInfo(alias="logisticsRemarks")]
+    logistics_remarks: Annotated[Iterable[LogisticsRemarksIngestParam], PropertyInfo(alias="logisticsRemarks")]
     """Remarks associated with this support item."""
 
     logistics_specialties: Annotated[
@@ -488,20 +458,6 @@ class LogisticsTransportationPlanLogisticsSegment(TypedDict, total=False):
     """The identifier that represents a specific aircraft within an aircraft type."""
 
 
-class LogisticsTransportationPlanLogisticsTransportationPlansRemark(TypedDict, total=False):
-    last_changed: Annotated[Union[str, datetime], PropertyInfo(alias="lastChanged", format="iso8601")]
-    """
-    Date the remark was published or updated, in ISO 8601 UTC format, with
-    millisecond precision.
-    """
-
-    remark: str
-    """Text of the remark."""
-
-    username: str
-    """User who published the remark."""
-
-
 class LogisticsTransportationPlan(TypedDict, total=False):
     act_dep_time: Annotated[Union[str, datetime], PropertyInfo(alias="actDepTime", format="iso8601")]
     """
@@ -574,8 +530,7 @@ class LogisticsTransportationPlan(TypedDict, total=False):
     """The transportation segments associated with this transportation plan."""
 
     logistics_transportation_plans_remarks: Annotated[
-        Iterable[LogisticsTransportationPlanLogisticsTransportationPlansRemark],
-        PropertyInfo(alias="logisticsTransportationPlansRemarks"),
+        Iterable[LogisticsRemarksIngestParam], PropertyInfo(alias="logisticsTransportationPlansRemarks")
     ]
     """Remarks associated with this transportation plan."""
 
