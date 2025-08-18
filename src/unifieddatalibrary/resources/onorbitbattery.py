@@ -26,6 +26,7 @@ from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.onorbit_battery_full import OnorbitBatteryFull
 from ..types.onorbitbattery_list_response import OnorbitbatteryListResponse
+from ..types.shared_params.battery_ingest import BatteryIngest
 
 __all__ = ["OnorbitbatteryResource", "AsyncOnorbitbatteryResource"]
 
@@ -59,7 +60,7 @@ class OnorbitbatteryResource(SyncAPIResource):
         id_on_orbit: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        battery: onorbitbattery_create_params.Battery | NotGiven = NOT_GIVEN,
+        battery: BatteryIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -153,7 +154,7 @@ class OnorbitbatteryResource(SyncAPIResource):
         id_on_orbit: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        battery: onorbitbattery_update_params.Battery | NotGiven = NOT_GIVEN,
+        battery: BatteryIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -402,7 +403,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         id_on_orbit: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        battery: onorbitbattery_create_params.Battery | NotGiven = NOT_GIVEN,
+        battery: BatteryIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -496,7 +497,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         id_on_orbit: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        battery: onorbitbattery_update_params.Battery | NotGiven = NOT_GIVEN,
+        battery: BatteryIngest | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         quantity: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
