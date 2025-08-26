@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.19 (2025-08-26)
+
+Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
+
+### Bug Fixes
+
+* avoid newer type syntax ([9631ddd](https://github.com/Bluestaq/udl-python-sdk/commit/9631ddd0d6ff27e3b41673b14fb7329446fff40b))
+
+
+### Chores
+
+* **internal:** change ci workflow machines ([14f884e](https://github.com/Bluestaq/udl-python-sdk/commit/14f884ed8c066bfad0058588904da10446ed126a))
+* **internal:** update pyright exclude list ([e5ed265](https://github.com/Bluestaq/udl-python-sdk/commit/e5ed265125fdcddca6b96c9c6f67253cc796826b))
+* update github action ([20fec5b](https://github.com/Bluestaq/udl-python-sdk/commit/20fec5b4e4d39293d9fe9a39e763ed9c9c738d1b))
+
 ## 0.1.0-alpha.18 (2025-08-12)
 
 Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
