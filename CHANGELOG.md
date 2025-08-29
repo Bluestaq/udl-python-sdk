@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-08-29)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Chores
+
+* **internal:** add Sequence related utils ([eff555b](https://github.com/Bluestaq/udl-python-sdk/commit/eff555b344070fac4fb0625d09f6d1627430c34f))
+
 ## 0.1.0-alpha.19 (2025-08-26)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
