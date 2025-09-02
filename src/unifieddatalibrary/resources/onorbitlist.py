@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +14,7 @@ from ..types import (
     onorbitlist_create_params,
     onorbitlist_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -64,7 +63,7 @@ class OnorbitlistResource(SyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        onorbits: List[str] | NotGiven = NOT_GIVEN,
+        onorbits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -153,7 +152,7 @@ class OnorbitlistResource(SyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        onorbits: List[str] | NotGiven = NOT_GIVEN,
+        onorbits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -518,7 +517,7 @@ class AsyncOnorbitlistResource(AsyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        onorbits: List[str] | NotGiven = NOT_GIVEN,
+        onorbits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -607,7 +606,7 @@ class AsyncOnorbitlistResource(AsyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        onorbits: List[str] | NotGiven = NOT_GIVEN,
+        onorbits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

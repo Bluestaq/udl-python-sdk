@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,7 +16,7 @@ from ..types import (
     airspace_control_order_retrieve_params,
     airspace_control_order_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -73,10 +73,10 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         airspace_control_order_references: Iterable[airspace_control_order_create_params.AirspaceControlOrderReference]
         | NotGiven = NOT_GIVEN,
         area_of_validity: str | NotGiven = NOT_GIVEN,
-        class_reasons: List[str] | NotGiven = NOT_GIVEN,
+        class_reasons: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         class_source: str | NotGiven = NOT_GIVEN,
-        declass_exemption_codes: List[str] | NotGiven = NOT_GIVEN,
-        downgrade_ins_dates: List[str] | NotGiven = NOT_GIVEN,
+        declass_exemption_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        downgrade_ins_dates: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         geo_datum: str | NotGiven = NOT_GIVEN,
         month: str | NotGiven = NOT_GIVEN,
         op_ex_info: str | NotGiven = NOT_GIVEN,
@@ -88,7 +88,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         serial_num: str | NotGiven = NOT_GIVEN,
         stop_qualifier: str | NotGiven = NOT_GIVEN,
         stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        und_lnk_trks: List[str] | NotGiven = NOT_GIVEN,
+        und_lnk_trks: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -534,10 +534,10 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         airspace_control_order_references: Iterable[airspace_control_order_create_params.AirspaceControlOrderReference]
         | NotGiven = NOT_GIVEN,
         area_of_validity: str | NotGiven = NOT_GIVEN,
-        class_reasons: List[str] | NotGiven = NOT_GIVEN,
+        class_reasons: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         class_source: str | NotGiven = NOT_GIVEN,
-        declass_exemption_codes: List[str] | NotGiven = NOT_GIVEN,
-        downgrade_ins_dates: List[str] | NotGiven = NOT_GIVEN,
+        declass_exemption_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        downgrade_ins_dates: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         geo_datum: str | NotGiven = NOT_GIVEN,
         month: str | NotGiven = NOT_GIVEN,
         op_ex_info: str | NotGiven = NOT_GIVEN,
@@ -549,7 +549,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         serial_num: str | NotGiven = NOT_GIVEN,
         stop_qualifier: str | NotGiven = NOT_GIVEN,
         stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        und_lnk_trks: List[str] | NotGiven = NOT_GIVEN,
+        und_lnk_trks: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

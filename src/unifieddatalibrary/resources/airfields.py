@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +14,7 @@ from ..types import (
     airfield_update_params,
     airfield_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,7 +64,7 @@ class AirfieldsResource(SyncAPIResource):
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        alternative_names: List[str] | NotGiven = NOT_GIVEN,
+        alternative_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         country_name: str | NotGiven = NOT_GIVEN,
@@ -92,7 +91,7 @@ class AirfieldsResource(SyncAPIResource):
         secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         state_province_code: str | NotGiven = NOT_GIVEN,
-        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
+        suitability_code_descs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -346,7 +345,7 @@ class AirfieldsResource(SyncAPIResource):
         type: str,
         body_id: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        alternative_names: List[str] | NotGiven = NOT_GIVEN,
+        alternative_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         country_name: str | NotGiven = NOT_GIVEN,
@@ -373,7 +372,7 @@ class AirfieldsResource(SyncAPIResource):
         secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         state_province_code: str | NotGiven = NOT_GIVEN,
-        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
+        suitability_code_descs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -772,7 +771,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         type: str,
         id: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        alternative_names: List[str] | NotGiven = NOT_GIVEN,
+        alternative_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         country_name: str | NotGiven = NOT_GIVEN,
@@ -799,7 +798,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         state_province_code: str | NotGiven = NOT_GIVEN,
-        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
+        suitability_code_descs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,
@@ -1053,7 +1052,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         type: str,
         body_id: str | NotGiven = NOT_GIVEN,
         alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        alternative_names: List[str] | NotGiven = NOT_GIVEN,
+        alternative_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         city: str | NotGiven = NOT_GIVEN,
         country_code: str | NotGiven = NOT_GIVEN,
         country_name: str | NotGiven = NOT_GIVEN,
@@ -1080,7 +1079,7 @@ class AsyncAirfieldsResource(AsyncAPIResource):
         secondary_icao: str | NotGiven = NOT_GIVEN,
         state: str | NotGiven = NOT_GIVEN,
         state_province_code: str | NotGiven = NOT_GIVEN,
-        suitability_code_descs: List[str] | NotGiven = NOT_GIVEN,
+        suitability_code_descs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         suitability_codes: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
         zar_id: str | NotGiven = NOT_GIVEN,

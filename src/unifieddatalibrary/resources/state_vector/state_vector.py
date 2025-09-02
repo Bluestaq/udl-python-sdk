@@ -31,7 +31,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -140,13 +140,13 @@ class StateVectorResource(SyncAPIResource):
         solar_rad_press: bool | NotGiven = NOT_GIVEN,
         solar_rad_press_coeff: float | NotGiven = NOT_GIVEN,
         solid_earth_tides: bool | NotGiven = NOT_GIVEN,
-        sourced_data: List[str] | NotGiven = NOT_GIVEN,
+        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
         srp_area: float | NotGiven = NOT_GIVEN,
         step_mode: str | NotGiven = NOT_GIVEN,
         step_size: float | NotGiven = NOT_GIVEN,
         step_size_selection: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tai_utc: float | NotGiven = NOT_GIVEN,
         thrust_accel: float | NotGiven = NOT_GIVEN,
         tracks_avail: int | NotGiven = NOT_GIVEN,
@@ -1108,13 +1108,13 @@ class AsyncStateVectorResource(AsyncAPIResource):
         solar_rad_press: bool | NotGiven = NOT_GIVEN,
         solar_rad_press_coeff: float | NotGiven = NOT_GIVEN,
         solid_earth_tides: bool | NotGiven = NOT_GIVEN,
-        sourced_data: List[str] | NotGiven = NOT_GIVEN,
+        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
         srp_area: float | NotGiven = NOT_GIVEN,
         step_mode: str | NotGiven = NOT_GIVEN,
         step_size: float | NotGiven = NOT_GIVEN,
         step_size_selection: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tai_utc: float | NotGiven = NOT_GIVEN,
         thrust_accel: float | NotGiven = NOT_GIVEN,
         tracks_avail: int | NotGiven = NOT_GIVEN,

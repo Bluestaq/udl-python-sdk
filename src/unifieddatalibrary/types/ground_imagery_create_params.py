@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["GroundImageryCreateParams"]
@@ -63,7 +64,7 @@ class GroundImageryCreateParams(TypedDict, total=False):
     id_sensor: Annotated[str, PropertyInfo(alias="idSensor")]
     """Optional ID of the sensor that produced this ground image."""
 
-    keywords: List[str]
+    keywords: SequenceNotStr[str]
     """Optional array of keywords for this image."""
 
     name: str
@@ -127,7 +128,7 @@ class GroundImageryCreateParams(TypedDict, total=False):
     multiple images of the same subject.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

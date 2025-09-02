@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal
 
@@ -17,7 +17,7 @@ from ..types import (
     navigational_obstruction_update_params,
     navigational_obstruction_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -96,7 +96,7 @@ class NavigationalObstructionResource(SyncAPIResource):
         horiz_acc: float | NotGiven = NOT_GIVEN,
         horiz_datum_code: str | NotGiven = NOT_GIVEN,
         init_record_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        keys: List[str] | NotGiven = NOT_GIVEN,
+        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lighting_code: str | NotGiven = NOT_GIVEN,
         line_ne_lat: float | NotGiven = NOT_GIVEN,
         line_ne_lon: float | NotGiven = NOT_GIVEN,
@@ -128,7 +128,7 @@ class NavigationalObstructionResource(SyncAPIResource):
         surface_mat_code: str | NotGiven = NOT_GIVEN,
         transaction_code: str | NotGiven = NOT_GIVEN,
         validation_code: int | NotGiven = NOT_GIVEN,
-        values: List[str] | NotGiven = NOT_GIVEN,
+        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         vectors_filename: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
@@ -498,7 +498,7 @@ class NavigationalObstructionResource(SyncAPIResource):
         horiz_acc: float | NotGiven = NOT_GIVEN,
         horiz_datum_code: str | NotGiven = NOT_GIVEN,
         init_record_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        keys: List[str] | NotGiven = NOT_GIVEN,
+        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lighting_code: str | NotGiven = NOT_GIVEN,
         line_ne_lat: float | NotGiven = NOT_GIVEN,
         line_ne_lon: float | NotGiven = NOT_GIVEN,
@@ -530,7 +530,7 @@ class NavigationalObstructionResource(SyncAPIResource):
         surface_mat_code: str | NotGiven = NOT_GIVEN,
         transaction_code: str | NotGiven = NOT_GIVEN,
         validation_code: int | NotGiven = NOT_GIVEN,
-        values: List[str] | NotGiven = NOT_GIVEN,
+        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         vectors_filename: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
@@ -1207,7 +1207,7 @@ class AsyncNavigationalObstructionResource(AsyncAPIResource):
         horiz_acc: float | NotGiven = NOT_GIVEN,
         horiz_datum_code: str | NotGiven = NOT_GIVEN,
         init_record_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        keys: List[str] | NotGiven = NOT_GIVEN,
+        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lighting_code: str | NotGiven = NOT_GIVEN,
         line_ne_lat: float | NotGiven = NOT_GIVEN,
         line_ne_lon: float | NotGiven = NOT_GIVEN,
@@ -1239,7 +1239,7 @@ class AsyncNavigationalObstructionResource(AsyncAPIResource):
         surface_mat_code: str | NotGiven = NOT_GIVEN,
         transaction_code: str | NotGiven = NOT_GIVEN,
         validation_code: int | NotGiven = NOT_GIVEN,
-        values: List[str] | NotGiven = NOT_GIVEN,
+        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         vectors_filename: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,
@@ -1609,7 +1609,7 @@ class AsyncNavigationalObstructionResource(AsyncAPIResource):
         horiz_acc: float | NotGiven = NOT_GIVEN,
         horiz_datum_code: str | NotGiven = NOT_GIVEN,
         init_record_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        keys: List[str] | NotGiven = NOT_GIVEN,
+        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lighting_code: str | NotGiven = NOT_GIVEN,
         line_ne_lat: float | NotGiven = NOT_GIVEN,
         line_ne_lon: float | NotGiven = NOT_GIVEN,
@@ -1641,7 +1641,7 @@ class AsyncNavigationalObstructionResource(AsyncAPIResource):
         surface_mat_code: str | NotGiven = NOT_GIVEN,
         transaction_code: str | NotGiven = NOT_GIVEN,
         validation_code: int | NotGiven = NOT_GIVEN,
-        values: List[str] | NotGiven = NOT_GIVEN,
+        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         vectors_filename: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
         wac_innr: str | NotGiven = NOT_GIVEN,

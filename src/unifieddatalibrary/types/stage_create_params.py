@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["StageCreateParams"]
@@ -102,7 +102,7 @@ class StageCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    photo_urls: Annotated[List[str], PropertyInfo(alias="photoURLs")]
+    photo_urls: Annotated[SequenceNotStr[str], PropertyInfo(alias="photoURLs")]
     """Array of URLs of photos of the stage."""
 
     restartable: bool
@@ -114,7 +114,7 @@ class StageCreateParams(TypedDict, total=False):
     stage_number: Annotated[int, PropertyInfo(alias="stageNumber")]
     """The stage number of this launch stage."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

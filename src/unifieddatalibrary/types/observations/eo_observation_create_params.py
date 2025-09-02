@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["EoObservationCreateParams", "EoobservationDetails"]
@@ -476,7 +477,7 @@ class EoObservationCreateParams(TypedDict, total=False):
     target-to-sun vector.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -704,7 +705,7 @@ class EoobservationDetails(TypedDict, total=False):
     mag_instrumental_unc: Annotated[float, PropertyInfo(alias="magInstrumentalUnc")]
     """Uncertainty in the instrumental magnitude."""
 
-    neutral_density_filter_names: Annotated[List[str], PropertyInfo(alias="neutralDensityFilterNames")]
+    neutral_density_filter_names: Annotated[SequenceNotStr[str], PropertyInfo(alias="neutralDensityFilterNames")]
     """
     Must be present for all values n=1 to numNeutralDensityFilters, in incrementing
     order of n, and for no other values of n.
@@ -892,7 +893,7 @@ class EoobservationDetails(TypedDict, total=False):
     source: str
     """Source of the data, will be set to EOObservation source if blank."""
 
-    spectral_filters: Annotated[List[str], PropertyInfo(alias="spectralFilters")]
+    spectral_filters: Annotated[SequenceNotStr[str], PropertyInfo(alias="spectralFilters")]
     """
     Array of the SpectralFilters keywords, must be present for all values n=1 to
     numSpectralFilters, in incrementing order of n, and for no other values of n.

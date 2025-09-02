@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,7 +16,7 @@ from ..types import (
     object_of_interest_create_params,
     object_of_interest_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -66,7 +66,7 @@ class ObjectOfInterestResource(SyncAPIResource):
         source: str,
         status_date: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
-        affected_objects: List[str] | NotGiven = NOT_GIVEN,
+        affected_objects: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         apogee: float | NotGiven = NOT_GIVEN,
         arg_of_perigee: float | NotGiven = NOT_GIVEN,
         b_star: float | NotGiven = NOT_GIVEN,
@@ -317,7 +317,7 @@ class ObjectOfInterestResource(SyncAPIResource):
         source: str,
         status_date: Union[str, datetime],
         body_id: str | NotGiven = NOT_GIVEN,
-        affected_objects: List[str] | NotGiven = NOT_GIVEN,
+        affected_objects: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         apogee: float | NotGiven = NOT_GIVEN,
         arg_of_perigee: float | NotGiven = NOT_GIVEN,
         b_star: float | NotGiven = NOT_GIVEN,
@@ -846,7 +846,7 @@ class AsyncObjectOfInterestResource(AsyncAPIResource):
         source: str,
         status_date: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
-        affected_objects: List[str] | NotGiven = NOT_GIVEN,
+        affected_objects: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         apogee: float | NotGiven = NOT_GIVEN,
         arg_of_perigee: float | NotGiven = NOT_GIVEN,
         b_star: float | NotGiven = NOT_GIVEN,
@@ -1097,7 +1097,7 @@ class AsyncObjectOfInterestResource(AsyncAPIResource):
         source: str,
         status_date: Union[str, datetime],
         body_id: str | NotGiven = NOT_GIVEN,
-        affected_objects: List[str] | NotGiven = NOT_GIVEN,
+        affected_objects: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         apogee: float | NotGiven = NOT_GIVEN,
         arg_of_perigee: float | NotGiven = NOT_GIVEN,
         b_star: float | NotGiven = NOT_GIVEN,

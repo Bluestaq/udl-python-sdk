@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["NotificationCreateParams"]
@@ -56,7 +56,7 @@ class NotificationCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, used for
     implementing data owner conditional access controls to restrict access to the

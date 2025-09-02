@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -113,7 +114,7 @@ class FlightplanCreateParams(TypedDict, total=False):
     arr_runway: Annotated[str, PropertyInfo(alias="arrRunway")]
     """The arrival runway for this flight."""
 
-    atc_addresses: Annotated[List[str], PropertyInfo(alias="atcAddresses")]
+    atc_addresses: Annotated[SequenceNotStr[str], PropertyInfo(alias="atcAddresses")]
     """Array of Air Traffic Control (ATC) addresses."""
 
     avg_temp_dev: Annotated[float, PropertyInfo(alias="avgTempDev")]
@@ -140,7 +141,7 @@ class FlightplanCreateParams(TypedDict, total=False):
     contingency_fuel: Annotated[float, PropertyInfo(alias="contingencyFuel")]
     """The amount of contingency fuel in pounds."""
 
-    country_codes: Annotated[List[str], PropertyInfo(alias="countryCodes")]
+    country_codes: Annotated[SequenceNotStr[str], PropertyInfo(alias="countryCodes")]
     """
     Array of country codes for the countries overflown during this flight in ISO
     3166-1 Alpha-2 format.
@@ -191,13 +192,13 @@ class FlightplanCreateParams(TypedDict, total=False):
     millisecond precision.
     """
 
-    etops_airfields: Annotated[List[str], PropertyInfo(alias="etopsAirfields")]
+    etops_airfields: Annotated[SequenceNotStr[str], PropertyInfo(alias="etopsAirfields")]
     """
     Array of Extended Operations (ETOPS) adequate landing airfields that are within
     the mission region.
     """
 
-    etops_alt_airfields: Annotated[List[str], PropertyInfo(alias="etopsAltAirfields")]
+    etops_alt_airfields: Annotated[SequenceNotStr[str], PropertyInfo(alias="etopsAltAirfields")]
     """
     Array of Extended Operations (ETOPS) alternate suitable landing airfields that
     are within the mission region.

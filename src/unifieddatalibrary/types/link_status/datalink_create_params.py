@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = [
@@ -66,7 +67,7 @@ class DatalinkCreateParams(TypedDict, total=False):
     create operations.
     """
 
-    ack_inst_units: Annotated[List[str], PropertyInfo(alias="ackInstUnits")]
+    ack_inst_units: Annotated[SequenceNotStr[str], PropertyInfo(alias="ackInstUnits")]
     """
     Array of instructions for acknowledging and the force or units required to
     acknowledge the data link message being sent.
@@ -94,7 +95,7 @@ class DatalinkCreateParams(TypedDict, total=False):
     canx_serial_num: Annotated[str, PropertyInfo(alias="canxSerialNum")]
     """Serial number assigned to this data link message cancellation."""
 
-    canx_si_cs: Annotated[List[str], PropertyInfo(alias="canxSICs")]
+    canx_si_cs: Annotated[SequenceNotStr[str], PropertyInfo(alias="canxSICs")]
     """
     Array of NATO Subject Indicator Codes (SIC) or filing numbers of this data link
     message or document being cancelled.
@@ -112,7 +113,7 @@ class DatalinkCreateParams(TypedDict, total=False):
     millisecond precision.
     """
 
-    class_reasons: Annotated[List[str], PropertyInfo(alias="classReasons")]
+    class_reasons: Annotated[SequenceNotStr[str], PropertyInfo(alias="classReasons")]
     """Array of codes that indicate the reasons material is classified."""
 
     class_source: Annotated[str, PropertyInfo(alias="classSource")]
@@ -135,13 +136,13 @@ class DatalinkCreateParams(TypedDict, total=False):
     Allowable entries are 15 to 90 in increments of 15 degrees.
     """
 
-    dec_exempt_codes: Annotated[List[str], PropertyInfo(alias="decExemptCodes")]
+    dec_exempt_codes: Annotated[SequenceNotStr[str], PropertyInfo(alias="decExemptCodes")]
     """
     Array of codes that provide justification for exemption from automatic
     downgrading or declassification.
     """
 
-    dec_inst_dates: Annotated[List[str], PropertyInfo(alias="decInstDates")]
+    dec_inst_dates: Annotated[SequenceNotStr[str], PropertyInfo(alias="decInstDates")]
     """
     Array of markings that provide the literal guidance or dates for the downgrading
     or declassification of this data link message.
@@ -223,7 +224,7 @@ class DatalinkCreateParams(TypedDict, total=False):
     collections within the datalink service.
     """
 
-    non_link_unit_des: Annotated[List[str], PropertyInfo(alias="nonLinkUnitDes")]
+    non_link_unit_des: Annotated[SequenceNotStr[str], PropertyInfo(alias="nonLinkUnitDes")]
     """Array of non-link specific data unit designators."""
 
     op_ex_info: Annotated[str, PropertyInfo(alias="opExInfo")]
@@ -283,7 +284,7 @@ class DatalinkCreateParams(TypedDict, total=False):
     poc_name: Annotated[str, PropertyInfo(alias="pocName")]
     """The name of the point of contact for this data link message."""
 
-    poc_nums: Annotated[List[str], PropertyInfo(alias="pocNums")]
+    poc_nums: Annotated[SequenceNotStr[str], PropertyInfo(alias="pocNums")]
     """
     Array of telephone numbers, radio frequency values, or email addresses of the
     point of contact for this data link message.
@@ -369,7 +370,7 @@ class DatalinkCreateParams(TypedDict, total=False):
     track_num_block_l_ls: Annotated[Iterable[int], PropertyInfo(alias="trackNumBlockLLs")]
     """Array of Link-16 octal track numbers used as the lower limit of a track block."""
 
-    track_num_blocks: Annotated[List[str], PropertyInfo(alias="trackNumBlocks")]
+    track_num_blocks: Annotated[SequenceNotStr[str], PropertyInfo(alias="trackNumBlocks")]
     """
     Array of defined ranges of Link-11/11B track numbers assigned to a participating
     unit or reporting unit.
@@ -410,7 +411,7 @@ class MultiDutyMultiDutyVoiceCoord(TypedDict, total=False):
     multilink coordination.
     """
 
-    multi_tele_freq_nums: Annotated[List[str], PropertyInfo(alias="multiTeleFreqNums")]
+    multi_tele_freq_nums: Annotated[SequenceNotStr[str], PropertyInfo(alias="multiTeleFreqNums")]
     """
     Array of telephone numbers or contact frequencies used for interface control for
     multilink coordination.
@@ -427,7 +428,7 @@ class MultiDuty(TypedDict, total=False):
     duty: str
     """Specific duties assigned for multilink coordination (e.g. ICO, RICO, SICO)."""
 
-    duty_tele_freq_nums: Annotated[List[str], PropertyInfo(alias="dutyTeleFreqNums")]
+    duty_tele_freq_nums: Annotated[SequenceNotStr[str], PropertyInfo(alias="dutyTeleFreqNums")]
     """
     Array of telephone numbers or the frequency values for radio transmission of the
     person to be contacted for multilink coordination.
@@ -494,7 +495,7 @@ class Reference(TypedDict, total=False):
     ref_serial_num: Annotated[str, PropertyInfo(alias="refSerialNum")]
     """Serial number assigned to this reference."""
 
-    ref_si_cs: Annotated[List[str], PropertyInfo(alias="refSICs")]
+    ref_si_cs: Annotated[SequenceNotStr[str], PropertyInfo(alias="refSICs")]
     """
     Array of NATO Subject Indicator Codes (SIC) or filing numbers of the document
     being referenced.
@@ -579,7 +580,7 @@ class VoiceCoord(TypedDict, total=False):
     this data link message.
     """
 
-    tele_freq_nums: Annotated[List[str], PropertyInfo(alias="teleFreqNums")]
+    tele_freq_nums: Annotated[SequenceNotStr[str], PropertyInfo(alias="teleFreqNums")]
     """
     Array of telephone numbers or contact frequencies used for interface control for
     this data link message.

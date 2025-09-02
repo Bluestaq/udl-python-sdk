@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -166,7 +167,7 @@ class BodyCollectionRequirement(TypedDict, total=False):
     support.
     """
 
-    target_list: Annotated[List[str], PropertyInfo(alias="targetList")]
+    target_list: Annotated[SequenceNotStr[str], PropertyInfo(alias="targetList")]
     """Array of POI Id's for the targets being tasked."""
 
     type: str
@@ -347,7 +348,7 @@ class BodyTaskingTaskingCollectionRequirement(TypedDict, total=False):
     support.
     """
 
-    target_list: Annotated[List[str], PropertyInfo(alias="targetList")]
+    target_list: Annotated[SequenceNotStr[str], PropertyInfo(alias="targetList")]
     """Array of POI Id's for the targets being tasked."""
 
     type: str

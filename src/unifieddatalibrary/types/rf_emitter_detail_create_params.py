@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["RfEmitterDetailCreateParams"]
@@ -137,5 +138,5 @@ class RfEmitterDetailCreateParams(TypedDict, total=False):
     transmitter_frequency: Annotated[float, PropertyInfo(alias="transmitterFrequency")]
     """Transmitter frequency in Mhz."""
 
-    urls: List[str]
+    urls: SequenceNotStr[str]
     """Array of URLs containing additional information on this RF Emitter."""

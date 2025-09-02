@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +14,7 @@ from ..types import (
     stage_create_params,
     stage_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -82,11 +81,11 @@ class StageResource(SyncAPIResource):
         num_stage_elements: int | NotGiven = NOT_GIVEN,
         num_vernier: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        photo_urls: List[str] | NotGiven = NOT_GIVEN,
+        photo_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         restartable: bool | NotGiven = NOT_GIVEN,
         reusable: bool | NotGiven = NOT_GIVEN,
         stage_number: int | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         thrust_sea_level: float | NotGiven = NOT_GIVEN,
         thrust_vacuum: float | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -293,11 +292,11 @@ class StageResource(SyncAPIResource):
         num_stage_elements: int | NotGiven = NOT_GIVEN,
         num_vernier: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        photo_urls: List[str] | NotGiven = NOT_GIVEN,
+        photo_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         restartable: bool | NotGiven = NOT_GIVEN,
         reusable: bool | NotGiven = NOT_GIVEN,
         stage_number: int | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         thrust_sea_level: float | NotGiven = NOT_GIVEN,
         thrust_vacuum: float | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -782,11 +781,11 @@ class AsyncStageResource(AsyncAPIResource):
         num_stage_elements: int | NotGiven = NOT_GIVEN,
         num_vernier: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        photo_urls: List[str] | NotGiven = NOT_GIVEN,
+        photo_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         restartable: bool | NotGiven = NOT_GIVEN,
         reusable: bool | NotGiven = NOT_GIVEN,
         stage_number: int | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         thrust_sea_level: float | NotGiven = NOT_GIVEN,
         thrust_vacuum: float | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
@@ -993,11 +992,11 @@ class AsyncStageResource(AsyncAPIResource):
         num_stage_elements: int | NotGiven = NOT_GIVEN,
         num_vernier: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        photo_urls: List[str] | NotGiven = NOT_GIVEN,
+        photo_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         restartable: bool | NotGiven = NOT_GIVEN,
         reusable: bool | NotGiven = NOT_GIVEN,
         stage_number: int | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         thrust_sea_level: float | NotGiven = NOT_GIVEN,
         thrust_vacuum: float | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,

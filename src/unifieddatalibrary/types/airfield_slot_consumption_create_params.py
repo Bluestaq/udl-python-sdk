@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["AirfieldSlotConsumptionCreateParams"]
@@ -74,7 +75,7 @@ class AirfieldSlotConsumptionCreateParams(TypedDict, total=False):
     app_org: Annotated[str, PropertyInfo(alias="appOrg")]
     """Short name of the organization approving the use of this slot."""
 
-    call_signs: Annotated[List[str], PropertyInfo(alias="callSigns")]
+    call_signs: Annotated[SequenceNotStr[str], PropertyInfo(alias="callSigns")]
     """Array of call signs of the aircraft using this slot."""
 
     consumer: str
