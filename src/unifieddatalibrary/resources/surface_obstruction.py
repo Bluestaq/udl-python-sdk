@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -16,7 +16,7 @@ from ..types import (
     surface_obstruction_update_params,
     surface_obstruction_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -64,8 +64,8 @@ class SurfaceObstructionResource(SyncAPIResource):
         id_surface: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        advisory_required: List[str] | NotGiven = NOT_GIVEN,
-        approval_required: List[str] | NotGiven = NOT_GIVEN,
+        advisory_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        approval_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         distance_from_center_line: float | NotGiven = NOT_GIVEN,
         distance_from_edge: float | NotGiven = NOT_GIVEN,
         distance_from_threshold: float | NotGiven = NOT_GIVEN,
@@ -170,8 +170,8 @@ class SurfaceObstructionResource(SyncAPIResource):
         id_surface: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        advisory_required: List[str] | NotGiven = NOT_GIVEN,
-        approval_required: List[str] | NotGiven = NOT_GIVEN,
+        advisory_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        approval_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         distance_from_center_line: float | NotGiven = NOT_GIVEN,
         distance_from_edge: float | NotGiven = NOT_GIVEN,
         distance_from_threshold: float | NotGiven = NOT_GIVEN,
@@ -588,8 +588,8 @@ class AsyncSurfaceObstructionResource(AsyncAPIResource):
         id_surface: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        advisory_required: List[str] | NotGiven = NOT_GIVEN,
-        approval_required: List[str] | NotGiven = NOT_GIVEN,
+        advisory_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        approval_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         distance_from_center_line: float | NotGiven = NOT_GIVEN,
         distance_from_edge: float | NotGiven = NOT_GIVEN,
         distance_from_threshold: float | NotGiven = NOT_GIVEN,
@@ -694,8 +694,8 @@ class AsyncSurfaceObstructionResource(AsyncAPIResource):
         id_surface: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        advisory_required: List[str] | NotGiven = NOT_GIVEN,
-        approval_required: List[str] | NotGiven = NOT_GIVEN,
+        advisory_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        approval_required: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         distance_from_center_line: float | NotGiven = NOT_GIVEN,
         distance_from_edge: float | NotGiven = NOT_GIVEN,
         distance_from_threshold: float | NotGiven = NOT_GIVEN,

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -124,7 +125,9 @@ class BodyOpticalSoiObservationList(TypedDict, total=False):
     steradian per micrometer.
     """
 
-    intensity_times: Annotated[List[Union[str, datetime]], PropertyInfo(alias="intensityTimes", format="iso8601")]
+    intensity_times: Annotated[
+        SequenceNotStr[Union[str, datetime]], PropertyInfo(alias="intensityTimes", format="iso8601")
+    ]
     """Array of start times for each intensity measurement.
 
     The 1st value in the array will match obStartTime.
@@ -302,7 +305,7 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     is provided.
     """
 
-    polarizations: List[str]
+    polarizations: SequenceNotStr[str]
     """Array of sensor polarizations when collecting the data.
 
     Polarization is a property of electromagnetic waves that describes the
@@ -374,7 +377,7 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     at GEO.
     """
 
-    tovs: Annotated[List[Union[str, datetime]], PropertyInfo(format="iso8601")]
+    tovs: Annotated[SequenceNotStr[Union[str, datetime]], PropertyInfo(format="iso8601")]
     """
     Array of the times of validity in ISO 8601 UTC format with microsecond
     precision.
@@ -790,7 +793,7 @@ class Body(TypedDict, total=False):
     based on historical collection data for the object.
     """
 
-    spectral_filters: Annotated[List[str], PropertyInfo(alias="spectralFilters")]
+    spectral_filters: Annotated[SequenceNotStr[str], PropertyInfo(alias="spectralFilters")]
     """
     Array of the SpectralFilters keywords, must be present for all values n=1 to
     numSpectralFilters, in incrementing order of n, and for no other values of n.
@@ -799,7 +802,7 @@ class Body(TypedDict, total=False):
     star_cat_name: Annotated[str, PropertyInfo(alias="starCatName")]
     """Name of the Star Catalog used for photometry and astrometry."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

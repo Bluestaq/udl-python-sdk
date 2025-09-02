@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -81,7 +81,7 @@ class AttitudeSetsResource(SyncAPIResource):
         start_time: Union[str, datetime],
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        as_ref: List[str] | NotGiven = NOT_GIVEN,
+        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
@@ -535,7 +535,7 @@ class AttitudeSetsResource(SyncAPIResource):
         start_time: Union[str, datetime],
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        as_ref: List[str] | NotGiven = NOT_GIVEN,
+        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
@@ -773,7 +773,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         start_time: Union[str, datetime],
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        as_ref: List[str] | NotGiven = NOT_GIVEN,
+        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,
@@ -1227,7 +1227,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         start_time: Union[str, datetime],
         type: str,
         id: str | NotGiven = NOT_GIVEN,
-        as_ref: List[str] | NotGiven = NOT_GIVEN,
+        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | NotGiven = NOT_GIVEN,
         es_id: str | NotGiven = NOT_GIVEN,
         euler_rot_seq: str | NotGiven = NOT_GIVEN,

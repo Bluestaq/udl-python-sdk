@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -157,12 +157,12 @@ class ManeuversResource(SyncAPIResource):
         pre_vel_z: float | NotGiven = NOT_GIVEN,
         report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
-        sourced_data: List[str] | NotGiven = NOT_GIVEN,
+        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
         state_model: str | NotGiven = NOT_GIVEN,
         state_model_version: float | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         total_burn_time: float | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
@@ -1026,12 +1026,12 @@ class AsyncManeuversResource(AsyncAPIResource):
         pre_vel_z: float | NotGiven = NOT_GIVEN,
         report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
-        sourced_data: List[str] | NotGiven = NOT_GIVEN,
+        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
         state_model: str | NotGiven = NOT_GIVEN,
         state_model_version: float | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         total_burn_time: float | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,

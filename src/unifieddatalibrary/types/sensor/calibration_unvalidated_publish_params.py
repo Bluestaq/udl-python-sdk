@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["CalibrationUnvalidatedPublishParams", "Body"]
@@ -274,7 +275,7 @@ class Body(TypedDict, total=False):
     used to determine the radar cross section bias.
     """
 
-    ref_targets: Annotated[List[str], PropertyInfo(alias="refTargets")]
+    ref_targets: Annotated[SequenceNotStr[str], PropertyInfo(alias="refTargets")]
     """Array of the catalog IDs of the reference targets used in the calibration."""
 
     ref_type: Annotated[str, PropertyInfo(alias="refType")]

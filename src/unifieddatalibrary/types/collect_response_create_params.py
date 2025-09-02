@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CollectResponseCreateParams"]
@@ -100,7 +101,7 @@ class CollectResponseCreateParams(TypedDict, total=False):
     sat_no: Annotated[int, PropertyInfo(alias="satNo")]
     """Satellite/catalog number of the target on-orbit object."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUIDs of the UDL data record(s) collected in response to the associated
     request. See the associated 'srcTyps' array for the specific types of data,
@@ -109,7 +110,7 @@ class CollectResponseCreateParams(TypedDict, total=False):
     retrieve the specified object(s) (e.g. /udl/rfobservation/{uuid}).
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record type(s) (DOA, ELSET, EO, RADAR, RF, SV) collected or
     produced in response to the associated request. See the associated 'srcIds'
@@ -161,7 +162,7 @@ class CollectResponseCreateParams(TypedDict, total=False):
     SCHEDULED: The request was received and has been scheduled for execution.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

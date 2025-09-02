@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -192,7 +193,7 @@ class Body(TypedDict, total=False):
     format.
     """
 
-    external_actions: Annotated[List[str], PropertyInfo(alias="externalActions")]
+    external_actions: Annotated[SequenceNotStr[str], PropertyInfo(alias="externalActions")]
     """List of external actions to be executed as part of this task."""
 
     external_request_id: Annotated[str, PropertyInfo(alias="externalRequestId")]

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -85,9 +85,9 @@ class SiteStatusResource(SyncAPIResource):
         hot_inventory: int | NotGiven = NOT_GIVEN,
         hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
         inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: List[str] | NotGiven = NOT_GIVEN,
-        link_status: List[str] | NotGiven = NOT_GIVEN,
-        missile: List[str] | NotGiven = NOT_GIVEN,
+        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
         mobile_alt_id: str | NotGiven = NOT_GIVEN,
         ops_capability: str | NotGiven = NOT_GIVEN,
@@ -95,8 +95,8 @@ class SiteStatusResource(SyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         pes: bool | NotGiven = NOT_GIVEN,
         poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: List[str] | NotGiven = NOT_GIVEN,
-        radar_system: List[str] | NotGiven = NOT_GIVEN,
+        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         radiate_mode: str | NotGiven = NOT_GIVEN,
         report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         sam_mode: str | NotGiven = NOT_GIVEN,
@@ -357,9 +357,9 @@ class SiteStatusResource(SyncAPIResource):
         hot_inventory: int | NotGiven = NOT_GIVEN,
         hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
         inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: List[str] | NotGiven = NOT_GIVEN,
-        link_status: List[str] | NotGiven = NOT_GIVEN,
-        missile: List[str] | NotGiven = NOT_GIVEN,
+        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
         mobile_alt_id: str | NotGiven = NOT_GIVEN,
         ops_capability: str | NotGiven = NOT_GIVEN,
@@ -367,8 +367,8 @@ class SiteStatusResource(SyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         pes: bool | NotGiven = NOT_GIVEN,
         poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: List[str] | NotGiven = NOT_GIVEN,
-        radar_system: List[str] | NotGiven = NOT_GIVEN,
+        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         radiate_mode: str | NotGiven = NOT_GIVEN,
         report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         sam_mode: str | NotGiven = NOT_GIVEN,
@@ -910,9 +910,9 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         hot_inventory: int | NotGiven = NOT_GIVEN,
         hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
         inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: List[str] | NotGiven = NOT_GIVEN,
-        link_status: List[str] | NotGiven = NOT_GIVEN,
-        missile: List[str] | NotGiven = NOT_GIVEN,
+        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
         mobile_alt_id: str | NotGiven = NOT_GIVEN,
         ops_capability: str | NotGiven = NOT_GIVEN,
@@ -920,8 +920,8 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         pes: bool | NotGiven = NOT_GIVEN,
         poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: List[str] | NotGiven = NOT_GIVEN,
-        radar_system: List[str] | NotGiven = NOT_GIVEN,
+        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         radiate_mode: str | NotGiven = NOT_GIVEN,
         report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         sam_mode: str | NotGiven = NOT_GIVEN,
@@ -1182,9 +1182,9 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         hot_inventory: int | NotGiven = NOT_GIVEN,
         hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
         inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: List[str] | NotGiven = NOT_GIVEN,
-        link_status: List[str] | NotGiven = NOT_GIVEN,
-        missile: List[str] | NotGiven = NOT_GIVEN,
+        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
         mobile_alt_id: str | NotGiven = NOT_GIVEN,
         ops_capability: str | NotGiven = NOT_GIVEN,
@@ -1192,8 +1192,8 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         pes: bool | NotGiven = NOT_GIVEN,
         poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: List[str] | NotGiven = NOT_GIVEN,
-        radar_system: List[str] | NotGiven = NOT_GIVEN,
+        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         radiate_mode: str | NotGiven = NOT_GIVEN,
         report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         sam_mode: str | NotGiven = NOT_GIVEN,

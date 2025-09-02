@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["NotificationCreateRawParams"]
@@ -47,5 +47,5 @@ class NotificationCreateRawParams(TypedDict, total=False):
     created.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """Optional list of provider/source specific tags for this data."""

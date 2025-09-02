@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EngineDetailCreateParams"]
@@ -96,7 +96,7 @@ class EngineDetailCreateParams(TypedDict, total=False):
     specific_impulse: Annotated[float, PropertyInfo(alias="specificImpulse")]
     """Launch engine specific impulse in seconds."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

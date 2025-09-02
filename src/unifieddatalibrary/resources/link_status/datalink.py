@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -64,21 +64,21 @@ class DatalinkResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
-        ack_inst_units: List[str] | NotGiven = NOT_GIVEN,
+        ack_inst_units: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         ack_req: bool | NotGiven = NOT_GIVEN,
         alt_diff: int | NotGiven = NOT_GIVEN,
         canx_id: str | NotGiven = NOT_GIVEN,
         canx_originator: str | NotGiven = NOT_GIVEN,
         canx_serial_num: str | NotGiven = NOT_GIVEN,
-        canx_si_cs: List[str] | NotGiven = NOT_GIVEN,
+        canx_si_cs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         canx_special_notation: str | NotGiven = NOT_GIVEN,
         canx_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        class_reasons: List[str] | NotGiven = NOT_GIVEN,
+        class_reasons: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         class_source: str | NotGiven = NOT_GIVEN,
         consec_decorr: int | NotGiven = NOT_GIVEN,
         course_diff: int | NotGiven = NOT_GIVEN,
-        dec_exempt_codes: List[str] | NotGiven = NOT_GIVEN,
-        dec_inst_dates: List[str] | NotGiven = NOT_GIVEN,
+        dec_exempt_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        dec_inst_dates: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         decorr_win_mult: float | NotGiven = NOT_GIVEN,
         geo_datum: str | NotGiven = NOT_GIVEN,
         jre_call_sign: str | NotGiven = NOT_GIVEN,
@@ -94,7 +94,7 @@ class DatalinkResource(SyncAPIResource):
         min_track_qual: int | NotGiven = NOT_GIVEN,
         month: str | NotGiven = NOT_GIVEN,
         multi_duty: Iterable[datalink_create_params.MultiDuty] | NotGiven = NOT_GIVEN,
-        non_link_unit_des: List[str] | NotGiven = NOT_GIVEN,
+        non_link_unit_des: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         op_ex_info: str | NotGiven = NOT_GIVEN,
         op_ex_info_alt: str | NotGiven = NOT_GIVEN,
         ops: Iterable[datalink_create_params.Op] | NotGiven = NOT_GIVEN,
@@ -105,7 +105,7 @@ class DatalinkResource(SyncAPIResource):
         poc_loc_name: str | NotGiven = NOT_GIVEN,
         poc_lon: float | NotGiven = NOT_GIVEN,
         poc_name: str | NotGiven = NOT_GIVEN,
-        poc_nums: List[str] | NotGiven = NOT_GIVEN,
+        poc_nums: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         poc_rank: str | NotGiven = NOT_GIVEN,
         qualifier: str | NotGiven = NOT_GIVEN,
         qual_sn: int | NotGiven = NOT_GIVEN,
@@ -120,7 +120,7 @@ class DatalinkResource(SyncAPIResource):
         stop_time_mod: str | NotGiven = NOT_GIVEN,
         sys_default_code: str | NotGiven = NOT_GIVEN,
         track_num_block_l_ls: Iterable[int] | NotGiven = NOT_GIVEN,
-        track_num_blocks: List[str] | NotGiven = NOT_GIVEN,
+        track_num_blocks: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         voice_coord: Iterable[datalink_create_params.VoiceCoord] | NotGiven = NOT_GIVEN,
         win_size_min: float | NotGiven = NOT_GIVEN,
         win_size_mult: float | NotGiven = NOT_GIVEN,
@@ -691,21 +691,21 @@ class AsyncDatalinkResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
-        ack_inst_units: List[str] | NotGiven = NOT_GIVEN,
+        ack_inst_units: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         ack_req: bool | NotGiven = NOT_GIVEN,
         alt_diff: int | NotGiven = NOT_GIVEN,
         canx_id: str | NotGiven = NOT_GIVEN,
         canx_originator: str | NotGiven = NOT_GIVEN,
         canx_serial_num: str | NotGiven = NOT_GIVEN,
-        canx_si_cs: List[str] | NotGiven = NOT_GIVEN,
+        canx_si_cs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         canx_special_notation: str | NotGiven = NOT_GIVEN,
         canx_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        class_reasons: List[str] | NotGiven = NOT_GIVEN,
+        class_reasons: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         class_source: str | NotGiven = NOT_GIVEN,
         consec_decorr: int | NotGiven = NOT_GIVEN,
         course_diff: int | NotGiven = NOT_GIVEN,
-        dec_exempt_codes: List[str] | NotGiven = NOT_GIVEN,
-        dec_inst_dates: List[str] | NotGiven = NOT_GIVEN,
+        dec_exempt_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        dec_inst_dates: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         decorr_win_mult: float | NotGiven = NOT_GIVEN,
         geo_datum: str | NotGiven = NOT_GIVEN,
         jre_call_sign: str | NotGiven = NOT_GIVEN,
@@ -721,7 +721,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
         min_track_qual: int | NotGiven = NOT_GIVEN,
         month: str | NotGiven = NOT_GIVEN,
         multi_duty: Iterable[datalink_create_params.MultiDuty] | NotGiven = NOT_GIVEN,
-        non_link_unit_des: List[str] | NotGiven = NOT_GIVEN,
+        non_link_unit_des: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         op_ex_info: str | NotGiven = NOT_GIVEN,
         op_ex_info_alt: str | NotGiven = NOT_GIVEN,
         ops: Iterable[datalink_create_params.Op] | NotGiven = NOT_GIVEN,
@@ -732,7 +732,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
         poc_loc_name: str | NotGiven = NOT_GIVEN,
         poc_lon: float | NotGiven = NOT_GIVEN,
         poc_name: str | NotGiven = NOT_GIVEN,
-        poc_nums: List[str] | NotGiven = NOT_GIVEN,
+        poc_nums: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         poc_rank: str | NotGiven = NOT_GIVEN,
         qualifier: str | NotGiven = NOT_GIVEN,
         qual_sn: int | NotGiven = NOT_GIVEN,
@@ -747,7 +747,7 @@ class AsyncDatalinkResource(AsyncAPIResource):
         stop_time_mod: str | NotGiven = NOT_GIVEN,
         sys_default_code: str | NotGiven = NOT_GIVEN,
         track_num_block_l_ls: Iterable[int] | NotGiven = NOT_GIVEN,
-        track_num_blocks: List[str] | NotGiven = NOT_GIVEN,
+        track_num_blocks: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         voice_coord: Iterable[datalink_create_params.VoiceCoord] | NotGiven = NOT_GIVEN,
         win_size_min: float | NotGiven = NOT_GIVEN,
         win_size_mult: float | NotGiven = NOT_GIVEN,

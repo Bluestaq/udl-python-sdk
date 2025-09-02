@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["HazardCreateBulkParams", "Body"]
@@ -16,7 +17,7 @@ class HazardCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
-    alarms: Required[List[str]]
+    alarms: Required[SequenceNotStr[str]]
     """Array of the specific alarms associated with this detection.
 
     The alarms and alarmValues arrays must contain the same number of elements.
@@ -230,14 +231,14 @@ class Body(TypedDict, total=False):
     per second.
     """
 
-    readings: List[str]
+    readings: SequenceNotStr[str]
     """Array of the specific readings associated with this detection.
 
     The readings, readingUnits, and readingValues arrays must contain the same
     number of elements.
     """
 
-    reading_units: Annotated[List[str], PropertyInfo(alias="readingUnits")]
+    reading_units: Annotated[SequenceNotStr[str], PropertyInfo(alias="readingUnits")]
     """Array of the units that correspond to each of the readingValues.
 
     The readings, readingUnits, and readingValues arrays must contain the same

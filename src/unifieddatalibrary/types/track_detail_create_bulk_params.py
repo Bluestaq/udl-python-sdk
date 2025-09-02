@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["TrackDetailCreateBulkParams", "Body"]
@@ -952,7 +953,7 @@ class Body(TypedDict, total=False):
     rpt_chxref: Annotated[str, PropertyInfo(alias="rptChxref")]
     """Source cross-reference code for the Command that originated the track report."""
 
-    rtn: List[str]
+    rtn: SequenceNotStr[str]
     """
     A Reference Track Number used to associate information and directives with the
     track. Referenced, but not constrained to, MIL-STD-6016F Reference Track Number.
@@ -962,7 +963,7 @@ class Body(TypedDict, total=False):
     rtn_cmd: Annotated[str, PropertyInfo(alias="rtnCmd")]
     """The name of the Command reporting the Received Track Number (RTN)."""
 
-    rtn_msg_ts: Annotated[List[Union[str, datetime]], PropertyInfo(alias="rtnMsgTs", format="iso8601")]
+    rtn_msg_ts: Annotated[SequenceNotStr[Union[str, datetime]], PropertyInfo(alias="rtnMsgTs", format="iso8601")]
     """
     The message timestamp that the reference track position was recorded, in ISO
     8601 UTC format with microsecond precision. The 'rtnMsgTs' and 'rtn' arrays must

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EventEvolutionUnvalidatedPublishParams", "Body"]
@@ -161,7 +162,7 @@ class Body(TypedDict, total=False):
     from event association.
     """
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUIDs of the UDL data records that are related to the determination of
     this activity or event. See the associated 'srcTyps' array for the specific
@@ -171,7 +172,7 @@ class Body(TypedDict, total=False):
     operation to retrieve that object.
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types (AIS, CONJUNCTION, DOA, ELSET, EO, ESID, GROUNDIMAGE,
     POI, MANEUVER, MTI, NOTIFICATION, RADAR, RF, SIGACT, SKYIMAGE, SV, TRACK) that
@@ -183,7 +184,7 @@ class Body(TypedDict, total=False):
     status: str
     """The status of this activity or event. (ACTIVE, CONCLUDED, UNKNOWN)."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -192,5 +193,5 @@ class Body(TypedDict, total=False):
     UDL team.
     """
 
-    url: List[str]
+    url: SequenceNotStr[str]
     """List of URLs to before/after images of this point of interest entity."""

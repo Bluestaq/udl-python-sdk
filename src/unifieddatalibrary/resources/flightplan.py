@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -17,7 +17,7 @@ from ..types import (
     flightplan_retrieve_params,
     flightplan_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -77,7 +77,7 @@ class FlightplanResource(SyncAPIResource):
         arr_alternate2_fuel: float | NotGiven = NOT_GIVEN,
         arr_ice_fuel: float | NotGiven = NOT_GIVEN,
         arr_runway: str | NotGiven = NOT_GIVEN,
-        atc_addresses: List[str] | NotGiven = NOT_GIVEN,
+        atc_addresses: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         avg_temp_dev: float | NotGiven = NOT_GIVEN,
         burned_fuel: float | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
@@ -85,7 +85,7 @@ class FlightplanResource(SyncAPIResource):
         climb_fuel: float | NotGiven = NOT_GIVEN,
         climb_time: str | NotGiven = NOT_GIVEN,
         contingency_fuel: float | NotGiven = NOT_GIVEN,
-        country_codes: List[str] | NotGiven = NOT_GIVEN,
+        country_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         dep_alternate: str | NotGiven = NOT_GIVEN,
         depress_fuel: float | NotGiven = NOT_GIVEN,
         dep_runway: str | NotGiven = NOT_GIVEN,
@@ -96,8 +96,8 @@ class FlightplanResource(SyncAPIResource):
         enroute_time: str | NotGiven = NOT_GIVEN,
         equipment: str | NotGiven = NOT_GIVEN,
         est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etops_airfields: List[str] | NotGiven = NOT_GIVEN,
-        etops_alt_airfields: List[str] | NotGiven = NOT_GIVEN,
+        etops_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        etops_alt_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         etops_rating: str | NotGiven = NOT_GIVEN,
         etops_val_window: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -604,7 +604,7 @@ class FlightplanResource(SyncAPIResource):
         arr_alternate2_fuel: float | NotGiven = NOT_GIVEN,
         arr_ice_fuel: float | NotGiven = NOT_GIVEN,
         arr_runway: str | NotGiven = NOT_GIVEN,
-        atc_addresses: List[str] | NotGiven = NOT_GIVEN,
+        atc_addresses: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         avg_temp_dev: float | NotGiven = NOT_GIVEN,
         burned_fuel: float | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
@@ -612,7 +612,7 @@ class FlightplanResource(SyncAPIResource):
         climb_fuel: float | NotGiven = NOT_GIVEN,
         climb_time: str | NotGiven = NOT_GIVEN,
         contingency_fuel: float | NotGiven = NOT_GIVEN,
-        country_codes: List[str] | NotGiven = NOT_GIVEN,
+        country_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         dep_alternate: str | NotGiven = NOT_GIVEN,
         depress_fuel: float | NotGiven = NOT_GIVEN,
         dep_runway: str | NotGiven = NOT_GIVEN,
@@ -623,8 +623,8 @@ class FlightplanResource(SyncAPIResource):
         enroute_time: str | NotGiven = NOT_GIVEN,
         equipment: str | NotGiven = NOT_GIVEN,
         est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etops_airfields: List[str] | NotGiven = NOT_GIVEN,
-        etops_alt_airfields: List[str] | NotGiven = NOT_GIVEN,
+        etops_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        etops_alt_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         etops_rating: str | NotGiven = NOT_GIVEN,
         etops_val_window: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -1351,7 +1351,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
         arr_alternate2_fuel: float | NotGiven = NOT_GIVEN,
         arr_ice_fuel: float | NotGiven = NOT_GIVEN,
         arr_runway: str | NotGiven = NOT_GIVEN,
-        atc_addresses: List[str] | NotGiven = NOT_GIVEN,
+        atc_addresses: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         avg_temp_dev: float | NotGiven = NOT_GIVEN,
         burned_fuel: float | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
@@ -1359,7 +1359,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
         climb_fuel: float | NotGiven = NOT_GIVEN,
         climb_time: str | NotGiven = NOT_GIVEN,
         contingency_fuel: float | NotGiven = NOT_GIVEN,
-        country_codes: List[str] | NotGiven = NOT_GIVEN,
+        country_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         dep_alternate: str | NotGiven = NOT_GIVEN,
         depress_fuel: float | NotGiven = NOT_GIVEN,
         dep_runway: str | NotGiven = NOT_GIVEN,
@@ -1370,8 +1370,8 @@ class AsyncFlightplanResource(AsyncAPIResource):
         enroute_time: str | NotGiven = NOT_GIVEN,
         equipment: str | NotGiven = NOT_GIVEN,
         est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etops_airfields: List[str] | NotGiven = NOT_GIVEN,
-        etops_alt_airfields: List[str] | NotGiven = NOT_GIVEN,
+        etops_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        etops_alt_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         etops_rating: str | NotGiven = NOT_GIVEN,
         etops_val_window: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -1878,7 +1878,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
         arr_alternate2_fuel: float | NotGiven = NOT_GIVEN,
         arr_ice_fuel: float | NotGiven = NOT_GIVEN,
         arr_runway: str | NotGiven = NOT_GIVEN,
-        atc_addresses: List[str] | NotGiven = NOT_GIVEN,
+        atc_addresses: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         avg_temp_dev: float | NotGiven = NOT_GIVEN,
         burned_fuel: float | NotGiven = NOT_GIVEN,
         call_sign: str | NotGiven = NOT_GIVEN,
@@ -1886,7 +1886,7 @@ class AsyncFlightplanResource(AsyncAPIResource):
         climb_fuel: float | NotGiven = NOT_GIVEN,
         climb_time: str | NotGiven = NOT_GIVEN,
         contingency_fuel: float | NotGiven = NOT_GIVEN,
-        country_codes: List[str] | NotGiven = NOT_GIVEN,
+        country_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         dep_alternate: str | NotGiven = NOT_GIVEN,
         depress_fuel: float | NotGiven = NOT_GIVEN,
         dep_runway: str | NotGiven = NOT_GIVEN,
@@ -1897,8 +1897,8 @@ class AsyncFlightplanResource(AsyncAPIResource):
         enroute_time: str | NotGiven = NOT_GIVEN,
         equipment: str | NotGiven = NOT_GIVEN,
         est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etops_airfields: List[str] | NotGiven = NOT_GIVEN,
-        etops_alt_airfields: List[str] | NotGiven = NOT_GIVEN,
+        etops_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        etops_alt_airfields: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         etops_rating: str | NotGiven = NOT_GIVEN,
         etops_val_window: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,

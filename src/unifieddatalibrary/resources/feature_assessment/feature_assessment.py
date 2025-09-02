@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -81,7 +81,7 @@ class FeatureAssessmentResource(SyncAPIResource):
         agjson: str | NotGiven = NOT_GIVEN,
         andims: int | NotGiven = NOT_GIVEN,
         ann_lims: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        ann_text: List[str] | NotGiven = NOT_GIVEN,
+        ann_text: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         area: str | NotGiven = NOT_GIVEN,
         asrid: int | NotGiven = NOT_GIVEN,
         assessment: str | NotGiven = NOT_GIVEN,
@@ -92,7 +92,7 @@ class FeatureAssessmentResource(SyncAPIResource):
         feature_array: Iterable[float] | NotGiven = NOT_GIVEN,
         feature_bool: bool | NotGiven = NOT_GIVEN,
         feature_string: str | NotGiven = NOT_GIVEN,
-        feature_string_array: List[str] | NotGiven = NOT_GIVEN,
+        feature_string_array: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         feature_value: float | NotGiven = NOT_GIVEN,
         heading: float | NotGiven = NOT_GIVEN,
         height: float | NotGiven = NOT_GIVEN,
@@ -100,10 +100,10 @@ class FeatureAssessmentResource(SyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         speed: float | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_ts: List[Union[str, datetime]] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_ts: SequenceNotStr[Union[str, datetime]] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         width: float | NotGiven = NOT_GIVEN,
@@ -678,7 +678,7 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         agjson: str | NotGiven = NOT_GIVEN,
         andims: int | NotGiven = NOT_GIVEN,
         ann_lims: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        ann_text: List[str] | NotGiven = NOT_GIVEN,
+        ann_text: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         area: str | NotGiven = NOT_GIVEN,
         asrid: int | NotGiven = NOT_GIVEN,
         assessment: str | NotGiven = NOT_GIVEN,
@@ -689,7 +689,7 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         feature_array: Iterable[float] | NotGiven = NOT_GIVEN,
         feature_bool: bool | NotGiven = NOT_GIVEN,
         feature_string: str | NotGiven = NOT_GIVEN,
-        feature_string_array: List[str] | NotGiven = NOT_GIVEN,
+        feature_string_array: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         feature_value: float | NotGiven = NOT_GIVEN,
         heading: float | NotGiven = NOT_GIVEN,
         height: float | NotGiven = NOT_GIVEN,
@@ -697,10 +697,10 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         speed: float | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_ts: List[Union[str, datetime]] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_ts: SequenceNotStr[Union[str, datetime]] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         width: float | NotGiven = NOT_GIVEN,
