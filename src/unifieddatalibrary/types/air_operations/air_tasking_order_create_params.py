@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = [
@@ -314,19 +315,19 @@ class AcMsnTasking(TypedDict, total=False):
     mission.
     """
 
-    rcvy_loc_name: Annotated[List[str], PropertyInfo(alias="rcvyLocName")]
+    rcvy_loc_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="rcvyLocName")]
     """
     An array of locations specified for the recovery of the tasked air mission
     represented by varying formats.
     """
 
-    rcvy_loc_utm: Annotated[List[str], PropertyInfo(alias="rcvyLocUTM")]
+    rcvy_loc_utm: Annotated[SequenceNotStr[str], PropertyInfo(alias="rcvyLocUTM")]
     """
     An array of recovery locations specified in UTM (100 meter) coordinates for the
     tasked air mission.
     """
 
-    rcvy_time: Annotated[List[Union[str, datetime]], PropertyInfo(alias="rcvyTime", format="iso8601")]
+    rcvy_time: Annotated[SequenceNotStr[Union[str, datetime]], PropertyInfo(alias="rcvyTime", format="iso8601")]
     """
     An array of recovery times for the tasked air mission in ISO8601 UTC format with
     millisecond precision.
@@ -370,7 +371,7 @@ class NavalFltOp(TypedDict, total=False):
     """
 
     schd_launch_rcvy_time: Annotated[
-        List[Union[str, datetime]], PropertyInfo(alias="schdLaunchRcvyTime", format="iso8601")
+        SequenceNotStr[Union[str, datetime]], PropertyInfo(alias="schdLaunchRcvyTime", format="iso8601")
     ]
     """
     An array of times at which an aircraft will be launched and/or recovered in

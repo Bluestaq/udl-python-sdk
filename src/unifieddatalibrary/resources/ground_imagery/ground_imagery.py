@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Mapping, cast
+from typing import Union, Mapping, cast
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -26,7 +26,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr
 from ..._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -91,7 +91,7 @@ class GroundImageryResource(SyncAPIResource):
         filesize: int | NotGiven = NOT_GIVEN,
         format: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
-        keywords: List[str] | NotGiven = NOT_GIVEN,
+        keywords: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -103,7 +103,7 @@ class GroundImageryResource(SyncAPIResource):
         region_text: str | NotGiven = NOT_GIVEN,
         region_type: str | NotGiven = NOT_GIVEN,
         subject_id: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -698,7 +698,7 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         filesize: int | NotGiven = NOT_GIVEN,
         format: str | NotGiven = NOT_GIVEN,
         id_sensor: str | NotGiven = NOT_GIVEN,
-        keywords: List[str] | NotGiven = NOT_GIVEN,
+        keywords: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -710,7 +710,7 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         region_text: str | NotGiven = NOT_GIVEN,
         region_type: str | NotGiven = NOT_GIVEN,
         subject_id: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -80,7 +80,7 @@ class ItemTrackingsResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         dv_code: str | NotGiven = NOT_GIVEN,
         id_item: str | NotGiven = NOT_GIVEN,
-        keys: List[str] | NotGiven = NOT_GIVEN,
+        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lat: float | NotGiven = NOT_GIVEN,
         lon: float | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
@@ -88,7 +88,7 @@ class ItemTrackingsResource(SyncAPIResource):
         scan_type: str | NotGiven = NOT_GIVEN,
         sc_gen_tool: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        values: List[str] | NotGiven = NOT_GIVEN,
+        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -545,7 +545,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         dv_code: str | NotGiven = NOT_GIVEN,
         id_item: str | NotGiven = NOT_GIVEN,
-        keys: List[str] | NotGiven = NOT_GIVEN,
+        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lat: float | NotGiven = NOT_GIVEN,
         lon: float | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
@@ -553,7 +553,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         scan_type: str | NotGiven = NOT_GIVEN,
         sc_gen_tool: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        values: List[str] | NotGiven = NOT_GIVEN,
+        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

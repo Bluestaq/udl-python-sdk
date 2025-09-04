@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal
 
@@ -17,7 +17,7 @@ from ..types import (
     equipment_retrieve_params,
     equipment_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -106,8 +106,8 @@ class EquipmentResource(SyncAPIResource):
         res_prod: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, date] | NotGiven = NOT_GIVEN,
         seq_num: int | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sym_code: str | NotGiven = NOT_GIVEN,
         utm: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
@@ -600,8 +600,8 @@ class EquipmentResource(SyncAPIResource):
         res_prod: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, date] | NotGiven = NOT_GIVEN,
         seq_num: int | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sym_code: str | NotGiven = NOT_GIVEN,
         utm: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
@@ -1315,8 +1315,8 @@ class AsyncEquipmentResource(AsyncAPIResource):
         res_prod: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, date] | NotGiven = NOT_GIVEN,
         seq_num: int | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sym_code: str | NotGiven = NOT_GIVEN,
         utm: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,
@@ -1809,8 +1809,8 @@ class AsyncEquipmentResource(AsyncAPIResource):
         res_prod: str | NotGiven = NOT_GIVEN,
         review_date: Union[str, date] | NotGiven = NOT_GIVEN,
         seq_num: int | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sym_code: str | NotGiven = NOT_GIVEN,
         utm: str | NotGiven = NOT_GIVEN,
         wac: str | NotGiven = NOT_GIVEN,

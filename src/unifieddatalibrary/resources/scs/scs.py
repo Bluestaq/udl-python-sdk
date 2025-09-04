@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict
 
 import httpx
 
@@ -57,7 +57,7 @@ from .folders import (
     AsyncFoldersResourceWithStreamingResponse,
 )
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -308,7 +308,7 @@ class ScsResource(SyncAPIResource):
     def download(
         self,
         *,
-        body: List[str],
+        body: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -331,7 +331,7 @@ class ScsResource(SyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/download",
-            body=maybe_transform(body, List[str]),
+            body=maybe_transform(body, SequenceNotStr[str]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -564,9 +564,9 @@ class ScsResource(SyncAPIResource):
         count: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         content_criteria: str | NotGiven = NOT_GIVEN,
-        meta_data_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        non_range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
+        meta_data_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        non_range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         search_after: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -870,7 +870,7 @@ class AsyncScsResource(AsyncAPIResource):
     async def download(
         self,
         *,
-        body: List[str],
+        body: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -893,7 +893,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/download",
-            body=await async_maybe_transform(body, List[str]),
+            body=await async_maybe_transform(body, SequenceNotStr[str]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1126,9 +1126,9 @@ class AsyncScsResource(AsyncAPIResource):
         count: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         content_criteria: str | NotGiven = NOT_GIVEN,
-        meta_data_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        non_range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
+        meta_data_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        non_range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         search_after: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

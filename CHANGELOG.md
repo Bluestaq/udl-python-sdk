@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.21 (2025-09-04)
+
+Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
+
+### Features
+
+* improve future compat with pydantic v3 ([c6391c9](https://github.com/Bluestaq/udl-python-sdk/commit/c6391c9cb6aa18a0ee3498377c84697e28ac2057))
+* **types:** replace List[str] with SequenceNotStr in params ([d39cfc1](https://github.com/Bluestaq/udl-python-sdk/commit/d39cfc1b1686ab369ee536ac8326bdc63398e138))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([7cbeeee](https://github.com/Bluestaq/udl-python-sdk/commit/7cbeeeeb601972aa8d791c95601fb7c64037fbc1))
+
 ## 0.1.0-alpha.20 (2025-08-29)
 
 Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)

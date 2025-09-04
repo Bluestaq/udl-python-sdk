@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["PoiCreateBulkParams", "Body"]
@@ -146,7 +147,7 @@ class Body(TypedDict, total=False):
     env: str
     """POI environment type (e.g., LAND, SURFACE, SUBSURFACE, UNKNOWN, etc.)."""
 
-    groups: List[str]
+    groups: SequenceNotStr[str]
     """Optional array of groups used when a POI msg originates from a TAK server.
 
     Each group must be no longer than 256 characters. Groups identify a set of users
@@ -165,7 +166,7 @@ class Body(TypedDict, total=False):
     ASSUMED_FRIEND, UNKNOWN, etc.).
     """
 
-    id_weather_report: Annotated[List[str], PropertyInfo(alias="idWeatherReport")]
+    id_weather_report: Annotated[SequenceNotStr[str], PropertyInfo(alias="idWeatherReport")]
     """
     Array of one or more unique identifiers of weather records associated with this
     POI. Each element in array must be 36 characters or less in length.
@@ -213,7 +214,7 @@ class Body(TypedDict, total=False):
     spec: str
     """Specific point/object type (e.g., 82/GROUND, LIGHT_TANK, etc.)."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUIDs of the UDL data records that are related to the determination of
     this Point of Interest. See the associated 'srcTyps' array for the specific
@@ -223,7 +224,7 @@ class Body(TypedDict, total=False):
     operation to retrieve that object (e.g. /udl/rfobservation/{uuid}).
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types (GROUNDIMAGE, RFOBS) that are related to the
     determination of this Point of Interest. See the associated 'srcIds' array for
@@ -237,7 +238,7 @@ class Body(TypedDict, total=False):
     start: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Start time of event validity (optional), in ISO8601 UTC format."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -262,5 +263,5 @@ class Body(TypedDict, total=False):
     type: str
     """Event type, in CoT object heirarchy notation (optional, CoT)."""
 
-    urls: List[str]
+    urls: SequenceNotStr[str]
     """List of URLs to before/after images of this Point of Interest entity."""

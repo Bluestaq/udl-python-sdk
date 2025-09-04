@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CotCreateParams", "CotChatData", "CotPositionData"]
@@ -21,7 +22,7 @@ class CotCreateParams(TypedDict, total=False):
     alt: float
     """Point height above ellipsoid (WGS-84), in meters."""
 
-    call_signs: Annotated[List[str], PropertyInfo(alias="callSigns")]
+    call_signs: Annotated[SequenceNotStr[str], PropertyInfo(alias="callSigns")]
     """Optional list of call signs to send message to directly."""
 
     ce: float
@@ -36,7 +37,7 @@ class CotCreateParams(TypedDict, total=False):
     cot_position_data: Annotated[CotPositionData, PropertyInfo(alias="cotPositionData")]
     """Schema for the CotPositionData to post."""
 
-    groups: List[str]
+    groups: SequenceNotStr[str]
     """Optional set of groups to send message to specifically.
 
     If not specified, the message will be sent to the default _ANON_ group.
@@ -66,7 +67,7 @@ class CotCreateParams(TypedDict, total=False):
     type: str
     """Event type, in CoT object heirarchy notation (optional, CoT)."""
 
-    uids: List[str]
+    uids: SequenceNotStr[str]
     """Optional list of TAK user ids to send message to directly."""
 
 

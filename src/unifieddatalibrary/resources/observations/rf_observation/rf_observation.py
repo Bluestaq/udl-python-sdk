@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,7 +16,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -90,9 +90,9 @@ class RfObservationResource(SyncAPIResource):
         carrier_standard: str | NotGiven = NOT_GIVEN,
         channel: int | NotGiven = NOT_GIVEN,
         chip_rates: Iterable[float] | NotGiven = NOT_GIVEN,
-        code_fills: List[str] | NotGiven = NOT_GIVEN,
+        code_fills: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         code_lengths: Iterable[float] | NotGiven = NOT_GIVEN,
-        code_taps: List[str] | NotGiven = NOT_GIVEN,
+        code_taps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         collection_mode: str | NotGiven = NOT_GIVEN,
         confidence: float | NotGiven = NOT_GIVEN,
         confidences: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -100,7 +100,7 @@ class RfObservationResource(SyncAPIResource):
         constellation_y_points: Iterable[float] | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         detection_status: str | NotGiven = NOT_GIVEN,
-        detection_statuses: List[str] | NotGiven = NOT_GIVEN,
+        detection_statuses: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         elevation: float | NotGiven = NOT_GIVEN,
         elevation_measured: bool | NotGiven = NOT_GIVEN,
@@ -149,16 +149,16 @@ class RfObservationResource(SyncAPIResource):
         senalt: float | NotGiven = NOT_GIVEN,
         senlat: float | NotGiven = NOT_GIVEN,
         senlon: float | NotGiven = NOT_GIVEN,
-        signal_ids: List[str] | NotGiven = NOT_GIVEN,
+        signal_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         snr: float | NotGiven = NOT_GIVEN,
         snrs: Iterable[float] | NotGiven = NOT_GIVEN,
         spectrum_analyzer_power: float | NotGiven = NOT_GIVEN,
         start_frequency: float | NotGiven = NOT_GIVEN,
         switch_point: int | NotGiven = NOT_GIVEN,
         symbol_to_noise_ratio: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
-        telemetry_ids: List[str] | NotGiven = NOT_GIVEN,
+        telemetry_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
         track_range: float | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
@@ -908,9 +908,9 @@ class AsyncRfObservationResource(AsyncAPIResource):
         carrier_standard: str | NotGiven = NOT_GIVEN,
         channel: int | NotGiven = NOT_GIVEN,
         chip_rates: Iterable[float] | NotGiven = NOT_GIVEN,
-        code_fills: List[str] | NotGiven = NOT_GIVEN,
+        code_fills: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         code_lengths: Iterable[float] | NotGiven = NOT_GIVEN,
-        code_taps: List[str] | NotGiven = NOT_GIVEN,
+        code_taps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         collection_mode: str | NotGiven = NOT_GIVEN,
         confidence: float | NotGiven = NOT_GIVEN,
         confidences: Iterable[float] | NotGiven = NOT_GIVEN,
@@ -918,7 +918,7 @@ class AsyncRfObservationResource(AsyncAPIResource):
         constellation_y_points: Iterable[float] | NotGiven = NOT_GIVEN,
         descriptor: str | NotGiven = NOT_GIVEN,
         detection_status: str | NotGiven = NOT_GIVEN,
-        detection_statuses: List[str] | NotGiven = NOT_GIVEN,
+        detection_statuses: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         elevation: float | NotGiven = NOT_GIVEN,
         elevation_measured: bool | NotGiven = NOT_GIVEN,
@@ -967,16 +967,16 @@ class AsyncRfObservationResource(AsyncAPIResource):
         senalt: float | NotGiven = NOT_GIVEN,
         senlat: float | NotGiven = NOT_GIVEN,
         senlon: float | NotGiven = NOT_GIVEN,
-        signal_ids: List[str] | NotGiven = NOT_GIVEN,
+        signal_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         snr: float | NotGiven = NOT_GIVEN,
         snrs: Iterable[float] | NotGiven = NOT_GIVEN,
         spectrum_analyzer_power: float | NotGiven = NOT_GIVEN,
         start_frequency: float | NotGiven = NOT_GIVEN,
         switch_point: int | NotGiven = NOT_GIVEN,
         symbol_to_noise_ratio: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
-        telemetry_ids: List[str] | NotGiven = NOT_GIVEN,
+        telemetry_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
         track_range: float | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,

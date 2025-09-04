@@ -6,6 +6,7 @@ from typing import List, Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CollectRequestCreateParams", "Elset", "StateVector"]
@@ -421,7 +422,7 @@ class CollectRequestCreateParams(TypedDict, total=False):
     collection. Note that suffix definitions are sensor type specific.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -705,7 +706,7 @@ class Elset(TypedDict, total=False):
     kilometers.
     """
 
-    sourced_data: Annotated[List[str], PropertyInfo(alias="sourcedData")]
+    sourced_data: Annotated[SequenceNotStr[str], PropertyInfo(alias="sourcedData")]
     """Optional array of UDL data (observation) UUIDs used to build this element set.
 
     See the associated sourcedDataTypes array for the specific types of observations
@@ -724,7 +725,7 @@ class Elset(TypedDict, total=False):
     two arrays must match in size).
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -1126,7 +1127,7 @@ class StateVector(TypedDict, total=False):
     solid_earth_tides: Annotated[bool, PropertyInfo(alias="solidEarthTides")]
     """Boolean indicating use of solid earth tide perturbations for this vector."""
 
-    sourced_data: Annotated[List[str], PropertyInfo(alias="sourcedData")]
+    sourced_data: Annotated[SequenceNotStr[str], PropertyInfo(alias="sourcedData")]
     """Optional array of UDL data (observation) UUIDs used to build this state vector.
 
     See the associated sourcedDataTypes array for the specific types of observations
@@ -1159,7 +1160,7 @@ class StateVector(TypedDict, total=False):
     step_size_selection: Annotated[str, PropertyInfo(alias="stepSizeSelection")]
     """Initial step size selection (AUTO or MANUAL)."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

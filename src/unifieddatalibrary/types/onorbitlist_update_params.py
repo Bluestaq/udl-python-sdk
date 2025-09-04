@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["OnorbitlistUpdateParams"]
@@ -43,7 +43,7 @@ class OnorbitlistUpdateParams(TypedDict, total=False):
     description: str
     """Description of the list."""
 
-    onorbits: List[str]
+    onorbits: SequenceNotStr[str]
     """Ordered array of Onorbit IDs belonging to this list."""
 
     origin: str

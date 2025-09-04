@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -89,7 +89,7 @@ class WeatherReportResource(SyncAPIResource):
         atype: str | NotGiven = NOT_GIVEN,
         bar_press: float | NotGiven = NOT_GIVEN,
         cc_event: bool | NotGiven = NOT_GIVEN,
-        cloud_cover: List[str] | NotGiven = NOT_GIVEN,
+        cloud_cover: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         cloud_hght: Iterable[float] | NotGiven = NOT_GIVEN,
         contrail_hght_lower: float | NotGiven = NOT_GIVEN,
         contrail_hght_upper: float | NotGiven = NOT_GIVEN,
@@ -133,8 +133,8 @@ class WeatherReportResource(SyncAPIResource):
         soil_moisture: float | NotGiven = NOT_GIVEN,
         soil_temp: float | NotGiven = NOT_GIVEN,
         solar_rad: float | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         surrounding_weather: str | NotGiven = NOT_GIVEN,
         temperature: float | NotGiven = NOT_GIVEN,
         visibility: float | NotGiven = NOT_GIVEN,
@@ -880,7 +880,7 @@ class AsyncWeatherReportResource(AsyncAPIResource):
         atype: str | NotGiven = NOT_GIVEN,
         bar_press: float | NotGiven = NOT_GIVEN,
         cc_event: bool | NotGiven = NOT_GIVEN,
-        cloud_cover: List[str] | NotGiven = NOT_GIVEN,
+        cloud_cover: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         cloud_hght: Iterable[float] | NotGiven = NOT_GIVEN,
         contrail_hght_lower: float | NotGiven = NOT_GIVEN,
         contrail_hght_upper: float | NotGiven = NOT_GIVEN,
@@ -924,8 +924,8 @@ class AsyncWeatherReportResource(AsyncAPIResource):
         soil_moisture: float | NotGiven = NOT_GIVEN,
         soil_temp: float | NotGiven = NOT_GIVEN,
         solar_rad: float | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         surrounding_weather: str | NotGiven = NOT_GIVEN,
         temperature: float | NotGiven = NOT_GIVEN,
         visibility: float | NotGiven = NOT_GIVEN,

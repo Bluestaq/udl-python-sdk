@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -17,7 +17,7 @@ from ..types import (
     crew_retrieve_params,
     crew_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -71,7 +71,7 @@ class CrewResource(SyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alert_type: str | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
-        assigned_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        assigned_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         commander_id: str | NotGiven = NOT_GIVEN,
         commander_last4_ssn: str | NotGiven = NOT_GIVEN,
         commander_name: str | NotGiven = NOT_GIVEN,
@@ -110,7 +110,7 @@ class CrewResource(SyncAPIResource):
         post_rest_offset: str | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        req_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        req_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage1_qual: str | NotGiven = NOT_GIVEN,
         stage2_qual: str | NotGiven = NOT_GIVEN,
@@ -444,7 +444,7 @@ class CrewResource(SyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alert_type: str | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
-        assigned_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        assigned_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         commander_id: str | NotGiven = NOT_GIVEN,
         commander_last4_ssn: str | NotGiven = NOT_GIVEN,
         commander_name: str | NotGiven = NOT_GIVEN,
@@ -483,7 +483,7 @@ class CrewResource(SyncAPIResource):
         post_rest_offset: str | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        req_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        req_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage1_qual: str | NotGiven = NOT_GIVEN,
         stage2_qual: str | NotGiven = NOT_GIVEN,
@@ -1000,7 +1000,7 @@ class AsyncCrewResource(AsyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alert_type: str | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
-        assigned_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        assigned_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         commander_id: str | NotGiven = NOT_GIVEN,
         commander_last4_ssn: str | NotGiven = NOT_GIVEN,
         commander_name: str | NotGiven = NOT_GIVEN,
@@ -1039,7 +1039,7 @@ class AsyncCrewResource(AsyncAPIResource):
         post_rest_offset: str | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        req_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        req_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage1_qual: str | NotGiven = NOT_GIVEN,
         stage2_qual: str | NotGiven = NOT_GIVEN,
@@ -1373,7 +1373,7 @@ class AsyncCrewResource(AsyncAPIResource):
         alerted_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         alert_type: str | NotGiven = NOT_GIVEN,
         arms_crew_unit: str | NotGiven = NOT_GIVEN,
-        assigned_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        assigned_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         commander_id: str | NotGiven = NOT_GIVEN,
         commander_last4_ssn: str | NotGiven = NOT_GIVEN,
         commander_name: str | NotGiven = NOT_GIVEN,
@@ -1412,7 +1412,7 @@ class AsyncCrewResource(AsyncAPIResource):
         post_rest_offset: str | NotGiven = NOT_GIVEN,
         pre_rest_applied: bool | NotGiven = NOT_GIVEN,
         pre_rest_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        req_qual_code: List[str] | NotGiven = NOT_GIVEN,
+        req_qual_code: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         return_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         stage1_qual: str | NotGiven = NOT_GIVEN,
         stage2_qual: str | NotGiven = NOT_GIVEN,

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CrewUnvalidatedPublishParams", "Body", "BodyCrewMember"]
@@ -386,7 +387,7 @@ class Body(TypedDict, total=False):
     If multiple units exist, use the Aircraft Commander's Unit.
     """
 
-    assigned_qual_code: Annotated[List[str], PropertyInfo(alias="assignedQualCode")]
+    assigned_qual_code: Annotated[SequenceNotStr[str], PropertyInfo(alias="assignedQualCode")]
     """
     Array of qualification codes assigned to this crew (e.g., AL for Aircraft
     Leader, CS for Combat Systems Operator, etc.).
@@ -561,7 +562,7 @@ class Body(TypedDict, total=False):
     with millisecond precision.
     """
 
-    req_qual_code: Annotated[List[str], PropertyInfo(alias="reqQualCode")]
+    req_qual_code: Annotated[SequenceNotStr[str], PropertyInfo(alias="reqQualCode")]
     """
     Array of qualification codes required for this crew (e.g., AL for Aircraft
     Leader, CS for Combat Systems Operator, etc.).

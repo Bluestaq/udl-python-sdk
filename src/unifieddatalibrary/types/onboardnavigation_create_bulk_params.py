@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["OnboardnavigationCreateBulkParams", "Body"]
@@ -117,7 +118,7 @@ class Body(TypedDict, total=False):
     based on the onboard sun sensor, at each epoch.
     """
 
-    ts: Annotated[List[Union[str, datetime]], PropertyInfo(format="iso8601")]
+    ts: Annotated[SequenceNotStr[Union[str, datetime]], PropertyInfo(format="iso8601")]
     """Array of epochs of the observations, in ISO 8601 UTC format.
 
     The epochs are assumed to correspond to all sensor data in this record. If

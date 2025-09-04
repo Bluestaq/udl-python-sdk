@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["WeatherReportUnvalidatedPublishParams", "Body"]
@@ -116,7 +117,7 @@ class Body(TypedDict, total=False):
     cc_event: Annotated[bool, PropertyInfo(alias="ccEvent")]
     """Flag indicating detection of a cloud-to-cloud lightning event."""
 
-    cloud_cover: Annotated[List[str], PropertyInfo(alias="cloudCover")]
+    cloud_cover: Annotated[SequenceNotStr[str], PropertyInfo(alias="cloudCover")]
     """
     Array of cloud cover descriptions - each element can be maximum of 16 characters
     long. Intended as, but not constrained to, MIL-STD-6016 cloud cover designations
@@ -367,7 +368,7 @@ class Body(TypedDict, total=False):
     solar irradiance is measured in watt per square meter (W/m2).
     """
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUID(s) of the UDL data record(s) that are related to this
     WeatherReport record. See the associated 'srcTyps' array for the specific types
@@ -377,7 +378,7 @@ class Body(TypedDict, total=False):
     retrieve that object.
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types (SENSOR, WEATHERDATA) that are related to this
     WeatherReport record. See the associated 'srcIds' array for the record UUIDs,

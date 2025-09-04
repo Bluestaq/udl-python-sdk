@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -41,14 +42,14 @@ class BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(Type
 
 
 class BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(TypedDict, total=False):
-    int_dur: Annotated[List[str], PropertyInfo(alias="intDur")]
+    int_dur: Annotated[SequenceNotStr[str], PropertyInfo(alias="intDur")]
     """Mandatory if timeMode is INTERVAL.
 
     Can be a numerical multiplier on an interval frequency code, a stop time
     qualifier code such as AFTER, NET, UFN, etc, or a datetime like string.
     """
 
-    int_freq: Annotated[List[str], PropertyInfo(alias="intFreq")]
+    int_freq: Annotated[SequenceNotStr[str], PropertyInfo(alias="intFreq")]
     """Mandatory if timeMode is INTERVAL.
 
     Can be one of the interval frequency codes, such as BIWEEKLY, DAILY, YEARLY,
@@ -126,7 +127,7 @@ class BodyAirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
     control operation assigned to him.
     """
 
-    cntrl_auth_freqs: Annotated[List[str], PropertyInfo(alias="cntrlAuthFreqs")]
+    cntrl_auth_freqs: Annotated[SequenceNotStr[str], PropertyInfo(alias="cntrlAuthFreqs")]
     """The frequency for the airspace control authority.
 
     Can specify HZ, KHZ, MHZ, GHZ or a DESIG frequency designator code.
@@ -154,7 +155,7 @@ class BodyAirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
     "CIRCLE" shape, or the "origin of bearing" for arcs.
     """
 
-    corr_way_points: Annotated[List[str], PropertyInfo(alias="corrWayPoints")]
+    corr_way_points: Annotated[SequenceNotStr[str], PropertyInfo(alias="corrWayPoints")]
     """
     An array of at least two alphanumeric symbols used to serially identify the
     corridor waypoints. If cmShape is set to "CORRIDOR", one of either corrWayPoints
@@ -185,7 +186,7 @@ class BodyAirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
     orbit_alignment: Annotated[str, PropertyInfo(alias="orbitAlignment")]
     """Orbit alignment look-up code. Can be C=Center, L=Left, R=Right."""
 
-    poly_coord: Annotated[List[str], PropertyInfo(alias="polyCoord")]
+    poly_coord: Annotated[SequenceNotStr[str], PropertyInfo(alias="polyCoord")]
     """
     A set of geospatial coordinates specified in DMS (Degrees, Minutes, Seconds)
     format which determine the vertices of a one or two dimensional geospatial
@@ -277,7 +278,7 @@ class BodyAirspaceControlMeansStatus(TypedDict, total=False):
     cm_stat: Annotated[str, PropertyInfo(alias="cmStat")]
     """Status of Airspace Control Means. Must be ADD, CHANGE, or DELETE."""
 
-    cm_stat_id: Annotated[List[str], PropertyInfo(alias="cmStatId")]
+    cm_stat_id: Annotated[SequenceNotStr[str], PropertyInfo(alias="cmStatId")]
     """Airspace control means name or designator.
 
     Mandatory if acmStat equals "DELETE," otherwise this field is prohibited.
@@ -291,7 +292,7 @@ class BodyAirspaceControlOrderReference(TypedDict, total=False):
     ref_serial_num: Annotated[str, PropertyInfo(alias="refSerialNum")]
     """The reference serial number."""
 
-    ref_si_cs: Annotated[List[str], PropertyInfo(alias="refSICs")]
+    ref_si_cs: Annotated[SequenceNotStr[str], PropertyInfo(alias="refSICs")]
     """
     Array of NATO Subject Indicator Codes (SIC) or filing numbers of the document
     being referenced.
@@ -386,7 +387,7 @@ class Body(TypedDict, total=False):
     area_of_validity: Annotated[str, PropertyInfo(alias="areaOfValidity")]
     """Name of the area of the command for which the ACO is valid."""
 
-    class_reasons: Annotated[List[str], PropertyInfo(alias="classReasons")]
+    class_reasons: Annotated[SequenceNotStr[str], PropertyInfo(alias="classReasons")]
     """Mandatory if classSource uses the "IORIG" designator.
 
     Must be a REASON FOR CLASSIFICATION code.
@@ -398,13 +399,13 @@ class Body(TypedDict, total=False):
     for the ACO message.
     """
 
-    declass_exemption_codes: Annotated[List[str], PropertyInfo(alias="declassExemptionCodes")]
+    declass_exemption_codes: Annotated[SequenceNotStr[str], PropertyInfo(alias="declassExemptionCodes")]
     """
     Coded entries that provide justification for exemption from automatic
     downgrading or declassification of the airspace control order.
     """
 
-    downgrade_ins_dates: Annotated[List[str], PropertyInfo(alias="downgradeInsDates")]
+    downgrade_ins_dates: Annotated[SequenceNotStr[str], PropertyInfo(alias="downgradeInsDates")]
     """
     Markings providing the literal guidance or date for downgrading or declassifying
     the airspace control order.
@@ -468,7 +469,7 @@ class Body(TypedDict, total=False):
     UTC format with millisecond precision.
     """
 
-    und_lnk_trks: Annotated[List[str], PropertyInfo(alias="undLnkTrks")]
+    und_lnk_trks: Annotated[SequenceNotStr[str], PropertyInfo(alias="undLnkTrks")]
     """
     Array of unique link 16 identifiers that will be assigned to a future airspace
     control means.

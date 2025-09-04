@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +14,7 @@ from ..types import (
     bus_update_params,
     bus_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -104,7 +103,7 @@ class BusesResource(SyncAPIResource):
         num_orbit_type: int | NotGiven = NOT_GIVEN,
         oap_payload_power: float | NotGiven = NOT_GIVEN,
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
-        orbit_types: List[str] | NotGiven = NOT_GIVEN,
+        orbit_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
@@ -437,7 +436,7 @@ class BusesResource(SyncAPIResource):
         num_orbit_type: int | NotGiven = NOT_GIVEN,
         oap_payload_power: float | NotGiven = NOT_GIVEN,
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
-        orbit_types: List[str] | NotGiven = NOT_GIVEN,
+        orbit_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
@@ -953,7 +952,7 @@ class AsyncBusesResource(AsyncAPIResource):
         num_orbit_type: int | NotGiven = NOT_GIVEN,
         oap_payload_power: float | NotGiven = NOT_GIVEN,
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
-        orbit_types: List[str] | NotGiven = NOT_GIVEN,
+        orbit_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,
@@ -1286,7 +1285,7 @@ class AsyncBusesResource(AsyncAPIResource):
         num_orbit_type: int | NotGiven = NOT_GIVEN,
         oap_payload_power: float | NotGiven = NOT_GIVEN,
         oap_spacecraft_power: float | NotGiven = NOT_GIVEN,
-        orbit_types: List[str] | NotGiven = NOT_GIVEN,
+        orbit_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         payload_dimension_x: float | NotGiven = NOT_GIVEN,
         payload_dimension_y: float | NotGiven = NOT_GIVEN,

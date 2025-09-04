@@ -6,6 +6,7 @@ from typing import List, Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -48,7 +49,7 @@ class BodyAmplitude(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of amplitude data."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -62,7 +63,7 @@ class BodyAntennaElementPosition(TypedDict, total=False):
     data: Iterable[Iterable[float]]
     """Array of 3-element tuples (x,y,z) in km."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -73,7 +74,7 @@ class BodyAzimuth(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of incoming azimuth at the receiver."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -91,13 +92,13 @@ class BodyCharAtt(TypedDict, total=False):
     characteristic.
     """
 
-    climate_model_input_params: Annotated[List[str], PropertyInfo(alias="climateModelInputParams")]
+    climate_model_input_params: Annotated[SequenceNotStr[str], PropertyInfo(alias="climateModelInputParams")]
     """Input parameters for the climate model."""
 
     climate_model_name: Annotated[str, PropertyInfo(alias="climateModelName")]
     """Name of the climate model."""
 
-    climate_model_options: Annotated[List[str], PropertyInfo(alias="climateModelOptions")]
+    climate_model_options: Annotated[SequenceNotStr[str], PropertyInfo(alias="climateModelOptions")]
     """List of options for the climate model."""
 
     d: str
@@ -409,7 +410,7 @@ class BodyDoppler(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of received doppler shifts in Hz."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -423,7 +424,7 @@ class BodyElevation(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of incoming elevation at the receiver."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -437,7 +438,7 @@ class BodyFrequency(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of frequency data."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for frequency dimensions."""
 
     dimensions: Iterable[int]
@@ -451,7 +452,7 @@ class BodyPhase(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of phase data."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for phase dimensions."""
 
     dimensions: Iterable[int]
@@ -469,7 +470,7 @@ class BodyPolarization(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[List[Literal["X", "O"]]]]]]]]
     """Array of polarization data."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -483,7 +484,7 @@ class BodyPower(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of received power in db."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -497,7 +498,7 @@ class BodyRange(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of range data."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for range dimensions."""
 
     dimensions: Iterable[int]
@@ -531,7 +532,7 @@ class BodyStokes(TypedDict, total=False):
     data: Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[Iterable[float]]]]]]]
     """Array of received stokes data."""
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -551,7 +552,7 @@ class BodyTime(TypedDict, total=False):
     dimensions as power.
     """
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of names for dimensions."""
 
     dimensions: Iterable[int]
@@ -569,7 +570,7 @@ class BodyTraceGeneric(TypedDict, total=False):
     frequency-range pairs.
     """
 
-    dimension_name: Annotated[List[str], PropertyInfo(alias="dimensionName")]
+    dimension_name: Annotated[SequenceNotStr[str], PropertyInfo(alias="dimensionName")]
     """Array of dimension names for trace generic data."""
 
     notes: str

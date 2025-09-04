@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -102,7 +102,7 @@ class EphemerisSetsResource(SyncAPIResource):
         has_accel: bool | NotGiven = NOT_GIVEN,
         has_cov: bool | NotGiven = NOT_GIVEN,
         has_mnvr: bool | NotGiven = NOT_GIVEN,
-        id_maneuvers: List[str] | NotGiven = NOT_GIVEN,
+        id_maneuvers: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_state_vector: str | NotGiven = NOT_GIVEN,
         integrator: str | NotGiven = NOT_GIVEN,
@@ -116,7 +116,7 @@ class EphemerisSetsResource(SyncAPIResource):
         sat_no: int | NotGiven = NOT_GIVEN,
         solid_earth_tides: bool | NotGiven = NOT_GIVEN,
         step_size: int | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         usable_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         usable_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -682,7 +682,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         has_accel: bool | NotGiven = NOT_GIVEN,
         has_cov: bool | NotGiven = NOT_GIVEN,
         has_mnvr: bool | NotGiven = NOT_GIVEN,
-        id_maneuvers: List[str] | NotGiven = NOT_GIVEN,
+        id_maneuvers: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         id_on_orbit: str | NotGiven = NOT_GIVEN,
         id_state_vector: str | NotGiven = NOT_GIVEN,
         integrator: str | NotGiven = NOT_GIVEN,
@@ -696,7 +696,7 @@ class AsyncEphemerisSetsResource(AsyncAPIResource):
         sat_no: int | NotGiven = NOT_GIVEN,
         solid_earth_tides: bool | NotGiven = NOT_GIVEN,
         step_size: int | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         usable_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         usable_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,

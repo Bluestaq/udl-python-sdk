@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["TrackCreateBulkParams", "Body"]
@@ -428,7 +429,7 @@ class Body(TypedDict, total=False):
     spd: float
     """Track object spd, in meters/sec."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUIDs of the UDL data records that contributed to the generation of
     this fused track. See the associated 'srcTyps' array for the specific types of
@@ -438,7 +439,7 @@ class Body(TypedDict, total=False):
     appropriate API operation to retrieve that object (e.g. /udl/poi/{uuid}).
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types (POI, MTI, TRACK, GROUNDIMAGE) that contributed to the
     generation of this fused track. See the associated 'srcIds' array for the record
@@ -456,7 +457,7 @@ class Body(TypedDict, total=False):
     estimated more than 12 units.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -144,7 +144,7 @@ class CollectRequestsResource(SyncAPIResource):
         stop_lat: float | NotGiven = NOT_GIVEN,
         stop_lon: float | NotGiven = NOT_GIVEN,
         suffix: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         target_size: float | NotGiven = NOT_GIVEN,
         task_category: int | NotGiven = NOT_GIVEN,
         task_group: str | NotGiven = NOT_GIVEN,
@@ -968,7 +968,7 @@ class AsyncCollectRequestsResource(AsyncAPIResource):
         stop_lat: float | NotGiven = NOT_GIVEN,
         stop_lon: float | NotGiven = NOT_GIVEN,
         suffix: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         target_size: float | NotGiven = NOT_GIVEN,
         task_category: int | NotGiven = NOT_GIVEN,
         task_group: str | NotGiven = NOT_GIVEN,

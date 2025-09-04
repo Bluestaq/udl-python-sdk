@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["SarObservationCreateBulkParams", "Body"]
@@ -293,7 +294,7 @@ class Body(TypedDict, total=False):
     squint_angle: Annotated[float, PropertyInfo(alias="squintAngle")]
     """The squint angle for the collection in degrees."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """Array of UUIDs of the UDL data records that are related to the SAR Observation.
 
     See the associated 'srcTyps' array for the specific types of data, positionally
@@ -303,7 +304,7 @@ class Body(TypedDict, total=False):
     /udl/sarobservation/{uuid}).
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """Array of UDL record types (e.g.
 
     ANALYTICMAGERY, ESID, GROUNDIMAGE, NOTIFICATION, POI, SV, TRACK) that are
@@ -315,7 +316,7 @@ class Body(TypedDict, total=False):
     swath_length: Annotated[float, PropertyInfo(alias="swathLength")]
     """The length of the collection as projected on the ground in kilometers."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

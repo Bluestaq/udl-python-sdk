@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["LaunchVehicleDetailCreateParams"]
@@ -184,7 +184,7 @@ class LaunchVehicleDetailCreateParams(TypedDict, total=False):
     sso_payload_mass: Annotated[float, PropertyInfo(alias="ssoPayloadMass")]
     """Max vehicle payload mass to Sun-Synchronous Orbit in kg."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

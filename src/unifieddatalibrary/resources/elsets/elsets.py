@@ -33,7 +33,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -115,9 +115,9 @@ class ElsetsResource(SyncAPIResource):
         rev_no: int | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
         semi_major_axis: float | NotGiven = NOT_GIVEN,
-        sourced_data: List[str] | NotGiven = NOT_GIVEN,
+        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -826,9 +826,9 @@ class AsyncElsetsResource(AsyncAPIResource):
         rev_no: int | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
         semi_major_axis: float | NotGiven = NOT_GIVEN,
-        sourced_data: List[str] | NotGiven = NOT_GIVEN,
+        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         uct: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

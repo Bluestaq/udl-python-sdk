@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["UdlH3geoUnvalidatedPublishParams", "Cell"]
@@ -73,7 +74,7 @@ class UdlH3geoUnvalidatedPublishParams(TypedDict, total=False):
     At this time, UDL supports a resolution of 3 or less.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,7 +16,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -120,7 +120,7 @@ class RadarobservationResource(SyncAPIResource):
         seny: float | NotGiven = NOT_GIVEN,
         senz: float | NotGiven = NOT_GIVEN,
         snr: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         timing_bias: float | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,
@@ -811,7 +811,7 @@ class AsyncRadarobservationResource(AsyncAPIResource):
         seny: float | NotGiven = NOT_GIVEN,
         senz: float | NotGiven = NOT_GIVEN,
         snr: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         timing_bias: float | NotGiven = NOT_GIVEN,
         track_id: str | NotGiven = NOT_GIVEN,

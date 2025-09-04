@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["OnorbitdetailUpdateParams"]
@@ -91,7 +92,7 @@ class OnorbitdetailUpdateParams(TypedDict, total=False):
     numDeployable.
     """
 
-    dep_names: Annotated[List[str], PropertyInfo(alias="depNames")]
+    dep_names: Annotated[SequenceNotStr[str], PropertyInfo(alias="depNames")]
     """Array of satellite deployable objects.
 
     Must contain the same number of elements as the value of numDeployable.
@@ -151,7 +152,7 @@ class OnorbitdetailUpdateParams(TypedDict, total=False):
     arrays) in meters.
     """
 
-    mission_types: Annotated[List[str], PropertyInfo(alias="missionTypes")]
+    mission_types: Annotated[SequenceNotStr[str], PropertyInfo(alias="missionTypes")]
     """Array of the type of missions the spacecraft performs.
 
     Must contain the same number of elements as the value of numMission.

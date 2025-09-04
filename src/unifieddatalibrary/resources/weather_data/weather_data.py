@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -104,8 +104,8 @@ class WeatherDataResource(SyncAPIResource):
         snrs: Iterable[float] | NotGiven = NOT_GIVEN,
         spec_avgs: Iterable[int] | NotGiven = NOT_GIVEN,
         spec_widths: Iterable[float] | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         td_avg_sample_nums: Iterable[int] | NotGiven = NOT_GIVEN,
         term_alt: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -673,8 +673,8 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         snrs: Iterable[float] | NotGiven = NOT_GIVEN,
         spec_avgs: Iterable[int] | NotGiven = NOT_GIVEN,
         spec_widths: Iterable[float] | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         td_avg_sample_nums: Iterable[int] | NotGiven = NOT_GIVEN,
         term_alt: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

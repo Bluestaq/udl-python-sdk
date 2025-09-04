@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["SiteStatusUpdateParams"]
@@ -139,21 +140,21 @@ class SiteStatusUpdateParams(TypedDict, total=False):
     UNK - Unknown.
     """
 
-    link: List[str]
+    link: SequenceNotStr[str]
     """
     Array of Link item(s) for which status is available and reported (ATDL, IJMS,
     LINK-1, LINK-11, LINK-11B, LINK-16). This array must be the same length as the
     linkStatus array.
     """
 
-    link_status: Annotated[List[str], PropertyInfo(alias="linkStatus")]
+    link_status: Annotated[SequenceNotStr[str], PropertyInfo(alias="linkStatus")]
     """
     Array of the status (AVAILABLE, DEGRADED, NOT AVAILABLE, etc.) for each links in
     the link array. This array must be the same length as the link array, and the
     status must correspond to the appropriate position index in the link array.
     """
 
-    missile: List[str]
+    missile: SequenceNotStr[str]
     """
     Array of specific missile types for which an estimated inventory count is
     available (e.g. GMD TYPE A, HARPOON, TOMAHAWK, etc.). This array must be the
@@ -200,7 +201,7 @@ class SiteStatusUpdateParams(TypedDict, total=False):
     poiid: str
     """The POI (point of interest) ID related to this platform, if available."""
 
-    radar_status: Annotated[List[str], PropertyInfo(alias="radarStatus")]
+    radar_status: Annotated[SequenceNotStr[str], PropertyInfo(alias="radarStatus")]
     """
     Array of the status (NON-OPERATIONAL, OPERATIONAL, OFF) for each radar system in
     the radarSystem array. This array must be the same length as the radarSystem
@@ -208,7 +209,7 @@ class SiteStatusUpdateParams(TypedDict, total=False):
     radarSystem array.
     """
 
-    radar_system: Annotated[List[str], PropertyInfo(alias="radarSystem")]
+    radar_system: Annotated[SequenceNotStr[str], PropertyInfo(alias="radarSystem")]
     """
     Array of radar system(s) for which status is available and reported
     (ACQUISITION, IFFSIF, ILLUMINATING, MODE-4, PRIMARY SURVEILLANCE, SECONDARY
