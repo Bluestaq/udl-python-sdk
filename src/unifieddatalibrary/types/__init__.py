@@ -417,7 +417,6 @@ from .rf_band_list_response import RfBandListResponse as RfBandListResponse
 from .rf_band_update_params import RfBandUpdateParams as RfBandUpdateParams
 from .rf_emitter_get_params import RfEmitterGetParams as RfEmitterGetParams
 from .sc_file_upload_params import ScFileUploadParams as ScFileUploadParams
-from .sc_update_tags_params import ScUpdateTagsParams as ScUpdateTagsParams
 from .scientific_get_params import ScientificGetParams as ScientificGetParams
 from .sensor_count_response import SensorCountResponse as SensorCountResponse
 from .sensor_tuple_response import SensorTupleResponse as SensorTupleResponse
@@ -1154,10 +1153,8 @@ from .rf_emitter_detail_tuple_params import RfEmitterDetailTupleParams as RfEmit
 from .route_stat_query_help_response import RouteStatQueryHelpResponse as RouteStatQueryHelpResponse
 from .sar_observation_count_response import SarObservationCountResponse as SarObservationCountResponse
 from .sar_observation_tuple_response import SarObservationTupleResponse as SarObservationTupleResponse
-from .sc_aggregate_doc_type_response import ScAggregateDocTypeResponse as ScAggregateDocTypeResponse
 from .sensor_maintenance_list_params import SensorMaintenanceListParams as SensorMaintenanceListParams
 from .sensor_plan_queryhelp_response import SensorPlanQueryhelpResponse as SensorPlanQueryhelpResponse
-from .sensor_type_queryhelp_response import SensorTypeQueryhelpResponse as SensorTypeQueryhelpResponse
 from .sgi_unvalidated_publish_params import SgiUnvalidatedPublishParams as SgiUnvalidatedPublishParams
 from .site_remark_queryhelp_response import SiteRemarkQueryhelpResponse as SiteRemarkQueryhelpResponse
 from .site_status_queryhelp_response import SiteStatusQueryhelpResponse as SiteStatusQueryhelpResponse
@@ -1913,9 +1910,6 @@ from .organizationdetail_find_by_source_response import (
 )
 from .sar_observation_unvalidated_publish_params import (
     SarObservationUnvalidatedPublishParams as SarObservationUnvalidatedPublishParams,
-)
-from .sensor_observation_type_queryhelp_response import (
-    SensorObservationTypeQueryhelpResponse as SensorObservationTypeQueryhelpResponse,
 )
 from .sera_data_early_warning_queryhelp_response import (
     SeraDataEarlyWarningQueryhelpResponse as SeraDataEarlyWarningQueryhelpResponse,

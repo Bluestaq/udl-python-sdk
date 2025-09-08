@@ -32,14 +32,6 @@ from .paths import (
     PathsResourceWithStreamingResponse,
     AsyncPathsResourceWithStreamingResponse,
 )
-from .groups import (
-    GroupsResource,
-    AsyncGroupsResource,
-    GroupsResourceWithRawResponse,
-    AsyncGroupsResourceWithRawResponse,
-    GroupsResourceWithStreamingResponse,
-    AsyncGroupsResourceWithStreamingResponse,
-)
 from .folders import (
     FoldersResource,
     AsyncFoldersResource,
@@ -47,30 +39,6 @@ from .folders import (
     AsyncFoldersResourceWithRawResponse,
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
-)
-from .file_metadata import (
-    FileMetadataResource,
-    AsyncFileMetadataResource,
-    FileMetadataResourceWithRawResponse,
-    AsyncFileMetadataResourceWithRawResponse,
-    FileMetadataResourceWithStreamingResponse,
-    AsyncFileMetadataResourceWithStreamingResponse,
-)
-from .range_parameters import (
-    RangeParametersResource,
-    AsyncRangeParametersResource,
-    RangeParametersResourceWithRawResponse,
-    AsyncRangeParametersResourceWithRawResponse,
-    RangeParametersResourceWithStreamingResponse,
-    AsyncRangeParametersResourceWithStreamingResponse,
-)
-from .classification_markings import (
-    ClassificationMarkingsResource,
-    AsyncClassificationMarkingsResource,
-    ClassificationMarkingsResourceWithRawResponse,
-    AsyncClassificationMarkingsResourceWithRawResponse,
-    ClassificationMarkingsResourceWithStreamingResponse,
-    AsyncClassificationMarkingsResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -80,30 +48,6 @@ __all__ = [
     "AsyncFoldersResourceWithRawResponse",
     "FoldersResourceWithStreamingResponse",
     "AsyncFoldersResourceWithStreamingResponse",
-    "ClassificationMarkingsResource",
-    "AsyncClassificationMarkingsResource",
-    "ClassificationMarkingsResourceWithRawResponse",
-    "AsyncClassificationMarkingsResourceWithRawResponse",
-    "ClassificationMarkingsResourceWithStreamingResponse",
-    "AsyncClassificationMarkingsResourceWithStreamingResponse",
-    "GroupsResource",
-    "AsyncGroupsResource",
-    "GroupsResourceWithRawResponse",
-    "AsyncGroupsResourceWithRawResponse",
-    "GroupsResourceWithStreamingResponse",
-    "AsyncGroupsResourceWithStreamingResponse",
-    "FileMetadataResource",
-    "AsyncFileMetadataResource",
-    "FileMetadataResourceWithRawResponse",
-    "AsyncFileMetadataResourceWithRawResponse",
-    "FileMetadataResourceWithStreamingResponse",
-    "AsyncFileMetadataResourceWithStreamingResponse",
-    "RangeParametersResource",
-    "AsyncRangeParametersResource",
-    "RangeParametersResourceWithRawResponse",
-    "AsyncRangeParametersResourceWithRawResponse",
-    "RangeParametersResourceWithStreamingResponse",
-    "AsyncRangeParametersResourceWithStreamingResponse",
     "PathsResource",
     "AsyncPathsResource",
     "PathsResourceWithRawResponse",

@@ -47,8 +47,11 @@ class RfEmitterUpdateParams(TypedDict, total=False):
     entity can have an operating unit, a location (if terrestrial), and statuses.
     """
 
+    ext_sys_id: Annotated[str, PropertyInfo(alias="extSysId")]
+    """The originating system ID for the RF Emitter."""
+
     id_entity: Annotated[str, PropertyInfo(alias="idEntity")]
-    """ID of the parent entity for this rfemitter."""
+    """ID by reference of the parent entity for this RFEmitter."""
 
     origin: str
     """
@@ -56,6 +59,12 @@ class RfEmitterUpdateParams(TypedDict, total=False):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
+    """
+
+    subtype: str
+    """The RF Emitter subtype, which can distinguish specialized deployments (e.g.
+
+    BLOCK_0_AVL, BLOCK_0_DS1, BLOCK_0_TEST, BLOCK_1, BLOCK_1_TEST, NONE).
     """
 
     type: str

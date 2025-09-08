@@ -40,33 +40,122 @@ class TestRfEmitterDetails:
             data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
-            id="RFEMITTERDETAILS-ID",
+            id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             alternate_facility_name="ALTERNATE_FACILITY_NAME",
             alt_name="ALTERNATE_NAME",
-            antenna_diameter=20.23,
-            antenna_size=[1.1, 2.2],
+            amplifier={
+                "device_identifier": "1200W_Amplifier_GE",
+                "manufacturer": "General Electric",
+                "model_name": "Model 2600",
+                "power": 1200.1,
+            },
+            antennas=[
+                {
+                    "antenna_diameter": 20.23,
+                    "antenna_size": [1.1, 2.2],
+                    "az_el_fixed": True,
+                    "feeds": [
+                        {
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "name": "Feed A",
+                            "polarization": "HORIZONTAL",
+                        }
+                    ],
+                    "fixed_azimuth": 5.1,
+                    "fixed_elevation": 10.1,
+                    "max_azimuths": [359.1, 359.1],
+                    "max_elevation": 88.1,
+                    "min_azimuths": [5.1, 7.5],
+                    "min_elevation": 10.1,
+                    "name": "ds1Rotor",
+                    "receiver_channels": [
+                        {
+                            "bandwidth": 0.51,
+                            "channel_num": "315",
+                            "device_identifier": "MMS1",
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "max_bandwidth": 100.1,
+                            "min_bandwidth": 0.05,
+                            "sensitivity": 10.23,
+                        }
+                    ],
+                    "transmit_channels": [
+                        {
+                            "power": 100.23,
+                            "bandwidth": 0.125,
+                            "channel_num": "12",
+                            "device_identifier": "TX1-B4-778",
+                            "freq": 42000.1,
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "hardware_sample_rate": 192000,
+                            "max_bandwidth": 100.1,
+                            "max_gain": 20.1,
+                            "min_bandwidth": 0.05,
+                            "min_gain": 0.1,
+                            "sample_rates": [192000, 9216000],
+                        }
+                    ],
+                }
+            ],
             barrage_noise_bandwidth=5.23,
+            bit_run_time=120.1,
             description="DESCRIPTION",
             designator="DESIGNATOR",
             doppler_noise=10.23,
             drfm_instantaneous_bandwidth=20.23,
             family="FAMILY",
-            manufacturer_org_id="MANUFACTURERORG-ID",
+            fixed_attenuation=5.1,
+            id_manufacturer_org="MANUFACTURERORG-ID",
+            id_production_facility_location="PRODUCTIONFACILITYLOCATION-ID",
+            loaned_to_cocom="SPACEFOR-STRATNORTH",
             notes="NOTES",
             num_bits=256,
             num_channels=10,
             origin="THIRD_PARTY_DATASOURCE",
-            production_facility_location_id="PRODUCTIONFACILITYLOCATION-ID",
+            power_offsets=[
+                {
+                    "frequency_band": "KU",
+                    "power_offset": -5.1,
+                }
+            ],
+            prep_time=60.1,
+            primary_cocom="SPACESOC",
             production_facility_name="PRODUCTION_FACILITY",
-            receiver_bandwidth=15.23,
-            receiver_sensitivity=10.23,
             receiver_type="RECEIVER_TYPE",
             secondary_notes="MORE_NOTES",
+            services=[
+                {
+                    "name": "tlc-freqcontrol",
+                    "version": "17.2.5_build72199",
+                }
+            ],
             system_sensitivity_end=150.23,
-            system_sensitivity_start=50.23,
-            transmit_power=100.23,
-            transmitter_bandwidth=0.125,
-            transmitter_frequency=105.9,
+            system_sensitivity_start=50.32,
+            ttps=[
+                {
+                    "output_signal_name": "SIGNAL_A",
+                    "technique_definitions": [
+                        {
+                            "name": "SIGNAL TUNE",
+                            "param_definitions": [
+                                {
+                                    "default_value": "444.0",
+                                    "max": 1000.1,
+                                    "min": 0.1,
+                                    "name": "CENTER_FREQ",
+                                    "optional": False,
+                                    "type": "DOUBLE",
+                                    "units": "hertz",
+                                    "valid_values": ["100.1", "444.1", "1000.1"],
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ],
             urls=["TAG1", "TAG2"],
         )
         assert rf_emitter_detail is None
@@ -120,33 +209,122 @@ class TestRfEmitterDetails:
             data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
-            body_id="RFEMITTERDETAILS-ID",
+            body_id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             alternate_facility_name="ALTERNATE_FACILITY_NAME",
             alt_name="ALTERNATE_NAME",
-            antenna_diameter=20.23,
-            antenna_size=[1.1, 2.2],
+            amplifier={
+                "device_identifier": "1200W_Amplifier_GE",
+                "manufacturer": "General Electric",
+                "model_name": "Model 2600",
+                "power": 1200.1,
+            },
+            antennas=[
+                {
+                    "antenna_diameter": 20.23,
+                    "antenna_size": [1.1, 2.2],
+                    "az_el_fixed": True,
+                    "feeds": [
+                        {
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "name": "Feed A",
+                            "polarization": "HORIZONTAL",
+                        }
+                    ],
+                    "fixed_azimuth": 5.1,
+                    "fixed_elevation": 10.1,
+                    "max_azimuths": [359.1, 359.1],
+                    "max_elevation": 88.1,
+                    "min_azimuths": [5.1, 7.5],
+                    "min_elevation": 10.1,
+                    "name": "ds1Rotor",
+                    "receiver_channels": [
+                        {
+                            "bandwidth": 0.51,
+                            "channel_num": "315",
+                            "device_identifier": "MMS1",
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "max_bandwidth": 100.1,
+                            "min_bandwidth": 0.05,
+                            "sensitivity": 10.23,
+                        }
+                    ],
+                    "transmit_channels": [
+                        {
+                            "power": 100.23,
+                            "bandwidth": 0.125,
+                            "channel_num": "12",
+                            "device_identifier": "TX1-B4-778",
+                            "freq": 42000.1,
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "hardware_sample_rate": 192000,
+                            "max_bandwidth": 100.1,
+                            "max_gain": 20.1,
+                            "min_bandwidth": 0.05,
+                            "min_gain": 0.1,
+                            "sample_rates": [192000, 9216000],
+                        }
+                    ],
+                }
+            ],
             barrage_noise_bandwidth=5.23,
+            bit_run_time=120.1,
             description="DESCRIPTION",
             designator="DESIGNATOR",
             doppler_noise=10.23,
             drfm_instantaneous_bandwidth=20.23,
             family="FAMILY",
-            manufacturer_org_id="MANUFACTURERORG-ID",
+            fixed_attenuation=5.1,
+            id_manufacturer_org="MANUFACTURERORG-ID",
+            id_production_facility_location="PRODUCTIONFACILITYLOCATION-ID",
+            loaned_to_cocom="SPACEFOR-STRATNORTH",
             notes="NOTES",
             num_bits=256,
             num_channels=10,
             origin="THIRD_PARTY_DATASOURCE",
-            production_facility_location_id="PRODUCTIONFACILITYLOCATION-ID",
+            power_offsets=[
+                {
+                    "frequency_band": "KU",
+                    "power_offset": -5.1,
+                }
+            ],
+            prep_time=60.1,
+            primary_cocom="SPACESOC",
             production_facility_name="PRODUCTION_FACILITY",
-            receiver_bandwidth=15.23,
-            receiver_sensitivity=10.23,
             receiver_type="RECEIVER_TYPE",
             secondary_notes="MORE_NOTES",
+            services=[
+                {
+                    "name": "tlc-freqcontrol",
+                    "version": "17.2.5_build72199",
+                }
+            ],
             system_sensitivity_end=150.23,
-            system_sensitivity_start=50.23,
-            transmit_power=100.23,
-            transmitter_bandwidth=0.125,
-            transmitter_frequency=105.9,
+            system_sensitivity_start=50.32,
+            ttps=[
+                {
+                    "output_signal_name": "SIGNAL_A",
+                    "technique_definitions": [
+                        {
+                            "name": "SIGNAL TUNE",
+                            "param_definitions": [
+                                {
+                                    "default_value": "444.0",
+                                    "max": 1000.1,
+                                    "min": 0.1,
+                                    "name": "CENTER_FREQ",
+                                    "optional": False,
+                                    "type": "DOUBLE",
+                                    "units": "hertz",
+                                    "valid_values": ["100.1", "444.1", "1000.1"],
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ],
             urls=["TAG1", "TAG2"],
         )
         assert rf_emitter_detail is None
@@ -433,33 +611,122 @@ class TestAsyncRfEmitterDetails:
             data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
-            id="RFEMITTERDETAILS-ID",
+            id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             alternate_facility_name="ALTERNATE_FACILITY_NAME",
             alt_name="ALTERNATE_NAME",
-            antenna_diameter=20.23,
-            antenna_size=[1.1, 2.2],
+            amplifier={
+                "device_identifier": "1200W_Amplifier_GE",
+                "manufacturer": "General Electric",
+                "model_name": "Model 2600",
+                "power": 1200.1,
+            },
+            antennas=[
+                {
+                    "antenna_diameter": 20.23,
+                    "antenna_size": [1.1, 2.2],
+                    "az_el_fixed": True,
+                    "feeds": [
+                        {
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "name": "Feed A",
+                            "polarization": "HORIZONTAL",
+                        }
+                    ],
+                    "fixed_azimuth": 5.1,
+                    "fixed_elevation": 10.1,
+                    "max_azimuths": [359.1, 359.1],
+                    "max_elevation": 88.1,
+                    "min_azimuths": [5.1, 7.5],
+                    "min_elevation": 10.1,
+                    "name": "ds1Rotor",
+                    "receiver_channels": [
+                        {
+                            "bandwidth": 0.51,
+                            "channel_num": "315",
+                            "device_identifier": "MMS1",
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "max_bandwidth": 100.1,
+                            "min_bandwidth": 0.05,
+                            "sensitivity": 10.23,
+                        }
+                    ],
+                    "transmit_channels": [
+                        {
+                            "power": 100.23,
+                            "bandwidth": 0.125,
+                            "channel_num": "12",
+                            "device_identifier": "TX1-B4-778",
+                            "freq": 42000.1,
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "hardware_sample_rate": 192000,
+                            "max_bandwidth": 100.1,
+                            "max_gain": 20.1,
+                            "min_bandwidth": 0.05,
+                            "min_gain": 0.1,
+                            "sample_rates": [192000, 9216000],
+                        }
+                    ],
+                }
+            ],
             barrage_noise_bandwidth=5.23,
+            bit_run_time=120.1,
             description="DESCRIPTION",
             designator="DESIGNATOR",
             doppler_noise=10.23,
             drfm_instantaneous_bandwidth=20.23,
             family="FAMILY",
-            manufacturer_org_id="MANUFACTURERORG-ID",
+            fixed_attenuation=5.1,
+            id_manufacturer_org="MANUFACTURERORG-ID",
+            id_production_facility_location="PRODUCTIONFACILITYLOCATION-ID",
+            loaned_to_cocom="SPACEFOR-STRATNORTH",
             notes="NOTES",
             num_bits=256,
             num_channels=10,
             origin="THIRD_PARTY_DATASOURCE",
-            production_facility_location_id="PRODUCTIONFACILITYLOCATION-ID",
+            power_offsets=[
+                {
+                    "frequency_band": "KU",
+                    "power_offset": -5.1,
+                }
+            ],
+            prep_time=60.1,
+            primary_cocom="SPACESOC",
             production_facility_name="PRODUCTION_FACILITY",
-            receiver_bandwidth=15.23,
-            receiver_sensitivity=10.23,
             receiver_type="RECEIVER_TYPE",
             secondary_notes="MORE_NOTES",
+            services=[
+                {
+                    "name": "tlc-freqcontrol",
+                    "version": "17.2.5_build72199",
+                }
+            ],
             system_sensitivity_end=150.23,
-            system_sensitivity_start=50.23,
-            transmit_power=100.23,
-            transmitter_bandwidth=0.125,
-            transmitter_frequency=105.9,
+            system_sensitivity_start=50.32,
+            ttps=[
+                {
+                    "output_signal_name": "SIGNAL_A",
+                    "technique_definitions": [
+                        {
+                            "name": "SIGNAL TUNE",
+                            "param_definitions": [
+                                {
+                                    "default_value": "444.0",
+                                    "max": 1000.1,
+                                    "min": 0.1,
+                                    "name": "CENTER_FREQ",
+                                    "optional": False,
+                                    "type": "DOUBLE",
+                                    "units": "hertz",
+                                    "valid_values": ["100.1", "444.1", "1000.1"],
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ],
             urls=["TAG1", "TAG2"],
         )
         assert rf_emitter_detail is None
@@ -513,33 +780,122 @@ class TestAsyncRfEmitterDetails:
             data_mode="TEST",
             id_rf_emitter="RFEMITTER-ID",
             source="Bluestaq",
-            body_id="RFEMITTERDETAILS-ID",
+            body_id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             alternate_facility_name="ALTERNATE_FACILITY_NAME",
             alt_name="ALTERNATE_NAME",
-            antenna_diameter=20.23,
-            antenna_size=[1.1, 2.2],
+            amplifier={
+                "device_identifier": "1200W_Amplifier_GE",
+                "manufacturer": "General Electric",
+                "model_name": "Model 2600",
+                "power": 1200.1,
+            },
+            antennas=[
+                {
+                    "antenna_diameter": 20.23,
+                    "antenna_size": [1.1, 2.2],
+                    "az_el_fixed": True,
+                    "feeds": [
+                        {
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "name": "Feed A",
+                            "polarization": "HORIZONTAL",
+                        }
+                    ],
+                    "fixed_azimuth": 5.1,
+                    "fixed_elevation": 10.1,
+                    "max_azimuths": [359.1, 359.1],
+                    "max_elevation": 88.1,
+                    "min_azimuths": [5.1, 7.5],
+                    "min_elevation": 10.1,
+                    "name": "ds1Rotor",
+                    "receiver_channels": [
+                        {
+                            "bandwidth": 0.51,
+                            "channel_num": "315",
+                            "device_identifier": "MMS1",
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "max_bandwidth": 100.1,
+                            "min_bandwidth": 0.05,
+                            "sensitivity": 10.23,
+                        }
+                    ],
+                    "transmit_channels": [
+                        {
+                            "power": 100.23,
+                            "bandwidth": 0.125,
+                            "channel_num": "12",
+                            "device_identifier": "TX1-B4-778",
+                            "freq": 42000.1,
+                            "freq_max": 43500.1,
+                            "freq_min": 39500.1,
+                            "hardware_sample_rate": 192000,
+                            "max_bandwidth": 100.1,
+                            "max_gain": 20.1,
+                            "min_bandwidth": 0.05,
+                            "min_gain": 0.1,
+                            "sample_rates": [192000, 9216000],
+                        }
+                    ],
+                }
+            ],
             barrage_noise_bandwidth=5.23,
+            bit_run_time=120.1,
             description="DESCRIPTION",
             designator="DESIGNATOR",
             doppler_noise=10.23,
             drfm_instantaneous_bandwidth=20.23,
             family="FAMILY",
-            manufacturer_org_id="MANUFACTURERORG-ID",
+            fixed_attenuation=5.1,
+            id_manufacturer_org="MANUFACTURERORG-ID",
+            id_production_facility_location="PRODUCTIONFACILITYLOCATION-ID",
+            loaned_to_cocom="SPACEFOR-STRATNORTH",
             notes="NOTES",
             num_bits=256,
             num_channels=10,
             origin="THIRD_PARTY_DATASOURCE",
-            production_facility_location_id="PRODUCTIONFACILITYLOCATION-ID",
+            power_offsets=[
+                {
+                    "frequency_band": "KU",
+                    "power_offset": -5.1,
+                }
+            ],
+            prep_time=60.1,
+            primary_cocom="SPACESOC",
             production_facility_name="PRODUCTION_FACILITY",
-            receiver_bandwidth=15.23,
-            receiver_sensitivity=10.23,
             receiver_type="RECEIVER_TYPE",
             secondary_notes="MORE_NOTES",
+            services=[
+                {
+                    "name": "tlc-freqcontrol",
+                    "version": "17.2.5_build72199",
+                }
+            ],
             system_sensitivity_end=150.23,
-            system_sensitivity_start=50.23,
-            transmit_power=100.23,
-            transmitter_bandwidth=0.125,
-            transmitter_frequency=105.9,
+            system_sensitivity_start=50.32,
+            ttps=[
+                {
+                    "output_signal_name": "SIGNAL_A",
+                    "technique_definitions": [
+                        {
+                            "name": "SIGNAL TUNE",
+                            "param_definitions": [
+                                {
+                                    "default_value": "444.0",
+                                    "max": 1000.1,
+                                    "min": 0.1,
+                                    "name": "CENTER_FREQ",
+                                    "optional": False,
+                                    "type": "DOUBLE",
+                                    "units": "hertz",
+                                    "valid_values": ["100.1", "444.1", "1000.1"],
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ],
             urls=["TAG1", "TAG2"],
         )
         assert rf_emitter_detail is None

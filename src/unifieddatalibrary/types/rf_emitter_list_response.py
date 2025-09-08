@@ -50,8 +50,11 @@ class RfEmitterListResponse(BaseModel):
     system.
     """
 
+    ext_sys_id: Optional[str] = FieldInfo(alias="extSysId", default=None)
+    """The originating system ID for the RF Emitter."""
+
     id_entity: Optional[str] = FieldInfo(alias="idEntity", default=None)
-    """ID of the parent entity for this rfemitter."""
+    """ID by reference of the parent entity for this RFEmitter."""
 
     origin: Optional[str] = None
     """
@@ -65,6 +68,12 @@ class RfEmitterListResponse(BaseModel):
     """
     The originating source network on which this record was created, auto-populated
     by the system.
+    """
+
+    subtype: Optional[str] = None
+    """The RF Emitter subtype, which can distinguish specialized deployments (e.g.
+
+    BLOCK_0_AVL, BLOCK_0_DS1, BLOCK_0_TEST, BLOCK_1, BLOCK_1_TEST, NONE).
     """
 
     type: Optional[str] = None

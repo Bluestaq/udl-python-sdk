@@ -387,13 +387,6 @@ class AirTaskingOrderFull(BaseModel):
     by the system.
     """
 
-    raw_file_uri: Optional[str] = FieldInfo(alias="rawFileURI", default=None)
-    """
-    Optional URI location in the document repository of the raw file parsed by the
-    system to produce this record. To download the raw file, prepend
-    https://udl-hostname/scs/download?id= to this value.
-    """
-
     source_dl: Optional[str] = FieldInfo(alias="sourceDL", default=None)
     """The source data library from which this record was received.
 
