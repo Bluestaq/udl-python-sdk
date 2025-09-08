@@ -699,7 +699,7 @@ class RadarSoiObservationList(TypedDict, total=False):
     """Bandwidth of radar pulse in hertz."""
 
     range_accels: Annotated[Iterable[float], PropertyInfo(alias="rangeAccels")]
-    """Array of the range acceleratons of target in kilometers per second squared.
+    """Array of the range accelerations of target in kilometers per second squared.
 
     The 'tovs' and 'rangeAccels' arrays must match in size, if 'rangeAccels' is
     provided. If there is an associated image the range acceleration is assumed to

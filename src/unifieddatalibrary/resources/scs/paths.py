@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import typing_extensions
+
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
@@ -41,6 +43,7 @@ class PathsResource(SyncAPIResource):
         """
         return PathsResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def create_with_file(
         self,
         file_content: FileContent,
@@ -68,7 +71,7 @@ class PathsResource(SyncAPIResource):
         Args:
           id: The full path to create, including path and file name
 
-          classification_marking: Classification (ex. U//FOUO)
+          classification_marking: Classification marking of the file being uploaded.
 
           delete_after: Length of time after which to automatically delete the file.
 
@@ -134,6 +137,7 @@ class AsyncPathsResource(AsyncAPIResource):
         """
         return AsyncPathsResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def create_with_file(
         self,
         file_content: FileContent,
@@ -161,7 +165,7 @@ class AsyncPathsResource(AsyncAPIResource):
         Args:
           id: The full path to create, including path and file name
 
-          classification_marking: Classification (ex. U//FOUO)
+          classification_marking: Classification marking of the file being uploaded.
 
           delete_after: Length of time after which to automatically delete the file.
 
@@ -211,8 +215,10 @@ class PathsResourceWithRawResponse:
     def __init__(self, paths: PathsResource) -> None:
         self._paths = paths
 
-        self.create_with_file = to_raw_response_wrapper(
-            paths.create_with_file,
+        self.create_with_file = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                paths.create_with_file,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -220,8 +226,10 @@ class AsyncPathsResourceWithRawResponse:
     def __init__(self, paths: AsyncPathsResource) -> None:
         self._paths = paths
 
-        self.create_with_file = async_to_raw_response_wrapper(
-            paths.create_with_file,
+        self.create_with_file = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                paths.create_with_file,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -229,8 +237,10 @@ class PathsResourceWithStreamingResponse:
     def __init__(self, paths: PathsResource) -> None:
         self._paths = paths
 
-        self.create_with_file = to_streamed_response_wrapper(
-            paths.create_with_file,
+        self.create_with_file = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                paths.create_with_file,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -238,6 +248,8 @@ class AsyncPathsResourceWithStreamingResponse:
     def __init__(self, paths: AsyncPathsResource) -> None:
         self._paths = paths
 
-        self.create_with_file = async_to_streamed_response_wrapper(
-            paths.create_with_file,
+        self.create_with_file = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                paths.create_with_file,  # pyright: ignore[reportDeprecated],
+            )
         )

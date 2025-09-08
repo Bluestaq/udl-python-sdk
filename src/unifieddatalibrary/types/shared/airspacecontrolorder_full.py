@@ -459,13 +459,6 @@ class AirspacecontrolorderFull(BaseModel):
     qual_sn: Optional[int] = FieldInfo(alias="qualSN", default=None)
     """The serial number associated with the message qualifier."""
 
-    raw_file_uri: Optional[str] = FieldInfo(alias="rawFileURI", default=None)
-    """
-    Optional URI location in the document repository of the raw file parsed by the
-    system to produce this record. To download the raw file, prepend
-    https://udl-hostname/scs/download?id= to this value.
-    """
-
     serial_num: Optional[str] = FieldInfo(alias="serialNum", default=None)
     """The unique message identifier sequentially assigned by the originator."""
 

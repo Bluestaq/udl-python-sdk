@@ -3709,7 +3709,6 @@ Types:
 from unifieddatalibrary.types import (
     SensorObservationTypeListResponse,
     SensorObservationTypeGetResponse,
-    SensorObservationTypeQueryhelpResponse,
 )
 ```
 
@@ -3717,7 +3716,6 @@ Methods:
 
 - <code title="get /udl/sensorobservationtype">client.sensor_observation_type.<a href="./src/unifieddatalibrary/resources/sensor_observation_type.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_observation_type_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_observation_type_list_response.py">SyncOffsetPage[SensorObservationTypeListResponse]</a></code>
 - <code title="get /udl/sensorobservationtype/{id}">client.sensor_observation_type.<a href="./src/unifieddatalibrary/resources/sensor_observation_type.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_observation_type_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_observation_type_get_response.py">SensorObservationTypeGetResponse</a></code>
-- <code title="get /udl/sensorobservationtype/queryhelp">client.sensor_observation_type.<a href="./src/unifieddatalibrary/resources/sensor_observation_type.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/sensor_observation_type_queryhelp_response.py">SensorObservationTypeQueryhelpResponse</a></code>
 
 # SensorPlan
 
@@ -3763,18 +3761,13 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types import (
-    SensorTypeListResponse,
-    SensorTypeGetResponse,
-    SensorTypeQueryhelpResponse,
-)
+from unifieddatalibrary.types import SensorTypeListResponse, SensorTypeGetResponse
 ```
 
 Methods:
 
 - <code title="get /udl/sensortype">client.sensor_type.<a href="./src/unifieddatalibrary/resources/sensor_type.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_type_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_type_list_response.py">SyncOffsetPage[SensorTypeListResponse]</a></code>
 - <code title="get /udl/sensortype/{id}">client.sensor_type.<a href="./src/unifieddatalibrary/resources/sensor_type.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_type_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_type_get_response.py">SensorTypeGetResponse</a></code>
-- <code title="get /udl/sensortype/queryhelp">client.sensor_type.<a href="./src/unifieddatalibrary/resources/sensor_type.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/sensor_type_queryhelp_response.py">SensorTypeQueryhelpResponse</a></code>
 
 # SeraDataCommDetails
 
@@ -5113,7 +5106,6 @@ Types:
 
 ```python
 from unifieddatalibrary.types import (
-    ScAggregateDocTypeResponse,
     ScAllowableFileExtensionsResponse,
     ScAllowableFileMimesResponse,
     ScCopyResponse,
@@ -5126,7 +5118,6 @@ from unifieddatalibrary.types import (
 Methods:
 
 - <code title="delete /scs/delete">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/sc_delete_params.py">params</a>) -> None</code>
-- <code title="get /scs/aggregateDocType">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">aggregate_doc_type</a>() -> <a href="./src/unifieddatalibrary/types/sc_aggregate_doc_type_response.py">ScAggregateDocTypeResponse</a></code>
 - <code title="get /scs/allowableFileExtensions">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_extensions</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_extensions_response.py">ScAllowableFileExtensionsResponse</a></code>
 - <code title="get /scs/allowableFileMimes">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_mimes</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_mimes_response.py">ScAllowableFileMimesResponse</a></code>
 - <code title="post /scs/copy">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/sc_copy_params.py">params</a>) -> str</code>
@@ -5136,7 +5127,6 @@ Methods:
 - <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
 - <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
 - <code title="post /scs/search">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/sc_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_search_response.py">ScSearchResponse</a></code>
-- <code title="put /scs/updateTagsForFilesInFolder">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">update_tags</a>(\*\*<a href="src/unifieddatalibrary/types/sc_update_tags_params.py">params</a>) -> None</code>
 
 ## Folders
 
@@ -5151,54 +5141,6 @@ Methods:
 - <code title="post /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_create_params.py">params</a>) -> str</code>
 - <code title="get /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
 - <code title="patch /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_update_params.py">params</a>) -> None</code>
-
-## ClassificationMarkings
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import ClassificationMarkingListResponse
-```
-
-Methods:
-
-- <code title="get /scs/getClassificationMarkings">client.scs.classification_markings.<a href="./src/unifieddatalibrary/resources/scs/classification_markings.py">list</a>() -> <a href="./src/unifieddatalibrary/types/scs/classification_marking_list_response.py">ClassificationMarkingListResponse</a></code>
-
-## Groups
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import GroupListResponse
-```
-
-Methods:
-
-- <code title="get /scs/groups">client.scs.groups.<a href="./src/unifieddatalibrary/resources/scs/groups.py">list</a>() -> <a href="./src/unifieddatalibrary/types/scs/group_list_response.py">GroupListResponse</a></code>
-
-## FileMetadata
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import FileMetadataListResponse
-```
-
-Methods:
-
-- <code title="get /scs/listFileMetadata">client.scs.file_metadata.<a href="./src/unifieddatalibrary/resources/scs/file_metadata.py">list</a>() -> <a href="./src/unifieddatalibrary/types/scs/file_metadata_list_response.py">FileMetadataListResponse</a></code>
-
-## RangeParameters
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import RangeParameterListResponse
-```
-
-Methods:
-
-- <code title="get /scs/listRangeParameters">client.scs.range_parameters.<a href="./src/unifieddatalibrary/resources/scs/range_parameters.py">list</a>() -> <a href="./src/unifieddatalibrary/types/scs/range_parameter_list_response.py">RangeParameterListResponse</a></code>
 
 ## Paths
 

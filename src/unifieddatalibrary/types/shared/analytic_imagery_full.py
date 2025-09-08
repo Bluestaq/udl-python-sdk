@@ -85,12 +85,6 @@ class FeatureAssessment(BaseModel):
     should contain one annotation per four values of the area (annLims) array.
     """
 
-    area: Optional[str] = None
-    """
-    Optional geographical region or polygon (lat/lon pairs) of the area surrounding
-    the feature assessment as projected on the ground.
-    """
-
     asrid: Optional[int] = None
     """Geographical spatial_ref_sys for region."""
 
@@ -346,12 +340,6 @@ class AnalyticImageryFull(BaseModel):
     rectangular areas specified in annLims. This array contains the annotation text
     associated with the areas of interest indicated in annLims, in order. This array
     should contain one annotation per four values of the area (annLims) array.
-    """
-
-    area: Optional[str] = None
-    """
-    Optional geographical region or polygon (lat/lon pairs) of the area surrounding
-    the point of interest as projected on the ground.
     """
 
     asrid: Optional[int] = None

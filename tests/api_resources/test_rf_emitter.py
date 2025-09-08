@@ -41,7 +41,7 @@ class TestRfEmitter:
             data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
-            id="RFEMITTER-ID",
+            id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             entity={
                 "classification_marking": "U",
                 "data_mode": "TEST",
@@ -90,8 +90,10 @@ class TestRfEmitter:
                 "taskable": False,
                 "urls": ["URL1", "URL2"],
             },
+            ext_sys_id="EXTSYS-ID",
             id_entity="0167f577-e06c-358e-85aa-0a07a730bdd0",
             origin="THIRD_PARTY_DATASOURCE",
+            subtype="BLOCK_1",
             type="TYPE_OF_EMITTER",
         )
         assert rf_emitter is None
@@ -145,7 +147,7 @@ class TestRfEmitter:
             data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
-            body_id="RFEMITTER-ID",
+            body_id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             entity={
                 "classification_marking": "U",
                 "data_mode": "TEST",
@@ -194,8 +196,10 @@ class TestRfEmitter:
                 "taskable": False,
                 "urls": ["URL1", "URL2"],
             },
+            ext_sys_id="EXTSYS-ID",
             id_entity="0167f577-e06c-358e-85aa-0a07a730bdd0",
             origin="THIRD_PARTY_DATASOURCE",
+            subtype="BLOCK_1",
             type="TYPE_OF_EMITTER",
         )
         assert rf_emitter is None
@@ -482,7 +486,7 @@ class TestAsyncRfEmitter:
             data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
-            id="RFEMITTER-ID",
+            id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             entity={
                 "classification_marking": "U",
                 "data_mode": "TEST",
@@ -531,8 +535,10 @@ class TestAsyncRfEmitter:
                 "taskable": False,
                 "urls": ["URL1", "URL2"],
             },
+            ext_sys_id="EXTSYS-ID",
             id_entity="0167f577-e06c-358e-85aa-0a07a730bdd0",
             origin="THIRD_PARTY_DATASOURCE",
+            subtype="BLOCK_1",
             type="TYPE_OF_EMITTER",
         )
         assert rf_emitter is None
@@ -586,7 +592,7 @@ class TestAsyncRfEmitter:
             data_mode="TEST",
             name="RF_NAME",
             source="Bluestaq",
-            body_id="RFEMITTER-ID",
+            body_id="ad88770b-d824-443f-bdce-5f9e3fa500a9",
             entity={
                 "classification_marking": "U",
                 "data_mode": "TEST",
@@ -635,8 +641,10 @@ class TestAsyncRfEmitter:
                 "taskable": False,
                 "urls": ["URL1", "URL2"],
             },
+            ext_sys_id="EXTSYS-ID",
             id_entity="0167f577-e06c-358e-85aa-0a07a730bdd0",
             origin="THIRD_PARTY_DATASOURCE",
+            subtype="BLOCK_1",
             type="TYPE_OF_EMITTER",
         )
         assert rf_emitter is None

@@ -102,15 +102,6 @@ class GroundImageryGetResponse(BaseModel):
     valid sensor ID.
     """
 
-    region: Optional[str] = None
-    """
-    Geographical region or polygon (lon/lat pairs) of the image as projected on the
-    ground in geoJSON or geoText format. This is an optional convenience field only
-    used for create operations. The system will auto-detect the format (Well Known
-    Text or GeoJSON) and populate both regionText and regionGeoJSON fields
-    appropriately. When omitted, regionText or regionGeoJSON is expected.
-    """
-
     region_geo_json: Optional[str] = FieldInfo(alias="regionGeoJSON", default=None)
     """
     Geographical region or polygon (lat/lon pairs), as depicted by the GeoJSON

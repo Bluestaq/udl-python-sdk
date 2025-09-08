@@ -15,8 +15,6 @@ class FolderUpdateParams(TypedDict, total=False):
 
     attributes: Attributes
 
-    content_action: Annotated[Literal["UPDATE", "COPY", "MOVE"], PropertyInfo(alias="contentAction")]
-
     target_name: Annotated[str, PropertyInfo(alias="targetName")]
 
     target_path: Annotated[str, PropertyInfo(alias="targetPath")]
