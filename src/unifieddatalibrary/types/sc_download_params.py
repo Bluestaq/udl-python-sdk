@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Required, TypedDict
-
-from .._types import SequenceNotStr
 
 __all__ = ["ScDownloadParams"]
 
 
 class ScDownloadParams(TypedDict, total=False):
-    body: Required[SequenceNotStr[str]]
+    body: Required[Iterable[object]]

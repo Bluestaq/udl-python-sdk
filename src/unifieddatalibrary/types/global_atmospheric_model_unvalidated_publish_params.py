@@ -50,12 +50,6 @@ class GlobalAtmosphericModelUnvalidatedPublishParams(TypedDict, total=False):
     cadence: int
     """Model execution cadence, in minutes."""
 
-    data_source_identifier: Annotated[str, PropertyInfo(alias="dataSourceIdentifier")]
-    """
-    A unique identification code or label assigned to a particular source from which
-    atmospheric data originates.
-    """
-
     end_alt: Annotated[float, PropertyInfo(alias="endAlt")]
     """Ending altitude of model outputs, in kilometers."""
 

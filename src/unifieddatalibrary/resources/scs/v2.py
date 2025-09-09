@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
@@ -58,23 +56,11 @@ class V2Resource(SyncAPIResource):
         *,
         path: str,
         send_notification: bool | NotGiven = NOT_GIVEN,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_update_params.Attachment | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: Literal["file", "folder"] | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -95,45 +81,15 @@ class V2Resource(SyncAPIResource):
 
           send_notification: Whether or not to send a notification that the target file/folder was updated.
 
-          id: Unique identifier for document.
-
-          attachment: Additional metadata associated with this document.
-
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
-          created_at: The time at which this document was created, represented in UTC ISO format.
-
-          created_by: The creator of this document. Can be a person or a software entity.
-
-          delete_on: Time at which this document should be automatically deleted. Represented in
-              milliseconds since Unix epoch.
-
           description: Optional description for the file or folder.
-
-          filename: The name of this document. Applicable to files and folders.
-
-          file_path: The absolute path to this document.
-
-          keywords: Optional. Any keywords associated with this document. Only applicable to files
-              whose contents are indexed (e.g. text files, PDFs).
-
-          parent_path: The parent folder of this document. If this document is a root-level folder then
-              the parent path is "/".
-
-          path_type: The type of this document.
 
           read_acl: For folders only. Comma separated list of user and group ids that should have
               read access on this folder and the items nested in it.
 
-          size: Size of this document in bytes.
-
           tags: Array of provider/source specific tags for this data, used for implementing data
               owner conditional access controls to restrict access to the data.
-
-          updated_at: The time at which this document was most recently updated, represented in UTC
-              ISO format.
-
-          updated_by: The person or software entity who updated this document most recently.
 
           write_acl: For folders only. Comma separated list of user and group ids that should have
               write access on this folder and the items nested in it.
@@ -151,23 +107,11 @@ class V2Resource(SyncAPIResource):
             "/scs/v2/update",
             body=maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "delete_on": delete_on,
                     "description": description,
-                    "filename": filename,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_update_params.V2UpdateParams,
@@ -423,23 +367,11 @@ class V2Resource(SyncAPIResource):
         *,
         path: str,
         send_notification: bool | NotGiven = NOT_GIVEN,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_folder_create_params.Attachment | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: Literal["file", "folder"] | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -464,45 +396,15 @@ class V2Resource(SyncAPIResource):
 
           send_notification: Whether or not to send a notification that this folder was created.
 
-          id: Unique identifier for document.
-
-          attachment: Additional metadata associated with this document.
-
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
-          created_at: The time at which this document was created, represented in UTC ISO format.
-
-          created_by: The creator of this document. Can be a person or a software entity.
-
-          delete_on: Time at which this document should be automatically deleted. Represented in
-              milliseconds since Unix epoch.
-
           description: Optional description for the file or folder.
-
-          filename: The name of this document. Applicable to files and folders.
-
-          file_path: The absolute path to this document.
-
-          keywords: Optional. Any keywords associated with this document. Only applicable to files
-              whose contents are indexed (e.g. text files, PDFs).
-
-          parent_path: The parent folder of this document. If this document is a root-level folder then
-              the parent path is "/".
-
-          path_type: The type of this document.
 
           read_acl: For folders only. Comma separated list of user and group ids that should have
               read access on this folder and the items nested in it.
 
-          size: Size of this document in bytes.
-
           tags: Array of provider/source specific tags for this data, used for implementing data
               owner conditional access controls to restrict access to the data.
-
-          updated_at: The time at which this document was most recently updated, represented in UTC
-              ISO format.
-
-          updated_by: The person or software entity who updated this document most recently.
 
           write_acl: For folders only. Comma separated list of user and group ids that should have
               write access on this folder and the items nested in it.
@@ -520,23 +422,11 @@ class V2Resource(SyncAPIResource):
             "/scs/v2/folder",
             body=maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "delete_on": delete_on,
                     "description": description,
-                    "filename": filename,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_folder_create_params.V2FolderCreateParams,
@@ -633,23 +523,11 @@ class AsyncV2Resource(AsyncAPIResource):
         *,
         path: str,
         send_notification: bool | NotGiven = NOT_GIVEN,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_update_params.Attachment | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: Literal["file", "folder"] | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -670,45 +548,15 @@ class AsyncV2Resource(AsyncAPIResource):
 
           send_notification: Whether or not to send a notification that the target file/folder was updated.
 
-          id: Unique identifier for document.
-
-          attachment: Additional metadata associated with this document.
-
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
-          created_at: The time at which this document was created, represented in UTC ISO format.
-
-          created_by: The creator of this document. Can be a person or a software entity.
-
-          delete_on: Time at which this document should be automatically deleted. Represented in
-              milliseconds since Unix epoch.
-
           description: Optional description for the file or folder.
-
-          filename: The name of this document. Applicable to files and folders.
-
-          file_path: The absolute path to this document.
-
-          keywords: Optional. Any keywords associated with this document. Only applicable to files
-              whose contents are indexed (e.g. text files, PDFs).
-
-          parent_path: The parent folder of this document. If this document is a root-level folder then
-              the parent path is "/".
-
-          path_type: The type of this document.
 
           read_acl: For folders only. Comma separated list of user and group ids that should have
               read access on this folder and the items nested in it.
 
-          size: Size of this document in bytes.
-
           tags: Array of provider/source specific tags for this data, used for implementing data
               owner conditional access controls to restrict access to the data.
-
-          updated_at: The time at which this document was most recently updated, represented in UTC
-              ISO format.
-
-          updated_by: The person or software entity who updated this document most recently.
 
           write_acl: For folders only. Comma separated list of user and group ids that should have
               write access on this folder and the items nested in it.
@@ -726,23 +574,11 @@ class AsyncV2Resource(AsyncAPIResource):
             "/scs/v2/update",
             body=await async_maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "delete_on": delete_on,
                     "description": description,
-                    "filename": filename,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_update_params.V2UpdateParams,
@@ -998,23 +834,11 @@ class AsyncV2Resource(AsyncAPIResource):
         *,
         path: str,
         send_notification: bool | NotGiven = NOT_GIVEN,
-        id: str | NotGiven = NOT_GIVEN,
-        attachment: v2_folder_create_params.Attachment | NotGiven = NOT_GIVEN,
         classification_marking: str | NotGiven = NOT_GIVEN,
-        created_at: str | NotGiven = NOT_GIVEN,
-        created_by: str | NotGiven = NOT_GIVEN,
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        file_path: str | NotGiven = NOT_GIVEN,
-        keywords: str | NotGiven = NOT_GIVEN,
-        parent_path: str | NotGiven = NOT_GIVEN,
-        path_type: Literal["file", "folder"] | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
         tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        updated_at: str | NotGiven = NOT_GIVEN,
-        updated_by: str | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1039,45 +863,15 @@ class AsyncV2Resource(AsyncAPIResource):
 
           send_notification: Whether or not to send a notification that this folder was created.
 
-          id: Unique identifier for document.
-
-          attachment: Additional metadata associated with this document.
-
           classification_marking: Classification marking of the folder or file in IC/CAPCO portion-marked format.
 
-          created_at: The time at which this document was created, represented in UTC ISO format.
-
-          created_by: The creator of this document. Can be a person or a software entity.
-
-          delete_on: Time at which this document should be automatically deleted. Represented in
-              milliseconds since Unix epoch.
-
           description: Optional description for the file or folder.
-
-          filename: The name of this document. Applicable to files and folders.
-
-          file_path: The absolute path to this document.
-
-          keywords: Optional. Any keywords associated with this document. Only applicable to files
-              whose contents are indexed (e.g. text files, PDFs).
-
-          parent_path: The parent folder of this document. If this document is a root-level folder then
-              the parent path is "/".
-
-          path_type: The type of this document.
 
           read_acl: For folders only. Comma separated list of user and group ids that should have
               read access on this folder and the items nested in it.
 
-          size: Size of this document in bytes.
-
           tags: Array of provider/source specific tags for this data, used for implementing data
               owner conditional access controls to restrict access to the data.
-
-          updated_at: The time at which this document was most recently updated, represented in UTC
-              ISO format.
-
-          updated_by: The person or software entity who updated this document most recently.
 
           write_acl: For folders only. Comma separated list of user and group ids that should have
               write access on this folder and the items nested in it.
@@ -1095,23 +889,11 @@ class AsyncV2Resource(AsyncAPIResource):
             "/scs/v2/folder",
             body=await async_maybe_transform(
                 {
-                    "id": id,
-                    "attachment": attachment,
                     "classification_marking": classification_marking,
-                    "created_at": created_at,
-                    "created_by": created_by,
                     "delete_on": delete_on,
                     "description": description,
-                    "filename": filename,
-                    "file_path": file_path,
-                    "keywords": keywords,
-                    "parent_path": parent_path,
-                    "path_type": path_type,
                     "read_acl": read_acl,
-                    "size": size,
                     "tags": tags,
-                    "updated_at": updated_at,
-                    "updated_by": updated_by,
                     "write_acl": write_acl,
                 },
                 v2_folder_create_params.V2FolderCreateParams,

@@ -83,13 +83,6 @@ class OpticalSoiObservationList(BaseModel):
     specified in spectralFilters that corresponds to the spectral filter used.
     """
 
-    declination_rates: Optional[List[float]] = FieldInfo(alias="declinationRates", default=None)
-    """
-    Array of declination rate values, in degrees per second, measuring the rate
-    speed at which an object's declination changes over time, for each element in
-    the intensities field, at the middle of the frame's exposure time.
-    """
-
     declinations: Optional[List[float]] = None
     """
     Array of declination values, in degrees, of the Target object from the frame of

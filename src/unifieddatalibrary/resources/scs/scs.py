@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import typing_extensions
-from typing import Dict
+from typing import Dict, Iterable
 
 import httpx
 
@@ -242,7 +242,7 @@ class ScsResource(SyncAPIResource):
     def download(
         self,
         *,
-        body: SequenceNotStr[str],
+        body: Iterable[object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -265,7 +265,7 @@ class ScsResource(SyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/download",
-            body=maybe_transform(body, SequenceNotStr[str]),
+            body=maybe_transform(body, Iterable[object]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -728,7 +728,7 @@ class AsyncScsResource(AsyncAPIResource):
     async def download(
         self,
         *,
-        body: SequenceNotStr[str],
+        body: Iterable[object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -751,7 +751,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/download",
-            body=await async_maybe_transform(body, SequenceNotStr[str]),
+            body=await async_maybe_transform(body, Iterable[object]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

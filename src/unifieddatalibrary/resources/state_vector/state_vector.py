@@ -116,7 +116,6 @@ class StateVectorResource(SyncAPIResource):
         leap_second_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         lunar_solar: bool | NotGiven = NOT_GIVEN,
         mass: float | NotGiven = NOT_GIVEN,
-        msg_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
         obs_available: int | NotGiven = NOT_GIVEN,
         obs_used: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -398,9 +397,6 @@ class StateVectorResource(SyncAPIResource):
 
           mass: The mass of the object, in kilograms.
 
-          msg_ts: Time when message was generated in ISO 8601 UTC format with microsecond
-              precision.
-
           obs_available: The number of observations available for the OD of the object.
 
           obs_used: The number of observations accepted for the OD of the object.
@@ -648,7 +644,6 @@ class StateVectorResource(SyncAPIResource):
                     "leap_second_time": leap_second_time,
                     "lunar_solar": lunar_solar,
                     "mass": mass,
-                    "msg_ts": msg_ts,
                     "obs_available": obs_available,
                     "obs_used": obs_used,
                     "origin": origin,
@@ -1089,7 +1084,6 @@ class AsyncStateVectorResource(AsyncAPIResource):
         leap_second_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         lunar_solar: bool | NotGiven = NOT_GIVEN,
         mass: float | NotGiven = NOT_GIVEN,
-        msg_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
         obs_available: int | NotGiven = NOT_GIVEN,
         obs_used: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -1371,9 +1365,6 @@ class AsyncStateVectorResource(AsyncAPIResource):
 
           mass: The mass of the object, in kilograms.
 
-          msg_ts: Time when message was generated in ISO 8601 UTC format with microsecond
-              precision.
-
           obs_available: The number of observations available for the OD of the object.
 
           obs_used: The number of observations accepted for the OD of the object.
@@ -1621,7 +1612,6 @@ class AsyncStateVectorResource(AsyncAPIResource):
                     "leap_second_time": leap_second_time,
                     "lunar_solar": lunar_solar,
                     "mass": mass,
-                    "msg_ts": msg_ts,
                     "obs_available": obs_available,
                     "obs_used": obs_used,
                     "origin": origin,
