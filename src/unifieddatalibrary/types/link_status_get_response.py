@@ -162,8 +162,5 @@ class LinkStatusGetResponse(BaseModel):
     sat_no2: Optional[int] = FieldInfo(alias="satNo2", default=None)
     """Satellite/catalog number of the target on-orbit secondary object."""
 
-    snr: Optional[float] = None
-    """Signal to noise ratio, in dB."""
-
     sys_cap: Optional[str] = FieldInfo(alias="sysCap", default=None)
     """The SYSCAP mission status of the system(s) forming the link."""

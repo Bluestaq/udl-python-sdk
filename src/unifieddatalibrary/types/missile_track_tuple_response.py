@@ -26,27 +26,6 @@ class MissileTrackTupleResponseItemVector(BaseModel):
     confidence: Optional[int] = None
     """Confidence of the vector, 0-100."""
 
-    context_keys: Optional[List[str]] = FieldInfo(alias="contextKeys", default=None)
-    """
-    An optional string array containing additional data (keys) representing relevant
-    items for context of fields not specifically defined in this schema. This array
-    is paired with the contextValues string array and must contain the same number
-    of items. Please note these fields are intended for contextual use only and do
-    not pertain to core schema information. To ensure proper integration and avoid
-    misuse, coordination of how these fields are populated and consumed is required
-    during onboarding.
-    """
-
-    context_values: Optional[List[str]] = FieldInfo(alias="contextValues", default=None)
-    """
-    An optional string array containing the values associated with the contextKeys
-    array. This array is paired with the contextKeys string array and must contain
-    the same number of items. Please note these fields are intended for contextual
-    use only and do not pertain to core schema information. To ensure proper
-    integration and avoid misuse, coordination of how these fields are populated and
-    consumed is required during onboarding.
-    """
-
     course: Optional[float] = None
     """Track object course, in degrees clockwise from true north."""
 
@@ -117,18 +96,12 @@ class MissileTrackTupleResponseItemVector(BaseModel):
     null then ECEF should be assumed. The array element order is [x, y, z].
     """
 
-    propagated: Optional[bool] = None
-    """Flag indicating whether the vector data was propagated."""
-
     quat: Optional[List[float]] = None
     """
     The quaternion describing the attitude of the spacecraft with respect to the
     reference frame listed in the 'referenceFrame' field. The array element order
     convention is the three vector components, followed by the scalar component.
     """
-
-    range: Optional[float] = None
-    """Range from the originating system or sensor to the object, in kilometers."""
 
     reference_frame: Optional[str] = FieldInfo(alias="referenceFrame", default=None)
     """The reference frame of the cartesian vector (ECEF, J2000).
@@ -143,7 +116,7 @@ class MissileTrackTupleResponseItemVector(BaseModel):
     """Status of the vector (e.g. INITIAL, UPDATE)."""
 
     time_source: Optional[str] = FieldInfo(alias="timeSource", default=None)
-    """Source of the epoch time."""
+    """Source of the time value."""
 
     type: Optional[str] = None
     """Type of vector represented (e.g. LOS, PREDICTED, STATE)."""
@@ -162,9 +135,6 @@ class MissileTrackTupleResponseItemVector(BaseModel):
     WGS-84 object longitude subpoint at epoch, represented as -180 to 180 degrees
     (negative values west of Prime Meridian).
     """
-
-    vector_track_id: Optional[str] = FieldInfo(alias="vectorTrackId", default=None)
-    """Vector track ID within the originating system or sensor."""
 
     vel: Optional[List[float]] = None
     """
@@ -305,27 +275,6 @@ class MissileTrackTupleResponseItem(BaseModel):
     the track.
     """
 
-    context_keys: Optional[List[str]] = FieldInfo(alias="contextKeys", default=None)
-    """
-    An optional string array containing additional data (keys) representing relevant
-    items for context of fields not specifically defined in this schema. This array
-    is paired with the contextValues string array and must contain the same number
-    of items. Please note these fields are intended for contextual use only and do
-    not pertain to core schema information. To ensure proper integration and avoid
-    misuse, coordination of how these fields are populated and consumed is required
-    during onboarding.
-    """
-
-    context_values: Optional[List[str]] = FieldInfo(alias="contextValues", default=None)
-    """
-    An optional string array containing the values associated with the contextKeys
-    array. This array is paired with the contextKeys string array and must contain
-    the same number of items. Please note these fields are intended for contextual
-    use only and do not pertain to core schema information. To ensure proper
-    integration and avoid misuse, coordination of how these fields are populated and
-    consumed is required during onboarding.
-    """
-
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Time the row was created in the database."""
 
@@ -355,9 +304,6 @@ class MissileTrackTupleResponseItem(BaseModel):
 
     UNKNOWN: Environment is not known.
     """
-
-    impact_alt: Optional[float] = FieldInfo(alias="impactAlt", default=None)
-    """Estimated impact point altitude relative to WGS-84 ellipsoid, in kilometers."""
 
     impact_aou_data: Optional[List[float]] = FieldInfo(alias="impactAouData", default=None)
     """Three element array representing an Area of Uncertainty (AoU).
@@ -397,9 +343,6 @@ class MissileTrackTupleResponseItem(BaseModel):
     is not null. See the aouEllp field definition for specific information.
     """
 
-    impact_conf: Optional[float] = FieldInfo(alias="impactConf", default=None)
-    """Confidence level of the impact point estimate. 0 - 100 percent."""
-
     impact_lat: Optional[float] = FieldInfo(alias="impactLat", default=None)
     """WGS-84 latitude of the missile object impact point, in degrees.
 
@@ -420,9 +363,6 @@ class MissileTrackTupleResponseItem(BaseModel):
 
     info_source: Optional[str] = FieldInfo(alias="infoSource", default=None)
     """Source code for source of information used to detect track."""
-
-    launch_alt: Optional[float] = FieldInfo(alias="launchAlt", default=None)
-    """Estimated launch point altitude relative to WGS-84 ellipsoid, in kilometers."""
 
     launch_aou_data: Optional[List[float]] = FieldInfo(alias="launchAouData", default=None)
     """Three element array representing an Area of Uncertainty (AoU).
@@ -462,18 +402,6 @@ class MissileTrackTupleResponseItem(BaseModel):
     is not null. See the aouEllp field definition for specific information.
     """
 
-    launch_az: Optional[float] = FieldInfo(alias="launchAz", default=None)
-    """
-    Angle between true north and the object's current position, with respect to the
-    launch point, in degrees. 0 to 360 degrees.
-    """
-
-    launch_az_unc: Optional[float] = FieldInfo(alias="launchAzUnc", default=None)
-    """Uncertainty of the launch azimuth, in degrees."""
-
-    launch_conf: Optional[float] = FieldInfo(alias="launchConf", default=None)
-    """Confidence level in the accuracy of the launch point estimate. 0 - 100 percent."""
-
     launch_lat: Optional[float] = FieldInfo(alias="launchLat", default=None)
     """WGS-84 latitude of the missile launch point, in degrees.
 
@@ -491,12 +419,6 @@ class MissileTrackTupleResponseItem(BaseModel):
 
     lost_trk_ind: Optional[bool] = FieldInfo(alias="lostTrkInd", default=None)
     """Indicates whether or not the missile is considered lost."""
-
-    maneuver_end: Optional[datetime] = FieldInfo(alias="maneuverEnd", default=None)
-    """Maneuver end time, in ISO 8601 UTC format with microsecond precision."""
-
-    maneuver_start: Optional[datetime] = FieldInfo(alias="maneuverStart", default=None)
-    """Maneuver start time, in ISO 8601 UTC format with microsecond precision."""
 
     msg_create_date: Optional[datetime] = FieldInfo(alias="msgCreateDate", default=None)
     """

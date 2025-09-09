@@ -6,7 +6,6 @@ from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
-from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["MissileTrackUnvalidatedPublishParams", "Body", "BodyVector"]
@@ -30,27 +29,6 @@ class BodyVector(TypedDict, total=False):
 
     confidence: int
     """Confidence of the vector, 0-100."""
-
-    context_keys: Annotated[SequenceNotStr[str], PropertyInfo(alias="contextKeys")]
-    """
-    An optional string array containing additional data (keys) representing relevant
-    items for context of fields not specifically defined in this schema. This array
-    is paired with the contextValues string array and must contain the same number
-    of items. Please note these fields are intended for contextual use only and do
-    not pertain to core schema information. To ensure proper integration and avoid
-    misuse, coordination of how these fields are populated and consumed is required
-    during onboarding.
-    """
-
-    context_values: Annotated[SequenceNotStr[str], PropertyInfo(alias="contextValues")]
-    """
-    An optional string array containing the values associated with the contextKeys
-    array. This array is paired with the contextKeys string array and must contain
-    the same number of items. Please note these fields are intended for contextual
-    use only and do not pertain to core schema information. To ensure proper
-    integration and avoid misuse, coordination of how these fields are populated and
-    consumed is required during onboarding.
-    """
 
     course: float
     """Track object course, in degrees clockwise from true north."""
@@ -122,18 +100,12 @@ class BodyVector(TypedDict, total=False):
     null then ECEF should be assumed. The array element order is [x, y, z].
     """
 
-    propagated: bool
-    """Flag indicating whether the vector data was propagated."""
-
     quat: Iterable[float]
     """
     The quaternion describing the attitude of the spacecraft with respect to the
     reference frame listed in the 'referenceFrame' field. The array element order
     convention is the three vector components, followed by the scalar component.
     """
-
-    range: float
-    """Range from the originating system or sensor to the object, in kilometers."""
 
     reference_frame: Annotated[str, PropertyInfo(alias="referenceFrame")]
     """The reference frame of the cartesian vector (ECEF, J2000).
@@ -148,7 +120,7 @@ class BodyVector(TypedDict, total=False):
     """Status of the vector (e.g. INITIAL, UPDATE)."""
 
     time_source: Annotated[str, PropertyInfo(alias="timeSource")]
-    """Source of the epoch time."""
+    """Source of the time value."""
 
     type: str
     """Type of vector represented (e.g. LOS, PREDICTED, STATE)."""
@@ -167,9 +139,6 @@ class BodyVector(TypedDict, total=False):
     WGS-84 object longitude subpoint at epoch, represented as -180 to 180 degrees
     (negative values west of Prime Meridian).
     """
-
-    vector_track_id: Annotated[str, PropertyInfo(alias="vectorTrackId")]
-    """Vector track ID within the originating system or sensor."""
 
     vel: Iterable[float]
     """
@@ -310,27 +279,6 @@ class Body(TypedDict, total=False):
     the track.
     """
 
-    context_keys: Annotated[SequenceNotStr[str], PropertyInfo(alias="contextKeys")]
-    """
-    An optional string array containing additional data (keys) representing relevant
-    items for context of fields not specifically defined in this schema. This array
-    is paired with the contextValues string array and must contain the same number
-    of items. Please note these fields are intended for contextual use only and do
-    not pertain to core schema information. To ensure proper integration and avoid
-    misuse, coordination of how these fields are populated and consumed is required
-    during onboarding.
-    """
-
-    context_values: Annotated[SequenceNotStr[str], PropertyInfo(alias="contextValues")]
-    """
-    An optional string array containing the values associated with the contextKeys
-    array. This array is paired with the contextKeys string array and must contain
-    the same number of items. Please note these fields are intended for contextual
-    use only and do not pertain to core schema information. To ensure proper
-    integration and avoid misuse, coordination of how these fields are populated and
-    consumed is required during onboarding.
-    """
-
     drop_pt_ind: Annotated[bool, PropertyInfo(alias="dropPtInd")]
     """The drop-point indicator setting."""
 
@@ -354,9 +302,6 @@ class Body(TypedDict, total=False):
 
     UNKNOWN: Environment is not known.
     """
-
-    impact_alt: Annotated[float, PropertyInfo(alias="impactAlt")]
-    """Estimated impact point altitude relative to WGS-84 ellipsoid, in kilometers."""
 
     impact_aou_data: Annotated[Iterable[float], PropertyInfo(alias="impactAouData")]
     """Three element array representing an Area of Uncertainty (AoU).
@@ -396,9 +341,6 @@ class Body(TypedDict, total=False):
     is not null. See the aouEllp field definition for specific information.
     """
 
-    impact_conf: Annotated[float, PropertyInfo(alias="impactConf")]
-    """Confidence level of the impact point estimate. 0 - 100 percent."""
-
     impact_lat: Annotated[float, PropertyInfo(alias="impactLat")]
     """WGS-84 latitude of the missile object impact point, in degrees.
 
@@ -419,9 +361,6 @@ class Body(TypedDict, total=False):
 
     info_source: Annotated[str, PropertyInfo(alias="infoSource")]
     """Source code for source of information used to detect track."""
-
-    launch_alt: Annotated[float, PropertyInfo(alias="launchAlt")]
-    """Estimated launch point altitude relative to WGS-84 ellipsoid, in kilometers."""
 
     launch_aou_data: Annotated[Iterable[float], PropertyInfo(alias="launchAouData")]
     """Three element array representing an Area of Uncertainty (AoU).
@@ -461,18 +400,6 @@ class Body(TypedDict, total=False):
     is not null. See the aouEllp field definition for specific information.
     """
 
-    launch_az: Annotated[float, PropertyInfo(alias="launchAz")]
-    """
-    Angle between true north and the object's current position, with respect to the
-    launch point, in degrees. 0 to 360 degrees.
-    """
-
-    launch_az_unc: Annotated[float, PropertyInfo(alias="launchAzUnc")]
-    """Uncertainty of the launch azimuth, in degrees."""
-
-    launch_conf: Annotated[float, PropertyInfo(alias="launchConf")]
-    """Confidence level in the accuracy of the launch point estimate. 0 - 100 percent."""
-
     launch_lat: Annotated[float, PropertyInfo(alias="launchLat")]
     """WGS-84 latitude of the missile launch point, in degrees.
 
@@ -490,12 +417,6 @@ class Body(TypedDict, total=False):
 
     lost_trk_ind: Annotated[bool, PropertyInfo(alias="lostTrkInd")]
     """Indicates whether or not the missile is considered lost."""
-
-    maneuver_end: Annotated[Union[str, datetime], PropertyInfo(alias="maneuverEnd", format="iso8601")]
-    """Maneuver end time, in ISO 8601 UTC format with microsecond precision."""
-
-    maneuver_start: Annotated[Union[str, datetime], PropertyInfo(alias="maneuverStart", format="iso8601")]
-    """Maneuver start time, in ISO 8601 UTC format with microsecond precision."""
 
     msg_create_date: Annotated[Union[str, datetime], PropertyInfo(alias="msgCreateDate", format="iso8601")]
     """

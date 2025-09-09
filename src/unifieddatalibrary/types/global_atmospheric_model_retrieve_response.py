@@ -66,12 +66,6 @@ class GlobalAtmosphericModelRetrieveResponse(BaseModel):
     system.
     """
 
-    data_source_identifier: Optional[str] = FieldInfo(alias="dataSourceIdentifier", default=None)
-    """
-    A unique identification code or label assigned to a particular source from which
-    atmospheric data originates.
-    """
-
     end_alt: Optional[float] = FieldInfo(alias="endAlt", default=None)
     """Ending altitude of model outputs, in kilometers."""
 

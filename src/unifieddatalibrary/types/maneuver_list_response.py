@@ -549,12 +549,6 @@ class PostEventStateVector(BaseModel):
     mass: Optional[float] = None
     """The mass of the object, in kilograms."""
 
-    msg_ts: Optional[datetime] = FieldInfo(alias="msgTs", default=None)
-    """
-    Time when message was generated in ISO 8601 UTC format with microsecond
-    precision.
-    """
-
     obs_available: Optional[int] = FieldInfo(alias="obsAvailable", default=None)
     """The number of observations available for the OD of the object."""
 
@@ -1412,12 +1406,6 @@ class PreEventStateVector(BaseModel):
 
     mass: Optional[float] = None
     """The mass of the object, in kilograms."""
-
-    msg_ts: Optional[datetime] = FieldInfo(alias="msgTs", default=None)
-    """
-    Time when message was generated in ISO 8601 UTC format with microsecond
-    precision.
-    """
 
     obs_available: Optional[int] = FieldInfo(alias="obsAvailable", default=None)
     """The number of observations available for the OD of the object."""
