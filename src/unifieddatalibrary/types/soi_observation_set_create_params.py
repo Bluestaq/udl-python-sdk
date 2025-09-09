@@ -466,6 +466,13 @@ class OpticalSoiObservationList(TypedDict, total=False):
     specified in spectralFilters that corresponds to the spectral filter used.
     """
 
+    declination_rates: Annotated[Iterable[float], PropertyInfo(alias="declinationRates")]
+    """
+    Array of declination rate values, in degrees per second, measuring the rate
+    speed at which an object's declination changes over time, for each element in
+    the intensities field, at the middle of the frame's exposure time.
+    """
+
     declinations: Iterable[float]
     """
     Array of declination values, in degrees, of the Target object from the frame of

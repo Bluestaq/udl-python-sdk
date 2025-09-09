@@ -70,6 +70,7 @@ class TestLinkStatus:
             origin="THIRD_PARTY_DATASOURCE",
             sat_no1=1,
             sat_no2=2,
+            snr=10.1,
             sys_cap="Example status",
         )
         assert link_status is None
@@ -359,6 +360,7 @@ class TestAsyncLinkStatus:
             origin="THIRD_PARTY_DATASOURCE",
             sat_no1=1,
             sat_no2=2,
+            snr=10.1,
             sys_cap="Example status",
         )
         assert link_status is None

@@ -83,6 +83,7 @@ class TestSoiObservationSet:
                 {
                     "ob_start_time": parse_datetime("2018-01-01T16:00:00.888456Z"),
                     "current_spectral_filter_num": 0,
+                    "declination_rates": [0, 0, 0],
                     "declinations": [-0.45, -0.45, -0.45],
                     "exp_duration": 0.455,
                     "extinction_coeffs": [0.32, 0.32, 0.32],
@@ -606,6 +607,7 @@ class TestAsyncSoiObservationSet:
                 {
                     "ob_start_time": parse_datetime("2018-01-01T16:00:00.888456Z"),
                     "current_spectral_filter_num": 0,
+                    "declination_rates": [0, 0, 0],
                     "declinations": [-0.45, -0.45, -0.45],
                     "exp_duration": 0.455,
                     "extinction_coeffs": [0.32, 0.32, 0.32],
