@@ -539,6 +539,12 @@ class BodyPostEventStateVector(TypedDict, total=False):
     mass: float
     """The mass of the object, in kilograms."""
 
+    msg_ts: Annotated[Union[str, datetime], PropertyInfo(alias="msgTs", format="iso8601")]
+    """
+    Time when message was generated in ISO 8601 UTC format with microsecond
+    precision.
+    """
+
     obs_available: Annotated[int, PropertyInfo(alias="obsAvailable")]
     """The number of observations available for the OD of the object."""
 
@@ -1395,6 +1401,12 @@ class BodyPreEventStateVector(TypedDict, total=False):
 
     mass: float
     """The mass of the object, in kilograms."""
+
+    msg_ts: Annotated[Union[str, datetime], PropertyInfo(alias="msgTs", format="iso8601")]
+    """
+    Time when message was generated in ISO 8601 UTC format with microsecond
+    precision.
+    """
 
     obs_available: Annotated[int, PropertyInfo(alias="obsAvailable")]
     """The number of observations available for the OD of the object."""
