@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -52,7 +52,16 @@ class RfBandListResponse(BaseModel):
     """
 
     bandwidth: Optional[float] = None
-    """RF Band frequency range bandwidth in Mhz."""
+    """RF Band frequency range bandwidth in megahertz."""
+
+    bandwidth_settings: Optional[List[float]] = FieldInfo(alias="bandwidthSettings", default=None)
+    """Array of frequency range bandwidth settings, in megahertz for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     beamwidth: Optional[float] = None
     """
@@ -60,8 +69,17 @@ class RfBandListResponse(BaseModel):
     degrees.
     """
 
+    beamwidth_settings: Optional[List[float]] = FieldInfo(alias="beamwidthSettings", default=None)
+    """Array of beamwidth settings, in degrees for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
+
     center_freq: Optional[float] = FieldInfo(alias="centerFreq", default=None)
-    """Center frequency of RF frequency range, if applicable, in Mhz."""
+    """Center frequency of RF frequency range, if applicable, in megahertz."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Time the row was created in the database, auto-populated by the system."""
@@ -72,8 +90,17 @@ class RfBandListResponse(BaseModel):
     system.
     """
 
+    delay_settings: Optional[List[float]] = FieldInfo(alias="delaySettings", default=None)
+    """Array of delay settings, in seconds for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
+
     edge_gain: Optional[float] = FieldInfo(alias="edgeGain", default=None)
-    """RF Range edge gain, in dBi."""
+    """RF Range edge gain, in decibel relative to isotrope."""
 
     eirp: Optional[float] = None
     """
@@ -84,7 +111,7 @@ class RfBandListResponse(BaseModel):
     dipole. Effective radiated power and effective isotropic radiated power both
     measure the amount of power a radio transmitter and antenna (or other source of
     electromagnetic waves) radiates in a specific direction: in the direction of
-    maximum signal strength (the "main lobe") of its radiation pattern.
+    maximum signal strength (the main lobe) of its radiation pattern.
     """
 
     erp: Optional[float] = None
@@ -96,17 +123,41 @@ class RfBandListResponse(BaseModel):
     Effective radiated power and effective isotropic radiated power both measure the
     amount of power a radio transmitter and antenna (or other source of
     electromagnetic waves) radiates in a specific direction: in the direction of
-    maximum signal strength (the "main lobe") of its radiation pattern.
+    maximum signal strength (the main lobe) of its radiation pattern.
     """
 
     freq_max: Optional[float] = FieldInfo(alias="freqMax", default=None)
-    """End/maximum of transmit RF frequency range, if applicable, in Mhz."""
+    """End/maximum of transmit RF frequency range, if applicable, in megahertz."""
 
     freq_min: Optional[float] = FieldInfo(alias="freqMin", default=None)
-    """Start/minimum of transmit RF frequency range, if applicable, in Mhz."""
+    """Start/minimum of transmit RF frequency range, if applicable, in megahertz."""
+
+    frequency_settings: Optional[List[float]] = FieldInfo(alias="frequencySettings", default=None)
+    """Array of frequency settings, in megahertz for this RFBand.
+
+    This array and the settings arrays must match in size.
+    """
+
+    gain_settings: Optional[List[float]] = FieldInfo(alias="gainSettings", default=None)
+    """Array of gain settings, in decibels for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     mode: Optional[Literal["TX", "RX"]] = None
     """RF Band mode (e.g. TX, RX)."""
+
+    noise_settings: Optional[List[float]] = FieldInfo(alias="noiseSettings", default=None)
+    """Array of signal noise settings, in decibels for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     origin: Optional[str] = None
     """
@@ -123,7 +174,7 @@ class RfBandListResponse(BaseModel):
     """
 
     peak_gain: Optional[float] = FieldInfo(alias="peakGain", default=None)
-    """RF Range maximum gain, in dBi."""
+    """RF Range maximum gain, in decibel relative to isotrope."""
 
     polarization: Optional[Literal["H", "V", "R", "L"]] = None
     """Transponder polarization e.g.
@@ -137,5 +188,5 @@ class RfBandListResponse(BaseModel):
     purpose: Optional[Literal["COMM", "TTC", "OPS", "OTHER"]] = None
     """
     Purpose or use of the RF Band -- COMM = communications, TTC =
-    Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
+    Telemetry/Tracking/Control, OPS = Operations, OTHER = Other.
     """

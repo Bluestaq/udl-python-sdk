@@ -79,8 +79,6 @@ class FileData(BaseModel):
 
     attributes: Optional[Attributes] = None
 
-    content_action: Optional[Literal["UPDATE", "COPY", "MOVE"]] = FieldInfo(alias="contentAction", default=None)
-
     target_name: Optional[str] = FieldInfo(alias="targetName", default=None)
 
     target_path: Optional[str] = FieldInfo(alias="targetPath", default=None)

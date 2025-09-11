@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["AirfieldUpdateParams"]
@@ -49,7 +49,7 @@ class AirfieldUpdateParams(TypedDict, total=False):
     alt_airfield_id: Annotated[str, PropertyInfo(alias="altAirfieldId")]
     """Alternate Airfield identifier provided by source."""
 
-    alternative_names: Annotated[List[str], PropertyInfo(alias="alternativeNames")]
+    alternative_names: Annotated[SequenceNotStr[str], PropertyInfo(alias="alternativeNames")]
     """Alternative names for this airfield."""
 
     city: str
@@ -178,7 +178,7 @@ class AirfieldUpdateParams(TypedDict, total=False):
     Intended as, but not constrained to, FIPS 10-4 region code designations.
     """
 
-    suitability_code_descs: Annotated[List[str], PropertyInfo(alias="suitabilityCodeDescs")]
+    suitability_code_descs: Annotated[SequenceNotStr[str], PropertyInfo(alias="suitabilityCodeDescs")]
     """Array of descriptions for given suitability codes.
 
     The index of the description corresponds to the position of the letter code in

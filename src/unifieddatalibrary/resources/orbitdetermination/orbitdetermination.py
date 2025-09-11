@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -80,8 +80,8 @@ class OrbitdeterminationResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
-        accepted_ob_ids: List[str] | NotGiven = NOT_GIVEN,
-        accepted_ob_typs: List[str] | NotGiven = NOT_GIVEN,
+        accepted_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        accepted_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         agom_est: bool | NotGiven = NOT_GIVEN,
         agom_model: str | NotGiven = NOT_GIVEN,
         apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
@@ -104,11 +104,11 @@ class OrbitdeterminationResource(SyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         previous_wrms: float | NotGiven = NOT_GIVEN,
-        rejected_ob_ids: List[str] | NotGiven = NOT_GIVEN,
-        rejected_ob_typs: List[str] | NotGiven = NOT_GIVEN,
+        rejected_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        rejected_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         rms_convergence_criteria: float | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
-        sensor_ids: List[str] | NotGiven = NOT_GIVEN,
+        sensor_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         time_span: float | NotGiven = NOT_GIVEN,
         wrms: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -700,8 +700,8 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         id: str | NotGiven = NOT_GIVEN,
-        accepted_ob_ids: List[str] | NotGiven = NOT_GIVEN,
-        accepted_ob_typs: List[str] | NotGiven = NOT_GIVEN,
+        accepted_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        accepted_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         agom_est: bool | NotGiven = NOT_GIVEN,
         agom_model: str | NotGiven = NOT_GIVEN,
         apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
@@ -724,11 +724,11 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         orig_object_id: str | NotGiven = NOT_GIVEN,
         previous_wrms: float | NotGiven = NOT_GIVEN,
-        rejected_ob_ids: List[str] | NotGiven = NOT_GIVEN,
-        rejected_ob_typs: List[str] | NotGiven = NOT_GIVEN,
+        rejected_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        rejected_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         rms_convergence_criteria: float | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
-        sensor_ids: List[str] | NotGiven = NOT_GIVEN,
+        sensor_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         time_span: float | NotGiven = NOT_GIVEN,
         wrms: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

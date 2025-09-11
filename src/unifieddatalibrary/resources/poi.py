@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -17,7 +17,7 @@ from ..types import (
     poi_create_bulk_params,
     poi_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -85,10 +85,10 @@ class PoiResource(SyncAPIResource):
         el: float | NotGiven = NOT_GIVEN,
         elle: Iterable[float] | NotGiven = NOT_GIVEN,
         env: str | NotGiven = NOT_GIVEN,
-        groups: List[str] | NotGiven = NOT_GIVEN,
+        groups: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         how: str | NotGiven = NOT_GIVEN,
         ident: str | NotGiven = NOT_GIVEN,
-        id_weather_report: List[str] | NotGiven = NOT_GIVEN,
+        id_weather_report: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lat: float | NotGiven = NOT_GIVEN,
         le: float | NotGiven = NOT_GIVEN,
         lon: float | NotGiven = NOT_GIVEN,
@@ -99,15 +99,15 @@ class PoiResource(SyncAPIResource):
         pps: str | NotGiven = NOT_GIVEN,
         pri: int | NotGiven = NOT_GIVEN,
         spec: str | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         stale: Union[str, datetime] | NotGiven = NOT_GIVEN,
         start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         trkid: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        urls: List[str] | NotGiven = NOT_GIVEN,
+        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -697,10 +697,10 @@ class AsyncPoiResource(AsyncAPIResource):
         el: float | NotGiven = NOT_GIVEN,
         elle: Iterable[float] | NotGiven = NOT_GIVEN,
         env: str | NotGiven = NOT_GIVEN,
-        groups: List[str] | NotGiven = NOT_GIVEN,
+        groups: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         how: str | NotGiven = NOT_GIVEN,
         ident: str | NotGiven = NOT_GIVEN,
-        id_weather_report: List[str] | NotGiven = NOT_GIVEN,
+        id_weather_report: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         lat: float | NotGiven = NOT_GIVEN,
         le: float | NotGiven = NOT_GIVEN,
         lon: float | NotGiven = NOT_GIVEN,
@@ -711,15 +711,15 @@ class AsyncPoiResource(AsyncAPIResource):
         pps: str | NotGiven = NOT_GIVEN,
         pri: int | NotGiven = NOT_GIVEN,
         spec: str | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         stale: Union[str, datetime] | NotGiven = NOT_GIVEN,
         start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         trkid: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
-        urls: List[str] | NotGiven = NOT_GIVEN,
+        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

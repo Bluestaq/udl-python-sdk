@@ -62,12 +62,6 @@ class HistoryRetrieveResponseItem(BaseModel):
     andims: Optional[int] = None
     """Number of dimensions of the geometry depicted by region."""
 
-    area: Optional[str] = None
-    """
-    Optional geographical region or polygon (lat/lon pairs) of the area surrounding
-    the image event as projected on the ground.
-    """
-
     asrid: Optional[int] = None
     """Geographical spatial_ref_sys for region."""
 

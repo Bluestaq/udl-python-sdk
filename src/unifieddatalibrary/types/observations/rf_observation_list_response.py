@@ -181,6 +181,9 @@ class RfObservationListResponse(BaseModel):
     nominal_snr: Optional[float] = FieldInfo(alias="nominalSnr", default=None)
     """Nominal or expected signal to noise ratio, in dB."""
 
+    orig_country: Optional[str] = FieldInfo(alias="origCountry", default=None)
+    """Country of origin in which the data was originally posted."""
+
     origin: Optional[str] = None
     """
     Originating system or organization which produced the data, if different from
@@ -188,6 +191,9 @@ class RfObservationListResponse(BaseModel):
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
     """
+
+    orig_marking: Optional[str] = FieldInfo(alias="origMarking", default=None)
+    """Original security marking that the data was marked with."""
 
     orig_network: Optional[str] = FieldInfo(alias="origNetwork", default=None)
     """

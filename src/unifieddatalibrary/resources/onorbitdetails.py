@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -14,7 +14,7 @@ from ..types import (
     onorbitdetail_create_params,
     onorbitdetail_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -72,7 +72,7 @@ class OnorbitdetailsResource(SyncAPIResource):
         delta_v_unc: float | NotGiven = NOT_GIVEN,
         dep_est_masses: Iterable[float] | NotGiven = NOT_GIVEN,
         dep_mass_uncs: Iterable[float] | NotGiven = NOT_GIVEN,
-        dep_names: List[str] | NotGiven = NOT_GIVEN,
+        dep_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         drift_rate: float | NotGiven = NOT_GIVEN,
         dry_mass: float | NotGiven = NOT_GIVEN,
         est_delta_v_duration: float | NotGiven = NOT_GIVEN,
@@ -86,7 +86,7 @@ class OnorbitdetailsResource(SyncAPIResource):
         maneuverable: bool | NotGiven = NOT_GIVEN,
         max_delta_v: float | NotGiven = NOT_GIVEN,
         max_radius: float | NotGiven = NOT_GIVEN,
-        mission_types: List[str] | NotGiven = NOT_GIVEN,
+        mission_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         num_deployable: int | NotGiven = NOT_GIVEN,
         num_mission: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -327,7 +327,7 @@ class OnorbitdetailsResource(SyncAPIResource):
         delta_v_unc: float | NotGiven = NOT_GIVEN,
         dep_est_masses: Iterable[float] | NotGiven = NOT_GIVEN,
         dep_mass_uncs: Iterable[float] | NotGiven = NOT_GIVEN,
-        dep_names: List[str] | NotGiven = NOT_GIVEN,
+        dep_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         drift_rate: float | NotGiven = NOT_GIVEN,
         dry_mass: float | NotGiven = NOT_GIVEN,
         est_delta_v_duration: float | NotGiven = NOT_GIVEN,
@@ -341,7 +341,7 @@ class OnorbitdetailsResource(SyncAPIResource):
         maneuverable: bool | NotGiven = NOT_GIVEN,
         max_delta_v: float | NotGiven = NOT_GIVEN,
         max_radius: float | NotGiven = NOT_GIVEN,
-        mission_types: List[str] | NotGiven = NOT_GIVEN,
+        mission_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         num_deployable: int | NotGiven = NOT_GIVEN,
         num_mission: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -735,7 +735,7 @@ class AsyncOnorbitdetailsResource(AsyncAPIResource):
         delta_v_unc: float | NotGiven = NOT_GIVEN,
         dep_est_masses: Iterable[float] | NotGiven = NOT_GIVEN,
         dep_mass_uncs: Iterable[float] | NotGiven = NOT_GIVEN,
-        dep_names: List[str] | NotGiven = NOT_GIVEN,
+        dep_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         drift_rate: float | NotGiven = NOT_GIVEN,
         dry_mass: float | NotGiven = NOT_GIVEN,
         est_delta_v_duration: float | NotGiven = NOT_GIVEN,
@@ -749,7 +749,7 @@ class AsyncOnorbitdetailsResource(AsyncAPIResource):
         maneuverable: bool | NotGiven = NOT_GIVEN,
         max_delta_v: float | NotGiven = NOT_GIVEN,
         max_radius: float | NotGiven = NOT_GIVEN,
-        mission_types: List[str] | NotGiven = NOT_GIVEN,
+        mission_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         num_deployable: int | NotGiven = NOT_GIVEN,
         num_mission: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
@@ -990,7 +990,7 @@ class AsyncOnorbitdetailsResource(AsyncAPIResource):
         delta_v_unc: float | NotGiven = NOT_GIVEN,
         dep_est_masses: Iterable[float] | NotGiven = NOT_GIVEN,
         dep_mass_uncs: Iterable[float] | NotGiven = NOT_GIVEN,
-        dep_names: List[str] | NotGiven = NOT_GIVEN,
+        dep_names: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         drift_rate: float | NotGiven = NOT_GIVEN,
         dry_mass: float | NotGiven = NOT_GIVEN,
         est_delta_v_duration: float | NotGiven = NOT_GIVEN,
@@ -1004,7 +1004,7 @@ class AsyncOnorbitdetailsResource(AsyncAPIResource):
         maneuverable: bool | NotGiven = NOT_GIVEN,
         max_delta_v: float | NotGiven = NOT_GIVEN,
         max_radius: float | NotGiven = NOT_GIVEN,
-        mission_types: List[str] | NotGiven = NOT_GIVEN,
+        mission_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         num_deployable: int | NotGiven = NOT_GIVEN,
         num_mission: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,

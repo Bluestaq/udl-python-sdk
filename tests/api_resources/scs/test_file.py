@@ -12,6 +12,8 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.shared import FileData
 
+# pyright: reportDeprecated=false
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -20,25 +22,30 @@ class TestFile:
 
     @parametrize
     def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.retrieve(
-            id="id",
-        )
+        with pytest.warns(DeprecationWarning):
+            file = client.scs.file.retrieve(
+                id="id",
+            )
+
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.retrieve(
-            id="id",
-            first_result=0,
-            max_results=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            file = client.scs.file.retrieve(
+                id="id",
+                first_result=0,
+                max_results=0,
+            )
+
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        response = client.scs.file.with_raw_response.retrieve(
-            id="id",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.scs.file.with_raw_response.retrieve(
+                id="id",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -47,73 +54,78 @@ class TestFile:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        with client.scs.file.with_streaming_response.retrieve(
-            id="id",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.scs.file.with_streaming_response.retrieve(
+                id="id",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(FileData, file, path=["response"])
+                file = response.parse()
+                assert_matches_type(FileData, file, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.update()
+        with pytest.warns(DeprecationWarning):
+            file = client.scs.file.update()
+
         assert file is None
 
     @parametrize
     def test_method_update_with_all_params(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.update(
-            file_data_list=[
-                {
-                    "id": "/example/folder/example_file.txt",
-                    "attributes": {
-                        "id": "id",
-                        "classification": "U",
-                        "classification_marking": "classificationMarking",
-                        "created_by": "createdBy",
-                        "created_date": "createdDate",
-                        "delete_on": 0,
-                        "description": "A new Example description",
-                        "doc_title": "docTitle",
-                        "doc_type": "docType",
-                        "doi": ["string"],
-                        "ellipse_lat": 0,
-                        "ellipse_lon": 0,
-                        "file_name": "fileName",
-                        "intrinsic_title": "intrinsicTitle",
-                        "keywords": "keywords",
-                        "media_title": "mediaTitle",
-                        "meta_info": "A new Example metaInfo",
-                        "milgrid": "milgrid",
-                        "milgrid_lat": 0,
-                        "milgrid_lon": 0,
-                        "modified_by": "modifiedBy",
-                        "modified_date": "modifiedDate",
-                        "name": "name",
-                        "path": "path",
-                        "read": "read",
-                        "searchable": True,
-                        "search_after": "searchAfter",
-                        "serial_number": "serialNumber",
-                        "size": 0,
-                        "tags": ["string"],
-                        "write": "write",
-                    },
-                    "content_action": "UPDATE",
-                    "target_name": "targetName",
-                    "target_path": "targetPath",
-                    "type": "file",
-                }
-            ],
-        )
+        with pytest.warns(DeprecationWarning):
+            file = client.scs.file.update(
+                file_data_list=[
+                    {
+                        "id": "/example/folder/example_file.txt",
+                        "attributes": {
+                            "id": "id",
+                            "classification": "U",
+                            "classification_marking": "classificationMarking",
+                            "created_by": "createdBy",
+                            "created_date": "createdDate",
+                            "delete_on": 0,
+                            "description": "A new Example description",
+                            "doc_title": "docTitle",
+                            "doc_type": "docType",
+                            "doi": ["string"],
+                            "ellipse_lat": 0,
+                            "ellipse_lon": 0,
+                            "file_name": "fileName",
+                            "intrinsic_title": "intrinsicTitle",
+                            "keywords": "keywords",
+                            "media_title": "mediaTitle",
+                            "meta_info": "metaInfo",
+                            "milgrid": "milgrid",
+                            "milgrid_lat": 0,
+                            "milgrid_lon": 0,
+                            "modified_by": "modifiedBy",
+                            "modified_date": "modifiedDate",
+                            "name": "name",
+                            "path": "path",
+                            "read": "read",
+                            "searchable": True,
+                            "search_after": "searchAfter",
+                            "serial_number": "serialNumber",
+                            "size": 0,
+                            "tags": ["exampleTag", "anotherTag"],
+                            "write": "write",
+                        },
+                        "target_name": "targetName",
+                        "target_path": "targetPath",
+                        "type": "file",
+                    }
+                ],
+            )
+
         assert file is None
 
     @parametrize
     def test_raw_response_update(self, client: Unifieddatalibrary) -> None:
-        response = client.scs.file.with_raw_response.update()
+        with pytest.warns(DeprecationWarning):
+            response = client.scs.file.with_raw_response.update()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -122,38 +134,44 @@ class TestFile:
 
     @parametrize
     def test_streaming_response_update(self, client: Unifieddatalibrary) -> None:
-        with client.scs.file.with_streaming_response.update() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.scs.file.with_streaming_response.update() as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert file is None
+                file = response.parse()
+                assert file is None
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.list(
-            path="path",
-        )
+        with pytest.warns(DeprecationWarning):
+            file = client.scs.file.list(
+                path="path",
+            )
+
         assert_matches_type(SyncOffsetPage[FileData], file, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
-        file = client.scs.file.list(
-            path="path",
-            count=0,
-            first_result=0,
-            max_results=0,
-            offset=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            file = client.scs.file.list(
+                path="path",
+                count=0,
+                first_result=0,
+                max_results=0,
+                offset=0,
+            )
+
         assert_matches_type(SyncOffsetPage[FileData], file, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
-        response = client.scs.file.with_raw_response.list(
-            path="path",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.scs.file.with_raw_response.list(
+                path="path",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -162,14 +180,15 @@ class TestFile:
 
     @parametrize
     def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
-        with client.scs.file.with_streaming_response.list(
-            path="path",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.scs.file.with_streaming_response.list(
+                path="path",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = response.parse()
-            assert_matches_type(SyncOffsetPage[FileData], file, path=["response"])
+                file = response.parse()
+                assert_matches_type(SyncOffsetPage[FileData], file, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -181,25 +200,30 @@ class TestAsyncFile:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.retrieve(
-            id="id",
-        )
+        with pytest.warns(DeprecationWarning):
+            file = await async_client.scs.file.retrieve(
+                id="id",
+            )
+
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.retrieve(
-            id="id",
-            first_result=0,
-            max_results=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            file = await async_client.scs.file.retrieve(
+                id="id",
+                first_result=0,
+                max_results=0,
+            )
+
         assert_matches_type(FileData, file, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.scs.file.with_raw_response.retrieve(
-            id="id",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.scs.file.with_raw_response.retrieve(
+                id="id",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -208,73 +232,78 @@ class TestAsyncFile:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.scs.file.with_streaming_response.retrieve(
-            id="id",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.scs.file.with_streaming_response.retrieve(
+                id="id",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(FileData, file, path=["response"])
+                file = await response.parse()
+                assert_matches_type(FileData, file, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.update()
+        with pytest.warns(DeprecationWarning):
+            file = await async_client.scs.file.update()
+
         assert file is None
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.update(
-            file_data_list=[
-                {
-                    "id": "/example/folder/example_file.txt",
-                    "attributes": {
-                        "id": "id",
-                        "classification": "U",
-                        "classification_marking": "classificationMarking",
-                        "created_by": "createdBy",
-                        "created_date": "createdDate",
-                        "delete_on": 0,
-                        "description": "A new Example description",
-                        "doc_title": "docTitle",
-                        "doc_type": "docType",
-                        "doi": ["string"],
-                        "ellipse_lat": 0,
-                        "ellipse_lon": 0,
-                        "file_name": "fileName",
-                        "intrinsic_title": "intrinsicTitle",
-                        "keywords": "keywords",
-                        "media_title": "mediaTitle",
-                        "meta_info": "A new Example metaInfo",
-                        "milgrid": "milgrid",
-                        "milgrid_lat": 0,
-                        "milgrid_lon": 0,
-                        "modified_by": "modifiedBy",
-                        "modified_date": "modifiedDate",
-                        "name": "name",
-                        "path": "path",
-                        "read": "read",
-                        "searchable": True,
-                        "search_after": "searchAfter",
-                        "serial_number": "serialNumber",
-                        "size": 0,
-                        "tags": ["string"],
-                        "write": "write",
-                    },
-                    "content_action": "UPDATE",
-                    "target_name": "targetName",
-                    "target_path": "targetPath",
-                    "type": "file",
-                }
-            ],
-        )
+        with pytest.warns(DeprecationWarning):
+            file = await async_client.scs.file.update(
+                file_data_list=[
+                    {
+                        "id": "/example/folder/example_file.txt",
+                        "attributes": {
+                            "id": "id",
+                            "classification": "U",
+                            "classification_marking": "classificationMarking",
+                            "created_by": "createdBy",
+                            "created_date": "createdDate",
+                            "delete_on": 0,
+                            "description": "A new Example description",
+                            "doc_title": "docTitle",
+                            "doc_type": "docType",
+                            "doi": ["string"],
+                            "ellipse_lat": 0,
+                            "ellipse_lon": 0,
+                            "file_name": "fileName",
+                            "intrinsic_title": "intrinsicTitle",
+                            "keywords": "keywords",
+                            "media_title": "mediaTitle",
+                            "meta_info": "metaInfo",
+                            "milgrid": "milgrid",
+                            "milgrid_lat": 0,
+                            "milgrid_lon": 0,
+                            "modified_by": "modifiedBy",
+                            "modified_date": "modifiedDate",
+                            "name": "name",
+                            "path": "path",
+                            "read": "read",
+                            "searchable": True,
+                            "search_after": "searchAfter",
+                            "serial_number": "serialNumber",
+                            "size": 0,
+                            "tags": ["exampleTag", "anotherTag"],
+                            "write": "write",
+                        },
+                        "target_name": "targetName",
+                        "target_path": "targetPath",
+                        "type": "file",
+                    }
+                ],
+            )
+
         assert file is None
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.scs.file.with_raw_response.update()
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.scs.file.with_raw_response.update()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -283,38 +312,44 @@ class TestAsyncFile:
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.scs.file.with_streaming_response.update() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.scs.file.with_streaming_response.update() as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert file is None
+                file = await response.parse()
+                assert file is None
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.list(
-            path="path",
-        )
+        with pytest.warns(DeprecationWarning):
+            file = await async_client.scs.file.list(
+                path="path",
+            )
+
         assert_matches_type(AsyncOffsetPage[FileData], file, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        file = await async_client.scs.file.list(
-            path="path",
-            count=0,
-            first_result=0,
-            max_results=0,
-            offset=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            file = await async_client.scs.file.list(
+                path="path",
+                count=0,
+                first_result=0,
+                max_results=0,
+                offset=0,
+            )
+
         assert_matches_type(AsyncOffsetPage[FileData], file, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.scs.file.with_raw_response.list(
-            path="path",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.scs.file.with_raw_response.list(
+                path="path",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -323,13 +358,14 @@ class TestAsyncFile:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.scs.file.with_streaming_response.list(
-            path="path",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.scs.file.with_streaming_response.list(
+                path="path",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            file = await response.parse()
-            assert_matches_type(AsyncOffsetPage[FileData], file, path=["response"])
+                file = await response.parse()
+                assert_matches_type(AsyncOffsetPage[FileData], file, path=["response"])
 
         assert cast(Any, response.is_closed) is True

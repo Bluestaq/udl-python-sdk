@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EphemerisSetCreateParams", "EphemerisList"]
@@ -122,7 +123,7 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     has_mnvr: Annotated[bool, PropertyInfo(alias="hasMnvr")]
     """Boolean indicating whether maneuver(s) are incorporated into the ephemeris."""
 
-    id_maneuvers: Annotated[List[str], PropertyInfo(alias="idManeuvers")]
+    id_maneuvers: Annotated[SequenceNotStr[str], PropertyInfo(alias="idManeuvers")]
     """Array of the maneuver IDs of all maneuvers incorporated in the ephemeris."""
 
     id_on_orbit: Annotated[str, PropertyInfo(alias="idOnOrbit")]
@@ -184,7 +185,7 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     step_size: Annotated[int, PropertyInfo(alias="stepSize")]
     """Ephemeris step size, in seconds."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

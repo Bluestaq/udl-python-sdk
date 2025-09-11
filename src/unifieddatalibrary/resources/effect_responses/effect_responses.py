@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -83,7 +83,7 @@ class EffectResponsesResource(SyncAPIResource):
         coa_metrics: Iterable[effect_response_create_params.CoaMetric] | NotGiven = NOT_GIVEN,
         collateral_damage_est: float | NotGiven = NOT_GIVEN,
         decision_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_actions: List[str] | NotGiven = NOT_GIVEN,
+        external_actions: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         external_request_id: str | NotGiven = NOT_GIVEN,
         id_effect_request: str | NotGiven = NOT_GIVEN,
         munition_id: str | NotGiven = NOT_GIVEN,
@@ -565,7 +565,7 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         coa_metrics: Iterable[effect_response_create_params.CoaMetric] | NotGiven = NOT_GIVEN,
         collateral_damage_est: float | NotGiven = NOT_GIVEN,
         decision_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_actions: List[str] | NotGiven = NOT_GIVEN,
+        external_actions: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         external_request_id: str | NotGiven = NOT_GIVEN,
         id_effect_request: str | NotGiven = NOT_GIVEN,
         munition_id: str | NotGiven = NOT_GIVEN,

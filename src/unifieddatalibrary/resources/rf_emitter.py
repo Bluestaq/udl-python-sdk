@@ -64,8 +64,10 @@ class RfEmitterResource(SyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        ext_sys_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
+        subtype: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -108,12 +110,17 @@ class RfEmitterResource(SyncAPIResource):
               such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
               entity can have an operating unit, a location (if terrestrial), and statuses.
 
-          id_entity: ID of the parent entity for this rfemitter.
+          ext_sys_id: The originating system ID for the RF Emitter.
+
+          id_entity: ID by reference of the parent entity for this RFEmitter.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
+
+          subtype: The RF Emitter subtype, which can distinguish specialized deployments (e.g.
+              BLOCK_0_AVL, BLOCK_0_DS1, BLOCK_0_TEST, BLOCK_1, BLOCK_1_TEST, NONE).
 
           type: Type of this RF Emitter.
 
@@ -136,8 +143,10 @@ class RfEmitterResource(SyncAPIResource):
                     "source": source,
                     "id": id,
                     "entity": entity,
+                    "ext_sys_id": ext_sys_id,
                     "id_entity": id_entity,
                     "origin": origin,
+                    "subtype": subtype,
                     "type": type,
                 },
                 rf_emitter_create_params.RfEmitterCreateParams,
@@ -158,8 +167,10 @@ class RfEmitterResource(SyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        ext_sys_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
+        subtype: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -168,10 +179,11 @@ class RfEmitterResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """Service operation to update an RFEmitter.
+        """Service operation to update a single RFEmitter record.
 
-        A specific role is required to perform
-        this service operation. Please contact the UDL team for assistance.
+        A specific role is
+        required to perform this service operation. Please contact the UDL team for
+        assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -202,12 +214,17 @@ class RfEmitterResource(SyncAPIResource):
               such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
               entity can have an operating unit, a location (if terrestrial), and statuses.
 
-          id_entity: ID of the parent entity for this rfemitter.
+          ext_sys_id: The originating system ID for the RF Emitter.
+
+          id_entity: ID by reference of the parent entity for this RFEmitter.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
+
+          subtype: The RF Emitter subtype, which can distinguish specialized deployments (e.g.
+              BLOCK_0_AVL, BLOCK_0_DS1, BLOCK_0_TEST, BLOCK_1, BLOCK_1_TEST, NONE).
 
           type: Type of this RF Emitter.
 
@@ -232,8 +249,10 @@ class RfEmitterResource(SyncAPIResource):
                     "source": source,
                     "body_id": body_id,
                     "entity": entity,
+                    "ext_sys_id": ext_sys_id,
                     "id_entity": id_entity,
                     "origin": origin,
+                    "subtype": subtype,
                     "type": type,
                 },
                 rf_emitter_update_params.RfEmitterUpdateParams,
@@ -302,7 +321,7 @@ class RfEmitterResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to delete an RFEmitter specified by the passed ID path
+        Service operation to delete a RFEmitter record specified by the passed ID path
         parameter. A specific role is required to perform this service operation. Please
         contact the UDL team for assistance.
 
@@ -387,8 +406,8 @@ class RfEmitterResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RfEmitterGetResponse:
         """
-        Service operation to get a single RFEmitter by its unique ID passed as a path
-        parameter.
+        Service operation to get a single RFEmitter record by its unique ID passed as a
+        path parameter.
 
         Args:
           extra_headers: Send extra headers
@@ -527,8 +546,10 @@ class AsyncRfEmitterResource(AsyncAPIResource):
         source: str,
         id: str | NotGiven = NOT_GIVEN,
         entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        ext_sys_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
+        subtype: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -571,12 +592,17 @@ class AsyncRfEmitterResource(AsyncAPIResource):
               such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
               entity can have an operating unit, a location (if terrestrial), and statuses.
 
-          id_entity: ID of the parent entity for this rfemitter.
+          ext_sys_id: The originating system ID for the RF Emitter.
+
+          id_entity: ID by reference of the parent entity for this RFEmitter.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
+
+          subtype: The RF Emitter subtype, which can distinguish specialized deployments (e.g.
+              BLOCK_0_AVL, BLOCK_0_DS1, BLOCK_0_TEST, BLOCK_1, BLOCK_1_TEST, NONE).
 
           type: Type of this RF Emitter.
 
@@ -599,8 +625,10 @@ class AsyncRfEmitterResource(AsyncAPIResource):
                     "source": source,
                     "id": id,
                     "entity": entity,
+                    "ext_sys_id": ext_sys_id,
                     "id_entity": id_entity,
                     "origin": origin,
+                    "subtype": subtype,
                     "type": type,
                 },
                 rf_emitter_create_params.RfEmitterCreateParams,
@@ -621,8 +649,10 @@ class AsyncRfEmitterResource(AsyncAPIResource):
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
         entity: EntityIngestParam | NotGiven = NOT_GIVEN,
+        ext_sys_id: str | NotGiven = NOT_GIVEN,
         id_entity: str | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
+        subtype: str | NotGiven = NOT_GIVEN,
         type: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -631,10 +661,11 @@ class AsyncRfEmitterResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """Service operation to update an RFEmitter.
+        """Service operation to update a single RFEmitter record.
 
-        A specific role is required to perform
-        this service operation. Please contact the UDL team for assistance.
+        A specific role is
+        required to perform this service operation. Please contact the UDL team for
+        assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -665,12 +696,17 @@ class AsyncRfEmitterResource(AsyncAPIResource):
               such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An
               entity can have an operating unit, a location (if terrestrial), and statuses.
 
-          id_entity: ID of the parent entity for this rfemitter.
+          ext_sys_id: The originating system ID for the RF Emitter.
+
+          id_entity: ID by reference of the parent entity for this RFEmitter.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
+
+          subtype: The RF Emitter subtype, which can distinguish specialized deployments (e.g.
+              BLOCK_0_AVL, BLOCK_0_DS1, BLOCK_0_TEST, BLOCK_1, BLOCK_1_TEST, NONE).
 
           type: Type of this RF Emitter.
 
@@ -695,8 +731,10 @@ class AsyncRfEmitterResource(AsyncAPIResource):
                     "source": source,
                     "body_id": body_id,
                     "entity": entity,
+                    "ext_sys_id": ext_sys_id,
                     "id_entity": id_entity,
                     "origin": origin,
+                    "subtype": subtype,
                     "type": type,
                 },
                 rf_emitter_update_params.RfEmitterUpdateParams,
@@ -765,7 +803,7 @@ class AsyncRfEmitterResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to delete an RFEmitter specified by the passed ID path
+        Service operation to delete a RFEmitter record specified by the passed ID path
         parameter. A specific role is required to perform this service operation. Please
         contact the UDL team for assistance.
 
@@ -850,8 +888,8 @@ class AsyncRfEmitterResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RfEmitterGetResponse:
         """
-        Service operation to get a single RFEmitter by its unique ID passed as a path
-        parameter.
+        Service operation to get a single RFEmitter record by its unique ID passed as a
+        path parameter.
 
         Args:
           extra_headers: Send extra headers

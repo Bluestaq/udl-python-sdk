@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["RfObservationUnvalidatedPublishParams", "Body"]
@@ -91,13 +92,13 @@ class Body(TypedDict, total=False):
     chip_rates: Annotated[Iterable[float], PropertyInfo(alias="chipRates")]
     """Array of chipRates."""
 
-    code_fills: Annotated[List[str], PropertyInfo(alias="codeFills")]
+    code_fills: Annotated[SequenceNotStr[str], PropertyInfo(alias="codeFills")]
     """Array of code fills."""
 
     code_lengths: Annotated[Iterable[float], PropertyInfo(alias="codeLengths")]
     """Array of code lengths."""
 
-    code_taps: Annotated[List[str], PropertyInfo(alias="codeTaps")]
+    code_taps: Annotated[SequenceNotStr[str], PropertyInfo(alias="codeTaps")]
     """Array of code taps."""
 
     collection_mode: Annotated[str, PropertyInfo(alias="collectionMode")]
@@ -133,7 +134,7 @@ class Body(TypedDict, total=False):
     DETECTED, CARRIER_ACQUIRING, CARRIER_DETECTED, NOT_DETECTED, etc).
     """
 
-    detection_statuses: Annotated[List[str], PropertyInfo(alias="detectionStatuses")]
+    detection_statuses: Annotated[SequenceNotStr[str], PropertyInfo(alias="detectionStatuses")]
     """Array of detection statuses (e.g.
 
     DETECTED, CARRIER_DETECTED, NOT_DETECTED) for each measured signal.
@@ -348,7 +349,7 @@ class Body(TypedDict, total=False):
     west of Prime Meridian).
     """
 
-    signal_ids: Annotated[List[str], PropertyInfo(alias="signalIds")]
+    signal_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="signalIds")]
     """Array of optional source provided identifiers of the measurements/signals."""
 
     snr: float
@@ -369,7 +370,7 @@ class Body(TypedDict, total=False):
     symbol_to_noise_ratio: Annotated[float, PropertyInfo(alias="symbolToNoiseRatio")]
     """Symbol to noise ratio, in dB."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -384,7 +385,7 @@ class Body(TypedDict, total=False):
     observation.
     """
 
-    telemetry_ids: Annotated[List[str], PropertyInfo(alias="telemetryIds")]
+    telemetry_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="telemetryIds")]
     """
     Array of optional source provided telemetry identifiers of the
     measurements/signals.

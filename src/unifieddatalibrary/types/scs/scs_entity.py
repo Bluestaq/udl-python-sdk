@@ -29,7 +29,7 @@ class ScsEntity(BaseModel):
     description: Optional[str] = None
     """Optional description for the file or folder."""
 
-    file_name: Optional[str] = FieldInfo(alias="fileName", default=None)
+    filename: Optional[str] = None
 
     file_path: Optional[str] = FieldInfo(alias="filePath", default=None)
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing_extensions import Literal
 
 import httpx
@@ -43,6 +44,7 @@ class FoldersResource(SyncAPIResource):
         """
         return FoldersResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def create(
         self,
         *,
@@ -112,6 +114,7 @@ class FoldersResource(SyncAPIResource):
             cast_to=str,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def retrieve(
         self,
         *,
@@ -159,12 +162,12 @@ class FoldersResource(SyncAPIResource):
             cast_to=FileData,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def update(
         self,
         *,
         id: str | NotGiven = NOT_GIVEN,
         attributes: folder_update_params.Attributes | NotGiven = NOT_GIVEN,
-        content_action: Literal["UPDATE", "COPY", "MOVE"] | NotGiven = NOT_GIVEN,
         target_name: str | NotGiven = NOT_GIVEN,
         target_path: str | NotGiven = NOT_GIVEN,
         type: Literal["file", "folder", "summary"] | NotGiven = NOT_GIVEN,
@@ -196,7 +199,6 @@ class FoldersResource(SyncAPIResource):
                 {
                     "id": id,
                     "attributes": attributes,
-                    "content_action": content_action,
                     "target_name": target_name,
                     "target_path": target_path,
                     "type": type,
@@ -230,6 +232,7 @@ class AsyncFoldersResource(AsyncAPIResource):
         """
         return AsyncFoldersResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def create(
         self,
         *,
@@ -299,6 +302,7 @@ class AsyncFoldersResource(AsyncAPIResource):
             cast_to=str,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def retrieve(
         self,
         *,
@@ -346,12 +350,12 @@ class AsyncFoldersResource(AsyncAPIResource):
             cast_to=FileData,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def update(
         self,
         *,
         id: str | NotGiven = NOT_GIVEN,
         attributes: folder_update_params.Attributes | NotGiven = NOT_GIVEN,
-        content_action: Literal["UPDATE", "COPY", "MOVE"] | NotGiven = NOT_GIVEN,
         target_name: str | NotGiven = NOT_GIVEN,
         target_path: str | NotGiven = NOT_GIVEN,
         type: Literal["file", "folder", "summary"] | NotGiven = NOT_GIVEN,
@@ -383,7 +387,6 @@ class AsyncFoldersResource(AsyncAPIResource):
                 {
                     "id": id,
                     "attributes": attributes,
-                    "content_action": content_action,
                     "target_name": target_name,
                     "target_path": target_path,
                     "type": type,
@@ -401,14 +404,20 @@ class FoldersResourceWithRawResponse:
     def __init__(self, folders: FoldersResource) -> None:
         self._folders = folders
 
-        self.create = to_raw_response_wrapper(
-            folders.create,
+        self.create = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                folders.create,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.retrieve = to_raw_response_wrapper(
-            folders.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                folders.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = to_raw_response_wrapper(
-            folders.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                folders.update,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -416,14 +425,20 @@ class AsyncFoldersResourceWithRawResponse:
     def __init__(self, folders: AsyncFoldersResource) -> None:
         self._folders = folders
 
-        self.create = async_to_raw_response_wrapper(
-            folders.create,
+        self.create = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                folders.create,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.retrieve = async_to_raw_response_wrapper(
-            folders.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                folders.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = async_to_raw_response_wrapper(
-            folders.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                folders.update,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -431,14 +446,20 @@ class FoldersResourceWithStreamingResponse:
     def __init__(self, folders: FoldersResource) -> None:
         self._folders = folders
 
-        self.create = to_streamed_response_wrapper(
-            folders.create,
+        self.create = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                folders.create,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.retrieve = to_streamed_response_wrapper(
-            folders.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                folders.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = to_streamed_response_wrapper(
-            folders.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                folders.update,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -446,12 +467,18 @@ class AsyncFoldersResourceWithStreamingResponse:
     def __init__(self, folders: AsyncFoldersResource) -> None:
         self._folders = folders
 
-        self.create = async_to_streamed_response_wrapper(
-            folders.create,
+        self.create = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                folders.create,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.retrieve = async_to_streamed_response_wrapper(
-            folders.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                folders.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = async_to_streamed_response_wrapper(
-            folders.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                folders.update,  # pyright: ignore[reportDeprecated],
+            )
         )

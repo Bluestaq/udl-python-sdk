@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .location_ingest_param import LocationIngestParam
 
@@ -228,5 +229,5 @@ class EntityIngestParam(TypedDict, total=False):
     taskable: bool
     """Boolean indicating if this entity is taskable."""
 
-    urls: List[str]
+    urls: SequenceNotStr[str]
     """List of URLs to additional details/documents for this entity."""

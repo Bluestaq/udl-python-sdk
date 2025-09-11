@@ -78,6 +78,10 @@ class TestV2:
             path="path",
             first_result=0,
             max_results=0,
+            order="order",
+            search_after="searchAfter",
+            size=0,
+            sort="sort",
         )
         assert_matches_type(SyncOffsetPage[ScsEntity], v2, path=["response"])
 
@@ -364,6 +368,10 @@ class TestAsyncV2:
             path="path",
             first_result=0,
             max_results=0,
+            order="order",
+            search_after="searchAfter",
+            size=0,
+            sort="sort",
         )
         assert_matches_type(AsyncOffsetPage[ScsEntity], v2, path=["response"])
 

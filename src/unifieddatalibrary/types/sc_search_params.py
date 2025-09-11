@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ScSearchParams"]
@@ -22,10 +23,10 @@ class ScSearchParams(TypedDict, total=False):
 
     content_criteria: Annotated[str, PropertyInfo(alias="contentCriteria")]
 
-    meta_data_criteria: Annotated[Dict[str, List[str]], PropertyInfo(alias="metaDataCriteria")]
+    meta_data_criteria: Annotated[Dict[str, SequenceNotStr[str]], PropertyInfo(alias="metaDataCriteria")]
 
-    non_range_criteria: Annotated[Dict[str, List[str]], PropertyInfo(alias="nonRangeCriteria")]
+    non_range_criteria: Annotated[Dict[str, SequenceNotStr[str]], PropertyInfo(alias="nonRangeCriteria")]
 
-    range_criteria: Annotated[Dict[str, List[str]], PropertyInfo(alias="rangeCriteria")]
+    range_criteria: Annotated[Dict[str, SequenceNotStr[str]], PropertyInfo(alias="rangeCriteria")]
 
     search_after: Annotated[str, PropertyInfo(alias="searchAfter")]

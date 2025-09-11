@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+import typing_extensions
+from typing import Dict, Iterable
 
 import httpx
 
@@ -30,14 +31,6 @@ from .paths import (
     PathsResourceWithStreamingResponse,
     AsyncPathsResourceWithStreamingResponse,
 )
-from .groups import (
-    GroupsResource,
-    AsyncGroupsResource,
-    GroupsResourceWithRawResponse,
-    AsyncGroupsResourceWithRawResponse,
-    GroupsResourceWithStreamingResponse,
-    AsyncGroupsResourceWithStreamingResponse,
-)
 from ...types import (
     sc_copy_params,
     sc_move_params,
@@ -45,7 +38,6 @@ from ...types import (
     sc_rename_params,
     sc_search_params,
     sc_file_upload_params,
-    sc_update_tags_params,
     sc_file_download_params,
 )
 from .folders import (
@@ -57,7 +49,7 @@ from .folders import (
     AsyncFoldersResourceWithStreamingResponse,
 )
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -75,33 +67,8 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .file_metadata import (
-    FileMetadataResource,
-    AsyncFileMetadataResource,
-    FileMetadataResourceWithRawResponse,
-    AsyncFileMetadataResourceWithRawResponse,
-    FileMetadataResourceWithStreamingResponse,
-    AsyncFileMetadataResourceWithStreamingResponse,
-)
 from ..._base_client import make_request_options
-from .range_parameters import (
-    RangeParametersResource,
-    AsyncRangeParametersResource,
-    RangeParametersResourceWithRawResponse,
-    AsyncRangeParametersResourceWithRawResponse,
-    RangeParametersResourceWithStreamingResponse,
-    AsyncRangeParametersResourceWithStreamingResponse,
-)
-from .classification_markings import (
-    ClassificationMarkingsResource,
-    AsyncClassificationMarkingsResource,
-    ClassificationMarkingsResourceWithRawResponse,
-    AsyncClassificationMarkingsResourceWithRawResponse,
-    ClassificationMarkingsResourceWithStreamingResponse,
-    AsyncClassificationMarkingsResourceWithStreamingResponse,
-)
 from ...types.sc_search_response import ScSearchResponse
-from ...types.sc_aggregate_doc_type_response import ScAggregateDocTypeResponse
 from ...types.sc_allowable_file_mimes_response import ScAllowableFileMimesResponse
 from ...types.sc_allowable_file_extensions_response import ScAllowableFileExtensionsResponse
 
@@ -112,22 +79,6 @@ class ScsResource(SyncAPIResource):
     @cached_property
     def folders(self) -> FoldersResource:
         return FoldersResource(self._client)
-
-    @cached_property
-    def classification_markings(self) -> ClassificationMarkingsResource:
-        return ClassificationMarkingsResource(self._client)
-
-    @cached_property
-    def groups(self) -> GroupsResource:
-        return GroupsResource(self._client)
-
-    @cached_property
-    def file_metadata(self) -> FileMetadataResource:
-        return FileMetadataResource(self._client)
-
-    @cached_property
-    def range_parameters(self) -> RangeParametersResource:
-        return RangeParametersResource(self._client)
 
     @cached_property
     def paths(self) -> PathsResource:
@@ -160,6 +111,7 @@ class ScsResource(SyncAPIResource):
         """
         return ScsResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def delete(
         self,
         *,
@@ -200,25 +152,6 @@ class ScsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def aggregate_doc_type(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScAggregateDocTypeResponse:
-        """Returns a map of document types and counts in root folder."""
-        return self._get(
-            "/scs/aggregateDocType",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ScAggregateDocTypeResponse,
-        )
-
     def allowable_file_extensions(
         self,
         *,
@@ -229,7 +162,7 @@ class ScsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ScAllowableFileExtensionsResponse:
-        """Returns a list of allowable file extensions for upload."""
+        """Returns a list of the allowed filename extensions."""
         return self._get(
             "/scs/allowableFileExtensions",
             options=make_request_options(
@@ -248,7 +181,7 @@ class ScsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ScAllowableFileMimesResponse:
-        """Returns a list of allowable file mime types for upload."""
+        """Returns a list of the allowed file upload mime types."""
         return self._get(
             "/scs/allowableFileMimes",
             options=make_request_options(
@@ -257,6 +190,7 @@ class ScsResource(SyncAPIResource):
             cast_to=ScAllowableFileMimesResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def copy(
         self,
         *,
@@ -308,7 +242,7 @@ class ScsResource(SyncAPIResource):
     def download(
         self,
         *,
-        body: List[str],
+        body: Iterable[object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -331,7 +265,7 @@ class ScsResource(SyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/download",
-            body=maybe_transform(body, List[str]),
+            body=maybe_transform(body, Iterable[object]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -385,6 +319,7 @@ class ScsResource(SyncAPIResource):
             cast_to=BinaryAPIResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def file_upload(
         self,
         file_content: FileContent,
@@ -410,11 +345,11 @@ class ScsResource(SyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          classification_marking: Classification (ex. U//FOUO)
+          classification_marking: Classification marking of the file being uploaded.
 
-          file_name: FileName (ex. dog.jpg)
+          file_name: Name of the file to upload.
 
-          path: The base path to upload file (ex. images)
+          path: The base path to upload file
 
           delete_after: Length of time after which to automatically delete the file.
 
@@ -460,6 +395,7 @@ class ScsResource(SyncAPIResource):
             cast_to=str,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def move(
         self,
         *,
@@ -478,7 +414,7 @@ class ScsResource(SyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to copy
+          id: The path of the item to move
 
           target_path: The path to copy to
 
@@ -508,6 +444,7 @@ class ScsResource(SyncAPIResource):
             cast_to=str,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def rename(
         self,
         *,
@@ -557,6 +494,7 @@ class ScsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def search(
         self,
         *,
@@ -564,9 +502,9 @@ class ScsResource(SyncAPIResource):
         count: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         content_criteria: str | NotGiven = NOT_GIVEN,
-        meta_data_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        non_range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
+        meta_data_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        non_range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         search_after: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -622,74 +560,11 @@ class ScsResource(SyncAPIResource):
             cast_to=ScSearchResponse,
         )
 
-    def update_tags(
-        self,
-        *,
-        folder: str,
-        tags: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Updates tags for given folder.
-
-        Args:
-          folder: The base path to folder
-
-          tags: The new tag
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._put(
-            "/scs/updateTagsForFilesInFolder",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "folder": folder,
-                        "tags": tags,
-                    },
-                    sc_update_tags_params.ScUpdateTagsParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
 
 class AsyncScsResource(AsyncAPIResource):
     @cached_property
     def folders(self) -> AsyncFoldersResource:
         return AsyncFoldersResource(self._client)
-
-    @cached_property
-    def classification_markings(self) -> AsyncClassificationMarkingsResource:
-        return AsyncClassificationMarkingsResource(self._client)
-
-    @cached_property
-    def groups(self) -> AsyncGroupsResource:
-        return AsyncGroupsResource(self._client)
-
-    @cached_property
-    def file_metadata(self) -> AsyncFileMetadataResource:
-        return AsyncFileMetadataResource(self._client)
-
-    @cached_property
-    def range_parameters(self) -> AsyncRangeParametersResource:
-        return AsyncRangeParametersResource(self._client)
 
     @cached_property
     def paths(self) -> AsyncPathsResource:
@@ -722,6 +597,7 @@ class AsyncScsResource(AsyncAPIResource):
         """
         return AsyncScsResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def delete(
         self,
         *,
@@ -762,25 +638,6 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def aggregate_doc_type(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScAggregateDocTypeResponse:
-        """Returns a map of document types and counts in root folder."""
-        return await self._get(
-            "/scs/aggregateDocType",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ScAggregateDocTypeResponse,
-        )
-
     async def allowable_file_extensions(
         self,
         *,
@@ -791,7 +648,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ScAllowableFileExtensionsResponse:
-        """Returns a list of allowable file extensions for upload."""
+        """Returns a list of the allowed filename extensions."""
         return await self._get(
             "/scs/allowableFileExtensions",
             options=make_request_options(
@@ -810,7 +667,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ScAllowableFileMimesResponse:
-        """Returns a list of allowable file mime types for upload."""
+        """Returns a list of the allowed file upload mime types."""
         return await self._get(
             "/scs/allowableFileMimes",
             options=make_request_options(
@@ -819,6 +676,7 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=ScAllowableFileMimesResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def copy(
         self,
         *,
@@ -870,7 +728,7 @@ class AsyncScsResource(AsyncAPIResource):
     async def download(
         self,
         *,
-        body: List[str],
+        body: Iterable[object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -893,7 +751,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/download",
-            body=await async_maybe_transform(body, List[str]),
+            body=await async_maybe_transform(body, Iterable[object]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -947,6 +805,7 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=AsyncBinaryAPIResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def file_upload(
         self,
         file_content: FileContent,
@@ -972,11 +831,11 @@ class AsyncScsResource(AsyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          classification_marking: Classification (ex. U//FOUO)
+          classification_marking: Classification marking of the file being uploaded.
 
-          file_name: FileName (ex. dog.jpg)
+          file_name: Name of the file to upload.
 
-          path: The base path to upload file (ex. images)
+          path: The base path to upload file
 
           delete_after: Length of time after which to automatically delete the file.
 
@@ -1022,6 +881,7 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=str,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def move(
         self,
         *,
@@ -1040,7 +900,7 @@ class AsyncScsResource(AsyncAPIResource):
         service operation. Please contact the UDL team for assistance.
 
         Args:
-          id: The path of the item to copy
+          id: The path of the item to move
 
           target_path: The path to copy to
 
@@ -1070,6 +930,7 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=str,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def rename(
         self,
         *,
@@ -1119,6 +980,7 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def search(
         self,
         *,
@@ -1126,9 +988,9 @@ class AsyncScsResource(AsyncAPIResource):
         count: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         content_criteria: str | NotGiven = NOT_GIVEN,
-        meta_data_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        non_range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
-        range_criteria: Dict[str, List[str]] | NotGiven = NOT_GIVEN,
+        meta_data_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        non_range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         search_after: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1184,63 +1046,15 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=ScSearchResponse,
         )
 
-    async def update_tags(
-        self,
-        *,
-        folder: str,
-        tags: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Updates tags for given folder.
-
-        Args:
-          folder: The base path to folder
-
-          tags: The new tag
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._put(
-            "/scs/updateTagsForFilesInFolder",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "folder": folder,
-                        "tags": tags,
-                    },
-                    sc_update_tags_params.ScUpdateTagsParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
 
 class ScsResourceWithRawResponse:
     def __init__(self, scs: ScsResource) -> None:
         self._scs = scs
 
-        self.delete = to_raw_response_wrapper(
-            scs.delete,
-        )
-        self.aggregate_doc_type = to_raw_response_wrapper(
-            scs.aggregate_doc_type,
+        self.delete = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                scs.delete,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.allowable_file_extensions = to_raw_response_wrapper(
             scs.allowable_file_extensions,
@@ -1248,8 +1062,10 @@ class ScsResourceWithRawResponse:
         self.allowable_file_mimes = to_raw_response_wrapper(
             scs.allowable_file_mimes,
         )
-        self.copy = to_raw_response_wrapper(
-            scs.copy,
+        self.copy = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                scs.copy,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.download = to_custom_raw_response_wrapper(
             scs.download,
@@ -1259,41 +1075,30 @@ class ScsResourceWithRawResponse:
             scs.file_download,
             BinaryAPIResponse,
         )
-        self.file_upload = to_raw_response_wrapper(
-            scs.file_upload,
+        self.file_upload = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                scs.file_upload,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.move = to_raw_response_wrapper(
-            scs.move,
+        self.move = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                scs.move,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.rename = to_raw_response_wrapper(
-            scs.rename,
+        self.rename = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                scs.rename,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.search = to_raw_response_wrapper(
-            scs.search,
-        )
-        self.update_tags = to_raw_response_wrapper(
-            scs.update_tags,
+        self.search = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                scs.search,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
     def folders(self) -> FoldersResourceWithRawResponse:
         return FoldersResourceWithRawResponse(self._scs.folders)
-
-    @cached_property
-    def classification_markings(self) -> ClassificationMarkingsResourceWithRawResponse:
-        return ClassificationMarkingsResourceWithRawResponse(self._scs.classification_markings)
-
-    @cached_property
-    def groups(self) -> GroupsResourceWithRawResponse:
-        return GroupsResourceWithRawResponse(self._scs.groups)
-
-    @cached_property
-    def file_metadata(self) -> FileMetadataResourceWithRawResponse:
-        return FileMetadataResourceWithRawResponse(self._scs.file_metadata)
-
-    @cached_property
-    def range_parameters(self) -> RangeParametersResourceWithRawResponse:
-        return RangeParametersResourceWithRawResponse(self._scs.range_parameters)
 
     @cached_property
     def paths(self) -> PathsResourceWithRawResponse:
@@ -1312,11 +1117,10 @@ class AsyncScsResourceWithRawResponse:
     def __init__(self, scs: AsyncScsResource) -> None:
         self._scs = scs
 
-        self.delete = async_to_raw_response_wrapper(
-            scs.delete,
-        )
-        self.aggregate_doc_type = async_to_raw_response_wrapper(
-            scs.aggregate_doc_type,
+        self.delete = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                scs.delete,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.allowable_file_extensions = async_to_raw_response_wrapper(
             scs.allowable_file_extensions,
@@ -1324,8 +1128,10 @@ class AsyncScsResourceWithRawResponse:
         self.allowable_file_mimes = async_to_raw_response_wrapper(
             scs.allowable_file_mimes,
         )
-        self.copy = async_to_raw_response_wrapper(
-            scs.copy,
+        self.copy = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                scs.copy,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.download = async_to_custom_raw_response_wrapper(
             scs.download,
@@ -1335,41 +1141,30 @@ class AsyncScsResourceWithRawResponse:
             scs.file_download,
             AsyncBinaryAPIResponse,
         )
-        self.file_upload = async_to_raw_response_wrapper(
-            scs.file_upload,
+        self.file_upload = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                scs.file_upload,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.move = async_to_raw_response_wrapper(
-            scs.move,
+        self.move = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                scs.move,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.rename = async_to_raw_response_wrapper(
-            scs.rename,
+        self.rename = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                scs.rename,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.search = async_to_raw_response_wrapper(
-            scs.search,
-        )
-        self.update_tags = async_to_raw_response_wrapper(
-            scs.update_tags,
+        self.search = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                scs.search,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
     def folders(self) -> AsyncFoldersResourceWithRawResponse:
         return AsyncFoldersResourceWithRawResponse(self._scs.folders)
-
-    @cached_property
-    def classification_markings(self) -> AsyncClassificationMarkingsResourceWithRawResponse:
-        return AsyncClassificationMarkingsResourceWithRawResponse(self._scs.classification_markings)
-
-    @cached_property
-    def groups(self) -> AsyncGroupsResourceWithRawResponse:
-        return AsyncGroupsResourceWithRawResponse(self._scs.groups)
-
-    @cached_property
-    def file_metadata(self) -> AsyncFileMetadataResourceWithRawResponse:
-        return AsyncFileMetadataResourceWithRawResponse(self._scs.file_metadata)
-
-    @cached_property
-    def range_parameters(self) -> AsyncRangeParametersResourceWithRawResponse:
-        return AsyncRangeParametersResourceWithRawResponse(self._scs.range_parameters)
 
     @cached_property
     def paths(self) -> AsyncPathsResourceWithRawResponse:
@@ -1388,11 +1183,10 @@ class ScsResourceWithStreamingResponse:
     def __init__(self, scs: ScsResource) -> None:
         self._scs = scs
 
-        self.delete = to_streamed_response_wrapper(
-            scs.delete,
-        )
-        self.aggregate_doc_type = to_streamed_response_wrapper(
-            scs.aggregate_doc_type,
+        self.delete = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                scs.delete,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.allowable_file_extensions = to_streamed_response_wrapper(
             scs.allowable_file_extensions,
@@ -1400,8 +1194,10 @@ class ScsResourceWithStreamingResponse:
         self.allowable_file_mimes = to_streamed_response_wrapper(
             scs.allowable_file_mimes,
         )
-        self.copy = to_streamed_response_wrapper(
-            scs.copy,
+        self.copy = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                scs.copy,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.download = to_custom_streamed_response_wrapper(
             scs.download,
@@ -1411,41 +1207,30 @@ class ScsResourceWithStreamingResponse:
             scs.file_download,
             StreamedBinaryAPIResponse,
         )
-        self.file_upload = to_streamed_response_wrapper(
-            scs.file_upload,
+        self.file_upload = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                scs.file_upload,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.move = to_streamed_response_wrapper(
-            scs.move,
+        self.move = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                scs.move,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.rename = to_streamed_response_wrapper(
-            scs.rename,
+        self.rename = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                scs.rename,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.search = to_streamed_response_wrapper(
-            scs.search,
-        )
-        self.update_tags = to_streamed_response_wrapper(
-            scs.update_tags,
+        self.search = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                scs.search,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
     def folders(self) -> FoldersResourceWithStreamingResponse:
         return FoldersResourceWithStreamingResponse(self._scs.folders)
-
-    @cached_property
-    def classification_markings(self) -> ClassificationMarkingsResourceWithStreamingResponse:
-        return ClassificationMarkingsResourceWithStreamingResponse(self._scs.classification_markings)
-
-    @cached_property
-    def groups(self) -> GroupsResourceWithStreamingResponse:
-        return GroupsResourceWithStreamingResponse(self._scs.groups)
-
-    @cached_property
-    def file_metadata(self) -> FileMetadataResourceWithStreamingResponse:
-        return FileMetadataResourceWithStreamingResponse(self._scs.file_metadata)
-
-    @cached_property
-    def range_parameters(self) -> RangeParametersResourceWithStreamingResponse:
-        return RangeParametersResourceWithStreamingResponse(self._scs.range_parameters)
 
     @cached_property
     def paths(self) -> PathsResourceWithStreamingResponse:
@@ -1464,11 +1249,10 @@ class AsyncScsResourceWithStreamingResponse:
     def __init__(self, scs: AsyncScsResource) -> None:
         self._scs = scs
 
-        self.delete = async_to_streamed_response_wrapper(
-            scs.delete,
-        )
-        self.aggregate_doc_type = async_to_streamed_response_wrapper(
-            scs.aggregate_doc_type,
+        self.delete = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                scs.delete,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.allowable_file_extensions = async_to_streamed_response_wrapper(
             scs.allowable_file_extensions,
@@ -1476,8 +1260,10 @@ class AsyncScsResourceWithStreamingResponse:
         self.allowable_file_mimes = async_to_streamed_response_wrapper(
             scs.allowable_file_mimes,
         )
-        self.copy = async_to_streamed_response_wrapper(
-            scs.copy,
+        self.copy = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                scs.copy,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.download = async_to_custom_streamed_response_wrapper(
             scs.download,
@@ -1487,41 +1273,30 @@ class AsyncScsResourceWithStreamingResponse:
             scs.file_download,
             AsyncStreamedBinaryAPIResponse,
         )
-        self.file_upload = async_to_streamed_response_wrapper(
-            scs.file_upload,
+        self.file_upload = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                scs.file_upload,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.move = async_to_streamed_response_wrapper(
-            scs.move,
+        self.move = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                scs.move,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.rename = async_to_streamed_response_wrapper(
-            scs.rename,
+        self.rename = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                scs.rename,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.search = async_to_streamed_response_wrapper(
-            scs.search,
-        )
-        self.update_tags = async_to_streamed_response_wrapper(
-            scs.update_tags,
+        self.search = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                scs.search,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
     def folders(self) -> AsyncFoldersResourceWithStreamingResponse:
         return AsyncFoldersResourceWithStreamingResponse(self._scs.folders)
-
-    @cached_property
-    def classification_markings(self) -> AsyncClassificationMarkingsResourceWithStreamingResponse:
-        return AsyncClassificationMarkingsResourceWithStreamingResponse(self._scs.classification_markings)
-
-    @cached_property
-    def groups(self) -> AsyncGroupsResourceWithStreamingResponse:
-        return AsyncGroupsResourceWithStreamingResponse(self._scs.groups)
-
-    @cached_property
-    def file_metadata(self) -> AsyncFileMetadataResourceWithStreamingResponse:
-        return AsyncFileMetadataResourceWithStreamingResponse(self._scs.file_metadata)
-
-    @cached_property
-    def range_parameters(self) -> AsyncRangeParametersResourceWithStreamingResponse:
-        return AsyncRangeParametersResourceWithStreamingResponse(self._scs.range_parameters)
 
     @cached_property
     def paths(self) -> AsyncPathsResourceWithStreamingResponse:

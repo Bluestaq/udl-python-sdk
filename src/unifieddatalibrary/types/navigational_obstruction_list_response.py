@@ -344,13 +344,6 @@ class NavigationalObstructionListResponse(BaseModel):
     inadequate source material, this code indicates the quality of the data.
     """
 
-    raw_file_uri: Optional[str] = FieldInfo(alias="rawFileURI", default=None)
-    """
-    Optional URI location in the document repository of the raw file parsed by the
-    system to produce this record. To download the raw file, prepend
-    https://udl-hostname/scs/download?id= to this value.
-    """
-
     rev_date: Optional[date] = FieldInfo(alias="revDate", default=None)
     """Date this obstacle data was revised, in ISO 8601 date-only format (ex.
 

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["UdlSigactUnvalidatedPublishParams", "Body", "BodyRelatedDoc", "BodyRelatedDocDataSourceRef"]
@@ -73,7 +74,7 @@ class Body(TypedDict, total=False):
     accuracy: int
     """Estimate of the accuracy that this event occurred as described/reported."""
 
-    actors: List[str]
+    actors: SequenceNotStr[str]
     """A list of one or more actors involved in the event."""
 
     agjson: str

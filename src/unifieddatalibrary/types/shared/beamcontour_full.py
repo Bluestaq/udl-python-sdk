@@ -73,19 +73,6 @@ class BeamcontourFull(BaseModel):
     BORESIGHT or CONTOUR.
     """
 
-    geography: Optional[str] = None
-    """
-    GeoJSON or Well Known Text expression of the boresight point, service area point
-    or region, or the gain contour region in geographic longitude, latitude pairs.
-    Boresight and service area point(s) are represented as a 'Point' or
-    'MultiPoint', service areas and closed gain contours as 'Polygon', and open
-    contours as 'LineString'. This is an optional convenience field only used for
-    create operations. The system will auto-detect the format (Well Known Text or
-    GeoJSON) and populate both geographyText and geographyJson fields appropriately.
-    A create request must contain one of the geography, geographyText, or
-    geographyJson.
-    """
-
     geography_json: Optional[str] = FieldInfo(alias="geographyJson", default=None)
     """
     Geographical region or polygon (lat/lon pairs), as depicted by the GeoJSON

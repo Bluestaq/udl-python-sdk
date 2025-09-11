@@ -19,7 +19,6 @@ from ..pagination import SyncOffsetPage, AsyncOffsetPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.sensor_type_get_response import SensorTypeGetResponse
 from ..types.sensor_type_list_response import SensorTypeListResponse
-from ..types.sensor_type_queryhelp_response import SensorTypeQueryhelpResponse
 
 __all__ = ["SensorTypeResource", "AsyncSensorTypeResource"]
 
@@ -134,28 +133,6 @@ class SensorTypeResource(SyncAPIResource):
             cast_to=SensorTypeGetResponse,
         )
 
-    def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorTypeQueryhelpResponse:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        return self._get(
-            "/udl/sensortype/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SensorTypeQueryhelpResponse,
-        )
-
 
 class AsyncSensorTypeResource(AsyncAPIResource):
     @cached_property
@@ -267,28 +244,6 @@ class AsyncSensorTypeResource(AsyncAPIResource):
             cast_to=SensorTypeGetResponse,
         )
 
-    async def queryhelp(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorTypeQueryhelpResponse:
-        """
-        Service operation to provide detailed information on available dynamic query
-        parameters for a particular data type.
-        """
-        return await self._get(
-            "/udl/sensortype/queryhelp",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SensorTypeQueryhelpResponse,
-        )
-
 
 class SensorTypeResourceWithRawResponse:
     def __init__(self, sensor_type: SensorTypeResource) -> None:
@@ -299,9 +254,6 @@ class SensorTypeResourceWithRawResponse:
         )
         self.get = to_raw_response_wrapper(
             sensor_type.get,
-        )
-        self.queryhelp = to_raw_response_wrapper(
-            sensor_type.queryhelp,
         )
 
 
@@ -315,9 +267,6 @@ class AsyncSensorTypeResourceWithRawResponse:
         self.get = async_to_raw_response_wrapper(
             sensor_type.get,
         )
-        self.queryhelp = async_to_raw_response_wrapper(
-            sensor_type.queryhelp,
-        )
 
 
 class SensorTypeResourceWithStreamingResponse:
@@ -330,9 +279,6 @@ class SensorTypeResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             sensor_type.get,
         )
-        self.queryhelp = to_streamed_response_wrapper(
-            sensor_type.queryhelp,
-        )
 
 
 class AsyncSensorTypeResourceWithStreamingResponse:
@@ -344,7 +290,4 @@ class AsyncSensorTypeResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             sensor_type.get,
-        )
-        self.queryhelp = async_to_streamed_response_wrapper(
-            sensor_type.queryhelp,
         )

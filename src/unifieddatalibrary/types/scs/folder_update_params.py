@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["FolderUpdateParams", "Attributes"]
@@ -14,8 +14,6 @@ class FolderUpdateParams(TypedDict, total=False):
     id: str
 
     attributes: Attributes
-
-    content_action: Annotated[Literal["UPDATE", "COPY", "MOVE"], PropertyInfo(alias="contentAction")]
 
     target_name: Annotated[str, PropertyInfo(alias="targetName")]
 
@@ -43,7 +41,7 @@ class Attributes(TypedDict, total=False):
 
     doc_type: Annotated[str, PropertyInfo(alias="docType")]
 
-    doi: List[str]
+    doi: SequenceNotStr[str]
 
     ellipse_lat: Annotated[float, PropertyInfo(alias="ellipseLat")]
 
@@ -83,6 +81,6 @@ class Attributes(TypedDict, total=False):
 
     size: int
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
 
     write: str

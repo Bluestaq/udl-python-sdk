@@ -12,7 +12,6 @@ from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     SensorObservationTypeGetResponse,
     SensorObservationTypeListResponse,
-    SensorObservationTypeQueryhelpResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -110,31 +109,6 @@ class TestSensorObservationType:
                 id="",
             )
 
-    @parametrize
-    def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
-        sensor_observation_type = client.sensor_observation_type.queryhelp()
-        assert_matches_type(SensorObservationTypeQueryhelpResponse, sensor_observation_type, path=["response"])
-
-    @parametrize
-    def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
-        response = client.sensor_observation_type.with_raw_response.queryhelp()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sensor_observation_type = response.parse()
-        assert_matches_type(SensorObservationTypeQueryhelpResponse, sensor_observation_type, path=["response"])
-
-    @parametrize
-    def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
-        with client.sensor_observation_type.with_streaming_response.queryhelp() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sensor_observation_type = response.parse()
-            assert_matches_type(SensorObservationTypeQueryhelpResponse, sensor_observation_type, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
 
 class TestAsyncSensorObservationType:
     parametrize = pytest.mark.parametrize(
@@ -228,28 +202,3 @@ class TestAsyncSensorObservationType:
             await async_client.sensor_observation_type.with_raw_response.get(
                 id="",
             )
-
-    @parametrize
-    async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sensor_observation_type = await async_client.sensor_observation_type.queryhelp()
-        assert_matches_type(SensorObservationTypeQueryhelpResponse, sensor_observation_type, path=["response"])
-
-    @parametrize
-    async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensor_observation_type.with_raw_response.queryhelp()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        sensor_observation_type = await response.parse()
-        assert_matches_type(SensorObservationTypeQueryhelpResponse, sensor_observation_type, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensor_observation_type.with_streaming_response.queryhelp() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            sensor_observation_type = await response.parse()
-            assert_matches_type(SensorObservationTypeQueryhelpResponse, sensor_observation_type, path=["response"])
-
-        assert cast(Any, response.is_closed) is True

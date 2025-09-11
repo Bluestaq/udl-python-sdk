@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EmitterGeolocationCreateBulkParams", "Body"]
@@ -226,7 +227,7 @@ class Body(TypedDict, total=False):
     signal_of_interest: Annotated[str, PropertyInfo(alias="signalOfInterest")]
     """The name of the signal of interest."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

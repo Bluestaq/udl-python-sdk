@@ -11,13 +11,13 @@ __all__ = ["ScFileUploadParams"]
 
 class ScFileUploadParams(TypedDict, total=False):
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
-    """Classification (ex. U//FOUO)"""
+    """Classification marking of the file being uploaded."""
 
     file_name: Required[Annotated[str, PropertyInfo(alias="fileName")]]
-    """FileName (ex. dog.jpg)"""
+    """Name of the file to upload."""
 
     path: Required[str]
-    """The base path to upload file (ex. images)"""
+    """The base path to upload file"""
 
     delete_after: Annotated[str, PropertyInfo(alias="deleteAfter")]
     """Length of time after which to automatically delete the file."""

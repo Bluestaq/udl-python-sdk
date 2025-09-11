@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import Iterable
 from typing_extensions import Required, TypedDict
 
 __all__ = ["ScDownloadParams"]
 
 
 class ScDownloadParams(TypedDict, total=False):
-    body: Required[List[str]]
+    body: Required[Iterable[object]]

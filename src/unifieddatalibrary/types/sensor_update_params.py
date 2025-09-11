@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .location_ingest_param import LocationIngestParam
 
@@ -338,7 +339,7 @@ class Entity(TypedDict, total=False):
     terrestrial_id: Annotated[str, PropertyInfo(alias="terrestrialId")]
     """Terrestrial identifier of this entity, if applicable."""
 
-    urls: List[str]
+    urls: SequenceNotStr[str]
     """List of URLs to additional details/documents for this entity."""
 
 
@@ -441,7 +442,7 @@ class Sensorcharacteristic(TypedDict, total=False):
     bandwidth: float
     """The total bandwidth, in megahertz, about the radar center frequency."""
 
-    beam_order: Annotated[List[str], PropertyInfo(alias="beamOrder")]
+    beam_order: Annotated[SequenceNotStr[str], PropertyInfo(alias="beamOrder")]
     """Array designating the beam order of provided values (e.g.
 
     vb1 for vertical beam 1, ob1 for oblique beam 1, etc.). Required if any of the

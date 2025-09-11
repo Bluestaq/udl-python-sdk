@@ -14,7 +14,7 @@ class PathCreateWithFileParams(TypedDict, total=False):
     """The full path to create, including path and file name"""
 
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
-    """Classification (ex. U//FOUO)"""
+    """Classification marking of the file being uploaded."""
 
     delete_after: Annotated[str, PropertyInfo(alias="deleteAfter")]
     """Length of time after which to automatically delete the file."""

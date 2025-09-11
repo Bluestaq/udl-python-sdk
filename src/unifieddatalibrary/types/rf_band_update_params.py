@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -50,7 +51,16 @@ class RfBandUpdateParams(TypedDict, total=False):
     """
 
     bandwidth: float
-    """RF Band frequency range bandwidth in Mhz."""
+    """RF Band frequency range bandwidth in megahertz."""
+
+    bandwidth_settings: Annotated[Iterable[float], PropertyInfo(alias="bandwidthSettings")]
+    """Array of frequency range bandwidth settings, in megahertz for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     beamwidth: float
     """
@@ -58,11 +68,29 @@ class RfBandUpdateParams(TypedDict, total=False):
     degrees.
     """
 
+    beamwidth_settings: Annotated[Iterable[float], PropertyInfo(alias="beamwidthSettings")]
+    """Array of beamwidth settings, in degrees for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
+
     center_freq: Annotated[float, PropertyInfo(alias="centerFreq")]
-    """Center frequency of RF frequency range, if applicable, in Mhz."""
+    """Center frequency of RF frequency range, if applicable, in megahertz."""
+
+    delay_settings: Annotated[Iterable[float], PropertyInfo(alias="delaySettings")]
+    """Array of delay settings, in seconds for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     edge_gain: Annotated[float, PropertyInfo(alias="edgeGain")]
-    """RF Range edge gain, in dBi."""
+    """RF Range edge gain, in decibel relative to isotrope."""
 
     eirp: float
     """
@@ -73,7 +101,7 @@ class RfBandUpdateParams(TypedDict, total=False):
     dipole. Effective radiated power and effective isotropic radiated power both
     measure the amount of power a radio transmitter and antenna (or other source of
     electromagnetic waves) radiates in a specific direction: in the direction of
-    maximum signal strength (the "main lobe") of its radiation pattern.
+    maximum signal strength (the main lobe) of its radiation pattern.
     """
 
     erp: float
@@ -85,17 +113,41 @@ class RfBandUpdateParams(TypedDict, total=False):
     Effective radiated power and effective isotropic radiated power both measure the
     amount of power a radio transmitter and antenna (or other source of
     electromagnetic waves) radiates in a specific direction: in the direction of
-    maximum signal strength (the "main lobe") of its radiation pattern.
+    maximum signal strength (the main lobe) of its radiation pattern.
     """
 
     freq_max: Annotated[float, PropertyInfo(alias="freqMax")]
-    """End/maximum of transmit RF frequency range, if applicable, in Mhz."""
+    """End/maximum of transmit RF frequency range, if applicable, in megahertz."""
 
     freq_min: Annotated[float, PropertyInfo(alias="freqMin")]
-    """Start/minimum of transmit RF frequency range, if applicable, in Mhz."""
+    """Start/minimum of transmit RF frequency range, if applicable, in megahertz."""
+
+    frequency_settings: Annotated[Iterable[float], PropertyInfo(alias="frequencySettings")]
+    """Array of frequency settings, in megahertz for this RFBand.
+
+    This array and the settings arrays must match in size.
+    """
+
+    gain_settings: Annotated[Iterable[float], PropertyInfo(alias="gainSettings")]
+    """Array of gain settings, in decibels for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     mode: Literal["TX", "RX"]
     """RF Band mode (e.g. TX, RX)."""
+
+    noise_settings: Annotated[Iterable[float], PropertyInfo(alias="noiseSettings")]
+    """Array of signal noise settings, in decibels for this RFBand.
+
+    If this array is specified then it must be the same size as the
+    frequencySettings array. A null value may be used for one or more of the
+    frequencies in the frequencySettings array if there is no corresponding value
+    for a given frequency.
+    """
 
     origin: str
     """
@@ -106,7 +158,7 @@ class RfBandUpdateParams(TypedDict, total=False):
     """
 
     peak_gain: Annotated[float, PropertyInfo(alias="peakGain")]
-    """RF Range maximum gain, in dBi."""
+    """RF Range maximum gain, in decibel relative to isotrope."""
 
     polarization: Literal["H", "V", "R", "L"]
     """Transponder polarization e.g.
@@ -120,5 +172,5 @@ class RfBandUpdateParams(TypedDict, total=False):
     purpose: Literal["COMM", "TTC", "OPS", "OTHER"]
     """
     Purpose or use of the RF Band -- COMM = communications, TTC =
-    Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
+    Telemetry/Tracking/Control, OPS = Operations, OTHER = Other.
     """

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -13,7 +12,7 @@ from ..types import (
     launch_vehicle_detail_create_params,
     launch_vehicle_detail_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -104,7 +103,7 @@ class LaunchVehicleDetailsResource(SyncAPIResource):
         sound_pressure_level: float | NotGiven = NOT_GIVEN,
         source_url: str | NotGiven = NOT_GIVEN,
         sso_payload_mass: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         variant: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -374,7 +373,7 @@ class LaunchVehicleDetailsResource(SyncAPIResource):
         sound_pressure_level: float | NotGiven = NOT_GIVEN,
         source_url: str | NotGiven = NOT_GIVEN,
         sso_payload_mass: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         variant: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -799,7 +798,7 @@ class AsyncLaunchVehicleDetailsResource(AsyncAPIResource):
         sound_pressure_level: float | NotGiven = NOT_GIVEN,
         source_url: str | NotGiven = NOT_GIVEN,
         sso_payload_mass: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         variant: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1069,7 +1068,7 @@ class AsyncLaunchVehicleDetailsResource(AsyncAPIResource):
         sound_pressure_level: float | NotGiven = NOT_GIVEN,
         source_url: str | NotGiven = NOT_GIVEN,
         sso_payload_mass: float | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         variant: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
