@@ -15,8 +15,8 @@ from ...types import (
     sensor_maintenance_tuple_params,
     sensor_maintenance_create_params,
     sensor_maintenance_update_params,
-    sensor_maintenance_current_params,
     sensor_maintenance_create_bulk_params,
+    sensor_maintenance_list_current_params,
 )
 from .history import (
     HistoryResource,
@@ -41,8 +41,8 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sensor_maintenance_get_response import SensorMaintenanceGetResponse
 from ...types.sensor_maintenance_list_response import SensorMaintenanceListResponse
 from ...types.sensor_maintenance_tuple_response import SensorMaintenanceTupleResponse
-from ...types.sensor_maintenance_current_response import SensorMaintenanceCurrentResponse
 from ...types.sensor_maintenance_queryhelp_response import SensorMaintenanceQueryhelpResponse
+from ...types.sensor_maintenance_list_current_response import SensorMaintenanceListCurrentResponse
 
 __all__ = ["SensorMaintenanceResource", "AsyncSensorMaintenanceResource"]
 
@@ -609,49 +609,6 @@ class SensorMaintenanceResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def current(
-        self,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorMaintenanceCurrentResponse:
-        """
-        Service operation to get current Sensor Maintenance records using any number of
-        additional parameters.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/sensormaintenance/current",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    sensor_maintenance_current_params.SensorMaintenanceCurrentParams,
-                ),
-            ),
-            cast_to=SensorMaintenanceCurrentResponse,
-        )
-
     def get(
         self,
         id: str,
@@ -696,6 +653,50 @@ class SensorMaintenanceResource(SyncAPIResource):
                 ),
             ),
             cast_to=SensorMaintenanceGetResponse,
+        )
+
+    def list_current(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[SensorMaintenanceListCurrentResponse]:
+        """
+        Service operation to get current Sensor Maintenance records using any number of
+        additional parameters.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/sensormaintenance/current",
+            page=SyncOffsetPage[SensorMaintenanceListCurrentResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sensor_maintenance_list_current_params.SensorMaintenanceListCurrentParams,
+                ),
+            ),
+            model=SensorMaintenanceListCurrentResponse,
         )
 
     def queryhelp(
@@ -1349,49 +1350,6 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def current(
-        self,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorMaintenanceCurrentResponse:
-        """
-        Service operation to get current Sensor Maintenance records using any number of
-        additional parameters.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/sensormaintenance/current",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    sensor_maintenance_current_params.SensorMaintenanceCurrentParams,
-                ),
-            ),
-            cast_to=SensorMaintenanceCurrentResponse,
-        )
-
     async def get(
         self,
         id: str,
@@ -1436,6 +1394,50 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
                 ),
             ),
             cast_to=SensorMaintenanceGetResponse,
+        )
+
+    def list_current(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[SensorMaintenanceListCurrentResponse, AsyncOffsetPage[SensorMaintenanceListCurrentResponse]]:
+        """
+        Service operation to get current Sensor Maintenance records using any number of
+        additional parameters.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/sensormaintenance/current",
+            page=AsyncOffsetPage[SensorMaintenanceListCurrentResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sensor_maintenance_list_current_params.SensorMaintenanceListCurrentParams,
+                ),
+            ),
+            model=SensorMaintenanceListCurrentResponse,
         )
 
     async def queryhelp(
@@ -1549,11 +1551,11 @@ class SensorMaintenanceResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             sensor_maintenance.create_bulk,
         )
-        self.current = to_raw_response_wrapper(
-            sensor_maintenance.current,
-        )
         self.get = to_raw_response_wrapper(
             sensor_maintenance.get,
+        )
+        self.list_current = to_raw_response_wrapper(
+            sensor_maintenance.list_current,
         )
         self.queryhelp = to_raw_response_wrapper(
             sensor_maintenance.queryhelp,
@@ -1589,11 +1591,11 @@ class AsyncSensorMaintenanceResourceWithRawResponse:
         self.create_bulk = async_to_raw_response_wrapper(
             sensor_maintenance.create_bulk,
         )
-        self.current = async_to_raw_response_wrapper(
-            sensor_maintenance.current,
-        )
         self.get = async_to_raw_response_wrapper(
             sensor_maintenance.get,
+        )
+        self.list_current = async_to_raw_response_wrapper(
+            sensor_maintenance.list_current,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             sensor_maintenance.queryhelp,
@@ -1629,11 +1631,11 @@ class SensorMaintenanceResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             sensor_maintenance.create_bulk,
         )
-        self.current = to_streamed_response_wrapper(
-            sensor_maintenance.current,
-        )
         self.get = to_streamed_response_wrapper(
             sensor_maintenance.get,
+        )
+        self.list_current = to_streamed_response_wrapper(
+            sensor_maintenance.list_current,
         )
         self.queryhelp = to_streamed_response_wrapper(
             sensor_maintenance.queryhelp,
@@ -1669,11 +1671,11 @@ class AsyncSensorMaintenanceResourceWithStreamingResponse:
         self.create_bulk = async_to_streamed_response_wrapper(
             sensor_maintenance.create_bulk,
         )
-        self.current = async_to_streamed_response_wrapper(
-            sensor_maintenance.current,
-        )
         self.get = async_to_streamed_response_wrapper(
             sensor_maintenance.get,
+        )
+        self.list_current = async_to_streamed_response_wrapper(
+            sensor_maintenance.list_current,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             sensor_maintenance.queryhelp,

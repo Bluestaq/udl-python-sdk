@@ -6,10 +6,10 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["SensorMaintenanceCurrentParams"]
+__all__ = ["SensorMaintenanceListCurrentParams"]
 
 
-class SensorMaintenanceCurrentParams(TypedDict, total=False):
+class SensorMaintenanceListCurrentParams(TypedDict, total=False):
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]
 
     max_results: Annotated[int, PropertyInfo(alias="maxResults")]

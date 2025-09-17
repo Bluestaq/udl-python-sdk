@@ -10,8 +10,9 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.sensor_plan import (
-    HistoryRetrieveResponse,
+    HistoryListResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -21,43 +22,43 @@ class TestHistory:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: Unifieddatalibrary) -> None:
-        history = client.sensor_plan.history.retrieve(
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        history = client.sensor_plan.history.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
-    def test_method_retrieve_with_all_params(self, client: Unifieddatalibrary) -> None:
-        history = client.sensor_plan.history.retrieve(
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.sensor_plan.history.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        response = client.sensor_plan.history.with_raw_response.retrieve(
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.sensor_plan.history.with_raw_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = response.parse()
-        assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+        assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: Unifieddatalibrary) -> None:
-        with client.sensor_plan.history.with_streaming_response.retrieve(
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.sensor_plan.history.with_streaming_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = response.parse()
-            assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+            assert_matches_type(SyncOffsetPage[HistoryListResponse], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -152,43 +153,43 @@ class TestAsyncHistory:
     )
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.sensor_plan.history.retrieve(
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.sensor_plan.history.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
-    async def test_method_retrieve_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        history = await async_client.sensor_plan.history.retrieve(
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.sensor_plan.history.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             columns="columns",
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensor_plan.history.with_raw_response.retrieve(
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sensor_plan.history.with_raw_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         history = await response.parse()
-        assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+        assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensor_plan.history.with_streaming_response.retrieve(
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sensor_plan.history.with_streaming_response.list(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             history = await response.parse()
-            assert_matches_type(HistoryRetrieveResponse, history, path=["response"])
+            assert_matches_type(AsyncOffsetPage[HistoryListResponse], history, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
