@@ -8,10 +8,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["HistoryRetrieveParams"]
+__all__ = ["HistoryListParams"]
 
 
-class HistoryRetrieveParams(TypedDict, total=False):
+class HistoryListParams(TypedDict, total=False):
     start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]]
     """The start time of the plan or schedule, in ISO 8601 UTC format.
 

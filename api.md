@@ -3664,8 +3664,8 @@ Types:
 from unifieddatalibrary.types import (
     SensorMaintenanceListResponse,
     SensorMaintenanceCountResponse,
-    SensorMaintenanceCurrentResponse,
     SensorMaintenanceGetResponse,
+    SensorMaintenanceListCurrentResponse,
     SensorMaintenanceQueryhelpResponse,
     SensorMaintenanceTupleResponse,
 )
@@ -3679,8 +3679,8 @@ Methods:
 - <code title="delete /udl/sensormaintenance/{id}">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">delete</a>(id) -> None</code>
 - <code title="get /udl/sensormaintenance/count">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/sensormaintenance/createBulk">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/sensormaintenance/current">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">current</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_current_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_current_response.py">SensorMaintenanceCurrentResponse</a></code>
 - <code title="get /udl/sensormaintenance/{id}">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_get_response.py">SensorMaintenanceGetResponse</a></code>
+- <code title="get /udl/sensormaintenance/current">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">list_current</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_list_current_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_list_current_response.py">SyncOffsetPage[SensorMaintenanceListCurrentResponse]</a></code>
 - <code title="get /udl/sensormaintenance/queryhelp">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_queryhelp_response.py">SensorMaintenanceQueryhelpResponse</a></code>
 - <code title="get /udl/sensormaintenance/tuple">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_tuple_response.py">SensorMaintenanceTupleResponse</a></code>
 
@@ -3689,15 +3689,12 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.sensor_maintenance import (
-    HistoryRetrieveResponse,
-    HistoryCountResponse,
-)
+from unifieddatalibrary.types.sensor_maintenance import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
-- <code title="get /udl/sensormaintenance/history">client.sensor_maintenance.history.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/history.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance/history_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance/history_retrieve_response.py">HistoryRetrieveResponse</a></code>
+- <code title="get /udl/sensormaintenance/history">client.sensor_maintenance.history.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/sensormaintenance/history/aodr">client.sensor_maintenance.history.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/sensormaintenance/history/count">client.sensor_maintenance.history.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance/history_count_params.py">params</a>) -> str</code>
 
@@ -3747,12 +3744,12 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.sensor_plan import HistoryRetrieveResponse, HistoryCountResponse
+from unifieddatalibrary.types.sensor_plan import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
-- <code title="get /udl/sensorplan/history">client.sensor_plan.history.<a href="./src/unifieddatalibrary/resources/sensor_plan/history.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_plan/history_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_plan/history_retrieve_response.py">HistoryRetrieveResponse</a></code>
+- <code title="get /udl/sensorplan/history">client.sensor_plan.history.<a href="./src/unifieddatalibrary/resources/sensor_plan/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_plan/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_plan/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/sensorplan/history/aodr">client.sensor_plan.history.<a href="./src/unifieddatalibrary/resources/sensor_plan/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_plan/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/sensorplan/history/count">client.sensor_plan.history.<a href="./src/unifieddatalibrary/resources/sensor_plan/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_plan/history_count_params.py">params</a>) -> str</code>
 

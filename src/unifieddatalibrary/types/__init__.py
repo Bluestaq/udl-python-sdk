@@ -1338,7 +1338,6 @@ from .operatingunitremark_list_response import OperatingunitremarkListResponse a
 from .orbitdetermination_count_response import OrbitdeterminationCountResponse as OrbitdeterminationCountResponse
 from .orbitdetermination_tuple_response import OrbitdeterminationTupleResponse as OrbitdeterminationTupleResponse
 from .sensor_maintenance_count_response import SensorMaintenanceCountResponse as SensorMaintenanceCountResponse
-from .sensor_maintenance_current_params import SensorMaintenanceCurrentParams as SensorMaintenanceCurrentParams
 from .sensor_maintenance_tuple_response import SensorMaintenanceTupleResponse as SensorMaintenanceTupleResponse
 from .sera_data_comm_detail_list_params import SeraDataCommDetailListParams as SeraDataCommDetailListParams
 from .sera_data_navigation_count_params import SeraDataNavigationCountParams as SeraDataNavigationCountParams
@@ -1427,7 +1426,6 @@ from .maneuver_unvalidated_publish_params import ManeuverUnvalidatedPublishParam
 from .navigational_obstruction_get_params import NavigationalObstructionGetParams as NavigationalObstructionGetParams
 from .onorbitthrusterstatus_create_params import OnorbitthrusterstatusCreateParams as OnorbitthrusterstatusCreateParams
 from .onorbitthrusterstatus_list_response import OnorbitthrusterstatusListResponse as OnorbitthrusterstatusListResponse
-from .sensor_maintenance_current_response import SensorMaintenanceCurrentResponse as SensorMaintenanceCurrentResponse
 from .sensor_observation_type_list_params import SensorObservationTypeListParams as SensorObservationTypeListParams
 from .sera_data_comm_detail_create_params import SeraDataCommDetailCreateParams as SeraDataCommDetailCreateParams
 from .sera_data_comm_detail_list_response import SeraDataCommDetailListResponse as SeraDataCommDetailListResponse
@@ -1668,6 +1666,9 @@ from .operatingunitremark_queryhelp_response import (
 from .secure_messaging_describe_topic_params import (
     SecureMessagingDescribeTopicParams as SecureMessagingDescribeTopicParams,
 )
+from .sensor_maintenance_list_current_params import (
+    SensorMaintenanceListCurrentParams as SensorMaintenanceListCurrentParams,
+)
 from .sensor_plan_unvalidated_publish_params import (
     SensorPlanUnvalidatedPublishParams as SensorPlanUnvalidatedPublishParams,
 )
@@ -1823,6 +1824,9 @@ from .onorbitthrusterstatus_queryhelp_response import (
 )
 from .organizationdetail_find_by_source_params import (
     OrganizationdetailFindBySourceParams as OrganizationdetailFindBySourceParams,
+)
+from .sensor_maintenance_list_current_response import (
+    SensorMaintenanceListCurrentResponse as SensorMaintenanceListCurrentResponse,
 )
 from .sera_data_comm_detail_queryhelp_response import (
     SeraDataCommDetailQueryhelpResponse as SeraDataCommDetailQueryhelpResponse,
